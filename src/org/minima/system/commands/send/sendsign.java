@@ -112,18 +112,29 @@ public class sendsign extends Command {
 			//Add this address / public key to the list we need to sign as..
 			String pubkey = srow.getPublicKey();
 			if(!reqsigs.contains(pubkey)) {
+				//Remember it - one signature per DISTINCT key, not one per input coin. Without this add()
+				//the guard never fires, so an N-input transaction from one address burned N key uses
+				//instead of 1 (and appended N duplicate signatures to the witness). Every leaf spent here
+				//is spent for good, so this was silently driving keys towards exhaustion.
+				reqsigs.add(pubkey);
+
 				//Use the wallet..
 				Signature signature = walletdb.signData(pubkey, trans.getTransactionID());
-				
+
 				//Add it..
 				witness.addSignature(signature);
-			}	
+			}
 		}
-		
+
 		//Get the sigs required.. for the BURN transaction
 		trans 	= txp.getBurnTransaction();
 		witness = txp.getBurnWitness();
 		inputs 	= trans.getAllInputs();
+
+		//A SEPARATE dedupe list: the burn transaction has its own transaction ID, so a key that signed
+		//the main transaction must still sign this one. Sharing reqsigs would skip it and produce an
+		//unsigned burn.
+		ArrayList<String> burnsigs = new ArrayList<>();
 		for(Coin input : inputs) {
 		
 			//Add the script proofs
@@ -139,15 +150,17 @@ public class sendsign extends Command {
 			
 			//Add this address / public key to the list we need to sign as..
 			String pubkey = srow.getPublicKey();
-			if(!reqsigs.contains(pubkey)) {
+			if(!burnsigs.contains(pubkey)) {
+				burnsigs.add(pubkey);
+
 				//Use the wallet..
 				Signature signature = walletdb.signData(pubkey, trans.getTransactionID());
-				
+
 				//Add it..
 				witness.addSignature(signature);
-			}	
+			}
 		}
-		
+
 		//Are we locking the DB
 		if(passwordlock) {
 			//Lock the Wallet DB

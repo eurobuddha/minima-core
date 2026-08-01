@@ -789,8 +789,27 @@ public class Wallet extends SqlDB {
 	
 	/**
 	 * Sign a piece of data with a specific public key
+	 *
+	 * MUST be synchronized. Minima signatures are STATEFUL: this method is a read-modify-write of the
+	 * key's `uses` counter (SELECT uses -> tk.sign() at that leaf -> UPDATE uses), and the sign() in the
+	 * middle is thousands of hashes, so the window is milliseconds wide. Two concurrent callers on the
+	 * same key both read `uses = N` and both sign leaf N over DIFFERENT data - which is a reused
+	 * Winternitz one-time signature, and reusing a leaf twice LEAKS that leaf's private key. Nothing in
+	 * the node detects it: TreeKey.verify() only checks the Merkle path, it has no notion of index
+	 * monotonicity.
+	 *
+	 * Concurrency here is routine, not exotic: HTTPServer spawns a thread per RPC request, MDS spawns a
+	 * handler per MiniDapp socket, SendPollManager fires on its own timer, and getDefaultAddress() picks
+	 * uniformly at random from only 64 keys - so two overlapping signs collide on one key often.
+	 *
+	 * The shared PreparedStatements (SQL_GET_KEY / SQL_UPDATE_KEY_USES) are not thread-safe either, so
+	 * the unsynchronized version also corrupted each other's bound parameters.
+	 *
+	 * Every other mutator on this class is already synchronized; this was the one exception. Monitors
+	 * are reentrant, so the synchronized helpers called from here (getKeyFromPublic, isBaseSeedAvailable)
+	 * are fine.
 	 */
-	public Signature signData(String zPublicKey, MiniData zData) {
+	public synchronized Signature signData(String zPublicKey, MiniData zData) {
 		
 		//Check we can create new keys
 		if(!isBaseSeedAvailable()) {
@@ -844,7 +863,9 @@ public class Wallet extends SqlDB {
 		return null;
 	}
 		
-	private void updateUses(int zUses, String zPublicKey) throws SQLException {		
+	/** Synchronized with signData - it is the write half of that read-modify-write, and it drives a
+	 *  shared (non-thread-safe) PreparedStatement. */
+	private synchronized void updateUses(int zUses, String zPublicKey) throws SQLException {
 
 		//Get the Query ready
 		SQL_UPDATE_KEY_USES.clearParameters();
