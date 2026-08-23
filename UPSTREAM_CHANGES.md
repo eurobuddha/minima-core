@@ -4,12 +4,16 @@
 **From:** eurobuddha — fork at https://github.com/eurobuddha/minima-core
 **Date:** 2026-08-02
 
-Two unrelated pieces of work, both driven by running mainnet nodes on Android phones:
+Three unrelated pieces of work, all driven by running mainnet nodes on Android phones:
 
 1. **A security fix** — `Wallet.signData` is an unsynchronized read-modify-write of the key-use
    counter, which produces genuine Winternitz one-time-signature reuse. Confirmed in the wild.
 2. **MegaMMR import on constrained heaps** — a 343 MB mainnet `mega.mmr` needed ~1.3 GB decoded and
    killed the process on a 512 MB phone heap, with no usable error.
+3. **A correctness fix** — `Wallet.removeScript` deletes the DB row but never removes the address
+   from the in-memory `mAllTrackedAddress` / `mAllSimpleAddress` caches, so re-registering a shared
+   script with `newscript trackall:false` keeps adopting every stranger's coin until node restart.
+   Confirmed in the wild (shared casino covenant). See Part 3.
 
 Everything is self-contained; no consensus rules, transaction validation or network code is touched.
 Take any or all of it — happy to raise PRs in whatever shape suits you.
@@ -22,7 +26,7 @@ Two sibling documents cover our Android-app fork (`minima-core-android`), which 
 ## Scope: six files
 
 ```
-src/org/minima/database/wallet/Wallet.java              security
+src/org/minima/database/wallet/Wallet.java              security + removeScript cache fix (Part 3)
 src/org/minima/system/commands/send/sendsign.java       security
 src/org/minima/objects/mmr/MMR.java                     heap
 src/org/minima/objects/mmr/MegaMMR.java                 heap
@@ -233,10 +237,49 @@ phone the practical mainnet path is `-megammr` **plus** `-megaprune`.
 
 ---
 
+# Part 3 — `Wallet.removeScript` leaves the relevance caches stale
+
+## The defect
+
+`Wallet` keeps two fast-check caches beside the SQL scripts table: `mAllTrackedAddress` (feeds
+`isAddressRelevant`, i.e. `TxPoWTreeNode.checkRelevant`'s address test) and `mAllSimpleAddress`.
+They are populated on load and in `addScript(...)` — but `removeScript(zAddress)` only executes the
+SQL delete and never touches either cache.
+
+`newscript` re-registration is `removeScript` + `addScript(..., track)`, and `addScript` only ever
+ADDS to the caches (when `zTrack`/`zSimple` are true). So demoting a script from `trackall:true` to
+`trackall:false` updates the DB but leaves the address in `mAllTrackedAddress` until the node
+restarts — `checkRelevant` keeps returning true for EVERY coin at that address, and the wallet keeps
+adopting other people's coins into its relevant set (balance `locked`, `coins relevant:true`, and
+`history`) block after block. The same staleness applies to `removescript` proper.
+
+Where this bites in practice: any app built on a SHARED covenant address (one script, many users —
+our casino, an order book, a liquidity pool) that ever registered it `trackall:true` and then
+corrects to `trackall:false`. The correction silently does not take effect for the running node; a
+polluted wallet keeps growing. `cointrack enable:false` per coin cannot keep up because relevance is
+re-checked only when a block first processes a coin.
+
+## The change
+
+`removeScript` additionally removes the address from both caches, so they always mirror the DB:
+
+```java
+mAllTrackedAddress.remove(zAddress);
+mAllSimpleAddress.remove(zAddress);
+```
+
+A subsequent `addScript` re-adds whatever the new flags say, so `newscript trackall:true` behavior
+is unchanged. Two lines; no consensus, transaction or network code touched.
+
 ## Verification
 
 **Security fix** — the standalone race harness above; plus the fix has been running in our Android node
 build (`minimaCore 1.6.7-ui-h2`) with no ill effects.
+
+**removeScript cache fix** — `newscript trackall:true` a shared script, then re-register it
+`trackall:false`, then process a block carrying a foreign coin at that address: without the fix the
+coin is adopted (relevant) until restart; with it, it is not. Existing behavior for `trackall:true`
+registrations is unchanged.
 
 **MegaMMR work** — desktop `javac -source/-target 8` build with 405-class parity; happy-path import OK;
 truncated file → clean `EOFException`; 200 MB file on `-Xmx256m` → clean "too large" pre-flight with the

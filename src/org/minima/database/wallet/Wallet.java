@@ -613,16 +613,23 @@ public class Wallet extends SqlDB {
 	public synchronized void removeScript(String zAddress) {
 		//Now put all this in the DB
 		try {
-		
+
 			//Get the Query ready
 			SQL_REMOVE_SCRIPT.clearParameters();
-		
+
 			//Set main params
 			SQL_REMOVE_SCRIPT.setString(1, zAddress);
-			
+
 			//Do it.
 			SQL_REMOVE_SCRIPT.execute();
-			
+
+			//Keep the fast-check caches mirroring the DB. Without this a `newscript trackall:false`
+			//re-registration (removeScript + addScript(track=false)) demoted only the DB row while
+			//mAllTrackedAddress still contained the address until restart — so checkRelevant kept
+			//adopting EVERY coin at a shared script address (e.g. the casino covenant) every block.
+			mAllTrackedAddress.remove(zAddress);
+			mAllSimpleAddress.remove(zAddress);
+
 		} catch (SQLException e) {
 			MinimaLogger.log(e);
 		}
