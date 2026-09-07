@@ -86,6 +86,30 @@ public class NIOServer implements Runnable {
 		mSelector.wakeup();
 	}
 	
+	/**
+	 * Hand an INCOMING connection to an embedding host (see {@link NIOHandoff}): its key leaves the
+	 * selector, it leaves the client list, the channel goes blocking, and whatever the reader had
+	 * buffered beyond the last complete frame is returned so nothing is lost. Null if unknown.
+	 */
+	public Object[] detachForHandoff(String zUID) {
+		NIOClient client = mClients.remove(zUID);
+		if(client == null) {
+			return null;
+		}
+		try {
+			client.mKey.cancel();
+			mSelector.wakeup();
+			byte[] leftover = client.drainBufferedInput();
+			client.mSocket.configureBlocking(true);
+			NIOMessage.mlastSyncReq.remove(zUID);
+			NIOMessage.mLastChainSync.remove(zUID);
+			return new Object[]{client.mSocket, leftover};
+		} catch (Exception e) {
+			try { client.mSocket.close(); } catch (Exception ignored) {}
+			return null;
+		}
+	}
+
 	public NIOClient getClient(String zUID) {
 		return mClients.get(zUID);
 	}

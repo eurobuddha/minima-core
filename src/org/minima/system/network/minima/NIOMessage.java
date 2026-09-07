@@ -282,6 +282,21 @@ public class NIOMessage implements Runnable {
 				
 				//We have received a greeting message
 				Greeting greet = Greeting.ReadFromStream(dis);
+
+				//A Parlons/Maxima relay client on OUR port (see NIOHandoff): hand the whole
+				//connection to the embedding relay, greeting and all, before any chain handling.
+				if(nioclient.isIncoming() && NIOHandoff.wants(greet)) {
+					Object[] handed = Main.getInstance().getNIOManager().getNIOServer().detachForHandoff(mClientUID);
+					if(handed != null) {
+						try {
+							NIOHandoff.HANDLER.take((java.nio.channels.SocketChannel) handed[0], mData.getBytes(), (byte[]) handed[1], nioclient.getHost());
+						} catch (Throwable t) {
+							MinimaLogger.log("NIOHandoff failed : " + t);
+							try { ((java.nio.channels.SocketChannel) handed[0]).close(); } catch (Exception ignored) {}
+						}
+					}
+					return;
+				}
 				
 				//What version..
 				boolean testcheck = true;

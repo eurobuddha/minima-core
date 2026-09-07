@@ -500,6 +500,27 @@ public class NIOClient {
 		mBufferOut.compact();
 	}
 	
+	/** Bytes read from the socket but not yet consumed as a frame (see NIOHandoff): the read buffer
+	 *  is kept in write mode between reads (compact()), so flip, copy, clear. Any partial frame in
+	 *  progress is returned as its raw bytes too (length prefix rebuilt), so the taker's stream
+	 *  starts exactly where ours stopped. */
+	byte[] drainBufferedInput() {
+		java.io.ByteArrayOutputStream out = new java.io.ByteArrayOutputStream();
+		if(mReadByteArray != null) {
+			byte[] partial = mReadByteArray.toByteArray();
+			java.nio.ByteBuffer len = java.nio.ByteBuffer.allocate(4).putInt(mReadCurrentLimit);
+			out.write(len.array(), 0, 4);
+			out.write(partial, 0, partial.length);
+			mReadByteArray = null;
+		}
+		((java.nio.Buffer) mBufferIn).flip();
+		byte[] rest = new byte[mBufferIn.remaining()];
+		mBufferIn.get(rest);
+		out.write(rest, 0, rest.length);
+		mBufferIn.clear();
+		return out.toByteArray();
+	}
+
 	public void disconnect() {
         try {
      	   mKey.cancel();
