@@ -38,6 +38,9 @@ dependencies {
     //Bouncy Castle
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.69'
     
+    //Rhino JS engine - MDS service.js / backend scripts
+    implementation 'org.mozilla:rhino:1.7.14'
+    
     //MySQL connector
  	implementation "mysql:mysql-connector-java:8.0.26"
 }

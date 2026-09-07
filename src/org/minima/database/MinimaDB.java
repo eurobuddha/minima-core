@@ -9,6 +9,7 @@ import org.minima.database.archive.ArchiveManager;
 import org.minima.database.archive.TxBlockDB;
 import org.minima.database.cascade.Cascade;
 import org.minima.database.txpowdb.TxPoWDB;
+import org.minima.database.minidapps.MDSDB;
 import org.minima.database.txpowtree.CoinDB;
 import org.minima.database.txpowtree.TxPowTree;
 import org.minima.database.userprefs.UserDB;
@@ -44,6 +45,7 @@ public class MinimaDB {
 	TxPowTree 		mTxPoWTree;
 	Cascade			mCascade;
 	UserDB			mUserDB;
+	MDSDB			mMDSDB;
 	TxnDB			mTxnDB;
 	Wallet			mWallet;
 	TxBlockDB		mTxBlockDB;
@@ -85,6 +87,7 @@ public class MinimaDB {
 		mTxPoWTree 	= new TxPowTree();
 		mCascade	= new Cascade();
 		mUserDB		= new UserDB();
+		mMDSDB   	= new MDSDB();
 		mWallet		= new Wallet();
 		mTxBlockDB	= new TxBlockDB();
 		
@@ -173,6 +176,10 @@ public class MinimaDB {
 	/**
 	 * Get the various different databases
 	 */
+	public MDSDB getMDSDB() {
+		return mMDSDB;
+	}
+	
 	public TxPoWDB getTxPoWDB() {
 		return mTxPoWDB;
 	}
@@ -356,9 +363,15 @@ public class MinimaDB {
 				mTxPoWDB.loadSQLDB(new File(txpowsqlfolder,"txpow"));
 			}
 			
-			//Load the Maxima DB
+			//Load the MDS DB
 			if(Main.STARTUP_DEBUG_LOGS) {
-				MinimaLogger.log("MinimaDB load MaximaDB..");
+				MinimaLogger.log("MinimaDB load MDSDB..");
+			}
+			File mdssqlfolder = new File(basedb,"mdssql");
+			if(!GeneralParams.IS_MAIN_DBPASSWORD_SET) {
+				mMDSDB.loadDB(new File(mdssqlfolder,"mds"));
+			}else {
+				mMDSDB.loadEncryptedSQLDB(new File(mdssqlfolder,"mds"),GeneralParams.MAIN_DBPASSWORD);
 			}
 			
 			//Load the User Prefs
@@ -586,6 +599,8 @@ public class MinimaDB {
 			mTxPoWDB.saveDB(zCompact);
 			MinimaLogger.log("ArchiveDB shutdown..");
 			mArchive.saveDB(zCompact);
+			MinimaLogger.log("MDSDB shutdown..");
+			mMDSDB.saveDB(zCompact);
 			
 			//Close the CoinDB
 			MinimaLogger.log("CoinDB shutdown..");

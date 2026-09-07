@@ -443,6 +443,9 @@ public class ParamConfigurer {
                 GeneralParams.MDS_NOSSL = true;
             }
         }),
+        mdsbind("mdsbind", "Bind the MDS servers to one interface only, e.g. 127.0.0.1 (default: all)", (args, configurer) -> {
+            GeneralParams.MDS_BIND_HOST = args.trim();
+        }),
         mysqldb("mysqldb", "Set the full MySQL DB details as username:password@host:port", (args, configurer) -> {
         	GeneralParams.MYSQL_DB_DETAILS = args;
         }),

@@ -301,6 +301,11 @@ public class GeneralParams {
 	public static boolean MDS_NOSSL = false;
 	
 	/**
+	 * Interface the MDS servers bind: "" = every interface (stock Minima), "127.0.0.1" = loopback only
+	 */
+	public static String MDS_BIND_HOST = "";
+	
+	/**
 	 * Setup MySQL DB from command line
 	 */
 	public static String MYSQL_DB_DETAILS = "";
@@ -455,6 +460,7 @@ public class GeneralParams {
 		NOTIFY_ALL_TXPOW 	  = false;
 		RESCUE_MEGAMMR_NODE	  = "";
 		MDS_NOSSL 			  = false;
+		MDS_BIND_HOST 		  = "";
 		
 		MYSQL_STORE_ALLTXPOW  	= false;
 		MYSQL_DB_DETAILS 		= "";

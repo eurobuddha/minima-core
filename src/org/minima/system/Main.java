@@ -19,6 +19,7 @@ import org.minima.system.brains.TxPoWProcessor;
 import org.minima.system.commands.CommandRunner;
 import org.minima.system.commands.backup.mysql;
 import org.minima.system.commands.sendpoll.SendPollManager;
+import org.minima.system.mds.MDSManager;
 import org.minima.system.genesis.GenesisMMR;
 import org.minima.system.genesis.GenesisTxPoW;
 import org.minima.system.network.NetworkManager;
@@ -30,6 +31,7 @@ import org.minima.system.params.GeneralParams;
 import org.minima.system.params.GlobalParams;
 import org.minima.utils.MiniFile;
 import org.minima.utils.MiniFormat;
+import org.minima.utils.ssl.SSLManager;
 import org.minima.utils.MinimaLogger;
 import org.minima.utils.json.JSONArray;
 import org.minima.utils.json.JSONObject;
@@ -213,6 +215,13 @@ public class Main extends MessageProcessor {
 	 */
 	boolean mShuttingdown 				= false;
 	boolean mHaveShutDownMDS 			= false;
+	boolean mShutdownComplete 			= false;
+	
+	/**
+	 * MDS - the MiniDAPP System (re-imported from upstream Minima; served by the Parlons Node
+	 * only when GeneralParams.MDS_ENABLED, loopback-bound by default - see GeneralParams.MDS_BIND_HOST)
+	 */
+	MDSManager mMDS;
 	/**
 	 * Are we restoring..
 	 */
@@ -323,6 +332,17 @@ public class Main extends MessageProcessor {
 		}
 		
 		
+		//Create the SSL Keystore - only needed for the self-signed MDS https server
+		if(GeneralParams.GENERATE_SSL && GeneralParams.MDS_ENABLED && !GeneralParams.MDS_NOSSL) {
+			if(STARTUP_DEBUG_LOGS) {
+				MinimaLogger.log("SSL Key.. start");
+			}
+			SSLManager.makeKeyFile();
+			if(STARTUP_DEBUG_LOGS) {
+				MinimaLogger.log("SSL Key.. finish");
+			}
+		}
+		
 		//Calculate the User hashrate.. start her up as seems to make a difference.. initialises..
 		TxPoWMiner.calculateHashRateOld(new MiniNumber(10000));
 		
@@ -382,6 +402,9 @@ public class Main extends MessageProcessor {
 				
 		//New Send POll Manager
 		mSendPoll = new SendPollManager();
+		
+		//Start MDS (a no-op processor unless GeneralParams.MDS_ENABLED)
+		mMDS = new MDSManager();
 		
 		//Simulate traffic message
 		AUTOMINE_TIMER = MiniNumber.THOUSAND.div(GlobalParams.MINIMA_BLOCK_SPEED).getAsLong();
@@ -478,6 +501,10 @@ public class Main extends MessageProcessor {
 		mShuttingdown = true;
 	}
 	
+	public boolean isShutdownComplete() {
+		return mShutdownComplete;
+	}
+	
 	public boolean isShuttingDown() {
 		return mShuttingdown;
 	}
@@ -533,6 +560,7 @@ public class Main extends MessageProcessor {
 			waitToShutDown();
 			
 			MinimaLogger.log("Shut down completed OK..");
+			mShutdownComplete = true;
 			
 			//Tell listener..
 			NotifyMainListenerOfShutDown();
@@ -685,9 +713,7 @@ public class Main extends MessageProcessor {
 		if(zShutDownMDS) {
 			if(!mHaveShutDownMDS) {
 				mHaveShutDownMDS = true;
-				
-				//Shut down the Notify Manager
-				mNotifyManager.shutDown();
+				shutdownMDS();
 			}
 		}
 				
@@ -695,6 +721,21 @@ public class Main extends MessageProcessor {
 		MinimaLogger.log("Shutdown TxPoWProcessor..");
 		mTxPoWProcessor.stopMessageProcessor();
 		mTxPoWProcessor.waitToShutDown();
+	}
+	
+	public void shutdownMDS() {
+		//ShutDown MDS
+		MinimaLogger.log("Shutdown MDS..");
+		if(mMDS != null) {
+			mMDS.shutdown();
+		}
+		
+		//Shut down the Notify Manager
+		mNotifyManager.shutDown();
+	}
+	
+	public MDSManager getMDSManager() {
+		return mMDS;
 	}
 	
 	/**
@@ -1120,6 +1161,12 @@ public class Main extends MessageProcessor {
 			MinimaLogger.log("Wait 10 seconds..");
 			Thread.sleep(10000);
 			
+			//Stop and restart the MDS..
+			if(mMDS != null) {
+				MinimaLogger.log("Clear MDS");
+				mMDS.clearExceptString("MDS_TIMER");
+			}
+			
 			//Reset the IBD timer
 			getTxPoWProcessor().resetFirstIBDTimer();
 			
@@ -1323,6 +1370,14 @@ public class Main extends MessageProcessor {
 				//And post
 				getNotifyManager().PostEvent(notify);
 			}
+		}
+		
+		//Tell the MDS..
+		if(getMDSManager() != null) {
+			Message poll = new Message(MDSManager.MDS_POLLMESSAGE);
+			poll.addObject("poll", notify);
+			poll.addObject("to", zTo);
+			getMDSManager().PostMessage(poll);
 		}
 	}
 	

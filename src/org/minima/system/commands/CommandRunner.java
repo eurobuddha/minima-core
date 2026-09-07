@@ -1,5 +1,7 @@
 package org.minima.system.commands;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
@@ -20,7 +22,14 @@ import org.minima.system.commands.backup.mmrsync.megammr;
 import org.minima.system.commands.backup.mmrsync.megammrsync;
 import org.minima.system.commands.base.automine;
 import org.minima.system.commands.base.balance;
+import org.minima.database.minidapps.MiniDAPP;
+import org.minima.system.Main;
 import org.minima.system.commands.base.benchmark;
+import org.minima.system.commands.mds.checkmode;
+import org.minima.system.commands.mds.checkpending;
+import org.minima.system.commands.mds.checkrestore;
+import org.minima.system.commands.mds.mds;
+import org.minima.system.mds.MDSManager;
 import org.minima.system.commands.base.block;
 import org.minima.system.commands.base.burn;
 import org.minima.system.commands.base.checkaddress;
@@ -137,14 +146,14 @@ public class CommandRunner {
 			new send(), new balance(), new tokencreate(), new tokenvalidate(), new tokens(),new getaddress(), new newaddress(), new debugflag(),
 			new incentivecash(), new webhooks(), new peers(), new p2pstate(),
 
-			new sendpoll(), new healthcheck(), new mempool(), new block(), new reset(),
+			new mds(), new sendpoll(), new healthcheck(), new mempool(), new block(), new reset(),
 			
 			new whitepaper(), new sendnosign(), new sendsign(), new sendpost(), new sendview(),
 			new sendfrom(), new createfrom(), new rawfrom(), new rawtxnfrom(), new signfrom(), new postfrom(), new constructfrom(), new consolidatefrom(),
 			new createtokenfrom(),
 			
 			new archive(), new logs(), new history(), new convert(),new maths(),
-			new restoresync(), new timemilli(),
+			new checkpending(), new checkmode(), new checkrestore(), new restoresync(), new timemilli(),
 			
 			new decryptbackup(), new megammrsync(), new systemcheck(), new scanchain(),
 			
@@ -256,27 +265,9 @@ public class CommandRunner {
 			//Check this MiniDAPP can make this call..
 			boolean allowed = isCommandAllowed(comname);
 			
-			//Is this an ADMIN User
-			if(!zMiniDAPPID.equals("0x00")) {
-				
-				//Public MiniDAPPs cannot add to pending..
-				if(!allowed) {
-					result=  new JSONObject();
-					result.put("command", command);
-					result.put("status", false);
-					result.put("pending", false);
-					result.put("error", "You need ADMIN privileges to run this command");
-					
-					//Add to the List..
-					finalresult.add(result);
-					
-					//And that's all folks..
-					break;
-				}
-			}
-
 			//Is this a MiniDAPP..
-			/*if(zMiniDAPPID.equals(Main.getInstance().getMDSManager().getPublicMiniDAPPID())) {
+			MDSManager mds = Main.getInstance() == null ? null : Main.getInstance().getMDSManager();
+			if(mds != null && zMiniDAPPID.equals(mds.getPublicMiniDAPPID())) {
 				
 				//Public MiniDAPPs cannot add to pending..
 				if(!allowed) {
@@ -297,14 +288,23 @@ public class CommandRunner {
 				
 				if(!allowed) {
 					
-					//Get the MiniDAPP
-					MiniDAPP md = Main.getInstance().getMDSManager().getMiniDAPP(zMiniDAPPID);
+					//Get the MiniDAPP - unknown callers (no MDS, or not an installed dapp) are refused outright
+					MiniDAPP md = mds == null ? null : mds.getMiniDAPP(zMiniDAPPID);
+					if(md == null) {
+						result=  new JSONObject();
+						result.put("command", command);
+						result.put("status", false);
+						result.put("pending", false);
+						result.put("error", "You need ADMIN privileges to run this command");
+						finalresult.add(result);
+						break;
+					}
 					
 					//Does it have WRITE permission..
 					if(!md.getPermission().equalsIgnoreCase("write")) {
 					
 						//Add to pending..
-						String puid = Main.getInstance().getMDSManager().addPendingCommand(md, command);
+						String puid = mds.addPendingCommand(md, command);
 						
 						//And return..
 						result=  new JSONObject();
@@ -321,7 +321,7 @@ public class CommandRunner {
 						break;
 					}
 				}
-			}*/
+			}
 			
 			try {
 				result = cmd.runCommand();
