@@ -72,6 +72,16 @@ public class NIOClient {
 	int mConnectAttempts = 1;
 	
 	boolean mValidGreeting = false;
+
+	/** Set (on the selector thread) once this connection has been handed to an embedding relay
+	 *  (see NIOHandoff): the NIO layer must never close or read it again. */
+	volatile boolean mHandedOff = false;
+
+	/** While a NIOHandoff handler is registered and an INCOMING client has not greeted yet, every
+	 *  complete frame after the FIRST one in a read is held here instead of being posted, so a
+	 *  hand-off can replay it to the relay in order. A chain peer's greeting releases them. */
+	private final ArrayList<byte[]> mHeldFrames = new ArrayList<>();
+	private int mFramesSeen = 0;
 	
 	boolean mSentGreeting = false;
 	
@@ -238,6 +248,25 @@ public class NIOClient {
 	
 	public void setValidGreeting(boolean zValid) {
 		mValidGreeting = zValid;
+		if(zValid) {
+			//A chain peer after all: release, in order, any frames held back behind its greeting
+			ArrayList<byte[]> held;
+			synchronized (mHeldFrames) {
+				held = new ArrayList<>(mHeldFrames);
+				mHeldFrames.clear();
+			}
+			for(byte[] frame : held) {
+				postFrame(frame);
+			}
+		}
+	}
+
+	private void postFrame(byte[] zFrame) {
+		Message msg = new Message(NIOManager.NIO_INCOMINGMSG);
+		msg.addString("uid", mUID);
+		msg.addString("fullhost", getFullAddress());
+		msg.addObject("data", new MiniData(zFrame));
+		mNIOManager.PostMessage(msg);
 	}
 	
 	public boolean haveSentGreeting() {
@@ -386,12 +415,22 @@ public class NIOClient {
 					//Get  all the data
 					byte[] allreaddata = mReadByteArray.toByteArray(); 
 					
-					//Post it !
-					Message msg = new Message(NIOManager.NIO_INCOMINGMSG);
-					msg.addString("uid", mUID);
-					msg.addString("fullhost", getFullAddress());
-					msg.addObject("data", new MiniData(allreaddata));
-					mNIOManager.PostMessage(msg);
+					//Post it ! - unless it may belong to a relay client (see NIOHandoff): an incoming
+					//client that has not greeted yet gets its FIRST frame posted (that decides chain
+					//peer or relay client) and any further frames held until that decision is made.
+					mFramesSeen++;
+					boolean hold = false;
+					if(mIncoming && !mValidGreeting && mFramesSeen > 1 && NIOHandoff.HANDLER != null) {
+						synchronized (mHeldFrames) {
+							if(!mValidGreeting) {
+								mHeldFrames.add(allreaddata);
+								hold = true;
+							}
+						}
+					}
+					if(!hold) {
+						postFrame(allreaddata);
+					}
 					
 					//New array required..
 					mReadByteArray = null;
@@ -506,6 +545,14 @@ public class NIOClient {
 	 *  starts exactly where ours stopped. */
 	byte[] drainBufferedInput() {
 		java.io.ByteArrayOutputStream out = new java.io.ByteArrayOutputStream();
+		synchronized (mHeldFrames) {
+			for(byte[] frame : mHeldFrames) {
+				java.nio.ByteBuffer len = java.nio.ByteBuffer.allocate(4).putInt(frame.length);
+				out.write(len.array(), 0, 4);
+				out.write(frame, 0, frame.length);
+			}
+			mHeldFrames.clear();
+		}
 		if(mReadByteArray != null) {
 			byte[] partial = mReadByteArray.toByteArray();
 			java.nio.ByteBuffer len = java.nio.ByteBuffer.allocate(4).putInt(mReadCurrentLimit);
@@ -522,6 +569,9 @@ public class NIOClient {
 	}
 
 	public void disconnect() {
+		if(mHandedOff) {
+			return;   //the relay owns this socket now (NIOHandoff)
+		}
         try {
      	   mKey.cancel();
      	   mSocket.close();
