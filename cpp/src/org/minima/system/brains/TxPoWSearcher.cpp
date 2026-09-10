@@ -62,7 +62,7 @@ bool TxPoWSearcher::checkTxPoWRelevant(const TxPoW& txpow,const ChainServices& w
 }
 std::vector<std::shared_ptr<Token>> TxPoWSearcher::getAllTokens(){std::lock_guard lock(mImportedMutex);std::vector<std::shared_ptr<Token>> result;std::unordered_set<std::string> added;
     for(auto tip=services.getTip();tip;tip=tip->getParent())for(const auto& coin:tip->getAllCoins()){auto id=coin.getTokenID().to0xString();if(id!="0x00"&&added.insert(id).second)result.push_back(token(coin));}
-    for(const auto& item:mImportedTokens){if(!item)throw std::runtime_error("Null imported token");auto id=item->getTokenID().value().to0xString();if(added.insert(id).second)result.push_back(item);}return result;
+    for(const auto& item:mImportedTokens){if(!item)throw JavaNullPointerException("Null imported token");auto id=item->getTokenID().value().to0xString();if(added.insert(id).second)result.push_back(item);}return result;
 }
 void TxPoWSearcher::importToken(std::shared_ptr<Token> token){std::lock_guard lock(mImportedMutex);mImportedTokens.push_back(std::move(token));}
 std::shared_ptr<Token> TxPoWSearcher::getToken(const MiniData& id){auto tip=services.getTip();bool megaCheck=false;

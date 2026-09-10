@@ -1,5 +1,6 @@
 #include "org/minima/system/params/GlobalParams.hpp"
 #include "SqlRecordingFixture.hpp"
+#include "TxPoWSearcherFixture.hpp"
 #include "org/minima/database/MinimaDB.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -200,6 +201,13 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             }
             else if(op=="historyLoad")MinimaDB::getDB()->getTxPoWDB()->getSQLDB()->loadDB(std::filesystem::path(root)/"txpow");
             else if(op=="historyLimit")TxPoWSqlDB::MAX_RELEVANT_TXPOW=MiniNumber(config->getString("limit"));
+            else if(op=="tokenImports"){
+                TxPoWSearcherFixture::reset();
+                for(const auto& data:array(config->get("tokens")).elements()){
+                    auto token=data.isNull()?std::optional<Token>():Token::convertMiniDataVersion(MiniData::fromHex(data.asString()));
+                    TxPoWSearcher::importToken(token?std::make_shared<Token>(*token):nullptr);
+                }
+            }
             else if(op=="scanDetails"){
                 std::optional<TxPoW> pow;
                 if(!flag("nullTxPoW")){

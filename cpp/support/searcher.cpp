@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <unordered_set>
 using namespace minima;using namespace minima::json;
-namespace minima {struct TxPoWSearcherFixture {static void reset(){std::lock_guard lock(TxPoWSearcher::mImportedMutex);TxPoWSearcher::mImportedTokens.clear();}};}
+#include "TxPoWSearcherFixture.hpp"
 static int number(const JSONObject& value,const std::string& key){return int(std::get<int64_t>(value.get(key).value));}
 static auto array(const JSONObject& value,const std::string& key){return std::get<std::shared_ptr<JSONArray>>(value.get(key).value);}
 static auto hex(const JSONObject& value,const std::string& key){return MiniData::fromHex(value.get(key).asString());}

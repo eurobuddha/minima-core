@@ -1,3 +1,51 @@
+# Code Review — tokenvalidate and signature conversion
+
+## Summary
+
+The command preserves the pinned sequential validation flow and reuses existing
+Token discovery, Signature/TreeKey, JSON parser and RPCClient implementations.
+Negative signature/web checks remain response data with a successful command
+status. The full native-node goal is unfinished.
+
+## Findings
+
+No unresolved defect was found in this scoped command review. Both signature
+fields must exist; root comparison precedes verification over the coin ID.
+Malformed signatures stop execution; false verification still allows the web
+check. The URL cast remains outside the download catch, while null URL failure
+occurs inside. ASCII trim and canonical token ID comparison preserve source
+behavior. Java Error and allocation failures escape the Exception boundary.
+
+The source converter's IOException-only catch/log behavior is restored. Tests
+distinguish logged I/O failures from escaping NumberFormatException. Null imported
+tokens now retain Java's exception category. Two initial fixture expectations
+and the actual null-import difference are documented in retained evidence.
+
+A regression found that restored logs polluted the command fixture's stdout
+protocol. Reusing the existing stderr logger callback fixes it without changing
+production logging. The sanitizer target-name mistake is recorded: its initial
+batch used an older minima_command binary; the explicit correct-target rebuild
+and passing rerun supersede that result.
+
+## Validation
+
+Both new comparisons pass: 126 programs, 254 operations, 33 actual HTTP requests
+per runtime. All seven affected comparisons pass with current binaries in both
+builds; reports, initial failures and final reruns are retained. Full normal
+build/relink passed; the final fixture-only change was rebuilt separately.
+The original older sanitizer baseline is still running. There is no full-current
+209-test-suite pass claim.
+
+## Verdict
+
+Approve this scoped checkpoint. Finite metadata/signature/loopback cases and
+selected provider-diagnostic normalization do not certify arbitrary reference
+identity, concurrency, platform behavior, durable storage or full-node startup.
+Existing broader Signature/verify/CHECKSIG API limitations remain separate port
+work; the mapping explicitly retains partial status.
+
+## Previous scoped reviews
+
 # Code Review — scanchain command
 
 ## Summary

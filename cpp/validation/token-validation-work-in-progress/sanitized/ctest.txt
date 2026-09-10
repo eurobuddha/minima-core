@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 209: token_validation_differential
+1/1 Test #209: token_validation_differential ....   Passed   10.26 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  10.26 sec

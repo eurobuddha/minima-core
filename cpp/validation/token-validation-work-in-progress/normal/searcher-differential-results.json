@@ -1,0 +1,7 @@
+{
+  "cases": 189,
+  "queries": 6468,
+  "passed": 189,
+  "failures": [],
+  "scope": "Filtered coin searches, spent/dedup ordering, depth, MegaMMR fallback and lock counts, simple/relevant selection, block/transaction/address searches with duplicate matches, token imports and lookup, tokens command failure state, coin export/check against a real twelve-block MMR history; native chain token reference identity remains incomplete"
+}

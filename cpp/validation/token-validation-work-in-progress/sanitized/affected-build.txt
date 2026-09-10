@@ -1,0 +1,31 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_objects.dir/support/objects.cpp.o
+[100%] Linking CXX executable minima_objects
+[100%] Built target minima_objects
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_kissvm.dir/support/kissvm.cpp.o
+[100%] Linking CXX executable minima_kissvm
+[100%] Built target minima_kissvm
+[ 98%] Built target minima_file_port
+[ 98%] Building CXX object CMakeFiles/minima_commands.dir/support/commands_cli.cpp.o
+[100%] Linking CXX executable minima_commands
+[100%] Built target minima_commands
+[100%] Built target minima_file_port
+[100%] Linking CXX executable minima_command_runner
+[100%] Built target minima_command_runner
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_transaction_commands.dir/support/transaction_commands.cpp.o
+[100%] Linking CXX executable minima_transaction_commands
+[100%] Built target minima_transaction_commands
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_searcher.dir/support/searcher.cpp.o
+[100%] Linking CXX executable minima_searcher
+[100%] Built target minima_searcher
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_rpc_client.dir/support/rpc_client.cpp.o
+[100%] Linking CXX executable minima_rpc_client
+[100%] Built target minima_rpc_client
+[ 98%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/notify_http_worker.dir/support/notify_http_worker.cpp.o
+[100%] Linking CXX executable notify_http_worker
+[100%] Built target notify_http_worker

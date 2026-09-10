@@ -17,6 +17,7 @@ class Handler(BaseHTTPRequestHandler):
         with self.server.lock:self.server.requests.append(dict(method=self.command,path=self.path,headers=headers,body=body.hex()))
         parsed=urlsplit(self.path);query=parse_qs(parsed.query,keep_blank_values=True);path=parsed.path;status=200;location=None
         content=base64.b64decode(query.get('body',['YWxwaGENCmJldGEKZ2FtbWENZGVsdGE='])[0])
+        if hasattr(self.server,'body_override'):content=self.server.body_override
         if path=='/drop':self.close_connection=True;return
         if path=='/loop':status=302;location='/loop'
         elif path=='/proxy' and hasattr(self.server,'proxy_url'):status=305;location=self.server.proxy_url

@@ -6,7 +6,7 @@
 #include "support/JavaUnicode.hpp"
 using namespace minima;using namespace minima::json;
 static auto row(std::optional<std::string> id,int n){auto tx=std::make_shared<Transaction>();auto witness=std::make_shared<Witness>();for(int i=0;i<n%4;++i)tx->addInput(Coin(i==0&&n%3==0?MiniData::fromHex("0x03"):MiniData(BigInt(n+i+1)),MiniData::fromHex("0xabcd"),MiniNumber(i+10),Token::TOKENID_MINIMA));for(int i=0;i<n%5;++i)tx->addOutput(Coin(Coin::COINID_OUTPUT,MiniData::fromHex("0x1234"),MiniNumber(i+1),Token::TOKENID_MINIMA));for(int i=0;i<n%3;++i)tx->addStateVariable(StateVariable(i,"[hello "+std::to_string(n)+"]"));if(n%2==0)witness->addScript(ScriptProof("RETURN TRUE"));return std::make_shared<TxnRow>(id,tx,witness);}
-namespace minima {struct TxPoWSearcherFixture {static void reset(){std::lock_guard lock(TxPoWSearcher::mImportedMutex);TxPoWSearcher::mImportedTokens.clear();}};}
+#include "TxPoWSearcherFixture.hpp"
 static JSONValue run(const JSONObject& request){
     TxPoWSearcherFixture::reset();TxPoWSearcher::services.getTip=[](){return std::shared_ptr<TxPoWTreeNode>{};};
     auto owner=std::make_shared<TxnDB>(std::make_shared<UserDB>());auto& db=*owner;TxnDB::runtimeLookup=[owner]{return owner;};JSONArray results;

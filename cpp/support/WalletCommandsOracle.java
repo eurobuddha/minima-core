@@ -235,6 +235,10 @@ public class WalletCommandsOracle extends SqlDBOracle {
                 }
                 else if(op.equals("historyLoad"))MinimaDB.getDB().getTxPoWDB().getSQLDB().loadDB(new File(root,"txpow"));
                 else if(op.equals("historyLimit"))org.minima.database.txpowdb.sql.TxPoWSqlDB.MAX_RELEVANT_TXPOW=new org.minima.objects.base.MiniNumber(config.getString("limit"));
+                else if(op.equals("tokenImports")){
+                    var field=org.minima.system.brains.TxPoWSearcher.class.getDeclaredField("mImportedTokens");field.setAccessible(true);((ArrayList<?>)field.get(null)).clear();
+                    for(Object data:(JSONArray)config.get("tokens"))org.minima.system.brains.TxPoWSearcher.importToken(data==null?null:org.minima.objects.Token.convertMiniDataVersion(new org.minima.objects.base.MiniData((String)data)));
+                }
                 else if(op.equals("scanDetails")){
                     org.minima.objects.TxPoW pow=null;
                     if(!Boolean.TRUE.equals(config.get("nullTxPoW"))){

@@ -1,0 +1,46 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start   5: object_differential
+1/7 Test   #5: object_differential .................   Passed   29.26 sec
+    Start  16: kissvm_differential
+2/7 Test  #16: kissvm_differential .................   Passed    5.94 sec
+    Start  51: command_differential
+3/7 Test  #51: command_differential ................***Failed    9.03 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/command_differential.py", line 117, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/command_differential.py", line 97, in main
+    expected=run(java,cases);actual=run(cpp,cases);failures=[{'case':c,'java':j,'cpp':n} for c,j,n in zip(cases,expected,actual) if j!=n]
+                                    ~~~^^^^^^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/command_differential.py", line 15, in run
+    (build/'command-crash-stderr.txt').write_text(p.stderr);raise RuntimeError(f'Process {p.returncode}, output {len(lines)}, expected {len(cases)}')
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Process 0, output 12290, expected 12158
+
+    Start  52: command_runner_differential
+4/7 Test  #52: command_runner_differential .........   Passed    2.48 sec
+    Start  53: transaction_commands_differential
+5/7 Test  #53: transaction_commands_differential ...   Passed    8.34 sec
+    Start  54: searcher_differential
+6/7 Test  #54: searcher_differential ...............   Passed    9.52 sec
+    Start 104: rpc_client_differential
+7/7 Test #104: rpc_client_differential .............   Passed    4.88 sec
+
+86% tests passed, 1 tests failed out of 7
+
+Total Test time (real) =  69.46 sec
+
+The following tests FAILED:
+	 51 - command_differential (Failed)
+Errors while running CTest

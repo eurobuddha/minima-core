@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/tokenvalidate.java) · `src/org/minima/system/commands/base/tokenvalidate.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/tokenvalidate.java) · [Native C++](../../../../../../../../src/org/minima/system/commands/base/tokenvalidate.cpp)
 
 ## Purpose
 
@@ -20,19 +20,19 @@ tokenvalidate independently checks a token’s optional creator signature and op
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse Signature wire decoding, TreeKey verification and RPCClient GET behavior. Preserve the signed message (coin ID) and the distinction between command failure and a negative validation result.
+The mapped native counterpart compiles and is registered. It reuses Command, token search, Signature wire decoding, TreeKey verification, JSON parsing and RPCClient GET behavior. The signed message remains the coin ID. Command failure and a negative validation result remain distinct.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed fixtures cover missing fields, malformed signatures, mismatched roots, wrong signed message, valid signature and nonobject metadata. A controlled transport should return whitespace-wrapped matching ID, wrong case/ID and exceptions. Assert that invalid signature does not prevent the subsequent web check when decoding succeeds.
+Both builds pass 126 Java/C++ programs / 254 operations, including 33 real loopback HTTP requests per runtime. The [student lab](../../../../../../../../student-guide/new-tests/token-validation.md) explains missing/typed fields, malformed signatures, mismatched roots, wrong signed messages, valid signatures and nonobject metadata. HTTP checks include matching/mismatching text, whitespace, line removal, redirects, status errors and failed connections. Invalid decoded signatures still permit the web check; decoding errors stop it.
 
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+The [saved results](../../../../../../../../validation/token-validation-work-in-progress/progress.json) retain the expectation correction and null-import defect as well as passing comparisons.
 
 ## Limits
 
-No URL was fetched. These checks establish particular metadata relationships, not an endorsement of the creator, token value or contract safety. Description fields themselves are not all signed by this verifier.
+Only controlled loopback URLs were fetched. These checks establish particular metadata relationships, not an endorsement of the creator, token value or contract safety. Description fields themselves are not all signed by this verifier.
 
 ## Check your understanding
 

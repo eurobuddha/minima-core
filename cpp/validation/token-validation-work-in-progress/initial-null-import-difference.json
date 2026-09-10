@@ -1,0 +1,152 @@
+{
+  "passed": false,
+  "programs": 108,
+  "total_programs": 123,
+  "operations": 216,
+  "http_requests_per_runtime": 32,
+  "failures": [
+    {
+      "case": 108,
+      "request": {
+        "ops": [
+          {
+            "op": "tokenImports",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "tokens": [
+              null
+            ]
+          },
+          {
+            "op": "direct",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "name": "tokenvalidate",
+            "params": {
+              "tokenid": "0xF79A0DC5526F838AF7FF1B4EC9621CE1FF61F71BA3AE6AA2DE61AE9B87F773E2"
+            },
+            "replyText": true
+          }
+        ],
+        "error": true
+      },
+      "java": {
+        "ops": [
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "exception": "java.lang.NullPointerException",
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      },
+      "cpp": {
+        "ops": [
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "exception": "java.lang.RuntimeException: Null imported token",
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      },
+      "java_requests": [],
+      "cpp_requests": []
+    }
+  ],
+  "scope": "Actual tokenvalidate, source-generated signatures/tokens, TreeKey, imported/tree discovery and real RPCClient against loopback HTTP. Exact replies/log bodies and request traces except existing enhanced NPE/CCE and selected URL/transport-provider diagnostics. No durable storage, public web traffic, arbitrary TLS/provider/platform or full-node parity certification."
+}

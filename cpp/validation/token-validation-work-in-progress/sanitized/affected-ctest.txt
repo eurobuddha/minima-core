@@ -1,0 +1,19 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start   5: object_differential
+1/7 Test   #5: object_differential .................   Passed   97.86 sec
+    Start  16: kissvm_differential
+2/7 Test  #16: kissvm_differential .................   Passed   11.74 sec
+    Start  51: command_differential
+3/7 Test  #51: command_differential ................   Passed   19.68 sec
+    Start  52: command_runner_differential
+4/7 Test  #52: command_runner_differential .........   Passed    3.35 sec
+    Start  53: transaction_commands_differential
+5/7 Test  #53: transaction_commands_differential ...   Passed   19.76 sec
+    Start  54: searcher_differential
+6/7 Test  #54: searcher_differential ...............   Passed   26.20 sec
+    Start 104: rpc_client_differential
+7/7 Test #104: rpc_client_differential .............   Passed    5.63 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) = 184.24 sec

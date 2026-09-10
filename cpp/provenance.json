@@ -2553,5 +2553,61 @@
     },
     "normal_full_build": true,
     "compiler_warnings_observed": 0
+  },
+  "token_validation_command": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "status": "focused comparison and all seven affected comparisons pass in both builds",
+    "counterparts": 367,
+    "production": 323,
+    "mapped_tests": 44,
+    "absent": 90,
+    "ctest_registered": 209,
+    "programs_per_build": 126,
+    "operations_per_build": 254,
+    "http_requests_per_runtime": 33,
+    "normal": true,
+    "sanitized": true,
+    "seconds": [
+      3.78,
+      10.26
+    ],
+    "reuse": [
+      "src/org/minima/system/brains/TxPoWSearcher.cpp",
+      "src/org/minima/objects/keys/Signature.cpp",
+      "src/org/minima/objects/keys/TreeKey.cpp",
+      "src/org/minima/utils/RPCClient.cpp",
+      "src/support/JavaStringTrim.hpp",
+      "support/wallet_commands.cpp",
+      "support/WalletCommandsOracle.java",
+      "support/TxPoWSearcherFixture.hpp",
+      "tools/rpc_client_differential.py"
+    ],
+    "sibling_candidate": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/objects/Token.hpp",
+    "sibling_difference": "Sibling uses its different serialization and single SHA3 hashing, unlike the pinned Token implementation and existing wire fixtures.",
+    "fixes": [
+      "Signature converter catches/logs IOException and propagates other exceptions",
+      "Null imported token in getAllTokens raises JavaNullPointerException",
+      "Command fixture routes production diagnostics to stderr, matching Java oracle"
+    ],
+    "pending": [
+      "Finish older sanitizer baseline and remaining current integration rebuilds",
+      "Complete remaining native counterparts and full API/runtime parity"
+    ],
+    "limits": "Finite signatures and token metadata with real loopback HTTP. Provider-specific transport diagnostics normalized, as in existing RPC tests. No durable storage, public web access, arbitrary inherited/reference/concurrency/platform or full-node parity claim.",
+    "affected_comparisons": {
+      "reports_per_build": [
+        "object-differential-results.json",
+        "kissvm-differential-results.json",
+        "command-differential-results.json",
+        "command-runner-differential-results.json",
+        "transaction-commands-differential-results.json",
+        "searcher-differential-results.json",
+        "rpc-client-results.json"
+      ],
+      "normal_command_rerun_seconds": 13.72,
+      "sanitized_command_rerun_seconds": 24.57,
+      "caveat": "Initial normal command check failed from diagnostic stdout pollution. Initial sanitizer batch used an older minima_command binary because minima_commands is a different target. Both final singular-target rebuilds and reruns pass."
+    },
+    "normal_full_build": true
   }
 }

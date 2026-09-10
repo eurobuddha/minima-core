@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 366 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 367 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -216,7 +216,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/base/test.java` | `src/org/minima/system/commands/base/test.cpp` | unported | — |
 | `src/org/minima/system/commands/base/timemilli.java` | `src/org/minima/system/commands/base/timemilli.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/tokencreate.java` | `src/org/minima/system/commands/base/tokencreate.cpp` | unported | — |
-| `src/org/minima/system/commands/base/tokenvalidate.java` | `src/org/minima/system/commands/base/tokenvalidate.cpp` | unported | — |
+| `src/org/minima/system/commands/base/tokenvalidate.java` | `src/org/minima/system/commands/base/tokenvalidate.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/trace.java` | `src/org/minima/system/commands/base/trace.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/tutorial.java` | `src/org/minima/system/commands/base/tutorial.cpp` | unported | — |
 | `src/org/minima/system/commands/help.java` | `src/org/minima/system/commands/help.cpp` | unported | — |

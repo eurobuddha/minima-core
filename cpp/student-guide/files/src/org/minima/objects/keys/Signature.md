@@ -22,7 +22,7 @@ An ordered chain of SignatureProof objects linking a tree’s root public key do
 
 ## How the translation is approached
 
-Native storage is a vector with mutable access. Its root getter explicitly throws a Java-typed IndexOutOfBoundsException for an empty list. Static deserialization returns a fresh object; the optional-returning converter catches all std::exception, broader than Java’s IOException catch.
+Native storage is a vector with mutable access. Its root getter explicitly throws a Java-typed IndexOutOfBoundsException for an empty list. Static deserialization returns a fresh object; the optional-returning converter now catches only wire::IOException, logs through MinimaLogger and returns an empty optional. Other exceptions propagate as in Java.
 
 ## What the tests tell us
 
@@ -40,6 +40,6 @@ Why can an empty Signature round-trip successfully but fail when added to Witnes
 
 ## Limits and traceability
 
-Mutable list identity across reads, exact converter logging and exception breadth remain different. The empty-list getter’s typed fix does not establish every Signature error path. Source-map status remains partial and parity not_verified.
+The [token-validation lab](../../../../../../../student-guide/new-tests/token-validation.md) now checks converter I/O logging and the escaping NumberFormatException for a zero-length BigInteger. Mutable list identity across reads, inherited APIs and exhaustive logger failure behavior remain open. The empty-list getter’s typed fix does not establish every Signature error path. Source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `5fd453e5f2df679cf33afc68d993cc8c0b10d781418c78a024b5e7fe9e65059c`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).

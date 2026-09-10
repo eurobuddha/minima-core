@@ -414,7 +414,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [test.java](files/src/org/minima/system/commands/base/test.md) | authored | unported |
 | [timemilli.java](files/src/org/minima/system/commands/base/timemilli.md) | authored | implemented_partial |
 | [tokencreate.java](files/src/org/minima/system/commands/base/tokencreate.md) | authored | unported |
-| [tokenvalidate.java](files/src/org/minima/system/commands/base/tokenvalidate.md) | authored | unported |
+| [tokenvalidate.java](files/src/org/minima/system/commands/base/tokenvalidate.md) | authored | implemented_partial |
 | [trace.java](files/src/org/minima/system/commands/base/trace.md) | authored | implemented_partial |
 | [tutorial.java](files/src/org/minima/system/commands/base/tutorial.md) | authored | unported |
 

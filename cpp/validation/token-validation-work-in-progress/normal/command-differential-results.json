@@ -1,0 +1,6 @@
+{
+  "cases": 12289,
+  "passed": 12289,
+  "failures": [],
+  "scope": "Command accessors and metadata, hash/missingcmd, convert malformed Base64/HEX/Mx and arbitrary bytes, checkaddress synthetic wallet cache lookups, random sizes/hash/keycode properties; generic exceptions normalized to ERROR"
+}

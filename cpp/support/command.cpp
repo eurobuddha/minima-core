@@ -6,6 +6,8 @@
 #include "org/minima/system/commands/scripts/runscript.hpp"
 #include "org/minima/system/commands/signatures/verify.hpp"
 #include "support/JavaInteger.hpp"
+#include "org/minima/utils/MinimaLogger.hpp"
+#include "support/JavaUnicode.hpp"
 #include "org/minima/system/commands/base/maths.hpp"
 #include "org/minima/system/commands/base/mmrcreate.hpp"
 #include "org/minima/system/commands/base/mmrproof.hpp"
@@ -21,6 +23,9 @@ static json::JSONValue value(const std::optional<std::string>& s){return s?json:
 template<class T>static json::JSONValue object(std::shared_ptr<T> p){json::JSONValue value;if(p)value.value=std::move(p);return value;}
 class Test:public Command{public:using Command::Command;json::JSONValue runCommand()override{return getJSONReply();}std::shared_ptr<Command> getFunction()const override{return std::make_shared<Test>(getName(),getHelp());}};
 int main(){
+    auto logger=MinimaLogger::getRuntime();
+    logger.println=[](const std::u16string& text){std::cerr<<unicode::encodeUTF8(text)<<'\n';};
+    MinimaLogger::setRuntime(std::move(logger));
     TxPoWTreeNode::services.isAddressRelevant=[](const std::string& address){return address=="0x"+std::string(64,'1')||address=="0x"+std::string(64,'2');};
     TxPoWTreeNode::services.isAddressSimple=[](const std::string& address){return address=="0x"+std::string(64,'1')||address=="0x"+std::string(64,'3');};
     std::cout<<std::unitbuf;std::string line;while(std::getline(std::cin,line))try{auto data=std::get<std::shared_ptr<json::JSONObject>>(json::JSONValue::parseWithException(line).value);auto op=data->get("op").asString();if(op=="integer"){std::cout<<javaParseInt(data->get("value").asString())<<'\n';continue;}if(op=="mx"){std::cout<<json::JSONValue(Address::makeMinimaAddress(MiniData::fromHex(data->get("value").asString()))).toJSONString()<<'\n';continue;}

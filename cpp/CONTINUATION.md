@@ -1,3 +1,50 @@
+# Current work — tokenvalidate validated; local preservation checkpoint
+
+Project/branch MinimaCoreC++. Full 457-file native-node goal remains active and
+incomplete. Mapping: 367 counterparts (323 production + 44 tests), 90 absent
+(46 production + 44 tests), all existing counterparts still partial. 209 CTest.
+All 457 student guides authored; teaching coverage does not certify parity.
+
+New tokenvalidate.cpp/hpp matches pinned signature/web validation and reuses
+searcher, Signature/TreeKey, JSON parser, RPCClient and Java string trim.
+Signature converter now catches/logs IOException only; non-I/O exceptions escape.
+Null imported tokens now raise JavaNullPointerException in getAllTokens.
+TokenValidationOracle and token_validation_runtime reuse wallet fixtures;
+TxPoWSearcherFixture reset extracted unchanged from two existing fixtures.
+Student lab written before testing: student-guide/new-tests/token-validation.md.
+
+126 programs / 254 operations / 33 HTTP requests per runtime pass normal and
+ASAN/UBSAN (3.78s / 10.26s). All seven affected comparisons pass both builds:
+9464 object, 4471 KISS, 12289 command, 1265 runner, 1129 transaction programs /
+6904 operations, 189 searcher cases, 477 RPC cases. All fourteen reports retained
+under validation/token-validation-work-in-progress/{normal,sanitized}.
+Initial command regression failed because restored production logs polluted the
+fixture stdout protocol. command.cpp now copies transaction_commands.cpp stderr
+logger routing, matching CommandOracle. Fresh minima_command rebuild/reruns pass
+13.72s normal / 24.57s sanitized. Initial sanitizer seven-test batch had rebuilt
+minima_commands (different target); its command pass was stale, superseded by
+that singular-target rebuild. Initial failure and both reruns retained.
+
+Full normal build/relink passed before the final fixture-only change; the changed
+fixture was rebuilt afterwards. Affected sanitizer binaries rebuilt. Original
+full sanitizer baseline remains LIVE handle 42976, redirected authoritative log
+/tmp/minima-shared-json-all-tests-san.log, latest test 162 wallet key commands. Keep
+polling same handle. Do not restart or overwrite active baseline executables.
+MiniByte and NIO initial baseline failures have passing explicit reruns saved.
+No full-current-209-suite or full-node parity claim. Last numbered checkpoint 362.
+
+This checkpoint is ready for a local commit and verified recovery bundle; inspect
+Git HEAD/status and latest local-backups manifest to learn whether those steps
+finished. Prior HEAD 7bd0b9d2b8195a25c573201a74bf4246ce74d1dd, verified bundle
+local-backups/MinimaCoreC++-20260910T212502Z.bundle, SHA256
+0ec3461eabd1aae4f09915dd3e4d27a971e35ec79a286bfc522988a396f9e8b6.
+No GitHub push. Reuse /tmp/minima-hashtest-backup.py for bundle/clone checks,
+then additionally verify tokenvalidate code, lesson and sanitizer report in clone.
+Next: finish pending audit, continue missing production/test counterparts and
+inherited API/runtime integration. Native entry point and durable SQL unfinished.
+
+Older notes follow; their counts and job states are superseded above.
+
 # Current work — scanchain passes both builds and affected regressions
 
 This goal turn is PROGRESS: translated and registered scanchain with real
