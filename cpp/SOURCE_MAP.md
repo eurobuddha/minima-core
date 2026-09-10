@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 371 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 373 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -239,8 +239,8 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/search/keys.java` | `src/org/minima/system/commands/search/keys.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/search/tokens.java` | `src/org/minima/system/commands/search/tokens.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/search/txpow.java` | `src/org/minima/system/commands/search/txpow.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/send/multisig.java` | `src/org/minima/system/commands/send/multisig.cpp` | unported | — |
-| `src/org/minima/system/commands/send/multisigread.java` | `src/org/minima/system/commands/send/multisigread.cpp` | unported | — |
+| `src/org/minima/system/commands/send/multisig.java` | `src/org/minima/system/commands/send/multisig.cpp` | implemented_partial | — |
+| `src/org/minima/system/commands/send/multisigread.java` | `src/org/minima/system/commands/send/multisigread.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/send/send.java` | `src/org/minima/system/commands/send/send.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/send/sendnosign.java` | `src/org/minima/system/commands/send/sendnosign.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/send/sendpoll.java` | `src/org/minima/system/commands/send/sendpoll.cpp` | implemented_partial | — |

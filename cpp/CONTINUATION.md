@@ -1,3 +1,45 @@
+# Current work — multisig workflows validated; preserve this checkpoint
+
+Project/branch MinimaCoreC++. Added send/multisig.cpp/hpp and multisigread.cpp/hpp,
+common support/MultisigCommands.cpp, registration and unchanged shared contract.
+Actual create/list/getkey/spend/sign/view/post use native child commands. Preserves
+source raw read addresses, normalized full addresses, duplicate state matches,
+first spend match, scaled change, raw command text, repeated signing and late errors.
+
+Final normal and ASAN/UBSAN comparisons pass 340 programs / 1,089 operations /
+22,269 SQL observations. Real exported signatures and signed posting/mining checked.
+Both full builds pass. Four affected suites pass both: registry 1,265 cases,
+transaction commands 1,129 cases / 6,904 ops; witnesses 418 programs / 1,128 ops /
+8,637 SQL; offline send 201 programs / 558 ops / 9,773 SQL.
+
+Malformed import exposed existing txnimport generic-runtime error; corrected to
+JavaNullPointerException with replacement-ID parsing before null dereference.
+Fixture exception recording now preserves embedded NUL via getMessage(). Optional
+actual-child tracing, configured proof fixtures and verifyTxnFile added. Initial
+failures saved. Final subdirectory case observes absolute temp-root export path;
+source MiniFile treats slash-containing paths directly. Generated root nested file
+was removed after identifying the test artifact. All current handles terminal.
+
+Mapping 373 counterparts (329 production + 44 mapped tests), 84 absent (40 production
++ 44 tests), 214 CTest entries. All 457 student guides authored and structurally
+checked. All counterparts still implemented_partial/not_verified. Evidence in
+validation/multisig-work-in-progress; scope excludes durable SQL, live-node/full
+API/reference/concurrency parity. No full current 214-suite pass asserted.
+
+Ready for local commit and verified bundle recovery; inspect HEAD/latest ignored
+local-backups manifest for preservation state. Prior HEAD 28af8f8 and bundle
+MinimaCoreC++-20260910T224625Z.bundle, SHA256
+2a35f1d7e0c52eecd39f4592a878f177109df88796fec8e9664a8707981fa5e3.
+Reuse /tmp/minima-hashtest-backup.py and additionally verify both multisig sources,
+lab and sanitizer report. No GitHub push. Full goal remains active.
+
+Read-ahead only: network/nodecount.java and base/incentivecash.java fully read;
+no native changes for them. nodecount depends on HashSet socket-address ordering,
+real NIO ping, float arithmetic and CSV; incentivecash saves UserDB before raw URL
+PUT/JSON parsing. Next work still requires inspecting local/sibling implementations
+and reporting reuse. Prior reads P2PSwapLink.java (entirely commented/inactive) and
+Streamable.java (active stream interface) remain unported. Historical notes follow.
+
 # Current work — tokencreate validated; preserve this checkpoint
 
 Project/branch MinimaCoreC++. This turn is PROGRESS. Added base/tokencreate.cpp/hpp

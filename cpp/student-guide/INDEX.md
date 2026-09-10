@@ -456,8 +456,8 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [multisig.java](files/src/org/minima/system/commands/send/multisig.md) | authored | unported |
-| [multisigread.java](files/src/org/minima/system/commands/send/multisigread.md) | authored | unported |
+| [multisig.java](files/src/org/minima/system/commands/send/multisig.md) | authored | implemented_partial |
+| [multisigread.java](files/src/org/minima/system/commands/send/multisigread.md) | authored | implemented_partial |
 | [send.java](files/src/org/minima/system/commands/send/send.md) | authored | implemented_partial |
 | [sendnosign.java](files/src/org/minima/system/commands/send/sendnosign.md) | authored | implemented_partial |
 | [sendpoll.java](files/src/org/minima/system/commands/send/sendpoll.md) | authored | implemented_partial |

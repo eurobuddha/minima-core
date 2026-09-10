@@ -1,0 +1,1168 @@
+{
+  "passed": false,
+  "programs": 89,
+  "total_programs": 330,
+  "operations": 266,
+  "sql_calls": 5006,
+  "failures": [
+    {
+      "case": 89,
+      "request": {
+        "offline": true,
+        "consolidation": true,
+        "ops": [
+          {
+            "op": "load",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00",
+            "traceChildren": true
+          },
+          {
+            "op": "chain",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00",
+            "traceChildren": true,
+            "history": "8",
+            "nodes": [
+              {
+                "pow": "0x000100000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x00000001650000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000101000000010001000100000000010000000100000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "relevant": [
+                  "0x00000001650000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000101000000010001000100000000010000000100000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "txns": [],
+                "mmr": "0x000100000100000000010100010100010000010000000001000000002043C795B9B3E7266AC20925B55A007EE56F6CFAC5B565A90837CE7B30727B8AF9000101"
+              },
+              {
+                "pow": "0x0001010000000100000203E800010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x00000001660000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000102000000010001000100000000010100000101000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "relevant": [
+                  "0x00000001660000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000102000000010001000100000000010100000101000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "txns": [],
+                "mmr": "0x0001010001000000000102000103000101000100000000010000000020C496F56BC967FA9D28A5676E1A7AEE4452231249336B9E5387964CF0E90CD3C90001030001000001000000000101000000209691AB7CF310358DF82C0919D9B2A8CDCDB1E3C6030A402066597896A58BAB5300010200010000010000000001000000002043C795B9B3E7266AC20925B55A007EE56F6CFAC5B565A90837CE7B30727B8AF9000101"
+              },
+              {
+                "pow": "0x0001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x00000001670000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000103000000010001000100000000010200000102000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "relevant": [
+                  "0x00000001670000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000103000000010001000100000000010200000102000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "txns": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020C496F56BC967FA9D28A5676E1A7AEE4452231249336B9E5387964CF0E90CD3C9000103000100000100000000010200000020DA18B795B8CE342C1A4CD5A81BD9A63A720F1E2DC1C603C4552FBEAA356E1B23000103"
+              },
+              {
+                "pow": "0x000103000000010000020BB800010300000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x00000001680000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000104000000010001000100000000010300000103000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "relevant": [
+                  "0x00000001680000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000104000000010001000100000000010300000103000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "txns": [],
+                "mmr": "0x0001030001000000000104000105000101000100000000010100000020AEAF604A0CD865CF49B392DCAC2BD033D2AD18C56B435B86BBA100EBAB0705E1000107000101000100000000010000000020C496F56BC967FA9D28A5676E1A7AEE4452231249336B9E5387964CF0E90CD3C900010300010000010000000001030000002057124A1A3F3BEC37BE53E573EEB233FBDCFEDC36D7C1691A218B0BB648CD77D2000104000100000100000000010200000020DA18B795B8CE342C1A4CD5A81BD9A63A720F1E2DC1C603C4552FBEAA356E1B23000103000102000100000000010000000020BFE3D0FEA633E3C379520AB11A67C07FAF9DD912B762B7070730510ED1CBC85700010A"
+              },
+              {
+                "pow": "0x000104000000010000020FA000010400000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020BFE3D0FEA633E3C379520AB11A67C07FAF9DD912B762B7070730510ED1CBC85700010A"
+              },
+              {
+                "pow": "0x00010500000001000002138800010500000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020BFE3D0FEA633E3C379520AB11A67C07FAF9DD912B762B7070730510ED1CBC85700010A"
+              },
+              {
+                "pow": "0x00010600000001000002177000010600000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x00000001660000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000102000000010001000100000000010101000101000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "relevant": [
+                  "0x00000001660000002056FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9000102000000010001000100000000010101000101000107000100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D01010000000121020200010103020001010401000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE0501000000205D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE090100000020A6CB100DCB9590515ECA2F78F35FAC4775E0FECD06470BC6D3F9DB783F75813D00"
+                ],
+                "txns": [],
+                "mmr": "0x0001060001000000000104000105000101000100000000010100000020AEAF604A0CD865CF49B392DCAC2BD033D2AD18C56B435B86BBA100EBAB0705E1000107000101000100000000010000000020274C051716A547FBF5564E0125C5EA6AAA42E94B502C19F36A95B28FE70F6BD3000101000100000100000000010100000020352BAED78F66E1D6A72F34189F823FA1AF01C9B5B55CD095080D98E1A6C792CE00010000010000010000000001000000002043C795B9B3E7266AC20925B55A007EE56F6CFAC5B565A90837CE7B30727B8AF900010100010200010000000001000000002073F69E1B9F29D65E74D5B164D466A48F3912AC668AE1301FA967200E9A25E2E3000108"
+              },
+              {
+                "pow": "0x000107000000010000021B5800010700000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x000107000100000000010400010100010200010000000001000000002073F69E1B9F29D65E74D5B164D466A48F3912AC668AE1301FA967200E9A25E2E3000108"
+              },
+              {
+                "pow": "0x000108000000010000021F4000010800000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x000108000100000000010400010100010200010000000001000000002073F69E1B9F29D65E74D5B164D466A48F3912AC668AE1301FA967200E9A25E2E3000108"
+              },
+              {
+                "pow": "0x00010900000001000002232800010900000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x000109000100000000010400010100010200010000000001000000002073F69E1B9F29D65E74D5B164D466A48F3912AC668AE1301FA967200E9A25E2E3000108"
+              },
+              {
+                "pow": "0x00010A00000001000002271000010A00000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x00010A000100000000010400010100010200010000000001000000002073F69E1B9F29D65E74D5B164D466A48F3912AC668AE1301FA967200E9A25E2E3000108"
+              },
+              {
+                "pow": "0x00010B000000010000022AF800010B00000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x00010B000100000000010400010100010200010000000001000000002073F69E1B9F29D65E74D5B164D466A48F3912AC668AE1301FA967200E9A25E2E3000108"
+              }
+            ]
+          },
+          {
+            "op": "fileDirectory",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00",
+            "traceChildren": true,
+            "file": "dir"
+          },
+          {
+            "op": "filePut",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00",
+            "traceChildren": true,
+            "file": "bad.txn",
+            "data": "0x0000"
+          },
+          {
+            "op": "direct",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00",
+            "traceChildren": true,
+            "name": "multisig",
+            "params": {
+              "action": "sign",
+              "file": "nul\u0000file"
+            }
+          }
+        ]
+      },
+      "java": {
+        "ops": [
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [],
+            "files": {},
+            "directories": [],
+            "events": [
+              [
+                "connect",
+                "jdbc:h2:/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/multisig-qfd8cm6h/wallet;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE",
+                "SA",
+                ""
+              ],
+              [
+                "connection.setAutoCommit",
+                1,
+                true
+              ],
+              [
+                "connection.createStatement",
+                1
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `keys` (  `id` bigint auto_increment,  `size` int NOT NULL,  `depth` int NOT NULL,  `uses` bigint NOT NULL,  `maxuses` bigint NOT NULL,  `modifier` varchar(80) NOT NULL,  `privatekey` varchar(80) NOT NULL,  `publickey` varchar(80) NOT NULL)"
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `scripts` (  `id` bigint auto_increment,  `script` varchar(8192) NOT NULL,  `address` varchar(80) NOT NULL,  `simple` int NOT NULL,  `defaultaddress` int NOT NULL,  `publickey` varchar(80) NOT NULL,  `track` int NOT NULL)"
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `seed` (  `id` int NOT NULL UNIQUE,  `phrase` varchar(8192) NOT NULL,  `seed` varchar(80) NOT NULL)"
+              ],
+              [
+                "statement.close"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT IGNORE INTO keys ( size, depth, uses, maxuses, modifier, privatekey, publickey ) VALUES ( ?, ?, ?, ? ,? ,? ,? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM keys"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM keys WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=? WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=uses+?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET privatekey='0x00' WHERE privatekey!='0x00'"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET privatekey=? WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT IGNORE INTO scripts ( script, address, simple, defaultaddress, publickey, track ) VALUES ( ? , ? , ? , ? , ? , ? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "DELETE FROM scripts WHERE address=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE simple<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE track<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE defaultaddress<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE address=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM seed WHERE id=1"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT INTO seed ( id, phrase, seed ) VALUES ( 1 , ? , ? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE seed SET phrase=?, seed=? WHERE id=1"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getInt",
+                "size"
+              ],
+              [
+                "rows.getInt",
+                "depth"
+              ],
+              [
+                "rows.getInt",
+                "uses"
+              ],
+              [
+                "rows.getInt",
+                "maxuses"
+              ],
+              [
+                "rows.getString",
+                "modifier"
+              ],
+              [
+                "rows.getString",
+                "privatekey"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "prepared.executeQuery",
+                11
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "script"
+              ],
+              [
+                "rows.getString",
+                "address"
+              ],
+              [
+                "rows.getInt",
+                "simple"
+              ],
+              [
+                "rows.getInt",
+                "defaultaddress"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.getInt",
+                "track"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "prepared.executeQuery",
+                16
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "phrase"
+              ],
+              [
+                "rows.getString",
+                "seed"
+              ],
+              [
+                "prepared.clearParameters",
+                15
+              ],
+              [
+                "prepared.setString",
+                15,
+                1,
+                "0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9"
+              ],
+              [
+                "prepared.executeQuery",
+                15
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "script"
+              ],
+              [
+                "rows.getString",
+                "address"
+              ],
+              [
+                "rows.getInt",
+                "simple"
+              ],
+              [
+                "rows.getInt",
+                "defaultaddress"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.getInt",
+                "track"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [],
+            "files": {},
+            "directories": [],
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [],
+            "files": {},
+            "directories": [
+              "dir"
+            ],
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [],
+            "files": {
+              "bad.txn": "0x0000"
+            },
+            "directories": [
+              "dir"
+            ],
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "exception": "org.minima.system.commands.CommandException: File does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/multisig-qfd8cm6h/offline/nul\u0000file",
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [
+              {
+                "name": "txnimport",
+                "text": "txnimport id:<ID:0> file:nul\u0000file",
+                "params": {
+                  "id": "<ID:0>",
+                  "file": "nul\u0000file"
+                }
+              }
+            ],
+            "files": {
+              "bad.txn": "0x0000"
+            },
+            "directories": [
+              "dir"
+            ],
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      },
+      "cpp": {
+        "ops": [
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [],
+            "files": {},
+            "directories": [],
+            "events": [
+              [
+                "connect",
+                "jdbc:h2:/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/multisig-qfd8cm6h/wallet;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE",
+                "SA",
+                ""
+              ],
+              [
+                "connection.setAutoCommit",
+                1,
+                true
+              ],
+              [
+                "connection.createStatement",
+                1
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `keys` (  `id` bigint auto_increment,  `size` int NOT NULL,  `depth` int NOT NULL,  `uses` bigint NOT NULL,  `maxuses` bigint NOT NULL,  `modifier` varchar(80) NOT NULL,  `privatekey` varchar(80) NOT NULL,  `publickey` varchar(80) NOT NULL)"
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `scripts` (  `id` bigint auto_increment,  `script` varchar(8192) NOT NULL,  `address` varchar(80) NOT NULL,  `simple` int NOT NULL,  `defaultaddress` int NOT NULL,  `publickey` varchar(80) NOT NULL,  `track` int NOT NULL)"
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `seed` (  `id` int NOT NULL UNIQUE,  `phrase` varchar(8192) NOT NULL,  `seed` varchar(80) NOT NULL)"
+              ],
+              [
+                "statement.close"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT IGNORE INTO keys ( size, depth, uses, maxuses, modifier, privatekey, publickey ) VALUES ( ?, ?, ?, ? ,? ,? ,? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM keys"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM keys WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=? WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=uses+?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET privatekey='0x00' WHERE privatekey!='0x00'"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET privatekey=? WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT IGNORE INTO scripts ( script, address, simple, defaultaddress, publickey, track ) VALUES ( ? , ? , ? , ? , ? , ? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "DELETE FROM scripts WHERE address=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE simple<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE track<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE defaultaddress<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE address=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM seed WHERE id=1"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT INTO seed ( id, phrase, seed ) VALUES ( 1 , ? , ? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE seed SET phrase=?, seed=? WHERE id=1"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getInt",
+                "size"
+              ],
+              [
+                "rows.getInt",
+                "depth"
+              ],
+              [
+                "rows.getInt",
+                "uses"
+              ],
+              [
+                "rows.getInt",
+                "maxuses"
+              ],
+              [
+                "rows.getString",
+                "modifier"
+              ],
+              [
+                "rows.getString",
+                "privatekey"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "prepared.executeQuery",
+                11
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "script"
+              ],
+              [
+                "rows.getString",
+                "address"
+              ],
+              [
+                "rows.getInt",
+                "simple"
+              ],
+              [
+                "rows.getInt",
+                "defaultaddress"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.getInt",
+                "track"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "prepared.executeQuery",
+                16
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "phrase"
+              ],
+              [
+                "rows.getString",
+                "seed"
+              ],
+              [
+                "prepared.clearParameters",
+                15
+              ],
+              [
+                "prepared.setString",
+                15,
+                1,
+                "0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9"
+              ],
+              [
+                "prepared.executeQuery",
+                15
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "script"
+              ],
+              [
+                "rows.getString",
+                "address"
+              ],
+              [
+                "rows.getInt",
+                "simple"
+              ],
+              [
+                "rows.getInt",
+                "defaultaddress"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.getInt",
+                "track"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [],
+            "files": {},
+            "directories": [],
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [],
+            "files": {},
+            "directories": [
+              "dir"
+            ],
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [],
+            "files": {
+              "bad.txn": "0x0000"
+            },
+            "directories": [
+              "dir"
+            ],
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "exception": "org.minima.system.commands.CommandException: File does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/multisig-qfd8cm6h/offline/nul",
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "forwarded": [],
+            "childCalls": [
+              {
+                "name": "txnimport",
+                "text": "txnimport id:<ID:0> file:nul\u0000file",
+                "params": {
+                  "id": "<ID:0>",
+                  "file": "nul\u0000file"
+                }
+              }
+            ],
+            "files": {
+              "bad.txn": "0x0000"
+            },
+            "directories": [
+              "dir"
+            ],
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "Actual multisig/multisigread and nested transaction commands, real MMR proofs/wallet/signatures, recursive temporary files, exact wire bytes except validated generated MiniString transaction-ID fields and clock filenames. Recording SQL and fixture chain do not prove durable storage or live node acceptance; full API/reference/concurrency parity unverified."
+}

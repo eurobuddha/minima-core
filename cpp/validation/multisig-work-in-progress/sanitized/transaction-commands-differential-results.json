@@ -1,0 +1,7 @@
+{
+  "cases": 1129,
+  "operations": 6904,
+  "passed": 1129,
+  "failures": [],
+  "scope": "Nine transaction commands: metadata, create/delete/list, state mutation, witness clearing/monotonic flags, ordered wire snapshots, Java/native file and HEX import/export, invalid/corrupt inputs and dispatcher sequences; generic exceptions normalized"
+}

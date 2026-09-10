@@ -34,7 +34,7 @@ json::JSONValue txnimport::runCommand(){
     auto result=getJSONReply();auto owner=TxnDB::getRuntimeDB();auto& db=*owner;std::shared_ptr<TxnRow> row;
     if(existsParam("file")){auto file=MiniFile::createBaseFile(getParam("file"));std::error_code error;if(!std::filesystem::exists(file,error))throw CommandException("File does not exist : "+std::filesystem::absolute(file).string());row=TxnRow::convertMiniDataVersion(MiniData(MiniFile::readCompleteFile(file)));}
     else if(existsParam("data"))row=TxnRow::convertMiniDataVersion(getDataParam("data"));else throw CommandException("Must specify file or data");
-    if(!row)throw std::runtime_error("Null decoded transaction");if(existsParam("id"))row->setID(getParam("id"));db.addCompleteTransaction(row);result.put("response",row->toJSON());return result;
+    if(existsParam("id")){auto id=getParam("id");if(!row)throw JavaNullPointerException("null imported transaction");row->setID(id);}if(!row)throw JavaNullPointerException("null imported transaction");db.addCompleteTransaction(row);result.put("response",row->toJSON());return result;
 }
 std::shared_ptr<Command> txnimport::getFunction() const {return std::make_shared<txnimport>();}
 }

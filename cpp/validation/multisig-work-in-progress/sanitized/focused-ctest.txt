@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 214: multisig_workflow_differential
+1/1 Test #214: multisig_workflow_differential ...   Passed  124.78 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) = 124.79 sec

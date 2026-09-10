@@ -2,11 +2,11 @@
 
 **Teaching status:** Authored algorithm and test explanation; full API/parity review remains open.
 
-**Port status:** `unported`; parity `not_verified`. The mapped C++ file is absent. This page does not describe a completed translation.
+**Port status:** `implemented_partial`; parity `not_verified`. The mapped native command compiles; finite workflow checks do not certify complete API or node parity.
 
 | Source | Destination |
 |---|---|
-| [src/org/minima/system/commands/send/multisig.java](../../../../../../../../../upstream-study/src/org/minima/system/commands/send/multisig.java) | `src/org/minima/system/commands/send/multisig.cpp` (planned) |
+| [src/org/minima/system/commands/send/multisig.java](../../../../../../../../../upstream-study/src/org/minima/system/commands/send/multisig.java) | `src/org/minima/system/commands/send/multisig.cpp` |
 
 ## What this file does
 
@@ -24,11 +24,17 @@ Create, discover and spend coins protected by the fixed root-or-threshold multis
 
 ## How the translation is approached
 
-No native command counterpart exists. A future port should retain the pinned Command/CommandRunner parsing and reply model and reuse compatible transaction, JSON and stream primitives. Required wallet/database/miner bindings and failure ordering must be implemented explicitly. Java command strings here are executable parser input, so quoting, separators and ignored child statuses are observable behavior.
+The mapped `.cpp` keeps the source name, constructor, help, accepted parameters and fresh-command factory. Both command files call `support/MultisigCommands.cpp` for their shared action logic. The exact contract in `support/MultisigContract.hpp` is also used by Wallet. Reusing this literal matters: changing script text can change the address that identifies a protected coin.
+
+The shared function takes the command object and a read-mode flag. Read mode removes create/sign and preserves the source's plain-string spend address. Full mode uses the existing address parser. Search, state handling, command parsing, file serialization and signing use the existing native implementations; the port does not substitute recorded replies for production children.
 
 ## What the tests tell us
 
-No direct command parity experiment was found in the inspected harnesses. Proposed future test: Use deterministic contract hashing/state fixtures, including duplicate matching state values and malformed key strings that pass the length check. Record multi-command text, first-input key selection, child-failure propagation and file-name placement. Verify state-preserving change separately from state-free payment. A later VM fixture must test root bypass and threshold satisfaction using real signatures. This experiment has not been implemented or run for this lesson; constituent codec or runner tests do not establish command coverage.
+The [workflow lab](../../../../../../../new-tests/multisig-workflow.md) explains `tools/multisig_differential.py`. Java constructs coins and valid MMR histories, then both runtimes execute the same programs. A thin test-only wrapper records child command text and still runs the real child. The comparison includes replies, SQL effects, custom rows and exported file bytes.
+
+For example, putting the ID hash at ports 0 and 9 makes list return the same coin twice; spend selects the first matching coin once. A payment discards old state while positive change copies it. Repeated public-key values cause repeated signing attempts, while the witness handles duplicate signatures according to its own rules. Parent status and each nested status must be inspected separately.
+
+Generated 32-byte transaction IDs are shape-checked. Only their complete serialized MiniString fields and textual references are normalized; transaction and witness bytes remain compared. Clock-generated filenames are also checked before normalization. Malformed-file testing found an older txnimport exception mismatch, corrected to retain Java's null-pointer exception and argument-evaluation order. Reports retain the original failure.
 
 ## Dependencies and reading map
 
@@ -42,6 +48,6 @@ If the ID hash occurs in two different state ports of one coin, how many entries
 
 ## Limits and traceability
 
-The command counterpart is absent and parity remains not_verified. This is an authored source lesson and a proposed verification design, not evidence that this command is implemented or that its tests pass.
+The counterpart exists but remains implemented_partial/not_verified. Recording SQL does not establish durable storage; local chain, file and miner fixtures do not establish network acceptance. Review the current lab/evidence for the exact observed coverage. Full native-node and arbitrary reference/concurrency behavior remain unfinished.
 
 Pinned Java SHA-256: `866f07feb5aabd9c38cee6cb15200edf57536ba545c8756e5209939ccb01a08c`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).

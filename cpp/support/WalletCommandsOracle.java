@@ -49,6 +49,24 @@ public class WalletCommandsOracle extends SqlDBOracle {
         SendRecordingScope(boolean enabled){if(enabled)for(int i=0;i<CommandRunner.ALL_COMMANDS.length;i++)if("send".equals(CommandRunner.ALL_COMMANDS[i].getName())){index=i;saved=CommandRunner.ALL_COMMANDS[i];CommandRunner.ALL_COMMANDS[i]=new RecordingSend();break;}}
         public void close(){if(index>=0)CommandRunner.ALL_COMMANDS[index]=saved;}
     }
+    static JSONArray childCalls=new JSONArray();
+    static class TracingCommand extends Command {
+        Command delegate;
+        TracingCommand(Command command){super(command.getName(),command.getHelp());delegate=command;}
+        public Command getFunction(){return new TracingCommand(delegate.getFunction());}
+        public ArrayList<String> getValidParams(){return delegate.getValidParams();}
+        public String getFullHelp(){return delegate.getFullHelp();}
+        public JSONObject runCommand()throws Exception{
+            delegate.getParams().putAll(getParams());delegate.setCompleteCommand(getCompleteCommand());delegate.setMiniDAPPID(getMiniDAPPID());
+            var call=new JSONObject();call.put("name",getName());call.put("text",getCompleteCommand());call.put("params",getParams());childCalls.add(call);
+            return delegate.runCommand();
+        }
+    }
+    static class TraceScope implements AutoCloseable {
+        Command[] saved;
+        TraceScope(boolean enabled){if(enabled){saved=CommandRunner.ALL_COMMANDS.clone();for(int i=0;i<saved.length;i++)if(saved[i].getName().startsWith("txn"))CommandRunner.ALL_COMMANDS[i]=new TracingCommand(saved[i]);}}
+        public void close(){if(saved!=null)for(int i=0;i<saved.length;i++)CommandRunner.ALL_COMMANDS[i]=saved[i];}
+    }
     static class RecordingMysql extends Command {
         RecordingMysql(){super("mysql","fixture MySQL delegation");}
         public Command getFunction(){return new RecordingMysql();}
@@ -144,9 +162,9 @@ public class WalletCommandsOracle extends SqlDBOracle {
         if(vaultEnabled)for(String name:new String[]{"archive.mv.db","cascade.db","chaintree.db","p2p.db"})new File(root+"/databases/"+name).delete();
         miningMiner=null;miningPosted.clear();miningHeld.clear();miningCalls=new JSONArray();setField(org.minima.system.Main.class,null,"mMainInstance",null);GeneralParams.USE_SQL_COINDB=false;GeneralParams.IS_MEGAMMR=false;connectionID=preparedID=0;org.minima.system.params.GlobalParams.MINIMA_MMR_PROOF_HISTORY=new org.minima.objects.base.MiniNumber(256);GeneralParams.DATA_FOLDER=root;var prefs=new File(root+"/databases/userprefs.db");java.nio.file.Files.deleteIfExists(prefs.toPath());createOwner();var wallet=MinimaDB.getDB().getWallet();JSONArray outputs=new JSONArray();org.minima.objects.TxPoW held=null;org.minima.objects.TxBody body=null;
         for(Object entry:(JSONArray)input.get("ops")){
-            config=(JSONObject)entry;historyCalls=new JSONArray();forwarded=new JSONArray();events=new JSONArray();calls=0;miningCalls=new JSONArray();vaultCalls=new JSONArray();JSONObject out=new JSONObject();long before=System.currentTimeMillis();
+            config=(JSONObject)entry;childCalls=new JSONArray();historyCalls=new JSONArray();forwarded=new JSONArray();events=new JSONArray();calls=0;miningCalls=new JSONArray();vaultCalls=new JSONArray();JSONObject out=new JSONObject();long before=System.currentTimeMillis();
             var bytes=new ByteArrayOutputStream();var previous=System.out;System.setOut(new PrintStream(bytes,true,"UTF-8"));
-            try(var recording=new SendRecordingScope(Boolean.TRUE.equals(config.get("recordSend")));var mysqlRecording=new MysqlRecordingScope(Boolean.TRUE.equals(config.get("recordMysql")))){
+            try(var recording=new SendRecordingScope(Boolean.TRUE.equals(config.get("recordSend")));var mysqlRecording=new MysqlRecordingScope(Boolean.TRUE.equals(config.get("recordMysql")));var trace=new TraceScope(Boolean.TRUE.equals(config.get("traceChildren")))){
                 String op=config.getString("op");Object result=null;
                 if(op.equals("filePut")){var file=new File(offlineRoot,config.getString("file"));file.getParentFile().mkdirs();java.nio.file.Files.write(file.toPath(),new org.minima.objects.base.MiniData(config.getString("data")).getBytes());}
                 else if(op.equals("signDemo")){
@@ -155,6 +173,11 @@ public class WalletCommandsOracle extends SqlDBOracle {
                 else if(op.equals("fileWrite"))org.minima.utils.MiniFile.writeDataToFile(org.minima.utils.MiniFile.createBaseFile(config.getString("file")),new org.minima.objects.base.MiniData(config.getString("data")).getBytes(),Boolean.TRUE.equals(config.get("append")));
                 else if(op.equals("fileBase"))GeneralParams.BASE_FILE_FOLDER=config.getString("folder");
                 else if(op.equals("fileDirectory"))new File(offlineRoot,config.getString("file")).mkdirs();
+                else if(op.equals("verifyTxnFile")){
+                    var txnFileBytes=org.minima.utils.MiniFile.readCompleteFile(new File(offlineRoot,config.getString("file")));var inputStream=new ByteArrayInputStream(txnFileBytes);var row=org.minima.database.userprefs.txndb.TxnRow.ReadFromStream(new DataInputStream(inputStream));var valid=new JSONArray();
+                    for(var signature:row.getWitness().getAllSignatures()){var key=new org.minima.objects.keys.TreeKey();key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(row.getTransaction().getTransactionID(),signature));}
+                    var value=new JSONObject();value.put("signatures",valid);value.put("consumed",txnFileBytes.length-inputStream.available());value.put("bytes",txnFileBytes.length);result=value;
+                }
                 else if(op.equals("verifyFile")){
                     var fileBytes=org.minima.utils.MiniFile.readCompleteFile(new File(offlineRoot,signedFile(offlineRoot)));var pow=org.minima.objects.TxPoW.convertMiniDataVersion(new org.minima.objects.base.MiniData(fileBytes));var value=new JSONObject();
                     for(boolean burn:new boolean[]{false,true}){var valid=new JSONArray();var txn=burn?pow.getBurnTransaction():pow.getTransaction();var witness=burn?pow.getBurnWitness():pow.getWitness();for(var signature:witness.getAllSignatures()){var key=new org.minima.objects.keys.TreeKey();key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(txn.getTransactionID(),signature));}value.put(burn?"burn":"main",valid);}result=value;
@@ -411,6 +434,7 @@ public class WalletCommandsOracle extends SqlDBOracle {
             JSONArray checked=new JSONArray();for(var row:MinimaDB.getDB().getCustomTxnDB().listTxns())checked.add(row.getTransaction().isCheckedMonotonic());out.put("checked",checked);out.put("mining",miningSnapshot());
             if(vaultEnabled)out.put("vault",vaultSnapshot());
             if(input.containsKey("consolidation")||input.containsKey("txpowSearch"))out.put("forwarded",forwarded);
+            if(Boolean.TRUE.equals(config.get("traceChildren")))out.put("childCalls",childCalls);
             if(input.containsKey("funding")){out.put("coinLocks",new JSONArray(org.minima.system.commands.txn.txnaddamount.LOCKED_COINS));out.put("coinLockEnabled",org.minima.system.commands.txn.txnaddamount.isCoinLockEnabled());}
             if(offline){
                 var files=new JSONObject();var structures=new JSONObject();var directories=new ArrayList<String>();
@@ -523,6 +547,13 @@ public class WalletCommandsOracle extends SqlDBOracle {
                     value.put("row",org.minima.objects.base.MiniData.getMiniDataVersion(new org.minima.database.userprefs.txndb.TxnRow("test",ConsensusOracle.txpow(parts[1]).getTransaction(),ConsensusOracle.txpow(parts[1]).getWitness())).to0xString());value.put("mode",mode);value.put("script",script);value.put("mmr",parts[0]);value.put("pow",parts[1]);value.put("block",parts[2]);value.put("body",ConsensusOracle.wire(ConsensusOracle.txpow(parts[1]).getTxBody()));fixtures.add(value);
                 }
                 System.setOut(stdout);System.out.println(fixtures.toJSONString());
+            }else if("multisigFixtures".equals(request.get("kind"))){
+                var address=new org.minima.objects.Address(org.minima.system.commands.send.multisig.MULTISIG_CONTRACT);
+                request.put("address",address.getAddressData().to0xString());
+                org.minima.objects.Token token=null;
+                if(request.containsKey("token"))token=new org.minima.objects.Token(new org.minima.objects.base.MiniData("0xCAFE"),new org.minima.objects.base.MiniNumber(2),new org.minima.objects.base.MiniNumber(100),new org.minima.objects.base.MiniString("Teaching token"),new org.minima.objects.base.MiniString("RETURN TRUE"),org.minima.objects.base.MiniNumber.ZERO);
+                var fixture=SearcherOracle.proofFixtures(token,request);fixture.put("address",request.get("address"));fixture.put("contract",org.minima.system.commands.send.multisig.MULTISIG_CONTRACT);fixture.put("mxaddress",address.getMinimaAddress());fixture.put("tokenid",token==null?"0x00":token.getTokenID().to0xString());
+                System.out.println(fixture.toJSONString());
             }else if("witnessFixtures".equals(request.get("kind"))){
                 var fixtures=SearcherOracle.proofFixtures();var coins=new JSONArray();var branches=new JSONArray();
                 for(Object data:(JSONArray)fixtures.get("proofs")){var cp=org.minima.objects.CoinProof.convertMiniDataVersion(new org.minima.objects.base.MiniData((String)data));coins.add(org.minima.objects.base.MiniData.getMiniDataVersion(cp.getCoin()).to0xString());branches.add(org.minima.objects.base.MiniData.getMiniDataVersion(cp.getMMRProof()).to0xString());}

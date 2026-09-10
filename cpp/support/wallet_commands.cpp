@@ -31,7 +31,7 @@ struct WalletCommandsFixture {
 class DormantMiner:public TxPoWMiner {
 public:explicit DormantMiner(TxPoWMinerServices services):TxPoWMiner(std::move(services)){}
 };
-static JSONArray forwarded,historyCalls;
+static JSONArray forwarded,historyCalls,childCalls;
 class RecordingHistory:public commands::history {
 public:
     std::shared_ptr<JSONObject> getTxnDetails(TxPoW* txpow) override {
@@ -61,6 +61,25 @@ struct SendRecordingScope {
     bool enabled;std::vector<std::shared_ptr<Command>> saved;
     explicit SendRecordingScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS;for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="send")command=std::make_shared<RecordingSend>();}}
     ~SendRecordingScope(){if(enabled)CommandRunner::ALL_COMMANDS=std::move(saved);}
+};
+class TracingCommand:public Command {
+    std::shared_ptr<Command> delegate;
+public:
+    explicit TracingCommand(std::shared_ptr<Command> command):Command(command->getName(),command->getHelp()),delegate(std::move(command)){}
+    std::shared_ptr<Command> getFunction() const override{return std::make_shared<TracingCommand>(delegate->getFunction());}
+    std::vector<std::string> getValidParams() const override{return delegate->getValidParams();}
+    std::optional<std::string> getFullHelp() const override{return delegate->getFullHelp();}
+    JSONValue runCommand() override{
+        for(const auto& [key,value]:getParams()->entries())delegate->getParams()->put(key,value);
+        delegate->setCompleteCommand(getCompleteCommand());delegate->setMiniDAPPID(getMiniDAPPID());
+        JSONObject call;call.put("name",getName().value());call.put("text",getCompleteCommand().value_or(""));call.put("params",*getParams());childCalls.add(call);
+        return delegate->runCommand();
+    }
+};
+struct TraceScope {
+    bool enabled;std::vector<std::shared_ptr<Command>> saved;
+    explicit TraceScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS;for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()->starts_with("txn"))command=std::make_shared<TracingCommand>(command);}}
+    ~TraceScope(){if(enabled)CommandRunner::ALL_COMMANDS=std::move(saved);}
 };
 class RecordingMysql:public Command {
 public:
@@ -105,9 +124,9 @@ static JSONObject run(const JSONObject& input,const std::string& root){
     MinimaLogger::Runtime logger;logger.println=[](const auto& full){auto text=unicode::encodeUTF8(full);auto at=text.find("] : ");if(at!=std::string::npos){auto body=text.substr(at+4);if(!body.starts_with("     "))logs.add(body);}};
     MinimaLogger::setRuntime(logger);struct Reset{~Reset(){MinimaLogger::setRuntime({});}}reset;
     for(const auto& entry:array(input.get("ops")).elements()){
-        config=&object(entry);forwarded=JSONArray();events=JSONArray();logs=JSONArray();calls=0;historyCalls=JSONArray();WalletMiningFixture::calls=JSONArray();WalletVaultFixture::mainCalls=JSONArray();JSONObject out;auto before=TimerMessage::currentTimeMillis();
+        config=&object(entry);childCalls=JSONArray();forwarded=JSONArray();events=JSONArray();logs=JSONArray();calls=0;historyCalls=JSONArray();WalletMiningFixture::calls=JSONArray();WalletVaultFixture::mainCalls=JSONArray();JSONObject out;auto before=TimerMessage::currentTimeMillis();
         try{
-            SendRecordingScope recording(flag("recordSend"));MysqlRecordingScope mysqlRecording(flag("recordMysql"));
+            SendRecordingScope recording(flag("recordSend"));MysqlRecordingScope mysqlRecording(flag("recordMysql"));TraceScope trace(flag("traceChildren"));
             auto op=config->getString("op");JSONValue result;
             if(op=="filePut"){
                 auto file=offlineRoot/config->getString("file");std::filesystem::create_directories(file.parent_path());auto bytes=MiniData::fromHex(config->getString("data")).bytes();
@@ -121,6 +140,11 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             else if(op=="fileWrite")MiniFile::writeDataToFile(MiniFile::createBaseFile(config->getString("file")),MiniData::fromHex(config->getString("data")).bytes(),flag("append"));
             else if(op=="fileBase")GeneralParams::BASE_FILE_FOLDER=config->getString("folder");
             else if(op=="fileDirectory")std::filesystem::create_directories(offlineRoot/config->getString("file"));
+            else if(op=="verifyTxnFile"){
+                auto bytes=MiniFile::readCompleteFile(offlineRoot/config->getString("file"));size_t offset=0;auto row=TxnRow::deserialise(bytes,offset);JSONArray valid;
+                for(const auto& signature:row->getWitness()->getAllSignatures()){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(row->getTransaction()->getTransactionID(),signature));}
+                JSONObject value;value.put("signatures",valid);value.put("consumed",int64_t(offset));value.put("bytes",int64_t(bytes.size()));result=value;
+            }
             else if(op=="verifyFile"){
                 auto bytes=MiniFile::readCompleteFile(offlineRoot/signedFile());auto pow=TxPoW::convertMiniDataVersion(MiniData(bytes));if(!pow)throw JavaNullPointerException("null file TxPoW");
                 JSONObject value;for(bool burn:{false,true}){JSONArray valid;auto& txn=burn?pow->getBurnTransaction():pow->getTransaction();auto& witness=burn?pow->getBurnWitness():pow->getWitness();for(const auto& signature:witness.getAllSignatures()){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(txn.getTransactionID(),signature));}value.put(burn?"burn":"main",valid);}result=value;
@@ -375,7 +399,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 std::shared_ptr<Command> command=flag("classOnly")?std::make_shared<commands::magic>():CommandRunner::getRunner().getCommandOnly(config->getString("name"));sqlRequired(command);for(const auto& [key,value]:object(config->get("params")).entries())command->getParams()->put(key,value.isString()&&value.asString()=="$SIGNED"?JSONValue(signedFile()):value);result=command->runCommand();
             }else result=CommandRunner::getRunner().runMultiCommand(config->getString("caller"),config->getString("text"));
             out.put("value",flag("replyText")?JSONValue(result.toJSONString()):result);
-        }catch(const CommandException& error){out.put("exception",std::string("org.minima.system.commands.CommandException: ")+error.what());}
+        }catch(const CommandException& error){out.put("exception",std::string("org.minima.system.commands.CommandException")+(error.getMessage()?": "+*error.getMessage():""));}
         catch(const std::exception& error){out.put("exception",nativeExceptionText(error));}
         if(input.containsKey("nodeState")){
             auto savedPreferences=std::filesystem::path(root)/"control-prefs";out.put("savedPreferences",std::filesystem::exists(savedPreferences)?JSONValue(MiniData(MiniFile::readCompleteFile(savedPreferences)).to0xString()):JSONValue());
@@ -394,6 +418,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
         JSONArray checked;for(const auto& row:*TxnDB::getRuntimeDB()->listTxns())checked.add(row->getTransaction()->isCheckedMonotonic());out.put("checked",checked);out.put("mining",WalletMiningFixture::snapshot());
         if(WalletVaultFixture::enabled)out.put("vault",WalletVaultFixture::snapshot());
         if(input.containsKey("consolidation")||input.containsKey("txpowSearch"))out.put("forwarded",forwarded);
+        if(flag("traceChildren"))out.put("childCalls",childCalls);
         if(input.containsKey("funding")){JSONArray ids;for(const auto& id:commands::txnaddamount::LOCKED_COINS)ids.add(id);out.put("coinLocks",ids);out.put("coinLockEnabled",commands::txnaddamount::isCoinLockEnabled());}
         if(offline){
             JSONObject files,structures;std::vector<std::string> directories;

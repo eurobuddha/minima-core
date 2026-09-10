@@ -1,0 +1,13 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 168: offline_send_commands_differential
+    Start  53: transaction_commands_differential
+1/4 Test  #53: transaction_commands_differential ......   Passed   23.61 sec
+    Start 139: wallet_witness_commands_differential
+2/4 Test #139: wallet_witness_commands_differential ...   Passed   15.06 sec
+    Start  52: command_runner_differential
+3/4 Test  #52: command_runner_differential ............   Passed    3.87 sec
+4/4 Test #168: offline_send_commands_differential .....   Passed  102.58 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) = 102.59 sec

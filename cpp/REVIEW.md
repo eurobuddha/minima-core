@@ -1,3 +1,57 @@
+# Code Review — multisig workflows
+
+## Summary
+
+Two mapped command counterparts share the source action logic and exact existing
+contract. They reuse native wallet/search/proof/transaction/file/vault/miner
+implementations. The 457-file native node is still incomplete.
+
+## Findings
+
+The scoped source review found no unresolved production defect in these translated
+actions. Contract text and help metadata are unchanged. Parameter order, UTF-16 key
+length checks, int32 threshold conversion and unescaped nested command strings
+match Java. list preserves duplicate matches at different state ports; spend
+selects the first match, computes scaled-token change, and distinguishes raw read
+addresses from normalized full-command addresses. Parent replies preserve nested
+false statuses rather than inventing rollback or error propagation.
+
+Signing imports before key discovery, examines every state value of the first
+input, and keeps repeated signing attempts. Unlock/relock surrounds child execution
+with the source's lack of finally cleanup. Post uses mine:true/auto:true. Review
+also checked fresh factories, registration and the common contract used by Wallet.
+
+A malformed-file comparison exposed txnimport's older generic runtime exception.
+It now uses JavaNullPointerException while retaining replacement-ID argument
+parsing before a null receiver is rejected. The recording fixture independently
+needed getMessage() to preserve embedded NUL text. Initial failures are retained.
+New fixture compile/observation typos were corrected before the passing run.
+
+The test-only tracing wrapper invokes actual child bodies and restores the
+registry after each operation. Optional proof fixture configuration leaves old
+fixtures unchanged. Whole exported TxnRow bytes are compared except complete
+validated generated-ID fields; a separate reader verifies real signatures and
+full file consumption. Subdirectory exports stay inside the observed temp root.
+
+## Validation and limits
+
+Normal comparison: 340 programs / 1,089 operations / 22,269 SQL observations.
+The final sanitizer comparison passes the same corpus, including complete
+subdirectory-file observations. Both full builds pass. Four affected regression
+suites pass in both builds. All 457 teaching guides pass structural audit.
+
+Recording SQL, fixed miner-entry PRNG and fixture chain/lifecycle services are
+explicit boundaries. The normalizer excludes Java-specific null/class-cast prose,
+shape-checked random IDs/timestamps and independently encrypted vault bytes. It
+retains transaction/witness bytes, command text, SQL effects and decrypted state.
+No full current 214-suite, durable-storage or live-node parity claim is made.
+Empty-input imports, all threshold/root combinations and arbitrary reference or
+concurrency APIs remain unverified. All mapped counterparts remain partial.
+
+## Verdict
+
+Approve this scoped progress checkpoint. Full-goal completion is not asserted. Historical reviews follow.
+
 # Code Review — wallet token creation
 
 ## Summary

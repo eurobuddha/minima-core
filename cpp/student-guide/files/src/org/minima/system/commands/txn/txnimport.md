@@ -44,3 +44,7 @@ Why should a failed import response not automatically imply the database is unch
 Full API, exact generic exceptions and node integration parity remain open. These offline draft-transaction tests do not mine, sign or broadcast a transaction. 
 
 Pinned Java SHA-256: `de026d8434227c34ba8a4819d3bb50d80d18ba94998441841d16125e279e4513`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+### Multisig integration follow-up
+
+Malformed imports now use the existing JavaNullPointerException representation instead of a generic native runtime error. An explicit replacement ID is parsed before a null decoded row is dereferenced, matching Java argument evaluation. The multisig workflow comparison covers the resulting nested error and retained-row behavior.

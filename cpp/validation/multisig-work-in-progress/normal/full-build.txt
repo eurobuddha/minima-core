@@ -1,0 +1,321 @@
+[ 51%] Built target minima_file_port
+[ 51%] Linking CXX executable minima_objects
+[ 51%] Linking CXX executable malformed_streams
+[ 51%] Linking CXX executable MiniByteTests
+[ 51%] Linking CXX executable minima_primitives
+[ 51%] Built target MiniByteTests
+[ 51%] Built target minima_primitives
+[ 51%] Built target malformed_streams
+[ 52%] Built target minima_objects
+[ 53%] Linking CXX executable TransactionTests
+[ 53%] Linking CXX executable TxHeaderTests
+[ 53%] Linking CXX executable minima_json
+[ 53%] Linking CXX executable minima_kiss_values
+[ 53%] Built target TransactionTests
+[ 53%] Built target minima_json
+[ 53%] Built target minima_kiss_values
+[ 53%] Built target TxHeaderTests
+[ 53%] Linking CXX executable ValueTests
+[ 54%] Linking CXX executable BooleanValueTests
+[ 54%] Linking CXX executable ScriptValueTests
+[ 54%] Linking CXX executable HexValueTests
+[ 54%] Built target ValueTests
+[ 54%] Built target BooleanValueTests
+[ 54%] Built target ScriptValueTests
+[ 54%] Built target HexValueTests
+[ 54%] Linking CXX executable LexicalTokenizerTests
+[ 54%] Linking CXX executable NumberValueTests
+[ 54%] Linking CXX executable ConstantExpressionTests
+[ 54%] Linking CXX executable minima_kissvm
+[ 55%] Built target LexicalTokenizerTests
+[ 55%] Built target NumberValueTests
+[ 55%] Built target minima_kissvm
+[ 55%] Built target ConstantExpressionTests
+[ 55%] Linking CXX executable VariableExpressionTests
+[ 55%] Linking CXX executable GlobalExpressionTests
+[ 55%] Linking CXX executable FunctionExpressionTests
+[ 56%] Linking CXX executable ContractTests
+[ 56%] Built target GlobalExpressionTests
+[ 56%] Built target ContractTests
+[ 58%] Built target VariableExpressionTests
+[ 58%] Built target FunctionExpressionTests
+[ 58%] Linking CXX executable StatementBlockTests
+[ 58%] Linking CXX executable minima_peer_messages
+[ 59%] Linking CXX executable txn_lock_workers
+[ 59%] Linking CXX executable minima_small_utilities
+[ 59%] Built target minima_peer_messages
+[ 59%] Built target txn_lock_workers
+[ 59%] Built target StatementBlockTests
+[ 59%] Built target minima_small_utilities
+[ 59%] Linking CXX executable ASSERTstatementTests
+[ 59%] Linking CXX executable EXECstatementTests
+[ 59%] Linking CXX executable minima_cascade
+[ 59%] Linking CXX executable TxPowTreeTest
+[ 59%] Built target ASSERTstatementTests
+[ 59%] Built target EXECstatementTests
+[ 59%] Built target minima_cascade
+[ 59%] Built target TxPowTreeTest
+[ 59%] Linking CXX executable minima_tree
+[ 60%] Linking CXX executable minima_utility
+[ 60%] Linking CXX executable minima_consensus
+[ 60%] Linking CXX executable RamDBTest
+[ 60%] Built target minima_utility
+[ 60%] Built target minima_tree
+[ 60%] Built target minima_consensus
+[ 60%] Built target RamDBTest
+[ 60%] Linking CXX executable minima_ram
+[ 60%] Linking CXX executable timed_checker_checks
+[ 60%] Linking CXX executable minima_prefs
+[ 60%] Linking CXX executable minima_hashmap
+[ 61%] Built target minima_prefs
+[ 61%] Built target minima_ram
+[ 61%] Built target timed_checker_checks
+[ 62%] Built target minima_hashmap
+[ 62%] Linking CXX executable minima_messages
+[ 63%] Linking CXX executable message_workers
+[ 63%] Linking CXX executable minima_txndb
+[ 63%] Linking CXX executable minima_archive_cache
+[ 63%] Built target minima_messages
+[ 63%] Built target message_workers
+[ 63%] Built target minima_archive_cache
+[ 64%] Built target minima_txndb
+[ 64%] Linking CXX executable minima_ibd
+[ 64%] Linking CXX executable minima_mmrsync
+[ 64%] Linking CXX executable minima_sendpoll
+[ 64%] Linking CXX executable minima_raw_archive
+[ 64%] Built target minima_mmrsync
+[ 64%] Built target minima_sendpoll
+[ 64%] Built target minima_ibd
+[ 65%] Built target minima_raw_archive
+[ 65%] Linking CXX executable minima_bip39
+[ 65%] Linking CXX executable minima_fast_bytes
+[ 65%] Linking CXX executable minima_wallet_rows
+[ 66%] Linking CXX executable minima_network_utilities
+[ 66%] Built target minima_fast_bytes
+[ 67%] Built target minima_bip39
+[ 67%] Built target minima_wallet_rows
+[ 67%] Built target minima_network_utilities
+[ 67%] Linking CXX executable minima_command_runner
+[ 67%] Linking CXX executable minima_command
+[ 68%] Linking CXX executable minima_commands
+[ 68%] Linking CXX executable minima_transaction_commands
+[ 68%] Built target minima_command
+[ 68%] Built target minima_commands
+[ 68%] Built target minima_transaction_commands
+[ 68%] Built target minima_command_runner
+[ 69%] Linking CXX executable minima_searcher
+[ 70%] Linking CXX executable InetSocketAddressIOTest
+[ 70%] Linking CXX executable GreetingTest
+[ 70%] Linking CXX executable minima_peer_state
+[ 70%] Built target GreetingTest
+[ 70%] Built target InetSocketAddressIOTest
+[ 70%] Built target minima_searcher
+[ 70%] Built target minima_peer_state
+[ 70%] Linking CXX executable P2PDBTest
+[ 70%] Linking CXX executable minima_nio_client
+[ 70%] Linking CXX executable nio_loopback
+[ 70%] Linking CXX executable minima_nio_server
+[ 70%] Built target nio_loopback
+[ 71%] Built target P2PDBTest
+[ 71%] Built target minima_nio_client
+[ 71%] Built target minima_nio_server
+[ 71%] Linking CXX executable minima_network_startup
+[ 71%] Linking CXX executable minima_p2p2_db
+[ 72%] Linking CXX executable minima_nio_manager_transport
+[ 72%] Linking CXX executable fixed_task_executor
+[ 72%] Built target minima_p2p2_db
+[ 72%] Built target fixed_task_executor
+[ 72%] Built target minima_nio_manager_transport
+[ 73%] Built target minima_network_startup
+[ 73%] Linking CXX executable nio_manager_loopback
+[ 73%] Linking CXX executable nio_connections
+[ 73%] Linking CXX executable minima_nio_manager_state
+[ 73%] Linking CXX executable minima_nio_message
+[ 74%] Built target nio_connections
+[ 74%] Built target nio_manager_loopback
+[ 74%] Built target minima_nio_manager_state
+[ 74%] Built target minima_nio_message
+[ 74%] Linking CXX executable peers_checker_native
+[ 74%] Linking CXX executable minima_p2p_functions
+[ 74%] Linking CXX executable minima_peers_checker
+[ 74%] Linking CXX executable p2p_manager_native
+[ 74%] Built target minima_peers_checker
+[ 74%] Built target peers_checker_native
+[ 74%] Built target minima_p2p_functions
+[ 74%] Linking CXX executable peer_state_concurrent
+[ 74%] Built target p2p_manager_native
+[ 74%] Linking CXX executable minima_p2p_manager
+[ 74%] Linking CXX executable minima_p2p2_runtime
+[ 74%] Linking CXX executable p2p2_worker
+[ 75%] Built target peer_state_concurrent
+[ 76%] Built target minima_p2p2_runtime
+[ 76%] Built target minima_p2p_manager
+[ 76%] Built target p2p2_worker
+[ 76%] Linking CXX executable minima_network_manager
+[ 77%] Linking CXX executable minima_http_server
+[ 77%] Linking CXX executable network_manager_native
+[ 77%] Linking CXX executable minima_sql_db
+[ 77%] Built target minima_http_server
+[ 77%] Built target network_manager_native
+[ 77%] Built target minima_sql_db
+[ 77%] Built target minima_network_manager
+[ 77%] Linking CXX executable sql_db_concurrent
+[ 77%] Linking CXX executable minima_onchain_db
+[ 77%] Linking CXX executable minima_txpow_sql_db
+[ 77%] Linking CXX executable minima_txpow_db
+[ 77%] Built target minima_onchain_db
+[ 77%] Built target sql_db_concurrent
+[ 77%] Built target minima_txpow_sql_db
+[ 77%] Built target minima_txpow_db
+[ 77%] Linking CXX executable minima_coin_db
+[ 77%] Linking CXX executable minima_wallet
+[ 77%] Linking CXX executable minima_archive_manager
+[ 77%] Linking CXX executable minima_db
+[ 77%] Built target minima_coin_db
+[ 77%] Built target minima_wallet
+[ 77%] Linking CXX executable minima_db_ownership
+[ 77%] Linking CXX executable minima_db_lock
+[ 77%] Built target minima_archive_manager
+[ 77%] Built target minima_db
+[ 77%] Linking CXX executable minima_txpow_miner
+[ 77%] Linking CXX executable txpow_miner_worker
+[ 77%] Built target minima_db_lock
+[ 78%] Built target minima_db_ownership
+[ 78%] Linking CXX executable txblock_ownership
+[ 78%] Built target minima_txpow_miner
+[ 79%] Linking CXX executable minima_txpow_processor
+[ 79%] Built target txpow_miner_worker
+[ 80%] Linking CXX executable txpow_processor_worker
+[ 80%] Linking CXX executable minima_notify_manager
+[ 81%] Built target txblock_ownership
+[ 81%] Built target minima_txpow_processor
+[ 82%] Linking CXX executable notify_manager_worker
+[ 82%] Linking CXX executable minima_rpc_client
+[ 82%] Built target txpow_processor_worker
+[ 82%] Built target minima_notify_manager
+[ 82%] Linking CXX executable notify_http_worker
+[ 82%] Linking CXX executable rpc_configuration_native
+[ 82%] Built target notify_manager_worker
+[ 82%] Built target minima_rpc_client
+[ 82%] Linking CXX executable minima_logger_worker
+[ 82%] Linking CXX executable minima_logger
+[ 82%] Built target notify_http_worker
+[ 83%] Built target rpc_configuration_native
+[ 83%] Linking CXX executable minima-rpc
+[ 83%] Linking CXX executable minima_rpc_cli
+[ 83%] Built target minima_logger
+[ 83%] Built target minima_logger_worker
+[ 83%] Built target minima-rpc
+[ 84%] Linking CXX executable native_stack_trace
+[ 84%] Linking CXX executable minima_param_configurer
+[ 84%] Linking CXX executable param_configurer_process
+[ 84%] Built target minima_rpc_cli
+[ 84%] Linking CXX executable ParamConfigurerTest
+[ 85%] Built target param_configurer_process
+[ 85%] Built target native_stack_trace
+[ 85%] Built target minima_param_configurer
+[ 85%] Linking CXX executable uncaught_workers
+[ 85%] Linking CXX executable minima_uncaught
+[ 85%] Linking CXX executable native_thread_checks
+[ 85%] Built target ParamConfigurerTest
+[ 85%] Linking CXX executable http_server_errors
+[ 85%] Built target uncaught_workers
+[ 85%] Built target minima_uncaught
+[ 85%] Built target native_thread_checks
+[ 85%] Linking CXX executable executor_uncaught
+[ 85%] Linking CXX executable nio_server_errors
+[ 85%] Linking CXX executable nio_manager_errors
+[ 85%] Built target http_server_errors
+[ 85%] Linking CXX executable timed_checker_errors
+[ 85%] Built target nio_manager_errors
+[ 85%] Built target nio_server_errors
+[ 86%] Built target executor_uncaught
+[ 86%] Linking CXX executable checker_logs
+[ 86%] Linking CXX executable MinimaFunctionTests
+[ 86%] Linking CXX executable ABSTests
+[ 87%] Built target timed_checker_errors
+[ 88%] Built target checker_logs
+[ 89%] Built target MinimaFunctionTests
+[ 89%] Linking CXX executable command_runner_errors
+[ 89%] Built target ABSTests
+[ 89%] Linking CXX executable FLOORTests
+[ 89%] Linking CXX executable CEILTests
+[ 89%] Building CXX object CMakeFiles/wallet_commands.dir/support/wallet_commands.cpp.o
+[ 89%] Built target command_runner_errors
+[ 89%] Built target FLOORTests
+[ 89%] Linking CXX executable MINTests
+[ 89%] Built target CEILTests
+[ 89%] Linking CXX executable MAXTests
+[ 90%] Linking CXX executable minima_coin_streams
+[ 91%] Built target MINTests
+[ 91%] Linking CXX executable MiniStringTests
+[ 91%] Built target MAXTests
+[ 91%] Built target minima_coin_streams
+[ 91%] Linking CXX executable INCTests
+[ 91%] Linking CXX executable DECTests
+[ 91%] Built target MiniStringTests
+[ 91%] Linking CXX executable POWTests
+[ 91%] Built target INCTests
+[ 91%] Built target DECTests
+[ 92%] Linking CXX executable SIGDIGTests
+[ 92%] Linking CXX executable BITCOUNTTests
+[ 92%] Built target POWTests
+[ 92%] Linking CXX executable BITGETTests
+[ 92%] Built target SIGDIGTests
+[ 92%] Built target BITCOUNTTests
+[ 92%] Linking CXX executable BITSETTests
+[ 92%] Linking CXX executable REVTests
+[ 93%] Built target BITGETTests
+[ 93%] Linking CXX executable LENTests
+[ 93%] Built target BITSETTests
+[ 94%] Built target REVTests
+[ 94%] Linking CXX executable minima_sendpoll_command
+[ 95%] Linking CXX executable wallet_wrappers
+[ 95%] Built target LENTests
+[ 95%] Linking CXX executable BOOLTests
+[ 95%] Built target minima_sendpoll_command
+[ 95%] Built target wallet_wrappers
+[ 95%] Linking CXX executable HEXTests
+[ 95%] Linking CXX executable NUMBERTests
+[ 95%] Built target BOOLTests
+[ 96%] Built target HEXTests
+[ 96%] Linking CXX executable SCRIPTTests
+[ 96%] Built target NUMBERTests
+[ 96%] Linking CXX executable minima_mysql_connect
+[ 96%] Linking CXX executable minima_main_runtime
+[ 96%] Built target SCRIPTTests
+[ 97%] Built target minima_mysql_connect
+[ 97%] Linking CXX executable main_ownership
+[ 98%] Linking CXX executable json_collections
+[ 99%] Built target minima_main_runtime
+[ 99%] Linking CXX executable shared_json_native
+[ 99%] Built target json_collections
+[ 99%] Built target main_ownership
+[ 99%] Linking CXX executable rpc_live
+[ 99%] Linking CXX executable minima_hashtest_runtime
+[ 99%] Built target shared_json_native
+[ 99%] Building CXX object CMakeFiles/coin_import_runtime.dir/support/wallet_commands.cpp.o
+[ 99%] Built target rpc_live
+[ 99%] Built target minima_hashtest_runtime
+[ 99%] Building CXX object CMakeFiles/scan_chain_runtime.dir/support/wallet_commands.cpp.o
+[ 99%] Building CXX object CMakeFiles/token_validation_runtime.dir/support/wallet_commands.cpp.o
+[ 99%] Linking CXX executable wallet_commands
+[ 99%] Built target wallet_commands
+[ 99%] Linking CXX executable peers_command_runtime
+[ 99%] Built target peers_command_runtime
+[ 99%] Building CXX object CMakeFiles/automatic_transaction_runtime.dir/support/wallet_commands.cpp.o
+[ 99%] Linking CXX executable coin_import_runtime
+[100%] Linking CXX executable scan_chain_runtime
+[100%] Linking CXX executable token_validation_runtime
+[100%] Built target coin_import_runtime
+[100%] Building CXX object CMakeFiles/burn_metrics_runtime.dir/support/wallet_commands.cpp.o
+[100%] Built target scan_chain_runtime
+[100%] Built target token_validation_runtime
+[100%] Building CXX object CMakeFiles/token_creation_runtime.dir/support/wallet_commands.cpp.o
+[100%] Built target multisig_runtime
+[100%] Linking CXX executable automatic_transaction_runtime
+[100%] Built target automatic_transaction_runtime
+[100%] Linking CXX executable burn_metrics_runtime
+[100%] Linking CXX executable token_creation_runtime
+[100%] Built target burn_metrics_runtime
+[100%] Built target token_creation_runtime
