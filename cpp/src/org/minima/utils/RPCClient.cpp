@@ -18,9 +18,9 @@ http::URL parse(const String& host,bool https){
     if(!host)throw wire::TypedIOException("java.net.MalformedURLException","null URL");
     auto text=trim(*host);if(text.size()>=4&&std::equal(text.begin(),text.begin()+4,"url:",[](char a,char b){return std::tolower(static_cast<unsigned char>(a))==b;}))text.erase(0,4);
     if(text.find('\n')!=text.npos)throw wire::TypedIOException("java.net.MalformedURLException","Illegal character in URL");
-    // Keep C string URL APIs from truncating NUL or rejecting a CR path before
+    // Keep C string URL APIs from truncating NUL or rejecting CR/tab paths before
     // Java's connection phase. The unmodified request target is retained below.
-    for(size_t i=0;i<text.size();++i)if(text[i]=='\0'||text[i]=='\r'){auto escape=text[i]=='\0'?"%00":"%0D";text.replace(i,1,escape);i+=2;}
+    for(size_t i=0;i<text.size();++i)if(text[i]=='\0'||text[i]=='\r'||text[i]=='\t'){auto escape=text[i]=='\0'?"%00":text[i]=='\r'?"%0D":"%09";text.replace(i,1,escape);i+=2;}
     auto result=http::url();auto code=curl_url_set(result.get(),CURLUPART_URL,text.c_str(),CURLU_NON_SUPPORT_SCHEME|CURLU_PATH_AS_IS|CURLU_ALLOW_SPACE);
     if(code!=CURLUE_OK)throw wire::TypedIOException("java.net.MalformedURLException",curl_url_strerror(code));
     auto scheme=http::part(result.get(),CURLUPART_SCHEME);

@@ -27,7 +27,7 @@ public:
         try {auto bytes=PasswordCrypto::decryptPassword(password,MiniData(readCompleteFile(file)));readObject(object,bytes.bytes());}catch(const std::exception& e){log(e);}
     }
     template<class T> static void saveObject(const std::filesystem::path& file,T& object) {try {writeDataToFile(file,object.serialise());}catch(const std::ios_base::failure& e){log(e);}catch(const wire::IOException& e){log(e);}}
-    template<class T> static void saveObjectDirect(const std::filesystem::path& file,T& object) {try {prepareFile(file,false);std::ofstream out(file,std::ios::binary|std::ios::trunc);out.exceptions(std::ios::badbit|std::ios::failbit);auto bytes=object.serialise();out.write(reinterpret_cast<const char*>(bytes.data()),std::streamsize(bytes.size()));out.flush();out.close();}catch(const std::ios_base::failure& e){log(e);}catch(const wire::IOException& e){log(e);}}
+    template<class T> static void saveObjectDirect(const std::filesystem::path& file,T& object) {try {auto out=openObjectOutput(file);auto bytes=object.serialise();out.write(reinterpret_cast<const char*>(bytes.data()),std::streamsize(bytes.size()));out.flush();out.close();}catch(const std::ios_base::failure& e){logObjectOutput(wire::IOException(e.what()));}catch(const wire::IOException& e){logObjectOutput(e);}}
     template<class T> static void saveObjectEncrypted(const std::string& password,const std::filesystem::path& file,T& object) {try {auto bytes=PasswordCrypto::encryptPassword(password,MiniData(object.serialise()));writeDataToFile(file,bytes.bytes());}catch(const std::exception& e){log(e);}}
     static void copyFile(const std::filesystem::path& original,const std::filesystem::path& copy);
     static void copyFileOrFolder(const std::filesystem::path& original,const std::filesystem::path& copy);
@@ -39,6 +39,8 @@ public:
     static void decompressGzipFile(const std::filesystem::path& gzip,const std::filesystem::path& file);
     static void compressGzipFile(const std::filesystem::path& file,const std::filesystem::path& gzip);
 private:
+    static std::ofstream openObjectOutput(const std::filesystem::path& file);
+    static void logObjectOutput(const wire::IOException& error);
     static void prepareFile(const std::filesystem::path& file,bool append);
 };
 }

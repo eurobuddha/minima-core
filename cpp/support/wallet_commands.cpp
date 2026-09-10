@@ -3,6 +3,7 @@
 #include "TxPoWSearcherFixture.hpp"
 #include "org/minima/system/commands/txn/txnauto.hpp"
 #include "org/minima/system/commands/base/burn.hpp"
+#include "org/minima/system/commands/base/incentivecash.hpp"
 #include "org/minima/database/MinimaDB.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -32,6 +33,29 @@ class DormantMiner:public TxPoWMiner {
 public:explicit DormantMiner(TxPoWMinerServices services):TxPoWMiner(std::move(services)){}
 };
 static JSONArray forwarded,historyCalls,childCalls;
+static JSONArray incentiveCalls;
+static JSONValue incentivePrefs(){
+    auto path=std::filesystem::path(GeneralParams::DATA_FOLDER)/"databases/userprefs.db";
+    return std::filesystem::is_regular_file(path)?JSONValue(MiniData(MiniFile::readCompleteFile(path)).to0xString()):JSONValue();
+}
+class RecordingIncentiveCash:public commands::incentivecash {
+public:
+    std::shared_ptr<Command> getFunction() const override{return std::make_shared<RecordingIncentiveCash>();}
+protected:
+    std::string requestPUT(const std::string& url) override {
+        JSONObject call;call.put("url",url);call.put("prefs",incentivePrefs());
+        call.put("user",JSONValue::parseWithException(MinimaDB::getDB()->getUserDB()->getAllData()->toJSONString()));incentiveCalls.add(call);
+        const std::string origin="https://incentivecash.minima.global";
+        if(!url.starts_with(origin+"/"))throw std::runtime_error("unexpected incentive destination");
+        if(flag("httpFail"))throw wire::IOException("fixture HTTP failure");
+        return commands::incentivecash::requestPUT(config->getString("route")+url.substr(origin.size()));
+    }
+};
+struct IncentiveRecordingScope {
+    bool enabled;std::vector<std::shared_ptr<Command>> saved;
+    explicit IncentiveRecordingScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS;for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="incentivecash")command=std::make_shared<RecordingIncentiveCash>();}}
+    ~IncentiveRecordingScope(){if(enabled)CommandRunner::ALL_COMMANDS=std::move(saved);}
+};
 class RecordingHistory:public commands::history {
 public:
     std::shared_ptr<JSONObject> getTxnDetails(TxPoW* txpow) override {
@@ -114,7 +138,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
     GeneralParams::BASE_FILE_FOLDER=offline?offlineRoot.string():"";
     if(offline){std::filesystem::remove_all(offlineRoot);std::filesystem::create_directories(offlineRoot);}
     auto signedFile=[&](){std::string name;for(const auto& file:std::filesystem::directory_iterator(offlineRoot))if(file.path().filename().string().starts_with("signedtransaction-"))name=file.path().filename().string();return name;};
-    commands::txnaddamount::enableCoinLock(false);WalletMiningFixture::reset();WalletVaultFixture::reset(input,root);TxPoWSqlDB::MAX_RELEVANT_TXPOW=MiniNumber(100);GeneralParams::NUMBER_DAYS_SQLTXPOWDB=3;connectionID=preparedID=0;GlobalParams::MINIMA_MMR_PROOF_HISTORY=MiniNumber(256);GeneralParams::DATA_FOLDER=root;auto prefs=std::filesystem::path(root)/"databases/userprefs.db";std::filesystem::remove(prefs);MinimaDBServices services;
+    commands::txnaddamount::enableCoinLock(false);WalletMiningFixture::reset();WalletVaultFixture::reset(input,root);TxPoWSqlDB::MAX_RELEVANT_TXPOW=MiniNumber(100);GeneralParams::NUMBER_DAYS_SQLTXPOWDB=3;connectionID=preparedID=0;GlobalParams::MINIMA_MMR_PROOF_HISTORY=MiniNumber(256);GeneralParams::DATA_FOLDER=root;auto prefs=std::filesystem::path(root)/"databases/userprefs.db";if(input.containsKey("incentive"))std::filesystem::remove_all(prefs);else std::filesystem::remove(prefs);MinimaDBServices services;
     services.sql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user,password});return std::make_shared<Connection>();};
     services.sql.log=[](const auto& text,bool){logs.add(text);};
     services.isShuttingDown=[]{return false;};services.postMainMessage=[](auto){};services.postMainTimer=[](auto){};
@@ -124,11 +148,16 @@ static JSONObject run(const JSONObject& input,const std::string& root){
     MinimaLogger::Runtime logger;logger.println=[](const auto& full){auto text=unicode::encodeUTF8(full);auto at=text.find("] : ");if(at!=std::string::npos){auto body=text.substr(at+4);if(!body.starts_with("     "))logs.add(body);}};
     MinimaLogger::setRuntime(logger);struct Reset{~Reset(){MinimaLogger::setRuntime({});}}reset;
     for(const auto& entry:array(input.get("ops")).elements()){
-        config=&object(entry);childCalls=JSONArray();forwarded=JSONArray();events=JSONArray();logs=JSONArray();calls=0;historyCalls=JSONArray();WalletMiningFixture::calls=JSONArray();WalletVaultFixture::mainCalls=JSONArray();JSONObject out;auto before=TimerMessage::currentTimeMillis();
+        config=&object(entry);incentiveCalls=JSONArray();childCalls=JSONArray();forwarded=JSONArray();events=JSONArray();logs=JSONArray();calls=0;historyCalls=JSONArray();WalletMiningFixture::calls=JSONArray();WalletVaultFixture::mainCalls=JSONArray();JSONObject out;auto before=TimerMessage::currentTimeMillis();
+        std::ostringstream incentivePrinted;auto previousOutput=input.containsKey("incentive")?std::cout.rdbuf(incentivePrinted.rdbuf()):nullptr;
         try{
+            IncentiveRecordingScope incentiveRecording(input.containsKey("incentive"));
             SendRecordingScope recording(flag("recordSend"));MysqlRecordingScope mysqlRecording(flag("recordMysql"));TraceScope trace(flag("traceChildren"));
             auto op=config->getString("op");JSONValue result;
-            if(op=="filePut"){
+            if(op=="incentivePrefs"){for(const auto& [key,value]:object(config->get("values")).entries())MinimaDB::getDB()->getUserDB()->getAllData()->put(key,value);}
+            else if(op=="incentiveLoad"){UserDB fresh;fresh.loadDB(prefs);result=JSONValue::parseWithException(fresh.getAllData()->toJSONString());}
+            else if(op=="incentiveDirectory"){std::filesystem::remove_all(prefs);std::filesystem::create_directories(prefs);std::ofstream(prefs/"obstacle")<<"fixture";}
+            else if(op=="filePut"){
                 auto file=offlineRoot/config->getString("file");std::filesystem::create_directories(file.parent_path());auto bytes=MiniData::fromHex(config->getString("data")).bytes();
                 std::ofstream stream(file,std::ios::binary);stream.write(reinterpret_cast<const char*>(bytes.data()),std::streamsize(bytes.size()));
             }
@@ -401,6 +430,10 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             out.put("value",flag("replyText")?JSONValue(result.toJSONString()):result);
         }catch(const CommandException& error){out.put("exception",std::string("org.minima.system.commands.CommandException")+(error.getMessage()?": "+*error.getMessage():""));}
         catch(const std::exception& error){out.put("exception",nativeExceptionText(error));}
+        if(input.containsKey("incentive")){
+            std::cout.rdbuf(previousOutput);out.put("printed",incentivePrinted.str());out.put("incentiveCalls",incentiveCalls);
+            out.put("user",JSONValue::parseWithException(MinimaDB::getDB()->getUserDB()->getAllData()->toJSONString()));
+        }
         if(input.containsKey("nodeState")){
             auto savedPreferences=std::filesystem::path(root)/"control-prefs";out.put("savedPreferences",std::filesystem::exists(savedPreferences)?JSONValue(MiniData(MiniFile::readCompleteFile(savedPreferences)).to0xString()):JSONValue());
             try{out.put("preferenceWire",MiniData(MinimaDB::getDB()->getUserDB()->serialise()).to0xString());}catch(const std::exception& error){out.put("preferenceError",nativeExceptionText(error));}

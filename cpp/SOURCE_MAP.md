@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 374 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 375 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -192,7 +192,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/base/hash.java` | `src/org/minima/system/commands/base/hash.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/hashtest.java` | `src/org/minima/system/commands/base/hashtest.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/healthcheck.java` | `src/org/minima/system/commands/base/healthcheck.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/base/incentivecash.java` | `src/org/minima/system/commands/base/incentivecash.cpp` | unported | — |
+| `src/org/minima/system/commands/base/incentivecash.java` | `src/org/minima/system/commands/base/incentivecash.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/jniminingtest.java` | `src/org/minima/system/commands/base/jniminingtest.cpp` | unported | — |
 | `src/org/minima/system/commands/base/jnitest.java` | `src/org/minima/system/commands/base/jnitest.cpp` | unported | — |
 | `src/org/minima/system/commands/base/logs.java` | `src/org/minima/system/commands/base/logs.cpp` | implemented_partial | — |

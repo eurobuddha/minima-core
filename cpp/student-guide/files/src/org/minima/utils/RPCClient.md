@@ -30,7 +30,7 @@ The driver runs controlled HTTP and TLS loopback servers and compares both metho
 - [Native RPC fixture](../../../../../../support/rpc_client.cpp)
 - [HTTP/TLS request-trace comparison driver](../../../../../../tools/rpc_client_differential.py)
 
-The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
+The [incentive lab](../../../../../new-tests/incentive-cash.md) additionally exercises actual PUT requests whose raw ID contains tabs, CR, LF or NUL. A tab mismatch exposed libcurl URL parsing rejecting the request too early. The adapter now escapes tabs only in the parsed URL, retaining the unmodified raw request target, as for CR/NUL. The lab records focused and regression results separately.
 
 ## Limits and a useful next test
 

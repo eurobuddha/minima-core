@@ -1,3 +1,59 @@
+# Code Review — incentivecash persistence and PUT
+
+## Summary
+
+The mapped command preserves the source optional-ID validation, immediate save,
+current-ID read, raw URL construction, PUT and JSONObject cast. It reuses existing
+production components and is registered, matching pinned CommandRunner. This is
+scoped progress toward the unfinished 457-file native node.
+
+## Findings
+
+No unresolved defect was found in this scoped review. Supplied blank/null/wrong
+type parameters fail before mutation; a missing/null stored value returns empty.
+Save-disabled and actual save-failure cases preserve memory and continue through
+the same request path. Request or JSON errors do not roll back a saved ID. JSON
+null is accepted, while arrays/scalars fail the object cast. The historical URL
+is unchanged and uses the base version value, not the micro-version suffix.
+
+Two exposed shared gaps were corrected. RPCClient retains tabs in the raw request
+target using its existing CR/NUL parsing approach. MiniFile direct-save checks
+file opening before serializing, reports Java FileNotFoundException for open
+failure, and logs caught I/O through existing NativeThrowable/MinimaLogger. It
+still serializes in memory after opening; generic late iostream error wording
+and partial buffered-stream writes remain outside this finite checkpoint.
+
+The fixture records source URLs and pre-request files before routing to loopback.
+Production defaults still call actual RPCClient. Java command and RPC source are
+unmodified. Native requestPUT is an added protected test boundary. Snapshots copy
+preference JSON to prevent later mutation from rewriting earlier observations.
+Registry overrides and logger state are restored; temporary directory cleanup
+is confined to the test-owned preference path. No public rewards requests occur.
+
+## Validation
+
+Both full builds and eight affected checks pass in each build. Focused normal
+and ASAN/UBSAN comparisons pass106 programs/207 operations/79 HTTP requests per
+runtime. RPC482 cases/597 requests plus actual notification integration;
+utility1361; prefs1130; wallet675 programs/1907 ops/50275 SQL;
+MinimaDB2367 programs/7519 ops/334711 driver calls; registry1265; DB lock and
+ownership checks. All457 guides pass structural audit. The map has375 counterparts
+and82 absent files, with216 registered CTest entries. Initial failures are saved.
+
+## Limits
+
+Exact preference bytes, original URLs, service data, request traces and selected
+logs/errors are compared. Enhanced NPE/CCE/malformed-URL prose, Java stack frames
+and substituted fixture origin in PUT diagnostics are treated explicitly. No
+public-service access, complete TLS/provider/stream/reference/concurrency API,
+durable SQL, complete node or full current216-suite claim. Counterparts remain
+implemented_partial/not_verified.
+
+## Verdict
+
+Approve this scoped local checkpoint. Full-goal completion is not asserted.
+Historical reviews follow.
+
 # Code Review — node-count traversal
 
 ## Summary

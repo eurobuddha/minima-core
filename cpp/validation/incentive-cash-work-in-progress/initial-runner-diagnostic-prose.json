@@ -1,0 +1,124 @@
+{
+  "passed": false,
+  "programs": 96,
+  "total_programs": 106,
+  "operations": 197,
+  "http_requests_per_runtime": 72,
+  "failures": [
+    {
+      "case": 96,
+      "request": {
+        "incentive": true,
+        "ops": [
+          {
+            "route": "http://127.0.0.1:55991",
+            "op": "run",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "text": "incentivecash uid:{\"bad\":true}"
+          }
+        ],
+        "body": "7b2272657761726473223a31322c226461696c79223a5b312c325d2c226d657373616765223a227465616368696e67227d",
+        "status": 200
+      },
+      "java": {
+        "ops": [
+          {
+            "value": [
+              {
+                "command": "incentivecash",
+                "params": {
+                  "uid": {
+                    "bad": true
+                  }
+                },
+                "status": false,
+                "pending": false,
+                "error": "java.lang.ClassCastException"
+              }
+            ],
+            "printed": [],
+            "incentiveCalls": [],
+            "user": {},
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [
+              "java.lang.ClassCastException: class org.minima.utils.json.JSONObject cannot be cast to class java.lang.String (org.minima.utils.json.JSONObject is in unnamed module of loader 'app'; java.lang.String is in module java.base of loader 'bootstrap')"
+            ],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      },
+      "cpp": {
+        "ops": [
+          {
+            "value": [
+              {
+                "command": "incentivecash",
+                "params": {
+                  "uid": {
+                    "bad": true
+                  }
+                },
+                "status": false,
+                "pending": false,
+                "error": "java.lang.ClassCastException"
+              }
+            ],
+            "printed": [],
+            "incentiveCalls": [],
+            "user": {},
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [
+              "java.lang.ClassCastException: Cannot cast command parameter to String"
+            ],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      },
+      "java_requests": [],
+      "cpp_requests": []
+    }
+  ],
+  "scope": "Actual incentivecash, UserDB file serialization/reload, MinimaDB save ordering, JSONParser and RPCClient PUT against loopback. Exact saved bytes, recorded original HTTPS URL, service response and request traces. Only enhanced NPE/CCE/malformed-URL provider prose and fixture HTTP origin in PUT diagnostics normalized. Public incentive service, TLS account interaction, durable SQL and full-node/API/reference/concurrency parity not certified."
+}

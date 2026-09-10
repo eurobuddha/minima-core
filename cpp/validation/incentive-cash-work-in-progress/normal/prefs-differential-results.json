@@ -1,0 +1,6 @@
+{
+  "cases": 1130,
+  "passed": 1130,
+  "failures": [],
+  "scope": "All declared UserDB accessors, JsonDB type/default/read errors, mutable array aliasing, name normalization and date formatting; file failure and complete stream API parity pending"
+}

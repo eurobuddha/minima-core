@@ -1,0 +1,44 @@
+{
+  "passed": false,
+  "programs": 2,
+  "total_programs": 106,
+  "operations": 2,
+  "http_requests_per_runtime": 0,
+  "failures": [
+    {
+      "case": 2,
+      "runtime": "java",
+      "error": "TypeError(\"'NoneType' object is not subscriptable\")",
+      "request": {
+        "incentive": true,
+        "ops": [
+          {
+            "route": "http://127.0.0.1:50798",
+            "op": "direct",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "name": "incentivecash",
+            "params": {
+              "uid": ""
+            }
+          },
+          {
+            "route": "http://127.0.0.1:50798",
+            "op": "incentiveLoad",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00"
+          }
+        ],
+        "body": "7b2272657761726473223a31322c226461696c79223a5b312c325d2c226d657373616765223a227465616368696e67227d",
+        "status": 200,
+        "requests": 0,
+        "uid": "",
+        "saved": true
+      },
+      "stderr": ""
+    }
+  ],
+  "scope": "Actual incentivecash, UserDB file serialization/reload, MinimaDB save ordering, JSONParser and RPCClient PUT against loopback. Exact saved bytes, recorded original HTTPS URL, service response and request traces. Only enhanced NPE/CCE/malformed-URL provider prose and fixture HTTP origin in PUT diagnostics normalized. Public incentive service, TLS account interaction, durable SQL and full-node/API/reference/concurrency parity not certified."
+}

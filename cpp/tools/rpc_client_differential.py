@@ -72,7 +72,7 @@ def cases(server,other,tls,ca):
             result.append(dict(method=method,url=server.url.replace('://','://'+authority)+'/status/200',user='explicit',password='password',token='explicit',data='body'))
         for path in ['/a/../status/200','/status/200?x=%00&y=π','/status/200#fragment','/status/200?','/status/200 space']:
             result.append(dict(method=method,url=server.url+path,user='explicit',password='password',token='explicit',data='body'))
-        for path in ['/proxy','/status/101','/status/200\x00ignored','/status/200\rignored','/status/200\nignored']:
+        for path in ['/proxy','/status/101','/status/200\x00ignored','/status/200\rignored','/status/200\nignored','/status/200\tignored']:
             result.append(dict(method=method,url=server.url+path,user='explicit',password='password',token='explicit',data='body'))
     return result
 

@@ -1,3 +1,41 @@
+# Current work — incentivecash validated; preserve this checkpoint
+
+Project/branch MinimaCoreC++. Added base/incentivecash.cpp/hpp and registration.
+Reuses actual UserDB/MinimaDB save, JSON parser and RPCClient PUT. Production uses
+exact historical HTTPS URL; fixture records it and routes HTTP to loopback.
+
+Both normal and ASAN/UBSAN pass 106 programs / 207 operations / 79 real HTTP
+requests per runtime. Exact preference bytes and fresh reloads prove persistence
+before request errors. Supplied blank ID fails before saving; stored null defaults
+to empty. Saving disabled leaves memory changed/old file intact. Nonempty directory
+blocks the preference file: source logs the open error and continues to HTTP.
+
+Shared fixes: RPCClient retains tab in raw request target while escaping only URL
+parser input; MiniFile direct-save open errors use FileNotFoundException and real
+MinimaLogger via NativeThrowable. Existing direct-save in-memory serialization
+and late-stream-error limitations remain. Test assumptions corrected for blank
+IDs, base/micro version, null stored values and raw JSON control characters.
+
+Both full builds pass. Eight affected checks pass each: RPC 482 cases / 597
+requests plus notification integration; utility 1,361 cases; prefs 1,130; wallet
+675 programs / 1,907 ops / 50,275 SQL; owner DB 2,367 programs / 7,519 ops /
+334,711 driver calls; registry 1,265 cases; DB lock and DB ownership. No full current
+216-suite claim. All 457 student guides authored/audited. Map375 (331 production +
+44 mapped tests), absent82 (38 production +44 tests),216CTest. All counterparts
+remain implemented_partial/not_verified. Evidence validation/incentive-cash-work-in-progress.
+
+Ready for local commit and verified recovery bundle. Prior HEAD8fec12c041bf45831f2bac44f8fbc756ee232455.
+Use /tmp/minima-hashtest-backup.py; verify incentivecash.cpp/hpp, lab, final
+sanitizer evidence and changed MiniFile/RPCClient in recovery clone. No GitHub push.
+
+Read-ahead ItemList.java and its student guide fully read. No native/sibling
+ItemList match found; no implementation started. Notable source quirks: two-arg
+constructor stores input as separator; getArray always fails cast; exact empty
+separator does not advance. Need inspect reusable UTF16/string-tokenizer/list
+primitives and tests before editing. Streamable.java is active interface with
+stream APIs still needing design/integration. P2PSwapLink.java entirely commented.
+The full native-node goal remains active. Historical notes follow.
+
 # Current work — nodecount validated; preserve this checkpoint
 
 Project/branch MinimaCoreC++. Added network/nodecount.cpp/hpp, direct native class

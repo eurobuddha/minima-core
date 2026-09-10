@@ -1,0 +1,43 @@
+{
+  "passed": false,
+  "programs": 3,
+  "total_programs": 106,
+  "operations": 3,
+  "http_requests_per_runtime": 0,
+  "failures": [
+    {
+      "case": 3,
+      "runtime": "java",
+      "error": "AssertionError({'url': 'https://incentivecash.minima.global/api/ping/student-01?version=1.1.2', 'prefs': '0x000000147B22756964223A2273747564656E742D3031227D', 'user': {'uid': 'student-01'}})",
+      "request": {
+        "incentive": true,
+        "ops": [
+          {
+            "route": "http://127.0.0.1:51652",
+            "op": "direct",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "name": "incentivecash",
+            "params": {
+              "uid": "student-01"
+            }
+          },
+          {
+            "route": "http://127.0.0.1:51652",
+            "op": "incentiveLoad",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00"
+          }
+        ],
+        "body": "7b2272657761726473223a31322c226461696c79223a5b312c325d2c226d657373616765223a227465616368696e67227d",
+        "status": 200,
+        "uid": "student-01",
+        "saved": true
+      },
+      "stderr": ""
+    }
+  ],
+  "scope": "Actual incentivecash, UserDB file serialization/reload, MinimaDB save ordering, JSONParser and RPCClient PUT against loopback. Exact saved bytes, recorded original HTTPS URL, service response and request traces. Only enhanced NPE/CCE/malformed-URL provider prose and fixture HTTP origin in PUT diagnostics normalized. Public incentive service, TLS account interaction, durable SQL and full-node/API/reference/concurrency parity not certified."
+}

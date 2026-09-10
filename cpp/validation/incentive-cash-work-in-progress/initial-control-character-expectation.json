@@ -1,0 +1,44 @@
+{
+  "passed": false,
+  "programs": 69,
+  "total_programs": 106,
+  "operations": 135,
+  "http_requests_per_runtime": 44,
+  "failures": [
+    {
+      "case": 69,
+      "runtime": "java",
+      "error": "JSONDecodeError('Invalid control character at: line 1 column 7 (char 6)')",
+      "request": {
+        "incentive": true,
+        "ops": [
+          {
+            "route": "http://127.0.0.1:53822",
+            "op": "direct",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "name": "incentivecash",
+            "params": {
+              "uid": "response-student"
+            }
+          },
+          {
+            "route": "http://127.0.0.1:53822",
+            "op": "incentiveLoad",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00"
+          }
+        ],
+        "body": "7b2278223a2200227d",
+        "status": 200,
+        "requests": 1,
+        "uid": "response-student",
+        "saved": true
+      },
+      "stderr": ""
+    }
+  ],
+  "scope": "Actual incentivecash, UserDB file serialization/reload, MinimaDB save ordering, JSONParser and RPCClient PUT against loopback. Exact saved bytes, recorded original HTTPS URL, service response and request traces. Only enhanced NPE/CCE/malformed-URL provider prose and fixture HTTP origin in PUT diagnostics normalized. Public incentive service, TLS account interaction, durable SQL and full-node/API/reference/concurrency parity not certified."
+}

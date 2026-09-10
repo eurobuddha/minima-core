@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 2367,
+  "operations": 7519,
+  "driver_calls": 334711,
+  "failures": [],
+  "scope": "Actual pinned MinimaDB constructor/getters/identity, paths, notifications, reentrant locks, lifecycle/recovery/shutdown ordering and state-file bytes using actual child implementations and recording SQL. Nonempty chain/cascade restoration, truncated files, sizes, partial state, global MMR lookup and held reset/load references compared. Main callbacks recorded; timer and SQL timestamps verified. Java diagnostic identities, logger prefixes/stacks and enhanced NPE expressions normalized. Native H2 persistence/encryption, full runtime integration and further lifecycle/concurrency cases remain unverified."
+}

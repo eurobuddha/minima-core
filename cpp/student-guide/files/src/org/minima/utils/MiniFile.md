@@ -20,7 +20,7 @@ MiniFile centralizes byte/object persistence, copying, directory traversal, cont
 
 ## How the C++ translation works
 
-Native filesystem/stream primitives replace Java File and streams, with explicit signed-width conversions and shared MiniData/PasswordCrypto/Gzip helpers. createBaseFile now reuses JavaUnixFile normalization, parent-child joining and mkdirs. readCompleteFile narrows the stat length before allocation and raises typed file-open errors. The writer follows Java’s parent creation, optional deletion, exclusive createNewFile, output open, write and close sequence; it distinguishes IOException during creation from FileNotFoundException during opening. Object templates use serialise or readDataStream/deserialise. Important limits remain: native loadObjectSlow currently reads the whole file, saveObjectDirect serializes in memory after opening the destination, gzip helpers buffer entire files, and logging goes through std::clog. These are meaningful stream, memory, and failure differences despite normal-file compatibility.
+Native filesystem/stream primitives replace Java File and streams, with explicit signed-width conversions and shared MiniData/PasswordCrypto/Gzip helpers. createBaseFile now reuses JavaUnixFile normalization, parent-child joining and mkdirs. readCompleteFile narrows the stat length before allocation and raises typed file-open errors. The writer follows Java’s parent creation, optional deletion, exclusive createNewFile, output open, write and close sequence; it distinguishes IOException during creation from FileNotFoundException during opening. Object templates use serialise or readDataStream/deserialise. Important limits remain: native loadObjectSlow currently reads the whole file, saveObjectDirect serializes in memory after opening the destination, gzip helpers buffer entire files, and most older wrapper logging goes through std::clog. Direct-save I/O errors now go through MinimaLogger using the existing NativeThrowable adapter. These are meaningful stream, memory, and failure differences despite normal-file compatibility.
 
 ## Understanding the tests
 
@@ -31,6 +31,8 @@ The utility fixture creates an isolated tree, writes a payload, appends bytes 1,
 - [Utility differential driver](../../../../../../tools/utility_differential.py)
 
 The [offline-file lab](../../../../../new-tests/offline-send-files.md) adds actual command and direct-writer tests with exact error categories, message text, recursive file bytes and directory observations. Initial missing-file and output-parent mismatches exposed the generic native stream errors. Corrections preserve errors and the signing effects that occur before a write failure. The normal utility suite was rerun and passes all 1,361 cases; the lab records the separate offline comparison results.
+
+The [incentive lab](../../../../../new-tests/incentive-cash.md) blocks userprefs.db with a nonempty directory and observes the actual FileNotFoundException log while the command proceeds to HTTP. The native direct-save path now checks its output open before serialization and reports the typed error through MinimaLogger. Other generic streaming and late-write failures remain separate limits.
 
 ## Limits and a useful next test
 

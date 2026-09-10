@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/incentivecash.java) · `src/org/minima/system/commands/base/incentivecash.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/incentivecash.java) · [Mapped C++ body](../../../../../../../../src/org/minima/system/commands/base/incentivecash.cpp) · [C++ header](../../../../../../../../src/org/minima/system/commands/base/incentivecash.hpp)
 
 ## Purpose
 
@@ -19,15 +19,19 @@ incentivecash optionally stores a user identifier, then asks the source’s conf
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse UserDB persistence, RPCClient PUT semantics and the pinned JSON parser. The URL is historical source behavior; this guide does not assert the service is currently available.
+The native class reuses Command parameter/reply helpers, UserDB, MinimaDB.saveUserDB, RPCClient.sendPUT and JSONParser. Its protected requestPUT method defaults to the real RPC client; the test subclass only records the original URL and routes it to loopback. The registered command always uses the source HTTPS origin. The URL includes MINIMA_VERSION (1.1.2 here), not the separate full micro version (1.1.2.8).
+
+Supplying uid: with no value does not clear the ID: getParam trims the supplied string and rejects a blank result before the setter runs. A missing or JSON-null stored value uses the empty-string default and skips HTTP. A JSON-null supplied parameter fails as a null String. These are different paths despite looking similar at the terminal.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed tests use a controlled endpoint/transport callback, assert save-before-request order, empty-ID no-request behavior, exact URL construction with special characters, and malformed/nonobject JSON failures. Test persisted ID after a request failure.
+The [incentive lab](../../../../../../../new-tests/incentive-cash.md) was written before running the new test. Its [driver](../../../../../../../../tools/incentive_cash_differential.py) runs the pinned Java command and native counterpart with the existing wallet fixture. Both use actual UserDB files and a real loopback HTTP server. Java routes its URL connection; native overrides requestPUT and calls the real default RPC implementation with the routed destination.
 
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+Each request records the exact original HTTPS URL, current preferences and already-written file bytes. A fresh UserDB then reloads the file. This proves save-before-request order and persistence after HTTP/JSON errors. Disabling saving leaves memory changed while the old file survives. A nonempty directory blocking userprefs.db forces a real save error; the source logs it and continues to HTTP.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+The corpus includes raw special-character IDs, wrong parameter/stored types, blank IDs, JSON null/arrays/scalars, malformed responses, HTTP status failures, repeated calls and runner permissions. It compares response data, exact serialized file bytes, request method/path/headers/body, logs and exception categories. Only explicitly listed runtime diagnostic wording and the test's substituted origin are normalized. Literal service-response strings are preserved.
+
+Initial tests corrected assumptions about blank IDs, version suffixes and JSON control characters. They also exposed two shared native gaps: tab URL handling and direct-save file-open logging. Evidence and final results are recorded with the lab.
 
 ## Limits
 

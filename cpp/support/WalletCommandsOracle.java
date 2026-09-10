@@ -49,6 +49,7 @@ public class WalletCommandsOracle extends SqlDBOracle {
         SendRecordingScope(boolean enabled){if(enabled)for(int i=0;i<CommandRunner.ALL_COMMANDS.length;i++)if("send".equals(CommandRunner.ALL_COMMANDS[i].getName())){index=i;saved=CommandRunner.ALL_COMMANDS[i];CommandRunner.ALL_COMMANDS[i]=new RecordingSend();break;}}
         public void close(){if(index>=0)CommandRunner.ALL_COMMANDS[index]=saved;}
     }
+    static JSONArray incentiveCalls=new JSONArray();
     static JSONArray childCalls=new JSONArray();
     static class TracingCommand extends Command {
         Command delegate;
@@ -160,13 +161,16 @@ public class WalletCommandsOracle extends SqlDBOracle {
         org.minima.system.commands.txn.txnaddamount.enableCoinLock(false);org.minima.database.txpowdb.sql.TxPoWSqlDB.MAX_RELEVANT_TXPOW=new org.minima.objects.base.MiniNumber(100);GeneralParams.NUMBER_DAYS_SQLTXPOWDB=3;
         vaultEnabled=Boolean.TRUE.equals(input.get("vault"));vaultCalls=new JSONArray();vaultShutdown=vaultStopped=false;vaultRoot=root;org.minima.database.wallet.Wallet.NUMBER_GETADDRESS_KEYS=64;
         if(vaultEnabled)for(String name:new String[]{"archive.mv.db","cascade.db","chaintree.db","p2p.db"})new File(root+"/databases/"+name).delete();
-        miningMiner=null;miningPosted.clear();miningHeld.clear();miningCalls=new JSONArray();setField(org.minima.system.Main.class,null,"mMainInstance",null);GeneralParams.USE_SQL_COINDB=false;GeneralParams.IS_MEGAMMR=false;connectionID=preparedID=0;org.minima.system.params.GlobalParams.MINIMA_MMR_PROOF_HISTORY=new org.minima.objects.base.MiniNumber(256);GeneralParams.DATA_FOLDER=root;var prefs=new File(root+"/databases/userprefs.db");java.nio.file.Files.deleteIfExists(prefs.toPath());createOwner();var wallet=MinimaDB.getDB().getWallet();JSONArray outputs=new JSONArray();org.minima.objects.TxPoW held=null;org.minima.objects.TxBody body=null;
+        miningMiner=null;miningPosted.clear();miningHeld.clear();miningCalls=new JSONArray();setField(org.minima.system.Main.class,null,"mMainInstance",null);GeneralParams.USE_SQL_COINDB=false;GeneralParams.IS_MEGAMMR=false;connectionID=preparedID=0;org.minima.system.params.GlobalParams.MINIMA_MMR_PROOF_HISTORY=new org.minima.objects.base.MiniNumber(256);GeneralParams.DATA_FOLDER=root;var prefs=new File(root+"/databases/userprefs.db");if(input.containsKey("incentive")&&prefs.exists()){try(var paths=java.nio.file.Files.walk(prefs.toPath())){for(var path:paths.sorted(Comparator.reverseOrder()).toList())java.nio.file.Files.delete(path);}}else java.nio.file.Files.deleteIfExists(prefs.toPath());createOwner();var wallet=MinimaDB.getDB().getWallet();JSONArray outputs=new JSONArray();org.minima.objects.TxPoW held=null;org.minima.objects.TxBody body=null;
         for(Object entry:(JSONArray)input.get("ops")){
-            config=(JSONObject)entry;childCalls=new JSONArray();historyCalls=new JSONArray();forwarded=new JSONArray();events=new JSONArray();calls=0;miningCalls=new JSONArray();vaultCalls=new JSONArray();JSONObject out=new JSONObject();long before=System.currentTimeMillis();
+            config=(JSONObject)entry;incentiveCalls=new JSONArray();childCalls=new JSONArray();historyCalls=new JSONArray();forwarded=new JSONArray();events=new JSONArray();calls=0;miningCalls=new JSONArray();vaultCalls=new JSONArray();JSONObject out=new JSONObject();long before=System.currentTimeMillis();
             var bytes=new ByteArrayOutputStream();var previous=System.out;System.setOut(new PrintStream(bytes,true,"UTF-8"));
             try(var recording=new SendRecordingScope(Boolean.TRUE.equals(config.get("recordSend")));var mysqlRecording=new MysqlRecordingScope(Boolean.TRUE.equals(config.get("recordMysql")));var trace=new TraceScope(Boolean.TRUE.equals(config.get("traceChildren")))){
                 String op=config.getString("op");Object result=null;
-                if(op.equals("filePut")){var file=new File(offlineRoot,config.getString("file"));file.getParentFile().mkdirs();java.nio.file.Files.write(file.toPath(),new org.minima.objects.base.MiniData(config.getString("data")).getBytes());}
+                if(op.equals("incentivePrefs"))MinimaDB.getDB().getUserDB().getAllData().putAll((JSONObject)config.get("values"));
+                else if(op.equals("incentiveLoad")){var fresh=new org.minima.database.userprefs.UserDB();fresh.loadDB(prefs);result=new JSONParser().parse(fresh.getAllData().toJSONString());}
+                else if(op.equals("incentiveDirectory")){java.nio.file.Files.deleteIfExists(prefs.toPath());prefs.mkdirs();java.nio.file.Files.writeString(new File(prefs,"obstacle").toPath(),"fixture");}
+                else if(op.equals("filePut")){var file=new File(offlineRoot,config.getString("file"));file.getParentFile().mkdirs();java.nio.file.Files.write(file.toPath(),new org.minima.objects.base.MiniData(config.getString("data")).getBytes());}
                 else if(op.equals("signDemo")){
                     org.minima.system.commands.send.sendsign.main(Boolean.TRUE.equals(config.get("nullArgs"))?null:new String[0]);result=bytes.toString("UTF-8");
                 }
@@ -414,6 +418,10 @@ public class WalletCommandsOracle extends SqlDBOracle {
                 out.put("value",Boolean.TRUE.equals(config.get("replyText"))?org.minima.utils.json.JSONValue.toJSONString(result):result);
             }catch(Exception error){out.put("exception",error.toString());}finally{System.setOut(previous);}
             JSONArray logs=new JSONArray();for(String line:bytes.toString("UTF-8").split("\n")){int at=line.indexOf("] : ");if(at>=0&&!line.substring(at+4).startsWith("     "))logs.add(line.substring(at+4));}
+            if(input.containsKey("incentive")){
+                out.put("printed",bytes.toString("UTF-8"));out.put("incentiveCalls",incentiveCalls);
+                out.put("user",new JSONParser().parse(MinimaDB.getDB().getUserDB().getAllData().toJSONString()));
+            }
             boolean captureImportObservation=input.containsKey("coinImport");
             if(captureImportObservation)System.setOut(new PrintStream(bytes,true,"UTF-8"));
             try{if(input.containsKey("nodeState")){

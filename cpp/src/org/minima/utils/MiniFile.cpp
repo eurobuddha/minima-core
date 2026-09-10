@@ -4,6 +4,7 @@
 #include "support/Gzip.hpp"
 #include "support/JavaUnixFile.hpp"
 #include "support/JavaExceptions.hpp"
+#include "support/NativeThrowable.hpp"
 #include <cerrno>
 #include <cstring>
 #include <fcntl.h>
@@ -42,6 +43,15 @@ void MiniFile::prepareFile(const fs::path& file,bool append) {
         if(descriptor<0){if(errno!=EEXIST)throw wire::IOException(std::strerror(errno));}
         else ::close(descriptor);
     }
+}
+std::ofstream MiniFile::openObjectOutput(const fs::path& file) {
+    auto path=*javaUnixFile(file);prepareFile(path,false);
+    std::ofstream out(path,std::ios::binary|std::ios::trunc);
+    if(!out.is_open())throw wire::TypedIOException("java.io.FileNotFoundException",path.string()+" ("+std::strerror(errno)+")");
+    out.exceptions(std::ios::badbit|std::ios::failbit);return out;
+}
+void MiniFile::logObjectOutput(const wire::IOException& error) {
+    MinimaLogger::log(std::make_shared<NativeThrowable>(error));
 }
 void MiniFile::writeDataToFile(const fs::path& file,std::span<const uint8_t> data,bool append) {
     auto path=*javaUnixFile(file);prepareFile(path,append);

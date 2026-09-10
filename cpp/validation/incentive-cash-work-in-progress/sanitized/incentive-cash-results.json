@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 106,
+  "total_programs": 106,
+  "operations": 207,
+  "http_requests_per_runtime": 79,
+  "failures": [],
+  "scope": "Actual incentivecash, UserDB file serialization/reload, MinimaDB save ordering, JSONParser and RPCClient PUT against loopback. Exact saved bytes, recorded original HTTPS URL, service response and request traces. Only enhanced NPE/CCE/malformed-URL provider prose and fixture HTTP origin in PUT diagnostics normalized. Public incentive service, TLS account interaction, durable SQL and full-node/API/reference/concurrency parity not certified."
+}

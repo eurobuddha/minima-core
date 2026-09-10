@@ -1,0 +1,21 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  93: minima_db_differential
+    Start 133: wallet_commands_differential
+    Start 104: rpc_client_differential
+1/8 Test #104: rpc_client_differential ..........   Passed   11.13 sec
+    Start  37: prefs_differential
+2/8 Test  #37: prefs_differential ...............   Passed    6.88 sec
+    Start  31: utility_differential
+3/8 Test  #31: utility_differential .............   Passed    4.77 sec
+    Start  52: command_runner_differential
+4/8 Test  #52: command_runner_differential ......   Passed    5.25 sec
+    Start  95: minima_db_ownership
+5/8 Test  #95: minima_db_ownership ..............   Passed    1.53 sec
+    Start  94: minima_db_lock
+6/8 Test  #94: minima_db_lock ...................   Passed    0.46 sec
+7/8 Test  #93: minima_db_differential ...........   Passed   72.61 sec
+8/8 Test #133: wallet_commands_differential .....   Passed   80.65 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =  80.66 sec

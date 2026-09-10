@@ -2917,5 +2917,51 @@
     "evidence": "validation/node-count-work-in-progress",
     "limitations": "All counterparts partial. Real loopback sockets with unstarted manager owner; native CSV descriptor RAII instead of source writer leak; rendered float JSON instead of Java Float-object APIs. No full node, durable storage, arbitrary JDK identity-hash tie/reference/concurrency/locale or exhaustive double rounding parity claim.",
     "test_driver_sha256": "baa476ba1a9e3beab458be73aa52b6a6693de220603626890c77b0d437aa64fb"
+  },
+  "incentive_cash_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "status": "focused comparison, both full builds and eight affected checks pass in both configurations",
+    "counterparts": 375,
+    "production": 331,
+    "mapped_tests": 44,
+    "absent": 82,
+    "ctest_registered": 216,
+    "programs": 106,
+    "operations": 207,
+    "http_requests_per_runtime": 79,
+    "normal": true,
+    "sanitized": true,
+    "normal_full_build": true,
+    "sanitized_full_build": true,
+    "reuse": [
+      "src/org/minima/system/commands/Command.cpp",
+      "src/org/minima/database/userprefs/UserDB.cpp",
+      "src/org/minima/database/MinimaDB.cpp",
+      "src/org/minima/utils/JsonDB.cpp",
+      "src/org/minima/utils/RPCClient.cpp",
+      "src/org/minima/utils/MiniFile.cpp",
+      "src/support/NativeThrowable.hpp",
+      "support/WalletCommandsOracle.java",
+      "support/wallet_commands.cpp",
+      "support/NotifyManagerOracle.java",
+      "tools/rpc_client_differential.py",
+      "tools/token_validation_differential.py"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; no incentivecash implementation found",
+    "adaptation": "Source command translated with protected requestPUT default calling actual RPCClient. Test-only subclass and Java URLStreamHandlerFactory record exact source URL and route requests to loopback. Reuse existing actual wallet owner, preference files and request server.",
+    "production_fixes": [
+      "RPCClient escapes tabs for URL parsing while retaining raw request target, reusing CR/NUL approach",
+      "MiniFile direct-save open errors use Java FileNotFoundException and MinimaLogger through existing NativeThrowable; opening remains before serialization"
+    ],
+    "test_corrections": [
+      "Supplied blank ID is rejected before save; it does not clear the ID",
+      "URL uses MINIMA_VERSION 1.1.2, not full micro version 1.1.2.8",
+      "Stored null uses empty-string default",
+      "Pinned parser accepts raw control characters in strings",
+      "Normalize enhanced class-cast prose in runner logs as well as returned errors"
+    ],
+    "evidence": "validation/incentive-cash-work-in-progress",
+    "limitations": "All counterparts partial. No public incentive service/TLS account interaction, durable SQL, complete native node, full current 216-suite or arbitrary reference/concurrency/streaming failure parity certification. saveObjectDirect still serializes in memory after open; late iostream error text may differ. Fixture strips Java stack frames and normalizes listed provider prose only; preference bytes, URLs and service data remain exact.",
+    "test_driver_sha256": "97ccfcba8ce2af065ea19e8cf57f5cec469db0c35de0631d3b976d8d83105db7"
   }
 }

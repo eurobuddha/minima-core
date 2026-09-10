@@ -1,0 +1,194 @@
+{
+  "passed": false,
+  "programs": 17,
+  "total_programs": 106,
+  "operations": 31,
+  "http_requests_per_runtime": 14,
+  "failures": [
+    {
+      "case": 17,
+      "request": {
+        "incentive": true,
+        "ops": [
+          {
+            "route": "http://127.0.0.1:52126",
+            "op": "direct",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "name": "incentivecash",
+            "params": {
+              "uid": "a\tvalue"
+            }
+          },
+          {
+            "route": "http://127.0.0.1:52126",
+            "op": "incentiveLoad",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00"
+          }
+        ],
+        "body": "7b2272657761726473223a31322c226461696c79223a5b312c325d2c226d657373616765223a227465616368696e67227d",
+        "status": 200,
+        "uid": "a\tvalue",
+        "saved": true
+      },
+      "java": {
+        "ops": [
+          {
+            "exception": "org.minima.utils.json.parser.ParseException: Unexpected character (<) at position 0.",
+            "printed": [],
+            "incentiveCalls": [
+              {
+                "url": "https://incentivecash.minima.global/api/ping/a\tvalue?version=1.1.2",
+                "prefs": "0x000000127B22756964223A22615C7476616C7565227D",
+                "user": {
+                  "uid": "a\tvalue"
+                }
+              }
+            ],
+            "user": {
+              "uid": "a\tvalue"
+            },
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": "0x000000127B22756964223A22615C7476616C7565227D"
+          },
+          {
+            "value": {
+              "uid": "a\tvalue"
+            },
+            "printed": [],
+            "incentiveCalls": [],
+            "user": {
+              "uid": "a\tvalue"
+            },
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": "0x000000127B22756964223A22615C7476616C7565227D"
+          }
+        ]
+      },
+      "cpp": {
+        "ops": [
+          {
+            "exception": "java.net.MalformedURLException",
+            "printed": [],
+            "incentiveCalls": [
+              {
+                "url": "https://incentivecash.minima.global/api/ping/a\tvalue?version=1.1.2",
+                "prefs": "0x000000127B22756964223A22615C7476616C7565227D",
+                "user": {
+                  "uid": "a\tvalue"
+                }
+              }
+            ],
+            "user": {
+              "uid": "a\tvalue"
+            },
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": "0x000000127B22756964223A22615C7476616C7565227D"
+          },
+          {
+            "value": {
+              "uid": "a\tvalue"
+            },
+            "printed": [],
+            "incentiveCalls": [],
+            "user": {
+              "uid": "a\tvalue"
+            },
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": "0x000000127B22756964223A22615C7476616C7565227D"
+          }
+        ]
+      },
+      "java_requests": [],
+      "cpp_requests": []
+    }
+  ],
+  "scope": "Actual incentivecash, UserDB file serialization/reload, MinimaDB save ordering, JSONParser and RPCClient PUT against loopback. Exact saved bytes, recorded original HTTPS URL, service response and request traces. Only enhanced NPE/CCE/malformed-URL provider prose and fixture HTTP origin in PUT diagnostics normalized. Public incentive service, TLS account interaction, durable SQL and full-node/API/reference/concurrency parity not certified."
+}
