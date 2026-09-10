@@ -62,7 +62,7 @@ def project(raw,request):
     return value
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--group',choices=['main','commands','network','status','diagnostics','health','logs','node-status','rpc'],default='main');args=ap.parse_args();build=args.build.resolve();oracle=build/('main-runtime-oracle-'+args.group);oracle.mkdir(exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--group',choices=['main','commands','network','status','diagnostics','health','logs','node-status','rpc','hashtest'],default='main');ap.add_argument('--native-target',default='minima_main_runtime');args=ap.parse_args();build=args.build.resolve();oracle=build/('main-runtime-oracle-'+args.group);oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support'/x for x in ['MainRuntimeOracle.java','MainNetworkOracle.java','SqlDBOracle.java','NIOClientOracle.java','ArchiveManagerOracle.java']];listing=build/('main-runtime-java-sources-'+args.group+'.txt');listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
     failures=[];operations=0;corpus=cases();projector=project;validate=lambda request,output:None
     if args.group=='commands':
@@ -86,11 +86,14 @@ def main():
     if args.group=='node-status':
         from node_status_commands_corpus import cases as node_status_cases,validate,project as projector
         corpus=node_status_cases()
+    if args.group=='hashtest':
+        from hashtest_commands_corpus import cases as hash_cases,validate,project as projector
+        corpus=hash_cases()
     if args.group=='logs':
         from logs_commands_corpus import cases as logs_cases,validate
         corpus=logs_cases()
     with tempfile.TemporaryDirectory(prefix='main-runtime-',dir=build) as root:
-        runners=[Runner(['java']+(['-Duser.timezone=UTC'] if args.group in ['status','diagnostics','node-status'] else [])+['-cp',f'{oracle}:{JAVA}/jar/minima.jar','MainRuntimeOracle',root]),Runner((['env','TZ=UTC'] if args.group in ['status','diagnostics','node-status'] else [])+[str(build/'minima_main_runtime'),root])]
+        runners=[Runner(['java']+(['-Duser.timezone=UTC'] if args.group in ['status','diagnostics','node-status'] else [])+['-cp',f'{oracle}:{JAVA}/jar/minima.jar','MainRuntimeOracle',root],response_timeout=120 if args.group=='hashtest' else 30),Runner((['env','TZ=UTC'] if args.group in ['status','diagnostics','node-status'] else [])+[str(build/args.native_target),root],response_timeout=120 if args.group=='hashtest' else 30)]
         try:
             for index,request in enumerate(corpus):
                 outputs=[]
@@ -112,5 +115,6 @@ def main():
     if args.group=='logs':report['scope']='Actual logs command and all nine native/Java global flags, ordered partial mutations, omitted values, hidden SQL transaction flag, exact metadata, runner gates and Main.setSyncIBD consumer. Seven GeneralParams fields use atomic native storage. No transactional snapshot, exhaustive concurrent Java scheduling or full-node logging certification.'
     if args.group=='node-status':report['scope']='Actual status command, database child objects, synthetic chain/cascade, controlled SQL and files, device arithmetic and debug order. JVM heap validated for shape/bounds; native heap and collection hint checked independently. Uptime bounded before normalization. No durable SQL, full-node startup, actual JVM/native heap equality or exhaustive concurrent scheduling.'
     if args.group=='rpc':report['scope']='RPC user management, registered command metadata, actual UserDB arrays, malformed state, enable precedence, actual stopped NetworkManager disable path and interrupted sleep boundary. Successful live enable/authentication/concurrent mutation integration remains pending.'
-    (build/('rpc-command-results.json' if args.group=='rpc' else 'node-status-command-results.json' if args.group=='node-status' else 'logs-command-results.json' if args.group=='logs' else 'healthcheck-command-results.json' if args.group=='health' else 'trace-clock-command-results.json' if args.group=='diagnostics' else 'network-status-command-results.json' if args.group=='status' else 'main-runtime-results.json' if args.group=='main' else 'main-lifecycle-commands-results.json' if args.group=='commands' else 'network-peer-commands-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
+    if args.group=='hashtest':report['scope']='Actual registered hashtest wrapper and real TxPoWMiner hashing, default amount, direct and runner dispatch, metadata and typed failures. Clock bounds, raw rate consistency and four-digit MH/s truncation validated independently before normalizing timing/speed. No cross-runtime performance equality or full native node claim.'
+    (build/('hashtest-command-results.json' if args.group=='hashtest' else 'rpc-command-results.json' if args.group=='rpc' else 'node-status-command-results.json' if args.group=='node-status' else 'logs-command-results.json' if args.group=='logs' else 'healthcheck-command-results.json' if args.group=='health' else 'trace-clock-command-results.json' if args.group=='diagnostics' else 'network-status-command-results.json' if args.group=='status' else 'main-runtime-results.json' if args.group=='main' else 'main-lifecycle-commands-results.json' if args.group=='commands' else 'network-peer-commands-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

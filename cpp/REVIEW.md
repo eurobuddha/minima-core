@@ -4532,3 +4532,37 @@ port limitations. The live fixture neither starts those workers nor certifies th
 Approve the scoped live integration fix with its normal/sanitizer comparison
 evidence. Save as WIP while the prior 204-test full suites finish. Relink and run
 affected existing regressions before declaring this RPC step fully validated.
+
+
+## Code Review — hashtest command and benchmark comparison
+
+### Summary
+
+The command wrapper reuses the existing miner benchmark, numeric operations,
+parameter helpers, logger and command registry. It preserves default amount,
+measurement/logging order and Java long subtraction without native signed
+overflow. Metadata strings come from the pinned body. The new test group reuses
+the Main fixture and independently validates timing and rate before normalization.
+Its separate native target keeps already-running full-suite executables intact.
+
+### Findings
+
+MAJOR, fixed: hashes was initially serialized as a string. The pinned writer
+emits MiniNumber through its raw object-toString fallback. Existing RawJSON
+numeric composition now preserves the numeric token without a floating conversion.
+The failing report is retained and the normal rerun passes all 59 programs.
+
+MINOR, corrected test deadline: the sanitizer's real million-hash case exceeded
+the generic runner's 30-second response limit. This group now has a bounded
+120-second response deadline and 240-second CTest limit. Other groups retain
+their prior limits. No production workload reduction or fake clock was added.
+
+The finite corpus compares ordinary numeric values after JSON parsing; it does
+not certify arbitrary-precision JSON consumers, every clock discontinuity or
+performance equality. Existing miner tests cover controlled elapsed-time clamps.
+
+### Verdict
+
+Approve the scoped wrapper and comparison: both builds pass all 59 programs.
+Registration/affected regressions must finish before a completed checkpoint claim.
+The wider full-node and all-file parity goal remains incomplete.

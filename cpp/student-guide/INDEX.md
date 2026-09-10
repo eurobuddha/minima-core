@@ -388,7 +388,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [debugflag.java](files/src/org/minima/system/commands/base/debugflag.md) | authored | implemented_partial |
 | [getaddress.java](files/src/org/minima/system/commands/base/getaddress.md) | authored | implemented_partial |
 | [hash.java](files/src/org/minima/system/commands/base/hash.md) | authored | implemented_partial |
-| [hashtest.java](files/src/org/minima/system/commands/base/hashtest.md) | authored | unported |
+| [hashtest.java](files/src/org/minima/system/commands/base/hashtest.md) | authored | implemented_partial |
 | [healthcheck.java](files/src/org/minima/system/commands/base/healthcheck.md) | authored | implemented_partial |
 | [incentivecash.java](files/src/org/minima/system/commands/base/incentivecash.md) | authored | unported |
 | [jniminingtest.java](files/src/org/minima/system/commands/base/jniminingtest.md) | authored | unported |

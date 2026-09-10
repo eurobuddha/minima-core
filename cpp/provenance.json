@@ -2428,5 +2428,51 @@
       "Relink affected existing targets for default Authorizer lookup and rerun affected regression tests"
     ],
     "limits": "Manual Main with real RPC transport; node workers unstarted and SQL fixture binding only. No durable SQL, full native node, exhaustive concurrency, or full-file parity claim."
+  },
+  "hashtest_command": {
+    "status": "focused comparison passes; affected and full regressions running",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "counterparts": 364,
+    "production": 320,
+    "mapped_tests": 44,
+    "absent": 93,
+    "ctest_registered": 206,
+    "normal": {
+      "programs": 59,
+      "operations": 61,
+      "ctest_seconds": 15.65
+    },
+    "sanitized": {
+      "programs": 59,
+      "operations": 61,
+      "ctest_seconds": 84.39
+    },
+    "reuse": [
+      "src/org/minima/system/brains/TxPoWMiner.cpp::calculateHashSpeed",
+      "src/org/minima/utils/json/JSONValue.cpp::raw",
+      "support/main_runtime.cpp",
+      "tools/main_runtime_differential.py"
+    ],
+    "native_fixture": "minima_hashtest_runtime uses existing Main fixture in distinct executable; prior full-suite binaries unchanged",
+    "initial_findings": [
+      "JSON number emitted as string; corrected using existing raw numeric representation",
+      "Sanitizer real million-hash workload exceeded generic 30-second response timeout; rerun passes at 120-second per-request deadline"
+    ],
+    "affected_regressions": {
+      "normal_session": 9583,
+      "sanitized_session": 37480,
+      "tests": [
+        "command_runner_differential",
+        "network_utilities_differential"
+      ],
+      "state": "rebuilding"
+    },
+    "full_regressions": {
+      "normal_session": 29381,
+      "sanitized_session": 42976,
+      "entries_at_launch": 204,
+      "known_failure": "MiniByteTests stale exception catch corrected; direct reruns pass, final CTest rerun pending"
+    },
+    "limits": "Timing/rates independently validated before normalization. No equal Java/native performance, durable SQL, full-node startup, exhaustive API parity or completed full-port claim."
   }
 }

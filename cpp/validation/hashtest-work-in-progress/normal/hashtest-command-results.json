@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 59,
+  "total_programs": 59,
+  "operations": 61,
+  "failures": [],
+  "scope": "Actual registered hashtest wrapper and real TxPoWMiner hashing, default amount, direct and runner dispatch, metadata and typed failures. Clock bounds, raw rate consistency and four-digit MH/s truncation validated independently before normalizing timing/speed. No cross-runtime performance equality or full native node claim."
+}

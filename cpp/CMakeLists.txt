@@ -1136,3 +1136,10 @@ add_executable(rpc_live support/rpc_live.cpp support/MainNetworkFixture.cpp)
 target_link_libraries(rpc_live PRIVATE minima_file_port)
 add_test(NAME rpc_live_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/rpc_live_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(rpc_live_differential PROPERTIES TIMEOUT 180)
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/base/hashtest.cpp)
+# Reuse the Main fixture in a distinct binary while prior full suites finish.
+add_executable(minima_hashtest_runtime support/main_runtime.cpp support/MainNetworkFixture.cpp)
+target_link_libraries(minima_hashtest_runtime PRIVATE minima_file_port)
+add_test(NAME hashtest_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/main_runtime_differential.py --build ${CMAKE_CURRENT_BINARY_DIR} --group hashtest --native-target minima_hashtest_runtime)
+set_tests_properties(hashtest_command_differential PROPERTIES TIMEOUT 240)

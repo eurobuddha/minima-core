@@ -1,3 +1,45 @@
+# Current work — hashtest passes both builds; regression builds/tests LIVE
+
+Full457workingC++goal ACTIVE/incomplete. Mapping364=320production+44tests;93absent.
+206CTestregistered. Last numberedcheckpoint362; no new completeness claim.
+
+New hashtest.cpp/hpp registered inCommandRunner, actual TxPoWMiner speed routine
+unchanged, real clock/log and 4-significant-digit MH/s. Initial JSON hashes string
+mismatch corrected using existing JSONValue::raw(number.toString()). Failure saved.
+New lab BEFOREtests. Existing Main fixture compiled into minima_hashtest_runtime
+so running204fullsuites retain existing binaries. main_runtime_differential adds
+--group hashtest and --native-target(defaultunchanged). 59programs61ops PASSboth:
+normal15.65s, ASAN/UBSAN84.39s. Initialsanitizer generic30s response deadline timed
+out onactualmillionhashes; onlythisgroup uses120sresponse/240sCTest, rerunpasses.
+
+LIVE affected regression build+tests: normal9583 and sanitizer37480. Buildtargets
+minima_command_runner/minima_network_utilities; then2matchingCTestentries. Logs
+/tmp/minima-hashtest-regression-build{,-san}.log and
+/tmp/minima-hashtest-regression{,-san}.log. Builds unexpectedlyrecompiledlibrary
+afterCMake reconfigure; normal/sanitizer flags confirmed Debug and ASAN/UBSAN.
+Both full suites had already passed these entries before targets replaced.
+Poll completion, inspect reports, save results underhashtest-work-in-progress.
+
+LIVE fullbaseline suites: normal29381 /tmp/minima-shared-json-all-tests.log
+and sanitizer42976 /tmp/minima-shared-json-all-tests-san.log. Lastnormal139,san57.
+Only observedfailure MiniByteTests stale catch, alreadycorrected/directpassboth.
+Do not restartslowtests. Fullsuites captured204beforeRPC-live/hashtest additions;
+mostexecutables baseline5fbb638. Neverclaimcurrent206allpass. Relink remaining
+affected Main/DB/network/auth targets aftertheirfullruns finish and rerun.
+ExplicitMiniByteCTestneededafterfullsummary. Source-mapupdated364/auditpasses.
+
+Saved RPC livecommitc002323bb16ee6af884438aa04d303e4ab30ba5f. Verifiedlocalbundle
+MinimaCoreC++-20260910T204256Z.bundle SHA256
+8d29fa02509fbc95c73f3d270bc8c5a08edad6d925ee873ae7c01a3bdd7b6500.
+Hashtestwork beingcommitted/bundled; inspectactualHEAD/latestmanifest. Localonly,
+noGitHubpush. GRAPHIFY_SKIP_HOOK=1. All457studentguides authored, fullparitynotverified.
+
+Inspectedadditionalabsents fornextwork: P2PSwapLink.java is ENTIRELY COMMENTEDOUT
+(noJava class); ItemList.java has two-stringctor sp=s quirk,getArray alwaysCCE,
+exactemptyseparatornonterminates,multitokenStringTokenizer behavior. Noedits tothese.
+
+Older notes follow.
+
 # Current work — live RPC passes; broader shared JSON suites still running
 
 Full 457-file goal ACTIVE/incomplete. Branch/project MinimaCoreC++. Mapping still

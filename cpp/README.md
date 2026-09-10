@@ -5,9 +5,17 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **319 production counterparts and 44 mapped test files exist;
-94 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **320 production counterparts and 44 mapped test files exist;
+93 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+hashtest now compiles and is registered, reusing the actual miner hash-speed loop.
+Its [student lab](student-guide/new-tests/hash-speed-command.md) explains real
+hashing, bounded clocks, decimal rate checks and the initial JSON type mismatch.
+Both normal and ASAN/UBSAN comparisons pass 59 programs / 61 operations,
+including the real million-hash default. [Saved results](validation/hashtest-work-in-progress/progress.json)
+record the initial type mismatch and sanitizer test-deadline adjustment. Affected
+registration regressions and the earlier full suites are still running.
 
 RPC is **work in progress**. Shared authentication flags and password now use
 atomic booleans and the existing locked nullable-string snapshot pattern. Both
@@ -16,7 +24,7 @@ match Java. All 38 comparison reports are saved. Shared user-array access and
 command-driven live enable/authentication have further validation below. See the
 [RPC lab](student-guide/new-tests/rpc-command.md) and
 [configuration evidence](validation/rpc-configuration/progress.json). There are
-205 CTest entries. The last fully saved numbered checkpoint remains 362.
+206 CTest entries. The last fully saved numbered checkpoint remains 362.
 
 Shared JSON storage is a further **work-in-progress** change: owned value reads,
 retained root/child references and checked ordered iteration replace borrowed

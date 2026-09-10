@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/hashtest.java) · `src/org/minima/system/commands/base/hashtest.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/hashtest.java) · [Native counterpart](../../../../../../../../src/org/minima/system/commands/base/hashtest.cpp)
 
 ## Purpose
 
@@ -19,15 +19,15 @@ hashtest times the miner’s hash-speed calculation and reports an approximate r
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse the miner’s actual speed routine, MiniNumber arithmetic and logger. A timed no-op would exercise the response format but not hash performance.
+The mapped native body reuses Command parameter/reply helpers, the existing miner speed routine, MiniNumber arithmetic and MinimaLogger unchanged. The elapsed subtraction uses unsigned arithmetic followed by a signed bit conversion to preserve Java long wrap without C++ signed overflow. The response stores hashes as raw numeric JSON using MiniNumber formatting, matching Java’s object serialization fallback. The first comparison caught a string-versus-number mismatch before this correction.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed tests inject controlled clock/speed results to check units, significant digits, logging order and failure behavior. Separately run actual hashing to verify work is performed; do not require Java and C++ wall times to be equal.
+The [new lab](../../../../../../../../student-guide/new-tests/hash-speed-command.md) was written before the comparison. It runs actual hashing and validates each runtime independently: bounded elapsed milliseconds, rate consistent with a bounded integer internal duration, and exact four-digit truncation of the logged speed divided by one million. Only validated timing/speed fields are normalized. Existing miner worker tests independently exercise clamped elapsed time through the miner’s clock parameter.
 
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Both targeted builds and the normal/sanitizer comparisons pass: 59 programs and 61 operations per build. The full regression suites already in progress use their existing binaries, so they do not certify this new command.
 
 ## Limits
 
