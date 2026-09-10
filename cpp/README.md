@@ -5,9 +5,14 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **313 production counterparts and 44 mapped test files exist;
-100 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **315 production counterparts and 44 mapped test files exist;
+98 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+Local Git project/branch: **MinimaCoreC++**. The last verified checkpoint is
+`e2c0d06` (357 mapped counterparts). The additional trace and timemilli bodies
+are work in progress; their dedicated tests are pending. See [Git workflow](GIT_WORKFLOW.md)
+and [their lab](student-guide/new-tests/trace-and-clock-commands.md).
 
 network now compiles and is registered. Its [status-command lab](student-guide/new-tests/network-status-command.md)
 explains 124 programs and 562 operations matching Java in both builds, including

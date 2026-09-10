@@ -1,3 +1,56 @@
+# Current work — local Git checkpoints and trace/timemilli in progress
+
+USER NOW EXPLICITLY AUTHORIZES/REQUESTS REGULAR LOCAL GIT COMMITS/BACKUPS.
+Localproject/branchname MinimaCoreC++ (userrequested), workspacepathunchanged.
+Verified357checkpoint committed e2c0d06. Pinupstream-study recordedasgitlink+
+.gitmodules: existinglocalworktreeunchanged, freshclonecaninitializesubmodule.
+Graphifyhooksonbranchswitchlaunchedrebuildandbackedcuratedgraph2026-09-10;
+futurecommitcommands use documented GRAPHIFY_SKIP_HOOK=1 optout toavoidbackground
+rebuildschangingfilesduringcheckpoint. Hooksnotremoved. Root.gitdescription MinimaCoreC++.
+No GitHubpush yet: asyncdestinationquestionpending choicesminima-core-fork/minima-core/
+localonly. Do not pushoriginupstreamorchoosewrongfork. Gitmutationrequiresautoescalation;
+allreviewrequestsaccepted, noapprovalrejection. LocalGitignore excludesDSStore,
+local-backups,graphcache/machinepathfiles; oldtrackedJavaresourceDSStoreunchanged.
+
+FullportgoalACTIVE/incomplete. Newtrace.cpp/.hpp+timemilli.cpp/.hpp written+registered
+andCMakeadded. Source-map359=315prod+44tests,98absent=54prod+44tests;196CTest.
+These2commands are WIP; lastverifiedcheckpointremains357. NOnewfixture/testsyet.
+LabBEFOREtests student-guide/new-tests/trace-and-clock-commands.md. Guidesportstatus
+updatedWIP butearlierfuturewordingneedsfullrewriteaftervalidated. CurrentREADME
+stillverified357; makefuturecounts/distinctionexplicit. BothFULLBUILDS nowPASS withtrace/timemilli; handles27672,40491terminal.
+Logs /tmp/minima-trace-clock-build{,-san}.log; no observedcompilerwarnings.
+Command-specifictestsSTILLPENDING. Guideaudit359counterparts9035links2634anchors0errors.
+
+Sourcebase trace.java, timemilli.java, logs.java,healthcheck.java allreadFULL.
+Onlytrace/timemilli implemented. GeneralParams.hpp/.cppFULL, TimerMessage.hpp/.cppFULL,
+TxPoWSqlDB.hppFULL, MessageProcessor.cppfirst50lines andheaderFULL; relevantNIOtrace
+field declarations/use sites; MiniNumber.cppgetAsBigInteger/getAsLong/getAsInt600..625;
+JavaDateString.hppFULLread. Siblingsearch foundno commandwrappers. Reusegateannounced
+Command,MessageProcessor/NIOflags,TimerMessageclock,MiniNumberintegerconversion,
+JavaDateString andexistingunsigned/bitcastoverflowpattern.
+
+trace rawenable null=>JavaCheckedException Must specify enable;wrongtypeCCE;
+exacttrueonly(no trim). filter=getParam(defaultempty), updateMessageProcessor global
+trace/filter BEFOREgetBooleanParam(network,false); malformednetworkleavesfirsteffect.
+ThenNIOClient/NIOServer atomicmTraceON updates; responseenabled/filter/shownetwork.
+MatcheractualMessageProcessor lowercasesboth despitehelpcase-sensitiveclaim.
+timemilli clockcapturedfirst;minutesbackpriorityhoursback;MiniNumber.getAsInt;
+32bit factor60000/3600000 multiplicationWRAPS beforelongassignment;64bitsubtraction
+unsigned/bitcast preservesJava; responsemillis+javaDateString. HelpfirstcharacterTAB.
+
+NEXT implementtrace/clock diagnostics fixture+corpus usingMainRuntimeunstartedMain
+asglobaltraceobserver withnewoptionaldiagnosticsreset/snapshotops. Observeactual
+NIOatomicflags. Crossrawenable,filter,network typedparams andpartialchanges; use
+actualMain.isTrace/getTraceFilter/checkTraceFilter. Compareexchangeswithnetwork
+loggingon/off. Clockindependent offsetreconstructioninsidebefore/after andexactUTC
+renderingfromreturnedmillis beforeclocknormalization. Sharedclock/MiniNumber/parser
+helpersalreadytested; testsmustassert32bitmultiplyoverflow andminutespriority.
+logs remainsunported: uses7GeneralParamsboolflags+2SQLatomicflags, sourceorderpartial
+mutations. Potentialnativeconcurrentboolaccessrequiresreviewbeforeport; no dependency
+changesmade. healthcheckremainssource-onlyread; needsrealcascade/treefixture.
+
+Prior verifiedcheckpoint357follows. Itremainsauthoritativeforpassedtests.
+
 # Verified checkpoint357 — network status/control command
 
 GoalACTIVE/incomplete. CurrentturnPROGRESS. 357counterparts=313production+44tests,

@@ -412,10 +412,10 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [status.java](files/src/org/minima/system/commands/base/status.md) | authored | unported |
 | [systemcheck.java](files/src/org/minima/system/commands/base/systemcheck.md) | authored | unported |
 | [test.java](files/src/org/minima/system/commands/base/test.md) | authored | unported |
-| [timemilli.java](files/src/org/minima/system/commands/base/timemilli.md) | authored | unported |
+| [timemilli.java](files/src/org/minima/system/commands/base/timemilli.md) | authored | implemented_partial |
 | [tokencreate.java](files/src/org/minima/system/commands/base/tokencreate.md) | authored | unported |
 | [tokenvalidate.java](files/src/org/minima/system/commands/base/tokenvalidate.md) | authored | unported |
-| [trace.java](files/src/org/minima/system/commands/base/trace.md) | authored | unported |
+| [trace.java](files/src/org/minima/system/commands/base/trace.md) | authored | implemented_partial |
 | [tutorial.java](files/src/org/minima/system/commands/base/tutorial.md) | authored | unported |
 
 ## src/org/minima/system/commands/network

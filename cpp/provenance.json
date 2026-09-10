@@ -2065,5 +2065,18 @@
       "reports_read": 18
     },
     "limits": "Unstarted Main workers: restart is an exact queued message. No full startup, durable storage or exhaustive owner/concurrent/P2P failure parity."
+  },
+  "trace_and_clock_wip": {
+    "sources": {
+      "trace": "bd7e00f83cb65a9a608c08c3e92e03131dc3e16b179e2d4264eea1b48493d6f7",
+      "timemilli": "cc3b6cfe6d1ddfa751d7776ed9f267a97b8bb02f8e10ea5f914649ea780ba6c6"
+    },
+    "status": "Native bodies written; dedicated differential tests pending",
+    "reuse": [
+      "Command raw/trimmed getters",
+      "MessageProcessor shared tracing and atomic NIOClient/NIOServer flags",
+      "TimerMessage.currentTimeMillis, MiniNumber.getAsInt, JavaDateString and unsigned/bitcast overflow pattern"
+    ],
+    "limits": "Not included in verified checkpoint e2c0d06."
   }
 }

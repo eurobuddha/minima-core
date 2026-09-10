@@ -1098,3 +1098,5 @@ set_tests_properties(ping_command_differential PROPERTIES TIMEOUT 600)
 target_sources(minima_file_port PRIVATE src/org/minima/system/commands/network/network.cpp)
 add_test(NAME network_status_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/main_runtime_differential.py --build ${CMAKE_CURRENT_BINARY_DIR} --group status)
 set_tests_properties(network_status_command_differential PROPERTIES TIMEOUT 600)
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/base/trace.cpp src/org/minima/system/commands/base/timemilli.cpp)

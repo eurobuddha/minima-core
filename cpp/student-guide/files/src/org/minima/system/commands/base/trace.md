@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`. Native body written; command-specific tests pending.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/trace.java) · `src/org/minima/system/commands/base/trace.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/trace.java) · [Native C++ body](../../../../../../../../src/org/minima/system/commands/base/trace.cpp)
 
 ## Purpose
 
@@ -19,11 +19,11 @@ trace changes shared MessageProcessor tracing and optionally low-level NIO clien
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse MessageProcessor and NIO global trace state. Preserve the different raw enable access and trimmed network helper semantics.
+The native body now reuses the existing Command parameter/reply helpers and the named services. Its command-specific differential tests are still pending.  Reuse MessageProcessor and NIO global trace state. Preserve the different raw enable access and trimmed network helper semantics.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed tests compare missing enable, raw true versus padded true, absent/present filter, and omitted network after it was previously enabled. Inject a network parsing failure and assert the earlier MessageProcessor setting remains changed.
+No completed command-specific comparison is claimed yet. Proposed tests compare missing enable, raw true versus padded true, absent/present filter, and omitted network after it was previously enabled. Inject a network parsing failure and assert the earlier MessageProcessor setting remains changed.
 
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
@@ -38,3 +38,9 @@ The native MessageProcessor worker fixture covers one lowercase filter case; it 
 Why do enable:" true " and network:" true " have different behavior when runCommand receives those raw parameter strings?
 
 Pinned Java SHA-256: `bd7e00f83cb65a9a608c08c3e92e03131dc3e16b179e2d4264eea1b48493d6f7`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
+
+## Current work checkpoint
+
+The native body and registry entry are written. This is work in progress: no new
+command-specific comparison has been accepted yet. The [trace and clock lab](../../../../../../../new-tests/trace-and-clock-commands.md) was written before the planned tests. Earlier future-work wording above
+describes the intended validation; it does not claim that these tests ran.

@@ -2043,9 +2043,9 @@
     "java": "src/org/minima/system/commands/base/timemilli.java",
     "cpp": "src/org/minima/system/commands/base/timemilli.cpp",
     "guide": "files/src/org/minima/system/commands/base/timemilli.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
     "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
   },
@@ -2073,9 +2073,9 @@
     "java": "src/org/minima/system/commands/base/trace.java",
     "cpp": "src/org/minima/system/commands/base/trace.cpp",
     "guide": "files/src/org/minima/system/commands/base/trace.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
     "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
   },
