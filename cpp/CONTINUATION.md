@@ -1,3 +1,37 @@
+# Current work — peers port and integration checks pass
+
+Project/branch MinimaCoreC++. This goal turn is PROGRESS. Added peers.cpp/hpp,
+registered command, real Main/P2P/checker/MiniFile/RPCClient composition.
+Mapping now 368 (324 production + 44 tests), 89 absent (45 production +44tests),
+210 CTest. Full 457-file goal remains active/incomplete; all counterparts partial.
+All457 student guides authored. Lab peers-command.md was written before tests.
+
+New peers_command_runtime reuses main_runtime + MainNetworkFixture in a distinct
+executable. New driver reuses existing Main projection, Runner and loopback Server.
+271programs1355operations48HTTPrequests/runtime pass both (3.79s/5.27s).
+Initial temporary-copy lifetime and missing DB service fixture failures saved.
+All six affected checks pass current binaries: network222programs794ops,
+status124programs562ops, runner1265cases each build. Normal full build passed.
+Saved evidence under validation/peers-command-work-in-progress. Scoped review
+and lessons updated. Regeneration/audit must pass before committing.
+
+LIVE original sanitizer baseline42976: /tmp/minima-shared-json-all-tests-san.log,
+last seen177 coin_search_command_differential. Poll same handle. Do not overwrite active baseline
+executables; peers checks used their separate target. Baseline uses original204
+entries, not a current210-suite run. Initial MiniByte and NIO failures have
+passing reruns saved in shared-json-work-in-progress. Last numbered checkpoint362.
+
+This peers checkpoint is ready to commit and bundle. Inspect Git HEAD/status and
+latest local-backups manifest to determine whether preservation finished.
+Prior saved HEAD cb8cf01d8264ae54de5188e74673b2906689736b; restored/verified bundle
+local-backups/MinimaCoreC++-20260910T214013Z.bundle, SHA256
+188d0e80b09b6c7b6c8251d653bc5e9e2d46593cdf74be13e766637b57c30821.
+Reuse /tmp/minima-hashtest-backup.py then check peers source/lab/sanitizer evidence
+in recovery clone. No GitHub push. Continue remaining native APIs, files, tests,
+entry point and durable storage; no full parity/completion claim.
+
+Older notes follow; above supersedes older counts/job states.
+
 # Current work — tokenvalidate validated; local preservation checkpoint
 
 Project/branch MinimaCoreC++. Full 457-file native-node goal remains active and

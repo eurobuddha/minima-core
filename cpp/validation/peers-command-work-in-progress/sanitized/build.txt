@@ -1,0 +1,4 @@
+[ 98%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/peers_command_runtime.dir/support/MainNetworkFixture.cpp.o
+[100%] Linking CXX executable peers_command_runtime
+[100%] Built target peers_command_runtime

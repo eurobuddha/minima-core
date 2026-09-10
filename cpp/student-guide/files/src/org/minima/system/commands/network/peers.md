@@ -2,11 +2,11 @@
 
 **Teaching status:** Authored algorithm and test explanation; full API/parity review remains open.
 
-**Port status:** `unported`; parity `not_verified`. The mapped C++ file is absent. This page does not describe a completed translation.
+**Port status:** `implemented_partial`; parity `not_verified`. The native command compiles and finite Java/C++ comparisons pass; full inherited API and runtime parity remain open.
 
 | Source | Destination |
 |---|---|
-| [src/org/minima/system/commands/network/peers.java](../../../../../../../../../upstream-study/src/org/minima/system/commands/network/peers.java) | `src/org/minima/system/commands/network/peers.cpp` (planned) |
+| [src/org/minima/system/commands/network/peers.java](../../../../../../../../../upstream-study/src/org/minima/system/commands/network/peers.java) | [src/org/minima/system/commands/network/peers.cpp](../../../../../../../../src/org/minima/system/commands/network/peers.cpp) |
 
 ## What this file does
 
@@ -23,11 +23,11 @@ Lists, checks, imports or publishes the P2P peer-address list.
 
 ## How the translation is approached
 
-The mapped native command is absent. Reuse connect’s endpoint parser and existing address/message types, while retaining differences between parsing an integer port and constructing a valid socket address. Randomization should be controlled by a fixture seam for reproducible comparisons.
+The native command reuses connect’s endpoint parser, InetSocketAddress, Main/P2P/checker state, MiniFile, RPCClient and the existing peer shuffle. Parsing an integer port and constructing a valid socket address remain separate steps. Random selections are checked independently for membership and cardinality, then normalized for comparison.
 
 ## What the tests tell us
 
-Proposed tests cover disabled/slave early replies, list versus forcecheck empty counts, max -1/0/1, unresolved addresses, duplicate and empty comma tokens, HTTP-empty failure, local-file rejection and partial posting before a bad port. Capture file bytes and intended check messages with fake HTTP/file/manager receivers. These tests are future work; no live peer list is contacted.
+The [peer-command lab](../../../../../../../new-tests/peers-command.md) explains 271 programs / 1,355 operations passing in normal and sanitizer builds. Checks use real loopback HTTP (48 requests per runtime), MiniFile writes and unstarted checker queues. They cover disabled/slave replies, inclusive limits, empty counts, malformed owners, unresolved addresses, duplicates, partial posting, downloads and file failures. Actual queue fields and file bytes are compared.
 
 ## Dependencies and reading map
 
@@ -41,6 +41,6 @@ Why can max:0 still publish one peer? Trace the counter comparison before increm
 
 ## Limits and traceability
 
-File operations, downloading, random selection and real P2P admission are not implemented by this absent counterpart. The mapped native file is absent; all validation proposed here is future work.
+File operations, loopback downloading, random selection and queue submission are implemented and tested. Live peer admission, public DNS, concurrent scheduling, arbitrary subclass/reference behavior and complete native-node integration remain unverified.
 
 Pinned Java SHA-256: `a106f44f73f181d0fe4d7255eef7bdb80dc55a5bb715dcdfd1b36b173d0d27df`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).

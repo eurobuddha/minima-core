@@ -2,13 +2,13 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 367,
-  "native_absent": 90,
+  "native_counterparts": 368,
+  "native_absent": 89,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
-      "counterparts": 323,
-      "absent": 46
+      "counterparts": 324,
+      "absent": 45
     },
     "test": {
       "total": 88,
@@ -20,7 +20,7 @@
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9092,
+  "links_checked": 9095,
   "line_anchors_checked": 2634,
   "errors": [],
   "ownership_exclusions": [
@@ -2223,9 +2223,9 @@
       "java": "src/org/minima/system/commands/network/peers.java",
       "cpp": "src/org/minima/system/commands/network/peers.cpp",
       "guide": "files/src/org/minima/system/commands/network/peers.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
       "teaching_note": "Authored algorithm and test explanation; full API/parity review remains open."
     },

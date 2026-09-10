@@ -1163,3 +1163,10 @@ add_executable(token_validation_runtime support/wallet_commands.cpp)
 target_link_libraries(token_validation_runtime PRIVATE minima_file_port)
 add_test(NAME token_validation_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/token_validation_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(token_validation_differential PROPERTIES TIMEOUT 240)
+
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/network/peers.cpp)
+add_executable(peers_command_runtime support/main_runtime.cpp support/MainNetworkFixture.cpp)
+target_link_libraries(peers_command_runtime PRIVATE minima_file_port)
+add_test(NAME peers_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/peers_command_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(peers_command_differential PROPERTIES TIMEOUT 240)

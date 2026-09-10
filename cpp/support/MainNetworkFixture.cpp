@@ -17,7 +17,7 @@ struct Fixture:MainNetworkFixture {
     std::shared_ptr<p2p::P2PManagerFixture> peer;
     std::shared_ptr<NetworkManager> net;
     std::vector<std::shared_ptr<NIOClient>> clients;
-    bool statusFixture=false;
+    bool statusFixture=false,peersFixture=false;
     explicit Fixture(const json::JSONObject& config,const std::function<void(std::shared_ptr<NetworkManager>)>& publish){
         statusFixture=config.containsKey("statusFixture")&&config.get("statusFixture").asBool();
         if(statusFixture){
@@ -25,7 +25,18 @@ struct Fixture:MainNetworkFixture {
             GeneralParams::MINIMA_PORT=9001;GeneralParams::RPC_PORT=9005;GeneralParams::RPC_ENABLED=false;
             auto traffic=nio->getTrafficListener();traffic->resetAt(0);traffic->addToTotalRead(12345);traffic->addToTotalWrite(23456);traffic->addReadBytes("fixture-read",1024);traffic->addWriteBytes("fixture-write",2048);
         }
-        p2p::P2PManagerServices services;services.releaseLocks=[]{};peer=p2p::P2PManagerFixture::create(services);
+        p2p::P2PManagerServices services;services.releaseLocks=[]{};services.getP2PDB=[]{return sqlRequired(MinimaDB::getDB()).getP2PDB();};peer=p2p::P2PManagerFixture::create(services);
+        peersFixture=config.containsKey("peersFixture")&&config.get("peersFixture").asBool();
+        if(peersFixture){
+            GeneralParams::P2P_ENABLED=config.containsKey("enabled")?config.get("enabled").asBool():true;
+            GeneralParams::PEERSCHECKER_lOG=config.containsKey("peerLogs")&&config.get("peerLogs").asBool();
+            auto checker=std::dynamic_pointer_cast<IdleChecker>(peer->getPeersChecker());while(checker->getNextMessage()){}
+            if(config.containsKey("known"))for(const auto& raw: ::array(config.get("known"))->elements()){
+                SocketAddressPtr address;if(!raw.isNull()){auto item=::object(raw);auto host=item->getString("host");auto port=int32_t(std::get<int64_t>(item->get("port").value));address=item->containsKey("unresolved")?InetSocketAddress::createUnresolved(host,port):std::make_shared<InetSocketAddress>(host,port);}
+                peer->peerState()->getKnownPeers()->add(address);
+            }
+            if(config.containsKey("verified")&&config.get("verified").asBool())checker->getVerifiedPeers()->add(std::make_shared<InetSocketAddress>("127.0.0.1",1));
+        }
         auto kind=config.getString("peer","real");std::shared_ptr<MessageProcessor> selected=peer;if(kind=="null")selected.reset();else if(kind=="wrong")selected=nio;
         net=NetworkManagerFixture::create(nio,selected);publish(net);
         if(config.containsKey("state")){auto values=::object(config.get("state"));auto state=peer->peerState();if(values->containsKey("accept"))state->setAcceptingInLinks(values->get("accept").asBool());if(values->containsKey("startup"))state->setStartupComplete(values->get("startup").asBool());if(values->containsKey("discovery"))state->setDoingDiscoveryConnection(values->get("discovery").asBool());}
@@ -38,6 +49,11 @@ struct Fixture:MainNetworkFixture {
     }
     std::shared_ptr<NetworkManager> network() override{return net;}
     json::JSONObject snapshot() override{json::JSONObject out;out.put("queued",nio->drain());json::JSONArray rows;for(auto& client:clients){json::JSONObject row;row.put("uid",client->getUID().value());row.put("packets",NIOClientFixture::packets(*client));rows.add(row);}out.put("clients",rows);out.put("traffic",nio->getTrafficListener()->getBreakdown());
+        if(peersFixture){
+            json::JSONArray queued,known;auto checker=std::dynamic_pointer_cast<IdleChecker>(peer->getPeersChecker());
+            while(auto message=checker->getNextMessage()){json::JSONObject row;row.put("type",*message->getMessageType());if(message->exists("address")){auto address=message->getObject("address").as<SocketAddressPtr>();row.put("host",address->getHostString());row.put("port",address->getPort());row.put("force",message->getBoolean("force"));}queued.add(row);}
+            auto knownCopy=peer->getPeersCopy();for(const auto& address:*knownCopy)known.add(address?json::JSONValue(address->toString()):json::JSONValue());out.put("peerQueue",queued);out.put("known",known);
+        }
         if(statusFixture){auto traffic=nio->getTrafficListener();out.put("trace",nio->isTrace());out.put("filter",nio->getTraceFilter());out.put("host",GeneralParams::MINIMA_HOST);out.put("hostset",GeneralParams::IS_HOST_SET);out.put("totalRead",traffic->getTotalRead());out.put("totalWrite",traffic->getTotalWrite());out.put("start",traffic->getStartTime());}return out;}
 };
 }

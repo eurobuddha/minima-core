@@ -1,0 +1,55 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "status": "focused peers and affected network/status/runner checks pass both builds",
+  "counterparts": 368,
+  "production": 324,
+  "mapped_tests": 44,
+  "absent": 89,
+  "ctest_registered": 210,
+  "programs": 271,
+  "operations": 1355,
+  "http_requests_per_runtime": 48,
+  "normal": true,
+  "sanitized": true,
+  "seconds": [
+    3.79,
+    5.27
+  ],
+  "affected": {
+    "network": [
+      222,
+      794
+    ],
+    "status": [
+      124,
+      562
+    ],
+    "runner_cases": 1265
+  },
+  "normal_full_build": true,
+  "reuse": [
+    "src/org/minima/system/commands/network/connect.cpp",
+    "src/org/minima/system/network/p2p/P2PManager.cpp",
+    "src/org/minima/system/network/p2p/P2PPeersChecker.cpp",
+    "src/support/InetSocketAddress.cpp",
+    "src/support/PeerShuffle.hpp",
+    "src/org/minima/utils/MiniFile.cpp",
+    "src/org/minima/utils/RPCClient.cpp",
+    "support/MainNetworkFixture.cpp",
+    "support/MainNetworkOracle.java",
+    "support/main_runtime.cpp",
+    "tools/main_runtime_differential.py",
+    "tools/rpc_client_differential.py"
+  ],
+  "sibling_candidate": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/network/P2PSync.hpp",
+  "sibling_difference": "Different sync-loop model; no corresponding peers command or peer-checker queue API.",
+  "fixture_corrections": [
+    "Retain shared ownership of copied peer vector before iteration",
+    "Bind existing MinimaDB P2P database service for haveAnyPeers fallback"
+  ],
+  "pending": [
+    "Finish older sanitizer baseline and current full integration validation",
+    "45 production and 44 test counterparts absent; all counterparts still require full parity verification"
+  ],
+  "limits": "Finite queue-only peer submissions, real files and loopback HTTP. Shuffled subsets validated independently; selected diagnostic normalization. No live peer admission, public DNS, arbitrary concurrent/subclass/reference/platform or complete native-node parity claim."
+}

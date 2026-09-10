@@ -1,0 +1,383 @@
+{
+  "passed": false,
+  "programs": 43,
+  "total_programs": 268,
+  "operations": 215,
+  "http_requests_per_runtime": 0,
+  "failures": [
+    {
+      "case": 43,
+      "request": {
+        "ops": [
+          {
+            "cmd": "peersSetup",
+            "rows": [],
+            "columns": []
+          },
+          {
+            "cmd": "network",
+            "rows": [],
+            "columns": [],
+            "peersFixture": true,
+            "known": [
+              {
+                "host": "127.0.0.1",
+                "port": 9001
+              }
+            ],
+            "enabled": true,
+            "peer": "real",
+            "verified": true,
+            "peerLogs": true
+          },
+          {
+            "cmd": "prefs",
+            "rows": [],
+            "columns": [],
+            "values": {
+              "slavenode_enabled": false
+            }
+          },
+          {
+            "cmd": "direct",
+            "rows": [],
+            "columns": [],
+            "name": "peers",
+            "params": {
+              "action": "list",
+              "max": "-2"
+            }
+          },
+          {
+            "cmd": "networkSnapshot",
+            "rows": [],
+            "columns": []
+          }
+        ],
+        "checkList": {
+          "max": -2,
+          "action": "list"
+        }
+      },
+      "java": {
+        "ops": [
+          {
+            "value": null,
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {}
+          },
+          {
+            "value": null,
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {}
+          },
+          {
+            "value": null,
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "slavenode_enabled": false
+            }
+          },
+          {
+            "value": {
+              "command": "peers",
+              "params": {
+                "action": "list",
+                "max": "-2"
+              },
+              "status": true,
+              "pending": false,
+              "response": {
+                "peerslist": "<validated subset:0>",
+                "size": 0,
+                "havepeers": true,
+                "p2penabled": true
+              }
+            },
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "slavenode_enabled": false
+            }
+          },
+          {
+            "value": {
+              "queued": [],
+              "clients": [],
+              "traffic": {
+                "reads": {},
+                "writes": {}
+              },
+              "peerQueue": [],
+              "known": [
+                "/127.0.0.1:9001"
+              ]
+            },
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "slavenode_enabled": false
+            }
+          }
+        ],
+        "files": {
+          "existing.txt": "6f6c642066697874757265",
+          "directory/child": "6b656570"
+        }
+      },
+      "cpp": {
+        "ops": [
+          {
+            "value": null,
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {}
+          },
+          {
+            "value": null,
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {}
+          },
+          {
+            "value": null,
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "slavenode_enabled": false
+            }
+          },
+          {
+            "value": {
+              "command": "peers",
+              "params": {
+                "action": "list",
+                "max": "-2"
+              },
+              "status": true,
+              "pending": false,
+              "response": {
+                "peerslist": "<validated subset:0>",
+                "size": 0,
+                "havepeers": true,
+                "p2penabled": true
+              }
+            },
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "slavenode_enabled": false
+            }
+          },
+          {
+            "value": {
+              "queued": [],
+              "clients": [],
+              "traffic": {
+                "reads": {},
+                "writes": {}
+              },
+              "peerQueue": [],
+              "known": []
+            },
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": true,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "slavenode_enabled": false
+            }
+          }
+        ],
+        "files": {
+          "existing.txt": "6f6c642066697874757265",
+          "directory/child": "6b656570"
+        }
+      },
+      "java_requests": [],
+      "cpp_requests": []
+    }
+  ],
+  "scope": "Actual peers command, unstarted Main/P2P/checker queues, real MiniFile bytes and loopback RPCClient requests. Random selections independently checked for membership/cardinality; enhanced exception and selected URL provider diagnostics normalized. No live admission, public DNS, arbitrary concurrent/runtime parity certification."
+}

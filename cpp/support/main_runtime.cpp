@@ -1,6 +1,7 @@
 #include "SqlRecordingFixture.hpp"
 #include "ArchiveFixture.hpp"
 #include "MainNetworkFixture.hpp"
+#include "org/minima/system/commands/network/peers.hpp"
 #include "MainFixture.hpp"
 #include "org/minima/system/Main.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
@@ -91,6 +92,8 @@ JSONObject run(const JSONObject& input,const std::string& root){
             else if(cmd=="mutate")data->put(config->getString("key","value"),config->get("value"));
             else if(cmd=="clear")Main::ClearMainInstance();else if(cmd=="publish")MainFixture::install(main);else if(cmd=="shutdownNotice")main->NotifyMainListenerOfShutDown();
             else if(cmd=="network"){network=support::MainNetworkFixture::create(*config,[&](auto value){MainFixture::network(*main,std::move(value));});MainFixture::network(*main,flag("nullNetwork")?nullptr:network->network());}
+            else if(cmd=="peersSetup"){GeneralParams::BASE_FILE_FOLDER=root;}
+            else if(cmd=="peersList")value=commands::peers::getPeersList(int32_t(integer(*config,"max")));
             else if(cmd=="networkSnapshot")value=sqlRequired(network).snapshot();
             else if(cmd=="rescueNode")GeneralParams::RESCUE_MEGAMMR_NODE=config->getString("host");
             else if(cmd=="drain"){JSONArray queued;while(auto message=main->take()){JSONObject item;auto type=message->getMessageType();item.put("type",type?JSONValue(*type):JSONValue());auto host=message->getString("host");item.put("host",host?JSONValue(*host):JSONValue());queued.add(item);}value=queued;}

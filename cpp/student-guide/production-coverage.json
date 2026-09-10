@@ -2163,9 +2163,9 @@
     "java": "src/org/minima/system/commands/network/peers.java",
     "cpp": "src/org/minima/system/commands/network/peers.cpp",
     "guide": "files/src/org/minima/system/commands/network/peers.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
     "teaching_note": "Authored algorithm and test explanation; full API/parity review remains open."
   },

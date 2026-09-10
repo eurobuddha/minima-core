@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 271,
+  "total_programs": 271,
+  "operations": 1355,
+  "http_requests_per_runtime": 48,
+  "failures": [],
+  "scope": "Actual peers command, unstarted Main/P2P/checker queues, real MiniFile bytes and loopback RPCClient requests. Random selections independently checked for membership/cardinality; enhanced exception and selected URL provider diagnostics normalized. No live admission, public DNS, arbitrary concurrent/runtime parity certification."
+}

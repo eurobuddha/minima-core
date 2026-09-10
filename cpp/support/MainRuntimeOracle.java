@@ -87,6 +87,8 @@ public class MainRuntimeOracle extends SqlDBOracle {
                 case "mutate":data.put(config.getString("key","value"),config.get("value"));break;
                 case "clear":Main.ClearMainInstance();break;case "publish":install(main);break;case "shutdownNotice":main.NotifyMainListenerOfShutDown();break;
                 case "network":network=new MainNetworkOracle(config,main);NIOClientOracle.set(main,"mNetwork",flag("nullNetwork")?null:network.network);break;
+                case "peersSetup":GeneralParams.BASE_FILE_FOLDER=root;break;
+                case "peersList":value=org.minima.system.commands.network.peers.getPeersList(((Number)config.get("max")).intValue());break;
                 case "networkSnapshot":value=network.snapshot();break;
                 case "rescueNode":GeneralParams.RESCUE_MEGAMMR_NODE=config.getString("host");break;
                 case "drain":{var queued=new JSONArray();Message message;while((message=main.take())!=null){var item=new JSONObject();item.put("type",message.getMessageType());item.put("host",message.getString("host"));queued.add(item);}value=queued;break;}

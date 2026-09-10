@@ -428,7 +428,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [network.java](files/src/org/minima/system/commands/network/network.md) | authored | implemented_partial |
 | [nodecount.java](files/src/org/minima/system/commands/network/nodecount.md) | authored | unported |
 | [p2pstate.java](files/src/org/minima/system/commands/network/p2pstate.md) | authored | implemented_partial |
-| [peers.java](files/src/org/minima/system/commands/network/peers.md) | authored | unported |
+| [peers.java](files/src/org/minima/system/commands/network/peers.md) | authored | implemented_partial |
 | [ping.java](files/src/org/minima/system/commands/network/ping.md) | authored | implemented_partial |
 | [rpc.java](files/src/org/minima/system/commands/network/rpc.md) | authored | implemented_partial |
 | [webhooks.java](files/src/org/minima/system/commands/network/webhooks.md) | authored | implemented_partial |

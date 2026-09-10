@@ -1,3 +1,47 @@
+# Code Review — peers command and network fixture extension
+
+## Summary
+
+The native peers command follows the pinned Java branches and composes existing
+Main, P2P, address parsing, shuffle, files and HTTP components. The command is
+registered and compiled. Full-node parity remains unfinished.
+
+## Findings
+
+No unresolved defect was found in the scoped command review. Disabled/slave
+short-circuiting precedes parameter reads. Forcecheck queues before parsing max.
+Limits are inclusive, empty split behavior differs between list and forcecheck,
+comma tokenization drops empties, and duplicates queue separately. Port parsing
+and socket validation retain their separate failure points. Earlier messages
+survive a later error. Fetch rejects file presence; publish uses MiniFile base
+paths and writes actual address bytes. The helper retains partial text on caught
+exceptions; Java Error/allocation failures escape.
+
+Two fixture errors were found and fixed: a copied vector lost its temporary
+shared owner before iteration, and the fixture omitted the database service
+used by haveAnyPeers. Initial reports are retained. Production peer-list code
+already retained ownership. Shared fixture regression checks pass after fixes.
+
+## Validation
+
+271 programs / 1355 operations / 48 HTTP requests per runtime pass normal and
+ASAN/UBSAN. Independent assertions check shuffled membership/cardinality, queue
+duplicates and partial effects, HTTP request attributes and actual file bytes.
+Both builds pass 222 network programs / 794 operations, 124 status programs /
+562 operations, and 1265 runner cases. The full normal build/relink passes.
+The original older sanitizer baseline remains running; no full-current-210-suite
+pass or native-node startup claim is made.
+
+## Verdict
+
+Approve this scoped checkpoint. Live peer admission, public DNS, arbitrary
+subclass/reference behavior, concurrent owner replacement, platform encodings
+and the full node remain open. Random streams are not compared for identical
+choices; each selected set is validated before normalization. Missing-file and
+partial status remain explicit in the source map.
+
+## Previous scoped reviews
+
 # Code Review — tokenvalidate and signature conversion
 
 ## Summary

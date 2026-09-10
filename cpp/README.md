@@ -5,16 +5,21 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **323 production counterparts and 44 mapped test files exist;
-90 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **324 production counterparts and 44 mapped test files exist;
+89 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+peers now compiles and is registered. Both builds pass 271 programs / 1,355
+operations, including 48 loopback HTTP requests per runtime, real file writes
+and checker queue effects. See the [student lab](student-guide/new-tests/peers-command.md).
+There are now 210 registered CTest entries; full-node parity remains unfinished.
 
 tokenvalidate now compiles and is registered. Both builds pass 126 programs /
 254 operations and 33 loopback HTTP requests per runtime. Signature conversion
 now preserves Java's I/O catch/log boundary; null imported tokens raise the source
 exception category. See the [student lab](student-guide/new-tests/token-validation.md)
 and [saved evidence](validation/token-validation-work-in-progress/progress.json).
-There are 209 CTest entries. All seven affected comparisons pass in both builds;
+Its seven affected comparisons pass in both builds;
 the command fixture required a logging fix and a fresh rebuild before its final pass.
 
 scanchain now compiles and is registered. Both builds pass 320 programs and

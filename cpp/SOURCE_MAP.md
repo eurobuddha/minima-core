@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 367 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 368 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -226,7 +226,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/network/network.java` | `src/org/minima/system/commands/network/network.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/network/nodecount.java` | `src/org/minima/system/commands/network/nodecount.cpp` | unported | — |
 | `src/org/minima/system/commands/network/p2pstate.java` | `src/org/minima/system/commands/network/p2pstate.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/network/peers.java` | `src/org/minima/system/commands/network/peers.cpp` | unported | — |
+| `src/org/minima/system/commands/network/peers.java` | `src/org/minima/system/commands/network/peers.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/network/ping.java` | `src/org/minima/system/commands/network/ping.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/network/rpc.java` | `src/org/minima/system/commands/network/rpc.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/network/webhooks.java` | `src/org/minima/system/commands/network/webhooks.cpp` | implemented_partial | — |
