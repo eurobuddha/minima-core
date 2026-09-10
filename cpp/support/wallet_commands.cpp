@@ -2,6 +2,7 @@
 #include "SqlRecordingFixture.hpp"
 #include "TxPoWSearcherFixture.hpp"
 #include "org/minima/system/commands/txn/txnauto.hpp"
+#include "org/minima/system/commands/base/burn.hpp"
 #include "org/minima/database/MinimaDB.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -100,7 +101,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
     services.isShuttingDown=[]{return false;};services.postMainMessage=[](auto){};services.postMainTimer=[](auto){};
     services.postNotifyEvent=[](const auto&,const auto&){};services.setStartupError=[](bool,const auto&){};
     services.halt=[](int){throw std::runtime_error("unexpected halt");};services.currentThreadName=[]{return "main";};
-    MinimaDB::createDB(services);WalletCommandsFixture::initTxn();commands::txnutils::getMiner=[]()->std::shared_ptr<TxPoWMiner>{throw JavaNullPointerException("null Main receiver");};GeneralParams::USE_SQL_COINDB=false;GeneralParams::IS_MEGAMMR=false;auto wallet=MinimaDB::getDB()->getWallet();JSONArray outputs;std::optional<TxPoW> held;std::optional<TxBody> body;
+    MinimaDB::createDB(services);WalletCommandsFixture::initTxn();commands::txnutils::getMiner=[]()->std::shared_ptr<TxPoWMiner>{throw JavaNullPointerException("null Main receiver");};GeneralParams::USE_SQL_COINDB=false;GeneralParams::IS_MEGAMMR=false;auto wallet=MinimaDB::getDB()->getWallet();JSONArray outputs;std::optional<TxPoW> held;std::optional<TxBody> body;std::shared_ptr<commands::burn> burnMetrics;
     MinimaLogger::Runtime logger;logger.println=[](const auto& full){auto text=unicode::encodeUTF8(full);auto at=text.find("] : ");if(at!=std::string::npos){auto body=text.substr(at+4);if(!body.starts_with("     "))logs.add(body);}};
     MinimaLogger::setRuntime(logger);struct Reset{~Reset(){MinimaLogger::setRuntime({});}}reset;
     for(const auto& entry:array(input.get("ops")).elements()){
@@ -324,6 +325,22 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 data->setInCascade(flag("cascade"));data->setOnMainChain(flag("onChain"));
                 MinimaDB::getDB()->getTxPoWDB()->getCompleteMemPool()->put(pow->getTxPoWID(),data);
                 result=pow->isTransaction();
+            }else if(op=="burnNew"){burnMetrics=std::make_shared<commands::burn>();
+            }else if(op=="burnRun"){
+                if(flag("fresh"))burnMetrics=std::dynamic_pointer_cast<commands::burn>(sqlRequired(burnMetrics).getFunction());
+                auto& metric=sqlRequired(burnMetrics);*metric.getParams()=object(config->get("params"));result=metric.runCommand();
+            }else if(op=="burnCheck"){
+                std::optional<TxPoW> pow;if(!flag("nullTxPoW")){pow=TxPoW::convertMiniDataVersion(MiniData::fromHex(config->getString("data")));if(flag("bodyless"))pow->clearBody();}
+                sqlRequired(burnMetrics).checkBurn(pow?&*pow:nullptr,int32_t(integer(*config,"counter")));
+            }else if(op=="burnMedian"){
+                commands::burn::Values values;for(const auto& item:array(config->get("values")).elements()){
+                    if(item.isNull())values.push_back(nullptr);
+                    else if(item.isString())values.push_back(std::make_shared<MiniNumber>(item.asString()));
+                    else values.push_back(values.at(size_t(integer(object(item),"alias"))));
+                }auto original=values;JSONObject value;
+                try{auto median=sqlRequired(burnMetrics).getMediaValue(flag("nullValues")?nullptr:&values);value.put("median",median?JSONValue(median->toString()):JSONValue());if(values.empty())value.put("emptyIdentity",median==sqlRequired(burnMetrics).getMediaValue(values));auto it=std::find(original.begin(),original.end(),median);value.put("identity",it==original.end()?-1:int64_t(it-original.begin()));}
+                catch(const std::exception& error){value.put("exception",nativeExceptionText(error));}
+                JSONArray sorted;for(const auto& item:values)sorted.add(item?JSONValue(item->toString()):JSONValue());value.put("values",sorted);result=value;
             }else if(op=="automaticHelper") {
                 std::optional<MiniNumber> amount;if(!config->get("amount").isNull())amount.emplace(config->getString("amount"));
                 auto row=commands::txnauto::createTransaction(string(config->get("address")),amount?&*amount:nullptr);

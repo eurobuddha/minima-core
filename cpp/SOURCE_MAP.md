@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 369 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 370 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -178,7 +178,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/base/balance.java` | `src/org/minima/system/commands/base/balance.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/benchmark.java` | `src/org/minima/system/commands/base/benchmark.cpp` | unported | — |
 | `src/org/minima/system/commands/base/block.java` | `src/org/minima/system/commands/base/block.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/base/burn.java` | `src/org/minima/system/commands/base/burn.cpp` | unported | — |
+| `src/org/minima/system/commands/base/burn.java` | `src/org/minima/system/commands/base/burn.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/checkaddress.java` | `src/org/minima/system/commands/base/checkaddress.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/coincheck.java` | `src/org/minima/system/commands/base/coincheck.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/coinexport.java` | `src/org/minima/system/commands/base/coinexport.cpp` | implemented_partial | — |

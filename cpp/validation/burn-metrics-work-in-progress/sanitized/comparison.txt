@@ -1,0 +1,28 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                                                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 warnings
+{
+  "passed": true,
+  "programs": 364,
+  "total_programs": 364,
+  "operations": 4361,
+  "sql_calls": 30113,
+  "scope": "Actual burn command, public helpers and runner with real TxPoW arithmetic, tree and RAM/recording SQL. Window boundaries, retained state, median order/identity, malformed inputs and SQL failures. Exact numeric replies and effects; selected VM exception prose normalized. No arbitrary throwing-sort mutation, inherited reference/concurrency, durable SQL or full-node parity certification."
+}

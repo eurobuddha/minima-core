@@ -70,3 +70,6 @@ The [seed derivation lab](new-tests/seed-random-command.md) teaches deterministi
 - [Node-status lab](new-tests/node-status-command.md): complete report assembly, decimal device estimates, median speeds, and explicit JVM/native memory boundaries.
 
 - [RPC lab](new-tests/rpc-command.md): ordered configuration updates, shared user arrays, typed failures, and remaining live-server validation.
+
+- [Historical burn-metrics lab](new-tests/burn-metrics.md): independent window
+  totals, retained command state, lower-middle medians and null-sort mutations.

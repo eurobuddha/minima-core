@@ -1,0 +1,51 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "status": "both final comparisons and full builds pass; affected integration checks pass",
+  "counterparts": 370,
+  "production": 326,
+  "mapped_tests": 44,
+  "absent": 87,
+  "ctest_registered": 212,
+  "reuse": [
+    "src/org/minima/system/commands/base/scanchain.cpp",
+    "src/org/minima/database/txpowdb/TxPoWDB.cpp",
+    "src/org/minima/objects/TxPoW.hpp",
+    "src/org/minima/objects/Transaction.cpp",
+    "src/org/minima/objects/base/MiniNumber.cpp",
+    "support/wallet_commands.cpp",
+    "support/WalletCommandsOracle.java",
+    "tools/scan_chain_differential.py"
+  ],
+  "adaptation": "Three retained metric windows, real TxPoW arithmetic, exact numeric replies, descending lower-middle median and helper calls; source lookup order and duplicate references preserved.",
+  "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; MiniNumber.hpp and transaction/TxPoW candidates inspected. No equivalent burn metrics command; reuse current pinned and tested number/TxPoW implementation.",
+  "sort_reuse": {
+    "source": "OpenJDK 26.0.1 java.base/java/util/TimSort.java",
+    "local_archive": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/lib/src.zip",
+    "java_sha256": "f147bfc6470b811546384b17b7fd3ed278586db806f445d66151a34f617c0d19",
+    "destination": "src/support/JavaNullableNumberSort.hpp",
+    "license": "OPENJDK_TIMSORT_LICENSE",
+    "adaptation": "Run discovery, binary insertion, minimum run length and collapse scheduling translated. Completed non-null runs use std::inplace_merge; a final singleton null raises before merge mutation. Specialized for nullable immutable MiniNumber ordering; arbitrary comparator callbacks/allocation failures are outside this adapter."
+  },
+  "affected": {
+    "runner_cases_per_build": 1265,
+    "history_programs_per_build": 484,
+    "history_operations_per_build": 1489,
+    "history_sql_calls_per_build": 52194,
+    "scan_programs_per_build": 320,
+    "scan_operations_per_build": 2027
+  },
+  "limits": "Finite command/helper tests and recording SQL. Original MiniNumber global constant reference APIs, arbitrary subclass/concurrent mutation, durable storage and full native-node integration remain incomplete.",
+  "pending": [
+    "Complete remaining 43 production and 44 test counterparts",
+    "Complete inherited/reference APIs and native storage/runtime integration",
+    "Validate full native node before completion"
+  ],
+  "programs": 364,
+  "operations": 4361,
+  "sql_calls": 30113,
+  "normal": true,
+  "sanitized": true,
+  "normal_full_build": true,
+  "sanitized_full_build": true,
+  "validation_order": "Affected regressions passed before final helper guards/identity correction; final burn corpus and both full rebuilds cover the final source."
+}

@@ -1,3 +1,33 @@
+# Current work — burn metrics validated; preserve this checkpoint
+
+Project/branch MinimaCoreC++. This is PROGRESS, not full-goal completion.
+Added burn.cpp/hpp with real TxPoW/tree/TxPoWDB/MiniNumber composition. Preserves
+1/10/50 windows, repeated-instance accumulation, duplicate references, lower-middle
+median, hidden direct action and runner allow-list behavior. OpenJDK-derived
+JavaNullableNumberSort.hpp preserves list state on null comparison failures;
+license/notices/hash retained. Empty medians return a shared helper zero.
+
+Mapping: 370 counterparts (326 production + 44 tests), 87 absent (43 production + 44 tests),
+212 CTest entries. All 457 student guides authored and structurally audited.
+Both final burn comparisons pass 364 programs / 4,361 operations / 30,113 SQL; both full builds pass.
+Affected runner 1,265 cases, history 484 programs / 1,489 operations / 52,194 SQL,
+scanchain 320 programs / 2,027 operations
+pass both. Regressions preceded final helper guards/identity correction; final
+burn corpus/full rebuilds cover final source. No full current 212-test suite claim.
+Evidence:validation/burn-metrics-work-in-progress. Initial build, incorrect test
+expectations and real null-sort mutation failure retained. Scoped review and lab
+saved. Full native-node/inherited/reference/durable SQL work remains unfinished.
+
+All work handles terminal when this note was finalized; no active old baseline.
+Original 204-test baseline terminal/composite reruns documented in older notes.
+Ready for local commit and verified bundle recovery. Inspect HEAD and newest
+local-backups manifest to confirm preservation finished. Prior HEAD 3bb9976;
+prior bundle MinimaCoreC++-20260910T220811Z.bundle. Reuse
+/tmp/minima-hashtest-backup.py; additionally verify burn source, sort adapter,
+license, student lab and sanitizer evidence in the recovery clone. No GitHub push.
+
+Older notes follow; current counts/status above supersede them.
+
 # Current work — txnauto validated and older baseline finished
 
 Project/branch MinimaCoreC++. This turn is PROGRESS. Added txnauto.cpp/hpp,

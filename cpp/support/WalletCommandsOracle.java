@@ -134,6 +134,7 @@ public class WalletCommandsOracle extends SqlDBOracle {
     }
     static String signedFile(File root){String result="";for(File file:root.listFiles())if(file.getName().startsWith("signedtransaction-"))result=file.getName();return result;}
     static JSONObject runCommands(JSONObject input,String root)throws Exception{
+        org.minima.system.commands.base.burn burnMetrics=null;
         if(input.containsKey("nodeState"))java.nio.file.Files.deleteIfExists(new File(root,"control-prefs").toPath());
         boolean offline=input.containsKey("offline");File offlineRoot=new File(root,"offline");GeneralParams.BASE_FILE_FOLDER=offline?offlineRoot.getPath():"";
         if(offline){if(offlineRoot.exists())try(var paths=java.nio.file.Files.walk(offlineRoot.toPath())){for(var path:paths.sorted(Comparator.reverseOrder()).toList())java.nio.file.Files.delete(path);}offlineRoot.mkdirs();}
@@ -344,6 +345,20 @@ public class WalletCommandsOracle extends SqlDBOracle {
                     pow.setHeaderBodyHash();pow.calculateTXPOWID();var data=new org.minima.database.txpowdb.ram.RamData(pow);
                     data.setInCascade(Boolean.TRUE.equals(config.get("cascade")));data.setOnMainChain(Boolean.TRUE.equals(config.get("onChain")));
                     MinimaDB.getDB().getTxPoWDB().getCompleteMemPool().put(pow.getTxPoWID(),data);result=pow.isTransaction();
+                }else if(op.equals("burnNew")){burnMetrics=new org.minima.system.commands.base.burn();
+                }else if(op.equals("burnRun")){
+                    if(Boolean.TRUE.equals(config.get("fresh")))burnMetrics=(org.minima.system.commands.base.burn)burnMetrics.getFunction();
+                    burnMetrics.getParams().clear();burnMetrics.getParams().putAll((JSONObject)config.get("params"));result=burnMetrics.runCommand();
+                }else if(op.equals("burnCheck")){
+                    org.minima.objects.TxPoW pow=null;if(!Boolean.TRUE.equals(config.get("nullTxPoW"))){pow=org.minima.objects.TxPoW.convertMiniDataVersion(new org.minima.objects.base.MiniData(config.getString("data")));if(Boolean.TRUE.equals(config.get("bodyless")))pow.clearBody();}
+                    burnMetrics.checkBurn(pow,((Number)config.get("counter")).intValue());
+                }else if(op.equals("burnMedian")){
+                    var values=new ArrayList<org.minima.objects.base.MiniNumber>();for(Object item:(JSONArray)config.get("values")){
+                        if(item==null)values.add(null);else if(item instanceof String)values.add(new org.minima.objects.base.MiniNumber((String)item));else values.add(values.get(((Number)((JSONObject)item).get("alias")).intValue()));
+                    }var original=new ArrayList<>(values);var value=new JSONObject();
+                    try{var median=burnMetrics.getMediaValue(Boolean.TRUE.equals(config.get("nullValues"))?null:values);value.put("median",median==null?null:median.toString());if(values.isEmpty())value.put("emptyIdentity",median==burnMetrics.getMediaValue(values));int identity=-1;for(int i=0;i<original.size();i++)if(original.get(i)==median){identity=i;break;}value.put("identity",identity);}
+                    catch(Exception error){value.put("exception",error.toString());}
+                    var sorted=new JSONArray();for(var item:values)sorted.add(item==null?null:item.toString());value.put("values",sorted);result=value;
                 }else if(op.equals("automaticHelper")){
                     var row=org.minima.system.commands.txn.txnauto.createTransaction((String)config.get("address"),config.get("amount")==null?null:new org.minima.objects.base.MiniNumber(config.getString("amount")));
                     var value=new JSONObject();value.put("row",row.toJSON());value.put("wire",org.minima.objects.base.MiniData.getMiniDataVersion(row).to0xString());var verified=new JSONArray();

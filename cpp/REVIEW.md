@@ -1,3 +1,62 @@
+# Code Review — historical burn metrics and nullable median
+
+## Summary
+
+The new mapped burn command composes existing TxPoW arithmetic, tree traversal,
+TxPoWDB and numeric JSON. It preserves per-instance accumulators and source
+window boundaries. The full native-node implementation remains incomplete.
+
+## Findings
+
+### MAJOR — throwing standard sort changed caller-visible values (resolved)
+
+The original native median used std::stable_sort. With [3, 1, null], its throwing
+comparator left [null, 1, null], while Java retained [3, 1, null]. The replacement
+adapts OpenJDK run discovery, binary insertion and merge scheduling; sorted
+non-null runs reuse std::inplace_merge. A final singleton null throws before
+merge mutation. Source notices, license and input hash are retained. This is a
+specialized nullable-number adapter, not a general throwing-comparator TimSort.
+
+### MINOR — empty median result identity (resolved)
+
+Repeated empty-list calls originally allocated different zeros. A shared helper
+singleton now preserves repeated-result identity, with an explicit oracle check.
+The native global MiniNumber constant/reference API is still a broader limitation.
+
+## Source and fixture review
+
+The database is captured once before action branching. Default list traverses
+at most 50 ancestors, counts the block and each available reference, and keeps
+duplicates. checkBurn rejects nontransactions and otherwise always updates the
+50-block accumulator, even for direct counters >=50; negative counters update
+the 10-block window. Empty minima become zero before median serialization;
+unknown direct actions do not reset state. The runner's inherited empty parameter
+allow-list rejects the hidden action parameter. Fresh factory instances reset.
+
+The fixture retains actual command objects and decodes Java-created TxPoW bytes.
+It compares exact numeric replies, list ordering/identity, database calls and
+failure effects. Independent decimal calculations check totals, lower medians,
+sentinel min/max and average truncation. Initial wrong metadata and token-filter
+expectations were corrected against pinned Java and their failures were retained.
+The initial fixture build also attempted an unavailable JSONObject.clear method;
+it now assigns through the existing object, preserving its shared owner identity.
+
+## Validation
+
+Final normal and sanitizer runs each pass 364 programs, 4,361 operations and 30,113
+SQL observations. Both complete builds pass after review.
+Affected runner (1,265 cases), history (484 programs / 1,489 operations / 52,194 SQL), and
+scanchain (320 programs / 2,027 operations) pass both builds. These regressions preceded
+the final helper-only guards and empty-result identity correction; those changes
+are covered by the final burn corpus. All 457 guides pass structural audit.
+No full current 212-test suite or full-node parity pass is claimed.
+
+## Verdict
+
+Approve this scoped checkpoint. Arbitrary inherited
+reference/subclass/concurrency behavior, durable SQL and complete native entrypoint
+integration remain unfinished. Older reviews follow for historical context.
+
 # Code Review — txnauto and shared automatic transaction builder
 
 ## Summary

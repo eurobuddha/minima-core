@@ -1,0 +1,13 @@
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/CommandRunner.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/burn.cpp.o
+[  3%] Linking CXX static library libminima_file_port.a
+[ 98%] Built target minima_file_port
+[ 98%] Building CXX object CMakeFiles/burn_metrics_runtime.dir/support/wallet_commands.cpp.o
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/wallet_commands.cpp:331:75: error: no member named 'clear' in 'minima::json::JSONObject'
+  331 |                 auto& metric=sqlRequired(burnMetrics);metric.getParams()->clear();for(const auto& [key,value]:object(config->get("params")).entries())metric.getParams()->put(key,value);result=metric.runCommand();
+      |                                                       ~~~~~~~~~~~~~~~~~~~~^
+1 error generated.
+make[3]: *** [CMakeFiles/burn_metrics_runtime.dir/support/wallet_commands.cpp.o] Error 1
+make[2]: *** [CMakeFiles/burn_metrics_runtime.dir/all] Error 2
+make[1]: *** [CMakeFiles/burn_metrics_runtime.dir/rule] Error 2
+make: *** [burn_metrics_runtime] Error 2

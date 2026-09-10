@@ -376,7 +376,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [balance.java](files/src/org/minima/system/commands/base/balance.md) | authored | implemented_partial |
 | [benchmark.java](files/src/org/minima/system/commands/base/benchmark.md) | authored | unported |
 | [block.java](files/src/org/minima/system/commands/base/block.md) | authored | implemented_partial |
-| [burn.java](files/src/org/minima/system/commands/base/burn.md) | authored | unported |
+| [burn.java](files/src/org/minima/system/commands/base/burn.md) | authored | implemented_partial |
 | [checkaddress.java](files/src/org/minima/system/commands/base/checkaddress.md) | authored | implemented_partial |
 | [coincheck.java](files/src/org/minima/system/commands/base/coincheck.md) | authored | implemented_partial |
 | [coinexport.java](files/src/org/minima/system/commands/base/coinexport.md) | authored | implemented_partial |

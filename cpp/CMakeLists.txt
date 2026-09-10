@@ -1177,3 +1177,10 @@ add_executable(automatic_transaction_runtime support/wallet_commands.cpp)
 target_link_libraries(automatic_transaction_runtime PRIVATE minima_file_port)
 add_test(NAME automatic_transaction_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/automatic_transaction_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(automatic_transaction_differential PROPERTIES TIMEOUT 300)
+
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/base/burn.cpp)
+add_executable(burn_metrics_runtime support/wallet_commands.cpp)
+target_link_libraries(burn_metrics_runtime PRIVATE minima_file_port)
+add_test(NAME burn_metrics_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/burn_metrics_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(burn_metrics_differential PROPERTIES TIMEOUT 300)
