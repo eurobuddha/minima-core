@@ -15,3 +15,7 @@ build
 
 .nb-gradle/
 
+
+# Local operating-system files and checkpoint bundles
+.DS_Store
+/local-backups/

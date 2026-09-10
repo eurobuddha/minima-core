@@ -1,0 +1,3 @@
+[submodule "upstream-study"]
+	path = upstream-study
+	url = https://github.com/spartacusrex-minima/minima-core.git

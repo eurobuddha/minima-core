@@ -1,0 +1,48 @@
+#include "P2PFunctionsFixture.hpp"
+#include "P2PManagerFixture.hpp"
+#include <cmath>
+static JSONValue managerEvent(const std::shared_ptr<Message>& message){
+    JSONObject row;row.put("type",nullable(message->getMessageType()));
+    if(message->exists("address")){auto raw=message->getObject("address");row.put("address",snapshot(raw.isNull()?nullptr:raw.as<SocketAddressPtr>()));}
+    if(message->exists("force"))row.put("force",message->getBoolean("force"));return row;
+}
+static JSONValue runManager(const JSONObject& request){
+    JSONArray events,posted,checkerPosts,states;int saves=0;
+    GeneralParams::TEST_PARAMS=false;GeneralParams::ALLOW_ALL_IP=flag(request,"allow");GeneralParams::TXBLOCK_NODE=false;GeneralParams::NETWORKING_LOGS=false;GeneralParams::IS_MOBILE=false;
+    GeneralParams::MINIMA_HOST=request.containsKey("host")?request.get("host").asString():"127.0.0.1";GeneralParams::MINIMA_PORT=int32_t(num(request,"port",9001));GeneralParams::IS_HOST_SET=flag(request,"hostSet");GeneralParams::IS_ACCEPTING_IN_LINKS=!request.containsKey("accept")||flag(request,"accept");GeneralParams::NOCONNECT=flag(request,"noconnect");GeneralParams::P2P_ADDNODES=request.containsKey("addnodes")?request.get("addnodes").asString():"";GeneralParams::P2P_ROOTNODE=request.containsKey("root")?request.get("root").asString():"";
+    P2PParams::TGT_NUM_LINKS=int32_t(num(request,"max",5));P2PParams::TGT_NUM_NONE_P2P_LINKS=int32_t(num(request,"maxNone",100));P2PParams::MIN_NUM_CONNECTIONS=int32_t(num(request,"min",2));P2PParams::LOOP_DELAY=int32_t(num(request,"loopDelay",600000));P2PParams::LOOP_DELAY_VARIABILITY=int32_t(num(request,"variability",30000));P2PParams::SAVE_DATA_DELAY=300000;P2PParams::NODE_NOT_ACCEPTING_CHECK_DELAY=600000;P2PParams::DEFAULT_NODE_LIST=std::make_shared<JavaList<SocketAddressPtr>>();
+    if(request.containsKey("defaults")){auto peers=list(request.get("defaults"));for(const auto& peer:*peers)P2PParams::DEFAULT_NODE_LIST->add(peer);}
+    P2PParams::LOG_LEVEL=P2PLogLevel::DEBUG;P2PPeersChecker::MAX_VERIFIED_PEERS=int32_t(num(request,"cap",250));P2PFunctions::clearInvalidPeers();P2PFunctionsFixture::cache(std::make_shared<JavaStringSet>());P2PFunctionsFixture::seed(num(request,"seed",5564));P2PManagerFixture::seed(uint64_t(num(request,"seed",5564)));
+    auto nio=NIOManagerFixture::create();NIOManager::runtimeLookup=[nio]{return nio;};NIOClient::runtimeLookup=[nio]{return nio->clientRuntime();};P2PFunctions::logger=[&](const auto& text){events.add("log:"+text);};SwapLinksFunctions::mainPresent=[]{return true;};
+    struct Reset{~Reset(){NIOManager::runtimeLookup={};NIOClient::runtimeLookup={};P2PFunctions::logger={};SwapLinksFunctions::mainPresent={};P2PFunctionsFixture::cache(nullptr);}}reset;
+    std::vector<std::shared_ptr<NIOClient>> clients;if(request.containsKey("clients"))for(const auto& raw:array(request.get("clients"))->elements()){auto row=object(raw);auto client=std::make_shared<NIOClient>(flag(*row,"incoming"),string(row->get("host")),int32_t(num(*row,"port",9001)),nullptr,std::make_shared<NativeNIOSelectionKey>([]{}));NIOClientFixture::uid(*client,row->get("uid").asString());client->setValidGreeting(flag(*row,"valid"));nio->add(client,flag(*row,"connected"));clients.push_back(client);}
+    auto db=std::make_shared<P2PDB>();if(request.containsKey("db"))*db->getAllData()=*object(request.get("db"));
+    bool dbFailure=false,saveFailure=false;P2PManagerServices services;services.releaseLocks=[]{};services.getTip=[]{return std::shared_ptr<TxPoWTreeNode>{};};services.getP2PDB=[&]{if(dbFailure)throw std::runtime_error("DB receiver failure");return db;};services.saveP2PDB=[&]{++saves;if(saveFailure)throw std::runtime_error("Save failure");};services.currentTimeMillis=[]{return int64_t(180001);};
+    auto manager=P2PManagerFixture::create(services);auto checker=std::static_pointer_cast<IdleChecker>(manager->getPeersChecker());checker->getNextMessage();auto state=manager->peerState();manager->first(flag(request,"first"));manager->INITIAL_PEERS_LIST_NUM=int32_t(num(request,"initial",0));manager->P2P_HEALTH_CHECK_TIMER=num(request,"healthDelay",600000);
+    state->setDoingDiscoveryConnection(flag(request,"discovery"));state->setNoConnect(flag(request,"stateNoConnect"));state->setStartupComplete(flag(request,"startup"));state->setHostSet(flag(request,"stateHostSet"));state->setAcceptingInLinks(!request.containsKey("stateAccept")||flag(request,"stateAccept"));if(request.containsKey("my"))state->setMyMinimaAddress(address(request.get("my")));if(request.containsKey("known")){auto peers=list(request.get("known"));for(const auto& peer:*peers)state->getKnownPeers()->add(peer);}
+    if(request.containsKey("maps")){auto maps=object(request.get("maps"));for(const char* name:{"in","out","none","not","all"})if(maps->containsKey(name)){auto links=map(maps->get(name));if(std::string(name)=="in")state->setInLinks(links);else if(std::string(name)=="out")state->setOutLinks(links);else if(std::string(name)=="none")state->setNoneP2PLinks(links);else if(std::string(name)=="not")state->setNotAcceptingConnP2PLinks(links);else state->setAllLinks(links);}}
+    for(const char* key:{"verified","unverified"})if(request.containsKey(key)){auto peers=list(request.get(key));for(const auto& peer:*peers)(std::string(key)=="verified"?checker->getVerifiedPeers():checker->getUnverifiedPeers())->add(peer);}
+    for(const auto& raw:array(request.get("ops"))->elements()){auto op=object(raw);auto kind=op->get("op").asString();JSONValue result="OK";try{
+        if(kind=="status")result=manager->getStatus(flag(*op,"full"));
+        else if(kind=="address")result=manager->getP2PAddress();
+        else if(kind=="clients"){auto value=manager->getClients();result=std::isnan(value)?JSONValue("NaN"):std::isinf(value)?JSONValue(value>0?"Infinity":"-Infinity"):JSONValue(double(value));}
+        else if(kind=="have")result=manager->haveAnyPeers();
+        else if(kind=="update")manager->updateP2PPeersList();
+        else if(kind=="shutdown")manager->shutdown();
+        else if(kind=="initial")manager->INITIAL_PEERS_LIST_NUM=int32_t(num(*op,"value"));
+        else if(kind=="failures"){dbFailure=flag(*op,"db");saveFailure=flag(*op,"save");}
+        else if(kind=="post"){for(int64_t i=0;i<num(*op,"count",1);++i)manager->PostMessage(std::make_shared<Message>(string(op->get("type"))));}
+        else if(kind=="copy"){auto peers=manager->getPeersCopy();result=snapshots(peers);peers->clear();}
+        else if(kind=="process"){
+            auto message=std::make_shared<Message>(string(op->get("type")));if(op->containsKey("uid"))message->addString("uid",string(op->get("uid")));if(op->containsKey("address"))message->addObject("address",MessageObject(address(op->get("address"))));
+            if(op->containsKey("client")){auto index=num(*op,"client",-1);auto client=index<0?std::shared_ptr<NIOClient>{}:clients.at(size_t(index));message->addObject("client",MessageObject(client));}
+            if(op->containsKey("message")){auto value=op->get("message");if(value.isNull())message->addObject("message",{});else if(std::holds_alternative<std::shared_ptr<JSONObject>>(value.value))message->addObject("message",MessageObject(object(value)));else message->addObject("message",MessageObject(int32_t(17)));}
+            manager->process(flag(*op,"nullMessage")?nullptr:message);
+        }else throw std::runtime_error("Unknown fixture operation");
+    }catch(const std::exception&){result="ERROR";}
+        auto nioMessages=nio->drain();for(const auto& msg:nioMessages.elements())posted.add(msg);while(auto message=checker->getNextMessage())checkerPosts.add(managerEvent(message));
+        auto peer=object(swapState(state));peer->put("all",peerMapSnapshot(state->getAllLinks()));peer->put("accept",state->isAcceptingInLinks());peer->put("noconnect",state->isNoConnect());peer->put("startup",state->isStartupComplete());peer->put("max",state->getMaxNumP2PConnections());peer->put("maxNone",state->getMaxNumNoneP2PConnections());peer->put("delay",state->getLoopDelay());
+        JSONObject row;row.put("result",result);row.put("state",*peer);row.put("events",events);row.put("posted",posted);row.put("checker",checkerPosts);row.put("pending",manager->queued());row.put("db",*db->getAllData());row.put("saves",saves);row.put("initial",manager->INITIAL_PEERS_LIST_NUM.load());row.put("running",manager->isRunning());row.put("checkerRunning",checker->isRunning());JSONArray timers;for(const auto& timer:manager->timers){auto event=object(managerEvent(timer));event->put("delay",NIOManagerFixture::timerDelay(*timer));timers.add(*event);}row.put("timers",timers);JSONArray queues,greetings;for(const auto& client:clients){queues.add(NIOClientFixture::packets(*client));greetings.add(client->hasReceivedP2PGreeting());}row.put("queues",queues);row.put("greetings",greetings);row.put("traffic",nio->getTrafficListener()->getBreakdown());row.put("read",nio->getTrafficListener()->getTotalRead());row.put("write",nio->getTrafficListener()->getTotalWrite());row.put("verified",snapshots(std::make_shared<std::vector<SocketAddressPtr>>(checker->getVerifiedPeers()->elements())));row.put("unverified",snapshots(std::make_shared<std::vector<SocketAddressPtr>>(checker->getUnverifiedPeers()->elements())));states.add(JSONValue::parseWithException(row.toJSONString()));
+    }return states;
+}
+int main(){std::string line;while(std::getline(std::cin,line))try{std::cout<<runManager(*object(JSONValue::parseWithException(line))).toJSONString()<<std::endl;}catch(const std::exception& error){std::cerr<<error.what()<<'\n';std::cout<<"\"ERROR\""<<std::endl;}}

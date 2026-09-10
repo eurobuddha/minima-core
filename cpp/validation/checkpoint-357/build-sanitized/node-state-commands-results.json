@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 363,
+  "total_programs": 363,
+  "operations": 1411,
+  "sql_calls": 21009,
+  "failures": [],
+  "scope": "Actual mempool, cointrack, magic, RAM map/flags, CoinDB, tree search/relevance, UserDB/JsonDB and TxPoWGenerator. Exact replies, preference/coin/MMR wire and SQL effects. Random tree-ID bindings shape-checked and assigned stable per-program labels; existing runtime diagnostic normalization. Recording SQL does not prove durable storage, full Main/node/network, arbitrary retained collection alias mutation or exhaustive concurrency/platform parity."
+}

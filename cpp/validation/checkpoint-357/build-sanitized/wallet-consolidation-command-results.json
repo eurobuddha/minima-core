@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 247,
+  "total_programs": 247,
+  "operations": 742,
+  "sql_calls": 23185,
+  "failures": [],
+  "scope": "Actual consolidate, coin search/order, Wallet and CommandRunner. Record forwarded send text/parameters and controlled replies through a scoped prototype; compare real send dry-run integration using existing proof/miner fixtures. Exact SQL, logs, response and stored bytes compared except existing shape-checked PRNG and runtime exception prose. No durable SQL or live node/network acceptance."
+}

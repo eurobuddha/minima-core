@@ -1,0 +1,992 @@
+[
+  {
+    "path": "cpp/src/org/minima/system/commands/Command.hpp",
+    "count": 1,
+    "before": "280170bfaba429d3e47958d481a214cd04df829fa19ec5c01a46994f87a649f2",
+    "after": "0d209862b4bc021954376d263cbffad282ab7ab5bd17de4c5b7396b76c5a8eeb"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/backup/rescue.cpp",
+    "count": 1,
+    "before": "77523f5b92c0d58907955e9b347f84c714d07ea974c40c7e29b663660468c985",
+    "after": "505d570a416aa1ae8d8e5eb74ca370214fa82c640555c3b38b896e734b32e894"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/backup/rescue.hpp",
+    "count": 1,
+    "before": "9ed37b54d0c8cbb657ef8943efc9f321ae2576dc1a956212ad3860f2e3f31103",
+    "after": "9fdc9a94f30e910adbfb98e4d216e9759f3d53c8264e18ef518d9dc682cea150"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/backup/vault.cpp",
+    "count": 1,
+    "before": "f898d6dad4215b1099a7fcd2505b41ce70c0298beffecd70268ab3d52d76394e",
+    "after": "f558df050f4a1dba84b595be74bfefc3c93bbfd0183b110210b7567ec9be2ab1"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/backup/vault.hpp",
+    "count": 1,
+    "before": "ca3de921d113d26cc7e0a6a1706beb50d49406b65c4aae0e7fb61bfff3d33b66",
+    "after": "bec87c4468ff155e4097eb102f5130ebae5d35b934610a52a4a47a4cab644d1e"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/automine.cpp",
+    "count": 1,
+    "before": "78d9610be1daff876f07d0723a0ece5c1ce0ca9ad6ed2b805ea0f8ce25eeaed1",
+    "after": "70e2618d7864ff219c11f3aa2fbd7d172da5d164ac7480fdeefda56b746774ce"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/automine.hpp",
+    "count": 1,
+    "before": "2d69ee2bac80800d888ee7671844838df9da5c95f660a4633baf7f8b28eab25e",
+    "after": "ba90da6d74ee8101cd5859af9e99bd3193a2d4d97f458dc4ac714d163df12593"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/balance.cpp",
+    "count": 1,
+    "before": "39432cda9fc245bb3d0f5ead7e3584082df7dedd5da3dc7959d9a0d878dc77d7",
+    "after": "337e6840a39fad511938f429eb9b37d6b403077d7932d56b20acc96605466d44"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/balance.hpp",
+    "count": 1,
+    "before": "cd63424a9786cb7aeda80709b3f222d54a38bae7c98a3874f45ebe17fcd62a63",
+    "after": "63682a510da1c6afb43ed87a0374ae61e9dc83363d3f97e28ee051e3771c37a5"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/block.cpp",
+    "count": 1,
+    "before": "cd2a16ff62cecdc00e052efedd2871d53d40c358369d309c0d610abf65da58fc",
+    "after": "18b55a7ee718b0dccc773701a22ad9166428da8fe8af6db475be808bda581fba"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/block.hpp",
+    "count": 1,
+    "before": "ed28fcacc9675ae26382d77dcfe33958b588459e4fe7c0b21a86df3c28004c8c",
+    "after": "86cf10d0602b1f7c1d09e4460498e9dbe688e10d10ad1281869387c8e414ad08"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/checkaddress.cpp",
+    "count": 1,
+    "before": "773364348937d2aca1fa3fe03e518e698960404e813d1f44d532892d5626e715",
+    "after": "010bc56188ab8dbed8645ddd0d884467ca2090b7b628076b7c2b6ccff35308f2"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/checkaddress.hpp",
+    "count": 1,
+    "before": "38c08f8ccf78b5bbedc78d874212c9c36b629968efe6e93647eebf7be22dd0ef",
+    "after": "24ed7609187826ab3779bcb73c0c43bc5cf69e1abbb5360e500c7ab5042787eb"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/coincheck.cpp",
+    "count": 1,
+    "before": "888de94539c52541c14b39df806d98b9b4c90642c9c5659db721a7310d0714cb",
+    "after": "2a478f78e4c89841d1b5c8fb22a7baa62b64d63177930fb80e2b489d05938341"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/coincheck.hpp",
+    "count": 1,
+    "before": "fdf7aa3677cb32be5c60ea91698a1c6966ac2ebd5477922976526ecad4639ec8",
+    "after": "db478f4240459df94d4a6200113c9821f5653d924ddad10549897ba5fb87953a"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/coinexport.cpp",
+    "count": 1,
+    "before": "86f1d692659503321e17582d454e065d72ac87d90d6966357f0b4848255fc82d",
+    "after": "5eefc759605f5f7e6406b036891883141e28ecd5c92eac038679a3918e4cc805"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/coinexport.hpp",
+    "count": 1,
+    "before": "3b72dd9f3b24e5c2d7a3cb482bd593fefa83e63adc380c0b6a2d93839a0817af",
+    "after": "eaa93767d9a8c99631b6b28fe9c5c640ed10b989ee9dd2527d7e74fd86ad70dd"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/coinnotify.cpp",
+    "count": 1,
+    "before": "2d880bd83c8022caa9e53f0f7b2a989627d3f734b1cff3432888533f605fc527",
+    "after": "4c604715506c2d6527bb6018d5d752347015f572c145f52e5afb0f7bd36416fa"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/coinnotify.hpp",
+    "count": 1,
+    "before": "59f7e09d5f86b965db77974a9341b7827a45082d6e9d72c0569036d479db3317",
+    "after": "4d14d04fa07a7c7b8666450f70071a022ffe29fedbd3006545d365620a632b4c"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/cointrack.cpp",
+    "count": 1,
+    "before": "c409fecce99300a7df749d513eab5586c52e62f9bbfeb81303f6cca5ef52e312",
+    "after": "77ae4845487cbe7cd3eaab5539c07a3c8b026247b0903c754da81bbe0ea63826"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/cointrack.hpp",
+    "count": 1,
+    "before": "e365d21a9e19676a06fe8746174981243014fa5403e61d5c72ee4f927695be51",
+    "after": "2e6a716743fcbc29b803bddaaf5f466c3c1088f8318af42ec435dcb817eceaa3"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/consolidate.cpp",
+    "count": 1,
+    "before": "83c4fd24d860871368eaf0e0a4441d82d86a58ee1b383444a2c161917207c274",
+    "after": "33ff6347891c4af5894a782038caa64415cfa17655d38ae6e920d8b34ecb7cb2"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/consolidate.hpp",
+    "count": 1,
+    "before": "c3953fe1f2314d67e8978a173674bcd269757682758c8e9f6ccc24b838e23803",
+    "after": "9828abbe1d3438fe1bb58467a070b347e1841ca083eb71fd46efa0d772f0f8bc"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/convert.cpp",
+    "count": 1,
+    "before": "f380c05fcfd2c0f7b12eda765f543a923cca6dd3a5b619b540b466b8ea82697e",
+    "after": "76acec87161201b5d5c98d790aab38bbfebfa9724a36f281189069b0274b1fda"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/convert.hpp",
+    "count": 1,
+    "before": "09cff797f5605fcfe9937e9ed916b6743d37a3fd89c2b93067a2629f2b629b72",
+    "after": "fb7d5e41421db95bff9b9de2efb69b445b3031b3738557ce6a305b9e2b381091"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/debugflag.cpp",
+    "count": 1,
+    "before": "456e4d069f605ba04355a91c137d4b92903d8cda7f80fde30c8f09bc641bc527",
+    "after": "6399e82f58ccb6e8024d8769d5a8f8c32b09593d673c9d3435c3cd3ce9bb0fc9"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/debugflag.hpp",
+    "count": 1,
+    "before": "7a61e5cf552fb350eb8f4b0940f295341a1e84361c9763ce3b6231b9b70029b7",
+    "after": "155c7cc6608ba0f7989b981f3049c6b224e3d6902fe16f11630a146728f7114f"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/getaddress.cpp",
+    "count": 1,
+    "before": "181577ab0a1f0798db05279e60fb3c6260c06dae64b062b940dcff0946348af8",
+    "after": "a7e81ba13942d6429345f5070c008dad2e6890f8e6888f14ca0e20da0309d90f"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/getaddress.hpp",
+    "count": 1,
+    "before": "69d905a1ffe28cbeeb6cd8f0b1363c0665f3b6d3a0b026c4dafb43f7e29fcec4",
+    "after": "d3a8849b3e25ae866c7e982bff8f9671c9c0a01ac7ad1ebe1a084d1f6e7b3884"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/hash.cpp",
+    "count": 1,
+    "before": "0e2e4472f42dec8b8805cc5788f0d0756c14fcfa55f7c256c2f1dd71d8eea4b1",
+    "after": "b9af0f52c00d5e9bf5257e49beda439d6457cdbf72dc1bc6a26ee7dd85673a8a"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/hash.hpp",
+    "count": 1,
+    "before": "5c7df46e53e6c0b1b40ea72c76c692b217dbd76a0b0a3962e26438e5b72ab53a",
+    "after": "f7b9bcfb1778bcb80995751c08c58e3da6ca3d8537ae40daa6d48c66d2e9d5e5"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/magic.cpp",
+    "count": 1,
+    "before": "61328cf1f802ed717d0216f7e998d6e3bbe19fbc3b3c6d5430a32b479372f5c4",
+    "after": "cf714a10e21ca66c713da7ce9f5f6e3ffedb3aa015069ed28b16f534ca52ac39"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/magic.hpp",
+    "count": 1,
+    "before": "616e38ba05257e977e978f80173e109fd968f377cedadd4360e2c9e1b38e1c0e",
+    "after": "b99dab2c4e0ad7cf9bc10b302d7c5efb3f023c977e30a81c50ccbafdca278892"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/maths.cpp",
+    "count": 1,
+    "before": "1b383686bb7734400a933577846c1ec207c7f4397bf3165396b5bba4968d755d",
+    "after": "40b494b9f744ff8062b538e5b585a776a4d0f183c9a7f1324085fda78c47d04d"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/maths.hpp",
+    "count": 1,
+    "before": "a7f8b8c19d86d414458182788283901a4368794d3562cdcec421c1c4610cbd21",
+    "after": "5ae47f9bb3a1e7a8fcfa617feda753c40c6a5d7e5107fc593193d4783ccae1b7"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/mempool.cpp",
+    "count": 1,
+    "before": "345402e7c89b755be826bd86c77ce7dcc63febf3affa67a5b415740f13703064",
+    "after": "3a12482894fdd6d1cda3d8026bc270ef1d488863b9a6d33c8bfc9c6bd63821b7"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/mempool.hpp",
+    "count": 1,
+    "before": "d840707d7cb30e96685ec5fff1d79f253a4d37b61fc42f6a743739af3b4fd30c",
+    "after": "91caa62f885523aad43bee811eacad3347e5f723b31a4743baf7f02d20d197fc"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/missingcmd.cpp",
+    "count": 1,
+    "before": "b005352377ad77ca623eaaaaa2725814d5dd1a392615c701160407da98a9cd15",
+    "after": "7fb3f0950ace0319eb0843fbde4d049671131745a431314101f1964fa52c4d89"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/missingcmd.hpp",
+    "count": 1,
+    "before": "89f05930b426ae4b7aeef1506a6d165e069373d49aff5bade4cd515ce763e0c3",
+    "after": "69b0433f791a3126c9c6d70b1d5fe4847b5dbbbf3c8c92d088f15798383daffb"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/mmrcreate.cpp",
+    "count": 1,
+    "before": "25b9d715ff384a6775175b57dedfb0e0c5caa4321563ce563c7bae8c7f2c120d",
+    "after": "10562124a4fe3eda0ab18cb03fd42adcca68ac3ddfb62bf01e24b14bc9ca5d06"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/mmrcreate.hpp",
+    "count": 1,
+    "before": "6522776899e5f68dc26a96cd9f2a737471c07d70910e5fbebaa1c207ab04c048",
+    "after": "2f4f8487d8f15ecf23648eddcdbc3f68e2d2ede21e8425eb57428413e804aa39"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/mmrproof.cpp",
+    "count": 1,
+    "before": "cf74b3b815e9b9522e6df14c80cff219fa6321454f7216c6878f1de5a022be80",
+    "after": "b18c95366535b3ecab4e0bde4411765bce3a5290cb0a908c8902b9bce69688c9"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/mmrproof.hpp",
+    "count": 1,
+    "before": "523952763aeb6056e1afb9a219da7132893a02014ecf86b85ad2fc91b3072f43",
+    "after": "0984e478b7d23c6e9583186f070d4ad65c8bee9635d939410da7768e34c08241"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/newaddress.cpp",
+    "count": 1,
+    "before": "d392dc74b8951953a884e3dfa4cf563360ac0e7dfc56dfee3de3f1dbc0d9b178",
+    "after": "8e1d5785e7b761019bba2ef691e2facfb872a5a4fc6015612227254364e77d5d"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/newaddress.hpp",
+    "count": 1,
+    "before": "393502cab11b3b8cdce2de549b992e79d7d09091c14812b4330833d9898e42c4",
+    "after": "f15c28d4ed61b25225e88126518de99c12077a55da1a45eb86d33c580b5fc318"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/printmmr.cpp",
+    "count": 1,
+    "before": "4056d6a87e48af74982fca0fc2b695fb65f15d33b0183e31612d556cd3a842ca",
+    "after": "bec58251d7addc04ca84e29d990e774195467f7c6ace451782f599c0cf422c3b"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/printmmr.hpp",
+    "count": 1,
+    "before": "16d0140646b8de14ca8e69d53e358e35cbe0459f5d3daf1f9750663fccc1cfc4",
+    "after": "747d541460ffddc1e681d99023852300933047f0a6bc066a7304c120ef77887f"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/printtree.cpp",
+    "count": 1,
+    "before": "dfb05dfcfa2a43ef9ce4ad76a60a1d70bb0f2756650356e3dcf03975e135de85",
+    "after": "cce775ea3326e961bb0aabac2541526bd1e6c45ff4647537941af1b9cb473ec3"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/printtree.hpp",
+    "count": 1,
+    "before": "d0538606a1bb49f58f40579d2cb134b93eee0e88666d9ca01af27f8ac0b1955c",
+    "after": "c215b5465c67e8515ae744159ca77db1486dad17a9d47b68f647c41193a183ab"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/quit.cpp",
+    "count": 1,
+    "before": "bd11a03c514668ec16e081f8cca266dfce490dac8339050783a95f4a7281df58",
+    "after": "4289f663cda98133ea5d6f7847ed2fd8503c819dad30772e5eebdc1b3c1af447"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/quit.hpp",
+    "count": 1,
+    "before": "3e4141f8eb57b57704f9ba01dc4da445ca3b8bc10d96289eee8515b30bcb7c44",
+    "after": "4c2e164608d7c6e36a470a1538b95d0769b16fda025ac1618e9ea7b38a41b1a3"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/random.cpp",
+    "count": 1,
+    "before": "7d57fede35ea774a4649e25d6703651f55b8d46ed94652cf03d71f5c49bcac4b",
+    "after": "627c167533b96180516a47a1f96c200b6bdf08bc036cbcf88ea594bede6792c5"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/random.hpp",
+    "count": 1,
+    "before": "5a25750d06d2a0aea69a1a7a1443e16c33edc61d58ec78a820c83d54f977113f",
+    "after": "1db47df3abeeb43f216ec4412269655e883c8cd6c0061602c7af3e6c8ea71d96"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/seedrandom.cpp",
+    "count": 1,
+    "before": "5c155de8c44072f50ffbebc2d6eac286e580173f97cec0c95ecec22d384d059c",
+    "after": "a61921ccd45f06960d3ee13ccbe235717d3e2582a25197e10097209cc57a1635"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/seedrandom.hpp",
+    "count": 1,
+    "before": "54f932c5689a94f4afdf9ee25d3e19c4f772dd9c2900770a1c35cd27aa7a1a58",
+    "after": "a7094450b0a0bbcd8245d7a52319c872504452df02c5e739d3d07486edfd9258"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/slavenode.cpp",
+    "count": 1,
+    "before": "8e8f133b935d231f3108b8a7581ef174bf5755f9d0fc77553b18ef98e7d42ab9",
+    "after": "d9aaa2aaaae59743c0e85e8326722f3fc7ae87a2db4e986d3b09c8c3d394c2f5"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/base/slavenode.hpp",
+    "count": 1,
+    "before": "c1b1842f4deb93c83be4ae1981238bcfd1fd2a4b3cf3b915700bde57f456ce59",
+    "after": "a231c2c245769d31d3f936d3d0cb58ff01dba9aa15d5b6cd209a7b9d2ed6e232"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/connect.cpp",
+    "count": 1,
+    "before": "3b46a509e1ef20202e25d1d33ef2660c75e378e451caaef1d1651ce4fc8bdf77",
+    "after": "1a25a0962b97aa9b34975bfd7c8b793377eebf2d487b89d58121991b9f7d6ad2"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/connect.hpp",
+    "count": 1,
+    "before": "14efcb1b8bbe07a104e811b005494b47d28a015271e7b340c1fb1837b653302e",
+    "after": "dc6c7bae88a293c6ebf4695294ca2b703edcea024b8bd77b6f4c7a2a3d932e83"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/disconnect.cpp",
+    "count": 1,
+    "before": "9cf65b7a446bea6f4c5abfa171add7a3d7d24b81507b0556a6894e50524caa66",
+    "after": "eeb0a43bd017107001f99105ca5ecf80304e2c5fe33246d340ee82f171480d85"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/disconnect.hpp",
+    "count": 1,
+    "before": "f7ba81432aeb4450e6f9ec217363f267ed9e481740f57d3255d9364fc3f1e3de",
+    "after": "47e384e878d2666113c72da97d510b4290927e061fb88503ed627e04150f1c75"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/message.cpp",
+    "count": 1,
+    "before": "c4609b2ffd54cd5711839c0262bbccaf29d2cc95eb93235c53b4b9e5f9d65a28",
+    "after": "31330fe316c708f78cd7cb012849b69cdb1472d9b06ce05974acf7743cd77900"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/message.hpp",
+    "count": 1,
+    "before": "da78825ab062ea7e78593a5f05671b03174639be23aa5d7ee58d7f06666e38c4",
+    "after": "28d83d870a8f4d8b8616b0bdcf8568af3b58d04c183c887a0dd307151632ea67"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/p2pstate.cpp",
+    "count": 1,
+    "before": "25ecea546271a682d26799e8f58431c09d7e9cfc8ced788b6bdfd25534f074bd",
+    "after": "a07ac0cc49dc8c87d3dddbac7bb988c3e1015621ebe7633af05f546893bd2ba6"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/p2pstate.hpp",
+    "count": 1,
+    "before": "e04a1b477e53af20da82cccda3fc7225dc39235732c9e011f68f46d443c6ae94",
+    "after": "b4999d2c2fdf9e6ee1f0d0ee059abf1fb0279fadd039e8ea5c31537b384609db"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/webhooks.cpp",
+    "count": 1,
+    "before": "ce6fefb2ce696e0203191db934ef9c2e4f12bbc1afda73cb8c9d5ef20abe1f13",
+    "after": "7814d32087e6847c9bb094b9b860abbbf7da5f85c53b6c62e289581af61bdaf6"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/network/webhooks.hpp",
+    "count": 1,
+    "before": "fc29a5bc126e0e8fb8ad0287e1215f6847d0552f537d1c6124d873f66d3d6928",
+    "after": "db1b799bf134ea9d89ad2de48a2e9b68f4cb233e07f5a3a74782c5f8a2296900"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/scripts/newscript.cpp",
+    "count": 1,
+    "before": "be55890ebd448b87b35d46b8f991acfd649916a41e13f5616d763ece2203eec7",
+    "after": "58498b849b3717604e90e93d96d4cfd0a6919f6ed414f88bb5b7b3451f6bc8c5"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/scripts/newscript.hpp",
+    "count": 1,
+    "before": "0642da8a9a7a02ba332840595e6f69783e7ceeaefadce31b65ba07b02668eac6",
+    "after": "f377e647296d2c07116e392423ab1af8fa0878c84185a0aed952c1809a81fd40"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/scripts/removescript.cpp",
+    "count": 1,
+    "before": "88952b891bc9622d7d80069589d6760d4a12f47d10a897325d5fb36680107582",
+    "after": "ca26404556031f23f8aa951fae5556203502fc6b5fc3817a05ee14e1c08df3fb"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/scripts/removescript.hpp",
+    "count": 1,
+    "before": "34d781713e889894e87174b387bdd617add2bcd6286cc6208e41b47c0ce17c70",
+    "after": "787b9e5f8ef1218759f1c6c6eae65376a5b170669dba86f4ddfd0c46d78d00ef"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/scripts/runscript.cpp",
+    "count": 1,
+    "before": "964c12792a7f186bc2daf679d9c96224ced032deca2912839877122e047d39c5",
+    "after": "752cf989a2ded57c2ca758b13dfc5ea014782ad06b339c44247b541fa8e243d2"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/scripts/runscript.hpp",
+    "count": 1,
+    "before": "d806ba784a04dc7fb3b66c05a87a592bdac0000cea5fa732907f72930cf62543",
+    "after": "b598e815917709df52de5fce7e0d3837493fba4f7444554f6c2598ece4587ccb"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/scripts/scripts.cpp",
+    "count": 1,
+    "before": "0d16c5fb4f842c03e66cbb8c2a65fbfd5fa5e97160d129d9c205150311ff5be8",
+    "after": "a2397d868fe4a94b59b8d60102f60ef65bf9baf1a1ed450a3f11a5df4785a7f7"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/scripts/scripts.hpp",
+    "count": 1,
+    "before": "57bc321fef562aa0df89cda2b1065ad91134254bd284eb8ba8ea27a3d0956cc9",
+    "after": "6d9e0b32b8d85861cdaef545861abd677f7ce9b5c4bde8cd25536b5352120148"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/coins.cpp",
+    "count": 1,
+    "before": "3664b4232aeb57f838cc58d6236caf75ef9f881bab59253963485f93a9176e2a",
+    "after": "56a00d8bace36d1e7ff3ef9463e1a3d89b1029057bcbe353a4f7c63e0f671edb"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/coins.hpp",
+    "count": 1,
+    "before": "9a48ff822c6410b3d5c7a8ccb91f01b7b501d9bdb17e8776ea9b0e6d1a5f62d4",
+    "after": "5668d423c30a86013a3b34bb54e7698383701301d4cc8c1a99061171c120d691"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/history.cpp",
+    "count": 1,
+    "before": "cabf3b8fd0e6101920dd591c0c08985c7ba9af5e2c14866b2a2c32b17338b5ab",
+    "after": "bf2762290dfe3d6c66bd845cbad44f23170ced9d108f947120d77a695b08c301"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/history.hpp",
+    "count": 1,
+    "before": "387647de9e164445e2bcea364991e82475fc56d1c174bdee99df139dd7013b15",
+    "after": "f296e28cf75ff8d99b3e5a40482ef25de76d8a518be8b588d0d4c30eaefa87e2"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/keys.cpp",
+    "count": 1,
+    "before": "a8e3c0b22a656d39da3c0dd912b8169f1013ca22b1c184d4b7686c2937807c17",
+    "after": "6927fe7dcadf65af4166bef9139fece02f6c8c15e593982611e253418c30f7d6"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/keys.hpp",
+    "count": 1,
+    "before": "f9e76c3e1d50a72929836bf2a9f3372476d1a64d3d62620f20c0beb02d675649",
+    "after": "24ddf3b6c90129552e68a187c3d66699e26ed616cdf2318ae388fdca503d67fd"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/tokens.cpp",
+    "count": 1,
+    "before": "28264acb77034b2ca921003948ac3894971111f3666f67ef92a6541a77bf8c7e",
+    "after": "f85940f8db8cb75337668592002c81d291183386a47e03b92c8d1eee2706bb28"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/tokens.hpp",
+    "count": 1,
+    "before": "8b4652b0bdac7f53eb0398ca8e0bea5dd6bfa9f7cbcdaae06d65a821d07c1c68",
+    "after": "91bfe094cf2b33de2368205a94652dc903521f89905e38946a02caffd7ccdf4b"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/txpow.cpp",
+    "count": 1,
+    "before": "b464150e4e90c9a875cba9e81fe6fb1325496d0c50cf4147e43606b6c3a0979f",
+    "after": "b73fd4e9ae3839ad0b58ce1ba81836f9200695235bddc8cf9137e27dd70e7e40"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/search/txpow.hpp",
+    "count": 1,
+    "before": "802f195678b5c55ece0ffd292f353186c58ab64b884f6fc1ff5e7c27cc4f91cf",
+    "after": "48f4887783f93423a94f3218bcb13038e6172e1215e1d2398714802444dcca45"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/send.cpp",
+    "count": 1,
+    "before": "d067403bcf02473aae10cd5a97c1ac0bb290b9dcf18c19e7a845fb216fb46a6b",
+    "after": "8db2ce8186f02b7bd29d2445628327d0f0ad2e899e42bce661de30af613ed548"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/send.hpp",
+    "count": 1,
+    "before": "2f98a4af46cd4c67d530ec9ab8d20da3dd113978009ad2328f2bf66866aad88f",
+    "after": "e907906bec44c56ac0472c687315a1517707b448b8c573109bc28c616b9d10e3"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendnosign.cpp",
+    "count": 1,
+    "before": "5e19bf936c41536176a54a9457f525acc3b9c5167026cc44f9a4bbf4728d2c6b",
+    "after": "a655d592366dd6f3c6c4862a28c1a509829dda5b2f0035c0bafa31c4381c6004"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendnosign.hpp",
+    "count": 1,
+    "before": "5cdfa5b255170782ef18fa1db2a9295dd925ce3a54c739b78ca25653483d8be5",
+    "after": "8ae9aecc101a30637cc004b74befc570ae5be97675f169e8733ba8e93e862d9e"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendpoll.cpp",
+    "count": 1,
+    "before": "825affa8a3136271f02949b7376e5d67d5c8e8e8c72a405743ba6202fa45a018",
+    "after": "f16d100b66dee72866badb6c4f58dfa5b396bedb2f7f80ba89f8f13bf68dc625"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendpoll.hpp",
+    "count": 1,
+    "before": "c6afc915a25d86d2fe3a8258bc94f3799990a778b8f73f26737ee95b8f3c445a",
+    "after": "b99b54a3f1a56f66974cfc0f24b15b0e59f0cbd8ca332ae717281a30eabd0737"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendpost.cpp",
+    "count": 1,
+    "before": "059b790dd0cc7abe7586f2659721685be9c40a6402c96fb512e89e4ff527249c",
+    "after": "015303ea2bd5262a6d1c48d45ef9ff74ec6704d831f9ebe69a5409a1635d5969"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendpost.hpp",
+    "count": 1,
+    "before": "7c7fdd9130946aadb3a8b99a16e1b5d5d6d923b9bb71e79e3b79df3c9903b136",
+    "after": "bb59e5a3410a4f95bc1da53de8fadea066f683ea3052a4c20b59bbbfb5cd58a7"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendsign.cpp",
+    "count": 1,
+    "before": "8ac8852774b36ff0ceb7432a8b6b7cf82302ae4ee3156596be3f1659b6f485cc",
+    "after": "8369c69d0f0a7840fb7254a37eb737fbd92b4e86f6d26a8803a5afef126ba013"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendsign.hpp",
+    "count": 1,
+    "before": "95486233d2178739690a1520be327495fef2b921fae92b1bb76a2a6bd170b432",
+    "after": "2859979d872617b41f3f0a8dc160ad348ef2d33e27d906ffde64aa705051ddca"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendview.cpp",
+    "count": 1,
+    "before": "04b6c0c6977e0bdc2588060c5c6d3429e1c46048e0bf8f2dcea2f0da4fb59e33",
+    "after": "eee176af9850ebfb08979d52129da28a1cf346374d14983880481c644b2f4293"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/sendview.hpp",
+    "count": 1,
+    "before": "d3322823c931042c67157898effc28cbe93a37c6938b5b420fbb8460f6048e61",
+    "after": "9b4e66de99d3f54bfd9b99b5e6249ec21c4ff275c0d07545a94df3330e4dca37"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/consolidatefrom.cpp",
+    "count": 1,
+    "before": "f304ec3f27a3835ae9eac1dae53ac7a4f3281fc3807ac379abb469d1bdbfc4ba",
+    "after": "34a0e752211b84a0134d1b6c9ea3f658691e81edb2b5d13845772bc354287dcb"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/consolidatefrom.hpp",
+    "count": 1,
+    "before": "6e3a880a80cf0979a5526799215a331bfb89e7b4341b067d7c8de959fc8fdf2e",
+    "after": "2b3caef967d3e39f15206741cd2bc53f2b1bd411703965614ec898312ecf5868"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/constructfrom.cpp",
+    "count": 1,
+    "before": "ea91bfe20d2fe58a4db36bc69dbf0131d7d50be42eb88af9246a0ac6fd41f0bf",
+    "after": "e4b95be2f7cb579ed743c770f8348aaeda83c351c69c4c8f4639614b5ff9d13c"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/constructfrom.hpp",
+    "count": 1,
+    "before": "598cafc9d6625ac694d4bca67adcf9594badf8354818c864834981a174a6c265",
+    "after": "f9b1be7ba426ca506eb13156c534e38507ad09b26557f2dd8adeb482e034e4bb"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/createfrom.cpp",
+    "count": 1,
+    "before": "1c157d6be217d476db7ea53f43b261d6944702e9b140cfbc16887ae84eeaf177",
+    "after": "7cb7ac6946eed67e7d6780e6113ef6f606a72835e01e28a2e309d742e652225b"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/createfrom.hpp",
+    "count": 1,
+    "before": "720f2c1553e32acdff85d04e3584ecc11f96925c81a119945ae6ed98aac9879c",
+    "after": "6bc6d3612ae123fc9709af69a25a07c50d6c29115a141337d373027e7f014032"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/createtokenfrom.cpp",
+    "count": 1,
+    "before": "f884b504d2552fce361ee1154ee5252576dfe25218fcfbf0cb34504a4030f85f",
+    "after": "0a95847875dbf84c22cc32c6e3dde5a420d5b448df7ac4b966b07f855670708a"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/createtokenfrom.hpp",
+    "count": 1,
+    "before": "5f233983a4fe60ff081babd0ffbc169eef533a41a3759f6dde938e07f48c5a48",
+    "after": "fd80dc58990d32c10981b06d5ca53230f88f01f1697638dbcd7d944154011703"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/postfrom.cpp",
+    "count": 1,
+    "before": "4795ebd8a65f64c63e49d1cfae4b6db719f9d84b866fe1afdf331787c2f4da60",
+    "after": "27160cbbc04a25e19cf9a1fdcb93cbd3e519b4d6c30e4013145da64564213484"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/postfrom.hpp",
+    "count": 1,
+    "before": "a3c4226fc42503176fa56e83f93e6f7b711d62100544df7a3563026e29024693",
+    "after": "09a9ad33862861e37941c785839257db8ed15da815f4bf696f84a6059eaf0ca9"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/rawfrom.cpp",
+    "count": 1,
+    "before": "dcbcb5c78a3239eb02c2e0a152ba877113f284a04395558b94d547ed68aa8f2e",
+    "after": "1b546f97b794a67660386b8edd50d3d09c6e736c43f3cae49151a96cc97a3904"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/rawfrom.hpp",
+    "count": 1,
+    "before": "ef72f69ce4fbe5ef6ddddaa283f0f4b8f4932d0d725db853d168aa79013cdf51",
+    "after": "45a7629a94b41a6eb466e835b19e88f702b11fff81bf5e942b203750e39f0264"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/rawtxnfrom.cpp",
+    "count": 1,
+    "before": "675c8a01a950c2b80392b2dcad0fc5e30a7007c77459727e5099ee8934ee6209",
+    "after": "0db2f697664ca4233119e0fed5d414e81964eef0cabb7832c56b135ae5b42699"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/rawtxnfrom.hpp",
+    "count": 1,
+    "before": "6dbb4b98d43d82ffcfef8179c141876fd4139daff89481a4281b130381495a76",
+    "after": "5d3354872ecb3c60fb674e037d5df24c8a44cbca5f51f657474d3de3d7e328b8"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/sendfrom.cpp",
+    "count": 1,
+    "before": "d1c5808333bcec988669c9e7638ab96eaede9cd9be6206855242eec57684cd01",
+    "after": "e66e34c31689015676512371318bc0888e5b6b251412f864e775d065eb41a9f9"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/sendfrom.hpp",
+    "count": 1,
+    "before": "ff2bdfa653e4760ba4d8eb15c6b1a26a9d08c8c67b040847b64efa498a4c6585",
+    "after": "ced8c0d05c6e838c20a14eeb456570815849b3b049be5977e9b899438be59d16"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/signfrom.cpp",
+    "count": 1,
+    "before": "5d79c7f473447c6a5ca83b6b7c2de92eddb3ba7c3cacb840b982b1466c7d6830",
+    "after": "200ed4399eb755f903deb79cc5f7584db14f08f5e70ec4d1a56de359e0a50f39"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/send/wallet/signfrom.hpp",
+    "count": 1,
+    "before": "52e282e6bcdbf7dd2ee763ebf41fd82fbc60cabd91e9cac905c9cee06a3ca0d9",
+    "after": "5476ccd665040463735b47bb6d63568bd32c3f73e3dca2102e266ba0350fd217"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/signatures/sign.cpp",
+    "count": 1,
+    "before": "f2a3a809a61e7a299550c4ec38a6cd01d482feae676e2eb04be789554557597a",
+    "after": "093efa962e96475ec5233968ce71ae83602a4e021b520298e313b899b430c625"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/signatures/sign.hpp",
+    "count": 1,
+    "before": "32c5ab3bf18e5e004a9fd7c8192c0ef7c8e5d1591a2bfe5a25a74d413180c06b",
+    "after": "7ab053eabcc00ed45ab773177067ccc81298586db33bb9898ec486e1fbfb048e"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/signatures/verify.cpp",
+    "count": 1,
+    "before": "36432957ce029cb0fbc58edd7e92f75374d02185aa6bddc05260698879e1b4b6",
+    "after": "847672407ebb3b0a89c2e820050bc2824dd88fffed3f6d4d245afc5bc84ea126"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/signatures/verify.hpp",
+    "count": 1,
+    "before": "c289b62e5a68ffe0afaaef0c9e24cd12f09af3ffd806eb07aa87dccc5a61bc19",
+    "after": "82934a21ab47bd015ac7b4f717525caed95a035fd35d319eb023396612943668"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnaddamount.cpp",
+    "count": 1,
+    "before": "764a3cdec9f99685b0f5170354a85d75d08748b46c26487d12c8182aa6cded68",
+    "after": "08bf7298886558ac648d85d2a332cf8c1433c0cd66687106b1f2b5fd74beec0b"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnaddamount.hpp",
+    "count": 1,
+    "before": "62cd92bfb6e2e2ad9b1fc924ea5b4479605088ccc6b398993d14c35cb67b6946",
+    "after": "137748b5389952be7cf6bcf7e98fc79935f201b6450cc65459a6c1eeb03e8109"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnbasics.cpp",
+    "count": 1,
+    "before": "4560e21010f32af01eed9112eb5ec567e28a4a7250978e5a4fbb3a2f827aa7c4",
+    "after": "173f80868e7069bd7afb9ffadee9a7f38845992f0a745e496abdd51b98c7860d"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnbasics.hpp",
+    "count": 1,
+    "before": "192fe10fdb109f1ba19d25ada242f8dfe906d16552ce96199b1ae173548e349c",
+    "after": "c9505fea5bb8d8fc311dd11f26f518dcec7954c98ccb25dd8ad35e0f78d9066d"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txncheck.cpp",
+    "count": 1,
+    "before": "b9edf5b128f2a831426c291b32c87ba830b8706ceaa8466f289c8c0e39d226d7",
+    "after": "84340458dda49ed8177f71b2aa3b66a66d9213633ed16128c09051ffbd33d429"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txncheck.hpp",
+    "count": 1,
+    "before": "9f3532a10804434002a7d69cfe974670fb847f12e6abf221a6191578c32dad84",
+    "after": "81e44982aa5783f1a0e219d4007c0d895e51fab041231e0245332e3571ee453b"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnclear.cpp",
+    "count": 1,
+    "before": "74b9fcd42936d2d987ed3f8816ec1ca93b991325975c90ff525f12bfcd787836",
+    "after": "f38bf98523e12ad0f12f69314a65d7246d877e9a4bb0ef7bf54c942e3d50d50c"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnclear.hpp",
+    "count": 1,
+    "before": "bc45081b47990569731d78a7762c8f18e826fa3f324500e3d932e651ccd7943d",
+    "after": "72b2455f081cab782fe059c4ed8afffa5d40cd101ee91415ed86268d1fe18bd9"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txncoinlock.cpp",
+    "count": 1,
+    "before": "ba5901f7d61b6502a88080dcedbaa9cb99162970f5cfcd0163f6b3c91650624a",
+    "after": "a91daf2e741ad04fb1d3570e4c54564b90450a2d5e5c6851a5f93e6953824f84"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txncoinlock.hpp",
+    "count": 1,
+    "before": "0fc5c45d7d180bd622f7ef86e37eab5273e66f32f93d0f9cf3186a9296083339",
+    "after": "f777fe6a658beee25afdd0509c7ad0201e04d9e7e5b45b9ba1b556276f0c295e"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txncreate.cpp",
+    "count": 1,
+    "before": "49372024412dfa97c457ce6d877681c4a7fc42aeada21aec4dafd84773eeb312",
+    "after": "ee28811badc78a2e7040dad141a93f7403929c1687ca6b6b54728e69af0384b2"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txncreate.hpp",
+    "count": 1,
+    "before": "2e491f046012f96086905de066ff436a7efb5b415ffd7f55b75aa93a599bd96f",
+    "after": "640654717ab0b43bb0432721a4ea5a52ca52e2c26286c3388e3f9e857d74303a"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txndelete.cpp",
+    "count": 1,
+    "before": "ab435822f2bcf963b4b450214d09a59c1cb276b37e4c11e4561a20230e66787c",
+    "after": "10a88862e12bac88ca0658add695b2925183a80cbd73fb4476b98129e7025fe6"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txndelete.hpp",
+    "count": 1,
+    "before": "46b99e8751c916a7c00e35b35bf3dae04802fccb91c0550761614067c1503559",
+    "after": "5fe1a3d6439fad1af71ff7dc1c973693043f56c3f374c35b0eefbf24aa875e21"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnexport.cpp",
+    "count": 1,
+    "before": "9860e60611e1230b30482171f83582a89a130022eaf087293ba956f6ed696f76",
+    "after": "e9391ca92e543b140e52a3dd816198e2fd36258a9e38228f2c9964418bb1a9dd"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnexport.hpp",
+    "count": 1,
+    "before": "0cfb9358864f0419b74dabfddeb7a8db3b2f6993f8d84063b878310d6b5bdc23",
+    "after": "c41fd319938524cd66cdebfa875fc409919e05d8e6d31fcc00ab4b353433ca0f"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnimport.cpp",
+    "count": 1,
+    "before": "a55f94730a0133dd5122d1728067b10add4577322907634a2500279ca1da615c",
+    "after": "5d689a704b4f32f2f8059685f0e326985492267e4be683de8a6ea17015260a89"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnimport.hpp",
+    "count": 1,
+    "before": "d6c5858e9c421b9cd87f36cb75bd96b2c7a2e436e1cdc0dcb78240a18a88fae1",
+    "after": "4d836990dc9d8d27137ccb085471e4b81aaf626c6a546d51910d513cc118704d"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txninput.cpp",
+    "count": 1,
+    "before": "7531c32b9a29590fdd28fcd3b1179d5fabe8cd747fcace03ea44df87ee745481",
+    "after": "1af5f3b9818d2f1e7f07a46590a453123b4d0d0a0afc9e4ced45344023e9f755"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txninput.hpp",
+    "count": 1,
+    "before": "bbbd8a11672f969a3d45464fd54ab7b80f0b076a5c8a0e863b5f0b9b34a91ea9",
+    "after": "8454ba5bf46b46a2423b1495c2e112b8590109edfa4ec63f6e588cebd38758a0"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnlist.cpp",
+    "count": 1,
+    "before": "67a439f66d1050dbb21d6802f0ae102ee0cee1b0841a93a0e23f8afe6cdbfba7",
+    "after": "a4dc244a88187b7e4d0589fb639be5e66fd487282132e01cd639561f2a5187b9"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnlist.hpp",
+    "count": 1,
+    "before": "13364f140a616a8f55c190e1c357d64b8fbcbb0203b739abec3fd29811a71c75",
+    "after": "9214b6fcdc04043f701892982630b89cc5b27c2e1c254261d40b68154db80dd1"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnlock.cpp",
+    "count": 1,
+    "before": "96d8073baf2e69c846673fb0954d2afbc77df199a16c7b3b4815b71ff5b5a04a",
+    "after": "1ec001df32578965387827041bacf1d39896a01c30113c4a0fee41ca72a87aab"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnlock.hpp",
+    "count": 1,
+    "before": "e1d0fb0e67f93454077562693ef5f466a7d360f320540386da679a7a193c1511",
+    "after": "387b307bef0fa39872c123d455d19a0e86ecdbdcac8c202b64c03cba7305ec8f"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnmine.cpp",
+    "count": 1,
+    "before": "b57cda2bca09e9bbee63b3750d4314df732b0518b58110e751c8394e437250bf",
+    "after": "3b6826bd3ffde4855a4ae323116151b0494137c8cc354aa1bbd5437e40ddc958"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnmine.hpp",
+    "count": 1,
+    "before": "116dd386d59b8bd5a112b31c08a59225a8e1f258e39c644101a08c2cda860d61",
+    "after": "95b031ec0bc2402de39713ae9c0c3b50a504b89866f55a38848c10f06d72cd9a"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnminepost.cpp",
+    "count": 1,
+    "before": "5db313fe7be71d2f4286b6c8dee92e0ba193efd90234b4454eef60039c482238",
+    "after": "05bb8a2f1d57d3dd94032fa51cad50e96b811c9e6cce7d32606e6c41e097cd24"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnminepost.hpp",
+    "count": 1,
+    "before": "704335b6c2b9c05e72ac50f853c00c082f5913e528cb8879488939b650495e52",
+    "after": "65e09672030d65df6da59026682518a5f47e1d231343842ae88f537ab12ae647"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnmmr.cpp",
+    "count": 1,
+    "before": "3054a44cad3354ceba082401e4f5fbf7d47dcabf3f5c5869d811fe78cb65b2ed",
+    "after": "81b09600767145ff6537905a269cb5db89647602eb083d9ef623e07f58f55fe7"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnmmr.hpp",
+    "count": 1,
+    "before": "fdde54c61c796e9e71e795d03ec82be99e97c0f12f3d7607d86740de32b9a7fb",
+    "after": "6c18c35884ea40e16638d11908ff916a40f1d4d1277ddc04e9d0157d1cfb70c8"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnoutput.cpp",
+    "count": 1,
+    "before": "f62a8bd3d3cc82e84437955e88381d795b02c350b256b6efe0e0bea81afe2d7a",
+    "after": "6c1004842334f70233c15de9572a20371ad6e63c5bc8fa27a59c8c2cf708f362"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnoutput.hpp",
+    "count": 1,
+    "before": "d0391eb539803873a9cb2ad90c4ba74ee9ab24c9e5eca58e2061fa98af9145bc",
+    "after": "29b78722234f39f68b1eb28918f12ee58686340bf4d6f1d6518c3a4dfc5733fd"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnpost.cpp",
+    "count": 1,
+    "before": "b64578b8753ab358aae90d97d75afc58675292ef4b4baf1455bab2f59f7385b2",
+    "after": "b952032f0dc644b8a9ff985e6c1c0fc737738e99f032ef09777462ef15886d92"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnpost.hpp",
+    "count": 1,
+    "before": "4544c935136e2fef1245d8e6a8b194c12513198f82e923f076951d6107a881d4",
+    "after": "fb9789d9dbd73ae7365b7b91561a5d7c58f00521c03aac8ee6c362b7348b46a9"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnscript.cpp",
+    "count": 1,
+    "before": "9f9b418d111bf36ec037ca5d01ee3aefb679557c339f843332ea5d3ede55f26d",
+    "after": "a72ccd7a74e41b15ac9169134ab9e7c51700c2a2ea092977d8b7bdfbf8de1e74"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnscript.hpp",
+    "count": 1,
+    "before": "043a94db23db43b6b89ea3c0dec6e5776b4557b30095b3d81bc321d578ab2f3a",
+    "after": "ffc9615bdaa100fd3bd0249644aa4210bc9b645f59a57ecf7040f55c1a4afaef"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnsign.cpp",
+    "count": 1,
+    "before": "c373d380c5bed1992e0dd942b1c1455fe22d14b3ee838f4cc25a7686b50419e5",
+    "after": "5fa031593dfd57e7763d970daadae25d41c954d0ea3fcf14f1b0a18377c35627"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnsign.hpp",
+    "count": 1,
+    "before": "b71c99ff721f915e9efc442a17e8d1c9664220cd5adde6c4cea8640f197adcc3",
+    "after": "656f3b0ba8d62d700eb184bf58c1f773bef1d6b087f27a7082b8da357d1cbc25"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnstate.cpp",
+    "count": 1,
+    "before": "d3b0b1d7c98e84d0864b7b5c06ed0821db3c297fb2ad18ee902f238286e05784",
+    "after": "674e1af71923cfe3f6a9454de899c29e97f7bd578a2da5cf530976594b2efd6e"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnstate.hpp",
+    "count": 1,
+    "before": "be4d0e2f0d618d3367f6a844680a186d7e991c4b1d9c7856da4f6833736341c5",
+    "after": "803caa3709611c02ee44d48b60e07de97636213ecd84d984a3d7ae7b005d1b73"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnview.cpp",
+    "count": 1,
+    "before": "4412af1993d94acf4c557258a16ce9f874fbe48b082f2e97fb0f61f21dd90801",
+    "after": "31184b2a4c0b2ed5dea5a10da3e7a8f9a830305f256bec3b40e0beb3ea8c867a"
+  },
+  {
+    "path": "cpp/src/org/minima/system/commands/txn/txnview.hpp",
+    "count": 1,
+    "before": "3d9bcfa20e31699cc1a56a82183f5e33ceef3d685f6afbf425a7156741c63615",
+    "after": "1f0cfffa4f24094c348821d94caa02d37ebb9de7d90062892b775ccd429b4093"
+  },
+  {
+    "path": "cpp/support/command.cpp",
+    "count": 1,
+    "before": "15e9035064ae180c1fe00680a701fe3e4345c74bf0b522128743a2ebb69139a8",
+    "after": "8e4d60c00beac0c2c6b28bb4292c8c5673d067484dd2d905ab184d83dd1c0467"
+  },
+  {
+    "path": "cpp/support/command_runner.cpp",
+    "count": 1,
+    "before": "d84f07ba119bdcf0e2773ecb4a3a6e1dc1cd8b1b08ce70d0ab3f97c39cf57fe6",
+    "after": "37883439520e800eb70256811e1510ad337ace3ac4e6ae650dd8b866c46f1fcc"
+  },
+  {
+    "path": "cpp/support/command_runner_errors.cpp",
+    "count": 1,
+    "before": "726d70d21ec13d39f26c90406b7051ea3886ac908f660ebf60607a120985aea5",
+    "after": "648102aaa6ee1888db1f4e4b1902f5a57fc620d10e238c789555dedb620ee738"
+  },
+  {
+    "path": "cpp/support/wallet_commands.cpp",
+    "count": 2,
+    "before": "2fc6730346c73033ca3cf13090b8f6d4d7665544bb142ef007a5d25d96e767c5",
+    "after": "1a3f9180e7b8b42124da7daa2cc86dc6cda27837d9a9b64d8f72aff413a4d840"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 309,
+  "total_programs": 309,
+  "operations": 782,
+  "sql_calls": 14616,
+  "failures": [],
+  "scope": "Actual seedrandom, wallet seed availability/updates, MiniString/MiniData and Crypto. Exact replies and SQL effects, synthetic seeds only, independent SHA3-256 framed-byte expectations. No live wallet, full Main, durable SQL or exhaustive concurrency/platform certification."
+}

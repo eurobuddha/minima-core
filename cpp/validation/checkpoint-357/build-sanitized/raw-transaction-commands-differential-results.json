@@ -1,0 +1,7 @@
+{
+  "programs": 656,
+  "passed": 656,
+  "child_calls": 3991,
+  "failures": [],
+  "scope": "Actual rawfrom/rawtxnfrom inherited bodies, metadata, null/type gates, exact ordered child text and row wire, state conversion, cleanup on throws versus ignored statuses; real child execution and full exported TxnRow roundtrip. Known random32byte IDs alone normalized in text and verified serialized ID fields; NPE/CCE prose normalized. No live node, durable SQL or funded network acceptance."
+}

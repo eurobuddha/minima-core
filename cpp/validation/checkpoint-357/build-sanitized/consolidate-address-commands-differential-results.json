@@ -1,0 +1,7 @@
+{
+  "programs": 331,
+  "passed": 331,
+  "child_calls": 3815,
+  "failures": [],
+  "scope": "Actual consolidatefrom main and public helper bodies, real coin search/age/mempool filtering, supplied helper coin order, child text and stored row bytes, typed/null parameters, failures and cleanup. Selected real input/output/script children. Only verified random IDs and specified runtime exception prose normalized. No live node, durable SQL or network acceptance."
+}

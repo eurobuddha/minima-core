@@ -1,0 +1,2069 @@
+{
+  "source_repository": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp",
+  "commit": "a7c9a055010a8c753de4bee2dbdf1456d894ace7",
+  "note": "Copied primitive inputs retain their original working-tree hashes. Subsequent source translations and reviewed adaptations are recorded below; the complete node is unfinished.",
+  "files": [
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/types/MiniData.cpp",
+      "source_sha256": "24b2b10ba0017c30354064b8584a34a9a24909a208211fd9c1e0fd1b2cb691c9",
+      "destination": "src/org/minima/objects/base/MiniData.cpp"
+    },
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/types/MiniData.hpp",
+      "source_sha256": "5c2d289b4e45976e2701980555b8beac0d7ba13a92dcc0a7683d2e29e205cee5",
+      "destination": "src/org/minima/objects/base/MiniData.hpp"
+    },
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/types/MiniNumber.cpp",
+      "source_sha256": "67cc3f43ddcf3573152a15c508be7fe7ff78dc69a2e30cb5ec75fa42e8f47d94",
+      "destination": "src/org/minima/objects/base/MiniNumber.cpp"
+    },
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/types/MiniNumber.hpp",
+      "source_sha256": "4f7128901daa29b7b3451691a3fe863410b85623b4a5d6c00e783ab622878c3e",
+      "destination": "src/org/minima/objects/base/MiniNumber.hpp"
+    },
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/types/MiniString.cpp",
+      "source_sha256": "1a6aa094a672850e39c6e254c8de1c2e5460d5b6c56570fa2c880868a437496d",
+      "destination": "src/org/minima/objects/base/MiniString.cpp"
+    },
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/types/MiniString.hpp",
+      "source_sha256": "b7a1014ec06918ab42a362671fbcbe6d4bb658678250a118a769c1a99346bd1f",
+      "destination": "src/org/minima/objects/base/MiniString.hpp"
+    }
+  ],
+  "adaptations": [
+    "Package-relative .cpp/.hpp paths",
+    "MiniNumber range, tested rounding and wire-scale fixes",
+    "MiniData numeric ordering and OS randomness",
+    "Bounded span-based stream readers",
+    "MiniByte Java value semantics in dedicated translation unit"
+  ],
+  "additional_reuse": [
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/objects/MiniByte.hpp",
+      "destination": "src/org/minima/objects/base/MiniByte.cpp",
+      "adaptation": "Split into header/source and add Java signed/unsigned, boolean and string methods"
+    },
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/network/NIOClient.hpp",
+      "source_sha256": "f90285253d1b3765b9d25a28c6dcff02ea48c8f381e058b7d07eda42755cbbcf",
+      "destination": "src/support/InetSocketAddress.cpp",
+      "adaptation": "Reuse getaddrinfo AF_UNSPEC/SOCK_STREAM/AI_ADDRCONFIG and freeaddrinfo composition; JDK behavior adapter replaces sibling connection/message logic."
+    },
+    {
+      "source": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/network/NIOServer.hpp",
+      "destination": "src/org/minima/system/network/minima/NIOServer.cpp",
+      "adaptation": "Reuse POSIX socket/bind/listen/accept ownership; translate actual pinned Java selector loop using poll and a nonblocking wakeup pipe, default JDK dual-stack binding, reuse-address after bind, queued outgoing registrations, shared NIOClient map and reconnect rules. Sibling blocking accept/IPv4-only behavior is not substituted."
+    }
+  ],
+  "upstream_translations": {
+    "repository": "https://github.com/spartacusrex-minima/minima-core",
+    "commit": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "source_hashes": "source-map.json",
+    "adaptations": [
+      "C++ value types and optional/pointer values replace Java references and nulls; remaining aliasing/exception/logging parity requires review.",
+      "Bounded span readers replace DataInputStream; writes preserve Java field order.",
+      "JSON ordered containers, UTF-16 keys/values and the exact pinned Yylex DFA; native DOM and resumable event parsing. Generic container overloads and incremental reader I/O remain incomplete.",
+      "MMR leaf and parent hashes preserve the Java domain prefixes, serialized data and sums.",
+      "MMR Java Hashtable enumeration reused for MegaMMR coin tables and KISS variables; shared block MMR transition used by MegaMMR and genesis construction.",
+      "KISS expressions, parser precedence, statement control flow, instruction accounting and 53 built-ins translated from the pinned sources. Existing sibling Parser/Interpreter/Functions differ in consensus-visible semantics and are not substituted.",
+      "KISS string operations use UTF-16 indices. StringValue construction preserves the pinned MiniString(String) UTF-8 round trip: isolated surrogates become question marks before subsequent operations. Mutable Java charset configuration and all stream overloads remain incomplete.",
+      "MiniData unsigned shifts added; MiniNumber remainder quotient scale/precision derived from pinned Java oracle behavior, using the existing BigInt arithmetic.",
+      "Tokenizer root-locale Unicode-to-ASCII identifier case mappings checked by enumerating the installed JDK case conversions; other default locales remain unverified.",
+      "Cascade/CascadeNode pruning and DECIMAL32 weights translated; TxPowTree/TxPoWTreeNode GHOST, wire and notification behavior reuse existing BlockMMR and JavaHashtable. ChainServices callbacks await MinimaDB/Wallet/Main wiring.",
+      "MiniFile/MiniFormat and five encryption classes translated. OpenSSL EVP supplies RSA PKCS8/SPKI, AES-CBC, PBKDF2-SHA256 and SHA256withRSA; zlib supplies gzip. Checked errors, PKCS padding and password cipher buffering compared across freshly compiled Java and native code.",
+      "Local OpenJDK 26.0.1 CipherInputStream/CipherCore sources inspected to reproduce buffering and early-close behavior. No JDK implementation source copied; native EVP buffering adapter follows observed Java output boundaries.",
+      "TxPoWChecker/TxPoWGenerator/RelayPolicy translate pinned consensus, cached monotonic script results, MMR checks, difficulty arithmetic and burn-ordered mempool assembly using existing object, TreeKey, Contract and tree implementations. ConsensusServices remains a runtime dependency boundary.",
+      "TimedChecker owns worker inputs through shared pointers and publishes completion through atomics. The Java timeout does not forcibly cancel validation. Full timeout, process shutdown and concurrent integration behavior remain under review.",
+      "RamDB/RamData translated with shared TxPoW identity. JavaConcurrentMap reuses JavaUnicode UTF-16 conversion, preserves tested quiescent JDK spread hashes/list-transfer/tree-bin enumeration rules and uses native red-black balancing and mutexes. Concurrent enumeration is a snapshot; Java weakly consistent traversal remains a documented difference.",
+      "JsonDB, UserDB and MiniUtil reuse existing JSON, MiniString, MiniFile and crypto primitives. ICU lowercasing/calendar services have native adapters for inspected JDK final-sigma word boundaries and extreme Gregorian/Julian dates; general locale/calendar parity remains incomplete.",
+      "Message/MessageStack/MessageListener/TimerMessage/MessageProcessor/TimerProcessor translate pinned typed payload, FIFO/filter, timer and shutdown behavior. Sibling src/system/MessageProcessor.hpp and its tests were inspected; native mutex/condition-variable worker composition is adapted with explicit shared ownership and required database lock cleanup.",
+      "JavaConcurrentMap now has a HashMap policy reusing the same native tree logic with JDK-compatible hash spreading, resize thresholds, stable list splits and root-to-front tree ordering. Local OpenJDK HashMap/ConcurrentHashMap source was inspected for behavior; no JDK implementation source was copied.",
+      "Java floating formatting was extracted from the tested JSON double implementation into JavaFloating.hpp and reused for float/double message boxes. UserDB lowercasing was extracted into JavaLowerCase.hpp for message trace filtering.",
+      "TxnDB/TxnRow reuse Transaction, Witness, TxPoWGenerator and UserDB. Shared lists/rows preserve tested aliases; wire readers now distinguish IOException/EOF from runtime numeric errors and retain partial transaction reads.",
+      "TxBlockDB and TxPoWList preserve shared cached objects and list aliases using existing JavaConcurrentMap and wire readers.",
+      "IBD translates archive-range selection, chain intersections, shortened cascades and integer weight comparisons using existing Cascade/TxPowTree. IBDServices is an explicit runtime binding boundary.",
+      "MegaMMRBackup/MegaMMRIBD/MegaMMRSyncData reuse existing MegaMMR, IBD and CoinProof. MMR and MegaMMR readers now retain partially read state as in Java.",
+      "SendPollMessage/SendPollManager reuse OS random MiniData, JSON and message/timer workers. Command execution requires a native CommandRunner callback.",
+      "RawArchiveInput reuses object decoders with an incremental zlib input adapter. Local OpenJDK GZIPInputStream was inspected for header/trailer and concatenation behavior; no JDK implementation source was copied. The adapter buffers the current object and replays its decoder on incomplete input.",
+      "Wallet SeedRow/KeyRow/ScriptRow preserve pinned constructor column order, getters and JSON. SqlRow defines a driver conversion boundary without selecting a substitute persistent database.",
+      "BIP39 copies all 2048 words from pinned Java and reuses MiniString/SHA3/ICU casing. Sibling crypto/BIP39.hpp was inspected and rejected for incompatible 64-byte repeated-hash seed and entropy/checksum mnemonic generation.",
+      "FastByteArrayStream preserves pinned 256KiB growth and invalid-copy capacity effects using native byte vectors. Local OpenJDK ByteArrayOutputStream was inspected for inherited write/reset/close/string behavior; no JDK implementation code copied.",
+      "NIOTraffic reuses JavaHashtable with UTF-16 hash support and MiniFormat; signed totals use defined modulo-64-bit arithmetic. Authorizer reuses actual UserDB/GeneralParams and a basic Base64 decoder checked against the inspected JDK implementation.",
+      "Command/CommandException preserve parameter presence/type/default rules and shared JSON reply parameters. hash/missingcmd reuse existing command, crypto and file code. Address/BaseConverter errors expose Java exception categories; base32 parses Unicode digits with ICU and the existing BigInt. MiniFile now rejects directory reads as Java FileInputStream does.",
+      "CommandRunner translates the pinned fast/JSON splitters, command parsing, multi-command stop rules and write permission list. Native CLI dispatches actual mapped commands; generic JDK exception diagnostics and the full registry remain incomplete.",
+      "convert/random/checkaddress reuse the actual Command, MiniData/MiniString, BaseConverter, Crypto and ChainServices implementations. Base64 encoder uses already-linked OpenSSL; decoder follows the inspected JDK ISO-8859-1 input and malformed-padding diagnostics. MiniData HEX parsing now applies the existing ICU JavaUpperCase adapter before validating hexadecimal characters.",
+      "BaseConverter.encode32 adapts the tested BigInt::toDecimalString byte-wise short-divisor loop from src/org/minima/objects/base/MiniNumber.cpp to radix 32, preserving pinned Minima alphabet/numeric semantics with much lower conversion cost.",
+      "maths/mmrcreate/mmrproof/runscript/verify directly translate the pinned commands using the already tested Contract, MMR, ScriptProof, StateVariable, Signature and TreeKey classes. JavaInteger.hpp reuses Unicode digit conversion with signed-32-bit checks; local JDK Integer.parseInt source inspected for behavior, no JDK implementation copied.",
+      "txncreate/txndelete/txnlist/txnclear/txnstate/txnexport/txnimport/txnview translate pinned command paths using existing TxnDB/TxnRow, Witness, Transaction and MiniFile. TxnDB runtime lookup is explicit; offline CLI owns one session database. Transaction command fixtures adapt support/TxnDBOracle.java and support/txndb.cpp, with synthetic signature/coin proof additions.",
+      "TxPoWSearcher translates pinned filtering, deduplication, depth, chain lookup, token import and MegaMMR lock behavior using existing TxPoWTreeNode, Coin, Token and JavaHashtable. Sibling src/system/TxPoWSearcher.hpp inspected; it lacks the pinned filtered coin/token API. Explicit runtime service bindings remain.",
+      "txnoutput/tokens/coincheck/coinexport reuse existing TxnDB, Token, Transaction, CoinProof and MMR code. Searcher oracle adapts ArchiveCacheOracle fixtures and a twelve-block Java MMR history. Token IO-only conversion failure handling preserves failed-import list mutation.",
+      "ASSERTstatementTests and EXECstatementTests translate matching pinned Java constructor, return-state, failure and instruction assertions using the existing StatementBlockTests contract setup. Sibling tests/kissvm/test_kissvm.cpp inspected; direct statement API coverage differs.",
+      "Maths reuses BigInt from objects/base/MiniNumber and JavaInteger parsing; signed BigInteger bit inspection and logarithm mantissa extraction translate pinned Maths.java. Stack reuses MessageObject to preserve shared payloads and the existing vector LIFO pattern from TxPowTree.cpp.",
+      "TimedRequest translates the pinned public request list and ID-only sendNow checks using shared MiniData/RequestUnit values and existing TimerMessage::currentTimeMillis. No expiration or automatic insertion added; Java has no such behavior.",
+      "debugflag/txnlock translate pinned commands using Command, GeneralParams and MiniNumber. txnlock reuses the native timed-wait pattern in MessageProcessor with a mutex/atomic flag, checked negative delays and bounded sleep chunks to avoid duration overflow. Java thread interruption remains a runtime integration gap.",
+      "InetSocketAddressIO/P2PDoSwap/P2PWalkLinks reuse MiniData, ordered JSON and checked JavaInteger conversion. Native InetSocketAddress adapts getaddrinfo setup from the inspected sibling src/network/NIOClient.hpp; JDK numeric parsing, scopes, default hostname, equality and hash behavior were inspected in the installed OpenJDK 26.0.1 sources without copying JDK implementation code.",
+      "P2PState/P2PGreeting/P2PParams reuse the existing JavaHashMap, address adapter and shared lists. JavaHashMap gained explicit Java object hashes; SocketAddressSet supplies address equality keys and retains first inserted objects. Fixed-size JavaList models default Arrays.asList structural checks. Greeting state construction uses OS entropy for an independent uniform Fisher-Yates shuffle; deterministic Java Random state and non-Comparable collision-tree identity order are not claimed.",
+      "InetSocketAddressIOTest/GreetingTest/P2PDBTest translate the matching pinned Java assertions. P2PDB uses the existing JsonDB/MiniFile implementation; native test fixture directories are unique to avoid overwriting an unrelated tmp.db. Peer harnesses share PeerHarness.hpp and inherit the existing Java fixture helpers.",
+      "NIOClient/NIOClientInfo translate actual pinned constructors, connection metadata, 8192-byte buffering, partial frame I/O, queues, traffic/message side effects and failure timing. NIORuntime is an explicit Main/NIOManager binding; absent lookup fails, while a null manager is retained until use. Metadata locks and an atomic trace flag prevent C++ data races.",
+      "PosixNIOSocket adapts the inspected sibling src/network/NIOClient.hpp POSIX send/recv and owned-descriptor pattern for nonblocking EAGAIN/EOF/EINTR handling and SIGPIPE suppression. NativeNIOSelectionKey stores real interest/validity state with a supplied selector wakeup. The sibling blocking frame reader has incompatible zero-length and 64MiB rules and was not substituted.",
+      "JavaDateString reuses native MiniUtil Julian/date conversion and TxHeader formatting composition with ICU timezone metadata. Installed JDK Date.toString, ZoneInfo.getOffsets and SimpleTimeZone transition/overflow behavior were inspected, not copied. UTC, London, New York and Tokyo fixtures include extreme millisecond values; other zone datasets and mutable Java timezone APIs remain open.",
+      "NIOClientOracle uses test-only Unsafe allocation for Main/NetworkManager/manager receivers, then invokes the unmodified pinned NIOClient constructors and methods on controlled SocketChannel/SelectionKey adapters. Buffer hashes/positions, queued/posted data, traffic, partial failures and live versus copied NIOClientInfo data are compared. Native loopback fixture adapts sibling tests/network/test_network.cpp with atomic port-zero binding and forced backpressure.",
+      "NIOServer translates the full pinned run loop and lifecycle APIs over the existing PosixNIOSocket/NIOClient/MessageStack primitives. Java/runtime manager startup is bypassed only by the oracle fixture; native event handling is actual socket I/O. Port collisions are checked in isolated subprocesses because pinned Java halts(0). Native selector storage uses a mutex because this target libc++ lacks atomic<shared_ptr>. Main/NIOManager binding, custom JDK network properties, static demonstration main and complete exception/log formatting remain pending.",
+      "P2P2DB reuses JsonDB, MiniFile and MiniUtil::StringList/convertArrayList. Its shared list survives load; each element is cast and appended sequentially so malformed JSON preserves partial list mutation. JsonDB load/save and destructor are virtual for Java superclass dispatch. Native standard error preserves message text but not MinimaLogger prefixes.",
+      "Greeting.createGreeting translates pinned database lock/unlock order, caught body exceptions, nullable welcome, configured host/port, tip-to-root traversal, repeated chain append and peers string-array generation. It reuses existing Greeting, TxPoWTreeNode, InetSocketAddressIO and required-services pattern from ChainServices/IBDServices. The inspected sibling Greeting.hpp has no live creation method and an older version/default; it was not substituted.",
+      "connect.java is translated to a concrete command counterpart using Command, Message, the existing CommandRunner trim rule and JavaInteger::javaParseInt. First-colon splitting and unrestricted signed-int port acceptance follow the pin. Its post callback requires Main/NIOManager binding. JavaCheckedException preserves checked java.lang.Exception text in CommandRunner; existing exception mappings are unchanged.",
+      "NetworkStartupOracle executes actual pinned Greeting.createGreeting/connect methods; existing Unsafe singleton fixture allocation and PeerMessagesOracle address conversion are reused, with native PeerHarness and real TxPoWTreeNode chains. Only external service receivers are controlled. Missing native full runtime remains explicit.",
+      "NIOManager translates all active pinned processMessage branches and transport helpers using existing MessageProcessor/NIOClient/NIOServer/Greeting/NIOTraffic. Required NIOManagerServices receivers await Main, NetworkManager, NIOMessage and P2P bindings. Weak server callbacks plus worker ownership avoid a permanent manager/server cycle; native loopback fixture verifies shutdown release.",
+      "FixedTaskExecutor adapts current/sibling MessageProcessor condition-variable queues for four lazy workers and shutdown draining. Installed OpenJDK 26.0.1 Executors.newFixedThreadPool and ThreadPoolExecutor worker exit/run/getTask methods were inspected; no JDK implementation source copied. Native tests exercise worker limits, FIFO, failures, rejection, timeout and task lifetime.",
+      "NIOConnections adapts existing owned POSIX socket/address helpers. Installed OpenJDK NioSocketImpl timedRead/connect inspected; native monotonic deadlines survive interrupted polls and reset after positive read progress. Any-local Socket.connect destination substitution, custom properties and exact resource failures remain pending.",
+      "NIOManagerTransportOracle reuses NIOClientOracle singleton fixture with actual pinned Java static methods. 640 serialization/send cases and 17 loopback ping cases pass normal and sanitizer builds. No remote peers or production node are started; native manager incoming fixture collects required dispatch callbacks, not a substitute NIOMessage implementation.",
+      "NIOManagerStateOracle reuses NIOClientOracle Unsafe singleton/client/socket fixtures and NetworkStartupOracle/IBDOracle required DB receiver patterns. Native NIOManagerFixture uses actual manager, maps, clients and queues with private test friendship for NIOServer and TimerMessage. 1449 programs / 3879 operations match actual pinned Java in normal and ASAN/UBSAN builds; random client UIDs are projected by identity without mutating map keys.",
+      "NIOManager state differential corrected nullable TxPoW lookup call order: NIOManagerServices.txPoWExists takes optional<string> and receives the original ID before any dereference/logging/construction. Destructor catches selector wake failure locally so stop/join are not skipped. Full Main/NIOMessage/P2P/database runtime and process-exit integration remain pending.",
+      "NIOMessage.cpp translates the pinned 1311-line dispatcher using the tested Greeting/IBD/Pulse/TxPoW/TxBlock/MegaMMR wrappers, TxPoWChecker/RelayPolicy/TxPoWSearcher and NIOManager. The fully read sibling src/network/NIOMessage.hpp only implements envelope builders and cannot replace the dispatcher. JavaStringSet composes the existing JavaHashMap/SocketAddressSet locking pattern. DECIMAL32 difficulty comparison reuses MMREntryNumber.dividePositive with seven significant digits.",
+      "NIOMessageOracle reuses NIOClientOracle, NIOManagerStateOracle and IBDOracle receiver patterns plus complete ConsensusOracle.fixture and ArchiveCacheOracle zero-parent fixture setup. It executes pinned NIOMessage.run without starting Main, workers, sockets or a miner; native receivers capture matching effects. Normal and ASAN/UBSAN comparisons: 1918 programs / 4677 packets pass. MINIMALOG is explicitly excluded; MDS_HEAVIER_CHAIN and rescue timers are compared.",
+      "TxPoWChecker script/MMR pointer overloads preserve Java null-receiver timing; existing reference overloads delegate. NIOMessage no longer rejects null MMR before script evaluation; it guards optional server/traffic receiver dereferences. MessageProcessor.PostTimerMessage is virtual to preserve Java overriding. Private fixture friends observe MMR and mempool state without exposing a new production setter.",
+      "NIOManager loopback fixture now binds NIOMessage.dispatch after the original 32-frame/four-worker test. Actual TCP TxPoWID and SINGLE_PING packets produce exact TxPoWREQ and decoded SINGLE_PONG responses, preserve framed traffic and complete shutdown ownership in normal and sanitizer builds. Main/NetworkManager/P2P/database/processor/miner and logger integration remain pending.",
+      "P2PFunctions and UtilFuncs translate pinned source using native NIOManager/NIOClientInfo, JavaHashMap/JavaStringSet, Message, JSON/MiniString and InetSocketAddress. Sibling src/network/P2PSync.hpp and tests/network/test_p2p_sync.cpp inspected; its different batch synchronization loop is not a compatible implementation of these peer helpers.",
+      "P2PEnvironment reuses inspected native InetSocketAddress POSIX address handling. Local JDK InetAddress reverse/forward hostname confirmation, HttpURLConnection redirect logic and HttpClient retry behavior inspected, not copied. Actual getifaddrs/getnameinfo/getaddrinfo supply interface hostnames; native libcurl handles HTTP(S) with manual Java redirect/retry rules. Official libcurl HEADERFUNCTION/WRITEFUNCTION/FAILONERROR documentation consulted. JDK HTTP 305 cached request path preserved after real trace comparison.",
+      "JavaRandom48 uses the specified java.util.Random 48-bit LCG and bounded-int rejection rule, checked against inspected local JDK Random.next/nextInt source and six seeded differential programs. Default seed uses existing MiniData OS entropy; no JDK implementation source copied.",
+      "P2PFunctionsOracle reuses NIOClientOracle singleton fixtures and actual pinned P2PFunctions/UtilFuncs; native fixture uses actual native manager maps, message queues, send serialization and traffic. 672 programs / 3670 operations plus 39 real loopback HTTP cases pass normal and ASAN/UBSAN. Log bodies are compared without runtime prefix. Availability method call/failure order uses an offline HTTPS URL provider; actual transport checks use HTTP. Full TLS/default proxy/cache/authenticator/timeouts/body-close/resource semantics and Main/logger runtime bindings remain outstanding.",
+      "SwapLinksFunctions directly translates every pinned method using existing P2PState/P2PFunctions/UtilFuncs, P2PGreeting/P2PWalkLinks, MiniData, Message and NIOManager/NIOServer clients. Pinned SwapLinksFunctionsTest and QuickState/QuickInetLists plus P2PManager caller blocks inspected. Sibling P2PSync implements a different synchronization loop and cannot replace link management. Explicit required mainPresent receiver preserves absent-Main versus absent-manager branching; full Main binding remains pending.",
+      "SwapLinks differential extends the actual P2PFunctions/NIOClient oracle and native peer harness rather than building a second simulated manager. 651 programs / 1959 operations cover state snapshots, duplicate incoming peers, greeting flags, disconnect ordering, discovery, secret responses, load-balance and scale walks, null/error partial state and wrapper JSON aliasing. Only generated secret bytes and independently shuffled greeting knownPeers ordering are canonicalized; lengths and equality/reuse relationships remain checked. Fixture temporary list ownership corrected after actual comparison detected missing known peers.",
+      "WalkLinksFuncs translates the complete pinned class using P2PState, UtilFuncs, P2PWalkLinks/P2PDoSwap, NIOManager effects and JavaRandom48. Pinned WalkLinksFuncsTest, P2PManager routing callers and Java/native P2PDoSwap inspected; sibling P2PSync is a different protocol loop. PeerOperations.hpp extracts the already tested SwapLinksFunctions null/map/message helpers unchanged; P2PFunctions exposes its existing log-body adapter for reuse until full native MinimaLogger binding.",
+      "Walk-link differential extends the existing peer oracle/harness with persistent walk snapshots and a separately seeded Random stream. 883 programs / 2153 operations pass normal and ASAN/UBSAN, including 329 path-change observations, path cutoff9, first-match duplicate removal, source nextInt(size-1) behavior, signed32 slot overflow, failed connect followed by null and secret errors. Native receiver validation is sequenced before host/port evaluation. Map-order coverage guard corrected from assumed UID order to actual Java HashMap order. Generated load-swap secret bytes alone canonicalized with length/equality retained; deterministic walk secrets and all message/state effects remain exact. Full Main/P2PManager/logger runtime and generic exception/resource/concurrency semantics remain open.",
+      "P2PPeersChecker directly translates pinned methods using existing MessageProcessor/TimerMessage/SocketAddressSet/P2PFunctions/NIOManager.sendPingMessage/Greeting/TxPoWTreeNode. Full pinned checker and relevant P2PManager constructor/startup/shutdown callers inspected; native SendPollManager lifecycle and message worker/timer implementations reused. Sibling P2PSync has no corresponding peer verifier. Factory starts the worker only after shared ownership; tip and lock-cleanup bindings remain required from the full runtime.",
+      "peers_checker_native tests source-derived admission, duplicate/local rejection, promotion with no local tip, verified/unverified ping failure, 30-minute retry, 10-percent admission boundary through a fixture draw, capacity replacement, null random selection, force-check forcelog without force, loop rescheduling and real worker startup/shutdown ownership. Passes normal and ASAN/UBSAN. Ping/random are overridden for this native test, timers captured; Separate peers_checker_differential now compares actual pinned/native checker and real TCP ping with nonnull chain fixtures. Parent MessageStack is weak to avoid a native cycle; full P2PManager lifecycle/reference parity remains under review.",
+      "PeerRuntimeFixture.hpp extracts the existing p2p_functions.cpp NIOManager/NIOClient fixture unchanged. PeersCheckerOracle.java reuses P2PFunctionsOracle/NIOClientOracle and NIOMessageOracle tree fixture patterns without modifying pinned Java. 339 programs / 758 operations / 329 real loopback pings match exact state, request bytes, traffic, messages, logs and timer delays normally and under ASAN/UBSAN. 500 fresh-Random admission trials per implementation use bounded statistical and state invariants. A fixture-only TCP barrier fixes early-return trace attribution when the Main/manager receiver is absent. Full parent/timer/logger lifecycle and concurrency remain open.",
+      "P2PTestParams directly translates pinned defaults and setTestParams using P2PParams, JavaList fixed-size storage and InetSocketAddress. Pinned and sibling core/Minima Java test settings are identical; sibling tools/minima-core-cpp has no corresponding test settings. Native values() uses the inspected Crypto::getInstance function-static pattern to defer class initialization/address resolution until first access. Mutable Java static fields become one shared C++ settings object; setTestParams preserves exact assignment order and peer-list aliasing. P2PParams.LOG_LEVEL now uses optional<P2PLogLevel> to preserve Java null comparisons in the existing logging methods. Existing PeerStateOracle and peer-state fixtures were extended with 76 test-settings programs / 230 operations; complete suite 874 / 26348 passes normal and ASAN/UBSAN. Full P2PManager use, concurrent parameter mutation and resource-failure class initialization semantics remain unverified.",
+      "P2PManager directly translates all pinned method bodies using P2PState/P2PDB/P2PPeersChecker/SwapLinksFunctions/WalkLinksFuncs/MessageProcessor/TimerMessage/native NIOManager and connect.createConnectMessage. Full pinned manager, relevant NetworkManager/NIOManager callers, native dependencies and prior peer tests inspected; sibling P2PSync implements a different synchronization flow and cannot replace peer link management. P2PManagerServices preserves required external database receivers. Factory establishes shared ownership before checker/timers/manager worker startup; destructor joins the owned checker. PeerShuffle.hpp extracts the existing P2PGreeting Fisher-Yates permutation unchanged for discovery reuse.",
+      "p2p_manager_native validates initial timers, forced saved-peer checks, peer caps/copies, persistence threshold/save count, overload clear exclusions, connectivity assessment, seeded loop delay, IEEE float client fractions, actual greeting serialization/processing, status, failed/disconnected link maps and shutdown. Test-mode check preserves state construction before global test settings. Separate actual factory/checker/timer workers dispatch an address message, reject a local checker peer, stop/join and expire both owners. Passes normal and ASAN/UBSAN. Peer-state and swap-link regressions also pass after shuffle extraction. This is native-only manager validation, not a Java differential comparison; discovery transport, arbitrary references, shared mutable-state synchronization and full Main/MinimaDB/NetworkManager bindings remain required.",
+      "P2PState scalar/shared-pointer access uses existing NIOClient short-mutex conventions; own-address construction stays outside the lock, snapshots retain local strong references, and manager public counters/timer are atomic. Concurrent test: 2000 reference/scalar replacements, 2000 actual manager updates, 16000 reads; normal, ASAN/UBSAN and ThreadSanitizer pass with frozen global runtime configuration.",
+      "P2PFunctionsFixture.hpp and P2PManagerFixture.hpp extract existing support helpers unchanged apart from manager state/queue observation. P2PManagerOracle reuses P2PFunctionsOracle/NIOClientOracle receivers and actual pinned P2PManager. Corrected source-format peer objects validate success and error paths: 405 programs / 2915 operations / 46 emitted packets pass both builds. JSON routing payloads, envelope lengths, state, timers, DB effects and logs compared; generated secrets/shuffle permutations normalized explicitly.",
+      "P2P manager discovery reuses peers_checker_differential.Runner/Responder and PeersCheckerOracle greeting encoding. 31 programs / 84 operations / 39 real loopback TCP pings per build match exact frames, traffic, state, malformed responses, guards and three-attempt cap with actual five-second pauses. No pinned Java edits or remote peer/node startup. Full runtime integration still pending.",
+      "P2P2Functions reuses compatible native P2PFunctions predicates, NIO queries/actions and native availability, retaining separate invalid-peer/cache state and unconditional P2P2 logs. P2P2Manager reuses actual MessageProcessor/TimerMessage/P2P2DB/P2PDB/JavaRandom48, preserving literal init entries, DB call order, inactive pinned branches and nullable random peers. 837 programs / 3374 operations match actual Java in normal and ASAN/UBSAN; fresh multi-peer randomness checked by membership/distribution. Actual worker/timer/shutdown ownership test and existing P2P2DB tests pass both. Public numeric controls atomic; full owners, external list concurrency and nullable static messages remain pending.",
+      "RPC Server/HTTPServer directly translate pinned listener sources using existing NIOServer dual-stack bind/backlog, PosixNIOSocket and MessageProcessor shared ownership conventions. SocketWakeup extracts the actual NIOServer nonblocking pipe helper. Three Java/C++ programs / ten TCP handlers per implementation pass both builds: automatic/manual startup, concurrent exact binary handlers, bind collision logs and shutdown. Existing NIO listener/manager loopback regressions and all-target builds pass both. CMDHandler and full NetworkManager ownership, repeated starts and complete exception identity remain pending.",
+      "CMDHandler directly translates pinned run() through Authorizer, CommandRunner, GeneralParams and existing Java integer/case/date/UTF8 helpers. SocketCharacterReader reuses MiniString malformed-prefix rules and JavaUnicode decoding; nioReadSome reuses NIOConnections polling. JavaURLDecoder follows installed JDK26 URLDecoder/HexFormat strict escape behavior. Existing HTTPServer fixtures extended for actual CMDHandler; SearcherOracle separate protocol/log stream reused. 2106 real TCP requests across six configurations pass both builds, comparing exact responses except Date value, lengths, actual command dispatch, auth, malformed/truncated input, UTF16 body count and fragmented input. Complete logger/exception identity, unpaired-surrogate command APIs and quit/Main shutdown remain open.",
+      "NetworkManager directly translates pinned methods and owns actual native NIO/P2P/P2P2/RPC workers. Reuses MessageProcessor factory ownership, short mutex getters, required database/Main services, NIOTraffic/MiniFormat/JavaDateString and existing native RPC commands. P2PEnvironment localHostInterfaces reuses getifaddrs and numeric rendering with inspected OpenJDK BSD interface/address insertion ordering and UP/RUNNING flags. Initial unsupported atomic<shared_ptr> replaced by existing short-lock pattern. Review corrected NIO Main shutdown receiver (distinct from network flag). Eight actual lifecycle combinations and 540 host/status Java programs pass both builds; all targets and seven relevant regression/integration suites pass. Static full-node bindings, remaining lifecycle/exception/concurrency and non-BSD interface variants remain open."
+    ]
+  },
+  "bouncycastle": {
+    "repository": "https://github.com/bcgit/bc-java",
+    "reference_tag": "r1rv70",
+    "destination": "src/org/minima/objects/keys/Winternitz.cpp",
+    "license": "BOUNCY_CASTLE_LICENSE",
+    "adaptation": "Specialize the inspected GMSS algorithm to Minima w=8 and SHA3-256; compare with the actual pinned Minima JAR through ObjectOracle.",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv70/core/src/main/java/org/bouncycastle/pqc/crypto/gmss/util/WinternitzOTSignature.java",
+        "sha256": "04c553fcedf8318736f3792538be2d8b2fc37103cab340a9f7824eae1f4a4cd3"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv70/core/src/main/java/org/bouncycastle/pqc/crypto/gmss/util/WinternitzOTSVerify.java",
+        "sha256": "e158f2bc84cbdcfafaa62c7e30ef0d0be62934ccaac099968fb183592526e740"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv70/core/src/main/java/org/bouncycastle/pqc/crypto/gmss/util/GMSSRandom.java",
+        "sha256": "06b6c276a220c5142a4d937400e153ae94c5310321da644f3f097c08e73e123e"
+      }
+    ]
+  },
+  "native_dependencies": {
+    "OpenSSL": "3.2+ Crypto; tested 3.6.2, linked via system installation",
+    "zlib": "system zlib; tested 1.2.12",
+    "Threads": "CMake Threads::Threads",
+    "ICU": "78+ uc/i18n; tested 78.3, linked via system installation",
+    "CURL": "7.85+ libcurl; tested SDK libcurl 8.7.1, CURL::libcurl"
+  },
+  "fdlibm": {
+    "repository": "https://netlib.org/fdlibm/",
+    "license": "Preserved in each adapted source file",
+    "adaptation": "C++ namespace; std::bit_cast high/low-word access instead of aliasing pointer macros; explicit -ffp-contract=off preserves evaluation order. Reused for Maths logarithms after libc differed from pinned Java by one bit.",
+    "sources": [
+      {
+        "url": "https://netlib.org/fdlibm/e_log.c",
+        "sha256": "a2b1bd1b367026a35f36da53425cd618386c3bf69d23ac224a40791aa9855ac9",
+        "destination": "src/support/fdlibm/e_log.cpp"
+      },
+      {
+        "url": "https://netlib.org/fdlibm/e_log10.c",
+        "sha256": "0d636f23e0e70430344cfb003aebce3317260e28c716bbfb8c0839117e533efc",
+        "destination": "src/support/fdlibm/e_log10.cpp"
+      }
+    ]
+  },
+  "network_interface_reference": {
+    "url": "https://raw.githubusercontent.com/openjdk/jdk26u/master/src/java.base/unix/native/libnet/NetworkInterface.c",
+    "retrieved": "2026-09-09",
+    "sha256": "26ddf4d4fd162ef014eafdef40c5af45df51e6ebb949f0f5557518ae702689cb",
+    "note": "Inspected BSD enumIPv4Interfaces/addif and isUp0/isLoopback0 ordering/flag behavior. New localHostInterfaces adapts existing native P2PEnvironment implementation; no JNI source is compiled into the C++ port."
+  },
+  "sql_db_translation": {
+    "source": "upstream-study/src/org/minima/utils/SqlDB.java",
+    "pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "reused": [
+      "cpp/src/support/SqlRow.hpp",
+      "cpp/src/org/minima/objects/base/MiniData.hpp",
+      "cpp/src/org/minima/objects/base/MiniString.cpp",
+      "cpp/src/org/minima/utils/json/parser/JSONParser.hpp",
+      "cpp/src/org/minima/utils/json/JSONObject.hpp",
+      "cpp/support/WalletRowsOracle.java",
+      "cpp/tools/peers_checker_differential.py"
+    ],
+    "incompatible_candidate": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/persistence/Database.hpp uses SQLite and cannot supply pinned H2 MVStore, AES, arbitrary SQL and SCRIPT/RUNSCRIPT behavior; its persistence test was read.",
+    "platform_reference": "Installed JDK26.0.1 lib/src.zip java.base/java/io/UnixFileSystem.java inspected for separator normalization, invalid NUL paths and absolute resolution; no JDK source copied.",
+    "verification": "464 actual Java/native SqlDB programs, 1260 operations, 8352 recording-driver calls; 1024 native concurrent calls plus two reentrant schema calls. All targets and both new suites pass normal and ASAN/UBSAN.",
+    "remaining": "Native H2-compatible connection provider and SQL execution/storage/encryption/backup engine are absent. Prepared statements, database subclasses, full Main/logger binding, exact generic exceptions/UTF16/public API and lifecycle concurrency remain incomplete."
+  },
+  "onchain_db_translation": {
+    "source": "upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java",
+    "reused": [
+      "cpp/src/org/minima/utils/SqlDB.hpp",
+      "cpp/src/support/SqlRow.hpp",
+      "cpp/src/org/minima/objects/base/MiniNumber.cpp",
+      "cpp/src/support/JavaDateString.hpp",
+      "cpp/src/org/minima/utils/messages/TimerMessage.cpp",
+      "cpp/support/SqlDBOracle.java",
+      "cpp/support/sql_db.cpp"
+    ],
+    "incompatible_candidate": "Sibling tools/minima-core-cpp/src/persistence/BlockStore.hpp and tests/persistence/test_persistence.cpp inspected; serialized block schema, replacement semantics and SQLite driver differ from pinned on-chain membership table.",
+    "adaptation": "Native prepared-statement interface/getLong extends SqlConnection; extracted existing SqlDB null helper and shared recording fixture. Preserves int-overflow retention default, SQL-only catches, partial results, ordered parameters and statement replacement on reopen.",
+    "verification": "855 actual Java/native programs / 3639 operations / 29167 driver calls pass normal and ASAN/UBSAN. Live timestamps validated against call windows before normalization; Java NPE expression text and full logger prefixes/stack traces excluded. Native SQL engine and runtime owners absent."
+  },
+  "mini_number_range_exception_fix": {
+    "source": "upstream-study/src/org/minima/objects/base/MiniNumber.java checkLimits",
+    "reuse": "Extracted cpp/src/org/minima/objects/mmr/MMREntryNumber.cpp toBigDecimalString into cpp/src/support/JavaBigDecimalText.hpp; reused JavaNumberFormatException.",
+    "reason": "OnChainDB differential found 1e40 rejected with a different native exception type/message before the DB call. Positive and negative range errors now follow source; added boundary, scientific, scale and precision cases.",
+    "verification": "All targets build and primitive, kissvm, cascade, command, command_runner, sql_db, sql_db_concurrent and onchain_db suites pass normal and ASAN/UBSAN. Other MiniNumber API/exception gaps remain open."
+  },
+  "h2_reference_source": {
+    "version": "2.4.240",
+    "version_evidence": "javap -constants upstream-study/jar/minima.jar org.h2.engine.Constants reports VERSION_MAJOR=2, VERSION_MINOR=4, BUILD_ID=240, BUILD_DATE=2025-09-22.",
+    "url": "https://repo.maven.apache.org/maven2/com/h2database/h2/2.4.240/h2-2.4.240-sources.jar",
+    "local_reference": "/tmp/minima-h2-2.4.240-sources.jar",
+    "sha256": "a853be74b3f6d63438c53d19e2c368f158ee622499422ba586d1f8bc17b843e2",
+    "published_sha1_verified": "e75d1bac93e36cf12928d56423bdc5d4ecc57fe0",
+    "license_notice": "Official https://h2database.com/html/license.html fully read: MPL 2.0 / EPL 1.0. No H2 source incorporated yet.",
+    "inspection": "Driver.java and full JdbcConnection.java read. Archive contains 842 Java sources. SQL engine, session and MVStore implementation dependencies still require inspection. No H2 source copied into compiled C++ or used as runtime Java."
+  },
+  "txpow_sql_db_translation": {
+    "source": "upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java",
+    "reused": [
+      "cpp/src/org/minima/utils/SqlDB.hpp",
+      "cpp/src/org/minima/objects/TxPoW.hpp",
+      "cpp/src/org/minima/objects/base/MiniData.hpp",
+      "cpp/src/org/minima/utils/messages/TimerMessage.hpp",
+      "cpp/src/support/JavaLowerCase.hpp",
+      "cpp/src/support/SqlConnection.hpp",
+      "cpp/support/SqlRecordingFixture.hpp",
+      "cpp/support/SqlDBOracle.java",
+      "cpp/support/ArchiveFixture.hpp",
+      "cpp/support/ArchiveCacheOracle.java",
+      "cpp/support/ram.cpp",
+      "cpp/support/RamOracle.java",
+      "cpp/tools/onchain_db_differential.py"
+    ],
+    "incompatible_candidate": "Sibling tools/minima-core-cpp/src/persistence/BlockStore.hpp and Database.hpp plus persistence tests inspected: SQLite storage, serialized-block schema and replacement semantics differ from pinned TxPoWSqlDB/H2.",
+    "adaptation": "Native prepared setInt/setBytes and result getBytes; exact query/parameter order and SQL-only catches, nullable results, lazy retention initialization, wraparound cleanup, single-pass query filtering and serialized-value failure timing. Required native connection provider remains absent.",
+    "verification": "2592 actual pinned Java/native programs, 8729 operations, 86333 recording-driver calls pass normal and ASAN/UBSAN. All truncated prefixes of four TxPoWs, non-empty transaction logs, malformed primitive fields and oversized-hash serialization failure. Clock values checked before normalization; NPE diagnostic expression text and logger prefixes/stacks excluded.",
+    "remaining": "Real H2 SQL execution, storage, constraints, ordering, engine-side prepared invalidation, encryption and backup not supplied by fixtures. Main/MinimaDB/TxPoWDB runtime owners, remaining database classes, complete API/UTF16/locale/logger parity and source demonstration main remain incomplete."
+  },
+  "txpow_conversion_and_wire_errors": {
+    "source": [
+      "upstream-study/src/org/minima/objects/TxPoW.java",
+      "upstream-study/src/org/minima/objects/base/MiniData.java",
+      "upstream-study/src/org/minima/objects/base/MiniNumber.java"
+    ],
+    "adaptation": "TxPoW conversion catches only wire IOException and accepts an I/O log callback. MiniData hash read/write errors preserve source messages, negative ordinary array size uses existing JavaNegativeArraySizeException; MiniNumber invalid wire length and zero-length BigInteger preserve source error details. Numerical algorithms and successful wire formats unchanged.",
+    "verification": "All targets compile. Twelve selected malformed/source-map/primitive/object/archive/NIO/SQL suites pass both builds (106.38s normal,255.35s ASAN/UBSAN). Other public API, generic reader errors and full logger integration remain under review."
+  },
+  "txpow_db_translation": {
+    "source": "upstream-study/src/org/minima/database/txpowdb/TxPoWDB.java",
+    "reuse": [
+      "cpp/src/org/minima/database/txpowdb/ram/RamDB.cpp",
+      "cpp/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp",
+      "cpp/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.cpp",
+      "cpp/src/org/minima/system/brains/TxPoWSearcher.cpp",
+      "cpp/src/org/minima/utils/messages/Message.hpp",
+      "cpp/support/SqlRecordingFixture.hpp",
+      "cpp/support/NIOClientOracle.java",
+      "cpp/support/TxPoWSqlDBOracle.java"
+    ],
+    "adaptation": "Required Main message and wallet resolver callbacks, shared ownership of actual RAM and SQL counterparts. SqlDB Unix File normalization extracted unchanged to JavaUnixFile.hpp. Shared SQL TxPoW fixture extracted from txpow_sql_db.cpp. Header-only transaction getters now throw typed JavaNullPointerException.",
+    "verification": "1355 programs / 7407 operations / 80960 effects pass normal and ASAN/UBSAN. RAM-first reads, duplicate insertion, relevance through Wallet membership including state keys, message and map/object identity, partial exceptions, both-store lifecycle and clock validation. Ten selected regression suites pass in both builds (149.23s / 399.91s).",
+    "remaining": "Real native H2 backend, Main/MinimaDB/Wallet bindings and full node runtime absent. Nullable checkMempoolCoins input, complete Java API/concurrent traversal and other TxPoW body-getter exceptions remain incomplete."
+  },
+  "coin_db_translation": {
+    "source": "upstream-study/src/org/minima/database/txpowtree/CoinDB.java",
+    "reused": [
+      "cpp/src/org/minima/utils/SqlDB.hpp",
+      "cpp/src/org/minima/objects/Coin.hpp",
+      "cpp/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp",
+      "cpp/src/support/JavaUnixFile.hpp",
+      "cpp/support/SqlRecordingFixture.hpp",
+      "cpp/support/SqlDBOracle.java",
+      "cpp/support/objects.cpp coin(int)",
+      "cpp/support/ObjectOracle.java coin(int)",
+      "cpp/tools/sql_db_differential.py normalize",
+      "cpp/tools/peers_checker_differential.py Runner"
+    ],
+    "incompatible_candidate": "Sibling tools/minima-core-cpp/src/persistence/UTxOStore.hpp and its persistence tests: SQLite coin-id primary key, spent flags and reorg deletion differ from pinned node-ID cache schema and old-file deletion. No substitution.",
+    "adaptation": "Required SqlDBServices; static instance published after constructor returns, short mutex for native shared-pointer lifetime; actual old cache file removal and SqlDB load; exact four statements/parameter order, recursive synchronized methods, partial/null results and SQL-only catches. Coin converter now catches only I/O errors with callback. Existing TxPoWSqlDB codec error formatter extracted unchanged to JavaIOExceptionText.hpp; SqlDB absolute File helper extracted unchanged. Existing coin fixture extracted to CoinFixture.hpp.",
+    "verification": "1350 programs/4318 operations/28803 driver effects pass normal (7.19s) and ASAN/UBSAN (9.34s). All native targets compile both builds. Seven other object/source-map/SQL regressions pass normal (68.28s); all eight pass sanitized (201.07s). Exact statements, file deletion/static publication, malformed/token/state coins, partial results and failure order; Java NPE expressions and logger prefixes/stacks excluded.",
+    "remaining": "Real native H2 provider, persistent queries, node/runtime owners and ChainServices nullable coin-list integration absent. Full Java object/reference/UTF16/file/concurrent lifecycle and logger parity remain under review. Default Coin converter logging remains a callback/stderr boundary."
+  },
+  "wallet_translation": {
+    "source": "upstream-study/src/org/minima/database/wallet/Wallet.java",
+    "reused": [
+      "cpp/src/org/minima/utils/SqlDB.hpp",
+      "cpp/src/org/minima/database/wallet/KeyRow.hpp",
+      "cpp/src/org/minima/database/wallet/SeedRow.hpp",
+      "cpp/src/org/minima/database/wallet/ScriptRow.hpp",
+      "cpp/src/org/minima/utils/BIP39.cpp",
+      "cpp/src/org/minima/utils/Crypto.hpp",
+      "cpp/src/org/minima/objects/Address.hpp",
+      "cpp/src/org/minima/objects/keys/TreeKey.hpp",
+      "cpp/src/support/JavaRandom48.hpp",
+      "cpp/support/SqlRecordingFixture.hpp",
+      "cpp/support/SqlDBOracle.java"
+    ],
+    "incompatible_candidate": "Sibling tools/minima-core-cpp/src/wallet/Wallet.hpp and wallet tests in tests/database/test_database.cpp and tests/integration/test_integration.cpp inspected: random single-WOTS keys, one-use flag and in-memory address keys differ from source seeded TreeKey and SQL persistence. No substitution.",
+    "adaptations": "Required SqlDBServices, native shared row ownership/nullable text, recursive method locks and atomic stop/default-count fields. BIP39 trim helper extracted unchanged to JavaStringTrim.hpp. Exact multisig.MULTISIG_CONTRACT extracted to support/MultisigContract.hpp; multisig command not claimed. TreeKey logger callback now preserves source exhaustion/excessive-signature-level logs; pointer signing overload preserves null-data timing and maximum-level diagnostic corrected.",
+    "verification": "1433 programs/6521 operations/85452 recorded JDBC effects pass normal (23.19s) and ASAN/UBSAN (144.49s). Actual native key derivation/signature bytes, key-use update failures, seed alias identity, cache updates, schema/reopen, default-key count stickiness and partial errors. All targets compile both builds; eight selected regression suites pass normal67.49s/sanitized272.07s. No new ThreadSanitizer run.",
+    "remaining": "Native H2 engine, durable key-use updates, storage recovery, Main/MinimaDB/TxPoWDB runtime binding absent. Unsynchronized lifecycle/seed/cache mutation and Java reference/UTF16/null API parity remain open. Random default choice tested zero/one candidate, generated seed uses supplied fixture phrase; private cache sets sorted for membership only. Full logger and pathological TreeKey API behavior incomplete."
+  },
+  "archive_manager_translation": {
+    "source": "upstream-study/src/org/minima/database/archive/ArchiveManager.java",
+    "reused": [
+      "cpp/src/org/minima/utils/SqlDB.hpp",
+      "cpp/src/org/minima/objects/TxBlock.cpp",
+      "cpp/src/org/minima/database/cascade/Cascade.cpp",
+      "cpp/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp",
+      "cpp/src/support/JavaIOExceptionText.hpp",
+      "cpp/support/SqlRecordingFixture.hpp",
+      "cpp/support/SqlDBOracle.java",
+      "cpp/support/ArchiveFixture.hpp",
+      "cpp/support/ArchiveCacheOracle.java txpow fixture",
+      "cpp/support/NIOClientOracle.java reflection helpers",
+      "cpp/tools/peers_checker_differential.py Runner",
+      "cpp/tools/sql_db_differential.py normalize"
+    ],
+    "incompatible_candidate": "Sibling tools/minima-core-cpp/src/chain/BlockStore.hpp stores TxPoW in memory, and src/persistence/BlockStore.hpp uses SQLite replacement/block schemas. Neither supplies pinned H2 archive/cascade behavior.",
+    "adaptations": "Required SQL/shutdown/clock/startup-debug services, shared nullable blocks/cascades, recursive method locks, atomic long retention initialized with Java long wrap. Exact schema and fifteen prepared statements. TxBlock conversion catches I/O only; TxBlock/Cascade I/O and Cascade validation logs use callbacks. Java deterministic TxPoW fixture copied from ArchiveCacheOracle because that older class depends on a replacement TxPoW test class; actual pinned TxPoW is used here.",
+    "verification": "3333 programs/10831 operations/125655 recorded SQL effects pass normal30.70s and ASAN/UBSAN92.71s. All native targets compile both builds. Nine selected normal suites pass171.61s; eight supporting sanitized suites pass422.25s plus archive92.71s. First fixture-heavy corpus timed out240s; constructing only referenced test inputs retained comparisons and fixed test overhead. No new ThreadSanitizer run.",
+    "remaining": "Actual native H2 engine, SQL constraints/persistence/recovery, Main/MinimaDB runtime binding and demonstration main absent. Concurrent unsynchronized lifecycle, complete reference/null/UTF16/stream APIs and full logger behavior unverified. No new ThreadSanitizer run or live node."
+  },
+  "minima_db_translation": {
+    "source": "upstream-study/src/org/minima/database/MinimaDB.java",
+    "reused": [
+      "cpp/src/org/minima/database/archive/ArchiveManager.cpp",
+      "cpp/src/org/minima/database/txpowdb/TxPoWDB.cpp",
+      "cpp/src/org/minima/database/txpowtree/TxPowTree.cpp",
+      "cpp/src/org/minima/database/txpowtree/CoinDB.cpp",
+      "cpp/src/org/minima/database/wallet/Wallet.cpp",
+      "cpp/src/org/minima/database/userprefs/UserDB.cpp",
+      "cpp/src/org/minima/database/userprefs/txndb/TxnDB.cpp",
+      "cpp/src/org/minima/system/network/p2p/P2PDB.cpp",
+      "cpp/src/org/minima/system/network/p2p2/P2P2DB.cpp",
+      "cpp/src/org/minima/utils/MiniFile.hpp",
+      "cpp/src/support/JavaUnixFile.hpp",
+      "cpp/support/SqlRecordingFixture.hpp",
+      "cpp/support/SqlDBOracle.java",
+      "cpp/support/NIOClientOracle.java",
+      "cpp/tools/peers_checker_differential.py Runner",
+      "cpp/tools/sql_db_differential.py normalize"
+    ],
+    "incompatible_candidate": "Sibling tools/minima-core-cpp/src/database/MinimaDB.hpp and relevant database/integration tests inspected: SQLite bootstrap/addBlock flow and different database types do not preserve pinned lifecycle or nested read/write locks.",
+    "adaptations": "Required native SQL/Main services; shared singleton/component ownership; native mutex/condition-variable reentrant nonfair read/write adapter from inspected JDK26.0.1 contract (no JDK source copied). Unix File parent/child composition follows inspected JDK File/UnixFileSystem. Source safeRelease drops at most one hold of each kind and does not update diagnostic fields. TxnDB resolves current global UserDB on each save/load. Runtime custom-transaction and MegaMMR search callbacks return shared ownership, retained by callers through each operation. MMR global fallback now returns and retains shared ownership; MegaMMR clear/load replace a shared MMR. Existing stat-size helper extracted to JavaUnixFile.hpp; source load-size log restored. MiniFile uses existing JavaIOExceptionText for typed I/O diagnostics.",
+    "verification": "2367 programs/7519 operations/334711 recorded SQL calls pass normal34.83s and ASAN/UBSAN53.50s. Seven selected suites pass normal94.39s/sanitized229.34s. Full builds pass. Nonempty chain/cascade objects, MegaMMR boundaries,48 truncated state-file cases, sizes and partial state compared. Separate owner test passes retained reset/last-owner transfer plus7000 reads during1000 fully constructed MegaMMR component replacements. Existing lock tests passed previous milestone; no new ThreadSanitizer run.",
+    "remaining": "Native H2 execution/storage/encryption/recovery absent. Main/miner/processors and full runtime incomplete. Transaction-rich restoration, real halt branch, singleton/service rebinding, concurrent mutation of one MegaMMR and full public/alias/null/UTF16/log behavior unverified. ChainServices still converts some nullable/shared objects to values. Extreme lock overflow_error differs from Java Error. No new ThreadSanitizer run."
+  },
+  "txpow_miner_translation": {
+    "source": "upstream-study/src/org/minima/system/brains/TxPoWMiner.java",
+    "reused": [
+      "cpp/src/org/minima/utils/Crypto.cpp",
+      "cpp/src/org/minima/objects/base/MiniNumber.cpp BigInt",
+      "cpp/src/org/minima/objects/TxHeader.cpp",
+      "cpp/src/org/minima/objects/TxPoW.cpp",
+      "cpp/src/org/minima/utils/messages/MessageProcessor.cpp",
+      "cpp/src/org/minima/system/network/p2p2/P2P2Manager.cpp factory pattern",
+      "cpp/src/org/minima/system/brains/TxPoWGenerator.cpp",
+      "cpp/support/ArchiveFixture.hpp",
+      "cpp/support/CoinFixture.hpp",
+      "cpp/support/ObjectOracle.java coin",
+      "cpp/support/ArchiveManagerOracle.java txpow",
+      "cpp/support/NIOClientOracle.java Unsafe reflection",
+      "cpp/support/SqlRecordingFixture.hpp JSON adapters",
+      "cpp/tools/peers_checker_differential.py Runner",
+      "cpp/tools/sql_db_differential.py normalize"
+    ],
+    "incompatible_candidate": "Sibling tools/minima-core-cpp/src/mining/TxPoWMiner.hpp,MiningManager.hpp and tests/mining/test_mining.cpp fully inspected. Integer nonce reserialization, block-or-transaction classification, different stop conditions, direct chain processing and random template construction do not preserve pinned miner.",
+    "adaptations": "Required Main callbacks; actual native generator/tip/broadcast defaults; owned MessageProcessor factory; shared TxPoW messages; short coin-list mutex; explicit clock adapter. Exact offset4 BigInteger-byte patching, strict transaction difficulty,10001-failure timeout check, timeout/exception reservations, absent end automine flag and stopped-loop ZERO finalnonce retained.",
+    "verification": "Both all-target builds pass.357 programs/1352operations pass normal9.17s; six selected normal suites38.54s. Native worker mines16TxPoWs, tests cancellation/owner release/exception recovery, strict clock equality, benchmark arithmetic and supplied generator/broadcast routing. Same six suites pass ASAN/UBSAN126.45s; miner differential28.78s/nativeworker6.03s. Source mapping264/193 checked.",
+    "remaining": "Full Main/processor/node integration absent. Arbitrary simultaneous TxPoW mutation/read and global settings mutation unsynchronized. Native generator/broadcast defaults need full runtime validation. Wrong payload casts/header-only processing/malformed-header and resource-error API semantics incomplete. Benchmark effects use native clock adapters; demo main absent. No ThreadSanitizer run. Source Crypto.hashObject catches/logs/returns null; native template throws and TxHeader hash fields are nonnullable. Requires shared API correction."
+  },
+  "txblock_checker_ownership": {
+    "source": [
+      "upstream-study/src/org/minima/objects/TxBlock.java",
+      "upstream-study/src/org/minima/system/brains/TxPoWChecker.java",
+      "upstream-study/src/org/minima/system/brains/TimedChecker.java"
+    ],
+    "reused": [
+      "cpp/src/org/minima/objects/TxBlock.cpp",
+      "cpp/src/org/minima/database/txpowtree/TxPoWTreeNode.hpp",
+      "cpp/src/org/minima/system/brains/TxPoWChecker.cpp",
+      "cpp/src/org/minima/system/brains/TimedChecker.cpp",
+      "cpp/support/objects.cpp blockFixture extracted into BlockFixture.hpp",
+      "cpp/support/ObjectOracle.java",
+      "cpp/support/ArchiveManagerOracle.java",
+      "cpp/support/timed.cpp",
+      "cpp/tools/peers_checker_differential.py Runner"
+    ],
+    "adaptations": "Shared main TxPoW and owned transaction lists; existing synchronous value adapter borrows; asynchronous value adapter retains original vector even empty. In-place TxBlock reading preserves old main on failure and removed states. Typed missing-transaction errors.",
+    "verification": "1558 programs/6219 operations pass normal and ASAN/UBSAN. Ten selected suites pass264.38s/589.95s, including old/shared120-second deadline lifetime and release checks.",
+    "remaining": "Collection aliases, parent peak-list identity, exact checker logging/error order, concurrent mutation and complete runtime remain pending."
+  },
+  "txpow_processor_translation": {
+    "source": "upstream-study/src/org/minima/system/brains/TxPoWProcessor.java",
+    "reused": [
+      "cpp/src/org/minima/database/MinimaDB.cpp",
+      "cpp/src/org/minima/database/txpowdb/TxPoWDB.cpp",
+      "cpp/src/org/minima/database/archive/TxBlockDB.cpp",
+      "cpp/src/org/minima/database/txpowtree/TxPowTree.cpp",
+      "cpp/src/org/minima/database/txpowtree/TxPoWTreeNode.cpp",
+      "cpp/src/org/minima/system/brains/TxPoWChecker.cpp",
+      "cpp/src/org/minima/utils/Stack.cpp",
+      "cpp/src/org/minima/utils/messages/MessageProcessor.cpp",
+      "cpp/support/NIOMessageOracle.java receiver injection pattern",
+      "cpp/support/IBDOracle.java archive receiver pattern",
+      "cpp/support/ArchiveFixture.hpp and ArchiveManagerOracle.java",
+      "cpp/support/txpow_miner_worker.cpp worker lifetime pattern",
+      "cpp/tools/peers_checker_differential.py Runner",
+      "cpp/tools/sql_db_differential.py normalize"
+    ],
+    "incompatible_candidate": "Fully read sibling tools/minima-core-cpp/src/system/TxPoWProcessor.hpp and relevant tests/system/test_processor.cpp: basic height/time classification, unconditional transaction acceptance, hardcoded32 trimming and TxPoW-ID MMR leaves differ from pinned validation/IBD/database behavior. Not copied.",
+    "adaptations": "Owned source-message objects and worker factory; required Main services; actual MinimaDB/NIO defaults; atomic first-IBD/completion fields; explicit finally cleanup; Java checked/IO exception formatting and native RAII in place of GC hints. TxBlockDB null error and header validation diagnostic/order mismatches corrected.",
+    "verification": "384 programs/1434operations normal24.05s and ASAN/UBSAN45.93s. Actual pinned processor/checker/tree/MMR, eight Java-mined blocks with fork and referenced empty transaction, actual RAM flags; controlled SQL index/archive/wallet/external receivers. Native18-message worker recovery/cleanup/owner release and24strict clock cases. Both all-target builds pass. Normalselectedregressions148.36s+52.33s. Same five map/ownership/checker/processor suites pass sanitized135.70s. Final sanitized consensus/archive-cache also pass462.05s (archive27.04s).",
+    "remaining": "Main/full native H2/runtime integration; simultaneous mutable tree/MMR/TxPoW access; transaction-rich chain and complete API/resource/error behavior; Java identity strings and generic payload casts. Native-only clock boundary tests; no TSAN."
+  },
+  "notification_translation": {
+    "sources": [
+      "src/org/minima/system/network/webhooks/NotifyManager.java",
+      "src/org/minima/system/commands/network/webhooks.java"
+    ],
+    "native": [
+      "src/org/minima/system/network/webhooks/NotifyManager.cpp",
+      "src/org/minima/system/commands/network/webhooks.cpp"
+    ],
+    "reused": [
+      "MessageProcessor owned factory/queue",
+      "MessageObject shared JSONObject",
+      "UserDB/JsonDB/MiniUtil array persistence",
+      "Command/CommandRunner parser and dispatch"
+    ],
+    "adaptations": [
+      "Required listener receiver; actual MinimaDB user DB, native RPCClient POST and native MinimaLogger defaults; HTTP/log receivers remain injectable for controlled tests",
+      "UTF16 hook list, UserDB and Command parameter adapters preserve isolated surrogate code units",
+      "Recursive hook mutex and atomic error logging flag",
+      "Explicit JavaClassCastException for malformed payload/event types"
+    ],
+    "verification": "527 programs/2667operations pass normal3.86s and ASAN/UBSAN4.21s. Actual pinned NotifyManager/webhooks/CommandRunner/RPCClient with controlled Main/HttpURLConnection, actual native UserDB/JSON/queue.400concurrenteventworker,malformedmessage recovery,hook mutation,stop/JSON ownership,reentrant DB lookup;10sanitizedworkerrepeats pass1.92s after destruction assertion barrier correction.Eightselectedsuites normal16.05s/sanitized26.05s; final extra malformed-command cases covered by527programs. Both final full all-target builds pass.",
+    "remaining": "Full Main runtime absent; mutable shared JSON and UserDB require complete cross-worker access contract. Default HTTP and logging now use native RPCClient/MinimaLogger, separately compared and exercised by real workers. No TSAN."
+  },
+  "rpc_client_translation": {
+    "source": "src/org/minima/utils/RPCClient.java",
+    "native": "src/org/minima/utils/RPCClient.cpp",
+    "reused": [
+      "src/support/P2PEnvironment.cpp curl lifecycle/header/redirect composition extracted to support/CurlTransport.hpp",
+      "src/support/Base64.hpp",
+      "src/org/minima/objects/base/MiniString.cpp UTF8 decoder",
+      "src/support/ByteIO.hpp and JavaIOExceptionText.hpp",
+      "MinimaDB global-reference mutex snapshot pattern for mutable USER_AGENT",
+      "tools/p2p_functions_differential.py loopback scaffolding and peers_checker_differential.Runner"
+    ],
+    "adaptations": [
+      "All ten active public RPC method forms translated; optional strings preserve null and empty distinction",
+      "Native libcurl HTTP/1.1 request/response, 10-second connect timeout, no added read timeout, source 200-only line-concatenated responses",
+      "Manual same-protocol redirects, 20-hop limit, POST-to-GET header reset except 307, destination auth stripping, 305 proxy target and header behavior",
+      "URL user-info never automatically authorizes requests; explicit Minima auth headers preserved",
+      "Native SSLContext callback configures connection TLS options; CA file tested, default verification retained",
+      "Typed I/O exception class rendering and owned full message prevent embedded NUL truncation",
+      "Unexpected 101 retry/rejection and premature fixed-length EOF follow inspected installed JDK",
+      "Initial raw request target preserves empty query, CR and path bytes; NUL URL fails source proxy-selection phase",
+      "NotifyManager default sender bound to RPCClient; mutable USER_AGENT uses mutex-protected snapshots"
+    ],
+    "primary_dependencies_inspected": [
+      "Local OpenJDK26.0.1 HttpURLConnection, HttpClient, NetworkClient, MessageHeader, ParseUtil and MeteredStream source",
+      "https://curl.se/libcurl/c/CURLOPT_SSL_CTX_FUNCTION.html",
+      "https://curl.se/libcurl/c/CURLOPT_CAINFO.html",
+      "https://curl.se/libcurl/c/CURLOPT_CAINFO_BLOB.html",
+      "https://curl.se/libcurl/c/CURLOPT_CURLU.html",
+      "https://curl.se/libcurl/c/curl_url_set.html",
+      "https://curl.se/libcurl/c/CURLOPT_REQUEST_TARGET.html"
+    ],
+    "verification": "477 cases/597 HTTP requests per runtime pass in normal and ASAN/UBSAN. Actual unchanged pinned Java RPCClient on ephemeral HTTP/HTTPS loopback servers; method/path/header values/body and outputs compared. Native queued notification worker adds2events/7requests/2loggedfailures. Ten related regression suites pass62.58s/72.02s. Final USER_AGENT snapshot fix passes a4-thread/4000-assignment native stress check. Final four suites pass normal10.67s/ASAN-UBSAN12.97s; final RPC477cases/597requests pass5.33s/5.35s. Both final all-target builds pass.",
+    "remaining": "Not full JDK URL/URLConnection/SSLContext equivalence: malformed and uncommon URLs, NUL header values, all response parser cases, global ProxySelector/Authenticator/CookieHandler/ResponseCache/system properties, trust-store/provider/cipher/key-manager behavior, mutable charset/isolated UTF16 surrogates, exact provider-specific diagnostic messages and exception stack traces. Header order and selected runtime diagnostics normalized. Full Main/native H2 node absent."
+  },
+  "logger_translation": {
+    "source": "src/org/minima/utils/MinimaLogger.java",
+    "native": "src/org/minima/utils/MinimaLogger.cpp",
+    "reused": [
+      "support/JavaDateString.hpp tested calendar calculation extracted to support/JavaCalendarFields.hpp",
+      "utils/MiniFormat.cpp formatSize",
+      "support/JavaUnicode.hpp and JSONObject UTF16 values",
+      "MinimaDB mutex/shared-reference snapshot pattern",
+      "NotifyManager owned worker and MessageObject JSON retention",
+      "NIOClientOracle Unsafe helper for controlled Main/DateFormat receivers"
+    ],
+    "adaptations": [
+      "Native clock and allocator total/free memory callbacks; macOS malloc_zone_statistics default, glibc mallinfo2 branch",
+      "UTF16 nullable strings preserve full message code units in notification JSON",
+      "Print before notification; two separate Main receiver lookups; original JSON passed to receiver",
+      "Throwable interface supplies original text and nullable recorded frame array; no fabricated throw-site stack",
+      "Fixed dd/MM/yyyy HH:mm:ss formatter captures default zone and reuses Java calendar field behavior",
+      "Runtime callbacks held as immutable shared snapshots; retired callback destruction and copying occur outside registry lock",
+      "NotifyManager logger default now calls native MinimaLogger"
+    ],
+    "platform_evidence": "Read installed SDK malloc/malloc.h malloc_statistics_t and malloc_zone_statistics declaration, including null-zone sum of all zones. Existing JavaDateString and NIO date tests reused unchanged. No JDK implementation source copied.",
+    "verification": "2016 Java/C++ cases across4zones (including384original DATEFORMAT timestamp cases) pass normal/sanitized. Native worker400concurrent pairs/800Mainlookups, rebindNPE, heapwrap/order, native heap/clock/stdout, receiverretirementreentry and actual NotifyManager default logging -> queuedMINIMALOG. Seven suites pass57.40s/130.06s; NIO714cases13972ops pass44.82s/115.27s. Both final all-target builds pass. Final normal loggerpair3.20s; final corrected sanitizedlogger3.47s/worker0.79s.",
+    "remaining": "Full mutable SimpleDateFormat and throw-site frame capture for all native exceptions are incomplete. JVM heap text and automatic NPE messages normalized. Main receiver controlled in integration; full Main/H2/node absent. glibc allocator branch untested here. No TSAN."
+  },
+  "rpc_cli_translation": {
+    "source": "src/org/minima/utils/MinimaRPCClient.java",
+    "native": "src/org/minima/utils/MinimaRPCClient.cpp",
+    "executable": "build/minima-rpc",
+    "reused": [
+      "RPCClient::sendGETBasicAuth native HTTP/TLS implementation",
+      "MiniFormat::JSONPretty and JSONParser",
+      "MinimaLogger Throwable and native stdout/heap/time defaults",
+      "SocketCharacterReader byte framing, JavaUnicode/MiniString UTF8 charset behavior",
+      "JavaExceptions/ByteIO/JavaIOExceptionText typed failures",
+      "rpc_client_differential Handler/Server and peers_checker_differential Runner"
+    ],
+    "adaptations": [
+      "Nullable UTF16 arguments, original flags/banner/default authentication and single-command/interactive control flow",
+      "Shared reader takes byte-input callback; POSIX stdin reads available data and retries EINTR; stdin requests fresh reads after temporary terminal EOF while sockets retain sticky EOF",
+      "UTF8 form encoding uses existing JavaUnicode encoder plus original safe-byte/space/uppercase-percent rules",
+      "NativeStackTrace captures construction-time frames via platform execinfo, grows beyond64frames and preserves copies/rethrows",
+      "Shared typed exceptions, I/O errors and ParseException carry native frames; NativeThrowable adapts original text/frames to MinimaLogger and stderr",
+      "Original commented SSL-context setup remains inactive"
+    ],
+    "platform_evidence": [
+      "Installed OpenJDK26.0.1 URLEncoder.java read in full; no implementation copied",
+      "Installed execinfo.h read in full; link platform backtrace/backtrace_symbols APIs without copying implementation",
+      "Installed OpenJDK26 StreamDecoder.implRead inspected: EOF flag local per read and decoder reset permits a later terminal read"
+    ],
+    "verification": "89 actual pinned Java/C++ main cases,70HTTPrequests per runtime,10real executable checks pass normal/sanitized. Nullable args, isolated UTF16, NUL/control/form-encoding, auth defaults, JSON object/scalar/parse/status failures, banner, trim, quit failure/recovery, input read failure and close failure. Actual pipe input processes a line before EOF; EOF does not exit; pseudoterminal Ctrl-D then exit succeeds. Native stacks160+frames, original-symbol presence, copy/throw preservation, fullNULIOmessage, typed/parser stacks pass normal/sanitized. Ten affected normal suites pass53.79s;12sanitized suites pass128.36s. Final EOF/reader correction: both all-target builds pass;4related suites pass13.32s/14.11s, including finalCLI5.47s/5.75s.",
+    "remaining": "Full node/Main/H2/MVStore not implemented. Native stack symbols and counts differ from JVM; uncaptured std::exception types, causes/suppressed exceptions, all resource/PrintStream/JVM-global cases remain incomplete. Mutable charset, isolated UTF16 URL/header boundaries and full JDK network/TLS behavior inherit RPCClient gaps. EOF spin intentionally matches source; no production network/node launched."
+  },
+  "startup_configuration_translation": {
+    "sources": [
+      "src/org/minima/system/params/TestParams.java",
+      "src/org/minima/system/params/ParamConfigurer.java",
+      "test/org/minima/system/params/ParamConfigurerTest.java"
+    ],
+    "native": [
+      "src/org/minima/system/params/TestParams.cpp",
+      "src/org/minima/system/params/ParamConfigurer.cpp",
+      "test/org/minima/system/params/ParamConfigurerTest.cpp"
+    ],
+    "reused": [
+      "P2PTestParams::values lazy mutable settings pattern",
+      "GlobalParams/GeneralParams existing native static fields",
+      "JavaConcurrentMap/JavaHashMap hashed-key, tree and bucket traversal",
+      "JavaInteger BMP Unicode decimal validation extended to signed64bit",
+      "JavaLowerCase/JavaFinalSigma logic with direct UTF16 overload",
+      "JavaUnixFile constructor/absolute/child path rules",
+      "MiniString malformed UTF8 span consumption extracted to UTF8Spans.hpp",
+      "SocketCharacterReader line/CRLF rules with a decoded-character callback",
+      "RPCClient::sendGET and MinimaLogger production defaults",
+      "Existing HTTP fixture Server and JSON-line Runner"
+    ],
+    "adaptations": [
+      "All67active enum consumers and original help strings; same argument lookahead, configuration precedence and partial mutation/error behavior",
+      "Stable native enum identity hashes; test receiver binds actual Java hashes for exact arbitrary iteration-order comparisons; equal-hash tree ties use enum ordinal",
+      "HashMap bulk-insert pre-sizing including first-table capacities below16",
+      "StrictUTF8CharacterReader decodes complete fetched8192bytebuffer before returning lines and retains incomplete prefixes between reads",
+      "POSIX configuration open/fstat/read with captured int-sized file fence and RAII close; checked opening errors vs unchecked traversal errors",
+      "JavaUnixMkdirs tries original path then canonicalizes before parent creation; stored absolute parameter string retains source spelling",
+      "MiniNumber reuses BMP digit recognition and typed NumberFormatException for invalid decimal/exponent/scale inputs",
+      "JavaTypedException preserves named runtime diagnostics and fullNUL-containing messages"
+    ],
+    "primary_source_review": [
+      "Full pinned ParamConfigurer.java553lines,TestParams.java81lines,ParamConfigurerTest.javafive methods and Minima startup caller",
+      "Installed OpenJDK26.0.1 java.util.HashMap.putMapEntries for pre-sizing",
+      "Installed OpenJDK26.0.1 File.mkdirs, Files.lines/createFileChannelLinesStream, FileChannelLinesSpliterator.getBufferedReader/readLine and StreamDecoder readBytes/implRead/inReady",
+      "Native NIOSocket POSIX read/close ownership pattern and all reused headers/fixtures inspected"
+    ],
+    "validation": "719 cases/all67activehandlers pass normal5.07s and ASAN/UBSAN7.88s. Actual global/TestParams fields, exact supplied-enum-hash map contents/order, error side effects, filesystem snapshots, strictUTF8 at8192byte boundaries, English/Turkish environment normalization,4HTTPrequests per runtime,3process checks(help,missing-file exit,lazy version). Unchanged original5JUnit test methods run with fresh GeneralParams per method; mapped native5methods pass.18affected regression suites pass normal149.99s/sanitized259.21s; both final all-target builds pass. Final renderer fixture uses production nativeExceptionText and verifies NUL-bearing unknown-argument messages. Source map273counterparts184absent.",
+    "remaining": [
+      "Full Main/nativeH2/MVStore/node absent",
+      "GeneralParams/GlobalParams native value fields still do not preserve all nullable/isolatedUTF16/reference/concurrent-update semantics",
+      "Default identity hash values legitimately differ by process; supplied-hash comparisons establish map behavior, not identical hash generation",
+      "Reentrant/concurrent modification traversal, resource failures, JVM-global locale/stream/error handling and special/huge/changing configuration files remain incomplete",
+      "Native file stream closes deterministically; upstream Files.lines stream is not explicitly closed and may retain descriptors until collection"
+    ]
+  },
+  "uncaught_exception_translation": {
+    "sources": [
+      "src/org/minima/utils/MinimaUncaughtException.java",
+      "src/org/minima/utils/messages/MessageProcessor.java",
+      "src/org/minima/utils/messages/TimerProcessor.java",
+      "src/org/minima/Minima.java"
+    ],
+    "native": [
+      "src/org/minima/utils/MinimaUncaughtException.cpp",
+      "src/support/NativeThread.cpp"
+    ],
+    "reused": [
+      "MinimaLogger::Throwable/runtime/default logger",
+      "NativeThrowable/NativeStackTrace construction-time frames",
+      "JavaTypedException diagnostics",
+      "MessageProcessor/TimerProcessor native ownership and join barriers",
+      "Shared logger runtime registry retirement outside lock",
+      "MinimaLoggerOracle/NIOClientOracle controlled Main/date/PrintStream and pinned-source compilation"
+    ],
+    "adaptations": [
+      "Per-instance nullable UTF16 last error; static captured default replaced on each constructor; no lock held across logging or handler callbacks",
+      "Actual native exception-type classification including subclasses/std::bad_alloc, with no string-based inference",
+      "Default _Exit(0) and injectable halt boundary",
+      "Default thread handler registry looked up at failure; handler exceptions confined to the native thread boundary",
+      "MessageProcessor source Error/Exception logging and finally cleanup; escaping failures retain unfinished flags",
+      "Timer orphan exception and logger routing; real message/timer factories use native default dispatch"
+    ],
+    "validation": "121 unchanged pinned handler programs +6fatal process checks +13real worker scenarios pass normal/ASAN/UBSAN. Native thread checks pass subtype/spoofed-name classification,empty messages,late default lookup,actual native thread identity,reentrant registry retirement,injected halt,foreign throws and stderr fallback. All28affected suites pass145.07s normal/281.49s sanitized. New uncaught4.81s/6.10s and nativechecks0.31s/0.48s. Both final all-target builds pass without compiler warnings/errors. Map274counterparts/183absent. JVM/native frames,automatic NPE details,heap prefix and elapsed trace times normalized or separately scoped.",
+    "remaining": [
+      "Full native Main/node/H2/MVStore absent; MVStoreException carrier is not storage implementation",
+      "Other native thread launch sites not yet integrated",
+      "Native frames/VM diagnostics/resource exhaustion/thread groups/per-thread overrides/interruptions/causes/suppressed exceptions and complete memory-model behavior unverified",
+      "Timer weak receiver lifetime and lock reentry remain partial"
+    ]
+  },
+  "http_executor_thread_integration": {
+    "sources": [
+      "src/org/minima/system/network/rpc/HTTPServer.java",
+      "java.base/java/util/concurrent/ThreadPoolExecutor.java (installed OpenJDK26.0.1)",
+      "java.base/java/util/concurrent/Executors.java (installed OpenJDK26.0.1)"
+    ],
+    "native": [
+      "src/org/minima/system/network/rpc/HTTPServer.cpp",
+      "src/support/FixedTaskExecutor.hpp",
+      "src/support/JavaSocketExceptions.hpp"
+    ],
+    "reused": [
+      "NativeThread default-handler dispatch and thread identity",
+      "MinimaLogger and NativeThrowable original diagnostics/recorded frames",
+      "wire::TypedIOException with concrete SocketException/BindException subtypes",
+      "Existing HTTPServer POSIX socket/wakeup/ownership adapters",
+      "Existing FixedTaskExecutor lazy FIFO workers,shutdown/drain and replacement",
+      "Existing HTTPServerOracle/http_server.cpp and loopback harness; only native logger receiver adapted"
+    ],
+    "primary_source_review": [
+      "Full pinned HTTPServer.java and native implementation/header/fixtures/dependencies inspected",
+      "Installed OpenJDK26.0.1 runWorker,processWorkerExit,addWorker,addWorkerFailed,execute and DefaultThreadFactory read; no JDK implementation copied",
+      "Current+sibling search found no alternate proven native default-handler implementation"
+    ],
+    "adaptations": [
+      "Listener and daemon request thread boundaries; exact source catch categories and logger overloads",
+      "Escaping executor task exceptions retain original native exception_ptr, worker-exit cleanup precedes default dispatch; replacement failure supersedes original",
+      "DefaultThreadFactory-style signed32bit pool/worker counters; replacement owner lifetime and termination behavior retained"
+    ],
+    "validation": "13normal affected suites PASS in13.77+29.58+43.11seconds;16sanitizer suites PASS173.36s.30actual pinned HTTP failure cases PASS4.53s/6.76s and10JDK/native executor cases PASS2.83s/3.19s. Both final all-target builds PASS without warnings/errors. All new JSON reports have zero failures. Source map remains274counterparts/183absent; no new mapped implementation claimed.",
+    "remaining": [
+      "No full Main/nativeH2/MVStore/node",
+      "NIOManager server/connect and TimedChecker boundaries/dependency Error catches still incomplete",
+      "Complete JVM groups/priority/interruptions,OS resource errors,HTTP repeated concurrent starts/close-error callback reentry and all ExecutorService APIs not established"
+    ]
+  },
+  "nio_thread_integration": {
+    "sources": [
+      "src/org/minima/system/network/minima/NIOServer.java",
+      "src/org/minima/system/network/minima/NIOClient.java",
+      "src/org/minima/system/network/minima/NIOManager.java"
+    ],
+    "native": [
+      "src/org/minima/system/network/minima/NIOServer.cpp",
+      "src/org/minima/system/network/minima/NIOClient.cpp",
+      "src/org/minima/system/network/minima/NIOManager.cpp"
+    ],
+    "reused": [
+      "Existing selector/poll, socket ownership, queued registration/disconnect lists and shared client map",
+      "NativeThread default-handler registry and unnamed worker naming",
+      "MinimaLogger and NativeThrowable original diagnostic rendering",
+      "NIOServerOracle/NIOClientOracle loopback, controlled receiver and selection-key fixtures",
+      "HTTPServerErrorsOracle/http_server_errors log/error comparison approach",
+      "NIOManager state fixture friend access and existing connection adapters"
+    ],
+    "review": [
+      "Pinned server source and native server/client implementations read; source NIOClient cancellation and manager constructor/connect runnable catch scopes checked",
+      "Sibling tools/minima-core-cpp/src/network/NIOServer.hpp read; blocking IPv4 accept loop not substituted for pinned selector semantics"
+    ],
+    "adaptations": [
+      "JavaError/std::bad_alloc escape source Exception catches in server send/accept/read/run and client disconnect",
+      "Real logger for server catches, fatal bind, trace paths and connector success/failure; source trace notify=false",
+      "Actual manager server and detached connector factories retain owners and dispatch through NativeThread; logger failures preserve source reconnect ordering"
+    ],
+    "validation": "10 normal affected suites PASS80.67+47.98seconds;13ASAN/UBSAN suites PASS285.25s.63server/client cases PASS7.80s/11.93s,12connector+4nativefactory cases PASS4.34s/4.66s. Both full builds PASS with no compiler warnings/errors;all4newJSONreports explicitly verified passed=true and zero failures. Source map274/183 unchanged and whitespace check PASS.",
+    "remaining": [
+      "Full Main/nativeH2/MVStore/node absent;274counterparts/183absent unchanged",
+      "NIOServer native selector closes at normal shutdown while source selector remains open; complete resource/cancellation/reentry semantics not established",
+      "Native OS diagnostics differ from JDK outside explicit typed carriers; NIOClient read/write and other NIOManager method catches/logging still need review",
+      "TimedChecker and remaining worker boundaries still unintegrated; JVM thread groups/priority/interruptions not established"
+    ]
+  },
+  "timed_checker_thread_integration": {
+    "sources": [
+      "src/org/minima/system/brains/TimedChecker.java",
+      "src/org/minima/system/brains/TxPoWChecker.java"
+    ],
+    "native": [
+      "src/org/minima/system/brains/TimedChecker.cpp",
+      "src/org/minima/system/brains/TxPoWChecker.cpp"
+    ],
+    "reused": [
+      "Existing TimedChecker asynchronous state and original parent/block/list/ancestor ownership",
+      "NativeThread unnamed-worker/default-dispatch boundary",
+      "MinimaLogger/NativeThrowable original exception rendering",
+      "Existing timed.cpp parent/MMR and valid block setup",
+      "ConsensusOracle source generator/serialization/duplicate transaction fixture",
+      "Existing NIOClientOracle reflection and explicit failure-handler fixtures",
+      "Existing txpow_processor.cpp per-operation capture,now includes actual logger println",
+      "Executor uncaught fixture release-after-caller-observation pattern"
+    ],
+    "adaptations": [
+      "Worker and outer Exception/Error distinction and source logger order; finished only assigned after completing catch; no reset of flags on reuse",
+      "BLOCK_LOGS final log outside catch,including null block dereference",
+      "Block header/catch/maxcount/duplicate/MMR logs use actual logger; block visits all proof IDs before constructing uniqueness set",
+      "Java-generated parent/block/duplicate wires reused by native differential fixture; actual two-minute timeout tested without shortening"
+    ],
+    "validation": "Eleven distinct normal affected suites pass after fixture correction;13SAN suitesPASS557.30s.2890consensus casesPASS170.82s/557.29s;1558ownership programs6219operationsPASS62.12s/182.99s;384processor programs1434operationsPASS(normaldirectrerun)/55.37s. Existing value/shared ownership deadlinesPASS120.78s/120.78s normal and122.94s/121.32s SAN. FreshError actual120second deadlinePASS122.95s/125.72s. Finalrelease-signal fixture91casesPASS20.19s normal andPASSdirectSANrunner. All result reports explicitly verified zero failures;all finalbuild logs no C++warnings/errors. Source-map274/183 unchanged and whitespacecheckPASS.",
+    "remaining": [
+      "FullMain/nativeH2/MVStore/183missing mapped files and complete parity unimplemented",
+      "Native Java interruption,stored Thread field,thread groups/priority and resource-failure creation behavior incomplete",
+      "Other checker/basic/MMR/script logs and complete reference/API semantics not reviewed",
+      "Empty MMR source root returns null leading to NPE; current checker still throws invalid_argument at missing root. Requires explicit parity correction/test.",
+      "Generated NPE expressions,automatic JVM/native frames,thread counters and elapsed log milliseconds excluded from new comparison"
+    ]
+  },
+  "checker_rejection_translation": {
+    "sources": [
+      "src/org/minima/system/brains/TxPoWChecker.java",
+      "src/org/minima/objects/Transaction.java",
+      "src/org/minima/objects/TxPoW.java",
+      "src/org/minima/objects/keys/Signature.java",
+      "src/org/minima/kissvm/Contract.java"
+    ],
+    "reused": [
+      "Existing TxPoWChecker validation stages and cache flags",
+      "MinimaLogger actual println receiver and NativeThrowable exception classification",
+      "JavaConcurrentMap.hpp HashMap collection capacity/traversal",
+      "JavaHashtable.hpp token amount enumeration",
+      "ConsensusOracle.java source fixture generation/serialization",
+      "NIOClientOracle.java reflection helpers",
+      "peers_checker_differential.py persistent Runner",
+      "TimedCheckerErrorsOracle/timed_checker_errors existing priming and release-signal fixture"
+    ],
+    "adaptations": [
+      "Source rejection messages and logger-failure propagation in basic/simple/script/MMR/signature methods",
+      "Transaction.checkValid input/output/token rejection logs and Hashtable traversal",
+      "Nullable Simple MMR forwarding uses existing pointer MMR/script paths; block callers avoid null reference construction",
+      "Source exception categories for empty MMR root, body field reads, missing token at Contract.setGlobals and empty Signature root lookup",
+      "Source token-script failure label and optional complete trace",
+      "Test-only ObjectOracle-equivalent scoped suppression of Transaction validation logger"
+    ],
+    "verification": {
+      "normal": "1343 checker comparisons/100 Java fixtures and105 timed failure comparisons;12 additional affected normal suites pass, including9244 object,4471 VM,2890 consensus,135 HashMap cases;1558 block ownership programs/6219 operations;384 processor programs/1434 operations. Reports explicitly checked zero failures.",
+      "sanitizers": "Full ASAN/UBSAN build and all14 affected suites pass492.87s. All8reports inspectedzero failures:1343 checker comparisons/100fixtures;105 timed failures;9244 objects;4471 VM;2890 consensus;135 HashMap;1558 block ownership programs/6219operations;384processor programs/1434operations.",
+      "initial_failures": "78 of1185 checker cases exposed missing transaction logs and native exception category mismatches; corrected production and expanded tests. One fixture compile failed on nonexistent resetRuntime; fixed before running tests."
+    },
+    "limits": [
+      "Not complete file/API parity or full node",
+      "Automatic logger prefix/frame fields excluded and Java-generated NPE expression diagnostics normalized; categories retained",
+      "Arbitrary object aliases/null list entries and concurrent mutation not fully represented",
+      "TimedChecker native interruption and complete Java Thread behavior remain incomplete",
+      "Main/H2/MVStore full node runtime absent"
+    ],
+    "student_lab": "student-guide/new-tests/checker-rejections.md"
+  },
+  "script_value_mapped_test": {
+    "source": "test/org/minima/tests/kissvm/values/ScriptValueTests.java",
+    "native": "test/org/minima/tests/kissvm/values/ScriptValueTests.cpp",
+    "reused": [
+      "Existing native StringValue and Value implementations",
+      "BooleanValueTests require/throw mapped assertion convention",
+      "ParamConfigurerOriginalTests direct invocation of unchanged source JUnit assertions",
+      "Pinned upstream lib/junit-4.13.jar and fresh original source compilation"
+    ],
+    "adaptation": "All ten active assertions preserved in source order; native entry point uses existing standalone test convention. Original Java test remains unchanged. No production code changed.",
+    "verification": "Full normal and ASAN/UBSAN builds pass; mapped executable, original-Java comparison and source map pass in each build. Reports record1original method and10assertions per runtime.",
+    "remaining": "Full StringValue API not established by this test; project275counterparts182absent,parity classification remainsnot_verified."
+  },
+  "hex_value_mapped_test": {
+    "sources": [
+      "test/org/minima/tests/kissvm/values/HexValueTests.java",
+      "src/org/minima/kissvm/values/HexValue.java"
+    ],
+    "native": [
+      "test/org/minima/tests/kissvm/values/HexValueTests.cpp",
+      "src/org/minima/kissvm/values/HexValue.cpp"
+    ],
+    "reused": [
+      "Existing HexValue/MiniData/MiniNumber native constructors and equality",
+      "Existing JavaNumberFormatException",
+      "ScriptValueTests native require/throw convention",
+      "Existing original-value Python runner generalized with a selected test class and separate output directories",
+      "Pinned bundledJUnit direct original test method invocation"
+    ],
+    "adaptations": [
+      "Preserve all active constructor and six-route comparison cases, including repeated same-direction inequality assertion; commented ordering checks stay inactive",
+      "Use JavaNumberFormatException for negative and fractional numeric HexValue construction, with original messages"
+    ],
+    "verification": "Full normal/SAN builds pass, eight affected suites pass23.81s/85.21s. OriginalHexValue2methods35assertions per runtime and ScriptValue1/10 pass. All normal/SAN reports read:1451value,4471VM,9244object zero failures.",
+    "remaining": "Full HexValue aliases, size/error paths and complete node stillnotverified;276counterparts181absent."
+  },
+  "number_value_mapped_test": {
+    "source": [
+      "test/org/minima/tests/kissvm/values/NumberValueTests.java",
+      "src/org/minima/kissvm/values/NumberValue.java",
+      "src/org/minima/objects/base/MiniNumber.java"
+    ],
+    "native": [
+      "test/org/minima/tests/kissvm/values/NumberValueTests.cpp",
+      "src/org/minima/objects/base/MiniNumber.cpp",
+      "src/support/JavaExceptions.hpp"
+    ],
+    "reuse": [
+      "Existing NumberValue/MiniNumber decimal arithmetic",
+      "JavaTypedException and NativeStackTrace",
+      "Shared original JUnit runner and bundled junit-4.13.jar"
+    ],
+    "adaptations": [
+      "Preserve all99 executed assertions; comparison loops stop at missingcase3",
+      "Typed ArithmeticException forzero denominator; distinguishzero dividend",
+      "Seven supplemental Java/native error outputs fordiv andnegativepow; exactcomparison"
+    ],
+    "verification": "Full normal/SAN builds;16/16 affected suites193.70s/528.87s. Original4methods99assertions+7errorcomparisons pass both. Primitive3802,value1451,VM4471,object9244,checker1343,logger2016,consensus2890 zero failures.",
+    "remaining": "Other numeric error categories/reference semantics/fullnative node remainunverified."
+  },
+  "function_mapped_tests": {
+    "source": [
+      "test/org/minima/tests/kissvm/functions/DUMMYFUNCTION.java",
+      "test/org/minima/tests/kissvm/functions/MinimaFunctionTests.java",
+      "test/org/minima/tests/kissvm/functions/maths/ABSTests.java"
+    ],
+    "reuse": [
+      "Existing MinimaFunction registry andshared ExpressionPtr parameters",
+      "ABS/Contract.getNumberParam/MiniNumber.abs",
+      "Shared original JUnit driver andbundleddependency"
+    ],
+    "adaptations": [
+      "Test-only DUMMYFUNCTION preservesallfivebodymethods, linkedonlyintoconsumingtest",
+      "MinimaFunctionTests11executed assertions retainpointeridentity andtypederrors",
+      "ABSTests23executed assertions retain7numericcases+5errors; no productionchange"
+    ],
+    "verification": "Full normal/SAN builds;9/9selected suites10.55s/10.83s. OriginalABS3methods23assertions;MinimaFunction2methods11assertions; existing3valueclassesstillpass. Reportsreadbothbuilds.",
+    "remaining": "Dummy runFunction/minimum-metadata notexecuted byoriginaltest;fullpublicAPI,Unicode/null/ownershipcases and native node notcertified.280counterparts177absent."
+  },
+  "command_runner_errors": {
+    "source": [
+      "src/org/minima/system/commands/CommandRunner.java",
+      "src/org/minima/utils/MinimaLogger.java"
+    ],
+    "reuse": [
+      "Existing MinimaLogger/NativeThrowable and nativeExceptionText",
+      "Existing TxPoWChecker JavaError/bad_alloc catch boundary",
+      "CheckerLogsOracle and checker_logs ordered log capture"
+    ],
+    "adaptations": [
+      "Actual logger in generic catch; preserve IOException name",
+      "Rethrow Error and bad_alloc before generic catch",
+      "896 controlled command-outcome/gate/batch/logger failure requests"
+    ],
+    "verification": "450 baseline mismatches corrected to zero normal/SAN. All9selected regression suites pass; cmd_handler sandbox bind failed initially, approved local socket reruns pass4.96s/5.52s. Reportsread both:896new,1233runner,12289command,1129txn programs6904ops,2106HTTPrequests,527notify2667ops,2016logger.",
+    "remaining": "No complete registry/Main/wallet runtime; generated frames/time/memory excluded; injected OOM does not prove arbitrary allocation failure safety."
+  },
+  "rounding_mapped_tests": {
+    "source": [
+      "test/org/minima/tests/kissvm/functions/maths/FLOORTests.java",
+      "test/org/minima/tests/kissvm/functions/maths/CEILTests.java"
+    ],
+    "reuse": [
+      "Native FLOOR/CEIL and MiniNumber decimal methods unchanged",
+      "ABSTests typed-rejection and Contract context setup",
+      "Shared original JUnit runner with separate driver/report paths"
+    ],
+    "adaptations": [
+      "All active cases in source order; decimal fractions remain string-constructed",
+      "30FLOOR/26CEIL successful assertions guarded by native counters",
+      "Three unchanged Java methods per class invoked directly"
+    ],
+    "verification": "Full normal/SAN builds pass.10/10 selected suites pass13.21s/13.07s; all14original reports read after completion.",
+    "remaining": "Original empty domain block and zero-only count tests are not full coverage; no complete decimal/API/native-node claim."
+  },
+  "wallet_commands": {
+    "source": [
+      "src/org/minima/system/commands/scripts/scripts.java",
+      "src/org/minima/system/commands/scripts/newscript.java",
+      "src/org/minima/system/commands/scripts/removescript.java",
+      "src/org/minima/system/commands/signatures/sign.java"
+    ],
+    "reuse": [
+      "Actual MinimaDB/Wallet owners and SQL operations",
+      "Command parameter helpers and source metadata/factories",
+      "Address/Contract.cleanScript/ScriptRow/Signature",
+      "SqlDBOracle/SqlRecordingFixture and WalletOracle testing conventions",
+      "NativeThrowable delegates SQL text to existing sqlExceptionText",
+      "Narrow getParam delegates to existing typed UTF16 accessor"
+    ],
+    "adaptations": [
+      "Four native command files and headers, registry and CMake entries",
+      "675recorded-SQL programs include actual signatures,cache queries,failure positions and parameter types",
+      "cleanScript token/error logs use MinimaLogger",
+      "1120command-runner error cases now include checked SQL and SQL runtime carriers"
+    ],
+    "verification": "Full normal/SAN builds pass with no warning/error lines.13/13affected suites PASS36.37s/151.68s. Reportsread both:675programs1907ops50275SQLcalls;1120errors;1233runner;12289command;1129txn6904ops;2106HTTP;527notify2667ops;4471VM;1433wallet6521ops;2016logger.",
+    "remaining": "Recording SQL is not native H2; no live wallet/Main, durable or crash-safe use updates, arbitrary Unicode/null row/concurrent lifecycle parity. Map286/171 allpartial."
+  },
+  "address_commands": {
+    "source": [
+      "src/org/minima/system/commands/base/newaddress.java",
+      "src/org/minima/system/commands/base/getaddress.java",
+      "src/org/minima/system/commands/base/coinnotify.java",
+      "src/org/minima/system/commands/base/slavenode.java"
+    ],
+    "reuse": [
+      "Existing native Command parameter/reply helpers, Wallet/ScriptRow/TreeKey and actual MinimaDB/UserDB owners",
+      "WalletCommandsOracle, wallet_commands and wallet_commands_differential recording-SQL harness extended with separate address group",
+      "Actual JsonDB/MiniFile preference serialization and reload"
+    ],
+    "adaptations": [
+      "Four native command files/headers, source metadata/factories, registry and CMake entries",
+      "134 address programs include checked/runtime SQL failures, real default keys, direct versus dispatch parameters, Mx aliases, save-disabled memory/file state and owner recreation",
+      "Separate Java compilation/report paths allow both groups to run concurrently"
+    ],
+    "verification": "Full normal/SAN builds pass. Six selected suites pass28.41s/156.12s. Both reports134programs276ops3693SQLcalls. Existing675wallet/1233runner/1120runner-error/1130prefs cases pass. Reports read after terminal success.",
+    "remaining": "No native H2 or full Main/startup; SQL requests do not prove durable rows, preference reload is not a full restart, distinct-row randomness/concurrent lifecycle/filesystem errors remain unverified. Map290/167 allpartial."
+  },
+  "extrema_mapped_tests": {
+    "source": [
+      "test/org/minima/tests/kissvm/functions/maths/MINTests.java",
+      "test/org/minima/tests/kissvm/functions/maths/MAXTests.java"
+    ],
+    "reuse": [
+      "Existing native MIN/MAX and MinimaFunction registry unchanged",
+      "ConstantExpression/NumberValue/Contract setup and FLOORTests typed assertion convention",
+      "JavaRandom48 bounded draws; no production helper changes",
+      "Shared original JUnit runner and bundled junit-4.13.jar"
+    ],
+    "adaptations": [
+      "Two mapped tests retain120023successful-path assertions and six10000-trial loops each",
+      "Native samples assembled from bounded16-bit draws with reproducible per-trial seeds; Java methods retain unseeded Random. Same property and ranges, not identical sampled inputs or PRNG sequences.",
+      "Separate oracle/report paths and longer per-process test timeout for full trial loops"
+    ],
+    "verification": "Full normal/SAN builds pass with no compiler warning/error lines.12/12 selected suites36.91s/69.38s. MIN/MAX each3unchangedJava methods120023assertions60000trials per runtime. All18original reports read including finalSANMAXafterterminalsuccess.",
+    "remaining": "Original empty domain blocks, tie identity, decimal fraction/extensive numeric domain and complete production API not proved. Native H2/Main/full node incomplete. Map292/165 allpartial."
+  },
+  "witness_commands": {
+    "source": [
+      "src/org/minima/system/commands/txn/txnmmr.java",
+      "src/org/minima/system/commands/txn/txnscript.java",
+      "src/org/minima/system/commands/Command.java"
+    ],
+    "reuse": [
+      "Existing native TxnDB runtime lookup, MinimaDB chain/Wallet, MMR.getProofToPeak, ScriptProof/MMRProof/Witness methods",
+      "Existing WalletCommandsOracle/wallet_commands recording-SQL fixture and shared differential driver",
+      "SearcherOracle Java-produced twelve-node MMR/coin/proof fixtures and ArchiveCacheOracle",
+      "TransactionCommandsOracle fixture initialization convention: Java field setup/native runtime lookup",
+      "Existing JavaClassCastException and nativeExceptionText for exact error categories"
+    ],
+    "adaptations": [
+      "Two mapped command files/headers plus registry and CMake entries",
+      "418program witness group with independent compilation/reports, full TxnDB wire and monotonic observations",
+      "Wrong nonnull JSONObject access throws JavaClassCastException; null/default/alias preserved",
+      "Harness direct exception observation now uses nativeExceptionText instead of SQL-only helper"
+    ],
+    "verification": "Full normal/SAN builds pass;9/9 selected suites44.49s/182.20s. All16reports read after completion. Witness418programs1128ops8637SQLcalls per runtime; earlier675wallet/134address/12289command/1233runner/1120errors/1129txncommand/2503TxnDB regressions pass.",
+    "remaining": "CoinProof value storage does not establish Java shared Coin identity after mutation; native H2/Main/full lifecycle and arbitrary malformed graphs/Unicode/concurrency remain incomplete. Recording SQL is not durability. Map294/163 allpartial."
+  },
+  "coin_ownership": {
+    "source": [
+      "src/org/minima/objects/Coin.java",
+      "src/org/minima/objects/CoinProof.java",
+      "src/org/minima/objects/Transaction.java"
+    ],
+    "reuse": [
+      "Existing native Coin codecs, JSON, hash calculation and wire-based deepCopy",
+      "Existing ObjectOracle.coin and native CoinFixture.hpp, objects harness and differential driver",
+      "Existing TxBlock shared ownership and explicit BlockMMR/searcher deep-copy boundaries"
+    ],
+    "sibling_inspection": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/objects/Coin.hpp, Coin.cpp and CoinProof.hpp retain value copies and have incompatible spent/token codec behavior; not substituted.",
+    "adaptations": [
+      "Coin fields moved into one shared allocation; ordinary handle copies share, constructors/decoders allocate independently",
+      "220 alias programs cover five coin fixtures, four growth sizes and eleven mutation targets; 38 result fields guard successful Java observations",
+      "Shared coin mutations, vector removal/clear, local rebinding, deepCopy/renamed-copy/wire-copy independence compared in bytes/JSON and MMR leaf"
+    ],
+    "verification": "Full normal/SAN builds pass without compiler warning/error lines. Baseline9244/9464 passes:all220newcasesfail. Corrected9464/9464 both. Normal21/21 selected303.51s. SAN20/21 initial703.82s with block-ownership240s timeout; isolatedsamecorpus+limit rerun1558programs6219opsPASS141.61s with process-management access. All36comparisonreportsread after completion.",
+    "remaining": "State-list aliases across different coins, retained primitive/token object identity, MMRProof identity, Coin/CoinProof in-place read and conversion errors, null graphs and full node lifecycle remain incomplete. CoinTests source has been read but its counterpart is still absent. Map294/163 allpartial."
+  },
+  "coin_stream_readers": {
+    "source": [
+      "src/org/minima/objects/Coin.java",
+      "src/org/minima/objects/CoinProof.java",
+      "src/org/minima/objects/mmr/MMRProof.java",
+      "src/org/minima/objects/StateVariable.java",
+      "src/org/minima/system/brains/TxPoWSearcher.java"
+    ],
+    "reuse": [
+      "Existing native Coin/CoinProof/MMRProof codecs and JSON",
+      "Existing native shared handle ownership",
+      "MinimaLogger and NativeThrowable",
+      "ObjectOracle/CoinFixture and persistent differential Runner"
+    ],
+    "adaptations": [
+      "In-place source-order readers and partial mutation",
+      "Shared Coin state-list bridge, CoinProof wrapper and outer MMRProof storage",
+      "Actual I/O logging and nullable deepCopy result",
+      "Empty optional for null copied search result",
+      "StateVariable reader diagnostic includes rejected type"
+    ],
+    "validation": "Both final full builds pass without compiler warning/error lines. 3045 stream programs pass each. Baseline2716/3029 differences retained. Normal broad20/21 then corrected search harness rerun189/189 in9.58s; SAN broad20/20 in711.13s. Isolated SANownership1558programs6219operations passes146.76s underunchanged240limit. All36broadreports inspected, zero differences; all29selectedchecks perbuild pass after one normal search-harness correction.",
+    "limits": "Nested token/value/proof-chunk/MMRData identity; all legacy list-sharing callers; full native startup and H2 persistence remain incomplete."
+  },
+  "ministring_original_test": {
+    "source": [
+      "test/org/minima/objects/base/MiniStringTests.java",
+      "src/org/minima/objects/base/MiniString.java"
+    ],
+    "reuse": [
+      "cpp/src/org/minima/objects/base/MiniString.cpp unchanged",
+      "cpp/tools/script_value_original_tests.py direct-call original-test convention"
+    ],
+    "adaptations": [
+      "Native mapped test retains two annotated methods and separately executable unannotated helper",
+      "Java runner checks annotation membership before direct calls",
+      "Native value-result non-null checks represented as owned returned objects"
+    ],
+    "validation": "Both builds and all four selected checks pass: MiniString native and unchanged annotated Java methods (5 assertions) plus separate helper (1), FLOOR30 and primitive3802 comparisons. Normal8.63s, ASAN/UBSAN10.72s.",
+    "limits": "Five successful-path non-null assertions plus one supplemental helper assertion; source discards static read result. Not a decoded-content or complete API parity test."
+  },
+  "automine_command": {
+    "source": [
+      "src/org/minima/system/commands/base/automine.java",
+      "src/org/minima/system/commands/Command.java",
+      "src/org/minima/system/commands/CommandRunner.java"
+    ],
+    "reuse": [
+      "Native Command parameter/reply helpers",
+      "Existing CommandRunner registration and fresh factory convention",
+      "CommandRunnerOracle/command_runner and differential driver"
+    ],
+    "adaptations": [
+      "Map and register the active no-op body without activating commented mining branches",
+      "32 programs compare direct params, metadata, inherited validation and caller dispatch"
+    ],
+    "validation": "Baseline1233oldcasespass+32newfail. Corrected1265/1265pass normal2.88s and ASAN/UBSAN3.65s. Both final full builds pass. Shared command12289/error1120/mapping checks passnormal8.72s; SANfinalfourchecks includingownership pass171.05s.",
+    "limits": "Direct malformed parameter errors normalize to ERROR in this harness. Full registry and full node remain incomplete."
+  },
+  "chain_inspection_commands": {
+    "source": [
+      "src/org/minima/system/commands/base/block.java",
+      "src/org/minima/system/commands/base/printmmr.java",
+      "src/org/minima/system/commands/base/printtree.java",
+      "src/org/minima/database/txpowtree/TxPowTree.java:printTree",
+      "src/org/minima/objects/TxHeader.java:toJSON"
+    ],
+    "reuse": [
+      "Native Command and CommandRunner registration/factory conventions",
+      "Actual native MinimaDB/TxPowTree/Cascade/MMR",
+      "JavaDateString.hpp and JavaInteger.hpp unchanged",
+      "MinimaDBOracle/minima_db recording fixture and differential driver"
+    ],
+    "sibling_review": "tools/minima-core-cpp/src/chain/TxPowTree.hpp and chain/cascade/Cascade.hpp inspected; different weight representation/formatting, no matching command implementation. Current native algorithms reused.",
+    "adaptations": [
+      "Three mapped commands registered with exact help, replies, ordering and factories",
+      "Native TxPowTree depth subtraction now wraps as Java int",
+      "TxHeader delegates date rendering to existing shared helper instead of its independent strftime helper",
+      "Existing database fixture gains direct/meta/runner commands, tree forks, tip MMR/time controls and four-zone comparison"
+    ],
+    "primary_runtime_review": "Installed OpenJDK src.zip Date.toString and ZoneInfo/ZoneInfoFile date-display/transition paths inspected after January1970London label mismatch. Existing shared helper directly probed against Java and already correct; unchanged.",
+    "validation": "Both final full builds pass without compiler warning/error lines. Initial78program1002op UTC comparison passes4.16s/6.92s. Four-zone baseline stops atLondoncase2 with TxHeaderBSTvsGMT. Corrected expanded324program4096op corpus passesnormal9.69s/SAN20.22s, zero differences. Nine regressions passnormal50.23s/SAN177.75s: objects9464, tree1027, cascade2892, MinimaDB2367programs7519ops334711SQLcalls, command12289, runner1265,error1120 plus TxHeaderTests/mapping. All14regressionreports inspected; ten unique selected checks perbuild pass.",
+    "limits": [
+      "Enhanced Java NPE/classcast expressions and logger prefixes/frames normalized",
+      "Populated trees with extreme int depths not run; source loop can perform billions of checks",
+      "Arbitrary concurrent owner mutation and full source API parity unverified",
+      "Recording SQL is not native H2 persistence; Main startup remains absent"
+    ]
+  },
+  "transaction_input_commands": {
+    "source": [
+      "src/org/minima/system/commands/txn/txninput.java",
+      "src/org/minima/system/commands/txn/txnbasics.java",
+      "src/org/minima/system/commands/txn/txnutils.java"
+    ],
+    "reuse": [
+      "Existing Command/CommandRunner, MinimaDB, TxnDB, Coin conversion and shared Coin handles",
+      "Existing TxPoWSearcher, MMR, Witness, TxPoWGenerator, Wallet, TreeKey signing and TxPoWMiner mining membership",
+      "WalletCommandsOracle.java, wallet_commands.cpp, wallet_commands_differential.py and SearcherOracle Java-produced fixtures"
+    ],
+    "sibling_review": "Searched tools/minima-core-cpp src/tests for txninput, txnbasics, txnutils, setMMRandScripts, createBurnTransaction and scriptmmr: no matching implementation. Sibling MiniNumber interface and current native MiniNumber constructor/parser inspected; no compatible decimal-error helper found.",
+    "adaptations": [
+      "Three mapped source files; two commands registered with source help/factories/parameters",
+      "All txnutils bodies translated, including strict/permissive and single-coin proof/script attachment and linked burn construction",
+      "Explicit getMiner boundary for future Main binding; unbound Main throws rather than silently approving mining checks",
+      "Harness initializes actual custom transaction owner through friend fixture, matching Java reflection; replaces separate runtimeLookup override",
+      "Harness loads actual chain coins/relevance, controls dormant miner membership and actual RamData mempool entries, and compares full custom transaction bytes and SQL effects"
+    ],
+    "numeric_syntax_repair": {
+      "source": "Installed OpenJDK 26 src.zip java.base/java/math/BigDecimal.java:538-775 and MAX_COMPACT_DIGITS=18; pinned MiniNumber(String) uses BigDecimal with MathContext",
+      "native": "src/support/JavaBigDecimalSyntax.hpp, called by existing MiniNumber string constructor",
+      "behavior": "Ordered BMP digit, dot, exponent and invalid-character diagnostics; existing numeric arithmetic, rounding and limit code reused",
+      "baseline": "First failing comparison at zero-based case341, 342 evaluated of609 planned; source amount:bad message versus native generic MiniNumber: invalid number. Retained build/transaction-input-commands-syntax-baseline-results.json",
+      "limits": "Extreme exponent overflow and all precision/scale behavior not established by this syntax repair"
+    },
+    "validation": {
+      "normal": "671 programs, 2734 operations, 41653 SQL calls; zero mismatches. Full build passes.",
+      "sanitizer": "Full build and 671 programs, 2734 operations, 41653 SQL calls pass; zero mismatches. Test duration207.73s while overlapping other selected checks.",
+      "regressions": "All13 selected checks pass per build: normal101.73s, sanitized276.80s. Including new test,14unique checks perbuild, notfull143CTest registrations. All24regression JSONreports and both new reports read; zero mismatches.",
+      "guide_audit": "All457 guides, source hashes and statuses audited. Final audit recorded in student-guide/coverage-audit.json."
+    },
+    "limits": [
+      "Main/Minima startup and native H2 storage remain absent",
+      "Main/miner fixtures do not run workers; SQL driver records requests and supplies rows",
+      "Only single-candidate random change-address selection; no exhaustive aliasing/concurrency or nullable native reference API coverage",
+      "All counterparts remain implemented_partial; parity not_verified"
+    ]
+  },
+  "transaction_check_command": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "source": "upstream-study/src/org/minima/system/commands/txn/txncheck.java",
+    "destination": "src/org/minima/system/commands/txn/txncheck.cpp",
+    "reuse": [
+      "Command and CommandRunner parameter/reply/factory behavior",
+      "MinimaDB actual custom TxnDB, current tree, mempool and UserDB callbacks",
+      "TxPoWGenerator, TxPoWChecker, TreeKey and Transaction amounts",
+      "TxnRow and TxBlock shared ownership pattern for four TxBody fields",
+      "Transaction and Witness in-place stream readers",
+      "WalletCommandsOracle.java, wallet_commands.cpp, wallet_commands_differential.py and ConsensusOracle fixtures"
+    ],
+    "adaptations": [
+      "Retain supplied transaction/witness owners in TxBody, TxPoW shared setters/getters and generator overloads; value convenience APIs retained",
+      "MinimaDB.bindRuntime installs existing consensus callbacks",
+      "TxBody in-place read preserves field identity and partial mutation; ID vector resets after nested reads",
+      "Missing token creator throws JavaNullPointerException in TxBlock",
+      "Generator zero integer hash rate throws JavaArithmeticException; MiniData negative-BigInteger message matches source spelling",
+      "Preserve final validtransaction conjunction without allsignaturesvalid"
+    ],
+    "validation": {
+      "normal_programs": 396,
+      "normal_operations": 1049,
+      "normal_sql_calls": 0,
+      "sanitizer_programs": 396,
+      "sanitizer_operations": 1049,
+      "sanitizer_sql_calls": 0,
+      "regressions": {
+        "selected_tests_per_build": 21,
+        "normal_seconds": 353.96,
+        "sanitizer_seconds": 898.47,
+        "passed": true,
+        "comparison_reports_read_per_build": 18
+      }
+    },
+    "limits": "Complete Main startup, native H2/MVStore, all value-call-site ownership, nullable API surfaces and list reference identity remain incomplete; command result does not replace complete node validation."
+  },
+  "increment_decrement_mapped_tests": {
+    "sources": [
+      "test/org/minima/tests/kissvm/functions/maths/INCTests.java",
+      "test/org/minima/tests/kissvm/functions/maths/DECTests.java"
+    ],
+    "destinations": [
+      "test/org/minima/tests/kissvm/functions/maths/INCTests.cpp",
+      "test/org/minima/tests/kissvm/functions/maths/DECTests.cpp"
+    ],
+    "reuse": "Existing ABSTests.cpp assertion/context/typed-rejection pattern and script_value_original_tests.py compile-and-run harness; actual INC/DEC/Contract/ConstantExpression/MinimaFunction objects unchanged.",
+    "sibling_inspected": "tools/minima-core-cpp/tests/kissvm/test_kissvm.cpp INC/DEC block + runScript, src/kissvm/functions/Functions.cpp requireArgs/numArg/INC/DEC. Two integer script assertions use a different value-function API and do not cover pinned decimal source cases.",
+    "validation": {
+      "builds": [
+        "normal",
+        "address_and_undefined_sanitizers"
+      ],
+      "ctest_entries_per_build": 4,
+      "original_methods_per_class": 3,
+      "active_assertions_per_runtime_per_class": 30,
+      "native_production_changes": false
+    },
+    "limits": "Eleven active source value examples, not every arithmetic boundary. Empty domain block and commented alternate expectations remain inactive."
+  },
+  "transaction_mining_commands": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources": [
+      "upstream-study/src/org/minima/system/commands/txn/txnpost.java",
+      "upstream-study/src/org/minima/system/commands/txn/txnmine.java",
+      "upstream-study/src/org/minima/system/commands/txn/txnminepost.java"
+    ],
+    "destinations": [
+      "src/org/minima/system/commands/txn/txnpost.cpp",
+      "src/org/minima/system/commands/txn/txnmine.cpp",
+      "src/org/minima/system/commands/txn/txnminepost.cpp"
+    ],
+    "reuse": [
+      "Actual MinimaDB custom database and chain tip",
+      "txnutils proof/script and signed burn construction",
+      "Shared TxPoWGenerator overloads and TxnRow transaction/witness owners",
+      "Actual TxPoWMiner synchronous body and asynchronous queue/processing",
+      "Existing Coin converter MinimaLogger/NativeThrowable error pattern",
+      "WalletCommandsOracle.java, wallet_commands.cpp, recording SQL driver, consensus fixtures and wallet proof-chain fixtures"
+    ],
+    "adaptations": [
+      "Overridable native miner entry methods match Java virtual dispatch",
+      "Explicit txnminepost Main-message callback defaults to null Main failure; future Main must bind it",
+      "Only generated PRNG bytes fixed at miner entry in comparison fixture; actual header hashing, mining and queues run",
+      "Separate false/throwing miner results and Main post failures injected to test caller behavior",
+      "Older transaction harness sends logger diagnostics to stderr as its Java oracle already does"
+    ],
+    "validation": {
+      "normal_programs": 207,
+      "normal_operations": 699,
+      "normal_sql_calls": 1893,
+      "normal_seconds": 54.49,
+      "sanitizer_programs": 207,
+      "sanitizer_operations": 699,
+      "sanitizer_sql_calls": 1893,
+      "sanitizer_seconds": 62.54,
+      "regressions": {
+        "selected_regressions_per_build": 16,
+        "normal_group_seconds": 258.81,
+        "sanitizer_group_seconds_including_mining": 1117.13,
+        "normal_corrected_harness_rerun_seconds": 9.09,
+        "sanitizer_corrected_harness_rerun_seconds": 22.83,
+        "final_results_passed": true,
+        "note": "Both initial groups included one pre-fix transaction harness protocol failure, replaced by a passing targeted rerun. No other failures. Sanitizer group also includes the new mining test."
+      },
+      "current_checkpoint": {
+        "source_counterparts": 311,
+        "production_counterparts": 275,
+        "test_counterparts": 36,
+        "absent": 146,
+        "ctest_registrations": 155,
+        "distinct_selected_tests_passed_per_build": 24,
+        "comparison_reports_read_per_build": 19,
+        "full_suite_run": false
+      }
+    },
+    "limits": [
+      "Main/Minima startup and native H2/MVStore absent",
+      "Main messages locally recorded; no live acceptance or network propagation",
+      "Incomplete nullable reference APIs, list/coin ownership and mutable-object concurrency",
+      "Log prefixes, stack frames and Java-specific null/cast wording excluded"
+    ]
+  },
+  "power_sigdig_mapped_tests": {
+    "sources": [
+      "test/org/minima/tests/kissvm/functions/maths/POWTests.java",
+      "test/org/minima/tests/kissvm/functions/maths/SIGDIGTests.java"
+    ],
+    "destinations": [
+      "test/org/minima/tests/kissvm/functions/maths/POWTests.cpp",
+      "test/org/minima/tests/kissvm/functions/maths/SIGDIGTests.cpp"
+    ],
+    "reuse": "Existing INCTests assertion/context/typed-rejection adapter, actual function/Contract/ConstantExpression classes, script_value_original_tests.py runner; unchanged pinned Java methods",
+    "sibling_inspected": "tools/minima-core-cpp/tests/kissvm/test_kissvm.cpp runScript and SIGDIG cases; src/kissvm/functions/Functions.cpp requireArgs/numArg/SIGDIG. Reversed arguments and double rounding are incompatible with pinned SIGDIG.",
+    "validation": {
+      "builds": [
+        "normal",
+        "address_and_undefined_sanitizers"
+      ],
+      "ctest_entries_per_build": 4,
+      "methods_per_class": 3,
+      "assertions_per_runtime": {
+        "POW": 25,
+        "SIGDIG": 89
+      },
+      "normal_seconds": 5.6,
+      "sanitizer_seconds": 6.11,
+      "passed": true,
+      "production_changes": false
+    },
+    "limits": "POW positive sample is only 0^0; SIGDIG compares delegation with the same underlying decimal helper, not an independent rounding oracle. Complete per-file parity remains not_verified."
+  },
+  "bitcount_mapped_test": {
+    "source": "test/org/minima/tests/kissvm/functions/maths/BITCOUNTTests.java",
+    "destination": "test/org/minima/tests/kissvm/functions/maths/BITCOUNTTests.cpp",
+    "reuse": [
+      "Pinned BITCOUNT.java public 256-entry table and table-based totalBits",
+      "Existing BITCOUNT runFunction, Contract typed getter, ConstantExpression, HexValue",
+      "INCTests assertion/context/typed rejection pattern and existing original-test driver"
+    ],
+    "sibling_inspected": "tools/minima-core-cpp/src/kissvm/functions/Functions.cpp BITCOUNT and hexArg; tests/kissvm/test_kissvm.cpp BITCOUNT block/runScript. Compiler popcount plus two basic examples lacks published table and does not support its mutation.",
+    "production_change": "Expose mutable std::array<int32_t,256> BITSPERBYTE initialized from pinned literal; totalBits reads table entries with unsigned accumulation and bit-cast back to Java signed int",
+    "validation": {
+      "builds": [
+        "normal",
+        "address_and_undefined_sanitizers"
+      ],
+      "ctest_entries_per_build": 3,
+      "original_methods": 3,
+      "assertions_per_runtime": 34,
+      "conditional_table_checks_per_runtime": 256,
+      "supplemental_table_mutation_observations": [
+        84,
+        42,
+        -2147483648
+      ],
+      "kissvm_comparisons": 4471,
+      "normal_seconds": 12.9,
+      "sanitizer_seconds": 21.74,
+      "passed": true
+    },
+    "limits": "Source conditional fail-only table checks distinguished from executed JUnit assertions; complete nullable totalBits API and concurrent array mutation remain unverified."
+  },
+  "vault_signing_commands": {
+    "source": [
+      "upstream-study/src/org/minima/system/commands/backup/vault.java",
+      "upstream-study/src/org/minima/system/commands/txn/txnsign.java"
+    ],
+    "reuse": [
+      "src/org/minima/database/wallet/Wallet.cpp",
+      "src/org/minima/utils/encrypt/PasswordCrypto.cpp",
+      "src/org/minima/utils/BIP39.cpp",
+      "src/org/minima/objects/keys/TreeKey.cpp",
+      "src/org/minima/objects/Witness.cpp",
+      "src/org/minima/system/commands/txn/txnpost.cpp",
+      "src/support/InetSocketAddress.cpp",
+      "support/WalletMiningFixture.hpp",
+      "support/WalletCommandsOracle.java"
+    ],
+    "adaptation": "Translate source ordering into native command/SQL APIs. Explicit Main receiver remains absent by default. Extract existing unresolved-address case fold. Add typed nullable Witness signature/key entry points, Java array-bounds errors at TreeKeyNode accesses and actual MinimaLogger default for TreeKey. Preserve incomplete-key stop sleep, encrypted-save-before-wipe, no general relock on failure, post-before-delete. Existing Runner gains optional response_timeout=30; vault selects180 for sanitizer full-size custom signing.",
+    "sibling_review": "tools/minima-core-cpp/src/wallet/Wallet.hpp is in-memory and lacks matching SQL/encrypted-seed lifecycle; no compatible vault/txnsign implementation found.",
+    "validation": "247 programs800 operations16275 recordingSQL calls, including8 cross-language decryption programs PASS in normal128.01s and ASAN/UBSAN560.21s. Bothreportsread. All18selectedregressions PASS normal543.20s andsan1832.49s;all34regressionreportsread. Afterkeysregistration normal3targetedchecksPASS34.12s andsan2PASS12.50s;all5refreshedreportsread.",
+    "limits": "Recording SQL query rows do not establish durable persistence. Main lifecycle calls recorded; full native Main/Minima/H2 absent. Complete signature/list identity and interruption behavior unverified."
+  },
+  "bitget_bitset_mapped_tests": {
+    "source": [
+      "upstream-study/test/org/minima/tests/kissvm/functions/maths/BITGETTests.java",
+      "upstream-study/test/org/minima/tests/kissvm/functions/maths/BITSETTests.java"
+    ],
+    "reuse": "Mapped BITCOUNTTests assertion/factory/ConstantExpression/Contract adapter and original-test runner. Existing BITGET/BITSET production functions unchanged.",
+    "sibling_review": "tools/minima-core-cpp tests/kissvm/test_kissvm.cpp and src/kissvm/functions/Functions.cpp inspected. Sibling reverses per-byte bit numbering, BITGET returnsfalse out-of-range, BITSET retains zero tail and uses truthiness. Its round-trip example is insufficient for pinned expectations.",
+    "adaptation": "Byte arrays reproduce Java BitSet single-set/all-except-one patterns for positions0..62. Preserve all constructor, valid, typed rejection assertions.",
+    "validation": "4CTest entries eachbuildPASS;3unchangedJava methods each;272 BITGET and271 BITSET assertions perruntime;all4reportsread.",
+    "limits": "No new production algorithm; originalloops omit63; full API parity unverified."
+  },
+  "wallet_key_command": {
+    "source": "upstream-study/src/org/minima/system/commands/search/keys.java",
+    "reuse": [
+      "src/org/minima/database/wallet/Wallet.cpp",
+      "src/org/minima/database/wallet/KeyRow.cpp",
+      "src/org/minima/utils/BIP39.cpp",
+      "src/org/minima/objects/keys/TreeKey.cpp",
+      "src/org/minima/system/commands/txn/txnminepost.cpp",
+      "support/WalletMiningFixture.hpp",
+      "support/WalletCommandsOracle.java"
+    ],
+    "adaptation": "Actual list filtering/max-use calculation, deterministic key derivation without phrase cleaning, row checks, new-key delegation and Main message posting. checkKey preserves seed/private check followed by private/public check. Existing explicit message receiver pattern. Nullable JSON field is checked before String receiver equality.",
+    "sibling_review": "Previously inspected tools/minima-core-cpp/src/wallet/Wallet.hpp has in-memory keys without matching SQL seed/modifier lifecycle; no compatible keys command found.",
+    "validation": "132programs262operations7895recordingSQLcalls PASS normal51.46s and ASAN/UBSAN265.36s. Bothreportsread. BothcorrectedfullbuildsPASSwithoutwarnings. Initialnullfilterfailurefixed;extraouterspace/blankexpectationscorrectedafterrereadingCommand.getParam;baselinefilesretained. Overall24distinctselectedCTestentriesPASSperbuild(notfull161);all42comparisonreportsread.",
+    "limits": "RecordingSQL, no nativeH2/Mainworker; genkey comparison supplies phrases and does not execute random no-phrase branch."
+  },
+  "coin_funding_commands": {
+    "source": [
+      "upstream-study/src/org/minima/system/commands/send/send.java",
+      "upstream-study/src/org/minima/system/commands/txn/txnaddamount.java",
+      "upstream-study/src/org/minima/system/commands/txn/txncoinlock.java"
+    ],
+    "reuse": [
+      "src/org/minima/system/commands/txn/txnutils.cpp",
+      "src/org/minima/system/commands/txn/txninput.cpp",
+      "src/org/minima/system/commands/txn/txnpost.cpp",
+      "src/org/minima/system/commands/txn/txnsign.cpp",
+      "src/org/minima/system/commands/search/keys.cpp",
+      "src/org/minima/system/brains/TxPoWSearcher.cpp",
+      "src/org/minima/system/brains/TxPoWGenerator.cpp",
+      "src/org/minima/database/wallet/Wallet.cpp",
+      "support/WalletCommandsOracle.java",
+      "support/WalletMiningFixture.hpp",
+      "support/WalletVaultFixture.hpp",
+      "support/SearcherOracle.java",
+      "tools/wallet_commands_differential.py"
+    ],
+    "sibling_review": "tools/minima-core-cpp/src/wallet/Wallet.hpp read; src/tests searches found no coin-selection implementation. The sibling in-memory one-time-key wallet does not implement the pinned SQL/seed/modifier lifecycle.",
+    "adaptation": "Translate original command/helper control flow, stable sorting with caller-list mutation, address grouping and first-small-coin break, fallback reservation behavior, static coin locks, partial transaction mutations, token scaling, proofs, signing, dryrun and mining. Reuse existing native runtime receiver; Main binding remains absent by default. Shared Command JSONArray cast now typed; generator mempool size/work rejection logs use MinimaLogger. Send signing exception text reuses NativeThrowable and leaves JavaError/bad_alloc outside Exception handling.",
+    "validation": "736 programs, 3418 operations, 39016 recording SQL calls PASS normal47.76s and ASAN/UBSAN229.24s. Both reports inspected. Full builds PASS, followed by successful new REV/LEN target builds. Seven normal regressions PASS177.25s. Six sanitizer behavior regressions PASS, consensus543.15s and input224.68s; an initial stale map caused that batch exit8, corrected321 source_mapping passes in both final five-entry REV/LEN runs. All twelve regression comparison reports inspected. Overall12 distinct selected CTest entries PASS per build including funding and four original-test entries, not the full166.",
+    "limits": "All mapped files remain partial. Missing full native Main/Minima/H2. Source demo main, nullable helper/list replacement and all Java object-key/reference APIs remain unverified; stock command behavior compared. Dryrun PRNG bytes normalized only after length check32; source-created fixture pool PRNG/time fixed before hashing. Vault ciphertext bytes normalized with existing decrypt/persist checks. No real wallet or network node used."
+  },
+  "rev_len_mapped_tests": {
+    "sources": [
+      "test/org/minima/tests/kissvm/functions/base/REVTests.java",
+      "test/org/minima/tests/kissvm/functions/base/LENTests.java"
+    ],
+    "reuse": "Existing BITGET assertion/factory/Contract/ConstantExpression adapter, existing REV/LEN production bodies and script_value_original_tests.py runner. Original Java methods unchanged.",
+    "sibling_review": "src/kissvm/functions/Functions.cpp REV/LEN and tests/kissvm/test_kissvm.cpp inspected. REV uses compatible byte-copy/reverse; LEN string byte count differs from Java UTF16. Existing native functions already compatible with tested cases, so no production changes.",
+    "validation": "4 new CTest entries plus source_mapping PASS normal9.41s and ASAN/UBSAN9.24s. Three original methods and twelve executed assertions each per runtime; all four original reports inspected.",
+    "limits": "Original REV invalid-domain case is actually two-argument arity rejection. LEN original string sample ASCII only; these tests do not establish exhaustive Unicode or source API parity."
+  },
+  "offline_send_commands": {
+    "sources": [
+      "src/org/minima/system/commands/send/sendview.java",
+      "src/org/minima/system/commands/send/sendpost.java",
+      "src/org/minima/system/commands/send/sendsign.java",
+      "src/org/minima/utils/MiniFile.java"
+    ],
+    "reuse": [
+      "src/org/minima/utils/MiniFile.cpp",
+      "src/support/JavaUnixFile.hpp",
+      "src/org/minima/system/params/ParamConfigurer.cpp",
+      "src/org/minima/objects/TxPoW.cpp",
+      "src/org/minima/database/wallet/Wallet.cpp",
+      "src/org/minima/objects/Witness.cpp",
+      "src/org/minima/system/commands/backup/vault.cpp",
+      "src/org/minima/system/commands/txn/txnutils.cpp",
+      "src/org/minima/objects/base/MiniData.cpp",
+      "src/org/minima/objects/base/MiniNumber.hpp",
+      "support/minima_rpc_cli.cpp",
+      "support/WalletCommandsOracle.java",
+      "support/wallet_commands.cpp",
+      "tools/wallet_commands_differential.py"
+    ],
+    "sibling_review": "Searches of tools/minima-core-cpp/src and tests found no sendview/sendpost/sendsign or corresponding complete-TxPoW writer. Existing native txnview/export/import and utility fixtures were inspected first; their TxnRow format cannot replace these complete-TxPoW commands.",
+    "adaptation": "Translate exact metadata and control flow. View complete TxPoW JSON; post snapshot before async miner mutation; sign every input main then burn while actual Witness deduplicates roots. Optional unlock precedes decoded-object dereference; relock only after successful loops. Write actual serialized TxPoW using real wallclock filename. Demo main preserves all512 prints with ignored null/empty arguments. MiniFile reuses Unix normalization/mkdirs and descriptor cleanup, preserving narrowed allocation-before-open and exclusive-create/output-open/write ordering with typed Java I/O exceptions.",
+    "validation": "Both full builds PASS without compiler warnings. All twelve selected CTest entries PASS normal133.68s and ASAN/UBSAN515.77s; all22 comparison reports inspected. Offline201programs558operations9773SQL calls PASS23.32s/97.59s. Utility1361cases perbuild. Vault247programs800operations16275SQL calls and8crossdecrypt programs PASS107.57s/515.76s. Source_mapping324PASS. This is selected validation, not all167 registered checks.",
+    "limits": "All mapped counterparts remain partial/not_verified; 324present133absent. Full Main/Minima/durable SQL absent. Recording SQL rows repeat supplieduses0 and prove write counts, not persisted increments. Independent timestamp names and vault ciphertext normalized; filebytes, directories, other fields compared. Synthetic TxPoWs are not asserted consensus-valid. Arbitrary file races/symlinks/permissions/streams, Java reference ownership and complete platform equivalence remain unverified. Existing MiniFile loadObjectSlow/saveObjectDirect/logging differences are documented.",
+    "baselines": [
+      "build/offline-send-file-read-baseline-results.json",
+      "build/offline-send-file-write-baseline-results.json"
+    ],
+    "lesson": "student-guide/new-tests/offline-send-files.md"
+  },
+  "unsigned_send_command": {
+    "source": "src/org/minima/system/commands/send/sendnosign.java",
+    "reuse": [
+      "src/org/minima/system/commands/send/send.cpp",
+      "src/support/SendRecipients.hpp",
+      "src/org/minima/system/commands/txn/txnutils.cpp",
+      "src/org/minima/system/brains/TxPoWGenerator.cpp",
+      "src/org/minima/utils/MiniFile.cpp",
+      "support/SearcherOracle.java",
+      "support/WalletMiningFixture.hpp",
+      "support/WalletCommandsOracle.java",
+      "support/wallet_commands.cpp",
+      "tools/coin_funding_corpus.py",
+      "tools/wallet_commands_differential.py"
+    ],
+    "sibling_review": "Searched tools/minima-core-cpp/src and tests for sendnosign/selectCoins/unsignedtransaction; no corresponding candidate found. Native send/txnutils, MMR fixtures and generator were read first. Native send control flow cannot be called wholesale because the pinned unsigned command has different confirmation, split, state, signing and output rules.",
+    "adaptation": "Reuse unchanged nextRecipientToken and requiredToken by extracting them from send.cpp to SendRecipients.hpp; retain send::selectCoins. Translate cached confirmation rewind, coinage default0 despite runner exclusion, fractional split1..20 without remainder outputs, strict String states, change without key consistency check, sign=false token burn, ignored dryrun and actual full-TxPoW file output. Native AddressAmount is an independent nested value class.",
+    "validation": "Final309programs1248operations20081SQL calls PASS normal28.74s and ASAN/UBSAN94.27s; both reports inspected. Earlier304programsPASS28.42s. Expanded307 assertion wrongly expected a zero-total file; source/native both reject Invalid Minima amount to send..0. Corrected expectation and added zero/negative individual-recipient tests. All seven selected CTest entries PASS per build after unsigned-only followups. Initial normal7batch58.03s and san7batch220.24s exit8 only supersededzeroassertion; six regressions eachPASS. Funding736programs PASS51.66s/186.59s; offline201programs PASS16.49s/101.33s. All12 comparison reports inspected. Both full builds PASS without warnings; not all168 registered checks.",
+    "normalization": "Actual TxHeader/TxPoW readers measure file PRNG offset/length. Assert decoded32bytes equals rawslice and full input consumed. Normalize only that slice, decoded body PRNG and shape-checked generated timestamp filenames; all other file bytes, decoded fields, replies, SQL, logs, directories, signatures and mining wire remain compared. Existing miner replay fixes PRNG at entry for subsequent queue tests.",
+    "limits": "325counterparts132absent, all partial/not_verified. Missing native Main/Minima/durable SQL. Recorded driver rows do not prove durable one-time-key counters. Fixture MMR chains and queued mining do not prove network acceptance. Nullable AddressAmount/reference APIs, concurrency and all filesystem/platform behavior remain unverified.",
+    "lesson": "student-guide/new-tests/unsigned-transaction-files.md",
+    "observation": "build/unsigned-zero-amount-observations.json"
+  },
+  "sendpoll_command": {
+    "source": "src/org/minima/system/commands/send/sendpoll.java",
+    "reuse": [
+      "src/org/minima/system/commands/sendpoll/SendPollManager.cpp",
+      "src/org/minima/system/commands/sendpoll/SendPollMessage.cpp",
+      "src/org/minima/system/commands/Command.cpp",
+      "src/org/minima/system/commands/CommandRunner.cpp",
+      "support/sendpoll.cpp",
+      "support/WalletCommandsOracle.java"
+    ],
+    "sibling_search": "minima-core-cpp/src and tests: no sendpoll or SendPollManager candidate. Read complete pinned source and existing queue manager/worker checks before implementation.",
+    "adaptation": "Native Main receiver callback; first literal case-sensitive rewrite; fetch manager before branches but dereference after branch-specific validation; exact reply/help/valid params. Reuse actual queue unchanged. Java fixture bypasses thread-starting constructor; native dormant subclass uses existing seam; actual worker and runner process hash/failure jobs.",
+    "validation": "Full normal and ASAN/UBSAN builds PASS without warnings. Six selected CTest entries PASS each: sendpoll_command_differential367programs3216operations6.75s/8.54s; source_mapping326; sendpoll_workers; command_differential12289; command_runner_differential1265; command_runner_errors_differential1120. Five-regression batches13.69s/25.31s. All eight comparison reports read. Not all169 tests.",
+    "normalization": "UID16-byte uppercase hex shape and per-snapshot uniqueness checked before consistent identity labels. NPE and CCE prose normalized to exception classes. Initial88 mismatches all existing Command generic cast messages versus Java type/loader detail. Other replies/queue/snapshots/timer metadata compared; logger output excluded.",
+    "limits": "326 counterparts131absent, all partial/not_verified. Native Main/Minima/durable SQL absent. No source timer/thread scheduling equivalence or live-wallet run; existing worker null type/storedUID invalid_argument categories and malformed status semantics remain partial.",
+    "lesson": "student-guide/new-tests/send-polling-command.md"
+  },
+  "wallet_orchestration_commands": {
+    "sources": [
+      "src/org/minima/system/commands/send/wallet/createfrom.java",
+      "src/org/minima/system/commands/send/wallet/constructfrom.java",
+      "src/org/minima/system/commands/send/wallet/postfrom.java",
+      "src/org/minima/system/commands/send/wallet/signfrom.java"
+    ],
+    "reuse": [
+      "src/org/minima/database/userprefs/txndb/TxnDB.cpp",
+      "src/org/minima/database/userprefs/txndb/TxnRow.cpp",
+      "src/org/minima/system/commands/CommandRunner.cpp",
+      "src/org/minima/system/commands/txn/txncreate.cpp",
+      "src/org/minima/system/commands/txn/txninput.cpp",
+      "src/org/minima/system/commands/txn/txnoutput.cpp",
+      "src/org/minima/system/commands/txn/txnscript.cpp",
+      "src/org/minima/system/commands/txn/txnmmr.cpp",
+      "src/org/minima/system/commands/txn/txnsign.cpp",
+      "src/org/minima/system/commands/txn/txnpost.cpp",
+      "src/org/minima/system/commands/txn/txnexport.cpp",
+      "support/WalletCommandsOracle.java"
+    ],
+    "sibling_search": "minima-core-cpp/src and tests contain no matching four wrappers. Read pinned complete wrapper bodies and relevant existing codecs/commands/tests before implementation.",
+    "adaptation": "Package-relative wrapper files preserve source control flow and virtual public child-command overloads. CommandResult shares first-array-element selection, typed Boolean unboxing and nullable child rejection. CommandException stores complete optional text separately from what(); runner preserves null and embedded-NUL messages. postfrom/signfrom evaluate id argument before null-row dereference.",
+    "validation": "Final659programs2060childcalls PASSnormal14.29s and ASAN/UBSAN58.31s. All5selectedchecksPASSperbuild (batches14.29s/58.32s): wrappers,command12289,runner1265,runnererrors1120,source_mapping330. All8reportsread. BothfullbuildsPASSwithoutwarnings. Notall170tests. Earlier639 and653 programsPASSbothbuilds before review expansions.",
+    "normalization": "Shape-check generated32byte uppercase UID from txncreate trace. For TxnRow data/wire verify leading4-byte66length and exactID bytes; replace only that field and matching text. Preserve all remaining bytes. Actual TxnRow reader roundtrips consumed/full bytes and actual TreeKey verifies decoded signature. NPE/CCE runtime prose and stack/logger prefixes excluded; other logs/errors/replies/rows/childtext compared.",
+    "findings_fixed": "Initialemptyhelper genericvector and null/wrongstatus variant exceptions corrected to Java categories. NullableCommandException and publicerror:null/no generic logging supported. Review baseline showed ID ClassCastException must precede null-row failure; fixed. Second baseline showed embeddedNUL text truncated after what(); stored complete optional message fixes it. Source boolean bad string meansfalse and source blankcoinlistrejects: corrected independent test expectations.",
+    "source_behavior": "createfrom preserves literal space after fromaddress:, allowing tested parser reply to bypass fundingfailure check and export emptytxn+script. Proofbuilder failure ignored. No source cleanup finally added. signfrom row insertion precedes key/use/post validation; response extraction follows deletion. Fixed sourcebehavior is preserved, not described as a valid funded transfer.",
+    "fixture": "Actual MinimaDB/TxnDB without SQL load; source reflects customDB/native existing friend init. Four inherited wrapper bodies record child text+row wire, inject failures or invoke actual CommandRunner. Actual default64^3 customsign anddecodedsignatureverification. Public recordRunner temporarily swaps prototype and restores in finally/RAII. No source algorithm emulation, live node/wallet or network posting.",
+    "limits": "330counterparts127absent, all partial/not_verified. Main/Minima/durable SQL absent. Full funded-chain posting/network confirmation and arbitrary nullable String/JSONObject return/reference APIs remain incomplete or separately scoped. Finite tests do not prove exhaustive thread, allocator or platform behavior.",
+    "baselines": [
+      "build/wallet-wrapper-id-order-baseline.json",
+      "build/wallet-wrapper-null-character-baseline.json"
+    ],
+    "lesson": "student-guide/new-tests/wallet-command-orchestration.md"
+  },
+  "raw_transaction_commands": {
+    "sources": [
+      "src/org/minima/system/commands/send/wallet/rawfrom.java",
+      "src/org/minima/system/commands/send/wallet/rawtxnfrom.java"
+    ],
+    "reuse": [
+      "src/support/CommandResult.hpp",
+      "src/org/minima/system/commands/send/send.cpp:stateText",
+      "src/org/minima/objects/StateVariable.cpp",
+      "src/org/minima/system/commands/txn/txnstate.cpp",
+      "src/org/minima/system/commands/txn/txninput.cpp",
+      "src/org/minima/system/commands/txn/txnoutput.cpp",
+      "src/org/minima/system/commands/txn/txnscript.cpp",
+      "src/org/minima/system/commands/txn/txnexport.cpp",
+      "support/wallet_wrappers.cpp",
+      "support/WalletWrappersOracle.java",
+      "src/support/JavaStringIgnoreCase.hpp"
+    ],
+    "sibling_search": "No rawfrom/rawtxnfrom match in minima-core-cpp/src or tests. Complete pinned raw bodies and relevant JSON/getters/state conversion/native helpers inspected before implementation.",
+    "adaptation": "Extract stateText unchanged from send.cpp into StateText.hpp. Extract typed Boolean unboxing unchanged from CommandResult.status into booleanValue. Share identical output/state loops via RawTxnCommands; retain separate alternating versus separated input/script order. Source JSONObject extends LinkedHashMap, matching native insertion order. Preserve null-to-text concatenation, typed casts, port parsing before value conversion, ignored child status and exception-dependent cleanup.",
+    "unicode_fix": "Review baseline showed source rawtxnfrom accepted fal\u017fe as FALSE, native StateVariable rejected numeric conversion. Replace ASCII Boolean comparisons with existing JavaStringEqualsIgnoreCase used by vault/InetSocketAddress; add 24 direct/real-child case variants with explicit expected Boolean text and exported state.",
+    "validation": "Initial7checksPASSnormal88.75s/san271.44s: source_mapping332,command12289,runner1265,runnererrors1120,walletwrappers659/2060calls,funding736/3418ops/39016SQL,raw632/3835calls. Initial raw5.76s/7.59s; funding88.74s/271.43s. After Unicode fix, full builds30033/82747PASSwithoutwarnings and finalraw656/3991callsPASS4.06s/4.55s; object9464PASS25.10s/91.34s, two-checkbatches25.10s/91.36s. All14 distinct comparison reports inspected. Eight distinct selectedchecks acrossphases, notall171; initialregressions were not all repeated after targetedstatefix.",
+    "build_timing": "Initial sanitized CTest started while final build tail was active; authoritative binary mtimes for wallet_wrappers/wallet_commands preceded their fresh Java oracle class compilation timestamps, proving those native processes subsequently loaded new binaries. Build54210 terminalPASS; no speculative restart. Finalfocusedchecks started after both finalbuilds terminalPASS.",
+    "normalization": "Known shape-checked32byte uppercase random rowIDs normalized in child text and verified leading MiniString field (4-byte66length plus exactID bytes) only. Actual TxnRow readers compare full roundtrip and consumedlength. NPE/CCE runtime prose normalized; all other observed rows/replies/logs/childtext/bytes compared.",
+    "limits": "332counterparts125absent, all partial/not_verified. Native Main/Minima/durable SQL absent. No valid funded/network-confirmed transfer asserted; native nullable/reference/Map APIs and exhaustive platform/locale behavior remain unverified.",
+    "baseline": "build/raw-state-unicode-baseline.json",
+    "lesson": "student-guide/new-tests/raw-transaction-commands.md"
+  },
+  "custom_address_send_commands": {
+    "sources": [
+      "src/org/minima/system/commands/send/wallet/sendfrom.java",
+      "src/org/minima/system/commands/send/wallet/createtokenfrom.java"
+    ],
+    "reuse": [
+      "src/org/minima/system/commands/send/wallet/createfrom.cpp",
+      "src/support/RawTxnCommands.hpp",
+      "src/support/CommandResult.hpp",
+      "src/support/JavaInteger.hpp",
+      "src/org/minima/objects/Coin.cpp",
+      "src/org/minima/objects/Token.cpp",
+      "src/org/minima/database/userprefs/txndb/TxnDB.cpp",
+      "src/org/minima/objects/base/MiniNumber.cpp",
+      "support/WalletWrappersOracle.java",
+      "support/wallet_wrappers.cpp",
+      "support/NumberValueOriginalTests.java",
+      "test/org/minima/tests/kissvm/values/NumberValueTests.cpp"
+    ],
+    "sibling_search": "No sendfrom/createtokenfrom matches in minima-core-cpp/src or tests. Read pinned bodies and relevant native getters, state loop, result helpers, transaction/token objects, DB and fixture before adaptation.",
+    "adaptation": "Two package-relative wrappers preserve source metadata, public virtual child overload, parameter and random-ID order, child text including fromaddress: space, typed status/error handling, ignored script/MMR/sign statuses and deletion order. Token creation preserves raw decimal String cast/parse, floor and supply bounds, no lower decimal bound, actual Token creation and output-zero replacement. Added source MINI_UNIT constant to existing MiniNumber.",
+    "fix": "Initial492 comparison had489passes: two exponent-bound failures exposed generic Power out of range vs source ArithmeticException: Invalid operation. Reuse JavaArithmeticException in existing MiniNumber.pow guard. Four direct supplemental probes test both signs/int extremes. Third discrepancy was JVM null-pointer prose wrapped by CommandException; narrow exception-field normalization retains both class names.",
+    "fixture": "Existing eight recording wrapper subclasses run actual source/native bodies. Optional materialize mode runs actual txncreate/delete and supplies explicit ordinary outputs via actual txnoutput. Row snapshots include real transaction JSON and full serialized wire before each child. Returned failures and throws injected before materialization; real children test source empty-row and offline chain-tip failures. Funding/post replies are controlled input, not chain acceptance. Real send case controls signing reply only.",
+    "validation": "Both final full builds98803/44490 PASS without warnings. All10selectedchecks PASSnormal40.23s/san124.63s: mapping334,custom492/2052calls13.69s/25.24s,wallet659/2060calls16.88s/63.08s,raw656/3991calls8.30s/3.33s,command12289,runner1265,runnererrors1120,objects9464(27.06s/124.61s),primitives3802,originalNumberValue99assertions+11supplementalexacterrors(6.57s/3.32s). All18comparisonreports inspected after completion. Notall172CTest.",
+    "normalization": "Shape-checked generated32byte random IDs only in matching text and verified leading serialized row-ID fields; runtime-specific NPE/CCE prose, including those class names immediately wrapped by CommandException in exception fields. Other observed replies, errors, logs, JSON, child text and bytes compared.",
+    "baseline": "build/custom-send-error-baseline.json",
+    "lesson": "student-guide/new-tests/custom-address-send-commands.md",
+    "limits": "334counterparts=294production+40tests;123absent=75production+48tests. All counterparts partial and parity not_verified. Main/Minima/durableSQL absent. Finite offline tests do not prove funded/network acceptance or exhaustive API/platform/resource behavior."
+  },
+  "consolidate_address_command": {
+    "source": "src/org/minima/system/commands/send/wallet/consolidatefrom.java",
+    "reuse": [
+      "src/org/minima/system/commands/txn/txnaddamount.cpp",
+      "src/org/minima/system/commands/send/send.cpp:stable descending amount comparison",
+      "src/org/minima/system/brains/TxPoWSearcher.cpp",
+      "src/org/minima/database/txpowdb/TxPoWDB.cpp",
+      "src/org/minima/database/txpowdb/ram/RamDB.cpp",
+      "src/support/CommandResult.hpp",
+      "support/WalletWrappersOracle.java",
+      "support/wallet_wrappers.cpp",
+      "support/WalletCommandsOracle.java:chain setup",
+      "support/wallet_commands.cpp:chain setup"
+    ],
+    "sibling_search": "No consolidatefrom in minima-core-cpp/src or tests. Pinned251-line class and relevant native search, stable ordering, RAM membership, tree/coin APIs and fixtures inspected. No production callers of createConsolidate found; command registered by source CommandRunner.",
+    "adaptation": "Package-relative command and virtual public helper preserve two distinct algorithms. Main creates before mine/tip validation, searches all matching coins with optional MegaMMR, stable descending Minima amount order, age>=3 then mempool check, count-limit after adding at least one coin, native-only burn, ten equal outputs and unchecked post.response. Helper keeps supplied order, no filtering/limit, burn regardless token, one output, mine:true and nullable strict JSONObject cast after delete. Nullable shared coin owners/list, optional Strings and borrowed number pointers represent source null behavior. Counter increment explicitly wraps as Java int.",
+    "fixture": "Existing recording subclasses extended to ninth command. Explicit coins populate source-supported test TxPoWTreeNode and actual MegaMMR/RAM stores; witness coin proofs drive real checkMempoolCoins. Main source search/filter loop remains actual. Public helper called directly with nullable inputs. Optional execute list runs real txninput/txnoutput/txnscript; create/delete materialize through existing mode. Controlled proof/sign/post replies do not imply network acceptance.",
+    "validation": "Initial327programs3603calls PASS6.57s/13.21s. Final331programs3815calls PASS12.81s/22.38s after 55-coin limit and smallest-unit division additions. Finalfullbuilds96651/25846PASSwithoutwarnings. All8selectedchecks45932/43123PASSnormal22.25s/san65.92s: mapping335,consolidation331,custom492/2052calls15.75s/29.65s,wallet659/2060calls19.55s/65.92s,raw656/3991calls9.38s/3.54s,command12289,runner1265,runnererrors1120. All14comparisonreports inspected. Notall173CTest.",
+    "review": "No source/native discrepancy found in tested body observations. Fixed initial fixture missing GeneralParams include. Review retained Java-overridable public helper and added independent default50/explicit51/all55 selection tests and 1E-44/10 truncation. Existing random-ID and runtime-prose normalization unchanged.",
+    "lesson": "student-guide/new-tests/consolidate-custom-address.md",
+    "limits": "335counterparts295production40tests;122absent74production48tests. Allpartial/not_verified. Main/Minima/durableSQL remain absent. No live wallet/node/posting. Full nullable/reference/collection mutation, allocator/platform/concurrency and node integration parity remain unproven."
+  },
+  "wallet_consolidation_command": {
+    "source": "src/org/minima/system/commands/base/consolidate.java",
+    "reuse": [
+      "src/org/minima/system/commands/send/send.cpp:orderCoins",
+      "src/org/minima/system/brains/TxPoWSearcher.cpp:getRelevantUnspentCoins",
+      "src/org/minima/database/wallet/Wallet.cpp:getDefaultAddress",
+      "src/support/CommandResult.hpp",
+      "support/WalletCommandsOracle.java",
+      "support/wallet_commands.cpp",
+      "tools/wallet_commands_differential.py"
+    ],
+    "sibling_search": "No consolidate implementation in minima-core-cpp/src or tests. Complete236line pinned source and relevant native dependencies/callers/tests inspected.",
+    "adaptation": "Package-relative command preserves raw tokenid, parsing order, age filtering, descending amount/address grouping, token amount before signature limit, post-add coin limit, default-address lookup and exact child text. Password redaction before value getter. Child response/message/error/full-object selection uses existing typed status.",
+    "runner_fix": "Post-execution status check reuses CommandResult.status outside original catch block. Preserved baseline build/wallet-consolidation-status-baseline.json. Four direct missing/null/String/integer probes and nested public dispatch.",
+    "fixture": "Scoped send prototype records actual runner-parsed text/params and controlled replies; restored after operation. Source-generated Coin/token variants feed actual tree/search/order. Separate real-send dry-run uses existing proof/mining fixture. No live node/SQL engine.",
+    "normalization": "Existing SQL/logger/runtime prose normalization; shape-checked 32byte PRNG only in successful real consolidate dryrun response.body.prng, all other fields compared.",
+    "validation": "Final247 programs742 operations23185 SQL PASS17.06s/34.49s. Both final full builds90631/77313PASSwithoutwarnings. All8selectedchecks PASS58.53s/191.87s: mapping336, consolidation247, wallet675/1907/50275SQL,funding736/3418/39016SQL,wrappers659/2060calls,command12289,runner1265,runnererrors1120. All14comparisonreports read. Notall174CTest.",
+    "lesson": "student-guide/new-tests/wallet-consolidation.md",
+    "limits": "336counterparts296production40tests;121absent73production48tests. Allpartial/not_verified. Main/Minima/durableSQL absent. FullAPI/reference/concurrency/platform and network acceptance unproven."
+  },
+  "wallet_balance_command": {
+    "source": "src/org/minima/system/commands/base/balance.java",
+    "reuse": [
+      "src/org/minima/system/brains/TxPoWSearcher.cpp",
+      "src/org/minima/database/wallet/Wallet.cpp:isAddressSimple",
+      "src/org/minima/objects/Token.cpp",
+      "src/org/minima/objects/base/MiniNumber.cpp",
+      "src/org/minima/utils/json/JSONValue.cpp:raw",
+      "src/org/minima/utils/json/parser/JSONParser.cpp",
+      "src/support/RawTxnCommands.hpp:object",
+      "support/WalletCommandsOracle.java",
+      "support/wallet_commands.cpp",
+      "tools/wallet_commands_differential.py"
+    ],
+    "sibling_search": "No balance command in minima-core-cpp/src or tests; vendor SQLite balance routines are unrelated. The 383-line pinned command and relevant native search, wallet cache, token/number, JSON fallback/cast, fixtures and tests were read.",
+    "adaptation": "Preserve parameter order, tip rejection before megammr parse, relevant/default versus explicit-address search, exact token strings, first-encounter token order, missing metadata failure, depth classification, counts and lists. Sendable requires confirmed/simple plus exact RETURN TRUE for custom tokens. Token scaling and details use existing Token. Raw MiniString names are serialized verbatim, including invalid JSON; simple view uses the actual parser and strict object helper. Source help and parameter list retained, including debug omission.",
+    "fixture": "Reuse actual source-generated Coin/Token wire, existing chain/MMR fixture and Wallet cache through recording SQL. Optional chain mega flag/coins populate real MegaMMR. replyText captures actual serialized replies inside a safe outer string envelope. Existing generic exception normalization is undone for captured replies and coin debug logs so exception-like token names remain exact. Direct constructor probes call actual MiniNumber APIs.",
+    "number_fix": "MiniNumber coefficient/scale constructor now expands only negative-scale zeros retained by 64-digit precision before applying context and checking range, matching Java BigDecimal.toPlainString constructor representation. String constructor unchanged. Preserved first failing report build/wallet-balance-range-baseline.json. Existing BigInt/pow10/context and JavaBigDecimalText reused; sibling range check is deferred and cannot replace the pinned behavior.",
+    "validation": "Both full builds65913/95723 pass without warnings. All13 distinct selected checks pass in each build across phases: balance275 programs776 operations21515 SQL11.57s/37.07s; consolidation247/742/23185SQL17.53s/36.46s; wallet675/1907/50275SQL15.90s/82.87s; funding736/3418/39016SQL60.63s/193.37s; command12289; runner1265; runnererrors1120; objects9464(29.31s/96.25s); originalNumberValue99assertions+11supplementalerrors(5.27s/2.60s); searcher189programs6468queries(11.43s/26.89s); KISSVM4471(6.85s/11.24s); primitives3802(1.48s/2.54s); mapping337. Normal11-regression batch57193PASS60.64s plus separate balance98349/primitives89834. Sanitizer12-regression batch99852PASS193.38s plus primitives42063. All24 comparison reports inspected. Not all175 CTest entries. No production edits after final full builds.",
+    "lesson": "student-guide/new-tests/wallet-balance.md",
+    "limits": "337 counterparts297 production40 tests;120 absent72 production48 tests. Allpartial/not_verified. Main/Minima/durableSQL absent. Finite tests do not establish live balances, network acceptance, arbitrary Java reference/collection mutation, serialization timing, platform/resource exhaustion or concurrency parity."
+  },
+  "coin_search_command": {
+    "source": "src/org/minima/system/commands/search/coins.java",
+    "reuse": [
+      "src/org/minima/system/brains/TxPoWSearcher.cpp:searchCoins",
+      "src/org/minima/system/commands/txn/txnutils.cpp:getMiner",
+      "src/org/minima/system/brains/TxPoWMiner.cpp:checkForMiningCoin",
+      "src/org/minima/database/txpowdb/TxPoWDB.cpp:checkMempoolCoins",
+      "src/org/minima/database/txpowdb/ram/RamDB.cpp:checkForCoinID",
+      "src/org/minima/system/commands/send/send.cpp:selectCoins",
+      "src/org/minima/objects/Token.cpp",
+      "support/WalletCommandsOracle.java",
+      "support/wallet_commands.cpp",
+      "tools/wallet_commands_differential.py",
+      "tools/wallet_balance_corpus.py:fixture_request"
+    ],
+    "sibling_search": "No coins class/body in minima-core-cpp/src or tests. Pinned full command and relevant search, selector, miner/RAM, parameter and fixture implementations/tests inspected.",
+    "adaptation": "Preserve presence-based relevant flag (ignoring its value), early parameter parsing, no-tip empty response before later getters, real search, age filtering, Main/miner lookup order, mining-before-RAM checks, stable asc creation-height sort only, first-token scaling for non-Minima token ID and actual send.selectCoins. Coin.toJSON plus String age. Metadata literals and valid params retained. ZERO_TXPOWID confirmed0x00, equal to native token ID.",
+    "fixture": "Existing wallet fixture unchanged. Driver adds coins group using existing balanceFixtures Coin/Token generator (native, RETURN TRUE and RETURN FALSE token groups) and witnessFixtures states/proofs. Existing miner and pool operations supply actual reservation/membership state. Independent assertions cover IDs/ages/order/state/filtering/selection; selected response fields remain fully compared with established exception prose normalization.",
+    "validation": "Both full builds88906/43551 PASS without warnings. Initial285 programs1136 operations24992 SQL PASS11.30s/27.70s after correcting blank-state fixture expectation. Final287/1144/25168SQL PASS20.89s/41.27s with independent state IDs and RETURN FALSE token cases. All9 selectedchecks64358/77145 PASSnormal61.55s/san193.68s: coins287,balance275/776ops/21515SQL19.62s/38.31s,wallet675/1907ops/50275SQL21.26s/84.45s,funding736/3418ops/39016SQL61.54s/193.67s,searcher189/6468queries12.30s/26.22s,command12289,runner1265,runnererrors1120,mapping338. All16 comparison reports inspected. Not all176 CTest entries. No production edits after full builds.",
+    "review": "No source/native body mismatch found. Initial assertion expected a result for supplied blank state; both correctly reject. Test now asserts rejection. Code review adds independent non-vacuous state matches and proves sendable checks simple address without token script. No production changes after full builds.",
+    "lesson": "student-guide/new-tests/coin-search-command.md",
+    "limits": "338 counterparts298 production40 tests;119 absent71 production48 tests. Allpartial/not_verified. Main/Minima/durableSQL absent. No native full Main startup, live network acceptance, atomic snapshots or exhaustive Java reference/concurrency/platform parity."
+  },
+  "transaction_history_command": {
+    "source": "src/org/minima/system/commands/search/history.java",
+    "reuse": [
+      "src/org/minima/system/commands/Command.cpp",
+      "src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp",
+      "src/org/minima/database/wallet/Wallet.cpp:isAddressRelevant",
+      "src/org/minima/objects/Coin.cpp:getTokenAmount",
+      "src/org/minima/objects/Token.cpp",
+      "src/org/minima/objects/base/MiniNumber.cpp",
+      "src/org/minima/utils/messages/TimerMessage.cpp:currentTimeMillis",
+      "src/support/JavaHashtable.hpp",
+      "src/support/JavaConcurrentMap.hpp:JavaHashMap",
+      "support/SqlRecordingFixture.hpp",
+      "support/wallet_commands.cpp",
+      "support/WalletCommandsOracle.java",
+      "tools/wallet_commands_differential.py",
+      "tools/wallet_balance_corpus.py:fixture_request,preserve_text",
+      "tools/txpow_sql_db_differential.py:clock window validation"
+    ],
+    "sibling_search": "No native history/getTxnDetails body in minima-core-cpp/src or tests. Pinned full history source and relevant SQL, Java collection adapters, Coin/Token, wallet, TxPoW, command/clock APIs and fixture/tests inspected. Existing SQL and collection implementations are reused unchanged.",
+    "adaptation": "Preserve four actions, getter order and Java int/long conversions. Relevant size versus latest size with actual current time minus one day; custom where uses existing SQL method. Transactions reads tip before loop and counts transaction-bearing TxPoWs plus all referenced IDs. List serializes before virtual helper. Helper uses main inputs then outputs, tracked addresses, raw/native or Coin token amounts (missing metadata falls back), source Hashtable enumeration and HashSet iteration, and output-minus-input String totals. Nullable shared-pointer result and mutable TxPoW argument preserve demonstrated override behavior.",
+    "fixture": "Source balance fixture coins feed actual TxPoW creation/serialization, including optional signed amount replacement using the actual Coin constructor. Native decodes source wire. Actual SQL methods and recording rows/failures used. Clock bounds measured around each history operation; bound timestamp and response verified before replacing just that timestamp. Exact serialized reply text preserved from generic exception normalization. Scoped helper overrides return null/objects, throw or mutate the argument height after serialization.",
+    "validation": "Both final full builds99172/3622 PASS without warnings; subsequent history in same sessions484 programs1489 operations52194SQL PASS5.46s/10.04s. Prior483 suite48976/49578PASS5.59s/10.10s. Nine-regression normal14492PASS158.81s. Sanitizer55233 eightPASS, SQL timeout120.01s, batch160.85s; separate full SQL91536PASS2592programs8729ops86333SQL. Groups wallet675,balance275,coins287,command12289,runner1265,runnererrors1120,HashMap135,map339. All18 final reports read. Ten distinct selected checks passed across phases, not all177CTest. No production edits after final full builds; other regression groups unchanged by final mutable helper/history-only fixture edits.",
+    "review": "Corrected initial const TxPoW helper argument to mutable pointer, preserving public Java override mutation. Independent assertion observes helper height99 while already-serialized reply remains20. Added one-sided/repeated/signed/zero/many-token total checks. No additional production body mismatch found. Initial fixture method spelling and absent optional arrays corrected; guide writer adapted existing alternate heading order and removed duplicate exercise section.",
+    "lesson": "student-guide/new-tests/transaction-history.md",
+    "limits": "339 counterparts299production40tests;118absent70production48tests. Allpartial/not_verified. Main/Minima/durableSQL absent. Recording SQL and source fixture chains do not prove live history, node startup, retained JSON alias mutation, arbitrary nullable Coin lists or exhaustive Java reference/concurrency/platform parity."
+  },
+  "txpow_search_command": {
+    "source": "src/org/minima/system/commands/search/txpow.java",
+    "reuse": [
+      "src/org/minima/database/txpowdb/TxPoWDB.cpp:getTxPoW,getSqlSize",
+      "src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.cpp",
+      "src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp:getAllRelevant",
+      "src/org/minima/database/archive/ArchiveManager.cpp:loadBlock,loadBlockFromNumber",
+      "src/org/minima/system/brains/TxPoWSearcher.cpp:getTxPoWBlock,searchChainForTxPoW,searchTxPoWviaAddress",
+      "src/org/minima/database/userprefs/UserDB.cpp:getAutoLoginDetailsMySQL",
+      "src/org/minima/objects/TxBlock.hpp:getSharedTxPoW",
+      "src/support/CommandResult.hpp:first,booleanValue",
+      "src/support/RawTxnCommands.hpp:object",
+      "src/support/StateText.hpp:stateText",
+      "support/SqlRecordingFixture.hpp",
+      "support/SqlDBOracle.java",
+      "support/wallet_commands.cpp:SendRecordingScope",
+      "support/WalletCommandsOracle.java:SendRecordingScope,historyFixtures",
+      "tools/wallet_commands_differential.py",
+      "tools/wallet_balance_corpus.py:fixture_request,preserve_text"
+    ],
+    "sibling_search": "No txpow command/class in minima-core-cpp/src or tests. Full pinned294line command, relevant native storage/search/casting/runner implementations, dependencies/callers and existing SQL/archive/onchain/TxPoWDB/searcher/wallet comparison fixtures inspected. No existing per-query row-routing candidate in current/sibling test support; default shared rows cannot express ordinary SQL miss followed by archive hit in one call.",
+    "adaptation": "Keep action>txpowid>relevant>inblock>onchain>block>address precedence by presence. Reuse RAM/SQL/archive lookup and owned TxPoW; configured MySQL via actual runner first-result helper and strict nested object/Boolean, ignoring nested status. Relevant and address deduplicate IDs in encounter order, using unordered_set membership only. Inblock lowercase0x routes ID overload, else MiniNumber long. Onchain retained chain then SQL, confirmations=tip-height Strings; block chain then archive. info calls SQL/onchain size/first/last in source order and reports retention days. Object field text uses existing StateText with explicit null guard. Source metadata retained.",
+    "fixture": "Optional rowsBySQL in recording drivers routes prepared query rows by stored SQL text; default rows and all event identities/errors remain. Wallet adds txpowStores (real SQL/onchain/archive load), txpowPrefs and real RamData insertion; source txpowSearchFixtures decodes source-generated wire and emits real TxBlock wire/IDs/JSON. Existing balance/history source generators and chain/MMR fixtures reused. MySQL prototype scoped using existing send recording pattern; native append only inside fixture because mysql counterpart absent, Java replace existing final-array element. Real runner handles parsing/results. Forwarded effects observed for txpowSearch programs. No production database or MySQL body substituted.",
+    "validation": "Both full builds93598/38830 PASSwithoutwarnings (also86769/5362 initial). Initial677programs2090ops41337SQL PASS10.93s/25.58s. Final680programs2099ops41510SQL PASS10.28s/26.97s. All12selectedchecks39590/55967 PASSnormal58.91s/sanitizer156.18s. Othergroups wallet675/1907ops50275SQL;history484/1489ops52194SQL;Archive3333/10831ops125655SQL;TxPoWDB1355/7407ops80960effects;OnChain855/3639ops29167SQL;SqlDB464/1260ops8352SQL;searcher189/6468queries;Command12289;runner1265;runnererrors1120;map340. All22finalreportsread. Not all178CTest. No native/compiled fixture edits after final full builds; subsequent three corpus review cases ran in final batch.",
+    "review": "No source/native production mismatch found. Fixed Java fixture array reassignment (final registry) by existing scoped element replacement, corrected independent address expectation to include burn input and exposed forwarded recording field. Review adds failed nested status with found:true, and proves missing block/onchain never use MySQL even with preferences enabled. Exact serialized text and original runtime diagnostic normalization retained.",
+    "lesson": "student-guide/new-tests/txpow-search.md",
+    "limits": "340counterparts300production40tests;117absent69production48tests. Allpartial/not_verified. Native mysql, Main/Minima/durableSQL absent. Recording rows and downstream prototype do not prove durable storage, actual MySQL, live chain/node/network, arbitrary retained references or exhaustive concurrency/platform parity."
+  },
+  "node_state_commands": {
+    "sources": [
+      "src/org/minima/system/commands/base/mempool.java",
+      "src/org/minima/system/commands/base/cointrack.java",
+      "src/org/minima/system/commands/base/magic.java"
+    ],
+    "reuse": [
+      "Command",
+      "JavaConcurrentMap",
+      "RamData",
+      "TxPoWDB",
+      "CoinDB",
+      "TxPoWSearcher",
+      "TxPoWTreeNode",
+      "UserDB",
+      "JsonDB",
+      "Magic",
+      "TxPoWGenerator",
+      "Coin private null handle",
+      "wallet_commands fixtures",
+      "node_state_corpus.py"
+    ],
+    "adaptation": "Preserve flags, source ordering, typed preference reads and partial writes. Register only mempool and cointrack. Fix JsonDB String cast, nullable SQL-to-chain copies and empty-inner-loop evaluation order using existing components. Current/sibling searches found no reusable command counterpart.",
+    "validation": {
+      "programs": 363,
+      "operations": 1411,
+      "sql_calls": 21009,
+      "normal_seconds": 20.23,
+      "sanitized_seconds": 35.38,
+      "selected_checks": 13,
+      "regression_seconds": [
+        64.09,
+        145.86
+      ]
+    },
+    "limits": "All counterparts partial/not_verified. Recorded SQL, random tree-ID labels, no full Main/live node, retained-list alias or exhaustive concurrent/platform certification."
+  },
+  "seed_random_command": {
+    "source": "src/org/minima/system/commands/base/seedrandom.java",
+    "reuse": [
+      "Wallet.isBaseSeedAvailable/getBaseSeed",
+      "SeedRow.getSeed",
+      "Command.getParamUTF16/getJSONReply",
+      "MiniString.serialise",
+      "MiniData.serialise",
+      "Crypto.hashObjects",
+      "JavaUnicode.encodeUTF8",
+      "wallet_commands fixtures",
+      "wallet_balance_corpus.preserve_text"
+    ],
+    "adaptation": "Native command composition with source lock-check order, UTF-16 reply text, Java UTF-8 encoding and both framed hashes. Existing source class registered like Java. No matching command in sibling repo.",
+    "validation": {
+      "programs": 309,
+      "operations": 782,
+      "sql_calls": 14616,
+      "comparison_seconds": [
+        12.3,
+        5.5
+      ],
+      "selected_regressions": 4,
+      "regression_seconds": [
+        23.31,
+        75.25
+      ]
+    },
+    "limits": "Synthetic seeds and recorded SQL; UTF-8 fixture transport replaces isolated surrogates. No cryptographic separation proof, live wallet, exhaustive concurrent seed replacement or complete runtime parity."
+  },
+  "cast_original_tests": {
+    "sources": [
+      "test/org/minima/tests/kissvm/functions/cast/BOOLTests.java",
+      "test/org/minima/tests/kissvm/functions/cast/HEXTests.java",
+      "test/org/minima/tests/kissvm/functions/cast/NUMBERTests.java",
+      "test/org/minima/tests/kissvm/functions/cast/SCRIPTTests.java"
+    ],
+    "reuse": [
+      "test/org/minima/tests/kissvm/functions/base/LENTests.cpp",
+      "tools/script_value_original_tests.py",
+      "support/LENOriginalTests.java",
+      "existing BOOL/HEX/NUMBER/STRING and VM values"
+    ],
+    "adaptation": "Map active original fixtures/assertions and typed exceptions. Preserve SCRIPTTests name while testing STRING. Keep source class casts via dynamic_cast and leave commented assertions inactive. Sibling script-level examples lack these class assertions.",
+    "validation": {
+      "methods_per_class": 3,
+      "assertions_per_runtime": {
+        "BOOLTests": 21,
+        "HEXTests": 24,
+        "NUMBERTests": 19,
+        "SCRIPTTests": 23
+      },
+      "final_selected_checks": 10,
+      "seconds": [
+        11.35,
+        11.12
+      ]
+    },
+    "limits": "All rows partial/not_verified; finite unchanged original assertions, no exhaustive production casting parity."
+  },
+  "mysql_connect": {
+    "source": "src/org/minima/utils/mysql/MySQLConnect.java",
+    "reuse": [
+      "src/support/SqlConnection.hpp",
+      "src/support/JavaFloating.hpp",
+      "src/support/JavaUnicode.hpp",
+      "support/SqlRecordingFixture.hpp",
+      "support/SqlDBOracle.java",
+      "support/ArchiveFixture.hpp",
+      "support/CoinFixture.hpp",
+      "actual TxBlock/TxPoW/Cascade/Coin codecs"
+    ],
+    "adaptation": "Translate pinned SQL and method-specific failure/locking order; nullable credentials/decoded objects; decimal long wrapping; JDK26 fixed-decimal rounding with existing Java floating conversion and ICU locale symbols. Extend shared SQL interface with double binding/value, default binding throws for unsupported drivers. Sibling SQLite dialect and SqlDB whole query helper are incompatible.",
+    "validation": {
+      "programs": 1598,
+      "operations": 5399,
+      "sql_calls": 60287,
+      "normal_seconds": 40.98,
+      "sanitizer_seconds": 110.76,
+      "selected_regressions": {
+        "sql_db": 464,
+        "txpow_sql_db": 2592,
+        "coin_db": 1350,
+        "archive_manager": 3333,
+        "wallet_commands": 675,
+        "seconds": [
+          42.11,
+          118.87
+        ]
+      }
+    },
+    "limits": "Recording connection only; no native driver, durable MySQL execution, demo-main validation, complete Main integration or exhaustive concurrency/platform parity."
+  },
+  "pulse_runtime": {
+    "sources": [
+      "src/org/minima/objects/Pulse.java",
+      "src/org/minima/database/txpowtree/TxPowTree.java",
+      "src/org/minima/objects/base/MiniData.java"
+    ],
+    "reuse": [
+      "actual MinimaDB/read locks/TxPowTree/MinimaLogger",
+      "existing Pulse/MiniData/MiniNumber wire",
+      "existing MiniFormat.formatSize",
+      "support/minima_db.cpp",
+      "support/MinimaDBOracle.java",
+      "tools/minima_db_differential.py"
+    ],
+    "changes": "Add createPulse and instance stream reader; preserve shared-list replacement; exact MiniData oversized/expected-size diagnostics. Extend real-DB fixture with list/stream observations and fault receivers. Sibling Pulse header has incompatible one-byte count and 60-ID cap.",
+    "validation": {
+      "programs": 152,
+      "operations": 946,
+      "normal_seconds": 10.18,
+      "sanitizer_seconds": 25.01,
+      "selected_regressions": {
+        "object": 9464,
+        "tree": 1027,
+        "utility": 1361,
+        "nio_client": 714,
+        "minima_db": 2367,
+        "chain_commands": 324,
+        "native_lock_and_ownership_tests": 2,
+        "seconds": [
+          63.66,
+          184.7
+        ]
+      }
+    },
+    "limits": "Main absent; no full node or native storage. Null list elements, MiniData byte aliases, mutable global limits, all locales and concurrent mutation remain open."
+  },
+  "main_runtime": {
+    "source": "upstream-study/src/org/minima/system/Main.java",
+    "source_sha256": "143e67f90b0941fa9c7bd8626e6092396d64c0cb85fd5e9a5346132daf18ffa1",
+    "destination": "src/org/minima/system/Main.cpp",
+    "reuse": [
+      "Existing MinimaDB, network/processor/miner/notification/polling factories and actual component bodies",
+      "Pinned mysql.convertMySQLParams body extracted to support/MySQLConfiguration.hpp; full command still absent",
+      "Shared SQL recording fixtures, Java Unsafe/reflection fixture allocation, native archive/TxPoW codecs",
+      "Existing native thread boundary and Java-compatible typed exception carriers"
+    ],
+    "adaptations": [
+      "Factory publishes shared owner before starting worker and executing startup body; startup failure stops/joins only created owners",
+      "Global and child ownership retirement occurs outside mutexes; native thread name survives nested worker/uncaught boundaries",
+      "MainServices requires actual SQL/MySQL connection callbacks and exposes native library, clock, sleep, collection, halt/exit boundaries",
+      "Runtime binds NIO, Greeting/IBD, command receivers, logging and owned managers; MegaMMR snapshot receiver remains a dependency",
+      "Message boxed getters and JsonDB Boolean/string getters now preserve typed null/cast failures; MySQL credentials evaluated in source order"
+    ],
+    "validation": {
+      "programs": 336,
+      "operations": 897,
+      "normal_seconds": 8.45,
+      "sanitizer_seconds": 5.11,
+      "native_ownership_seconds": [
+        0.69,
+        1.7
+      ],
+      "native_ownership": "Nested worker names and uncaught callback, reentrant listener destruction, failed library load before timer and failed first SQL connection with weak-owner cleanup",
+      "test_scope": "Actual Main bodies with unstarted workers and real database child objects; recording SQL, controlled timers, listener identity and state/log/error observations; no live database or node",
+      "selected_regressions": {
+        "distinct_tests": 14,
+        "normal_initial_batch_seconds": 68.13,
+        "normal_final_getter_batch_seconds": 40.7,
+        "sanitizer_batch_seconds": 120.12,
+        "sanitizer_batch": "13/14 passed; NIO internal 100-second limit exceeded",
+        "nio_isolated_sanitizer_seconds": 83.64,
+        "nio_isolated_programs": 1918,
+        "final": "all selected checks passed across phases"
+      }
+    },
+    "limits": "All mapped counterparts remain implemented_partial/parity not_verified. Successful full startup/shutdown, all native thread interleavings/interrupted sleeps, durable SQL/MySQL drivers, full command registry, Minima entry point, MegaMMR snapshot helper and optional JNI integration remain open."
+  },
+  "main_lifecycle_commands": {
+    "sources": [
+      "upstream-study/src/org/minima/system/commands/base/quit.java",
+      "upstream-study/src/org/minima/system/commands/backup/rescue.java"
+    ],
+    "destinations": [
+      "src/org/minima/system/commands/base/quit.cpp",
+      "src/org/minima/system/commands/backup/rescue.cpp"
+    ],
+    "reuse": "Existing Command, CommandRunner, Main and Message implementations; shared Main fixture extended with metadata, direct/runner calls and actual queue draining. Sibling signal-based shutdown loop is not source-compatible.",
+    "validation": {
+      "programs": 102,
+      "operations": 366,
+      "initial_seconds": [
+        2.59,
+        3.1
+      ],
+      "independent_assertion": "Every successful rescue reply maps to one queued MAIN_DO_RESCUE with the same host in order",
+      "final_seconds": [
+        3.18,
+        2.43
+      ],
+      "selected_regressions": {
+        "command_cases": 12289,
+        "runner_cases": 1265,
+        "runner_error_cases": 1120,
+        "main_programs": 336,
+        "main_ownership": true,
+        "normal_batch_seconds": 9.69,
+        "sanitizer_batch_including_commands_seconds": 24.0,
+        "final_parallel_fixture_seconds": 4.17
+      }
+    },
+    "limits": "Unstarted workers and partially initialized database owners, no actual rescue handler dispatch, full-node shutdown, durable compaction or networking. Nullable global configuration and concurrent singleton replacement remain unverified."
+  },
+  "network_peer_commands": {
+    "sources": [
+      "upstream-study/src/org/minima/system/commands/network/disconnect.java",
+      "upstream-study/src/org/minima/system/commands/network/message.java",
+      "upstream-study/src/org/minima/system/commands/network/p2pstate.java"
+    ],
+    "destinations": [
+      "src/org/minima/system/commands/network/disconnect.cpp",
+      "src/org/minima/system/commands/network/message.cpp",
+      "src/org/minima/system/commands/network/p2pstate.cpp"
+    ],
+    "reuse": [
+      "Command, Main, NIOManager/NIOServer/NIOClient, MiniString and P2PManager bodies",
+      "PeerRuntimeFixture.hpp and P2PManagerFixture.hpp behind MainNetworkFixture adapter; existing Java NIOClientOracle channel/key and reflection setup",
+      "Existing P2PEnvironment numeric address formatter and interface-index lookup; cached /private/tmp/minima-jdk26-NetworkInterface.c BSD scope assignment reviewed"
+    ],
+    "adaptations": [
+      "Explicit raw String type checks without trimming; static NIO method still evaluates the Main/network receiver expression",
+      "Wrong P2P manager type distinguished from null",
+      "NIOManager/P2PFunctions missing runtime owner errors use JavaNullPointerException",
+      "Local IPv6 interface hostnames retain interface scope even if OS sockaddr scope is zero"
+    ],
+    "jdk_network_interface_source_sha256": "26ddf4d4fd162ef014eafdef40c5af45df51e6ebb949f0f5557518ae702689cb",
+    "validation": {
+      "programs": 222,
+      "operations": 794,
+      "final_seconds": [
+        3.55,
+        5.68
+      ],
+      "selected_regressions": 12,
+      "initial_batch_seconds": [
+        37.16,
+        55.1
+      ],
+      "initial_failures": "Two loopback sandbox restrictions and one real IPv6 interface mismatch; all resolved/revalidated",
+      "normal_loopback_retry_seconds": 26.6,
+      "final_batch_seconds": [
+        55.91,
+        56.89
+      ],
+      "independent_checks": "Packet type 5 and UTF-8 length framing, broadcast validity and targeted UID selection, exact disconnect queue entries, successful fixture/status checks"
+    },
+    "limits": "No live peer command delivery or full Main startup, durable storage, exhaustive concurrency/reference API or ping null-return adaptation. Loopback regressions use only isolated local sockets."
+  },
+  "ping_and_nullable_commands": {
+    "source": "upstream-study/src/org/minima/system/commands/network/ping.java",
+    "destination": "src/org/minima/system/commands/network/ping.cpp",
+    "reuse": [
+      "Command, JSONValue, JSONObject and CommandResult.status",
+      "JavaInteger.javaParseInt and JavaStringTrim.javaStringTrim",
+      "Main, NIOManager.sendPingMessage and existing optional Greeting extra-data field",
+      "MainRuntimeOracle/MainNetworkOracle and native MainNetworkFixture",
+      "nio_manager_transport_differential.py loopback peer and exact request-frame assertion"
+    ],
+    "adaptations": [
+      "No-argument runCommand declarations/definitions return existing JSONValue for nullable source object references; string-taking helper overloads unchanged",
+      "Runner keeps nullable reply and checks status after catch block; Java errors and generic exception handling unchanged",
+      "Greeting.getExtraDataOptional exposes existing state without dereferencing a null object",
+      "Loopback fixture accepts optional request factory while preserving its original default behavior"
+    ],
+    "mechanical_migration": "support/nullable-command-migration.json records 166 substitutions in 165 files. Reverse-substitution hashes match all 163 untouched-after-migration files; Command.hpp has the documented API comment and command_runner_errors.cpp has new explicit probes.",
+    "closest_sibling": "src/objects/Greeting.hpp stores raw JSON text and a different default version; it does not replace the pinned decoder. No compatible sibling command wrapper found.",
+    "validation": {
+      "builds": [
+        "normal",
+        "sanitizer"
+      ],
+      "ping_programs_per_build": 95,
+      "loopback_cases_per_build": 9,
+      "runner_error_cases_per_build": 1680,
+      "selected_tests_per_build": 35,
+      "selected_seconds": [
+        181.54,
+        762.1
+      ],
+      "normal_reports_read": 33,
+      "sanitizer_reports_read": 33
+    },
+    "limits": "Partial, parity not_verified. Full startup, complete registry/storage, exact socket/wire diagnostic prose, NIO logger failures and exhaustive malformed Greeting/reference behavior remain open."
+  },
+  "network_status_command": {
+    "source": "upstream-study/src/org/minima/system/commands/network/network.java",
+    "destination": "src/org/minima/system/commands/network/network.cpp",
+    "reuse": [
+      "Command and actual Main/NetworkManager/NIOManager/NIOClientInfo/NIOTraffic/MessageProcessor bodies",
+      "Existing MainNetworkFixture and MainNetworkOracle; existing Main runtime driver with opt-in status observations",
+      "Native NetworkManager getUserDB fixture callback follows Main.newNetwork binding"
+    ],
+    "adaptations": [
+      "Explicit typed required receivers, repeated source owner lookups retained",
+      "Logging on/off branches share their identical dispatch sequence; global trace semantics retained",
+      "Fixed initial fixture clocks and UTC rendering; actual reset clocks checked before normalization"
+    ],
+    "validation": {
+      "builds": [
+        "normal",
+        "sanitizer"
+      ],
+      "programs_per_build": 124,
+      "operations_per_build": 562,
+      "test_seconds": [
+        4.53,
+        3.8
+      ],
+      "selected_tests_per_build": 10,
+      "selected_seconds": [
+        19.15,
+        27.27
+      ],
+      "reports_read": 18
+    },
+    "limits": "Unstarted Main workers: restart is an exact queued message. No full startup, durable storage or exhaustive owner/concurrent/P2P failure parity."
+  }
+}

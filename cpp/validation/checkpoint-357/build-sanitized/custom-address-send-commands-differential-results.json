@@ -1,0 +1,7 @@
+{
+  "programs": 492,
+  "passed": 492,
+  "child_calls": 2052,
+  "failures": [],
+  "scope": "Actual sendfrom/createtokenfrom bodies, metadata, parameter/error order, child failures, real stored output replacement, token JSON and wire, cleanup, and public runner/helper execution. Controlled funding/posting replies are fixture inputs; real-child cases exercise offline failure paths. Only checked random IDs and NPE/CCE wording normalized. No live node or durable SQL."
+}

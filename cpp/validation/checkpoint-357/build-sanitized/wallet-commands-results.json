@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 675,
+  "total_programs": 675,
+  "operations": 1907,
+  "sql_calls": 50275,
+  "failures": [],
+  "scope": "Actual selected commands, registry/parameter/permission gates, MinimaDB/Wallet/ScriptRow/Address/Contract cleaning and TreeKey signatures. Exact replies, metadata, SQL calls, logs and selected cache membership. Recording SQL only; no native H2 or live wallet. Java-specific NPE/class-cast diagnostics, stack frames and logger prefix excluded. Supplied query rows do not establish durable SQL persistence. Address group also compares real default TreeKey generation, volatile coin notifications and exact UserDB file bytes across save/disable-save/reload/owner-recreation. Default-address randomness compared with zero, one or identical duplicate rows; selection among distinct candidates is not proved. Witness group uses actual chain/transaction/witness objects and Java-produced MMR bytes, compares full custom-DB wire and monotonic flags after every operation. Check group reuses actual consensus fixtures and generator/checker/TreeKey, compares full stored transaction/witness wire, all three cache flags, generated owner identity/lifetime and in-place TxBody reads including aliases, null fields, offsets and partial failures. Fixed fixture times force existing clock clamp; random generated PRNG omitted from ownership snapshots. Mining group runs actual queued/synchronous mining after fixing only the generated 32 PRNG bytes at miner entry. Compares miner arguments, full TxPoW wire, exact replies, Main messages, retained queue owners and reservations, burn signatures, failed conversion logs and late deletion effects. False/throwing miner results and Main post failures are injected separately. Main construction, external network acceptance, full coin/list aliasing and complete node integration remain unverified."
+}

@@ -1,0 +1,24 @@
+#include "org/minima/system/network/p2p/messages/P2PDoSwap.hpp"
+#include "org/minima/system/network/p2p/messages/P2PWalkLinks.hpp"
+#include <iostream>
+#include "PeerHarness.hpp"
+static JSONValue run(JSONObject& request) {
+    auto kind=request.get("kind").asString();
+    if(kind=="address") {auto a=address(request.get("address"));JSONObject result;result.put("value",snapshot(a));if(request.containsKey("other")){if(!a)throw std::runtime_error("Null address");auto b=address(request.get("other"));result.put("equal",b&&a->equals(*b));}return result;}
+    if(kind=="int")return InetSocketAddressIO::safeReadInt(*object(request.get("object")),"value");
+    if(kind=="io") {auto values=array(request.get("value"));auto peers=request.get("mode").asString()=="strings"?InetSocketAddressIO::addressesJSONArrayToList(values):InetSocketAddressIO::addressesJSONToList(values);JSONObject result;result.put("peers",snapshots(peers));try{result.put("objects",InetSocketAddressIO::addressesListToJSON(peers));}catch(const std::exception&){result.put("objects","ERROR");}try{result.put("strings",InetSocketAddressIO::addressesListToJSONArray(peers));}catch(const std::exception&){result.put("strings","ERROR");}return result;}
+    if(kind=="swap") {
+        P2PDoSwap swap=request.containsKey("target")?P2PDoSwap(std::make_shared<MiniData>(MiniData::fromHex("0x0001")),address(request.get("target")),string(request.get("uid"))):P2PDoSwap();bool random=swap.getSecret()->getLength()==(request.containsKey("target")?2:8);swap.setSecret(std::make_shared<MiniData>(MiniData::fromHex("0x0001")));JSONArray output;
+        for(const auto& value:array(request.get("ops"))->elements()) {auto op=object(value);JSONValue outcome="OK";try{auto name=op->get("op").asString();const auto& v=op->get("value");
+            if(name=="read")swap.readJson(*object(v));else if(name=="new")swap=P2PDoSwap::readFromJson(*object(v));else if(name=="target")swap.setSwapTarget(address(v));else if(name=="uid")swap.setSwappingClientUID(string(v));else if(name=="secret")swap.setSecret(v.isNull()?nullptr:std::make_shared<MiniData>(MiniData::fromHex(v.asString())));else throw std::invalid_argument(name);
+        }catch(const std::exception&){outcome="ERROR";}JSONObject state;state.put("result",outcome);state.put("secret",swap.getSecret()?JSONValue(swap.getSecret()->to0xString()):JSONValue{});state.put("target",snapshot(swap.getSwapTarget()));state.put("uid",nullable(swap.getSwappingClientUID()));try{state.put("json",swap.toJson());}catch(const std::exception&){state.put("json","ERROR");}output.add(state);}JSONObject result;result.put("random",random);result.put("states",output);return result;
+    }
+    if(kind=="walk") {
+        auto external=list(request.get("path"));auto ctor=request.get("ctor").asString();P2PWalkLinks walk=ctor=="path"?P2PWalkLinks(true,true,external):ctor=="target"?P2PWalkLinks(true,true,std::string("uid")):P2PWalkLinks();bool random=walk.getSecret()->getLength()==8;walk.setSecret(std::make_shared<MiniData>(MiniData::fromHex("0x0001")));JSONArray output;
+        for(const auto& value:array(request.get("ops"))->elements()) {auto op=object(value);JSONValue outcome="OK";try{auto name=op->get("op").asString();const auto& v=op->get("value");
+            if(name=="read")walk.fromJson(*object(v));else if(name=="new")walk=P2PWalkLinks::readFromJSON(*object(v));else if(name=="target")walk.setTargetUidForNextHop(string(v));else if(name=="secret")walk.setSecret(v.isNull()?nullptr:std::make_shared<MiniData>(MiniData::fromHex(v.asString())));else if(name=="path")walk.setPathTaken(list(v));else if(name=="hop")walk.addHopToPath(address(v));else if(name=="previous")outcome=snapshot(walk.getPreviousNode(address(v)));else if(name=="append"||name=="external"){auto target=name=="append"?walk.getPathTaken():external;if(!target)throw std::runtime_error("Null path");target->push_back(address(v));}else throw std::invalid_argument(name);
+        }catch(const std::exception&){outcome="ERROR";}JSONObject state;state.put("result",outcome);state.put("secret",walk.getSecret()?JSONValue(walk.getSecret()->to0xString()):JSONValue{});state.put("target",nullable(walk.getTargetUidForNextHop()));state.put("path",snapshots(walk.getPathTaken()));state.put("walk",walk.isWalkInLinks());state.put("join",walk.isJoiningWalk());state.put("client",walk.isClientWalk());state.put("return",walk.isReturning());state.put("slots",walk.getAvailableNoneP2PConnectionSlots());try{state.put("json",walk.toJson());}catch(const std::exception&){state.put("json","ERROR");}output.add(state);}JSONObject result;result.put("random",random);result.put("states",output);return result;
+    }
+    throw std::invalid_argument(kind);
+}
+int main(){std::cout<<std::unitbuf;std::string line;while(std::getline(std::cin,line))try{auto request=object(JSONValue::parseWithException(line));std::cout<<run(*request).toJSONString()<<'\n';}catch(const std::exception&){std::cout<<"\"ERROR\"\n";}}

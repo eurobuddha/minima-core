@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 275,
+  "total_programs": 275,
+  "operations": 776,
+  "sql_calls": 21515,
+  "failures": [],
+  "scope": "Actual balance, real coin search/tree/MegaMMR, Wallet cache, MiniNumber/Token scaling and JSON parser. Exact serialized command reply captured as a string, including source malformed JSON; SQL calls, ordered logs, cache and stored transaction bytes compared. Existing runtime-specific exception prose/logger normalization only. Supplied rows and source-generated fixture coins do not prove durable SQL, live balances, full reference API or node integration."
+}

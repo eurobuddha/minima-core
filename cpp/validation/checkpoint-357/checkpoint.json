@@ -1,0 +1,31 @@
+{
+  "mapped_counterparts": 357,
+  "production": 313,
+  "mapped_tests": 44,
+  "total_java_files": 457,
+  "status": "incomplete",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "validation_phases": [
+    {
+      "checkpoint": 356,
+      "selected_tests_per_build": 35,
+      "seconds": [
+        181.54,
+        762.1
+      ]
+    },
+    {
+      "checkpoint": 357,
+      "selected_tests_per_build": 10,
+      "seconds": [
+        19.15,
+        27.27
+      ]
+    }
+  ],
+  "limits": "Scoped finite comparisons, not full parity or full-node startup. Report filenames carry each corpus scope. The subsequent trace/timemilli work is excluded from this verified checkpoint."
+}

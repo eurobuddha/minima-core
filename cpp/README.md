@@ -1,0 +1,719 @@
+# MinimaCoreC++ — incomplete
+
+Pinned Java source: `../upstream-study`, commit
+`5564b9d78978efcaf23679190d05253961fc6e69` (`1.1.2.8`).
+
+The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
+assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
+`.cpp` paths. **313 production counterparts and 44 mapped test files exist;
+100 mapped files remain unported.** These existing files are still classified
+as partial until their complete API and behavior have been reviewed.
+
+network now compiles and is registered. Its [status-command lab](student-guide/new-tests/network-status-command.md)
+explains 124 programs and 562 operations matching Java in both builds, including
+UID filtering, traffic reset, shared tracing and queued restart behavior. Both
+full builds and ten affected regression groups pass (19.15s/27.27s). There are
+196 CTest entries.
+
+ping now compiles and is registered. Its [nullable-reply lab](student-guide/new-tests/nullable-command-replies.md)
+explains the existing JSONValue return representation, the runner's status check
+outside its catch block, and nullable Greeting extra data. The new normal comparison
+passes 95 command programs and nine isolated loopback cases; the expanded runner
+error comparison passes 1,680 requests. All 35 selected regressions pass in both builds (181.54s normal, 762.10s sanitizer).
+That checkpoint had 195 CTest entries.
+
+disconnect, message and p2pstate now compile and are registered. Their
+[peer-command lab](student-guide/new-tests/network-peer-commands.md) explains
+222 programs and 794 operations matching Java in both builds (3.55s/5.68s),
+including real queues, packet encoding and detailed status. All 12 affected
+regressions pass across the validation phases. That checkpoint had 194 CTest entries.
+
+quit and rescue now compile and are registered. Their
+[lifecycle command lab](student-guide/new-tests/main-lifecycle-commands.md) explains
+102 programs and 366 operations matching Java in both builds, with actual Main
+calls and queued rescue messages. That checkpoint had 193 CTest entries.
+
+Main now compiles and binds the existing native runtime components. Its
+[runtime lab](student-guide/new-tests/main-runtime.md) explains lifecycle ordering,
+notifications, backup SQL and failed-startup ownership. All 336 programs and 897
+operations match Java in both builds (8.45s/5.11s); native ownership checks pass
+(0.69s/1.70s). Full startup, durable SQL/MySQL drivers, complete command registration
+and the Minima entry point remain unfinished. That checkpoint had 192 CTest entries.
+
+Pulse.createPulse and instance decoding now connect to the actual database/tree
+components. Retained pulse lists survive tree recalculation and partial reads.
+The [runtime lab](student-guide/new-tests/main-runtime.md) explains the 152 programs
+and 946 operations matching Java in both builds (10.18s/25.01s). That prerequisite checkpoint
+had 190 CTest entries.
+
+MySQLConnect now compiles. Its [connection lab](student-guide/new-tests/mysql-connection.md)
+explains SQL ordering, partial failures, real wire codecs and locale-sensitive
+numbers. All 1,598 programs, 5,399 operations and 60,287 SQL observations match
+Java in normal and sanitizer builds (40.98s/110.76s). A native MySQL driver and
+live persistence remain open. That checkpoint had 189 CTest entries.
+
+seedrandom now compiles and is registered. Its [seed derivation lab](student-guide/new-tests/seed-random-command.md)
+explains exact framed hashing, Unicode and lock-check order. All 309 programs,
+782 operations and 14,616 SQL observations match Java in both builds
+(12.30s/5.50s), including independent SHA3-256 expectations. All four selected
+regressions pass (23.31s/75.25s).
+
+Four [original casting test counterparts](student-guide/new-tests/cast-original-tests.md)
+now compile: BOOLTests, HEXTests, NUMBERTests and SCRIPTTests. All 87 original
+assertions per runtime pass; the existing cast implementations were reused.
+Both full builds and all ten final casting/harness checks pass (11.35s/11.12s).
+That checkpoint had 188 CTest entries. All 457 student lessons are authored; full-file
+behavioral parity and the complete native node remain unfinished.
+
+mempool, cointrack and magic now compile. The [node-state lab](student-guide/new-tests/node-state-commands.md)
+explains their behavior and four comparison findings. mempool and cointrack are
+registered; magic stays unregistered like the pinned source. All 363 programs,
+1,411 operations and 21,009 SQL observations match Java in normal and ASAN/UBSAN
+builds (20.23s/35.38s). Both full builds and all 13 selected regressions pass
+(64.09s/145.86s). That checkpoint had 179 CTest entries. All 457 student lessons remain
+authored; teaching coverage does not certify completed port behavior.
+
+txpow now compiles and is registered. Its [search lab](student-guide/new-tests/txpow-search.md)
+explains query precedence, RAM/SQL/archive fallbacks, on-chain confirmations,
+stable deduplication and MySQL delegation. All 680 programs, 2,099 operations and
+41,510 SQL observations match Java in both builds (10.28s/26.97s). Both full builds
+and all 12 selected checks pass (58.91s normal, 156.18s sanitizer). That checkpoint had 178
+CTest entries. Native MySQL, durable SQL and the complete node remain unfinished.
+
+history now compiles and is registered. Its [transaction-history lab](student-guide/new-tests/transaction-history.md)
+explains SQL action selection, wallet-relative token totals, Java collection order,
+chain counts and real-clock validation. All 484 programs, 1,489 operations and
+52,194 SQL observations match Java in normal and ASAN/UBSAN builds (5.46s/10.04s).
+Both full builds pass without warnings. All ten selected checks pass across the
+validation phases; the sanitized SQL group required a separate run after the
+concurrent batch hit its 120-second limit. That checkpoint had 177 CTest entries; the full node
+and durable native SQL remain unfinished.
+
+coins now compiles and is registered. Its [coin-search lab](student-guide/new-tests/coin-search-command.md)
+explains relevance by parameter presence, age/depth, state matching, miner and
+mempool filtering, and reused amount selection. All 287 programs, 1,144 operations
+and 25,168 SQL observations match Java in both builds (20.89s/41.27s). That checkpoint contained
+176 CTest entries. Both full builds and all nine selected checks pass
+(61.55s normal, 193.68s sanitizer); the complete node remains unfinished.
+
+balance now compiles and is registered. Its [balance lab](student-guide/new-tests/wallet-balance.md)
+explains confirmation depth, sendable classification, exact token filters, MegaMMR,
+raw token names and simple-view parsing. All 275 programs, 776 operations and
+21,515 SQL observations match Java in normal and ASAN/UBSAN builds. The tests also
+corrected the shared arithmetic constructor's overflow-message representation;
+24 direct probes distinguish it from the String constructor. Both full builds
+and all 13 distinct selected checks pass across the validation phases. The
+regression batches took 60.64s normal and 193.38s sanitizer; balance and primitive
+checks also ran separately. That checkpoint contained 175 CTest entries.
+
+consolidate now compiles and is registered. Its [wallet-consolidation lab](student-guide/new-tests/wallet-consolidation.md)
+explains address grouping, age and signature limits, forwarded send parameters,
+password redaction and child-reply selection. All 247 programs, 742 operations
+and 23,185 SQL observations match Java in both builds. A shared runner fix now
+preserves Java's missing/wrong-type status exceptions. Both full builds and all
+eight selected checks pass (58.53s normal, 191.87s ASAN/UBSAN); that checkpoint contained 174 CTest entries.
+
+consolidatefrom now compiles and is registered, including its separate public
+createConsolidate helper. The [consolidation lab](student-guide/new-tests/consolidate-custom-address.md)
+follows real coin search, maturity and mempool filtering, stable selection order,
+burn limits, one-versus-ten outputs, nullable helper inputs and cleanup. All 331
+programs and 3,815 observed child calls match Java in normal and ASAN/UBSAN builds.
+Both full builds and all eight selected checks pass (22.25s normal, 65.92s
+ASAN/UBSAN). That checkpoint contained 173 CTest entries.
+
+sendfrom and createtokenfrom now compile and are registered. Their
+[custom-address lab](student-guide/new-tests/custom-address-send-commands.md)
+compares funding/posting error order, token output replacement, preserved change,
+raw decimal parsing and fixed-precision supply. All 492 programs and 2,052 child
+calls match Java in normal and ASAN/UBSAN builds. MiniNumber now exposes MINI_UNIT
+and gives Java's exact arithmetic exception for out-of-range powers. Both full
+builds and all ten selected checks pass (40.23s/124.63s); these include 99 original
+number assertions plus eleven supplemental error observations per runtime.
+That checkpoint had 172 CTest entries.
+
+rawfrom and rawtxnfrom now compile and are registered. Their [raw-transaction lab](student-guide/new-tests/raw-transaction-commands.md)
+compares distinct input/script orders, typed JSON fields, state conversion and
+real exported row bytes. The final 656-program comparison passes in both builds,
+with 3,991 child calls each. StateVariable now handles Java’s Unicode Boolean
+case comparison; the final object regression passes 9,464 cases per build.
+Both full builds pass. Eight distinct selected checks pass across the extraction
+and focused state-fix phases. That checkpoint had 171 CTest entries.
+
+Four wallet wrappers now compile and are registered: createfrom, constructfrom,
+postfrom and signfrom. Their [orchestration lab](student-guide/new-tests/wallet-command-orchestration.md)
+explains exact child-command order, cleanup, ignored failures, nullable errors,
+exported transaction bytes and decoded signature verification. The expanded
+comparison passes 659 programs and 2,060 observed child calls in normal and
+ASAN/UBSAN builds. Both full builds and all five selected checks per build pass.
+That checkpoint had 170 CTest entries.
+
+The sendpoll command now compiles and is registered. Its [polling lab](student-guide/new-tests/send-polling-command.md)
+compares command rewriting, queue snapshots/removal and actual worker processing
+through CommandRunner. Both builds pass 367 programs and 3,216 operations. Both
+full builds and all six selected checks per build pass. That checkpoint had 169 CTest
+entries. The fixture records timers; full native Main ownership remains absent.
+
+The sendnosign command now compiles and is registered. Its [unsigned-file lab](student-guide/new-tests/unsigned-transaction-files.md)
+follows confirmed coin selection, fractional splits, proofs, unsigned burns and
+actual create–view–sign–post sequences. The final 309 programs pass in normal and ASAN/UBSAN builds, comparing 1,248
+operations and 20,081 recorded SQL calls each. All seven selected checks pass per
+build after correcting one independent zero-total test expectation.
+That checkpoint had 168 CTest entries.
+
+The sendview, sendsign and sendpost commands compile and are registered. Their
+[offline-file lab](student-guide/new-tests/offline-send-files.md) compares complete
+TxPoW bytes, signature verification, SQL effects, reply snapshots, queued mining
+and exact filesystem errors. MiniFile now preserves the tested Java file-open and
+file-create exception categories and order. The sendsign demonstration main also
+prints the source's 512 values. Normal and ASAN/UBSAN comparisons pass 201 programs each, with 558 operations
+and 9,773 recorded SQL calls. All twelve selected checks pass in both builds. That checkpoint had 167 CTest entries.
+
+The send, txnaddamount and txncoinlock commands now compile and are registered.
+Their [coin-funding lab](student-guide/new-tests/coin-selection-and-funding.md)
+compares selector order, locks, partial failures, real proofs and signatures,
+custom-token burns, dry runs and miner submission. Both builds pass 736 programs, 3,418 operations and 39,016 recording SQL calls.
+All twelve selected checks pass in both builds, including shared-component
+regressions and the original tests below. That checkpoint had 166 CTest entries.
+
+The original [REV/LEN tests](student-guide/new-tests/reverse-and-length.md) now
+have compiled counterparts and pass in both builds, twelve assertions each per
+runtime. Their production functions are unchanged.
+
+vault and txnsign now compile and are registered. The [vault/signing lab](student-guide/new-tests/vault-and-signing.md)
+explains encrypted seed transitions, real signatures and side effects before
+failures. Normal and ASAN/UBSAN comparisons both pass 247 programs.
+The original [BITGET/BITSET tests](student-guide/new-tests/bit-get-set.md) now pass
+in both builds with 272/271 assertions per runtime. At that earlier checkpoint the
+CTest inventory contained 161 entries; not all entries were rerun here.
+
+The keys command also compiles and is registered. Its [wallet-key lab](student-guide/new-tests/wallet-keys.md)
+distinguishes seed derivation checks from public/private matching and follows
+filter precedence and background key-creation requests. Its corrected comparisons pass 132 programs in both builds.
+Those prior 24 selected checks passed in normal and sanitizer builds.
+
+The [student guide](student-guide/how-to-study-this-port.md) explains how to read
+the source, translation and test evidence. Per-file lessons for all 457 sources
+now have an authored first teaching pass, organized by package. The
+[checker rejection lab](student-guide/new-tests/checker-rejections.md) records
+the initial mismatches, corrections and verification limits.
+
+Three chain-inspection commands now compile and are registered: block, printmmr
+and printtree. Their [student lab](student-guide/new-tests/chain-commands.md)
+records 324 matching Java/C++ programs and 4,096 operations across four time zones
+in both builds. Tests found and removed an older TxHeader date formatter by reusing
+the existing Java-compatible helper. The renderer also preserves signed integer
+wraparound in depth subtraction; extreme populated-tree traversals remain untested.
+Both full builds and all ten selected checks pass in normal and sanitizer builds.
+
+Basic/simple/script/MMR/signature rejection paths now use the actual logger,
+including failures during logging. Transaction validation preserves token table
+traversal; empty bodies, tokens and signature lists produce source exception
+categories on the tested paths. The expanded comparison passes 1,343 requests
+from 100 Java fixtures, and the timed failure suite passes 105 cases. Fourteen
+affected suites pass in both normal and ASAN/UBSAN builds. Full file parity and
+full node integration remain incomplete.
+
+CommandRunner now uses the actual logger for generic command failures and lets
+Java-style Error categories escape. Its new [error-path lab](student-guide/new-tests/command-runner-errors.md)
+records 450 initial mismatches, corrected to zero; the expanded 1,120 cases now pass in both builds.
+All nine affected selected suites pass; the HTTP handler required a rerun with
+local socket access after the sandbox rejected binding.
+
+Four wallet commands now compile and are registered: scripts, newscript,
+removescript and sign. Their [student lab](student-guide/new-tests/wallet-commands.md)
+records 675 passing Java/C++ programs with 1,907 operations and 50,275 SQL calls in
+both builds. Testing corrected SQL exception labels, cleaning logs and shared
+parameter type errors. The SQL receiver records requests; native H2 persistence
+and full node startup remain unfinished.
+
+Four more commands now compile and are registered: newaddress, getaddress,
+coinnotify and slavenode. Their [student lab](student-guide/new-tests/address-commands.md)
+records 134 passing Java/C++ programs, 276 operations and 3,693 SQL calls in both
+builds. The fixture uses real default TreeKey creation and temporary preference
+files; all six selected regressions pass. SQL durability, distinct-row random
+selection and a complete node restart remain unverified.
+
+txnmmr and txnscript now compile and are registered. Their [witness-command lab](student-guide/new-tests/witness-commands.md)
+records 418 passing Java/C++ programs, 1,128 operations and 8,637 SQL calls in both
+builds. Tests compare proof/script insertion, partial failure state and full custom
+transaction bytes. A shared JSONObject parameter cast now preserves ClassCastException.
+All nine selected suites pass. A subsequent [coin ownership lab](student-guide/new-tests/coin-ownership.md)
+corrects shared Coin mutations and adds 220 programs; both object suites now pass
+9,464 cases. The later reader work below adds outer MMRProof ownership and an
+owned state-list bridge; nested identity and full node ownership remain incomplete.
+
+Coin now uses shared field storage for ordinary handle copies. The existing codecs,
+JSON, hash calculation and explicit deepCopy algorithm are retained. All 220 new
+ownership cases failed before the correction and now pass in both builds. The
+21 selected normal regressions pass; the sanitizer run passes 20 initially and
+its timed-out block-ownership check passes an isolated rerun (141.61s). See the
+[ownership lab](student-guide/new-tests/coin-ownership.md) for the measured limits.
+
+Coin, CoinProof and MMRProof now have in-place readers preserving partial changes.
+Their [reader lab](student-guide/new-tests/coin-streams.md) records 3,045 passing
+Java/C++ programs per build, including retained objects, consumed bytes, actual
+logging and null copy/search results. Both final full builds and all 29 selected
+checks pass in each build, after correcting one normal search-harness logging
+protocol failure. Nested object identity remains incomplete.
+
+The registered automine command now preserves its pinned active behavior: read
+a parameter and return the standard reply, with all mining branches left inactive.
+Its 32 added direct/runner programs pass in both builds (1,265 runner cases total).
+
+MiniStringTests now has its mapped counterpart. Its lesson separates the two
+annotated source methods (five successful-path non-null assertions) from the
+unannotated helper (one supplemental assertion). Production code is reused unchanged.
+
+The missing ScriptValueTests and HexValueTests counterparts now compile. Their
+unchanged Java methods and native assertions pass in both builds: 10 script-value
+and 35 hex-value assertions. HexValue numeric constructors now preserve the source
+NumberFormatException category. All eight affected value/VM/object suites pass
+normal and ASAN/UBSAN; their student lessons explain the tests and limitations.
+
+NumberValueTests now preserves 99 active source assertions, including exact
+ArithmeticException checks. Zero divided by zero now reports Division undefined;
+nonzero division by zero reports Division by zero. Seven additional error
+observations match Java exactly. All 16 affected normal and ASAN/UBSAN suites pass.
+DUMMYFUNCTION, MinimaFunctionTests and ABSTests now compile. The original Java
+function tests and their native equivalents pass: 11 MinimaFunction assertions
+and 23 ABS assertions. Nine selected suites pass in both builds. DUMMYFUNCTION
+is a helper linked into the test, not a registered production function.
+FLOORTests and CEILTests preserve 30 and 26 original assertions respectively;
+all ten selected original-test/mapping suites pass in both builds. Production
+rounding code was reused unchanged. MINTests and MAXTests now each retain 120,023
+assertions and all 60,000 boundary trials. Their unchanged Java methods and native
+tests pass in both builds, along with all twelve selected suites. Native random
+samples are reproducible and distinct from Java’s unseeded samples; production
+MIN/MAX code was reused unchanged.
+
+MinimaUncaughtException now compiles with the source duplicate suppression,
+shared captured default handler, logging order and immediate fatal shutdown.
+Native message and timer threads dispatch escaping failures through a default
+handler registry. Message processing preserves Java catch/finally order, including
+cleanup after a logger failure. The native MVStore exception type is only an
+exception carrier; it does not implement H2. Other worker launch sites and full
+Main startup still need integration. 121 Java/C++ handler programs, six fatal
+process checks and 13 worker scenarios pass. All 28 affected regression suites pass
+in normal and ASAN/UBSAN builds; validation limits are recorded in REVIEW.md.
+
+HTTP listener/request threads and the fixed task executor now use the same
+native uncaught-handler boundary. HTTPServer preserves the source distinction between socket and other I/O
+errors, and executor failures start replacement workers before handler
+dispatch. Thirty HTTP failure scenarios and ten executor scenarios pass against
+Java. Thirteen affected normal suites and sixteen sanitizer suites pass. NIO
+server/connect threads and the timed checker now use this integration as described
+below.
+
+NIOManager server/connect workers now dispatch escaping failures through
+NativeThread. NIOServer preserves Exception-versus-Error catch boundaries and
+uses the actual logger, including trace notification flags; NIOClient cancellation
+also preserves Error propagation. Sixty-three server/client failure comparisons,
+twelve actual connector comparisons and four native server factory checks pass.
+Ten affected normal suites and thirteen ASAN/UBSAN suites pass. This does
+not establish full node startup, complete socket diagnostics or all NIO APIs.
+
+TimedChecker now dispatches escaping worker failures through NativeThread while
+preserving the Java finished/valid flags on reuse. Block validation uses the source
+catch-log order and visits every transaction before checking duplicate coin IDs.
+Ninety-one targeted comparisons and the actual two-minute worker-error deadline
+pass; eleven affected normal suites and thirteen sanitizer suites pass. The
+final release-signal fixture also passes in both builds. Java interruption
+semantics, remaining checker APIs and complete node integration remain incomplete.
+
+NotifyManager and the `webhooks` command now compile. Their 527 Java/C++ programs
+cover 2,667 operations in normal and ASAN/UBSAN builds: original JSON identity,
+listener mutation, hook persistence/filtering, command dispatch and error order.
+A native worker test covers 400 concurrent events, hook updates and shutdown
+ownership. HTTP/listener/logger receivers are controlled in these comparisons;
+The production defaults now call the native RPC client and logger; Main integration remains incomplete.
+
+RPCClient now compiles with GET/PUT/POST, Basic authentication and HTTPS.
+477 Java/C++ loopback cases compare 597 requests per runtime, including redirects,
+status errors, UTF-8, connection failures and selected TLS trust behavior. The
+notification worker delivers seven real HTTP requests from two queued events and
+logs both expected failures. Ten relevant suites pass in normal and ASAN/UBSAN
+builds. This remains a partial client: complete JDK URL, TLS/provider, mutable
+charset, binary-header and process-global network behavior is not established.
+
+MinimaLogger now compiles and passes 2,016 Java/C++ cases across four time zones,
+including signed-long timestamp extremes, UTF-16 text, notification order, callback
+failures and explicit exception-frame sequences. Native worker checks cover 400
+concurrent print/notification pairs, runtime receiver retirement and queued
+listener-error logging. Its default memory prefix measures the native allocator;
+full mutable date-formatter APIs remain incomplete. Native construction-time
+frame capture now covers the shared typed exceptions, I/O errors and JSON parser. Seven related suites pass in normal and ASAN/UBSAN builds.
+
+A native RPC command-line executable now builds as `cpp/build/minima-rpc`.
+It translates the pinned MinimaRPCClient argument handling, interactive input,
+UTF-8 form encoding, Basic authentication, JSON display and error paths. 89 Java/C++
+cases compare 70 HTTP requests per runtime; ten executable checks include pipe
+input before EOF and terminal Ctrl-D recovery. All pass normal and ASAN/UBSAN. Java is
+used only by test oracles; the executable links the native implementation.
+For an existing local node, run:
+
+```sh
+cpp/build/minima-rpc -host http://127.0.0.1:9005 -command status
+```
+
+This executable is an RPC client, not the still-unfinished native node. Its
+`-sslpubkey` setting follows the pinned source, whose custom SSL setup is commented
+out. Construction-time native exception stacks retain their original frames
+through copying and rethrows; their symbols and frame counts differ from the JVM.
+Standard exceptions outside the captured typed hierarchy still need integration.
+
+Startup configuration now has native `ParamConfigurer` and `TestParams`
+counterparts, including all 67 active parameter handlers. Arguments, environment
+entries and UTF-8 configuration files feed the actual global settings, P2P log
+level, directory creation and native peer-list HTTP requests. 719 Java/C++ programs
+and eighteen affected regression suites pass in normal and ASAN/UBSAN builds.
+The five original parameter tests have a mapped C++ test. Shared fixes add Unicode decimal digits,
+64-bit argument bounds, bulk-map sizing, canonical directory creation and strict
+buffered UTF-8 decoding. Full Main startup and persistence are still incomplete.
+
+The compiled subset includes base values, JSON serialization/parsing, address/base
+conversion, hashing, MMR data/entry/proof objects, state variables, tokens,
+coins, script/coin proofs, transactions, signatures, Winternitz and witnesses.
+Also implemented are MMR trees, hierarchical TreeKey signatures, global/general
+parameters, Magic adjustment, TxBody, TxHeader, TxPoW, TxBlock construction and
+MegaMMR block application/pruning/wire snapshots. File persistence is now connected for MegaMMR, Cascade and TxPowTree;
+node database integration remains outstanding. Genesis coin/MMR/TxPoW construction
+and greeting/pulse wire objects are included. All 84 KISS production classes now have compiled counterparts: values, tokens,
+exceptions, expressions, parsers, statements, Contract, and all 53 built-ins.
+Their execution is under differential review; full API and edge-case parity
+is not established.
+Cascade pruning and chain-tree GHOST selection also compile, with 2,892 cascade
+and 1,027 tree Java comparisons passing. Wallet/SQL/message service connections
+remain unwired in the standalone library. MiniFile, MiniFormat and five encryption
+classes pass 1,361 interoperability comparisons in normal and sanitized builds.
+Consensus validation and generation pass 2,890 Java comparisons in normal and sanitized builds.
+RAM database behavior passes 315 comparisons; preferences pass 1,130. Six message/timer
+classes pass 905 message comparisons, 135 HashMap programs, and concurrent worker
+checks, also under sanitizers. Custom transaction storage passes 2,503 comparisons in normal and sanitized builds.
+Archive cache/list behavior passes 734 and IBD selection/weight/range behavior passes
+1,057 comparisons, also under sanitizers. MegaMMR backup/sync wrappers pass 3600
+comparisons in normal and sanitized builds. Send-poll concurrency, retry, removal and
+worker/timer checks also pass both builds. RawArchiveInput streams gzip into 256-block
+batches and passes 613 comparisons in both builds. Wallet row constructors and JSON pass
+1,710 comparisons in both builds. Pinned BIP39 word/seed behavior passes 8,736,
+FastByteArrayStream passes 190 operation programs, and RPC authorization/Base64/traffic
+accounting passes 5,636 comparisons, all under sanitizers as well. The command base, conversion/hash/random commands, MMR commands, maths/runscript and
+signature verification, debugflag and txnlock pass 12,289 comparisons in normal and sanitized builds.
+The dispatcher passes 1,233 comparisons. Nine transaction commands pass 1,129
+sequences covering 6,904 operations, also under sanitizers. TxPoWSearcher and token/coin-proof commands pass 189
+programs containing 6,468 queries in both builds. Maths, Stack and TimedRequest pass 3,809
+programs, including raw floating-point results and stateful request-list checks.
+Peer address/swap/walk behavior passes 1,447 programs; peer state, greetings and
+P2PDB pass 798 programs containing 26,118 operations, in both builds. The three
+mapped peer tests include exact greeting JSON and a 1,000-peer persistence round trip.
+NIOClient/NIOClientInfo pass 714 comparisons covering 13,972 operations plus
+UTC/London/New York/Tokyo date cases. Real loopback checks cover a 1 MiB payload,
+backpressure, selector interests, traffic and EOF in normal and sanitized builds.
+NIOServer now has a native dual-stack event loop, with Java/C++ lifecycle and startup
+failure checks. P2P2DB passes 211 programs covering 5,145 operations, including
+shared-list ownership, exact persistence bytes and partial failures; both new suites
+pass normal and ASAN/UBSAN builds. NIOManager now has a compiled counterpart;
+Main and full MinimaDB runtime integration
+remain outstanding. Greeting creation and the connect command now pass 532 Java/C++
+programs (including 1,764 greeting calls) in both builds, covering lock/failure order,
+repeated chain append, peer fields, parsing and command dispatch.
+NIOManager transport passes 640 Java/C++ serialization/send cases and 17 real
+loopback ping cases in both builds. A native integration fixture exercises the
+connect command, outgoing greeting, 32 incoming framed dispatches through four
+workers, disconnect cleanup, socket shutdown and manager lifetime release.
+Executor checks cover queued FIFO, failure replacement and shutdown draining.
+Manager state transitions now pass 1,449 Java/C++ programs containing 3,879
+operations in both builds, covering reconnect modes, disconnect policy, timers,
+sync requests, stale reads, queries and receiver failures. Full runtime and API
+parity remain outstanding.
+NIOMessage now has a compiled dispatcher covering greeting negotiation, transaction
+validation and relay, pulse synchronization, peer messages, archive requests and
+block-node messages. Its offline oracle executes the actual pinned Java dispatcher;
+1,918 programs / 4,677 packets pass normal and ASAN/UBSAN builds. A real TCP fixture also routes transaction-ID and single-ping packets
+through NIOMessage in normal and sanitized builds. Full Main/P2P/database/processor/
+miner bindings, MegaMMR sync service binding and log/notification parity remain pending.
+Headers supplement the 1:1 `.cpp` destinations. Extra test/tool sources under
+P2PFunctions and UtilFuncs now compile and pass 672 Java/C++ programs covering
+3,670 operations in normal and sanitized builds. Tests include connection policy,
+peer lookup, message queues, local-interface/cache behavior and seeded selection.
+Another 39 local HTTP cases compare results and request paths, including dropped
+responses and proxy redirects. Default HTTPS/TLS settings and complete logger/node
+runtime parity remain under review.
+
+SwapLinksFunctions also compiles. Its 651 Java/C++ programs cover 1,959
+operations in normal and ASAN/UBSAN builds: greetings, duplicate incoming connections, IP discovery, shared JSON,
+link removal and load-balancing walks. Complete Main/runtime bindings remain
+outstanding.
+
+WalkLinksFuncs now passes 883 programs covering 2,153 operations in normal and
+ASAN/UBSAN builds. The suite checks routing cutoffs, returning paths, duplicate/null
+addresses, actual connection requests, swap selection and signed client-slot counts.
+Complete peer-runtime integration remains outstanding.
+
+P2PPeersChecker now passes 339 Java/C++ programs with 758 operations and 329 real
+loopback pings in normal and ASAN/UBSAN builds. These compare request bytes, traffic,
+chain checks, peer sets, parent messages and timer requests. Separate native worker
+startup/shutdown tests pass; full parent/runtime and timer dispatch remain pending.
+
+P2PTestParams now copies test settings into P2PParams with shared peer-list identity,
+fixed-list behavior and nullable log levels. The expanded peer-state comparison
+passes 874 programs / 26,348 operations in normal and ASAN/UBSAN builds.
+
+P2PManager now compiles with all pinned method bodies translated. Native state,
+persistence, routing, test-mode initialization, actual timer dispatch and manager/
+checker shutdown tests pass normally and under ASAN/UBSAN. Manager Java comparisons
+pass 405 programs / 2,915 operations, including 46 emitted packets. Discovery adds
+31 programs / 84 operations / 39 real TCP pings in both builds, including actual
+five-second retries. State references/scalars are synchronized; concurrent status
+reads pass normal, ASAN/UBSAN and ThreadSanitizer tests. Complete node bindings,
+arbitrary global configuration mutation and full lifecycle integration remain open.
+
+P2P2Functions and P2P2Manager now compile and pass 837 Java/C++ programs with
+3,374 operations in both builds. Actual worker initialization, timer dispatch and
+shutdown ownership pass separately. The pinned P2P2 manager itself contains inactive
+connection-selection/slow-loop branches; these remain inactive in the port.
+
+RPC Server/HTTPServer now compile. Java/C++ TCP comparisons pass automatic/manual
+startup, concurrent binary handlers, bind collision and shutdown in both builds.
+The selector wakeup helper is shared with NIOServer; existing NIO listener and
+manager loopback regressions pass. CMDHandler also compiles and passes 2,106 actual TCP requests across six RPC/auth
+configurations in both builds. Tests compare response bytes, URL decoding, POST
+character counts, malformed/truncated input, header rules, authorization and command
+dispatch; only the wall-clock Date value is normalized. Full Main/database integration,
+quit-command shutdown and complete logger/exception parity remain outstanding.
+
+NetworkManager now compiles and owns the native NIO/P2P/P2P2/RPC lifecycle. Eight
+actual worker combinations pass RPC commands/restart, NIO ping dispatch, status,
+traffic, normal/hard shutdown and owner release in both builds. Host selection and
+network status pass 540 Java/C++ programs in both builds, including signed traffic
+rates and database receiver failures. Full Main/database binding, all lifecycle
+error paths and arbitrary concurrent configuration changes remain outstanding.
+
+SqlDB now compiles with its pinned lifecycle, encrypted-reopen URL and credentials,
+backup/restore statement ordering, generic result conversion and JSON/data helpers.
+464 Java/C++ programs cover 1,260 operations and 8,352 recording-driver calls in
+normal and ASAN/UBSAN builds. A separate native test verifies 1,024 serialized
+concurrent calls and two reentrant schema calls. The native H2-compatible connection
+provider is still required and is **not implemented**; these tests do not execute
+SQL storage, H2 encryption or backup scripts. Other SQL database subclasses and
+full Main database integration remain outstanding.
+
+TxPoWOnChainDB now compiles with the pinned schema, prepared statements, block
+membership queries, first/last records, count and cleanup. 855 Java/C++ programs
+cover 3,639 operations and 29,167 recording-driver calls in normal and ASAN/UBSAN
+builds. These checks also found and fixed MiniNumber's range-exception type/message,
+reusing the existing BigDecimal formatter. Eight selected primitive, VM, cascade,
+command and SQL suites pass both builds. Native H2 persistence remains absent.
+
+TxPoWSqlDB now compiles with the pinned transaction/block schema, queries, insert,
+cleanup and reconnection behavior. 2,592 Java/C++ programs cover 8,729 operations
+and 86,333 recording-driver calls in normal and ASAN/UBSAN builds, including actual
+serialized TxPoWs, malformed data and failure-side parameter binding. The checks
+also correct TxPoW conversion's I/O-only catch and primitive exception details.
+Twelve selected object, archive, network and SQL regressions pass both builds.
+These comparisons do not supply native H2 persistence or complete node integration.
+
+TxPoWDB now composes the actual RAM and SQL counterparts, preserving lookup order,
+duplicate handling, relevance checks and queued message references. 1,355 Java/C++
+programs cover 7,407 operations and 80,960 effects in both builds. Ten selected
+regression suites pass normally and under ASAN/UBSAN. Main and wallet callbacks
+remain required, and native H2 storage and full node integration are unfinished.
+
+CoinDB now compiles with the pinned tree-node cache schema, constructor file
+deletion, static replacement, queries and compact reopen. 1,350 Java/C++ programs
+cover 4,318 operations and 28,803 driver effects in both builds. Eight selected
+object, mapping and SQL suites pass normally and under ASAN/UBSAN. Coin decoding
+now preserves Java’s I/O-only catch. Native SQL storage and node coin-cache binding
+remain unfinished.
+
+Wallet now compiles with seed management, script caches, deterministic TreeKey
+creation, signing and SQL key-use update ordering. 1,433 Java/C++ programs cover
+6,521 operations and 85,452 driver effects, including real signature bytes and
+failed key inserts. Eight selected suites pass normally and under ASAN/UBSAN.
+Native durable wallet storage, runtime ownership and complete concurrency/API
+parity are still unfinished.
+
+ArchiveManager now compiles with the pinned SQL statements, block-save retry,
+range sorting and shutdown checks, cascade validation/replacement and cleanup.
+Its 3,333 Java/native programs compare 10,831 operations and 125,655 recorded SQL
+effects. Nine selected regressions pass normally and under ASAN/UBSAN. Native H2 storage and
+full runtime integration remain unfinished.
+
+MinimaDB now compiles and coordinates the existing databases, state files,
+recovery/restart and shutdown. Its Java comparison covers 2,367 programs,
+7,519 operations and 334,711 recorded SQL calls. Seven selected suites pass normally and under ASAN/UBSAN,
+including concurrent read/write lock checks and transaction/search regressions.
+The command, MegaMMR search and global MMR fallback bindings retain shared ownership
+during use. Restoration checks include nonempty chain/cascade objects, truncated
+state files, file sizes and held MMR objects across reset/load. A separate ownership
+test exercises 7,000 lookups during 1,000 database component replacements.
+Native H2 storage, remaining runtime bindings, full API/edge-case parity and the
+working node are still unfinished.
+
+TxPoWMiner now compiles with native SHA3 mining, source nonce-byte patching,
+coin reservations, Main notifications, automine timers and hash-rate routines.
+357 Java/C++ programs compare 1,352 operations in normal and ASAN/UBSAN builds.
+Native worker checks pass both builds and exercise
+actual mining, cancellation, retained ownership and callback-failure recovery.
+Full Main integration, concurrent access to shared mutable TxPoWs and remaining
+API/error cases still need completion.
+
+TxBlock and the synchronous/timed checker now retain shared TxPoW objects.
+In-place TxBlock restoration, aliases, repeated transaction references and validation
+cache mutations pass 1,558 Java/C++ programs (6,219 operations). Ten selected suites,
+including two real 120-second deadline/ownership checks, pass normal (264.38s) and
+ASAN/UBSAN (589.95s). Collection aliases and complete concurrency semantics remain
+unfinished. TxPoWProcessor now compiles and passes 384 Java/C++ programs (1,434 operations)
+in both builds. Its worker tests cover failure recovery, original block ownership,
+shutdown during active IBD and 24 strict clock boundaries. Database indexes,
+archive writes and Main/network receivers are controlled in these fixtures;
+complete native H2 and full node integration remain outstanding.
+
+`support/` and `tests/` are infrastructure, not claimed Java counterparts.
+
+## Build and test this port
+
+From the Java repository root:
+
+```sh
+cmake -S cpp -B cpp/build -DCMAKE_BUILD_TYPE=Debug -DICU_ROOT=/opt/homebrew/opt/icu4c
+cmake --build cpp/build -j 4
+ctest --test-dir cpp/build --output-on-failure
+```
+
+Outputs:
+
+- `cpp/build/libminima_file_port.a`: native port library.
+- `cpp/build/minima_commands`: native command console with 24 command counterparts; connect requires the node runtime binding.
+  Custom transactions live in memory for the console session; `txnexport` saves
+  files or HEX for a later `txnimport`. `checkaddress` still requires live wallet
+  callbacks; this console does not open a wallet or start a node.
+- `cpp/build/minima_primitives`: offline operation/serialization probe.
+- `cpp/build/minima_objects`: offline object/crypto probe.
+- `cpp/build/minima_json`: offline JSON lexer/DOM/event-parser probe.
+- `cpp/build/minima_kiss_values`: offline KISS value/token probe.
+- `cpp/build/minima_kissvm`: offline KISS expression/contract execution probe.
+- `cpp/build/*differential-results.json`: Java/C++ fixture results.
+
+Building requires a C++20 compiler, CMake, Python 3, OpenSSL 3.2+, libcurl 7.85+, zlib and ICU 78+ (uc/i18n). Set ICU_ROOT to your installation. Differential tests
+also require JDK 21+ (tested with OpenJDK 26.0.1) and the pinned upstream checkout/JAR. Consensus, RAM, preferences, message and custom-transaction tests freshly compile all 369 upstream production Java files.
+Other tests freshly compile the classes under comparison; the committed
+JAR supplies remaining Java dependencies (including Bouncy Castle). Native binaries do not use Java.
+
+```sh
+printf 'number 255\ndiv 100 4\nless 0x0001 0x02\n' | cpp/build/minima_primitives
+cpp/build/minima_commands 'maths calculate:"1+2 * (3/4)"'
+cpp/build/minima_commands 'txncreate id:example;txnstate id:example port:7 value:[offline];txnexport id:example'
+python3 cpp/tools/source_map.py --check
+cmake --build cpp/build --target check_full_port
+```
+
+`check_full_port` deliberately fails while implementations/parity are missing.
+Current status records no files as fully parity-verified. Do not change that
+based solely on compilation or a filename match. Regenerate mapping metadata
+after reviewed source changes with `python3 cpp/tools/source_map.py`.
+
+## Existing C++ node baseline
+
+The pre-existing implementation remains at
+`/Users/eurobuddha/Projects/minima/tools/minima-core-cpp`. Its local edits were
+preserved. It was compiled separately, using its own CMake project:
+
+```sh
+cmake -S /Users/eurobuddha/Projects/minima/tools/minima-core-cpp \
+  -B cpp-baseline-build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Debug \
+  -DMINIMA_BUILD_TESTS=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+cmake --build cpp-baseline-build -j 6
+ctest --test-dir cpp-baseline-build --output-on-failure --timeout 60
+cpp-baseline-build/minima_node --help
+```
+
+`cpp-baseline-build/minima_node` is a compiled arm64 macOS node executable,
+but it is **not the completed 1:1 port of this upstream**. All 25 baseline
+CTest suites passed after rerunning the three loopback networking suites
+outside the socket-restricted sandbox. Passing these tests does not resolve
+the consensus discrepancies recorded in [REVIEW.md](REVIEW.md).
+
+## Reuse and remaining work
+
+[provenance.json](provenance.json) records exact copied source paths and
+input hashes. MiniByte is adapted from the existing header implementation.
+The original C++ license is preserved in [REUSED_CODE_LICENSE](REUSED_CODE_LICENSE).
+Other candidate paths in the map are name/role search matches, not claims
+that the files have been reviewed or proven compatible.
+
+The current primitive suite compares 3,802 cases, including malformed UTF-8,
+decimal wire scales, powers, square roots, and signed integer conversions.
+The object suite adds Java-produced fixtures, binary round trips, truncations,
+checksums, transaction checks, MMR branches, and complete Winternitz keys and
+signatures. Exact current totals and failures are written in the build reports.
+Mapped native tests include MiniByteTests, TransactionTests, TxHeaderTests,
+ValueTests, BooleanValueTests, LexicalTokenizerTests, four expression test classes,
+ContractTests, StatementBlockTests, ASSERTstatementTests, EXECstatementTests,
+InetSocketAddressIOTest, GreetingTest and P2PDBTest. JSON comparisons
+cover 5,545 cases, including UTF-16 escapes, error positions and stoppable
+SAX-style parsing. KISS value/token comparisons cover 1,451 cases. The executing VM suite currently compares 4,471 cases across all 53 built-ins.
+It checks outcomes, KISS errors,
+instruction counts, stack depth, variables, monotonicity and execution traces.
+Generic Java/native runtime diagnostics are normalized in this suite and
+remain an explicit parity gap; they are not silently classified as equivalent.
+
+Bouncy Castle's GMSS source was inspected because the sibling C++ WOTS
+implementation uses incompatible parameters and seed derivation. Its relevant
+algorithm is adapted in Winternitz.cpp, with source hashes and license recorded
+in [provenance.json](provenance.json) and [BOUNCY_CASTLE_LICENSE](BOUNCY_CASTLE_LICENSE).
+
+Remaining work includes complete primitive/API equivalence, all protocol
+objects and cryptography, KISS API/edge-case parity, MMR/tree/consensus,
+persistence, networking/synchronization, lifecycle, every terminal command,
+and the remaining Java tests. Work should continue against the pinned Java
+sources, reusing candidates only after checking their implementations and
+running cross-language fixtures. No production node or wallet was started. Socket tests use local loopback only.
+
+The transaction-input work adds native txninput, txnbasics and all txnutils method
+bodies, including linked burn construction. Existing search, MMR, wallet, signing
+and ID code is reused. The [student lab](student-guide/new-tests/transaction-inputs.md)
+explains state changes before errors and the shared MiniNumber syntax fix. The
+Main miner lookup remains an explicit integration boundary; native startup and
+durable H2 storage remain unfinished. The new suite passes 671 programs, 2,734
+operations and 41,653 recorded SQL calls in both builds; all 13 selected
+regressions also pass in both builds.
+
+The transaction-check work adds the actual txncheck command and preserves shared
+transaction/witness owners through TxBody, TxPoW and the generator. The
+[student lab](student-guide/new-tests/transaction-check.md) explains independent
+validity fields, cached flags, retained owners and partial in-place body reads.
+The new suite passes 396 programs and 1,049 operations in both normal and
+AddressSanitizer/UndefinedBehaviorSanitizer builds. SQL is a recording boundary;
+these fixtures do not establish a complete working node. All 21 selected affected
+regressions also pass in both builds.
+
+Mapped INCTests and DECTests preserve the unchanged original Java tests' 30 active
+assertions per class in each runtime. Their
+[decimal arithmetic lab](student-guide/new-tests/increment-decrement.md) distinguishes
+executed assertions from comments and failure-branch call sites. The inventory now
+contains 311 native counterparts and 146 absent destinations; every counterpart
+still has partial status and unverified full parity.
+
+
+The mining/posting step adds txnpost, txnmine and txnminepost using the actual
+native generator, shared transaction/witness owners, signed burn construction and
+miner. The normal and sanitizer Java/C++ comparisons each pass 207 programs and 699 operations,
+including actual synchronous mining and queued mining. Main messages are locally
+recorded in the fixture; native Main startup and H2/MVStore remain unfinished.
+All sixteen selected affected regressions have passing final results in each build,
+including the targeted rerun after the older transaction harness was corrected. See the
+[student mining lab](student-guide/new-tests/transaction-mining.md).
+
+Mapped POWTests and SIGDIGTests run the unchanged Java test methods and the native
+assertions in both normal and sanitizer builds: 25 and 89 assertions per runtime.
+The [worked lesson](student-guide/new-tests/power-significant-digits.md) explains
+parameter order and why these samples do not establish complete arithmetic parity.
+The file map has 311 counterparts (275 production and 36 tests), with 146 absent
+(94 production and 52 tests). All counterparts remain partial/parity not_verified.
+
+
+BITCOUNTTests now has its mapped native file. BITCOUNT also exposes and reads the
+source's mutable lookup table; direct popcount did not preserve that API behavior.
+The original 34 assertion calls, 256 table predicates and three supplemental
+mutation observations pass in both builds, as does the 4,471-program KISS VM suite.
+See the [bit-counting lesson](student-guide/new-tests/bit-counting.md).

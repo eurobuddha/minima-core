@@ -1,0 +1,7 @@
+{
+  "programs": 367,
+  "operations": 3216,
+  "passed": 367,
+  "failures": [],
+  "scope": "Actual sendpoll metadata, command dispatch, rewrite/error order, queue snapshots and removal, successful/failed actual CommandRunner polling, stopped worker scheduling; 16-byte UID shape and identity checked before stable normalization; NPE/CCE prose normalized; background timer delivery and logger output excluded"
+}

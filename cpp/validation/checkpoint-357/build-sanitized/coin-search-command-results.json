@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 287,
+  "total_programs": 287,
+  "operations": 1144,
+  "sql_calls": 25168,
+  "failures": [],
+  "scope": "Actual coins command, search, wallet cache, MegaMMR, miner reservations, RAM witness membership and send.selectCoins. Source-generated Coin/Token wire and existing chain/MMR fixtures; exact metadata, replies, SQL/log/cache and stored transaction observations except established runtime exception prose. Independent IDs/ages/order/filter/selection assertions. No live Main startup, durable SQL, network acceptance or exhaustive reference/concurrency parity."
+}

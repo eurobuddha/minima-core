@@ -1,0 +1,7 @@
+{
+  "programs": 659,
+  "passed": 659,
+  "child_calls": 2060,
+  "failures": [],
+  "scope": "Actual four inherited wrapper bodies; recorded child text/order and rows; failure injection; real offline child execution and exported TxnRow bytes. Only shape-checked random32byte rowID field and matching text normalized; NPE/CCE prose normalized. Full node and durable SQL are absent."
+}
