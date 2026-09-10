@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "programs": 540,
+  "failures": [],
+  "scope": "Actual pinned/native NetworkManager.calculateHostIP and getStatus, real local interface host selection, configured-host bypass, actual NIO client maps and traffic accounting, positive/negative elapsed minutes, signed long rate division and byte formatting, basic/full status, P2P2/RPC configuration reporting and unused UserDB receiver/failure order. Only rendered start date normalized; elapsed-age fixtures stay away from live-clock minute boundaries. Enabled P2P nested status has separate manager comparison; constructor and soft/hard shutdown have native integration tests, not yet full Java lifecycle parity."
+}

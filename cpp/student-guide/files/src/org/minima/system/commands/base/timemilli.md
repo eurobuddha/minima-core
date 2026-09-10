@@ -38,4 +38,3 @@ UTC date coverage does not certify every timezone, locale, historical calendar o
 Why does storing minback in a long fail to prevent overflow in the multiplication that initializes it?
 
 Pinned Java SHA-256: `cc3b6cfe6d1ddfa751d7776ed9f267a97b8bb02f8e10ea5f914649ea780ba6c6`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
-

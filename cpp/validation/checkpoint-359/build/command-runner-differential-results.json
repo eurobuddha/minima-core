@@ -1,0 +1,6 @@
+{
+  "cases": 1265,
+  "passed": 1265,
+  "failures": [],
+  "scope": "CommandRunner fast/JSON tokenization, malformed quotes/JSON, Windows paths, duplicate parameters, multi-command stopping, parameter validation, write permissions and concrete hash; fake commands isolate dispatch without wallet/network actions. Also concrete automine direct calls, metadata, fresh factory, inherited empty valid-parameter list and runner dispatch. Direct malformed-parameter errors normalize to ERROR; complete registry and runtime exception diagnostics excluded."
+}
