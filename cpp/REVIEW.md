@@ -1,3 +1,55 @@
+# Code Review — wallet token creation
+
+## Summary
+
+The mapped tokencreate command reuses native number/object/wallet/proof/signing,
+generator and miner implementations. Source-specific control flow preserves raw
+parameter casts, wallet search order and mutable token-name metadata. The full
+native-node objective remains unfinished.
+
+## Findings
+
+No unresolved defect was found in the scoped translation review. Missing required
+parameters precede parsing; mine/uselimits/state/name are read in source order.
+Amount is a raw nullable string cast, decimals use Java integer parsing, and script
+null remains deferred until construction. Supply is floored, optional upper limits
+and multiplication order are retained, and no negative-burn rejection is invented.
+
+The default address is obtained before chain checks. Mature simple native coins
+are selected in search order, skipping miner/mempool reservations. Insufficient
+funds return a false status/message; no eligible coins throw. MMR history is
+clamped using the newest selected input. Proofs/scripts precede metadata signing;
+required public keys are deduplicated. The token signature covers the future
+first output coin ID. State parsing and transaction signing follow output/change
+construction, then actual generation and synchronous/queued mining execute.
+Name metadata is intentionally shared; late errors do not undo its mutations or
+signature-use effects. No additional rollback was introduced.
+
+The initial compile used calculateCoinID as static; it is an instance method and
+was corrected before validation. The first corpus also used a legacy reservation
+fixture whose Java miner lacked its message queue. Its replacement reserves through
+the initialized miner in both runtimes. Initial evidence is retained. Production
+behavior was not changed to emulate that incomplete fixture.
+
+## Validation
+
+Both configurations pass 335 programs / 1,349 operations / 26,719 SQL observations.
+CTest allows 600 seconds for the sanitizer workload; its unchanged per-response
+guard remains 30 seconds. Both registrations were inspected after configuration.
+Exact replies/wire/SQL/queue effects and shared-name mutations match Java. Independent
+decimal checks cover supply, coloring and conservation; cryptographic checks verify
+transaction and token metadata signatures. Both full builds and three affected
+regressions pass: registry, transaction mining and custom-address token wrappers.
+All 457 guides pass structural audit. There are 371 counterparts and 86 absent
+mapped files; all counterparts retain implemented_partial / not_verified status.
+No full current 213-test suite or full native-node parity pass is claimed.
+
+## Verdict
+
+Approve this scoped checkpoint. Durable SQL, network acceptance and complete
+inherited/reference/concurrency APIs remain outside this finite evidence.
+Older scoped reviews follow for historical context.
+
 # Code Review — historical burn metrics and nullable median
 
 ## Summary

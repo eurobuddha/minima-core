@@ -2764,5 +2764,78 @@
     "normal_full_build": true,
     "sanitized_full_build": true,
     "validation_order": "Affected regressions passed before final helper guards/identity correction; final burn corpus and both full rebuilds cover the final source."
+  },
+  "token_creation_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "status": "focused and affected comparisons pass both configurations; both full builds pass",
+    "counterparts": 371,
+    "production": 327,
+    "mapped_tests": 44,
+    "absent": 86,
+    "ctest_registered": 213,
+    "programs": 335,
+    "operations": 1349,
+    "sql_calls": 26719,
+    "normal": true,
+    "sanitized": true,
+    "normal_full_build": true,
+    "sanitized_full_build": true,
+    "reuse": [
+      "src/org/minima/system/commands/send/send.cpp",
+      "src/org/minima/system/commands/send/sendnosign.cpp",
+      "src/org/minima/system/commands/send/wallet/createtokenfrom.cpp",
+      "src/org/minima/objects/Token.cpp",
+      "src/org/minima/objects/Transaction.cpp",
+      "src/org/minima/database/wallet/Wallet.cpp",
+      "src/org/minima/system/brains/TxPoWGenerator.cpp",
+      "support/WalletMiningFixture.hpp",
+      "support/WalletCommandsOracle.java",
+      "tools/automatic_transaction_differential.py",
+      "tools/scan_chain_differential.py"
+    ],
+    "adaptation": "Translate source-specific direct wallet selection and token construction; reuse numeric parsing, objects, MMR proofs, wallet signatures, generator and miner. Retain raw string casts, optional limits, negative burn behavior, shared JSON-name mutation and late failures.",
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; no tokencreate/colorminima implementation found. Its wallet model differs from the pinned native Wallet already implemented and tested here.",
+    "fixture_correction": "Old miner reservation opcode creates a queue-less Java miner for selection-only checks. New reserveMining submits through the initialized mining fixture in both runtimes, preserving observable reservation and queue behavior.",
+    "limitations": "Recording SQL only; generated PRNG fixed at existing miner-entry fixture. Finite numeric, byte, mutation and signature checks do not certify durable storage, network acceptance or arbitrary inherited/reference/concurrency APIs.",
+    "pending": [
+      "Complete remaining 42 production and 44 original-test counterparts",
+      "Complete inherited/reference APIs and native storage/runtime integration",
+      "Validate full native node before claiming completion"
+    ],
+    "affected": {
+      "normal": {
+        "command-runner-differential-results.json": {
+          "passed": 1265,
+          "cases": 1265
+        },
+        "transaction-mining-commands-results.json": {
+          "passed": true,
+          "programs": 207,
+          "operations": 699,
+          "sql_calls": 1893
+        },
+        "custom-address-send-commands-differential-results.json": {
+          "passed": 492,
+          "programs": 492
+        }
+      },
+      "sanitized": {
+        "command-runner-differential-results.json": {
+          "passed": 1265,
+          "cases": 1265
+        },
+        "transaction-mining-commands-results.json": {
+          "passed": true,
+          "programs": 207,
+          "operations": 699,
+          "sql_calls": 1893
+        },
+        "custom-address-send-commands-differential-results.json": {
+          "passed": 492,
+          "programs": 492
+        }
+      }
+    },
+    "ctest_timeout_seconds": 600
   }
 }

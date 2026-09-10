@@ -200,6 +200,16 @@ public class WalletCommandsOracle extends SqlDBOracle {
                         var key=new org.minima.objects.keys.TreeKey();key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(pow.getTransaction().getTransactionID(),signature));
                     }result=valid;
                 }
+                else if(op.equals("verifyMinted")){
+                    var valid=new JSONArray();for(var pow:miningHeld){var coin=pow.getTransaction().getAllOutputs().get(0);var name=(JSONObject)org.minima.utils.json.JSONValue.parse(coin.getToken().getName().toString());
+                        if(name.containsKey("signature")){var signature=org.minima.objects.keys.Signature.convertMiniDataVersion(new org.minima.objects.base.MiniData(name.getString("signature")));var key=new org.minima.objects.keys.TreeKey();key.setPublicKey(new org.minima.objects.base.MiniData(name.getString("signedby")));valid.add(key.verify(coin.getCoinID(),signature));}
+                    }result=valid;
+                }
+                else if(op.equals("reserveMining")){
+                    var pow=new org.minima.objects.TxPoW();pow.setTimeMilli(org.minima.objects.base.MiniNumber.ZERO);
+                    for(Object coin:(JSONArray)config.get("coins"))pow.getTransaction().addInput(org.minima.objects.Coin.convertMiniDataVersion(new org.minima.objects.base.MiniData((String)coin)));
+                    miningMiner.mineTxPoWAsync(pow);
+                }
                 else if(op.equals("mining"))miningInit();
                 else if(op.equals("mineNext"))miningMiner.processNext();
                 else if(op.equals("mineState")){}
@@ -394,6 +404,7 @@ public class WalletCommandsOracle extends SqlDBOracle {
                 }out.put("nodeState",nodes);}catch(Exception error){out.put("nodeStateError",error.toString());}
             }}finally{if(captureImportObservation)System.setOut(previous);}
             if(captureImportObservation){logs.clear();for(String captured:bytes.toString("UTF-8").split("\n")){int at=captured.indexOf("] : ");if(at>=0&&!captured.substring(at+4).startsWith("     "))logs.add(captured.substring(at+4));}}
+            if(Boolean.TRUE.equals(config.get("echoParams")))out.put("parameterState",config.get("params"));
             if(input.containsKey("history")){out.put("before",before);out.put("after",System.currentTimeMillis());out.put("historyCalls",historyCalls);}
             try{out.put("txnwire",org.minima.objects.base.MiniData.getMiniDataVersion(MinimaDB.getDB().getCustomTxnDB()).to0xString());}catch(Exception e){out.put("txnwireError",e.toString());}
             var txnflags=new JSONArray();for(var row:MinimaDB.getDB().getCustomTxnDB().listTxns()){var txn=row.getTransaction();txnflags.add(new JSONArray(Arrays.asList(txn.mHaveCheckedMonotonic,txn.mIsMonotonic,txn.mIsValid)));}out.put("txnflags",txnflags);

@@ -1,3 +1,30 @@
+# Current work — tokencreate validated; preserve this checkpoint
+
+Project/branch MinimaCoreC++. This turn is PROGRESS. Added base/tokencreate.cpp/hpp
+and registration. Reuses actual numeric/object/wallet/MMR/signature/generator/miner
+components; preserves source-specific direct selection, raw parameter casts,
+optional limits, negative burn, JSON-name mutation and late failures.
+
+Both final comparisons pass 335 programs / 1,349 operations / 26,719 SQL observations.
+Independent supply/color/change/conservation, transaction signatures and token
+metadata signatures checked. New fixture reserveMining uses the initialized miner
+queue; the old selection-only miner opcode allocated a queue-less Java instance.
+The initial fixture mismatch and compile correction are retained.
+Both full builds and affected registry/mining/custom-token tests pass. Reports in
+validation/token-creation-work-in-progress. Scoped review, provenance and lab saved.
+All 457 student guides authored and structurally audited. Mapping 371 counterparts
+(327 production + 44 tests), 86 absent (42 production + 44 tests), 213 CTest entries.
+All counterparts remain partial; no full current 213-suite/node parity claim.
+
+All current work handles terminal after finalization; no live old baseline.
+Ready for commit and verified bundle recovery. Inspect HEAD/latest local-backups
+manifest to establish preservation state. Prior HEAD 5137cd1, prior bundle
+MinimaCoreC++-20260910T223019Z.bundle, SHA256
+06dfcee39acc4176067fd485f2b1b60b4234cecb90eef8fd6a94c43194e0680b.
+Use /tmp/minima-hashtest-backup.py; additionally verify tokencreate source, student
+lab and sanitizer report in recovery clone. No GitHub push. Full native-node and
+457-file goal remains active. Older notes follow for historical context.
+
 # Current work — burn metrics validated; preserve this checkpoint
 
 Project/branch MinimaCoreC++. This is PROGRESS, not full-goal completion.

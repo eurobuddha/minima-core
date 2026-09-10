@@ -166,6 +166,18 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                     TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(pow->getTransaction().getTransactionID(),signature));
                 }result=valid;
             }
+            else if(op=="verifyMinted"){
+                JSONArray valid;for(const auto& pow:WalletMiningFixture::held){
+                    const auto& coin=pow->getTransaction().getAllOutputs().at(0);auto token=coin.getToken();if(!token)throw JavaNullPointerException("null minted token");
+                    auto name=object(JSONValue::parse(token->getName().toString()));
+                    if(name.containsKey("signature")){auto signature=Signature::convertMiniDataVersion(MiniData::fromHex(name.getString("signature")));if(!signature)throw JavaNullPointerException("null token signature");TreeKey key;key.setPublicKey(MiniData::fromHex(name.getString("signedby")));valid.add(key.verify(coin.getCoinID(),*signature));}
+                }result=valid;
+            }
+            else if(op=="reserveMining"){
+                auto pow=std::make_shared<TxPoW>();pow->setTimeMilli(MiniNumber::ZERO);
+                for(const auto& coin:array(config->get("coins")).elements())pow->getTransaction().addInput(Coin::convertMiniDataVersion(MiniData::fromHex(coin.asString())).value());
+                sqlRequired(WalletMiningFixture::miner).mineTxPoWAsync(pow);
+            }
             else if(op=="mining")WalletMiningFixture::init();
             else if(op=="mineNext")sqlRequired(WalletMiningFixture::miner).processNext();
             else if(op=="mineState"){}
@@ -375,6 +387,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 nodes.add(value);
             }out.put("nodeState",nodes);}catch(const std::exception& error){out.put("nodeStateError",nativeExceptionText(error));}
         }
+        if(flag("echoParams"))out.put("parameterState",config->get("params"));
         if(input.containsKey("history")){out.put("before",before);out.put("after",TimerMessage::currentTimeMillis());out.put("historyCalls",historyCalls);}
         try{out.put("txnwire",MiniData(TxnDB::getRuntimeDB()->serialise()).to0xString());}catch(const std::exception& e){out.put("txnwireError",nativeExceptionText(e));}
         JSONArray txnflags;for(const auto& row:*TxnDB::getRuntimeDB()->listTxns()){JSONArray flags;auto txn=row->getTransaction();flags.add(txn->mHaveCheckedMonotonic);flags.add(txn->mIsMonotonic);flags.add(txn->mIsValid);txnflags.add(flags);}out.put("txnflags",txnflags);

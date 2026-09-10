@@ -1,0 +1,11 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  52: command_runner_differential
+1/3 Test  #52: command_runner_differential .................   Passed    2.63 sec
+    Start 150: transaction_mining_commands_differential
+2/3 Test #150: transaction_mining_commands_differential ....   Passed   15.33 sec
+    Start 173: custom_address_send_commands_differential
+3/3 Test #173: custom_address_send_commands_differential ...   Passed    6.79 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =  24.76 sec

@@ -73,3 +73,6 @@ The [seed derivation lab](new-tests/seed-random-command.md) teaches deterministi
 
 - [Historical burn-metrics lab](new-tests/burn-metrics.md): independent window
   totals, retained command state, lower-middle medians and null-sort mutations.
+
+- [Wallet token-creation lab](new-tests/token-creation.md): supply, coloring,
+  shared-name mutation, creator signatures and real mining queue effects.

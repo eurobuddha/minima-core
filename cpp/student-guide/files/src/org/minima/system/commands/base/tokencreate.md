@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/tokencreate.java) · `src/org/minima/system/commands/base/tokencreate.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/tokencreate.java) · [C++ counterpart](../../../../../../../../src/org/minima/system/commands/base/tokencreate.cpp)
 
 ## Purpose
 
@@ -21,22 +21,46 @@ tokencreate builds and signs a transaction that colors a quantity of Minima into
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse Token, CoinProof, ScriptProof, transaction ID construction, Wallet signing and TxPoWGenerator/miner. Exact decimal arithmetic, state serialization and signing order determine the resulting IDs; they cannot be approximated.
+The native command uses existing Command helpers, JavaInteger parsing, exact
+MiniNumber arithmetic, Token/Coin/Transaction serialization, Wallet signing,
+MMR proofs, TxPoWGenerator and TxPoWMiner. The flow retains source order: default
+address lookup comes before chain checks, mining/mempool exclusions occur in
+wallet search order, and proof construction precedes token metadata signatures.
+
+Calling send or createtokenfrom would change behavior: send reorders selection
+and has different validation; createtokenfrom composes temporary-row commands.
+This source builds the wallet transaction directly. The name object remains
+shared with its caller, so later failures do not undo inserted metadata.
 
 ## Understanding the tests
 
-The runner fixture checks tokencreate’s permission classification only. Proposed direct cases use deterministic coins/keys to assert colored amount, flooring, limits disabled, confirmation boundary, pending exclusions, change, proof-history clamp, missing scripts and deduplicated signatures. Check mutable name metadata and signing-use state after late state/mining failures; a failure can occur after signatures were consumed.
+The [token-creation lab](../../../../../../../new-tests/token-creation.md) was
+written before testing. Its Java-generated coin/MMR fixtures and actual keys
+feed both implementations. Compare replies, full TxPoW bytes, database calls,
+mining queues and mutations of a caller-supplied JSON name, including after errors.
 
-- [Runner fixture using selected fake commands](../../../../../../../../support/CommandRunnerOracle.java)
-- [Native runner fixture](../../../../../../../../support/command_runner.cpp)
-- [Runner-only dispatch/permission coverage](../../../../../../../../tools/command_runner_differential.py)
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+Independent assertions calculate colored Minima, floored supply, token decimals,
+change, input-output difference and output state flags. Separate cryptographic
+checks verify transaction signatures and the metadata signature over the minted
+coin ID. The initialized mining fixture fixes only the generated PRNG at entry;
+its queue and synchronous mining bodies still run. Other cases inject explicit
+mining failures, SQL faults, exhausted keys and missing script/history data.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+An initial reservation fixture created a Java miner without a message queue,
+which could test selection but failed at submission. The new cases reserve
+coins by submitting through the already initialized mining fixture in both
+runtimes. Keep this distinction visible when interpreting failures.
+
+- [Comparison driver](../../../../../../../../tools/token_creation_differential.py)
+- [Validation evidence](../../../../../../../../validation/token-creation-work-in-progress)
+- [Shared parameter parsing](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+
+Both builds pass 335 programs / 1,349 operations. Consult the lab and saved
+reports for the exact scope, independent assertions and regression evidence.
 
 ## Limits
 
-Async return means mining was queued, not confirmed on-chain. This body has no transaction-wide rollback and uses the caller’s name JSONObject directly. No token was minted while writing the lesson.
+Async return means mining was queued, not confirmed on-chain. This body has no transaction-wide rollback and uses the caller’s name JSONObject directly. Fixture transactions are constructed and signed locally; network acceptance and durable SQL remain unverified.
 
 ## Check your understanding
 

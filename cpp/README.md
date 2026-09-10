@@ -5,9 +5,15 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **326 production counterparts and 44 mapped test files exist;
-87 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **327 production counterparts and 44 mapped test files exist;
+86 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+tokencreate now compiles and is registered. Both builds pass 335 programs /
+1,349 operations, including real token and transaction signature verification.
+Both full builds and affected mining, custom token and registry checks pass.
+See the [student lab](student-guide/new-tests/token-creation.md) and
+[saved evidence](validation/token-creation-work-in-progress/progress.json).
 
 burn now compiles and is registered, with retained metrics and Java-compatible
 nullable median sorting. See the [student lab](student-guide/new-tests/burn-metrics.md)
@@ -17,7 +23,7 @@ txnauto now compiles and is registered. Its static helper shares the existing
 burn builder while retaining the early validity check and default link hash.
 Both normal and sanitizer comparisons pass 414 programs / 1,655 operations.
 Affected proof/burn, funding and runner checks pass, as do both full builds. See the [student lab](student-guide/new-tests/automatic-transaction.md).
-There are 212 registered CTest entries; full-node parity remains unfinished.
+There are 213 registered CTest entries; full-node parity remains unfinished.
 
 peers now compiles and is registered. Both builds pass 271 programs / 1,355
 operations, including 48 loopback HTTP requests per runtime, real file writes

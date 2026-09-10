@@ -1,0 +1,28 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                                                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 warnings
+{
+  "passed": true,
+  "programs": 335,
+  "total_programs": 335,
+  "operations": 1349,
+  "sql_calls": 26719,
+  "scope": "Actual tokencreate with real wallet, MMR proofs, token/transaction signatures, generator, queued/synchronous miner and recording SQL. Exact replies/wire/effects and shared-name mutation. Independent coloring/conservation/supply/signature checks. Generated PRNG fixed at existing miner entry fixture; selected VM diagnostic prose normalized. No durable SQL, network acceptance, arbitrary inherited/reference/concurrency or full native-node parity certification."
+}

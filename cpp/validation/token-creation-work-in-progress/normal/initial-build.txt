@@ -1,0 +1,11 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/CommandRunner.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/tokencreate.cpp.o
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/system/commands/base/tokencreate.cpp:114:89: error: call to non-static member function without an object argument
+  114 |         auto first=transaction->getAllInputs().front().getCoinID();auto id=Transaction::calculateCoinID(first,0);auto publicKey=getParam("signtoken");
+      |                                                                            ~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+1 error generated.
+make[3]: *** [CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/tokencreate.cpp.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/minima_file_port.dir/all] Error 2
+make[1]: *** [CMakeFiles/token_creation_runtime.dir/rule] Error 2
+make: *** [token_creation_runtime] Error 2
