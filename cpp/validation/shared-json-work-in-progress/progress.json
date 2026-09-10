@@ -1,6 +1,6 @@
 {
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
-  "status": "work_in_progress_full_regressions_running",
+  "status": "normal_baseline_complete_sanitized_baseline_running",
   "counterparts": 363,
   "absent": 94,
   "ctest_entries": 204,
@@ -27,18 +27,20 @@
   ],
   "initial_failures": "Three indexed-read exception categories, corrected and rerun in both builds.",
   "full_regressions": {
-    "state": "running",
-    "normal_session": 29381,
+    "state": "normal complete; sanitizer running",
+    "normal_session": null,
     "sanitized_session": 42976,
     "normal_log": "/tmp/minima-shared-json-all-tests.log",
     "sanitized_log": "/tmp/minima-shared-json-all-tests-san.log",
-    "known_failure": "MiniByteTests stale out_of_range catch; corrected to existing wire::EOFException. Target rebuilt and executable rerun directly with exit 0 in both builds; full suite retains its earlier failure."
+    "known_failure": "Initial MiniByte stale catch corrected and explicit CTest reruns pass both builds. Initial sanitizer NIO child exceeded 100 seconds; unchanged direct driver rerun passes all 1918 programs / 4677 packets under the same deadline."
   },
   "pending": [
-    "Finish both full regression runs, inspect every failure and rerun affected checks",
-    "Complete actual rpc-command listener enable/authenticated integration"
+    "Finish sanitizer baseline and inspect every result",
+    "Rebuild remaining sanitizer consumers and validate affected runtime integration after baseline finishes"
   ],
   "limits": "Finite iterator schedules and concurrent stress, no full inherited Java collection API or complete JVM concurrency proof. Source field accesses remain separate, not whole-command/tree transactions. No full-port or completed RPC checkpoint claim.",
   "normal_full_outcome": "203/204 initially, remaining MiniByte stale-test fix passes explicit CTest rerun; full-summary.json records scope",
-  "sanitized_full_outcome": "Still running session42976; MiniByte corrected/rerun passes; NIO-message process exceeded100s and needs isolated replay"
+  "sanitized_full_outcome": "Still running session 42976; known initial MiniByte and NIO timeout failures have passing reruns saved.",
+  "rpc_live_integration": "Passes both builds; evidence in ../rpc-live-work-in-progress",
+  "current_normal_affected_tests": 20
 }

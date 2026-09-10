@@ -1,0 +1,49 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": true,
+  "programs": 1918,
+  "packets": 4677,
+  "groups": {
+    "block-relay": 28,
+    "consensus": 720,
+    "difficulty-ratio": 5,
+    "greeting-repeat": 448,
+    "heavier-chain": 12,
+    "ibd-request": 4,
+    "id-flags": 8,
+    "mining": 4,
+    "mining-recent": 4,
+    "parent-scan": 4,
+    "payloads": 510,
+    "peer-json": 8,
+    "ping-ancestor": 4,
+    "pow-processing": 4,
+    "single-ping": 32,
+    "tree-scan": 16,
+    "truncated": 102,
+    "type-bytes": 5
+  },
+  "scope": "Actual pinned NIOMessage.run and native dispatcher. Real serialized payloads, client queues, traffic, IBD creation and chain helpers. Runtime DB/P2P/processor/miner receivers captured; no full node, database writes, socket or miner startup. Generic caught errors/logs are not compared. Includes script/signature/MMR/mempool decisions, difficulty-ratio rounding, parent/tree scan limits, and heavier-chain/rescue events. Exact live-clock boundaries, successful MegaMMR service binding, full runtime and log/notification parity remain pending."
+}

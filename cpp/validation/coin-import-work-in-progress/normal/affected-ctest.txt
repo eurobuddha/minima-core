@@ -1,0 +1,45 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+      Start   3: source_mapping
+ 1/20 Test   #3: source_mapping .........................   Passed    0.16 sec
+      Start  52: command_runner_differential
+ 2/20 Test  #52: command_runner_differential ............   Passed    2.40 sec
+      Start  81: http_server_differential
+ 3/20 Test  #81: http_server_differential ...............   Passed    2.44 sec
+      Start  82: cmd_handler_differential
+ 4/20 Test  #82: cmd_handler_differential ...............   Passed    4.15 sec
+      Start  83: network_manager_native
+ 5/20 Test  #83: network_manager_native .................   Passed    0.79 sec
+      Start  84: network_manager_differential
+ 6/20 Test  #84: network_manager_differential ...........   Passed    4.69 sec
+      Start  93: minima_db_differential
+ 7/20 Test  #93: minima_db_differential .................   Passed   34.22 sec
+      Start  94: minima_db_lock
+ 8/20 Test  #94: minima_db_lock .........................   Passed    0.38 sec
+      Start  95: minima_db_ownership
+ 9/20 Test  #95: minima_db_ownership ....................   Passed    0.46 sec
+      Start 105: rpc_configuration_native
+10/20 Test #105: rpc_configuration_native ...............   Passed    0.43 sec
+      Start 114: http_server_errors_differential
+11/20 Test #114: http_server_errors_differential ........   Passed    4.25 sec
+      Start 128: command_runner_errors_differential
+12/20 Test #128: command_runner_errors_differential .....   Passed    3.08 sec
+      Start 180: node_state_commands_differential
+13/20 Test #180: node_state_commands_differential .......   Passed   12.88 sec
+      Start 192: main_runtime_differential
+14/20 Test #192: main_runtime_differential ..............   Passed    2.89 sec
+      Start 193: main_ownership
+15/20 Test #193: main_ownership .........................   Passed    0.48 sec
+      Start 194: main_lifecycle_commands_differential
+16/20 Test #194: main_lifecycle_commands_differential ...   Passed    1.93 sec
+      Start 202: rpc_command_differential
+17/20 Test #202: rpc_command_differential ...............   Passed   12.15 sec
+      Start 203: json_collections_differential
+18/20 Test #203: json_collections_differential ..........   Passed    1.05 sec
+      Start 204: shared_json_native
+19/20 Test #204: shared_json_native .....................   Passed    7.02 sec
+      Start 205: rpc_live_differential
+20/20 Test #205: rpc_live_differential ..................   Passed   35.19 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Total Test time (real) = 131.05 sec

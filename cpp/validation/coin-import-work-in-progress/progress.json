@@ -1,5 +1,5 @@
 {
-  "status": "focused comparison passes; affected regressions pending",
+  "status": "focused comparisons and affected regressions pass",
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "counterparts": 365,
   "production": 321,
@@ -20,8 +20,15 @@
     "tools/node_state_corpus.py"
   ],
   "pending": [
-    "Existing node-state/command-runner regressions for new registry and fixture",
-    "Finish sanitizer shared JSON baseline; rerun NIO message timeout"
+    "Finish sanitizer shared JSON baseline and remaining affected sanitizer integration checks"
   ],
-  "limits": "Full/pruned synthetic histories, actual command/MMR/tree with recording SQL. No durable SQL, native full-node startup, concurrent tree mutation or full-file parity claim."
+  "limits": "Full/pruned synthetic histories, actual command/MMR/tree with recording SQL. No durable SQL, native full-node startup, concurrent tree mutation or full-file parity claim.",
+  "affected": {
+    "normal_ctest": 20,
+    "node_state_programs_per_build": 363,
+    "node_state_operations_per_build": 1411,
+    "node_state_sql_calls_per_build": 21009,
+    "command_runner_cases_per_build": 1265,
+    "sanitized_node_state_target": "coin_import_runtime"
+  }
 }

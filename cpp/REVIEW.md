@@ -1,3 +1,36 @@
+# Code Review — saved coin-import integration evidence
+
+## Summary
+
+This follow-up changes documentation and retained validation reports only. The
+coinimport implementation remains at 66f6b91. All 20 selected integration tests
+pass against current rebuilt normal binaries. Existing node-state and command
+runner comparisons also pass in the sanitizer configuration.
+
+## Findings
+
+No unresolved defect was found in this evidence update. Read all four affected
+comparison reports, the 20-test CTest log and parsed summary, both sanitizer
+logs, and the saved NIO rerun report. Node-state covers 363 programs / 1411
+operations / 21009 SQL calls per build; runner covers 1265 cases per build.
+
+The initial full sanitizer NIO failure is a subprocess timeout. Repeating the
+unchanged driver and binary after builds finished passes 1918 programs / 4677
+packets under the same 100-second child limit. No deadline or production change
+was made. The initial timeout is retained; its precise timing cause is unproven.
+Normal baseline coverage and current affected checks are reported separately.
+The older 204-test sanitizer baseline remains running, so no complete 207-test
+current-tree pass is asserted.
+
+## Verdict
+
+Approve this scoped evidence/documentation checkpoint. Full-port completeness,
+durable SQL, full native-node startup and remaining sanitizer integration work
+are still open. A local recovery bundle has been restored and verified; no
+GitHub push or off-machine backup is claimed.
+
+---
+
 # Code Review — network status and control command
 
 ## Summary

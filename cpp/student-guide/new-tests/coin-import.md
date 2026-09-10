@@ -73,3 +73,11 @@ Both builds pass all 142 programs and 390 operations. CTest durations were
 the initial expectation/fixture differences and corrected passing reports.
 Source exception prose and random SQL tree IDs have the explicit normalization
 described above; serialized coin/MMR data and non-ID SQL bindings remain exact.
+
+The affected regression checks also pass: all 20 selected integration tests in
+the rebuilt normal configuration, plus node-state and command-runner comparisons
+in both configurations. The node-state comparison exercises 363 programs, 1,411
+operations and 21,009 recorded SQL calls; command dispatch covers 1,265 cases.
+For the concurrent sanitizer baseline, the node-state driver uses the separate
+`coin_import_runtime` executable so the baseline executable stays intact. These
+checks test the shared fixture and registry changes as well as the new command.

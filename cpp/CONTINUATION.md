@@ -1,3 +1,37 @@
+# Latest saved evidence — affected integration checks pass
+
+Project/branch MinimaCoreC++. Coinimport implementation saved at
+66f6b91ee64438ba592a6d86747ac401f0b458f9. Verified local bundle
+local-backups/MinimaCoreC++-20260910T211111Z.bundle, SHA256
+1ee57d56ee154eb7288b0092abdc97b075d895c3e29e04c772cd095253d0cbc6.
+Recovery clone checked HEAD, connectivity, source pin/gitlink, coinimport code,
+lab and sanitized comparison report. Local only; no GitHub push.
+
+Normal affected batch 1937 TERMINAL exit 0: all 20 integration tests pass,
+131.05 seconds. Current normal binaries rebuilt after coinimport/hashtest and
+Authorizer. Sanitized node-state direct driver 18296 TERMINAL pass: 363 programs,
+1411 operations, 21009 SQL calls, using separate coin_import_runtime target.
+Registry build/test 82445 TERMINAL pass, 1265 cases. All four comparison reports,
+normal 20-test summary and three logs saved in coin-import-work-in-progress.
+
+Only full baseline still live: sanitizer 42976, original 204 entries, log
+/tmp/minima-shared-json-all-tests-san.log (last started 100). Normal baseline is
+terminal 203/204 with corrected MiniByte now explicitly passing CTest both builds.
+NIO sanitizer unchanged driver replay 11958 TERMINAL exit 0, log
+/tmp/minima-nio-message-san-rerun.log. All 1918 programs / 4677 packets pass with
+the unchanged 100-second child limit and native executable. Report, initial
+timeout excerpt, rerun log and summary saved in shared-json-work-in-progress/
+sanitized. Cause of initial timeout is not proven; builds were finished before
+rerun, but full sanitizer baseline remains active. Preserve both outcomes.
+Do not restart the full sanitizer baseline or overwrite its active binaries.
+
+Mapping remains 365 counterparts (321 production + 44 tests), 92 absent;
+207 registered CTest entries. All 457 teaching pages authored. Full goal active,
+incomplete; last numbered checkpoint 362. Next save these evidence/docs changes
+and verify a new bundle, then continue missing native functionality.
+
+Older notes follow; current states above supersede their live-job notes.
+
 # Latest active jobs — normal full build complete; affected checks started
 
 Normalfullbuild40482 TERMINALexit0,noobservedwarnings. Allnormalbinariesnow

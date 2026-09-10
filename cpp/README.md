@@ -14,7 +14,9 @@ and 390 operations, including historical MMR restoration, root invariance,
 conditional tracking shortcuts, retained failure effects and recorded SQL.
 See the [student lab](student-guide/new-tests/coin-import.md) and
 [evidence](validation/coin-import-work-in-progress/progress.json). Full parity
-and durable SQL remain unfinished.
+and durable SQL remain unfinished. The rebuilt normal binaries pass all 20
+affected integration tests; node-state and command-runner comparisons also pass
+in the sanitizer build. Their reports are saved with the coin-import evidence.
 
 hashtest now compiles and is registered, reusing the actual miner hash-speed loop.
 Its [student lab](student-guide/new-tests/hash-speed-command.md) explains real
@@ -23,7 +25,8 @@ Both normal and ASAN/UBSAN comparisons pass 59 programs / 61 operations,
 including the real million-hash default. [Saved results](validation/hashtest-work-in-progress/progress.json)
 record the initial type mismatch and sanitizer test-deadline adjustment. Both
 relinked command-runner (1,265 cases) and network-utility (5,668 cases) regressions
-also pass in both builds. The earlier full suites are still running.
+also pass in both builds. The earlier normal full baseline has finished; the
+sanitizer baseline is still running.
 
 RPC is **work in progress**. Shared authentication flags and password now use
 atomic booleans and the existing locked nullable-string snapshot pattern. Both
@@ -37,9 +40,12 @@ command-driven live enable/authentication have further validation below. See the
 Shared JSON storage is a further **work-in-progress** change: owned value reads,
 retained root/child references and checked ordered iteration replace borrowed
 vector references. Both full builds and the two focused tests per build pass
-(67 programs / 606 operations plus native concurrency). The full regression suites
-are running; their initial MiniByte test failure was a stale exception catch,
-now corrected and directly retested. See the
+(67 programs / 606 operations plus native concurrency). The normal 204-test
+baseline finished with 203 passing and a stale MiniByte
+exception catch. That test is corrected and its CTest rerun passes in both builds.
+The sanitizer baseline is still running. Its NIO comparison timed out initially;
+an unchanged direct rerun passes 1,918 programs and 4,677 packets within the
+original subprocess deadline. See the
 [shared JSON lab](student-guide/new-tests/shared-json-rpc.md).
 
 Live RPC integration now passes in both builds: two LF/CRLF lifecycles, each
@@ -49,8 +55,9 @@ Database replacement, password rotation, user changes, same-handler listener
 restart/disable and real one-second pauses are covered. See the
 [live lab](student-guide/new-tests/rpc-live-command.md) and
 [saved evidence](validation/rpc-live-work-in-progress/progress.json). The full
-204-test runs launched before this addition are still running; affected targets
-will need relinking and regression checks for the new default binding.
+204-test runs launched before this addition cover an older baseline. Normal
+targets have now been relinked and all 20 selected integration checks pass,
+including the live RPC comparison. The sanitizer baseline remains in progress.
 
 status now compiles and is registered. Its [student lab](student-guide/new-tests/node-status-command.md)
 explains full report assembly, device estimates, median speeds and the explicit

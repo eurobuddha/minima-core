@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "name": "source_mapping",
+      "seconds": 0.16
+    },
+    {
+      "name": "command_runner_differential",
+      "seconds": 2.4
+    },
+    {
+      "name": "http_server_differential",
+      "seconds": 2.44
+    },
+    {
+      "name": "cmd_handler_differential",
+      "seconds": 4.15
+    },
+    {
+      "name": "network_manager_native",
+      "seconds": 0.79
+    },
+    {
+      "name": "network_manager_differential",
+      "seconds": 4.69
+    },
+    {
+      "name": "minima_db_differential",
+      "seconds": 34.22
+    },
+    {
+      "name": "minima_db_lock",
+      "seconds": 0.38
+    },
+    {
+      "name": "minima_db_ownership",
+      "seconds": 0.46
+    },
+    {
+      "name": "rpc_configuration_native",
+      "seconds": 0.43
+    },
+    {
+      "name": "http_server_errors_differential",
+      "seconds": 4.25
+    },
+    {
+      "name": "command_runner_errors_differential",
+      "seconds": 3.08
+    },
+    {
+      "name": "node_state_commands_differential",
+      "seconds": 12.88
+    },
+    {
+      "name": "main_runtime_differential",
+      "seconds": 2.89
+    },
+    {
+      "name": "main_ownership",
+      "seconds": 0.48
+    },
+    {
+      "name": "main_lifecycle_commands_differential",
+      "seconds": 1.93
+    },
+    {
+      "name": "rpc_command_differential",
+      "seconds": 12.15
+    },
+    {
+      "name": "json_collections_differential",
+      "seconds": 1.05
+    },
+    {
+      "name": "shared_json_native",
+      "seconds": 7.02
+    },
+    {
+      "name": "rpc_live_differential",
+      "seconds": 35.19
+    }
+  ],
+  "scope": "Current normal binaries rebuilt after coinimport; 20 affected integration tests, not a complete 207-test run."
+}

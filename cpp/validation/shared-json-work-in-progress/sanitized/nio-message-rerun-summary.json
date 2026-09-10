@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "command": "python3 cpp/tools/nio_message_differential.py --build cpp/build-sanitized",
+  "exit": 0,
+  "programs": 1918,
+  "packets": 4677,
+  "unchanged_driver": true,
+  "unchanged_native_executable": true,
+  "per_subprocess_timeout_seconds": 100,
+  "initial_full_suite_timeout_retained": true,
+  "timing_cause": "Not proven. Rerun was after parallel builds finished; sanitizer baseline still active.",
+  "scope": "Direct rerun of the same CTest driver; not a fresh full-suite run."
+}
