@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/healthcheck.java) · `src/org/minima/system/commands/base/healthcheck.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/healthcheck.java) · [Native C++ body](../../../../../../../../src/org/minima/system/commands/base/healthcheck.cpp)
 
 ## Purpose
 
@@ -19,19 +19,21 @@ healthcheck reports tip/root heights and checks whether the cascade tip is immed
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse tree/cascade accessors and MiniNumber arithmetic while preserving response types and the literal source spelling.
+The registered native command reuses Command's reply envelope and typed receiver checks, the actual MinimaDB singleton, TxPowTree and Cascade getters, and MiniNumber arithmetic. It preserves the source's repeated database/tree and cascade-tip lookups. Shared pointers retain native object ownership while each read executes; no cached response or substitute chain model is introduced.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed tests use a single-node chain (length zero), adjacent/nonadjacent cascade heights, no cascade, missing tip/root and changed values between repeated lookups. Exact output types matter because cascade switches between object and string.
+The [healthcheck corpus](../../../../../../../../tools/healthcheck_commands_corpus.py) supplies 176 programs and 635 operations through the existing Main comparison driver. Both normal and ASAN/UBSAN builds match the pinned Java implementation. The fixture constructs actual tree nodes and cascade nodes, invokes tree recalculation, and then executes the registered command.
 
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+Independent expected values check single-node length zero, gapped and decreasing heights, fractional heights, large allowed heights, a heavier branch, and matching or mismatching cascade boundaries. Empty trees produce the exact missing-tip error. An explicitly null cascade fails only after the tree is available; an empty cascade returns the literal string nocacade. Replacing tree/cascade state between calls checks that the command reads current state. Direct calls must leave SQL events, timers, listeners and Main's queue empty.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Metadata checks include the empty valid-parameter list and fresh command instances. Direct calls ignore unused parameters, while text-runner cases exercise invalid-parameter and permission gates. The full reply is compared, so adding the Maxima fields mentioned only in help would fail.
+
+One initial test mistakenly supplied a height outside MiniNumber's allowed range. Java rejected setup before a tip existed. The corrected corpus retains that rejection as its own test, uses supported heights for arithmetic cases, and asserts setup success in every other case. This was a test expectation correction, not a production-code change. See the [lab](../../../../../../../new-tests/healthcheck-command.md).
 
 ## Limits
 
-The height adjacency boolean is a limited consistency check, not full chain/cascade cryptographic validation.
+Height adjacency is a limited consistency check, not chain/cascade cryptographic validation. Synthetic setup uses unstarted Main workers. Concurrent singleton/root replacement and exhaustive failure interleavings are not established. Existing tree and cascade tests cover their deeper algorithms; this command suite establishes the finite wrapper behavior described above.
 
 ## Check your understanding
 

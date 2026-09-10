@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 176,
+  "total_programs": 176,
+  "operations": 635,
+  "failures": [],
+  "scope": "Actual healthcheck command through registered Main/runner dispatch, real MinimaDB tree/cascade and arithmetic. Synthetic linear/branched/gapped heights, absent tip/cascade, repeated state replacement, exact response types and independent expected values. No full-node startup, cryptographic validity certificate or exhaustive concurrent owner replacement."
+}

@@ -5,9 +5,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **315 production counterparts and 44 mapped test files exist;
-98 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **316 production counterparts and 44 mapped test files exist;
+97 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+healthcheck now compiles and is registered. Its [student lab](student-guide/new-tests/healthcheck-command.md)
+explains 176 programs and 635 operations matching Java in both builds, including
+real tree/cascade state, exact height differences, response types and runner gates.
+Both full builds and all fourteen affected regressions pass (115.26s normal,
+247.61s ASAN/UBSAN). There are 198 CTest entries. [Saved checkpoint evidence](validation/checkpoint-360/checkpoint.json)
+contains all twenty-six comparison reports.
 
 Local Git project/branch: **MinimaCoreC++**. Checkpoint 359 adds compiled,
 registered trace and timemilli commands with 209 Java/C++ programs covering 652

@@ -62,7 +62,7 @@ def project(raw,request):
     return value
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--group',choices=['main','commands','network','status','diagnostics'],default='main');args=ap.parse_args();build=args.build.resolve();oracle=build/('main-runtime-oracle-'+args.group);oracle.mkdir(exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--group',choices=['main','commands','network','status','diagnostics','health'],default='main');args=ap.parse_args();build=args.build.resolve();oracle=build/('main-runtime-oracle-'+args.group);oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support'/x for x in ['MainRuntimeOracle.java','MainNetworkOracle.java','SqlDBOracle.java','NIOClientOracle.java','ArchiveManagerOracle.java']];listing=build/('main-runtime-java-sources-'+args.group+'.txt');listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
     failures=[];operations=0;corpus=cases();projector=project;validate=lambda request,output:None
     if args.group=='commands':
@@ -77,6 +77,9 @@ def main():
     if args.group=='diagnostics':
         from trace_clock_commands_corpus import cases as diagnostic_cases,validate,project as projector
         corpus=diagnostic_cases()
+    if args.group=='health':
+        from healthcheck_commands_corpus import cases as health_cases,validate
+        corpus=health_cases()
     with tempfile.TemporaryDirectory(prefix='main-runtime-',dir=build) as root:
         runners=[Runner(['java']+(['-Duser.timezone=UTC'] if args.group in ['status','diagnostics'] else [])+['-cp',f'{oracle}:{JAVA}/jar/minima.jar','MainRuntimeOracle',root]),Runner((['env','TZ=UTC'] if args.group in ['status','diagnostics'] else [])+[str(build/'minima_main_runtime'),root])]
         try:
@@ -96,5 +99,6 @@ def main():
     if args.group=='network':report['scope']='Actual disconnect/message/p2pstate commands through Main, real NIO/P2P components and unstarted fixtures; exact queues, packet bytes, traffic, status and typed failures. No real network delivery or full startup is certified.'
     if args.group=='status':report['scope']='Actual network command and Main/NIO/NetworkManager/traffic/trace composition. Direct hidden UID filter versus runner rejection, typed failures, partial logging effects, real local host enumeration, queue-only restart and validated reset clocks. Initial fixture clocks fixed; reset date prose excluded. No live restart or full startup.'
     if args.group=='diagnostics':report['scope']='Actual trace and timemilli commands, Main/runner dispatch, shared MessageProcessor/NIO trace state and matcher. Raw versus trimmed parameters, partial state after errors, integer offset wrap, minutes precedence, independently bounded clocks and exact UTC date rendering. Sampled clocks normalized after validation; enhanced NPE/CCE diagnostic prose excluded. No full-node scheduling or exhaustive locale parity.'
-    (build/('trace-clock-command-results.json' if args.group=='diagnostics' else 'network-status-command-results.json' if args.group=='status' else 'main-runtime-results.json' if args.group=='main' else 'main-lifecycle-commands-results.json' if args.group=='commands' else 'network-peer-commands-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
+    if args.group=='health':report['scope']='Actual healthcheck command through registered Main/runner dispatch, real MinimaDB tree/cascade and arithmetic. Synthetic linear/branched/gapped heights, absent tip/cascade, repeated state replacement, exact response types and independent expected values. No full-node startup, cryptographic validity certificate or exhaustive concurrent owner replacement.'
+    (build/('healthcheck-command-results.json' if args.group=='health' else 'trace-clock-command-results.json' if args.group=='diagnostics' else 'network-status-command-results.json' if args.group=='status' else 'main-runtime-results.json' if args.group=='main' else 'main-lifecycle-commands-results.json' if args.group=='commands' else 'network-peer-commands-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

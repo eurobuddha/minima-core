@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "programs": 95,
+  "total_programs": 95,
+  "loopback_cases": [
+    "normal",
+    "fragmented",
+    "null-extra",
+    "nested-extra",
+    "ignored-type",
+    "trailing",
+    "empty-frame",
+    "type-only",
+    "truncated"
+  ],
+  "failures": [],
+  "scope": "Actual ping, CommandRunner/Main and NIO transport. Exact metadata, reply shape, parameter errors, null/cast categories, traffic, ping request bytes and log count/order; socket/wire error prose and enhanced NPE/CCE prose excluded. Isolated loopback, unstarted Main owners, no full-node startup or exhaustive parity certification."
+}

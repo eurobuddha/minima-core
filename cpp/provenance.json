@@ -2098,5 +2098,38 @@
       "32-bit multiply wrap and 64-bit subtraction via unsigned arithmetic and bit_cast",
       "Reuse Main fixture diagnostics and driver; validate real clock bounds and exact UTC date before normalization"
     ]
+  },
+  "healthcheck_command": {
+    "source": "upstream-study/src/org/minima/system/commands/base/healthcheck.java",
+    "source_sha256": "cff60ae34f39db98ac66f3222925f953da734bf85e43dc87234227d194d2df0b",
+    "destination": "src/org/minima/system/commands/base/healthcheck.cpp",
+    "reuse": [
+      "Command reply and sqlRequired receiver helpers; base/block.cpp convention",
+      "Actual MinimaDB, TxPowTree, TxPoWTreeNode, Cascade, MiniNumber",
+      "MainRuntimeOracle/main_runtime.cpp and ArchiveFixture/ArchiveManagerOracle synthetic TxPoW builders"
+    ],
+    "adaptations": [
+      "Native shared ownership retains receivers and preserves repeated source getter calls",
+      "Opt-in healthChain fixture seeds real tree/cascade state; parent indices permit a branch",
+      "Existing differential driver gains health group and independent corpus assertions"
+    ],
+    "sibling_review": "tools/minima-core-cpp/src/chain/cascade/Cascade.hpp uses unique-node vector, double weight and different namespace/API; ChainState.hpp tracks a hash/int64 height. Existing pinned native components fit directly; no sibling wrapper found.",
+    "validation": {
+      "programs_per_build": 176,
+      "operations_per_build": 635,
+      "full_builds": [
+        "normal",
+        "ASAN/UBSAN"
+      ],
+      "selected_tests_per_build": 14,
+      "selected_seconds": [
+        115.26,
+        247.61
+      ],
+      "reports_read": 26,
+      "report_directory": "validation/checkpoint-360"
+    },
+    "test_correction": "Initial 1e40 synthetic height exceeded MiniNumber range. Preserve the rejection as a test, assert other setup succeeds, and use allowed large heights in arithmetic cases. Production body unchanged.",
+    "limits": "Partial and parity not_verified. Unstarted Main, no exhaustive concurrent owner replacement or full startup. Height adjacency is not cryptographic validation."
   }
 }

@@ -1,0 +1,6 @@
+{
+  "cases": 2892,
+  "passed": 2892,
+  "failures": [],
+  "scope": "Cascade wire, arithmetic, pruning, validity and display; generic errors normalized; file persistence pending"
+}

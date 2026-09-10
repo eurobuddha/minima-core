@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 102,
+  "total_programs": 102,
+  "operations": 366,
+  "failures": [],
+  "scope": "Actual quit/rescue commands, real unstarted Main lifecycle and queue, metadata, typed parameters and runner permissions. No successful full-node shutdown, live rescue, durable SQL or exhaustive concurrent singleton replacement is certified."
+}

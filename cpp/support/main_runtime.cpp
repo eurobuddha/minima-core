@@ -54,6 +54,15 @@ JSONObject run(const JSONObject& input,const std::string& root){
             else if(cmd=="shutdown")main->shutdown(flag("compact"));else if(cmd=="restore")main->restoreReady(flag("mds"));else if(cmd=="final")main->shutdownFinalProcs(flag("mds"));
             else if(cmd=="keysSize")value=main->getAllDefaultKeysSize();
             else if(cmd=="prefs"){for(const auto& [key,v]:object(config->get("values")).entries())MinimaDB::getDB()->getUserDB()->getAllData()->put(key,v);}
+            else if(cmd=="healthChain"){
+                auto db=MinimaDB::getDB();db->resetCascadeAndTxPoWTree();std::vector<std::shared_ptr<TxPoWTreeNode>> nodes;
+                const auto& blocks=array(config->get("blocks"));
+                for(size_t i=0;i<blocks.size();++i){auto pow=support::archiveFixtureTxPoW(int(i),0);pow->setBlockNumber(MiniNumber(blocks.get(i).asString()));pow->calculateTXPOWID();auto node=std::make_shared<TxPoWTreeNode>(*pow);
+                    if(i){auto parent=config->containsKey("parents")?std::get<int64_t>(array(config->get("parents")).get(i).value):int64_t(i)-1;nodes.at(size_t(parent))->addChildNode(node);}else db->getTxPoWTree()->setRoot(node);nodes.push_back(node);
+                }db->getTxPoWTree()->recalculateTree();
+                int i=0;for(const auto& number:array(config->get("cascade")).elements()){auto pow=support::archiveFixtureTxPoW(i++,0);pow->setBlockNumber(MiniNumber(number.asString()));pow->calculateTXPOWID();db->getCascade()->addToTip(*pow);}
+                if(flag("nullCascade"))db->setIBDCascade(nullptr);
+            }
             else if(cmd=="chain"){auto db=MinimaDB::getDB();db->resetCascadeAndTxPoWTree();std::shared_ptr<TxPoWTreeNode> previous;for(int i=0;i<integer(*config,"count",3);++i){auto pow=support::archiveFixtureTxPoW(i,0);auto node=std::make_shared<TxPoWTreeNode>(*pow);if(previous)previous->addChildNode(node);else db->getTxPoWTree()->setRoot(node);previous=node;}db->getTxPoWTree()->recalculateTree();}
             else if(cmd=="mysqlConfig"){GeneralParams::MYSQL_DB_DELAY=int32_t(integer(*config,"delay"));GeneralParams::MYSQL_DB_COINS=flag("coins");mysql_detail::configure(string(config->get("text")),services().sleep);}
             else if(cmd=="message"){

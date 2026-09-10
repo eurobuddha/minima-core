@@ -33,3 +33,8 @@ existing fork remotes. Local commits do not imply that a GitHub push occurred.
 Checkpoint 359 adds validated trace/timemilli coverage, both full builds and eleven
 selected regressions per build. Compact evidence is in validation/checkpoint-359.
 All 457 lessons remain present; 98 mapped files are still absent.
+
+Checkpoint 360 adds healthcheck using the actual database/tree/cascade. Both full
+builds and fourteen affected regressions pass per build; evidence is saved under
+validation/checkpoint-360/normal and sanitized. These labels avoid the inherited
+build-directory ignore rule. The map has 360 counterparts and 97 absent files.

@@ -4285,3 +4285,36 @@ comparison rules; full-node scheduling and exhaustive locale parity remain open.
 Approve this checkpoint for local preservation. This is not certification of the
 complete 457-file port. There are 359 counterparts and 98 absent mapped files;
 all existing entries remain implemented_partial / parity not_verified.
+
+
+## Code Review — checkpoint 360: healthcheck
+
+### Summary
+
+Reviewed the full pinned Java command, native header/body, registration, new Main
+fixture setup, oracle, driver group and corpus. The port preserves repeated owner
+lookups, typed missing receivers, the explicit missing-tip exception, MiniNumber
+height arithmetic, exact response types, and the source's nocacade spelling. It
+reuses actual native database/tree/cascade components. No Maxima behavior is added
+from help text alone.
+
+### Findings
+
+No blocking defect found in the scoped command review. The first test run exposed
+an invalid setup expectation for an out-of-range height. The corpus now preserves
+that rejection explicitly and asserts that every intended successful setup really
+succeeded. Both builds pass and all 176 programs / 635 operations match Java.
+Independent expectations cover height arithmetic, branch choice, empty/null
+cascade behavior and no SQL/timer/listener/queue effects from direct commands.
+
+Shared pointers retain receivers without merging the source's repeated calls.
+Concurrent singleton/root replacement remains unverified; the wrapper is a height
+consistency report, not a cryptographic chain-validation routine. Full-node
+startup, persistence and complete port parity remain outside this evidence.
+
+### Verdict
+
+Approve the command implementation with these documented limits. All fourteen affected
+regressions pass in both builds (115.26s / 247.61s); twenty-six reports were read
+without failures and saved under validation/checkpoint-360. No full-port completion
+is claimed.

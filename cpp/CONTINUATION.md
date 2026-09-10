@@ -1,3 +1,47 @@
+# Current checkpoint 360 — healthcheck validated, ready for local commit
+
+Full-port goal ACTIVE/incomplete. This turn made progress: native healthcheck
+header/body, registration, fixture/corpus, student lesson and saved validation.
+Local branch MinimaCoreC++, prior HEAD d9ea4f5; validated360 commit follows.
+Map360=316production+44tests;97absent=53production+44tests. Allpartial/not_verified.
+198CTest. All457guides;9041links2634anchors;0errors after final audit.
+
+Both FULLBUILDS PASS, no observed compilerwarnings. All176newprograms635operations
+matchJava in bothbuilds. FOURTEEN affected regressions PASS115.26s/247.61s. All26
+reports read,no failures; saved validation/checkpoint-360/{normal,sanitized}.
+ALLHANDLES TERMINAL: build59127/45449; newtests23046/89281; regressions20031/77928.
+Logs /tmp/minima-healthcheck-{build,build-san,test,test-san,regressions,regressions-san}.log.
+
+Initial testfailure:1e40height outsideMiniNumberrange causedsetupfailure/noTIP.
+Retained rejection case, usedallowedlargeheights elsewhere andassertedsetup success.
+No productioncode correction. Preserve healthcheck rawlogic: repeateddb/tree/cascade
+lookups,missingTIPCommandException,tip-root(no+1),nocacade,root-1adjacency,length,
+noMaxima. NativeactualCommand/MinimaDB/TxPowTree/Cascade/MiniNumber reused.
+Fixtures actualnodes,recalculateTree,addToTip,Main unstarted. GHOSTbranch,gapped/
+decreasing/fractional/largeheights,nullcascade,statereplacement,noSQL/timer/listener/
+queueeffects anddirectvsrunner gates checked. No fullstartup/concurrencycertificate.
+
+Studentlab BEFOREtests. Lesson,README/REVIEW/provenance/map/index/audit finalized.
+Savecoherentcheckpoint using GRAPHIFY_SKIP_HOOK=1 forgitcommit; Gitmutations need
+escalation,allaccepted. Tagunique360,refreshbundleandcloneverify. Newevidence uses
+normal/sanitized folders toavoidgeneric build ignore. No GitHubpush: user's target
+forkdestinationanswerpending. Existing source pin/worktree/originalhistory retained.
+
+NEXT logs source read FULL again. Also read GeneralParams.hpp/.cpp FULL and
+TxPoWSqlDB.hpp; searched ALL seven log flag references in native src/support.
+Current flags plainbool, asynchronously read by Main/TimedChecker/TxPoWChecker/
+TxPoWMiner/TxPoWProcessor/NIO/P2PPeersChecker. Use existing atomicbool pattern from
+TxPoWSqlDB LOG_ADD_BLOCKS/LOG_ADD_TRANSACTION (alreadyatomic). Seven GeneralParams
+flags likely need atomics before command concurrent writes. Two fixture adaptations
+identified: ParamSnapshots.hpp JSON puts + auto saved captures need load();
+txpow_processor.cpp line21 bool-pointer initializer list includes BLOCK_LOGS and
+IBDSYNC_LOGS; split those into direct assignments if madeatomic. No code for logs
+or atomic migration written. Read full affected fixture/callers/tests before edits,
+report reusegate and write studentlab before new tests. Preserve source fixed
+mutation order, omitted flags unchanged, partial changes on malformed later field.
+
+Older notes follow and may be obsolete.
+
 # Current checkpoint 359 — trace and timemilli validated and saved locally
 
 Full 457-file native-port goal remains ACTIVE and incomplete. Local Git branch and

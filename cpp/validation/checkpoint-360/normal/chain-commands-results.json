@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "programs": 324,
+  "operations": 4096,
+  "driver_calls": 0,
+  "failures": [],
+  "scope": "Actual block/printmmr/printtree command factories, replies, direct/runner errors, global database lookup, chain forks, bounded depths, populated MMR JSON, cascade printing and block date extremes across UTC, London, New York and Tokyo. Database identities/locks/files/SQL/Main effects compared. Enhanced NPE/class-cast text and logger prefixes/stacks normalized. Nonempty trees with extreme int depths, arbitrary concurrent mutation, native H2 and full node remain unverified.",
+  "timezones": [
+    "UTC",
+    "Europe/London",
+    "America/New_York",
+    "Asia/Tokyo"
+  ],
+  "planned_programs": 324
+}

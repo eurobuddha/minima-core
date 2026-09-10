@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 209,
+  "total_programs": 209,
+  "operations": 652,
+  "failures": [],
+  "scope": "Actual trace and timemilli commands, Main/runner dispatch, shared MessageProcessor/NIO trace state and matcher. Raw versus trimmed parameters, partial state after errors, integer offset wrap, minutes precedence, independently bounded clocks and exact UTC date rendering. Sampled clocks normalized after validation; enhanced NPE/CCE diagnostic prose excluded. No full-node scheduling or exhaustive locale parity."
+}
