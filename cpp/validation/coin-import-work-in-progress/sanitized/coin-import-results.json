@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 142,
+  "total_programs": 142,
+  "operations": 390,
+  "failures": [],
+  "scope": "Actual coinimport registered command, CoinProof/MMR, MinimaDB/tree/search and recording SQL. Full/pruned knowledge, historical restoration, root invariant, duplicate tracking, early ignored track/supplied proof, late parameter errors with retained mutations, malformed wire, runner permissions and SQL failures. Replies/state compared; enhanced NPE/CCE prose and generated SQL tree IDs normalized. No durable SQL, live-node acceptance or exhaustive concurrent tree mutation certification."
+}

@@ -82,13 +82,13 @@ def corpus(data):
         add(op('run',text=name+' invalid:true',replyText=True),setup=chain())
     return cases
 
-def project(raw,normalized,request):
+def project(raw,normalized,request,tree_sql=('SELECT * FROM coins WHERE txpowtreeid=?',)):
     normalized=preserve_text(raw,normalized,request);prepared={};count=0;treeIDs={}
     for entry,op in zip(normalized['ops'],request['ops']):
         for index,event in enumerate(entry['events'],1):
             if event[0]=='connection.prepareStatement' and index!=op.get('fail') and not op.get('nullPrepared'):
                 count+=1;prepared[count]=event[2]
-            if event[0]=='prepared.setString' and prepared.get(event[1])=='SELECT * FROM coins WHERE txpowtreeid=?':
+            if event[0]=='prepared.setString' and prepared.get(event[1]) in tree_sql:
                 assert event[2]==1 and re.fullmatch(r'0x[0-9A-F]{64}',event[3]),event
                 treeIDs.setdefault(event[3],'<tree-id-'+str(len(treeIDs))+'>');event[3]=treeIDs[event[3]]
     return normalized

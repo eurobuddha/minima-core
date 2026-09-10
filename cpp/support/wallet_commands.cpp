@@ -327,7 +327,9 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             try{out.put("preferenceWire",MiniData(MinimaDB::getDB()->getUserDB()->serialise()).to0xString());}catch(const std::exception& error){out.put("preferenceError",nativeExceptionText(error));}
             try{JSONArray nodes;for(auto node=MinimaDB::getDB()->getTxPoWTree()->getTip();node;node=node->getParent()){
                 JSONObject value;JSONArray entries,coins;for(const auto& entry:node->getRelevantCoinsEntries())entries.add(entry.toString());for(const auto& coin:node->getRelevantCoins())coins.add(MiniData(coin.serialise()).to0xString());
-                value.put("entries",entries);value.put("coins",coins);value.put("mmr",MiniData(node->getMMR()->serialise()).to0xString());nodes.add(value);
+                value.put("entries",entries);value.put("coins",coins);value.put("mmr",MiniData(node->getMMR()->serialise()).to0xString());
+                if(input.containsKey("coinImport")){JSONArray all;for(const auto& coin:node->getAllCoins())all.add(MiniData(coin.serialise()).to0xString());value.put("allCoins",all);auto root=node->getMMR()->getRoot();value.put("root",root?JSONValue(MiniData(root->serialise()).to0xString()):JSONValue());value.put("finalized",node->getMMR()->isFinalized());}
+                nodes.add(value);
             }out.put("nodeState",nodes);}catch(const std::exception& error){out.put("nodeStateError",nativeExceptionText(error));}
         }
         if(input.containsKey("history")){out.put("before",before);out.put("after",TimerMessage::currentTimeMillis());out.put("historyCalls",historyCalls);}

@@ -1,0 +1,419 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+        Start   1: MiniByteTests
+  1/204 Test   #1: MiniByteTests ...............................Subprocess aborted***Exception:   0.27 sec
+libc++abi: terminating due to uncaught exception of type minima::wire::EOFException: Truncated byte
+
+        Start   2: malformed_streams
+  2/204 Test   #2: malformed_streams ...........................   Passed    0.25 sec
+        Start   3: source_mapping
+  3/204 Test   #3: source_mapping ..............................   Passed    0.16 sec
+        Start   4: java_differential
+  4/204 Test   #4: java_differential ...........................   Passed    1.31 sec
+        Start   5: object_differential
+  5/204 Test   #5: object_differential .........................   Passed   24.98 sec
+        Start   6: TransactionTests
+  6/204 Test   #6: TransactionTests ............................   Passed    0.27 sec
+        Start   7: TxHeaderTests
+  7/204 Test   #7: TxHeaderTests ...............................   Passed    0.25 sec
+        Start   8: json_differential
+  8/204 Test   #8: json_differential ...........................   Passed    1.18 sec
+        Start   9: kiss_differential
+  9/204 Test   #9: kiss_differential ...........................   Passed    1.13 sec
+        Start  10: ValueTests
+ 10/204 Test  #10: ValueTests ..................................   Passed    0.29 sec
+        Start  11: BooleanValueTests
+ 11/204 Test  #11: BooleanValueTests ...........................   Passed    0.26 sec
+        Start  12: ScriptValueTests
+ 12/204 Test  #12: ScriptValueTests ............................   Passed    0.26 sec
+        Start  13: HexValueTests
+ 13/204 Test  #13: HexValueTests ...............................   Passed    0.24 sec
+        Start  14: NumberValueTests
+ 14/204 Test  #14: NumberValueTests ............................   Passed    0.25 sec
+        Start  15: LexicalTokenizerTests
+ 15/204 Test  #15: LexicalTokenizerTests .......................   Passed    0.25 sec
+        Start  16: kissvm_differential
+ 16/204 Test  #16: kissvm_differential .........................   Passed    4.95 sec
+        Start  17: ConstantExpressionTests
+ 17/204 Test  #17: ConstantExpressionTests .....................   Passed    0.31 sec
+        Start  18: VariableExpressionTests
+ 18/204 Test  #18: VariableExpressionTests .....................   Passed    0.28 sec
+        Start  19: GlobalExpressionTests
+ 19/204 Test  #19: GlobalExpressionTests .......................   Passed    0.32 sec
+        Start  20: FunctionExpressionTests
+ 20/204 Test  #20: FunctionExpressionTests .....................   Passed    0.30 sec
+        Start  21: ContractTests
+ 21/204 Test  #21: ContractTests ...............................   Passed    0.31 sec
+        Start  22: StatementBlockTests
+ 22/204 Test  #22: StatementBlockTests .........................   Passed    0.28 sec
+        Start  23: peer_messages_differential
+ 23/204 Test  #23: peer_messages_differential ..................   Passed    6.32 sec
+        Start  24: txn_lock_workers
+ 24/204 Test  #24: txn_lock_workers ............................   Passed    0.66 sec
+        Start  25: small_utilities_differential
+ 25/204 Test  #25: small_utilities_differential ................   Passed    5.25 sec
+        Start  26: ASSERTstatementTests
+ 26/204 Test  #26: ASSERTstatementTests ........................   Passed    0.35 sec
+        Start  27: EXECstatementTests
+ 27/204 Test  #27: EXECstatementTests ..........................   Passed    0.31 sec
+        Start  28: cascade_differential
+ 28/204 Test  #28: cascade_differential ........................   Passed   39.91 sec
+        Start  29: TxPowTreeTest
+ 29/204 Test  #29: TxPowTreeTest ...............................   Passed    0.37 sec
+        Start  30: tree_differential
+ 30/204 Test  #30: tree_differential ...........................   Passed    6.94 sec
+        Start  31: utility_differential
+ 31/204 Test  #31: utility_differential ........................   Passed    2.83 sec
+        Start  32: consensus_differential
+ 32/204 Test  #32: consensus_differential ......................   Passed  145.03 sec
+        Start  33: RamDBTest
+ 33/204 Test  #33: RamDBTest ...................................   Passed    0.37 sec
+        Start  34: ram_differential
+ 34/204 Test  #34: ram_differential ............................   Passed   48.30 sec
+        Start  35: timed_checker_checks
+ 35/204 Test  #35: timed_checker_checks ........................   Passed    0.58 sec
+        Start  36: timed_checker_deadline
+ 36/204 Test  #36: timed_checker_deadline ......................   Passed  120.66 sec
+        Start  37: prefs_differential
+ 37/204 Test  #37: prefs_differential ..........................   Passed    4.69 sec
+        Start  38: hashmap_differential
+ 38/204 Test  #38: hashmap_differential ........................   Passed   21.78 sec
+        Start  39: message_differential
+ 39/204 Test  #39: message_differential ........................   Passed    4.21 sec
+        Start  40: message_workers
+ 40/204 Test  #40: message_workers .............................   Passed    1.56 sec
+        Start  41: txndb_differential
+ 41/204 Test  #41: txndb_differential ..........................   Passed    5.98 sec
+        Start  42: archive_cache_differential
+ 42/204 Test  #42: archive_cache_differential ..................   Passed    9.56 sec
+        Start  43: ibd_differential
+ 43/204 Test  #43: ibd_differential ............................   Passed   31.37 sec
+        Start  44: mmrsync_differential
+ 44/204 Test  #44: mmrsync_differential ........................   Passed   17.53 sec
+        Start  45: sendpoll_workers
+ 45/204 Test  #45: sendpoll_workers ............................   Passed    1.75 sec
+        Start  46: raw_archive_differential
+ 46/204 Test  #46: raw_archive_differential ....................   Passed   35.19 sec
+        Start  47: wallet_rows_differential
+ 47/204 Test  #47: wallet_rows_differential ....................   Passed    2.76 sec
+        Start  48: bip39_differential
+ 48/204 Test  #48: bip39_differential ..........................   Passed    4.31 sec
+        Start  49: fast_bytes_differential
+ 49/204 Test  #49: fast_bytes_differential .....................   Passed    5.56 sec
+        Start  50: network_utilities_differential
+ 50/204 Test  #50: network_utilities_differential ..............   Passed    5.56 sec
+        Start  51: command_differential
+ 51/204 Test  #51: command_differential ........................   Passed    9.10 sec
+        Start  52: command_runner_differential
+ 52/204 Test  #52: command_runner_differential .................   Passed    2.29 sec
+        Start  53: transaction_commands_differential
+ 53/204 Test  #53: transaction_commands_differential ...........   Passed    8.78 sec
+        Start  54: searcher_differential
+ 54/204 Test  #54: searcher_differential .......................   Passed   10.13 sec
+        Start  55: InetSocketAddressIOTest
+ 55/204 Test  #55: InetSocketAddressIOTest .....................   Passed    0.27 sec
+        Start  56: GreetingTest
+ 56/204 Test  #56: GreetingTest ................................   Passed    0.27 sec
+        Start  57: peer_state_differential
+ 57/204 Test  #57: peer_state_differential .....................   Passed   38.43 sec
+        Start  58: P2PDBTest
+ 58/204 Test  #58: P2PDBTest ...................................   Passed    0.40 sec
+        Start  59: nio_client_differential
+ 59/204 Test  #59: nio_client_differential .....................   Passed   44.71 sec
+        Start  60: nio_loopback
+ 60/204 Test  #60: nio_loopback ................................   Passed    0.39 sec
+        Start  61: nio_server_differential
+ 61/204 Test  #61: nio_server_differential .....................   Passed    2.95 sec
+        Start  62: p2p2_db_differential
+ 62/204 Test  #62: p2p2_db_differential ........................   Passed    4.07 sec
+        Start  63: network_startup_differential
+ 63/204 Test  #63: network_startup_differential ................   Passed   17.60 sec
+        Start  64: nio_manager_transport_differential
+ 64/204 Test  #64: nio_manager_transport_differential ..........   Passed   25.30 sec
+        Start  65: fixed_task_executor
+ 65/204 Test  #65: fixed_task_executor .........................   Passed    0.51 sec
+        Start  66: nio_manager_loopback
+ 66/204 Test  #66: nio_manager_loopback ........................   Passed    0.54 sec
+        Start  67: nio_connections
+ 67/204 Test  #67: nio_connections .............................   Passed    1.31 sec
+        Start  68: nio_manager_state_differential
+ 68/204 Test  #68: nio_manager_state_differential ..............   Passed    8.46 sec
+        Start  69: nio_message_differential
+ 69/204 Test  #69: nio_message_differential ....................   Passed   38.60 sec
+        Start  70: p2p_functions_differential
+ 70/204 Test  #70: p2p_functions_differential ..................   Passed   51.06 sec
+        Start  71: swap_links_differential
+ 71/204 Test  #71: swap_links_differential .....................   Passed    6.07 sec
+        Start  72: walk_links_differential
+ 72/204 Test  #72: walk_links_differential .....................   Passed    6.38 sec
+        Start  73: peers_checker_native
+ 73/204 Test  #73: peers_checker_native ........................   Passed    0.32 sec
+        Start  74: peers_checker_differential
+ 74/204 Test  #74: peers_checker_differential ..................   Passed    6.37 sec
+        Start  75: p2p_manager_native
+ 75/204 Test  #75: p2p_manager_native ..........................   Passed    1.36 sec
+        Start  76: peer_state_concurrent
+ 76/204 Test  #76: peer_state_concurrent .......................   Passed    0.51 sec
+        Start  77: p2p_manager_differential
+ 77/204 Test  #77: p2p_manager_differential ....................   Passed    7.24 sec
+        Start  78: p2p_discovery_differential
+ 78/204 Test  #78: p2p_discovery_differential ..................   Passed   42.33 sec
+        Start  79: p2p2_runtime_differential
+ 79/204 Test  #79: p2p2_runtime_differential ...................   Passed    5.24 sec
+        Start  80: p2p2_worker
+ 80/204 Test  #80: p2p2_worker .................................   Passed    1.61 sec
+        Start  81: http_server_differential
+ 81/204 Test  #81: http_server_differential ....................   Passed    2.57 sec
+        Start  82: cmd_handler_differential
+ 82/204 Test  #82: cmd_handler_differential ....................   Passed    4.01 sec
+        Start  83: network_manager_native
+ 83/204 Test  #83: network_manager_native ......................   Passed    0.83 sec
+        Start  84: network_manager_differential
+ 84/204 Test  #84: network_manager_differential ................   Passed    4.86 sec
+        Start  85: sql_db_differential
+ 85/204 Test  #85: sql_db_differential .........................   Passed    3.22 sec
+        Start  86: sql_db_concurrent
+ 86/204 Test  #86: sql_db_concurrent ...........................   Passed    0.30 sec
+        Start  87: onchain_db_differential
+ 87/204 Test  #87: onchain_db_differential .....................   Passed    4.43 sec
+        Start  88: txpow_sql_db_differential
+ 88/204 Test  #88: txpow_sql_db_differential ...................   Passed   16.77 sec
+        Start  89: txpow_db_differential
+ 89/204 Test  #89: txpow_db_differential .......................   Passed   22.76 sec
+        Start  90: coin_db_differential
+ 90/204 Test  #90: coin_db_differential ........................   Passed    6.75 sec
+        Start  91: wallet_differential
+ 91/204 Test  #91: wallet_differential .........................   Passed   23.42 sec
+        Start  92: archive_manager_differential
+ 92/204 Test  #92: archive_manager_differential ................   Passed   31.10 sec
+        Start  93: minima_db_differential
+ 93/204 Test  #93: minima_db_differential ......................   Passed   42.89 sec
+        Start  94: minima_db_lock
+ 94/204 Test  #94: minima_db_lock ..............................   Passed    0.42 sec
+        Start  95: minima_db_ownership
+ 95/204 Test  #95: minima_db_ownership .........................   Passed    0.43 sec
+        Start  96: txpow_miner_differential
+ 96/204 Test  #96: txpow_miner_differential ....................   Passed    9.95 sec
+        Start  97: txpow_miner_worker
+ 97/204 Test  #97: txpow_miner_worker ..........................   Passed    1.95 sec
+        Start  98: txblock_ownership_differential
+ 98/204 Test  #98: txblock_ownership_differential ..............   Passed   59.19 sec
+        Start  99: timed_checker_shared_deadline
+ 99/204 Test  #99: timed_checker_shared_deadline ...............   Passed  120.71 sec
+        Start 100: txpow_processor_differential
+100/204 Test #100: txpow_processor_differential ................   Passed   21.64 sec
+        Start 101: txpow_processor_worker
+101/204 Test #101: txpow_processor_worker ......................   Passed    1.08 sec
+        Start 102: notify_manager_differential
+102/204 Test #102: notify_manager_differential .................   Passed    4.07 sec
+        Start 103: notify_manager_worker
+103/204 Test #103: notify_manager_worker .......................   Passed    0.47 sec
+        Start 104: rpc_client_differential
+104/204 Test #104: rpc_client_differential .....................   Passed    5.39 sec
+        Start 105: rpc_configuration_native
+105/204 Test #105: rpc_configuration_native ....................   Passed    0.50 sec
+        Start 106: minima_logger_differential
+106/204 Test #106: minima_logger_differential ..................   Passed    3.32 sec
+        Start 107: minima_logger_worker
+107/204 Test #107: minima_logger_worker ........................   Passed    0.44 sec
+        Start 108: native_stack_trace
+108/204 Test #108: native_stack_trace ..........................   Passed    0.36 sec
+        Start 109: minima_rpc_cli_differential
+109/204 Test #109: minima_rpc_cli_differential .................   Passed    5.80 sec
+        Start 110: param_configurer_differential
+110/204 Test #110: param_configurer_differential ...............   Passed    5.37 sec
+        Start 111: ParamConfigurerTest
+111/204 Test #111: ParamConfigurerTest .........................   Passed    1.30 sec
+        Start 112: minima_uncaught_differential
+112/204 Test #112: minima_uncaught_differential ................   Passed    6.26 sec
+        Start 113: native_thread_checks
+113/204 Test #113: native_thread_checks ........................   Passed    0.41 sec
+        Start 114: http_server_errors_differential
+114/204 Test #114: http_server_errors_differential .............   Passed    4.64 sec
+        Start 115: executor_uncaught_differential
+115/204 Test #115: executor_uncaught_differential ..............   Passed    2.33 sec
+        Start 116: nio_server_errors_differential
+116/204 Test #116: nio_server_errors_differential ..............   Passed    7.51 sec
+        Start 117: nio_manager_errors_differential
+117/204 Test #117: nio_manager_errors_differential .............   Passed    3.74 sec
+        Start 118: timed_checker_errors_differential
+118/204 Test #118: timed_checker_errors_differential ...........   Passed   18.85 sec
+        Start 119: timed_checker_error_deadline
+119/204 Test #119: timed_checker_error_deadline ................   Passed  122.52 sec
+        Start 120: checker_logs_differential
+120/204 Test #120: checker_logs_differential ...................   Passed   17.87 sec
+        Start 121: script_value_original_tests
+121/204 Test #121: script_value_original_tests .................   Passed    2.31 sec
+        Start 122: hex_value_original_tests
+122/204 Test #122: hex_value_original_tests ....................   Passed    2.12 sec
+        Start 123: number_value_original_tests
+123/204 Test #123: number_value_original_tests .................   Passed    2.06 sec
+        Start 124: MinimaFunctionTests
+124/204 Test #124: MinimaFunctionTests .........................   Passed    0.38 sec
+        Start 125: ABSTests
+125/204 Test #125: ABSTests ....................................   Passed    0.40 sec
+        Start 126: minima_function_original_tests
+126/204 Test #126: minima_function_original_tests ..............   Passed    2.21 sec
+        Start 127: abs_original_tests
+127/204 Test #127: abs_original_tests ..........................   Passed    3.28 sec
+        Start 128: command_runner_errors_differential
+128/204 Test #128: command_runner_errors_differential ..........   Passed    4.53 sec
+        Start 129: FLOORTests
+129/204 Test #129: FLOORTests ..................................   Passed    0.35 sec
+        Start 130: floor_original_tests
+130/204 Test #130: floor_original_tests ........................   Passed    1.83 sec
+        Start 131: CEILTests
+131/204 Test #131: CEILTests ...................................   Passed    0.33 sec
+        Start 132: ceil_original_tests
+132/204 Test #132: ceil_original_tests .........................   Passed    1.89 sec
+        Start 133: wallet_commands_differential
+133/204 Test #133: wallet_commands_differential ................   Passed   13.42 sec
+        Start 134: wallet_address_commands_differential
+134/204 Test #134: wallet_address_commands_differential ........   Passed   21.53 sec
+        Start 135: MINTests
+135/204 Test #135: MINTests ....................................   Passed    9.17 sec
+        Start 136: min_original_tests
+136/204 Test #136: min_original_tests ..........................   Passed    9.80 sec
+        Start 137: MAXTests
+137/204 Test #137: MAXTests ....................................   Passed    7.74 sec
+        Start 138: max_original_tests
+138/204 Test #138: max_original_tests ..........................   Passed   10.65 sec
+        Start 139: wallet_witness_commands_differential
+139/204 Test #139: wallet_witness_commands_differential ........   Passed   10.52 sec
+        Start 140: coin_streams_differential
+140/204 Test #140: coin_streams_differential ...................   Passed   46.12 sec
+        Start 141: MiniStringTests
+141/204 Test #141: MiniStringTests .............................   Passed    0.35 sec
+        Start 142: ministring_original_tests
+142/204 Test #142: ministring_original_tests ...................   Passed    5.15 sec
+        Start 143: chain_commands_differential
+143/204 Test #143: chain_commands_differential .................   Passed   20.18 sec
+        Start 144: transaction_input_commands_differential
+144/204 Test #144: transaction_input_commands_differential .....   Passed   57.14 sec
+        Start 145: transaction_check_command_differential
+145/204 Test #145: transaction_check_command_differential ......   Passed   33.61 sec
+        Start 146: INCTests
+146/204 Test #146: INCTests ....................................   Passed    0.41 sec
+        Start 147: inc_original_tests
+147/204 Test #147: inc_original_tests ..........................   Passed    1.72 sec
+        Start 148: DECTests
+148/204 Test #148: DECTests ....................................   Passed    0.32 sec
+        Start 149: dec_original_tests
+149/204 Test #149: dec_original_tests ..........................   Passed    1.69 sec
+        Start 150: transaction_mining_commands_differential
+150/204 Test #150: transaction_mining_commands_differential ....   Passed   15.56 sec
+        Start 151: POWTests
+151/204 Test #151: POWTests ....................................   Passed    0.47 sec
+        Start 152: pow_original_tests
+152/204 Test #152: pow_original_tests ..........................   Passed    1.69 sec
+        Start 153: SIGDIGTests
+153/204 Test #153: SIGDIGTests .................................   Passed    0.32 sec
+        Start 154: sigdig_original_tests
+154/204 Test #154: sigdig_original_tests .......................   Passed    1.72 sec
+        Start 155: BITCOUNTTests
+155/204 Test #155: BITCOUNTTests ...............................   Passed    0.29 sec
+        Start 156: bitcount_original_tests
+156/204 Test #156: bitcount_original_tests .....................   Passed    1.88 sec
+        Start 157: vault_signing_commands_differential
+157/204 Test #157: vault_signing_commands_differential .........   Passed   65.79 sec
+        Start 158: BITGETTests
+158/204 Test #158: BITGETTests .................................   Passed    0.33 sec
+        Start 159: bitget_original_tests
+159/204 Test #159: bitget_original_tests .......................   Passed    1.82 sec
+        Start 160: BITSETTests
+160/204 Test #160: BITSETTests .................................   Passed    0.31 sec
+        Start 161: bitset_original_tests
+161/204 Test #161: bitset_original_tests .......................   Passed    1.67 sec
+        Start 162: wallet_key_commands_differential
+162/204 Test #162: wallet_key_commands_differential ............   Passed   34.60 sec
+        Start 163: coin_funding_commands_differential
+163/204 Test #163: coin_funding_commands_differential ..........   Passed   55.62 sec
+        Start 164: REVTests
+164/204 Test #164: REVTests ....................................   Passed    0.53 sec
+        Start 165: rev_original_tests
+165/204 Test #165: rev_original_tests ..........................   Passed    2.78 sec
+        Start 166: LENTests
+166/204 Test #166: LENTests ....................................   Passed    0.37 sec
+        Start 167: len_original_tests
+167/204 Test #167: len_original_tests ..........................   Passed    3.16 sec
+        Start 168: offline_send_commands_differential
+168/204 Test #168: offline_send_commands_differential ..........   Passed   21.19 sec
+        Start 169: unsigned_send_command_differential
+169/204 Test #169: unsigned_send_command_differential ..........   Passed   33.42 sec
+        Start 170: sendpoll_command_differential
+170/204 Test #170: sendpoll_command_differential ...............   Passed   10.19 sec
+        Start 171: wallet_wrappers_differential
+171/204 Test #171: wallet_wrappers_differential ................   Passed   11.53 sec
+        Start 172: raw_transaction_commands_differential
+172/204 Test #172: raw_transaction_commands_differential .......   Passed    2.85 sec
+        Start 173: custom_address_send_commands_differential
+173/204 Test #173: custom_address_send_commands_differential ...   Passed    6.70 sec
+        Start 174: consolidate_address_commands_differential
+174/204 Test #174: consolidate_address_commands_differential ...   Passed    4.71 sec
+        Start 175: wallet_consolidation_command_differential
+175/204 Test #175: wallet_consolidation_command_differential ...   Passed   15.46 sec
+        Start 176: wallet_balance_command_differential
+176/204 Test #176: wallet_balance_command_differential .........   Passed   17.51 sec
+        Start 177: coin_search_command_differential
+177/204 Test #177: coin_search_command_differential ............   Passed   16.61 sec
+        Start 178: transaction_history_command_differential
+178/204 Test #178: transaction_history_command_differential ....   Passed    5.59 sec
+        Start 179: txpow_search_command_differential
+179/204 Test #179: txpow_search_command_differential ...........   Passed   11.65 sec
+        Start 180: node_state_commands_differential
+180/204 Test #180: node_state_commands_differential ............   Passed   14.95 sec
+        Start 181: seed_random_command_differential
+181/204 Test #181: seed_random_command_differential ............   Passed    4.00 sec
+        Start 182: BOOLTests
+182/204 Test #182: BOOLTests ...................................   Passed    0.35 sec
+        Start 183: bool_cast_original_tests
+183/204 Test #183: bool_cast_original_tests ....................   Passed    1.90 sec
+        Start 184: HEXTests
+184/204 Test #184: HEXTests ....................................   Passed    0.33 sec
+        Start 185: hex_cast_original_tests
+185/204 Test #185: hex_cast_original_tests .....................   Passed    2.30 sec
+        Start 186: NUMBERTests
+186/204 Test #186: NUMBERTests .................................   Passed    0.52 sec
+        Start 187: number_cast_original_tests
+187/204 Test #187: number_cast_original_tests ..................   Passed    2.62 sec
+        Start 188: SCRIPTTests
+188/204 Test #188: SCRIPTTests .................................   Passed    0.34 sec
+        Start 189: script_cast_original_tests
+189/204 Test #189: script_cast_original_tests ..................   Passed    1.96 sec
+        Start 190: mysql_connect_differential
+190/204 Test #190: mysql_connect_differential ..................   Passed   40.39 sec
+        Start 191: pulse_runtime_differential
+191/204 Test #191: pulse_runtime_differential ..................   Passed    9.30 sec
+        Start 192: main_runtime_differential
+192/204 Test #192: main_runtime_differential ...................   Passed    2.83 sec
+        Start 193: main_ownership
+193/204 Test #193: main_ownership ..............................   Passed    0.48 sec
+        Start 194: main_lifecycle_commands_differential
+194/204 Test #194: main_lifecycle_commands_differential ........   Passed    2.34 sec
+        Start 195: network_peer_commands_differential
+195/204 Test #195: network_peer_commands_differential ..........   Passed    3.09 sec
+        Start 196: ping_command_differential
+196/204 Test #196: ping_command_differential ...................   Passed    3.42 sec
+        Start 197: network_status_command_differential
+197/204 Test #197: network_status_command_differential .........   Passed    2.59 sec
+        Start 198: trace_clock_command_differential
+198/204 Test #198: trace_clock_command_differential ............   Passed    2.16 sec
+        Start 199: healthcheck_command_differential
+199/204 Test #199: healthcheck_command_differential ............   Passed    4.25 sec
+        Start 200: logs_command_differential
+200/204 Test #200: logs_command_differential ...................   Passed    2.55 sec
+        Start 201: node_status_command_differential
+201/204 Test #201: node_status_command_differential ............   Passed    6.84 sec
+        Start 202: rpc_command_differential
+202/204 Test #202: rpc_command_differential ....................   Passed   12.36 sec
+        Start 203: json_collections_differential
+203/204 Test #203: json_collections_differential ...............   Passed    0.58 sec
+        Start 204: shared_json_native
+204/204 Test #204: shared_json_native ..........................   Passed    6.79 sec
+
+99% tests passed, 1 tests failed out of 204
+
+Total Test time (real) = 2247.83 sec
+
+The following tests FAILED:
+	  1 - MiniByteTests (Subprocess aborted)
+Errors while running CTest

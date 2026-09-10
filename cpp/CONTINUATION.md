@@ -1,3 +1,56 @@
+# Latest active jobs — normal full build complete; affected checks started
+
+Normalfullbuild40482 TERMINALexit0,noobservedwarnings. Allnormalbinariesnow
+linkedcurrentcoinimport/hashtest/Authorizer. Newnormal20-test affectedCTestbatch
+started: /tmp/minima-post-rpc-normal-regressions.log (inspectlivehandleinthread).
+Sanitizernode-state directdriver18296 uses --native-target coin_import_runtime;
+registrybuild+CTest82445. Theirlogs /tmp/minima-coin-import-node-state-san.log
+and /tmp/minima-coin-import-registry-{build,test}-san.log. Pollandinspectresults.
+Originalsanfull42976 remainsLIVE(last93), normalfull29381 terminal.
+MiniByteexplicitCTest48309/2233PASSboth. Source-map365/92,audit9082/2634/0.
+
+# Current work — coinimport comparison passes, full normal baseline finished
+
+This goalturn is PROGRESS: added compiled/registered coinimport translation and
+142program390op Java comparisons, matching both builds. Mapping365 counterparts
+321prod+44tests;92absent;207CTest. Full457goalACTIVE/incomplete.
+
+coinimport reuses CoinProof/MMR/MinimaDB/TxPoWSearcher/tree; early tracking path
+ignores track/suppliedproof, historical path preserves lateparsemutation order
+androotcheck. Newtest reuses walletfixture as distinctcoin_import_runtime so
+livefullsuite binaries remainunchanged. NewCoinImportOracle subclassesexisting
+WalletCommandsOracle, sourcegenerated full/prunedMMR/proofs. Extraallcoins/root/
+finalized observations gatedbycoinImport. Java logcapturecoversnewSQLprobes with
+finallyrestore. node_state_corpus.project optionaltree_sql defaultsunchanged;
+newtest includesINSERT+SELECT randomIDs withconsistentcheckedmapping. Optional
+--native-target addedtowalletdriver foraffectedtestisolation,defaultwallet_commands.
+
+Coinimport passesboth142/390:normal7.23s,san17.15s. Fourinitialreports saved:
+repeat-importexpectation, pruned-spentexpectation, INSERT randomIDdifference,
+post-commandobserverlogcapture. No productionchange wasmade tofakeexpectedpolicy.
+NewlabwrittenBEFOREtests, guide/source-map/auditupdated(9082links2634anchors0errors).
+Affectednode_state/command_runner regressions stillpending; nextlaunchthem.
+
+Normalfullbaseline29381 TERMINALexit8:203/204pass,onlyMiniByteTestsstale catch.
+ExplicitMiniByteCTestnormal/sanPASSED0.39/0.31s (48309/2233 shouldterminal).
+Savednormalfull204log+summary andbothreruns under shared-json-work-in-progress.
+Thisvalidatespriorbaseline5fbb638,NOTallcurrent207tests.
+
+Only originalfullsuite stillLIVE42976 sanitizer /tmp/minima-shared-json-all-tests-san.log
+(last89). Twoobservedinitialfailures:fixedMiniByte andnio_message_differential69
+(timeout100s in nativeprocess, not yetreplayed). Inspect/replayNIOafterfullsuite
+andlowload; don'trestartwholefullsuitefromtimeout. Keepfullredirectedlogauthoritative
+becauseconcurrentfocusedCTestruns shareTestingdirectory.
+
+NEXT: savecoinimportWIPcommit+verifiedbundle; runnormalfullbuild nowthatnormal
+fullsuitefinished, affectedMain/DB/network/auth/registry/node-state checks. Use
+coin_import_runtime forsanitizernode-state viadriver --native-target whilefull
+sanitizerusesoriginalwallet_commands. Do not replaceactivefullsuitebinaries.
+Lastnumberedcheckpoint362. Latestearliersavedcommit2542fe0; inspectactualHEAD
+fornewsave. NoGitHubpush, GRAPHIFY_SKIP_HOOK=1.
+
+Older notes follow.
+
 # Latest saved validation — hashtest and two affected regressions PASS
 
 Hashtest implementation committed00c4867d52ec26eb840f86052955e6a12b68a031.

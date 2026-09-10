@@ -1,0 +1,27 @@
+{
+  "status": "focused comparison passes; affected regressions pending",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "counterparts": 365,
+  "production": 321,
+  "mapped_tests": 44,
+  "absent": 92,
+  "ctest_registered": 207,
+  "programs_per_build": 142,
+  "operations_per_build": 390,
+  "normal": true,
+  "sanitized": true,
+  "reuse": [
+    "src/org/minima/objects/CoinProof.cpp",
+    "src/org/minima/objects/mmr/MMR.cpp",
+    "src/org/minima/system/brains/TxPoWSearcher.cpp",
+    "src/org/minima/database/txpowtree/TxPoWTreeNode.cpp",
+    "support/wallet_commands.cpp",
+    "support/WalletCommandsOracle.java",
+    "tools/node_state_corpus.py"
+  ],
+  "pending": [
+    "Existing node-state/command-runner regressions for new registry and fixture",
+    "Finish sanitizer shared JSON baseline; rerun NIO message timeout"
+  ],
+  "limits": "Full/pruned synthetic histories, actual command/MMR/tree with recording SQL. No durable SQL, native full-node startup, concurrent tree mutation or full-file parity claim."
+}

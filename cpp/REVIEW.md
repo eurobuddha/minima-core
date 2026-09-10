@@ -4568,3 +4568,37 @@ Both relinked command-runner and network-utility regressions pass in both builds
 (1,265 and 5,668 cases). The earlier full suites and remaining RPC integration
 regressions must finish before a completed checkpoint claim.
 The wider full-node and all-file parity goal remains incomplete.
+
+
+## Code Review — coinimport and historical MMR restoration
+
+### Summary
+
+The wrapper translates the pinned two-path algorithm using existing proof, tree,
+MMR and database implementations. Source null dereferences have checked native
+failures. The first path preserves its ignored track/supplied-proof behavior;
+the historical path preserves finalization, coin insertion, late track parsing,
+relevance mutation and final root comparison in source order. The unused first
+getMMRData calculation is retained because the source evaluates it before update.
+
+### Findings
+
+No new blocking defect found in the implemented sequential body. Both builds
+pass 142 programs and 390 operations. Initial independent expectations were
+corrected against Java: repeat historical imports can duplicate records, and an
+artificially pruned newer spent leaf changes the time-valid proof check result.
+Neither finding justified replacing the source policy.
+
+Two fixture differences were corrected: INSERT tree IDs now use the existing
+checked identity mapping alongside SELECT IDs; Java captures diagnostics from
+the explicit post-command SQL observations to match native recording services.
+Other node-state groups retain their prior projection and capture defaults.
+The existing wallet driver accepts an optional native target, like the Main
+driver, to test the current fixture without replacing live full-suite binaries.
+
+### Verdict
+
+Approve the scoped translation and comparison evidence. Existing node-state and
+registry regressions remain pending. Recording SQL does not establish durable
+storage; arbitrary pruning is a synthetic missing-information experiment, and
+shared tree mutation/full native-node behavior remain wider incomplete work.

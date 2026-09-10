@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/coinimport.java) · `src/org/minima/system/commands/base/coinimport.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/coinimport.java) · [Native counterpart](../../../../../../../../src/org/minima/system/commands/base/coinimport.cpp)
 
 ## Purpose
 
@@ -20,15 +20,15 @@ coinimport installs a coin and its MMR proof into retained chain history, option
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse CoinProof decoding, MMR time-valid checks and tree relevance operations. Preserve mutation and parameter-reading order: moving track validation earlier would change failure side effects.
+The native body is compiled and registered. It reuses CoinProof decoding, MMR time-valid checks/update, MinimaDB, TxPoWSearcher and tree relevance operations. Checked null references preserve failure categories. Mutation and parameter-reading order are unchanged: moving track validation earlier would change retained side effects.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed tests cover spent coins, malformed/partial decoding, valid current proof with an invalid supplied proof, shortcut track:false, already relevant entries, too-old proof blocks, historical root invariance and invalid track after mutation. Inspect node/MMR/relevance state after every failure, not only the response.
+The [lab](../../../../../../../../student-guide/new-tests/coin-import.md) was written before the new comparison. Both normal and ASAN/UBSAN builds pass 142 programs and 390 operations, checking complete and deliberately pruned history, shortcut behavior, historical root invariance, late failures and recorded SQL. Coin lists, relevant entries, serialized MMR, roots and finalization flags are observed after operations.
 
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+The first test expectations were corrected against Java: repeated historical imports can append duplicate records, and discarding a newer spent leaf changes what checkProofTimeValid can detect. These synthetic missing-information cases are explained in the lab. Initial failures and corrected passes are saved; no production uniqueness or proof policy was substituted.
 
 ## Limits
 

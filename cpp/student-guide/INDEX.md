@@ -380,7 +380,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [checkaddress.java](files/src/org/minima/system/commands/base/checkaddress.md) | authored | implemented_partial |
 | [coincheck.java](files/src/org/minima/system/commands/base/coincheck.md) | authored | implemented_partial |
 | [coinexport.java](files/src/org/minima/system/commands/base/coinexport.md) | authored | implemented_partial |
-| [coinimport.java](files/src/org/minima/system/commands/base/coinimport.md) | authored | unported |
+| [coinimport.java](files/src/org/minima/system/commands/base/coinimport.md) | authored | implemented_partial |
 | [coinnotify.java](files/src/org/minima/system/commands/base/coinnotify.md) | authored | implemented_partial |
 | [cointrack.java](files/src/org/minima/system/commands/base/cointrack.md) | authored | implemented_partial |
 | [consolidate.java](files/src/org/minima/system/commands/base/consolidate.md) | authored | implemented_partial |

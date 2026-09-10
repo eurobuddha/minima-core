@@ -5,9 +5,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **320 production counterparts and 44 mapped test files exist;
-93 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **321 production counterparts and 44 mapped test files exist;
+92 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+coinimport is compiled and registered. Both builds pass 142 Java/C++ programs
+and 390 operations, including historical MMR restoration, root invariance,
+conditional tracking shortcuts, retained failure effects and recorded SQL.
+See the [student lab](student-guide/new-tests/coin-import.md) and
+[evidence](validation/coin-import-work-in-progress/progress.json). Full parity
+and durable SQL remain unfinished.
 
 hashtest now compiles and is registered, reusing the actual miner hash-speed loop.
 Its [student lab](student-guide/new-tests/hash-speed-command.md) explains real
@@ -25,7 +32,7 @@ match Java. All 38 comparison reports are saved. Shared user-array access and
 command-driven live enable/authentication have further validation below. See the
 [RPC lab](student-guide/new-tests/rpc-command.md) and
 [configuration evidence](validation/rpc-configuration/progress.json). There are
-206 CTest entries. The last fully saved numbered checkpoint remains 362.
+207 CTest entries. The last fully saved numbered checkpoint remains 362.
 
 Shared JSON storage is a further **work-in-progress** change: owned value reads,
 retained root/child references and checked ordered iteration replace borrowed

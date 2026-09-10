@@ -1,0 +1,2544 @@
+{
+  "passed": false,
+  "programs": 117,
+  "total_programs": 142,
+  "operations": 290,
+  "failures": [
+    {
+      "case": 117,
+      "request": {
+        "coinImport": true,
+        "nodeState": true,
+        "mode": "pruned",
+        "ops": [
+          {
+            "op": "chain",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "history": "8",
+            "nodes": [
+              {
+                "pow": "0x000100000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101"
+              },
+              {
+                "pow": "0x0001010000000100000203E800010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103"
+              },
+              {
+                "pow": "0x0001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103"
+              },
+              {
+                "pow": "0x000103000000010000020BB800010300000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001030001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A"
+              },
+              {
+                "pow": "0x000104000000010000020FA000010400000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A"
+              },
+              {
+                "pow": "0x00010500000001000002138800010500000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A"
+              },
+              {
+                "pow": "0x00010600000001000002177000010600000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x000107000000010000021B5800010700000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x000108000000010000021F4000010800000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x00010900000001000002232800010900000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x00010A00000001000002271000010A00000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x00010B000000010000022AF800010B00000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              }
+            ]
+          },
+          {
+            "op": "coinStore",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00"
+          },
+          {
+            "op": "coinSQL",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "enabled": true
+          },
+          {
+            "op": "direct",
+            "rows": [],
+            "probe": [],
+            "caller": "0x00",
+            "name": "coinimport",
+            "params": {
+              "data": "0x000000016500000001010001010000000100010001000000000100000001000001000000010300010200000000207772FE6DCC728EE44A3B44D49044BE2A42B064C6822D857F885067FBE529DE9A00010200000000206735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE135000107"
+            },
+            "replyText": true,
+            "rowsBySQL": {
+              "SELECT * FROM coins WHERE txpowtreeid=?": [
+                {
+                  "coindata": "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                }
+              ]
+            },
+            "fail": 0,
+            "runtimeFailure": false
+          }
+        ],
+        "sql": true
+      },
+      "java": {
+        "ops": [
+          {
+            "value": null,
+            "savedPreferences": null,
+            "preferenceWire": "0x000000027B7D",
+            "nodeState": [
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001030001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103",
+                "allCoins": [],
+                "root": "0x00000020C6E92406E628667B03113DD373A216D1275C71AADC067D64604D1D275F12DD19000106",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "allCoins": [],
+                "root": "0x00000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "allCoins": [],
+                "root": "0x00000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "finalized": true
+              }
+            ],
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "savedPreferences": null,
+            "preferenceWire": "0x000000027B7D",
+            "nodeState": [
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001030001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103",
+                "allCoins": [],
+                "root": "0x00000020C6E92406E628667B03113DD373A216D1275C71AADC067D64604D1D275F12DD19000106",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "allCoins": [],
+                "root": "0x00000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "allCoins": [],
+                "root": "0x00000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "finalized": true
+              }
+            ],
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [
+              [
+                "connect",
+                "jdbc:h2:/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/coin-import-gjejcq57/control-coins;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE",
+                "SA",
+                ""
+              ],
+              [
+                "connection.setAutoCommit",
+                1,
+                true
+              ],
+              [
+                "connection.createStatement",
+                1
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `coins` (  `id` bigint auto_increment,  `txpowtreeid` varchar(80) NOT NULL,  `blockheight` int NOT NULL,  `coindata` blob NOT NULL)"
+              ],
+              [
+                "statement.close"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT INTO coins ( txpowtreeid, blockheight, coindata ) VALUES ( ?, ?, ? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM coins WHERE txpowtreeid=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "DELETE FROM coins WHERE blockheight<?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT Count(*) as tot FROM coins"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "savedPreferences": null,
+            "preferenceWire": "0x000000027B7D",
+            "nodeState": [
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001030001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103",
+                "allCoins": [],
+                "root": "0x00000020C6E92406E628667B03113DD373A216D1275C71AADC067D64604D1D275F12DD19000106",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "allCoins": [],
+                "root": "0x00000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "allCoins": [],
+                "root": "0x00000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "finalized": true
+              }
+            ],
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-0>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-1>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-2>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-3>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-4>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-5>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-6>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-7>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-8>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-9>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-10>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-11>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": "{\"command\":\"coinimport\",\"params\":{\"data\":\"0x000000016500000001010001010000000100010001000000000100000001000001000000010300010200000000207772FE6DCC728EE44A3B44D49044BE2A42B064C6822D857F885067FBE529DE9A00010200000000206735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE135000107\"},\"status\":true,\"pending\":false,\"response\":{\"coin\":{\"coinid\":\"0x65\",\"amount\":\"1\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"},\"proof\":{\"blocktime\":\"3\",\"proof\":[{\"left\":false,\"data\":{\"data\":\"0x7772FE6DCC728EE44A3B44D49044BE2A42B064C6822D857F885067FBE529DE9A\",\"value\":\"2\"}},{\"left\":false,\"data\":{\"data\":\"0x6735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE135\",\"value\":\"7\"}}],\"prooflength\":2}}}",
+            "savedPreferences": null,
+            "preferenceWire": "0x000000027B7D",
+            "nodeState": [
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [
+                  "0"
+                ],
+                "coins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "mmr": "0x00010300010000000001040001050001010001000000000101000000206735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE135000107000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D0001030001000001000000000101000000207772FE6DCC728EE44A3B44D49044BE2A42B064C6822D857F885067FBE529DE9A000102000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020C6E92406E628667B03113DD373A216D1275C71AADC067D64604D1D275F12DD19000106",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "finalized": true
+              }
+            ],
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                1
+              ],
+              [
+                "prepared.setString",
+                1,
+                1,
+                "0x19247FBB0CA198B321BED3735A2769DFA96C132DA00F9BAEA59A6AA44CF71087"
+              ],
+              [
+                "prepared.setLong",
+                1,
+                2,
+                3
+              ],
+              [
+                "prepared.setBytes",
+                1,
+                3,
+                "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+              ],
+              [
+                "prepared.execute",
+                1
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-0>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-1>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-2>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-3>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-4>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-5>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-6>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-7>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-8>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-9>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-10>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-11>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      },
+      "cpp": {
+        "ops": [
+          {
+            "value": null,
+            "savedPreferences": null,
+            "preferenceWire": "0x000000027B7D",
+            "nodeState": [
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001030001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103",
+                "allCoins": [],
+                "root": "0x00000020C6E92406E628667B03113DD373A216D1275C71AADC067D64604D1D275F12DD19000106",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "allCoins": [],
+                "root": "0x00000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "allCoins": [],
+                "root": "0x00000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "finalized": true
+              }
+            ],
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "savedPreferences": null,
+            "preferenceWire": "0x000000027B7D",
+            "nodeState": [
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001030001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103",
+                "allCoins": [],
+                "root": "0x00000020C6E92406E628667B03113DD373A216D1275C71AADC067D64604D1D275F12DD19000106",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "allCoins": [],
+                "root": "0x00000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "allCoins": [],
+                "root": "0x00000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "finalized": true
+              }
+            ],
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [
+              [
+                "connect",
+                "jdbc:h2:/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/coin-import-gjejcq57/control-coins;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE",
+                "SA",
+                ""
+              ],
+              [
+                "connection.setAutoCommit",
+                1,
+                true
+              ],
+              [
+                "connection.createStatement",
+                1
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `coins` (  `id` bigint auto_increment,  `txpowtreeid` varchar(80) NOT NULL,  `blockheight` int NOT NULL,  `coindata` blob NOT NULL)"
+              ],
+              [
+                "statement.close"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT INTO coins ( txpowtreeid, blockheight, coindata ) VALUES ( ?, ?, ? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM coins WHERE txpowtreeid=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "DELETE FROM coins WHERE blockheight<?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT Count(*) as tot FROM coins"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "savedPreferences": null,
+            "preferenceWire": "0x000000027B7D",
+            "nodeState": [
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001030001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103",
+                "allCoins": [],
+                "root": "0x00000020C6E92406E628667B03113DD373A216D1275C71AADC067D64604D1D275F12DD19000106",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "allCoins": [],
+                "root": "0x00000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "allCoins": [],
+                "root": "0x00000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "finalized": true
+              }
+            ],
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-0>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-1>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-2>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-3>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-4>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-5>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-6>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-7>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-8>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-9>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-10>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-11>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": "{\"command\":\"coinimport\",\"params\":{\"data\":\"0x000000016500000001010001010000000100010001000000000100000001000001000000010300010200000000207772FE6DCC728EE44A3B44D49044BE2A42B064C6822D857F885067FBE529DE9A00010200000000206735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE135000107\"},\"status\":true,\"pending\":false,\"response\":{\"coin\":{\"coinid\":\"0x65\",\"amount\":\"1\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"},\"proof\":{\"blocktime\":\"3\",\"proof\":[{\"left\":false,\"data\":{\"data\":\"0x7772FE6DCC728EE44A3B44D49044BE2A42B064C6822D857F885067FBE529DE9A\",\"value\":\"2\"}},{\"left\":false,\"data\":{\"data\":\"0x6735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE135\",\"value\":\"7\"}}],\"prooflength\":2}}}",
+            "savedPreferences": null,
+            "preferenceWire": "0x000000027B7D",
+            "nodeState": [
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001060001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [
+                  "0"
+                ],
+                "coins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "mmr": "0x00010300010000000001040001050001010001000000000101000000206735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE135000107000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D0001030001000001000000000101000000207772FE6DCC728EE44A3B44D49044BE2A42B064C6822D857F885067FBE529DE9A000102000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020C6E92406E628667B03113DD373A216D1275C71AADC067D64604D1D275F12DD19000106",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001010001000000000102000101000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103",
+                "finalized": true
+              },
+              {
+                "entries": [],
+                "coins": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "allCoins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "root": "0x00000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101",
+                "finalized": true
+              }
+            ],
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "events": [
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                1
+              ],
+              [
+                "prepared.setString",
+                1,
+                1,
+                "0x3F8DBEA1A6FA1DC10863429C3502E2A755FE515470F02E88598BB66B9CE20D91"
+              ],
+              [
+                "prepared.setLong",
+                1,
+                2,
+                3
+              ],
+              [
+                "prepared.setBytes",
+                1,
+                3,
+                "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+              ],
+              [
+                "prepared.execute",
+                1
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-0>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-1>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-2>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-3>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-4>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-5>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-6>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-7>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-8>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-9>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-10>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "connection.isClosed",
+                1
+              ],
+              [
+                "prepared.clearParameters",
+                2
+              ],
+              [
+                "prepared.setString",
+                2,
+                1,
+                "<tree-id-11>"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getBytes",
+                "coindata"
+              ],
+              [
+                "rows.next"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "Actual coinimport registered command, CoinProof/MMR, MinimaDB/tree/search and recording SQL. Full/pruned knowledge, historical restoration, root invariant, duplicate tracking, early ignored track/supplied proof, late parameter errors with retained mutations, malformed wire, runner permissions and SQL failures. Replies/state compared; enhanced NPE/CCE prose and generated SQL tree IDs normalized. No durable SQL, live-node acceptance or exhaustive concurrent tree mutation certification."
+}

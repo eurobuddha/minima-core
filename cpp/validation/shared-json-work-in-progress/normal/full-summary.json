@@ -1,0 +1,12 @@
+{
+  "initial_tests": 204,
+  "initial_passed": 203,
+  "initial_failures": [
+    "MiniByteTests"
+  ],
+  "initial_seconds": 2247.83,
+  "initial_exit": 8,
+  "corrected_test_ctest_rerun_passed": true,
+  "baseline": "Shared JSON implementation at 5fbb638; excludes subsequent production bindings and command registrations",
+  "not_full_current_tree": true
+}

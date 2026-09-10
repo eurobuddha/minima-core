@@ -1143,3 +1143,9 @@ add_executable(minima_hashtest_runtime support/main_runtime.cpp support/MainNetw
 target_link_libraries(minima_hashtest_runtime PRIVATE minima_file_port)
 add_test(NAME hashtest_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/main_runtime_differential.py --build ${CMAKE_CURRENT_BINARY_DIR} --group hashtest --native-target minima_hashtest_runtime)
 set_tests_properties(hashtest_command_differential PROPERTIES TIMEOUT 240)
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/base/coinimport.cpp)
+add_executable(coin_import_runtime support/wallet_commands.cpp)
+target_link_libraries(coin_import_runtime PRIVATE minima_file_port)
+add_test(NAME coin_import_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/coin_import_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(coin_import_differential PROPERTIES TIMEOUT 240)
