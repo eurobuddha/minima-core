@@ -42,3 +42,8 @@ build-directory ignore rule. The map has 360 counterparts and 97 absent files.
 Checkpoint 361 adds logs and atomic storage for seven native logging switches.
 Both builds and 25 affected regressions pass per build. Evidence is in
 validation/checkpoint-361. The map has 361 counterparts and 96 absent files.
+
+Checkpoint 362 adds status, its explicit native memory boundary, and 187 Java/C++
+programs covering 634 operations. Implementation commit e826360 preserves the
+code and lessons; the follow-up validation commit records both passing 25-test
+regression runs. The checkpoint has 362 counterparts and 95 absent mapped files.

@@ -12,9 +12,37 @@
   ],
   "programs_per_build": 187,
   "operations_per_build": 634,
-  "affected_validation": "in progress",
   "reports": [
+    "differential-results.json",
+    "cascade-differential-results.json",
+    "tree-differential-results.json",
+    "utility-differential-results.json",
+    "consensus-differential-results.json",
+    "prefs-differential-results.json",
+    "command-differential-results.json",
+    "command-runner-differential-results.json",
+    "txpow-sql-db-results.json",
+    "txpow-db-results.json",
+    "minima-logger-results.json",
+    "command-runner-errors-results.json",
+    "chain-commands-results.json",
+    "main-runtime-results.json",
+    "main-lifecycle-commands-results.json",
+    "network-peer-commands-results.json",
+    "ping-command-results.json",
+    "network-status-command-results.json",
+    "trace-clock-command-results.json",
+    "healthcheck-command-results.json",
+    "logs-command-results.json",
     "node-status-command-results.json"
   ],
-  "limits": "Finite scoped validation; JVM/native heap sizes are not equated. Full node and complete parity remain unverified."
+  "limits": "Finite scoped validation; JVM/native heap sizes are not equated. Full node and complete parity remain unverified.",
+  "affected_tests_passed_per_build": 25,
+  "affected_seconds": [
+    301.18,
+    952.17
+  ],
+  "comparison_reports_read": 44,
+  "ctest_summaries": 2,
+  "implementation_commit": "e826360"
 }

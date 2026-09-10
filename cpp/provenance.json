@@ -2217,8 +2217,13 @@
       ],
       "programs_per_build": 187,
       "operations_per_build": 634,
-      "selected_regressions": "in progress",
-      "report_directory": "validation/checkpoint-362"
+      "report_directory": "validation/checkpoint-362",
+      "selected_tests_per_build": 25,
+      "selected_seconds": [
+        301.18,
+        952.17
+      ],
+      "reports_read": 44
     },
     "limits": "Partial / parity not_verified. No durable SQL or full-node startup, JVM collection guarantee, equal JVM/native heap or exhaustive concurrent owner replacement."
   }

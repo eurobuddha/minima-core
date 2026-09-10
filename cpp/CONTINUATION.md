@@ -1,35 +1,48 @@
-# Current checkpoint 362 — status implementation saved; regressions live
+# Current checkpoint 362 — status validated, ready for final local commit
 
-Full 457-file working native port goal ACTIVE/incomplete. This turn is progress:
+Full 457-file working native port goal ACTIVE/incomplete. This turn made progress:
 status header/body, registration, runtime collection hint, Main fixture and oracle,
 187-program / 634-operation corpus, student lab/lessons, mapping and evidence.
-Both FULL BUILDS and new comparisons PASS. 362 counterparts=318prod+44tests;
-95 absent=51prod+44tests. All map entries partial/not_verified. 200 CTest.
-All 457 lessons; 9050 links/2634 anchors; zero audit errors.
+Implementation commit e826360 is saved on MinimaCoreC++. Final evidence/docs commit
+follows; use git log and checkpoint-362 tag for its hash.
 
-LIVE PROCESS HANDLES: normal regression 7645; sanitizer regression 40204.
-Poll these handles; do not restart on silence. 25 selected regressions each.
-Logs /tmp/minima-node-status-regressions.log and -regressions-san.log.
-Other handles TERMINAL: builds54612(initial compile adapter fix needed),33622,
-62409,66252,25262; tests60565,53407(initial expected-value corrections),55373,
-89648,49199,42930. Latest comparisons187/634passboth. Build logs
-/tmp/minima-node-status-build.log and -build-san.log; test logs -test.log/-test-san.log.
+Both FULL BUILDS PASS without observed warnings. All 25 affected regressions PASS
+301.18s normal / 952.17s ASAN/UBSAN. All 44 JSON comparison reports
+read without failures; both CTest summaries saved in validation/checkpoint-362/
+normal and sanitized. 362 counterparts=318prod+44tests; 95absent=51prod+44tests.
+All map entries partial/not_verified. 200 CTest. All457studentlessons remain authored.
+Final guide audit:9052links,2634anchors,zeroerrors.
 
-NEXT: wait live regression runs, inspect every selected report, save compact reports
-under validation/checkpoint-362/normal and sanitized, finalize README/REVIEW/lab/
-provenance/this continuation, commit, tag checkpoint-362, create+verify bundle and
-recovery clone. Implementation commit is being made now; use git log for hash.
-No new agent needed. Existing guides are authored. No GitHub push: destination
-still unanswered; local branch/project remains MinimaCoreC++.
+ALL HANDLES TERMINAL. Final regressions7645/40204 exit0. Latest build66252/25262
+exit0; latest isolated comparisons49199/42930 exit0. Earlier builds33622/62409
+and first successful comparisons55373/89648 terminal. Initialbuild54612 API adapter
+compile fix; initialtests60565/53407 expected-value corrections. Logs all under
+/tmp/minima-node-status-{build,build-san,test,test-san,regressions,regressions-san}.log.
+No background work remains. Do not restart completed checks without new changes.
+
+Finish final local commit/tag and run /tmp/minima-status-backup.py to create,
+verify and recovery-clone a bundle. Its ignored local-backups JSON manifest records
+actual HEAD/SHA/recovery details; inspect the newest manifest if already done.
+No GitHub push: remote destination still unanswered. Full node goal unchanged.
 
 status follows pinned source ordering, including clean presence before parameters,
-early complete tip dereference, DECIMAL32/minimum hash rate/device ceiling, file
+early complete tip dereference, DECIMAL32/clamped hash rate/device ceiling, file
 sizes and sparse no-root fields, median speed, numeric/string distinctions,
 source debug order and optional network. Static main also ported and compared.
-MinimaLogger Runtime adds collectMemory (default no-op) and Main binds existing
-service. Native allocator statistics differ from JVM heap; tests validate independently
+MinimaLogger Runtime adds collectMemory(default no-op); Main binds existing service.
+Native allocator statistics differ from JVM heap; tests validate them independently
 before normalization. UserDB, SQL and actual chain objects reused. No full startup,
-durable SQL, collection guarantee or exhaustive concurrent scheduling certificate.
+durable SQL, JVM collection guarantee or exhaustive scheduling certification.
+
+Possible next command: RPC. FULL pinned network/rpc.java and its existing lesson
+read during the wait; native NetworkManager.cpp read fully and UserDB get/setRPCUsers
+examined. No RPC edits/lab/test written. Native startRPC/stopRPC run the actual
+HTTPServer/CMDHandler. Need complete reuse gate, dependencies/tests and source
+NetworkManager start/stop review before implementation. Source enable wins over
+action, stops RPC, sleeps1000ms, then mutates flags/password, then starts or stops;
+ssl is advertised but unused; valid list repeats password; addusers preserves
+array aliasing, remove replaces array, list exposes saved extra-user records.
+No alternate authentication backend or placeholder server should be invented.
 
 Older notes below are historical and may be obsolete.
 

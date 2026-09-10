@@ -4352,3 +4352,43 @@ builds (194.27s / 457.64s), and all 42 reports were read and saved under
 validation/checkpoint-361. Reversing only the documented atomic substitutions
 reproduces the prior GeneralParams header/body and ParamSnapshots hashes exactly.
 No complete 457-file port or full-node readiness is claimed.
+
+## Code Review — checkpoint 362: status
+
+### Summary
+
+Reviewed the full pinned command, new native header/body and registration, existing
+runtime callback changes, Main fixtures, oracle/driver, corpus and student lessons.
+The wrapper calls actual database, chain, cascade, wallet, filesystem, decimal and
+network components. Source ordering is preserved, including clean-key presence,
+early complete-mode tip access, repeated Main mode reads, sparse no-root fields
+and debug messages after each completed phase.
+
+### Findings
+
+No blocking defect found in this scoped review. Zero difficulty throws the Java
+arithmetic category before reading user hash rate. Existing HALF_EVEN division
+and MiniNumber arithmetic are reused. The byte adapter pads difficulty without
+truncation. Unsigned intermediate arithmetic preserves Java signed wraparound.
+The initial compiler error was an incorrect native API spelling for the byte
+adapter; the existing MiniData.withMinLength method is now called directly.
+
+Two independent test expectations were corrected: large device counts use plain
+integer text, and tied timestamps 0,0,1000,2000 select median block 2, yielding
+speed 2 against block 0. Production arithmetic was not changed for these errors.
+Nonzero cascade weights, malformed preference types, empty/null receivers, exact
+file totals, debug order and optional network output have explicit comparisons.
+
+The new collection-hint callback extends the existing runtime registry and binds
+Main's existing service. Its native default is a no-op. Heap bytes are validated
+separately for JVM and native allocators; clock normalization follows bounded
+validation. These adaptations do not assert JVM collection, equal heap sizes,
+full-node startup, durable SQL or every concurrent owner-replacement schedule.
+
+### Validation and verdict
+
+Both full builds and all 187 new programs / 634 operations pass in normal and
+ASAN/UBSAN builds. All 25 affected regressions pass in both builds (301.18s /
+952.17s). All 44 comparison reports were read and saved with both CTest
+summaries under validation/checkpoint-362. Approve this scoped checkpoint.
+Full-port completion remains unproven and is not claimed.

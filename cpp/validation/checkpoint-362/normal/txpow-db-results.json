@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 1355,
+  "operations": 7407,
+  "effects": 80960,
+  "failures": [],
+  "scope": "Actual pinned owning TxPoWDB, RAM/SQL subclasses, TxPoWSearcher and Wallet membership methods. Exact JDBC and owner-call order, shared TxPoW/message/RamData/map identities, null/error side effects, both-store lifecycle and relevance decisions. SQL clocks checked before normalization; RAM access timestamps checked at creation/change against operation windows. Java NPE expression diagnostics and logger prefixes/stacks excluded. JDBC and Main/wallet owner boundaries are fixtures; real native SQL storage and full node runtime remain incomplete."
+}

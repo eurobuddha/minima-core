@@ -49,4 +49,8 @@ truncation have explicit coverage.
 [Corpus](../../tools/node_status_commands_corpus.py) ·
 [Saved evidence](../../validation/checkpoint-362/checkpoint.json)
 
-Broader affected regression validation is still in progress.
+All 25 affected regressions pass in both builds (301.18s normal, 952.17s
+ASAN/UBSAN). All 44 comparison reports were read without failures and saved,
+alongside two CTest summaries. These include primitive arithmetic, cascade/tree
+calculations, consensus/median helpers, preferences, SQL databases, logger behavior,
+Main ownership and related command/runner checks.

@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "name": "source_mapping",
+      "seconds": 0.18
+    },
+    {
+      "name": "java_differential",
+      "seconds": 2.6
+    },
+    {
+      "name": "cascade_differential",
+      "seconds": 123.92
+    },
+    {
+      "name": "tree_differential",
+      "seconds": 15.95
+    },
+    {
+      "name": "utility_differential",
+      "seconds": 4.39
+    },
+    {
+      "name": "consensus_differential",
+      "seconds": 542.1
+    },
+    {
+      "name": "prefs_differential",
+      "seconds": 5.64
+    },
+    {
+      "name": "command_differential",
+      "seconds": 19.36
+    },
+    {
+      "name": "command_runner_differential",
+      "seconds": 4.32
+    },
+    {
+      "name": "txpow_sql_db_differential",
+      "seconds": 50.96
+    },
+    {
+      "name": "txpow_db_differential",
+      "seconds": 90.25
+    },
+    {
+      "name": "minima_logger_differential",
+      "seconds": 6.04
+    },
+    {
+      "name": "minima_logger_worker",
+      "seconds": 1.12
+    },
+    {
+      "name": "command_runner_errors_differential",
+      "seconds": 6.57
+    },
+    {
+      "name": "chain_commands_differential",
+      "seconds": 23.19
+    },
+    {
+      "name": "main_runtime_differential",
+      "seconds": 5.0
+    },
+    {
+      "name": "main_ownership",
+      "seconds": 1.92
+    },
+    {
+      "name": "main_lifecycle_commands_differential",
+      "seconds": 2.88
+    },
+    {
+      "name": "network_peer_commands_differential",
+      "seconds": 5.53
+    },
+    {
+      "name": "ping_command_differential",
+      "seconds": 4.96
+    },
+    {
+      "name": "network_status_command_differential",
+      "seconds": 4.89
+    },
+    {
+      "name": "trace_clock_command_differential",
+      "seconds": 2.69
+    },
+    {
+      "name": "healthcheck_command_differential",
+      "seconds": 9.93
+    },
+    {
+      "name": "logs_command_differential",
+      "seconds": 3.12
+    },
+    {
+      "name": "node_status_command_differential",
+      "seconds": 14.6
+    }
+  ],
+  "seconds": 952.17
+}
