@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 368 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 369 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -262,7 +262,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/signatures/verify.java` | `src/org/minima/system/commands/signatures/verify.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/tutorial.java` | `src/org/minima/system/commands/tutorial.cpp` | unported | — |
 | `src/org/minima/system/commands/txn/txnaddamount.java` | `src/org/minima/system/commands/txn/txnaddamount.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/txn/txnauto.java` | `src/org/minima/system/commands/txn/txnauto.cpp` | unported | — |
+| `src/org/minima/system/commands/txn/txnauto.java` | `src/org/minima/system/commands/txn/txnauto.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/txn/txnbasics.java` | `src/org/minima/system/commands/txn/txnbasics.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/txn/txncheck.java` | `src/org/minima/system/commands/txn/txncheck.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/txn/txnclear.java` | `src/org/minima/system/commands/txn/txnclear.cpp` | implemented_partial | — |

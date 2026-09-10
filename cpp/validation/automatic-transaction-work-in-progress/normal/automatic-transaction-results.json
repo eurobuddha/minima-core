@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 414,
+  "total_programs": 414,
+  "operations": 1655,
+  "sql_calls": 29925,
+  "failures": [],
+  "scope": "Actual registered txnauto and static helper with existing wallet, chain/MMR, miner, mempool, funding/signing commands and recording SQL. Exact stored wire and serialized replies, selected VM exception prose normalized. Independent cleanup, conservation, change-only output and signature checks. No durable SQL, network admission, arbitrary inherited reference/concurrency or full-node parity certification."
+}

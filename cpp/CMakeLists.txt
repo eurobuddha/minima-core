@@ -1170,3 +1170,10 @@ add_executable(peers_command_runtime support/main_runtime.cpp support/MainNetwor
 target_link_libraries(peers_command_runtime PRIVATE minima_file_port)
 add_test(NAME peers_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/peers_command_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(peers_command_differential PROPERTIES TIMEOUT 240)
+
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/txn/txnauto.cpp)
+add_executable(automatic_transaction_runtime support/wallet_commands.cpp)
+target_link_libraries(automatic_transaction_runtime PRIVATE minima_file_port)
+add_test(NAME automatic_transaction_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/automatic_transaction_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(automatic_transaction_differential PROPERTIES TIMEOUT 300)

@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 52: command_runner_differential
+1/1 Test #52: command_runner_differential ......   Passed    2.85 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   2.85 sec

@@ -23,6 +23,11 @@ txnutils supplies shared proof/script construction and linked burn-transaction c
 
 The native counterpart now compiles. It reuses searcher, MMR, Witness, wallet script/signing and transaction serialization. A burn is represented by input/output difference plus a link, not by an output sent to a special address.
 
+The existing burn builder now also serves txnauto's static helper through
+AutomaticTransaction.hpp. The burn path retains its late amount check and
+link assignment; txnauto additionally validates before coin search and leaves
+the default link untouched. See the [automatic-transaction lab](../../../../../../../new-tests/automatic-transaction.md).
+
 ## Understanding the tests
 
 The helper experiments distinguish strict/permissive failures, original input versus resolved proof coin, floating selection, duplicated calls and proof-before-script errors. Burn cases cover excluded/pending coins, zero/invalid amounts, change, exact link hash, deduplicated signatures and sign:false. Assert key-use consumption on late signing failure.

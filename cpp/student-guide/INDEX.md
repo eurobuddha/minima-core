@@ -498,7 +498,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | File | Teaching state | Native state |
 |---|---|---|
 | [txnaddamount.java](files/src/org/minima/system/commands/txn/txnaddamount.md) | authored | implemented_partial |
-| [txnauto.java](files/src/org/minima/system/commands/txn/txnauto.md) | authored | unported |
+| [txnauto.java](files/src/org/minima/system/commands/txn/txnauto.md) | authored | implemented_partial |
 | [txnbasics.java](files/src/org/minima/system/commands/txn/txnbasics.md) | authored | implemented_partial |
 | [txncheck.java](files/src/org/minima/system/commands/txn/txncheck.md) | authored | implemented_partial |
 | [txnclear.java](files/src/org/minima/system/commands/txn/txnclear.md) | authored | implemented_partial |

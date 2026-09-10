@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/txn/txnauto.java) · `src/org/minima/system/commands/txn/txnauto.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/txn/txnauto.java) · [C++ counterpart](../../../../../../../../src/org/minima/system/commands/txn/txnauto.cpp)
 
 ## Purpose
 
@@ -20,21 +20,21 @@ txnauto’s command creates a stored draft through txnaddamount, then optionally
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse nested command orchestration for runCommand, and preserve the separate static helper’s actual body when mapping. It must not be silently replaced by the superficially similar payment workflow.
+The native command reuses actual registered txnaddamount and txnsign, with CommandResult for typed child status/error handling. Proof preparation calls txnutils directly. The static helper shares the established burn builder through AutomaticTransaction.hpp: early amount validation is enabled, the link assignment is omitted, and signing is required. Database/miner lookup order and the unused address argument are preserved.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed command fixtures assert creation/deletion order, nested arguments, returned-status versus thrown-exception cleanup and mmrscript/sign defaults. Separate static-helper cases assert unused address, only-change outputs, exact input-output difference, pending exclusions, proof-history selection and key-use changes. No existing runner fake-command case executes these absent bodies.
+The [automatic-transaction lab](../../../../../../../new-tests/automatic-transaction.md) uses real child commands, Java-generated coins/proofs/keys and recording SQL. It compares stored transaction/witness wire, replies, SQL effects, locks and errors. Independent checks distinguish deletion from retained proof failures and verify signatures. Static-helper checks cover unused addresses including null, change-only outputs, input/output difference and the default one-byte link hash.
 
 - [Actual command construction path](../../../../../../../../../upstream-study/src/org/minima/system/commands/txn/txnaddamount.java)
 - [Witness preparation](../../../../../../../../../upstream-study/src/org/minima/system/commands/txn/txnutils.java)
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Both builds pass 414 programs / 1,655 operations. Consult the lab and retained reports for regression results; finite tests do not certify every inherited API.
 
 ## Limits
 
-No transaction was created or signed. Deleting a row after nested failure does not undo shared coin locks or signatures already consumed. The helper’s copied burn error text is another reason to test behavior rather than infer it from names.
+Fixture transactions are created and signed using real components; durable storage and network admission remain unverified. Deleting a row after nested failure does not undo shared coin locks or signatures already consumed. The helper’s copied burn error text is another reason to test behavior rather than infer it from names.
 
 ## Check your understanding
 

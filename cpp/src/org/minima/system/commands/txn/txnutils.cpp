@@ -1,4 +1,5 @@
 #include "txnutils.hpp"
+#include "support/AutomaticTransaction.hpp"
 #include "org/minima/database/MinimaDB.hpp"
 #include "org/minima/system/brains/TxPoWSearcher.hpp"
 #include "org/minima/system/brains/TxPoWGenerator.hpp"
@@ -66,11 +67,18 @@ void txnutils::setMMRandScripts(const Coin& coin, Witness& witness) {
 }
 std::shared_ptr<TxnRow> txnutils::createBurnTransaction(const std::vector<std::string>& excluded,
         const MiniData& link, const MiniNumber& amount, bool sign) {
+    return automatic_transaction::create(excluded,&link,&amount,sign,false);
+}
+std::shared_ptr<TxnRow> automatic_transaction::create(const std::vector<std::string>& excluded,
+        const MiniData* link,const MiniNumber* suppliedAmount,bool sign,bool validateFirst){
     auto row=std::make_shared<TxnRow>("temp",std::make_shared<Transaction>(),std::make_shared<Witness>());
     auto db=sqlRequired(MinimaDB::getDB()).getTxPoWDB();
-    auto miner=getMiner();
+    auto miner=txnutils::getMiner();
     auto wallet=sqlRequired(MinimaDB::getDB()).getWallet();
     auto tip=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWTree()).getTip();
+    if(!suppliedAmount)throw JavaNullPointerException("null automatic transaction amount");
+    const auto& amount=*suppliedAmount;
+    if(validateFirst&&!amount.isValidMinimaValue())throw CommandException("Invalid Minima amount to send.. "+amount.toString());
     auto relevant=TxPoWSearcher::getRelevantUnspentCoins(tip,"0x00",true);
     auto total=MiniNumber::ZERO;
     std::vector<Coin> coins;
@@ -110,7 +118,7 @@ std::shared_ptr<TxnRow> txnutils::createBurnTransaction(const std::vector<std::s
         if(!text) throw JavaNullPointerException("null change address");
         transaction->addOutput(Coin(Coin::COINID_OUTPUT,MiniData::fromHex(*text),change,Token::TOKENID_MINIMA,false));
     }
-    transaction->setLinkHash(link);
+    if(link)transaction->setLinkHash(*link);
     TxPoWGenerator::precomputeTransactionCoinID(*transaction);
     transaction->calculateTransactionID();
     if(sign) for(const auto& key:keys) {

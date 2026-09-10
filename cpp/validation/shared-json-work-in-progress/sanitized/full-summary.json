@@ -1,0 +1,23 @@
+{
+  "original_ctest_entries": 204,
+  "initial_passed": 202,
+  "initial_failures": [
+    {
+      "index": 1,
+      "name": "MiniByteTests",
+      "result": "Subprocess aborted***Exception:   0.33 sec"
+    },
+    {
+      "index": 69,
+      "name": "nio_message_differential",
+      "result": "***Failed  103.80 sec"
+    }
+  ],
+  "seconds": 5556.22,
+  "terminal_exit": 8,
+  "reruns": {
+    "MiniByteTests": "minibyte-ctest-rerun.txt",
+    "nio_message_differential": "nio-message-rerun-summary.json"
+  },
+  "scope": "Original shared-JSON sanitizer baseline completed. Both failures have retained passing explicit reruns; this is composite evidence, not an uninterrupted full-suite pass or current 211-test validation. Baseline executables precede later command/Authorizer changes."
+}

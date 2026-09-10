@@ -1,6 +1,7 @@
 #include "org/minima/system/params/GlobalParams.hpp"
 #include "SqlRecordingFixture.hpp"
 #include "TxPoWSearcherFixture.hpp"
+#include "org/minima/system/commands/txn/txnauto.hpp"
 #include "org/minima/database/MinimaDB.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -323,6 +324,12 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 data->setInCascade(flag("cascade"));data->setOnMainChain(flag("onChain"));
                 MinimaDB::getDB()->getTxPoWDB()->getCompleteMemPool()->put(pow->getTxPoWID(),data);
                 result=pow->isTransaction();
+            }else if(op=="automaticHelper") {
+                std::optional<MiniNumber> amount;if(!config->get("amount").isNull())amount.emplace(config->getString("amount"));
+                auto row=commands::txnauto::createTransaction(string(config->get("address")),amount?&*amount:nullptr);
+                JSONObject value;value.put("row",row->toJSON());value.put("wire",MiniData(row->serialise()).to0xString());JSONArray verified;
+                for(const auto& signature:row->getWitness()->getAllSignatures()){TreeKey key;key.setPublicKey(signature.getRootPublicKey());verified.add(key.verify(row->getTransaction()->getTransactionID(),signature));}
+                value.put("verified",verified);result=value;
             }else if(op=="burn") {
                 std::vector<std::string> excluded;for(const auto& id:array(config->get("exclude")).elements()) excluded.push_back(id.asString());
                 auto row=commands::txnutils::createBurnTransaction(excluded,MiniData::fromHex(config->getString("link")),MiniNumber(config->getString("amount")),!config->containsKey("sign")||flag("sign"));

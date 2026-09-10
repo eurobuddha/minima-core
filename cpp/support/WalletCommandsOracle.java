@@ -344,6 +344,10 @@ public class WalletCommandsOracle extends SqlDBOracle {
                     pow.setHeaderBodyHash();pow.calculateTXPOWID();var data=new org.minima.database.txpowdb.ram.RamData(pow);
                     data.setInCascade(Boolean.TRUE.equals(config.get("cascade")));data.setOnMainChain(Boolean.TRUE.equals(config.get("onChain")));
                     MinimaDB.getDB().getTxPoWDB().getCompleteMemPool().put(pow.getTxPoWID(),data);result=pow.isTransaction();
+                }else if(op.equals("automaticHelper")){
+                    var row=org.minima.system.commands.txn.txnauto.createTransaction((String)config.get("address"),config.get("amount")==null?null:new org.minima.objects.base.MiniNumber(config.getString("amount")));
+                    var value=new JSONObject();value.put("row",row.toJSON());value.put("wire",org.minima.objects.base.MiniData.getMiniDataVersion(row).to0xString());var verified=new JSONArray();
+                    for(var signature:row.getWitness().getAllSignatures()){var key=new org.minima.objects.keys.TreeKey();key.setPublicKey(signature.getRootPublicKey());verified.add(key.verify(row.getTransaction().getTransactionID(),signature));}value.put("verified",verified);result=value;
                 }else if(op.equals("burn")){
                     var excluded=new ArrayList<String>();for(Object id:(JSONArray)config.get("exclude"))excluded.add((String)id);
                     var row=org.minima.system.commands.txn.txnutils.createBurnTransaction(excluded,new org.minima.objects.base.MiniData(config.getString("link")),new org.minima.objects.base.MiniNumber(config.getString("amount")),!config.containsKey("sign")||Boolean.TRUE.equals(config.get("sign")));

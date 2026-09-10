@@ -1,3 +1,51 @@
+# Code Review — txnauto and shared automatic transaction builder
+
+## Summary
+
+The mapped command preserves the source's nested-command orchestration and
+failure cleanup. Its static helper reuses the proven burn algorithm while
+retaining the source's early amount check, unused address argument, default
+link hash and mandatory signing. The full native-node goal is unfinished.
+
+## Findings
+
+No unresolved defect was found in this scoped implementation review. Parameter
+order and duplicate checks precede insertion. False child statuses delete the
+row before forwarding the typed error; direct proof failures leave it present.
+Identifier concatenation is preserved, including space/separator behavior.
+The helper resolves database/miner/wallet/tree before checking nullable amount,
+filters mining/mempool coins, constructs proofs/change and signs once per key.
+The existing burn API still validates late, supports exclusions/optional signing
+and explicitly assigns its supplied link. No payment output was invented for
+the unused address argument.
+
+A test expectation assumed a 32-byte zero link. The pinned default is one byte,
+0x00, and the implementation already preserved it. The corrected assertion and
+initial failure are retained. The Java fixture's added type names also required
+qualification before its initial compile could pass.
+
+## Validation
+
+Both comparisons pass 414 programs / 1655 operations / 29925 SQL observations.
+Normal/sanitizer durations: 34.16s / 177.74s. Independent assertions cover cleanup,
+retained rows, actual signature validity, change-only outputs and conservation.
+Both builds pass the existing 671-program proof/burn corpus (2734 operations,
+41653 SQL calls), 736-program funding corpus (3418 operations,39016 SQL calls),
+and 1265 runner cases. Full normal and sanitizer builds/relinks pass.
+All457 student guides pass the structural audit; this is not parity certification.
+
+The older shared-JSON sanitizer baseline is terminal:202/204 initially, with
+passing reruns for the stale MiniByte catch and unchanged NIO timeout case.
+Full log and composite summary saved. No full-current-211-suite pass is claimed.
+
+## Verdict
+
+Approve this scoped checkpoint. Durable storage, network admission, native entry
+point, arbitrary inherited reference/subclass/concurrency behavior and full-node
+integration remain open. The source map keeps all counterparts partial.
+
+## Previous scoped reviews
+
 # Code Review — peers command and network fixture extension
 
 ## Summary

@@ -1,0 +1,46 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "status": "focused and all affected comparisons pass both builds; both full builds pass",
+  "counterparts": 369,
+  "production": 325,
+  "mapped_tests": 44,
+  "absent": 88,
+  "ctest_registered": 211,
+  "programs": 414,
+  "operations": 1655,
+  "sql_calls": 29925,
+  "normal": true,
+  "sanitized": true,
+  "seconds": [
+    34.16,
+    177.74
+  ],
+  "reuse": [
+    "src/org/minima/system/commands/txn/txnaddamount.cpp",
+    "src/org/minima/system/commands/txn/txnsign.cpp",
+    "src/org/minima/system/commands/txn/txnutils.cpp",
+    "src/support/CommandResult.hpp",
+    "support/wallet_commands.cpp",
+    "support/WalletCommandsOracle.java",
+    "tools/wallet_commands_differential.py"
+  ],
+  "adaptation": "Existing burn builder shared via AutomaticTransaction.hpp; txnauto enables early validation, passes no excluded coins or link assignment, always signs and ignores address as pinned source does.",
+  "sibling_candidate": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/wallet/Wallet.hpp",
+  "sibling_difference": "Single-use WOTS wallet with different key/address model; no custom transaction DB or equivalent automatic/burn builder.",
+  "affected": {
+    "inputs_programs_per_build": 671,
+    "inputs_operations_per_build": 2734,
+    "inputs_sql_calls_per_build": 41653,
+    "funding_programs_per_build": 736,
+    "funding_operations_per_build": 3418,
+    "funding_sql_calls_per_build": 39016,
+    "runner_cases_per_build": 1265
+  },
+  "normal_full_build": true,
+  "pending": [
+    "Complete remaining 44 production and 44 test counterparts, inherited APIs and native integration",
+    "Validate full current runtime before full-port completion"
+  ],
+  "limits": "Finite real transaction/proof/signature operations with recording SQL. No durable storage, network admission, arbitrary concurrent/subclass/reference/platform or full-node parity certification.",
+  "sanitized_full_build": true
+}

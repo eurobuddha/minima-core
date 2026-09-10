@@ -1,3 +1,41 @@
+# Current work — txnauto validated and older baseline finished
+
+Project/branch MinimaCoreC++. This turn is PROGRESS. Added txnauto.cpp/hpp,
+registered command and a nullable static helper. Shared txnutils burn algorithm
+through src/support/AutomaticTransaction.hpp: txnauto enables early validity,
+no link assignment, always signs, ignores address as source does. Existing burn
+path preserves late validation, exclusions, link and optional signing.
+
+Mapping369 counterparts (325production+44tests),88absent(44production+44tests),
+211CTest. All457 student guides authored/audited. All counterparts still partial;
+full457-file/native-node goal active/incomplete. Lab automatic-transaction.md
+written before tests. Normal and sanitizer414programs1655ops29925SQL pass
+34.16s/177.74s. Initial one-byte/default-link expectation failure retained.
+All affected checks pass BOTH current builds: inputs671programs2734ops41653SQL;
+funding736programs3418ops39016SQL; runner1265cases. Full normal+sanitizer builds
+and relinks pass. Evidence:validation/automatic-transaction-work-in-progress.
+
+NO LIVE baseline now. Original sanitizer handle42976 TERMINAL exit8 after
+5556.22s:202/204 initially, only MiniByteTests and nio_message_differential fail.
+Previously saved reruns both pass; NIO unchanged1918programs4677packets same100s
+child deadline. Whole terminal log+summary now retained in
+validation/shared-json-work-in-progress/sanitized/full-ctest-initial.txt and
+full-summary.json. Progress/provenance updated. This is composite older baseline
+evidence, not fresh full-current211suite. Old normalbaseline203/204+MiniBytererun.
+All sanitizer consumers now rebuilt; no baseline executable protection needed.
+All current jobs terminal; do not restart old handles. Last numbered checkpoint362.
+
+Ready to commit/bundle this scoped change; inspect Git HEAD/status and newest
+local-backups manifest to see whether preservation finished. Prior saved HEAD
+af59f634323187cdab2c5a6ce9bd6cf8576f843a, verified/restored bundle
+local-backups/MinimaCoreC++-20260910T215307Z.bundle, SHA256
+f23af117cbd6c733eb2c28971e173fd961aa6d67cd8a8c87ceee95448a69e34b.
+Reuse /tmp/minima-hashtest-backup.py, additionally verify txnauto source, lab and
+sanitizer report in recovery clone. No GitHub push. Continue missing production,
+tests, full inherited APIs, native entry point and durable SQL integration.
+
+Older notes follow; current counts and terminal statuses above supersede them.
+
 # Current work — peers port and integration checks pass
 
 Project/branch MinimaCoreC++. This goal turn is PROGRESS. Added peers.cpp/hpp,

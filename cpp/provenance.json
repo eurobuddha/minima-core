@@ -2357,7 +2357,7 @@
   },
   "shared_json_rpc_work_in_progress": {
     "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
-    "status": "work_in_progress_full_regressions_running",
+    "status": "both_original_baselines_complete_with_retained_passing_reruns",
     "counterparts": 363,
     "absent": 94,
     "ctest_entries": 204,
@@ -2384,18 +2384,21 @@
     ],
     "initial_failures": "Three indexed-read exception categories, corrected and rerun in both builds.",
     "full_regressions": {
-      "state": "running",
-      "normal_session": 29381,
-      "sanitized_session": 42976,
+      "state": "terminal: normal203/204 and sanitizer202/204 initially; all failed tests have passing reruns",
+      "normal_session": null,
+      "sanitized_session": null,
       "normal_log": "/tmp/minima-shared-json-all-tests.log",
       "sanitized_log": "/tmp/minima-shared-json-all-tests-san.log",
-      "known_failure": "MiniByteTests stale out_of_range catch; corrected to existing wire::EOFException. Target rebuilt and executable rerun directly with exit 0 in both builds; full suite retains its earlier failure."
+      "known_failure": "Initial MiniByte stale catch corrected and explicit CTest reruns pass both builds. Initial sanitizer NIO child exceeded 100 seconds; unchanged direct driver rerun passes all 1918 programs / 4677 packets under the same deadline."
     },
     "pending": [
-      "Finish both full regression runs, inspect every failure and rerun affected checks",
-      "Complete actual rpc-command listener enable/authenticated integration"
+      "Rebuild remaining current sanitizer consumers and validate current integration after later command/library changes"
     ],
-    "limits": "Finite iterator schedules and concurrent stress, no full inherited Java collection API or complete JVM concurrency proof. Source field accesses remain separate, not whole-command/tree transactions. No full-port or completed RPC checkpoint claim."
+    "limits": "Finite iterator schedules and concurrent stress, no full inherited Java collection API or complete JVM concurrency proof. Source field accesses remain separate, not whole-command/tree transactions. No full-port or completed RPC checkpoint claim.",
+    "normal_full_outcome": "203/204 initially, remaining MiniByte stale-test fix passes explicit CTest rerun; full-summary.json records scope",
+    "sanitized_full_outcome": "202/204 initial; MiniByte and unchanged NIO reruns pass; sanitized/full-summary.json records limits",
+    "rpc_live_integration": "Passes both builds; evidence in ../rpc-live-work-in-progress",
+    "current_normal_affected_tests": 20
   },
   "rpc_live_integration": {
     "status": "validated live RPC integration; broader regressions running",
@@ -2664,5 +2667,51 @@
       "45 production and 44 test counterparts absent; all counterparts still require full parity verification"
     ],
     "limits": "Finite queue-only peer submissions, real files and loopback HTTP. Shuffled subsets validated independently; selected diagnostic normalization. No live peer admission, public DNS, arbitrary concurrent/subclass/reference/platform or complete native-node parity claim."
+  },
+  "automatic_transaction_command": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "status": "focused and all affected comparisons pass both builds; both full builds pass",
+    "counterparts": 369,
+    "production": 325,
+    "mapped_tests": 44,
+    "absent": 88,
+    "ctest_registered": 211,
+    "programs": 414,
+    "operations": 1655,
+    "sql_calls": 29925,
+    "normal": true,
+    "sanitized": true,
+    "seconds": [
+      34.16,
+      177.74
+    ],
+    "reuse": [
+      "src/org/minima/system/commands/txn/txnaddamount.cpp",
+      "src/org/minima/system/commands/txn/txnsign.cpp",
+      "src/org/minima/system/commands/txn/txnutils.cpp",
+      "src/support/CommandResult.hpp",
+      "support/wallet_commands.cpp",
+      "support/WalletCommandsOracle.java",
+      "tools/wallet_commands_differential.py"
+    ],
+    "adaptation": "Existing burn builder shared via AutomaticTransaction.hpp; txnauto enables early validation, passes no excluded coins or link assignment, always signs and ignores address as pinned source does.",
+    "sibling_candidate": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/wallet/Wallet.hpp",
+    "sibling_difference": "Single-use WOTS wallet with different key/address model; no custom transaction DB or equivalent automatic/burn builder.",
+    "affected": {
+      "inputs_programs_per_build": 671,
+      "inputs_operations_per_build": 2734,
+      "inputs_sql_calls_per_build": 41653,
+      "funding_programs_per_build": 736,
+      "funding_operations_per_build": 3418,
+      "funding_sql_calls_per_build": 39016,
+      "runner_cases_per_build": 1265
+    },
+    "normal_full_build": true,
+    "pending": [
+      "Complete remaining 44 production and 44 test counterparts, inherited APIs and native integration",
+      "Validate full current runtime before full-port completion"
+    ],
+    "limits": "Finite real transaction/proof/signature operations with recording SQL. No durable storage, network admission, arbitrary concurrent/subclass/reference/platform or full-node parity certification.",
+    "sanitized_full_build": true
   }
 }

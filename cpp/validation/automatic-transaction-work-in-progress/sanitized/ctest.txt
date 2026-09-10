@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 211: automatic_transaction_differential
+1/1 Test #211: automatic_transaction_differential ...   Passed  177.74 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) = 177.75 sec

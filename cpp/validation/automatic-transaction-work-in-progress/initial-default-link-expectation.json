@@ -1,0 +1,899 @@
+{
+  "passed": false,
+  "programs": 260,
+  "total_programs": 414,
+  "operations": 1042,
+  "sql_calls": 17934,
+  "failures": [
+    {
+      "case": 260,
+      "runtime": "java",
+      "error": "AssertionError({'inputs': [{'coinid': '0x68', 'amount': '4', 'address': '0x01', 'miniaddress': 'Mx200104JMFSAS', 'tokenid': '0x00', 'token': None, 'storestate': True, 'state': [], 'spent': False, 'mmrentry': '3', 'created': '3'}], 'outputs': [{'coinid': '0xFDEFBC52CB5AC21143922C4DAB01ACC142DF7771408B89118C367171528817C6', 'amount': '3', 'address': '0x01', 'miniaddress': 'Mx200104JMFSAS', 'tokenid': '0x00', 'token': None, 'storestate': False, 'state': [], 'spent': False, 'mmrentry': '0', 'created': '0'}], 'state': [], 'linkhash': '0x00', 'transactionid': '0x11C1E44BBA3EA6FA71418E7DAFA4BCEB250CA58D5576E6CD8201F7F03A293330'})",
+      "request": {
+        "funding": true,
+        "ops": [
+          {
+            "op": "load",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00"
+          },
+          {
+            "op": "chain",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00",
+            "history": "8",
+            "nodes": [
+              {
+                "pow": "0x000100000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "relevant": [
+                  "0x0000000165000000010100010100000001000100010000000001000000010000010000"
+                ],
+                "txns": [],
+                "mmr": "0x0001000001000000000101000101000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101"
+              },
+              {
+                "pow": "0x0001010000000100000203E800010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x0000000166000000010100010200000001000100010000000001010000010100010000"
+                ],
+                "relevant": [
+                  "0x0000000166000000010100010200000001000100010000000001010000010100010000"
+                ],
+                "txns": [],
+                "mmr": "0x0001010001000000000102000103000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D0001030001000001000000000101000000207772FE6DCC728EE44A3B44D49044BE2A42B064C6822D857F885067FBE529DE9A000102000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101"
+              },
+              {
+                "pow": "0x0001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x0000000167000000010100010300000001000100010000000001020000010200010000"
+                ],
+                "relevant": [
+                  "0x0000000167000000010100010300000001000100010000000001020000010200010000"
+                ],
+                "txns": [],
+                "mmr": "0x0001020001000000000103000102000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D000103000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103"
+              },
+              {
+                "pow": "0x000103000000010000020BB800010300000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x0000000168000000010100010400000001000100010000000001030000010300010000"
+                ],
+                "relevant": [
+                  "0x0000000168000000010100010400000001000100010000000001030000010300010000"
+                ],
+                "txns": [],
+                "mmr": "0x00010300010000000001040001050001010001000000000101000000206735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE135000107000101000100000000010000000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D0001030001000001000000000103000000209406DD4ECCBF58CB4E91E861F099B1C9E7DE328B3E0FA687A782FC9C2D077A41000104000100000100000000010200000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5000103000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A"
+              },
+              {
+                "pow": "0x000104000000010000020FA000010400000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001040001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A"
+              },
+              {
+                "pow": "0x00010500000001000002138800010500000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001050001000000000104000101000102000100000000010000000020E622C2E047E0AA8FF37E7D86F4487FEF29BC84E957B9C450EAA54E17B571852700010A"
+              },
+              {
+                "pow": "0x00010600000001000002177000010600000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [
+                  "0x0000000166000000010100010200000001000100010000000001010100010100010000"
+                ],
+                "relevant": [
+                  "0x0000000166000000010100010200000001000100010000000001010100010100010000"
+                ],
+                "txns": [],
+                "mmr": "0x00010600010000000001040001050001010001000000000101000000206735C8B0DC7756BD4978E192B7B7C7155D3D35DA7B90ECAC7D5670DE261EE13500010700010100010000000001000000002059CBE28280F3653697D0442A6A900798C3F17E189EFE933D2B021F0D55DE924F0001010001000001000000000101000000208DA7A79EA29FB82691CC3A375D7B80F1B90EDD0440AE5D608352A2737AC2446C000100000100000100000000010000000020D3F07A1B8D757648423D9D242F9B943A1E52990620B173E2537DD8D21449B4AC000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x000107000000010000021B5800010700000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001070001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x000108000000010000021F4000010800000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001080001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x00010900000001000002232800010900000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x0001090001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x00010A00000001000002271000010A00000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x00010A0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              },
+              {
+                "pow": "0x00010B000000010000022AF800010B00000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100",
+                "coins": [],
+                "relevant": [],
+                "txns": [],
+                "mmr": "0x00010B0001000000000104000101000102000100000000010000000020D1E3894FBB50B16A51E0102AE76233C4CFD99070386A18898895EE3701151E8A000108"
+              }
+            ]
+          },
+          {
+            "op": "mining",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00"
+          },
+          {
+            "op": "automaticHelper",
+            "rows": [
+              {
+                "size": 2,
+                "depth": 2,
+                "uses": 0,
+                "maxuses": 4,
+                "modifier": "0x00",
+                "privatekey": "0xC4DD9EF0F0591E2CA51FC8E40EF8A9C75520B33B5AF952E5558D7A53F519DA3D",
+                "publickey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                "script": "RETURN TRUE",
+                "address": "0x01",
+                "simple": 1,
+                "defaultaddress": 1,
+                "track": 1,
+                "phrase": "fixture seed",
+                "seed": "0xAA"
+              }
+            ],
+            "probe": [
+              "0x01"
+            ],
+            "caller": "0x00",
+            "amount": "1",
+            "address": null
+          }
+        ],
+        "helperCheck": true
+      },
+      "stderr": "",
+      "raw": {
+        "ops": [
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "coinLocks": [],
+            "coinLockEnabled": false,
+            "events": [
+              [
+                "connect",
+                "jdbc:h2:/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/automatic-transaction-d1023t8g/wallet;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE",
+                "SA",
+                ""
+              ],
+              [
+                "connection.setAutoCommit",
+                1,
+                true
+              ],
+              [
+                "connection.createStatement",
+                1
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `keys` (  `id` bigint auto_increment,  `size` int NOT NULL,  `depth` int NOT NULL,  `uses` bigint NOT NULL,  `maxuses` bigint NOT NULL,  `modifier` varchar(80) NOT NULL,  `privatekey` varchar(80) NOT NULL,  `publickey` varchar(80) NOT NULL)"
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `scripts` (  `id` bigint auto_increment,  `script` varchar(8192) NOT NULL,  `address` varchar(80) NOT NULL,  `simple` int NOT NULL,  `defaultaddress` int NOT NULL,  `publickey` varchar(80) NOT NULL,  `track` int NOT NULL)"
+              ],
+              [
+                "statement.execute",
+                "CREATE TABLE IF NOT EXISTS `seed` (  `id` int NOT NULL UNIQUE,  `phrase` varchar(8192) NOT NULL,  `seed` varchar(80) NOT NULL)"
+              ],
+              [
+                "statement.close"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT IGNORE INTO keys ( size, depth, uses, maxuses, modifier, privatekey, publickey ) VALUES ( ?, ?, ?, ? ,? ,? ,? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM keys"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM keys WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=? WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET uses=uses+?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET privatekey='0x00' WHERE privatekey!='0x00'"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE keys SET privatekey=? WHERE publickey=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT IGNORE INTO scripts ( script, address, simple, defaultaddress, publickey, track ) VALUES ( ? , ? , ? , ? , ? , ? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "DELETE FROM scripts WHERE address=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE simple<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE track<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE defaultaddress<>0"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM scripts WHERE address=?"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "SELECT * FROM seed WHERE id=1"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "INSERT INTO seed ( id, phrase, seed ) VALUES ( 1 , ? , ? )"
+              ],
+              [
+                "connection.prepareStatement",
+                1,
+                "UPDATE seed SET phrase=?, seed=? WHERE id=1"
+              ],
+              [
+                "prepared.executeQuery",
+                2
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getInt",
+                "size"
+              ],
+              [
+                "rows.getInt",
+                "depth"
+              ],
+              [
+                "rows.getInt",
+                "uses"
+              ],
+              [
+                "rows.getInt",
+                "maxuses"
+              ],
+              [
+                "rows.getString",
+                "modifier"
+              ],
+              [
+                "rows.getString",
+                "privatekey"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "prepared.executeQuery",
+                11
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "script"
+              ],
+              [
+                "rows.getString",
+                "address"
+              ],
+              [
+                "rows.getInt",
+                "simple"
+              ],
+              [
+                "rows.getInt",
+                "defaultaddress"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.getInt",
+                "track"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "prepared.executeQuery",
+                16
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "phrase"
+              ],
+              [
+                "rows.getString",
+                "seed"
+              ],
+              [
+                "prepared.clearParameters",
+                15
+              ],
+              [
+                "prepared.setString",
+                15,
+                1,
+                "0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9"
+              ],
+              [
+                "prepared.executeQuery",
+                15
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "script"
+              ],
+              [
+                "rows.getString",
+                "address"
+              ],
+              [
+                "rows.getInt",
+                "simple"
+              ],
+              [
+                "rows.getInt",
+                "defaultaddress"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.getInt",
+                "track"
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "coinLocks": [],
+            "coinLockEnabled": false,
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": null,
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "coinLocks": [],
+            "coinLockEnabled": false,
+            "events": [],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          },
+          {
+            "value": {
+              "row": {
+                "id": "temp",
+                "transaction": {
+                  "inputs": [
+                    {
+                      "coinid": "0x68",
+                      "amount": "4",
+                      "address": "0x01",
+                      "miniaddress": "Mx200104JMFSAS",
+                      "tokenid": "0x00",
+                      "token": null,
+                      "storestate": true,
+                      "state": [],
+                      "spent": false,
+                      "mmrentry": "3",
+                      "created": "3"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "coinid": "0xFDEFBC52CB5AC21143922C4DAB01ACC142DF7771408B89118C367171528817C6",
+                      "amount": "3",
+                      "address": "0x01",
+                      "miniaddress": "Mx200104JMFSAS",
+                      "tokenid": "0x00",
+                      "token": null,
+                      "storestate": false,
+                      "state": [],
+                      "spent": false,
+                      "mmrentry": "0",
+                      "created": "0"
+                    }
+                  ],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0x11C1E44BBA3EA6FA71418E7DAFA4BCEB250CA58D5576E6CD8201F7F03A293330"
+                },
+                "witness": {
+                  "signatures": [
+                    {
+                      "signatures": [
+                        {
+                          "publickey": "0x1A62B6E1B25566B845C4591656B7DC0212A00A7C17216F5C0A6921E68BF218A1",
+                          "rootkey": "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE",
+                          "proof": {
+                            "blocktime": "0",
+                            "proof": [
+                              {
+                                "left": false,
+                                "data": {
+                                  "data": "0xB82C6609E3E418CD6707327C7C73B1895928C4AD15C3D88745C03AA1A5AEA787",
+                                  "value": "0"
+                                }
+                              }
+                            ],
+                            "prooflength": 1
+                          },
+                          "signature": "0xB8A667A58F72BA0FE3B1AF39483D8B7F6F190B351B1161D0D0800ED5B0D0703BA49DB3ACF977C339F00DC93C6559C0D2BFE0567E523EDEEA1F54CE78938E3E8234F479717CACFC2E4E4E93C823F155C829297EA4050E53E4CC829B125E00A2D30820B2AAD49F2A528094A24C599D3508739CE25F72029FED12400A3311F3AB0990B36E0CF9CDBD65D79542C5E22DBCCAE9923B17C9712B9EA20AB25E79503CB5B4D890BE3FB7EE04674A23943C99F85F7513677EC62A1B7C31934BFFDCBA69A10F0502152B5A7C9819AC152B62C1D355AEF5AE04945B863001430D0F206A453522334F60ECF6193ABA9C899741038E49BA076C69E75EA30E9B91E53A15001BA47657742D78A6B659CE312D1A41CE2AB9FE3EE2BF60E44E6564BCC55F5AC6E2645EA8A181FC45F8FB04B74A348818EEAAD86118AC950D52DABA7EBB23795D4D28715A64086D72526827FC0FF58932547782725598A858BC56A3E892737C6F74D7C23395814FB888EFC7EE3FD07DAF5EB34147075E328B3D35494431E2339EDFDDAAFDC31AB01F01E1638809BA3B73734EEAE93E825021B06422F7CD19917E521F3B6577054C98F073AF46DCBF970CFC798C510E4AEE2965122892642D5E6B23C8D9085FAECD1F7E22608C300DE882781A5FD01C653B454E5B1AD6ABF07539F79266EE56E53E58294DC6601CFC92453A0513504F195DBA78AB410AD2E10FAC4C1B75150F5BCC7A4EA966C4568A76E09E6AC92E6ECED42446502C581E866CBD31E4E54066914024BD40143FBB11959728388017C229A1340E59C5CBA4FEDCA65A209B8632F90E2ADA3FB9AB924968782BFB100E30F48DFCACDBA126C9F222F43725887C88ABDCDC8E0D07F62A6A782723FF6B52C8CED8E38A26616E413FDB58567C31EC42B49924A848806B127A0EB12D92A34CDD522C75F3E97ACE92A89A79D3459F5DF23CC29C19B70EF1E10C412D304C90C83411D4DCCDA33D72CF78BBCE8151F56C8093A47F4EC2C20E8A3A58599F1C2FA7B6815F44F7F4CF924CE022CEBF4AA4FD258757C7F4D61FF5F0B2E3FACC2782484160362C59E24D35434665EC2E012E0253650667EE29BBDDC92BD5BC5FDB7FB1BCCB9DF6CDC6A2EACBB6CB9CC44E2E909568E0F685D2CA47863E030A8B215BCDFCD6CFC43DD2DCEACBAF393670D8CA23FA4866CCC041A018E5D81DEFC051434B50D737B63EB41AD5FA374D97C1B3336DAF90441C406078A5345BD26AFCDC1422013C6EC7E5BF2835650D127FFE7F1FEE015F0D194A9791BCDA91CAC8F6977A8AA2D748AB9D377945925D776EB0CBFB8B60FC34F5CF6339FAFE8BDE04269261A9268BE72B20A980C1089EAFE013251A1E85A2CFD9E13593012DEED561921902C999DB754C8DAA12C7B0CF9A9A42B053572D600D6A3C2E65B23DC9219ACF837F78120D127E70B5E131B2963ECF473BFA015E20469A0199AE41FA241E337E4756A9019F71503DDFCFF521ADD1FAD9E13DE5A9E55A351A7AF5CF99CE792F78AA6133696909AD882567755B38CEB088AF"
+                        },
+                        {
+                          "publickey": "0xCB22A93B62E05CC725CBD78F220E1B525D0D0E2C2F54F2685F4ACFF2ED9CB1F3",
+                          "rootkey": "0x55D28D1742E20CA11142B31FB493702A181D4591B245119C92CD0169473DB3ED",
+                          "proof": {
+                            "blocktime": "0",
+                            "proof": [
+                              {
+                                "left": false,
+                                "data": {
+                                  "data": "0xDC397F16BC57973BEE8B96A52F6DCE0F0D7044809D7E27622BA2D238C23FB8D8",
+                                  "value": "0"
+                                }
+                              }
+                            ],
+                            "prooflength": 1
+                          },
+                          "signature": "0xBD4422C9E2CAA2E9D7647690C874A6C76DCE72F9BD09439890A6F6133B29BF179E22F46EAE27FFA3B960BA403754C16CA1C4E2C440305E7437221D5863C242DF64B4E53E1E9097C4ABA81DFA2FC4063A27278AF2B75FCF2500EE6725342D3228610EF9283194BBF9E6A1CD22B8417E8C926C24FDDFD122C9E096524B2D7DC6F7C7CD280343DDEC02A758CD8B75AC31FE17A6310D84E63EDAA4EB847DB69B0739178C236807ADB88353403B70F14C94472889E49978768BB3502A0421DF0A1B79F86F1C489BA0D7053C54E1F4C95C26B03CFCD4D7D5B908027BD1AC4BC71BA863A805A16F175A0DA49684B486A332ED862A6C966288C0353F86E32BBED934630FF647FC67FCBE7065A89E93E1341B2FCAD623AB56396895FDF21F1DDE74EE0458246D5DAE0847EABC6488788F48E14BECDB065AEB3012D9EF4C8F0787C91B55AB1C0F3AC75A4DFCFA3F5315535CABF820D94C4C05EB5BE9493234DB5227685CF511B765537D41683C7B28D93F06A3C8F4104D1D612543D931FB0EBA6A6DEBEB954B86717508BCD41E91F48DF6057EB3DA91B80275B082B39FCC51BE5E50783D35F5E84B47B46AEB3581D17F838844662A706E053B425DB329B7056CDB12D70D03A25324D21A30A39AC7A232A0F7C047222CB3BFF4E5BE84DEF2F806435B5CE706C4C892BFB4872FDBD9DB2B056C2E85441CA369D1E2D44BAE269E8B006FF4E0DA7AD8362DE191B581FDE146F11D0BE75B78E4A2699862F5C9FA4AC91FF46AD241B12A90572FA582FE17A973FF403F0ADC959ED380CE04E6D488EA5D5F7F5C425C6E1F884997B6C39E3D263BCC998BD320DF39EE9A2CB7452E06B23B522D55E15195BD614096AE11EF6E80613C778BEEF470A39F7A0FF49494E77C113D82256805B9941C62D14F3F8C6C5AC5E739AA725867E8F8D4AC0224E9D5F072011099D0910E97E244237DEE78B6C9C928B4B6428E043F9903B5CAA027FBDF0EF4FBF1A259521EAA8F7A1D587B3DCDBCCDF481E091C6E1327661A4C06FE0DFADEB2840E0999EB687DB6D7C02AFD93B3C76CA7B243A3B7E4FD7B1A4CF65EDBEFFF81D23F80F109F6186D0389F5E62FBF974330ECA13584915B995AECAAE67F3883543DF14B6E48AFA413DD1E9AEF968A88203EE18BDADEA536DE077F4B47A74BAE5490FABBF8EB93FE89452AF4D93FB98F0381672CB980B44606393EDA3C455A156472E38E3DD018AB86E56516AAB6FFE273CD719BC5FB1E4FBC31D7C9A898BA76B7B6153B770C5A2FA515003DD1BD2E455716DE80FA1F22E864A3477CCD8BD5F39F605CC99962BD81E71DE649963B0C3A592504DAD0D5B3D6AD74E9AEDF41DBE7AEB9547D9F242D496F7DD429A095FD0892492E2EB18E689FBF1C706AE22D55D025C2880A1C959610BDE91E8EA7F62339A3130A6A246EF29BCECECAA065D76D5FEE46467914636F0BA903A7113EAA8EBE5F43737C9FD14E645B49FC6A8BA288298D81B3534DCF5CDB455E8CC9790BD974183926ACB8B473FD6D4C2685A34741DB7C371887C"
+                        }
+                      ]
+                    }
+                  ],
+                  "mmrproofs": [
+                    {
+                      "coin": {
+                        "coinid": "0x68",
+                        "amount": "4",
+                        "address": "0x01",
+                        "miniaddress": "Mx200104JMFSAS",
+                        "tokenid": "0x00",
+                        "token": null,
+                        "storestate": true,
+                        "state": [],
+                        "spent": false,
+                        "mmrentry": "3",
+                        "created": "3"
+                      },
+                      "proof": {
+                        "blocktime": "3",
+                        "proof": [
+                          {
+                            "left": true,
+                            "data": {
+                              "data": "0xADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F5",
+                              "value": "3"
+                            }
+                          },
+                          {
+                            "left": true,
+                            "data": {
+                              "data": "0xA791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D",
+                              "value": "3"
+                            }
+                          }
+                        ],
+                        "prooflength": 2
+                      }
+                    }
+                  ],
+                  "scripts": [
+                    {
+                      "script": "RETURN TRUE",
+                      "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                      "proof": {
+                        "blocktime": "0",
+                        "proof": [],
+                        "prooflength": 0
+                      }
+                    }
+                  ]
+                },
+                "outputcoindata": [
+                  "0x00000020FDEFBC52CB5AC21143922C4DAB01ACC142DF7771408B89118C367171528817C6000000010100010300000001000000010000000001000000010000010000"
+                ]
+              },
+              "wire": "0x0000000474656D70000101000000016800000001010001040000000100010001000000000103000001030001000000010100000020FDEFBC52CB5AC21143922C4DAB01ACC142DF7771408B89118C367171528817C60000000101000103000000010000000100000000010000000100000100000001000000000100000101000102000000201A62B6E1B25566B845C4591656B7DC0212A00A7C17216F5C0A6921E68BF218A100000440B8A667A58F72BA0FE3B1AF39483D8B7F6F190B351B1161D0D0800ED5B0D0703BA49DB3ACF977C339F00DC93C6559C0D2BFE0567E523EDEEA1F54CE78938E3E8234F479717CACFC2E4E4E93C823F155C829297EA4050E53E4CC829B125E00A2D30820B2AAD49F2A528094A24C599D3508739CE25F72029FED12400A3311F3AB0990B36E0CF9CDBD65D79542C5E22DBCCAE9923B17C9712B9EA20AB25E79503CB5B4D890BE3FB7EE04674A23943C99F85F7513677EC62A1B7C31934BFFDCBA69A10F0502152B5A7C9819AC152B62C1D355AEF5AE04945B863001430D0F206A453522334F60ECF6193ABA9C899741038E49BA076C69E75EA30E9B91E53A15001BA47657742D78A6B659CE312D1A41CE2AB9FE3EE2BF60E44E6564BCC55F5AC6E2645EA8A181FC45F8FB04B74A348818EEAAD86118AC950D52DABA7EBB23795D4D28715A64086D72526827FC0FF58932547782725598A858BC56A3E892737C6F74D7C23395814FB888EFC7EE3FD07DAF5EB34147075E328B3D35494431E2339EDFDDAAFDC31AB01F01E1638809BA3B73734EEAE93E825021B06422F7CD19917E521F3B6577054C98F073AF46DCBF970CFC798C510E4AEE2965122892642D5E6B23C8D9085FAECD1F7E22608C300DE882781A5FD01C653B454E5B1AD6ABF07539F79266EE56E53E58294DC6601CFC92453A0513504F195DBA78AB410AD2E10FAC4C1B75150F5BCC7A4EA966C4568A76E09E6AC92E6ECED42446502C581E866CBD31E4E54066914024BD40143FBB11959728388017C229A1340E59C5CBA4FEDCA65A209B8632F90E2ADA3FB9AB924968782BFB100E30F48DFCACDBA126C9F222F43725887C88ABDCDC8E0D07F62A6A782723FF6B52C8CED8E38A26616E413FDB58567C31EC42B49924A848806B127A0EB12D92A34CDD522C75F3E97ACE92A89A79D3459F5DF23CC29C19B70EF1E10C412D304C90C83411D4DCCDA33D72CF78BBCE8151F56C8093A47F4EC2C20E8A3A58599F1C2FA7B6815F44F7F4CF924CE022CEBF4AA4FD258757C7F4D61FF5F0B2E3FACC2782484160362C59E24D35434665EC2E012E0253650667EE29BBDDC92BD5BC5FDB7FB1BCCB9DF6CDC6A2EACBB6CB9CC44E2E909568E0F685D2CA47863E030A8B215BCDFCD6CFC43DD2DCEACBAF393670D8CA23FA4866CCC041A018E5D81DEFC051434B50D737B63EB41AD5FA374D97C1B3336DAF90441C406078A5345BD26AFCDC1422013C6EC7E5BF2835650D127FFE7F1FEE015F0D194A9791BCDA91CAC8F6977A8AA2D748AB9D377945925D776EB0CBFB8B60FC34F5CF6339FAFE8BDE04269261A9268BE72B20A980C1089EAFE013251A1E85A2CFD9E13593012DEED561921902C999DB754C8DAA12C7B0CF9A9A42B053572D600D6A3C2E65B23DC9219ACF837F78120D127E70B5E131B2963ECF473BFA015E20469A0199AE41FA241E337E4756A9019F71503DDFCFF521ADD1FAD9E13DE5A9E55A351A7AF5CF99CE792F78AA6133696909AD882567755B38CEB088AF0001000001010000000020B82C6609E3E418CD6707327C7C73B1895928C4AD15C3D88745C03AA1A5AEA78700010000000020CB22A93B62E05CC725CBD78F220E1B525D0D0E2C2F54F2685F4ACFF2ED9CB1F300000440BD4422C9E2CAA2E9D7647690C874A6C76DCE72F9BD09439890A6F6133B29BF179E22F46EAE27FFA3B960BA403754C16CA1C4E2C440305E7437221D5863C242DF64B4E53E1E9097C4ABA81DFA2FC4063A27278AF2B75FCF2500EE6725342D3228610EF9283194BBF9E6A1CD22B8417E8C926C24FDDFD122C9E096524B2D7DC6F7C7CD280343DDEC02A758CD8B75AC31FE17A6310D84E63EDAA4EB847DB69B0739178C236807ADB88353403B70F14C94472889E49978768BB3502A0421DF0A1B79F86F1C489BA0D7053C54E1F4C95C26B03CFCD4D7D5B908027BD1AC4BC71BA863A805A16F175A0DA49684B486A332ED862A6C966288C0353F86E32BBED934630FF647FC67FCBE7065A89E93E1341B2FCAD623AB56396895FDF21F1DDE74EE0458246D5DAE0847EABC6488788F48E14BECDB065AEB3012D9EF4C8F0787C91B55AB1C0F3AC75A4DFCFA3F5315535CABF820D94C4C05EB5BE9493234DB5227685CF511B765537D41683C7B28D93F06A3C8F4104D1D612543D931FB0EBA6A6DEBEB954B86717508BCD41E91F48DF6057EB3DA91B80275B082B39FCC51BE5E50783D35F5E84B47B46AEB3581D17F838844662A706E053B425DB329B7056CDB12D70D03A25324D21A30A39AC7A232A0F7C047222CB3BFF4E5BE84DEF2F806435B5CE706C4C892BFB4872FDBD9DB2B056C2E85441CA369D1E2D44BAE269E8B006FF4E0DA7AD8362DE191B581FDE146F11D0BE75B78E4A2699862F5C9FA4AC91FF46AD241B12A90572FA582FE17A973FF403F0ADC959ED380CE04E6D488EA5D5F7F5C425C6E1F884997B6C39E3D263BCC998BD320DF39EE9A2CB7452E06B23B522D55E15195BD614096AE11EF6E80613C778BEEF470A39F7A0FF49494E77C113D82256805B9941C62D14F3F8C6C5AC5E739AA725867E8F8D4AC0224E9D5F072011099D0910E97E244237DEE78B6C9C928B4B6428E043F9903B5CAA027FBDF0EF4FBF1A259521EAA8F7A1D587B3DCDBCCDF481E091C6E1327661A4C06FE0DFADEB2840E0999EB687DB6D7C02AFD93B3C76CA7B243A3B7E4FD7B1A4CF65EDBEFFF81D23F80F109F6186D0389F5E62FBF974330ECA13584915B995AECAAE67F3883543DF14B6E48AFA413DD1E9AEF968A88203EE18BDADEA536DE077F4B47A74BAE5490FABBF8EB93FE89452AF4D93FB98F0381672CB980B44606393EDA3C455A156472E38E3DD018AB86E56516AAB6FFE273CD719BC5FB1E4FBC31D7C9A898BA76B7B6153B770C5A2FA515003DD1BD2E455716DE80FA1F22E864A3477CCD8BD5F39F605CC99962BD81E71DE649963B0C3A592504DAD0D5B3D6AD74E9AEDF41DBE7AEB9547D9F242D496F7DD429A095FD0892492E2EB18E689FBF1C706AE22D55D025C2880A1C959610BDE91E8EA7F62339A3130A6A246EF29BCECECAA065D76D5FEE46467914636F0BA903A7113EAA8EBE5F43737C9FD14E645B49FC6A8BA288298D81B3534DCF5CDB455E8CC9790BD974183926ACB8B473FD6D4C2685A34741DB7C371887C0001000001010000000020DC397F16BC57973BEE8B96A52F6DCE0F0D7044809D7E27622BA2D238C23FB8D800010000010100000001680000000101000104000000010001000100000000010300000103000100000001030001020100000020ADE33EEF9FF004D6F1298FBD51FCF5569B13CF8F9CD89A77B18B6B700F6EC9F50001030100000020A791A27FFDE379C78CA73FF085E06907814C3C5A6AD5C374930ACA7D5BDC342D0001030001010000000B52455455524E2054525545000100000100",
+              "verified": [
+                true
+              ]
+            },
+            "txnwire": "0x000100",
+            "txnflags": [],
+            "checked": [],
+            "mining": {
+              "calls": [],
+              "posted": [],
+              "pending": [],
+              "held": [],
+              "coins": []
+            },
+            "coinLocks": [],
+            "coinLockEnabled": false,
+            "events": [
+              [
+                "prepared.clearParameters",
+                15
+              ],
+              [
+                "prepared.setString",
+                15,
+                1,
+                "0x01"
+              ],
+              [
+                "prepared.executeQuery",
+                15
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "script"
+              ],
+              [
+                "rows.getString",
+                "address"
+              ],
+              [
+                "rows.getInt",
+                "simple"
+              ],
+              [
+                "rows.getInt",
+                "defaultaddress"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.getInt",
+                "track"
+              ],
+              [
+                "prepared.executeQuery",
+                14
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getString",
+                "script"
+              ],
+              [
+                "rows.getString",
+                "address"
+              ],
+              [
+                "rows.getInt",
+                "simple"
+              ],
+              [
+                "rows.getInt",
+                "defaultaddress"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "rows.getInt",
+                "track"
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "prepared.clearParameters",
+                3
+              ],
+              [
+                "prepared.setString",
+                3,
+                1,
+                "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE"
+              ],
+              [
+                "prepared.executeQuery",
+                3
+              ],
+              [
+                "rows.next"
+              ],
+              [
+                "rows.getInt",
+                "size"
+              ],
+              [
+                "rows.getInt",
+                "depth"
+              ],
+              [
+                "rows.getInt",
+                "uses"
+              ],
+              [
+                "rows.getInt",
+                "maxuses"
+              ],
+              [
+                "rows.getString",
+                "modifier"
+              ],
+              [
+                "rows.getString",
+                "privatekey"
+              ],
+              [
+                "rows.getString",
+                "publickey"
+              ],
+              [
+                "prepared.clearParameters",
+                4
+              ],
+              [
+                "prepared.setInt",
+                4,
+                1,
+                1
+              ],
+              [
+                "prepared.setString",
+                4,
+                2,
+                "0x5D75E30C06C55C848BA7BA34E46BFC30FCE1D0529FEC1FF4C706C434DE31AFFE"
+              ],
+              [
+                "prepared.execute",
+                4
+              ]
+            ],
+            "logs": [],
+            "cache": [
+              {
+                "address": "0x01",
+                "tracked": true,
+                "simple": true,
+                "notify": false
+              },
+              {
+                "address": "0x582AA40EA996419A3D8A5D26039A4E9584B746C2C26F860DAC8372BEA4457AF6",
+                "tracked": false,
+                "simple": false,
+                "notify": false
+              }
+            ],
+            "userEnabled": false,
+            "userHost": "",
+            "prefs": null
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "Actual registered txnauto and static helper with existing wallet, chain/MMR, miner, mempool, funding/signing commands and recording SQL. Exact stored wire and serialized replies, selected VM exception prose normalized. Independent cleanup, conservation, change-only output and signature checks. No durable SQL, network admission, arbitrary inherited reference/concurrency or full-node parity certification."
+}
