@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/status.java) · `src/org/minima/system/commands/base/status.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/status.java) · [Mapped C++ body](../../../../../../../../src/org/minima/system/commands/base/status.cpp) · [C++ header](../../../../../../../../src/org/minima/system/commands/base/status.hpp)
 
 ## Purpose
 
@@ -20,15 +20,41 @@ status assembles a broad runtime report from chain, wallet, files, databases and
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse formatting, median-time/chain-speed and filesystem helpers. Native process-memory and garbage-collection semantics require an explicit adaptation; C++ has no Java System.gc equivalent.
+The native command calls the existing MinimaDB, Main, MiniFile, MiniFormat and
+TxPoWGenerator implementations. Its DECIMAL32 division reuses MMREntryNumber's
+seven-digit HALF_EVEN calculation, then passes through the actual MiniNumber
+constructor, division and ceiling. MiniData.withMinLength pads the displayed
+difficulty without truncating longer input. JSON raw decimal values preserve the
+source's numeric speed field; block heights narrow to Java long while total
+length and branch subtraction preserve Java int wraparound.
+
+The existing MinimaLogger Runtime supplies allocator memory statistics and an
+optional collection-hint callback. Main binds its existing collectMemory service
+to this boundary. The default hint does nothing: native ownership replaces JVM
+collection. Calling it before any Main lookup preserves clean-key handling even
+when the Main singleton is absent. No lower RAM usage is promised.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed tests use fixed services, clock, filesystem and memory callbacks, then assert field types and phase order. Cover clean:false presence, no tip with complete false/true, root-tip inconsistency, low-mode device rounding, zero median block difference and absent network service. Timing/file totals need controlled inputs.
+The [status lab](../../../../../../../../student-guide/new-tests/node-status-command.md)
+was written before the tests. The [corpus](../../../../../../../../tools/node_status_commands_corpus.py)
+uses actual command registration, database children, synthetic chain nodes and
+controlled SQL rows/files. It compares metadata, direct typed parameters, runner
+permissions, optional network output, empty tips, SQL failures and debug order.
+Independent assertions check device estimates, median speed, file totals, wallet
+lock state, response types and absence of unintended queue/timer effects.
 
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+Two initial expectations were corrected using the source algorithm: Python's
+scientific integer notation must become a plain integer string, and timestamps
+0, 0, 1000, 2000 have median block 2, giving two blocks per second against block 0.
+The production arithmetic did not change to satisfy those mistaken expectations.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Each runtime's uptime is checked against surrounding timestamps before comparison.
+Native controlled heap bytes are asserted exactly, including signed wraparound;
+Java's actual heap display is validated for shape and bounds before excluding
+cross-runtime size equality. A native-only counter proves collection-hint presence
+and order. That counter does not prove JVM collection. The standalone static main
+is also invoked and its exact printed output compared.
 
 ## Limits
 

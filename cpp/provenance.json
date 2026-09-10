@@ -2186,5 +2186,40 @@
         "reverse_substitution_matches_prior": true
       }
     }
+  },
+  "node_status_command": {
+    "source": "upstream-study/src/org/minima/system/commands/base/status.java",
+    "source_sha256": "8d0247e53440969ace576d46015982e7dfb75c86825160e3e7877f55eab4e0eb",
+    "destination": "src/org/minima/system/commands/base/status.cpp",
+    "reuse": [
+      "Command parameters/replies and Main runtime registry",
+      "MMREntryNumber.dividePositive DECIMAL32 HALF_EVEN and MiniNumber arithmetic",
+      "MinimaDB, TxPowTree, Cascade, TxPoWGenerator, wallet and SQL counter getters",
+      "MiniData.withMinLength, MiniFile, MiniFormat, JavaDateString and JavaUnixFile",
+      "MinimaLogger Runtime heap callbacks and MainServices.collectMemory",
+      "MainRuntimeOracle/main_runtime.cpp and recording SQL fixture"
+    ],
+    "adaptations": [
+      "Native collection hint added to existing runtime boundary; default no-op, bound from Main collection service",
+      "Unsigned native arithmetic preserves Java signed wraparound",
+      "Explicit zero-difficulty ArithmeticException before user preference read",
+      "Native controlled heap and hint count validated independently; Java heap shape/bounds checked before excluding cross-runtime numeric equality",
+      "Actual per-operation uptime independently bounded before normalization; UTC date fixture"
+    ],
+    "test_corrections": [
+      "Independent Python expected device string initially used scientific notation; corrected to plain integer text",
+      "Tied timestamps 0,0,1000,2000 select median block 2 and give speed 2; initial expected 1 corrected"
+    ],
+    "validation": {
+      "full_builds": [
+        "normal",
+        "ASAN/UBSAN"
+      ],
+      "programs_per_build": 187,
+      "operations_per_build": 634,
+      "selected_regressions": "in progress",
+      "report_directory": "validation/checkpoint-362"
+    },
+    "limits": "Partial / parity not_verified. No durable SQL or full-node startup, JVM collection guarantee, equal JVM/native heap or exhaustive concurrent owner replacement."
   }
 }

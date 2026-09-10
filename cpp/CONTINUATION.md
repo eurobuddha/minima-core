@@ -1,3 +1,38 @@
+# Current checkpoint 362 — status implementation saved; regressions live
+
+Full 457-file working native port goal ACTIVE/incomplete. This turn is progress:
+status header/body, registration, runtime collection hint, Main fixture and oracle,
+187-program / 634-operation corpus, student lab/lessons, mapping and evidence.
+Both FULL BUILDS and new comparisons PASS. 362 counterparts=318prod+44tests;
+95 absent=51prod+44tests. All map entries partial/not_verified. 200 CTest.
+All 457 lessons; 9050 links/2634 anchors; zero audit errors.
+
+LIVE PROCESS HANDLES: normal regression 7645; sanitizer regression 40204.
+Poll these handles; do not restart on silence. 25 selected regressions each.
+Logs /tmp/minima-node-status-regressions.log and -regressions-san.log.
+Other handles TERMINAL: builds54612(initial compile adapter fix needed),33622,
+62409,66252,25262; tests60565,53407(initial expected-value corrections),55373,
+89648,49199,42930. Latest comparisons187/634passboth. Build logs
+/tmp/minima-node-status-build.log and -build-san.log; test logs -test.log/-test-san.log.
+
+NEXT: wait live regression runs, inspect every selected report, save compact reports
+under validation/checkpoint-362/normal and sanitized, finalize README/REVIEW/lab/
+provenance/this continuation, commit, tag checkpoint-362, create+verify bundle and
+recovery clone. Implementation commit is being made now; use git log for hash.
+No new agent needed. Existing guides are authored. No GitHub push: destination
+still unanswered; local branch/project remains MinimaCoreC++.
+
+status follows pinned source ordering, including clean presence before parameters,
+early complete tip dereference, DECIMAL32/minimum hash rate/device ceiling, file
+sizes and sparse no-root fields, median speed, numeric/string distinctions,
+source debug order and optional network. Static main also ported and compared.
+MinimaLogger Runtime adds collectMemory (default no-op) and Main binds existing
+service. Native allocator statistics differ from JVM heap; tests validate independently
+before normalization. UserDB, SQL and actual chain objects reused. No full startup,
+durable SQL, collection guarantee or exhaustive concurrent scheduling certificate.
+
+Older notes below are historical and may be obsolete.
+
 # Current checkpoint 361 — logs validated and ready for local commit
 
 Full-port goal ACTIVE/incomplete. This turn made progress: logs command, atomic

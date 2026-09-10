@@ -1111,3 +1111,7 @@ set_tests_properties(healthcheck_command_differential PROPERTIES TIMEOUT 600)
 target_sources(minima_file_port PRIVATE src/org/minima/system/commands/base/logs.cpp)
 add_test(NAME logs_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/main_runtime_differential.py --build ${CMAKE_CURRENT_BINARY_DIR} --group logs)
 set_tests_properties(logs_command_differential PROPERTIES TIMEOUT 600)
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/base/status.cpp)
+add_test(NAME node_status_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/main_runtime_differential.py --build ${CMAKE_CURRENT_BINARY_DIR} --group node-status)
+set_tests_properties(node_status_command_differential PROPERTIES TIMEOUT 600)

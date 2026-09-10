@@ -5,9 +5,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **317 production counterparts and 44 mapped test files exist;
-96 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **318 production counterparts and 44 mapped test files exist;
+95 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+status now compiles and is registered. Its [student lab](student-guide/new-tests/node-status-command.md)
+explains full report assembly, device estimates, median speeds and the explicit
+native memory boundary. Both full builds pass, and 187 programs / 634 operations
+match Java in both builds. There are 200 CTest entries. Broader regressions are
+in progress; [checkpoint evidence](validation/checkpoint-362/checkpoint.json)
+records the current validation scope.
 
 logs now compiles and is registered. Its [student lab](student-guide/new-tests/logging-flags-command.md)
 explains selective updates, partial failures and the native atomic storage used by

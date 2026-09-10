@@ -62,7 +62,7 @@ def project(raw,request):
     return value
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--group',choices=['main','commands','network','status','diagnostics','health','logs'],default='main');args=ap.parse_args();build=args.build.resolve();oracle=build/('main-runtime-oracle-'+args.group);oracle.mkdir(exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--group',choices=['main','commands','network','status','diagnostics','health','logs','node-status'],default='main');args=ap.parse_args();build=args.build.resolve();oracle=build/('main-runtime-oracle-'+args.group);oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support'/x for x in ['MainRuntimeOracle.java','MainNetworkOracle.java','SqlDBOracle.java','NIOClientOracle.java','ArchiveManagerOracle.java']];listing=build/('main-runtime-java-sources-'+args.group+'.txt');listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
     failures=[];operations=0;corpus=cases();projector=project;validate=lambda request,output:None
     if args.group=='commands':
@@ -80,11 +80,14 @@ def main():
     if args.group=='health':
         from healthcheck_commands_corpus import cases as health_cases,validate
         corpus=health_cases()
+    if args.group=='node-status':
+        from node_status_commands_corpus import cases as node_status_cases,validate,project as projector
+        corpus=node_status_cases()
     if args.group=='logs':
         from logs_commands_corpus import cases as logs_cases,validate
         corpus=logs_cases()
     with tempfile.TemporaryDirectory(prefix='main-runtime-',dir=build) as root:
-        runners=[Runner(['java']+(['-Duser.timezone=UTC'] if args.group in ['status','diagnostics'] else [])+['-cp',f'{oracle}:{JAVA}/jar/minima.jar','MainRuntimeOracle',root]),Runner((['env','TZ=UTC'] if args.group in ['status','diagnostics'] else [])+[str(build/'minima_main_runtime'),root])]
+        runners=[Runner(['java']+(['-Duser.timezone=UTC'] if args.group in ['status','diagnostics','node-status'] else [])+['-cp',f'{oracle}:{JAVA}/jar/minima.jar','MainRuntimeOracle',root]),Runner((['env','TZ=UTC'] if args.group in ['status','diagnostics','node-status'] else [])+[str(build/'minima_main_runtime'),root])]
         try:
             for index,request in enumerate(corpus):
                 outputs=[]
@@ -104,5 +107,6 @@ def main():
     if args.group=='diagnostics':report['scope']='Actual trace and timemilli commands, Main/runner dispatch, shared MessageProcessor/NIO trace state and matcher. Raw versus trimmed parameters, partial state after errors, integer offset wrap, minutes precedence, independently bounded clocks and exact UTC date rendering. Sampled clocks normalized after validation; enhanced NPE/CCE diagnostic prose excluded. No full-node scheduling or exhaustive locale parity.'
     if args.group=='health':report['scope']='Actual healthcheck command through registered Main/runner dispatch, real MinimaDB tree/cascade and arithmetic. Synthetic linear/branched/gapped heights, absent tip/cascade, repeated state replacement, exact response types and independent expected values. No full-node startup, cryptographic validity certificate or exhaustive concurrent owner replacement.'
     if args.group=='logs':report['scope']='Actual logs command and all nine native/Java global flags, ordered partial mutations, omitted values, hidden SQL transaction flag, exact metadata, runner gates and Main.setSyncIBD consumer. Seven GeneralParams fields use atomic native storage. No transactional snapshot, exhaustive concurrent Java scheduling or full-node logging certification.'
-    (build/('logs-command-results.json' if args.group=='logs' else 'healthcheck-command-results.json' if args.group=='health' else 'trace-clock-command-results.json' if args.group=='diagnostics' else 'network-status-command-results.json' if args.group=='status' else 'main-runtime-results.json' if args.group=='main' else 'main-lifecycle-commands-results.json' if args.group=='commands' else 'network-peer-commands-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
+    if args.group=='node-status':report['scope']='Actual status command, database child objects, synthetic chain/cascade, controlled SQL and files, device arithmetic and debug order. JVM heap validated for shape/bounds; native heap and collection hint checked independently. Uptime bounded before normalization. No durable SQL, full-node startup, actual JVM/native heap equality or exhaustive concurrent scheduling.'
+    (build/('node-status-command-results.json' if args.group=='node-status' else 'logs-command-results.json' if args.group=='logs' else 'healthcheck-command-results.json' if args.group=='health' else 'trace-clock-command-results.json' if args.group=='diagnostics' else 'network-status-command-results.json' if args.group=='status' else 'main-runtime-results.json' if args.group=='main' else 'main-lifecycle-commands-results.json' if args.group=='commands' else 'network-peer-commands-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

@@ -41,3 +41,14 @@ Allocator statistics naturally differ from JVM heap statistics. The fixed date-p
 If printing removes Main, should a notification still occur? If Main exists for the first lookup but disappears for the second, why would caching the first pointer change the source behavior?
 
 Pinned Java SHA-256: `1788078528ea03e9420b82150eb2629b2ffb5f4329b6a035debc856232ced3c7`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).
+
+## Status command runtime integration
+
+The status command now reuses the MinimaLogger Runtime's allocator memory
+callbacks. Its added collectMemory callback is a platform hint with a no-op
+default; Main binds its existing collection service during runtime setup.
+The command calls the hint for every present clean key before parsing other
+parameters or reading Main. C++ ownership does not provide JVM heap collection
+or an equal heap size. The status comparison independently validates native
+controlled bytes/hint counts and Java heap-format bounds. Existing logging
+formatting and notification behavior are unchanged.

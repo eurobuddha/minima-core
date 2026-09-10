@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 361 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 362 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -211,7 +211,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/base/seedrandom.java` | `src/org/minima/system/commands/base/seedrandom.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/slavenode.java` | `src/org/minima/system/commands/base/slavenode.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/sphincs.java` | `src/org/minima/system/commands/base/sphincs.cpp` | unported | — |
-| `src/org/minima/system/commands/base/status.java` | `src/org/minima/system/commands/base/status.cpp` | unported | — |
+| `src/org/minima/system/commands/base/status.java` | `src/org/minima/system/commands/base/status.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/systemcheck.java` | `src/org/minima/system/commands/base/systemcheck.cpp` | unported | — |
 | `src/org/minima/system/commands/base/test.java` | `src/org/minima/system/commands/base/test.cpp` | unported | — |
 | `src/org/minima/system/commands/base/timemilli.java` | `src/org/minima/system/commands/base/timemilli.cpp` | implemented_partial | — |

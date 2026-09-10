@@ -66,3 +66,5 @@ The initial guide generator was a navigation aid; those inventories have now bee
 The [node-state lab](new-tests/node-state-commands.md) follows mempool counters, coin tracking and desired capacity preferences. It explains registration, typed JSON reads and null-coin evaluation order through failing Java/C++ comparisons and their fixes.
 
 The [seed derivation lab](new-tests/seed-random-command.md) teaches deterministic framed hashing and wallet lock checks. The [original casting tests](new-tests/cast-original-tests.md) explain Boolean, hex, number and text conversions, including why SCRIPTTests tests STRING.
+
+- [Node-status lab](new-tests/node-status-command.md): complete report assembly, decimal device estimates, median speeds, and explicit JVM/native memory boundaries.

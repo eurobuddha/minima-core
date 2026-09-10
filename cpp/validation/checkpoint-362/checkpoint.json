@@ -1,0 +1,20 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "mapped_counterparts": 362,
+  "production_counterparts": 318,
+  "mapped_tests": 44,
+  "absent": 95,
+  "lessons": 457,
+  "ctest_registered": 200,
+  "full_builds_passed": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "programs_per_build": 187,
+  "operations_per_build": 634,
+  "affected_validation": "in progress",
+  "reports": [
+    "node-status-command-results.json"
+  ],
+  "limits": "Finite scoped validation; JVM/native heap sizes are not equated. Full node and complete parity remain unverified."
+}

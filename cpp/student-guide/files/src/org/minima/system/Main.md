@@ -114,3 +114,14 @@ Method navigation (declarations with bodies found in this file): [getInstance](.
 ## Traceability
 
 Pinned Java SHA-256: `143e67f90b0941fa9c7bd8626e6092396d64c0cb85fd5e9a5346132daf18ffa1`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## Status command runtime integration
+
+The status command now reuses the MinimaLogger Runtime's allocator memory
+callbacks. Its added collectMemory callback is a platform hint with a no-op
+default; Main binds its existing collection service during runtime setup.
+The command calls the hint for every present clean key before parsing other
+parameters or reading Main. C++ ownership does not provide JVM heap collection
+or an equal heap size. The status comparison independently validates native
+controlled bytes/hint counts and Java heap-format bounds. Existing logging
+formatting and notification behavior are unchanged.

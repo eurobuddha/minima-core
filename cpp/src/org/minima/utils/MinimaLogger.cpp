@@ -30,6 +30,7 @@ MinimaLogger::Runtime defaults(MinimaLogger::Runtime value){
     if(!value.currentTimeMillis)value.currentTimeMillis=[]{return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();};
     if(!value.println)value.println=[](const std::u16string& text){std::lock_guard lock(outputLock);std::cout<<unicode::encodeUTF8(text)<<std::endl;};
     if(!value.getMain)value.getMain=[]{return std::shared_ptr<MinimaLogger::MainReceiver>{};};
+    if(!value.collectMemory)value.collectMemory=[]{};
     return value;
 }
 }

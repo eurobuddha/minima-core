@@ -25,6 +25,8 @@ public:
         std::function<int64_t()> totalMemory,freeMemory,currentTimeMillis;
         std::function<void(const std::u16string&)> println;
         std::function<std::shared_ptr<MainReceiver>()> getMain;
+        // Optional platform collection hint; native ownership needs no JVM GC.
+        std::function<void()> collectMemory;
     };
     class DateFormat {
         std::u16string mZone;

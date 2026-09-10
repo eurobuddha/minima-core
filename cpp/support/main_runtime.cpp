@@ -8,9 +8,11 @@
 #include "support/NativeThread.hpp"
 #include <iostream>
 #include <sstream>
+#include <fstream>
+#include "org/minima/system/commands/base/status.hpp"
 using namespace minima;using namespace minima::json;using namespace minima::sql_fixture;
-namespace {JSONArray timers;std::vector<std::shared_ptr<JSONObject>> held;JSONArray listenerCalls;
-MainServices services(){MainServices s;s.sql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user,password});return std::make_shared<Connection>();};s.sql.log=[](const auto& text,bool){std::clog<<text<<'\n';};s.mysql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user?JSONValue(*user):JSONValue(),password?JSONValue(*password):JSONValue()});return std::make_shared<Connection>();};s.mysql.log=[](const auto& text){std::clog<<text<<'\n';};s.sleep=[](int64_t time){if(time<0)throw JavaIllegalArgumentException("timeout value is negative");std::this_thread::sleep_for(std::chrono::milliseconds(time));};s.halt=[](int code){throw JavaTypedException("fixture.Halt",std::to_string(code));};s.exit=s.halt;return s;}
+namespace {int collectionHints=0;JSONArray timers;std::vector<std::shared_ptr<JSONObject>> held;JSONArray listenerCalls;
+MainServices services(){MainServices s;s.collectMemory=[]{++collectionHints;};s.sql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user,password});return std::make_shared<Connection>();};s.sql.log=[](const auto& text,bool){std::clog<<text<<'\n';};s.mysql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user?JSONValue(*user):JSONValue(),password?JSONValue(*password):JSONValue()});return std::make_shared<Connection>();};s.mysql.log=[](const auto& text){std::clog<<text<<'\n';};s.sleep=[](int64_t time){if(time<0)throw JavaIllegalArgumentException("timeout value is negative");std::this_thread::sleep_for(std::chrono::milliseconds(time));};s.halt=[](int code){throw JavaTypedException("fixture.Halt",std::to_string(code));};s.exit=s.halt;return s;}
 class ManualMain:public Main {public:ManualMain():Main(services()){}std::shared_ptr<Message> take(){return getNextMessage();}void PostTimerMessage(const std::shared_ptr<TimerMessage>& timer) override{JSONArray entry;entry.add(timer->getMessageType().value_or("null"));entry.add(timer->getTimer());timers.add(entry);if(flag("timerFail"))throw JavaTypedException("java.lang.RuntimeException","fixture timer failure");}};
 class Listener:public MessageListener {public:void processMessage(std::shared_ptr<Message> message) override{auto data=message->getObject("notify").as<std::shared_ptr<JSONObject>>();held.push_back(data);JSONObject info;info.put("main",bool(Main::getInstance()));info.put("type",message->getMessageType().value_or("null"));listenerCalls.add(info);if(flag("listenerError"))throw JavaError("java.lang.AssertionError","fixture listener failure");if(flag("listenerFail"))throw JavaTypedException("java.lang.RuntimeException","fixture listener failure");}};
 }
@@ -27,9 +29,20 @@ JSONObject run(const JSONObject& input,const std::string& root){
     config=&input;events=JSONArray();GeneralParams::resetDefaults();GeneralParams::DATA_FOLDER=root;GeneralParams::USE_SQL_COINDB=false;GeneralParams::P2P_ENABLED=false;GeneralParams::P2P2_ENABLED=false;GeneralParams::MYSQL_DB_DELAY=0;Main::STARTUP_DEBUG_LOGS=false;Main::setMinimaListener(nullptr);held.clear();connectionID=preparedID=0;
     auto main=std::make_shared<ManualMain>();MainFixture::install(main);MainFixture::initialize(main);auto data=std::make_shared<JSONObject>();std::shared_ptr<support::MainNetworkFixture> network;JSONArray outputs;
     for(const auto& step:array(input.get("ops")).elements()){
-        config=&object(step);events=JSONArray();calls=0;timers=JSONArray();listenerCalls=JSONArray();JSONObject out;std::ostringstream stream;auto previous=std::clog.rdbuf(stream.rdbuf());auto before=TimerMessage::currentTimeMillis();
+        config=&object(step);collectionHints=0;events=JSONArray();calls=0;timers=JSONArray();listenerCalls=JSONArray();JSONObject out;std::ostringstream stream;auto previous=std::clog.rdbuf(stream.rdbuf());if(input.containsKey("nodeStatus")){auto runtime=MinimaLogger::getRuntime();runtime.totalMemory=[]{return integer(*config,"heapTotal",1048576);};runtime.freeMemory=[]{return integer(*config,"heapFree",2048);};MinimaLogger::setRuntime(std::move(runtime));}auto before=TimerMessage::currentTimeMillis();
         try{JSONValue value;auto cmd=config->getString("cmd");
-            if(cmd=="fields")MainFixture::fields(*main,object(config->get("values")));
+            if(cmd=="statusSetup"){
+                auto db=MinimaDB::getDB();
+                if(!flag("skipWallet"))db->getWallet()->loadDB(std::filesystem::path(root)/"databases/walletsql/wallet");
+                if(!flag("skipTxPoW"))db->getTxPoWDB()->loadSQLDB(std::filesystem::path(root)/"databases/txpowsql/txpow");
+                if(!flag("skipArchive"))db->getArchive()->loadDB(std::filesystem::path(root)/"databases/archivesql/archive");
+                GeneralParams::IS_MEGAMMR=flag("mega");
+                if(config->containsKey("files"))for(const auto& [name,length]:object(config->get("files")).entries()){
+                    auto path=std::filesystem::path(root)/unicode::encodeUTF8(name);std::filesystem::create_directories(path.parent_path());std::ofstream file(path,std::ios::binary);file<<std::string(size_t(std::get<int64_t>(length.value)),'x');
+                }
+            }
+            else if(cmd=="statusMain"){std::ostringstream output;auto previousOut=std::cout.rdbuf(output.rdbuf());try{commands::status::main({});}catch(...){std::cout.rdbuf(previousOut);throw;}std::cout.rdbuf(previousOut);value=output.str();}
+            else if(cmd=="fields")MainFixture::fields(*main,object(config->get("values")));
             else if(cmd=="logFlags"){
                 if(config->containsKey("values")){const auto& values=object(config->get("values"));
                     if(values.containsKey("scripts"))GeneralParams::SCRIPTLOGS=values.get("scripts").asBool();
@@ -81,10 +94,15 @@ JSONObject run(const JSONObject& input,const std::string& root){
             else if(cmd=="healthChain"){
                 auto db=MinimaDB::getDB();db->resetCascadeAndTxPoWTree();std::vector<std::shared_ptr<TxPoWTreeNode>> nodes;
                 const auto& blocks=array(config->get("blocks"));
-                for(size_t i=0;i<blocks.size();++i){auto pow=support::archiveFixtureTxPoW(int(i),0);pow->setBlockNumber(MiniNumber(blocks.get(i).asString()));pow->calculateTXPOWID();auto node=std::make_shared<TxPoWTreeNode>(*pow);
-                    if(i){auto parent=config->containsKey("parents")?std::get<int64_t>(array(config->get("parents")).get(i).value):int64_t(i)-1;nodes.at(size_t(parent))->addChildNode(node);}else db->getTxPoWTree()->setRoot(node);nodes.push_back(node);
+                for(size_t i=0;i<blocks.size();++i){auto pow=support::archiveFixtureTxPoW(int(i),0);pow->setBlockNumber(MiniNumber(blocks.get(i).asString()));
+                    if(config->containsKey("times"))pow->setTimeMilli(MiniNumber(array(config->get("times")).get(i).asString()));
+                    if(config->containsKey("difficulty"))pow->setBlockDifficulty(MiniData::fromHex(config->getString("difficulty")));
+                    if(config->containsKey("minima"))pow->setMMRTotal(MiniNumber(config->getString("minima")));
+                    pow->calculateTXPOWID();auto node=std::make_shared<TxPoWTreeNode>(*pow);
+                    if(i){auto parent=config->containsKey("parents")?std::get<int64_t>(array(config->get("parents")).get(i).value):int64_t(i)-1;nodes.at(size_t(parent))->addChildNode(node);}else db->getTxPoWTree()->setRoot(node);if(config->containsKey("coins"))for(int j=0;j<integer(*config,"coins");++j)node->getMMR()->addEntry(MMRData(MiniData::fromHex("0x01"),MiniNumber::ONE));nodes.push_back(node);
                 }db->getTxPoWTree()->recalculateTree();
                 int i=0;for(const auto& number:array(config->get("cascade")).elements()){auto pow=support::archiveFixtureTxPoW(i++,0);pow->setBlockNumber(MiniNumber(number.asString()));pow->calculateTXPOWID();db->getCascade()->addToTip(*pow);}
+                if(flag("cascadeWeights"))db->getCascade()->cascadeChain();
                 if(flag("nullCascade"))db->setIBDCascade(nullptr);
             }
             else if(cmd=="chain"){auto db=MinimaDB::getDB();db->resetCascadeAndTxPoWTree();std::shared_ptr<TxPoWTreeNode> previous;for(int i=0;i<integer(*config,"count",3);++i){auto pow=support::archiveFixtureTxPoW(i,0);auto node=std::make_shared<TxPoWTreeNode>(*pow);if(previous)previous->addChildNode(node);else db->getTxPoWTree()->setRoot(node);previous=node;}db->getTxPoWTree()->recalculateTree();}
@@ -97,7 +115,7 @@ JSONObject run(const JSONObject& input,const std::string& root){
             }else if(cmd!="info")throw std::invalid_argument(cmd);out.put("value",value);
         }catch(const CommandException& error){out.put("exception",std::string("org.minima.system.commands.CommandException: ")+error.what());}catch(const std::exception& error){out.put("exception",nativeExceptionText(error));}
         auto after=TimerMessage::currentTimeMillis();std::clog.rdbuf(previous);JSONArray logs;std::string line;std::istringstream lines(stream.str());while(std::getline(lines,line))logs.add(line);
-        out.put("before",before);out.put("after",after);out.put("logs",logs);out.put("timers",timers);out.put("events",events);out.put("listeners",listenerCalls);JSONArray retained;for(const auto& item:held)retained.add(*item);out.put("held",retained);out.put("state",snapshot(main));out.put("user",*MinimaDB::getDB()->getUserDB()->getAllData());outputs.add(out);
+        if(input.containsKey("nodeStatus"))out.put("nativeCollectionHints",collectionHints);out.put("before",before);out.put("after",after);out.put("logs",logs);out.put("timers",timers);out.put("events",events);out.put("listeners",listenerCalls);JSONArray retained;for(const auto& item:held)retained.add(*item);out.put("held",retained);out.put("state",snapshot(main));out.put("user",*MinimaDB::getDB()->getUserDB()->getAllData());outputs.add(out);
     }Main::setMinimaListener(nullptr);MainFixture::install(nullptr);JSONObject result;result.put("ops",outputs);return result;
 }
 }
