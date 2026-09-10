@@ -4392,3 +4392,36 @@ ASAN/UBSAN builds. All 25 affected regressions pass in both builds (301.18s /
 952.17s). All 44 comparison reports were read and saved with both CTest
 summaries under validation/checkpoint-362. Approve this scoped checkpoint.
 Full-port completion remains unproven and is not claimed.
+
+## Code Review — RPC work in progress
+
+### Summary
+
+The command body, registry and Main pause binding are implemented. Source
+parameter order, unused ssl, duplicate valid parameter, user-array aliasing and
+replacement, locale-sensitive modes and typed errors are exercised. Both full
+builds and eleven selected regressions pass; 258 programs / 590 operations match
+Java. The initial blank-action expectation was corrected without changing the
+production command. JsonDB's bad_variant_access was corrected to ClassCastException.
+
+### MAJOR — Concurrent authentication configuration needs safe native storage
+
+GeneralParams.hpp still declares RPC_ENABLED/RPC_AUTHENTICATE as plain bool and
+RPC_PASSWORD as std::string. The new command writes them, while CMDHandler and
+Authorizer can read them on request threads. Source Java reference assignment does
+not justify concurrent mutation of a native std::string. Reuse the existing atomic
+flag and immutable-string snapshot patterns before certifying live configuration.
+
+### MAJOR — Shared RPC-user arrays need concurrency review
+
+UserDB returns the actual mutable JSONArray. rpc adds in place and removal replaces
+the stored array; Authorizer and response serialization may read it concurrently.
+The current native JSON containers do not define safe overlapping access. Preserve
+the source's tested aliasing and replacement behavior while addressing native
+container lifetime/access safety. The sequential comparison cannot establish this.
+
+### Verdict
+
+Request changes before calling RPC ready. Save the current implementation as WIP;
+complete live enable/authenticated loopback integration and shared-state work next.
+No completed RPC checkpoint, full-node startup or complete 457-file parity is claimed.

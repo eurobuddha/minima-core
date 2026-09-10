@@ -49,3 +49,13 @@ The fixture reduces many exceptions to ERROR and does not establish full file-fa
 Why can exists("x") be false when the JSON text contains "x":null? How does merely calling getJSONArray("x") change the next serialized database?
 
 Pinned Java SHA-256: `cd1b32a4f7c496fd18fec4905136c0a70b57454b1dacff1a7a37134971405300`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).
+
+## RPC-array exception correction
+
+The RPC command comparison supplies a boolean where a saved JSONArray is expected.
+Java throws ClassCastException. The native getter previously allowed std::get to
+throw bad_variant_access, which the command boundary labelled RuntimeException.
+getJSONArray now checks the variant and throws the explicit Java category, while
+retaining missing/null default creation and shared-array identity. The older
+preference fixture collapsed both failures to ERROR; the new RPC test retains
+exception categories and shows why more precise observations matter.

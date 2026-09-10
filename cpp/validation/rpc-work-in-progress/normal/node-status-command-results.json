@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 187,
+  "total_programs": 187,
+  "operations": 634,
+  "failures": [],
+  "scope": "Actual status command, database child objects, synthetic chain/cascade, controlled SQL and files, device arithmetic and debug order. JVM heap validated for shape/bounds; native heap and collection hint checked independently. Uptime bounded before normalization. No durable SQL, full-node startup, actual JVM/native heap equality or exhaustive concurrent scheduling."
+}

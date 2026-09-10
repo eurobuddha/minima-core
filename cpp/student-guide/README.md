@@ -68,3 +68,5 @@ The [node-state lab](new-tests/node-state-commands.md) follows mempool counters,
 The [seed derivation lab](new-tests/seed-random-command.md) teaches deterministic framed hashing and wallet lock checks. The [original casting tests](new-tests/cast-original-tests.md) explain Boolean, hex, number and text conversions, including why SCRIPTTests tests STRING.
 
 - [Node-status lab](new-tests/node-status-command.md): complete report assembly, decimal device estimates, median speeds, and explicit JVM/native memory boundaries.
+
+- [RPC lab](new-tests/rpc-command.md): ordered configuration updates, shared user arrays, typed failures, and remaining live-server validation.

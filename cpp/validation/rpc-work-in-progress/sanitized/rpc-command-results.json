@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 258,
+  "total_programs": 258,
+  "operations": 590,
+  "failures": [],
+  "scope": "RPC user management, registered command metadata, actual UserDB arrays, malformed state, enable precedence, actual stopped NetworkManager disable path and interrupted sleep boundary. Successful live enable/authentication/concurrent mutation integration remains pending."
+}

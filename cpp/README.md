@@ -5,9 +5,17 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **318 production counterparts and 44 mapped test files exist;
-95 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **319 production counterparts and 44 mapped test files exist;
+94 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+RPC is **work in progress**. Its native command body and shared JsonDB array-cast
+correction compile in both builds. All 258 programs / 590 operations in the
+current comparison and all 11 selected regressions pass per build. Live enable,
+authenticated loopback requests and concurrent authentication/user-state access
+remain open. See the [RPC lab](student-guide/new-tests/rpc-command.md) and
+[scoped evidence](validation/rpc-work-in-progress/progress.json). There are now
+201 CTest entries. The last fully saved status checkpoint remains 362.
 
 status now compiles and is registered. Its [student lab](student-guide/new-tests/node-status-command.md)
 explains full report assembly, device estimates, median speeds and the explicit

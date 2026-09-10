@@ -9,10 +9,11 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <unicode/uloc.h>
 #include "org/minima/system/commands/base/status.hpp"
 using namespace minima;using namespace minima::json;using namespace minima::sql_fixture;
-namespace {int collectionHints=0;JSONArray timers;std::vector<std::shared_ptr<JSONObject>> held;JSONArray listenerCalls;
-MainServices services(){MainServices s;s.collectMemory=[]{++collectionHints;};s.sql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user,password});return std::make_shared<Connection>();};s.sql.log=[](const auto& text,bool){std::clog<<text<<'\n';};s.mysql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user?JSONValue(*user):JSONValue(),password?JSONValue(*password):JSONValue()});return std::make_shared<Connection>();};s.mysql.log=[](const auto& text){std::clog<<text<<'\n';};s.sleep=[](int64_t time){if(time<0)throw JavaIllegalArgumentException("timeout value is negative");std::this_thread::sleep_for(std::chrono::milliseconds(time));};s.halt=[](int code){throw JavaTypedException("fixture.Halt",std::to_string(code));};s.exit=s.halt;return s;}
+namespace {bool rpcInterrupted=false;int collectionHints=0;JSONArray timers;std::vector<std::shared_ptr<JSONObject>> held;JSONArray listenerCalls;
+MainServices services(){MainServices s;s.collectMemory=[]{++collectionHints;};s.sql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user,password});return std::make_shared<Connection>();};s.sql.log=[](const auto& text,bool){std::clog<<text<<'\n';};s.mysql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{event("connect",{url,user?JSONValue(*user):JSONValue(),password?JSONValue(*password):JSONValue()});return std::make_shared<Connection>();};s.mysql.log=[](const auto& text){std::clog<<text<<'\n';};s.sleep=[](int64_t time){if(rpcInterrupted){rpcInterrupted=false;throw JavaTypedException("java.lang.InterruptedException","sleep interrupted");}if(time<0)throw JavaIllegalArgumentException("timeout value is negative");std::this_thread::sleep_for(std::chrono::milliseconds(time));};s.halt=[](int code){throw JavaTypedException("fixture.Halt",std::to_string(code));};s.exit=s.halt;return s;}
 class ManualMain:public Main {public:ManualMain():Main(services()){}std::shared_ptr<Message> take(){return getNextMessage();}void PostTimerMessage(const std::shared_ptr<TimerMessage>& timer) override{JSONArray entry;entry.add(timer->getMessageType().value_or("null"));entry.add(timer->getTimer());timers.add(entry);if(flag("timerFail"))throw JavaTypedException("java.lang.RuntimeException","fixture timer failure");}};
 class Listener:public MessageListener {public:void processMessage(std::shared_ptr<Message> message) override{auto data=message->getObject("notify").as<std::shared_ptr<JSONObject>>();held.push_back(data);JSONObject info;info.put("main",bool(Main::getInstance()));info.put("type",message->getMessageType().value_or("null"));listenerCalls.add(info);if(flag("listenerError"))throw JavaError("java.lang.AssertionError","fixture listener failure");if(flag("listenerFail"))throw JavaTypedException("java.lang.RuntimeException","fixture listener failure");}};
 }
@@ -27,11 +28,25 @@ namespace {
 JSONObject snapshot(const std::shared_ptr<Main>& main){JSONObject out;out.put("startup",main->isStartUpComplete());out.put("error",main->isStartupError());auto error=main->getStartupErrorMsg();out.put("errorMessage",error?JSONValue(*error):JSONValue());out.put("shutdown",main->isShuttingDown());out.put("restoring",main->isRestoring());out.put("either",main->isShuttongDownOrRestoring());out.put("sync",main->isSyncIBD());out.put("normal",main->isNormalMineMode());out.put("automine",main->AUTOMINE_TIMER.load());out.put("keys",main->getAllKeysCreated());out.put("instance",Main::getInstance()==main);out.put("listener",bool(Main::getMinimaListener()));out.put("queue",main->getSize());return out;}
 JSONObject run(const JSONObject& input,const std::string& root){
     config=&input;events=JSONArray();GeneralParams::resetDefaults();GeneralParams::DATA_FOLDER=root;GeneralParams::USE_SQL_COINDB=false;GeneralParams::P2P_ENABLED=false;GeneralParams::P2P2_ENABLED=false;GeneralParams::MYSQL_DB_DELAY=0;Main::STARTUP_DEBUG_LOGS=false;Main::setMinimaListener(nullptr);held.clear();connectionID=preparedID=0;
-    auto main=std::make_shared<ManualMain>();MainFixture::install(main);MainFixture::initialize(main);auto data=std::make_shared<JSONObject>();std::shared_ptr<support::MainNetworkFixture> network;JSONArray outputs;
+    if(input.containsKey("rpcFixture")){UErrorCode code=U_ZERO_ERROR;uloc_setDefault("en_US",&code);}
+    auto main=std::make_shared<ManualMain>();MainFixture::install(main);MainFixture::initialize(main);auto data=std::make_shared<JSONObject>();std::shared_ptr<support::MainNetworkFixture> network;std::shared_ptr<JSONArray> rpcHeld;JSONArray outputs;
     for(const auto& step:array(input.get("ops")).elements()){
         config=&object(step);collectionHints=0;events=JSONArray();calls=0;timers=JSONArray();listenerCalls=JSONArray();JSONObject out;std::ostringstream stream;auto previous=std::clog.rdbuf(stream.rdbuf());if(input.containsKey("nodeStatus")){auto runtime=MinimaLogger::getRuntime();runtime.totalMemory=[]{return integer(*config,"heapTotal",1048576);};runtime.freeMemory=[]{return integer(*config,"heapFree",2048);};MinimaLogger::setRuntime(std::move(runtime));}auto before=TimerMessage::currentTimeMillis();
-        try{JSONValue value;auto cmd=config->getString("cmd");
-            if(cmd=="statusSetup"){
+        rpcInterrupted=input.containsKey("rpcFixture")&&flag("interruptThread");try{JSONValue value;auto cmd=config->getString("cmd");
+            if(cmd=="rpcConfig"){
+                if(config->containsKey("locale")){UErrorCode code=U_ZERO_ERROR;uloc_setDefault(config->getString("locale").c_str(),&code);if(U_FAILURE(code))throw std::runtime_error(u_errorName(code));}
+                if(config->containsKey("enabled"))GeneralParams::RPC_ENABLED=flag("enabled");
+                if(config->containsKey("authenticate"))GeneralParams::RPC_AUTHENTICATE=flag("authenticate");
+                if(config->containsKey("password"))GeneralParams::RPC_PASSWORD=config->getString("password");
+                if(config->containsKey("port"))GeneralParams::RPC_PORT=int32_t(integer(*config,"port"));
+                if(config->containsKey("users"))MinimaDB::getDB()->getUserDB()->getAllData()->put("rpcusers_allusers",config->get("users"));
+                if(flag("hold"))rpcHeld=MinimaDB::getDB()->getUserDB()->getRPCUsers();
+            }
+            else if(cmd=="rpcState"){
+                JSONObject state;state.put("enabled",GeneralParams::RPC_ENABLED);state.put("authenticate",GeneralParams::RPC_AUTHENTICATE);state.put("password",GeneralParams::RPC_PASSWORD);state.put("port",GeneralParams::RPC_PORT);
+                if(rpcHeld){state.put("sameArray",rpcHeld==MinimaDB::getDB()->getUserDB()->getRPCUsers());state.put("heldUsers",*rpcHeld);}value=state;
+            }
+            else if(cmd=="statusSetup"){
                 auto db=MinimaDB::getDB();
                 if(!flag("skipWallet"))db->getWallet()->loadDB(std::filesystem::path(root)/"databases/walletsql/wallet");
                 if(!flag("skipTxPoW"))db->getTxPoWDB()->loadSQLDB(std::filesystem::path(root)/"databases/txpowsql/txpow");
@@ -115,7 +130,7 @@ JSONObject run(const JSONObject& input,const std::string& root){
             }else if(cmd!="info")throw std::invalid_argument(cmd);out.put("value",value);
         }catch(const CommandException& error){out.put("exception",std::string("org.minima.system.commands.CommandException: ")+error.what());}catch(const std::exception& error){out.put("exception",nativeExceptionText(error));}
         auto after=TimerMessage::currentTimeMillis();std::clog.rdbuf(previous);JSONArray logs;std::string line;std::istringstream lines(stream.str());while(std::getline(lines,line))logs.add(line);
-        if(input.containsKey("nodeStatus"))out.put("nativeCollectionHints",collectionHints);out.put("before",before);out.put("after",after);out.put("logs",logs);out.put("timers",timers);out.put("events",events);out.put("listeners",listenerCalls);JSONArray retained;for(const auto& item:held)retained.add(*item);out.put("held",retained);out.put("state",snapshot(main));out.put("user",*MinimaDB::getDB()->getUserDB()->getAllData());outputs.add(out);
+        if(input.containsKey("rpcFixture")){out.put("interrupted",rpcInterrupted);rpcInterrupted=false;}if(input.containsKey("nodeStatus"))out.put("nativeCollectionHints",collectionHints);out.put("before",before);out.put("after",after);out.put("logs",logs);out.put("timers",timers);out.put("events",events);out.put("listeners",listenerCalls);JSONArray retained;for(const auto& item:held)retained.add(*item);out.put("held",retained);out.put("state",snapshot(main));out.put("user",*MinimaDB::getDB()->getUserDB()->getAllData());outputs.add(out);
     }Main::setMinimaListener(nullptr);MainFixture::install(nullptr);JSONObject result;result.put("ops",outputs);return result;
 }
 }

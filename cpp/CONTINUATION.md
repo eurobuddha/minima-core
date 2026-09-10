@@ -1,3 +1,63 @@
+# Current work — RPC WIP, passing sequential comparisons, save locally
+
+Full457-file native working-node goal ACTIVE/incomplete. This turn is PROGRESS.
+Prior verified checkpoint362:83abf274cbc2c19cb91ba1a4735ad2017fa105f5, tag
+minimacore-cpp/checkpoint-362. Its verified bundle is
+local-backups/MinimaCoreC++-20260910T194812Z.bundle, SHA256
+488a0a7ad6f2e4451fd4443ca76795f153c349858c183d0b2b5979ef1a2ea8f4.
+
+NEW RPC cpp/hpp, registration and Main sleep binding implemented. JsonDB.getJSONArray
+fixed wrong category: std::bad_variant_access now explicit JavaClassCastException;
+null/missing array creation and shared ownership retained. Native RPC body follows
+source enable precedence, stop/sleep/update/start-or-stop order, unused ssl,
+duplicate password in valid list, aliasing add/replacement remove, full listusers
+records and lowercase mode. Short help constructs current port; fullhelp reads it.
+
+Both FULL builds PASS, no observed warnings. 258 programs590operations PASS both;
+all11selectedregressions PASS85.74snormal/127.35ssanitizer.22JSONreports read,saved
+validation/rpc-work-in-progress/{normal,sanitized};progress.json explicitly WIP.
+363counterparts=319prod44tests;94absent=50prod44tests.201CTest.457authoredguides,
+9058links2634anchors; final audit has zero errors.
+
+ALL HANDLES TERMINAL:29719,6406,19289,4911 builds;4230initialtest blankexpectation;
+74680test exposedJsonDBwrongcategory;74280/22705finalbuild+11test runs exit0.
+Logs /tmp/minima-rpc-command-{build,build-san,test,regressions,regressions-san}.log.
+Do not restart completed tests without new changes. WIPcommit/backup follows;
+inspect git log/newestignoredmanifest for actual saved hash. No checkpoint363tagyet.
+
+NEXT WORK: finish RPC, do not move to an easier command or label this complete.
+1. Address concrete review concerns in REVIEW.md: RPC_ENABLED/AUTHENTICATE plain
+bool and RPC_PASSWORD std::string are written by command and read by live request
+threads. Reuse prior GeneralParams atomic migration; RPCClient::UserAgent is an
+existing locked optional<string> snapshot candidate for shared string storage.
+Read full relevant candidates/callers/tests and report reuse gate before adapting.
+No atomic/shared-string edits made yet. ParamSnapshots explicit snapshots will need
+adaptation if fields change. Also review shared RPC-user JSONArray/JsonDB state:
+Authorizer and serialization readers can overlap in-place append/replacement.
+Preserve tested array aliasing; do not substitute a copied users backend silently.
+2. Implement successful live enable/authentication/loopback command validation.
+Current258suite does NOT successfully startRPC: only stopped-managerdisable,
+invalidenable/password and actualJavaThread.interrupt/nativepauseexception.
+Source default1sec pause reused via MainServices.sleep. Native wholeThread.interrupt
+mechanism remains absent; fixture has bool boundarysignal only, documented.
+3. Existing network_manager_native.cpp exercises actual HTTPServer/CMDHandler RPC
+start/stop/restart across8networklifecycles. Reuse that proven integration.
+MainNetworkOracle/Fixture can provide actual NetworkManager on unstartedMain;
+HTTPServer getBoundRPCPort native, Java mRPCServer.mServerSocket reflection allows
+port0 observer. RPCClient.sendGETBasicAuth exists in org/minima/utils/RPCClient.
+Beware async server startup logs and fixture std::clog streambuf swaps; do not
+introduce concurrent streambuf mutation or normalize unvalidated outcome data.
+4. Expand relevant network/HTTP/authorization/configurer and state regressions,
+update lessons/provenance/map/review, then validated checkpoint and verifiedbundle.
+
+The RPC lab was written BEFORE tests; all touched Main/JsonDB/RPC lessons updated.
+First source test expected blank action to fall through, corrected to actual
+getParam blank rejection; source port unchanged. Native JsonDB mismatch was real.
+No user question required; already authorized localcommits/backup. NoGitHubpush:
+remote fork/ghfork destination unanswered. Worktree path/branch MinimaCoreC++.
+
+Older notes below are historical.
+
 # Current checkpoint 362 — status validated, ready for final local commit
 
 Full 457-file working native port goal ACTIVE/incomplete. This turn made progress:

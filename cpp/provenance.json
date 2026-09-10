@@ -2226,5 +2226,61 @@
       "reports_read": 44
     },
     "limits": "Partial / parity not_verified. No durable SQL or full-node startup, JVM collection guarantee, equal JVM/native heap or exhaustive concurrent owner replacement."
+  },
+  "rpc_command_work_in_progress": {
+    "source": "upstream-study/src/org/minima/system/commands/network/rpc.java",
+    "source_sha256": "aa904b05d470794d5c51a5040e56128b7f7726ee948b9de36d7e934b14469a4c",
+    "destination": "src/org/minima/system/commands/network/rpc.cpp",
+    "reuse": [
+      "Main/NetworkManager.startRPC/stopRPC",
+      "UserDB.get/setRPCUsers and JsonDB arrays",
+      "RawTxnCommands checked object/string helpers",
+      "JavaLowerCase locale-sensitive lowercase",
+      "Existing MainServices.sleep boundary",
+      "MainRuntimeOracle/main_runtime.cpp and differential driver"
+    ],
+    "correction": "JsonDB.getJSONArray now explicitly throws JavaClassCastException for a non-array stored variant; null/missing creation and aliasing unchanged.",
+    "validation": {
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "status": "work_in_progress",
+      "counterparts": 363,
+      "production_counterparts": 319,
+      "mapped_tests": 44,
+      "absent": 94,
+      "lessons": 457,
+      "ctest_entries": 201,
+      "full_builds": [
+        "normal",
+        "ASAN/UBSAN"
+      ],
+      "programs_per_build": 258,
+      "operations_per_build": 590,
+      "selected_tests_per_build": 11,
+      "selected_seconds": [
+        85.74,
+        127.35
+      ],
+      "reports": [
+        "prefs-differential-results.json",
+        "command-differential-results.json",
+        "command-runner-differential-results.json",
+        "command-runner-errors-results.json",
+        "main-runtime-results.json",
+        "main-lifecycle-commands-results.json",
+        "network-peer-commands-results.json",
+        "network-status-command-results.json",
+        "logs-command-results.json",
+        "node-status-command-results.json",
+        "rpc-command-results.json"
+      ],
+      "reports_read": 22,
+      "pending": [
+        "Successful live RPC enable and authenticated loopback command integration",
+        "Concurrent RPC_ENABLED/RPC_AUTHENTICATE/RPC_PASSWORD read/write safety",
+        "Shared RPC-user JSON array/state access during concurrent request handling",
+        "Broader affected HTTP/authorization/configuration checks after those changes"
+      ],
+      "limits": "Not a completed RPC checkpoint or full-port parity certificate. Current suite validates user management, stopped disable, interrupted sleep and typed failures."
+    }
   }
 }

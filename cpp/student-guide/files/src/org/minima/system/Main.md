@@ -125,3 +125,12 @@ parameters or reading Main. C++ ownership does not provide JVM heap collection
 or an equal heap size. The status comparison independently validates native
 controlled bytes/hint counts and Java heap-format bounds. Existing logging
 formatting and notification behavior are unchanged.
+
+## RPC pause binding in progress
+
+Main binds its existing sleep service to the rpc command. The command stops the
+network RPC listener before the one-second pause, then changes configuration.
+An injected interruption throws at the pause, before those writes. The Java
+comparison interrupts the actual calling thread; the native fixture supplies the
+matching exception through the service. Whole Java thread-interruption behavior
+and live RPC concurrent-state validation remain open.

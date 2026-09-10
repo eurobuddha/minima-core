@@ -30,10 +30,20 @@ public class MainRuntimeOracle extends SqlDBOracle {
         config=input;events=new JSONArray();GeneralParams.DATA_FOLDER=root;GeneralParams.RESCUE_MEGAMMR_NODE="";GeneralParams.USE_SQL_COINDB=false;GeneralParams.P2P_ENABLED=false;GeneralParams.P2P2_ENABLED=false;GeneralParams.MYSQL_DB_DELAY=0;GeneralParams.MYSQL_STORE_ALLTXPOW=false;GeneralParams.IBDSYNC_LOGS=false;GeneralParams.DB_IGNORE_LOCKS=false;GeneralParams.IS_MEGAMMR=false;Main.STARTUP_DEBUG_LOGS=false;Main.setMinimaListener(null);held.clear();connectionID=preparedID=0;
         var main=(ManualMain)NIOClientOracle.U.allocateInstance(ManualMain.class);NIOClientOracle.set(main,"mLock",new Object());NIOClientOracle.set(main,"mMessages",new LinkedList<Message>());NIOClientOracle.set(main,"STARTUP_ERROR_MSG","");NIOClientOracle.set(main,"mNormalMineMode",true);NIOClientOracle.set(main,"mOldTip",MiniData.ZERO_TXPOWID);main.AUTOMINE_TIMER=50000;
         for(var pair:new Object[][]{{"CLEANDB_RAM_TIMER",1800000L},{"CLEANDB_SQL_TIMER",43200000L},{"SYSTEMCLEAN_TIMER",300000L},{"MAIN_AUTOBACKUP_MYSQL_TIMER",7200000L},{"AUTOBACKUP_TIMER",86400000L},{"NETRESET_TIMER",86400000L},{"INIT_KEYS_TIMER",10000L},{"CHECKER_TIMER",180000L},{"P2PNETMDS_TIMER",1800000L}})NIOClientOracle.set(main,(String)pair[0],pair[1]);
-        install(main);MinimaDB.createDB();var data=new JSONObject();MainNetworkOracle network=null;var outputs=new JSONArray();
+        install(main);MinimaDB.createDB();var data=new JSONObject();MainNetworkOracle network=null;JSONArray rpcHeld=null;var outputs=new JSONArray();if(input.containsKey("rpcFixture")){Locale.setDefault(Locale.ENGLISH);GeneralParams.RPC_ENABLED=false;GeneralParams.RPC_AUTHENTICATE=false;GeneralParams.RPC_PASSWORD="none";GeneralParams.RPC_PORT=9005;}
         for(Object step:(JSONArray)input.get("ops")){
             config=(JSONObject)step;events=new JSONArray();calls=0;timers=new JSONArray();listenerCalls=new JSONArray();var out=new JSONObject();var bytes=new ByteArrayOutputStream();var previous=System.out;System.setOut(new PrintStream(bytes,true,"UTF-8"));long before=System.currentTimeMillis();
-            try{Object value=null;String cmd=config.getString("cmd");switch(cmd){
+            if(input.containsKey("rpcFixture")&&flag("interruptThread"))Thread.currentThread().interrupt();try{Object value=null;String cmd=config.getString("cmd");switch(cmd){
+                case "rpcConfig":{
+                    if(config.containsKey("locale"))Locale.setDefault(Locale.forLanguageTag(config.getString("locale")));
+                    if(config.containsKey("enabled"))GeneralParams.RPC_ENABLED=flag("enabled");
+                    if(config.containsKey("authenticate"))GeneralParams.RPC_AUTHENTICATE=flag("authenticate");
+                    if(config.containsKey("password"))GeneralParams.RPC_PASSWORD=config.getString("password");
+                    if(config.containsKey("port"))GeneralParams.RPC_PORT=integer(config,"port",0);
+                    if(config.containsKey("users"))MinimaDB.getDB().getUserDB().getAllData().put("rpcusers_allusers",config.get("users"));
+                    if(flag("hold"))rpcHeld=MinimaDB.getDB().getUserDB().getRPCUsers();break;
+                }
+                case "rpcState":{var state=new JSONObject();state.put("enabled",GeneralParams.RPC_ENABLED);state.put("authenticate",GeneralParams.RPC_AUTHENTICATE);state.put("password",GeneralParams.RPC_PASSWORD);state.put("port",GeneralParams.RPC_PORT);if(rpcHeld!=null){state.put("sameArray",rpcHeld==MinimaDB.getDB().getUserDB().getRPCUsers());state.put("heldUsers",new JSONArray(rpcHeld));}value=state;break;}
                 case "statusSetup":{
                     var db=MinimaDB.getDB();
                     if(!flag("skipWallet"))db.getWallet().loadDB(new File(root,"databases/walletsql/wallet"));
@@ -98,7 +108,7 @@ public class MainRuntimeOracle extends SqlDBOracle {
                 case "info":break;default:throw new IllegalArgumentException(cmd);
             }out.put("value",value);}catch(Throwable error){out.put("exception",error.toString());}finally{System.setOut(previous);}
             long after=System.currentTimeMillis();var logs=new JSONArray();for(String line:bytes.toString("UTF-8").split("\n")){int at=line.indexOf("] : ");if(at>=0&&!line.substring(at+4).startsWith("     "))logs.add(line.substring(at+4));}
-            if(input.containsKey("nodeStatus"))out.put("jvmMaxMemory",Runtime.getRuntime().maxMemory());out.put("before",before);out.put("after",after);out.put("logs",logs);out.put("timers",timers);out.put("events",events);out.put("listeners",listenerCalls);out.put("held",new JSONArray(held));out.put("state",snapshot(main));out.put("user",new JSONObject(MinimaDB.getDB().getUserDB().getAllData()));outputs.add(out);
+            if(input.containsKey("rpcFixture"))out.put("interrupted",Thread.interrupted());if(input.containsKey("nodeStatus"))out.put("jvmMaxMemory",Runtime.getRuntime().maxMemory());out.put("before",before);out.put("after",after);out.put("logs",logs);out.put("timers",timers);out.put("events",events);out.put("listeners",listenerCalls);out.put("held",new JSONArray(held));out.put("state",snapshot(main));out.put("user",new JSONObject(MinimaDB.getDB().getUserDB().getAllData()));outputs.add(out);
         }Main.setMinimaListener(null);install(null);var result=new JSONObject();result.put("ops",outputs);return result;
     }
     public static void main(String[] args)throws Exception{installDriver("jdbc:");var in=new BufferedReader(new InputStreamReader(System.in));String line;while((line=in.readLine())!=null)try{System.out.println(run((JSONObject)new JSONParser().parse(line),args[0]).toJSONString());}catch(Throwable e){e.printStackTrace(System.err);System.out.println("{\"fatal\":true}");}}

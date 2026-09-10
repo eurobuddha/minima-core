@@ -20,7 +20,12 @@ void JsonDB::setString(const std::string& name,const std::optional<std::string>&
 void JsonDB::setJSON(const std::string& name,std::shared_ptr<json::JSONObject> value) {json::JSONValue json;if(value)json.value=std::move(value);params().put(name,std::move(json));}
 std::shared_ptr<json::JSONObject> JsonDB::getJSON(const std::string& name,std::shared_ptr<json::JSONObject> fallback) const {return exists(name)?std::get<std::shared_ptr<json::JSONObject>>(params().get(name).value):std::move(fallback);}
 void JsonDB::setJSONArray(const std::string& name,std::shared_ptr<json::JSONArray> value) {json::JSONValue json;if(value)json.value=std::move(value);params().put(name,std::move(json));}
-std::shared_ptr<json::JSONArray> JsonDB::getJSONArray(const std::string& name) {if(!exists(name))setJSONArray(name,std::make_shared<json::JSONArray>());return std::get<std::shared_ptr<json::JSONArray>>(params().get(name).value);}
+std::shared_ptr<json::JSONArray> JsonDB::getJSONArray(const std::string& name) {
+    if(!exists(name))setJSONArray(name,std::make_shared<json::JSONArray>());
+    auto array=std::get_if<std::shared_ptr<json::JSONArray>>(&params().get(name).value);
+    if(!array)throw JavaClassCastException("Cannot cast stored value to JSONArray");
+    return *array;
+}
 void JsonDB::loadDB(const std::filesystem::path& file) {MiniFile::loadObjectSlow(file,*this);}
 void JsonDB::saveDB(const std::filesystem::path& file) {MiniFile::saveObjectDirect(file,*this);}
 std::vector<uint8_t> JsonDB::serialise() const {return MiniString(params().toString()).serialise();}

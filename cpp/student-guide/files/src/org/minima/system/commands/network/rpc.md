@@ -2,11 +2,11 @@
 
 **Teaching status:** Authored algorithm and test explanation; full API/parity review remains open.
 
-**Port status:** `unported`; parity `not_verified`. The mapped C++ file is absent. This page does not describe a completed translation.
+**Port status:** `implemented_partial`; parity `not_verified`. The native body exists; live-enable and concurrency validation are unfinished.
 
 | Source | Destination |
 |---|---|
-| [src/org/minima/system/commands/network/rpc.java](../../../../../../../../../upstream-study/src/org/minima/system/commands/network/rpc.java) | `src/org/minima/system/commands/network/rpc.cpp` (planned) |
+| [src/org/minima/system/commands/network/rpc.java](../../../../../../../../../upstream-study/src/org/minima/system/commands/network/rpc.java) | [Native body](../../../../../../../../src/org/minima/system/commands/network/rpc.cpp) |
 
 ## What this file does
 
@@ -23,11 +23,32 @@ Controls RPC enablement and the additional RPC-user records exposed through User
 
 ## How the translation is approached
 
-The mapped rpc.cpp is absent. Reuse candidates for a future port are Command parameter parsing, GeneralParams, UserDB and NetworkManager start/stop boundaries; no new authentication backend is required to explain the pinned command.
+The native body uses the existing Main/NetworkManager methods and actual UserDB
+arrays, with RawTxnCommands' checked object/string adapters and JavaLowerCase.
+The existing Main sleep service is bound to the command's one-second pause.
+Synthetic interruption propagates the native InterruptedException category at
+that boundary. No Java thread registry or full interruption mechanism is implied.
 
 ## What the tests tell us
 
-Proposed tests should record stop/sleep/global-update/start order, enable-over-action precedence, omitted password, unused ssl, duplicate usernames, reserved username, mode validation, replacement-array aliasing and listusers output. Inject interruption or manager failure at each stage to inspect partial changes. These are planned tests, not reported runs.
+The [lab](../../../../../../../../student-guide/new-tests/rpc-command.md) was written
+before the [comparison corpus](../../../../../../../../tools/rpc_commands_corpus.py).
+The current cases check direct/runner dispatch, metadata, duplicate usernames,
+reserved names, malformed array elements, unchanged versus replaced array identity,
+retained list replies and locale-sensitive modes. An initial expected value treated
+blank action as unknown; Command.getParam rejects blank strings before the action
+switch, so the test now expects that rejection.
+
+A malformed saved array revealed an actual shared-getter bug: native JsonDB exposed
+bad_variant_access instead of Java ClassCastException. The corrected getJSONArray
+keeps null/missing default creation and shared-array ownership, while explicitly
+checking the stored variant type. Earlier preference tests reduced all exceptions
+to ERROR, which could not detect this category mismatch; this command comparison
+checks the category and state separately.
+
+The stopped NetworkManager disable path and interrupted pause are exercised.
+Successful live enable/authentication and safe concurrent mutation remain open;
+this lesson does not claim a production-ready RPC implementation.
 
 ## Dependencies and reading map
 
@@ -41,6 +62,6 @@ When enable:false is supplied, how many stopRPC calls occur on the successful pa
 
 ## Limits and traceability
 
-The source’s help text is not evidence that ssl is implemented here. This unported command needs both behavioral tests and runtime binding before use. The mapped native file is absent; all validation proposed here is future work.
+The source’s help text is not evidence that ssl is implemented here. The native command is bound to Main, but successful live enablement, concurrent authentication/configuration access, durable preferences and complete parity remain unfinished.
 
 Pinned Java SHA-256: `aa904b05d470794d5c51a5040e56128b7f7726ee948b9de36d7e934b14469a4c`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).

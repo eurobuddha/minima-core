@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 124,
+  "total_programs": 124,
+  "operations": 562,
+  "failures": [],
+  "scope": "Actual network command and Main/NIO/NetworkManager/traffic/trace composition. Direct hidden UID filter versus runner rejection, typed failures, partial logging effects, real local host enumeration, queue-only restart and validated reset clocks. Initial fixture clocks fixed; reset date prose excluded. No live restart or full startup."
+}

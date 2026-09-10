@@ -1,4 +1,5 @@
 #include "Main.hpp"
+#include "org/minima/system/commands/network/rpc.hpp"
 #include "commands/CommandRunner.hpp"
 #include "commands/network/connect.hpp"
 #include "commands/network/webhooks.hpp"
@@ -87,7 +88,7 @@ void Main::bindRuntime(){
     n.postP2PTimer=[](auto timer){sqlRequired(sqlRequired(mainOwner()->getNetworkManager()).getP2PManager()).PostTimerMessage(timer);};n.postMainTimer=[](auto timer){mainOwner()->PostTimerMessage(timer);};n.notifyEvent=[](const auto& event,const auto& data){mainOwner()->PostNotifyEvent(event,data);};
     n.postProcessIBD=[](auto ibd,auto uid){sqlRequired(mainOwner()->getTxPoWProcessor()).postProcessIBD(ibd,uid);};n.postProcessSyncIBD=[](auto ibd,auto uid){sqlRequired(mainOwner()->getTxPoWProcessor()).postProcessSyncIBD(ibd,uid);};n.postProcessTxPoW=[](auto pow){sqlRequired(mainOwner()->getTxPoWProcessor()).postProcessTxPoW(pow);};n.postProcessTxBlock=[](auto block){sqlRequired(mainOwner()->getTxPoWProcessor()).postProcessTxBlock(block);};n.mineTxPoWAsync=[](auto pow){sqlRequired(mainOwner()->getTxPoWMiner()).mineTxPoWAsync(pow);};
     n.getPeersCopy=peers;n.getP2PClients=[]{return sqlRequired(std::dynamic_pointer_cast<p2p::P2PManager>(sqlRequired(mainOwner()->getNetworkManager()).getP2PManager())).getClients();};n.getP2P2Peers=[]{return sqlRequired(sqlRequired(MinimaDB::getDB()).getP2P2DB()).getAllKnownPeers();};n.getCurrentMegaMMRIBD=mServices.getCurrentMegaMMRIBD;n.getAutomineTimer=[]{return mainOwner()->AUTOMINE_TIMER.load();};n.currentTimeMillis=mServices.now;
-    commands::connect::postMessage=[](auto msg){sqlRequired(mainOwner()->getNIOManager()).PostMessage(msg);};commands::webhooks::runtimeLookup=[]{return mainOwner()->getNotifyManager();};commands::keys::postMessage=[](auto msg){mainOwner()->PostMessage(msg);};commands::txnminepost::postMessage=commands::keys::postMessage;commands::txnutils::getMiner=[]{return mainOwner()->getTxPoWMiner();};commands::sendpoll::getManager=[]{return mainOwner()->getSendPoll();};commands::vault::getMain=[]{return std::static_pointer_cast<commands::vault::MainReceiver>(getInstance());};
+    commands::rpc::sleep=mServices.sleep;commands::connect::postMessage=[](auto msg){sqlRequired(mainOwner()->getNIOManager()).PostMessage(msg);};commands::webhooks::runtimeLookup=[]{return mainOwner()->getNotifyManager();};commands::keys::postMessage=[](auto msg){mainOwner()->PostMessage(msg);};commands::txnminepost::postMessage=commands::keys::postMessage;commands::txnutils::getMiner=[]{return mainOwner()->getTxPoWMiner();};commands::sendpoll::getManager=[]{return mainOwner()->getSendPoll();};commands::vault::getMain=[]{return std::static_pointer_cast<commands::vault::MainReceiver>(getInstance());};
     auto logger=MinimaLogger::getRuntime();logger.collectMemory=mServices.collectMemory;logger.getMain=[]{return std::static_pointer_cast<MinimaLogger::MainReceiver>(getInstance());};MinimaLogger::setRuntime(std::move(logger));
 }
 void Main::initialize(){
