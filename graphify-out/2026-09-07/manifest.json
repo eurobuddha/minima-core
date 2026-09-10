@@ -1,0 +1,2817 @@
+{
+  "build.gradle": {
+    "mtime": 1788814920.9677894,
+    "ast_hash": "fb4a6c8505fe20b07a2f64f6a56bb3e9",
+    "semantic_hash": ""
+  },
+  "buildjars.sh": {
+    "mtime": 1782212542.9711885,
+    "ast_hash": "a088d11331bac712c4169e4457fe8857",
+    "semantic_hash": "a088d11331bac712c4169e4457fe8857"
+  },
+  "gradlew": {
+    "mtime": 1782212542.9718223,
+    "ast_hash": "e4e74bb6fc34e29b56849e5f48766d51",
+    "semantic_hash": "e4e74bb6fc34e29b56849e5f48766d51"
+  },
+  "settings.gradle": {
+    "mtime": 1782212543.0405118,
+    "ast_hash": "54bbf28aea08908bd87862b289617104",
+    "semantic_hash": "54bbf28aea08908bd87862b289617104"
+  },
+  "src/org/minima/Minima.java": {
+    "mtime": 1782212543.0407646,
+    "ast_hash": "abd5ffd74dbf47eed048392fb9abedfd",
+    "semantic_hash": "abd5ffd74dbf47eed048392fb9abedfd"
+  },
+  "src/org/minima/database/MinimaDB.java": {
+    "mtime": 1788814920.9613082,
+    "ast_hash": "9b7dd08c784484c3aec8267e99fd926d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/database/archive/ArchiveManager.java": {
+    "mtime": 1782212543.0416584,
+    "ast_hash": "2433c0d513b2807007b93a59a6ba8292",
+    "semantic_hash": "2433c0d513b2807007b93a59a6ba8292"
+  },
+  "src/org/minima/database/archive/RawArchiveInput.java": {
+    "mtime": 1782212543.0422094,
+    "ast_hash": "0bdbf1591775230eb7f9c5ecee7c7f08",
+    "semantic_hash": "0bdbf1591775230eb7f9c5ecee7c7f08"
+  },
+  "src/org/minima/database/archive/TxBlockDB.java": {
+    "mtime": 1782212543.0422792,
+    "ast_hash": "59bd02f5ece27bc48b97a058f82a9689",
+    "semantic_hash": "59bd02f5ece27bc48b97a058f82a9689"
+  },
+  "src/org/minima/database/cascade/Cascade.java": {
+    "mtime": 1782212543.0424232,
+    "ast_hash": "9f114b83fa0dfe4c52f8c22a02db747c",
+    "semantic_hash": "9f114b83fa0dfe4c52f8c22a02db747c"
+  },
+  "src/org/minima/database/cascade/CascadeNode.java": {
+    "mtime": 1782212543.0424874,
+    "ast_hash": "f5f0b608825b2decdadb26d67030169f",
+    "semantic_hash": "f5f0b608825b2decdadb26d67030169f"
+  },
+  "src/org/minima/database/txpowdb/TxPoWDB.java": {
+    "mtime": 1782212543.0426311,
+    "ast_hash": "797b947e3433ba1ecdbcc8fede1b2250",
+    "semantic_hash": "797b947e3433ba1ecdbcc8fede1b2250"
+  },
+  "src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java": {
+    "mtime": 1782212543.0427687,
+    "ast_hash": "b6e1e1269bcadbfb72c0d4a5ce65d336",
+    "semantic_hash": "b6e1e1269bcadbfb72c0d4a5ce65d336"
+  },
+  "src/org/minima/database/txpowdb/ram/RamDB.java": {
+    "mtime": 1782212543.0429091,
+    "ast_hash": "5f868aa3fee336a3bc462a9fd7c7c342",
+    "semantic_hash": "5f868aa3fee336a3bc462a9fd7c7c342"
+  },
+  "src/org/minima/database/txpowdb/ram/RamData.java": {
+    "mtime": 1782212543.0429676,
+    "ast_hash": "00475ed8ed4017c902cd406474e000d5",
+    "semantic_hash": "00475ed8ed4017c902cd406474e000d5"
+  },
+  "src/org/minima/database/txpowdb/sql/TxPoWList.java": {
+    "mtime": 1782212543.0430512,
+    "ast_hash": "2eaef9dc9432f741a1eeed27711aa52c",
+    "semantic_hash": "2eaef9dc9432f741a1eeed27711aa52c"
+  },
+  "src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java": {
+    "mtime": 1782212543.043113,
+    "ast_hash": "8390e152395974609de352b1ca8b35d7",
+    "semantic_hash": "8390e152395974609de352b1ca8b35d7"
+  },
+  "src/org/minima/database/txpowtree/CoinDB.java": {
+    "mtime": 1782212543.0432575,
+    "ast_hash": "c5bed30e28678dd588d50dfea72c866e",
+    "semantic_hash": "c5bed30e28678dd588d50dfea72c866e"
+  },
+  "src/org/minima/database/txpowtree/TxPoWTreeNode.java": {
+    "mtime": 1782212543.0433257,
+    "ast_hash": "a717ede37d6c58019265f41f2275c454",
+    "semantic_hash": "a717ede37d6c58019265f41f2275c454"
+  },
+  "src/org/minima/database/txpowtree/TxPoWTreeNodeAction.java": {
+    "mtime": 1782212543.0436168,
+    "ast_hash": "54e868a7d93a714e73a650c4535d0145",
+    "semantic_hash": "54e868a7d93a714e73a650c4535d0145"
+  },
+  "src/org/minima/database/txpowtree/TxPowTree.java": {
+    "mtime": 1782212543.0437036,
+    "ast_hash": "d06a401bfdfbeab79a64be2428e8624d",
+    "semantic_hash": "d06a401bfdfbeab79a64be2428e8624d"
+  },
+  "src/org/minima/database/userprefs/UserDB.java": {
+    "mtime": 1782212543.0438406,
+    "ast_hash": "22e5ebeaf853ce3ea498ba55467d4e1b",
+    "semantic_hash": "22e5ebeaf853ce3ea498ba55467d4e1b"
+  },
+  "src/org/minima/database/userprefs/txndb/TxnDB.java": {
+    "mtime": 1782212543.0457501,
+    "ast_hash": "93f33a6a5808ec131a8b3edfb0cd3e63",
+    "semantic_hash": "93f33a6a5808ec131a8b3edfb0cd3e63"
+  },
+  "src/org/minima/database/userprefs/txndb/TxnRow.java": {
+    "mtime": 1782212543.0458636,
+    "ast_hash": "3412c5942da69bf8eba43d54cedd63d5",
+    "semantic_hash": "3412c5942da69bf8eba43d54cedd63d5"
+  },
+  "src/org/minima/database/wallet/KeyRow.java": {
+    "mtime": 1782212543.0459936,
+    "ast_hash": "f870f64b350c6552b0d9813ff12f7b08",
+    "semantic_hash": "f870f64b350c6552b0d9813ff12f7b08"
+  },
+  "src/org/minima/database/wallet/ScriptRow.java": {
+    "mtime": 1782212543.0460613,
+    "ast_hash": "be621fc054fb4497a4515546bf21207c",
+    "semantic_hash": "be621fc054fb4497a4515546bf21207c"
+  },
+  "src/org/minima/database/wallet/SeedRow.java": {
+    "mtime": 1782212543.0461214,
+    "ast_hash": "89d3d0764fe10ecc164f3bab0ef9a800",
+    "semantic_hash": "89d3d0764fe10ecc164f3bab0ef9a800"
+  },
+  "src/org/minima/database/wallet/Wallet.java": {
+    "mtime": 1787522443.254081,
+    "ast_hash": "68e2bdcd6a061513b439e3b635067422",
+    "semantic_hash": ""
+  },
+  "src/org/minima/kissvm/Contract.java": {
+    "mtime": 1782212543.0463343,
+    "ast_hash": "c6f9dddef866c59d1b515db1b9249fa0",
+    "semantic_hash": "c6f9dddef866c59d1b515db1b9249fa0"
+  },
+  "src/org/minima/kissvm/exceptions/ExecutionException.java": {
+    "mtime": 1782212543.0464358,
+    "ast_hash": "db2b83ad36874d3515d6d511b860a52c",
+    "semantic_hash": "db2b83ad36874d3515d6d511b860a52c"
+  },
+  "src/org/minima/kissvm/exceptions/MinimaException.java": {
+    "mtime": 1782212543.0464878,
+    "ast_hash": "54902e6316bcfff5387a193e099fbbc2",
+    "semantic_hash": "54902e6316bcfff5387a193e099fbbc2"
+  },
+  "src/org/minima/kissvm/exceptions/MinimaParseException.java": {
+    "mtime": 1782212543.0465362,
+    "ast_hash": "62a7ace7c0ba2d9ae6137d0c013d80d9",
+    "semantic_hash": "62a7ace7c0ba2d9ae6137d0c013d80d9"
+  },
+  "src/org/minima/kissvm/expressions/BooleanExpression.java": {
+    "mtime": 1782212543.0466733,
+    "ast_hash": "af3fc8b0e86395ffeda7f3b7af5316fa",
+    "semantic_hash": "af3fc8b0e86395ffeda7f3b7af5316fa"
+  },
+  "src/org/minima/kissvm/expressions/ConstantExpression.java": {
+    "mtime": 1782212543.0467343,
+    "ast_hash": "1e22ea0727b991c6def8778497e94075",
+    "semantic_hash": "1e22ea0727b991c6def8778497e94075"
+  },
+  "src/org/minima/kissvm/expressions/Expression.java": {
+    "mtime": 1782212543.0467973,
+    "ast_hash": "fcab3ca1453d90bddd823be118c37dfb",
+    "semantic_hash": "fcab3ca1453d90bddd823be118c37dfb"
+  },
+  "src/org/minima/kissvm/expressions/ExpressionParser.java": {
+    "mtime": 1782212543.046912,
+    "ast_hash": "70b9a6cb86a3e20b71ac8380887a02f7",
+    "semantic_hash": "70b9a6cb86a3e20b71ac8380887a02f7"
+  },
+  "src/org/minima/kissvm/expressions/FunctionExpression.java": {
+    "mtime": 1782212543.0474906,
+    "ast_hash": "fcb437dac2dd0adb213a07b6c05173b3",
+    "semantic_hash": "fcb437dac2dd0adb213a07b6c05173b3"
+  },
+  "src/org/minima/kissvm/expressions/GlobalExpression.java": {
+    "mtime": 1782212543.0476532,
+    "ast_hash": "311ce678651b0b2f7f95383a634452ba",
+    "semantic_hash": "311ce678651b0b2f7f95383a634452ba"
+  },
+  "src/org/minima/kissvm/expressions/OperatorExpression.java": {
+    "mtime": 1782212543.0477962,
+    "ast_hash": "3bf5a67be0b57e83dddabc4b45dd7320",
+    "semantic_hash": "3bf5a67be0b57e83dddabc4b45dd7320"
+  },
+  "src/org/minima/kissvm/expressions/VariableExpression.java": {
+    "mtime": 1782212543.0478666,
+    "ast_hash": "2ff7821528ccfb59d34cffae7083add1",
+    "semantic_hash": "2ff7821528ccfb59d34cffae7083add1"
+  },
+  "src/org/minima/kissvm/functions/MinimaFunction.java": {
+    "mtime": 1782212543.0480275,
+    "ast_hash": "683a01eec15317a6e419e0b4b194149e",
+    "semantic_hash": "683a01eec15317a6e419e0b4b194149e"
+  },
+  "src/org/minima/kissvm/functions/cast/ASCII.java": {
+    "mtime": 1782212543.0481303,
+    "ast_hash": "1c26350eeb28db33a1ff03708987cfeb",
+    "semantic_hash": "1c26350eeb28db33a1ff03708987cfeb"
+  },
+  "src/org/minima/kissvm/functions/cast/BOOL.java": {
+    "mtime": 1782212543.0481882,
+    "ast_hash": "3d3efe7e1f506ed193777e6f0eac6678",
+    "semantic_hash": "3d3efe7e1f506ed193777e6f0eac6678"
+  },
+  "src/org/minima/kissvm/functions/cast/HEX.java": {
+    "mtime": 1782212543.048257,
+    "ast_hash": "444c0ea0201a207ec08cafee19498a27",
+    "semantic_hash": "444c0ea0201a207ec08cafee19498a27"
+  },
+  "src/org/minima/kissvm/functions/cast/NUMBER.java": {
+    "mtime": 1782212543.0483255,
+    "ast_hash": "618b23a9859a5f22de0d400eb26f7a7c",
+    "semantic_hash": "618b23a9859a5f22de0d400eb26f7a7c"
+  },
+  "src/org/minima/kissvm/functions/cast/STRING.java": {
+    "mtime": 1782212543.048383,
+    "ast_hash": "416c4d271a33dbf201baedababf35a17",
+    "semantic_hash": "416c4d271a33dbf201baedababf35a17"
+  },
+  "src/org/minima/kissvm/functions/cast/UTF8.java": {
+    "mtime": 1782212543.048444,
+    "ast_hash": "f5ec1eab8f2edab4503c29bb0389bd1a",
+    "semantic_hash": "f5ec1eab8f2edab4503c29bb0389bd1a"
+  },
+  "src/org/minima/kissvm/functions/general/ADDRESS.java": {
+    "mtime": 1782212543.0485406,
+    "ast_hash": "fa09af55e437a5184b87303d525361f4",
+    "semantic_hash": "fa09af55e437a5184b87303d525361f4"
+  },
+  "src/org/minima/kissvm/functions/general/EXISTS.java": {
+    "mtime": 1782212543.0488262,
+    "ast_hash": "d12591ae479f43571d0a8c57cd4f5b9e",
+    "semantic_hash": "d12591ae479f43571d0a8c57cd4f5b9e"
+  },
+  "src/org/minima/kissvm/functions/general/FUNCTION.java": {
+    "mtime": 1782212543.0489016,
+    "ast_hash": "98d525edeacef29d738fc8ed87548b44",
+    "semantic_hash": "98d525edeacef29d738fc8ed87548b44"
+  },
+  "src/org/minima/kissvm/functions/general/GET.java": {
+    "mtime": 1782212543.0489802,
+    "ast_hash": "ae7c0075101e4370bfc54fcdade7de29",
+    "semantic_hash": "ae7c0075101e4370bfc54fcdade7de29"
+  },
+  "src/org/minima/kissvm/functions/hex/BITCOUNT.java": {
+    "mtime": 1782212543.0490737,
+    "ast_hash": "fbce8eed0da658dbd1a5ef0bb8c4967b",
+    "semantic_hash": "fbce8eed0da658dbd1a5ef0bb8c4967b"
+  },
+  "src/org/minima/kissvm/functions/hex/BITGET.java": {
+    "mtime": 1782212543.049131,
+    "ast_hash": "ff75b4c862ffbf4fe50d5644a21bba45",
+    "semantic_hash": "ff75b4c862ffbf4fe50d5644a21bba45"
+  },
+  "src/org/minima/kissvm/functions/hex/BITSET.java": {
+    "mtime": 1782212543.0491884,
+    "ast_hash": "8c163bc576a45d4b1dc35c8b353fe65f",
+    "semantic_hash": "8c163bc576a45d4b1dc35c8b353fe65f"
+  },
+  "src/org/minima/kissvm/functions/hex/CONCAT.java": {
+    "mtime": 1782212543.0492485,
+    "ast_hash": "28be45452a39d6c221c2cfcf6ca86790",
+    "semantic_hash": "28be45452a39d6c221c2cfcf6ca86790"
+  },
+  "src/org/minima/kissvm/functions/hex/LEN.java": {
+    "mtime": 1782212543.0493093,
+    "ast_hash": "06bea2b11ff63fd4d71086d0c074b1a8",
+    "semantic_hash": "06bea2b11ff63fd4d71086d0c074b1a8"
+  },
+  "src/org/minima/kissvm/functions/hex/OVERWRITE.java": {
+    "mtime": 1782212543.0493705,
+    "ast_hash": "d94ce1b887c4d6bce62c187468777e4f",
+    "semantic_hash": "d94ce1b887c4d6bce62c187468777e4f"
+  },
+  "src/org/minima/kissvm/functions/hex/REV.java": {
+    "mtime": 1782212543.049438,
+    "ast_hash": "8e0584e40eeacbbedc5f0b1be0e79ef2",
+    "semantic_hash": "8e0584e40eeacbbedc5f0b1be0e79ef2"
+  },
+  "src/org/minima/kissvm/functions/hex/SETLEN.java": {
+    "mtime": 1782212543.0495024,
+    "ast_hash": "88d1d91ef269c30596a10bb2db4b2e78",
+    "semantic_hash": "88d1d91ef269c30596a10bb2db4b2e78"
+  },
+  "src/org/minima/kissvm/functions/hex/SUBSET.java": {
+    "mtime": 1782212543.0495794,
+    "ast_hash": "998d3b195ef33a4023cadab653d4710a",
+    "semantic_hash": "998d3b195ef33a4023cadab653d4710a"
+  },
+  "src/org/minima/kissvm/functions/number/ABS.java": {
+    "mtime": 1782212543.0497103,
+    "ast_hash": "3d2d72399c7d596d6964b767ac648559",
+    "semantic_hash": "3d2d72399c7d596d6964b767ac648559"
+  },
+  "src/org/minima/kissvm/functions/number/CEIL.java": {
+    "mtime": 1782212543.0497754,
+    "ast_hash": "7029e813e255e8144dd5ba2c72f9b454",
+    "semantic_hash": "7029e813e255e8144dd5ba2c72f9b454"
+  },
+  "src/org/minima/kissvm/functions/number/DEC.java": {
+    "mtime": 1782212543.049833,
+    "ast_hash": "7d9afb50bada5b9deb123068fdc18802",
+    "semantic_hash": "7d9afb50bada5b9deb123068fdc18802"
+  },
+  "src/org/minima/kissvm/functions/number/FLOOR.java": {
+    "mtime": 1782212543.0498831,
+    "ast_hash": "b99d02304a29fae831d204054a669dc3",
+    "semantic_hash": "b99d02304a29fae831d204054a669dc3"
+  },
+  "src/org/minima/kissvm/functions/number/INC.java": {
+    "mtime": 1782212543.049938,
+    "ast_hash": "9f2bf91dd772f3351692010f6b337ca3",
+    "semantic_hash": "9f2bf91dd772f3351692010f6b337ca3"
+  },
+  "src/org/minima/kissvm/functions/number/MAX.java": {
+    "mtime": 1782212543.0499887,
+    "ast_hash": "29bbbf3cb1b8d24311d5e46abc624bec",
+    "semantic_hash": "29bbbf3cb1b8d24311d5e46abc624bec"
+  },
+  "src/org/minima/kissvm/functions/number/MIN.java": {
+    "mtime": 1782212543.0500412,
+    "ast_hash": "2c4aff446904f2e0b395980a994a3712",
+    "semantic_hash": "2c4aff446904f2e0b395980a994a3712"
+  },
+  "src/org/minima/kissvm/functions/number/POW.java": {
+    "mtime": 1782212543.0500917,
+    "ast_hash": "1a3ec99d441cafd77185a1a692c4ecbf",
+    "semantic_hash": "1a3ec99d441cafd77185a1a692c4ecbf"
+  },
+  "src/org/minima/kissvm/functions/number/SIGDIG.java": {
+    "mtime": 1782212543.0501516,
+    "ast_hash": "942cd53f4c423bb58f8af219bd1fbce3",
+    "semantic_hash": "942cd53f4c423bb58f8af219bd1fbce3"
+  },
+  "src/org/minima/kissvm/functions/number/SQRT.java": {
+    "mtime": 1782212543.050236,
+    "ast_hash": "5395a1370527941f9a71ff18965d95d9",
+    "semantic_hash": "5395a1370527941f9a71ff18965d95d9"
+  },
+  "src/org/minima/kissvm/functions/sha/PROOF.java": {
+    "mtime": 1782212543.050333,
+    "ast_hash": "b7629c3c262451941436f93717338405",
+    "semantic_hash": "b7629c3c262451941436f93717338405"
+  },
+  "src/org/minima/kissvm/functions/sha/SHA2.java": {
+    "mtime": 1782212543.050391,
+    "ast_hash": "955fa1b38c0d8fd26953f4666b60b191",
+    "semantic_hash": "955fa1b38c0d8fd26953f4666b60b191"
+  },
+  "src/org/minima/kissvm/functions/sha/SHA3.java": {
+    "mtime": 1782212543.0504444,
+    "ast_hash": "36a59b70cd8b9013147ea0b1a67f7c4e",
+    "semantic_hash": "36a59b70cd8b9013147ea0b1a67f7c4e"
+  },
+  "src/org/minima/kissvm/functions/sigs/CHECKSIG.java": {
+    "mtime": 1782212543.0505238,
+    "ast_hash": "4d558cec36ed6fae774d131ad50d8d3f",
+    "semantic_hash": "4d558cec36ed6fae774d131ad50d8d3f"
+  },
+  "src/org/minima/kissvm/functions/sigs/MULTISIG.java": {
+    "mtime": 1782212543.0505774,
+    "ast_hash": "a746ffc0aa69c9b2672b6b9f546ee3e7",
+    "semantic_hash": "a746ffc0aa69c9b2672b6b9f546ee3e7"
+  },
+  "src/org/minima/kissvm/functions/sigs/SIGNEDBY.java": {
+    "mtime": 1782212543.0506377,
+    "ast_hash": "625e69d306d6679365e044cd1d2ec02c",
+    "semantic_hash": "625e69d306d6679365e044cd1d2ec02c"
+  },
+  "src/org/minima/kissvm/functions/state/PREVSTATE.java": {
+    "mtime": 1782212543.0507224,
+    "ast_hash": "b9e7d410a2d076de0847e57d9f5ea82e",
+    "semantic_hash": "b9e7d410a2d076de0847e57d9f5ea82e"
+  },
+  "src/org/minima/kissvm/functions/state/SAMESTATE.java": {
+    "mtime": 1782212543.0507774,
+    "ast_hash": "bf9f8abd08ac97bbfaf1a3acf8302958",
+    "semantic_hash": "bf9f8abd08ac97bbfaf1a3acf8302958"
+  },
+  "src/org/minima/kissvm/functions/state/STATE.java": {
+    "mtime": 1782212543.050827,
+    "ast_hash": "07bdce5132d6d52d0490105d9d3e53f1",
+    "semantic_hash": "07bdce5132d6d52d0490105d9d3e53f1"
+  },
+  "src/org/minima/kissvm/functions/string/REPLACE.java": {
+    "mtime": 1782212543.0509038,
+    "ast_hash": "33d4538da2c6371cad1752c632cc3fc5",
+    "semantic_hash": "33d4538da2c6371cad1752c632cc3fc5"
+  },
+  "src/org/minima/kissvm/functions/string/REPLACEFIRST.java": {
+    "mtime": 1782212543.050958,
+    "ast_hash": "8fb16f185cbafc91a52e10ea64d580ab",
+    "semantic_hash": "8fb16f185cbafc91a52e10ea64d580ab"
+  },
+  "src/org/minima/kissvm/functions/string/SUBSTR.java": {
+    "mtime": 1782212543.0510082,
+    "ast_hash": "062dba258ef60b960fc9d4fc1d82047c",
+    "semantic_hash": "062dba258ef60b960fc9d4fc1d82047c"
+  },
+  "src/org/minima/kissvm/functions/txn/input/GETINADDR.java": {
+    "mtime": 1782212543.0511212,
+    "ast_hash": "cddcb22e038e052ed927f8428b991523",
+    "semantic_hash": "cddcb22e038e052ed927f8428b991523"
+  },
+  "src/org/minima/kissvm/functions/txn/input/GETINAMT.java": {
+    "mtime": 1782212543.051171,
+    "ast_hash": "4a2ba23f4b24323f2e145769116f6817",
+    "semantic_hash": "4a2ba23f4b24323f2e145769116f6817"
+  },
+  "src/org/minima/kissvm/functions/txn/input/GETINID.java": {
+    "mtime": 1782212543.0512245,
+    "ast_hash": "9f132337fecf27da4d19f04b89203ce9",
+    "semantic_hash": "9f132337fecf27da4d19f04b89203ce9"
+  },
+  "src/org/minima/kissvm/functions/txn/input/GETINTOK.java": {
+    "mtime": 1782212543.0512764,
+    "ast_hash": "043b29e70b5778469fb133f59f423942",
+    "semantic_hash": "043b29e70b5778469fb133f59f423942"
+  },
+  "src/org/minima/kissvm/functions/txn/input/SUMINPUTS.java": {
+    "mtime": 1782212543.051331,
+    "ast_hash": "cbe3f6c90b111e021c5fe3b6b029da39",
+    "semantic_hash": "cbe3f6c90b111e021c5fe3b6b029da39"
+  },
+  "src/org/minima/kissvm/functions/txn/input/VERIFYIN.java": {
+    "mtime": 1782212543.051385,
+    "ast_hash": "e504ea0b8ff055aef4fe24cc7fe327e5",
+    "semantic_hash": "e504ea0b8ff055aef4fe24cc7fe327e5"
+  },
+  "src/org/minima/kissvm/functions/txn/output/GETOUTADDR.java": {
+    "mtime": 1782212543.0514627,
+    "ast_hash": "7ccd6ae5d4eb630cc03e12d838fffdfc",
+    "semantic_hash": "7ccd6ae5d4eb630cc03e12d838fffdfc"
+  },
+  "src/org/minima/kissvm/functions/txn/output/GETOUTAMT.java": {
+    "mtime": 1782212543.0515127,
+    "ast_hash": "0054599ea826ec9b274736ffde95d5e8",
+    "semantic_hash": "0054599ea826ec9b274736ffde95d5e8"
+  },
+  "src/org/minima/kissvm/functions/txn/output/GETOUTKEEPSTATE.java": {
+    "mtime": 1782212543.05174,
+    "ast_hash": "3e0ad0d2b4b723d44adc23396c0db6ea",
+    "semantic_hash": "3e0ad0d2b4b723d44adc23396c0db6ea"
+  },
+  "src/org/minima/kissvm/functions/txn/output/GETOUTTOK.java": {
+    "mtime": 1782212543.0518186,
+    "ast_hash": "9c2efa7b3ca1bac048c26078d2d18ac5",
+    "semantic_hash": "9c2efa7b3ca1bac048c26078d2d18ac5"
+  },
+  "src/org/minima/kissvm/functions/txn/output/SUMOUTPUTS.java": {
+    "mtime": 1782212543.051878,
+    "ast_hash": "0245e8ef0fa2069cc68d654be7fae34c",
+    "semantic_hash": "0245e8ef0fa2069cc68d654be7fae34c"
+  },
+  "src/org/minima/kissvm/functions/txn/output/VERIFYOUT.java": {
+    "mtime": 1782212543.0519364,
+    "ast_hash": "656e87ac9b2e706d506d25bbb6fbe871",
+    "semantic_hash": "656e87ac9b2e706d506d25bbb6fbe871"
+  },
+  "src/org/minima/kissvm/statements/Statement.java": {
+    "mtime": 1782212543.0520627,
+    "ast_hash": "c329e4b413022648ecc793c65c083ddb",
+    "semantic_hash": "c329e4b413022648ecc793c65c083ddb"
+  },
+  "src/org/minima/kissvm/statements/StatementBlock.java": {
+    "mtime": 1782212543.0521286,
+    "ast_hash": "5d7eb94e5430606c0068598a8c82cef5",
+    "semantic_hash": "5d7eb94e5430606c0068598a8c82cef5"
+  },
+  "src/org/minima/kissvm/statements/StatementParser.java": {
+    "mtime": 1782212543.0525463,
+    "ast_hash": "e71eb6f1f8036084dad93e2f2359fea3",
+    "semantic_hash": "e71eb6f1f8036084dad93e2f2359fea3"
+  },
+  "src/org/minima/kissvm/statements/commands/ASSERTstatement.java": {
+    "mtime": 1782212543.0526624,
+    "ast_hash": "9a434b1c9cf47a334a2815fc39118d1b",
+    "semantic_hash": "9a434b1c9cf47a334a2815fc39118d1b"
+  },
+  "src/org/minima/kissvm/statements/commands/EXECstatement.java": {
+    "mtime": 1782212543.0527253,
+    "ast_hash": "e4dadbab80a811b71bb969c2c9a3e10a",
+    "semantic_hash": "e4dadbab80a811b71bb969c2c9a3e10a"
+  },
+  "src/org/minima/kissvm/statements/commands/IFstatement.java": {
+    "mtime": 1782212543.052776,
+    "ast_hash": "83aa6945837ed5de2c630a67d5cfa420",
+    "semantic_hash": "83aa6945837ed5de2c630a67d5cfa420"
+  },
+  "src/org/minima/kissvm/statements/commands/LETstatement.java": {
+    "mtime": 1782212543.0528524,
+    "ast_hash": "7602738c2cdcc9bd5ea96c7a78bb0aa7",
+    "semantic_hash": "7602738c2cdcc9bd5ea96c7a78bb0aa7"
+  },
+  "src/org/minima/kissvm/statements/commands/MASTstatement.java": {
+    "mtime": 1782212543.052914,
+    "ast_hash": "82ded7c393f5c623a2063e1d7fbff1fe",
+    "semantic_hash": "82ded7c393f5c623a2063e1d7fbff1fe"
+  },
+  "src/org/minima/kissvm/statements/commands/RETURNstatement.java": {
+    "mtime": 1782212543.0529947,
+    "ast_hash": "6297a4fc20afc7a8d8e0b902120b74fb",
+    "semantic_hash": "6297a4fc20afc7a8d8e0b902120b74fb"
+  },
+  "src/org/minima/kissvm/statements/commands/WHILEstatement.java": {
+    "mtime": 1782212543.0530531,
+    "ast_hash": "a31c393b899ef9dbf1fef19529a3d572",
+    "semantic_hash": "a31c393b899ef9dbf1fef19529a3d572"
+  },
+  "src/org/minima/kissvm/tokens/LexicalTokenizer.java": {
+    "mtime": 1782212543.0531375,
+    "ast_hash": "af33b6503e7f477ef690e18f3b944569",
+    "semantic_hash": "af33b6503e7f477ef690e18f3b944569"
+  },
+  "src/org/minima/kissvm/tokens/ScriptToken.java": {
+    "mtime": 1782212543.0531967,
+    "ast_hash": "7990d7eb0fd1c79875b8509349ae412d",
+    "semantic_hash": "7990d7eb0fd1c79875b8509349ae412d"
+  },
+  "src/org/minima/kissvm/tokens/ScriptTokenizer.java": {
+    "mtime": 1782212543.0533159,
+    "ast_hash": "532e8b892375c0c2a14e26ac1aa0ccf4",
+    "semantic_hash": "532e8b892375c0c2a14e26ac1aa0ccf4"
+  },
+  "src/org/minima/kissvm/values/BooleanValue.java": {
+    "mtime": 1782212543.0533946,
+    "ast_hash": "b1d9260129d5037056ea79c84eecbefd",
+    "semantic_hash": "b1d9260129d5037056ea79c84eecbefd"
+  },
+  "src/org/minima/kissvm/values/HexValue.java": {
+    "mtime": 1782212543.0535724,
+    "ast_hash": "424e4249a88b77cb5025691ace4ff639",
+    "semantic_hash": "424e4249a88b77cb5025691ace4ff639"
+  },
+  "src/org/minima/kissvm/values/NumberValue.java": {
+    "mtime": 1782212543.0536368,
+    "ast_hash": "94c56802a880f76692ef55ae0ed7529b",
+    "semantic_hash": "94c56802a880f76692ef55ae0ed7529b"
+  },
+  "src/org/minima/kissvm/values/StringValue.java": {
+    "mtime": 1782212543.0536892,
+    "ast_hash": "1380a1553fe34b3ace5474d34fc3c10c",
+    "semantic_hash": "1380a1553fe34b3ace5474d34fc3c10c"
+  },
+  "src/org/minima/kissvm/values/Value.java": {
+    "mtime": 1782212543.0537415,
+    "ast_hash": "27f9828b4c95ba89f96fb10b249e2391",
+    "semantic_hash": "27f9828b4c95ba89f96fb10b249e2391"
+  },
+  "src/org/minima/objects/Address.java": {
+    "mtime": 1782212543.0538898,
+    "ast_hash": "c6d53f9277da2b5c699b8fd75408cab7",
+    "semantic_hash": "c6d53f9277da2b5c699b8fd75408cab7"
+  },
+  "src/org/minima/objects/Coin.java": {
+    "mtime": 1782212543.053968,
+    "ast_hash": "6bc5abf1e61e8a59c450fb38fdb9f48c",
+    "semantic_hash": "6bc5abf1e61e8a59c450fb38fdb9f48c"
+  },
+  "src/org/minima/objects/CoinProof.java": {
+    "mtime": 1782212543.0540206,
+    "ast_hash": "131ad0f39a7e9939ff5aadd765f79bf4",
+    "semantic_hash": "131ad0f39a7e9939ff5aadd765f79bf4"
+  },
+  "src/org/minima/objects/Greeting.java": {
+    "mtime": 1782212543.054124,
+    "ast_hash": "df59e619ed169aae80749242296672a5",
+    "semantic_hash": "df59e619ed169aae80749242296672a5"
+  },
+  "src/org/minima/objects/IBD.java": {
+    "mtime": 1782212543.0541883,
+    "ast_hash": "c4486523d4046cd9ae5f6ba73d51853d",
+    "semantic_hash": "c4486523d4046cd9ae5f6ba73d51853d"
+  },
+  "src/org/minima/objects/Magic.java": {
+    "mtime": 1782212543.054268,
+    "ast_hash": "b2f5ccb310925702c1dd0a3af9bacb71",
+    "semantic_hash": "b2f5ccb310925702c1dd0a3af9bacb71"
+  },
+  "src/org/minima/objects/Pulse.java": {
+    "mtime": 1782212543.0543225,
+    "ast_hash": "951de13a6a274f0a34171f3637c60432",
+    "semantic_hash": "951de13a6a274f0a34171f3637c60432"
+  },
+  "src/org/minima/objects/ScriptProof.java": {
+    "mtime": 1782212543.0545115,
+    "ast_hash": "55d58a66bd68cb01d07d603e94699ab8",
+    "semantic_hash": "55d58a66bd68cb01d07d603e94699ab8"
+  },
+  "src/org/minima/objects/StateVariable.java": {
+    "mtime": 1782212543.0546188,
+    "ast_hash": "39efee3fd9b8c4f727c369f3aef7a7e4",
+    "semantic_hash": "39efee3fd9b8c4f727c369f3aef7a7e4"
+  },
+  "src/org/minima/objects/Token.java": {
+    "mtime": 1782212543.0547261,
+    "ast_hash": "305f6dbabb8a42f91e4bf514277f61b6",
+    "semantic_hash": "305f6dbabb8a42f91e4bf514277f61b6"
+  },
+  "src/org/minima/objects/Transaction.java": {
+    "mtime": 1782212543.0547907,
+    "ast_hash": "7d1d5e264452f1a192129431dcfe3f56",
+    "semantic_hash": "7d1d5e264452f1a192129431dcfe3f56"
+  },
+  "src/org/minima/objects/TxBlock.java": {
+    "mtime": 1782212543.0548985,
+    "ast_hash": "8188b88b8a1b3bd677d904451681a2fa",
+    "semantic_hash": "8188b88b8a1b3bd677d904451681a2fa"
+  },
+  "src/org/minima/objects/TxBody.java": {
+    "mtime": 1782212543.054949,
+    "ast_hash": "d91e52ceb4bfb01c0b23d6952d8cb063",
+    "semantic_hash": "d91e52ceb4bfb01c0b23d6952d8cb063"
+  },
+  "src/org/minima/objects/TxHeader.java": {
+    "mtime": 1782212543.0550585,
+    "ast_hash": "4c94bdb3caca6d1be8fcc5d91dc225af",
+    "semantic_hash": "4c94bdb3caca6d1be8fcc5d91dc225af"
+  },
+  "src/org/minima/objects/TxPoW.java": {
+    "mtime": 1782212543.0553057,
+    "ast_hash": "0c1b30a4a67e3b8b7e878f6d434ebc1e",
+    "semantic_hash": "0c1b30a4a67e3b8b7e878f6d434ebc1e"
+  },
+  "src/org/minima/objects/Witness.java": {
+    "mtime": 1782212543.055415,
+    "ast_hash": "f421c306a7264f9ad3355d768f983693",
+    "semantic_hash": "f421c306a7264f9ad3355d768f983693"
+  },
+  "src/org/minima/objects/base/MiniByte.java": {
+    "mtime": 1782212543.0554945,
+    "ast_hash": "90b5a502ba1330cd40a040fd0e2cf1a2",
+    "semantic_hash": "90b5a502ba1330cd40a040fd0e2cf1a2"
+  },
+  "src/org/minima/objects/base/MiniData.java": {
+    "mtime": 1782212543.0556066,
+    "ast_hash": "64a51255f46ddd7f5de5100bf039d5d8",
+    "semantic_hash": "64a51255f46ddd7f5de5100bf039d5d8"
+  },
+  "src/org/minima/objects/base/MiniNumber.java": {
+    "mtime": 1782212543.0556753,
+    "ast_hash": "39eb2737fdf03aed9189826341b08d64",
+    "semantic_hash": "39eb2737fdf03aed9189826341b08d64"
+  },
+  "src/org/minima/objects/base/MiniString.java": {
+    "mtime": 1782212543.055736,
+    "ast_hash": "2cc24e2b152d17dd4e84ac146378082f",
+    "semantic_hash": "2cc24e2b152d17dd4e84ac146378082f"
+  },
+  "src/org/minima/objects/keys/Signature.java": {
+    "mtime": 1782212543.0558214,
+    "ast_hash": "2b6fb30a30ddecc33dd261e471caf4da",
+    "semantic_hash": "2b6fb30a30ddecc33dd261e471caf4da"
+  },
+  "src/org/minima/objects/keys/SignatureProof.java": {
+    "mtime": 1782212543.0558777,
+    "ast_hash": "2ad609eb580f026e0df2c6fbedd6d783",
+    "semantic_hash": "2ad609eb580f026e0df2c6fbedd6d783"
+  },
+  "src/org/minima/objects/keys/TreeKey.java": {
+    "mtime": 1782212543.0559878,
+    "ast_hash": "87f021d00b93126d8185f5d9a3874a34",
+    "semantic_hash": "87f021d00b93126d8185f5d9a3874a34"
+  },
+  "src/org/minima/objects/keys/TreeKeyNode.java": {
+    "mtime": 1782212543.0561402,
+    "ast_hash": "fa39d55a8f657a7e0ee760a1296c5299",
+    "semantic_hash": "fa39d55a8f657a7e0ee760a1296c5299"
+  },
+  "src/org/minima/objects/keys/Winternitz.java": {
+    "mtime": 1782212543.0562487,
+    "ast_hash": "001b7bbc864dd9e8eb39765d90017803",
+    "semantic_hash": "001b7bbc864dd9e8eb39765d90017803"
+  },
+  "src/org/minima/objects/mmr/MMR.java": {
+    "mtime": 1785624341.055304,
+    "ast_hash": "89629459fb684d9972d6162924c60e16",
+    "semantic_hash": "89629459fb684d9972d6162924c60e16"
+  },
+  "src/org/minima/objects/mmr/MMRData.java": {
+    "mtime": 1782212543.0564911,
+    "ast_hash": "cf7c69b2c1a1a676d489519b85b64ac3",
+    "semantic_hash": "cf7c69b2c1a1a676d489519b85b64ac3"
+  },
+  "src/org/minima/objects/mmr/MMREntry.java": {
+    "mtime": 1782212543.0565603,
+    "ast_hash": "d47b078bb40fc092c9070458e08e7717",
+    "semantic_hash": "d47b078bb40fc092c9070458e08e7717"
+  },
+  "src/org/minima/objects/mmr/MMREntryNumber.java": {
+    "mtime": 1782212543.05664,
+    "ast_hash": "36209e1971c616a1797204eabee7a03d",
+    "semantic_hash": "36209e1971c616a1797204eabee7a03d"
+  },
+  "src/org/minima/objects/mmr/MMRProof.java": {
+    "mtime": 1782212543.0567675,
+    "ast_hash": "1c582bf81b560923f70698edc73ecd7b",
+    "semantic_hash": "1c582bf81b560923f70698edc73ecd7b"
+  },
+  "src/org/minima/objects/mmr/MegaMMR.java": {
+    "mtime": 1785624341.0587492,
+    "ast_hash": "1d8c72c679749b9c71912b202a5b69e4",
+    "semantic_hash": "1d8c72c679749b9c71912b202a5b69e4"
+  },
+  "src/org/minima/system/Main.java": {
+    "mtime": 1788814920.9510884,
+    "ast_hash": "e8f74ceda5973d73184403e7eacd8a4e",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/brains/TimedChecker.java": {
+    "mtime": 1782212543.0575902,
+    "ast_hash": "2705911d17fbe51fbbf2020f7e3ec200",
+    "semantic_hash": "2705911d17fbe51fbbf2020f7e3ec200"
+  },
+  "src/org/minima/system/brains/TxPoWChecker.java": {
+    "mtime": 1785227118.731619,
+    "ast_hash": "c66ae124c624137ab78118f1252e6424",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/brains/TxPoWGenerator.java": {
+    "mtime": 1782212543.057781,
+    "ast_hash": "e2f8170a1b34cd60df953a37793187a0",
+    "semantic_hash": "e2f8170a1b34cd60df953a37793187a0"
+  },
+  "src/org/minima/system/brains/TxPoWMiner.java": {
+    "mtime": 1782212543.0580862,
+    "ast_hash": "8185d53a91d6e89777a15a4ebea2283a",
+    "semantic_hash": "8185d53a91d6e89777a15a4ebea2283a"
+  },
+  "src/org/minima/system/brains/TxPoWProcessor.java": {
+    "mtime": 1782212543.058171,
+    "ast_hash": "d612e5a9bcb816c663d0624a2beb6e13",
+    "semantic_hash": "d612e5a9bcb816c663d0624a2beb6e13"
+  },
+  "src/org/minima/system/brains/TxPoWSearcher.java": {
+    "mtime": 1782212543.0584822,
+    "ast_hash": "c4709e93dabbd58c53253ee16265c1d8",
+    "semantic_hash": "c4709e93dabbd58c53253ee16265c1d8"
+  },
+  "src/org/minima/system/commands/Command.java": {
+    "mtime": 1782212543.0586421,
+    "ast_hash": "092ddd0308c49cc79526135d148f8764",
+    "semantic_hash": "092ddd0308c49cc79526135d148f8764"
+  },
+  "src/org/minima/system/commands/CommandException.java": {
+    "mtime": 1782212543.058703,
+    "ast_hash": "63eee7849a26a341a09fa204900c1319",
+    "semantic_hash": "63eee7849a26a341a09fa204900c1319"
+  },
+  "src/org/minima/system/commands/CommandRunner.java": {
+    "mtime": 1788814920.963033,
+    "ast_hash": "ce729d4f45253e126887f71d25566b7d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/commands/backup/archive.java": {
+    "mtime": 1782212543.0590737,
+    "ast_hash": "e42f5f90b6294f045622f8ef81c06670",
+    "semantic_hash": "e42f5f90b6294f045622f8ef81c06670"
+  },
+  "src/org/minima/system/commands/backup/backup.java": {
+    "mtime": 1782212543.0595376,
+    "ast_hash": "0b5b9bddfe8ceb469ec1968cf9021113",
+    "semantic_hash": "0b5b9bddfe8ceb469ec1968cf9021113"
+  },
+  "src/org/minima/system/commands/backup/decryptbackup.java": {
+    "mtime": 1782212543.0596592,
+    "ast_hash": "ee37904303677067039d0d9569ea50e1",
+    "semantic_hash": "ee37904303677067039d0d9569ea50e1"
+  },
+  "src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.java": {
+    "mtime": 1782212543.059755,
+    "ast_hash": "117a20f2beddd674852959681d9bf633",
+    "semantic_hash": "117a20f2beddd674852959681d9bf633"
+  },
+  "src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.java": {
+    "mtime": 1782212543.0598145,
+    "ast_hash": "a2b86b8aa15faea4e73f712efe4d1f49",
+    "semantic_hash": "a2b86b8aa15faea4e73f712efe4d1f49"
+  },
+  "src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.java": {
+    "mtime": 1782212543.0598745,
+    "ast_hash": "bdc5dda6b6b21db13c8703648a7bca2f",
+    "semantic_hash": "bdc5dda6b6b21db13c8703648a7bca2f"
+  },
+  "src/org/minima/system/commands/backup/mmrsync/megammr.java": {
+    "mtime": 1785624341.0592344,
+    "ast_hash": "b39b83be7787fa6c795f2b54246140a1",
+    "semantic_hash": "b39b83be7787fa6c795f2b54246140a1"
+  },
+  "src/org/minima/system/commands/backup/mmrsync/megammrsync.java": {
+    "mtime": 1782212543.0600266,
+    "ast_hash": "20e8b6778f9ed77968820010811ad30e",
+    "semantic_hash": "20e8b6778f9ed77968820010811ad30e"
+  },
+  "src/org/minima/system/commands/backup/mysql.java": {
+    "mtime": 1782212543.0601408,
+    "ast_hash": "148f72cb6c8b92fa671d1cbb24a14e15",
+    "semantic_hash": "148f72cb6c8b92fa671d1cbb24a14e15"
+  },
+  "src/org/minima/system/commands/backup/mysqlcoins.java": {
+    "mtime": 1782212543.0602376,
+    "ast_hash": "5cd839c34c24a048343e3b10add218d7",
+    "semantic_hash": "5cd839c34c24a048343e3b10add218d7"
+  },
+  "src/org/minima/system/commands/backup/reset.java": {
+    "mtime": 1782212543.0603504,
+    "ast_hash": "2903ec5c26fec07a1a3549096a7346fd",
+    "semantic_hash": "2903ec5c26fec07a1a3549096a7346fd"
+  },
+  "src/org/minima/system/commands/backup/restore.java": {
+    "mtime": 1782212543.0604706,
+    "ast_hash": "cd1860fd3edc5931dfe1033b5dc18e10",
+    "semantic_hash": "cd1860fd3edc5931dfe1033b5dc18e10"
+  },
+  "src/org/minima/system/commands/backup/restoresync.java": {
+    "mtime": 1782212543.0606415,
+    "ast_hash": "7499a50e625d82935b88ff29f8f1c155",
+    "semantic_hash": "7499a50e625d82935b88ff29f8f1c155"
+  },
+  "src/org/minima/system/commands/backup/vault.java": {
+    "mtime": 1782212543.060714,
+    "ast_hash": "09aa6f5812152a55a081bb1cddff63b7",
+    "semantic_hash": "09aa6f5812152a55a081bb1cddff63b7"
+  },
+  "src/org/minima/system/commands/base/automine.java": {
+    "mtime": 1782212543.0608144,
+    "ast_hash": "3c58c84ad031ee63981eb0801ed0b6a6",
+    "semantic_hash": "3c58c84ad031ee63981eb0801ed0b6a6"
+  },
+  "src/org/minima/system/commands/base/balance.java": {
+    "mtime": 1782212543.0608876,
+    "ast_hash": "214183dd94b5cb76fa8006740c1ce435",
+    "semantic_hash": "214183dd94b5cb76fa8006740c1ce435"
+  },
+  "src/org/minima/system/commands/base/benchmark.java": {
+    "mtime": 1782212543.0609987,
+    "ast_hash": "d712f103720440c3c4f89eabd1ee3f5b",
+    "semantic_hash": "d712f103720440c3c4f89eabd1ee3f5b"
+  },
+  "src/org/minima/system/commands/base/block.java": {
+    "mtime": 1782212543.0610566,
+    "ast_hash": "8fc484673e5b5ce9e2dcec641d8c3d70",
+    "semantic_hash": "8fc484673e5b5ce9e2dcec641d8c3d70"
+  },
+  "src/org/minima/system/commands/base/burn.java": {
+    "mtime": 1782212543.061168,
+    "ast_hash": "7c428293108387b6c5e56b4f964accf7",
+    "semantic_hash": "7c428293108387b6c5e56b4f964accf7"
+  },
+  "src/org/minima/system/commands/base/checkaddress.java": {
+    "mtime": 1782212543.0613687,
+    "ast_hash": "48dc0e0cc405c33a1e0b8e1c8b4fcdc0",
+    "semantic_hash": "48dc0e0cc405c33a1e0b8e1c8b4fcdc0"
+  },
+  "src/org/minima/system/commands/base/coincheck.java": {
+    "mtime": 1782212543.061514,
+    "ast_hash": "ed1fea550b66dc847e212b6bf4d5de1e",
+    "semantic_hash": "ed1fea550b66dc847e212b6bf4d5de1e"
+  },
+  "src/org/minima/system/commands/base/coinexport.java": {
+    "mtime": 1782212543.0616348,
+    "ast_hash": "5d054b174c8b035ac2e0ee6a1f70217d",
+    "semantic_hash": "5d054b174c8b035ac2e0ee6a1f70217d"
+  },
+  "src/org/minima/system/commands/base/coinimport.java": {
+    "mtime": 1782212543.0617657,
+    "ast_hash": "cb4d432dd2d3d2f1ef2c4f1cf80f7d3c",
+    "semantic_hash": "cb4d432dd2d3d2f1ef2c4f1cf80f7d3c"
+  },
+  "src/org/minima/system/commands/base/coinnotify.java": {
+    "mtime": 1782212543.0618284,
+    "ast_hash": "0a4607bc5dc191e5379c4e8d80a7a54f",
+    "semantic_hash": "0a4607bc5dc191e5379c4e8d80a7a54f"
+  },
+  "src/org/minima/system/commands/base/cointrack.java": {
+    "mtime": 1782212543.0618987,
+    "ast_hash": "18d3743ea031d857abd2a55a688684a8",
+    "semantic_hash": "18d3743ea031d857abd2a55a688684a8"
+  },
+  "src/org/minima/system/commands/base/consolidate.java": {
+    "mtime": 1782212543.0620234,
+    "ast_hash": "095812c5c4532c9bc2b7dd7fa698339b",
+    "semantic_hash": "095812c5c4532c9bc2b7dd7fa698339b"
+  },
+  "src/org/minima/system/commands/base/convert.java": {
+    "mtime": 1782212543.0620828,
+    "ast_hash": "5af47633ab3296eb7b1c17b352033a15",
+    "semantic_hash": "5af47633ab3296eb7b1c17b352033a15"
+  },
+  "src/org/minima/system/commands/base/debugflag.java": {
+    "mtime": 1782212543.062162,
+    "ast_hash": "246f3608eb12c020ad7521665c453eea",
+    "semantic_hash": "246f3608eb12c020ad7521665c453eea"
+  },
+  "src/org/minima/system/commands/base/getaddress.java": {
+    "mtime": 1782212543.0622241,
+    "ast_hash": "d90a6790571978b9de67bdfc3b03d714",
+    "semantic_hash": "d90a6790571978b9de67bdfc3b03d714"
+  },
+  "src/org/minima/system/commands/base/hash.java": {
+    "mtime": 1782212543.0622873,
+    "ast_hash": "983f0df457e7869026c8bc7ec921d3ad",
+    "semantic_hash": "983f0df457e7869026c8bc7ec921d3ad"
+  },
+  "src/org/minima/system/commands/base/hashtest.java": {
+    "mtime": 1782212543.0623672,
+    "ast_hash": "69edbac0004705172cf89bc334c8ac49",
+    "semantic_hash": "69edbac0004705172cf89bc334c8ac49"
+  },
+  "src/org/minima/system/commands/base/healthcheck.java": {
+    "mtime": 1782212543.0624275,
+    "ast_hash": "c267fe97010ddb5c26dbd1bb7649dfd2",
+    "semantic_hash": "c267fe97010ddb5c26dbd1bb7649dfd2"
+  },
+  "src/org/minima/system/commands/base/incentivecash.java": {
+    "mtime": 1782212543.062499,
+    "ast_hash": "b1cf759e5c0c421063c1260b87638ed0",
+    "semantic_hash": "b1cf759e5c0c421063c1260b87638ed0"
+  },
+  "src/org/minima/system/commands/base/jniminingtest.java": {
+    "mtime": 1782212543.0626082,
+    "ast_hash": "e98292ecb61e55d696672d494a7a7e37",
+    "semantic_hash": "e98292ecb61e55d696672d494a7a7e37"
+  },
+  "src/org/minima/system/commands/base/jnitest.java": {
+    "mtime": 1782212543.0627334,
+    "ast_hash": "5b632c611e3a77708fa3441be1104b7d",
+    "semantic_hash": "5b632c611e3a77708fa3441be1104b7d"
+  },
+  "src/org/minima/system/commands/base/logs.java": {
+    "mtime": 1782212543.0629072,
+    "ast_hash": "794997b0c0959b1f2fa8b5cbfb878986",
+    "semantic_hash": "794997b0c0959b1f2fa8b5cbfb878986"
+  },
+  "src/org/minima/system/commands/base/magic.java": {
+    "mtime": 1782212543.062989,
+    "ast_hash": "62ab88fe417ee88972f8da573166db3d",
+    "semantic_hash": "62ab88fe417ee88972f8da573166db3d"
+  },
+  "src/org/minima/system/commands/base/maths.java": {
+    "mtime": 1782212543.0630584,
+    "ast_hash": "3917d734e1021dd620ec8d1e66b1e944",
+    "semantic_hash": "3917d734e1021dd620ec8d1e66b1e944"
+  },
+  "src/org/minima/system/commands/base/mempool.java": {
+    "mtime": 1782212543.0631201,
+    "ast_hash": "0745d3a7c8759225e5ecb676c0c68efa",
+    "semantic_hash": "0745d3a7c8759225e5ecb676c0c68efa"
+  },
+  "src/org/minima/system/commands/base/missingcmd.java": {
+    "mtime": 1782212543.0631905,
+    "ast_hash": "8430348d5c1c8f0a2111ab8ea9b2cfc6",
+    "semantic_hash": "8430348d5c1c8f0a2111ab8ea9b2cfc6"
+  },
+  "src/org/minima/system/commands/base/mmrcreate.java": {
+    "mtime": 1782212543.0632682,
+    "ast_hash": "44e2011ca6745f87130fd79708d8014c",
+    "semantic_hash": "44e2011ca6745f87130fd79708d8014c"
+  },
+  "src/org/minima/system/commands/base/mmrproof.java": {
+    "mtime": 1782212543.0633457,
+    "ast_hash": "115ed3e0da8ade5edf469a0529a1885f",
+    "semantic_hash": "115ed3e0da8ade5edf469a0529a1885f"
+  },
+  "src/org/minima/system/commands/base/newaddress.java": {
+    "mtime": 1782212543.0634253,
+    "ast_hash": "4f3643377b95863fbea051ffa49b999d",
+    "semantic_hash": "4f3643377b95863fbea051ffa49b999d"
+  },
+  "src/org/minima/system/commands/base/printmmr.java": {
+    "mtime": 1782212543.0634818,
+    "ast_hash": "ee260849728e74882a7113edd9af583e",
+    "semantic_hash": "ee260849728e74882a7113edd9af583e"
+  },
+  "src/org/minima/system/commands/base/printtree.java": {
+    "mtime": 1782212543.063535,
+    "ast_hash": "ca2571fdc1856593075d27f9994b21a8",
+    "semantic_hash": "ca2571fdc1856593075d27f9994b21a8"
+  },
+  "src/org/minima/system/commands/base/quit.java": {
+    "mtime": 1782212543.0635955,
+    "ast_hash": "fcd726a16fb5fe61a45e9a99375f81d3",
+    "semantic_hash": "fcd726a16fb5fe61a45e9a99375f81d3"
+  },
+  "src/org/minima/system/commands/base/random.java": {
+    "mtime": 1782212543.063655,
+    "ast_hash": "38c57cbfb95791add8cf199908aa7fd6",
+    "semantic_hash": "38c57cbfb95791add8cf199908aa7fd6"
+  },
+  "src/org/minima/system/commands/base/scanchain.java": {
+    "mtime": 1782212543.0637307,
+    "ast_hash": "3a882519bbedd0eb5d358f6ddcabb087",
+    "semantic_hash": "3a882519bbedd0eb5d358f6ddcabb087"
+  },
+  "src/org/minima/system/commands/base/seedrandom.java": {
+    "mtime": 1782212543.0637908,
+    "ast_hash": "09e1aecc834dbee830ccd4c672756ceb",
+    "semantic_hash": "09e1aecc834dbee830ccd4c672756ceb"
+  },
+  "src/org/minima/system/commands/base/slavenode.java": {
+    "mtime": 1782212543.0640156,
+    "ast_hash": "c8ed7a55adb0ae4972ca2ae950bc4b66",
+    "semantic_hash": "c8ed7a55adb0ae4972ca2ae950bc4b66"
+  },
+  "src/org/minima/system/commands/base/sphincs.java": {
+    "mtime": 1782212543.064116,
+    "ast_hash": "5942b488be253294af11e673a6b177c0",
+    "semantic_hash": "5942b488be253294af11e673a6b177c0"
+  },
+  "src/org/minima/system/commands/base/status.java": {
+    "mtime": 1782212543.06419,
+    "ast_hash": "b436e6f688bc6cbb636912312a18d71c",
+    "semantic_hash": "b436e6f688bc6cbb636912312a18d71c"
+  },
+  "src/org/minima/system/commands/base/systemcheck.java": {
+    "mtime": 1782212543.064306,
+    "ast_hash": "d7c5adcdbafa4565ab1e4a7b259ff3d8",
+    "semantic_hash": "d7c5adcdbafa4565ab1e4a7b259ff3d8"
+  },
+  "src/org/minima/system/commands/base/test.java": {
+    "mtime": 1782212543.0643616,
+    "ast_hash": "66a7abebbfed59d6a9076c5c1f103d78",
+    "semantic_hash": "66a7abebbfed59d6a9076c5c1f103d78"
+  },
+  "src/org/minima/system/commands/base/timemilli.java": {
+    "mtime": 1782212543.064415,
+    "ast_hash": "3b4e5397770d4af8afd4c35c133d5d30",
+    "semantic_hash": "3b4e5397770d4af8afd4c35c133d5d30"
+  },
+  "src/org/minima/system/commands/base/tokencreate.java": {
+    "mtime": 1782212543.06464,
+    "ast_hash": "dbd56436766d3007c5436d036206868f",
+    "semantic_hash": "dbd56436766d3007c5436d036206868f"
+  },
+  "src/org/minima/system/commands/base/tokenvalidate.java": {
+    "mtime": 1782212543.0649598,
+    "ast_hash": "b59ccf1352ae3093463fd490f93eba3e",
+    "semantic_hash": "b59ccf1352ae3093463fd490f93eba3e"
+  },
+  "src/org/minima/system/commands/base/trace.java": {
+    "mtime": 1782212543.0650322,
+    "ast_hash": "ee718ba10704b2dbf9591397a071433d",
+    "semantic_hash": "ee718ba10704b2dbf9591397a071433d"
+  },
+  "src/org/minima/system/commands/base/tutorial.java": {
+    "mtime": 1782212543.0651069,
+    "ast_hash": "863a0e2b5c151ed6417642062426362f",
+    "semantic_hash": "863a0e2b5c151ed6417642062426362f"
+  },
+  "src/org/minima/system/commands/help.java": {
+    "mtime": 1785624341.0593536,
+    "ast_hash": "f1164aeef9b7194addfd7c7c8b3c0d74",
+    "semantic_hash": "f1164aeef9b7194addfd7c7c8b3c0d74"
+  },
+  "src/org/minima/system/commands/network/connect.java": {
+    "mtime": 1782212543.06538,
+    "ast_hash": "42ed44c83acdad3836aad2c924705e66",
+    "semantic_hash": "42ed44c83acdad3836aad2c924705e66"
+  },
+  "src/org/minima/system/commands/network/disconnect.java": {
+    "mtime": 1782212543.065443,
+    "ast_hash": "e476c1486077b64425699f473df14a22",
+    "semantic_hash": "e476c1486077b64425699f473df14a22"
+  },
+  "src/org/minima/system/commands/network/message.java": {
+    "mtime": 1782212543.0654945,
+    "ast_hash": "6159fe76d5f755fd8a6d7406c2429f5c",
+    "semantic_hash": "6159fe76d5f755fd8a6d7406c2429f5c"
+  },
+  "src/org/minima/system/commands/network/network.java": {
+    "mtime": 1782212543.065551,
+    "ast_hash": "928ba0159828c3df49fabb97477c4aaa",
+    "semantic_hash": "928ba0159828c3df49fabb97477c4aaa"
+  },
+  "src/org/minima/system/commands/network/nodecount.java": {
+    "mtime": 1782212543.0656724,
+    "ast_hash": "2f3c2cc9318268525d55be4618e6b824",
+    "semantic_hash": "2f3c2cc9318268525d55be4618e6b824"
+  },
+  "src/org/minima/system/commands/network/p2pstate.java": {
+    "mtime": 1782212543.065761,
+    "ast_hash": "fa896f8e0d65a8262826717bbf1732c9",
+    "semantic_hash": "fa896f8e0d65a8262826717bbf1732c9"
+  },
+  "src/org/minima/system/commands/network/peers.java": {
+    "mtime": 1782212543.06583,
+    "ast_hash": "2a2ad89379c442241833c3ab4478f797",
+    "semantic_hash": "2a2ad89379c442241833c3ab4478f797"
+  },
+  "src/org/minima/system/commands/network/ping.java": {
+    "mtime": 1782212543.0658834,
+    "ast_hash": "6c43fb188aa7d39d5f914df546f9b720",
+    "semantic_hash": "6c43fb188aa7d39d5f914df546f9b720"
+  },
+  "src/org/minima/system/commands/network/rpc.java": {
+    "mtime": 1782212543.065995,
+    "ast_hash": "b56818c73932d2478269ac82bd1d618d",
+    "semantic_hash": "b56818c73932d2478269ac82bd1d618d"
+  },
+  "src/org/minima/system/commands/network/webhooks.java": {
+    "mtime": 1782212543.0660489,
+    "ast_hash": "ed47e85a3ae83da7b81edc9583c3960e",
+    "semantic_hash": "ed47e85a3ae83da7b81edc9583c3960e"
+  },
+  "src/org/minima/system/commands/scripts/newscript.java": {
+    "mtime": 1782212543.0661392,
+    "ast_hash": "9a3c75899681c4866903ef9ca0ad2581",
+    "semantic_hash": "9a3c75899681c4866903ef9ca0ad2581"
+  },
+  "src/org/minima/system/commands/scripts/removescript.java": {
+    "mtime": 1782212543.0661998,
+    "ast_hash": "2ec87904dc01dc3f3a4f0d9d43095014",
+    "semantic_hash": "2ec87904dc01dc3f3a4f0d9d43095014"
+  },
+  "src/org/minima/system/commands/scripts/runscript.java": {
+    "mtime": 1782212543.066315,
+    "ast_hash": "bd137fa93ae38357be7abf7f67733cd0",
+    "semantic_hash": "bd137fa93ae38357be7abf7f67733cd0"
+  },
+  "src/org/minima/system/commands/scripts/scripts.java": {
+    "mtime": 1782212543.0663772,
+    "ast_hash": "555aa2ebf760569ed74c0fa0897a0c7e",
+    "semantic_hash": "555aa2ebf760569ed74c0fa0897a0c7e"
+  },
+  "src/org/minima/system/commands/search/coins.java": {
+    "mtime": 1782212543.066518,
+    "ast_hash": "b495306b051f5db047b648db1b371566",
+    "semantic_hash": "b495306b051f5db047b648db1b371566"
+  },
+  "src/org/minima/system/commands/search/history.java": {
+    "mtime": 1782212543.0666301,
+    "ast_hash": "d95f4e067abb5b1c8f2c78d6c156a15c",
+    "semantic_hash": "d95f4e067abb5b1c8f2c78d6c156a15c"
+  },
+  "src/org/minima/system/commands/search/keys.java": {
+    "mtime": 1782212543.0667455,
+    "ast_hash": "f5bf7510ee5b39f9cf4dc64ad68a97eb",
+    "semantic_hash": "f5bf7510ee5b39f9cf4dc64ad68a97eb"
+  },
+  "src/org/minima/system/commands/search/tokens.java": {
+    "mtime": 1782212543.0667975,
+    "ast_hash": "65ab06752c9ea1f2320559f666193f43",
+    "semantic_hash": "65ab06752c9ea1f2320559f666193f43"
+  },
+  "src/org/minima/system/commands/search/txpow.java": {
+    "mtime": 1782212543.0669947,
+    "ast_hash": "4585900969faa9d0360029ce3ce1a737",
+    "semantic_hash": "4585900969faa9d0360029ce3ce1a737"
+  },
+  "src/org/minima/system/commands/send/multisig.java": {
+    "mtime": 1782212543.0670936,
+    "ast_hash": "791669162082f736363be40d1e45cdf8",
+    "semantic_hash": "791669162082f736363be40d1e45cdf8"
+  },
+  "src/org/minima/system/commands/send/multisigread.java": {
+    "mtime": 1782212543.0671902,
+    "ast_hash": "1593561a175de75805930f49cc0e3c14",
+    "semantic_hash": "1593561a175de75805930f49cc0e3c14"
+  },
+  "src/org/minima/system/commands/send/send.java": {
+    "mtime": 1782212543.067242,
+    "ast_hash": "7fa154b5a0e643d7c76e8bfabb4c169d",
+    "semantic_hash": "7fa154b5a0e643d7c76e8bfabb4c169d"
+  },
+  "src/org/minima/system/commands/send/sendnosign.java": {
+    "mtime": 1782212543.0676732,
+    "ast_hash": "281473e6f06238d8ed2d6174faea2f30",
+    "semantic_hash": "281473e6f06238d8ed2d6174faea2f30"
+  },
+  "src/org/minima/system/commands/send/sendpoll.java": {
+    "mtime": 1782212543.067767,
+    "ast_hash": "a44035467eb28dc20e246a9dea4be51a",
+    "semantic_hash": "a44035467eb28dc20e246a9dea4be51a"
+  },
+  "src/org/minima/system/commands/send/sendpost.java": {
+    "mtime": 1782212543.0678225,
+    "ast_hash": "f08f847fde5cb31333b8a88bdcac45a3",
+    "semantic_hash": "f08f847fde5cb31333b8a88bdcac45a3"
+  },
+  "src/org/minima/system/commands/send/sendsign.java": {
+    "mtime": 1785624314.3277063,
+    "ast_hash": "437bfae8b06700f209d76f375755621a",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/commands/send/sendview.java": {
+    "mtime": 1782212543.0679858,
+    "ast_hash": "3ec4a0161037d143dd29c5a5e86c7d07",
+    "semantic_hash": "3ec4a0161037d143dd29c5a5e86c7d07"
+  },
+  "src/org/minima/system/commands/send/wallet/consolidatefrom.java": {
+    "mtime": 1782212543.0681348,
+    "ast_hash": "1065af2912857456787660f8f530f6ea",
+    "semantic_hash": "1065af2912857456787660f8f530f6ea"
+  },
+  "src/org/minima/system/commands/send/wallet/constructfrom.java": {
+    "mtime": 1782212543.0682042,
+    "ast_hash": "aa52069e98ea626e21244588ca757776",
+    "semantic_hash": "aa52069e98ea626e21244588ca757776"
+  },
+  "src/org/minima/system/commands/send/wallet/createfrom.java": {
+    "mtime": 1782212543.0682511,
+    "ast_hash": "9457bc4777df41d402c889e57dcd6c85",
+    "semantic_hash": "9457bc4777df41d402c889e57dcd6c85"
+  },
+  "src/org/minima/system/commands/send/wallet/createtokenfrom.java": {
+    "mtime": 1782212543.0683606,
+    "ast_hash": "37bee01daf50aafdd0e7f761f5ab2fd3",
+    "semantic_hash": "37bee01daf50aafdd0e7f761f5ab2fd3"
+  },
+  "src/org/minima/system/commands/send/wallet/postfrom.java": {
+    "mtime": 1782212543.0684261,
+    "ast_hash": "c1eecb0143422541a89a1598ddcc7e57",
+    "semantic_hash": "c1eecb0143422541a89a1598ddcc7e57"
+  },
+  "src/org/minima/system/commands/send/wallet/rawfrom.java": {
+    "mtime": 1782212543.068568,
+    "ast_hash": "9958879484e3cbcf2d6c3608541bb0a5",
+    "semantic_hash": "9958879484e3cbcf2d6c3608541bb0a5"
+  },
+  "src/org/minima/system/commands/send/wallet/rawtxnfrom.java": {
+    "mtime": 1782212543.0686693,
+    "ast_hash": "3f70b7339bf74ce93c96f5f42b4d506d",
+    "semantic_hash": "3f70b7339bf74ce93c96f5f42b4d506d"
+  },
+  "src/org/minima/system/commands/send/wallet/sendfrom.java": {
+    "mtime": 1782212543.0687683,
+    "ast_hash": "7334759a9896a76bf7b46a37c3782e4f",
+    "semantic_hash": "7334759a9896a76bf7b46a37c3782e4f"
+  },
+  "src/org/minima/system/commands/send/wallet/signfrom.java": {
+    "mtime": 1782212543.0688248,
+    "ast_hash": "bde1ebf8293eaac75284825df603dc87",
+    "semantic_hash": "bde1ebf8293eaac75284825df603dc87"
+  },
+  "src/org/minima/system/commands/sendpoll/SendPollManager.java": {
+    "mtime": 1782212543.0689805,
+    "ast_hash": "4a7f0a7a575104c12e12cf7e49181399",
+    "semantic_hash": "4a7f0a7a575104c12e12cf7e49181399"
+  },
+  "src/org/minima/system/commands/sendpoll/SendPollMessage.java": {
+    "mtime": 1782212543.0690525,
+    "ast_hash": "e603018e4e0de8c15bd19f183a1c1680",
+    "semantic_hash": "e603018e4e0de8c15bd19f183a1c1680"
+  },
+  "src/org/minima/system/commands/signatures/sign.java": {
+    "mtime": 1782212543.069151,
+    "ast_hash": "2935634660ebba31ab3538f8e29a4130",
+    "semantic_hash": "2935634660ebba31ab3538f8e29a4130"
+  },
+  "src/org/minima/system/commands/signatures/verify.java": {
+    "mtime": 1782212543.06921,
+    "ast_hash": "cbfde81130fc34be7040ef9720fd93f6",
+    "semantic_hash": "cbfde81130fc34be7040ef9720fd93f6"
+  },
+  "src/org/minima/system/commands/tutorial.java": {
+    "mtime": 1782212543.0692966,
+    "ast_hash": "4c7e73b15e32bb1240e5bc33ff92ec09",
+    "semantic_hash": "4c7e73b15e32bb1240e5bc33ff92ec09"
+  },
+  "src/org/minima/system/commands/txn/txnaddamount.java": {
+    "mtime": 1782212543.0694022,
+    "ast_hash": "66716bb03c63227d4a2410f10177a579",
+    "semantic_hash": "66716bb03c63227d4a2410f10177a579"
+  },
+  "src/org/minima/system/commands/txn/txnauto.java": {
+    "mtime": 1782212543.069478,
+    "ast_hash": "bdf9440abc3393a238259af65f95d857",
+    "semantic_hash": "bdf9440abc3393a238259af65f95d857"
+  },
+  "src/org/minima/system/commands/txn/txnbasics.java": {
+    "mtime": 1782212543.0695372,
+    "ast_hash": "448c430a81b4c6dbbe5f76e95cb95403",
+    "semantic_hash": "448c430a81b4c6dbbe5f76e95cb95403"
+  },
+  "src/org/minima/system/commands/txn/txncheck.java": {
+    "mtime": 1782212543.0696547,
+    "ast_hash": "8f7fcd726cbfae75e41070251bb68008",
+    "semantic_hash": "8f7fcd726cbfae75e41070251bb68008"
+  },
+  "src/org/minima/system/commands/txn/txnclear.java": {
+    "mtime": 1782212543.0697181,
+    "ast_hash": "dc6e1c5194480086d494965a24c428c6",
+    "semantic_hash": "dc6e1c5194480086d494965a24c428c6"
+  },
+  "src/org/minima/system/commands/txn/txncoinlock.java": {
+    "mtime": 1782212543.0697846,
+    "ast_hash": "96acff335b6ec6fcb5f19a69b8a062b8",
+    "semantic_hash": "96acff335b6ec6fcb5f19a69b8a062b8"
+  },
+  "src/org/minima/system/commands/txn/txncreate.java": {
+    "mtime": 1782212543.0698528,
+    "ast_hash": "b2f35dc37f1d1e43caddf3a77a18dfbc",
+    "semantic_hash": "b2f35dc37f1d1e43caddf3a77a18dfbc"
+  },
+  "src/org/minima/system/commands/txn/txndelete.java": {
+    "mtime": 1782212543.069916,
+    "ast_hash": "1e2924d338c92534b88344c18a57533b",
+    "semantic_hash": "1e2924d338c92534b88344c18a57533b"
+  },
+  "src/org/minima/system/commands/txn/txnexport.java": {
+    "mtime": 1782212543.0699806,
+    "ast_hash": "6e44c8b4e384d762f716ecad159ae939",
+    "semantic_hash": "6e44c8b4e384d762f716ecad159ae939"
+  },
+  "src/org/minima/system/commands/txn/txnimport.java": {
+    "mtime": 1782212543.070176,
+    "ast_hash": "a14b3d5cf3bb2fb2a56f9c6032d1b67a",
+    "semantic_hash": "a14b3d5cf3bb2fb2a56f9c6032d1b67a"
+  },
+  "src/org/minima/system/commands/txn/txninput.java": {
+    "mtime": 1782212543.070328,
+    "ast_hash": "d85a52a35858d234b59610b08fc84242",
+    "semantic_hash": "d85a52a35858d234b59610b08fc84242"
+  },
+  "src/org/minima/system/commands/txn/txnlist.java": {
+    "mtime": 1782212543.0703945,
+    "ast_hash": "679b3d1e8f73f0df0834b988f88eff36",
+    "semantic_hash": "679b3d1e8f73f0df0834b988f88eff36"
+  },
+  "src/org/minima/system/commands/txn/txnlock.java": {
+    "mtime": 1782212543.0704508,
+    "ast_hash": "6854848f803197333327d73bcb1ad02f",
+    "semantic_hash": "6854848f803197333327d73bcb1ad02f"
+  },
+  "src/org/minima/system/commands/txn/txnmine.java": {
+    "mtime": 1782212543.070514,
+    "ast_hash": "d70a38e6caeddae1f83c8d75fd132d2a",
+    "semantic_hash": "d70a38e6caeddae1f83c8d75fd132d2a"
+  },
+  "src/org/minima/system/commands/txn/txnminepost.java": {
+    "mtime": 1782212543.0705967,
+    "ast_hash": "87585928bac2a2c05bbc4073df5c8c2b",
+    "semantic_hash": "87585928bac2a2c05bbc4073df5c8c2b"
+  },
+  "src/org/minima/system/commands/txn/txnmmr.java": {
+    "mtime": 1782212543.070652,
+    "ast_hash": "e2be2f05f09f3e0f327d702e0b4bdb38",
+    "semantic_hash": "e2be2f05f09f3e0f327d702e0b4bdb38"
+  },
+  "src/org/minima/system/commands/txn/txnoutput.java": {
+    "mtime": 1782212543.070718,
+    "ast_hash": "6d52e9dc896414064dca0e49fc24327a",
+    "semantic_hash": "6d52e9dc896414064dca0e49fc24327a"
+  },
+  "src/org/minima/system/commands/txn/txnpost.java": {
+    "mtime": 1782212543.0708282,
+    "ast_hash": "e26cd1b00773ac16ac48eebea122f1b8",
+    "semantic_hash": "e26cd1b00773ac16ac48eebea122f1b8"
+  },
+  "src/org/minima/system/commands/txn/txnscript.java": {
+    "mtime": 1782212543.0708954,
+    "ast_hash": "078c25ac72f8b0f39fe7dd90fffa1abf",
+    "semantic_hash": "078c25ac72f8b0f39fe7dd90fffa1abf"
+  },
+  "src/org/minima/system/commands/txn/txnsign.java": {
+    "mtime": 1782212543.0710099,
+    "ast_hash": "8e10bbee1a51056f5489d5f029569c8d",
+    "semantic_hash": "8e10bbee1a51056f5489d5f029569c8d"
+  },
+  "src/org/minima/system/commands/txn/txnstate.java": {
+    "mtime": 1782212543.0710602,
+    "ast_hash": "05794945d7c0a8f4f8db69322d851500",
+    "semantic_hash": "05794945d7c0a8f4f8db69322d851500"
+  },
+  "src/org/minima/system/commands/txn/txnutils.java": {
+    "mtime": 1782212543.0711281,
+    "ast_hash": "ebd89b096bdaf1ae9efc19926ecedc00",
+    "semantic_hash": "ebd89b096bdaf1ae9efc19926ecedc00"
+  },
+  "src/org/minima/system/commands/txn/txnview.java": {
+    "mtime": 1782212543.0711803,
+    "ast_hash": "2965ea5dcee6aa09344d1b904996b7bd",
+    "semantic_hash": "2965ea5dcee6aa09344d1b904996b7bd"
+  },
+  "src/org/minima/system/commands/whitepaper.java": {
+    "mtime": 1782212543.0712917,
+    "ast_hash": "f0b7102c04dbcfa15c35be2954e2509a",
+    "semantic_hash": "f0b7102c04dbcfa15c35be2954e2509a"
+  },
+  "src/org/minima/system/genesis/GenesisCoin.java": {
+    "mtime": 1782212543.0715203,
+    "ast_hash": "626e5c744cd0e5abb5f644f0e8824a55",
+    "semantic_hash": "626e5c744cd0e5abb5f644f0e8824a55"
+  },
+  "src/org/minima/system/genesis/GenesisMMR.java": {
+    "mtime": 1782212543.0715744,
+    "ast_hash": "003722ba2af3c92bf401124ce66410bc",
+    "semantic_hash": "003722ba2af3c92bf401124ce66410bc"
+  },
+  "src/org/minima/system/genesis/GenesisTxPoW.java": {
+    "mtime": 1782212543.0716302,
+    "ast_hash": "25f2aef1452ced5bba4c117eb5eba4f1",
+    "semantic_hash": "25f2aef1452ced5bba4c117eb5eba4f1"
+  },
+  "src/org/minima/system/network/NetworkManager.java": {
+    "mtime": 1782212543.071772,
+    "ast_hash": "0e3b9389f1f47fa5774caf95ae6db4d2",
+    "semantic_hash": "0e3b9389f1f47fa5774caf95ae6db4d2"
+  },
+  "src/org/minima/system/network/minima/NIOClient.java": {
+    "mtime": 1788802139.9918978,
+    "ast_hash": "fb9238c8accc9bebc68b2fe6ca2f9a60",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/network/minima/NIOClientInfo.java": {
+    "mtime": 1782212543.0719244,
+    "ast_hash": "74e8422194282f4e2183d4c7278fbc09",
+    "semantic_hash": "74e8422194282f4e2183d4c7278fbc09"
+  },
+  "src/org/minima/system/network/minima/NIOManager.java": {
+    "mtime": 1782212543.0720012,
+    "ast_hash": "5d4a4e7e4159d4d4b215413054fc5ce0",
+    "semantic_hash": "5d4a4e7e4159d4d4b215413054fc5ce0"
+  },
+  "src/org/minima/system/network/minima/NIOMessage.java": {
+    "mtime": 1788801627.6290948,
+    "ast_hash": "49901ab80a273f78d062633dc2e363e6",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/network/minima/NIOServer.java": {
+    "mtime": 1788802164.1241975,
+    "ast_hash": "1becc38414cc70966d7c5098471edb9f",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/network/minima/NIOTraffic.java": {
+    "mtime": 1782212543.0729902,
+    "ast_hash": "0028b31b057db7d28129348c1556aeef",
+    "semantic_hash": "0028b31b057db7d28129348c1556aeef"
+  },
+  "src/org/minima/system/network/minima/RelayPolicy.java": {
+    "mtime": 1782212543.0730512,
+    "ast_hash": "f2df01ed59aefa26027c933e798a3e3e",
+    "semantic_hash": "f2df01ed59aefa26027c933e798a3e3e"
+  },
+  "src/org/minima/system/network/p2p/P2PDB.java": {
+    "mtime": 1782212543.0731483,
+    "ast_hash": "39f19e171c1965b5d3661a333590171a",
+    "semantic_hash": "39f19e171c1965b5d3661a333590171a"
+  },
+  "src/org/minima/system/network/p2p/P2PFunctions.java": {
+    "mtime": 1782212543.0732305,
+    "ast_hash": "dd7950c52e71f33722656f56f01e9904",
+    "semantic_hash": "dd7950c52e71f33722656f56f01e9904"
+  },
+  "src/org/minima/system/network/p2p/P2PManager.java": {
+    "mtime": 1782212543.0733075,
+    "ast_hash": "fddb43e5692f4158d707938823b268d3",
+    "semantic_hash": "fddb43e5692f4158d707938823b268d3"
+  },
+  "src/org/minima/system/network/p2p/P2PPeersChecker.java": {
+    "mtime": 1782212543.0734916,
+    "ast_hash": "aa06329e734d30dc5675fd083eab1a31",
+    "semantic_hash": "aa06329e734d30dc5675fd083eab1a31"
+  },
+  "src/org/minima/system/network/p2p/P2PState.java": {
+    "mtime": 1782212543.0736015,
+    "ast_hash": "85fc251a17c9f13304f119fc08f2c634",
+    "semantic_hash": "85fc251a17c9f13304f119fc08f2c634"
+  },
+  "src/org/minima/system/network/p2p/SwapLinksFunctions.java": {
+    "mtime": 1782212543.0736666,
+    "ast_hash": "95ff522af21329c6aec3aff1e2f15e97",
+    "semantic_hash": "95ff522af21329c6aec3aff1e2f15e97"
+  },
+  "src/org/minima/system/network/p2p/UtilFuncs.java": {
+    "mtime": 1782212543.073719,
+    "ast_hash": "f03906cde4fcdd832af1bcc713b81976",
+    "semantic_hash": "f03906cde4fcdd832af1bcc713b81976"
+  },
+  "src/org/minima/system/network/p2p/WalkLinksFuncs.java": {
+    "mtime": 1782212543.0737886,
+    "ast_hash": "27dc8480089380e70488d6c55adf0060",
+    "semantic_hash": "27dc8480089380e70488d6c55adf0060"
+  },
+  "src/org/minima/system/network/p2p/messages/InetSocketAddressIO.java": {
+    "mtime": 1782212543.0738785,
+    "ast_hash": "04fc905606d4ef9338887a7501b25bc1",
+    "semantic_hash": "04fc905606d4ef9338887a7501b25bc1"
+  },
+  "src/org/minima/system/network/p2p/messages/P2PDoSwap.java": {
+    "mtime": 1782212543.073938,
+    "ast_hash": "9aa9a853880ef3e2b374fd2c3a5d8c3b",
+    "semantic_hash": "9aa9a853880ef3e2b374fd2c3a5d8c3b"
+  },
+  "src/org/minima/system/network/p2p/messages/P2PGreeting.java": {
+    "mtime": 1782212543.0740914,
+    "ast_hash": "cccbea8254145fbf91be79b15616ae78",
+    "semantic_hash": "cccbea8254145fbf91be79b15616ae78"
+  },
+  "src/org/minima/system/network/p2p/messages/P2PSwapLink.java": {
+    "mtime": 1782212543.0741568,
+    "ast_hash": "61f0d88670831548b47ccb4ca61e4fb7",
+    "semantic_hash": "61f0d88670831548b47ccb4ca61e4fb7"
+  },
+  "src/org/minima/system/network/p2p/messages/P2PWalkLinks.java": {
+    "mtime": 1782212543.07427,
+    "ast_hash": "467a874c5f30126c49296e2a6d556e75",
+    "semantic_hash": "467a874c5f30126c49296e2a6d556e75"
+  },
+  "src/org/minima/system/network/p2p/params/P2PParams.java": {
+    "mtime": 1782212543.0743558,
+    "ast_hash": "eb6c612ad1cc97c8905ae00eb9e62de3",
+    "semantic_hash": "eb6c612ad1cc97c8905ae00eb9e62de3"
+  },
+  "src/org/minima/system/network/p2p/params/P2PTestParams.java": {
+    "mtime": 1782212543.0744193,
+    "ast_hash": "eea3ad7c8a7e2d31365e3cb0db851059",
+    "semantic_hash": "eea3ad7c8a7e2d31365e3cb0db851059"
+  },
+  "src/org/minima/system/network/p2p2/P2P2DB.java": {
+    "mtime": 1782212543.0745025,
+    "ast_hash": "65fb7c3ba6f780df8ae9f44e80608127",
+    "semantic_hash": "65fb7c3ba6f780df8ae9f44e80608127"
+  },
+  "src/org/minima/system/network/p2p2/P2P2Functions.java": {
+    "mtime": 1782212543.0746043,
+    "ast_hash": "00579eb57e404f02dc008955e9c1ceeb",
+    "semantic_hash": "00579eb57e404f02dc008955e9c1ceeb"
+  },
+  "src/org/minima/system/network/p2p2/P2P2Manager.java": {
+    "mtime": 1782212543.0748827,
+    "ast_hash": "aa468e60432da5efc55be9cdef83fa76",
+    "semantic_hash": "aa468e60432da5efc55be9cdef83fa76"
+  },
+  "src/org/minima/system/network/rpc/Authorizer.java": {
+    "mtime": 1782212543.0749817,
+    "ast_hash": "ee6133af54eafa0fcb394d9b0387e540",
+    "semantic_hash": "ee6133af54eafa0fcb394d9b0387e540"
+  },
+  "src/org/minima/system/network/rpc/CMDHandler.java": {
+    "mtime": 1782212543.0750976,
+    "ast_hash": "3ac5eee0e28a675370fa8da29fcfbe3c",
+    "semantic_hash": "3ac5eee0e28a675370fa8da29fcfbe3c"
+  },
+  "src/org/minima/system/network/rpc/HTTPServer.java": {
+    "mtime": 1788814948.6508076,
+    "ast_hash": "8a635789af527a5e157217fb931a7d18",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/network/rpc/Server.java": {
+    "mtime": 1782212543.07521,
+    "ast_hash": "ddb723ec045c99c71eea1e73d01e0b5d",
+    "semantic_hash": "ddb723ec045c99c71eea1e73d01e0b5d"
+  },
+  "src/org/minima/system/network/webhooks/NotifyManager.java": {
+    "mtime": 1782212543.0752985,
+    "ast_hash": "2ced32a9f8b6daaf4298847f2a88f81f",
+    "semantic_hash": "2ced32a9f8b6daaf4298847f2a88f81f"
+  },
+  "src/org/minima/system/params/GeneralParams.java": {
+    "mtime": 1788814920.9639542,
+    "ast_hash": "b5e0dd3b8216ce6d951ab29224934251",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/params/GlobalParams.java": {
+    "mtime": 1785624341.0594873,
+    "ast_hash": "1ebffe54414099cf00183969ad4666e4",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/params/ParamConfigurer.java": {
+    "mtime": 1788814920.964599,
+    "ast_hash": "adcd66e08a4a3d276bfe161e1986f6e8",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/params/TestParams.java": {
+    "mtime": 1782212543.075621,
+    "ast_hash": "554c997c6d489bbb83fa6daadc6bd19c",
+    "semantic_hash": "554c997c6d489bbb83fa6daadc6bd19c"
+  },
+  "src/org/minima/utils/BIP39.java": {
+    "mtime": 1782212543.0757458,
+    "ast_hash": "7cb3da6433390617138ac8c54e788598",
+    "semantic_hash": "7cb3da6433390617138ac8c54e788598"
+  },
+  "src/org/minima/utils/BaseConverter.java": {
+    "mtime": 1782212543.0765975,
+    "ast_hash": "d703e91687b044a3d5612d3482bf5fa1",
+    "semantic_hash": "d703e91687b044a3d5612d3482bf5fa1"
+  },
+  "src/org/minima/utils/Crypto.java": {
+    "mtime": 1782212543.0766501,
+    "ast_hash": "268eefa2a2f17b1b0a99bd6069a688a8",
+    "semantic_hash": "268eefa2a2f17b1b0a99bd6069a688a8"
+  },
+  "src/org/minima/utils/FastByteArrayStream.java": {
+    "mtime": 1782212543.076704,
+    "ast_hash": "1fe5f2b646f7375a1d816dc9994bff89",
+    "semantic_hash": "1fe5f2b646f7375a1d816dc9994bff89"
+  },
+  "src/org/minima/utils/JsonDB.java": {
+    "mtime": 1782212543.076756,
+    "ast_hash": "b7c43851915a449c1f5ed48c6eb8bacc",
+    "semantic_hash": "b7c43851915a449c1f5ed48c6eb8bacc"
+  },
+  "src/org/minima/utils/Maths.java": {
+    "mtime": 1782212543.0768127,
+    "ast_hash": "1e03a1ff7141a2feb5979360e0a5a079",
+    "semantic_hash": "1e03a1ff7141a2feb5979360e0a5a079"
+  },
+  "src/org/minima/utils/MiniFile.java": {
+    "mtime": 1785624341.059788,
+    "ast_hash": "de7417438a0f6f334878d2c791ed1df6",
+    "semantic_hash": "de7417438a0f6f334878d2c791ed1df6"
+  },
+  "src/org/minima/utils/MiniFormat.java": {
+    "mtime": 1782212543.0770893,
+    "ast_hash": "3783420a8544175a3aa811cb1bce490e",
+    "semantic_hash": "3783420a8544175a3aa811cb1bce490e"
+  },
+  "src/org/minima/utils/MiniUtil.java": {
+    "mtime": 1782212543.07717,
+    "ast_hash": "3bc8bb4a611d6f1b4ab977cbc33fc181",
+    "semantic_hash": "3bc8bb4a611d6f1b4ab977cbc33fc181"
+  },
+  "src/org/minima/utils/MinimaLogger.java": {
+    "mtime": 1782212543.0772228,
+    "ast_hash": "e831d9b6690af3574bd6271f6b8a19ee",
+    "semantic_hash": "e831d9b6690af3574bd6271f6b8a19ee"
+  },
+  "src/org/minima/utils/MinimaRPCClient.java": {
+    "mtime": 1782212543.077336,
+    "ast_hash": "3019f141c5dfde918ecf1c9a639af58f",
+    "semantic_hash": "3019f141c5dfde918ecf1c9a639af58f"
+  },
+  "src/org/minima/utils/MinimaUncaughtException.java": {
+    "mtime": 1782212543.077391,
+    "ast_hash": "095da5ba5416409410401b05fdc2ff6e",
+    "semantic_hash": "095da5ba5416409410401b05fdc2ff6e"
+  },
+  "src/org/minima/utils/RPCClient.java": {
+    "mtime": 1782212543.0774558,
+    "ast_hash": "815b5acaa218cba9b73f15baac7fb1ca",
+    "semantic_hash": "815b5acaa218cba9b73f15baac7fb1ca"
+  },
+  "src/org/minima/utils/SqlDB.java": {
+    "mtime": 1782212543.0775177,
+    "ast_hash": "3aa3b5df4cb007ca354414950739b1f8",
+    "semantic_hash": "3aa3b5df4cb007ca354414950739b1f8"
+  },
+  "src/org/minima/utils/Stack.java": {
+    "mtime": 1782212543.0775719,
+    "ast_hash": "1e5b8d7e6c117fb9e4fe313e85eb90e0",
+    "semantic_hash": "1e5b8d7e6c117fb9e4fe313e85eb90e0"
+  },
+  "src/org/minima/utils/Streamable.java": {
+    "mtime": 1782212543.0776215,
+    "ast_hash": "9dc41777a95fe258a24c91c01aa50517",
+    "semantic_hash": "9dc41777a95fe258a24c91c01aa50517"
+  },
+  "src/org/minima/utils/TimedRequest.java": {
+    "mtime": 1782212543.077675,
+    "ast_hash": "74754b9398c6c0f21c1934becd147c69",
+    "semantic_hash": "74754b9398c6c0f21c1934becd147c69"
+  },
+  "src/org/minima/utils/ZipExtractor.java": {
+    "mtime": 1782212543.0777352,
+    "ast_hash": "0b13f44ce60889c58174ba75d4f26e25",
+    "semantic_hash": "0b13f44ce60889c58174ba75d4f26e25"
+  },
+  "src/org/minima/utils/encrypt/CryptoPackage.java": {
+    "mtime": 1782212543.0778232,
+    "ast_hash": "2cca6a99d7afda0852ed131ce6c213e9",
+    "semantic_hash": "2cca6a99d7afda0852ed131ce6c213e9"
+  },
+  "src/org/minima/utils/encrypt/EncryptDecrypt.java": {
+    "mtime": 1782212543.0778818,
+    "ast_hash": "b54aaa17a4d70eb47cb0c642e139086e",
+    "semantic_hash": "b54aaa17a4d70eb47cb0c642e139086e"
+  },
+  "src/org/minima/utils/encrypt/GenerateKey.java": {
+    "mtime": 1782212543.0780015,
+    "ast_hash": "c814b11ce7be8249dd4860242544d685",
+    "semantic_hash": "c814b11ce7be8249dd4860242544d685"
+  },
+  "src/org/minima/utils/encrypt/PasswordCrypto.java": {
+    "mtime": 1782212543.078055,
+    "ast_hash": "418ce307e0300d3180c3226e9ae93994",
+    "semantic_hash": "418ce307e0300d3180c3226e9ae93994"
+  },
+  "src/org/minima/utils/encrypt/SignVerify.java": {
+    "mtime": 1782212543.0781112,
+    "ast_hash": "3040c291fa1efccecf56825b0f07ad3c",
+    "semantic_hash": "3040c291fa1efccecf56825b0f07ad3c"
+  },
+  "src/org/minima/utils/encrypt/javajs/AesUtil.java": {
+    "mtime": 1782212543.07825,
+    "ast_hash": "b391b61ba92a0c551a76b16bdcbe6835",
+    "semantic_hash": "b391b61ba92a0c551a76b16bdcbe6835"
+  },
+  "src/org/minima/utils/jni/jnifunctions.java": {
+    "mtime": 1782212543.078335,
+    "ast_hash": "c4b7fd8ee6f0beb056e78821c5f6b6e3",
+    "semantic_hash": "c4b7fd8ee6f0beb056e78821c5f6b6e3"
+  },
+  "src/org/minima/utils/json/ItemList.java": {
+    "mtime": 1782212543.0785468,
+    "ast_hash": "40e234577ad41682bb4293357a87a30f",
+    "semantic_hash": "40e234577ad41682bb4293357a87a30f"
+  },
+  "src/org/minima/utils/json/JSONArray.java": {
+    "mtime": 1782212543.0786278,
+    "ast_hash": "e2265bed672a3733a16de88d8a7496d3",
+    "semantic_hash": "e2265bed672a3733a16de88d8a7496d3"
+  },
+  "src/org/minima/utils/json/JSONAware.java": {
+    "mtime": 1782212543.0786848,
+    "ast_hash": "d2cfaa660491b9402e84d494354c946a",
+    "semantic_hash": "d2cfaa660491b9402e84d494354c946a"
+  },
+  "src/org/minima/utils/json/JSONObject.java": {
+    "mtime": 1782212543.0787468,
+    "ast_hash": "434948783844d718f3a5e2407d4f9d89",
+    "semantic_hash": "434948783844d718f3a5e2407d4f9d89"
+  },
+  "src/org/minima/utils/json/JSONStreamAware.java": {
+    "mtime": 1782212543.078804,
+    "ast_hash": "5e98bbc0f1ec744dc47e04a31c753dd3",
+    "semantic_hash": "5e98bbc0f1ec744dc47e04a31c753dd3"
+  },
+  "src/org/minima/utils/json/JSONValue.java": {
+    "mtime": 1782212543.0789196,
+    "ast_hash": "4389daf655d41d355e9c482d836d6d89",
+    "semantic_hash": "4389daf655d41d355e9c482d836d6d89"
+  },
+  "src/org/minima/utils/json/JSONWriter.java": {
+    "mtime": 1782212543.0789735,
+    "ast_hash": "90f2d716bd3aa6901c544b05f84e1e75",
+    "semantic_hash": "90f2d716bd3aa6901c544b05f84e1e75"
+  },
+  "src/org/minima/utils/json/parser/ContainerFactory.java": {
+    "mtime": 1782212543.0790575,
+    "ast_hash": "a13e29c1e8eb4d4e6626eeb50d6aa55c",
+    "semantic_hash": "a13e29c1e8eb4d4e6626eeb50d6aa55c"
+  },
+  "src/org/minima/utils/json/parser/ContentHandler.java": {
+    "mtime": 1782212543.0791116,
+    "ast_hash": "b045a013586fa50a0669719be3006ee5",
+    "semantic_hash": "b045a013586fa50a0669719be3006ee5"
+  },
+  "src/org/minima/utils/json/parser/JSONParser.java": {
+    "mtime": 1782212543.0792677,
+    "ast_hash": "8a8df61a5a8e5b8e4b67e05a8724d097",
+    "semantic_hash": "8a8df61a5a8e5b8e4b67e05a8724d097"
+  },
+  "src/org/minima/utils/json/parser/ParseException.java": {
+    "mtime": 1782212543.079326,
+    "ast_hash": "a4f6cdedc225a660ea129e8e0c385aa2",
+    "semantic_hash": "a4f6cdedc225a660ea129e8e0c385aa2"
+  },
+  "src/org/minima/utils/json/parser/Yylex.java": {
+    "mtime": 1782212543.0793958,
+    "ast_hash": "5993964b5c6c5f7d1178145642d7e8db",
+    "semantic_hash": "5993964b5c6c5f7d1178145642d7e8db"
+  },
+  "src/org/minima/utils/json/parser/Yytoken.java": {
+    "mtime": 1782212543.079466,
+    "ast_hash": "be4707f14e8048198a2af720e2c72982",
+    "semantic_hash": "be4707f14e8048198a2af720e2c72982"
+  },
+  "src/org/minima/utils/messages/Message.java": {
+    "mtime": 1782212543.0796356,
+    "ast_hash": "a82b325371f6f632a417d4cc8c62d1db",
+    "semantic_hash": "a82b325371f6f632a417d4cc8c62d1db"
+  },
+  "src/org/minima/utils/messages/MessageListener.java": {
+    "mtime": 1782212543.0797074,
+    "ast_hash": "9e883a6d3b3696923354479c42029af1",
+    "semantic_hash": "9e883a6d3b3696923354479c42029af1"
+  },
+  "src/org/minima/utils/messages/MessageProcessor.java": {
+    "mtime": 1782212543.0798297,
+    "ast_hash": "77759a31a38a80b77a731a0fbe7125c4",
+    "semantic_hash": "77759a31a38a80b77a731a0fbe7125c4"
+  },
+  "src/org/minima/utils/messages/MessageStack.java": {
+    "mtime": 1782212543.079895,
+    "ast_hash": "fbe2b5f7c75508a3ddafa0aab913f660",
+    "semantic_hash": "fbe2b5f7c75508a3ddafa0aab913f660"
+  },
+  "src/org/minima/utils/messages/TimerMessage.java": {
+    "mtime": 1782212543.0799563,
+    "ast_hash": "08f5958625d56c916d2f515287fbe27e",
+    "semantic_hash": "08f5958625d56c916d2f515287fbe27e"
+  },
+  "src/org/minima/utils/messages/TimerProcessor.java": {
+    "mtime": 1782212543.080015,
+    "ast_hash": "db954ff9f94672b7c961c0d48c554fec",
+    "semantic_hash": "db954ff9f94672b7c961c0d48c554fec"
+  },
+  "src/org/minima/utils/mysql/ArchiveServer.java": {
+    "mtime": 1782212543.0801697,
+    "ast_hash": "08b590e10f0a017d0d89d36cac6ea8d7",
+    "semantic_hash": "08b590e10f0a017d0d89d36cac6ea8d7"
+  },
+  "src/org/minima/utils/mysql/MySQLConnect.java": {
+    "mtime": 1782212543.0802405,
+    "ast_hash": "dfd2971e12397dccb3d073114b7dbb1d",
+    "semantic_hash": "dfd2971e12397dccb3d073114b7dbb1d"
+  },
+  "src/org/minima/utils/sphincs/FORS/FORS.java": {
+    "mtime": 1782212543.0804331,
+    "ast_hash": "b8d169b56316c46e63995ecf3a651c2d",
+    "semantic_hash": "b8d169b56316c46e63995ecf3a651c2d"
+  },
+  "src/org/minima/utils/sphincs/FORS/FORSSignature.java": {
+    "mtime": 1782212543.080618,
+    "ast_hash": "95015bb25d922986dfd46c9c5db27e2e",
+    "semantic_hash": "95015bb25d922986dfd46c9c5db27e2e"
+  },
+  "src/org/minima/utils/sphincs/HORST/HORST.java": {
+    "mtime": 1782212543.0807352,
+    "ast_hash": "5c2601ecf5981f8f48c030e891d9d1bb",
+    "semantic_hash": "5c2601ecf5981f8f48c030e891d9d1bb"
+  },
+  "src/org/minima/utils/sphincs/HORST/HORSTSignature.java": {
+    "mtime": 1782212543.0808074,
+    "ast_hash": "a5773763c2e5958e74a8761529ecc052",
+    "semantic_hash": "a5773763c2e5958e74a8761529ecc052"
+  },
+  "src/org/minima/utils/sphincs/HORST/PrivateKey.java": {
+    "mtime": 1782212543.080866,
+    "ast_hash": "c0b79ab232aa104f3ef0738d5c41de5a",
+    "semantic_hash": "c0b79ab232aa104f3ef0738d5c41de5a"
+  },
+  "src/org/minima/utils/sphincs/HORST/PublicKey.java": {
+    "mtime": 1782212543.0809276,
+    "ast_hash": "6c821741ed719d168a89138618260d2d",
+    "semantic_hash": "6c821741ed719d168a89138618260d2d"
+  },
+  "src/org/minima/utils/sphincs/SPHINCS.java": {
+    "mtime": 1782212543.0810468,
+    "ast_hash": "fd97b1fcc96c5e7e9334c330dcdd91e4",
+    "semantic_hash": "fd97b1fcc96c5e7e9334c330dcdd91e4"
+  },
+  "src/org/minima/utils/sphincs/SPHINCSSignature.java": {
+    "mtime": 1782212543.0811055,
+    "ast_hash": "c4f1eb9345cfb9f2ec0f9ab0a7013e05",
+    "semantic_hash": "c4f1eb9345cfb9f2ec0f9ab0a7013e05"
+  },
+  "src/org/minima/utils/sphincs/SPHINCSUtils.java": {
+    "mtime": 1782212543.0812175,
+    "ast_hash": "0997d79feadb64543d693a8361541293",
+    "semantic_hash": "0997d79feadb64543d693a8361541293"
+  },
+  "src/org/minima/utils/sphincs/TransactionTest.java": {
+    "mtime": 1782212543.081349,
+    "ast_hash": "44b9768130ea95038bbd368de8d95ce8",
+    "semantic_hash": "44b9768130ea95038bbd368de8d95ce8"
+  },
+  "test/org/minima/database/txpowdb/ram/RamDBTest.java": {
+    "mtime": 1782212543.0816758,
+    "ast_hash": "6f06a94a8a4f53308ba5d9fc535a026e",
+    "semantic_hash": "6f06a94a8a4f53308ba5d9fc535a026e"
+  },
+  "test/org/minima/database/txpowtree/TxPowTreeTest.java": {
+    "mtime": 1782212543.0817773,
+    "ast_hash": "0cdb4a2a4c6d7111643fbeaeff41494b",
+    "semantic_hash": "0cdb4a2a4c6d7111643fbeaeff41494b"
+  },
+  "test/org/minima/objects/AddressTests.java": {
+    "mtime": 1782212543.0819201,
+    "ast_hash": "2d4b151eaddecb3a8af6f7c349819880",
+    "semantic_hash": "2d4b151eaddecb3a8af6f7c349819880"
+  },
+  "test/org/minima/objects/CoinTests.java": {
+    "mtime": 1782212543.0820434,
+    "ast_hash": "3f57729eef7ebf43a107c2ccb07b5ed3",
+    "semantic_hash": "3f57729eef7ebf43a107c2ccb07b5ed3"
+  },
+  "test/org/minima/objects/TokenTests.java": {
+    "mtime": 1782212543.0821002,
+    "ast_hash": "f301f3ee06b574a1a36d1dda02c667a4",
+    "semantic_hash": "f301f3ee06b574a1a36d1dda02c667a4"
+  },
+  "test/org/minima/objects/TransactionTests.java": {
+    "mtime": 1782212543.0822036,
+    "ast_hash": "17b7d55f59b43413b598d519d840edb5",
+    "semantic_hash": "17b7d55f59b43413b598d519d840edb5"
+  },
+  "test/org/minima/objects/TxHeaderTests.java": {
+    "mtime": 1782212543.0822644,
+    "ast_hash": "ded60091a73f270ec12d1ad001f00985",
+    "semantic_hash": "ded60091a73f270ec12d1ad001f00985"
+  },
+  "test/org/minima/objects/base/MiniByteTests.java": {
+    "mtime": 1782212543.0823498,
+    "ast_hash": "3d0df7f5242feea582645598411298c5",
+    "semantic_hash": "3d0df7f5242feea582645598411298c5"
+  },
+  "test/org/minima/objects/base/MiniDataTests.java": {
+    "mtime": 1782212543.0825074,
+    "ast_hash": "f16612005f5db0af7c33e97e83bff636",
+    "semantic_hash": "f16612005f5db0af7c33e97e83bff636"
+  },
+  "test/org/minima/objects/base/MiniNumberTests.java": {
+    "mtime": 1782212543.082776,
+    "ast_hash": "c4a4b077c09e72470dfdce84542a063a",
+    "semantic_hash": "c4a4b077c09e72470dfdce84542a063a"
+  },
+  "test/org/minima/objects/base/MiniStringTests.java": {
+    "mtime": 1782212543.0828376,
+    "ast_hash": "e71bdc639968b967ab4c027ee5718edf",
+    "semantic_hash": "e71bdc639968b967ab4c027ee5718edf"
+  },
+  "test/org/minima/system/brains/TxPoWProcessorTest.java": {
+    "mtime": 1782212543.083087,
+    "ast_hash": "f55ce5796cf9dabe7dba3b6c85e7b254",
+    "semantic_hash": "f55ce5796cf9dabe7dba3b6c85e7b254"
+  },
+  "test/org/minima/system/network/p2p/P2PDBTest.java": {
+    "mtime": 1782212543.0831966,
+    "ast_hash": "6b9a558b8edfc293c77e6e9883310f82",
+    "semantic_hash": "6b9a558b8edfc293c77e6e9883310f82"
+  },
+  "test/org/minima/system/network/p2p/SwapLinksFunctionsTest.java": {
+    "mtime": 1782212543.083301,
+    "ast_hash": "3a7054de3f4c5026f43a1d9ffa0f8ab8",
+    "semantic_hash": "3a7054de3f4c5026f43a1d9ffa0f8ab8"
+  },
+  "test/org/minima/system/network/p2p/UtilFuncsTest.java": {
+    "mtime": 1782212543.083354,
+    "ast_hash": "70e4b6077c2a6899a9716c0de9257d75",
+    "semantic_hash": "70e4b6077c2a6899a9716c0de9257d75"
+  },
+  "test/org/minima/system/network/p2p/WalkLinksFuncsTest.java": {
+    "mtime": 1782212543.0834112,
+    "ast_hash": "7214d9c49aa766b34303c645a7f3d8cc",
+    "semantic_hash": "7214d9c49aa766b34303c645a7f3d8cc"
+  },
+  "test/org/minima/system/network/p2p/messages/GreetingTest.java": {
+    "mtime": 1782212543.0834918,
+    "ast_hash": "9f254bc780493c031355a554b953f8b1",
+    "semantic_hash": "9f254bc780493c031355a554b953f8b1"
+  },
+  "test/org/minima/system/network/p2p/messages/InetSocketAddressIOTest.java": {
+    "mtime": 1782212543.0835416,
+    "ast_hash": "f4016acff3eefa49bce4d6d3e072d8cf",
+    "semantic_hash": "f4016acff3eefa49bce4d6d3e072d8cf"
+  },
+  "test/org/minima/system/network/p2p/testingutils/QuickClients.java": {
+    "mtime": 1782212543.0836198,
+    "ast_hash": "f344e820750742e0cac2a7932072336d",
+    "semantic_hash": "f344e820750742e0cac2a7932072336d"
+  },
+  "test/org/minima/system/network/p2p/testingutils/QuickInetLists.java": {
+    "mtime": 1782212543.0836697,
+    "ast_hash": "0ce0cec30b26d6ee3f1e282868c19537",
+    "semantic_hash": "0ce0cec30b26d6ee3f1e282868c19537"
+  },
+  "test/org/minima/system/network/p2p/testingutils/QuickState.java": {
+    "mtime": 1782212543.0837173,
+    "ast_hash": "52280546cd659b29bbd13553360f923e",
+    "semantic_hash": "52280546cd659b29bbd13553360f923e"
+  },
+  "test/org/minima/system/params/ParamConfigurerTest.java": {
+    "mtime": 1782212543.0838459,
+    "ast_hash": "a5409525f26241a444fa5a5b3d2abac7",
+    "semantic_hash": "a5409525f26241a444fa5a5b3d2abac7"
+  },
+  "test/org/minima/tests/kissvm/ContractTests.java": {
+    "mtime": 1782212543.084058,
+    "ast_hash": "b9091d821d42ed560327a7bebf664b15",
+    "semantic_hash": "b9091d821d42ed560327a7bebf664b15"
+  },
+  "test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.java": {
+    "mtime": 1782212543.0841491,
+    "ast_hash": "19e81ce2b5e24c3aa7b0222aa19cdc68",
+    "semantic_hash": "19e81ce2b5e24c3aa7b0222aa19cdc68"
+  },
+  "test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.java": {
+    "mtime": 1782212543.0842335,
+    "ast_hash": "fd020b706b26cb7e8c7494e6ec8ed55b",
+    "semantic_hash": "fd020b706b26cb7e8c7494e6ec8ed55b"
+  },
+  "test/org/minima/tests/kissvm/expressions/ExpressionParserTests.java": {
+    "mtime": 1782212543.0843027,
+    "ast_hash": "0f725f563fc5af5636ae2dc6b3e9d937",
+    "semantic_hash": "0f725f563fc5af5636ae2dc6b3e9d937"
+  },
+  "test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.java": {
+    "mtime": 1782212543.084423,
+    "ast_hash": "10ef79b613354d1d52a0d73f6be95f1d",
+    "semantic_hash": "10ef79b613354d1d52a0d73f6be95f1d"
+  },
+  "test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.java": {
+    "mtime": 1782212543.0844753,
+    "ast_hash": "ebee0cd1db295d7e5b4e29e23dd3ecab",
+    "semantic_hash": "ebee0cd1db295d7e5b4e29e23dd3ecab"
+  },
+  "test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.java": {
+    "mtime": 1782212543.084532,
+    "ast_hash": "0c123b37f3547ebc9206e3044c86faeb",
+    "semantic_hash": "0c123b37f3547ebc9206e3044c86faeb"
+  },
+  "test/org/minima/tests/kissvm/expressions/VariableExpressionTests.java": {
+    "mtime": 1782212543.0850835,
+    "ast_hash": "ad50311fb54814355f1f28485dd987f6",
+    "semantic_hash": "ad50311fb54814355f1f28485dd987f6"
+  },
+  "test/org/minima/tests/kissvm/functions/DUMMYFUNCTION.java": {
+    "mtime": 1782212543.0851755,
+    "ast_hash": "ae15a5491983a00f6b1396226e84f91a",
+    "semantic_hash": "ae15a5491983a00f6b1396226e84f91a"
+  },
+  "test/org/minima/tests/kissvm/functions/MinimaFunctionTests.java": {
+    "mtime": 1782212543.085239,
+    "ast_hash": "59558492d108d0fde4ceeee1299aef16",
+    "semantic_hash": "59558492d108d0fde4ceeee1299aef16"
+  },
+  "test/org/minima/tests/kissvm/functions/base/CONCATTests.java": {
+    "mtime": 1782212543.0853925,
+    "ast_hash": "d9963f37d0392be3ce134c192e9785b0",
+    "semantic_hash": "d9963f37d0392be3ce134c192e9785b0"
+  },
+  "test/org/minima/tests/kissvm/functions/base/GETTests.java": {
+    "mtime": 1782212543.0854688,
+    "ast_hash": "fee74bf2a67504df3b02f902feb82783",
+    "semantic_hash": "fee74bf2a67504df3b02f902feb82783"
+  },
+  "test/org/minima/tests/kissvm/functions/base/LENTests.java": {
+    "mtime": 1782212543.086772,
+    "ast_hash": "06c9b1eddcaaa9ae67c7e3de9493b17d",
+    "semantic_hash": "06c9b1eddcaaa9ae67c7e3de9493b17d"
+  },
+  "test/org/minima/tests/kissvm/functions/base/REVTests.java": {
+    "mtime": 1782212543.0868626,
+    "ast_hash": "9862c42a9edbff26eef1a14947d4bd6a",
+    "semantic_hash": "9862c42a9edbff26eef1a14947d4bd6a"
+  },
+  "test/org/minima/tests/kissvm/functions/base/SUBSETTests.java": {
+    "mtime": 1782212543.087025,
+    "ast_hash": "c6b56196a8576d36d2a85884b3490ee3",
+    "semantic_hash": "c6b56196a8576d36d2a85884b3490ee3"
+  },
+  "test/org/minima/tests/kissvm/functions/cast/BOOLTests.java": {
+    "mtime": 1782212543.087166,
+    "ast_hash": "95d390070c1c387ac522585dd3ace4bd",
+    "semantic_hash": "95d390070c1c387ac522585dd3ace4bd"
+  },
+  "test/org/minima/tests/kissvm/functions/cast/HEXTests.java": {
+    "mtime": 1782212543.0872862,
+    "ast_hash": "5f496fc43e685e3a3cf5bd997eb4ae00",
+    "semantic_hash": "5f496fc43e685e3a3cf5bd997eb4ae00"
+  },
+  "test/org/minima/tests/kissvm/functions/cast/NUMBERTests.java": {
+    "mtime": 1782212543.087392,
+    "ast_hash": "4644664e0e93bc3512cb1b773948c508",
+    "semantic_hash": "4644664e0e93bc3512cb1b773948c508"
+  },
+  "test/org/minima/tests/kissvm/functions/cast/SCRIPTTests.java": {
+    "mtime": 1782212543.0874949,
+    "ast_hash": "671250d42161e8bd1bdf91d68fb6e823",
+    "semantic_hash": "671250d42161e8bd1bdf91d68fb6e823"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/ABSTests.java": {
+    "mtime": 1782212543.0876231,
+    "ast_hash": "ed13fd6856f1c42adcd1b82448bf1c0f",
+    "semantic_hash": "ed13fd6856f1c42adcd1b82448bf1c0f"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/BITCOUNTTests.java": {
+    "mtime": 1782212543.0876842,
+    "ast_hash": "f1a45dc7517f24a06668b73db8645879",
+    "semantic_hash": "f1a45dc7517f24a06668b73db8645879"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/BITGETTests.java": {
+    "mtime": 1782212543.087742,
+    "ast_hash": "17e7c733dffe5569a20efa109ee9a77f",
+    "semantic_hash": "17e7c733dffe5569a20efa109ee9a77f"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/BITSETTests.java": {
+    "mtime": 1782212543.087806,
+    "ast_hash": "d8c63c842b7dfad041d132411993229e",
+    "semantic_hash": "d8c63c842b7dfad041d132411993229e"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/CEILTests.java": {
+    "mtime": 1782212543.08792,
+    "ast_hash": "d8b20b2bb729f0ea41d48e1f08e57e5d",
+    "semantic_hash": "d8b20b2bb729f0ea41d48e1f08e57e5d"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/DECTests.java": {
+    "mtime": 1782212543.0879974,
+    "ast_hash": "2fc970f7bf5d897e09345d9440ec3194",
+    "semantic_hash": "2fc970f7bf5d897e09345d9440ec3194"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/FLOORTests.java": {
+    "mtime": 1782212543.0880544,
+    "ast_hash": "407473453969910ea260a8bf13aa5278",
+    "semantic_hash": "407473453969910ea260a8bf13aa5278"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/INCTests.java": {
+    "mtime": 1782212543.0881157,
+    "ast_hash": "a71d37e9253298cde04d96e7ef5c0d21",
+    "semantic_hash": "a71d37e9253298cde04d96e7ef5c0d21"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/MAXTests.java": {
+    "mtime": 1782212543.0883548,
+    "ast_hash": "8ae608883404c3e15074d8d886eef359",
+    "semantic_hash": "8ae608883404c3e15074d8d886eef359"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/MINTests.java": {
+    "mtime": 1782212543.0884883,
+    "ast_hash": "ccd219e49390e28bf4b5837f55807c22",
+    "semantic_hash": "ccd219e49390e28bf4b5837f55807c22"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/POWTests.java": {
+    "mtime": 1782212543.088542,
+    "ast_hash": "6466aa63a9a3cdc1fc5983da1c958a1a",
+    "semantic_hash": "6466aa63a9a3cdc1fc5983da1c958a1a"
+  },
+  "test/org/minima/tests/kissvm/functions/maths/SIGDIGTests.java": {
+    "mtime": 1782212543.0886028,
+    "ast_hash": "4a617ef918ac9a14e9eeb5d2e0e7cbfb",
+    "semantic_hash": "4a617ef918ac9a14e9eeb5d2e0e7cbfb"
+  },
+  "test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.java": {
+    "mtime": 1782212543.0887585,
+    "ast_hash": "ff1534bc9a8da59fca86009a06904518",
+    "semantic_hash": "ff1534bc9a8da59fca86009a06904518"
+  },
+  "test/org/minima/tests/kissvm/functions/sha/SHA2Tests.java": {
+    "mtime": 1782212543.0888674,
+    "ast_hash": "a5fb68b859273be0dcfc2a43e2dc9825",
+    "semantic_hash": "a5fb68b859273be0dcfc2a43e2dc9825"
+  },
+  "test/org/minima/tests/kissvm/functions/sha/SHA3Tests.java": {
+    "mtime": 1782212543.088917,
+    "ast_hash": "c88a5457b6e0d179f756bdf6f361a752",
+    "semantic_hash": "c88a5457b6e0d179f756bdf6f361a752"
+  },
+  "test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.java": {
+    "mtime": 1782212543.088998,
+    "ast_hash": "0c23f41fdb56c065111b11efaaf40035",
+    "semantic_hash": "0c23f41fdb56c065111b11efaaf40035"
+  },
+  "test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.java": {
+    "mtime": 1782212543.0890844,
+    "ast_hash": "adf91f303627b720f699512b5fd0cc7f",
+    "semantic_hash": "adf91f303627b720f699512b5fd0cc7f"
+  },
+  "test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.java": {
+    "mtime": 1782212543.0891893,
+    "ast_hash": "0bea7d35305992e0c73748b95dcf4255",
+    "semantic_hash": "0bea7d35305992e0c73748b95dcf4255"
+  },
+  "test/org/minima/tests/kissvm/functions/state/PREVSTATETests.java": {
+    "mtime": 1782212543.0893328,
+    "ast_hash": "725ebf2d4d94de2a09450a687cef8a1f",
+    "semantic_hash": "725ebf2d4d94de2a09450a687cef8a1f"
+  },
+  "test/org/minima/tests/kissvm/functions/state/SAMESTATETests.java": {
+    "mtime": 1782212543.0894692,
+    "ast_hash": "53f894125786a3686ad2ae62bba3b0e8",
+    "semantic_hash": "53f894125786a3686ad2ae62bba3b0e8"
+  },
+  "test/org/minima/tests/kissvm/functions/state/STATETests.java": {
+    "mtime": 1782212543.0895703,
+    "ast_hash": "7640f3a194a69935a06044f933a2b08e",
+    "semantic_hash": "7640f3a194a69935a06044f933a2b08e"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.java": {
+    "mtime": 1782212543.089744,
+    "ast_hash": "1164c23016ced70f71708eacf6fa45d9",
+    "semantic_hash": "1164c23016ced70f71708eacf6fa45d9"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.java": {
+    "mtime": 1782212543.089808,
+    "ast_hash": "21e872d4037775002da48480cc923902",
+    "semantic_hash": "21e872d4037775002da48480cc923902"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.java": {
+    "mtime": 1782212543.0899181,
+    "ast_hash": "120c9e13de340d73adbc279a0279253c",
+    "semantic_hash": "120c9e13de340d73adbc279a0279253c"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.java": {
+    "mtime": 1782212543.0900216,
+    "ast_hash": "a74e740e91861e03d350b81172928b3b",
+    "semantic_hash": "a74e740e91861e03d350b81172928b3b"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.java": {
+    "mtime": 1782212543.0900831,
+    "ast_hash": "43609fb5f50307a7307d46d14971f26b",
+    "semantic_hash": "43609fb5f50307a7307d46d14971f26b"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.java": {
+    "mtime": 1782212543.0902264,
+    "ast_hash": "0a0ee3311f9a07d09d73c85b8a386c14",
+    "semantic_hash": "0a0ee3311f9a07d09d73c85b8a386c14"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.java": {
+    "mtime": 1782212543.0902963,
+    "ast_hash": "73041d72bffd1fb9ce4ffc14380fc77a",
+    "semantic_hash": "73041d72bffd1fb9ce4ffc14380fc77a"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.java": {
+    "mtime": 1782212543.0903974,
+    "ast_hash": "32b1bd6f73cda259b8209626e49441b9",
+    "semantic_hash": "32b1bd6f73cda259b8209626e49441b9"
+  },
+  "test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.java": {
+    "mtime": 1782212543.0904565,
+    "ast_hash": "3f25b689e08429b6b9409d3d448a5e8d",
+    "semantic_hash": "3f25b689e08429b6b9409d3d448a5e8d"
+  },
+  "test/org/minima/tests/kissvm/statements/StatementBlockTests.java": {
+    "mtime": 1782212543.090598,
+    "ast_hash": "4b232d159217487af81ee86728c7db6e",
+    "semantic_hash": "4b232d159217487af81ee86728c7db6e"
+  },
+  "test/org/minima/tests/kissvm/statements/StatementParserTests.java": {
+    "mtime": 1782212543.0906727,
+    "ast_hash": "5ef73f0694ccf9e7a2b2d8069d2596b6",
+    "semantic_hash": "5ef73f0694ccf9e7a2b2d8069d2596b6"
+  },
+  "test/org/minima/tests/kissvm/statements/commands/ASSERTstatementTests.java": {
+    "mtime": 1782212543.0908282,
+    "ast_hash": "4c5f3e42a760a02ca7ac95e7b927a14b",
+    "semantic_hash": "4c5f3e42a760a02ca7ac95e7b927a14b"
+  },
+  "test/org/minima/tests/kissvm/statements/commands/EXECstatementTests.java": {
+    "mtime": 1782212543.09089,
+    "ast_hash": "5ae97e2e2d643c900168851736fa0f1b",
+    "semantic_hash": "5ae97e2e2d643c900168851736fa0f1b"
+  },
+  "test/org/minima/tests/kissvm/statements/commands/IFstatementTests.java": {
+    "mtime": 1782212543.0909905,
+    "ast_hash": "54428005cea1b98df7349e46f0dc147e",
+    "semantic_hash": "54428005cea1b98df7349e46f0dc147e"
+  },
+  "test/org/minima/tests/kissvm/statements/commands/LETstatementTests.java": {
+    "mtime": 1782212543.0910463,
+    "ast_hash": "3a87ada2ce2da5c4ab3d485d613267f4",
+    "semantic_hash": "3a87ada2ce2da5c4ab3d485d613267f4"
+  },
+  "test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.java": {
+    "mtime": 1782212543.0917397,
+    "ast_hash": "f5a8c19d8bb884c034d72fce3a8fcff2",
+    "semantic_hash": "f5a8c19d8bb884c034d72fce3a8fcff2"
+  },
+  "test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.java": {
+    "mtime": 1782212543.0918453,
+    "ast_hash": "f4c7c2cc9ab6d26a0245d0397ded570f",
+    "semantic_hash": "f4c7c2cc9ab6d26a0245d0397ded570f"
+  },
+  "test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.java": {
+    "mtime": 1782212543.0919478,
+    "ast_hash": "7848110fb1d6bc362661f0f5cf66500c",
+    "semantic_hash": "7848110fb1d6bc362661f0f5cf66500c"
+  },
+  "test/org/minima/tests/kissvm/tokens/LexicalTokenizerTests.java": {
+    "mtime": 1782212543.0920322,
+    "ast_hash": "9c0bde34da91092cfb3f6c1d531ea549",
+    "semantic_hash": "9c0bde34da91092cfb3f6c1d531ea549"
+  },
+  "test/org/minima/tests/kissvm/tokens/TokenTests.java": {
+    "mtime": 1782212543.092094,
+    "ast_hash": "c6befd75d24d52b290f1f13c8247292a",
+    "semantic_hash": "c6befd75d24d52b290f1f13c8247292a"
+  },
+  "test/org/minima/tests/kissvm/values/BooleanValueTests.java": {
+    "mtime": 1782212543.0922606,
+    "ast_hash": "65c86a4921c8db31589509da2407dfe5",
+    "semantic_hash": "65c86a4921c8db31589509da2407dfe5"
+  },
+  "test/org/minima/tests/kissvm/values/HexValueTests.java": {
+    "mtime": 1782212543.0923874,
+    "ast_hash": "c67c643aaceab055a845203fc4ac4c88",
+    "semantic_hash": "c67c643aaceab055a845203fc4ac4c88"
+  },
+  "test/org/minima/tests/kissvm/values/NumberValueTests.java": {
+    "mtime": 1782212543.0924492,
+    "ast_hash": "5f2deb741387b0dd10dd405b171c9c08",
+    "semantic_hash": "5f2deb741387b0dd10dd405b171c9c08"
+  },
+  "test/org/minima/tests/kissvm/values/ScriptValueTests.java": {
+    "mtime": 1782212543.0930552,
+    "ast_hash": "378e7e4d3a280f36ff31b0571b4a3cdd",
+    "semantic_hash": "378e7e4d3a280f36ff31b0571b4a3cdd"
+  },
+  "test/org/minima/tests/kissvm/values/ValueTests.java": {
+    "mtime": 1782212543.0931756,
+    "ast_hash": "21e485ec5bb069dd79eeb44e820077f7",
+    "semantic_hash": "21e485ec5bb069dd79eeb44e820077f7"
+  },
+  "test/org/minima/utils/TestUtils.java": {
+    "mtime": 1782212543.0932724,
+    "ast_hash": "cadb64a5dc3ca86a7e3e49f64450178f",
+    "semantic_hash": "cadb64a5dc3ca86a7e3e49f64450178f"
+  },
+  "README.md": {
+    "mtime": 1782212542.9709115,
+    "ast_hash": "82d5fcc1411d9f777827eec1d41a8fe7",
+    "semantic_hash": "82d5fcc1411d9f777827eec1d41a8fe7"
+  },
+  "src/org/minima/system/commands/base/tutorial.txt": {
+    "mtime": 1782212543.0652194,
+    "ast_hash": "d57071d5390ab583e00b8114199e33d7",
+    "semantic_hash": "d57071d5390ab583e00b8114199e33d7"
+  },
+  "src/org/minima/utils/sphincs/kissvm.txt": {
+    "mtime": 1782212543.0814145,
+    "ast_hash": "0031bbd170103543532b9478ef21faf5",
+    "semantic_hash": "0031bbd170103543532b9478ef21faf5"
+  },
+  "Minima_wp_v9.pdf": {
+    "mtime": 1782212542.9704003,
+    "ast_hash": "c01b62b43fc2a28b2a7784566c30de21",
+    "semantic_hash": "c01b62b43fc2a28b2a7784566c30de21"
+  },
+  "UPSTREAM_CHANGES.md": {
+    "mtime": 1787522569.214236,
+    "ast_hash": "5958df1bbff980b4f8a173864b678b60",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/network/minima/NIOHandoff.java": {
+    "mtime": 1788789055.2216816,
+    "ast_hash": "fa4b32c9ced6db1460af173bf2c05549",
+    "semantic_hash": ""
+  },
+  "resources/mdsjs/mds.js": {
+    "mtime": 1788814762.580461,
+    "ast_hash": "07af211455349bc37e5c6f8d9e195c69",
+    "semantic_hash": ""
+  },
+  "resources/mdsjs/mds_orig.js": {
+    "mtime": 1788814762.5799308,
+    "ast_hash": "63e38a4ce1355db9096d5e98576c1b40",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/index-c2615a0a.js": {
+    "mtime": 1788814762.601224,
+    "ast_hash": "af0ebc769a3a61ca3b2140e17882e8f7",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/mds.js": {
+    "mtime": 1788814762.5962172,
+    "ast_hash": "87d8006cc4e3a4627e32976602ce6c80",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/index-fdc1a9df.js": {
+    "mtime": 1788814762.5923982,
+    "ast_hash": "1c914047824dbc68c9f745cde0843c8a",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/index-legacy-f6200fe1.js": {
+    "mtime": 1788814762.591382,
+    "ast_hash": "729cf5c8729ba7b47b66f640aae0fbdc",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/polyfills-legacy-9ffc4e0f.js": {
+    "mtime": 1788814762.5934331,
+    "ast_hash": "4091d38174c297dc902071081042028a",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/mds.js": {
+    "mtime": 1788814762.5874565,
+    "ast_hash": "138439a0c04b61177a94edcf8eec73e3",
+    "semantic_hash": ""
+  },
+  "src/org/minima/database/minidapps/MDSDB.java": {
+    "mtime": 1788814762.5510035,
+    "ast_hash": "18f7fafdfd94702ad4f1cc86c3ef9b86",
+    "semantic_hash": ""
+  },
+  "src/org/minima/database/minidapps/MiniDAPP.java": {
+    "mtime": 1788814762.5512557,
+    "ast_hash": "7935d41ac739da20e29bc61d7b0d768d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/commands/mds/checkmode.java": {
+    "mtime": 1788814762.5471416,
+    "ast_hash": "512d4436caa692cde88c05e75da5b70d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/commands/mds/checkpending.java": {
+    "mtime": 1788814762.5481315,
+    "ast_hash": "772905d649e3c494931279cd60f05720",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/commands/mds/checkrestore.java": {
+    "mtime": 1788814762.5474317,
+    "ast_hash": "36fba58a3d248aa90051e2b62898efcd",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/commands/mds/mds.java": {
+    "mtime": 1788815378.754859,
+    "ast_hash": "6f1c19e899a03e0cc0731d1ff029601d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/MDSCommandException.java": {
+    "mtime": 1788814762.5203214,
+    "ast_hash": "77e8271b75af864e6cfd810120b78f15",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/MDSCommandHandler.java": {
+    "mtime": 1788814762.5297594,
+    "ast_hash": "c410d1c7b17071e6f6b78e1789eb1a93",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/MDSFileHandler.java": {
+    "mtime": 1788814762.5183039,
+    "ast_hash": "93813c99453a4f590fc2dc545272306f",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/MDSInvalidIDException.java": {
+    "mtime": 1788814762.5275922,
+    "ast_hash": "196b09cc46d6edaf672884952e3415ab",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/MDSManager.java": {
+    "mtime": 1788815378.757836,
+    "ast_hash": "6b7c6da9fb0f2ccba63e960b877ea881",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/ServiceJSRunner.java": {
+    "mtime": 1788814762.537649,
+    "ast_hash": "a5ebe505bc8f3a1144f68b204bcf6f9b",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/APIAutoResponse.java": {
+    "mtime": 1788814762.5174222,
+    "ast_hash": "2fafde9f7553cb862a0fc0f6e3ece320",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/APICommand.java": {
+    "mtime": 1788814762.5119407,
+    "ast_hash": "16aa7b75f31554717c56d6754f9e0ac4",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/CMDcommand.java": {
+    "mtime": 1788814762.5051394,
+    "ast_hash": "f65b31976cf09c63b85a73fdfbd8ab9e",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/COMMSCommand.java": {
+    "mtime": 1788814762.5055408,
+    "ast_hash": "1795c95189559b6909bd3085e20988f0",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/FILEcommand.java": {
+    "mtime": 1788814762.5098965,
+    "ast_hash": "1327ed57e0234af477ed07f64dc617da",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/KEYPAIRcommand.java": {
+    "mtime": 1788814762.5167522,
+    "ast_hash": "7fdf76c2db760635ebfd256084c7787b",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/MDSCompleteHandler.java": {
+    "mtime": 1788814762.5059068,
+    "ast_hash": "1cd2042b121db41bb63141fac140ba3f",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/MEGAPOLLcommand.java": {
+    "mtime": 1788814762.5067735,
+    "ast_hash": "98ff405ed6b7120674c116f11aecce78",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/NETcommand.java": {
+    "mtime": 1788814762.5076752,
+    "ast_hash": "76aa787a477726e7561ca88b50afbf3d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/NOTIFYcommand.java": {
+    "mtime": 1788814762.5142465,
+    "ast_hash": "4e3a9166d5dabe49acb7e6a86099a885",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/POLLcommand.java": {
+    "mtime": 1788814762.5171156,
+    "ast_hash": "15bc116733565c2b6b73029157fbe96b",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/handler/SQLcommand.java": {
+    "mtime": 1788814762.5073793,
+    "ast_hash": "8a158805343453ef358994d0c279ede6",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHub.java": {
+    "mtime": 1788814762.5424285,
+    "ast_hash": "065d85339ba59971621634e4e7bf51cc",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubDelete.java": {
+    "mtime": 1788814762.5397148,
+    "ast_hash": "0e06ee87274012473786a3758a66e015",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubError.java": {
+    "mtime": 1788814762.5414832,
+    "ast_hash": "ee661b3fe0293dab4a9dd6dc32f28b93",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubInstall.java": {
+    "mtime": 1788814762.5418508,
+    "ast_hash": "526fb3f772e6b75ca2bdbc357924e9b0",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubInstallError.java": {
+    "mtime": 1788814762.5387642,
+    "ast_hash": "dc3c3beb4895688fa759cbbba9b21a85",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubLoggedOn.java": {
+    "mtime": 1788814762.5394435,
+    "ast_hash": "c4872c9258e135551cdb83fc537fccf1",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubLogon.java": {
+    "mtime": 1788814762.5384514,
+    "ast_hash": "9ef4b9e030ccc34697ce4e30722643ce",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubPending.java": {
+    "mtime": 1788814762.5407822,
+    "ast_hash": "f1fcfff67f7ae4998c2950c2857fc94e",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubPendingAction.java": {
+    "mtime": 1788814762.541077,
+    "ast_hash": "491cc3886a29dd8bc619a877cd20e4bd",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubPermission.java": {
+    "mtime": 1788814762.5399756,
+    "ast_hash": "75763fc8f01c8c9d0225221f554fb50d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSHubUpdate.java": {
+    "mtime": 1788814762.5403025,
+    "ast_hash": "c6dba3eb266824f8c5f12081d5ed0cdf",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/hub/MDSUtil.java": {
+    "mtime": 1788814762.5392087,
+    "ast_hash": "19d8d219ba01faa9c89be2c5bf69a3d8",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/multipart/ByteArray.java": {
+    "mtime": 1788814762.5320349,
+    "ast_hash": "90f338f66caa486b7f46b44944010bd5",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/multipart/MultipartData.java": {
+    "mtime": 1788814762.5344255,
+    "ast_hash": "5059635f6376de353d7828a565c3fe07",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/multipart/MultipartParser.java": {
+    "mtime": 1788814762.5372145,
+    "ast_hash": "fa66cea2d3db3fe93caf7a12089cee08",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/pending/PendingCommand.java": {
+    "mtime": 1788814762.5427856,
+    "ast_hash": "4fff454d1d124adfd3b8e363b96f3912",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/polling/PollMessage.java": {
+    "mtime": 1788814762.5192418,
+    "ast_hash": "c65840896dc9cf2366aebdb86afc9d13",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/polling/PollStack.java": {
+    "mtime": 1788814762.5189376,
+    "ast_hash": "07ad18d34e898e7584ee3d6d9a432d69",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/publicmds/MDSPublicPage.java": {
+    "mtime": 1788814762.5380049,
+    "ast_hash": "e39613c468d542ec54f70bf9d3037249",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/COMMSService.java": {
+    "mtime": 1788814762.5226896,
+    "ast_hash": "83305320181f297e1077e0be85957897",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/FILEService.java": {
+    "mtime": 1788814762.5223885,
+    "ast_hash": "4a9661fd3922a478e5fac86e5edb68f3",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/KEYPAIRService.java": {
+    "mtime": 1788814762.520836,
+    "ast_hash": "2f319e254838b325cb4af75a01ad4199",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/MDSJS.java": {
+    "mtime": 1788814762.5239675,
+    "ast_hash": "9ff9f6657a7acbe1e2ada03397ebad44",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/NETService.java": {
+    "mtime": 1788814762.5214076,
+    "ast_hash": "e79d5f5faef36dc0b5be9794d2158a6d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/NullCallable.java": {
+    "mtime": 1788814762.521137,
+    "ast_hash": "5895acbb0e6411948a9722b37c7a787b",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/api/APICallback.java": {
+    "mtime": 1788814762.5235798,
+    "ast_hash": "6375cfd0a6ba53accb9c839698f99cff",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/api/APIService.java": {
+    "mtime": 1788814762.523237,
+    "ast_hash": "c92e29ce4da9d0dbb4ca579f9957a870",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/shutter/SandboxContextFactory.java": {
+    "mtime": 1788814762.5246947,
+    "ast_hash": "39f591595a32e4074bb379490ef0ee38",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/shutter/SandboxNativeJavaObject.java": {
+    "mtime": 1788814762.5251536,
+    "ast_hash": "46bd51a0e428f93aad6c00f4bca527ad",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/runnable/shutter/SandboxWrapFactory.java": {
+    "mtime": 1788814762.5243611,
+    "ast_hash": "67781a03d56fc15e84ed61f5949dfee3",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/mds/sql/MiniDAPPDB.java": {
+    "mtime": 1788814762.5431807,
+    "ast_hash": "81fc5638217863ca8801b01cd6535075",
+    "semantic_hash": ""
+  },
+  "src/org/minima/system/network/rpc/HTTPSServer.java": {
+    "mtime": 1788814920.9659102,
+    "ast_hash": "4b3f88f99396edc1058cbf59bc28c050",
+    "semantic_hash": ""
+  },
+  "src/org/minima/utils/ssl/MinimaTrustManager.java": {
+    "mtime": 1788814762.5544627,
+    "ast_hash": "765f51e935db559cbb2f53eab263b95d",
+    "semantic_hash": ""
+  },
+  "src/org/minima/utils/ssl/SSLManager.java": {
+    "mtime": 1788814762.5541704,
+    "ast_hash": "f10b05753c099216b2d924d0a9fe3a18",
+    "semantic_hash": ""
+  },
+  "src/org/minima/utils/ssl/SelfSignedCertGenerator.java": {
+    "mtime": 1788814762.5538943,
+    "ast_hash": "514d72d032bb1075fd20946eb6cc9611",
+    "semantic_hash": ""
+  },
+  "resources/hublogin/httperror.html": {
+    "mtime": 1788814762.5782773,
+    "ast_hash": "f0b4fddd16586c8f9e1808ee3ff31f08",
+    "semantic_hash": ""
+  },
+  "resources/hublogin/index.html": {
+    "mtime": 1788814762.5775967,
+    "ast_hash": "903f959d1f90a1368aeede34ffcfecc4",
+    "semantic_hash": ""
+  },
+  "resources/hublogin/invalid.html": {
+    "mtime": 1788814762.5787532,
+    "ast_hash": "09ac5afa7c74e83579ec045986f234e7",
+    "semantic_hash": ""
+  },
+  "resources/hublogin/noconnect.html": {
+    "mtime": 1788814762.5780168,
+    "ast_hash": "cc045330ed1598cd16ba27dd5604aeda",
+    "semantic_hash": ""
+  },
+  "resources/hublogin/success.html": {
+    "mtime": 1788814762.5794353,
+    "ast_hash": "81a7ff0cc9a00c0ecb71469e42f0d967",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/index.html": {
+    "mtime": 1788814762.597396,
+    "ast_hash": "3d7d1b81d8a85678015fef2cd219e52a",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/index.html": {
+    "mtime": 1788814762.5867434,
+    "ast_hash": "3d83ecf76affc6e5e2aa98bfea6f1431",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/index_gen.html": {
+    "mtime": 1788814762.595556,
+    "ast_hash": "b2070bb873bae73293380b27b8fdd716",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/index.html": {
+    "mtime": 1788814762.5879939,
+    "ast_hash": "c1309b49386981d3ac6d8e1b5f655dcc",
+    "semantic_hash": ""
+  },
+  "resources/hublogin/background.svg": {
+    "mtime": 1788814762.5707195,
+    "ast_hash": "92cfcee55f5f504e93a5da40e4f3099f",
+    "semantic_hash": ""
+  },
+  "resources/hublogin/favicon.png": {
+    "mtime": 1788814762.5785189,
+    "ast_hash": "c24793357f2eef8767586179ced55c85",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/arrow_back.svg": {
+    "mtime": 1788814762.6005452,
+    "ast_hash": "ff92f12e865621cf4f5b46b45da39d42",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/arrow_circle_up.svg": {
+    "mtime": 1788814762.6023133,
+    "ast_hash": "24e5a808c8d28be6a1a93c89eec4c3de",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/clipboard.svg": {
+    "mtime": 1788814762.6016824,
+    "ast_hash": "054b20826beb3e0b8a0c6b9419666d15",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/down_arrow.svg": {
+    "mtime": 1788814762.6019695,
+    "ast_hash": "6a8e3c3354627b1cf3490de888c522e1",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/down_arrow_dark.svg": {
+    "mtime": 1788814762.5990436,
+    "ast_hash": "16ff7ff8fa9fa7da1f4116dd57b9c028",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/schedule.svg": {
+    "mtime": 1788814762.6031733,
+    "ast_hash": "7d2577d3b07ef9e744de9686658e2ed3",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/search.svg": {
+    "mtime": 1788814762.5987537,
+    "ast_hash": "77915117b05d0f5908a78b65d1819cc1",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/assets/search_dark.svg": {
+    "mtime": 1788814762.6002264,
+    "ast_hash": "e23c6a5c0b9d2db7e3358447312ac300",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/icon.png": {
+    "mtime": 1788814762.596995,
+    "ast_hash": "68dfcbdafca9d273c82841fdaf625195",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/block/icon.svg": {
+    "mtime": 1788814762.5981536,
+    "ast_hash": "c6a3ae0ca879e39260698d02e0f41825",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/close.svg": {
+    "mtime": 1788814762.5927882,
+    "ast_hash": "0af80ddce53c831189009fabfbd56669",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/footer-history.svg": {
+    "mtime": 1788814762.5916655,
+    "ast_hash": "a6eccaa3de94cffb2395abb75f1f8e73",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/footer-received.svg": {
+    "mtime": 1788814762.59381,
+    "ast_hash": "618304d57b1179c09008cefc94083fbc",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/footer-send.svg": {
+    "mtime": 1788814762.5941818,
+    "ast_hash": "8c1aee59739a35db48dc70c3e9bfd308",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/icon-white.svg": {
+    "mtime": 1788814762.5904713,
+    "ast_hash": "96e774160bbf637850fdb52508b7765d",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/assets/icon.svg": {
+    "mtime": 1788814762.590753,
+    "ast_hash": "b2cee925e1dfb33e2eac90e5e37aa132",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/icon.png": {
+    "mtime": 1788814762.5877593,
+    "ast_hash": "29d5addbb276dec10c3dfd5250cfcc06",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/icon.svg": {
+    "mtime": 1788814762.5889015,
+    "ast_hash": "df87d6ade37210e92ec34cf658a62940",
+    "semantic_hash": ""
+  },
+  "resources/publicmds/wallet/vite.svg": {
+    "mtime": 1788814762.58922,
+    "ast_hash": "154c1ef6951252e007ac8a080e45181f",
+    "semantic_hash": ""
+  }
+}
