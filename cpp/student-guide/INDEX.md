@@ -405,7 +405,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [printtree.java](files/src/org/minima/system/commands/base/printtree.md) | authored | implemented_partial |
 | [quit.java](files/src/org/minima/system/commands/base/quit.md) | authored | implemented_partial |
 | [random.java](files/src/org/minima/system/commands/base/random.md) | authored | implemented_partial |
-| [scanchain.java](files/src/org/minima/system/commands/base/scanchain.md) | authored | unported |
+| [scanchain.java](files/src/org/minima/system/commands/base/scanchain.md) | authored | implemented_partial |
 | [seedrandom.java](files/src/org/minima/system/commands/base/seedrandom.md) | authored | implemented_partial |
 | [slavenode.java](files/src/org/minima/system/commands/base/slavenode.md) | authored | implemented_partial |
 | [sphincs.java](files/src/org/minima/system/commands/base/sphincs.md) | authored | unported |

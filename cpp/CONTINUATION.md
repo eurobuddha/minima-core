@@ -1,3 +1,44 @@
+# Current work — scanchain passes both builds and affected regressions
+
+This goal turn is PROGRESS: translated and registered scanchain with real
+Command/MinimaDB/tree/TxPoWDB/date/transaction reuse. Mapped count is now 366
+(322 production + 44 mapped tests), 91 absent; 208 CTest. All 457 guides authored.
+Full 457-file working-native-node goal remains active/incomplete.
+
+New source: cpp/src/org/minima/system/commands/base/scanchain.{cpp,hpp}.
+New test: cpp/tools/scan_chain_differential.py, scan_chain_runtime reuses wallet
+fixture in a separate executable. Optional historyFixtures time field and
+scanDetails operation added; old defaults unchanged. Lab written before tests.
+320 programs / 2027 operations pass both: 23.57s normal, 67.47s ASAN/UBSAN.
+Two fixture setup failures retained (string state brackets, MiniNumber range).
+Reply numbers, inclusive/wrapped bounds, extreme dates, duplicates/missing/empty
+references, ordinary/burn details, null helper inputs and SQL failures checked.
+
+All affected checks are TERMINAL pass in both builds: registry 45018/33880,
+1265 cases; history + TxPoW 6345/65867, respectively 484 programs / 1489 ops /
+52194 SQL calls and 680 programs / 2099 ops / 41510 SQL calls. Saved all six
+reports and logs under validation/scan-chain-work-in-progress. Newtest runs
+70869/46999 terminal pass. Earlier fixture-failure handles terminal; ignore stale
+reports, final reports are saved explicitly.
+
+Normal full relink 11412 TERMINAL exit 0; saved normal/full-build.txt, no observed
+compiler warnings. All normal executables current. Library, scan_chain_runtime
+and runner also current in sanitizer build. Do not relink sanitizer baseline executables
+while they are active. LIVE original sanitizer full baseline: 42976,
+/tmp/minima-shared-json-all-tests-san.log, last started 137. Keep polling same
+handle; original normal baseline terminal and saved. MiniByte and NIO initial
+sanitizer failures have passing reruns; no later failure seen yet.
+
+Before ending: commit
+scanchain implementation, lab, source-map and evidence locally with
+GRAPHIFY_SKIP_HOOK=1, then create/restore-verify a new bundle. Last saved HEAD
+051c4dd3106f9b2bf8689f38c26b27478845f63b; verified bundle
+local-backups/MinimaCoreC++-20260910T211432Z.bundle, SHA256
+9ffa09908df58f81375949b7664a982a4b19f049e8a9d6c5eac329bb94844dc8.
+No GitHub push. Last numbered checkpoint 362; no full 208-test pass claim.
+
+Older notes follow; their job/count states are superseded above.
+
 # Latest saved evidence — affected integration checks pass
 
 Project/branch MinimaCoreC++. Coinimport implementation saved at

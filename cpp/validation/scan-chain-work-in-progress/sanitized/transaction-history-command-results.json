@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 484,
+  "total_programs": 484,
+  "operations": 1489,
+  "sql_calls": 52194,
+  "failures": [],
+  "scope": "Actual history, SQL methods, wire decoding, Wallet, MiniNumber/Token and Java collection adapters. Exact serialized replies, helper dispatch, SQL calls and chain counts. Default time is bounded against the real clock before normalization; explicit times remain exact. Existing runtime-specific exception prose normalization only. Recording rows do not prove durable SQL, full Main, live history, arbitrary reference APIs or exhaustive concurrency parity."
+}

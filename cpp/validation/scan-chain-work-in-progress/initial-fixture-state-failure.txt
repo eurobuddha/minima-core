@@ -1,0 +1,67 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 208: scan_chain_differential
+1/1 Test #208: scan_chain_differential ..........***Failed    1.90 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                                                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/scan_chain_differential.py", line 122, in main
+    f=fixtures(runners[0]);cases=corpus(f)
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/scan_chain_differential.py", line 25, in fixtures
+    wires=runner.ask(dict(kind='historyFixtures',cases=[dict(block=str(i+1))|v for i,v in enumerate(specs)]))
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 16, in ask
+    if not chunk:raise RuntimeError('Checker oracle exited: '+self.errors())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Checker oracle exited: Exception in thread "main" java.lang.NumberFormatException: Character array is missing "e" notation exponential mark.
+	at java.base/java.math.BigDecimal.<init>(BigDecimal.java:680)
+	at java.base/java.math.BigDecimal.<init>(BigDecimal.java:936)
+	at org.minima.objects.base.MiniNumber.<init>(MiniNumber.java:130)
+	at org.minima.objects.StateVariable.<init>(StateVariable.java:82)
+	at WalletCommandsOracle.main(WalletCommandsOracle.java:434)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/scan_chain_differential.py", line 136, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/scan_chain_differential.py", line 133, in main
+    for runner in runners:runner.close()
+                          ~~~~~~~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 27, in close
+    if code:raise RuntimeError(self.errors())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Exception in thread "main" java.lang.NumberFormatException: Character array is missing "e" notation exponential mark.
+	at java.base/java.math.BigDecimal.<init>(BigDecimal.java:680)
+	at java.base/java.math.BigDecimal.<init>(BigDecimal.java:936)
+	at org.minima.objects.base.MiniNumber.<init>(MiniNumber.java:130)
+	at org.minima.objects.StateVariable.<init>(StateVariable.java:82)
+	at WalletCommandsOracle.main(WalletCommandsOracle.java:434)
+
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   1.90 sec
+
+The following tests FAILED:
+	208 - scan_chain_differential (Failed)
+Errors while running CTest

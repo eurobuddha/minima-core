@@ -235,6 +235,16 @@ public class WalletCommandsOracle extends SqlDBOracle {
                 }
                 else if(op.equals("historyLoad"))MinimaDB.getDB().getTxPoWDB().getSQLDB().loadDB(new File(root,"txpow"));
                 else if(op.equals("historyLimit"))org.minima.database.txpowdb.sql.TxPoWSqlDB.MAX_RELEVANT_TXPOW=new org.minima.objects.base.MiniNumber(config.getString("limit"));
+                else if(op.equals("scanDetails")){
+                    org.minima.objects.TxPoW pow=null;
+                    if(!Boolean.TRUE.equals(config.get("nullTxPoW"))){
+                        pow=org.minima.objects.TxPoW.convertMiniDataVersion(new org.minima.objects.base.MiniData(config.getString("data")));
+                        if(Boolean.TRUE.equals(config.get("bodyless")))pow.clearBody();
+                        if(Boolean.TRUE.equals(config.get("nullTransaction")))pow.getTxBody().mTransaction=null;
+                        if(Boolean.TRUE.equals(config.get("nullBurn")))pow.getTxBody().mBurnTransaction=null;
+                    }
+                    result=new org.minima.system.commands.base.scanchain().getTransactionDetails(pow);
+                }
                 else if(op.equals("historyDetails")){
                     org.minima.objects.TxPoW pow=null;
                     if(!Boolean.TRUE.equals(config.get("nullTxPoW"))){
@@ -420,6 +430,7 @@ public class WalletCommandsOracle extends SqlDBOracle {
                             if(key.endsWith("nputs"))transaction.addInput(coin);else transaction.addOutput(coin);
                         }
                     }
+                    if(spec.containsKey("time"))pow.setTimeMilli(new org.minima.objects.base.MiniNumber(spec.getString("time")));
                     if(spec.containsKey("state"))pow.getTransaction().addStateVariable(new org.minima.objects.StateVariable(0,spec.getString("state")));
                     if(spec.containsKey("transactions"))for(Object id:(JSONArray)spec.get("transactions"))pow.addBlockTxPOW(new org.minima.objects.base.MiniData((String)id));
                     pow.setHeaderBodyHash();pow.calculateTXPOWID();result.add(org.minima.objects.base.MiniData.getMiniDataVersion(pow).to0xString());

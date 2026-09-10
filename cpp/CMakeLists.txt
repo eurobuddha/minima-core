@@ -1149,3 +1149,10 @@ add_executable(coin_import_runtime support/wallet_commands.cpp)
 target_link_libraries(coin_import_runtime PRIVATE minima_file_port)
 add_test(NAME coin_import_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/coin_import_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(coin_import_differential PROPERTIES TIMEOUT 240)
+
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/base/scanchain.cpp)
+add_executable(scan_chain_runtime support/wallet_commands.cpp)
+target_link_libraries(scan_chain_runtime PRIVATE minima_file_port)
+add_test(NAME scan_chain_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/scan_chain_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(scan_chain_differential PROPERTIES TIMEOUT 240)

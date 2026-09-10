@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/scanchain.java) · `src/org/minima/system/commands/base/scanchain.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/scanchain.java) · [Native C++](../../../../../../../../src/org/minima/system/commands/base/scanchain.cpp)
 
 ## Purpose
 
@@ -20,15 +20,15 @@ scanchain walks recent parent blocks and returns transaction details. Its inclus
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse parent traversal, TxPoWDB lookup and transaction JSON. Preserve MiniNumber-valued fields and date formatting; replacing inclusive loops with conventional exclusive limits changes output.
+The native counterpart compiles and is registered. It reuses Command parsing, owned tree/TxPoW references, TxPoWDB lookup, transaction JSON and the existing Java-compatible date formatter. MiniNumber-valued fields are emitted as JSON numbers. Both counters preserve Java signed-integer wrapping; replacing inclusive loops with conventional exclusive limits changes output.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed cases use offset 0 and -1, depth 0 and -1, offsets beyond the root, missing/duplicate referenced IDs and a block that is itself a transaction. Assert exact returned heights and transaction field presence; control timezone when comparing Date text.
+Both normal and sanitizer builds pass 320 Java/C++ programs covering 2,027 operations. The [new lab](../../../../../../../../student-guide/new-tests/scan-chain.md) explains the independent bounds, numeric-field, date and transaction-detail assertions. Cases include offset 0 and -1, depth 0 and -1, wrapped parameters, exhausted offsets, missing/duplicate references, ordinary and burn-only bodies, null helper inputs and SQL failures. The existing Runner fixes both runtimes to UTC.
 
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+The [saved results](../../../../../../../../validation/scan-chain-work-in-progress/progress.json) retain initial fixture errors as well as passing comparisons. Finite coverage does not establish full parity.
 
 ## Limits
 

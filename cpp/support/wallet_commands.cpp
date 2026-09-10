@@ -13,6 +13,7 @@ using namespace minima;using namespace minima::json;using namespace minima::sql_
 #include "WalletVaultFixture.hpp"
 #include "org/minima/system/commands/send/send.hpp"
 #include "org/minima/system/commands/search/history.hpp"
+#include "org/minima/system/commands/base/scanchain.hpp"
 #include "org/minima/system/commands/base/magic.hpp"
 #include "org/minima/system/commands/send/sendsign.hpp"
 #include <sstream>
@@ -199,6 +200,16 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             }
             else if(op=="historyLoad")MinimaDB::getDB()->getTxPoWDB()->getSQLDB()->loadDB(std::filesystem::path(root)/"txpow");
             else if(op=="historyLimit")TxPoWSqlDB::MAX_RELEVANT_TXPOW=MiniNumber(config->getString("limit"));
+            else if(op=="scanDetails"){
+                std::optional<TxPoW> pow;
+                if(!flag("nullTxPoW")){
+                    pow=TxPoW::convertMiniDataVersion(MiniData::fromHex(config->getString("data")));
+                    if(flag("bodyless"))pow->clearBody();
+                    if(flag("nullTransaction"))pow->getTxBody()->mTransaction.reset();
+                    if(flag("nullBurn"))pow->getTxBody()->mBurnTransaction.reset();
+                }
+                commands::scanchain command;auto detail=command.getTransactionDetails(pow?&*pow:nullptr);result=detail?JSONValue(*detail):JSONValue();
+            }
             else if(op=="historyDetails"){
                 std::optional<TxPoW> pow;
                 if(!flag("nullTxPoW")){

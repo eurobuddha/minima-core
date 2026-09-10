@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 365 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 366 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -207,7 +207,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/base/printtree.java` | `src/org/minima/system/commands/base/printtree.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/quit.java` | `src/org/minima/system/commands/base/quit.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/random.java` | `src/org/minima/system/commands/base/random.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/base/scanchain.java` | `src/org/minima/system/commands/base/scanchain.cpp` | unported | — |
+| `src/org/minima/system/commands/base/scanchain.java` | `src/org/minima/system/commands/base/scanchain.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/seedrandom.java` | `src/org/minima/system/commands/base/seedrandom.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/slavenode.java` | `src/org/minima/system/commands/base/slavenode.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/sphincs.java` | `src/org/minima/system/commands/base/sphincs.cpp` | unported | — |

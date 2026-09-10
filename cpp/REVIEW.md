@@ -1,3 +1,48 @@
+# Code Review — scanchain command
+
+## Summary
+
+The new mapped scanchain implementation preserves the pinned sequential command
+flow and reuses the existing parameter, tree, TxPoW, SQL and date components.
+Its detail helper is virtual and nullable for the source's object-return API.
+The full native-node goal remains unfinished.
+
+## Findings
+
+No unresolved defect was found in the scoped sequential command implementation.
+The tip check precedes both parameter reads; offset precedes depth. Both loops
+retain their inclusive conditions and Java's signed 32-bit counter increment.
+Block, relative depth and timestamp remain JSON numbers; owned TxPoW references
+survive detail calls. Referenced records retain duplicates and include empty
+transactions. Each lookup resolves the current MinimaDB owner as Java does.
+
+Two fixture setup errors were corrected: an unbracketed string state and a
+MiniNumber timestamp outside its allowed range. Initial failures are saved.
+The driver now closes both subprocesses even when one cleanup fails. It preserves
+serialized reply data while normalizing only known exception diagnostic fields.
+
+## Validation
+
+Both native library/fixture builds pass without observed compiler warnings.
+All 320 new programs / 2027 operations pass in normal and ASAN/UBSAN builds,
+23.57 and 67.47 seconds respectively. Independent assertions check bounds,
+field types, height subtraction, dates, ordering and transaction field presence.
+All six affected comparisons pass: 1265 runner cases, 484 history programs /
+1489 operations / 52194 SQL calls, and 680 TxPoW programs / 2099 operations /
+41510 SQL calls per build. Reports and logs are retained with the new lab.
+Source-map and all 457 student-guide structural checks pass.
+
+## Verdict
+
+Approve the scoped implementation and evidence. Finite tests do not certify
+arbitrary subclass-induced collection mutation, concurrent tree replacement,
+durable SQL, full inherited reference APIs or native-node startup. The full normal
+build and relink pass; the older sanitizer baseline is still running, with its
+known initial MiniByte and NIO failures already followed by passing reruns.
+No complete current 208-test run or full-port parity is claimed.
+
+---
+
 # Code Review — saved coin-import integration evidence
 
 ## Summary

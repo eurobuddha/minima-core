@@ -5,9 +5,17 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **321 production counterparts and 44 mapped test files exist;
-92 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **322 production counterparts and 44 mapped test files exist;
+91 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+scanchain now compiles and is registered. Both builds pass 320 programs and
+2,027 operations covering inclusive offset/depth loops, numeric fields, extreme
+dates, ordered transaction details and SQL failures. See the
+[student lab](student-guide/new-tests/scan-chain.md) and
+[saved evidence](validation/scan-chain-work-in-progress/progress.json).
+There are now 208 registered CTest entries. Existing history (484 programs),
+TxPoW search (680 programs) and runner (1,265 cases) comparisons pass both builds.
 
 coinimport is compiled and registered. Both builds pass 142 Java/C++ programs
 and 390 operations, including historical MMR restoration, root invariance,
@@ -35,7 +43,7 @@ match Java. All 38 comparison reports are saved. Shared user-array access and
 command-driven live enable/authentication have further validation below. See the
 [RPC lab](student-guide/new-tests/rpc-command.md) and
 [configuration evidence](validation/rpc-configuration/progress.json). There are
-207 CTest entries. The last fully saved numbered checkpoint remains 362.
+207 CTest entries at that stage. The last fully saved numbered checkpoint remains 362.
 
 Shared JSON storage is a further **work-in-progress** change: owned value reads,
 retained root/child references and checked ordered iteration replace borrowed

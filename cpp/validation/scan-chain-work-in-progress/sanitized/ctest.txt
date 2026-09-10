@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 208: scan_chain_differential
+1/1 Test #208: scan_chain_differential ..........   Passed   67.47 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  67.47 sec

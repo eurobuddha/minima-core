@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "programs": 0,
+  "total_programs": 0,
+  "operations": 0,
+  "failures": [
+    {
+      "phase": "fixture or comparison setup",
+      "error": "RuntimeError('Checker oracle exited: Exception in thread \"main\" java.lang.NumberFormatException: MiniNumber too large - outside allowed range 2^64 18446744073709551617\\n\\tat org.minima.objects.base.MiniNumber.checkLimits(MiniNumber.java:147)\\n\\tat org.minima.objects.base.MiniNumber.<init>(MiniNumber.java:131)\\n\\tat WalletCommandsOracle.main(WalletCommandsOracle.java:433)\\n')"
+    },
+    {
+      "phase": "cleanup",
+      "runtime": "java",
+      "error": "RuntimeError('Exception in thread \"main\" java.lang.NumberFormatException: MiniNumber too large - outside allowed range 2^64 18446744073709551617\\n\\tat org.minima.objects.base.MiniNumber.checkLimits(MiniNumber.java:147)\\n\\tat org.minima.objects.base.MiniNumber.<init>(MiniNumber.java:131)\\n\\tat WalletCommandsOracle.main(WalletCommandsOracle.java:433)\\n')"
+    }
+  ],
+  "scope": "Actual scanchain and detail helper, CommandRunner, tree and TxPoWDB RAM/recording-SQL. Inclusive bounds, wrapped integers, fractional/gapped/large heights, extreme dates, duplicate/missing/empty references, ordinary/burn transaction JSON, invalid parameters/receivers/SQL bytes and injected SQL failures. Exact reply text and effects; existing NPE/CCE diagnostic normalization. No durable SQL, atomic concurrent traversal or full-node parity claim."
+}

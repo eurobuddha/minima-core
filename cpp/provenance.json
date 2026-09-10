@@ -2508,5 +2508,50 @@
       "Finish sanitizer shared JSON baseline; rerun NIO message timeout"
     ],
     "limits": "Full/pruned synthetic histories, actual command/MMR/tree with recording SQL. No durable SQL, native full-node startup, concurrent tree mutation or full-file parity claim."
+  },
+  "scan_chain_command": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "status": "focused and affected comparisons pass; normal full build passes",
+    "counterparts": 366,
+    "production": 322,
+    "mapped_tests": 44,
+    "absent": 91,
+    "ctest_registered": 208,
+    "programs_per_build": 320,
+    "operations_per_build": 2027,
+    "normal": true,
+    "sanitized": true,
+    "seconds": [
+      23.57,
+      67.47
+    ],
+    "reuse": [
+      "src/org/minima/system/commands/Command.cpp",
+      "src/org/minima/system/commands/base/block.cpp",
+      "src/org/minima/database/txpowdb/TxPoWDB.cpp",
+      "src/support/JavaDateString.hpp",
+      "support/wallet_commands.cpp",
+      "support/WalletCommandsOracle.java",
+      "tools/wallet_balance_corpus.py",
+      "tools/peers_checker_differential.py"
+    ],
+    "sibling_candidate": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/system/TxPoWSearcher.hpp",
+    "sibling_difference": "getLastBlocks returns count items from canonicalChain in a different order; it does not implement the pinned offset/depth loops, replies or RAM/SQL lookup.",
+    "pending": [
+      "Finish earlier sanitizer baseline and remaining integration checks"
+    ],
+    "limits": "Real serialized objects and actual command/tree/RAM/recording SQL. No durable SQL or atomic concurrent traversal; finite comparisons do not certify full-file or whole-node parity.",
+    "affected": {
+      "command_runner_cases_per_build": 1265,
+      "history_programs_per_build": 484,
+      "history_operations_per_build": 1489,
+      "history_sql_calls_per_build": 52194,
+      "txpow_programs_per_build": 680,
+      "txpow_operations_per_build": 2099,
+      "txpow_sql_calls_per_build": 41510,
+      "fixture_target": "scan_chain_runtime"
+    },
+    "normal_full_build": true,
+    "compiler_warnings_observed": 0
   }
 }

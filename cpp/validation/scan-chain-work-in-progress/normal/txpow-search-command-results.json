@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 680,
+  "total_programs": 680,
+  "operations": 2099,
+  "sql_calls": 41510,
+  "failures": [],
+  "scope": "Actual txpow command and registry, RAM/SQL/archive/on-chain lookups, chain search and source-generated TxPoW/TxBlock wire. Exact serialized replies, IDs/order, confirmations, SQL calls, failures and MySQL forwarding through real runner. Optional rowsBySQL routes supplied recording-driver data. MySQL body uses a scoped recording prototype; no native MySQL, durable SQL, full Main/live chain, exhaustive Java reference or concurrency/platform parity is proved."
+}
