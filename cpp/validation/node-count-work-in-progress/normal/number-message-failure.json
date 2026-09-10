@@ -1,0 +1,41 @@
+{
+  "passed": false,
+  "programs": 86,
+  "total_programs": 171,
+  "ping_requests_per_runtime": 0,
+  "failures": [
+    {
+      "case": 86,
+      "request": {
+        "mode": "double",
+        "text": "1.2\u0000x"
+      },
+      "java": {
+        "exception": "java.lang.NumberFormatException: For input string: \"1.2\u0000x\"",
+        "logs": [],
+        "traffic": {
+          "reads": {},
+          "writes": {}
+        },
+        "read": 0,
+        "write": 0,
+        "files": {},
+        "directories": []
+      },
+      "cpp": {
+        "exception": "java.lang.NumberFormatException: For input string: \"1.2",
+        "logs": [],
+        "traffic": {
+          "reads": {},
+          "writes": {}
+        },
+        "read": 0,
+        "write": 0,
+        "files": {},
+        "directories": []
+      },
+      "traces": []
+    }
+  ],
+  "scope": "Actual nodecount and NIO ping over isolated loopback graphs, exact ping request bytes/order, traffic, replies, logs and CSV files. Installed JDK collection order, float calculations and Double parser cases. Unstarted manager owner; no public network enumeration, full-node startup or exhaustive inherited/reference/concurrency/API parity claim. Native CSV descriptor closed by RAII; source writer lifetime not reproduced."
+}

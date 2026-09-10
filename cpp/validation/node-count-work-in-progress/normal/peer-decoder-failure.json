@@ -1,0 +1,84 @@
+{
+  "passed": false,
+  "programs": 153,
+  "total_programs": 171,
+  "ping_requests_per_runtime": 287,
+  "failures": [
+    {
+      "case": {
+        "nodes": [
+          {
+            "extra": {
+              "peers-list": [
+                null
+              ]
+            }
+          }
+        ],
+        "defaults": [
+          0
+        ],
+        "params": {
+          "file": "scan.csv"
+        }
+      },
+      "request": {
+        "mode": "direct",
+        "params": {
+          "file": "scan.csv"
+        },
+        "defaults": [
+          {
+            "host": "127.0.0.1",
+            "port": 49302
+          }
+        ]
+      },
+      "java": {
+        "exception": "java.lang.NullPointerException",
+        "logs": [],
+        "traffic": {
+          "reads": {
+            "sendPingMessage": "46 bytes"
+          },
+          "writes": {
+            "sendPingMessage": "6 bytes"
+          }
+        },
+        "read": 0,
+        "write": 0,
+        "files": {
+          "scan.csv": ""
+        },
+        "directories": []
+      },
+      "cpp": {
+        "exception": "java.lang.RuntimeException: bad_variant_access",
+        "logs": [],
+        "traffic": {
+          "reads": {
+            "sendPingMessage": "46 bytes"
+          },
+          "writes": {
+            "sendPingMessage": "6 bytes"
+          }
+        },
+        "read": 0,
+        "write": 0,
+        "files": {
+          "scan.csv": ""
+        },
+        "directories": []
+      },
+      "traces": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ]
+    }
+  ],
+  "scope": "Actual nodecount and NIO ping over isolated loopback graphs, exact ping request bytes/order, traffic, replies, logs and CSV files. Installed JDK collection order, float calculations and Double parser cases. Unstarted manager owner; no public network enumeration, full-node startup or exhaustive inherited/reference/concurrency/API parity claim. Native CSV descriptor closed by RAII; source writer lifetime not reproduced."
+}

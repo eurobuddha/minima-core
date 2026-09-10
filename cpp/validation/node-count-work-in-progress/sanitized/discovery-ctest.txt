@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 78: p2p_discovery_differential
+1/1 Test #78: p2p_discovery_differential .......   Passed   43.16 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  43.17 sec

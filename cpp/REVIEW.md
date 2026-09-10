@@ -1,3 +1,64 @@
+# Code Review — node-count traversal
+
+## Summary
+
+The mapped nodecount class uses actual NIO ping transport, the existing socket
+address set and peer decoder, with source scan/CSV/numeric behavior. It is not
+registered because the pinned Java runner does not include it. The complete
+457-file native node remains unfinished.
+
+## Findings
+
+No unresolved defect was found in the scoped traversal review. Defaults are
+pinged first; their client counts are ignored. Discovered peers and pinged peers
+retain source set semantics. Pending sets use the installed JDK collection-copy
+capacity through the existing HashMap reserve helper, then the source removeAll
+size branch. A local owner now retains the converted peer list during iteration;
+the first loopback comparison exposed the earlier temporary-lifetime mistake.
+
+Float32 rounding, double client accumulation, saturation of float-to-int log
+values and nonfinite JSON nulls are preserved. Numeric parsing reuses the JSON
+lexer's validated-strtod approach with Java's broader decimal/hex/suffix grammar.
+NaN sign is canonicalized; typed exception storage preserves embedded NUL messages.
+Finite parsing tests compare raw double bits and text, not approximate tolerances.
+
+File opening precedes complete parsing. CSV text reaches disk only at the explicit
+flush points; an empty scan creates an empty file. Later write errors are swallowed
+as in PrintWriter. RAII closes the native descriptor; source leak/GC behavior is
+not asserted equivalent. Fixed-size CSV lines avoid automatic-buffer overflow in
+the covered execution path. Raw JSON preserves float rendering, not Java Float
+object APIs.
+
+Malformed greetings exposed older decoder categories: null/non-string string-array
+entries and missing colon fields now throw Java null/cast/array-index exceptions.
+Colon splitting, trailing-empty removal and port parsing remain source behavior.
+Existing P2P discovery tests verify the other production caller. Initial registry,
+numeric-message, discovery-lifetime and decoder failures are retained as evidence.
+
+## Validation
+
+Both full builds pass. Normal and ASAN/UBSAN focused comparisons pass 171 programs
+and 314 loopback ping requests per runtime. Both builds pass four affected suites:
+peer state (874 programs / 26,348 operations), NIO transport (640 serialization/send
+cases plus actual ping cases), registry (1,265 cases), and P2P discovery
+(31 programs / 84 operations / 39 TCP pings). All 457 student guides pass structural
+audit. There are 374 counterparts and 215 registered CTest entries.
+
+## Limits
+
+No public-network enumeration, full native-node startup, durable database or full
+current 215-suite claim. Test manager owners skip startup; all ping sockets and
+frame handling are real. Java null/cast diagnostic prose is normalized; numeric
+bits, parsed replies, log content, request order and CSV bytes are compared.
+Other JDK collection versions, identity-hash tree ties, arbitrary reference or
+concurrency APIs, all floating-rounding/locale cases, Java Float-object semantics
+and leaked-writer lifetime remain unverified. The native file remains partial.
+
+## Verdict
+
+Approve this scoped progress checkpoint. Full-goal completion is not asserted.
+Historical reviews follow.
+
 # Code Review — multisig workflows
 
 ## Summary

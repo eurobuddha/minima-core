@@ -1,3 +1,41 @@
+# Current work — nodecount validated; preserve this checkpoint
+
+Project/branch MinimaCoreC++. Added network/nodecount.cpp/hpp, direct native class
+and loopback oracle. The pinned CommandRunner DOES NOT register nodecount; native
+registry stays unchanged. Actual NIO sockets, set traversal, parsing and CSV execute.
+
+Final normal/ASAN comparisons: 171 programs, 314 loopback ping requests per runtime.
+Both full builds and four affected suites pass both: peer-state 874 programs /
+26,348 ops; transport 640 serialization/send cases plus actual ping cases; registry
+1,265 cases; P2P discovery 31 programs / 84 ops / 39 TCP pings. All handles terminal.
+
+Added JavaParseDouble.hpp using existing validated-strtod pattern plus Java grammar;
+SocketAddressSet vector constructor uses existing reserveForPutAll(max(size,12)),
+matching installed JDK26 HashSet collection sizing. InetSocketAddressIO string-array
+reader now reports Java NPE/CCE/array-index categories. Initial failures preserved:
+incorrect class registration, truncated NUL numeric exception, temporary converted
+peer-list lifetime, old peer decoder errors. Tests also corrected expected empty
+MiniData text and traffic totals-vs-breakdown assertions. No public-network crawl.
+
+Mapping 374 counterparts (330 production + 44 tests), 83 absent (39 production +
+44 tests), 215 CTest entries. All 457 student guides authored/audited. No full current
+215-suite or native-node/durable-SQL/reference/concurrency/API parity claim. All
+counterparts remain implemented_partial/not_verified. Evidence, review, provenance
+and lab in validation/node-count-work-in-progress and student-guide/new-tests.
+
+Ready for local commit and verified recovery bundle. Inspect HEAD and latest
+ignored local-backups manifest. Prior HEAD 16149561010f036aa1237621415733a76fac3872;
+prior bundle MinimaCoreC++-20260910T230928Z.bundle, SHA256
+26b942d572d9da94d55a140dd8a5f8978cbf4c613438bba79a8e18c148c9943a.
+Use /tmp/minima-hashtest-backup.py; also verify nodecount.cpp, JavaParseDouble.hpp,
+student lab and sanitizer report in recovery clone. No GitHub push.
+
+Read-ahead incentivecash.java fully read in preceding/current turn, no edits. It
+saves UserDB before hardcoded HTTPS PUT and JSON parse. Next work requires examining
+existing native UserDB/RPC fixtures and reporting reuse. P2PSwapLink.java remains
+entirely inactive/commented source; Streamable.java active interface still unported.
+The full 457-file working native-node goal remains active. Older notes follow.
+
 # Current work — multisig workflows validated; preserve this checkpoint
 
 Project/branch MinimaCoreC++. Added send/multisig.cpp/hpp and multisigread.cpp/hpp,

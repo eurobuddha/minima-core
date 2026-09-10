@@ -1,0 +1,55 @@
+{
+  "passed": false,
+  "programs": 0,
+  "total_programs": 171,
+  "ping_requests_per_runtime": 0,
+  "failures": [
+    {
+      "case": 0,
+      "request": {
+        "mode": "meta",
+        "params": {},
+        "defaults": []
+      },
+      "java": {
+        "exception": "java.lang.NullPointerException",
+        "logs": [],
+        "traffic": {
+          "reads": {},
+          "writes": {}
+        },
+        "read": 0,
+        "write": 0,
+        "files": {},
+        "directories": []
+      },
+      "cpp": {
+        "value": {
+          "name": "nodecount",
+          "help": "(file:) (complete:false|true) - Enumerate the network to count all participating nodes",
+          "fullhelp": "(file:) (complete:false|true) - Enumerate the network to count all participating nodes",
+          "valid": [
+            "file",
+            "complete"
+          ],
+          "fresh": {
+            "command": "nodecount",
+            "status": true,
+            "pending": false
+          }
+        },
+        "logs": [],
+        "traffic": {
+          "reads": {},
+          "writes": {}
+        },
+        "read": 0,
+        "write": 0,
+        "files": {},
+        "directories": []
+      },
+      "traces": []
+    }
+  ],
+  "scope": "Actual nodecount and NIO ping over isolated loopback graphs, exact ping request bytes/order, traffic, replies, logs and CSV files. Installed JDK collection order, float calculations and Double parser cases. Unstarted manager owner; no public network enumeration, full-node startup or exhaustive inherited/reference/concurrency/API parity claim. Native CSV descriptor closed by RAII; source writer lifetime not reproduced."
+}

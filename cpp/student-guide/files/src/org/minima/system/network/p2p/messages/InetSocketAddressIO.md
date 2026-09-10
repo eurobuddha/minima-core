@@ -46,3 +46,7 @@ Predict the port for an object containing "port":"9001". Then explain why the st
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `fbf80a246b7750b29ceb3de8e4615ddc4ccaf84dce7317e86ddcc8b796e530e9`. Mapping: [source-map.json](../../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../../REVIEW.md).
+
+### Node-count integration follow-up
+
+Actual ping greetings now exercise the string-array reader with null, non-string and missing-colon entries. The native method reports the Java null-pointer, class-cast and array-index exception categories before parsing an address. The source still splits on colons and discards trailing empty fields; this change does not add an IPv6-aware parser.

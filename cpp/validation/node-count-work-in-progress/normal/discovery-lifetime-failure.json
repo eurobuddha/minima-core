@@ -1,0 +1,108 @@
+{
+  "passed": false,
+  "programs": 91,
+  "total_programs": 171,
+  "ping_requests_per_runtime": 0,
+  "failures": [
+    {
+      "case": {
+        "nodes": [
+          {
+            "peers": [
+              0
+            ],
+            "clients": "99"
+          }
+        ],
+        "defaults": [
+          0
+        ],
+        "params": {
+          "complete": "true"
+        },
+        "basic": 1
+      },
+      "request": {
+        "mode": "direct",
+        "params": {
+          "complete": "true"
+        },
+        "defaults": [
+          {
+            "host": "127.0.0.1",
+            "port": 63547
+          }
+        ]
+      },
+      "java": {
+        "value": {
+          "command": "nodecount",
+          "params": {
+            "complete": "true"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "total_nodes": 1.0,
+            "server_nodes": 1.0,
+            "client_nodes": 0.0
+          }
+        },
+        "logs": [
+          "Total participating nodes: 1 of which 1 are p2p servers and 0 are client nodes."
+        ],
+        "traffic": {
+          "reads": {
+            "sendPingMessage": "74 bytes"
+          },
+          "writes": {
+            "sendPingMessage": "6 bytes"
+          }
+        },
+        "read": 0,
+        "write": 0,
+        "files": {},
+        "directories": []
+      },
+      "cpp": {
+        "value": {
+          "command": "nodecount",
+          "params": {
+            "complete": "true"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "total_nodes": 0.0,
+            "server_nodes": 0.0,
+            "client_nodes": 0.0
+          }
+        },
+        "logs": [
+          "Total participating nodes: 0 of which 0 are p2p servers and 0 are client nodes."
+        ],
+        "traffic": {
+          "reads": {
+            "sendPingMessage": "74 bytes"
+          },
+          "writes": {
+            "sendPingMessage": "6 bytes"
+          }
+        },
+        "read": 0,
+        "write": 0,
+        "files": {},
+        "directories": []
+      },
+      "traces": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ]
+    }
+  ],
+  "scope": "Actual nodecount and NIO ping over isolated loopback graphs, exact ping request bytes/order, traffic, replies, logs and CSV files. Installed JDK collection order, float calculations and Double parser cases. Unstarted manager owner; no public network enumeration, full-node startup or exhaustive inherited/reference/concurrency/API parity claim. Native CSV descriptor closed by RAII; source writer lifetime not reproduced."
+}
