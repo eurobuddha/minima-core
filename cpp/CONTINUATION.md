@@ -1,3 +1,39 @@
+# Current checkpoint 359 — trace and timemilli validated and saved locally
+
+Full 457-file native-port goal remains ACTIVE and incomplete. Local Git branch and
+project description are MinimaCoreC++. Existing history and source pin retained.
+359 mapped counterparts = 315 production + 44 tests; 98 absent = 54 production +
+44 tests. All mapped entries remain partial / parity not_verified. 197 CTest tests.
+
+Both full builds PASS. Trace/clock differential: 209 programs / 652 operations
+PASS in both builds. All eleven affected regressions PASS, 36.66s normal / 61.15s
+ASAN/UBSAN; all twenty reports read, no failures. Sessions 99435 and 11104 finished.
+Logs /tmp/minima-trace-clock-regressions{,-san}.log. Reports saved under
+validation/checkpoint-359. Student lab preceded tests; both lessons updated.
+
+Reuse actual Command, MessageProcessor shared trace state, atomic NIO flags,
+TimerMessage clock, MiniNumber narrowing and JavaDateString. Preserve trace's raw
+enable read and earlier trace change when network parsing fails. Preserve Java
+32-bit multiplication wrap before long clock subtraction. Independent bounds and
+UTC date assertions precede clock normalization. No full-node scheduling or
+exhaustive locale parity claimed. Fixtures use real unstarted Main and diagnostics.
+
+Git checkpoints already exist: e2c0d06 verified357; 9b06c3b WIPtrace/clock; c19fc27
+study graphs. New validated359 commit follows this note. Use GRAPHIFY_SKIP_HOOK=1
+for commits to prevent incidental rebuilds. Git mutations require auto escalation;
+no rejection occurred. Timestamped bundles under ignored local-backups include all
+refs and pinned upstream tag. Previous c19fc27 bundle was recovery-clone verified.
+No GitHub push: user's destination answer remains pending; do not guess which fork.
+
+Next source candidates already read: logs.java and healthcheck.java. logs needs
+review of GeneralParams plain bool fields before introducing concurrent mutation.
+healthcheck can reuse actual MinimaDB/TxPoWTree/Cascade and Main chain fixture, but
+needs a cascade fixture and differential corpus. Follow reuse gate and write the
+student lab before tests. Full startup/durable SQL/remaining registry and absent
+Minima entry point still prevent claiming a working complete node.
+
+Historical notes below may describe obsolete WIP or live handles.
+
 # Current work — local Git checkpoints and trace/timemilli in progress
 
 USER NOW EXPLICITLY AUTHORIZES/REQUESTS REGULAR LOCAL GIT COMMITS/BACKUPS.

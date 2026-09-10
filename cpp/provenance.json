@@ -2066,17 +2066,37 @@
     },
     "limits": "Unstarted Main workers: restart is an exact queued message. No full startup, durable storage or exhaustive owner/concurrent/P2P failure parity."
   },
-  "trace_and_clock_wip": {
+  "trace_and_clock_commands": {
     "sources": {
       "trace": "bd7e00f83cb65a9a608c08c3e92e03131dc3e16b179e2d4264eea1b48493d6f7",
       "timemilli": "cc3b6cfe6d1ddfa751d7776ed9f267a97b8bb02f8e10ea5f914649ea780ba6c6"
     },
-    "status": "Native bodies written; dedicated differential tests pending",
+    "status": "Compiled and finite differential coverage passed; implemented_partial, parity not_verified",
     "reuse": [
       "Command raw/trimmed getters",
       "MessageProcessor shared tracing and atomic NIOClient/NIOServer flags",
       "TimerMessage.currentTimeMillis, MiniNumber.getAsInt, JavaDateString and unsigned/bitcast overflow pattern"
     ],
-    "limits": "Not included in verified checkpoint e2c0d06."
+    "limits": "Workers unstarted; no exhaustive concurrency, timezone/locale or full-node parity. Enhanced null/cast diagnostic prose excluded.",
+    "validation": {
+      "programs_per_build": 209,
+      "operations_per_build": 652,
+      "full_builds": [
+        "normal",
+        "ASAN/UBSAN"
+      ],
+      "selected_tests_per_build": 11,
+      "selected_seconds": [
+        36.66,
+        61.15
+      ],
+      "reports_read": 20,
+      "report_directory": "validation/checkpoint-359"
+    },
+    "adaptations": [
+      "Raw enable access and ordered partial trace mutations preserved",
+      "32-bit multiply wrap and 64-bit subtraction via unsigned arithmetic and bit_cast",
+      "Reuse Main fixture diagnostics and driver; validate real clock bounds and exact UTC date before normalization"
+    ]
   }
 }

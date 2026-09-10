@@ -31,3 +31,17 @@ getFullHelp, which differs from the usual leading newline.
 Finite state/clock comparisons do not prove worker scheduling, all locales/time
 zones or complete node behavior. Do not claim that returning a current timestamp
 means either runtime can control or agree on an external system clock.
+
+## Completed validation
+
+Both full builds pass. The new corpus contains 209 programs and 652 operations,
+all matching Java in normal and ASAN/UBSAN builds. All eleven affected regression
+tests also pass (36.66s / 61.15s). These include the Main fixture, lifecycle and
+network commands, ping loopback transport, network manager, parameter helpers,
+runner/error behavior and source mapping. All twenty resulting reports were read
+and contain no failures. There are 197 registered CTest tests at this checkpoint.
+
+The [corpus](../../tools/trace_clock_commands_corpus.py) contains the independent
+state and clock assertions. The [Main comparison driver](../../tools/main_runtime_differential.py)
+executes both implementations. [Saved reports](../../validation/checkpoint-359/checkpoint.json)
+record the finite scope, including normalization and remaining limitations.

@@ -29,3 +29,7 @@ limitations are recorded in REVIEW.md and validation/checkpoint-357.
 
 GitHub backup destination is awaiting the user's choice between their two
 existing fork remotes. Local commits do not imply that a GitHub push occurred.
+
+Checkpoint 359 adds validated trace/timemilli coverage, both full builds and eleven
+selected regressions per build. Compact evidence is in validation/checkpoint-359.
+All 457 lessons remain present; 98 mapped files are still absent.

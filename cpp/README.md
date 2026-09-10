@@ -9,16 +9,18 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 98 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-Local Git project/branch: **MinimaCoreC++**. The last verified checkpoint is
-`e2c0d06` (357 mapped counterparts). The additional trace and timemilli bodies
-are work in progress; their dedicated tests are pending. See [Git workflow](GIT_WORKFLOW.md)
-and [their lab](student-guide/new-tests/trace-and-clock-commands.md).
+Local Git project/branch: **MinimaCoreC++**. Checkpoint 359 adds compiled,
+registered trace and timemilli commands with 209 Java/C++ programs covering 652
+operations per build. Both full builds and all eleven affected regression tests
+pass (36.66s normal, 61.15s ASAN/UBSAN). There are 197 CTest entries. See the
+[Git workflow](GIT_WORKFLOW.md), [trace and clock lab](student-guide/new-tests/trace-and-clock-commands.md)
+and [saved validation](validation/checkpoint-359/checkpoint.json).
 
 network now compiles and is registered. Its [status-command lab](student-guide/new-tests/network-status-command.md)
 explains 124 programs and 562 operations matching Java in both builds, including
 UID filtering, traffic reset, shared tracing and queued restart behavior. Both
 full builds and ten affected regression groups pass (19.15s/27.27s). There are
-196 CTest entries.
+196 CTest entries at that checkpoint.
 
 ping now compiles and is registered. Its [nullable-reply lab](student-guide/new-tests/nullable-command-replies.md)
 explains the existing JSONValue return representation, the runner's status check

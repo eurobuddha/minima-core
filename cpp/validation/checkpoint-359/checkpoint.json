@@ -1,0 +1,31 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "mapped_counterparts": 359,
+  "production_counterparts": 315,
+  "mapped_tests": 44,
+  "absent": 98,
+  "lessons": 457,
+  "ctest_registered": 197,
+  "full_builds_passed": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "affected_tests_passed_per_build": 11,
+  "affected_seconds": [
+    36.66,
+    61.15
+  ],
+  "reports": [
+    "command-differential-results.json",
+    "command-runner-differential-results.json",
+    "command-runner-errors-results.json",
+    "main-lifecycle-commands-results.json",
+    "main-runtime-results.json",
+    "network-manager-results.json",
+    "network-peer-commands-results.json",
+    "network-status-command-results.json",
+    "ping-command-results.json",
+    "trace-clock-command-results.json"
+  ],
+  "limits": "Finite scoped validation; all map entries remain partial and parity not_verified. Full native node is incomplete."
+}

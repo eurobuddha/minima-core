@@ -30,6 +30,10 @@ JSONObject run(const JSONObject& input,const std::string& root){
         config=&object(step);events=JSONArray();calls=0;timers=JSONArray();listenerCalls=JSONArray();JSONObject out;std::ostringstream stream;auto previous=std::clog.rdbuf(stream.rdbuf());auto before=TimerMessage::currentTimeMillis();
         try{JSONValue value;auto cmd=config->getString("cmd");
             if(cmd=="fields")MainFixture::fields(*main,object(config->get("values")));
+            else if(cmd=="diagnostics"){
+                if(flag("reset")){MessageProcessor::setTrace(false,"");NIOClient::mTraceON=false;NIOServer::mTraceON=false;}
+                JSONObject diagnostics;diagnostics.put("trace",main->isTrace());diagnostics.put("filter",main->getTraceFilter());diagnostics.put("client",NIOClient::mTraceON.load());diagnostics.put("server",NIOServer::mTraceON.load());if(config->containsKey("match"))diagnostics.put("matches",main->checkTraceFilter(config->getString("match")));value=diagnostics;
+            }
             else if(cmd=="normal")main->setNormalAutoMineSpeed();else if(cmd=="low")main->setLowPowAutoMineSpeed();
             else if(cmd=="sync"){GeneralParams::IBDSYNC_LOGS=flag("logs");main->setSyncIBD(flag("value"));}
             else if(cmd=="error")main->setStartUpError(flag("value"),string(config->get("message")));

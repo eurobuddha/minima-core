@@ -2,7 +2,7 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `implemented_partial`; parity `not_verified`. Native body written; command-specific tests pending.
+**Port status:** `implemented_partial`; parity `not_verified`. The native command compiles and has finite differential coverage.
 
 [Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/trace.java) · [Native C++ body](../../../../../../../../src/org/minima/system/commands/base/trace.cpp)
 
@@ -19,19 +19,19 @@ trace changes shared MessageProcessor tracing and optionally low-level NIO clien
 
 ## Translation and dependencies
 
-The native body now reuses the existing Command parameter/reply helpers and the named services. Its command-specific differential tests are still pending.  Reuse MessageProcessor and NIO global trace state. Preserve the different raw enable access and trimmed network helper semantics.
+The wrapper reuses Command parameter and reply helpers, MessageProcessor's shared trace state, and the existing atomic NIOClient and NIOServer flags. Direct string access preserves the raw enable value; getBooleanParam retains the source's trimmed network semantics. The order of writes matches Java, including changes left behind when a later getter throws.
 
 ## Understanding the tests
 
-No completed command-specific comparison is claimed yet. Proposed tests compare missing enable, raw true versus padded true, absent/present filter, and omitted network after it was previously enabled. Inject a network parsing failure and assert the earlier MessageProcessor setting remains changed.
+The trace/clock corpus runs 209 programs and 652 operations through actual registered commands and the Main fixture in each build. Trace cases cross missing, null, non-string, blank, padded, Unicode and ordinary values with two prior states. Snapshots inspect the real shared state and actual matcher after both successful and failed calls.
 
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+An independent assertion starts with both NIO flags enabled, then supplies network:null. The command fails, but its earlier trace/filter update remains and both NIO flags retain their prior values. Another assertion proves that omitting network clears both flags. A mixed-case matcher test checks the implementation rather than trusting the help text. Calling network loggingoff also demonstrates that shared MessageProcessor tracing and low-level NIO flags are separate settings.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Both full builds pass. All eleven affected regression tests pass in normal and ASAN/UBSAN builds. See the [trace and clock lab](../../../../../../../new-tests/trace-and-clock-commands.md) for the corpus, evidence and comparison limits.
 
 ## Limits
 
-The native MessageProcessor worker fixture covers one lowercase filter case; it does not implement this absent command wrapper or prove NIO flag propagation.
+Workers stay unstarted. State observations establish these ordered command effects, not concurrent worker scheduling or full-node integration. The comparator excludes enhanced Java null/cast diagnostic wording; other compared values retain their existing comparison rules.
 
 ## Check your understanding
 
@@ -39,8 +39,3 @@ Why do enable:" true " and network:" true " have different behavior when runComm
 
 Pinned Java SHA-256: `bd7e00f83cb65a9a608c08c3e92e03131dc3e16b179e2d4264eea1b48493d6f7`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
 
-## Current work checkpoint
-
-The native body and registry entry are written. This is work in progress: no new
-command-specific comparison has been accepted yet. The [trace and clock lab](../../../../../../../new-tests/trace-and-clock-commands.md) was written before the planned tests. Earlier future-work wording above
-describes the intended validation; it does not claim that these tests ran.

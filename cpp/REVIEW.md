@@ -4260,3 +4260,28 @@ JUnit assertions and checks 256 conditional predicates per runtime. Results:
 **Verdict: Approve the scoped table correction and mapped test; the complete-port
 goal remains unfinished.** Manual review checked the source table literal,
 accumulator conversion, source inputs, typed failures, wrapper and report counts.
+
+
+## Code Review — checkpoint 359: trace and clock commands
+
+### Summary
+
+Reviewed both native command bodies and the changed Main fixture/oracle, driver,
+corpus and CMake registration. Existing parameter/state/clock helpers are reused.
+Ordered side effects and Java integer wrap are preserved. Both full builds pass;
+209 programs / 652 operations match in both builds, and eleven affected regression
+tests pass (36.66s / 61.15s). Twenty reports were read without failures.
+
+### Findings
+
+No new blocking defect found in this scoped review. Clock normalization follows
+independent timestamp-bound and exact UTC date checks. Partial trace updates are
+observed through real shared state after failures. Metadata and runner gates are
+compared. Enhanced null/cast diagnostic wording remains excluded by the existing
+comparison rules; full-node scheduling and exhaustive locale parity remain open.
+
+### Verdict
+
+Approve this checkpoint for local preservation. This is not certification of the
+complete 457-file port. There are 359 counterparts and 98 absent mapped files;
+all existing entries remain implemented_partial / parity not_verified.
