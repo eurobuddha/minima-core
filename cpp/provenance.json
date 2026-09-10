@@ -2430,7 +2430,7 @@
     "limits": "Manual Main with real RPC transport; node workers unstarted and SQL fixture binding only. No durable SQL, full native node, exhaustive concurrency, or full-file parity claim."
   },
   "hashtest_command": {
-    "status": "focused comparison passes; affected and full regressions running",
+    "status": "focused and two affected regression comparisons pass; full baseline suites running",
     "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
     "counterparts": 364,
     "production": 320,
@@ -2459,13 +2459,20 @@
       "Sanitizer real million-hash workload exceeded generic 30-second response timeout; rerun passes at 120-second per-request deadline"
     ],
     "affected_regressions": {
-      "normal_session": 9583,
-      "sanitized_session": 37480,
+      "state": "passed",
       "tests": [
         "command_runner_differential",
         "network_utilities_differential"
       ],
-      "state": "rebuilding"
+      "cases_per_build": {
+        "command_runner": 1265,
+        "network_utilities": 5668
+      },
+      "builds": [
+        "normal",
+        "sanitized"
+      ],
+      "note": "Targets relinked after both full suites had passed those entries; no observed native compiler warnings"
     },
     "full_regressions": {
       "normal_session": 29381,

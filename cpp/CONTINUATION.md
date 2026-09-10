@@ -1,3 +1,33 @@
+# Latest saved validation — hashtest and two affected regressions PASS
+
+Hashtest implementation committed00c4867d52ec26eb840f86052955e6a12b68a031.
+Verifiedbundle MinimaCoreC++-20260910T205244Z.bundle SHA256
+a85b67f26c06f501d048b7435352d1adda32c6a03622b28e6ad2d8feb892ca8f.
+Recoverycloneverified HEAD/connectivity/pin/source/evidence;localonly.
+
+Affectedbuild/testhandles9583/37480 now TERMINALexit0. Both complete library
+rebuilds and relinked minima_command_runner/minima_network_utilities pass,
+noobservednativewarnings. Both2-testCTestbatchespass;1265runner+5668networkutility
+casesperbuild. All4reports and2CTestlogs read/savedhashtest-work-in-progress.
+Newhashcommand59programs61opspassesboth; source-map/audit364counterparts93absent,
+457guides,9079links2634anchors0errors. Current206CTest; fullgoalstillincomplete.
+
+ONLY LIVE testhandles now29381normal and42976sanitizer, original204fullsuites.
+Lastnormal144,san59; use /tmp/minima-shared-json-all-tests{,-san}.log forcomplete
+output. NewfocusedCTestinvocations also useTestingdirectory, so do not relyon
+sharedLastTest.log as sole evidence or --rerun-failed auto selection. Readfull
+redirectedlogs, inspectallfailures, explicitlyrerunfailednames. KnownMiniByte
+failurealreadyfixed/directpassboth; requiredCTeststillpendingafterfullsummary.
+
+Afterfullsuitesfinish, relink remainingaffectedMain/DB/network/HTTP/auth targets
+andcheckRPC/sharedJSONregressions withcurrentbindings/registry. Do not replace
+executablesstillusedbyrunningfullsuites. RPC-liveoldtargetalreadytesteddefault
+Authorizer binding, but now needsrelink forhashtestregistry ifbroaderintegration.
+Nooverall206currenttreepassclaim and no numberedcheckpointyet. Continueporting
+unportedfiles once thisvalidation step is settled.
+
+Older progress notes follow; theirLIVE statuses are superseded above.
+
 # Current work — hashtest passes both builds; regression builds/tests LIVE
 
 Full457workingC++goal ACTIVE/incomplete. Mapping364=320production+44tests;93absent.

@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 50: network_utilities_differential
+1/2 Test #50: network_utilities_differential ...   Passed    6.37 sec
+    Start 52: command_runner_differential
+2/2 Test #52: command_runner_differential ......   Passed    4.94 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  11.32 sec

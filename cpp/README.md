@@ -14,8 +14,9 @@ Its [student lab](student-guide/new-tests/hash-speed-command.md) explains real
 hashing, bounded clocks, decimal rate checks and the initial JSON type mismatch.
 Both normal and ASAN/UBSAN comparisons pass 59 programs / 61 operations,
 including the real million-hash default. [Saved results](validation/hashtest-work-in-progress/progress.json)
-record the initial type mismatch and sanitizer test-deadline adjustment. Affected
-registration regressions and the earlier full suites are still running.
+record the initial type mismatch and sanitizer test-deadline adjustment. Both
+relinked command-runner (1,265 cases) and network-utility (5,668 cases) regressions
+also pass in both builds. The earlier full suites are still running.
 
 RPC is **work in progress**. Shared authentication flags and password now use
 atomic booleans and the existing locked nullable-string snapshot pattern. Both

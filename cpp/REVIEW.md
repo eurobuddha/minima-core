@@ -4564,5 +4564,7 @@ performance equality. Existing miner tests cover controlled elapsed-time clamps.
 ### Verdict
 
 Approve the scoped wrapper and comparison: both builds pass all 59 programs.
-Registration/affected regressions must finish before a completed checkpoint claim.
+Both relinked command-runner and network-utility regressions pass in both builds
+(1,265 and 5,668 cases). The earlier full suites and remaining RPC integration
+regressions must finish before a completed checkpoint claim.
 The wider full-node and all-file parity goal remains incomplete.
