@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "cases": 30,
+  "failures": [],
+  "scope": "Unmodified pinned HTTPServer, actual listener and daemon request threads, loopback sockets; runtime/Error/OOM/IO/socket/bind failures in factories and handlers, stopped-server catches, logger failures, invalid ports and direct-run propagation. Explicit test default handler prevents fatal OOM halt. Native/JVM automatic stack lines and generated Thread counters excluded; source log text/order, handler thread name, listener completion/running/bound state compared."
+}

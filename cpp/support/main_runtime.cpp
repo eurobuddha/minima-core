@@ -37,13 +37,13 @@ JSONObject run(const JSONObject& input,const std::string& root){
                 if(config->containsKey("locale")){UErrorCode code=U_ZERO_ERROR;uloc_setDefault(config->getString("locale").c_str(),&code);if(U_FAILURE(code))throw std::runtime_error(u_errorName(code));}
                 if(config->containsKey("enabled"))GeneralParams::RPC_ENABLED=flag("enabled");
                 if(config->containsKey("authenticate"))GeneralParams::RPC_AUTHENTICATE=flag("authenticate");
-                if(config->containsKey("password"))GeneralParams::RPC_PASSWORD=config->getString("password");
+                if(config->containsKey("password"))GeneralParams::RPC_PASSWORD=config->get("password").isNull()?std::nullopt:std::optional(config->getString("password"));
                 if(config->containsKey("port"))GeneralParams::RPC_PORT=int32_t(integer(*config,"port"));
                 if(config->containsKey("users"))MinimaDB::getDB()->getUserDB()->getAllData()->put("rpcusers_allusers",config->get("users"));
                 if(flag("hold"))rpcHeld=MinimaDB::getDB()->getUserDB()->getRPCUsers();
             }
             else if(cmd=="rpcState"){
-                JSONObject state;state.put("enabled",GeneralParams::RPC_ENABLED);state.put("authenticate",GeneralParams::RPC_AUTHENTICATE);state.put("password",GeneralParams::RPC_PASSWORD);state.put("port",GeneralParams::RPC_PORT);
+                JSONObject state;state.put("enabled",GeneralParams::RPC_ENABLED.load());state.put("authenticate",GeneralParams::RPC_AUTHENTICATE.load());{auto password=GeneralParams::RPC_PASSWORD.load();state.put("password",password?JSONValue(*password):JSONValue());}state.put("port",GeneralParams::RPC_PORT);
                 if(rpcHeld){state.put("sameArray",rpcHeld==MinimaDB::getDB()->getUserDB()->getRPCUsers());state.put("heldUsers",*rpcHeld);}value=state;
             }
             else if(cmd=="statusSetup"){

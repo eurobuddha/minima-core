@@ -9,13 +9,14 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 94 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-RPC is **work in progress**. Its native command body and shared JsonDB array-cast
-correction compile in both builds. All 258 programs / 590 operations in the
-current comparison and all 11 selected regressions pass per build. Live enable,
-authenticated loopback requests and concurrent authentication/user-state access
-remain open. See the [RPC lab](student-guide/new-tests/rpc-command.md) and
-[scoped evidence](validation/rpc-work-in-progress/progress.json). There are now
-201 CTest entries. The last fully saved status checkpoint remains 362.
+RPC is **work in progress**. Shared authentication flags and password now use
+atomic booleans and the existing locked nullable-string snapshot pattern. Both
+full builds and 22 affected tests per build pass; 266 RPC programs / 614 operations
+match Java. All 38 comparison reports are saved. Shared user-array access and
+command-driven live enable/authentication integration remain open. See the
+[RPC lab](student-guide/new-tests/rpc-command.md) and
+[configuration evidence](validation/rpc-configuration/progress.json). There are
+202 CTest entries. The last fully saved numbered checkpoint remains 362.
 
 status now compiles and is registered. Its [student lab](student-guide/new-tests/node-status-command.md)
 explains full report assembly, device estimates, median speeds and the explicit

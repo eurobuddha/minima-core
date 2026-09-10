@@ -1,3 +1,68 @@
+# Current work — RPC configuration storage fixed and validated
+
+Full 457-file native working-node goal ACTIVE/incomplete. The prior naming-only
+turn was no progress toward the port; current turn makes concrete progress.
+363 counterparts (319 production + 44 tests), 94 absent, 202 CTest entries.
+All 457 lessons authored; audit 9061 links / 2634 anchors / zero errors.
+Last numbered checkpoint remains 362. Do not tag RPC complete yet.
+
+NEW: support/JavaStringReference.hpp extracts RPCClient::UserAgent's existing
+mutex/optional-string storage. RPCClient keeps its UserAgent alias. RPC_PASSWORD
+uses the extracted adapter; RPC_ENABLED and RPC_AUTHENTICATE use the existing
+atomic<bool> logging-flag pattern. Explicit load snapshots in Authorizer,
+NetworkManager/rpc replies and ParamSnapshots/main_runtime fixtures. Null password
+is preserved and does not compare equal to literal "null" or empty text.
+Command stop/sleep/update/start order unchanged; no multi-field transaction.
+
+Both FULL builds PASS with zero observed compiler warnings. 22 selected tests PASS
+per build: batch21 normal81.37s/sanitizer126.11s, plus CMDHandler4.60s/5.30s.
+266 RPC programs/614ops, 5668 network-utility cases, new native8000-loop concurrent
+snapshot test, existing477RPCclient cases/597requests, 2106CMDHandler requests over
+6configurations, native8networklifecycles and affected command/config regressions.
+All38JSONreports read and saved with CTest summaries in
+validation/rpc-configuration/{normal,sanitized}; progress.json/provenance/README,
+review and affected student lessons updated. Lab written BEFORE tests. No TSAN.
+All handles terminal: builds52472/36379, tests54888/56134, handler57471/90986.
+Logs /tmp/minima-rpc-config-{build,build-san,tests,tests-san,handler,handler-san}.log.
+Current implementation/evidence commit and verified local bundle follow; inspect
+actual git HEAD/latest local-backups manifest for their authoritative identifiers.
+
+NEXT: finish shared RPC-user JSON state and successful command-driven live enable.
+Do not move to an easier command or call the full goal complete.
+Read FULL this turn: pinned JSONArray.java (ArrayList inheritance, iterator-based
+serialization and primitive/object overloads), JSONObject.java (LinkedHashMap,
+iterator serialization), JsonDB.java and corresponding native headers/bodies;
+JavaList.hpp and JavaConcurrentMap.hpp. Current JSON get returns borrowed const
+JSONValue&, elements/entries borrowed const vector&, no synchronization. JsonDB
+mParams is a shared_ptr accessed/replaced without synchronization. UserDB.get/set
+RPCUsers alias the stored array. rpc appends in place/removes via replacement;
+Authorizer and CMDHandler read it; returned list replies retain it for serialization.
+A lock only during a getter cannot protect a borrowed reference after unlock.
+JavaList also lacks synchronization. JavaConcurrentMap has tested locked snapshot
+operations, but hash traversal and weak enumeration cannot replace ordered JSON
+containers unchanged. Native ParamConfigurer uses a modification count for a
+specific fail-fast check (configure lines165ff), not generic list iteration.
+These are reuse candidates, NOT an implemented JSON-container design. Preserve
+array/object identity and source iterator failure behavior; do not silently replace
+shared RPC records with a copied backend. Review callers/lifetimes if returning
+JSONValue by value; JsonDB getBoolean/getJSONArray take addresses of get().value.
+The generic full inherited Java collection API also remains incomplete.
+
+Live-test reuse already inspected fully: support/network_manager_native.cpp;
+actual NetworkManager startRPC/stopRPC/getBoundRPCPort; HTTPServer/CMDHandler,
+Authorizer and RPCClient. MainNetworkFixture/Oracle provide actual unstarted
+NetworkManager. Need rpc command enable:true to create real listener, then
+credentials/request/stop/restart observations. Avoid main_runtime's per-operation
+std::clog rdbuf swap while background server logs run. Existing handler/listener
+regressions do NOT prove rpc-command enable integration. Source one-second pause
+remains real; interruption fixture models service exception boundary only.
+
+Local project and branch MinimaCoreC++; cwd unchanged. No GitHub push authorized
+to a chosen remote; existing destination question remains unanswered. Local
+commits/bundles are authorized. Use GRAPHIFY_SKIP_HOOK=1 for Git mutations.
+
+Older notes below are historical.
+
 # Current work — RPC WIP, passing sequential comparisons, save locally
 
 Full457-file native working-node goal ACTIVE/incomplete. This turn is PROGRESS.

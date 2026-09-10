@@ -1,5 +1,6 @@
 #pragma once
 #include <atomic>
+#include "support/JavaStringReference.hpp"
 #include "org/minima/objects/base/MiniNumber.hpp"
 namespace minima {
 struct GeneralParams {
@@ -54,10 +55,10 @@ struct GeneralParams {
     static bool ARCHIVESYNC_LIMIT_BANDWIDTH;
     static bool RPC_CRLF;
     static bool DEFAULT_MINIDAPPS;
-    static bool RPC_ENABLED;
-    static bool RPC_AUTHENTICATE;
+    static std::atomic<bool> RPC_ENABLED;
+    static std::atomic<bool> RPC_AUTHENTICATE;
     static std::string RPC_AUTHSTYLE;
-    static std::string RPC_PASSWORD;
+    static JavaStringReference RPC_PASSWORD;
     static std::string SEED_PHRASE;
     static bool ANYSEED_PHRASE;
     static std::atomic<bool> PEERSCHECKER_lOG;

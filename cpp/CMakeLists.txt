@@ -786,6 +786,10 @@ add_test(NAME rpc_client_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURR
 set_tests_properties(rpc_client_differential PROPERTIES TIMEOUT 300)
 add_executable(notify_http_worker support/notify_http_worker.cpp)
 target_link_libraries(notify_http_worker PRIVATE minima_file_port)
+add_executable(rpc_configuration_native support/rpc_configuration_native.cpp)
+target_link_libraries(rpc_configuration_native PRIVATE minima_file_port)
+add_test(NAME rpc_configuration_native COMMAND rpc_configuration_native)
+set_tests_properties(rpc_configuration_native PROPERTIES TIMEOUT 30)
 
 add_executable(minima_logger support/minima_logger.cpp)
 target_link_libraries(minima_logger PRIVATE minima_file_port)

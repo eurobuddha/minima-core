@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 82: cmd_handler_differential
+1/1 Test #82: cmd_handler_differential .........   Passed    5.29 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   5.30 sec

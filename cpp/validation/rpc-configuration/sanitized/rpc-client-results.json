@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "cases": 477,
+  "requests_per_runtime": 597,
+  "notification_integration": {
+    "events": 2,
+    "requests": 7,
+    "logged_failures": 2
+  },
+  "failures": [],
+  "scope": "Actual Java RPCClient and native libcurl HTTP(S): request method/path/header values/body, response text/UTF8/line removal, status errors, same/cross host and protocol redirects, auth stripping and POST method/header reset, TLS rejection and configured CA verification. Native queued notification integration uses the production HTTP default, filtering, listener mutation, redirects and failure logging. Header order and selected VM/provider-generated diagnostic text normalized; custom global JDK properties/authenticator/proxy/cookie/cache and all native SSLContext providers remain unverified."
+}

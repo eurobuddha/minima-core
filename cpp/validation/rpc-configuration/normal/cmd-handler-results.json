@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "configurations": 6,
+  "requests": 2106,
+  "outcomes": [
+    "",
+    "HTTP/1.1 200 OK",
+    "HTTP/1.1 401 Unauthorized"
+  ],
+  "failures": [],
+  "scope": "Actual pinned/native HTTPServer and CMDHandler over real TCP, actual CommandRunner, URL decoding, malformed UTF-8, UTF-16 POST lengths, truncated/zero-padded bodies, CR/LF/CRLF lines, case-sensitive and duplicate headers, basic auth and configured users, exact response bytes/lengths except wall-clock Date value, fragmented multibyte input and reader boundary. Handler log failure sites/order and exact short-read logs compared; complete exception text, Authorizer/CommandRunner logger binding, unpaired-surrogate command parameters, quit command/Main lifecycle and arbitrary concurrent configuration mutation remain under review."
+}

@@ -51,10 +51,10 @@ static JSONObject snapshotGeneralParams() {JSONObject out;
     out.put("ARCHIVESYNC_LIMIT_BANDWIDTH",GeneralParams::ARCHIVESYNC_LIMIT_BANDWIDTH);
     out.put("RPC_CRLF",GeneralParams::RPC_CRLF);
     out.put("DEFAULT_MINIDAPPS",GeneralParams::DEFAULT_MINIDAPPS);
-    out.put("RPC_ENABLED",GeneralParams::RPC_ENABLED);
-    out.put("RPC_AUTHENTICATE",GeneralParams::RPC_AUTHENTICATE);
+    out.put("RPC_ENABLED",GeneralParams::RPC_ENABLED.load());
+    out.put("RPC_AUTHENTICATE",GeneralParams::RPC_AUTHENTICATE.load());
     out.put("RPC_AUTHSTYLE",GeneralParams::RPC_AUTHSTYLE);
-    out.put("RPC_PASSWORD",GeneralParams::RPC_PASSWORD);
+    {auto password=GeneralParams::RPC_PASSWORD.load();out.put("RPC_PASSWORD",password?json::JSONValue(*password):json::JSONValue());}
     out.put("SEED_PHRASE",GeneralParams::SEED_PHRASE);
     out.put("ANYSEED_PHRASE",GeneralParams::ANYSEED_PHRASE);
     out.put("PEERSCHECKER_lOG",GeneralParams::PEERSCHECKER_lOG.load());
@@ -137,7 +137,7 @@ static void setGeneralParams(const std::string& name,const JSONValue& value) {
     if(name=="RPC_ENABLED"){GeneralParams::RPC_ENABLED=value.asBool();return;}
     if(name=="RPC_AUTHENTICATE"){GeneralParams::RPC_AUTHENTICATE=value.asBool();return;}
     if(name=="RPC_AUTHSTYLE"){GeneralParams::RPC_AUTHSTYLE=value.asString();return;}
-    if(name=="RPC_PASSWORD"){GeneralParams::RPC_PASSWORD=value.asString();return;}
+    if(name=="RPC_PASSWORD"){GeneralParams::RPC_PASSWORD=value.isNull()?std::nullopt:std::optional(value.asString());return;}
     if(name=="SEED_PHRASE"){GeneralParams::SEED_PHRASE=value.asString();return;}
     if(name=="ANYSEED_PHRASE"){GeneralParams::ANYSEED_PHRASE=value.asBool();return;}
     if(name=="PEERSCHECKER_lOG"){GeneralParams::PEERSCHECKER_lOG=value.asBool();return;}
@@ -275,10 +275,10 @@ static auto defaults(){std::vector<std::function<void()>> result;
     {auto saved=GeneralParams::ARCHIVESYNC_LIMIT_BANDWIDTH;result.push_back([saved](){GeneralParams::ARCHIVESYNC_LIMIT_BANDWIDTH=saved;});}
     {auto saved=GeneralParams::RPC_CRLF;result.push_back([saved](){GeneralParams::RPC_CRLF=saved;});}
     {auto saved=GeneralParams::DEFAULT_MINIDAPPS;result.push_back([saved](){GeneralParams::DEFAULT_MINIDAPPS=saved;});}
-    {auto saved=GeneralParams::RPC_ENABLED;result.push_back([saved](){GeneralParams::RPC_ENABLED=saved;});}
-    {auto saved=GeneralParams::RPC_AUTHENTICATE;result.push_back([saved](){GeneralParams::RPC_AUTHENTICATE=saved;});}
+    {auto saved=GeneralParams::RPC_ENABLED.load();result.push_back([saved](){GeneralParams::RPC_ENABLED=saved;});}
+    {auto saved=GeneralParams::RPC_AUTHENTICATE.load();result.push_back([saved](){GeneralParams::RPC_AUTHENTICATE=saved;});}
     {auto saved=GeneralParams::RPC_AUTHSTYLE;result.push_back([saved](){GeneralParams::RPC_AUTHSTYLE=saved;});}
-    {auto saved=GeneralParams::RPC_PASSWORD;result.push_back([saved](){GeneralParams::RPC_PASSWORD=saved;});}
+    {auto saved=GeneralParams::RPC_PASSWORD.load();result.push_back([saved](){GeneralParams::RPC_PASSWORD=saved;});}
     {auto saved=GeneralParams::SEED_PHRASE;result.push_back([saved](){GeneralParams::SEED_PHRASE=saved;});}
     {auto saved=GeneralParams::ANYSEED_PHRASE;result.push_back([saved](){GeneralParams::ANYSEED_PHRASE=saved;});}
     {auto saved=GeneralParams::PEERSCHECKER_lOG.load();result.push_back([saved](){GeneralParams::PEERSCHECKER_lOG=saved;});}

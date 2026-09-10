@@ -4425,3 +4425,42 @@ container lifetime/access safety. The sequential comparison cannot establish thi
 Request changes before calling RPC ready. Save the current implementation as WIP;
 complete live enable/authenticated loopback integration and shared-state work next.
 No completed RPC checkpoint, full-node startup or complete 457-file parity is claimed.
+
+
+## Code Review — RPC configuration follow-up
+
+### Summary
+
+The plain flag/password finding from the initial RPC WIP review is addressed.
+JavaStringReference extracts the exact mutex/optional-string storage previously
+inside RPCClient::UserAgent, retains its public alias and adds an explicit load.
+RPC_PASSWORD uses that adapter; RPC_ENABLED and RPC_AUTHENTICATE use the existing
+GeneralParams atomic-boolean pattern. Parameter snapshots copy values explicitly.
+Authorizer preserves the source short circuit and null inequality. The command's
+stop/sleep/assignment/start order is unchanged; no atomic multi-field update is
+claimed. No additional defect was found in this scoped change.
+
+### Findings
+
+#### MAJOR — Shared RPC-user JSON state remains unresolved
+
+**Files:** src/org/minima/utils/JsonDB.cpp, src/org/minima/utils/json/JSONArray.hpp,
+src/org/minima/utils/json/JSONObject.hpp.
+
+User records still use unsynchronized native containers; append/replacement can
+race with authorization and serialization. Returning a borrowed vector/value
+reference after briefly locking its getter would not fix the lifetime hazard.
+The pinned JSONArray extends ArrayList and JSONObject extends LinkedHashMap;
+serialization uses iterators. Safe storage must preserve tested object aliasing,
+replacement and relevant iterator behavior. JavaConcurrentMap is a proven locked
+snapshot candidate, but its hash traversal order and enumeration semantics cannot
+replace these containers unchanged. JavaList has no synchronization and is not a
+solution to this finding. No JSON-container code was changed in this follow-up.
+
+### Verdict
+
+Approve the scoped configuration storage change, subject to the saved validation
+results. RPC as a whole remains work in progress: shared JSON access and actual
+command-driven listener enable/authenticated requests still need completion.
+Native snapshot stress and ASAN/UBSAN do not certify every scheduling interleaving;
+no ThreadSanitizer run or full native-node parity is claimed.

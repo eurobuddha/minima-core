@@ -44,3 +44,9 @@ Why must getStatus still call getUserDB even though it never reads the returned 
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `0eb26788b54a4c1258392d3a206ac01d7f07c83c245411dc7e4c5a58250b3956`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## RPC configuration follow-up
+
+The RPC enabled field in getStatus now explicitly loads the atomic flag shared
+with the rpc command. Reading status does not lock all settings into one snapshot.
+The existing actual-network lifecycle test is rerun after this storage change.

@@ -1531,7 +1531,7 @@
     ],
     "sibling_search": "No rawfrom/rawtxnfrom match in minima-core-cpp/src or tests. Complete pinned raw bodies and relevant JSON/getters/state conversion/native helpers inspected before implementation.",
     "adaptation": "Extract stateText unchanged from send.cpp into StateText.hpp. Extract typed Boolean unboxing unchanged from CommandResult.status into booleanValue. Share identical output/state loops via RawTxnCommands; retain separate alternating versus separated input/script order. Source JSONObject extends LinkedHashMap, matching native insertion order. Preserve null-to-text concatenation, typed casts, port parsing before value conversion, ignored child status and exception-dependent cleanup.",
-    "unicode_fix": "Review baseline showed source rawtxnfrom accepted fal\u017fe as FALSE, native StateVariable rejected numeric conversion. Replace ASCII Boolean comparisons with existing JavaStringEqualsIgnoreCase used by vault/InetSocketAddress; add 24 direct/real-child case variants with explicit expected Boolean text and exported state.",
+    "unicode_fix": "Review baseline showed source rawtxnfrom accepted falſe as FALSE, native StateVariable rejected numeric conversion. Replace ASCII Boolean comparisons with existing JavaStringEqualsIgnoreCase used by vault/InetSocketAddress; add 24 direct/real-child case variants with explicit expected Boolean text and exported state.",
     "validation": "Initial7checksPASSnormal88.75s/san271.44s: source_mapping332,command12289,runner1265,runnererrors1120,walletwrappers659/2060calls,funding736/3418ops/39016SQL,raw632/3835calls. Initial raw5.76s/7.59s; funding88.74s/271.43s. After Unicode fix, full builds30033/82747PASSwithoutwarnings and finalraw656/3991callsPASS4.06s/4.55s; object9464PASS25.10s/91.34s, two-checkbatches25.10s/91.36s. All14 distinct comparison reports inspected. Eight distinct selectedchecks acrossphases, notall171; initialregressions were not all repeated after targetedstatefix.",
     "build_timing": "Initial sanitized CTest started while final build tail was active; authoritative binary mtimes for wallet_wrappers/wallet_commands preceded their fresh Java oracle class compilation timestamps, proving those native processes subsequently loaded new binaries. Build54210 terminalPASS; no speculative restart. Finalfocusedchecks started after both finalbuilds terminalPASS.",
     "normalization": "Known shape-checked32byte uppercase random rowIDs normalized in child text and verified leading MiniString field (4-byte66length plus exactID bytes) only. Actual TxnRow readers compare full roundtrip and consumedlength. NPE/CCE runtime prose normalized; all other observed rows/replies/logs/childtext/bytes compared.",
@@ -2282,5 +2282,77 @@
       ],
       "limits": "Not a completed RPC checkpoint or full-port parity certificate. Current suite validates user management, stopped disable, interrupted sleep and typed failures."
     }
+  },
+  "rpc_configuration_followup": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "status": "rpc_work_in_progress",
+    "counterparts": 363,
+    "production_counterparts": 319,
+    "mapped_tests": 44,
+    "absent": 94,
+    "lessons": 457,
+    "ctest_entries": 202,
+    "full_builds": [
+      "normal",
+      "ASAN/UBSAN"
+    ],
+    "compiler_warnings_observed": 0,
+    "programs_per_build": 266,
+    "operations_per_build": 614,
+    "network_utility_cases_per_build": 5668,
+    "concurrent_native_operations_per_build": 8000,
+    "selected_tests_per_build": 22,
+    "first_batch_tests": 21,
+    "first_batch_seconds": [
+      81.37,
+      126.11
+    ],
+    "handler_seconds": [
+      4.6,
+      5.3
+    ],
+    "reports": [
+      "cmd-handler-results.json",
+      "command-differential-results.json",
+      "command-runner-differential-results.json",
+      "command-runner-errors-results.json",
+      "http-errors-results.json",
+      "http-server-results.json",
+      "logs-command-results.json",
+      "main-lifecycle-commands-results.json",
+      "main-runtime-results.json",
+      "minima-rpc-cli-results.json",
+      "network-manager-results.json",
+      "network-peer-commands-results.json",
+      "network-status-command-results.json",
+      "network-utilities-differential-results.json",
+      "node-status-command-results.json",
+      "param-configurer-results.json",
+      "prefs-differential-results.json",
+      "rpc-client-results.json",
+      "rpc-command-results.json"
+    ],
+    "reports_read": 38,
+    "changes": [
+      "Reuse extracted RPCClient::UserAgent storage as JavaStringReference for RPC_PASSWORD",
+      "Use existing GeneralParams atomic boolean pattern for RPC_ENABLED/RPC_AUTHENTICATE",
+      "Explicit nullable password and boolean snapshots in native fixtures and status replies",
+      "Compare 32 nullable/empty/default-password authorization cases and 8 RPC state programs"
+    ],
+    "pending": [
+      "Shared RPC-user JSON array/state access during concurrent request handling",
+      "Successful command-driven live RPC enable and authenticated loopback integration"
+    ],
+    "limits": "Individual configuration accesses are synchronized; source multi-field ordering retained, not a configuration transaction. Finite snapshot stress and ASAN/UBSAN, no TSAN. Existing native listener lifecycles and Java/C++ CMDHandler checks pass, but the rpc command has not yet successfully enabled a live listener in its integration suite. No completed RPC checkpoint or full-port parity claim.",
+    "reuse_paths": [
+      "src/org/minima/utils/RPCClient.hpp",
+      "src/org/minima/utils/RPCClient.cpp",
+      "support/notify_http_worker.cpp",
+      "src/org/minima/system/params/GeneralParams.hpp",
+      "src/org/minima/system/commands/base/logs.cpp",
+      "support/network_utilities.cpp",
+      "tools/network_utilities_differential.py",
+      "tools/rpc_commands_corpus.py"
+    ]
   }
 }

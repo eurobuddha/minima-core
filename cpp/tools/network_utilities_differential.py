@@ -28,6 +28,9 @@ def main():
                 add(type='auth',header=header,authenticate=authenticate,style='basic',password='test-password',users=records)
     for style in ['BASIC','','digest']:
         for header in headers[:10]:add(type='auth',header=header,authenticate=True,style=style,password='test-password',users=users)
+    for password,credential,authenticate in itertools.product([None,'','null','test-password'],['','null','test-password','wrong'],[False,True]):
+        header='Basic '+base64.b64encode(('minima:'+credential).encode()).decode()
+        add(type='auth',header=header,authenticate=authenticate,style='basic',password=password,users=[])
     keys=[None,'','A','B','Aa','BB','π','😄','Σ','sendPingMessage']+[''.join('Aa' if i&(1<<b) else 'BB' for b in range(7)) for i in range(128)]
     for _ in range(100):
         ops=[{'op':'reset','amount':rng.randint(-99999,99999)}]

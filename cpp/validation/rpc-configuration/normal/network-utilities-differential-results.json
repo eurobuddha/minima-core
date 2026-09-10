@@ -1,0 +1,6 @@
+{
+  "cases": 5668,
+  "passed": 5668,
+  "failures": [],
+  "scope": "Authorizer basic header parsing, default/additional users, duplicates and malformed data; JDK basic Base64 alphabet/padding; NIOTraffic signed counters, UTF-16 Hashtable ordering and formatted breakdown. No RPC server or wallet commands executed."
+}

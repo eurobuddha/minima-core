@@ -12,6 +12,8 @@ def cases():
     def add(*steps):result.append(dict(rpcFixture=True,ops=list(steps)))
     add(op('meta',name='rpc'),call(expect=response(authenticate=False)))
     for port in [-1,0,1,9005,65535]:add(config(port=port),op('meta',name='rpc'),call(expect=response(authenticate=False,port=port)))
+    for password,auth in itertools.product([None,'','null','synthetic'],[False,True]):
+        add(config(password=password,authenticate=auth),call(expect=response(authenticate=auth)),op('rpcState',passwordExpected=password))
     for auth in [False,True]:
         for action in ['',' ','unknown','listusers','LISTUSERS']:
             add(config(authenticate=auth,users=[USER]),call({'action':action},**({'error':'org.minima.system.commands.CommandException: BLANK param not allowed : action'} if not action.strip() else {'expect':response([USER] if action=='listusers' else 1,authenticate=auth)})))
@@ -65,4 +67,5 @@ def validate(request,output):
         if 'expect' in step:assert 'exception' not in row and row['value']['response']==step['expect'],(step,row)
         if 'users' in step and step['cmd']=='direct':assert row['user']['rpcusers_allusers']==step['users'],row
         if 'same' in step:assert row['value']['sameArray']==step['same'] and row['value']['heldUsers']==step['held'],row
+        if 'passwordExpected' in step:assert row['value']['password']==step['passwordExpected'],row
         assert row['timers']==[] and row['listeners']==[] and row['state']['queue']==0,row

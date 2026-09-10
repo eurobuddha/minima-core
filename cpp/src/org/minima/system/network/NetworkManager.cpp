@@ -60,7 +60,7 @@ json::JSONObject NetworkManager::getStatus(bool all){
     json::JSONObject stats;auto users=mServices.getUserDB();(void)users;
     stats.put("host",GeneralParams::MINIMA_HOST);stats.put("hostset",GeneralParams::IS_HOST_SET);stats.put("port",GeneralParams::MINIMA_PORT);
     auto nio=getNIOManager();stats.put("connecting",required(nio).getNumberOfConnnectingClients());stats.put("connected",nio->getNumberOfConnectedClients());
-    json::JSONObject rpc;rpc.put("enabled",GeneralParams::RPC_ENABLED);rpc.put("port",GeneralParams::RPC_PORT);stats.put("rpc",rpc);if(!all)return stats;
+    json::JSONObject rpc;rpc.put("enabled",GeneralParams::RPC_ENABLED.load());rpc.put("port",GeneralParams::RPC_PORT);stats.put("rpc",rpc);if(!all)return stats;
     if(GeneralParams::P2P_ENABLED){auto peer=std::dynamic_pointer_cast<p2p::P2PManager>(getP2PManager());stats.put("p2p",required(peer).getStatus(false));}else stats.put("p2p","disabled");
     stats.put("p2p2",GeneralParams::P2P2_ENABLED?"enabled":"disabled");auto traffic=nio->getTrafficListener();
     auto duration=std::bit_cast<int64_t>(uint64_t(mServices.currentTimeMillis())-uint64_t(traffic->getStartTime()));

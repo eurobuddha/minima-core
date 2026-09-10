@@ -1,0 +1,47 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+      Start  37: prefs_differential
+ 1/21 Test  #37: prefs_differential .....................   Passed    5.91 sec
+      Start  50: network_utilities_differential
+ 2/21 Test  #50: network_utilities_differential .........   Passed    5.73 sec
+      Start  51: command_differential
+ 3/21 Test  #51: command_differential ...................   Passed   19.42 sec
+      Start  52: command_runner_differential
+ 4/21 Test  #52: command_runner_differential ............   Passed    3.68 sec
+      Start  81: http_server_differential
+ 5/21 Test  #81: http_server_differential ...............   Passed    3.51 sec
+      Start  83: network_manager_native
+ 6/21 Test  #83: network_manager_native .................   Passed    1.65 sec
+      Start  84: network_manager_differential
+ 7/21 Test  #84: network_manager_differential ...........   Passed   10.41 sec
+      Start 104: rpc_client_differential
+ 8/21 Test #104: rpc_client_differential ................   Passed    5.04 sec
+      Start 105: rpc_configuration_native
+ 9/21 Test #105: rpc_configuration_native ...............   Passed    0.45 sec
+      Start 109: minima_rpc_cli_differential
+10/21 Test #109: minima_rpc_cli_differential ............   Passed    6.30 sec
+      Start 110: param_configurer_differential
+11/21 Test #110: param_configurer_differential ..........   Passed    7.81 sec
+      Start 111: ParamConfigurerTest
+12/21 Test #111: ParamConfigurerTest ....................   Passed    0.43 sec
+      Start 114: http_server_errors_differential
+13/21 Test #114: http_server_errors_differential ........   Passed    6.15 sec
+      Start 128: command_runner_errors_differential
+14/21 Test #128: command_runner_errors_differential .....   Passed    4.83 sec
+      Start 192: main_runtime_differential
+15/21 Test #192: main_runtime_differential ..............   Passed    5.13 sec
+      Start 194: main_lifecycle_commands_differential
+16/21 Test #194: main_lifecycle_commands_differential ...   Passed    2.59 sec
+      Start 195: network_peer_commands_differential
+17/21 Test #195: network_peer_commands_differential .....   Passed    4.39 sec
+      Start 197: network_status_command_differential
+18/21 Test #197: network_status_command_differential ....   Passed    3.23 sec
+      Start 200: logs_command_differential
+19/21 Test #200: logs_command_differential ..............   Passed    2.64 sec
+      Start 201: node_status_command_differential
+20/21 Test #201: node_status_command_differential .......   Passed   14.18 sec
+      Start 202: rpc_command_differential
+21/21 Test #202: rpc_command_differential ...............   Passed   12.60 sec
+
+100% tests passed, 0 tests failed out of 21
+
+Total Test time (real) = 126.11 sec

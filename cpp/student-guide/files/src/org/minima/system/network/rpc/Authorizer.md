@@ -23,7 +23,7 @@ Parse the pinned Basic authorization format and return a JSON decision using the
 
 ## How the translation is approached
 
-C++ reuses actual UserDB, MiniString and the checked Base64 adapter. The one-argument method needs a MinimaDB binding; the direct overload accepts the database explicitly for fixtures. Logging currently uses native diagnostic output and full exception/log parity remains open.
+C++ reuses actual UserDB, MiniString and the checked Base64 adapter. The one-argument method needs a MinimaDB binding; the direct overload accepts the database explicitly for fixtures. The main password comparison now reads a locked optional-string snapshot. Java password.equals(null) is false; converting null to the text "null" would accidentally accept credentials and is deliberately avoided. The authentication flag uses atomic storage, preserving the source short circuit. Logging currently uses native diagnostic output and full exception/log parity remains open.
 
 ## What the tests tell us
 

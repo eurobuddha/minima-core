@@ -20,7 +20,7 @@ RPCClient sends synchronous HTTP requests and returns response text. It wraps Ja
 
 ## How the C++ translation works
 
-C++ uses the shared libcurl transport but explicitly emulates observed Java request semantics: preserves raw targets, snapshots mutable USER_AGENT, strips URL user-info auth, controls Basic headers, follows the observed redirect status rules, changes POST to GET where required, and strips authorization when destinations change. It maps transport failures to Java-category exceptions, removes CR/LF from decoded success text, and caps redirects at 20. SSLContext is a native callback configuring the connection’s trust/key settings, not a Java provider object.
+C++ uses the shared libcurl transport but explicitly emulates observed Java request semantics: preserves raw targets, snapshots mutable USER_AGENT, strips URL user-info auth, controls Basic headers, follows the observed redirect status rules, changes POST to GET where required, and strips authorization when destinations change. It maps transport failures to Java-category exceptions, removes CR/LF from decoded success text, and caps redirects at 20. USER_AGENT now aliases the shared JavaStringReference adapter extracted from its original nested class. The same mutex-protected nullable snapshot is reused by the RPC server password. A reader retains its own text after a later assignment. SSLContext is a native callback configuring the connection’s trust/key settings, not a Java provider object.
 
 ## Understanding the tests
 

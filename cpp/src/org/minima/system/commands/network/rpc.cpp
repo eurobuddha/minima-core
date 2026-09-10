@@ -39,8 +39,8 @@ json::JSONValue rpc::runCommand(){
             users->setRPCUsers(replacement);
         }else if(action=="listusers")list=true;
     }
-    json::JSONObject details;details.put("enabled",GeneralParams::RPC_ENABLED);details.put("port",GeneralParams::RPC_PORT);
-    details.put("authenticate",GeneralParams::RPC_AUTHENTICATE);details.put("username","minima");details.put("password","***");
+    json::JSONObject details;details.put("enabled",GeneralParams::RPC_ENABLED.load());details.put("port",GeneralParams::RPC_PORT);
+    details.put("authenticate",GeneralParams::RPC_AUTHENTICATE.load());details.put("username","minima");details.put("password","***");
     if(!list)details.put("rpcusers",int64_t(sqlRequired(sqlRequired(users).getRPCUsers()).size()));
     else{json::JSONValue array;array.value=sqlRequired(users).getRPCUsers();details.put("rpcusers",array);}
     reply.put("response",details);return reply;

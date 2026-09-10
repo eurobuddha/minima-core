@@ -1,0 +1,62 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "status": "rpc_work_in_progress",
+  "counterparts": 363,
+  "production_counterparts": 319,
+  "mapped_tests": 44,
+  "absent": 94,
+  "lessons": 457,
+  "ctest_entries": 202,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "compiler_warnings_observed": 0,
+  "programs_per_build": 266,
+  "operations_per_build": 614,
+  "network_utility_cases_per_build": 5668,
+  "concurrent_native_operations_per_build": 8000,
+  "selected_tests_per_build": 22,
+  "first_batch_tests": 21,
+  "first_batch_seconds": [
+    81.37,
+    126.11
+  ],
+  "handler_seconds": [
+    4.6,
+    5.3
+  ],
+  "reports": [
+    "cmd-handler-results.json",
+    "command-differential-results.json",
+    "command-runner-differential-results.json",
+    "command-runner-errors-results.json",
+    "http-errors-results.json",
+    "http-server-results.json",
+    "logs-command-results.json",
+    "main-lifecycle-commands-results.json",
+    "main-runtime-results.json",
+    "minima-rpc-cli-results.json",
+    "network-manager-results.json",
+    "network-peer-commands-results.json",
+    "network-status-command-results.json",
+    "network-utilities-differential-results.json",
+    "node-status-command-results.json",
+    "param-configurer-results.json",
+    "prefs-differential-results.json",
+    "rpc-client-results.json",
+    "rpc-command-results.json"
+  ],
+  "reports_read": 38,
+  "changes": [
+    "Reuse extracted RPCClient::UserAgent storage as JavaStringReference for RPC_PASSWORD",
+    "Use existing GeneralParams atomic boolean pattern for RPC_ENABLED/RPC_AUTHENTICATE",
+    "Explicit nullable password and boolean snapshots in native fixtures and status replies",
+    "Compare 32 nullable/empty/default-password authorization cases and 8 RPC state programs"
+  ],
+  "pending": [
+    "Shared RPC-user JSON array/state access during concurrent request handling",
+    "Successful command-driven live RPC enable and authenticated loopback integration"
+  ],
+  "limits": "Individual configuration accesses are synchronized; source multi-field ordering retained, not a configuration transaction. Finite snapshot stress and ASAN/UBSAN, no TSAN. Existing native listener lifecycles and Java/C++ CMDHandler checks pass, but the rpc command has not yet successfully enabled a live listener in its integration suite. No completed RPC checkpoint or full-port parity claim."
+}

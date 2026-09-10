@@ -32,7 +32,7 @@ sleep boundary, not a complete implementation of Java Thread.interrupt semantics
 Full-node startup, durable preferences and exhaustive concurrent configuration
 changes remain separate validation requirements.
 
-## Current results and remaining work
+## Initial WIP results and remaining work
 
 Both full builds pass. All 258 current programs / 590 operations match Java,
 and all 11 selected regressions pass in normal and ASAN/UBSAN builds (85.74s /
@@ -48,3 +48,42 @@ establish concurrent safety.
 
 [Corpus](../../tools/rpc_commands_corpus.py) ·
 [Scoped results](../../validation/rpc-work-in-progress/progress.json)
+
+## Next experiment: concurrent configuration snapshots
+
+Plan recorded before adding this test. Java String values are immutable: assigning
+a password replaces a reference. A native std::string assignment can resize and
+free its storage while another thread reads it. Reuse RPCClient's tested locked
+optional-string storage so every reader owns a complete snapshot, including null.
+Reuse the atomic boolean pattern already used by GeneralParams logging flags.
+These protect individual reads and writes; they do not turn the source command's
+separate updates into one transaction or change its stop/sleep/update/start order.
+
+Exercise simultaneous writers and readers with long, distinct synthetic passwords
+and null. Each snapshot must equal one entire assigned value. Retaining an old
+snapshot across a later write must keep its old content. Through the real Authorizer,
+verify that a null configured password rejects the literal password "null" and an
+empty password, while an actual empty string accepts empty credentials. Extend the
+existing Java/C++ authentication corpus to compare these outcomes. Run the existing
+RPC client concurrency check too, because its storage class is being extracted.
+Stress tests can expose torn values but are not a proof covering every schedule;
+the mutex/atomic access discipline is also part of the review.
+
+
+## Configuration follow-up results
+
+Both full builds pass without observed compiler warnings. All 22 selected tests
+pass in each build: the first 21 take 81.37 seconds normally and 126.11 seconds
+with ASAN/UBSAN; CMDHandler is a separate additional check. All 38 JSON reports
+were read and saved. The RPC corpus now contains 266 programs / 614 operations,
+and the network utility corpus contains 5,668 cases. The native concurrency test
+executes 8,000 loop iterations across four threads and checks retained snapshots
+and null/empty authorization. Existing RPCClient tests also rerun the original
+USER_AGENT stress test through the extracted storage type.
+
+[Configuration evidence](../../validation/rpc-configuration/progress.json) ·
+[Concurrent native experiment](../../support/rpc_configuration_native.cpp) ·
+[Shared string storage](../../src/support/JavaStringReference.hpp)
+
+This resolves individual flag/password access. It does not resolve shared JSON
+user arrays or prove successful listener enablement through the rpc command.

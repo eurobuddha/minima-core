@@ -19,7 +19,7 @@ json::JSONObject Authorizer::checkAuchCredentials(const std::optional<std::strin
             auto colon=decoded.find(':');if(colon==std::string::npos)throw std::invalid_argument("Missing credential separator");
             auto username=decoded.substr(0,colon),password=decoded.substr(colon+1);result.put("username",username);
             if(username=="minima"){
-                if(!GeneralParams::RPC_AUTHENTICATE||password==GeneralParams::RPC_PASSWORD){result.put("valid",true);result.put("mode","write");return result;}
+                if(!GeneralParams::RPC_AUTHENTICATE||password==GeneralParams::RPC_PASSWORD.load()){result.put("valid",true);result.put("mode","write");return result;}
             }else if(GeneralParams::RPC_AUTHENTICATE){
                 users=db.getRPCUsers();if(!users)throw std::invalid_argument("Null RPC users");
                 for(const auto& entry:users->elements()){

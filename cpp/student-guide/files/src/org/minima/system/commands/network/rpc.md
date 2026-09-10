@@ -65,3 +65,11 @@ When enable:false is supplied, how many stopRPC calls occur on the successful pa
 The source’s help text is not evidence that ssl is implemented here. The native command is bound to Main, but successful live enablement, concurrent authentication/configuration access, durable preferences and complete parity remain unfinished.
 
 Pinned Java SHA-256: `aa904b05d470794d5c51a5040e56128b7f7726ee948b9de36d7e934b14469a4c`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Shared configuration follow-up
+
+RPC_ENABLED and RPC_AUTHENTICATE now use atomic boolean storage. RPC_PASSWORD
+reuses RPCClient's mutex-protected nullable string snapshot. The command still
+performs its source assignments separately and in the same order; this is not
+a transaction across all settings. Response booleans explicitly load their
+values. User-array mutation and live enable integration are still open gates.
