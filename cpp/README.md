@@ -13,10 +13,10 @@ RPC is **work in progress**. Shared authentication flags and password now use
 atomic booleans and the existing locked nullable-string snapshot pattern. Both
 full builds and 22 affected tests per build pass; 266 RPC programs / 614 operations
 match Java. All 38 comparison reports are saved. Shared user-array access and
-command-driven live enable/authentication integration remain open. See the
+command-driven live enable/authentication have further validation below. See the
 [RPC lab](student-guide/new-tests/rpc-command.md) and
 [configuration evidence](validation/rpc-configuration/progress.json). There are
-204 CTest entries. The last fully saved numbered checkpoint remains 362.
+205 CTest entries. The last fully saved numbered checkpoint remains 362.
 
 Shared JSON storage is a further **work-in-progress** change: owned value reads,
 retained root/child references and checked ordered iteration replace borrowed
@@ -25,6 +25,16 @@ vector references. Both full builds and the two focused tests per build pass
 are running; their initial MiniByte test failure was a stale exception catch,
 now corrected and directly retested. See the
 [shared JSON lab](student-guide/new-tests/shared-json-rpc.md).
+
+Live RPC integration now passes in both builds: two LF/CRLF lifecycles, each
+with 41 Java/C++ observations, 25 raw HTTP requests and two actual RPCClient calls
+per runtime. It exposed and fixed Authorizer's missing default MinimaDB lookup.
+Database replacement, password rotation, user changes, same-handler listener
+restart/disable and real one-second pauses are covered. See the
+[live lab](student-guide/new-tests/rpc-live-command.md) and
+[saved evidence](validation/rpc-live-work-in-progress/progress.json). The full
+204-test runs launched before this addition are still running; affected targets
+will need relinking and regression checks for the new default binding.
 
 status now compiles and is registered. Its [student lab](student-guide/new-tests/node-status-command.md)
 explains full report assembly, device estimates, median speeds and the explicit

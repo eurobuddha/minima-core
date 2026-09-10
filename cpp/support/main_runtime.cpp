@@ -1,6 +1,7 @@
 #include "SqlRecordingFixture.hpp"
 #include "ArchiveFixture.hpp"
 #include "MainNetworkFixture.hpp"
+#include "MainFixture.hpp"
 #include "org/minima/system/Main.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -17,13 +18,6 @@ MainServices services(){MainServices s;s.collectMemory=[]{++collectionHints;};s.
 class ManualMain:public Main {public:ManualMain():Main(services()){}std::shared_ptr<Message> take(){return getNextMessage();}void PostTimerMessage(const std::shared_ptr<TimerMessage>& timer) override{JSONArray entry;entry.add(timer->getMessageType().value_or("null"));entry.add(timer->getTimer());timers.add(entry);if(flag("timerFail"))throw JavaTypedException("java.lang.RuntimeException","fixture timer failure");}};
 class Listener:public MessageListener {public:void processMessage(std::shared_ptr<Message> message) override{auto data=message->getObject("notify").as<std::shared_ptr<JSONObject>>();held.push_back(data);JSONObject info;info.put("main",bool(Main::getInstance()));info.put("type",message->getMessageType().value_or("null"));listenerCalls.add(info);if(flag("listenerError"))throw JavaError("java.lang.AssertionError","fixture listener failure");if(flag("listenerFail"))throw JavaTypedException("java.lang.RuntimeException","fixture listener failure");}};
 }
-namespace minima {class MainFixture {public:
-    static void install(const std::shared_ptr<Main>& main){std::lock_guard lock(Main::mStaticLock);Main::mMainInstance=main;}
-    static void initialize(const std::shared_ptr<Main>& main){main->mUptimeMilli=0;main->bindRuntime();MinimaDB::createDB(main->databaseServices());}
-    static void network(Main& main,std::shared_ptr<NetworkManager> network){main.replace(main.mNetwork,std::move(network));}
-    static void dispatch(Main& main,const std::shared_ptr<Message>& message){main.processMessage(message);}
-    static void fields(Main& main,const JSONObject& values){for(const auto& [key,value]:values.entries()){auto name=unicode::encodeUTF8(key);if(name=="restoring")main.mRestoring=value.asBool();else if(name=="shutdown")main.mShuttingdown=value.asBool();else if(name=="keys")main.mInitKeysCreated=value.asBool();else if(name=="complete")main.STARTUP_COMPLETE=value.asBool();else if(name=="importing")main.MYSQL_IMPORTING_NO_ACTION=value.asBool();else if(name=="uptime")main.mUptimeMilli=std::get<int64_t>(value.value);}}
-};}
 namespace {
 JSONObject snapshot(const std::shared_ptr<Main>& main){JSONObject out;out.put("startup",main->isStartUpComplete());out.put("error",main->isStartupError());auto error=main->getStartupErrorMsg();out.put("errorMessage",error?JSONValue(*error):JSONValue());out.put("shutdown",main->isShuttingDown());out.put("restoring",main->isRestoring());out.put("either",main->isShuttongDownOrRestoring());out.put("sync",main->isSyncIBD());out.put("normal",main->isNormalMineMode());out.put("automine",main->AUTOMINE_TIMER.load());out.put("keys",main->getAllKeysCreated());out.put("instance",Main::getInstance()==main);out.put("listener",bool(Main::getMinimaListener()));out.put("queue",main->getSize());return out;}
 JSONObject run(const JSONObject& input,const std::string& root){

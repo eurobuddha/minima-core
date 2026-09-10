@@ -1,0 +1,32 @@
+{
+  "status": "validated live RPC integration; broader regressions running",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "baseline_commit": "5fbb63871844c282664a781dac18d4b3d8a917a4",
+  "counterparts": 363,
+  "absent": 94,
+  "ctest_registered": 205,
+  "validation": {
+    "normal": true,
+    "sanitized": true,
+    "lifecycles_per_build": 2,
+    "observations_per_lifecycle": 41,
+    "raw_http_requests_per_runtime_per_lifecycle": 25,
+    "rpcclient_calls_per_runtime_per_lifecycle": 2,
+    "real_pauses_per_runtime_per_lifecycle": 8,
+    "includes_database_replacement": true,
+    "invocation": "python3 cpp/tools/rpc_live_differential.py --build BUILD",
+    "reporting_only_followup": "Guard empty observations when the first runtime fails; passing execution path unchanged."
+  },
+  "full_regressions": {
+    "normal_session": 29381,
+    "sanitized_session": 42976,
+    "ctest_entries_at_launch": 204,
+    "baseline": "Shared JSON source at 5fbb638; most executables predate the new default Authorizer binding",
+    "known_failure": "MiniByteTests stale catch, fixed and direct reruns pass; CTest rerun still required"
+  },
+  "pending": [
+    "Finish full suites and inspect every failure",
+    "Relink affected existing targets for default Authorizer lookup and rerun affected regression tests"
+  ],
+  "limits": "Manual Main with real RPC transport; node workers unstarted and SQL fixture binding only. No durable SQL, full native node, exhaustive concurrency, or full-file parity claim."
+}

@@ -134,3 +134,13 @@ An injected interruption throws at the pause, before those writes. The Java
 comparison interrupts the actual calling thread; the native fixture supplies the
 matching exception through the service. Whole Java thread-interruption behavior
 and live RPC concurrent-state validation remain open.
+
+## Live RPC fixture
+
+The existing fixture setup is extracted into [MainFixture.hpp](../../../../../../support/MainFixture.hpp)
+for both main_runtime and the new live RPC experiment. It installs an unstarted
+Main, binds its actual runtime services, and creates MinimaDB. The live experiment
+uses real RPC listener and handler threads with a stable logging sink; it does
+not swap a stream buffer while those threads run. Database replacement reuses
+Main's existing databaseServices binding. Full node workers and durable SQL
+remain outside this fixture.

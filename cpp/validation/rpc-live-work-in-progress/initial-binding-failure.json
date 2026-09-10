@@ -1,0 +1,5 @@
+{
+  "runtime": "cpp",
+  "failure": "AssertionError(('hash data:live', b''))",
+  "stderr": "CMDHANDLER : java.lang.IllegalArgumentException: Invalid Authentication at RPC GET /hash+data%3Alive HTTP/1.1\nCMDHANDLER : java.lang.RuntimeException: Authorizer requires MinimaDB binding GET /hash+data%3Alive HTTP/1.1\n"
+}

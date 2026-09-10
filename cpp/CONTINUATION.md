@@ -1,3 +1,35 @@
+# Current work — live RPC passes; broader shared JSON suites still running
+
+Full 457-file goal ACTIVE/incomplete. Branch/project MinimaCoreC++. Mapping still
+363 counterparts / 94 absent; 205 CTest registered, previous full runs captured204.
+Live driver passes normal and ASAN/UBSAN:2LF/CRLF lifecycles,41observations each,
+25rawHTTPrequests+2RPCClientcalls+8realpauses per runtime/lifecycle. Includes replacing
+MinimaDB with listener active, rejecting old user and adding user to new DB.
+
+Production Authorizer now defaults to current MinimaDB->getUserDB lookup. First
+live run exposed empty callback; failure saved. Existing direct/override API kept.
+MainFixture extracted from main_runtime, adds database replacement via existing
+Main databaseServices. Live fixture uses actual command/network/HTTP/authorizer,
+stable logger sink, unstartedMainworkers, SQLconstructorfixture only.
+
+Full tests STILL LIVE: normal29381 /tmp/minima-shared-json-all-tests.log;
+san42976 /tmp/minima-shared-json-all-tests-san.log. Last observed normal92, san36.
+Only observedfailure MiniByteTests stale catch; corrected/directed reruns pass.
+Poll, do not restart merely slow. These runs cover shared JSON baseline5fbb638;
+most executables predate new Authorizer default. Relink existing targets after
+full suites finish, then affected Main/DB/network/auth and MiniByte CTest reruns.
+No claim full205 currenttree tests passed. Live results saved under
+validation/rpc-live-work-in-progress. Driver report-only empty-list guard added
+after successful runs; successful path unchanged.
+
+Latest verified baseline commit5fbb63871844c282664a781dac18d4b3d8a917a4, bundle
+MinimaCoreC++-20260910T202838Z.bundle SHA256
+a6c4356ae52149914449288d766da4743f2c44ebc427fe9fbfd6860302f29f01.
+Current live work is being committed/bundled: inspect actualHEAD and manifest.
+No GitHub push. GRAPHIFY_SKIP_HOOK=1 for localgit writes. Last numberedcheckpoint362.
+
+Older notes follow.
+
 # Current work — shared JSON WIP; full tests LIVE
 
 This goal turn is PROGRESS: implemented shared JSON storage/root ownership,

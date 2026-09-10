@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "lifecycles": 2,
+  "observations_per_lifecycle": 41,
+  "measurements": [
+    {
+      "crlf": false,
+      "runtime": "java",
+      "requests": 25,
+      "pauses": 8,
+      "minimum_pause_ms": 1000.8430830202997,
+      "maximum_pause_ms": 1011.6427920002025
+    },
+    {
+      "crlf": false,
+      "runtime": "cpp",
+      "requests": 25,
+      "pauses": 8,
+      "minimum_pause_ms": 1001,
+      "maximum_pause_ms": 1006.2233329808805
+    },
+    {
+      "crlf": true,
+      "runtime": "java",
+      "requests": 25,
+      "pauses": 8,
+      "minimum_pause_ms": 1002,
+      "maximum_pause_ms": 1007.5828749977518
+    },
+    {
+      "crlf": true,
+      "runtime": "cpp",
+      "requests": 25,
+      "pauses": 8,
+      "minimum_pause_ms": 1000,
+      "maximum_pause_ms": 1006.3807909900788
+    }
+  ],
+  "failures": [],
+  "scope": "Actual rpc command through manual Main and real NetworkManager/HTTPServer/CMDHandler/UserDB/Authorizer: enable, users, password rotation, header behavior, same-handler restart/disable, failure after stop, and actual RPCClient requests. Exact HTTP bytes except validated Date; ephemeral bound ports and async startup state validated separately before normalization. Real one-second pauses. Full node workers, durable SQL/preferences, TLS and exhaustive concurrency remain outside this fixture."
+}

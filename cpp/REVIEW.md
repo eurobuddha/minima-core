@@ -4499,3 +4499,36 @@ still require care in the future live-command integration fixture.
 Save as WIP while the full 204-test suites run. Inspect their outcomes before
 claiming this shared-container step fully validated. No completed RPC checkpoint
 or 457-file parity certification is claimed.
+
+
+## Code Review — live RPC command integration
+
+### Summary
+
+The fixture reuses the existing Main and network setup, production command,
+listener, handler, preferences, authorizer and client. Java runs the pinned
+implementations with the same unstarted node-worker boundary. HTTP bytes match
+after validating and normalizing Date; ephemeral ports are checked separately.
+The extracted MainFixture keeps existing operations unchanged. Logging uses a
+stable sink for the lifetime of background RPC workers.
+
+### Findings
+
+MAJOR, fixed: Authorizer had an empty default database callback. Isolated server
+fixtures supplied it, but real command-driven authentication failed. Its default
+now resolves the existing current MinimaDB UserDB, matching the Java source. The
+live database-replacement case verifies that it does not capture a stale owner.
+
+MINOR, fixed: the new driver's failure report indexed an empty observations list
+if the Java runtime failed first. The reporting expression now guards that case;
+the passing test path is unchanged. Runtime/test exceptions remain failures.
+
+No additional blocker found in this scoped change. Global callback mutation,
+complete concurrency semantics, durable SQL and full-node startup remain wider
+port limitations. The live fixture neither starts those workers nor certifies them.
+
+### Verdict
+
+Approve the scoped live integration fix with its normal/sanitizer comparison
+evidence. Save as WIP while the prior 204-test full suites finish. Relink and run
+affected existing regressions before declaring this RPC step fully validated.

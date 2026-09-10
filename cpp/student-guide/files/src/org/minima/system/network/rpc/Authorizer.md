@@ -23,7 +23,7 @@ Parse the pinned Basic authorization format and return a JSON decision using the
 
 ## How the translation is approached
 
-C++ reuses actual UserDB, MiniString and the checked Base64 adapter. The one-argument method needs a MinimaDB binding; the direct overload accepts the database explicitly for fixtures. The main password comparison now reads a locked optional-string snapshot. Java password.equals(null) is false; converting null to the text "null" would accidentally accept credentials and is deliberately avoided. The authentication flag uses atomic storage, preserving the source short circuit. Logging currently uses native diagnostic output and full exception/log parity remains open.
+C++ reuses actual UserDB, MiniString and the checked Base64 adapter. The one-argument method now defaults to the current MinimaDB UserDB lookup on every call; the direct overload accepts the database explicitly for fixtures. Earlier isolated tests supplied this callback and hid its missing production default. The main password comparison now reads a locked optional-string snapshot. Java password.equals(null) is false; converting null to the text "null" would accidentally accept credentials and is deliberately avoided. The authentication flag uses atomic storage, preserving the source short circuit. Logging currently uses native diagnostic output and full exception/log parity remains open.
 
 ## What the tests tell us
 
@@ -44,3 +44,12 @@ Why can a later malformed user record turn an earlier successful match into the 
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `a33c816e83c3de9954294b2d9faf7a8e4b0b14b4a82d738655b2d6ef5b57365e`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Live integration follow-up
+
+The [live RPC lab](../../../../../../../../student-guide/new-tests/rpc-live-command.md)
+first reproduced a missing production database binding, then passed in normal
+and sanitizer builds after adding the source-equivalent default lookup. Replacing
+MinimaDB while the listener stays active rejects the old extra user, proving
+the lookup does not retain the original UserDB. The default password remains
+a separate global setting. This establishes the tested live behavior only.

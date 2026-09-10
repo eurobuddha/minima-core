@@ -1,10 +1,11 @@
 #include "Authorizer.hpp"
+#include "org/minima/database/MinimaDB.hpp"
 #include "org/minima/objects/base/MiniString.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
 #include "support/Base64.hpp"
 #include <iostream>
 namespace minima {
-std::function<std::shared_ptr<UserDB>()> Authorizer::userDB;
+std::function<std::shared_ptr<UserDB>()> Authorizer::userDB=[]{return sqlRequired(MinimaDB::getDB()).getUserDB();};
 json::JSONObject Authorizer::checkAuchCredentials(const std::optional<std::string>& header) {
     if(!userDB)throw std::logic_error("Authorizer requires MinimaDB binding");auto db=userDB();if(!db)throw std::invalid_argument("Null UserDB");return checkAuchCredentials(header,*db);
 }

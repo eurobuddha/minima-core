@@ -2,7 +2,7 @@
 
 **Teaching status:** Authored algorithm and test explanation; full API/parity review remains open.
 
-**Port status:** `implemented_partial`; parity `not_verified`. The native body exists; live-enable and concurrency validation are unfinished.
+**Port status:** `implemented_partial`; parity `not_verified`. The native body and tested live-enable integration exist; full parity and exhaustive concurrency validation remain unfinished.
 
 | Source | Destination |
 |---|---|
@@ -47,7 +47,7 @@ to ERROR, which could not detect this category mismatch; this command comparison
 checks the category and state separately.
 
 The stopped NetworkManager disable path and interrupted pause are exercised.
-Successful live enable/authentication and safe concurrent mutation remain open;
+Successful live enable/authentication now has the separate comparison below; exhaustive concurrent schedules remain open;
 this lesson does not claim a production-ready RPC implementation.
 
 ## Dependencies and reading map
@@ -62,7 +62,7 @@ When enable:false is supplied, how many stopRPC calls occur on the successful pa
 
 ## Limits and traceability
 
-The source’s help text is not evidence that ssl is implemented here. The native command is bound to Main, but successful live enablement, concurrent authentication/configuration access, durable preferences and complete parity remain unfinished.
+The source’s help text is not evidence that ssl is implemented here. The native command is bound to Main, but tested live enablement is established below. Exhaustive concurrent authentication/configuration schedules, durable preferences and complete parity remain unfinished.
 
 Pinned Java SHA-256: `aa904b05d470794d5c51a5040e56128b7f7726ee948b9de36d7e934b14469a4c`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
 
@@ -72,4 +72,14 @@ RPC_ENABLED and RPC_AUTHENTICATE now use atomic boolean storage. RPC_PASSWORD
 reuses RPCClient's mutex-protected nullable string snapshot. The command still
 performs its source assignments separately and in the same order; this is not
 a transaction across all settings. Response booleans explicitly load their
-values. User-array mutation and live enable integration are still open gates.
+values. Shared JSON access now retains locked storage and checked iterators. The live integration result follows; neither change proves every concurrent schedule.
+
+## Live command result
+
+The [live lab](../../../../../../../../student-guide/new-tests/rpc-live-command.md)
+compares 41 observations per lifecycle in both normal and ASAN/UBSAN builds.
+It sends user changes and password rotation through real authenticated HTTP,
+checks same-handler restart and disable responses, and replaces the database
+without restarting the listener. Both LF and CRLF match Java. The real one-second
+pauses are measured. This exposed and corrected Authorizer's missing default
+database lookup, which isolated command/server fixtures had not exercised.

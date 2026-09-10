@@ -1531,7 +1531,7 @@
     ],
     "sibling_search": "No rawfrom/rawtxnfrom match in minima-core-cpp/src or tests. Complete pinned raw bodies and relevant JSON/getters/state conversion/native helpers inspected before implementation.",
     "adaptation": "Extract stateText unchanged from send.cpp into StateText.hpp. Extract typed Boolean unboxing unchanged from CommandResult.status into booleanValue. Share identical output/state loops via RawTxnCommands; retain separate alternating versus separated input/script order. Source JSONObject extends LinkedHashMap, matching native insertion order. Preserve null-to-text concatenation, typed casts, port parsing before value conversion, ignored child status and exception-dependent cleanup.",
-    "unicode_fix": "Review baseline showed source rawtxnfrom accepted falſe as FALSE, native StateVariable rejected numeric conversion. Replace ASCII Boolean comparisons with existing JavaStringEqualsIgnoreCase used by vault/InetSocketAddress; add 24 direct/real-child case variants with explicit expected Boolean text and exported state.",
+    "unicode_fix": "Review baseline showed source rawtxnfrom accepted fal\u017fe as FALSE, native StateVariable rejected numeric conversion. Replace ASCII Boolean comparisons with existing JavaStringEqualsIgnoreCase used by vault/InetSocketAddress; add 24 direct/real-child case variants with explicit expected Boolean text and exported state.",
     "validation": "Initial7checksPASSnormal88.75s/san271.44s: source_mapping332,command12289,runner1265,runnererrors1120,walletwrappers659/2060calls,funding736/3418ops/39016SQL,raw632/3835calls. Initial raw5.76s/7.59s; funding88.74s/271.43s. After Unicode fix, full builds30033/82747PASSwithoutwarnings and finalraw656/3991callsPASS4.06s/4.55s; object9464PASS25.10s/91.34s, two-checkbatches25.10s/91.36s. All14 distinct comparison reports inspected. Eight distinct selectedchecks acrossphases, notall171; initialregressions were not all repeated after targetedstatefix.",
     "build_timing": "Initial sanitized CTest started while final build tail was active; authoritative binary mtimes for wallet_wrappers/wallet_commands preceded their fresh Java oracle class compilation timestamps, proving those native processes subsequently loaded new binaries. Build54210 terminalPASS; no speculative restart. Finalfocusedchecks started after both finalbuilds terminalPASS.",
     "normalization": "Known shape-checked32byte uppercase random rowIDs normalized in child text and verified leading MiniString field (4-byte66length plus exactID bytes) only. Actual TxnRow readers compare full roundtrip and consumedlength. NPE/CCE runtime prose normalized; all other observed rows/replies/logs/childtext/bytes compared.",
@@ -2396,5 +2396,37 @@
       "Complete actual rpc-command listener enable/authenticated integration"
     ],
     "limits": "Finite iterator schedules and concurrent stress, no full inherited Java collection API or complete JVM concurrency proof. Source field accesses remain separate, not whole-command/tree transactions. No full-port or completed RPC checkpoint claim."
+  },
+  "rpc_live_integration": {
+    "status": "validated live RPC integration; broader regressions running",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "baseline_commit": "5fbb63871844c282664a781dac18d4b3d8a917a4",
+    "counterparts": 363,
+    "absent": 94,
+    "ctest_registered": 205,
+    "validation": {
+      "normal": true,
+      "sanitized": true,
+      "lifecycles_per_build": 2,
+      "observations_per_lifecycle": 41,
+      "raw_http_requests_per_runtime_per_lifecycle": 25,
+      "rpcclient_calls_per_runtime_per_lifecycle": 2,
+      "real_pauses_per_runtime_per_lifecycle": 8,
+      "includes_database_replacement": true,
+      "invocation": "python3 cpp/tools/rpc_live_differential.py --build BUILD",
+      "reporting_only_followup": "Guard empty observations when the first runtime fails; passing execution path unchanged."
+    },
+    "full_regressions": {
+      "normal_session": 29381,
+      "sanitized_session": 42976,
+      "ctest_entries_at_launch": 204,
+      "baseline": "Shared JSON source at 5fbb638; most executables predate the new default Authorizer binding",
+      "known_failure": "MiniByteTests stale catch, fixed and direct reruns pass; CTest rerun still required"
+    },
+    "pending": [
+      "Finish full suites and inspect every failure",
+      "Relink affected existing targets for default Authorizer lookup and rerun affected regression tests"
+    ],
+    "limits": "Manual Main with real RPC transport; node workers unstarted and SQL fixture binding only. No durable SQL, full native node, exhaustive concurrency, or full-file parity claim."
   }
 }
