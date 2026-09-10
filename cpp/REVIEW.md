@@ -4464,3 +4464,38 @@ results. RPC as a whole remains work in progress: shared JSON access and actual
 command-driven listener enable/authenticated requests still need completion.
 Native snapshot stress and ASAN/UBSAN do not certify every scheduling interleaving;
 no ThreadSanitizer run or full native-node parity is claimed.
+
+
+## Code Review — shared JSON storage, full regression pending
+
+### Summary
+
+JSONSequence preserves the existing ordered vector representation, uses the
+repository's locked-copy access discipline, and retains state ownership in its
+iterators. Accessors return copied JSONValue wrappers with shared nested owners.
+Structural changes increment an unsigned counter; map value replacement does
+not. Array hasNext uses current size; map traversal retains its initial end.
+Locks are released before traversing children, and copy assignment snapshots the
+source before locking the destination. JsonDB root reads/replacements retain
+owners under a separate mutex. Source multi-operation ordering remains separate.
+
+### Findings
+
+No new blocking defect found in the implemented access/iteration surface. The
+67-program Java comparison and actual UserDB concurrent stress pass both builds.
+The initial three index-category mismatches were corrected in the production
+array getter, with their failing report retained. Full regression found a stale
+MiniByteTests catch; the production byte reader was already correct. That test
+now catches wire::EOFException and passes direct runs in both builds.
+
+The generic inherited Java collection API, arbitrary keys, every reentrant
+callback and every concurrent schedule remain incomplete. Individual safe
+accesses do not guarantee transactional snapshots across multiple source reads.
+Global runtime callback registries and main_runtime's stream-buffer swapping
+still require care in the future live-command integration fixture.
+
+### Verdict
+
+Save as WIP while the full 204-test suites run. Inspect their outcomes before
+claiming this shared-container step fully validated. No completed RPC checkpoint
+or 457-file parity certification is claimed.

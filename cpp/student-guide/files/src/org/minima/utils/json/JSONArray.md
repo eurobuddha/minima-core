@@ -19,7 +19,7 @@ JSONArray is an ordered list with compact JSON serialization. Its many static ov
 
 ## How the C++ translation works
 
-The native vector<JSONValue> implements the ordinary ordered collection surface and shared nested values. It exposes add/get/size plus selected string search/removal helpers and serializers. The source’s full ArrayList inheritance and static primitive/char/Object array overload set are absent, so one mapped file does not mean complete API parity.
+The native ordered storage now protects each access with a mutex. get returns an owned JSONValue, whose nested shared_ptr still refers to the same child. It exposes add/get/size, selected string search/removal helpers, checked iterators and serializers. Iterator next detects structural changes; hasNext follows ArrayList's current-size check. Copy construction duplicates outer storage while preserving nested object identity. The source’s full ArrayList inheritance and static primitive/char/Object array overload set are absent, so one mapped file does not mean complete API parity.
 
 ## Understanding the tests
 
@@ -40,3 +40,14 @@ A proposed direct fixture should compare float[] containing NaN against a JSONAr
 Why can two Java containers holding conceptually identical characters serialize differently depending on whether they are char[] or a Collection?
 
 Pinned Java SHA-256: `c37502757d18942d282ef3d53f572e6bf6ab7396151bb4b64788b51233b15073`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+
+## Shared-record experiment
+
+The [shared JSON lab](../../../../../../new-tests/shared-json-rpc.md) was written
+before the new test. Its [comparison driver](../../../../../../../tools/json_collections_differential.py)
+uses direct Java and C++ containers, independent of the parser. The initial
+67-program run found three wrong native exception categories for array indices
+-1, 2 and 2147483647 on a two-element array. These now use the Java
+IndexOutOfBoundsException category. Iterator transitions and copy/child identity
+matched in that initial run; full regression validation is recorded separately.

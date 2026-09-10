@@ -1,0 +1,52 @@
+Start testing: Sep 10 21:24 BST
+----------------------------------------------------------
+203/204 Testing: json_collections_differential
+203/204 Test: json_collections_differential
+Command: "/opt/homebrew/Frameworks/Python.framework/Versions/3.14/bin/python3.14" "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/json_collections_differential.py" "--build" "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized"
+Directory: /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+"json_collections_differential" start time: Sep 10 21:24 BST
+Output:
+----------------------------------------------------------
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "programs": 67,
+  "operations": 606,
+  "failures": [],
+  "scope": "Pinned JSONArray/JSONObject: iterator hasNext/next before/between/after structural changes, map value replacement, empty/exhausted iterators, outer copy independence with shared children, original iterator ownership after variable replacement, array string removal and indexed reads. Single-thread deterministic schedules; native concurrent stress is a separate test. Full inherited Java collection API is not certified."
+}
+<end of output>
+Test time =   1.67 sec
+----------------------------------------------------------
+Test Passed.
+"json_collections_differential" end time: Sep 10 21:24 BST
+"json_collections_differential" time elapsed: 00:00:01
+----------------------------------------------------------
+
+204/204 Testing: shared_json_native
+204/204 Test: shared_json_native
+Command: "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/shared_json_native"
+Directory: /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+"shared_json_native" start time: Sep 10 21:24 BST
+Output:
+----------------------------------------------------------
+Shared JSON: 1600 concurrent iterations, 1594 valid serializations, 6 permitted iterator failures; retained array/root/child ownership passed
+<end of output>
+Test time =  12.76 sec
+----------------------------------------------------------
+Test Passed.
+"shared_json_native" end time: Sep 10 21:24 BST
+"shared_json_native" time elapsed: 00:00:12
+----------------------------------------------------------
+
+End testing: Sep 10 21:24 BST

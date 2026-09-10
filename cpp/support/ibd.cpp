@@ -29,7 +29,7 @@ static JSONValue run(const JSONObject& req){auto kind=req.getString("kind");
     if(kind=="complete")ibd.createCompleteIBD();
     else if(kind=="sync")ibd.createSyncIBD(*tx(integer(req,"first",1),0));
     else if(kind=="archive")ibd.createArchiveIBD(MiniNumber(integer(req,"first")),archive,integer(req,"local")>0);
-    else if(kind=="greet"){Greeting greeting;greeting.setTopBlock(MiniNumber(integer(req,"top",-1)));for(const auto& x:std::get<std::shared_ptr<JSONArray>>(req.get("chain").value)->elements()){auto& a=std::get<std::shared_ptr<JSONArray>>(x.value)->elements();greeting.getChain().push_back(tx(int(std::get<int64_t>(a.at(0).value)),int(std::get<int64_t>(a.at(1).value)))->getTxPoWIDData());}result=ibd.createIBD(greeting);}
+    else if(kind=="greet"){Greeting greeting;greeting.setTopBlock(MiniNumber(integer(req,"top",-1)));for(const auto& x:std::get<std::shared_ptr<JSONArray>>(req.get("chain").value)->elements()){auto a=std::get<std::shared_ptr<JSONArray>>(x.value)->elements();greeting.getChain().push_back(tx(int(std::get<int64_t>(a.at(0).value)),int(std::get<int64_t>(a.at(1).value)))->getTxPoWIDData());}result=ibd.createIBD(greeting);}
     else throw std::invalid_argument(kind);
     JSONObject out;out.put("result",result);out.put("ibd",snapshot(ibd));out.put("calls",ctx->calls);out.put("depth",ctx->depth);return out;
 }

@@ -42,3 +42,10 @@ Set peers from list A, append to A, then append to getPeersList(). Which changes
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `d946d075e2d5a7386b5f6f7da378943e2b879cb37f41c3360861a43c8eb74fa4`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+
+## Shared JSON ownership follow-up
+
+The peers accessors now use JsonDB's retained root pointer for each access.
+This preserves the original getter/setter behavior while allowing a concurrent
+root replacement to finish without freeing the object currently being read.

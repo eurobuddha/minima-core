@@ -19,7 +19,7 @@ JSONObject stores named values in insertion order because the actual superclass 
 
 ## How the C++ translation works
 
-The native vector of UTF-16 key/value pairs retains insertion order and replaces an existing value without moving its slot. JSONValue stores supported dynamic types. This is a subset of Java Map: arbitrary/null object keys, removal/iteration APIs, the map-copy constructor, and static map serializers are not all exposed. Native getString on null throws rather than returning Java null.
+The native ordered storage of UTF-16 key/value pairs retains insertion order and replaces an existing value without moving its slot. Each access now locks and returns an owned value. Replacing a value leaves the structural modification count unchanged; inserting a new key changes it. Checked iterators retain their storage owner, so replacing the calling variable does not destroy the original iteration. JSONValue copies retain shared ownership of nested objects. This is a subset of Java Map: arbitrary/null object keys, the full removal/iteration APIs, arbitrary map-copy construction, and static map serializers are not all exposed. Native getString on null throws rather than returning Java null.
 
 ## Understanding the tests
 
@@ -40,3 +40,13 @@ The current native container surface is partial. A proposed direct test should d
 If keys A, B, then A are inserted, in what order are keys serialized, and which A value appears?
 
 Pinned Java SHA-256: `0dcf342437c36cd2cbbd4d47a01598aa0988808a4b51e93c5763ab08029e5b7c`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+
+## Shared-record experiment
+
+The [shared JSON lab](../../../../../../new-tests/shared-json-rpc.md) explains the
+new direct iterator/copy comparison and actual UserDB concurrent test. A copied
+object has independent outer slots but shared children. The mutex is released
+before serializing a child, avoiding locks held across a nested traversal. This
+does not make an entire tree serialization a single atomic snapshot; structural
+changes may raise ConcurrentModificationException, as with the source iterator.

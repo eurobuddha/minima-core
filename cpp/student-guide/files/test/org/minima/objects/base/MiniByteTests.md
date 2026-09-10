@@ -59,3 +59,15 @@ A test samples behavior. Passing the shown cases would establish those observati
 Exercise: identify one boundary or state transition in the source, predict its result before running it, and explain which single assertion would detect an incorrect port. For a helper, identify a caller that would reveal an incorrectly generated fixture.
 
 Pinned Java SHA-256: `d38efb1fd1b5b81804b69a749b14483d7b785d3c0a2302ce7798fbc77fc067b5`.
+
+
+## Full-suite finding: exhausted stream category
+
+Before the next run, compare the mapped test with MiniByte.java/readDataStream,
+MiniByte.cpp/deserialise and support/ByteIO.hpp/byte. The source reads one byte
+from DataInputStream; exhausted input raises EOFException. The native byte helper
+already raises wire::EOFException. The mapped test's extra exhausted-buffer check
+still caught std::out_of_range, so its correct rejection escaped and aborted the
+test in both builds. Change only that catch to the existing EOFException type,
+then rerun the test. The generic malformed_streams test catches all std::exception
+values, so its pass alone could not detect this stale category expectation.

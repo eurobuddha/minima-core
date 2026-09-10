@@ -2354,5 +2354,47 @@
       "tools/network_utilities_differential.py",
       "tools/rpc_commands_corpus.py"
     ]
+  },
+  "shared_json_rpc_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "status": "work_in_progress_full_regressions_running",
+    "counterparts": 363,
+    "absent": 94,
+    "ctest_entries": 204,
+    "full_builds": [
+      "normal",
+      "ASAN/UBSAN"
+    ],
+    "compiler_warnings_observed": 0,
+    "focused_programs_per_build": 67,
+    "focused_operations_per_build": 606,
+    "focused_tests_per_build": 2,
+    "focused_seconds": [
+      8.08,
+      14.44
+    ],
+    "native_concurrent_iterations_per_build": 1600,
+    "native_successful_serializations_per_build": [
+      1594,
+      1594
+    ],
+    "native_permitted_iterator_failures_per_build": [
+      6,
+      6
+    ],
+    "initial_failures": "Three indexed-read exception categories, corrected and rerun in both builds.",
+    "full_regressions": {
+      "state": "running",
+      "normal_session": 29381,
+      "sanitized_session": 42976,
+      "normal_log": "/tmp/minima-shared-json-all-tests.log",
+      "sanitized_log": "/tmp/minima-shared-json-all-tests-san.log",
+      "known_failure": "MiniByteTests stale out_of_range catch; corrected to existing wire::EOFException. Target rebuilt and executable rerun directly with exit 0 in both builds; full suite retains its earlier failure."
+    },
+    "pending": [
+      "Finish both full regression runs, inspect every failure and rerun affected checks",
+      "Complete actual rpc-command listener enable/authenticated integration"
+    ],
+    "limits": "Finite iterator schedules and concurrent stress, no full inherited Java collection API or complete JVM concurrency proof. Source field accesses remain separate, not whole-command/tree transactions. No full-port or completed RPC checkpoint claim."
   }
 }

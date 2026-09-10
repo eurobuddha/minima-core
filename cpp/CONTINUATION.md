@@ -1,3 +1,56 @@
+# Current work — shared JSON WIP; full tests LIVE
+
+This goal turn is PROGRESS: implemented shared JSON storage/root ownership,
+new Java comparisons/native concurrency test, student lab, and a stale test fix.
+Full457workingC++goal ACTIVE/incomplete.363counterparts94absent;204CTest.
+
+LIVE full-suite handles (must poll, DO NOT restart from stale notes):
+- normal29381: /tmp/minima-shared-json-all-tests.log, last observed consensus32.
+- sanitizer42976: /tmp/minima-shared-json-all-tests-san.log, last observed peers23.
+Both launched full ctest --output-on-failure with required loopback escalation.
+Both recorded MiniByteTests1 abort: stale std::out_of_range catch vs existing
+wire::EOFException. Read actual pinned MiniByte.java/test, native implementation,
+ByteIO.hpp and malformed_streams test; fixed only mappedtest catch/include. Both
+target builds + direct executable reruns84227/92373 exit0. Full suite will still
+report its earlier failure; collect all outcomes then rerun failing CTest entries.
+No production source edits after full-suite start; only MiniByte test changed.
+
+New shared JSON implementation: support/JSONSequence.hpp owns mutex+orderedvector
+in shared State. get/find/snapshot copy under lock, iterator holds owner/modcount,
+checks structural mutation on next, Array.hasNext current-size semantics and
+Map.hasNext initial-end semantics. JSONObject overwrite existing slot doesn't
+increment modification. JSONArray.get now Java IndexOutOfBoundsException (first
+67program test exposed3mismatches). elements/entries return retained ranges;
+JSONArray.snapshot explicitly copies for wallet fixture's probe append. ibd fixture
+uses owned range. JsonDB params() returns locked root shared_ptr snapshot, setParams
+locks replacement; copies retain same root. getJSONArray allows a concurrently
+read null reference after creation check, like Java cast. P2PDB adapts params()->.
+Nested JSONValue pointers preserve child identity; serializers don't hold parent
+lock while traversing child. No JSONSequence general inheritedJavaAPI certification.
+
+Full builds60565/52182 PASSnoobservedwarnings. Initialbuild1035 alsoPASS;
+first67programtest97813 failedonly3indexcategories (saved initial-index-failure.json).
+Corrected focusedtests16098/1600PASSboth:67programs606ops, 1600concurrentiterations,
+1594validserializations/6permittedCME each (observed, nondeterministic counts).
+Focused evidence saved validation/shared-json-work-in-progress/{normal,sanitized}.
+Lab written BEFORE tests. Student guides for JSONArray/JSONObject/JsonDB/P2PDB and
+MiniByteTests updated. Source map still363; full guide audit pendingfinaledits.
+Implementation/evidence WIP commit and localbundle follow: inspect actualHEAD and
+latest ignoredmanifest for authoritative saved IDs. Last numberedcheckpoint362.
+
+NEXT: finish both fullregressions, inspectreports/failures, fix within sourcefidelity,
+rerun affectedtests. Then actual rpc-command enable:true listener+auth integration:
+reuse MainNetworkFixture/Oracle + actual NetworkManager/HTTPServer/CMDHandler and
+RPCClient; don't naively enable livebackgroundlogging during main_runtime's per-op
+std::clog.rdbuf swap. SharedJSONbasicaccess now implemented, subjecttoregression.
+Previous authentication flag/password followup is committed233ffcf5b520904c0b8266b3d68c34445207bfd3.
+Its verifiedbundle MinimaCoreC++-20260910T201520Z.bundle SHA256
+12fa9c2bb61bd007826f1d6f7c3529ef704054a92352e0c2e5f9d652a2fb7ab8.
+Branch/project MinimaCoreC++; keepJavaPin5564b9d. NoGitHubpush. Git writes use
+GRAPHIFY_SKIP_HOOK=1. Do not tagfullRPCor markgoalcomplete from focusedtests.
+
+Older notes follow.
+
 # Current work — RPC configuration storage fixed and validated
 
 Full 457-file native working-node goal ACTIVE/incomplete. The prior naming-only

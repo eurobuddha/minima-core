@@ -1,0 +1,98 @@
+{
+  "passed": false,
+  "programs": 67,
+  "operations": 606,
+  "failures": [
+    {
+      "case": 60,
+      "request": {
+        "kind": "array",
+        "ops": [
+          {
+            "op": "add",
+            "value": null
+          },
+          {
+            "op": "add",
+            "value": "\u03c0"
+          },
+          {
+            "op": "get",
+            "index": -1
+          }
+        ]
+      },
+      "java": [
+        "ok",
+        "ok",
+        "java.lang.IndexOutOfBoundsException"
+      ],
+      "cpp": [
+        "ok",
+        "ok",
+        "java.lang.RuntimeException"
+      ]
+    },
+    {
+      "case": 63,
+      "request": {
+        "kind": "array",
+        "ops": [
+          {
+            "op": "add",
+            "value": null
+          },
+          {
+            "op": "add",
+            "value": "\u03c0"
+          },
+          {
+            "op": "get",
+            "index": 2
+          }
+        ]
+      },
+      "java": [
+        "ok",
+        "ok",
+        "java.lang.IndexOutOfBoundsException"
+      ],
+      "cpp": [
+        "ok",
+        "ok",
+        "java.lang.RuntimeException"
+      ]
+    },
+    {
+      "case": 64,
+      "request": {
+        "kind": "array",
+        "ops": [
+          {
+            "op": "add",
+            "value": null
+          },
+          {
+            "op": "add",
+            "value": "\u03c0"
+          },
+          {
+            "op": "get",
+            "index": 2147483647
+          }
+        ]
+      },
+      "java": [
+        "ok",
+        "ok",
+        "java.lang.IndexOutOfBoundsException"
+      ],
+      "cpp": [
+        "ok",
+        "ok",
+        "java.lang.RuntimeException"
+      ]
+    }
+  ],
+  "scope": "Pinned JSONArray/JSONObject: iterator hasNext/next before/between/after structural changes, map value replacement, empty/exhausted iterators, outer copy independence with shared children, original iterator ownership after variable replacement, array string removal and indexed reads. Single-thread deterministic schedules; native concurrent stress is a separate test. Full inherited Java collection API is not certified."
+}

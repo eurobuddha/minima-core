@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 203: json_collections_differential
+1/2 Test #203: json_collections_differential ....   Passed    1.67 sec
+    Start 204: shared_json_native
+2/2 Test #204: shared_json_native ...............   Passed   12.76 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  14.44 sec

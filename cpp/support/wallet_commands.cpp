@@ -348,7 +348,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             out.put("files",files);out.put("directories",dirs);if(input.containsKey("unsigned"))out.put("fileTxPoW",structures);
         }
         out.put("events",events);out.put("logs",logs);JSONArray cache;
-        auto probes=array(config->get("probe")).elements();probes.emplace_back(Address::TRUE_ADDRESS.getAddressData().to0xString());
+        auto probes=array(config->get("probe")).snapshot();probes.emplace_back(Address::TRUE_ADDRESS.getAddressData().to0xString());
         for(const auto& a:probes){auto address=a.asString();JSONObject row;row.put("address",address);row.put("tracked",wallet->isAddressRelevant(address));row.put("simple",wallet->isAddressSimple(address));row.put("notify",MinimaDB::getDB()->checkCoinNotify(address));cache.add(row);}out.put("cache",cache);
         out.put("userEnabled",MinimaDB::getDB()->getUserDB()->isSlaveNode());out.put("userHost",MinimaDB::getDB()->getUserDB()->getSlaveNodeHost());
         out.put("prefs",std::filesystem::is_regular_file(prefs)?JSONValue(MiniData(MiniFile::readCompleteFile(prefs)).to0xString()):JSONValue());outputs.add(out);

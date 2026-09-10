@@ -5,11 +5,16 @@
 namespace minima {
 class JsonDB {
 protected:
+    mutable std::mutex mParamsLock;
     std::shared_ptr<json::JSONObject> mParams=std::make_shared<json::JSONObject>();
-    json::JSONObject& params() const {if(!mParams)throw std::logic_error("Null JsonDB parameters");return *mParams;}
+    std::shared_ptr<json::JSONObject> params() const {auto owner=getAllData();if(!owner)throw std::logic_error("Null JsonDB parameters");return owner;}
+    void setParams(std::shared_ptr<json::JSONObject> owner){std::lock_guard lock(mParamsLock);mParams=std::move(owner);}
 public:
+    JsonDB()=default;
+    JsonDB(const JsonDB& other):mParams(other.getAllData()){}
+    JsonDB& operator=(const JsonDB& other){if(this!=&other)setParams(other.getAllData());return *this;}
     virtual ~JsonDB()=default;
-    std::shared_ptr<json::JSONObject> getAllData() const {return mParams;}
+    std::shared_ptr<json::JSONObject> getAllData() const {std::lock_guard lock(mParamsLock);return mParams;}
     bool exists(const std::string& name) const;
     bool getBoolean(const std::string& name,bool fallback) const;
     void setBoolean(const std::string& name,bool value);

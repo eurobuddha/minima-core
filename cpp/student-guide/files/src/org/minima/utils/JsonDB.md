@@ -59,3 +59,15 @@ getJSONArray now checks the variant and throws the explicit Java category, while
 retaining missing/null default creation and shared-array identity. The older
 preference fixture collapsed both failures to ERROR; the new RPC test retains
 exception categories and shows why more precise observations matter.
+
+
+## Root ownership during concurrent reads
+
+JsonDB now locks the root shared_ptr when reading or replacing it. Each params()
+call returns an owner, so readDataStream can install a new root while an existing
+reader finishes using the old root. Copying JsonDB retains the same root, as its
+previous native shared_ptr copy did. Container getters return owned values, and
+getJSONArray still returns the stored array itself. The separate exists/create/get
+steps remain separate source operations; they are not a get-or-create transaction.
+The [shared JSON lab](../../../../../new-tests/shared-json-rpc.md) explains how to
+test replacements, serialization and retained objects together.
