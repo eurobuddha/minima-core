@@ -4318,3 +4318,37 @@ Approve the command implementation with these documented limits. All fourteen af
 regressions pass in both builds (115.26s / 247.61s); twenty-six reports were read
 without failures and saved under validation/checkpoint-360. No full-port completion
 is claimed.
+
+
+## Code Review — checkpoint 361: logs and atomic logging flags
+
+### Summary
+
+Reviewed the pinned logs command, native wrapper and registry, seven GeneralParams
+field declarations/definitions, both fixture adaptations, Main oracle/driver and
+new corpus. Parsing and updates remain interleaved in source order. txpowdb still
+performs two separate writes and reports the block flag only. Existing worker
+consumers read the actual globals; atomic bool storage replaces unsafe concurrent
+plain-bool access without changing their logging branches.
+
+### Findings
+
+No blocking defect found in this scoped review. The parameter snapshots explicitly
+load bool values, and processor fixture assignments retain the original order.
+Independent expected state checks include all nine flags after success or failure,
+so the hidden transaction flag cannot be masked by a correct-looking response.
+Main.setSyncIBD confirms one real logging consumer. Both full builds and the new
+327-program / 982-operation comparison pass in normal and ASAN/UBSAN builds.
+
+The source uses plain Java booleans. Native atomics define individual access;
+this does not certify all possible Java schedules, make multiple assignments one
+transaction, or synchronize unrelated GeneralParams settings. No thread-sanitizer
+run or complete native node is claimed by the current ASAN/UBSAN evidence.
+
+### Verdict
+
+Approve this scoped checkpoint. All 25 affected consumer regressions pass in both
+builds (194.27s / 457.64s), and all 42 reports were read and saved under
+validation/checkpoint-361. Reversing only the documented atomic substitutions
+reproduces the prior GeneralParams header/body and ParamSnapshots hashes exactly.
+No complete 457-file port or full-node readiness is claimed.

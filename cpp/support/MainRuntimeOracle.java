@@ -4,6 +4,7 @@ import org.minima.system.Main;
 import org.minima.system.network.minima.*;
 import org.minima.system.commands.CommandRunner;
 import org.minima.database.MinimaDB;
+import org.minima.database.txpowdb.sql.TxPoWSqlDB;
 import org.minima.objects.*;
 import org.minima.objects.base.*;
 import org.minima.database.txpowtree.*;
@@ -34,6 +35,28 @@ public class MainRuntimeOracle extends SqlDBOracle {
             config=(JSONObject)step;events=new JSONArray();calls=0;timers=new JSONArray();listenerCalls=new JSONArray();var out=new JSONObject();var bytes=new ByteArrayOutputStream();var previous=System.out;System.setOut(new PrintStream(bytes,true,"UTF-8"));long before=System.currentTimeMillis();
             try{Object value=null;String cmd=config.getString("cmd");switch(cmd){
                 case "fields":{var values=(JSONObject)config.get("values");for(Object raw:values.keySet()){String key=(String)raw;String field=switch(key){case "restoring"->"mRestoring";case "shutdown"->"mShuttingdown";case "keys"->"mInitKeysCreated";case "complete"->"STARTUP_COMPLETE";case "importing"->"MYSQL_IMPORTING_NO_ACTION";case "uptime"->"mUptimeMilli";default->throw new IllegalArgumentException(key);};NIOClientOracle.set(main,field,values.get(key));}break;}
+                case "logFlags":{if(config.containsKey("values")){var values=(JSONObject)config.get("values");
+                    if(values.containsKey("scripts"))GeneralParams.SCRIPTLOGS=(Boolean)values.get("scripts");
+                    if(values.containsKey("mining"))GeneralParams.MINING_LOGS=(Boolean)values.get("mining");
+                    if(values.containsKey("maxima"))GeneralParams.MAXIMA_LOGS=(Boolean)values.get("maxima");
+                    if(values.containsKey("blocks"))GeneralParams.BLOCK_LOGS=(Boolean)values.get("blocks");
+                    if(values.containsKey("networking"))GeneralParams.NETWORKING_LOGS=(Boolean)values.get("networking");
+                    if(values.containsKey("ibd"))GeneralParams.IBDSYNC_LOGS=(Boolean)values.get("ibd");
+                    if(values.containsKey("peerschecker"))GeneralParams.PEERSCHECKER_lOG=(Boolean)values.get("peerschecker");
+                    if(values.containsKey("txpowdb"))TxPoWSqlDB.LOG_ADD_BLOCKS=(Boolean)values.get("txpowdb");
+                    if(values.containsKey("txpowTransactions"))TxPoWSqlDB.LOG_ADD_TRANSACTION=(Boolean)values.get("txpowTransactions");
+                }var flags=new JSONObject();
+                flags.put("scripts",GeneralParams.SCRIPTLOGS);
+                flags.put("mining",GeneralParams.MINING_LOGS);
+                flags.put("maxima",GeneralParams.MAXIMA_LOGS);
+                flags.put("blocks",GeneralParams.BLOCK_LOGS);
+                flags.put("networking",GeneralParams.NETWORKING_LOGS);
+                flags.put("ibd",GeneralParams.IBDSYNC_LOGS);
+                flags.put("peerschecker",GeneralParams.PEERSCHECKER_lOG);
+                flags.put("txpowdb",TxPoWSqlDB.LOG_ADD_BLOCKS);
+                flags.put("txpowTransactions",TxPoWSqlDB.LOG_ADD_TRANSACTION);
+                value=flags;break;}
+                case "syncCurrent":main.setSyncIBD(flag("value"));break;
                 case "diagnostics":{if(flag("reset")){MessageProcessor.setTrace(false,"");NIOClient.mTraceON=false;NIOServer.mTraceON=false;}var diagnostics=new JSONObject();diagnostics.put("trace",main.isTrace());diagnostics.put("filter",main.getTraceFilter());diagnostics.put("client",NIOClient.mTraceON);diagnostics.put("server",NIOServer.mTraceON);if(config.containsKey("match"))diagnostics.put("matches",main.checkTraceFilter(config.getString("match")));value=diagnostics;break;}
                 case "normal":main.setNormalAutoMineSpeed();break;case "low":main.setLowPowAutoMineSpeed();break;
                 case "sync":GeneralParams.IBDSYNC_LOGS=flag("logs");main.setSyncIBD(flag("value"));break;

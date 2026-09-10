@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`. Finite command-specific comparison passes in both builds.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/logs.java) · `src/org/minima/system/commands/base/logs.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/logs.java) · [Native C++ body](../../../../../../../../src/org/minima/system/commands/base/logs.cpp)
 
 ## Purpose
 
@@ -19,19 +19,21 @@ logs selectively changes global logging flags and returns their current values. 
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse the global flag owners and shared Command getters, preserving partial mutation order rather than prevalidating the entire request.
+The wrapper reuses the existing Command getters and global flag owners. Each present parameter is parsed immediately before its assignment, preserving the source's fixed order and partial changes. The seven GeneralParams logging fields now use the same std::atomic<bool> storage pattern already used by TxPoWSqlDB. Reads and writes of each field are safe for native worker access; the whole group is still not an atomic transaction.
+
+The parameter fixture snapshots use load() to copy bool values, and the processor fixture assigns its two affected flags directly instead of storing bool pointers. These changes adapt test access to the actual production storage without substituting test-only flags. A source search found MAXIMA_LOGS only in its declaration, reset, and this command; storing a setting alone does not demonstrate an active logging consumer.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed cases initialize mixed flag values, omit all parameters, update one at a time, compare true versus TRUE/false, and force a late parsing failure after an earlier successful change. Assert both TxPoWSqlDB flags even though only one is returned.
+The [logging corpus](../../../../../../../../tools/logs_commands_corpus.py) contains 327 programs and 982 operations. It seeds all nine actual flags, including the transaction flag omitted from the command response. Each parameter is crossed with eighteen possible inputs and two mixed prior states. The independent checker calculates which earlier assignments survive, where parsing fails, and which later values must remain untouched.
 
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+An omitted txpowdb preserves deliberately different block and transaction flags. A supplied value updates both. Unicode whitespace and embedded control characters distinguish Java trimming from broader whitespace rules. Metadata, fresh factories, runner permissions and unknown parameters are also compared. Finally, Main.setSyncIBD provides a real consumer: its log appears only when the command enabled ibd.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+The [lab](../../../../../../../new-tests/logging-flags-command.md) was written before the tests. Both full builds pass, and all 327 programs / 982 operations match Java in normal and ASAN/UBSAN builds. All 25 affected consumer regressions also pass in both builds (194.27s / 457.64s). All 42 saved result reports were read without failures; the lab links to their scopes and limitations.
 
 ## Limits
 
-Logging behavior of each subsystem is separate from this flag-setting wrapper. A response alone cannot reveal a mismatch in the unreported transaction flag.
+A reply is not a transactional snapshot. Individual atomics prevent native data races for these fields, but do not reproduce every racy Java schedule. Full-node startup and every subsystem's logging remain outside this finite command comparison. Existing consumer tests are rerun as separate evidence.
 
 ## Check your understanding
 

@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "cases": 105,
+  "failures": [],
+  "scope": "Actual pinned TxPoWChecker/TimedChecker and native implementation, source-generated serialized parent/block/duplicate-proof fixtures, direct and reused timed checks with known matching initial/final values, primed-valid escaping failures and a worker held until the checking call returns; header, duplicate traversal, MMR and null failures, runtime/Error/OOM/IO logger failures at nested catch levels, final block log propagation, retained finished/valid flags and default dispatch. Explicit handlers prevent fatal OOM shutdown. Dedicated deadline run verifies actual120000ms polling after worker Error; no shortened timeout. Automatic stack frames, generated thread counters, elapsed log milliseconds and JVM-generated null diagnostics excluded. Full runtime and Java interruption semantics not established."
+}

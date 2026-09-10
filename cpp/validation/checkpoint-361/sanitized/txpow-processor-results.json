@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "programs": 384,
+  "operations": 1434,
+  "failures": [],
+  "scope": "Actual pinned processor/checker/tree/MMR with Java-mined block bytes. Controlled archive, TxPoW index and Main/network receivers; actual RAM flags. Queue, IBD, cascading, failure ordering, aliases and notifications. Native H2/full runtime and complete API parity remain pending."
+}

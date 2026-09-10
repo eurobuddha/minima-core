@@ -42,12 +42,12 @@ static JSONObject snapshotGeneralParams() {JSONObject out;
     out.put("USER_PULSE_FREQ",GeneralParams::USER_PULSE_FREQ);
     out.put("DEBUGFLAG",GeneralParams::DEBUGFLAG);
     out.put("DEBUGVAR",GeneralParams::DEBUGVAR);
-    out.put("SCRIPTLOGS",GeneralParams::SCRIPTLOGS);
-    out.put("MINING_LOGS",GeneralParams::MINING_LOGS);
-    out.put("MAXIMA_LOGS",GeneralParams::MAXIMA_LOGS);
-    out.put("NETWORKING_LOGS",GeneralParams::NETWORKING_LOGS);
-    out.put("IBDSYNC_LOGS",GeneralParams::IBDSYNC_LOGS);
-    out.put("BLOCK_LOGS",GeneralParams::BLOCK_LOGS);
+    out.put("SCRIPTLOGS",GeneralParams::SCRIPTLOGS.load());
+    out.put("MINING_LOGS",GeneralParams::MINING_LOGS.load());
+    out.put("MAXIMA_LOGS",GeneralParams::MAXIMA_LOGS.load());
+    out.put("NETWORKING_LOGS",GeneralParams::NETWORKING_LOGS.load());
+    out.put("IBDSYNC_LOGS",GeneralParams::IBDSYNC_LOGS.load());
+    out.put("BLOCK_LOGS",GeneralParams::BLOCK_LOGS.load());
     out.put("ARCHIVESYNC_LIMIT_BANDWIDTH",GeneralParams::ARCHIVESYNC_LIMIT_BANDWIDTH);
     out.put("RPC_CRLF",GeneralParams::RPC_CRLF);
     out.put("DEFAULT_MINIDAPPS",GeneralParams::DEFAULT_MINIDAPPS);
@@ -57,7 +57,7 @@ static JSONObject snapshotGeneralParams() {JSONObject out;
     out.put("RPC_PASSWORD",GeneralParams::RPC_PASSWORD);
     out.put("SEED_PHRASE",GeneralParams::SEED_PHRASE);
     out.put("ANYSEED_PHRASE",GeneralParams::ANYSEED_PHRASE);
-    out.put("PEERSCHECKER_lOG",GeneralParams::PEERSCHECKER_lOG);
+    out.put("PEERSCHECKER_lOG",GeneralParams::PEERSCHECKER_lOG.load());
     out.put("IS_MEGAMMR",GeneralParams::IS_MEGAMMR);
     out.put("NOTIFY_ALL_TXPOW",GeneralParams::NOTIFY_ALL_TXPOW);
     out.put("RESCUE_MEGAMMR_NODE",GeneralParams::RESCUE_MEGAMMR_NODE);
@@ -266,12 +266,12 @@ static auto defaults(){std::vector<std::function<void()>> result;
     {auto saved=GeneralParams::USER_PULSE_FREQ;result.push_back([saved](){GeneralParams::USER_PULSE_FREQ=saved;});}
     {auto saved=GeneralParams::DEBUGFLAG;result.push_back([saved](){GeneralParams::DEBUGFLAG=saved;});}
     {auto saved=GeneralParams::DEBUGVAR;result.push_back([saved](){GeneralParams::DEBUGVAR=saved;});}
-    {auto saved=GeneralParams::SCRIPTLOGS;result.push_back([saved](){GeneralParams::SCRIPTLOGS=saved;});}
-    {auto saved=GeneralParams::MINING_LOGS;result.push_back([saved](){GeneralParams::MINING_LOGS=saved;});}
-    {auto saved=GeneralParams::MAXIMA_LOGS;result.push_back([saved](){GeneralParams::MAXIMA_LOGS=saved;});}
-    {auto saved=GeneralParams::NETWORKING_LOGS;result.push_back([saved](){GeneralParams::NETWORKING_LOGS=saved;});}
-    {auto saved=GeneralParams::IBDSYNC_LOGS;result.push_back([saved](){GeneralParams::IBDSYNC_LOGS=saved;});}
-    {auto saved=GeneralParams::BLOCK_LOGS;result.push_back([saved](){GeneralParams::BLOCK_LOGS=saved;});}
+    {auto saved=GeneralParams::SCRIPTLOGS.load();result.push_back([saved](){GeneralParams::SCRIPTLOGS=saved;});}
+    {auto saved=GeneralParams::MINING_LOGS.load();result.push_back([saved](){GeneralParams::MINING_LOGS=saved;});}
+    {auto saved=GeneralParams::MAXIMA_LOGS.load();result.push_back([saved](){GeneralParams::MAXIMA_LOGS=saved;});}
+    {auto saved=GeneralParams::NETWORKING_LOGS.load();result.push_back([saved](){GeneralParams::NETWORKING_LOGS=saved;});}
+    {auto saved=GeneralParams::IBDSYNC_LOGS.load();result.push_back([saved](){GeneralParams::IBDSYNC_LOGS=saved;});}
+    {auto saved=GeneralParams::BLOCK_LOGS.load();result.push_back([saved](){GeneralParams::BLOCK_LOGS=saved;});}
     {auto saved=GeneralParams::ARCHIVESYNC_LIMIT_BANDWIDTH;result.push_back([saved](){GeneralParams::ARCHIVESYNC_LIMIT_BANDWIDTH=saved;});}
     {auto saved=GeneralParams::RPC_CRLF;result.push_back([saved](){GeneralParams::RPC_CRLF=saved;});}
     {auto saved=GeneralParams::DEFAULT_MINIDAPPS;result.push_back([saved](){GeneralParams::DEFAULT_MINIDAPPS=saved;});}
@@ -281,7 +281,7 @@ static auto defaults(){std::vector<std::function<void()>> result;
     {auto saved=GeneralParams::RPC_PASSWORD;result.push_back([saved](){GeneralParams::RPC_PASSWORD=saved;});}
     {auto saved=GeneralParams::SEED_PHRASE;result.push_back([saved](){GeneralParams::SEED_PHRASE=saved;});}
     {auto saved=GeneralParams::ANYSEED_PHRASE;result.push_back([saved](){GeneralParams::ANYSEED_PHRASE=saved;});}
-    {auto saved=GeneralParams::PEERSCHECKER_lOG;result.push_back([saved](){GeneralParams::PEERSCHECKER_lOG=saved;});}
+    {auto saved=GeneralParams::PEERSCHECKER_lOG.load();result.push_back([saved](){GeneralParams::PEERSCHECKER_lOG=saved;});}
     {auto saved=GeneralParams::IS_MEGAMMR;result.push_back([saved](){GeneralParams::IS_MEGAMMR=saved;});}
     {auto saved=GeneralParams::NOTIFY_ALL_TXPOW;result.push_back([saved](){GeneralParams::NOTIFY_ALL_TXPOW=saved;});}
     {auto saved=GeneralParams::RESCUE_MEGAMMR_NODE;result.push_back([saved](){GeneralParams::RESCUE_MEGAMMR_NODE=saved;});}

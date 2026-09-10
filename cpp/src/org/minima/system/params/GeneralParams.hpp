@@ -1,4 +1,5 @@
 #pragma once
+#include <atomic>
 #include "org/minima/objects/base/MiniNumber.hpp"
 namespace minima {
 struct GeneralParams {
@@ -44,12 +45,12 @@ struct GeneralParams {
     static int64_t USER_PULSE_FREQ;
     static bool DEBUGFLAG;
     static std::string DEBUGVAR;
-    static bool SCRIPTLOGS;
-    static bool MINING_LOGS;
-    static bool MAXIMA_LOGS;
-    static bool NETWORKING_LOGS;
-    static bool IBDSYNC_LOGS;
-    static bool BLOCK_LOGS;
+    static std::atomic<bool> SCRIPTLOGS;
+    static std::atomic<bool> MINING_LOGS;
+    static std::atomic<bool> MAXIMA_LOGS;
+    static std::atomic<bool> NETWORKING_LOGS;
+    static std::atomic<bool> IBDSYNC_LOGS;
+    static std::atomic<bool> BLOCK_LOGS;
     static bool ARCHIVESYNC_LIMIT_BANDWIDTH;
     static bool RPC_CRLF;
     static bool DEFAULT_MINIDAPPS;
@@ -59,7 +60,7 @@ struct GeneralParams {
     static std::string RPC_PASSWORD;
     static std::string SEED_PHRASE;
     static bool ANYSEED_PHRASE;
-    static bool PEERSCHECKER_lOG;
+    static std::atomic<bool> PEERSCHECKER_lOG;
     static bool IS_MEGAMMR;
     static bool NOTIFY_ALL_TXPOW;
     static std::string RESCUE_MEGAMMR_NODE;

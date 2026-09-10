@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 222,
+  "total_programs": 222,
+  "operations": 794,
+  "failures": [],
+  "scope": "Actual disconnect/message/p2pstate commands through Main, real NIO/P2P components and unstarted fixtures; exact queues, packet bytes, traffic, status and typed failures. No real network delivery or full startup is certified."
+}

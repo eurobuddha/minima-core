@@ -38,3 +38,7 @@ Checkpoint 360 adds healthcheck using the actual database/tree/cascade. Both ful
 builds and fourteen affected regressions pass per build; evidence is saved under
 validation/checkpoint-360/normal and sanitized. These labels avoid the inherited
 build-directory ignore rule. The map has 360 counterparts and 97 absent files.
+
+Checkpoint 361 adds logs and atomic storage for seven native logging switches.
+Both builds and 25 affected regressions pass per build. Evidence is in
+validation/checkpoint-361. The map has 361 counterparts and 96 absent files.

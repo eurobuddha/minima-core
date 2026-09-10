@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "programs": 1449,
+  "operations": 3879,
+  "groups": {
+    "archive-sync": 192,
+    "cancel-attempt": 1,
+    "connect": 24,
+    "disconnect": 3,
+    "disconnect-all": 1,
+    "disconnected": 576,
+    "guard": 36,
+    "hard-shutdown": 1,
+    "last-read": 40,
+    "new-connection": 24,
+    "null-client": 4,
+    "queries": 2,
+    "reconnect": 432,
+    "reconnect-limits": 12,
+    "remove-peer": 16,
+    "startup": 21,
+    "txpow-request": 64
+  },
+  "scope": "Actual pinned NIOManager processMessage, queries and disconnect methods. Initial singleton/database/service receivers and timer/post collection replace full startup; real clients/maps and packet queues. Random UIDs projected by object identity; configured clients use deterministic UIDs before insertion. Generic exceptions normalized. Stale-read tests avoid wall-clock boundary ambiguity. No real connector, NIOMessage dispatch or full node in this fixture."
+}

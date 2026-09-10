@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "cases": 719,
+  "handlers": 67,
+  "requests_per_runtime": 4,
+  "process_cases": 3,
+  "failures": [],
+  "scope": "Actual pinned ParamConfigurer/TestParams against native globals, map contents/order and failure-side effects; Java enum identity hashes supplied to native map for identical arbitrary identity ordering. Argument/environment/conf precedence, all67consumers, strictUTF8, numeric bounds, lazy test settings, actual loopback HTTP. NPE and numeric diagnostics normalized. Full node/JVM-global semantics remain incomplete."
+}

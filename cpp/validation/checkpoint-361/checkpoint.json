@@ -1,0 +1,42 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "mapped_counterparts": 361,
+  "production_counterparts": 317,
+  "mapped_tests": 44,
+  "absent": 96,
+  "lessons": 457,
+  "ctest_registered": 199,
+  "full_builds_passed": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "affected_tests_passed_per_build": 25,
+  "affected_seconds": [
+    194.27,
+    457.64
+  ],
+  "reports": [
+    "checker-logs-results.json",
+    "command-differential-results.json",
+    "command-runner-differential-results.json",
+    "command-runner-errors-results.json",
+    "healthcheck-command-results.json",
+    "logs-command-results.json",
+    "main-lifecycle-commands-results.json",
+    "main-runtime-results.json",
+    "network-peer-commands-results.json",
+    "network-status-command-results.json",
+    "nio-manager-state-results.json",
+    "nio-manager-transport-results.json",
+    "nio-message-results.json",
+    "param-configurer-results.json",
+    "peers-checker-results.json",
+    "ping-command-results.json",
+    "timed-errors-results.json",
+    "trace-clock-command-results.json",
+    "txpow-miner-results.json",
+    "txpow-processor-results.json",
+    "txpow-sql-db-results.json"
+  ],
+  "limits": "Finite scoped validation. Individual atomic flags, not a transactional command or complete concurrency audit. All map entries remain partial and parity not_verified; full node incomplete."
+}

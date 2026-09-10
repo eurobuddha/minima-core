@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "serialization_and_send_cases": 640,
+  "ping_cases": [
+    "valid-type-0",
+    "valid-type-11",
+    "valid-type-12",
+    "valid-type-255",
+    "fragmented",
+    "trailing-bytes",
+    "empty-frame",
+    "type-only",
+    "negative-length",
+    "oversize-length",
+    "truncated-header",
+    "truncated-frame",
+    "read-timeout",
+    "truncated-greeting-1",
+    "truncated-greeting-4",
+    "truncated-greeting-12",
+    "truncated-greeting-44"
+  ],
+  "scope": "Actual pinned NIOManager methods; exact payload bytes, all 256 type names, null/failing serializer timing, allocation failure conversion, empty server single/broadcast accounting, loopback ping framing, response type acceptance, truncation, length limits and read timeout. Singleton fixture only; full native node runtime and NIOMessage dispatch remain pending."
+}

@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "programs": 357,
+  "operations": 1352,
+  "failures": [],
+  "scope": "Actual pinned mining loops with real SHA3, full TxPoW wire/IDs and retained message identity, synchronous/async reservations, timeout/post exceptions, mutation and stopped-loop state, automine/no-tip timers. Clock values validated before normalization; Java NPE expressions excluded. Generator/network branches and full Main runtime remain pending."
+}

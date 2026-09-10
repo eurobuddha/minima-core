@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 327,
+  "total_programs": 327,
+  "operations": 982,
+  "failures": [],
+  "scope": "Actual logs command and all nine native/Java global flags, ordered partial mutations, omitted values, hidden SQL transaction flag, exact metadata, runner gates and Main.setSyncIBD consumer. Seven GeneralParams fields use atomic native storage. No transactional snapshot, exhaustive concurrent Java scheduling or full-node logging certification."
+}

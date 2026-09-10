@@ -2131,5 +2131,60 @@
     },
     "test_correction": "Initial 1e40 synthetic height exceeded MiniNumber range. Preserve the rejection as a test, assert other setup succeeds, and use allowed large heights in arithmetic cases. Production body unchanged.",
     "limits": "Partial and parity not_verified. Unstarted Main, no exhaustive concurrent owner replacement or full startup. Height adjacency is not cryptographic validation."
+  },
+  "logs_command": {
+    "source": "upstream-study/src/org/minima/system/commands/base/logs.java",
+    "source_sha256": "4f3cd7cae9824d9c4bbad52b345db83d4268279fef5766464b2822f8b7ada43e",
+    "destination": "src/org/minima/system/commands/base/logs.cpp",
+    "reuse": [
+      "Command.getParam/existsParam/reply helpers",
+      "GeneralParams and existing TxPoWSqlDB atomic logging flags",
+      "MainRuntimeOracle/main_runtime.cpp and existing differential driver",
+      "Main.setSyncIBD actual consumer"
+    ],
+    "adaptations": [
+      "Seven GeneralParams logging fields changed from bool to std::atomic<bool> for concurrent native reads/writes",
+      "ParamSnapshots explicitly loads bool values for JSON and baseline captures",
+      "Processor fixture sets two atomic flags directly instead of bool-pointer table entries",
+      "Command retains fixed mutation order and two separate SQL flag stores; no transactional command lock added"
+    ],
+    "validation": {
+      "full_builds": [
+        "normal",
+        "ASAN/UBSAN"
+      ],
+      "programs_per_build": 327,
+      "operations_per_build": 982,
+      "test_seconds": [
+        4.59,
+        7.91
+      ],
+      "selected_tests_per_build": 25,
+      "selected_seconds": [
+        194.27,
+        457.64
+      ],
+      "reports_read": 42,
+      "report_directory": "validation/checkpoint-361"
+    },
+    "sibling_search": "No logs command wrapper in tools/minima-core-cpp/src/system or chain; native pinned owners already fit directly.",
+    "limits": "Partial / parity not_verified. Individual atomics do not make grouped writes or response a transaction. Exhaustive Java race scheduling, full startup and every subsystem logging path remain unverified.",
+    "atomic_migration": {
+      "cpp/src/org/minima/system/params/GeneralParams.hpp": {
+        "prior_sha256": "9c09f1362bd26c1a7297fd0ed0ce8c5290f7e820ecd9d3a723f06ec5e8f7b358",
+        "new_sha256": "272b777b93673f26b2abc7515c0b832ca60e4e934d3fa5d15f481f8dcd04e648",
+        "reverse_substitution_matches_prior": true
+      },
+      "cpp/src/org/minima/system/params/GeneralParams.cpp": {
+        "prior_sha256": "9571d458cee7d93c1e85ae310379f5e027a0e8c094a1ef087220e5f7dd609c82",
+        "new_sha256": "7a2b61b65d1d622a86d113ebc3c6b1f5c09cc02433dd7e44a7eb403beb360dbe",
+        "reverse_substitution_matches_prior": true
+      },
+      "cpp/support/ParamSnapshots.hpp": {
+        "prior_sha256": "9127078da46489fb8437f36a534c15199be99618ae317509745ffb587db76e3f",
+        "new_sha256": "89c30b317f61e99e9efd0896dab231113eeb1522e7e02f036cd72090d3d7f7c6",
+        "reverse_substitution_matches_prior": true
+      }
+    }
   }
 }

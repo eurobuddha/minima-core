@@ -1,3 +1,55 @@
+# Current checkpoint 361 — logs validated and ready for local commit
+
+Full-port goal ACTIVE/incomplete. This turn made progress: logs command, atomic
+loggingfields,fixtures,tests,lessons and evidence. BranchMinimaCoreC++; priorHEAD
+1177d18healthcheck. New361validatedcommitfollows; noGitHubpushpendingdestination.
+Map361=317prod+44tests;96absent=52prod+44tests. Allpartial/not_verified.199CTest.
+All457lessons, finalauditfollowsthisnote. StudentlabBEFOREtests.
+
+BothFULLBUILDS PASSwithoutobservedwarnings. Newlogs327programs982operationsPASS
+normal4.59s/san7.91s. All25affectedregressionsPASS194.27s/457.64s. All42reportsread
+no failures,savedvalidation/checkpoint-361/{normal,sanitized}. ALLHANDLES TERMINAL:
+build22819/45999,newtest98688/19773,regressions40392/30621. Logs
+/tmp/minima-logs-{build,build-san,test,test-san,regressions,regressions-san}.log.
+
+Newlogs.hpp/.cpp registered+CMake. Seven GeneralParams flags nowstd::atomic<bool>
+followingTxPoWSqlDB. Preserveseparatefixed-orderwrites,omissions,partialfailures,
+TXPoWblock+transactionflags andsource replyreads. Atomicsperfieldnottransaction.
+ParamSnapshots nowload()boolsnapshots/captures; processorfixture two directflag
+assignmentsreplacebool-pointerentries. Reverseatomicchangesexactlyreproduceprior
+GeneralParams.hpp/.cpp+ParamSnapshotshashes; evidenceinprovenance. No source-body
+correctionsneededaftertests. Allmodifiedcode/fixtures/corpusreviewedafterapply.
+
+327programs cover18typedvalues*8keys*2priorstates, omittedoptions andsingleupdates,
+hiddenSQLtransactionflag,partialchangedprefix/unchangedsuffix,metadata/freshfactory,
+runnergates,actualMain.setSyncIBDlogconsumer. NativeMAXIMA_LOGS flag hasnosource
+consumeroutside declaration/reset/logs inthispin. Do notclaimfullMaximalogging.
+
+25selectedtests:source,Command/runner/errors,params+original,TxPoWSqlDB,miner+
+worker,processor+worker,checkerlogs,timederrors,peerschecker,NIOmessage/state/
+transport,Main,lifecycle,networkpeers/status,trace,health,ping,logs. Loopbackonly,
+escalationsaccepted. 21JSONreportsperbuild; worker/original/sourcegatesinCTest.
+NoTSAN/fullnode/exhaustiveJava-racy-scheduleclaim. No newagents.
+
+Lessons logs+GeneralParams,lab,README/REVIEW/provenance/map/index updated. Finalaudit,
+gitdiffcheck,commitwithGRAPHIFY_SKIP_HOOK=1,tagunique361,bundle/recoverycloneverify.
+Evidencefoldersnormal/sanitizedavoidrootbuildignore; originalhistory/pinretained.
+
+Nextcandidate status.java nowreadFULL343lines. Existingreuseidentifiedbutnotyet
+fullyreviewed forimplementation: MinimaLogger.hppFULL/cpp1..78 runtime public
+getRuntime().totalMemory/freeMemory already nativeallocator onApple/glibc;
+MiniFile getTotalFileSize/getTotalFileSizeWithNames alreadyexist. TxPoW.getWeight
+usesMMREntryNumber::dividePositive(Crypto::MAX_VAL,difficulty,7),exactDECIMAL32
+buildingblock candidate (needreadhelperfully). TxPoWGenerator median/speed funcs
+exist. Main.collectMemory currentlyprivate optionalhint; source status callsGC on
+clean PRESENCE beforedebug/complete parsingandbeforeMain/DB lookups. Do not replace
+that with anearlyrequiredMainlookup. No statuscode/lab/tests written. Sourceincludes
+staticmain hardcodedfileprint helper, preservemappedAPIexpectations. Mostdetails
+useactualDB/wallet/sql/chain/cascade/network; RAM/uptime requirevalidatedsampling
+orcontrollednativeboundary,notblanketnormalization. Fullnodegoal unchanged.
+
+Older notes below may be obsolete.
+
 # Current checkpoint 360 — healthcheck validated, ready for local commit
 
 Full-port goal ACTIVE/incomplete. This turn made progress: native healthcheck

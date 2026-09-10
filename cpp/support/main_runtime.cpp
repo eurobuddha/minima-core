@@ -30,6 +30,30 @@ JSONObject run(const JSONObject& input,const std::string& root){
         config=&object(step);events=JSONArray();calls=0;timers=JSONArray();listenerCalls=JSONArray();JSONObject out;std::ostringstream stream;auto previous=std::clog.rdbuf(stream.rdbuf());auto before=TimerMessage::currentTimeMillis();
         try{JSONValue value;auto cmd=config->getString("cmd");
             if(cmd=="fields")MainFixture::fields(*main,object(config->get("values")));
+            else if(cmd=="logFlags"){
+                if(config->containsKey("values")){const auto& values=object(config->get("values"));
+                    if(values.containsKey("scripts"))GeneralParams::SCRIPTLOGS=values.get("scripts").asBool();
+                    if(values.containsKey("mining"))GeneralParams::MINING_LOGS=values.get("mining").asBool();
+                    if(values.containsKey("maxima"))GeneralParams::MAXIMA_LOGS=values.get("maxima").asBool();
+                    if(values.containsKey("blocks"))GeneralParams::BLOCK_LOGS=values.get("blocks").asBool();
+                    if(values.containsKey("networking"))GeneralParams::NETWORKING_LOGS=values.get("networking").asBool();
+                    if(values.containsKey("ibd"))GeneralParams::IBDSYNC_LOGS=values.get("ibd").asBool();
+                    if(values.containsKey("peerschecker"))GeneralParams::PEERSCHECKER_lOG=values.get("peerschecker").asBool();
+                    if(values.containsKey("txpowdb"))TxPoWSqlDB::LOG_ADD_BLOCKS=values.get("txpowdb").asBool();
+                    if(values.containsKey("txpowTransactions"))TxPoWSqlDB::LOG_ADD_TRANSACTION=values.get("txpowTransactions").asBool();
+                }JSONObject flags;
+                flags.put("scripts",GeneralParams::SCRIPTLOGS.load());
+                flags.put("mining",GeneralParams::MINING_LOGS.load());
+                flags.put("maxima",GeneralParams::MAXIMA_LOGS.load());
+                flags.put("blocks",GeneralParams::BLOCK_LOGS.load());
+                flags.put("networking",GeneralParams::NETWORKING_LOGS.load());
+                flags.put("ibd",GeneralParams::IBDSYNC_LOGS.load());
+                flags.put("peerschecker",GeneralParams::PEERSCHECKER_lOG.load());
+                flags.put("txpowdb",TxPoWSqlDB::LOG_ADD_BLOCKS.load());
+                flags.put("txpowTransactions",TxPoWSqlDB::LOG_ADD_TRANSACTION.load());
+                value=flags;
+            }
+            else if(cmd=="syncCurrent")main->setSyncIBD(flag("value"));
             else if(cmd=="diagnostics"){
                 if(flag("reset")){MessageProcessor::setTrace(false,"");NIOClient::mTraceON=false;NIOServer::mTraceON=false;}
                 JSONObject diagnostics;diagnostics.put("trace",main->isTrace());diagnostics.put("filter",main->getTraceFilter());diagnostics.put("client",NIOClient::mTraceON.load());diagnostics.put("server",NIOServer::mTraceON.load());if(config->containsKey("match"))diagnostics.put("matches",main->checkTraceFilter(config->getString("match")));value=diagnostics;
