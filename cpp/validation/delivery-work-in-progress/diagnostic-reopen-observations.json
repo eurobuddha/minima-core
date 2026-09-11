@@ -1,0 +1,74 @@
+{
+  "source_head": "41a9c5f67e68116ba29c5ff28e0946dcfad086a3",
+  "diagnostic_run_exit": 0,
+  "observations": [
+    {
+      "block": 2309788,
+      "hash": "0x0000005478C93EEC2ABE92BBE2DD3122E570F15BAD5D029788D1566E89294F74",
+      "connected": 0,
+      "port": 22001,
+      "rpc_enabled": false,
+      "latest_peer": null
+    },
+    {
+      "block": 2309788,
+      "hash": "0x0000005478C93EEC2ABE92BBE2DD3122E570F15BAD5D029788D1566E89294F74",
+      "connected": 0,
+      "port": 22001,
+      "rpc_enabled": false,
+      "latest_peer": {
+        "block": 2309797,
+        "hash": "0x00000067D70419F434BFE05BB08148F78DE8364ECA83F7A48169219F89E3D7A1"
+      }
+    },
+    {
+      "block": 2309788,
+      "hash": "0x0000005478C93EEC2ABE92BBE2DD3122E570F15BAD5D029788D1566E89294F74",
+      "connected": 1,
+      "port": 22001,
+      "rpc_enabled": false,
+      "latest_peer": {
+        "block": 2309797,
+        "hash": "0x00000067D70419F434BFE05BB08148F78DE8364ECA83F7A48169219F89E3D7A1"
+      }
+    },
+    {
+      "block": 2309799,
+      "hash": "0x00000004203EBEE71332CAD57EA742874625FBC9F636B4DE0DCADA228CBDEB3F",
+      "connected": 1,
+      "port": 22001,
+      "rpc_enabled": false,
+      "latest_peer": {
+        "block": 2309799,
+        "hash": "0x00000004203EBEE71332CAD57EA742874625FBC9F636B4DE0DCADA228CBDEB3F"
+      }
+    },
+    {
+      "block": 2309800,
+      "hash": "0x0000004B3DAFE017CE93717051D846297CEE3A0B4327321BB52C306D5BA360D7",
+      "connected": 1,
+      "port": 22001,
+      "rpc_enabled": false,
+      "latest_peer": {
+        "block": 2309799,
+        "hash": "0x00000004203EBEE71332CAD57EA742874625FBC9F636B4DE0DCADA228CBDEB3F"
+      }
+    },
+    {
+      "block": 2309800,
+      "hash": "0x0000004B3DAFE017CE93717051D846297CEE3A0B4327321BB52C306D5BA360D7",
+      "connected": 1,
+      "port": 22001,
+      "rpc_enabled": false,
+      "latest_peer": {
+        "block": 2309800,
+        "hash": "0x0000004B3DAFE017CE93717051D846297CEE3A0B4327321BB52C306D5BA360D7"
+      }
+    }
+  ],
+  "block_processing_log": [
+    "Minima @ 11/09/2026 23:56:47 [47.5 MB] : Added block to tree : 2309800 0x0000004B3DAFE017CE93717051D846297CEE3A0B4327321BB52C306D5BA360D7"
+  ],
+  "clean_shutdown": true,
+  "scope": "Unchanged earlier packaged runtime, resumed existing isolated verification data, real launcher on port22001; observes catch-up and incremental block2309800. Does not erase initial 150-second reopen failure or prove its root cause. Public chain/network observations only; no wallet data."
+}

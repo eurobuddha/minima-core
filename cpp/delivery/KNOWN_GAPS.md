@@ -20,8 +20,7 @@ state/ownership tests, concurrency/error tests, and native node workflows. Each
 suite states its limits. Passing a finite corpus does not certify all Java virtual
 dispatch, object aliasing, exceptional paths, runtime/provider behavior or races.
 
-The current entry-point audit leaves twelve candidates: TxPoWMiner, EncryptDecrypt,
-CryptoPackage, PasswordCrypto, SignVerify, MMR, MegaMMR, TreeKey, ArchiveManager,
+The current entry-point audit leaves eight candidates: TxPoWMiner, MMR, MegaMMR, TreeKey, ArchiveManager,
 Cascade, TxPoWOnChainDB and TxPoWSqlDB. These classes already have native bodies,
 but their source demonstration entry points remain missing. See the latest
 validation candidate list for source paths and dependency details.

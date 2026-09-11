@@ -3,6 +3,7 @@
 namespace minima {
 class EncryptDecrypt {
 public:
+    static void main(const std::vector<std::string>* args);
     static std::vector<uint8_t> encryptASM(std::span<const uint8_t> key,std::span<const uint8_t> data);
     static std::vector<uint8_t> decryptASM(std::span<const uint8_t> key,std::span<const uint8_t> data);
     static std::vector<uint8_t> encryptSYM(std::span<const uint8_t> iv,std::span<const uint8_t> key,std::span<const uint8_t> data);

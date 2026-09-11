@@ -5,6 +5,7 @@ namespace minima {
 class CryptoPackage {
     std::optional<MiniData> mIvParam,mSecret,mData;
 public:
+    static void main(const std::vector<std::string>* args);
     void encrypt(std::span<const uint8_t> data,std::span<const uint8_t> publicKey);
     std::vector<uint8_t> decrypt(std::span<const uint8_t> privateKey) const;
     MiniData getCompleteEncryptedData() const {return MiniData(serialise());}

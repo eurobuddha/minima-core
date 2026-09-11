@@ -1,5 +1,6 @@
 #include "PasswordCrypto.hpp"
 #include "support/Gzip.hpp"
+#include <iostream>
 namespace minima {
 MiniData PasswordCrypto::encryptPassword(const std::string& password,const MiniData& data) {
     auto salt=MiniData::getRandomData(8);MiniData iv(GenerateKey::IvParam());auto secret=GenerateKey::secretKey(password,salt.bytes());auto out=wire::join(salt,iv);auto compressed=compressGzip(data.serialise());wire::append(out,GenerateKey::getCipherSYM(Cipher::ENCRYPT_MODE,iv.bytes(),secret.bytes).doFinal(compressed));return MiniData(std::move(out));
@@ -17,4 +18,13 @@ MiniData PasswordCrypto::decryptPassword(const std::string& password,const MiniD
     }
     wire::append(decrypted,cipher.doFinal({}));auto uncompressed=decompressGzip(decrypted,true);offset=0;return MiniData::deserialise(uncompressed,offset);
 }
+void PasswordCrypto::main(const std::vector<std::string>*) {
+    auto data=MiniData::getRandomData(32);std::cout<<data.to0xString()<<'\n';
+    const std::string password="apasswordblabla";
+    auto encrypted=encryptPassword(password,data);
+    std::cout<<encrypted.getLength()<<'\n'<<encrypted.to0xString()<<'\n';
+    auto decrypted=decryptPassword(password,encrypted);
+    std::cout<<decrypted.getLength()<<'\n'<<decrypted.to0xString()<<'\n';
+}
+
 }

@@ -30,6 +30,25 @@ The utility driver signs messages from length 0 through 2048 with key pairs gene
 
 The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
 
+## The added source demonstration entry point
+
+The source main generates an RSA pair and a 1,024-byte random message,
+signs with the private key and verifies with the public key. The complete printed
+output is `128` followed by `true`, each on its own line. The test invokes the real
+main, so successful return requires the existing generation, signing and verification
+operations to run. The older utility tests separately compare signatures for fixed
+keys/messages and check corrupted signatures and changed messages.
+
+The new [crypto main test](../../../../../../../tools/crypto_mains_differential.py)
+runs each actual Java and native main with null, empty and unused argument arrays.
+For the two printed AES envelopes, each language decrypts output from both languages
+and checks every original byte. See the [student lab](../../../../../../new-tests/crypto-main-methods.md)
+and its linked evidence for actual execution results and limitations.
+
+Java registers BouncyCastle before this demonstration. C++ reuses the linked
+OpenSSL backend; it has no Java Security provider registry. Registry side effects
+and provider-registration failures are not claimed as matching behavior.
+
 ## Limits and a useful next test
 
 No assertion here proves all DER key acceptance rules or exact SignatureException categories. The driver’s deterministic comparison is specific to this algorithm and must not be generalized to every signature scheme. Key generation remains randomized even when signing the same bytes with one fixed key is deterministic.

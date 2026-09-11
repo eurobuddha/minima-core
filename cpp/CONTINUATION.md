@@ -1,3 +1,27 @@
+# Timed delivery — crypto entry-point checkpoint
+
+Goal active/incomplete. Cutoff remains 02:30 London / 01:30 UTC, 12 September.
+No new mapped paths: 456 counterparts, one absent JNI file; full parity not_verified.
+Four new crypto mains tested normal and sanitized: 24 actual runs, 24 cross-decryptions,
+222 assertions each. Existing helpers reused; provider registry behavior not claimed.
+Four lessons and lab updated. Eight remaining main candidates in crypto batch evidence.
+
+Full normal earlier 292-test run session96386: 289 passed, three long crypto/magic tests
+running at last check. Full sanitized refresh+293 tests session77277. Do not restart.
+Actual normal node rebuilt successfully. Sanitized actual node in refresh build.
+
+Packaged41a9 initial fresh passed, reopen150s failed at2309788 vspeer2309789. Unchanged
+package diagnostic restart caught up and followed2309799->2309800, clean exit. Initial
+failure retained; exact cause unconfirmed. Temporary diagnostic node has exited;
+user preview21001 untouched. Runtime latest-observation comparison tightened.
+
+Current uncommitted crypto batch ready for local checkpoint; packaging notices and
+finder-metadata fix already committed2b0cc20 with verified bundle20260911T225633Z.
+Finish broad tests/remaining independent work and delivery; reserve final hour for
+package checks. Source/fullpackage assembly needs cpp clean. No push or user data edits.
+
+## Previous checkpoint (historical)
+
 # Delivery candidate — four further source entry points
 
 Deadline: 02:30 London on 12 September 2026 (01:30 UTC). See delivery/DEADLINE.md.

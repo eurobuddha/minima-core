@@ -30,6 +30,22 @@ The utility fixture compares deterministic AES ciphertext bytes for fixed key/IV
 
 The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
 
+## The added source demonstration entry point
+
+The source demonstration creates 1,024 random bytes, an 8-byte salt and a
+16-byte IV. It derives the AES key from `hello`, writes salt and IV as length-prefixed
+MiniData, then encrypts the raw bytes. Closing the output cipher emits its padding
+block. The printed envelope is 1,072 bytes: 12 for salt, 20 for IV and 1,040 for the
+padded payload. Native code reuses `Cipher.update`, `doFinal` and MiniData readers.
+The final source input-stream read is commented out. Native main initializes the
+decrypting cipher but deliberately does not decrypt or print extra output.
+
+The new [crypto main test](../../../../../../../tools/crypto_mains_differential.py)
+runs each actual Java and native main with null, empty and unused argument arrays.
+For the two printed AES envelopes, each language decrypts output from both languages
+and checks every original byte. See the [student lab](../../../../../../new-tests/crypto-main-methods.md)
+and its linked evidence for actual execution results and limitations.
+
 ## Limits and a useful next test
 
 ERROR comparison does not prove exact exception types or which operation failed first. Successful round trips alone would be weak evidence, which is why the driver also compares deterministic results and cross-language outputs. Null arrays, provider initialization failures, and all malformed padding patterns remain incomplete.

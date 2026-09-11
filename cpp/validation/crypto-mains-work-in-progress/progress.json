@@ -1,0 +1,35 @@
+{
+  "goal": "active_incomplete",
+  "deadline_utc": "2026-09-12T01:30:00Z",
+  "base_commit": "2b0cc20",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "missing": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "full_parity": "not_verified",
+  "new_main_methods": [
+    "EncryptDecrypt",
+    "PasswordCrypto",
+    "CryptoPackage",
+    "SignVerify"
+  ],
+  "remaining_main_candidates": 8,
+  "behavior_corrected_in_existing_helpers": [],
+  "validation": {
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "actual_main_runs_per_build": 24,
+    "cross_decryptions_per_build": 24,
+    "assertions_per_build": 222,
+    "normal_node_build_pass": true,
+    "full_normal_earlier_candidate": "289 passed, 3 still running",
+    "full_sanitized": "refresh build then 293 tests in session77277"
+  },
+  "limits": [
+    "No Java provider registry side-effect parity",
+    "CryptoPackage fresh private DER length recorded, not equated across random keys",
+    "Full class parity unverified"
+  ],
+  "next_action": "Finish remaining independent entries, broad regression, final package and recovery before deadline."
+}

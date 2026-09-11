@@ -31,6 +31,20 @@ The utility driver encrypts payloads of lengths 0, 1, 255, 512, 1024, and 4096 w
 
 The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
 
+## The added source demonstration entry point
+
+The source main generates a 32-byte message, encrypts it with the literal
+password `apasswordblabla`, then decrypts and prints the result. Both the original
+and recovered hex strings must agree. Its envelope contains serialized MiniData
+inside gzip inside AES; that differs from EncryptDecrypt's raw-byte demonstration.
+The new main calls the existing password helpers without changing those layers.
+
+The new [crypto main test](../../../../../../../tools/crypto_mains_differential.py)
+runs each actual Java and native main with null, empty and unused argument arrays.
+For the two printed AES envelopes, each language decrypts output from both languages
+and checks every original byte. See the [student lab](../../../../../../new-tests/crypto-main-methods.md)
+and its linked evidence for actual execution results and limitations.
+
 ## Limits and a useful next test
 
 Exact failure messages collapse to ERROR; corruption can be accepted when enough inner data was already read, so successful decryption is not evidence of an authentication check. Further tests should place damage at the gzip trailer, padding block, and MiniData body separately, explaining which layer actually consumes those bytes.

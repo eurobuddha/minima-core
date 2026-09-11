@@ -1,0 +1,18 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "main_runs": 24,
+  "assertions": 222,
+  "cross_decryptions": 24,
+  "scope": "24 actual main runs with null, empty and unused arguments; complete fixed output and structured random output checks; 24 cross-language/password/raw AES envelope decryptions. CryptoPackage private DER length is recorded but not equated across fresh random keys. Existing utility differential covers RSA/package/signature interoperability. No Java provider registry side-effect parity or provider-failure injection is claimed. Source commented-out decrypt reads remain inactive."
+}

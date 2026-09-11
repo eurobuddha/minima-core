@@ -31,6 +31,26 @@ The utility driver generates packages from both Java and native implementations 
 
 The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
 
+## The added source demonstration entry point
+
+The source main generates a fresh RSA pair and 256 bytes of data, encrypts
+through CryptoPackage, prints five lengths, and prints the result of comparing the
+decrypted bytes with the original. Its serialized package is 428 bytes: three
+four-byte length fields, 16-byte IV, 128-byte RSA-encrypted secret and 272-byte AES
+ciphertext. A fresh PKCS#8 private key has variable DER length because its integer
+encodings vary. The test records that length and checks the other complete lines;
+it does not pretend two independently random keys are identical.
+
+The new [crypto main test](../../../../../../../tools/crypto_mains_differential.py)
+runs each actual Java and native main with null, empty and unused argument arrays.
+For the two printed AES envelopes, each language decrypts output from both languages
+and checks every original byte. See the [student lab](../../../../../../new-tests/crypto-main-methods.md)
+and its linked evidence for actual execution results and limitations.
+
+Java registers BouncyCastle before this demonstration. C++ reuses the linked
+OpenSSL backend; it has no Java Security provider registry. Registry side effects
+and provider-registration failures are not claimed as matching behavior.
+
 ## Limits and a useful next test
 
 The fixture mostly creates a new object per operation; it does not fully establish partial state after reusing an object whose encrypt/read fails. A useful next fixture should initialize a valid package, then inject truncation at every field boundary and observe which old fields remain.

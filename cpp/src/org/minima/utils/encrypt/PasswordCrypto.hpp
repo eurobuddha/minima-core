@@ -3,6 +3,7 @@
 namespace minima {
 class PasswordCrypto {
 public:
+    static void main(const std::vector<std::string>* args);
     static MiniData encryptPassword(const std::string& password,const MiniData& data);
     static MiniData decryptPassword(const std::string& password,const MiniData& encrypted);
 };
