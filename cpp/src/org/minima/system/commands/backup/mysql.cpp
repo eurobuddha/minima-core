@@ -14,7 +14,7 @@
 #include "support/JavaUnixFile.hpp"
 #include <bit>
 #include <iostream>
-#include <thread>
+#include "support/NativeThread.hpp"
 namespace minima::commands {
 namespace {
 void log(const std::string& text){MinimaLogger::log(text);}
@@ -23,7 +23,7 @@ int64_t now(){return MinimaLogger::getRuntime().currentTimeMillis();}
 int64_t add(int64_t a,int64_t b){return std::bit_cast<int64_t>(uint64_t(a)+uint64_t(b));}
 int64_t subtract(int64_t a,int64_t b){return std::bit_cast<int64_t>(uint64_t(a)-uint64_t(b));}
 int32_t increment(int32_t n){return std::bit_cast<int32_t>(uint32_t(n)+1);}
-void pause(int64_t delay){if(delay<0)throw JavaIllegalArgumentException("timeout value is negative");std::this_thread::sleep_for(std::chrono::milliseconds(delay));}
+void pause(int64_t delay){if(delay<0)throw JavaIllegalArgumentException("timeout value is negative");nativeThreadSleep(delay);}
 std::shared_ptr<MinimaDB> database(){auto owner=MinimaDB::getDB();sqlRequired(owner);return owner;}
 std::shared_ptr<Main> runtime(){auto owner=Main::getInstance();sqlRequired(owner);return owner;}
 const MiniNumber& height(const std::shared_ptr<TxBlock>& block){return sqlRequired(block).getTxPoW().getBlockNumber();}

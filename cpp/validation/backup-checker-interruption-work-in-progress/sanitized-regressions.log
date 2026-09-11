@@ -1,0 +1,17 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 124: runtime_sleep_differential
+    Start 243: restoresync_differential
+    Start 246: mega_commands_differential
+1/6 Test #124: runtime_sleep_differential .......   Passed    9.13 sec
+    Start 240: archive_command_differential
+2/6 Test #243: restoresync_differential .........   Passed  170.77 sec
+    Start  44: timed_checker_checks
+3/6 Test  #44: timed_checker_checks .............   Passed    1.94 sec
+    Start 261: mysql_command_differential
+4/6 Test #240: archive_command_differential .....   Passed  226.59 sec
+5/6 Test #246: mega_commands_differential .......   Passed  239.87 sec
+6/6 Test #261: mysql_command_differential .......   Passed   98.09 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) = 270.85 sec

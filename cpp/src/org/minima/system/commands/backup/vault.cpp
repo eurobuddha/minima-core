@@ -8,7 +8,7 @@
 #include "org/minima/system/params/GeneralParams.hpp"
 #include "support/NativeThrowable.hpp"
 #include "support/JavaStringIgnoreCase.hpp"
-#include <thread>
+#include "support/NativeThread.hpp"
 namespace minima::commands {
 namespace {const std::string& requiredText(const std::optional<std::string>& text){if(!text)throw JavaNullPointerException("null vault string");return *text;}}
 std::function<std::shared_ptr<vault::MainReceiver>()> vault::getMain=[](){return std::shared_ptr<MainReceiver>{};};
@@ -98,7 +98,7 @@ json::JSONValue vault::runCommand(){
 }
 void vault::checkAllKeysCreated(){if(sqlRequired(getMain()).getAllKeysCreated())return;
     auto size=sqlRequired(getMain()).getAllDefaultKeysSize();throw CommandException("Please wait for ALL your keys to be created. This can take 5 mins. Currently ("+std::to_string(size)+"/"+std::to_string(Wallet::NUMBER_GETADDRESS_KEYS.load())+")");}
-void vault::stopAllKeysCreated(){if(sqlRequired(getMain()).getAllKeysCreated())return;sqlRequired(sqlRequired(MinimaDB::getDB()).getWallet()).setStopNewKeys(true);std::this_thread::sleep_for(std::chrono::milliseconds(2000));}
+void vault::stopAllKeysCreated(){if(sqlRequired(getMain()).getAllKeysCreated())return;sqlRequired(sqlRequired(MinimaDB::getDB()).getWallet()).setStopNewKeys(true);try{nativeThreadSleep(2000);}catch(const JavaTypedException& e){if(e.className()!="java.lang.InterruptedException")throw;}}
 void vault::passwordLockDB(const std::optional<std::string>& password){
     auto base=sqlRequired(sqlRequired(MinimaDB::getDB()).getWallet()).getBaseSeed();
     if(!sqlRequired(sqlRequired(MinimaDB::getDB()).getWallet()).isBaseSeedAvailable())throw CommandException("DB already locked!");

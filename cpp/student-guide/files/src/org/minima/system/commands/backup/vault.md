@@ -44,3 +44,7 @@ Only synthetic fixture seed material is used. These operations are not one datab
 Why is saving the encrypted phrase before wiping private keys necessary, and what remains if the wipe fails?
 
 Pinned Java SHA-256: `38d1cb311f72855ec1b1e574fd399c12a7f88b560f1a60a8713d62260af0894e`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
+
+## Backup/checker interruption follow-up
+
+stopAllKeysCreated now uses NativeThread and ignores only InterruptedException after setting STOP_NEWKEYS. When keys are already complete, it returns before sleeping and leaves interruption pending. New runtime cases compare both branches and the actual wallet stop flag without opening wallet storage. See the [interruption lab](../../../../../../../new-tests/backup-checker-interruption.md) for results and remaining limits. Full parity stays not_verified.

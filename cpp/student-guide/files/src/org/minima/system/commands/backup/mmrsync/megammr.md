@@ -71,3 +71,7 @@ helper checks all coins present in its map; that alone is not proof the map omit
 Why can checking the same in-memory MegaMMRBackup twice fail on the second attempt?
 
 Pinned Java SHA-256: `5ec2aedf311d44ba2836aaaa64dd9cdbac38780c84929b39d5145608d78e1cac`. [Mapping](../../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../../REVIEW.md).
+
+## Backup/checker interruption follow-up
+
+Import's 250 ms IBD-completion wait now uses NativeThread. Interruption exits before memory cleanup, proof transfer and final shutdown, matching the source statement order. Existing MegaMMR comparisons remain intact. A direct interrupted import against durable storage is not newly claimed. See the [interruption lab](../../../../../../../../new-tests/backup-checker-interruption.md) for results and remaining limits. Full parity stays not_verified.

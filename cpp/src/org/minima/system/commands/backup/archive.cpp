@@ -16,7 +16,7 @@
 #include "support/NIOConnections.hpp"
 #include "support/NativeThrowable.hpp"
 #include <bit>
-#include <thread>
+#include "support/NativeThread.hpp"
 namespace minima::commands {
 namespace {
 void log(const std::string& text){MinimaLogger::log(text);}
@@ -24,7 +24,7 @@ void collect(){if(auto callback=MinimaLogger::getRuntime().collectMemory)callbac
 int64_t now(){return MinimaLogger::getRuntime().currentTimeMillis();}
 int64_t subtract(int64_t a,int64_t b){return std::bit_cast<int64_t>(uint64_t(a)-uint64_t(b));}
 int32_t intadd(int32_t a,int32_t b){return std::bit_cast<int32_t>(uint32_t(a)+uint32_t(b));}
-void pause(int64_t delay){std::this_thread::sleep_for(std::chrono::milliseconds(delay));}
+void pause(int64_t delay){nativeThreadSleep(delay);}
 void removeFile(const std::filesystem::path& file){std::error_code error;if(file.string().find('\0')==std::string::npos)std::filesystem::remove(file,error);}
 bool fileExists(const std::filesystem::path& file){std::error_code error;return file.string().find('\0')==std::string::npos&&std::filesystem::exists(file,error);}
 std::shared_ptr<MinimaDB> db(){auto owner=MinimaDB::getDB();sqlRequired(owner);return owner;}
@@ -267,7 +267,7 @@ std::shared_ptr<IBD> archive::sendArchiveReq(const std::optional<std::string>& h
         auto response=MiniData::readFromStream([&](auto bytes)->size_t{auto count=nioReadSome(socket,bytes,10000);return count<0?0:size_t(count);});sqlRequired(sqlRequired(main()->getNIOManager()).getTrafficListener()).addReadBytes("sendArchiveReq",int64_t(response.size()));socket->close();size_t offset=0;(void)MiniByte::deserialise(response.bytes(),offset);ibd=std::make_shared<IBD>(IBD::deserialise(response.bytes(),offset));break;
     }catch(const JavaError&){throw;}catch(const std::bad_alloc&){throw;}catch(const std::exception& error){
         log("Archive connection : "+nativeExceptionText(error)+" @ "+host.value_or("null")+":"+std::to_string(port));ibd.reset();attempts=intadd(attempts,1);
-        if(attempts<maximum){log(std::to_string(attempts)+" Attempts > Wait 10 seconds and re-attempt..");pause(10000);log("Re-attempt started..");}
+        if(attempts<maximum){log(std::to_string(attempts)+" Attempts > Wait 10 seconds and re-attempt..");try{pause(10000);}catch(const JavaTypedException& e){if(e.className()!="java.lang.InterruptedException")throw;}log("Re-attempt started..");}
     }}return ibd;
 }
 }

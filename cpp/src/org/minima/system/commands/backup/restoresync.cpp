@@ -3,7 +3,7 @@
 #include "org/minima/system/commands/network/connect.hpp"
 #include "support/JavaDateString.hpp"
 #include <bit>
-#include <thread>
+#include "support/NativeThread.hpp"
 #include "vault.hpp"
 #include "org/minima/system/Main.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -16,7 +16,7 @@ namespace {
 int64_t now(){return MinimaLogger::getRuntime().currentTimeMillis();}
 int64_t subtract(int64_t a,int64_t b){return std::bit_cast<int64_t>(uint64_t(a)-uint64_t(b));}
 int32_t increment(int32_t a){return std::bit_cast<int32_t>(uint32_t(a)+1);}
-void pause(int64_t delay){std::this_thread::sleep_for(std::chrono::milliseconds(delay));}
+void pause(int64_t delay){nativeThreadSleep(delay);}
 std::shared_ptr<MinimaDB> db(){auto owner=MinimaDB::getDB();sqlRequired(owner);return owner;}
 std::shared_ptr<Main> main(){auto owner=Main::getInstance();sqlRequired(owner);return owner;}
 const MiniNumber& height(const std::shared_ptr<TxBlock>& block){return sqlRequired(block).getTxPoW().getBlockNumber();}

@@ -1,0 +1,2946 @@
+{
+  "passed": true,
+  "cases": 579,
+  "network_cases": 10,
+  "checks": [
+    {
+      "case": 0,
+      "task": "meta",
+      "exception": null
+    },
+    {
+      "case": 1,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 2,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 3,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 4,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 5,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 6,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 7,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 8,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 9,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 10,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 11,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 12,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 13,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 14,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 15,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 16,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 17,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 18,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 19,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 20,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 21,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 22,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 23,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 24,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 25,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 26,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 27,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 28,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 29,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 30,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 31,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 32,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 33,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 34,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 35,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 36,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 37,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 38,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 39,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 40,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 41,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 42,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 43,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 44,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 45,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 46,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 47,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 48,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 49,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 50,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 51,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 52,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 53,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 54,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 55,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 56,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 57,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 58,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 59,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 60,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 61,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 62,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 63,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 64,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 65,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 66,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 67,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : file"
+    },
+    {
+      "case": 68,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 69,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 70,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 71,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 72,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 73,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 74,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 75,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 76,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 77,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 78,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 79,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 80,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 81,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 82,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 83,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 84,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 85,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 86,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 87,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 88,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR not enabled"
+    },
+    {
+      "case": 89,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 90,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 91,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 92,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 93,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 94,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 95,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 96,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 97,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 98,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 99,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 100,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 101,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 102,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 103,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 104,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 105,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 106,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 107,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 108,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 109,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 110,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 111,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 112,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 113,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 114,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 115,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 116,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 117,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 118,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 119,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 120,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 121,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 122,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 123,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 124,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 125,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 126,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 127,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 128,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 129,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 130,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 131,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 132,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 133,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 134,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 135,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 136,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 137,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 138,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 139,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 140,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 141,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 142,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 143,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 144,
+      "task": "command",
+      "exception": "java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0"
+    },
+    {
+      "case": 145,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 146,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 147,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 148,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 149,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 150,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 151,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 152,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 153,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 154,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 155,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : file"
+    },
+    {
+      "case": 156,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 157,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 158,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 159,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 160,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 161,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 162,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 163,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 164,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 165,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 166,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MUST specify a file to restore from"
+    },
+    {
+      "case": 167,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 168,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 169,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 170,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 171,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 172,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 173,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 174,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 175,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 176,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 177,
+      "task": "runner",
+      "exception": null
+    },
+    {
+      "case": 178,
+      "task": "runner",
+      "exception": null
+    },
+    {
+      "case": 179,
+      "task": "runner",
+      "exception": null
+    },
+    {
+      "case": 180,
+      "task": "runner",
+      "exception": null
+    },
+    {
+      "case": 181,
+      "task": "meta",
+      "exception": null
+    },
+    {
+      "case": 182,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 183,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 184,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 185,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 186,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 187,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 188,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 189,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 190,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 191,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 192,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 193,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 194,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 195,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 196,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 197,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 198,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 199,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 200,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 201,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 202,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 203,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 204,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 205,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 206,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 207,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 208,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 209,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 210,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 211,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 212,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 213,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 214,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 215,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 216,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 217,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 218,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 219,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 220,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 221,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 222,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 223,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 224,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 225,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 226,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 227,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 228,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 229,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 230,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 231,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 232,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 233,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 234,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 235,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 236,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 237,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 238,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 239,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 240,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 241,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 242,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 243,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 244,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 245,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 246,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 247,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: param not specified : action"
+    },
+    {
+      "case": 248,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 249,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 250,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 251,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 252,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 253,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 254,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 255,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 256,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 257,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 258,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action"
+    },
+    {
+      "case": 259,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 260,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 261,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 262,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 263,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 264,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 265,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 266,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 267,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 268,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 269,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 270,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 271,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 272,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 273,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 274,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 275,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 276,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 277,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 278,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 279,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 280,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 281,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 282,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 283,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 284,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 285,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 286,
+      "task": "command",
+      "exception": "java.lang.ClassCastException"
+    },
+    {
+      "case": 287,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 288,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 289,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 290,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 291,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 292,
+      "task": "runner",
+      "exception": null
+    },
+    {
+      "case": 293,
+      "task": "runner",
+      "exception": null
+    },
+    {
+      "case": 294,
+      "task": "runner",
+      "exception": null
+    },
+    {
+      "case": 295,
+      "task": "runner",
+      "exception": null
+    },
+    {
+      "case": 296,
+      "task": "command",
+      "exception": "java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0"
+    },
+    {
+      "case": 297,
+      "task": "command",
+      "exception": "java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0"
+    },
+    {
+      "case": 298,
+      "task": "command",
+      "exception": "java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0"
+    },
+    {
+      "case": 299,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 300,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 301,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 302,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 303,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 304,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 305,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: Restore file doesn't exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/mega-command-cgvxc5wx/case/missing"
+    },
+    {
+      "case": 306,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR file doesn't exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/mega-command-cgvxc5wx/case/missing"
+    },
+    {
+      "case": 307,
+      "task": "command",
+      "exception": "java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0"
+    },
+    {
+      "case": 308,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: Restore file doesn't exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/mega-command-cgvxc5wx/case/nul\u0000file"
+    },
+    {
+      "case": 309,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR file doesn't exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/mega-command-cgvxc5wx/case/nul\u0000file"
+    },
+    {
+      "case": 310,
+      "task": "command",
+      "exception": "java.io.IOException: Invalid file path"
+    },
+    {
+      "case": 311,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 312,
+      "task": "command",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 313,
+      "task": "command",
+      "exception": "java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0"
+    },
+    {
+      "case": 314,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: Restore file doesn't exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/mega-command-cgvxc5wx/case/directory/nonexistent/file"
+    },
+    {
+      "case": 315,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: MegaMMR file doesn't exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/mega-command-cgvxc5wx/case/directory/nonexistent/file"
+    },
+    {
+      "case": 316,
+      "task": "command",
+      "exception": "java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0"
+    },
+    {
+      "case": 317,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : file"
+    },
+    {
+      "case": 318,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : file"
+    },
+    {
+      "case": 319,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 320,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 321,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 322,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 323,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 324,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 325,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 326,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 327,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 328,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 329,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 330,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 331,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 332,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 333,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 334,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 335,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 336,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:2 new_block:1"
+    },
+    {
+      "case": 337,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 338,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 339,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 340,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 341,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 342,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 343,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:0 new_block:2"
+    },
+    {
+      "case": 344,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:0 new_block:2"
+    },
+    {
+      "case": 345,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:0 new_block:2"
+    },
+    {
+      "case": 346,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:0 new_block:2"
+    },
+    {
+      "case": 347,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:0 new_block:2"
+    },
+    {
+      "case": 348,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:0 new_block:2"
+    },
+    {
+      "case": 349,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:0 new_block:2"
+    },
+    {
+      "case": 350,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:0 new_block:2"
+    },
+    {
+      "case": 351,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:3"
+    },
+    {
+      "case": 352,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:3"
+    },
+    {
+      "case": 353,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:3"
+    },
+    {
+      "case": 354,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:3"
+    },
+    {
+      "case": 355,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 356,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 357,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 358,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 359,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 360,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 361,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 362,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 363,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 364,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 365,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 366,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 367,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 368,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 369,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 370,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 371,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 372,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 373,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 374,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 375,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 376,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 377,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 378,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 379,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 380,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 381,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 382,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 383,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 384,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 385,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 386,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 387,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 388,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 389,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 390,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 391,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 392,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 393,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 394,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:1 new_block:1"
+    },
+    {
+      "case": 395,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 396,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 397,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 398,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 399,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 400,
+      "task": "check",
+      "exception": null
+    },
+    {
+      "case": 401,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 402,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: INVALID Coin proof! @ {\"coinid\":\"0xFFFF\",\"amount\":\"2\",\"address\":\"0x01\",\"miniaddress\":\"Mx200104JMFSAS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[{\"port\":0,\"type\":1,\"data\":\"0xAA\"}],\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}"
+    },
+    {
+      "case": 403,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 404,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 405,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 406,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 407,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 408,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 409,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 410,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 411,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 412,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 413,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 414,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 415,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 416,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 417,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 418,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 419,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 420,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 421,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 422,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 423,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 424,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 425,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 426,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 427,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 428,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 429,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 430,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:2"
+    },
+    {
+      "case": 431,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 432,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 433,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 434,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid block number.. not incremental.. last_in_mega:3 new_block:1"
+    },
+    {
+      "case": 435,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 436,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 437,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 438,
+      "task": "check",
+      "exception": "org.minima.system.commands.CommandException: Invalid IBD"
+    },
+    {
+      "case": 439,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 440,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 441,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 442,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 443,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 444,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 445,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 446,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 447,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 448,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 449,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 450,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 451,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 452,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 453,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 454,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 455,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 456,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 457,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 458,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 459,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 460,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 461,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 462,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 463,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 464,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 465,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 466,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 467,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 468,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 469,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 470,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 471,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 472,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 473,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 474,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 475,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 476,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 477,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 478,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 479,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 480,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 481,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 482,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 483,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 484,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 485,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 486,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 487,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 488,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 489,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 490,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 491,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 492,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 493,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 494,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 495,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 496,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 497,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 498,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 499,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 500,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 501,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 502,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 503,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 504,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 505,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 506,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 507,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 508,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 509,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 510,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 511,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 512,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 513,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 514,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 515,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 516,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 517,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 518,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 519,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 520,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 521,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 522,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 523,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 524,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 525,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 526,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 527,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 528,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 529,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 530,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 531,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 532,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 533,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 534,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 535,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 536,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 537,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 538,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 539,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 540,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 541,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 542,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 543,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 544,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 545,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 546,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 547,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 548,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 549,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 550,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 551,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 552,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 553,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 554,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 555,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 556,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 557,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 558,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 559,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 560,
+      "task": "search",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 561,
+      "task": "search",
+      "exception": null
+    },
+    {
+      "case": 562,
+      "task": "peers",
+      "exception": "java.lang.NullPointerException"
+    },
+    {
+      "case": 563,
+      "task": "peers",
+      "exception": null
+    },
+    {
+      "case": 564,
+      "task": "peers",
+      "exception": null
+    },
+    {
+      "case": 565,
+      "task": "peers",
+      "exception": null
+    },
+    {
+      "case": 566,
+      "task": "peers",
+      "exception": null
+    },
+    {
+      "case": 567,
+      "task": "peers",
+      "exception": null
+    },
+    {
+      "case": 568,
+      "task": "peers",
+      "exception": null
+    },
+    {
+      "case": 569,
+      "task": "peers",
+      "exception": null
+    },
+    {
+      "case": 570,
+      "task": "details",
+      "exception": null
+    },
+    {
+      "case": 571,
+      "task": "details",
+      "exception": null
+    },
+    {
+      "case": 572,
+      "task": "command",
+      "exception": null
+    },
+    {
+      "case": 573,
+      "task": "current",
+      "exception": null
+    },
+    {
+      "case": 574,
+      "task": "current",
+      "exception": null
+    },
+    {
+      "case": 575,
+      "task": "current",
+      "exception": null
+    },
+    {
+      "case": 576,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: Invalid HOST format for resync : bad"
+    },
+    {
+      "case": 577,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: Invalid HOST format for resync : 127.0.0.1:no"
+    },
+    {
+      "case": 578,
+      "task": "command",
+      "exception": "org.minima.system.commands.CommandException: Could not connect to Archive host! @ 127.0.0.1:0"
+    }
+  ],
+  "network": [
+    {
+      "reply": "0x0000014E17000102010001",
+      "success": true
+    },
+    {
+      "reply": "0x0000014E63000102010001",
+      "success": true
+    },
+    {
+      "reply": "0x0000014E17000102010001",
+      "success": false
+    },
+    {
+      "reply": "drop",
+      "success": false
+    },
+    {
+      "reply": "00000000",
+      "success": false
+    },
+    {
+      "reply": "ffffffff",
+      "success": false
+    },
+    {
+      "flag": "noMain",
+      "success": false
+    },
+    {
+      "flag": "noNetwork",
+      "success": false
+    },
+    {
+      "flag": "noNIO",
+      "success": false
+    },
+    {
+      "flag": "nullData",
+      "success": false
+    }
+  ],
+  "failures": [],
+  "scope": "Real H2 command metadata/gates/exports, file effects, mutable MegaMMR integrity and synthetic tree coin selection, peer files, default Main MegaMMR callback and loopback request decoding. Synthetic blocks are not live consensus evidence. Live import/resync, nonempty wallet/proof recovery, delayed timeouts and full parity remain unverified."
+}

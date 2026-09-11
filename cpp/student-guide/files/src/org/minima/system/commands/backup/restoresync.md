@@ -101,3 +101,7 @@ boundaries and full public API parity still require validation.
 Why can a failed archive connection still lead to the caller returning a restart message?
 
 Pinned Java SHA-256: `4eaff23d3afc7e26d2e15df39bb97613787e03a21dc0030fb26246d0dfe9832c`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
+
+## Backup/checker interruption follow-up
+
+The 250 ms first-tip and 50 ms catch-up waits now use NativeThread. Their exceptions retain source propagation; no local catch is added. Existing restore comparisons are used as regressions, while direct interruption midway through a durable restore/resync still needs its own controlled test. See the [interruption lab](../../../../../../../new-tests/backup-checker-interruption.md) for results and remaining limits. Full parity stays not_verified.

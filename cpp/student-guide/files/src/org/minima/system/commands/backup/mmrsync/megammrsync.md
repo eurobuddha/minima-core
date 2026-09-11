@@ -73,3 +73,7 @@ occurred before the substantive synchronization request fails.
 Why can mydetails omit an address that getMyDetails sends, and why does a null initial tip skip the MegaMMR scan?
 
 Pinned Java SHA-256: `332dfeabffaff9d0f3cac438d31197f3269c0385c8069af8cca8d7de97504152`. [Mapping](../../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../../REVIEW.md).
+
+## Backup/checker interruption follow-up
+
+The 250 ms IBD-completion wait now uses NativeThread. Interruption propagates before importing coin proofs, saving peer state and final shutdown. The command retains its existing source order and network adapters. Direct interruption during a live MegaMMR resync remains separate validation work. See the [interruption lab](../../../../../../../../new-tests/backup-checker-interruption.md) for results and remaining limits. Full parity stays not_verified.

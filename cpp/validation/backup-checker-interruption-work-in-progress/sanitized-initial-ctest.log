@@ -1,0 +1,55 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 124: runtime_sleep_differential
+    Start 129: timed_checker_errors_differential
+1/2 Test #124: runtime_sleep_differential ..........***Failed    7.47 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "comparisons": 9,
+  "assertions": 172,
+  "failure": "AssertionError({'mode': 'mysql_positive', 'java': {'mode': 'mysql_positive', 'connects': 0, 'sleepInterrupted': True, 'negativeDelay': False, 'prefs': {'mysql_host': 'fixture:3306', 'mysql_db': 'fixture', 'mysql_user': 'student', 'mysql_password': 'synthetic', 'mysql_autologindetails': True, 'mysql_autobackup': True}, 'error': 'none', 'pending': False, 'replaced': False, 'enabled': False, 'authenticate': False, 'locked': False}, 'cpp': {'mode': 'mysql_positive', 'connects': 0, 'sleepInterrupted': True, 'negativeDelay': False, 'prefs': {'webhooks': [], 'mysql_host': 'fixture:3306', 'mysql_db': 'fixture', 'mysql_user': 'student', 'mysql_password': 'synthetic', 'mysql_autologindetails': True, 'mysql_autobackup': True}, 'error': 'none', 'pending': False, 'replaced': False, 'enabled': False, 'authenticate': False, 'locked': False}})",
+  "scope": "Actual Main shutdown/restart with controlled old-network completion, real replacement network on ephemeral port with outbound peers disabled; RPC/vault/MySQL state ordering and archive request retry; actual archive server retry with recording SQL; actual P2P discovery/TCP responder. Real interrupt flags/sleeps, no injected InterruptedException. No wallet or mainnet node touched. Broader runtime/I/O/thread parity remains open."
+}
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/runtime_sleep_differential.py", line 71, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/runtime_sleep_differential.py", line 28, in main
+    report['cases'].append(dict(mode=mode,java=rows[0],cpp=rows[1]));check(rows[0]==rows[1],report['cases'][-1]);report['comparisons']+=1
+                                                                     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/runtime_sleep_differential.py", line 21, in check
+    assert condition,reason
+           ^^^^^^^^^
+AssertionError: {'mode': 'mysql_positive', 'java': {'mode': 'mysql_positive', 'connects': 0, 'sleepInterrupted': True, 'negativeDelay': False, 'prefs': {'mysql_host': 'fixture:3306', 'mysql_db': 'fixture', 'mysql_user': 'student', 'mysql_password': 'synthetic', 'mysql_autologindetails': True, 'mysql_autobackup': True}, 'error': 'none', 'pending': False, 'replaced': False, 'enabled': False, 'authenticate': False, 'locked': False}, 'cpp': {'mode': 'mysql_positive', 'connects': 0, 'sleepInterrupted': True, 'negativeDelay': False, 'prefs': {'webhooks': [], 'mysql_host': 'fixture:3306', 'mysql_db': 'fixture', 'mysql_user': 'student', 'mysql_password': 'synthetic', 'mysql_autologindetails': True, 'mysql_autobackup': True}, 'error': 'none', 'pending': False, 'replaced': False, 'enabled': False, 'authenticate': False, 'locked': False}}
+
+2/2 Test #129: timed_checker_errors_differential ...   Passed   29.78 sec
+
+50% tests passed, 1 tests failed out of 2
+
+Total Test time (real) =  29.82 sec
+
+The following tests FAILED:
+	124 - runtime_sleep_differential (Failed)
+Errors while running CTest

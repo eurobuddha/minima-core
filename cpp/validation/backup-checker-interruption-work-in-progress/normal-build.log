@@ -1,0 +1,33 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/vault.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TimedChecker.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/archive.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/megammr.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/restoresync.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mysql.cpp.o
+[  2%] Linking CXX static library libminima_file_port.a
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/timed_checker_errors.dir/support/timed_checker_errors.cpp.o
+[100%] Linking CXX executable timed_checker_errors
+[100%] Built target timed_checker_errors
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/timed_checker_checks.dir/support/timed.cpp.o
+[100%] Linking CXX executable timed_checker_checks
+[100%] Built target timed_checker_checks
+[ 97%] Built target minima_file_port
+[100%] Linking CXX executable runtime_sleep
+[100%] Built target runtime_sleep
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Building CXX object CMakeFiles/archive_command_runtime.dir/support/archive_command.cpp.o
+[100%] Building CXX object CMakeFiles/archive_command_runtime.dir/support/MainNetworkFixture.cpp.o
+[100%] Linking CXX executable archive_command_runtime
+[100%] Built target archive_command_runtime
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_mysql_command.dir/support/mysql_command.cpp.o
+[100%] Linking CXX executable minima_mysql_command
+[100%] Built target minima_mysql_command
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp

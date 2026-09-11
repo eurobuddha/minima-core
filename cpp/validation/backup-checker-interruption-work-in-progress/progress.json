@@ -1,0 +1,55 @@
+{
+  "goal": "active_incomplete",
+  "previous_goal_turn": "progress: checkpoint 9a43e88 with verified 45-file recovery bundle",
+  "base_commit": "9a43e88c510b42de9371780c440775a5c6a0c3f6",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "active_partial": 455,
+  "inactive_source_preserved": 1,
+  "absent": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "corrected": [
+    "TimedChecker polling interruption and worker interrupt after polling with retained ownership",
+    "vault ignores InterruptedException after setting stop-new-keys; ready path retains interrupt",
+    "archive retry ignores interruption; resync/raw import sleeps propagate",
+    "mysql, restoresync, megammr and megammrsync polling use NativeThread"
+  ],
+  "validation": {
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "runtime_comparisons_per_build": 26,
+    "runtime_assertions_per_build": 326,
+    "checker_cases_per_build": 106,
+    "new_runtime_cases": 7,
+    "new_checker_cases": 1,
+    "strengthened_checker_worker_observation": true,
+    "distinct_focused_ctests_per_build": 7,
+    "regression_group_seconds": {
+      "normal": 224.9,
+      "sanitized": 270.85
+    },
+    "checker_test_seconds": {
+      "normal": 25.04,
+      "sanitized": 29.78
+    },
+    "full_suite_rerun": false,
+    "deadline_rerun": false
+  },
+  "builds": {
+    "normal": "PASS affected targets and actual MinimaCoreCpp",
+    "sanitized": "PASS affected targets and actual MinimaCoreCpp; address/undefined sanitizers"
+  },
+  "raw_sleep_sites_under_mapped_production": 0,
+  "limits": [
+    "Zero raw sleep matches is not complete thread/API parity",
+    "Direct interrupted durable restore/MegaMMR processing and I/O waits remain unverified",
+    "Archive added cases use actual null-start encoding failure, not successful TCP retry",
+    "MySQL added cases use recording SQL; no user wallet or mainnet data touched",
+    "Checker retains source 120000 ms deadline; no long deadline rerun in this checkpoint",
+    "JNI native bodies unavailable in inspected sources; complete 457-file API/behavior parity not_verified"
+  ],
+  "failure_resolved": "Initial Java/native preference comparison differed by webhooks because native fixture constructs NotifyManager. Aligned Java initial state through actual getWebHooks; retained full comparison and added explicit preference expectations.",
+  "next_action": "Implement FixedTaskExecutor.awaitTermination interrupt semantics from inspected local OpenJDK source. Terminated/nonpositive-timeout paths retain pending flag; positive active waits can consume/throw. Then TimerProcessor and standalone entry-point API audit."
+}

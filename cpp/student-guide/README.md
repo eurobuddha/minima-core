@@ -1,4 +1,6 @@
 # Learning the Minima Java-to-C++ port
+
+The [backup/checker lab](new-tests/backup-checker-interruption.md) explains cooperative worker signals, retry catches and the source ordering of database setup.
 The [runtime sleep lab](new-tests/runtime-sleep-interruption.md) follows actual interruptions through Main restart, RPC, archive retry and P2P discovery, with scoped Java/C++ results.
 
 

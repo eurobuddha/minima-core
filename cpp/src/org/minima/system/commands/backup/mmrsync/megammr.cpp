@@ -9,7 +9,7 @@
 #include "support/JavaDateString.hpp"
 #include "support/JavaUnixFile.hpp"
 #include "support/NativeThrowable.hpp"
-#include <thread>
+#include "support/NativeThread.hpp"
 namespace minima::commands {
 namespace {
 void log(const std::string& text){MinimaLogger::log(text);}
@@ -58,7 +58,7 @@ json::JSONValue megammr::runCommand(){
         if(!GeneralParams::IS_MEGAMMR)throw CommandException("MegaMMR not enabled");auto file=getParam("file","");if(file.empty())throw CommandException("MUST specify a file to restore from");auto input=MiniFile::createBaseFile(file);if(!fileExists(input))throw CommandException("Restore file doesn't exist : "+javaUnixAbsoluteFile(input));MegaMMRBackup backup;
         try{log("Loading MegaMMR.. size:"+MiniFormat::formatSize(javaUnixFileLength(input)));MiniFile::loadObjectSlow(input,backup);}catch(const JavaError&){throw;}catch(const std::bad_alloc&){throw;}catch(const std::exception& error){throw CommandException(nativeExceptionText(error));}
         mainOwner()->archiveResetReady(false);sqlRequired(db()->getMegaMMR()).clear();db()->hardSetMegaMMR(backup.getMegaMMR());log("Process new IBD");sqlRequired(mainOwner()->getTxPoWProcessor()).postProcessIBD(backup.getIBD(),"0x00",true);
-        while(true){std::this_thread::sleep_for(std::chrono::milliseconds(250));if(sqlRequired(mainOwner()->getTxPoWProcessor()).isIBDProcessFinished())break;}
+        while(true){nativeThreadSleep(250);if(sqlRequired(mainOwner()->getTxPoWProcessor()).isIBDProcessFinished())break;}
         log("System memory clean..");if(auto collect=MinimaLogger::getRuntime().collectMemory)collect();auto tree=db()->getTxPoWTree();auto tip=sqlRequired(tree).getTip();log("Current Top Block : "+sqlRequired(tip).getTxPoW().getBlockNumber().toString());auto root=tree->getRoot();log("Current Tree Root : "+sqlRequired(root).getTxPoW().getBlockNumber().toString());log("Current MegaMMR Tip : "+sqlRequired(db()->getMegaMMR()).getMMR().getBlockTime().toString());log("Get all your CoinProofs");
         auto data=megammrsync::getMyDetails();auto proofs=megammrsync::getAllCoinProofs(data);log("Transfer your CoinProofs.. "+std::to_string(proofs->size()));for(const auto& proof:*proofs)CommandRunner::getRunner().runSingleCommand("coinimport track:true data:"+MiniData(sqlRequired(proof).serialise()).to0xString());
         json::JSONObject response;response.put("message","MegaMMR import finished.. please restart");result.put("response",response);mainOwner()->setHasShutDown();mainOwner()->shutdownFinalProcs();db()->saveAllDB();mainOwner()->stopMessageProcessor();mainOwner()->NotifyMainListenerOfShutDown();

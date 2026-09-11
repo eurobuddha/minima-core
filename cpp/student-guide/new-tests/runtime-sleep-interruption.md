@@ -86,3 +86,7 @@ Student exercise: explain why an interrupted RPC enable command can leave the ol
 server stopped while its configuration flag retains the old value. Then contrast
 that with Main.restartNIO: why must its InterruptedException catch continue to the
 replacement constructor? Use the source order of statements in each explanation.
+
+## Subsequent work
+
+The [backup/checker lab](backup-checker-interruption.md) migrates the seven raw sleep sites listed above and extends this driver to 26 comparisons. Those earlier counts describe the previous checkpoint; direct I/O and full lifecycle parity remain open.

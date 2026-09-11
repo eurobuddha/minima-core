@@ -8,14 +8,17 @@ import org.minima.utils.messages.*;
 import org.minima.utils.json.*;
 
 public class RuntimeSleepOracle extends NIOClientOracle {
+    static int archiveFailures,archiveRestarts;static boolean mysqlInterrupted,mysqlNegative;
     public static void main(String[] args)throws Exception{
         String mode=args[0];var out=new JSONObject();out.put("mode",mode);var saved=System.out;
         System.setOut(new PrintStream(OutputStream.nullOutputStream()){
-            public void println(String text){System.err.println(text);if(mode.equals("restart_wait")&&text.contains("restart in 5 seconds"))Thread.currentThread().interrupt();}
+            public void println(String text){System.err.println(text);if(text.contains("Archive connection : "))archiveFailures++;if(text.contains("Re-attempt started.."))archiveRestarts++;if(text.contains("java.lang.InterruptedException"))mysqlInterrupted=true;if(text.contains("java.lang.IllegalArgumentException"))mysqlNegative=true;if(mode.equals("restart_wait")&&text.contains("restart in 5 seconds"))Thread.currentThread().interrupt();}
         });
         GeneralParams.P2P_ENABLED=false;GeneralParams.P2P2_ENABLED=false;GeneralParams.RPC_ENABLED=false;GeneralParams.RPC_AUTHENTICATE=false;
         GeneralParams.NOCONNECT=true;GeneralParams.CONNECT_LIST="";GeneralParams.IS_HOST_SET=true;GeneralParams.MINIMA_HOST="127.0.0.1";GeneralParams.MINIMA_PORT=0;
-        MinimaDB.createDB();var main=(Main)U.allocateInstance(Main.class);MainNetworkOracle.stack(main);field(Main.class,"mMainInstance").set(null,main);
+        SqlDBOracle.events=new JSONArray();SqlDBOracle.config=new JSONObject();SqlDBOracle.config.put("rows",new JSONArray());SqlDBOracle.config.put("columns",new JSONArray());SqlDBOracle.installDriver("jdbc:mysql:");
+        // Native SystemCheckFixture creates NotifyManager, whose constructor reads this default.
+        MinimaDB.createDB();MinimaDB.getDB().getUserDB().getWebHooks();var main=(Main)U.allocateInstance(Main.class);MainNetworkOracle.stack(main);field(Main.class,"mMainInstance").set(null,main);
         var fixture=new MainNetworkOracle(new JSONObject(),main);var nio=fixture.nio;var network=fixture.network;
         set(network,"mP2PManager",nio);set(network,"mP2P2Manager",nio);
         var miner=(MessageProcessor)U.allocateInstance(org.minima.system.brains.TxPoWMiner.class);MainNetworkOracle.stack(miner);set(main,"mTxPoWMiner",miner);
@@ -33,6 +36,9 @@ public class RuntimeSleepOracle extends NIOClientOracle {
             else if(mode.equals("restart_wait")||mode.equals("restart_pause"))main.restartNIO();
             else if(mode.equals("netrestart")){var method=Main.class.getDeclaredMethod("processMessage",Message.class);method.setAccessible(true);method.invoke(main,new Message(Main.MAIN_NETRESTART));}
             else if(mode.equals("rpc")){var command=new org.minima.system.commands.network.rpc();command.getParams().put("enable","true");command.getParams().put("password","synthetic");command.runCommand();}
+            else if(mode.startsWith("vault_")){set(main,"mInitKeysCreated",mode.equals("vault_ready"));org.minima.system.commands.backup.vault.stopAllKeysCreated();out.put("stopNewKeys",get(MinimaDB.getDB().getWallet(),"STOP_NEWKEYS"));}
+            else if(mode.startsWith("archive_")){out.put("hasIBD",org.minima.system.commands.backup.archive.sendArchiveReq("127.0.0.1",0,null,mode.equals("archive_retry")?2:1)!=null);out.put("failures",archiveFailures);out.put("restarts",archiveRestarts);}
+            else if(mode.startsWith("mysql_")){GeneralParams.MYSQL_DB_DELAY=mode.equals("mysql_zero")?0:mode.equals("mysql_negative")?-1:10000;org.minima.system.commands.backup.mysql.convertMySQLParams("student:synthetic@fixture:3306/fixture");out.put("connects",SqlDBOracle.connectionID);out.put("sleepInterrupted",mysqlInterrupted);out.put("negativeDelay",mysqlNegative);out.put("prefs",MinimaDB.getDB().getUserDB().getAllData());}
             else throw new IllegalArgumentException(mode);
         }catch(Exception e){Throwable cause=e instanceof java.lang.reflect.InvocationTargetException?e.getCause():e;error=cause.getClass().getName();}
         boolean pending=Thread.interrupted();if(completed!=null)completed.join();

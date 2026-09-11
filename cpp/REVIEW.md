@@ -1,3 +1,37 @@
+# Current checkpoint — backup and checker interruption
+
+Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,
+one inactive), one absent jnifunctions.cpp. All full parity remains not_verified.
+
+Seven existing files updated: TimedChecker, vault, archive, mysql, restoresync,
+megammr and megammrsync. All mapped raw sleeps now use NativeThread. Vault and
+archive retry preserve missing source-local InterruptedException catches.
+TimedChecker signals its current worker after polling; caller interruption skips
+that later signal and retains the source failure path and input ownership.
+
+Both actual executable builds PASS. Normal and ASAN/UBSAN each pass 26 runtime
+comparisons / 326 assertions, 106 checker cases and seven distinct focused CTests.
+Seven runtime cases and one checker case are new; the held-worker assertion is
+strengthened. Storage regressions took 224.90 s / 270.85 s. Full suite and original
+long deadline tests were not rerun; no tests or source deadlines were shortened.
+
+Evidence: validation/backup-checker-interruption-work-in-progress. Seven lessons
+updated; student-guide/new-tests/backup-checker-interruption.md explains the tests.
+Initial webhook fixture mismatch is saved; initial state now matches through the
+actual getter. No compared preference was removed.
+
+NEXT: FixedTaskExecutor.awaitTermination ignores interruption. Inspected local
+OpenJDK 26.0.1: terminated and nonpositive-timeout paths retain pending interruption;
+positive active waits reach Condition.awaitNanos. Implement with meaningful ordering
+checks, then audit TimerProcessor and standalone entry points (NIOServer.main).
+Zero raw sleep matches does not certify condition-variable/I/O/thread/API parity.
+JNI native bodies remain unavailable, but independent work can proceed.
+
+Keep the frozen 6c28109 user preview on port 21001 and its data untouched. Preserve
+unrelated graphify outputs. Local checkpoints and verified recovery bundles; no push.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — runtime sleep integration
 
 Goal ACTIVE and incomplete. New mapped files: none. 456 paths remain: 455 active

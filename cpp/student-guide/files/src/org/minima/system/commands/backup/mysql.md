@@ -54,3 +54,7 @@ The recording suite does not make a live MySQL connection. Connector methods can
 Why is lastarch != 0 || lastarch != 1 true for every value, and what happens when the archive range helper excludes its lower bound?
 
 Pinned Java SHA-256: `1cf8f858f0329c43d139ebeca7de58876b036010afaa95e696a1077cde930265`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
+
+## Backup/checker interruption follow-up
+
+Resync polling and the convertMySQLParams delay now use NativeThread. New recording-driver comparisons cover positive, zero and negative setup delays with a pending interrupt. Positive delay consumes it before SQL connection, zero skips sleep and connects, and negative delay rejects without clearing it. Full preferences are compared because assignments happen before the delay. Interrupted resync persistence remains unverified. See the [interruption lab](../../../../../../../new-tests/backup-checker-interruption.md) for results and remaining limits. Full parity stays not_verified.

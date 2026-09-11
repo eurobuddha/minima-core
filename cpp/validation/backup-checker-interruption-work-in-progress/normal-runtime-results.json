@@ -1,0 +1,2404 @@
+{
+  "passed": true,
+  "comparisons": 26,
+  "assertions": 326,
+  "cases": [
+    {
+      "mode": "shutdown_wait",
+      "java": {
+        "mode": "shutdown_wait",
+        "error": "none",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "shutdown_wait",
+        "error": "none",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "restart_wait",
+      "java": {
+        "mode": "restart_wait",
+        "error": "none",
+        "pending": false,
+        "replaced": true,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "restart_wait",
+        "error": "none",
+        "pending": false,
+        "replaced": true,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "restart_pause",
+      "java": {
+        "mode": "restart_pause",
+        "error": "none",
+        "pending": false,
+        "replaced": true,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "restart_pause",
+        "error": "none",
+        "pending": false,
+        "replaced": true,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "netrestart",
+      "java": {
+        "mode": "netrestart",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "netrestart",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "rpc",
+      "java": {
+        "mode": "rpc",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "rpc",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "vault_wait",
+      "java": {
+        "mode": "vault_wait",
+        "stopNewKeys": true,
+        "error": "none",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "vault_wait",
+        "stopNewKeys": true,
+        "error": "none",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "vault_ready",
+      "java": {
+        "mode": "vault_ready",
+        "stopNewKeys": false,
+        "error": "none",
+        "pending": true,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "vault_ready",
+        "stopNewKeys": false,
+        "error": "none",
+        "pending": true,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "archive_retry",
+      "java": {
+        "mode": "archive_retry",
+        "hasIBD": false,
+        "failures": 2,
+        "restarts": 1,
+        "error": "none",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "archive_retry",
+        "hasIBD": false,
+        "failures": 2,
+        "restarts": 1,
+        "error": "none",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "archive_once",
+      "java": {
+        "mode": "archive_once",
+        "hasIBD": false,
+        "failures": 1,
+        "restarts": 0,
+        "error": "none",
+        "pending": true,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "archive_once",
+        "hasIBD": false,
+        "failures": 1,
+        "restarts": 0,
+        "error": "none",
+        "pending": true,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "mysql_positive",
+      "java": {
+        "mode": "mysql_positive",
+        "connects": 0,
+        "sleepInterrupted": true,
+        "negativeDelay": false,
+        "prefs": {
+          "webhooks": [],
+          "mysql_host": "fixture:3306",
+          "mysql_db": "fixture",
+          "mysql_user": "student",
+          "mysql_password": "synthetic",
+          "mysql_autologindetails": true,
+          "mysql_autobackup": true
+        },
+        "error": "none",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "mysql_positive",
+        "connects": 0,
+        "sleepInterrupted": true,
+        "negativeDelay": false,
+        "prefs": {
+          "webhooks": [],
+          "mysql_host": "fixture:3306",
+          "mysql_db": "fixture",
+          "mysql_user": "student",
+          "mysql_password": "synthetic",
+          "mysql_autologindetails": true,
+          "mysql_autobackup": true
+        },
+        "error": "none",
+        "pending": false,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "mysql_zero",
+      "java": {
+        "mode": "mysql_zero",
+        "connects": 1,
+        "sleepInterrupted": false,
+        "negativeDelay": false,
+        "prefs": {
+          "webhooks": [],
+          "mysql_host": "fixture:3306",
+          "mysql_db": "fixture",
+          "mysql_user": "student",
+          "mysql_password": "synthetic",
+          "mysql_autologindetails": true,
+          "mysql_autobackup": true
+        },
+        "error": "none",
+        "pending": true,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "mysql_zero",
+        "connects": 1,
+        "sleepInterrupted": false,
+        "negativeDelay": false,
+        "prefs": {
+          "webhooks": [],
+          "mysql_host": "fixture:3306",
+          "mysql_db": "fixture",
+          "mysql_user": "student",
+          "mysql_password": "synthetic",
+          "mysql_autologindetails": true,
+          "mysql_autobackup": true
+        },
+        "error": "none",
+        "pending": true,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "mode": "mysql_negative",
+      "java": {
+        "mode": "mysql_negative",
+        "connects": 0,
+        "sleepInterrupted": false,
+        "negativeDelay": true,
+        "prefs": {
+          "webhooks": [],
+          "mysql_host": "fixture:3306",
+          "mysql_db": "fixture",
+          "mysql_user": "student",
+          "mysql_password": "synthetic",
+          "mysql_autologindetails": true,
+          "mysql_autobackup": true
+        },
+        "error": "none",
+        "pending": true,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      },
+      "cpp": {
+        "mode": "mysql_negative",
+        "connects": 0,
+        "sleepInterrupted": false,
+        "negativeDelay": true,
+        "prefs": {
+          "webhooks": [],
+          "mysql_host": "fixture:3306",
+          "mysql_db": "fixture",
+          "mysql_user": "student",
+          "mysql_password": "synthetic",
+          "mysql_autologindetails": true,
+          "mysql_autobackup": true
+        },
+        "error": "none",
+        "pending": true,
+        "replaced": false,
+        "enabled": false,
+        "authenticate": false,
+        "locked": false
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "0",
+        "rows": [],
+        "columns": [],
+        "interrupt": true
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            0
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            0
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": null,
+        "rows": [],
+        "columns": [],
+        "interrupt": true
+      },
+      "java": {
+        "exception": "java.lang.NullPointerException",
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.NullPointerException"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ]
+        ]
+      },
+      "cpp": {
+        "exception": "java.lang.NullPointerException",
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.NullPointerException"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "7",
+        "rows": [],
+        "columns": [],
+        "interrupt": true,
+        "fail": 1,
+        "runtimeFailure": false
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [
+          "java.sql.SQLException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [
+          "java.sql.SQLException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "7",
+        "rows": [],
+        "columns": [],
+        "interrupt": true,
+        "fail": 1,
+        "runtimeFailure": true
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.IllegalStateException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.IllegalStateException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "7",
+        "rows": [],
+        "columns": [],
+        "interrupt": true,
+        "fail": 2,
+        "runtimeFailure": false
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [
+          "java.sql.SQLException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [
+          "java.sql.SQLException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "7",
+        "rows": [],
+        "columns": [],
+        "interrupt": true,
+        "fail": 2,
+        "runtimeFailure": true
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.IllegalStateException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.IllegalStateException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "7",
+        "rows": [],
+        "columns": [],
+        "interrupt": true,
+        "fail": 3,
+        "runtimeFailure": false
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [
+          "java.sql.SQLException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [
+          "java.sql.SQLException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "7",
+        "rows": [],
+        "columns": [],
+        "interrupt": true,
+        "fail": 3,
+        "runtimeFailure": true
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.IllegalStateException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.IllegalStateException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "7",
+        "rows": [],
+        "columns": [],
+        "interrupt": true,
+        "fail": 4,
+        "runtimeFailure": false
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [
+          "java.sql.SQLException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": true,
+        "logs": [
+          "java.sql.SQLException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      }
+    },
+    {
+      "archive": {
+        "op": "retry",
+        "first": "7",
+        "rows": [],
+        "columns": [],
+        "interrupt": true,
+        "fail": 4,
+        "runtimeFailure": true
+      },
+      "java": {
+        "blocks": [],
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.IllegalStateException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      },
+      "cpp": {
+        "blocks": [],
+        "threadInterrupted": false,
+        "logs": [
+          "Connection failed.. reconnecting.. : java.lang.IllegalStateException: fixture failure"
+        ],
+        "events": [
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ],
+          [
+            "prepared.clearParameters",
+            4
+          ],
+          [
+            "prepared.setLong",
+            4,
+            1,
+            7
+          ],
+          [
+            "prepared.executeQuery",
+            4
+          ],
+          [
+            "rows.next"
+          ]
+        ]
+      }
+    },
+    {
+      "p2p": "P2P_INIT",
+      "dropped": false,
+      "java": [
+        {
+          "threadInterrupted": true,
+          "result": "OK",
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "127.0.0.1",
+              "address": "127.0.0.1",
+              "port": 9001,
+              "text": "/127.0.0.1:9001",
+              "hash": 2130715434
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 600000
+          },
+          "events": [
+            "log:[+] P2P Version: 1.1",
+            "log:P2P Peers found : 0",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "6 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        },
+        {
+          "result": true,
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "127.0.0.1",
+              "address": "127.0.0.1",
+              "port": 9001,
+              "text": "/127.0.0.1:9001",
+              "hash": 2130715434
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 600000
+          },
+          "events": [
+            "log:[+] P2P Version: 1.1",
+            "log:P2P Peers found : 0",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "6 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        }
+      ],
+      "cpp": [
+        {
+          "threadInterrupted": true,
+          "result": "OK",
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "127.0.0.1",
+              "address": "127.0.0.1",
+              "port": 9001,
+              "text": "/127.0.0.1:9001",
+              "hash": 2130715434
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 600000
+          },
+          "events": [
+            "log:[+] P2P Version: 1.1",
+            "log:P2P Peers found : 0",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "6 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        },
+        {
+          "result": true,
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "127.0.0.1",
+              "address": "127.0.0.1",
+              "port": 9001,
+              "text": "/127.0.0.1:9001",
+              "hash": 2130715434
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 600000
+          },
+          "events": [
+            "log:[+] P2P Version: 1.1",
+            "log:P2P Peers found : 0",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "6 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        }
+      ]
+    },
+    {
+      "p2p": "P2P_INIT",
+      "dropped": true,
+      "java": [
+        {
+          "threadInterrupted": false,
+          "result": "OK",
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "127.0.0.1",
+              "address": "127.0.0.1",
+              "port": 9001,
+              "text": "/127.0.0.1:9001",
+              "hash": 2130715434
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 600000
+          },
+          "events": [
+            "log:[+] P2P Version: 1.1",
+            "log:P2P Peers found : 0",
+            "log:[D] Wait interrupted",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "12 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        },
+        {
+          "result": true,
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "127.0.0.1",
+              "address": "127.0.0.1",
+              "port": 9001,
+              "text": "/127.0.0.1:9001",
+              "hash": 2130715434
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 600000
+          },
+          "events": [
+            "log:[+] P2P Version: 1.1",
+            "log:P2P Peers found : 0",
+            "log:[D] Wait interrupted",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "12 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        }
+      ],
+      "cpp": [
+        {
+          "threadInterrupted": false,
+          "result": "OK",
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "127.0.0.1",
+              "address": "127.0.0.1",
+              "port": 9001,
+              "text": "/127.0.0.1:9001",
+              "hash": 2130715434
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 600000
+          },
+          "events": [
+            "log:[+] P2P Version: 1.1",
+            "log:P2P Peers found : 0",
+            "log:[D] Wait interrupted",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "12 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        },
+        {
+          "result": true,
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "127.0.0.1",
+              "address": "127.0.0.1",
+              "port": 9001,
+              "text": "/127.0.0.1:9001",
+              "hash": 2130715434
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 600000
+          },
+          "events": [
+            "log:[+] P2P Version: 1.1",
+            "log:P2P Peers found : 0",
+            "log:[D] Wait interrupted",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "12 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        }
+      ]
+    },
+    {
+      "p2p": "P2P_LOOP",
+      "dropped": false,
+      "java": [
+        {
+          "threadInterrupted": true,
+          "result": "OK",
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "0.0.0.0",
+              "address": "0.0.0.0",
+              "port": 9001,
+              "text": "0.0.0.0/0.0.0.0:9001",
+              "hash": 9001
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 10326
+          },
+          "events": [
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            },
+            {
+              "type": "P2P_LOOP",
+              "delay": 10326
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "6 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        },
+        {
+          "result": true,
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "0.0.0.0",
+              "address": "0.0.0.0",
+              "port": 9001,
+              "text": "0.0.0.0/0.0.0.0:9001",
+              "hash": 9001
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 10326
+          },
+          "events": [
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            },
+            {
+              "type": "P2P_LOOP",
+              "delay": 10326
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "6 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        }
+      ],
+      "cpp": [
+        {
+          "threadInterrupted": true,
+          "result": "OK",
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "0.0.0.0",
+              "address": "0.0.0.0",
+              "port": 9001,
+              "text": "0.0.0.0/0.0.0.0:9001",
+              "hash": 9001
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 10326
+          },
+          "events": [
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            },
+            {
+              "type": "P2P_LOOP",
+              "delay": 10326
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "6 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        },
+        {
+          "result": true,
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "0.0.0.0",
+              "address": "0.0.0.0",
+              "port": 9001,
+              "text": "0.0.0.0/0.0.0.0:9001",
+              "hash": 9001
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 10326
+          },
+          "events": [
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            },
+            {
+              "type": "P2P_LOOP",
+              "delay": 10326
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "6 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        }
+      ]
+    },
+    {
+      "p2p": "P2P_LOOP",
+      "dropped": true,
+      "java": [
+        {
+          "threadInterrupted": false,
+          "result": "OK",
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "0.0.0.0",
+              "address": "0.0.0.0",
+              "port": 9001,
+              "text": "0.0.0.0/0.0.0.0:9001",
+              "hash": 9001
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 10326
+          },
+          "events": [
+            "log:[D] Wait interrupted",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            },
+            {
+              "type": "P2P_LOOP",
+              "delay": 10326
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "12 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        },
+        {
+          "result": true,
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "0.0.0.0",
+              "address": "0.0.0.0",
+              "port": 9001,
+              "text": "0.0.0.0/0.0.0.0:9001",
+              "hash": 9001
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 10326
+          },
+          "events": [
+            "log:[D] Wait interrupted",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            },
+            {
+              "type": "P2P_LOOP",
+              "delay": 10326
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "12 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        }
+      ],
+      "cpp": [
+        {
+          "threadInterrupted": false,
+          "result": "OK",
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "0.0.0.0",
+              "address": "0.0.0.0",
+              "port": 9001,
+              "text": "0.0.0.0/0.0.0.0:9001",
+              "hash": 9001
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 10326
+          },
+          "events": [
+            "log:[D] Wait interrupted",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            },
+            {
+              "type": "P2P_LOOP",
+              "delay": 10326
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "12 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        },
+        {
+          "result": true,
+          "state": {
+            "in": [],
+            "out": [],
+            "not": [],
+            "none": [],
+            "my": {
+              "host": "0.0.0.0",
+              "address": "0.0.0.0",
+              "port": 9001,
+              "text": "0.0.0.0/0.0.0.0:9001",
+              "hash": 9001
+            },
+            "hostSet": false,
+            "discovery": false,
+            "secret": "",
+            "known": [
+              {
+                "host": "8.8.8.8",
+                "address": "8.8.8.8",
+                "port": 9001,
+                "text": "/8.8.8.8:9001",
+                "hash": 134753073
+              }
+            ],
+            "all": [],
+            "accept": true,
+            "noconnect": false,
+            "startup": false,
+            "max": 5,
+            "maxNone": 100,
+            "delay": 10326
+          },
+          "events": [
+            "log:[D] Wait interrupted",
+            "log:[I] [+] Discovery Completed"
+          ],
+          "posted": [],
+          "checker": [],
+          "pending": [],
+          "db": {},
+          "saves": 0,
+          "initial": 0,
+          "running": true,
+          "checkerRunning": true,
+          "timers": [
+            {
+              "type": "P2P_LOOP",
+              "delay": 10000
+            },
+            {
+              "type": "P2P_ASSESS_CONNECTIVITY",
+              "delay": 600000
+            },
+            {
+              "type": "P2P_SAVE_DATA",
+              "delay": 300000
+            },
+            {
+              "type": "P2P_LOOP",
+              "delay": 10326
+            }
+          ],
+          "queues": [],
+          "greetings": [],
+          "traffic": {
+            "reads": {
+              "sendPingMessage": "53 bytes"
+            },
+            "writes": {
+              "sendPingMessage": "12 bytes"
+            }
+          },
+          "read": 0,
+          "write": 0,
+          "verified": [
+            {
+              "host": "8.8.8.8",
+              "address": "8.8.8.8",
+              "port": 9001,
+              "text": "/8.8.8.8:9001",
+              "hash": 134753073
+            }
+          ],
+          "unverified": []
+        }
+      ]
+    }
+  ],
+  "scope": "Actual Main shutdown/restart with controlled old-network completion, real replacement network on ephemeral port with outbound peers disabled; RPC/vault/MySQL state ordering and archive request retry; actual archive server retry with recording SQL; actual P2P discovery/TCP responder. Real interrupt flags/sleeps, no injected InterruptedException. No wallet or mainnet node touched. Broader runtime/I/O/thread parity remains open."
+}

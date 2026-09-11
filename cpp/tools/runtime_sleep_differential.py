@@ -20,13 +20,16 @@ def main():
         report['assertions']+=1
         assert condition,reason
     try:
-        for mode in ['shutdown_wait','restart_wait','restart_pause','netrestart','rpc']:
+        for mode in ['shutdown_wait','restart_wait','restart_pause','netrestart','rpc','vault_wait','vault_ready','archive_retry','archive_once','mysql_positive','mysql_zero','mysql_negative']:
             rows=[]
             for command in [java+['RuntimeSleepOracle'],[str(build/'runtime_sleep')]]:
                 p=subprocess.run(command+[mode],capture_output=True,text=True,timeout=15,env={**os.environ,'UBSAN_OPTIONS':'halt_on_error=1'})
                 check(p.returncode==0,(command,mode,p.returncode,p.stdout,p.stderr));rows.append(json.loads(p.stdout))
             report['cases'].append(dict(mode=mode,java=rows[0],cpp=rows[1]));check(rows[0]==rows[1],report['cases'][-1]);report['comparisons']+=1
-            expected=dict(mode=mode,error='java.lang.InterruptedException' if mode in ['netrestart','rpc'] else 'none',pending=False,replaced=mode.startswith('restart_'),enabled=False,authenticate=False,locked=False)
+            expected=dict(mode=mode,error='java.lang.InterruptedException' if mode in ['netrestart','rpc'] else 'none',pending=mode in ['vault_ready','archive_once','mysql_zero','mysql_negative'],replaced=mode.startswith('restart_'),enabled=False,authenticate=False,locked=False)
+            if mode.startswith('vault_'):expected['stopNewKeys']=mode=='vault_wait'
+            if mode.startswith('archive_'):expected.update(hasIBD=False,failures=2 if mode=='archive_retry' else 1,restarts=1 if mode=='archive_retry' else 0)
+            if mode.startswith('mysql_'):expected.update(connects=1 if mode=='mysql_zero' else 0,sleepInterrupted=mode=='mysql_positive',negativeDelay=mode=='mysql_negative',prefs={'webhooks':[],'mysql_host':'fixture:3306','mysql_db':'fixture','mysql_user':'student','mysql_password':'synthetic','mysql_autologindetails':True,'mysql_autobackup':True})
             for row in rows:
                 for key,value in expected.items():check(row[key]==value,(mode,key,row))
         runners=[Runner(java+['ArchiveServerOracle']),Runner([str(build/'archive_server_runtime')])]
@@ -62,7 +65,7 @@ def main():
         report['passed']=True
     except Exception as error:report['failure']=repr(error);raise
     finally:
-        report['scope']='Actual Main shutdown/restart with controlled old-network completion, real replacement network on ephemeral port with outbound peers disabled; RPC state ordering; actual archive retry with recording SQL; actual P2P discovery/TCP responder. Real interrupt flags/sleeps, no injected InterruptedException. No wallet or mainnet node touched. Broader runtime/I/O/thread parity remains open.'
+        report['scope']='Actual Main shutdown/restart with controlled old-network completion, real replacement network on ephemeral port with outbound peers disabled; RPC/vault/MySQL state ordering and archive request retry; actual archive server retry with recording SQL; actual P2P discovery/TCP responder. Real interrupt flags/sleeps, no injected InterruptedException. No wallet or mainnet node touched. Broader runtime/I/O/thread parity remains open.'
         (build/'runtime-sleep-results.json').write_text(json.dumps(report,indent=2)+'\n')
         print(json.dumps({k:v for k,v in report.items() if k!='cases'},indent=2))
 if __name__=='__main__':main()

@@ -1,0 +1,27 @@
+{
+  "raw_sleep_search": "cpp/src/org/**/*.cpp: std::this_thread::sleep_",
+  "raw_sleep_sites": [],
+  "scope": "Zero raw sleep matches is not complete Java thread or API parity.",
+  "next": [
+    {
+      "path": "src/support/FixedTaskExecutor.hpp",
+      "method": "awaitTermination",
+      "gap": "Uses condition_variable wait without NativeThread interruption; called by NIOManager normal and hard shutdown.",
+      "source_evidence": "Installed OpenJDK 26.0.1 lib/src.zip: ThreadPoolExecutor.awaitTermination calls mainLock.lock (not lockInterruptibly), returns true for an already terminated pool and false for nonpositive time before invoking Condition.awaitNanos. Thus those paths retain pending interruption; a positive active wait consumes it and throws. AbstractQueuedSynchronizer.ConditionObject.awaitNanos also distinguishes signal-versus-interrupt ordering."
+    },
+    {
+      "path": "src/org/minima/utils/messages/TimerProcessor.cpp",
+      "method": "run/stop",
+      "gap": "Uses separate condition-variable wakeup. Source stop interrupts its thread and source run catches InterruptedException; inspect callback-time observability before declaring equivalence."
+    },
+    {
+      "path": "src/org/minima/system/network/minima/NIOServer.cpp",
+      "method": "main",
+      "gap": "Java standalone demonstration has four sleeps; native public header does not declare the demonstration entry point. API audit required."
+    },
+    {
+      "path": "src/org/minima/utils/jni/jnifunctions.cpp",
+      "gap": "Counterpart remains absent; external native bodies unavailable in inspected source."
+    }
+  ]
+}

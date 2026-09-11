@@ -112,3 +112,7 @@ boundaries and complete public API parity remain open.
 Construct an archive with consecutive heights and a wrong parent hash: how can integrity.valid be true while integrity.errors is nonzero?
 
 Pinned Java SHA-256: `a7bdbe6083655474292fc8782885efd98ec37fa87c92b89864f07696b223ae31`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
+
+## Backup/checker interruption follow-up
+
+Resync and raw-import polling pauses now use NativeThread and propagate interruption. sendArchiveReq has its missing local InterruptedException catch restored: after a failed request it ignores an interrupted retry delay and continues with the next attempt. Added null-start request cases execute real encoding failure and retry logic before socket creation; they do not claim successful TCP retry coverage. See the [interruption lab](../../../../../../../new-tests/backup-checker-interruption.md) for results and remaining limits. Full parity stays not_verified.

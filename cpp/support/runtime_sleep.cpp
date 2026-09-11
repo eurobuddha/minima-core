@@ -3,8 +3,12 @@
 #include "SystemCheckFixture.hpp"
 #include "org/minima/system/commands/network/rpc.hpp"
 #include <iostream>
+#include "org/minima/system/commands/backup/vault.hpp"
+#include "org/minima/system/commands/backup/archive.hpp"
+#include "org/minima/system/commands/backup/mysql.hpp"
 using namespace minima;
 namespace minima {
+struct WalletVaultFixture{static bool stopped(const Wallet& wallet){return wallet.STOP_NEWKEYS.load();}};
 // Adapt the existing MainNetworkFixture's unstarted owner; all three completion
 // receivers share one controlled NIO fixture for this Main wait-loop test.
 class NetworkManagerFixture:public NetworkManager {
@@ -14,15 +18,16 @@ public:
 };
 }
 class ManualMain:public Main {
-    static MainServices services(){MainServices s;s.sql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{sql_fixture::event("connect",{url,user,password});return std::make_shared<sql_fixture::Connection>();};return s;}
+    static MainServices services(){MainServices s;s.sql.connect=[](const auto& url,const auto& user,const auto& password)->std::shared_ptr<SqlConnection>{sql_fixture::event("connect",{url,user,password});return std::make_shared<sql_fixture::Connection>();};s.mysql.connect=[](const auto&,const auto&,const auto&)->std::shared_ptr<SqlConnection>{return std::make_shared<sql_fixture::Connection>();};return s;}
 public:ManualMain():Main(services()){}
 };
 int run(int argc,char** argv,const NativeThread& caller)try{
     if(argc!=2)return 2;std::string mode=argv[1];JSONObject out;out.put("mode",mode);
     GeneralParams::resetDefaults();GeneralParams::P2P_ENABLED=false;GeneralParams::P2P2_ENABLED=false;GeneralParams::RPC_ENABLED=false;
     GeneralParams::NOCONNECT=true;GeneralParams::CONNECT_LIST="";GeneralParams::IS_HOST_SET=true;GeneralParams::MINIMA_HOST="127.0.0.1";GeneralParams::MINIMA_PORT=0;
-    MinimaLogger::Runtime logger;logger.println=[&](const auto& text){std::cerr<<unicode::encodeUTF8(text)<<'\n';if(mode=="restart_wait"&&unicode::encodeUTF8(text).find("restart in 5 seconds")!=std::string::npos)interruptCurrentNativeThread();};MinimaLogger::setRuntime(logger);
-    JSONObject sqlConfig;sql_fixture::config=&sqlConfig;
+    std::atomic<int> archiveFailures{0},archiveRestarts{0};std::atomic<bool> mysqlInterrupted{false},mysqlNegative{false};
+    MinimaLogger::Runtime logger;logger.println=[&](const auto& text){auto log=unicode::encodeUTF8(text);std::cerr<<log<<'\n';if(log.find("Archive connection : ")!=std::string::npos)++archiveFailures;if(log.find("Re-attempt started..")!=std::string::npos)++archiveRestarts;if(log.find("java.lang.InterruptedException")!=std::string::npos)mysqlInterrupted=true;if(log.find("java.lang.IllegalArgumentException")!=std::string::npos)mysqlNegative=true;if(mode=="restart_wait"&&unicode::encodeUTF8(text).find("restart in 5 seconds")!=std::string::npos)interruptCurrentNativeThread();};MinimaLogger::setRuntime(logger);
+    JSONObject sqlConfig;sqlConfig.put("rows",JSONArray());sqlConfig.put("columns",JSONArray());sql_fixture::config=&sqlConfig;
     auto main=std::make_shared<ManualMain>();MainFixture::install(main);MainFixture::initialize(main);
     auto nio=NIOManagerFixture::create();auto network=NetworkManagerFixture::create(nio);MainFixture::network(*main,network);JSONObject config;SystemCheckFixture::setup(main,config);
     // Keep the logger boundary but avoid callback notifications from unrelated
@@ -40,6 +45,12 @@ int run(int argc,char** argv,const NativeThread& caller)try{
         else if(mode=="netrestart")MainFixture::dispatch(*main,std::make_shared<Message>(Main::MAIN_NETRESTART));
         else if(mode=="rpc"){
             commands::rpc command;command.getParams()->put("enable","true");command.getParams()->put("password","synthetic");command.runCommand();
+        }else if(mode.starts_with("vault_")){
+            JSONObject fields;fields.put("keys",mode=="vault_ready");MainFixture::fields(*main,fields);commands::vault::stopAllKeysCreated();out.put("stopNewKeys",WalletVaultFixture::stopped(*MinimaDB::getDB()->getWallet()));
+        }else if(mode.starts_with("archive_")){
+            out.put("hasIBD",bool(commands::archive::sendArchiveReq("127.0.0.1",0,static_cast<const MiniNumber*>(nullptr),mode=="archive_retry"?2:1)));out.put("failures",archiveFailures.load());out.put("restarts",archiveRestarts.load());
+        }else if(mode.starts_with("mysql_")){
+            GeneralParams::MYSQL_DB_DELAY=mode=="mysql_zero"?0:mode=="mysql_negative"?-1:10000;commands::mysql::convertMySQLParams("student:synthetic@fixture:3306/fixture");out.put("connects",sql_fixture::connectionID);out.put("sleepInterrupted",mysqlInterrupted.load());out.put("negativeDelay",mysqlNegative.load());out.put("prefs",*MinimaDB::getDB()->getUserDB()->getAllData());
         }else throw std::runtime_error("unknown mode");
     }catch(const JavaTypedException& e){error=e.className();}
     if(completed.joinable())completed.join();

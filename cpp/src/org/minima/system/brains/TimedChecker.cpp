@@ -24,25 +24,29 @@ bool TimedChecker::checkTxPoWBlock(std::shared_ptr<TxPoWTreeNode> parent,std::sh
         // during the worker's lifetime, even if the chain is pruned concurrently.
         std::vector<std::shared_ptr<TxPoWTreeNode>> ancestors;
         for(auto node=parent;node;node=node->getParent()) ancestors.push_back(node);
-        auto name=nextNativeThreadName();
-        std::thread worker([state=mState,parent,txpow,transactions,ancestors=std::move(ancestors),name=std::move(name)]()mutable {
-            NativeThread thread{std::move(name)};
-            runNativeThread(thread,[&]{
+        auto thread=std::make_shared<NativeThread>(NativeThread{nextNativeThreadName()});
+        {std::lock_guard lock(mThreadLock);mCheckerThread=thread;}
+        std::thread worker([state=mState,parent,txpow,transactions,ancestors=std::move(ancestors),thread]()mutable {
+            thread->id=std::this_thread::get_id();
+            runNativeThread(*thread,[&]{
                 try {state->valid=TxPoWChecker::checkTxPoWBlock(parent,txpow,transactions);}
                 catch(const JavaError&){throw;}catch(const std::bad_alloc&){throw;}
                 catch(const std::exception& e) {MinimaLogger::log("Block failed to process : "+nativeExceptionText(e));state->valid=false;}
                 state->finished=true;
             });
         });
-        // Java's interrupt does not cancel this CPU-bound checker. The worker
-        // owns every captured object; there is no detached reference to this.
+        // Interruption is cooperative. Retain every input until the worker exits,
+        // including when the polling caller returns before validation completes.
         worker.detach();
         int64_t duration=0;
         while(duration<MAX_CHECKTIME) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            nativeThreadSleep(50);
             if(mState->finished.load()) break;
             duration=elapsed();
         }
+        // Like the source field, target the current worker on this checker.
+        // An interrupted polling sleep skips this statement and enters the catch.
+        {std::lock_guard lock(mThreadLock);if(mCheckerThread)mCheckerThread->interrupt();}
     } catch(const JavaError&){throw;}catch(const std::bad_alloc&){throw;}
     catch(const std::exception& e) {MinimaLogger::log(std::make_shared<NativeThrowable>(e));mState->valid=false;}
     if(GeneralParams::BLOCK_LOGS){

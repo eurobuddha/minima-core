@@ -24,7 +24,7 @@ def main():
     patterns=['runtime','error','oom','io','runtime,runtime','runtime,error','runtime,oom','runtime,none,error','runtime,none,oom','runtime,runtime,error','runtime,runtime,runtime']
     cases += [(mode,'chain',pattern,False) for mode,pattern in itertools.product(['block','timed','only'],patterns)]
     cases += [('primed','chain',pattern,False) for pattern in ['error','oom','runtime,error','runtime,oom','runtime,none,error','runtime,none,oom','runtime,runtime,error','runtime,runtime,runtime']]
-    cases += [('stalled','chain','none',False)]
+    cases += [('stalled','chain','none',False),('interrupted','chain','none',False)]
     cases += [('timed','valid',kind,True) for kind in ['none','runtime','error','oom','io']]
     cases += [('timed','null-block','none',True),('fresh','valid','none',False),('fresh','chain','none',False)]
     cases += [(m,'empty-mmr',f,False) for m,f in itertools.product(['block','timed','primed'],['error','none,error','none,oom','runtime,runtime,error'])]
@@ -37,15 +37,22 @@ def main():
     with ThreadPoolExecutor(max_workers=2) as executor:
         for case in cases:
             futures=[executor.submit(run,c,case) for c in commands];rows=[future.result() for future in futures]
+            if case[0]=='interrupted':
+                for row in rows:row['events']=sorted(row['events'])
             if rows[0]!=rows[1]:failures.append(dict(case=case,java=rows[0],cpp=rows[1]))
             if case[0]=='stalled':
                 expected_stalled={'returned':True,'finished':True,'valid':False,'deadline':False}
                 for label,row in zip(['java','cpp'],rows):
                     if any(row.get(k)!=v for k,v in expected_stalled.items()):failures.append(dict(case=case,runtime=label,expected=expected_stalled,actual=row))
+            if case[0] in ['stalled','interrupted']:
+                for label,row in zip(['java','cpp'],rows):
+                    expected_event='workerInterrupted:'+str(case[0]=='stalled').lower()
+                    if expected_event not in row['events']:failures.append(dict(case=case,runtime=label,expected=expected_event,actual=row))
+                    if case[0]=='interrupted' and (row.get('threadInterrupted') is not False or row['returned'] is not False):failures.append(dict(case=case,runtime=label,actual=row))
             if args.deadline:
                 expected={'returned':False,'finished':False,'valid':False,'deadline':True}
                 for label,row in zip(['java','cpp'],rows):
                     if any(row.get(k)!=v for k,v in expected.items()):failures.append(dict(case=case,runtime=label,expected=expected,actual=row))
-    report=dict(passed=not failures,cases=len(cases),failures=failures,scope='Actual pinned TxPoWChecker/TimedChecker and native implementation, source-generated serialized parent/block/duplicate-proof fixtures, direct and reused timed checks with known matching initial/final values, primed-valid escaping failures and a worker held until the checking call returns; header, duplicate traversal, MMR and null failures, runtime/Error/OOM/IO logger failures at nested catch levels, final block log propagation, retained finished/valid flags and default dispatch. Explicit handlers prevent fatal OOM shutdown. Dedicated deadline run verifies actual120000ms polling after worker Error; no shortened timeout. Automatic stack frames, generated thread counters, elapsed log milliseconds and JVM-generated null diagnostics excluded. Full runtime and Java interruption semantics not established.')
+    report=dict(passed=not failures,cases=len(cases),failures=failures,scope='Actual pinned TxPoWChecker/TimedChecker and native implementation, source-generated serialized parent/block/duplicate-proof fixtures, direct and reused timed checks with known matching initial/final values, primed-valid escaping failures and a worker held until the checking call returns; header, duplicate traversal, MMR and null failures, runtime/Error/OOM/IO logger failures at nested catch levels, final block log propagation, retained finished/valid flags and default dispatch. Explicit handlers prevent fatal OOM shutdown. Dedicated deadline run verifies actual120000ms polling after worker Error; no shortened timeout. Automatic stack frames, generated thread counters, elapsed log milliseconds and JVM-generated null diagnostics excluded. Actual pending-caller interruption and worker interrupt after polling are checked; concurrent log ordering is excluded only in the interrupted case. Full runtime/thread lifecycle semantics not established.')
     (build/(name+'-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

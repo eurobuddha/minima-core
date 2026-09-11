@@ -12,7 +12,7 @@
 #include "support/NIOConnections.hpp"
 #include "support/NativeThrowable.hpp"
 #include <set>
-#include <thread>
+#include "support/NativeThread.hpp"
 namespace minima::commands {
 namespace {
 void log(const std::string& text){MinimaLogger::log(text);}
@@ -20,7 +20,7 @@ std::shared_ptr<MinimaDB> db(){auto value=MinimaDB::getDB();sqlRequired(value);r
 std::shared_ptr<Main> main(){auto value=Main::getInstance();sqlRequired(value);return value;}
 const std::string& text(const std::optional<std::string>& value){if(!value)throw JavaNullPointerException("null String");return *value;}
 json::JSONObject object(const json::JSONValue& value){if(value.isNull())throw JavaNullPointerException("null JSONObject");auto result=std::get_if<std::shared_ptr<json::JSONObject>>(&value.value);if(!result)throw JavaClassCastException("Cannot cast response to JSONObject");return sqlRequired(*result);}
-void awaitIBD(){while(true){std::this_thread::sleep_for(std::chrono::milliseconds(250));if(sqlRequired(main()->getTxPoWProcessor()).isIBDProcessFinished())break;}}
+void awaitIBD(){while(true){nativeThreadSleep(250);if(sqlRequired(main()->getTxPoWProcessor()).isIBDProcessFinished())break;}}
 }
 megammrsync::megammrsync():Command("megammrsync","[action:] [host:] (phrase:) (keys:) (keyuses:) (file:) (password:) - Restore from a MegaMMR node"){}
 std::optional<std::string> megammrsync::getFullHelp() const{return std::string(

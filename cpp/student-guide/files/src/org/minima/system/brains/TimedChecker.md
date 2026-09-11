@@ -105,3 +105,7 @@ Method navigation (declarations with bodies found in this file): [TimedChecker](
 
 
 Pinned Java SHA-256: `4f531dffac2a87a54335adac5a82ad0e967bcba2c4c5fd027b4beb7517ed72f3`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Backup/checker interruption follow-up
+
+The polling pause now uses NativeThread, and the checker retains the current worker descriptor so it can deliver the source interrupt after polling. An InterruptedException in the caller skips that later signal, logs and sets valid=false. The worker still owns all inputs until it exits. The existing error comparison adds a real interrupted-caller case and observes the worker flag in the held-worker case; no timeout is shortened. See the [interruption lab](../../../../../../new-tests/backup-checker-interruption.md) for results and remaining limits. Full parity stays not_verified.
