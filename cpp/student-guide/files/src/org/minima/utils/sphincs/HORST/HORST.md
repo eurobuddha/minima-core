@@ -1,10 +1,10 @@
 # HORST — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/HORST.java) · `src/org/minima/utils/sphincs/HORST/HORST.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/HORST.java) · [Native counterpart](../../../../../../../../src/org/minima/utils/sphincs/HORST/HORST.cpp)
 
 ## Purpose
 
@@ -18,22 +18,28 @@ HORST reveals selected secret preimages and accompanies each with an MMR proof u
 4. Verification hashes the message again, recomputes each index, hashes the supplied preimage, reconstructs an MMR leaf with that index, and calculates the supplied proof. Any root mismatch returns false; all 16 matches return true.
 5. The method assumes the required list entries exist. It does not first validate list lengths, so a truncated signature may throw rather than simply return false. Extra entries after the 16 used values are ignored by the verification loop.
 
-## Translation work still required
+## How the C++ translation works
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. A native translation should reuse the existing Crypto/MiniData/MMR proof primitives, preserving the distinction between raw-message hashing and structured seed expansion.
+The native HORST builds the real PrivateKey and PublicKey objects, then reuses raw Crypto hashing and the existing indexed MMR leaf/proof functions. getKeyRef performs the source's 32-bit wraparound with unsigned arithmetic and checks each byte access in order, avoiding undefined signed overflow. Verification performs sixteen sequential checks without prevalidating list sizes; a root mismatch can return false before a later missing or null entry is reached. The source log and main demonstration are also translated.
 
 ## Understanding the tests
 
-The source main uses fixed seed/message values, serializes and re-reads a signature, and prints Verify plus size/root. It contains no assertions. Proposed differential cases should compare index extraction at 0x0000/0x00FF/0xFF00/0xFFFF, all signature bytes, successful verification, changed message/preimage/proof/root, duplicate selected indices, and too-short/extra lists.
+Java and C++ sign fixed, empty, long, and repeated-index messages using three full-size trees. Every signature is supplied to both verifiers, including the opposite writer, with explicit expected success. Python separately checks the selected secrets and reconstructs all authentication paths. Negative checks alter each secret slot, messages, roots, sums, proof bytes, and list shapes. Null combinations check failure order; index tests include Java int multiplication wraparound. The actual Java and native main demonstrations must produce identical output ending in Verify : true.
 
-- [Deterministic secret expansion](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/PrivateKey.java)
-- [Indexed public MMR construction](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/PublicKey.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+The [HORST lab](../../../../../../../../student-guide/new-tests/horst-signatures.md)
+explains the independent reconstruction and records completed execution results.
+The [test driver](../../../../../../../../tools/horst_differential.py) calls the
+unmodified Java sources and the compiled native library. The source demonstration
+alone contains no assertions; the driver adds explicit acceptance and rejection checks.
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work.
+These cases cover the specified algorithm and error boundaries, not all possible
+Java subclass overrides, concurrent mutation, or mutable raw Java byte-array aliases.
+Null-pointer/EOF prose and runtime-specific stack frames are normalized by the fixtures.
+The Java test VM disables fast-throw diagnostic omission so repeated array errors
+retain comparable messages. FORS/SPHINCS integration and full node parity remain open.
+Passing these tests is not a cryptographic security certification.
 
 ## Check your understanding
 

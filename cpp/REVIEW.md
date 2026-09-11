@@ -1,3 +1,68 @@
+## HORST checkpoint code review
+
+### Summary
+
+Four source-relative counterparts implement the pinned legacy HORST construction
+with 65,536 secrets and an indexed MMR, sixteen selected preimages/proofs, mutable
+list ownership, partial reads/writes, converter logging, and the source main.
+Current Crypto, MiniData/MiniNumber and MMR primitives are reused unchanged. No
+modern SPHINCS substitution or reduced tree was introduced. This is a reviewed
+partial-port checkpoint, not full cryptographic or node-parity certification.
+
+### Findings
+
+**Resolved — proof JSON failure order.** Source MiniData.getMiniDataVersion catches
+IOException, logs, and returns null. HORSTSignature.toJSON then throws NPE. The
+native method now preserves that sequence; oversized proof hashes at all sixteen
+positions test logging, typed failure, and partial output prefixes.
+
+**Resolved — test diagnostics.** The initial 1,389-case run had 20 repeated array
+bounds failures whose Java message was omitted by JIT fast-throw optimization.
+The Java test VM now uses -XX:-OmitStackTraceInFastThrow. Exception messages remain
+compared (apart from explicitly normalized NPE/EOF prose), and the initial report
+is retained. During fixture review, proof mutation was also tied to the same
+seed/signature under verification rather than a later cached key's proof.
+
+**Reviewed boundary — absent-leaf proof.** Pinned MMR.getProof permits null to pass
+through empty proof loops when a complete HORST tree's requested leaf is absent.
+The general native MMR API rejects that request. PublicKey adapts only its own
+out-of-range path using existing getProofToPeak, which returns the matching empty
+proof. Valid paths call unchanged getProof; negative and excessive positions are
+compared with actual Java. This is specific to the fixed complete tree.
+
+**Remaining scope.** FORS/SPHINCS consumers, arbitrary subclass overrides, raw
+MiniData byte-array aliases, concurrent mutation, arbitrary failing output streams,
+and full runtime parity are not certified. Standard native vector output preserves
+observed partial write prefixes. Logger tests compare count/categories, not
+runtime-specific stack-frame text or every notification side effect.
+
+### Validation
+
+Both complete builds pass. Selected normal CTests pass in 135.90s;
+sanitized tests pass in 381.01s. HORST alone takes
+108.81s / 287.37s. Each build passes 1,438 comparisons and
+1,299 independent assertions: three full trees, all-key digests, twelve signing cases
+including repeated selected indices, 24 signatures supplied to both verifiers,
+every-slot mutations, 395 direct read cases and 395 converter cases, live list/proof
+aliases, null/bounds/int-wrap cases, partial output/JSON failures and actual main.
+Python hashlib reconstructs roots and all generated proof paths independently.
+Normal/sanitized normalized transcript hashes match. Object/MMR 9,464 and utility
+1,364 regression cases pass in both builds. Full 239-entry CTest suite was not run;
+H2 AOT is outside C++ sanitizer instrumentation.
+
+All new implementation headers/sources, fixtures, driver, CMake changes, source
+mapping, provenance, reports and student documentation were inspected. All 457
+lessons are authored/audited; 392 counterparts exist, 65 remain absent. Every
+source-map parity field remains not_verified.
+
+### Verdict
+
+✅ Approve this local checkpoint within its documented scope. Continue the full
+port through the remaining 21 production files, 44 original tests, and the
+unverified behavior of existing counterparts. Evidence: [HORST checkpoint](validation/horst-work-in-progress).
+
+---
+
 ## ZipExtractor checkpoint review
 
 ### Summary

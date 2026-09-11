@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 388 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 392 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -371,10 +371,10 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/utils/mysql/MySQLConnect.java` | `src/org/minima/utils/mysql/MySQLConnect.cpp` | implemented_partial | — |
 | `src/org/minima/utils/sphincs/FORS/FORS.java` | `src/org/minima/utils/sphincs/FORS/FORS.cpp` | unported | — |
 | `src/org/minima/utils/sphincs/FORS/FORSSignature.java` | `src/org/minima/utils/sphincs/FORS/FORSSignature.cpp` | unported | — |
-| `src/org/minima/utils/sphincs/HORST/HORST.java` | `src/org/minima/utils/sphincs/HORST/HORST.cpp` | unported | — |
-| `src/org/minima/utils/sphincs/HORST/HORSTSignature.java` | `src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp` | unported | — |
-| `src/org/minima/utils/sphincs/HORST/PrivateKey.java` | `src/org/minima/utils/sphincs/HORST/PrivateKey.cpp` | unported | — |
-| `src/org/minima/utils/sphincs/HORST/PublicKey.java` | `src/org/minima/utils/sphincs/HORST/PublicKey.cpp` | unported | — |
+| `src/org/minima/utils/sphincs/HORST/HORST.java` | `src/org/minima/utils/sphincs/HORST/HORST.cpp` | implemented_partial | — |
+| `src/org/minima/utils/sphincs/HORST/HORSTSignature.java` | `src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp` | implemented_partial | — |
+| `src/org/minima/utils/sphincs/HORST/PrivateKey.java` | `src/org/minima/utils/sphincs/HORST/PrivateKey.cpp` | implemented_partial | — |
+| `src/org/minima/utils/sphincs/HORST/PublicKey.java` | `src/org/minima/utils/sphincs/HORST/PublicKey.cpp` | implemented_partial | — |
 | `src/org/minima/utils/sphincs/SPHINCS.java` | `src/org/minima/utils/sphincs/SPHINCS.cpp` | unported | — |
 | `src/org/minima/utils/sphincs/SPHINCSSignature.java` | `src/org/minima/utils/sphincs/SPHINCSSignature.cpp` | unported | — |
 | `src/org/minima/utils/sphincs/SPHINCSUtils.java` | `src/org/minima/utils/sphincs/SPHINCSUtils.cpp` | unported | — |

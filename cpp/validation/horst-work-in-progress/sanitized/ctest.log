@@ -1,0 +1,11 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  5: object_differential
+1/3 Test  #5: object_differential ..............   Passed   90.15 sec
+    Start 31: utility_differential
+2/3 Test #31: utility_differential .............   Passed    3.48 sec
+    Start 33: horst_differential
+3/3 Test #33: horst_differential ...............   Passed  287.37 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) = 381.01 sec

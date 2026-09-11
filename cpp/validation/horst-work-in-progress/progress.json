@@ -1,0 +1,50 @@
+{
+  "previous_head": "e0666d5dabdb645db25794809529ead2cc59e6dd",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "mapped": 457,
+  "counterparts": 392,
+  "production_counterparts": 348,
+  "test_counterparts": 44,
+  "absent": 65,
+  "production_absent": 21,
+  "tests_absent": 44,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "ctest_inventory": 239,
+  "full_ctest_suite_run": false,
+  "new_test_cases": 1438,
+  "independent_assertions_per_build": 1299,
+  "full_tree_leaves": 65536,
+  "full_tree_seeds": 3,
+  "cross_writer_signatures": 24,
+  "normal_seconds": {
+    "horst": 108.81,
+    "object": 24.09,
+    "utility": 2.99,
+    "total": 135.9
+  },
+  "sanitized_seconds": {
+    "horst": 287.37,
+    "object": 90.15,
+    "utility": 3.48,
+    "total": 381.01
+  },
+  "regressions": {
+    "object_cases": 9464,
+    "utility_cases": 1364
+  },
+  "all_process_handles_terminal": true,
+  "teaching_guides": 457,
+  "initial_failures": [
+    "20 repeated bounds exceptions lost their message under JVM fast-throw optimization; test VM now disables diagnostic omission."
+  ],
+  "limits": [
+    "FORS/SPHINCS and their command/runtime consumers remain absent.",
+    "Raw MiniData Java byte-array aliases, arbitrary subclass overrides and concurrent mutation not certified.",
+    "NPE/EOF prose and runtime stack frames normalized; log comparison covers count and first two exception categories.",
+    "Full CTest suite not run; H2 AOT is outside C++ sanitizer instrumentation.",
+    "Full native node/mining/network/API parity and cryptographic security not established."
+  ]
+}

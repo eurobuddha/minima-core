@@ -1,3 +1,66 @@
+# Current work — four full-size HORST counterparts translated and validated
+
+MinimaCoreC++ branch/project/executable. Full457-file goal remains active.
+PreviousHEAD e0666d5; gitlog/local-backups identify final checkpoint and recovery.
+Both full builds pass. All build/test handles terminal after final verification.
+No GitHub push. Map392=348production+44originaltests;65absent=21prod+44tests.
+All457 lessons authored/audited; all parity not_verified.239CTestentries;
+fullsuite NOT run. H2 AOT outside C++ sanitizer instrumentation.
+
+New src/org/minima/utils/sphincs/HORST/{PrivateKey,PublicKey,HORSTSignature,HORST}.cpp/hpp.
+Namespace minima::sphincs::horst. Full65,536keys, structured seed+MiniNumber hash,
+raw publicpreimage/message SHA3, actual existing indexed MMR, root sum2147450880.
+Private/public getters sharedptrMiniData, cachedroot sharedptrMMRData. Nullprivate
+seed preserves65,536 Crypto null/log results. Public null/private-null failsNPE.
+PublicKey invalidproof uses existinggetProofToPeak: fixedcompleteonepeakJava
+passesnullthrough emptyloops; currentgeneralMMRgetProofrejectsmissingleaf. No
+sharedprimitivechanges. Invalidkeyarray access proper Java bounds, ref uses
+explicit32bitwrap and orderedbytebounds. HORST sign/verify exactly16 sequential
+checks; extrasignored, missing/nullthrows unless earlierroot mismatchreturnsfalse.
+log and actualsource main translated and compared by fixture --demo.
+
+HORSTSignature sharedData contains separatelyshared vectors of sharedptrMiniData
+and sharedptrMMRProof. Getters exposemutablelists. readDataStream replacesboth
+beforecount; addsvalue beforeproof; failuresretainpartialnewlists anddetachold.
+writeDataStream(vector&) appendscount/value/proof fields in source order; failed
+proofhashwrite retains its left-byte prefix. serialise wraps that writer.
+Converter catchesONLYwireIOException,logsNativeThrowable,returns partialsignature;
+nullinput/runtimeNumberFormat escape. toJSON proofIO logs thenNPE to reproduce
+MiniData.getMiniDataVersion nullreturn. OtherSPHINCS classes canreuse these APIs.
+
+New HORSTOracle.java/horst.cpp callactualpinnedJava/library. ExistingRunner reused;
+requestmutation controls, countedinputoffset, partialwritehash/length, JSON/errors,
+oldlistidentity/lengths, secret/proofaliaschecks, logcount/first2categories.
+NPE/EOF prose andstackframesnormalized. Initial1389cases20mismatches solelyJava
+JITomittedboundsmessages; retaininitial-results.json/test.log. FinalJavaVM disables
+OmitStackTraceInFastThrow. Reviewfixed JSONIO-nullboundary and tied mutatedproof
+fixture to correctseed. No reducedtree, Java-nodebackend or newcryptolibrary.
+
+BothfinalCTestsPASS1438cases/1299independentassertions, threefullseeds,12messages,
+24cross-writersignatures, repeatedindexmessagefound viarealhashsearch, allgenerated
+proofs independentlyreconstructedwithPythonhashlib.395read+395convert,80write/JSON,
+135keyaccess,124ref, nulls,16slotmutations; actualdemo outputidentical.
+NormalHORST 108.81s; sanitized 287.37s. BothregressionsPASSobject9464/utility1364;
+selected3 totals 135.90s / 381.01s. Bothfullbuildscompletedbeforefinaltests.
+Evidence validation/horst-work-in-progress contains reports, knownvectors, demo,
+build/configure/CTestlogs, progress, initialfailures andguideaudit.
+Source-demo seed00112233/messageFFEEDD firstindex5823; rootBB86260E...D440BE7;
+11,530bytes signature. Studentlab writtenbeforefirsttest, thenworkedexample/results;
+allfourlessonsexplain logic, reuse, tests andlimitations.
+
+NEXT: remaining legacyFORS/FORSSignature thenSPHINCS/SPHINCSSignature/Utils/
+TransactionTest (sourcesfullyreadinpreviousinvestigation; reread relevant parts).
+FullFORS16HORSTs =1,048,576leaves, outerindexedroot sum120; no sizingreduction.
+SourceFORSSignature read replacesinnerfirst, onlythenroot/prooflists; converters
+returnpartial onIO. SPHINCS usesactualTreeKey192/4 and decimalkeyuse STRING parsed
+ashex foruniqueforsseed; doNOTreplacewithMiniNumber/decimalbytes. SiblingTreeKey
+algorithm incompatible. Streamable, MySQLarchive/server, remainingbase/docs/JNI
+commands and44originaltests alsoabsent. Allpresentfilesneed remainingparityaudit.
+Reusegate,pre-teststudentlab,Java/nativecomparison,bothbuilds,review,localcommit
+andall-commit-path verifiedrecoverybundle remainrequired. No skill reread needed.
+
+---
+
 # Current work — ZipExtractor translated and streaming/path effects validated
 
 MinimaCoreC++ branch/project/executable. Full457-file goal remains active.

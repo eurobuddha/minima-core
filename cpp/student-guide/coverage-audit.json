@@ -2,13 +2,13 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 388,
-  "native_absent": 69,
+  "native_counterparts": 392,
+  "native_absent": 65,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
-      "counterparts": 344,
-      "absent": 25
+      "counterparts": 348,
+      "absent": 21
     },
     "test": {
       "total": 88,
@@ -20,7 +20,7 @@
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9204,
+  "links_checked": 9213,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -3673,41 +3673,41 @@
       "java": "src/org/minima/utils/sphincs/HORST/HORST.java",
       "cpp": "src/org/minima/utils/sphincs/HORST/HORST.cpp",
       "guide": "files/src/org/minima/utils/sphincs/HORST/HORST.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+      "teaching_note": "Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified."
     },
     {
       "java": "src/org/minima/utils/sphincs/HORST/HORSTSignature.java",
       "cpp": "src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp",
       "guide": "files/src/org/minima/utils/sphincs/HORST/HORSTSignature.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+      "teaching_note": "Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified."
     },
     {
       "java": "src/org/minima/utils/sphincs/HORST/PrivateKey.java",
       "cpp": "src/org/minima/utils/sphincs/HORST/PrivateKey.cpp",
       "guide": "files/src/org/minima/utils/sphincs/HORST/PrivateKey.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+      "teaching_note": "Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified."
     },
     {
       "java": "src/org/minima/utils/sphincs/HORST/PublicKey.java",
       "cpp": "src/org/minima/utils/sphincs/HORST/PublicKey.cpp",
       "guide": "files/src/org/minima/utils/sphincs/HORST/PublicKey.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+      "teaching_note": "Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified."
     },
     {
       "java": "src/org/minima/utils/sphincs/SPHINCS.java",

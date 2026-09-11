@@ -706,10 +706,10 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [HORST.java](files/src/org/minima/utils/sphincs/HORST/HORST.md) | authored | unported |
-| [HORSTSignature.java](files/src/org/minima/utils/sphincs/HORST/HORSTSignature.md) | authored | unported |
-| [PrivateKey.java](files/src/org/minima/utils/sphincs/HORST/PrivateKey.md) | authored | unported |
-| [PublicKey.java](files/src/org/minima/utils/sphincs/HORST/PublicKey.md) | authored | unported |
+| [HORST.java](files/src/org/minima/utils/sphincs/HORST/HORST.md) | authored | implemented_partial |
+| [HORSTSignature.java](files/src/org/minima/utils/sphincs/HORST/HORSTSignature.md) | authored | implemented_partial |
+| [PrivateKey.java](files/src/org/minima/utils/sphincs/HORST/PrivateKey.md) | authored | implemented_partial |
+| [PublicKey.java](files/src/org/minima/utils/sphincs/HORST/PublicKey.md) | authored | implemented_partial |
 
 ## src/org/minima/utils/sphincs
 

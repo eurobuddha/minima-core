@@ -1,10 +1,10 @@
 # PrivateKey — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/PrivateKey.java) · `src/org/minima/utils/sphincs/HORST/PrivateKey.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/PrivateKey.java) · [Native counterpart](../../../../../../../../src/org/minima/utils/sphincs/HORST/PrivateKey.cpp)
 
 ## Purpose
 
@@ -17,21 +17,28 @@ This private key deterministically expands one seed into 65536 secret values. Ea
 3. Store each derived MiniData in the indexed array. Reusing the same seed and serialization produces the same full array.
 4. getSize returns array length; getKey returns the stored reference directly. Negative or excessive indices fail through Java array bounds.
 
-## Translation work still required
+## How the C++ translation works
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. Existing Crypto, MiniNumber, and MiniData routines are the relevant lower-level building blocks; replacing them with a generic key generator would change every public leaf.
+The C++ class reuses Crypto.hashAllObjects with the existing MiniData and MiniNumber serialization. The fixed 65,536 slots hold shared MiniData pointers so signatures retain the selected secret object. Bounds checks throw the Java array-bounds category. For a null seed, Java Crypto catches and logs a null-pointer failure for each derivation and returns null each time; the native constructor preserves all 65,536 iterations and null slots.
 
 ## Understanding the tests
 
-The HORST main creates a key from a fixed seed and prints its size/root before signing and verifying. It does not assert individual derived bytes. A future fixture should compare keys at indices 0, 1, 255, 256, and 65535 against Java, assert size 65536, repeat construction for determinism, and distinguish raw-byte hashing from serialized-object hashing.
+Three complete seed expansions, including an empty seed and a 33-byte seed, are compared with Java. Python independently computes every secret using hashlib.sha3_256 and compares a digest of the concatenated 65,536 values. Selected values test byte/sign boundaries at 127/128, 255/256, 32767/32768, and the last index. Tests check invalid indices, getter identity, selected-secret identity in signatures, and all 65,536 null-seed logging events.
 
-- [Java demonstration and key caller](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/HORST.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+The [HORST lab](../../../../../../../../student-guide/new-tests/horst-signatures.md)
+explains the independent reconstruction and records completed execution results.
+The [test driver](../../../../../../../../tools/horst_differential.py) calls the
+unmodified Java sources and the compiled native library. The source demonstration
+alone contains no assertions; the driver adds explicit acceptance and rejection checks.
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work.
+These cases cover the specified algorithm and error boundaries, not all possible
+Java subclass overrides, concurrent mutation, or mutable raw Java byte-array aliases.
+Null-pointer/EOF prose and runtime-specific stack frames are normalized by the fixtures.
+The Java test VM disables fast-throw diagnostic omission so repeated array errors
+retain comparable messages. FORS/SPHINCS integration and full node parity remain open.
+Passing these tests is not a cryptographic security certification.
 
 ## Check your understanding
 

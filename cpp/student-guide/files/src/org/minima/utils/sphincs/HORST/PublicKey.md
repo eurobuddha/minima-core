@@ -1,10 +1,10 @@
 # PublicKey — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/PublicKey.java) · `src/org/minima/utils/sphincs/HORST/PublicKey.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/PublicKey.java) · [Native counterpart](../../../../../../../../src/org/minima/utils/sphincs/HORST/PublicKey.cpp)
 
 ## Purpose
 
@@ -17,21 +17,28 @@ PublicKey hashes each secret preimage and commits all public hashes to an MMR. T
 3. Create an MMR leaf from that public value and MiniNumber(i), then append it. This leaf construction is distinct from simply inserting the raw public hash.
 4. After all entries, finalize the MMR and cache its root. getKey/getSize expose the stored array, getPublicKeyTreeRoot returns the cached MMRData, and getKeyTreeProof requests a proof at the selected MMREntryNumber.
 
-## Translation work still required
+## How the C++ translation works
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. MiniData hashing, MMR leaf creation, finalization, and proof generation are the lower-level dependencies. The full MMRData root includes more than just an unlabelled hash.
+The native class reuses the existing MMR without changing its hashing, indexed sums, or finalization. Public values and the cached root use shared ownership. A complete 65,536-leaf tree has one peak. Java returns an empty proof for an out-of-range leaf in this tree: both proof loops are empty even though the leaf data is null. The general native MMR rejects missing leaves, so this caller uses its existing getProofToPeak for out-of-range positions. In-range proofs still use the unchanged complete getProof path.
 
 ## Understanding the tests
 
-The HORST demonstration prints the public root and uses generated proofs in a signature. Proposed tests should compare the complete fixed-seed root and proofs for first/last indices, recalculate each proof from its correct indexed leaf, and show that substituting a different index changes verification even when the public hash is unchanged.
+For each of three real full-size trees, tests compare all-public-value digests and the complete root against both Java and an independent Python tree. The expected sum is 2,147,450,880. Selected first/last and out-of-range proofs are compared byte for byte. Python independently reconstructs each generated signature proof from its public value and index. Changed root sums are explicitly rejected, even when the root hash is unchanged.
 
-- [Java signature and demonstration caller](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/HORST.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+The [HORST lab](../../../../../../../../student-guide/new-tests/horst-signatures.md)
+explains the independent reconstruction and records completed execution results.
+The [test driver](../../../../../../../../tools/horst_differential.py) calls the
+unmodified Java sources and the compiled native library. The source demonstration
+alone contains no assertions; the driver adds explicit acceptance and rejection checks.
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work.
+These cases cover the specified algorithm and error boundaries, not all possible
+Java subclass overrides, concurrent mutation, or mutable raw Java byte-array aliases.
+Null-pointer/EOF prose and runtime-specific stack frames are normalized by the fixtures.
+The Java test VM disables fast-throw diagnostic omission so repeated array errors
+retain comparable messages. FORS/SPHINCS integration and full node parity remain open.
+Passing these tests is not a cryptographic security certification.
 
 ## Check your understanding
 

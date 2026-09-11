@@ -1,0 +1,543 @@
+{
+  "cases": 1389,
+  "passed": 1369,
+  "independent_assertions": 471,
+  "groups": {
+    "reference-indices": 120,
+    "reference-boundaries": 4,
+    "null-reference": 1,
+    "null-public": 1,
+    "null-private": 1,
+    "full-tree": 3,
+    "key-access": 135,
+    "sign": 9,
+    "cross-writer": 18,
+    "changed-message": 18,
+    "changed-root": 18,
+    "changed-root-sum": 18,
+    "extra-entries": 18,
+    "live-list-alias": 3,
+    "null-sign-message": 3,
+    "changed-secret": 16,
+    "missing-values": 16,
+    "missing-proofs": 16,
+    "null-value": 16,
+    "null-proof": 16,
+    "empty-proof": 16,
+    "swapped-secret": 15,
+    "failure-precedence": 9,
+    "mutated-proof-wire": 44,
+    "partial-read": 395,
+    "converter": 395,
+    "null-converter": 1,
+    "partial-write-json": 64
+  },
+  "failures": [
+    {
+      "index": 240,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -1,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -1 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 241,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -1,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -1 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 243,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -2,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -2 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 244,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -2,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -2 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 246,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": 65536,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index 65536 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 247,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": 65536,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index 65536 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 249,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": 2147483647,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index 2147483647 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 250,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": 2147483647,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index 2147483647 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 252,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -2147483648,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -2147483648 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 253,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -2147483648,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -2147483648 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 321,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -1,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -1 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 322,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -1,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -1 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 324,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -2,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -2 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 325,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -2,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -2 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 327,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": 65536,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index 65536 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 328,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": 65536,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index 65536 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 330,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": 2147483647,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index 2147483647 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 331,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": 2147483647,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index 2147483647 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 333,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -2147483648,
+        "kind": "private"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -2147483648 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    },
+    {
+      "index": 334,
+      "group": "key-access",
+      "request": {
+        "action": "key",
+        "index": -2147483648,
+        "kind": "public"
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": ""
+        },
+        "logCount": 0,
+        "logKinds": []
+      },
+      "cpp": {
+        "error": {
+          "exception": "java.lang.ArrayIndexOutOfBoundsException",
+          "message": "Index -2147483648 out of bounds for length 65536"
+        },
+        "logCount": 0,
+        "logKinds": []
+      }
+    }
+  ],
+  "seconds": 118.134,
+  "full_tree_leaves": 65536,
+  "full_tree_seeds": 3,
+  "cross_writer_signatures": 18,
+  "transcript_sha256": "3c44f3a85e732d3301624a97abdc27632a29958d6326ded985e92c062bfd9797",
+  "scope": "Pinned full-size HORST four classes, native primitives; root/all-key digests independently reproduced with Python SHA3; exact wire/JSON, aliases, typed errors, partial input/output state and converter log categories. NPE/EOF prose and runtime stack frames normalized. Other SPHINCS classes, arbitrary subclass overrides, raw MiniData byte-array mutation and concurrent mutation not certified."
+}

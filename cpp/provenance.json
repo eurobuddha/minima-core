@@ -3638,5 +3638,60 @@
         "java.base/java/io/UnixFileSystem.java": "92f5d44d0e26d40e9bd6544625dec0f0022d6c5d954414a45c96e610135e4dfe"
       }
     }
+  },
+  "horst_checkpoint": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/utils/sphincs/HORST/HORST.java": "320f0ac46e9e2a0ab9556ee0fa3f69bbe8006890a8b8b6d12d8465d3a0eda904",
+      "upstream-study/src/org/minima/utils/sphincs/HORST/HORSTSignature.java": "cddb5f6240bad354beba9d7129f93307c530c496ea707bdaebd4fe8d5c847fe8",
+      "upstream-study/src/org/minima/utils/sphincs/HORST/PrivateKey.java": "a660c967225d2a09802325fceb90aff5f8fee1db497aba2b1806b5c4006c1eb4",
+      "upstream-study/src/org/minima/utils/sphincs/HORST/PublicKey.java": "48d92b2fd385c83d0b6bbdbbd5cafea88451965f6b4ba2422962cd4015ef5296"
+    },
+    "translation": "Four full-size legacy HORST classes. Preserve 65536 secrets, structured seed/index hashing, raw public/message hashing, indexed MMR sums, sixteen ordered signature/proof checks, mutable lists, partial wire reads/writes, converter logging and source main.",
+    "reuse": [
+      "cpp/src/org/minima/utils/Crypto.hpp",
+      "cpp/src/org/minima/objects/base/MiniData.cpp",
+      "cpp/src/org/minima/objects/base/MiniNumber.cpp",
+      "cpp/src/org/minima/objects/mmr/MMR.cpp",
+      "cpp/src/org/minima/objects/mmr/MMRData.cpp",
+      "cpp/src/org/minima/objects/mmr/MMRProof.cpp",
+      "cpp/src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.hpp",
+      "cpp/src/support/NativeThrowable.hpp",
+      "cpp/tools/peers_checker_differential.py:Runner"
+    ],
+    "sibling_search": {
+      "root": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp",
+      "candidate": "src/crypto/TreeKey.hpp",
+      "tests": "tests/crypto/test_treekey.cpp",
+      "result": "No HORST/FORS/SPHINCS implementation found. Sibling TreeKey uses binary raw-hash paths, 2^depth leaves and a different WOTS representation; it cannot replace the pinned indexed MMR construction. Existing current-repository primitives reused unchanged."
+    },
+    "minimum_adaptations": [
+      "Shared pointers preserve returned secret/root and mutable signature-list ownership; read replaces both list handles before the count.",
+      "PublicKey out-of-range proofs use existing getProofToPeak because this full tree has one peak and Java returns an empty proof for missing leaves; general native getProof rejects them.",
+      "HORSTSignature appends proof fields to the supplied output vector to preserve partial output before an invalid chunk; same existing codecs reused.",
+      "Explicit Java int wraparound and typed bounds/null failures avoid native undefined behavior."
+    ],
+    "files_sha256": {
+      "cpp/src/org/minima/utils/sphincs/HORST/HORST.cpp": "47c0956b73995aa729eda4c816e406e7facaafad070106b08f071572cdce6d0b",
+      "cpp/src/org/minima/utils/sphincs/HORST/HORST.hpp": "feadcf46d55e93520778f0d6f81dfce1b5747458dc9a0ac2b31d0b8ee1cb36af",
+      "cpp/src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp": "44cfda980573aedb2c825425ff48d239bff0157b8b9721494eaca2edbeca7b2a",
+      "cpp/src/org/minima/utils/sphincs/HORST/HORSTSignature.hpp": "45c0860c5304c8d5e17346866dc254d3a516500d60fcf5bf3bdc4946e966884f",
+      "cpp/src/org/minima/utils/sphincs/HORST/PrivateKey.cpp": "9f06d9ea253920fc11060a35de114385b20c0917c6faef9bc6c00a9ad2fcbe29",
+      "cpp/src/org/minima/utils/sphincs/HORST/PrivateKey.hpp": "c0e64c5106e88ba154456d77e555491ce9c9aac2e367312da2e284ebdf8697d4",
+      "cpp/src/org/minima/utils/sphincs/HORST/PublicKey.cpp": "36575fa52bc4ca5450f3ea383a15e2e45dd727452e66e0356d98b6e7bcd66912",
+      "cpp/src/org/minima/utils/sphincs/HORST/PublicKey.hpp": "bdbf404cea176bf3a9d213c9f642c9a72ff0b6be9a89183116d202c4a57b236a",
+      "cpp/support/HORSTOracle.java": "ee884c0386a87eb82a5ec9ba88d8dc646d6648336348090482f69e0929052c36",
+      "cpp/support/horst.cpp": "76cd37aaff253bd363bf59c724a79ccc75e17c02eeaa5192d51bf96515e115b9",
+      "cpp/tools/horst_differential.py": "b3900ec0d5fc905ab70a119f4e01a9aff8fc311cbc448e1d4afc508ad56e5a7e"
+    },
+    "evidence": "validation/horst-work-in-progress",
+    "full_parity_verified": false,
+    "limitations": [
+      "FORS/SPHINCS consumers still unported.",
+      "Arbitrary Java subclass overrides, concurrent list mutation and MiniData raw byte-array aliases are not certified.",
+      "The test observer normalizes NPE/EOF prose and stack frames; it compares exception categories, other messages, log count and first two logged exception categories.",
+      "JVM -XX:-OmitStackTraceInFastThrow makes repeated bounds diagnostics deterministic; no source algorithm is changed.",
+      "Cryptographic security and full node parity are not established."
+    ]
   }
 }

@@ -1,10 +1,10 @@
 # HORSTSignature — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/HORSTSignature.java) · `src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/HORSTSignature.java) · [Native counterpart](../../../../../../../../src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp)
 
 ## Purpose
 
@@ -17,21 +17,28 @@ HORSTSignature stores parallel lists of revealed secret values and public-tree p
 3. readDataStream replaces both lists, reads a count, then appends each value followed by its proof. Failure between these two reads can leave unequal list lengths. A negative narrowed count skips the loop.
 4. JSON output emits values containing sigvalue hex and serialized sigproof hex. convertMiniDataVersion catches IOException, logs it, and returns the same possibly partially populated object; other exceptions can propagate.
 
-## Translation work still required
+## How the C++ translation works
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. Reuse MiniNumber count encoding, MiniData, MMRProof, and the logging/error boundary. A temporary all-or-nothing decode would change the observable partial state.
+The native signature uses shared state containing two separately shared vectors, following the existing MegaMMRSyncData ownership pattern. Reading replaces both list objects before the count, leaving previously returned list handles detached and intact. Values and proofs are appended separately in source order. writeDataStream appends to a supplied byte vector so a failed write retains its prefix. JSON proof conversion catches an I/O error, logs it, then throws a null-pointer error just as Java does when it dereferences MiniData.getMiniDataVersion's null return. The conversion helper instead returns the partially populated signature after I/O errors.
 
 ## Understanding the tests
 
-The HORST main writes a full signature, re-reads it through convertMiniDataVersion, and prints verification. Proposed tests should compare exact alternating wire bytes, every truncated prefix, mismatched input lists, negative counts, trailing bytes, and whether the conversion helper returns partial state while direct reading throws.
+The driver truncates every prefix of an independently encoded small signature and samples every part of a full signature. Each case compares consumed bytes, new list lengths, old-list identity and lengths, partial output bytes through their digest, JSON or its failure, and typed read/write exceptions. Converter cases distinguish caught I/O errors from an escaping zero-length BigInteger error. Mutations exercise each of the sixteen slots, unequal lists, null entries, and oversized proof hashes that fail after part of the output has been written.
 
-- [Signature producer, verifier, and printed round trip](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/HORST.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+The [HORST lab](../../../../../../../../student-guide/new-tests/horst-signatures.md)
+explains the independent reconstruction and records completed execution results.
+The [test driver](../../../../../../../../tools/horst_differential.py) calls the
+unmodified Java sources and the compiled native library. The source demonstration
+alone contains no assertions; the driver adds explicit acceptance and rejection checks.
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work.
+These cases cover the specified algorithm and error boundaries, not all possible
+Java subclass overrides, concurrent mutation, or mutable raw Java byte-array aliases.
+Null-pointer/EOF prose and runtime-specific stack frames are normalized by the fixtures.
+The Java test VM disables fast-throw diagnostic omission so repeated array errors
+retain comparable messages. FORS/SPHINCS integration and full node parity remain open.
+Passing these tests is not a cryptographic security certification.
 
 ## Check your understanding
 
