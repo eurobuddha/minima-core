@@ -1,4 +1,5 @@
 #include "MiniNumber.hpp"
+#include "org/minima/objects/mmr/MMREntryNumber.hpp"
 #include "support/ByteIO.hpp"
 #include "support/JavaExceptions.hpp"
 #include "support/JavaInteger.hpp"
@@ -186,7 +187,9 @@ int BigInt::compareTo(const BigInt& o) const {
     bool na = isNegative(), no = o.isNegative();
     if (na != no) return na ? -1 : 1;
     int c = compareAbsTo(o);
-    return na ? -c : c;
+    // BigInteger.compareTo returns exactly -1, 0 or 1, not memcmp's byte difference.
+    const int order=(c>0)-(c<0);
+    return na ? -order : order;
 }
 
 bool BigInt::operator==(const BigInt& o) const { return bytes == o.bytes; }
@@ -304,6 +307,7 @@ BigInt BigInt::operator-() const {
 // ============================================================================
 MiniNumber::MiniNumber() : m_unscaled(0LL), m_scale(0) {}
 MiniNumber::MiniNumber(int64_t v) : m_unscaled(v), m_scale(0) { checkLimits(); }
+MiniNumber::MiniNumber(const BigInt& v):MiniNumber(v,0) {}
 
 
 MiniNumber MiniNumber::fromBytes(const std::vector<uint8_t>& bigEndianBytes) {
@@ -603,6 +607,7 @@ BigInt MiniNumber::getAsBigInteger() const {
     if (m_unscaled.isZero()) return BigInt(0LL);
     return m_scale < 0 ? m_unscaled * pow10(-m_scale) : m_unscaled / pow10(m_scale);
 }
+MMREntryNumber MiniNumber::getAsBigDecimal() const {return MMREntryNumber(getUnscaled(),getScale());}
 int64_t MiniNumber::getAsLong() const {
     const auto integer = getAsBigInteger();
     uint64_t result = integer.isNegative() ? UINT64_MAX : 0;

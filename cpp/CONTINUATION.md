@@ -1,4 +1,57 @@
-# Current checkpoint — three original object tests converted
+# Current checkpoint — original base tests and missing value APIs
+
+MinimaCoreC++ branch/project/executable. Base HEAD 325ec81a5ede1e0407eaeefc410f1018f9963ea5.
+Goal ACTIVE and incomplete. Newly mapped MiniNumberTests.cpp and MiniDataTests.cpp
+under test/org/minima/objects/base. Inventory:423 counterparts (364production,
+59tests),34 absent (5production,29tests). Full parity remains not_verified.
+
+Existing behavior: MiniData compare/inclusive comparisons, unbounded decimal
+view and bounded hex overload; MiniNumber BigInt constructor and raw decimal
+view reuse existing MMREntryNumber coefficient/scale carrier. BigInt::compareTo
+now returns exactly -1/0/1, correcting raw memcmp byte differences. Consumers
+inspected for sign use; exact MiniData/MiniNumber/MMREntryNumber results checked.
+No claim to full BigDecimal API or reference identity mapping.
+
+Both core/new-target builds and real MinimaCoreCpp node targets PASS (output
+MinimaCoreC++). Both original suites PASS12 methods/74 assertions per runtime
+(41MiniNumber,33MiniData); every printed observation compared in order except
+validated array-identity suffix and one-byte random output normalization.
+Ten-million-byte loop retained. MiniData TooBig method succeeds and has0assertions;
+this is source behavior, not meaningful rejection coverage.
+Both API corpora PASS1108 comparisons/18632 independent checks; transcript
+8add3a91186f26bf3f03a71c987f8420a134434a2d46c566e16fd27ce2717a14.
+Both3802-case primitive regressions PASS. Full CTest suite not repeated;271entries.
+Initial336 direct compare mismatches per build preserved in evidence. Catch-path
+printing uses existing nativeExceptionText. Final CTest validates those targets.
+
+Evidence:validation/original-base-tests-work-in-progress. Lab:
+student-guide/new-tests/original-base-tests.md. Two original-test and three
+production lessons updated; source map/457-page structural audit kept current.
+
+NEXT: convert remaining independent KISS original tests, preserving source
+methods/assertions and meaningful Java comparisons. Current remaining inventory:
+validation/original-base-tests-work-in-progress/remaining-files.json. Production
+JNI bodies/ABI remain missing in inspected repository/sibling candidates for4
+files; caller logic can proceed, complete native behavior needs bodies or vectors.
+P2PSwapLink entirely commented; TxPoWProcessorTest has2empty annotated test bodies
+and active delay overloads. Do not invent live behavior or credit empty assertions.
+
+Long Magic demos are saved9ae7039 binaries, independent of this checkpoint.
+Sessions55636(normal),41123(sanitizer) were both live when polled at this turn start.
+Poll exact handles; no restart from buffered output alone, no waiting on demos
+before independent conversions.
+
+Preserve unrelated graphify-out work and external f7f0e08 Java SQL/JAR commit.
+Pinned upstream-study unchanged. Commit only cpp; no push. Prior verified recovery
+bundle:local-backups/MinimaCoreC++-20260911T174633Z.bundle, HEAD325ec81,
+SHA5158990b36b4bbc25f9cef0dffbc6c60f1559436ac48b1ef061ca5553643340c;
+32checkpoint files byte-verified. After committing this batch, create/verify a
+new --all bundle, fresh recovery clone, fsck/source-pin checks and every changed
+checkpoint blob byte-for-byte; snapshot unrelated work separately.
+
+---
+
+# Historical checkpoint — three original object tests converted
 
 MinimaCoreC++ branch/project/executable. Base HEAD 4eebb838d9752d54e0f7dd814673702de8ac3a3c.
 Goal active, incomplete. NEW files: test/org/minima/objects/AddressTests.cpp,

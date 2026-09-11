@@ -1,0 +1,16 @@
+{
+  "CMakeLists.txt": "98907d2a6a1cfdd4da4ade9b2307a74d929f0339df4012418cc55786f9eec3d2",
+  "src/org/minima/objects/base/MiniData.hpp": "6a38eea9f037633f6aec54c8d5844d17041e8b052b877472f8e49e9ede427ece",
+  "src/org/minima/objects/base/MiniData.cpp": "dd94a2589b9fe548f0b07d6895091266a9e2aecd5658ebc7b51b7f81622d46fa",
+  "src/org/minima/objects/base/MiniNumber.hpp": "8a43b7789219c7b6b8aee716d338ad88de9282656e837d27bfbb31842b99c68e",
+  "src/org/minima/objects/base/MiniNumber.cpp": "b7fc47a863b521140167e07cf9284fec5a821f5d054521d9faf9deceba9ef895",
+  "src/org/minima/objects/mmr/MMREntryNumber.cpp": "5778c69cc253049e1ddb68dd402f5e59a455b7cc424d385098ad20608d24fa0c",
+  "support/OriginalBaseTestSupport.hpp": "38573f865bb3c83b9c2f02d968b5bde8eb00a20e2f10c5ed24b585ba90d8e1da",
+  "support/OriginalBaseTests.java": "648bcdae257067bd854e1cac539622ce7bbe04916f775810daf2dae5c2b68044",
+  "support/BaseValueAPIOracle.java": "72ee532249610ef9c959eb1aa285985e07fa7556c53aa56125c6b5d764214d27",
+  "support/base_value_api.cpp": "807646a17502acfa4360595ab1cf70b6c83fe24f7042164b2947b011da9d5b29",
+  "tools/original_base_tests.py": "62e629b4287305a372daa42bd3ac77be80fdb1a4726558fc70a13f244841e79a",
+  "tools/base_value_api_differential.py": "f44c6813f5edb7e4dd34ab8b0107b09ffc9bcc5fbfb8f680f7522935b824a401",
+  "test/org/minima/objects/base/MiniNumberTests.cpp": "5b681d2338f39c4e182b1eb61ef7f8d2344b9e6312bec7540a5e1d5193393b78",
+  "test/org/minima/objects/base/MiniDataTests.cpp": "0a92773ee2e0c473278db49ddf9a40373de193e5036a61f6a3d192b3885d3761"
+}

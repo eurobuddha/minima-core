@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 421 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 423 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -387,8 +387,8 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/objects/TransactionTests.java` | `test/org/minima/objects/TransactionTests.cpp` | implemented_partial | — |
 | `test/org/minima/objects/TxHeaderTests.java` | `test/org/minima/objects/TxHeaderTests.cpp` | implemented_partial | — |
 | `test/org/minima/objects/base/MiniByteTests.java` | `test/org/minima/objects/base/MiniByteTests.cpp` | implemented_partial | — |
-| `test/org/minima/objects/base/MiniDataTests.java` | `test/org/minima/objects/base/MiniDataTests.cpp` | unported | — |
-| `test/org/minima/objects/base/MiniNumberTests.java` | `test/org/minima/objects/base/MiniNumberTests.cpp` | unported | — |
+| `test/org/minima/objects/base/MiniDataTests.java` | `test/org/minima/objects/base/MiniDataTests.cpp` | implemented_partial | — |
+| `test/org/minima/objects/base/MiniNumberTests.java` | `test/org/minima/objects/base/MiniNumberTests.cpp` | implemented_partial | — |
 | `test/org/minima/objects/base/MiniStringTests.java` | `test/org/minima/objects/base/MiniStringTests.cpp` | implemented_partial | — |
 | `test/org/minima/system/brains/TxPoWProcessorTest.java` | `test/org/minima/system/brains/TxPoWProcessorTest.cpp` | unported | — |
 | `test/org/minima/system/network/p2p/P2PDBTest.java` | `test/org/minima/system/network/p2p/P2PDBTest.cpp` | implemented_partial | — |

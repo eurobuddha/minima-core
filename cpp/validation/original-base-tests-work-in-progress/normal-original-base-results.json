@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "original_methods": 12,
+  "assertions_per_runtime": 74,
+  "results": [
+    {
+      "name": "MiniNumberTests",
+      "passed": true,
+      "expected": {
+        "passed": true,
+        "tests": 6,
+        "assertions": 41,
+        "class": "MiniNumberTests"
+      },
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-base-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalBaseTests",
+            "MiniNumberTests"
+          ],
+          "returncode": 0,
+          "stdout": "i value is 0\ni.isEqual(MiniNumber.ONE) i:0 resolves as false\ni.isEqual(MiniNumber.ZERO) i:0 resolves as true\ni.isLess(MiniNumber.ONE) i:0 resolves as true\ni.add(MiniNumber.ONE).isEqual(MiniNumber.ONE) i:0 resolves as true\ni.increment().isEqual(MiniNumber.ONE) i:0 resolves as true\ni.mult(MiniNumber.ONE).isEqual(MiniNumber.ZERO)) i:0 resolves as true\ni.toString().contentEquals(\"0\") i:0 resolves as true\nMiniNumber() i value is 0\nMiniNumber(2147483649L) j value is 2147483649\nBigInteger(\"2147483649\") k value is 2147483649\nMiniNumber(k) l value is 2147483649\nBigDecimal(1.00) m value is 1\nMiniNumber.ONE value is 1\nMiniNumber.ONE.getAsBigInteger() value is 1\nMiniNumber.ONE.getAsInt() value is 1\nMiniNumber.ONE.abs() value is 1\nMiniNumber.ONE.floor() value is 1\nMiniNumber.ONE.ceil() value is 1\ni.add(MiniNumber.ONE).getAsLong() value is 1\ni.increment().setSignificantDigits(19) value is 1\ni.sub(MiniNumber.ONE).isEqual(MiniNumber.MINUSONE) i:0 resolves as true\ni.pow(1).isEqual(MiniNumber.ZERO i:0 resolves as true\ni.add(MiniNumber.ONE).isLess(MiniNumber.TWO) i:0 resolves as true\ni.add(MiniNumber.TWO).isLessEqual(MiniNumber.TWO) i:0 resolves as true\ni.add(MiniNumber.TWO).isLessEqual(MiniNumber.ONE) i:0 resolves as false\ni.add(MiniNumber.TWO).isMore(MiniNumber.ONE) i:0 resolves as true\ni.add(MiniNumber.ONE).div(MiniNumber.ONE).isEqual(MiniNumber.ONE) i:0 resolves as true\ni.add(MiniNumber.ONE).modulo(MiniNumber.ONE).isEqual(MiniNumber.ZERO) i:0 resolves as true\ni.increment().isEqual(MiniNumber.ONE i:0 resolves as true\ni.decrement().isEqual(MiniNumber.MINUSONE) i:0 resolves as true\ni.increment().setSignificantDigits(2).isEqual(MiniNumber.TWO) i:0 resolves as false\ni.increment().isLess(MiniNumber.ONE) i:0 resolves as false\ni.increment().isMore(MiniNumber.ONE) i:0 resolves as false\ni.isMoreEqual(MiniNumber.ONE) i:0 resolves as false\ni.isMoreEqual(MiniNumber.ZERO i:0 resolves as true\nMiniNumber.ONE.getAsBigDecimal().equals(m) m:1 value is true\n i is now equal to 1\nIOException: java.io.IOException: ERROR reading MiniNumber - input too large or negative 127 msg=ERROR reading MiniNumber - input too large or negative 127\ni.ReadFromStream(dis) i is now equal to 1\nORIGINAL_BASE_RESULT {\"class\":\"MiniNumberTests\",\"tests\":6,\"assertions\":41,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/MiniNumberTests"
+          ],
+          "returncode": 0,
+          "stdout": "i value is 0\ni.isEqual(MiniNumber.ONE) i:0 resolves as false\ni.isEqual(MiniNumber.ZERO) i:0 resolves as true\ni.isLess(MiniNumber.ONE) i:0 resolves as true\ni.add(MiniNumber.ONE).isEqual(MiniNumber.ONE) i:0 resolves as true\ni.increment().isEqual(MiniNumber.ONE) i:0 resolves as true\ni.mult(MiniNumber.ONE).isEqual(MiniNumber.ZERO)) i:0 resolves as true\ni.toString().contentEquals(\"0\") i:0 resolves as true\nMiniNumber() i value is 0\nMiniNumber(2147483649L) j value is 2147483649\nBigInteger(\"2147483649\") k value is 2147483649\nMiniNumber(k) l value is 2147483649\nBigDecimal(1.00) m value is 1\nMiniNumber.ONE value is 1\nMiniNumber.ONE.getAsBigInteger() value is 1\nMiniNumber.ONE.getAsInt() value is 1\nMiniNumber.ONE.abs() value is 1\nMiniNumber.ONE.floor() value is 1\nMiniNumber.ONE.ceil() value is 1\ni.add(MiniNumber.ONE).getAsLong() value is 1\ni.increment().setSignificantDigits(19) value is 1\ni.sub(MiniNumber.ONE).isEqual(MiniNumber.MINUSONE) i:0 resolves as true\ni.pow(1).isEqual(MiniNumber.ZERO i:0 resolves as true\ni.add(MiniNumber.ONE).isLess(MiniNumber.TWO) i:0 resolves as true\ni.add(MiniNumber.TWO).isLessEqual(MiniNumber.TWO) i:0 resolves as true\ni.add(MiniNumber.TWO).isLessEqual(MiniNumber.ONE) i:0 resolves as false\ni.add(MiniNumber.TWO).isMore(MiniNumber.ONE) i:0 resolves as true\ni.add(MiniNumber.ONE).div(MiniNumber.ONE).isEqual(MiniNumber.ONE) i:0 resolves as true\ni.add(MiniNumber.ONE).modulo(MiniNumber.ONE).isEqual(MiniNumber.ZERO) i:0 resolves as true\ni.increment().isEqual(MiniNumber.ONE i:0 resolves as true\ni.decrement().isEqual(MiniNumber.MINUSONE) i:0 resolves as true\ni.increment().setSignificantDigits(2).isEqual(MiniNumber.TWO) i:0 resolves as false\ni.increment().isLess(MiniNumber.ONE) i:0 resolves as false\ni.increment().isMore(MiniNumber.ONE) i:0 resolves as false\ni.isMoreEqual(MiniNumber.ONE) i:0 resolves as false\ni.isMoreEqual(MiniNumber.ZERO i:0 resolves as true\nMiniNumber.ONE.getAsBigDecimal().equals(m) m:1 value is true\n i is now equal to 1\nIOException: java.io.IOException: ERROR reading MiniNumber - input too large or negative 127 msg=ERROR reading MiniNumber - input too large or negative 127\ni.ReadFromStream(dis) i is now equal to 1\nORIGINAL_BASE_RESULT {\"class\":\"MiniNumberTests\",\"tests\":6,\"assertions\":41,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "MiniDataTests",
+      "passed": true,
+      "expected": {
+        "passed": true,
+        "tests": 6,
+        "assertions": 33,
+        "class": "MiniDataTests"
+      },
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-base-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalBaseTests",
+            "MiniDataTests"
+          ],
+          "returncode": 0,
+          "stdout": "i value is 0x1388\nj value is 0xFFFF\nk value is 0x05475746F7269616C73706F69674\nmData value is [0xFFFF, 0x05475746F7269616C73706F69674]\nmDataCompare value is [0x1388, 0xFFFF, 0x05475746F7269616C73706F69674]\ni.getLength()0x1388 resolves as 2\ni.getLength()0xFFFF resolves as 2\ni.getLength()0x05475746F7269616C73706F69674 resolves as 14\ni.getData()0x1388 resolves as [B@33c7353a\ni.getDataValue()0x1388 resolves as 5000\ni.getDataValueDecimal()0x1388 resolves as 5000\ni.to0xString()0x1388 resolves as 0x1388\ni.toString()0x1388 resolves as 0x1388\nmData[0].compare(k) resolves as -1\ni.getRandomData(1)0x1388 resolves as 0xDD\ni.shiftr(64) i:0x1388 resolves as 0x00\ni.shiftl(64) i:0x1388 resolves as 0x13880000000000000000\ni.concat(j) i:0x1388 j:0xFFFF resolves as 0x1388FFFF\ni.to0xString(1)0x1388 resolves as 0..\ni.to0xString(10000)0x1388 resolves as 0x1388..\ni.equals(j) i:0x1388 j:0xFFFF resolves as false\nj.equals(j) j:0xFFFF j:0xFFFF resolves as true\ni.isEqual(j)) i:0x1388 j:0xFFFF resolves as false\nmData[1].isEqual(mDataCompare[1]) mData[1]:0x05475746F7269616C73706F69674 mDataCompare[1]:0xFFFF resolves as false\ni.isLess(j) i:0x1388 j:0xFFFF resolves as true\nj.isLess(i) i:0x1388 j:0xFFFF resolves as false\nj.isLessEqual(i) i:0x1388 j:0xFFFF resolves as false\nj.isLess(i) i:0x1388 j:0xFFFF resolves as false\nj.isMore(i) i:0x1388 j:0xFFFF resolves as true\ni.isMore(j) i:0x1388 j:0xFFFF resolves as false\ni.isMoreEqual(j) i:0x1388 j:0xFFFF resolves as false\nj.isMoreEqual(j) j:0xFFFF j:0xFFFF resolves as true\nj.toString = 0xFFFF\n j is now equal to 0xFFFF\nIOException: java.io.IOException: Read Error : MiniData Length larger than maximum allowed (256 MB) 514.0 MB msg=Read Error : MiniData Length larger than maximum allowed (256 MB) 514.0 MB\n j is now equal to 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\n j is now equal to 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\nORIGINAL_BASE_RESULT {\"class\":\"MiniDataTests\",\"tests\":6,\"assertions\":33,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/MiniDataTests"
+          ],
+          "returncode": 0,
+          "stdout": "i value is 0x1388\nj value is 0xFFFF\nk value is 0x05475746F7269616C73706F69674\nmData value is [0xFFFF, 0x05475746F7269616C73706F69674]\nmDataCompare value is [0x1388, 0xFFFF, 0x05475746F7269616C73706F69674]\ni.getLength()0x1388 resolves as 2\ni.getLength()0xFFFF resolves as 2\ni.getLength()0x05475746F7269616C73706F69674 resolves as 14\ni.getData()0x1388 resolves as [B@16f5d68f8\ni.getDataValue()0x1388 resolves as 5000\ni.getDataValueDecimal()0x1388 resolves as 5000\ni.to0xString()0x1388 resolves as 0x1388\ni.toString()0x1388 resolves as 0x1388\nmData[0].compare(k) resolves as -1\ni.getRandomData(1)0x1388 resolves as 0xCE\ni.shiftr(64) i:0x1388 resolves as 0x00\ni.shiftl(64) i:0x1388 resolves as 0x13880000000000000000\ni.concat(j) i:0x1388 j:0xFFFF resolves as 0x1388FFFF\ni.to0xString(1)0x1388 resolves as 0..\ni.to0xString(10000)0x1388 resolves as 0x1388..\ni.equals(j) i:0x1388 j:0xFFFF resolves as false\nj.equals(j) j:0xFFFF j:0xFFFF resolves as true\ni.isEqual(j)) i:0x1388 j:0xFFFF resolves as false\nmData[1].isEqual(mDataCompare[1]) mData[1]:0x05475746F7269616C73706F69674 mDataCompare[1]:0xFFFF resolves as false\ni.isLess(j) i:0x1388 j:0xFFFF resolves as true\nj.isLess(i) i:0x1388 j:0xFFFF resolves as false\nj.isLessEqual(i) i:0x1388 j:0xFFFF resolves as false\nj.isLess(i) i:0x1388 j:0xFFFF resolves as false\nj.isMore(i) i:0x1388 j:0xFFFF resolves as true\ni.isMore(j) i:0x1388 j:0xFFFF resolves as false\ni.isMoreEqual(j) i:0x1388 j:0xFFFF resolves as false\nj.isMoreEqual(j) j:0xFFFF j:0xFFFF resolves as true\nj.toString = 0xFFFF\n j is now equal to 0xFFFF\nIOException: java.io.IOException: Read Error : MiniData Length larger than maximum allowed (256 MB) 514.0 MB msg=Read Error : MiniData Length larger than maximum allowed (256 MB) 514.0 MB\n j is now equal to 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\n j is now equal to 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\nORIGINAL_BASE_RESULT {\"class\":\"MiniDataTests\",\"tests\":6,\"assertions\":33,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "All twelve active methods in pinned MiniNumberTests and MiniDataTests, with 41 and 33 executed assertions respectively on the source paths. Exact annotation membership/options and absent lifecycle methods checked before fresh-instance direct invocation using real JUnit assertions. All source observations compared in order; only validated array identity spelling and one-byte random output are normalized. The original ten-million-byte loop is retained. The source TooBig method executes zero assertions on its actual successful path. No full production API/node parity claim."
+}

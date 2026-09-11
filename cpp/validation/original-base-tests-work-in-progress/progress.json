@@ -1,0 +1,51 @@
+{
+  "base_head": "325ec81a5ede1e0407eaeefc410f1018f9963ea5",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/objects/base/MiniNumberTests.cpp",
+    "test/org/minima/objects/base/MiniDataTests.cpp"
+  ],
+  "counterparts": 423,
+  "production_counterparts": 364,
+  "test_counterparts": 59,
+  "remaining": 34,
+  "remaining_production": 5,
+  "remaining_tests": 29,
+  "parity": "not_verified",
+  "builds": {
+    "normal": "core, new targets, primitive probe and MinimaCoreCpp node target PASS",
+    "sanitized": "core, new targets, primitive probe and MinimaCoreCpp node target PASS",
+    "node_output": "MinimaCoreC++",
+    "full_suite": "not repeated"
+  },
+  "tests": {
+    "original_methods": 12,
+    "original_assertions_per_runtime": 74,
+    "MiniNumberTests_assertions": 41,
+    "MiniDataTests_assertions": 33,
+    "API_comparisons_per_build": 1108,
+    "API_independent_checks_per_build": 18632,
+    "API_transcript_sha256": "8add3a91186f26bf3f03a71c987f8420a134434a2d46c566e16fd27ce2717a14",
+    "primitive_regression_comparisons_per_build": 3802,
+    "normal": "PASS",
+    "sanitized": "PASS"
+  },
+  "existing_changes": [
+    "MiniData compare/inclusive comparison, decimal value and bounded hex overload.",
+    "MiniNumber BigInt constructor and decimal view using existing unbounded MMREntryNumber carrier without additional rounding.",
+    "BigInt::compareTo normalized to exactly -1/0/1, matching Java; downstream MiniNumber and MMREntryNumber comparison results inherit correction."
+  ],
+  "initial_failure": "Extra API corpus found 336 Java/native comparison mismatches per build: raw memcmp byte differences escaped BigInt::compareTo. Independent expected checks caught the same 336 native errors; original assertions only observed comparison signs. Fixed the shared primitive and retained initial reports.",
+  "scope": "All original method bodies, loops and assertions translated. Java exact annotated method set checked before direct invocation of real JUnit assertions. Only validated array identity and one-byte random observation normalized. Original TooBig method has zero executed assertions on its successful path; ten-million-byte loop retained. Decimal carrier preserves observed coefficient/scale/text and independent snapshots, not a complete JDK BigDecimal API or identity mapping. Full base API, arbitrary allocation/concurrency and node parity incomplete.",
+  "next_action": "Prioritize remaining KISS test files using existing native function/expression/statement implementations. Remaining production JNI bodies are unresolved but do not block independent tests.",
+  "blockers": [
+    "Four production files depend on JNI implementation/ABI or authoritative vectors absent from inspected candidates.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Do not invent active behavior or credit empty assertions."
+  ],
+  "long_demos": {
+    "normal_session": 55636,
+    "sanitized_session": 41123,
+    "last_verified": "Both live at this turn start; saved 9ae7039 binaries, not current code."
+  }
+}

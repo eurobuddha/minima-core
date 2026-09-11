@@ -60,3 +60,11 @@ required sign bytes while removing redundant ones.
 Normalization scans the redundant sign prefix once and performs one vector erase,
 avoiding quadratic copying for large coefficients. The scalar suite adds four
 64 KiB sign-padding examples without imposing a timing-based assertion.
+
+## Original base-test checkpoint
+
+The existing unbounded coefficient/scale representation is now also reused by MiniData's decimal view and MiniNumber's raw decimal view. The adapters live in their respective MiniData.cpp and MiniNumber.cpp counterparts; the base headers forward-declare this carrier. They do not round or impose monetary limits. Tests compare coefficient, scale, Java decimal text and retained values after the source object changes.
+
+The shared BigInt comparison correction also makes this type's compareTo return Java's exact -1/0/1 values. Both builds verify positive, negative and zero decimal comparisons in the supplemental base API corpus. Reusing this carrier is not a claim to implement every BigDecimal method or Java object identity.
+
+See the [base-test lab](../../../../../../new-tests/original-base-tests.md) for the retained initial failure and complete scope.

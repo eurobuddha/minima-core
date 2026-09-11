@@ -1,0 +1,17 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/base/MiniNumber.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMREntryNumber.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/base/MiniData.cpp.o
+[  2%] Linking CXX static library libminima_file_port.a
+[100%] Built target minima_file_port
+[100%] Linking CXX executable base_value_api
+[100%] Built target base_value_api
+[100%] Built target minima_file_port
+[100%] Linking CXX executable MiniNumberTests
+[100%] Built target MiniNumberTests
+[100%] Built target minima_file_port
+[100%] Linking CXX executable MiniDataTests
+[100%] Built target MiniDataTests
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp

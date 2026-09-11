@@ -10,6 +10,7 @@
 
 namespace minima {
 class BigInt;
+class MMREntryNumber;
 
 class MiniData:public Streamable {
 public:
@@ -27,6 +28,8 @@ public:
     MiniData& operator=(MiniData&& other) noexcept;
     explicit MiniData(const BigInt& value);
     BigInt getDataValue() const;
+    // Reuse the unbounded decimal carrier already used for chain weights.
+    MMREntryNumber getDataValueDecimal() const;
     explicit MiniData(const std::vector<uint8_t>& b) : m_bytes(b) {}
     explicit MiniData(std::vector<uint8_t>&& b) : m_bytes(std::move(b)) {}
 
@@ -51,11 +54,15 @@ public:
     bool operator==(const MiniData& o) const { return m_bytes == o.m_bytes; }
     bool operator!=(const MiniData& o) const { return m_bytes != o.m_bytes; }
     bool isLess(const MiniData& o) const;
+    int compare(const MiniData& o) const;
+    bool isLessEqual(const MiniData& o) const { return compare(o)<=0; }
+    bool isMoreEqual(const MiniData& o) const { return compare(o)>=0; }
     bool isMore(const MiniData& o) const { return o.isLess(*this); }
     MiniData shiftl(int bits) const;
     MiniData shiftr(int bits) const;
 
     std::string to0xString() const;
+    std::string to0xString(int length) const;
     std::string toHexString(bool prefix = true) const;
 
     // Java CONCAT / SUBSET operations

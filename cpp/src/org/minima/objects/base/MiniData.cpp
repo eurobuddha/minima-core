@@ -1,5 +1,6 @@
 #include "MiniNumber.hpp"
 #include "MiniData.hpp"
+#include "org/minima/objects/mmr/MMREntryNumber.hpp"
 #include "org/minima/utils/MiniFormat.hpp"
 #include "support/ByteIO.hpp"
 #include "support/JavaExceptions.hpp"
@@ -133,6 +134,12 @@ MiniData MiniData::getRandomData(int len) {
 bool MiniData::isLess(const MiniData& o) const {return getDataValue()<o.getDataValue();}
 
 std::string MiniData::to0xString() const { return toHexString(true); }
+std::string MiniData::to0xString(int length) const {
+    const auto value=to0xString();
+    if(length<0)throw JavaTypedException("java.lang.StringIndexOutOfBoundsException",
+        "Range [0, "+std::to_string(length)+") out of bounds for length "+std::to_string(value.size()));
+    return value.substr(0,std::min(value.size(),size_t(length)))+"..";
+}
 std::string MiniData::toHexString(bool prefix) const {
     if (m_bytes.empty()) return ""; // Java BaseConverter.encode16(empty).
     static const char* HEX="0123456789ABCDEF";
@@ -228,6 +235,8 @@ BigInt MiniData::getDataValue() const {
     if(!value){value=std::make_shared<const BigInt>(BigInt::fromMagnitudeBytes(m_bytes));std::atomic_store(&mDataValue,value);}
     return *value;
 }
+int MiniData::compare(const MiniData& other) const {return getDataValue().compareTo(other.getDataValue());}
+MMREntryNumber MiniData::getDataValueDecimal() const {return MMREntryNumber(getDataValue());}
 namespace {
 MiniData shiftMagnitude(const std::vector<uint8_t>& bytes,int64_t bits) {
     auto first=std::find_if(bytes.begin(),bytes.end(),[](uint8_t b){return b!=0;});

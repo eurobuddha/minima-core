@@ -92,3 +92,11 @@ MMREntryNumber; explicit sign-padding tests cover both callers.
 The [TxHeader lab](../../../../../../new-tests/txheader.md) explains the shared default objects, retained field and
 array identities, run-length partial writes, and interrupted child factories.
 Its evidence is scoped to these behaviors; full class and node parity remain open.
+
+## Original base-test checkpoint
+
+The original tests add the BigInt constructor overload and a decimal view that preserves the existing coefficient and scale without another rounding pass. The native view reuses MMREntryNumber, already used as an unbounded decimal carrier. BigDecimal equality in the original test checks coefficient AND scale; equal numeric values alone are insufficient.
+
+The shared BigInt compareTo previously returned memcmp's byte difference for equal-length magnitudes. The new API corpus caught 2 compared with 0 returning 2 instead of Java's 1. Normalizing only the public comparison result fixes MiniData, MiniNumber and MMREntryNumber results while preserving ordering predicates. Both builds pass the 1,108-case API corpus, 3,802-case primitive regression and all original base assertions. This is a bounded result, not full MiniNumber/JDK parity.
+
+See the [base-test lab](../../../../../../new-tests/original-base-tests.md) for the retained initial failure and complete scope.

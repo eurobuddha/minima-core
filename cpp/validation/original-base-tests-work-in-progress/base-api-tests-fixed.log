@@ -1,0 +1,21 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "cases": 1108,
+  "planned_cases": 1108,
+  "independent_assertions": 18632,
+  "seconds": 2.99,
+  "transcript_sha256": "8add3a91186f26bf3f03a71c987f8420a134434a2d46c566e16fd27ce2717a14",
+  "failures": [],
+  "scope": "New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt constructor and raw decimal view. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim."
+}

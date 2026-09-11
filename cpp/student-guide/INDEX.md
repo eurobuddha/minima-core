@@ -747,8 +747,8 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | File | Teaching state | Native state |
 |---|---|---|
 | [MiniByteTests.java](files/test/org/minima/objects/base/MiniByteTests.md) | test explanation | implemented_partial |
-| [MiniDataTests.java](files/test/org/minima/objects/base/MiniDataTests.md) | test explanation | unported |
-| [MiniNumberTests.java](files/test/org/minima/objects/base/MiniNumberTests.md) | test explanation | unported |
+| [MiniDataTests.java](files/test/org/minima/objects/base/MiniDataTests.md) | test explanation | implemented_partial |
+| [MiniNumberTests.java](files/test/org/minima/objects/base/MiniNumberTests.md) | test explanation | implemented_partial |
 | [MiniStringTests.java](files/test/org/minima/objects/base/MiniStringTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/system/brains

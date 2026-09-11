@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/objects/base/MiniNumberTests.java](../../../../../../../../upstream-study/test/org/minima/objects/base/MiniNumberTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -43,11 +43,13 @@ An equality assertion compares an observed result with an expected value. A pred
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/objects/base/MiniNumberTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [MiniNumberTests.cpp](../../../../../../../test/org/minima/objects/base/MiniNumberTests.cpp).
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
+The mapped file now executes all six original annotated methods, with 41 assertions on the exercised paths. It preserves zero arithmetic, constructors, numeric relations, significant-digit calls, stream writes/reads and the oversized input failure. The source compares BigDecimal equality using both coefficient and scale; the native test uses the existing unbounded decimal carrier for that observation, rather than numeric equality alone.
 
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+All original printed observations are compared in order against unchanged Java. Static ReadFromStream is still invoked and its return discarded where the source discards it. The Java methods run on fresh instances after checking the exact annotation set and options; assertions still come from the real JUnit library. Both normal and sanitizer builds pass. The separate API corpus and primitive regression are reported separately from these source assertions.
+
+The [base test lab](../../../../../../new-tests/original-base-tests.md) explains the comparison defect, reused APIs, exact results and limits. Full parity remains not_verified.
 
 ## What students should conclude
 

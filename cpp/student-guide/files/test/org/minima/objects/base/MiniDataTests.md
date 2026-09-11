@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/objects/base/MiniDataTests.java](../../../../../../../../upstream-study/test/org/minima/objects/base/MiniDataTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -43,11 +43,15 @@ An equality assertion compares an observed result with an expected value. A pred
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/objects/base/MiniDataTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [MiniDataTests.cpp](../../../../../../../test/org/minima/objects/base/MiniDataTests.cpp).
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
+The mapped file executes all six annotated methods with 33 assertions on the observed source paths. It preserves byte/value comparisons, both random-data calls, shifts, concatenation, bounded hex views and stream/hash operations. Every source loop is retained, including appending ten million bytes.
 
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+Do not infer behavior from a test name: testReadFromStreamDataTooBig reads a valid object, resets the input to its beginning and reads the valid object again. It succeeds and executes zero assertions. By contrast, testReadFromStreamData reads its object, then interprets appended 0x20 bytes as a huge length; its catch runs an unconditional true assertion. The lesson retains both weak source tests and their actual observations instead of strengthening the assertion count silently.
+
+Both builds match all printed source observations after validating and normalizing only the byte-array identity spelling and the separately generated one-byte random value. A separate 1,108-case API corpus checks exact comparison results, cached numeric views, decimal snapshots and bounded hex errors with independent expectations.
+
+The [base test lab](../../../../../../new-tests/original-base-tests.md) explains the comparison defect, reused APIs, exact results and limits. Full parity remains not_verified.
 
 ## What students should conclude
 

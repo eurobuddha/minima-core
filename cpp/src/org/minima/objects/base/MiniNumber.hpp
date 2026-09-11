@@ -19,6 +19,7 @@
 #include <span>
 
 namespace minima {
+class MMREntryNumber;
 
 // ===========================================================================
 // BigInt — two's-complement big-endian (mirrors Java BigInteger.toByteArray())
@@ -112,6 +113,7 @@ public:
 
     MiniNumber();
     explicit MiniNumber(int64_t v);
+    explicit MiniNumber(const BigInt& v);
     explicit MiniNumber(const std::string& s);
     MiniNumber(BigInt unscaled, int scale);
     static MiniNumber fromBytes(const std::vector<uint8_t>& bigEndianBytes);  // from raw big-endian bytes (e.g. SHA2 hash)
@@ -149,6 +151,8 @@ public:
     int64_t     getAsLong()   const;
     int         getAsInt()    const;
     BigInt getAsBigInteger() const;
+    // Immutable Java BigDecimal observation represented without another rounding pass.
+    MMREntryNumber getAsBigDecimal() const;
     int decimalPlaces() const { return m_scale; }
     bool isValidMinimaValue() const { return isMore(ZERO) && isLessEqual(BILLION); }
     double      getAsDouble() const;

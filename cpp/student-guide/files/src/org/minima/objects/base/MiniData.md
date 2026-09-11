@@ -95,3 +95,11 @@ represented paths. This update does not establish full field identity or class p
 The [TxHeader lab](../../../../../../new-tests/txheader.md) explains the shared default objects, retained field and
 array identities, run-length partial writes, and interrupted child factories.
 Its evidence is scoped to these behaviors; full class and node parity remain open.
+
+## Original base-test checkpoint
+
+The original base-test conversion adds `compare`, `isLessEqual`, `isMoreEqual`, an unbounded decimal view and `to0xString(length)`. Numeric methods retain the existing lazy cache across in-place stream replacement; byte equality still examines the current bytes. The decimal view reuses the existing MMREntryNumber carrier at scale zero, avoiding MiniNumber's monetary range limit. Bounded hex always appends two dots, including when no truncation is needed, and negative lengths raise the Java substring exception.
+
+The extra corpus exposed raw byte differences leaking through BigInt comparison. That shared primitive now returns exactly -1, 0 or 1. Both builds pass 1,108 API comparisons and 18,632 independent checks, including leading zero bytes, large magnitudes, warmed caches, retained decimal snapshots and negative substring bounds. Complete mutable-byte alias/JDK API behavior remains outside this result.
+
+See the [base-test lab](../../../../../../new-tests/original-base-tests.md) for the retained initial failure and complete scope.

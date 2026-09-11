@@ -11,14 +11,21 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 57 mapped test files exist;
-36 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 59 mapped test files exist;
+34 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-Three original object tests now have working counterparts: AddressTests, CoinTests
+MiniNumberTests and MiniDataTests now have working counterparts. Both builds pass
+12 methods/74 source assertions, 1,108 API comparisons with 18,632 independent
+checks and the existing 3,802-case primitive regression. BigInt comparison now
+returns Java's exact -1/0/1 values. Both node executables rebuild. The inventory is
+**423 counterparts, 34 absent**, with full parity unverified. See the
+[base test lab](student-guide/new-tests/original-base-tests.md).
+
+The preceding three original object tests gained working counterparts: AddressTests, CoinTests
 and TokenTests. Both builds pass 8 methods/20 source assertions per runtime,
 all printed observations and six additional wire/decoded-content comparisons.
-The inventory is **421 counterparts, 36 absent**, with full parity unverified.
+That checkpoint had **421 counterparts, 36 absent**, with full parity unverified.
 See the [object test lab](student-guide/new-tests/original-object-tests.md).
 
 The preceding five P2P original files gained working counterparts: QuickInetLists, QuickState,
