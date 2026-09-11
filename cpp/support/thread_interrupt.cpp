@@ -9,7 +9,16 @@
 #include <future>
 #include <iostream>
 using namespace minima;using namespace minima::json;using commands::txnlock;
+namespace minima {struct TimerProcessorFixture {
+    static bool pending(const TimerProcessor& timer){return timer.mWorkerThread->isInterrupted();}
+    static bool running(const TimerProcessor& timer){return timer.mRunning.load();}
+    static void addNull(TimerProcessor& timer){std::lock_guard lock(timer.mMessagesLock);timer.mTimerMessages.push_back(nullptr);}
+};}
 namespace {
+class StoppedTimerTarget:public MessageProcessor {
+public:StoppedTimerTarget():MessageProcessor("stopped-timer-target",[]{}){stopMessageProcessor();}
+protected:void processMessage(std::shared_ptr<Message>)override{}
+};
 std::string sleepResult(int64_t delay){try{nativeThreadSleep(delay);return "returned";}catch(const JavaTypedException& e){return e.className();}catch(const JavaIllegalArgumentException&){return "java.lang.IllegalArgumentException";}}
 class Worker:public MessageProcessor {
     std::string mode;
@@ -51,6 +60,12 @@ int main(int argc,char** argv)try{
             txnlock command;command.getParams()->put("action","unlock");command.getParams()->put("unlockdelay","0");command.runCommand();
             result.put("locked",txnlock::mLocked.load());result.put("pending_after_unlock",nativeThreadInterrupted());
         });
+    }else if(mode.starts_with("timer_")){
+        TimerProcessor::createTimerProcessor();auto timers=TimerProcessor::getTimerProcessor();std::promise<void> called;auto observed=called.get_future();int calls=0;bool before=true,after=false;
+        log.println=[&](const auto& text){auto line=unicode::encodeUTF8(text);if(line.find("Timer Message NOT run")==std::string::npos&&line.find("Timer Message is NULL")==std::string::npos)return;++calls;before=TimerProcessorFixture::pending(*timers);if(mode=="timer_self")interruptCurrentNativeThread();else timers->stop();after=TimerProcessorFixture::pending(*timers);called.set_value();};MinimaLogger::setRuntime(log);
+        auto target=std::make_shared<StoppedTimerTarget>();
+        if(mode=="timer_null")TimerProcessorFixture::addNull(*timers);else{auto message=std::make_shared<TimerMessage>(-1,"TIMER_PROBE");message->setProcessor(target);timers->PostMessage(message);}
+        if(observed.wait_for(std::chrono::seconds(3))!=std::future_status::ready)throw std::runtime_error("timer callback timeout");timers->join();result.put("calls",calls);result.put("before",before);result.put("after",after);result.put("pending",TimerProcessorFixture::pending(*timers));result.put("running",TimerProcessorFixture::running(*timers));result.put("remaining",timers->getSize());
     }else if(mode=="hard_poll"){
         int cleanup=0;TimerProcessor::createTimerProcessor();auto timers=TimerProcessor::getTimerProcessor();
         auto worker=SendPollManager::create([](const auto& command){return CommandRunner::getRunner().runSingleCommand(command.value());},[&]{++cleanup;});

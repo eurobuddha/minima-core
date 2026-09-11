@@ -53,6 +53,15 @@ public class ThreadInterruptOracle extends NIOClientOracle {
             txnlock.lockFunction(false);Thread.currentThread().interrupt();result.put("acquired",new txnlock().getLock(-1));result.put("pending_after_acquire",Thread.currentThread().isInterrupted());
             var command=new txnlock();command.getParams().put("action","unlock");command.getParams().put("unlockdelay","0");command.runCommand();
             result.put("locked",txnlock.mLocked);result.put("pending_after_unlock",Thread.interrupted());
+        }else if(mode.startsWith("timer_")){
+            TimerProcessor.createTimerProcessor();var timers=TimerProcessor.getTimerProcessor();var called=new CountDownLatch(1);int[] calls={0};boolean[] before={true},after={false};
+            System.setOut(new PrintStream(OutputStream.nullOutputStream()){
+                public void println(String text){if(!text.contains("Timer Message NOT run")&&!text.contains("Timer Message is NULL"))return;calls[0]++;before[0]=Thread.currentThread().isInterrupted();if(mode.equals("timer_self"))Thread.currentThread().interrupt();else timers.stop();after[0]=Thread.currentThread().isInterrupted();called.countDown();}
+            });
+            var target=(Worker)U.allocateInstance(Worker.class);
+            if(mode.equals("timer_null")){synchronized(get(timers,"mMessagesLock")){((java.util.ArrayList<TimerMessage>)get(timers,"mTimerMessages")).add(null);}}
+            else{var message=new TimerMessage(-1,"TIMER_PROBE");message.setProcessor(target);timers.PostMessage(message);}
+            if(!called.await(3,TimeUnit.SECONDS))throw new AssertionError("timer callback timeout");var thread=(Thread)get(timers,"mMainThread");thread.join(3000);if(thread.isAlive())throw new AssertionError("timer still alive");result.put("calls",calls[0]);result.put("before",before[0]);result.put("after",after[0]);result.put("pending",thread.isInterrupted());result.put("running",get(timers,"mRunning"));result.put("remaining",timers.getSize());
         }else if(mode.equals("hard_poll")){
             field(MinimaDB.class,"mMinimaDB").set(null,U.allocateInstance(DB.class));TimerProcessor.createTimerProcessor();var timers=TimerProcessor.getTimerProcessor();
             var worker=new SendPollManager();worker.addSendCommand("hash data:interrupt-fixture");worker.PostMessage(SendPollManager.SENDPOLL_FUNCTION);

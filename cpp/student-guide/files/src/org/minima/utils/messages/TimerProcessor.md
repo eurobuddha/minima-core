@@ -20,7 +20,7 @@ This singleton-style service scans pending timers once per loop and posts overdu
 
 ## How the C++ translation works
 
-The native implementation reuses the same pollAt body for deterministic and real worker paths. condition_variable provides interruptible sleep, while NativeThread routes escaping failures. A registry keeps previous created instances alive until teardown, matching the fact that replacing the singleton does not stop old Java workers. Shared timer objects and weak processor targets require explicit lifetime handling; null expired receivers throw.
+The native implementation reuses the same pollAt body for deterministic and real worker paths. NativeThread provides interruptible sleep and routes escaping failures. The timer retains its worker descriptor so stop delivers an observable pending interrupt before sleep consumes it. A registry keeps previous created instances alive until teardown, matching the fact that replacing the singleton does not stop old Java workers. Shared timer objects and weak processor targets require explicit lifetime handling; null expired receivers throw.
 
 ## Understanding the tests
 
@@ -32,10 +32,21 @@ The descriptions above come from reading the cited source and test evidence. No 
 
 ## Limits and a useful next test
 
-There is no Java/live timer trace differential in the inspected fixture. Clock jumps, repeated singleton replacement, logger failure during traversal, and expired weak destinations require further cases. A useful failure test would throw after one due delivery and inspect whether the unchanged original list permits that message to be delivered again on retry.
+The original worker fixture has no Java trace comparison; the later interruption follow-up below adds three actual Java/native timer cases. Clock jumps, repeated singleton replacement, logger failure during traversal, and expired weak destinations require further cases. A useful failure test would throw after one due delivery and inspect whether the unchanged original list permits that message to be delivered again on retry.
 
 ## Check your understanding
 
 If two timers are inserted in reverse deadline order and both are overdue at the next scan, which is posted first? Why is replacing the list only at the end observable if delivery throws?
 
 Pinned Java SHA-256: `384d1125acc9516fc4853ebdcc904e17d5e4eaef85d5e5295b2b206fe9ae90e3`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+## Interruption follow-up
+
+The [executor/timer lab](../../../../../../new-tests/executor-interruption.md) explains
+three actual worker tests: stop during polling, self-interrupt during polling, and
+an internal null queue entry. A logger callback observes pending=false before the
+action and true afterward. The unchanged one-second sleep consumes the flag, exits,
+and leaves an empty timer queue. The null entry is logged and skipped as in Java.
+The expanded thread comparison passes 12 cases / 194 assertions in both normal
+and sanitizer builds; message_workers also passes. These are fresh scoped results.
+Java synchronized-list reentrancy, clock jumps and full timer API parity remain open.

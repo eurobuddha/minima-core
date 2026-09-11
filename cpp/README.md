@@ -4,7 +4,9 @@ A frozen **runnable macOS preview** is now available on local port **21001**,
 connecting to eurobuddha.com:9001 with separate data. See [PREVIEW.md](PREVIEW.md)
 for the double-click launcher, commands, package and scoped verification results.
 
-Backup/checker interruption is now integrated across seven further files, with 26 runtime comparisons, 106 checker cases and seven focused tests passing per build. See the [backup/checker lab](student-guide/new-tests/backup-checker-interruption.md). Full 457-file parity remains unfinished; executor waits and API omissions are next.
+Executor waits and timer interruption now preserve the tested Java ordering, including a second interrupt during lock reacquisition. Both builds pass 37 executor comparisons and the expanded 12-case thread comparison, with all six focused regressions passing. See the [executor/timer lab](student-guide/new-tests/executor-interruption.md). Timer reentrancy and other API omissions remain open.
+
+Backup/checker interruption is now integrated across seven further files, with 26 runtime comparisons, 106 checker cases and seven focused tests passing per build. See the [backup/checker lab](student-guide/new-tests/backup-checker-interruption.md). Full 457-file parity remains unfinished.
 
 Six more runtime files now use interruptible sleep, including Main restart catch fixes. Nineteen Java/native comparisons and seven focused regressions pass in both builds. See the [runtime sleep lab](student-guide/new-tests/runtime-sleep-interruption.md). No new counterpart or full-parity completion is claimed.
 

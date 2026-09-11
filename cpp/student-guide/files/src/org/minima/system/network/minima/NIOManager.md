@@ -54,3 +54,14 @@ Pinned Java SHA-256: `34724dfafbb4159b894487b23bf071ca89c446ee69d0430c9232347844
 ## Runtime sleep follow-up
 
 The 50 ms server-completion wait now uses NativeThread and retains propagation to the caller. The Main restart comparison starts and shuts down a real replacement NIO network on port 0. It does not directly interrupt this NIO shutdown loop; executor and I/O interruption remain separate validation work. See the [runtime sleep lab](../../../../../../../new-tests/runtime-sleep-interruption.md) for the experiment, results and limits. Full parity remains not_verified.
+
+## Executor interruption follow-up
+
+The [executor wait lab](../../../../../../../new-tests/executor-interruption.md) checks
+the actual hard and message-driven shutdown methods with real held executor tasks.
+Shutdown closes the pool first; an active wait consumes a pending interrupt and
+throws before the server or processor is stopped. An already terminated empty pool
+returns immediately without consuming the flag, so shutdown continues. Four NIO
+cases are included in 37 passing executor comparisons / 273 assertions per build.
+The server is unstarted: this proves the tested effect order, not socket shutdown
+or complete manager lifecycle parity.

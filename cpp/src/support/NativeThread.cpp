@@ -12,9 +12,16 @@ std::mutex handlerLock;
 std::shared_ptr<NativeUncaughtExceptionHandler> defaultHandler;
 std::atomic<uint64_t> threadNumber{0};
 thread_local const NativeThread* currentThread=nullptr;
-NativeThread::InterruptState& interruptState(){
-    thread_local NativeThread::InterruptState fallback;
-    return currentThread?*currentThread->interruption:fallback;
+std::shared_ptr<NativeThread::InterruptState> interruptStateOwner(){
+    thread_local auto fallback=std::make_shared<NativeThread::InterruptState>();
+    return currentThread?currentThread->interruption:fallback;
+}
+NativeThread::InterruptState& interruptState(){return *interruptStateOwner();}
+void signalInterrupt(NativeThread::InterruptState& state){
+    std::shared_ptr<std::function<void()>> listener;
+    {std::lock_guard lock(state.lock);state.pending=true;listener=state.listener.lock();}
+    state.wake.notify_all();
+    if(listener)(*listener)();
 }
 struct UnknownThrowable:MinimaLogger::Throwable {
     MinimaLogger::String toString() const override{return u"native.UnknownException: Non-standard C++ exception";}
@@ -41,16 +48,24 @@ void setDefaultUncaughtExceptionHandler(std::shared_ptr<NativeUncaughtExceptionH
 std::u16string nextNativeThreadName(){return unicode::decodeUTF8("Thread-"+std::to_string(threadNumber.fetch_add(1)));}
 std::string currentNativeThreadName(){return currentThread?unicode::encodeUTF8(currentThread->name):"main";}
 void NativeThread::interrupt() const {
-    {std::lock_guard lock(interruption->lock);interruption->pending=true;}
-    interruption->wake.notify_all();
+    signalInterrupt(*interruption);
 }
 bool NativeThread::isInterrupted() const {
     std::lock_guard lock(interruption->lock);return interruption->pending;
 }
 void interruptCurrentNativeThread(){
-    auto& state=interruptState();
-    {std::lock_guard lock(state.lock);state.pending=true;}
-    state.wake.notify_all();
+    signalInterrupt(interruptState());
+}
+NativeInterruptRegistration::NativeInterruptRegistration(std::function<void()> wake)
+    :mState(interruptStateOwner()),mListener(std::make_shared<std::function<void()>>(std::move(wake))){
+    bool pending;
+    {std::lock_guard lock(mState->lock);mPrevious=mState->listener;mState->listener=mListener;pending=mState->pending;}
+    try{if(pending)(*mListener)();}catch(...){reset();throw;}
+}
+void NativeInterruptRegistration::reset(){
+    if(!mListener)return;
+    {std::lock_guard lock(mState->lock);if(mState->listener.lock()==mListener)mState->listener=mPrevious;}
+    mListener.reset();
 }
 bool nativeThreadInterrupted(){
     auto& state=interruptState();std::lock_guard lock(state.lock);

@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "cases": 10,
+  "failures": [],
+  "scope": "Actual JDK Executors.newFixedThreadPool(1) and native FixedTaskExecutor. Runtime/Error/OOM/IO/default-handler failures, late global-handler replacement, successor thread starts before handler dispatch, queue drain and awaitTermination may complete while uncaught handler remains blocked. Exact first worker name and event order. Native resource exhaustion, JDK thread groups/priority/interruptions/custom ThreadFactory and all ExecutorService APIs remain outside this comparison."
+}

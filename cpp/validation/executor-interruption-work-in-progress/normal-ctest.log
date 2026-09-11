@@ -1,0 +1,17 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 125: runtime_sleep_differential
+    Start 124: thread_interrupt_differential
+    Start 127: executor_uncaught_differential
+1/6 Test #127: executor_uncaught_differential ....   Passed    4.30 sec
+    Start  49: message_workers
+2/6 Test  #49: message_workers ...................   Passed    2.37 sec
+    Start  74: fixed_task_executor
+3/6 Test  #74: fixed_task_executor ...............   Passed    0.35 sec
+    Start  75: executor_interrupt_differential
+4/6 Test #125: runtime_sleep_differential ........   Passed    7.82 sec
+5/6 Test  #75: executor_interrupt_differential ...   Passed    3.50 sec
+6/6 Test #124: thread_interrupt_differential .....   Passed   11.60 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =  11.61 sec

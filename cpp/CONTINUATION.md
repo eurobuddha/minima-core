@@ -1,3 +1,32 @@
+# Current checkpoint — executor and timer interruption
+
+Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,
+one inactive), one absent jnifunctions.cpp. Full parity remains not_verified.
+
+FixedTaskExecutor now preserves awaitTermination shortcut, interrupt, saturation
+and signal ordering. A second interrupt during lock reacquisition remains pending.
+NIOManager's actual hard/normal shutdown paths are covered using real executor
+tasks and an unstarted server. TimerProcessor now delivers a real worker interrupt,
+consumes it in source-order sleep, and logs/skips null queue entries.
+
+Both actual executable builds PASS. Normal and ASAN/UBSAN each pass all six focused
+CTests (11.61 s / 15.63 s): executor interruption 37 comparisons / 273 assertions;
+thread interruption 12 comparisons / 194 assertions, including three new timer
+cases; runtime sleep 26 comparisons / 326 assertions; executor uncaught behavior,
+fixed executor and message workers. Full suite not rerun. No source wait shortened.
+
+Evidence: validation/executor-interruption-work-in-progress. Student lab:
+student-guide/new-tests/executor-interruption.md. Timer and NIO lessons updated.
+Review caught and fixed consume-after-reacquire ordering before final verification.
+
+NEXT: implement TimerProcessor's remaining synchronized-list reentrancy behavior,
+then audit standalone NIOServer.main and further API omissions. JNI external bodies
+remain unavailable in inspected sources; independent work can proceed. Finite tests
+and compilation are not complete parity. Keep frozen 6c28109 port21001 preview and
+its data untouched. Preserve unrelated graphify outputs; local commits/bundles, no push.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — backup and checker interruption
 
 Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,

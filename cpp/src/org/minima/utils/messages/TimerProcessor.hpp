@@ -3,14 +3,16 @@
 #include <atomic>
 #include <condition_variable>
 #include <thread>
+#include "support/NativeThread.hpp"
 namespace minima {
 class TimerProcessor {
+    friend struct TimerProcessorFixture;
     std::atomic<bool> mRunning{true};
     std::thread mMainThread;
+    std::shared_ptr<NativeThread> mWorkerThread;
     std::vector<std::shared_ptr<TimerMessage>> mTimerMessages;
     mutable std::mutex mMessagesLock;
-    std::mutex mSleepLock,mJoinLock;
-    std::condition_variable mSleep;
+    std::mutex mJoinLock;
     TimerProcessor()=default;
 public:
     ~TimerProcessor();

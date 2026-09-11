@@ -11,7 +11,7 @@ def main():
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support'/name for name in ['NIOClientOracle.java','ThreadInterruptOracle.java']]
     listing=build/'thread-interrupt-java-sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n')
     subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
-    modes=['flags','external','lock_flags','hard_sleep','hard_lock','hard_unlock','soft_sleep','interrupted_waiter','hard_poll']
+    modes=['flags','external','lock_flags','hard_sleep','hard_lock','hard_unlock','soft_sleep','interrupted_waiter','hard_poll','timer_stop','timer_self','timer_null']
     report={'passed':False,'comparisons':0,'assertions':0,'cases':[],'scope':'Real interruptible sleep and pinned MessageProcessor/txnlock paths. No forced thread termination, arbitrary I/O interruption or complete scheduler interleaving parity claimed.'}
     path=build/'thread-interrupt-results.json'
     try:
@@ -33,6 +33,8 @@ def main():
                     assert row=={'mode':mode,'blocked':True,'error':'java.lang.InterruptedException','pending':False};report['assertions']+=3
                 elif mode=='lock_flags':
                     assert row=={'mode':mode,'acquired':True,'pending_after_acquire':True,'locked':False,'pending_after_unlock':True};report['assertions']+=4
+                elif mode.startswith('timer_'):
+                    assert row==dict(mode=mode,calls=1,before=False,after=True,pending=False,running=False,remaining=0),row;report['assertions']+=6
                 elif mode=='hard_poll':
                     assert row==dict(mode=mode,remaining=0,timers=1,cleanup=1,running=False,shutdown=True),row;report['assertions']+=5
                 else:

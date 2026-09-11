@@ -1,0 +1,760 @@
+{
+  "passed": true,
+  "comparisons": 37,
+  "assertions": 273,
+  "observations": [
+    {
+      "case": [
+        "matrix",
+        "open",
+        "-9223372036854775808",
+        "false"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "open",
+        "-9223372036854775808",
+        "true"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "open",
+        "-1",
+        "false"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "open",
+        "-1",
+        "true"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "open",
+        "0",
+        "false"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "open",
+        "0",
+        "true"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "open",
+        "1",
+        "false"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "open",
+        "1",
+        "true"
+      ],
+      "java": {
+        "value": null,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      },
+      "cpp": {
+        "value": null,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "-9223372036854775808",
+        "false"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "-9223372036854775808",
+        "true"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "-1",
+        "false"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "-1",
+        "true"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "0",
+        "false"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "0",
+        "true"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "1",
+        "false"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "1",
+        "true"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "-9223372036854775808",
+        "false"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "-9223372036854775808",
+        "true"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "-1",
+        "false"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "-1",
+        "true"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "0",
+        "false"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "0",
+        "true"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "1",
+        "false"
+      ],
+      "java": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      },
+      "cpp": {
+        "value": false,
+        "error": "none",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "1",
+        "true"
+      ],
+      "java": {
+        "value": null,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      },
+      "cpp": {
+        "value": null,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "open",
+        "9223372036854775807",
+        "true"
+      ],
+      "java": {
+        "value": null,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      },
+      "cpp": {
+        "value": null,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "terminated",
+        "9223372036854775807",
+        "true"
+      ],
+      "java": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      },
+      "cpp": {
+        "value": true,
+        "error": "none",
+        "pending": true
+      }
+    },
+    {
+      "case": [
+        "matrix",
+        "held",
+        "9223372036854775807",
+        "true"
+      ],
+      "java": {
+        "value": null,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      },
+      "cpp": {
+        "value": null,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      }
+    },
+    {
+      "case": [
+        "interrupt"
+      ],
+      "java": {
+        "blocked": true,
+        "beforeShutdown": true,
+        "results": [
+          {
+            "value": null,
+            "error": "java.lang.InterruptedException",
+            "pending": false
+          }
+        ]
+      },
+      "cpp": {
+        "blocked": true,
+        "beforeShutdown": true,
+        "results": [
+          {
+            "value": null,
+            "error": "java.lang.InterruptedException",
+            "pending": false
+          }
+        ]
+      }
+    },
+    {
+      "case": [
+        "complete"
+      ],
+      "java": {
+        "blocked": true,
+        "results": [
+          {
+            "value": true,
+            "error": "none",
+            "pending": false
+          }
+        ]
+      },
+      "cpp": {
+        "blocked": true,
+        "results": [
+          {
+            "value": true,
+            "error": "none",
+            "pending": false
+          }
+        ]
+      }
+    },
+    {
+      "case": [
+        "multiple"
+      ],
+      "java": {
+        "blocked": true,
+        "beforeShutdown": true,
+        "othersBlocked": true,
+        "results": [
+          {
+            "value": null,
+            "error": "java.lang.InterruptedException",
+            "pending": false
+          },
+          {
+            "value": true,
+            "error": "none",
+            "pending": false
+          },
+          {
+            "value": true,
+            "error": "none",
+            "pending": false
+          },
+          {
+            "value": true,
+            "error": "none",
+            "pending": false
+          }
+        ]
+      },
+      "cpp": {
+        "blocked": true,
+        "beforeShutdown": true,
+        "othersBlocked": true,
+        "results": [
+          {
+            "value": null,
+            "error": "java.lang.InterruptedException",
+            "pending": false
+          },
+          {
+            "value": true,
+            "error": "none",
+            "pending": false
+          },
+          {
+            "value": true,
+            "error": "none",
+            "pending": false
+          },
+          {
+            "value": true,
+            "error": "none",
+            "pending": false
+          }
+        ]
+      }
+    },
+    {
+      "case": [
+        "reuse"
+      ],
+      "java": {
+        "blocked": true,
+        "beforeShutdown": true,
+        "results": [
+          {
+            "value": null,
+            "error": "java.lang.InterruptedException",
+            "pending": false
+          }
+        ]
+      },
+      "cpp": {
+        "blocked": true,
+        "beforeShutdown": true,
+        "results": [
+          {
+            "value": null,
+            "error": "java.lang.InterruptedException",
+            "pending": false
+          }
+        ]
+      }
+    },
+    {
+      "case": [
+        "signal_first"
+      ],
+      "java": {
+        "blocked": true,
+        "results": [
+          {
+            "value": true,
+            "error": "none",
+            "pending": true
+          }
+        ]
+      },
+      "cpp": {
+        "blocked": true,
+        "results": [
+          {
+            "value": true,
+            "error": "none",
+            "pending": true
+          }
+        ]
+      }
+    },
+    {
+      "case": [
+        "reinterrupt"
+      ],
+      "java": {
+        "blocked": true,
+        "beforeShutdown": true,
+        "results": [
+          {
+            "value": null,
+            "error": "java.lang.InterruptedException",
+            "pending": true
+          }
+        ]
+      },
+      "cpp": {
+        "blocked": true,
+        "beforeShutdown": true,
+        "results": [
+          {
+            "value": null,
+            "error": "java.lang.InterruptedException",
+            "pending": true
+          }
+        ]
+      }
+    },
+    {
+      "case": [
+        "nio_hard_held"
+      ],
+      "java": {
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "poolShutdown": true,
+        "serverShutdown": false,
+        "running": true
+      },
+      "cpp": {
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "poolShutdown": true,
+        "serverShutdown": false,
+        "running": true
+      }
+    },
+    {
+      "case": [
+        "nio_hard_idle"
+      ],
+      "java": {
+        "error": "none",
+        "pending": true,
+        "poolShutdown": true,
+        "serverShutdown": true,
+        "running": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": true,
+        "poolShutdown": true,
+        "serverShutdown": true,
+        "running": false
+      }
+    },
+    {
+      "case": [
+        "nio_message_held"
+      ],
+      "java": {
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "poolShutdown": true,
+        "serverShutdown": false,
+        "running": true
+      },
+      "cpp": {
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "poolShutdown": true,
+        "serverShutdown": false,
+        "running": true
+      }
+    },
+    {
+      "case": [
+        "nio_message_idle"
+      ],
+      "java": {
+        "error": "none",
+        "pending": true,
+        "poolShutdown": true,
+        "serverShutdown": true,
+        "running": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": true,
+        "poolShutdown": true,
+        "serverShutdown": true,
+        "running": false
+      }
+    }
+  ],
+  "scope": "Actual Executors.newFixedThreadPool versus native FixedTaskExecutor; negative/zero/positive/saturated timeouts, preexisting/external interruption, real termination, independent waiters, repeated waits, signal-before-interrupt with controlled pool lock, and actual NIOManager hard/message shutdown with real held executor task and unstarted server. No injected InterruptedException, shortened source wait, user database or mainnet node. One native ordering fixture performs the existing empty-pool shutdown transition under the pool lock. All races, I/O, thread lifecycle and complete executor API remain unverified."
+}

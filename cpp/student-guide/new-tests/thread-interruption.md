@@ -90,3 +90,10 @@ stack frames, diagnostic prose and elapsed scheduling times are not compared.
 
 Why should a zero-delay unlock preserve a pending interrupt while `Thread.sleep(0)`
 consumes it? The answer is in the source branch: zero-delay unlock never calls sleep.
+
+## Later timer extension
+
+The [executor/timer lab](executor-interruption.md) adds three actual timer-worker
+Java/native cases. The expanded driver now passes 12 comparisons / 194 assertions
+in normal and address/undefined sanitizer builds. Earlier nine-case results above
+remain historical evidence for their original scope.

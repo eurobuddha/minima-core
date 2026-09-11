@@ -9,6 +9,7 @@ struct NativeThread {
         std::mutex lock;
         std::condition_variable wake;
         bool pending=false;
+        std::weak_ptr<std::function<void()>> listener;
     };
     std::u16string name;
     std::thread::id id=std::this_thread::get_id();
@@ -34,4 +35,17 @@ std::string currentNativeThreadName();
 void nativeThreadSleep(int64_t milliseconds);
 void interruptCurrentNativeThread();
 bool nativeThreadInterrupted();
+// A blocking adapter may register one scoped wakeup. Delivery occurs outside the
+// interrupt-state lock. The callback must own/weakly retain everything it touches.
+class NativeInterruptRegistration {
+    std::shared_ptr<NativeThread::InterruptState> mState;
+    std::shared_ptr<std::function<void()>> mListener;
+    std::weak_ptr<std::function<void()>> mPrevious;
+    void reset();
+public:
+    explicit NativeInterruptRegistration(std::function<void()> wake);
+    ~NativeInterruptRegistration(){reset();}
+    NativeInterruptRegistration(const NativeInterruptRegistration&)=delete;
+    NativeInterruptRegistration& operator=(const NativeInterruptRegistration&)=delete;
+};
 }

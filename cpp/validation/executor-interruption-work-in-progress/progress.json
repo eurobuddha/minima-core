@@ -1,0 +1,46 @@
+{
+  "goal": "active_incomplete",
+  "base_commit": "0716a165b412dfd9777046627561758d0538590b",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "active_partial": 455,
+  "inactive_source_preserved": 1,
+  "absent": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "full_parity": "not_verified",
+  "corrected": [
+    "FixedTaskExecutor.awaitTermination pending interrupt shortcuts, active wait delivery, saturation, termination/interrupt ordering and second interrupt during lock reacquisition",
+    "NIOManager hard/normal shutdown inherits actual executor interruption and effect ordering",
+    "TimerProcessor worker interruption during polling and sleep; null queue entry log-and-skip"
+  ],
+  "validation": {
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "actual_executable_builds_pass": true,
+    "distinct_focused_ctests_per_build": 6,
+    "executor_comparisons": 37,
+    "executor_assertions": 273,
+    "thread_comparisons": 12,
+    "thread_assertions": 194,
+    "new_timer_cases": 3,
+    "runtime_comparisons": 26,
+    "runtime_assertions": 326,
+    "ctest_seconds": {
+      "normal": 11.61,
+      "sanitized": 15.63
+    },
+    "full_suite_rerun": false
+  },
+  "review_correction": "Moved consumption of first wait interruption before reacquiring pool lock; added controlled second-interrupt Java/native case, then rebuilt and reran affected tests in both builds.",
+  "limits": [
+    "Finite scenarios do not prove all scheduler interleavings or complete thread/executor API parity",
+    "NIO shutdown tests use real executor tasks and an unstarted server, not sockets",
+    "One native fixture performs existing empty-pool shutdown transition under its nonrecursive lock to control signal ordering",
+    "Native manual timer adapter has no Java counterpart; Java synchronized timer lock reentrancy still requires adaptation",
+    "JNI native bodies unavailable in inspected sources; no native mining contract invented"
+  ],
+  "next_action": "Audit and implement remaining TimerProcessor synchronized-list reentrancy behavior using source and existing callback fixtures, then standalone NIOServer.main and further API omissions.",
+  "preview": "Frozen 6c28109 port21001 package and user data untouched"
+}
