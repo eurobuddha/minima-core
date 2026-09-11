@@ -3293,5 +3293,39 @@
       "support/ArchiveCommandOracle.java": "d8c39034e8278c0c9bf4a4e1292533d712828d521e1c999de1ba7344bdba0879",
       "tools/archive_command_differential.py": "db455a35f004b803cc191a5d6cdc5b28320c1504b4c61d53f693b3589ae7a7fc"
     }
+  },
+  "archive_runtime_checkpoint": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "reused_inspected": [
+      "tools/native_restore_startup.py Node/ready/key_state/chain",
+      "tools/native_node_startup.py replies",
+      "tools/peers_checker_differential.py Runner/Responder",
+      "support/MainNetworkFixture.cpp",
+      "support/PeerRuntimeFixture.hpp",
+      "support/NIOClientOracle.java install",
+      "support/archive_command.cpp",
+      "support/ArchiveCommandOracle.java",
+      "src/org/minima/system/Main.cpp archiveResetReady/shutdown",
+      "src/org/minima/database/MinimaDB.cpp loadAllDB/reopen",
+      "src/org/minima/system/brains/TxPoWProcessor.cpp processArchiveIBD",
+      "src/org/minima/objects/IBD.cpp",
+      "src/support/NIOConnections.cpp",
+      "src/org/minima/system/network/minima/NIOTraffic.cpp"
+    ],
+    "sibling_inspected": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/database/MinimaDB.hpp uses SQLite persistence; it cannot supply pinned H2 archive fixtures",
+    "adaptations": [
+      "Existing archive fixtures add saved-tree export and request codec/traffic operations",
+      "Actual executable Node harness reused for both formats and reset/restore",
+      "Existing loopback responder reused unchanged with real retry delays"
+    ],
+    "production_changes": false,
+    "validation": "validation/archive-runtime-work-in-progress/progress.json",
+    "parity": "not_verified",
+    "hashes": {
+      "support/archive_command.cpp": "b63ed08b36c694e748168d30d547cfa597b0dbb93c137022e2caef031b9fcf41",
+      "support/ArchiveCommandOracle.java": "69a493e563dc2ae99fc2034716221f11b4b1448de3f0ca3ea0e3c8845169b0b5",
+      "tools/native_archive_startup.py": "df7a0abf9e81e8c39a1e0edc03bb512a230e6782c3eec2451b66885a0fe34043",
+      "tools/archive_network_differential.py": "ecc402ef6fbd0c156beec5d3e61a9366b812e3f0e9619e178b78290f7ff108ab"
+    }
   }
 }

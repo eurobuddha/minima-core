@@ -1,3 +1,46 @@
+# Archive runtime checkpoint — full port unfinished
+
+## Code Review
+
+Reviewed both new test drivers, extended archive fixtures, existing node/peer
+harnesses and MainNetworkFixture/NIOClientOracle adapters, source archive helpers,
+Main/MinimaDB reset and reopening, processor archive path and CMake registration.
+No production implementation changed. No blocking finding remains for this
+validation checkpoint. Full archive and node parity remain unverified.
+
+The live test loads a genuine saved solo genesis tree and exports its TxBlock
+through each runtime's actual ArchiveManager. Only insertion timestamps are made
+deterministic. H2 and raw output bytes match across both runtimes. Every actual
+node uses its production runner and processor, without scoped resync overrides.
+All six workflows check nested success, graceful process exit and cleanup, then
+opposite-runtime persisted chain, coin count/Minima total and complete key-use maps.
+Signing verifies and rejects modified data and advances only one key use.
+
+Loopback tests reuse the existing responder and its drain barrier, preserving real
+socket I/O and ten-second retries. Frames and traffic are independently asserted,
+including writes that reach the peer before a missing traffic receiver fails.
+NIOTraffic breakdown counters differ from total counters by design. Complete empty
+payloads add a zero-byte breakdown entry before decoding fails. Zero attempts do
+not connect. Both overloads and default third-attempt recovery are exercised.
+The fixture obtains responses through the actual archive helper; it does not inject
+an alternate transport. OS/JVM exception log text is explicitly outside comparison.
+
+Both builds pass six live workflows / 13 node processes, 37 loopback comparisons,
+and the full existing 509-case archive regression. Normal and ASAN/UBSAN fixture
+targets build; production targets did not change from the prior full-build checkpoint.
+229 CTest entries registered; full suite not run. Native H2 AOT is not instrumented
+by C++ sanitizers. All handles terminal. Evidence: validation/archive-runtime-work-in-progress.
+
+Limits: live chain is genesis only; helper replies contain empty IBD. Cascades,
+multi-batches, phrase replacement, nonempty network IBD, delayed read/connect
+failures, full remote resync, concurrent sources and exact partial object-write
+failure boundaries remain required. These tests do not certify complete reset or
+archive public API parity. Map stays 382 present / 75 absent, all not_verified.
+All 457 student lessons remain present. Next mapped command: restoresync.java,
+now reread completely through all 515 lines, with its distinct age/key-use logic.
+
+---
+
 # Archive checkpoint — full port unfinished
 
 ## Code Review

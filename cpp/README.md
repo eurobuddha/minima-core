@@ -9,12 +9,15 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 75 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-The mapped `archive` class now includes every source action branch and both network
-helpers. Both builds pass 509 Java/native comparisons each, including exact raw
-and H2 gzip export bytes, damaged-file effects, address records and listener events.
-Recursive resync is recorded by a scoped test probe; real-node import/resync and loopback request tests remain required. See the
-[student lab](student-guide/new-tests/archive.md) and
-[saved evidence](validation/archive-command-work-in-progress).
+The mapped `archive` class includes every source action branch and both network
+helpers. Both builds pass 509 storage/query cases, 37 loopback request/retry cases,
+and six live workflows using 13 real node processes each. Both archive formats,
+reset/restore, worker shutdown, opposite-runtime chain/coin/key reopen and signing
+are checked. Live chain input is genesis only; full synchronization parity remains
+unverified. See the [archive lab](student-guide/new-tests/archive.md),
+[live-node lab](student-guide/new-tests/archive-live-node.md),
+[network lab](student-guide/new-tests/archive-network.md), and
+[saved runtime evidence](validation/archive-runtime-work-in-progress).
 
 The mapped `reset` command now compiles and coordinates nested commands through
 the real runner. Both builds pass 224 Java/native cases, including four real H2

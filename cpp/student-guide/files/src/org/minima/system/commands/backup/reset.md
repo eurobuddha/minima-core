@@ -56,15 +56,23 @@ failed archive result after successful restore. Test-owned workers and both old
 and new SQL connections are closed after observations.
 
 The archive probe returns a controlled result. These cases establish reset's
-control flow and restore/reopen integration; archive import is still unported.
+control flow and restore/reopen integration. Archive is now mapped and its actual
+local synchronization has separate runtime evidence.
 See [validation](../../../../../../../../validation/reset-work-in-progress) for
 final build/test counts and coverage limits. Both normal and ASAN/UBSAN comparisons
 pass 224 cases, including all four real restore/reopen cases.
 
+The [live archive lab](../../../../../../../../student-guide/new-tests/archive-live-node.md)
+adds actual reset action:restore in both runtimes with a genuine genesis archive.
+It checks both nested statuses, clean shutdown, opposite-runtime reopen, exact
+chain/coin state, all eight key-use counts at 263 and restored-key signing. Both
+normal and sanitizer builds pass. This covers a real reset path without the archive
+probe; cascades, multi-batches and seed replacement still need validation.
+
 ## Limits
 
 There is no rollback if archive import fails after the wallet has been restored.
-Archive import, complete reset/chain synchronization, concurrent mutation and full
+Complete reset/chain synchronization, concurrent mutation and full
 public API parity remain unverified. All filesystem mutations in these tests occur
 in isolated fixture directories.
 

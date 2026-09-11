@@ -1,0 +1,6 @@
+-- Configuring done (0.2s)
+-- Generating done (0.4s)
+-- Build files have been written to: /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+[ 96%] Built target minima_file_port
+[ 98%] Built target minima_native_h2
+[100%] Built target archive_command_runtime

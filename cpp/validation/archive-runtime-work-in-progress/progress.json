@@ -1,0 +1,33 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "daa3f2d65164653381d830eb30a55b7b0052f683",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "Archive real-node local import/reset and loopback request evidence added; production code unchanged",
+  "counterparts": 382,
+  "production_counterparts": 338,
+  "mapped_tests": 44,
+  "absent": 75,
+  "ctest_entries": 229,
+  "fixture_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "live_node_processes_per_build": 13,
+  "live_workflows_per_build": 6,
+  "network_cases_per_build": 37,
+  "archive_regression_cases_per_build": 509,
+  "student_guides": 457,
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "31 absent production and 44 absent mapped source tests",
+    "restoresync full mapped implementation and validation",
+    "Archive cascades/multibatches, seed replacement, delayed socket timeouts, concurrent static sources and malformed object serialization failures",
+    "Nonempty/cascaded IBD through sendArchiveReq and full remote sync integration",
+    "Full existing counterpart API, mining, network and runtime parity"
+  ]
+}

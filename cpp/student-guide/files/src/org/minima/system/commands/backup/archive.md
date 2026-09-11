@@ -69,18 +69,36 @@ blocks. Saved failed observer reports document that correction.
 Both builds pass all 509 cases each, including 40 raw exports and six H2 exports.
 Eight selected dependency regression suites also pass in both builds.
 
-See [evidence](../../../../../../../../validation/archive-command-work-in-progress)
-for the current validation results; these do not certify every synchronization or
-network branch. Real-node import/resync and loopback request/retry tests remain
-separate required work.
+See [storage evidence](../../../../../../../../validation/archive-command-work-in-progress)
+and [runtime evidence](../../../../../../../../validation/archive-runtime-work-in-progress).
+The [live-node lab](../../../../../../../../student-guide/new-tests/archive-live-node.md)
+and [driver](../../../../../../../../tools/native_archive_startup.py) use a genuine
+saved genesis chain. Both Java and C++ fixtures export identical H2/raw bytes. Six
+workflows per build run both import formats in both runtimes and reset/restore in
+both runtimes: 13 actual node processes. Reopening with the other runtime preserves
+chain and coin state and all eight keys. Imports retain uses 100; reset restores
+seven plus 256 = 263. Signing consumes exactly one use and changed data is rejected.
+The actual command registry and processor run in these nodes without the probe.
+
+The [network lab](../../../../../../../../student-guide/new-tests/archive-network.md)
+and [driver](../../../../../../../../tools/archive_network_differential.py) use real
+loopback sockets with existing Main/NIO fixtures. Both builds pass 37 comparisons:
+request frames across start-number values, discarded response type, empty IBD,
+trailing bytes, malformed frames, missing receivers, zero attempts, two-attempt
+recovery/exhaustion and default third-attempt recovery. The source ten-second retry
+sleep remains real. Traffic breakdown includes payload bytes only; total counters
+stay zero because these methods do not update them. Socket exception log prose is
+not compared. All 509 storage/query cases still pass with the expanded fixture.
 
 ## Limits
 
 Integrity checks adjacency/alignment, not all consensus rules. Static temporary
 sources and cleanup without finally make concurrent/repeated invocation important.
-Several success messages survive incomplete processing. Real-node synchronization,
-network retries/timeouts, cascaded exports, concurrent streams, malformed object
-serialization failure boundaries and full API parity remain unverified.
+Several success messages survive incomplete processing. Live-node evidence uses
+only genesis; cascades, multi-batches and phrase-based wallet replacement remain
+unverified. Socket delay/timeouts, nonempty/cascaded IBD through the request helper,
+full remote resync, concurrent streams, malformed object serialization failure
+boundaries and complete public API parity remain open.
 
 ## Check your understanding
 

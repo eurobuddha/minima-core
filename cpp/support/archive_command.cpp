@@ -1,4 +1,6 @@
 #include "MainFixture.hpp"
+#include "MainNetworkFixture.hpp"
+#include "org/minima/system/network/minima/NIOMessage.hpp"
 #include "ArchiveFixture.hpp"
 #include "org/minima/system/commands/backup/archive.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
@@ -32,6 +34,11 @@ JSONObject run(const JSONObject& input,NativeH2Runtime& engine){
     MainServices services;services.sql.connect=engine.connector();services.sql.log=[](const auto& text,bool){std::clog<<text<<'\n';};services.halt=[](int){throw std::runtime_error("fixture startup failed");};auto main=std::make_shared<ArchiveMain>(std::move(services));MainFixture::install(main);MainFixture::initialize(main);auto db=MinimaDB::getDB();db->loadAllDB();JSONObject flags;flags.put("keys",!input.containsKey("keys")||input.getBoolean("keys"));MainFixture::fields(*main,flags);
     auto saved=CommandRunner::ALL_COMMANDS;struct Registry{std::vector<std::shared_ptr<Command>> saved;~Registry(){CommandRunner::ALL_COMMANDS=std::move(saved);}} registry{saved};for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="archive")command=std::make_shared<ArchiveProbe>();
     JSONObject out;try{
+        if(op=="seedTree"){
+            JSONArray wires;auto node=db->getTxPoWTree()->getTip();
+            while(node){auto block=node->getSharedTxBlock();db->getArchive()->saveBlock(block.get());wires.add(MiniData(block->serialise()).to0xString());node=node->getParent();}
+            db->getArchive()->executeGenericSQL("UPDATE syncblock SET timemilli=block*1000");out.put("blocks",wires);db->saveAllDB();out.put("seeded",true);return out;
+        }
         if(op=="seed"){
             JSONArray wires;MiniData parent=MiniData::ZERO_TXPOWID;
             for(const auto& item:std::get<std::shared_ptr<JSONArray>>(input.get("heights").value)->elements()){
@@ -42,6 +49,17 @@ JSONObject run(const JSONObject& input,NativeH2Runtime& engine){
             db->getArchive()->executeGenericSQL("UPDATE syncblock SET timemilli=block*1000");out.put("blocks",wires);db->saveAllDB();out.put("seeded",true);return out;
         }
         if(input.containsKey("treeBlock")){auto bytes=MiniData::fromHex(input.getString("treeBlock"));size_t offset=0;auto block=std::make_shared<TxBlock>(TxBlock::deserialise(bytes.bytes(),offset));auto node=std::make_shared<TxPoWTreeNode>(std::make_shared<TxBlock>(block->getSharedTxPoW()),false);node->getTxBlock().getOutputCoins()=block->getOutputCoins();node->getTxBlock().getInputCoinProofs()=block->getInputCoinProofs();db->getTxPoWTree()->setRoot(node);}
+        if(op=="encodeRequest"){auto start=MiniNumber(input.getString("start"));out.put("wire",MiniData(NIOManager::createNIOMessage(NIOMessage::MSG_ARCHIVE_REQ,start).serialise()).to0xString());db->saveSQL(false);return out;}
+        if(op=="encodeReply"){IBD ibd;auto type=MiniByte(int32_t(std::get<int64_t>(input.get("type").value)));out.put("ibd",MiniData(ibd.serialise()).to0xString());out.put("wire",MiniData(NIOManager::createNIOMessage(type,ibd).serialise()).to0xString());db->saveSQL(false);return out;}
+        if(op=="request"){
+            JSONObject config;auto network=support::MainNetworkFixture::create(config,[&](auto value){MainFixture::network(*main,value);});auto nio=network->network()->getNIOManager();
+            if(input.containsKey("noMain"))Main::ClearMainInstance();
+            else if(input.containsKey("noNetwork"))MainFixture::network(*main,nullptr);
+            else if(input.containsKey("noNIO")){JSONObject missing;missing.put("nullNIO",true);network=support::MainNetworkFixture::create(missing,[&](auto value){MainFixture::network(*main,value);});}
+            std::optional<MiniNumber> start;if(!input.get("start").isNull())start=MiniNumber(input.getString("start"));auto host=input.get("host").isNull()?std::optional<std::string>():std::optional(input.getString("host"));auto port=int32_t(std::get<int64_t>(input.get("port").value));
+            auto ibd=input.containsKey("attempts")?commands::archive::sendArchiveReq(host,port,start?&*start:nullptr,int32_t(std::get<int64_t>(input.get("attempts").value))):commands::archive::sendArchiveReq(host,port,start?&*start:nullptr);
+            out.put("ibd",ibd?JSONValue(MiniData(ibd->serialise()).to0xString()):JSONValue());out.put("traffic",nio->getTrafficListener()->getBreakdown());out.put("read",nio->getTrafficListener()->getTotalRead());out.put("write",nio->getTrafficListener()->getTotalWrite());db->saveSQL(false);return out;
+        }
         commands::archive command;
         if(op=="meta"){out.put("name",command.getName().value());out.put("help",command.getHelp().value());out.put("fullHelp",command.getFullHelp().value());JSONArray params;for(const auto& key:command.getValidParams())params.add(key);out.put("params",params);command.getParams()->put("file","fixture");out.put("fresh",*command.getFunction()->getParams());}
         else if(op=="notify"){std::shared_ptr<MessageListener> listener;if(!input.containsKey("nullListener"))listener=std::make_shared<ArchiveListener>();auto text=input.get("message");commands::archive::NotifyListener(listener,text.isNull()?std::nullopt:std::optional(text.asString()));out.put("notified",true);}

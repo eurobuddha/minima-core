@@ -1,3 +1,58 @@
+# Current work — archive runtime validation saved
+
+MinimaCoreC++ active full 457-file goal, incomplete. Previous goal turn made
+verified progress: six real-node archive workflows per build, 13 node processes,
+37 real-loopback request comparisons per build, and 509 existing archive cases
+rerun successfully in both normal and ASAN/UBSAN configurations. No production
+source changed this checkpoint. All build/test handles terminal. Fixture targets
+build; production executable is unchanged from prior complete builds. 229 CTest
+entries now registered; full suite NOT run. H2 AOT outside C++ sanitizer coverage.
+
+New tools/native_archive_startup.py reuses Node/ready/key_state/chain. A real Java
+solo node creates genesis and eight keys at uses7, exports backup, quits. Extended
+archive fixture seedTree loads genuine saved chain and archives actual TxBlocks;
+both fixtures export identical H2/raw bytes. Both formats imported by both runtimes,
+plus reset action:restore in each runtime. Opposite-runtime reopen checks chain,
+coins, full keys/use map (100 import,263 reset), signatures and changed-data rejection.
+13 real-node processes per build. All actual runners/processors used without probes.
+
+New tools/archive_network_differential.py reuses Runner/Responder unchanged.
+Expanded archive fixtures have encodeRequest/encodeReply/request operations and
+reuse MainNetworkFixture.cpp and NIOClientOracle.install. 37 cases compare exact
+frames, start numbers, ignored type, empty IBD, trailing/malformed frames, missing
+Main/network/NIO, zero attempts and real10second retries. Default third attempt
+sleeps20seconds per runtime. Payload-only traffic breakdown checked independently;
+total counters stayzero. No transport/clock override or production changes.
+
+Evidence validation/archive-runtime-work-in-progress; student labs archive-live-node
+and archive-network. Mapped archive/reset lessons and README/provenance/REVIEW updated.
+Map unchanged382=338production+44tests,75absent=31production+44tests. All457 guides;
+full parity not_verified. PreviousHEADdaa3f2d; git log/local-backups manifests give
+new commit/recovery bundle. No GitHub push. Source pin5564b9d78978efcaf23679190d05253961fc6e69.
+
+NEXT: port full restoresync.java (515lines reread completely this turn), not just
+its recent-backup shortcut. Reuse restore.cpp six-section restore/private helpers,
+archive::sendArchiveReq/NotifyListener, Main restoreReady/restoreReadyForSync and
+archiveResetReady(false,false), exact native file/cipher/gzip/SQL adapters. Before
+edits inspect full native restore and its fixtures/tests, sibling search and report
+exact reuse paths, write student lab before tests. Do not conflate source differences:
+restoresync saves/closes wallet before reopen, increments configurable keyuses after
+reopen, and validparams excludes keyuses even though direct body reads it. If tip
+age<2days OR nohost, skipremote and shutdown. Else tip.getParent(128) start; parent
+behavior must be preserved. performResync invalid connection yields NPE, preflight
+failure returns emptyJSONObject without increment. On success archiveResetReady
+(false,false), increment/setuses, realbatchprocess, memory>250MiB reset every5
+batches, sourcebounded waits, finalresponse withoutshutdown (caller shutsdown).
+Need exactmemoryproviderreuse Main/MinimaLogger rather than fabricatedconstant.
+
+Remaining archive validation: actual cascades/multibatches, seed replacement,
+nonempty/cascaded IBD through request helper, full remote node sync, delayed
+read/connect timeouts, concurrent/repeated static sources, exact partial
+serialization failures. Existing helper tests onlyemptyIBD; localnode onlygenesis.
+Broader existing counterpart API/network/mining parity and75absentfiles remain.
+
+---
+
 # Current work — archive storage checkpoint
 
 Project/branch/executable MinimaCoreC++. Full 457-file port remains active/incomplete.
