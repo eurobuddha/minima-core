@@ -29,6 +29,7 @@ public:
     MMRData calculateProof(MMRData data) const;
     json::JSONObject toJSON() const;
     std::string toString() const {return toJSON().toJSONString();}
+    void writeDataStream(std::vector<uint8_t>& output) const;
     std::vector<uint8_t> serialise() const;
     void readDataStream(std::span<const uint8_t> data,size_t& offset);
     static MMRProof deserialise(std::span<const uint8_t> data,size_t& offset);

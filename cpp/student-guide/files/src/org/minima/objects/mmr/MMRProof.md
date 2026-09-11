@@ -47,3 +47,13 @@ Write the parent expressions for two chunks: first left, then right. Explain why
  The source map still labels this counterpart partial and parity not_verified. The described fixtures establish their particular observations, not full API equivalence or a working full node.
 
 Pinned Java SHA-256: `d38fac343155d3a60e2bbf8447b50b8a7b513f4660d650d5cf3f778c21e46a63`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Incremental output reused by HORST and FORS
+
+The native `writeDataStream(vector&)` now exposes the existing proof encoding as
+an append operation. It writes block time, chunk count, and then each direction
+byte and MMRData. This preserves the partial prefix if a later oversized hash
+throws. HORSTSignature and FORSSignature share this method; serialise wraps it
+with a fresh vector. The [FORS lab](../../../../../../../student-guide/new-tests/fors-signatures.md)
+checks nested failures, while the existing object and HORST comparisons regress
+unchanged successful proof bytes. This does not model every failing Java output stream.

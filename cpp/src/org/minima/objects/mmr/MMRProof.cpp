@@ -17,11 +17,15 @@ json::JSONObject MMRProof::toJSON() const {
     json::JSONArray arr;for(const auto& chunk:mData->mProofChain) arr.add(chunk.toJSON());
     obj.put("proof",arr);obj.put("prooflength",getProofLength());return obj;
 }
-std::vector<uint8_t> MMRProof::serialise() const {
-    auto out=wire::join(mData->mBlockTime,MiniNumber(getProofLength()));
-    for(const auto& chunk:mData->mProofChain) wire::append(out,chunk.serialise());
-    return out;
+void MMRProof::writeDataStream(std::vector<uint8_t>& output) const {
+    wire::append(output,mData->mBlockTime.serialise());
+    wire::append(output,MiniNumber(getProofLength()).serialise());
+    for(const auto& chunk:mData->mProofChain) {
+        wire::append(output,chunk.mLeft.serialise());
+        wire::append(output,chunk.mMMRData.serialise());
+    }
 }
+std::vector<uint8_t> MMRProof::serialise() const {std::vector<uint8_t> output;writeDataStream(output);return output;}
 void MMRProof::readDataStream(std::span<const uint8_t> data,size_t& offset) {
     mData->mBlockTime=MiniNumber::deserialise(data,offset);
     mData->mProofChain.clear();

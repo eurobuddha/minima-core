@@ -1,0 +1,33 @@
+{
+  "previous_head": "d6f3e1e7ebc8b6724c32a15d65f6d4f44dc3d71b",
+  "goal_complete": false,
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "status": "compiled; full FORS validation running",
+  "mapped": 457,
+  "counterparts": 394,
+  "production_counterparts": 350,
+  "test_counterparts": 44,
+  "absent": 63,
+  "production_absent": 19,
+  "tests_absent": 44,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "full_ctest_suite_run": false,
+  "normal_regressions": "object 9464 and HORST 1438 passed; 140.02 seconds",
+  "sanitized_regressions": "running; object test passed, HORST not yet terminal",
+  "active_sessions": {
+    "normal_fors": 90381,
+    "sanitized_fors": 25692,
+    "sanitized_regressions": 69241
+  },
+  "all_process_handles_terminal": false,
+  "teaching_guides": 457,
+  "initial_harness_failure": "Malformed count loop overwrote integer case counter with bytes; fixed count_wire name. Initial sanitizer process was explicitly interrupted and verified terminal before restarting.",
+  "notes": [
+    "FORS retains all sixteen 65536-leaf trees, no size reduction.",
+    "ForestRunner reuses Runner with a 120-second teardown allowance for the million-leaf native forest; normal current run began with the stricter 5-second base teardown limit.",
+    "Revalidate active sessions before assuming any process is terminal or restarting.",
+    "Full FORS results, demos, review closure and final recovery checkpoint remain pending."
+  ]
+}

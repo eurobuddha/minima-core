@@ -19,7 +19,7 @@ HORSTSignature stores parallel lists of revealed secret values and public-tree p
 
 ## How the C++ translation works
 
-The native signature uses shared state containing two separately shared vectors, following the existing MegaMMRSyncData ownership pattern. Reading replaces both list objects before the count, leaving previously returned list handles detached and intact. Values and proofs are appended separately in source order. writeDataStream appends to a supplied byte vector so a failed write retains its prefix. JSON proof conversion catches an I/O error, logs it, then throws a null-pointer error just as Java does when it dereferences MiniData.getMiniDataVersion's null return. The conversion helper instead returns the partially populated signature after I/O errors.
+The native signature uses shared state containing two separately shared vectors, following the existing MegaMMRSyncData ownership pattern. Reading replaces both list objects before the count, leaving previously returned list handles detached and intact. Values and proofs are appended separately in source order. writeDataStream appends to a supplied byte vector so a failed write retains its prefix. Proof fields now use the extracted MMRProof::writeDataStream loop, shared with FORSSignature. JSON proof conversion catches an I/O error, logs it, then throws a null-pointer error just as Java does when it dereferences MiniData.getMiniDataVersion's null return. The conversion helper instead returns the partially populated signature after I/O errors.
 
 ## Understanding the tests
 

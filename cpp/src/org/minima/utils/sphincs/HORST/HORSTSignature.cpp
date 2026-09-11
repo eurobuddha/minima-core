@@ -33,13 +33,7 @@ void HORSTSignature::writeDataStream(std::vector<uint8_t>& output) const {
     for(size_t i=0;i<mData->values->size();++i) {
         wire::append(output,required((*mData->values)[i]).serialise());
         const auto& proof=required(proofAt(*mData->proofs,i));
-        wire::append(output,proof.getBlockTime().serialise());
-        wire::append(output,MiniNumber(proof.getProofLength()).serialise());
-        for(int c=0;c<proof.getProofLength();++c) {
-            const auto& chunk=proof.getProofChunk(c);
-            wire::append(output,chunk.mLeft.serialise());
-            wire::append(output,chunk.getMMRData().serialise());
-        }
+        proof.writeDataStream(output);
     }
 }
 std::vector<uint8_t> HORSTSignature::serialise() const {std::vector<uint8_t> out;writeDataStream(out);return out;}

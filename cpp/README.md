@@ -5,9 +5,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **348 production counterparts and 44 mapped test files exist;
-65 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **350 production counterparts and 44 mapped test files exist;
+63 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The two FORS counterparts compile with sixteen complete HORST trees (1,048,576
+inner leaves), nested signatures, and the shared incremental MMR proof writer.
+Both complete builds pass; full FORS comparisons and sanitizer regressions are
+still running. This is a work-in-progress checkpoint. See the
+[student lab](student-guide/new-tests/fors-signatures.md) and
+[current validation status](validation/fors-work-in-progress/progress.json).
 
 The four legacy HORST classes now compile with real 65,536-leaf key trees and
 source-compatible signatures, mutable lists, and wire error behavior. Both builds
@@ -15,8 +22,7 @@ pass 1,438 Java/native comparisons and 1,299 independent assertions, including
 Python reconstruction of the complete trees and every generated authentication
 path. The 9,464 object/MMR and 1,364 utility regression cases also pass in both
 builds. See the [student lab](student-guide/new-tests/horst-signatures.md) and
-[saved evidence](validation/horst-work-in-progress). FORS/SPHINCS integration
-remains to be ported.
+[saved evidence](validation/horst-work-in-progress). FORS validation and SPHINCS integration remain open.
 
 The mapped `ZipExtractor` now performs streaming extraction with canonical path
 checks and source-compatible partial-file/error behavior. Both full builds and

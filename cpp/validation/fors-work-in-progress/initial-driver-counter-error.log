@@ -1,0 +1,23 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{"progress": "full forest constructed and independently checked", "cases": 1, "failures": 0}
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/fors_differential.py", line 95, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/fors_differential.py", line 76, in main
+    compare('partial-read',dict(action='read',initial=record['java'],wire=hx(b)))
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/fors_differential.py", line 16, in compare
+    values=[r.ask(request) for r in runners];count+=1;groups[group]=groups.get(group,0)+1;transcript.update(json.dumps([request,*values],sort_keys=True,separators=(',',':')).encode())
+                                             ^^^^^^^^
+TypeError: can't concat int to bytes

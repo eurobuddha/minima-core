@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  5: object_differential
+1/2 Test  #5: object_differential ..............   Passed   26.11 sec
+    Start 34: horst_differential
+2/2 Test #34: horst_differential ...............   Passed  113.89 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) = 140.02 sec

@@ -1,3 +1,13 @@
+## FORS work-in-progress review — validation pending
+
+The two FORS classes and the extracted MMR proof writer compile in both complete
+builds. Normal object and HORST regressions passed. Full-forest comparisons and
+sanitizer regressions are still running; no final review approval is claimed.
+The initial failure was test-driver counter shadowing, corrected before restart.
+See [current process/evidence status](validation/fors-work-in-progress/progress.json).
+
+---
+
 ## HORST checkpoint code review
 
 ### Summary

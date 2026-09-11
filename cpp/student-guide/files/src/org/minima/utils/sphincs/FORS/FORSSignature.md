@@ -1,10 +1,10 @@
 # FORSSignature — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/FORS/FORSSignature.java) · `src/org/minima/utils/sphincs/FORS/FORSSignature.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/FORS/FORSSignature.java) · [Native counterpart](../../../../../../../../src/org/minima/utils/sphincs/FORS/FORSSignature.cpp)
 
 ## Purpose
 
@@ -18,21 +18,25 @@ FORSSignature combines one HORSTSignature with lists of HORST roots and their ou
 4. JSON output includes embedded horstsignature and an array of root/proof descriptions indexed by the embedded value count. An apparently unused root serialization call still executes before its JSON fields are emitted and can fail.
 5. convertMiniDataVersion logs IOException and returns partial state. A mismatch between stored counts may only become visible later during JSON output or verification.
 
-## Translation work still required
+## How the C++ translation works
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. Reuse the exact HORSTSignature, MMRData, MMRProof, and MiniNumber encodings; merging the two wire counts or validating them early would change source behavior.
+The native class holds shared state with an embedded HORSTSignature and separately shared outer root/proof lists. Reading first replaces the inner object. Only after its read succeeds are the outer lists replaced. Counts are decoded independently; serialization still writes the inner count twice. The existing HORSTSignature writer is reused, and its tested incremental proof-writing loop is now shared through MMRProof::writeDataStream. The unused root serialization call in toJSON is retained: an I/O error logs but its null result is ignored, whereas a failed proof conversion is dereferenced and throws NPE.
 
 ## Understanding the tests
 
-The FORS demonstration exercises a normal complete serialization round trip and prints verification. Proposed tests should deliberately encode different embedded and outer counts, truncate between a root and its proof, add unused extra roots, and compare direct-reader exceptions versus helper-returned partial objects.
+The driver truncates each prefix of a small independently encoded nested signature and samples every part of a full signature. It compares consumed byte counts, partial output hashes and lengths, JSON or typed errors, old/new object identity and list lengths. Unequal and narrowed counts, null entries, missing lists, oversized roots and oversized proof hashes exercise distinct failure orders. Converter cases verify that I/O errors log and return partial objects while zero-length BigInteger runtime errors escape. A source demonstration alone has no assertions; these tests add explicit checks.
 
-- [Signature producer and printed round trip](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/FORS/FORS.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+The [FORS lab](../../../../../../../../student-guide/new-tests/fors-signatures.md)
+records the plan and execution results. The [driver](../../../../../../../../tools/fors_differential.py)
+calls unmodified pinned Java classes and the compiled native library.
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work.
+Raw MiniData byte-array aliases, arbitrary Java subclasses, concurrent mutation,
+arbitrary failing output streams, and full SPHINCS/node integration remain open.
+The fixtures normalize NPE/EOF prose and runtime-specific stack frames; logged
+exception counts/categories are compared. Passing these tests does not establish
+cryptographic security or complete file parity.
 
 ## Check your understanding
 

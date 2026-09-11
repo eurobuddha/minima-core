@@ -1,3 +1,67 @@
+# Current work — FORS compiled; full validation RUNNING
+
+Full goal active. WIP checkpoint, NOT validated completion. PreviousHEAD d6f3e1e.
+Map394=350production+44originaltests;63absent=19production+44tests. All457 lessons
+authored/audited; all paritynot_verified. Both full builds passed. FullsuiteNOT run.
+MinimaCoreC++ local branch/project/executable. No GitHub push.
+
+LIVE HANDLES (revalidate with write_stdin; never infer terminal from this file):
+normal FORS direct driver session90381 -> /tmp/minima-fors-normal-test.log
+sanitized FORS direct driver session25692 -> /tmp/minima-fors-sanitized-test.log
+sanitized regressions session69241 -> /tmp/minima-fors-sanitized-regressions.log
+Normal regressions session56542 TERMINAL PASS: object9464 / HORST1438,140.02s.
+Both fullbuild sessions1197 and98727 TERMINAL PASS; fixturebuild66053 PASS.
+Initialnormal31986 TERMINAL FAIL (test-driver case counter overwritten by bytes).
+Initialsanitized47115 explicitlyinterrupted(PythonPID33667),verifiedTERMINAL1;
+cleanup's5sec wait killed ownedbusy native child. Do NOT poll/restart these oldhandles.
+
+New src/org/minima/utils/sphincs/FORS/{FORS,FORSSignature}.cpp/hpp.
+Namespace minima::sphincs::fors. FORS retains16fullHORSTs=1,048,576leaves; seed
+hashAllObjects(base,MiniNumber(i)); outer indexedMMR rootsum120. sign onepreimage/
+innerproof/root/outerproof pertree. verifyouterFIRST theninner,16sequentialchecks;
+no earlystructuralvalidation. Allgetteraliases via sharedptr; main/log translated.
+FORSSignature sharedData holds sharedinnerSignature,rootlist,prooflist. readreplaces
+innerFIRST; outerlists ONLY replaced after successfulinnerread. Independentouter
+count; writer usesinnercounttwice. Converter logsONLYIO andreturnspartialobject.
+toJSON includesunusedrootMiniDataVersion call: IOlogs/nullignored, rootJSONcontinues;
+proofconversionIOlogs thenNPE. Nulls/bounds categorypreserved. No newcrypto backend.
+
+SharedMMRProof.hpp/.cpp nowwriteDataStream(vector&) with existing fieldloop extracted
+fromHORSTSignature: blocktime,count,chunkleft,MMRData; preservespartialprefixbefore
+badchunk. serialise wrapsnewwriter. HORSTSignature delegates tosharedwriter.
+Python horst_differential.proof_root adds optionalsteps=16 (defaultunchanged),
+FORS reuses it with4outersteps. Object/HORST regressions covertheextraction.
+
+FORSOracle.java extendsHORSTOracle to reusecodecs/errors/inner mutation. Nativefors.cpp
+adapts inspectedHORSTfixture. fors_differential.py uses Runner andHORST independent
+fulltree/proof helpers. Each run buildsactualforestonceplusanotherforactualsource
+main. IndependentPython rebuildsall16innerroots andouter;4messages inclactualrepeat
+index;bothwriterssenttobothverifiers;everyinner/outerproofindependentlychecked.
+Nestedtruncation,independentcounts,null/shortlists,all16slotchanges,root/proofIO,
+getteraliases andouter-before-innerfailureorder. Root/message/hash/sum checksreal.
+
+Initialnormal reachedfirstpartial-read andfailedTypeError because `for count in`
+overwrote the nonlocalintegercounter withbytes. Fixedto count_wire. Initiallogs saved
+validation/fors-work-in-progress. Currentnormal restarted corrected driver BEFORE
+ForestRunnerclose override was added; it still uses stricter5secteardown. Current
+sanitizer uses ForestRunner(Runner) close120sec tofreefullforest. Outputs/protocol
+andcomparisoncorpus otherwise same. If normalhitsclosetimeout, retain evidence and
+resume/re-run asnecessary; do not claimpass. Driver now saves fors-known-vectors.json
+aftereachsign andfors-progress.json every50cases. Fullreport onlyafter mainsfinish.
+Inspectpartialprogressforfailures; don't rerunonlybecause longconstruction is quiet.
+Perrequest/demo timeout1800sec; CTestfors timeout3600sec. No tree-size reduction.
+
+NEXT: wait/inspectthreelivehandles, fixactualmismatches, finishFORSnormal/sanreports
+anddemos. Savecompletebuild/regression/newtestevidence; finalize studentlab/results,
+README, REVIEW, CONTINUATION, provenance, source-map, guideaudit, localcommitand
+all-current-commit-path verifiedrecoverybundle. WIPprogress.json deliberatelysays
+validationrunning. Finalcode reviewstillpending. No fullparityclaim.
+Source/pinnedFORSclasses+consumersread; no siblingFORS/HORST/SPHINCScandidate.
+FollowupSPHINCS/SPHINCSSignature/Utils/TransactionTest remainabsent. Sourcequirks
+summarizedbelow(previousHORSTcheckpoint). Currentworktree isauthoritative.
+
+---
+
 # Current work — four full-size HORST counterparts translated and validated
 
 MinimaCoreC++ branch/project/executable. Full457-file goal remains active.

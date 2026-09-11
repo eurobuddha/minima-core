@@ -3693,5 +3693,30 @@
       "JVM -XX:-OmitStackTraceInFastThrow makes repeated bounds diagnostics deterministic; no source algorithm is changed.",
       "Cryptographic security and full node parity are not established."
     ]
+  },
+  "fors_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/utils/sphincs/FORS/FORS.java": "5793254152bf14fda00f675689feb43f13d38b755d300200cd8cda01dc10094b",
+      "upstream-study/src/org/minima/utils/sphincs/FORS/FORSSignature.java": "5497bc3135f0a17609a5eb7fa74277e7f424762156003636838f4730aa19792f"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/objects/mmr/MMRProof.cpp": "c4d705bafec861f5aa01b99d9c22adffa079b607b49782e36f9239b6b016a6ee",
+      "cpp/src/org/minima/objects/mmr/MMRProof.hpp": "01e563c063bef5d1911f34170af021e475f69ef5f5346e5ede9db72c70178801",
+      "cpp/src/org/minima/utils/sphincs/FORS/FORS.cpp": "33777576300c3f043d0ea147f3923f59e127e86f6fd4c99b484ceb8c0ae8a214",
+      "cpp/src/org/minima/utils/sphincs/FORS/FORS.hpp": "ccdec2a0e0713c5707105acf81012a36da0af5ee563f6cf093916ae13370ec5a",
+      "cpp/src/org/minima/utils/sphincs/FORS/FORSSignature.cpp": "cf4534ffb26298f18019b73ac86fcdec5a14222105e3da8f0b35e6929dd12ee7",
+      "cpp/src/org/minima/utils/sphincs/FORS/FORSSignature.hpp": "05e437b2767b8eebeb6a009fb66a9de27ca25bdb453106853494705c016bffa8",
+      "cpp/src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp": "4535c281be8a0abf2eac1bd56ecbd14e2fc140f80986eb7f8340c875309ac72e",
+      "cpp/support/FORSOracle.java": "6a2502148f8cb426ca14c4c9086b259809c5c07e0b3609b41a85969c8a22ca8b",
+      "cpp/support/fors.cpp": "4c5b99687c576ae82ad9bf434c4121f33fcd0354cc98ec05afb4e2645490f712",
+      "cpp/tools/fors_differential.py": "ad739a0bac68d6480d67e29ffd8da6c8303dfc59974b26b0115c493f9dbe6fde",
+      "cpp/tools/horst_differential.py": "47bef5a88eb5ce191937d4a43dbd9d1f3594ccaad3ac52cd0982319f662c3d43"
+    },
+    "reuse": "Actual native HORST, Crypto/MiniData/MiniNumber/MMR. Extract tested partial proof writer from HORSTSignature into MMRProof. Java fixture extends HORSTOracle; driver reuses Runner and independent HORST tree/proof reconstruction. ForestRunner only widens teardown timeout.",
+    "sibling_search": "No FORS/HORST/SPHINCS in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; previously inspected sibling TreeKey has incompatible tree/signature format.",
+    "evidence": "validation/fors-work-in-progress",
+    "validation": "Both full builds passed; normal object/HORST regressions passed; full FORS and sanitizer regressions pending.",
+    "full_parity_verified": false
   }
 }

@@ -1,0 +1,40 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/fors_differential.py", line 32, in main
+    root=dict(data=hx(nodes[0][0]),value=str(nodes[0][1]))
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/fors_differential.py", line 16, in compare
+    values=[r.ask(request) for r in runners];count+=1;groups[group]=groups.get(group,0)+1;transcript.update(json.dumps([request,*values],sort_keys=True,separators=(',',':')).encode())
+            ~~~~~^^^^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 14, in ask
+    if not select.select([self.child.stdout],[],[],self.response_timeout)[0]:raise TimeoutError('Checker oracle did not respond')
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/fors_differential.py", line 95, in <module>
+    report=dict(cases=count,passed=count-len({f['index'] for f in failures if 'index' in f}),independent_assertions=checks,groups=groups,failures=failures,seconds=round(time.monotonic()-start,3),full_forest_leaves=1048576,transcript_sha256=transcript.hexdigest(),scope='Full-size pinned FORS and nested signature APIs, both source mains, independent million-leaf forest and proof reconstruction; NPE/EOF prose and stack frames normalized. Raw MiniData aliases, arbitrary subclasses, concurrent mutation and full SPHINCS/node parity not certified.')
+                                         ^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/fors_differential.py", line 92, in main
+    assert demos[0].endswith('Verify : true\n');(build/'fors-demo-output.json').write_text(json.dumps(dict(stdout=demos[1]),indent=2)+'\n')
+                          ^^^^^^^^^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 25, in close
+    try:code=self.child.wait(timeout=5)
+             ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1279, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2076, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/minima_fors']' timed out after 5 seconds

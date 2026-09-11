@@ -3593,21 +3593,21 @@
     "java": "src/org/minima/utils/sphincs/FORS/FORS.java",
     "cpp": "src/org/minima/utils/sphincs/FORS/FORS.cpp",
     "guide": "files/src/org/minima/utils/sphincs/FORS/FORS.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+    "teaching_note": "Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified."
   },
   {
     "java": "src/org/minima/utils/sphincs/FORS/FORSSignature.java",
     "cpp": "src/org/minima/utils/sphincs/FORS/FORSSignature.cpp",
     "guide": "files/src/org/minima/utils/sphincs/FORS/FORSSignature.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+    "teaching_note": "Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified."
   },
   {
     "java": "src/org/minima/utils/sphincs/HORST/HORST.java",

@@ -1,10 +1,10 @@
 # FORS — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/FORS/FORS.java) · `src/org/minima/utils/sphincs/FORS/FORS.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/FORS/FORS.java) · [Native counterpart](../../../../../../../../src/org/minima/utils/sphincs/FORS/FORS.cpp)
 
 ## Purpose
 
@@ -18,22 +18,25 @@ FORS combines 16 separate HORST trees into a forest commitment. One selected pre
 4. Verification first proves each supplied HORST root at outer index i against the forest root. It then hashes the supplied secret, reconstructs the inner leaf using the message-derived index, and verifies its proof against that HORST root.
 5. Return false at the first root mismatch, true after all 16 pairs. Missing/null lists can throw because structural lengths are assumed rather than prevalidated.
 
-## Translation work still required
+## How the C++ translation works
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. The existing MMRData and MMRProof operations are necessary for both levels. A single-tree HORST signature cannot substitute for the outer forest binding.
+The C++ constructor retains sixteen complete HORST objects and uses the existing MMR for the outer tree. Seed derivation, leaf sums, finalization and both proof calculations reuse the tested primitives. Shared roots and selected secrets retain their identity across signatures; each signature gets separate lists and proof objects. Verification follows Java's outer-before-inner order without adding an early structural validation pass. The source log and main are translated as well.
 
 ## Understanding the tests
 
-The source main constructs a fixed-seed forest, signs fixed bytes, serializes/re-reads the signature, and prints verification and size. Proposed tests should compare all outer roots/proofs and wire bytes, then independently alter outer tree index, inner key index, preimage, proof, message, and root to identify the failing verification layer.
+The driver constructs all 1,048,576 leaves in each runtime and independently rebuilds sixteen inner roots and the outer root with Python SHA3. It compares exact signatures for four messages, including an actual hash with a repeated index, and supplies both writers' signatures to both verifiers. Every inner and outer proof is reconstructed independently. Mutations at all sixteen positions distinguish wrong outer roots, wrong inner sums, wrong secrets, empty proofs, short lists and null entries. Alias cases check shared roots/secrets and distinct lists/proofs. The source main is invoked directly.
 
-- [Inner-tree index and key operations](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/HORST/HORST.java)
-- [Four-component signature encoding](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/FORS/FORSSignature.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+The [FORS lab](../../../../../../../../student-guide/new-tests/fors-signatures.md)
+records the plan and execution results. The [driver](../../../../../../../../tools/fors_differential.py)
+calls unmodified pinned Java classes and the compiled native library.
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work.
+Raw MiniData byte-array aliases, arbitrary Java subclasses, concurrent mutation,
+arbitrary failing output streams, and full SPHINCS/node integration remain open.
+The fixtures normalize NPE/EOF prose and runtime-specific stack frames; logged
+exception counts/categories are compared. Passing these tests does not establish
+cryptographic security or complete file parity.
 
 ## Check your understanding
 

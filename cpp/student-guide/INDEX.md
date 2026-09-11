@@ -699,8 +699,8 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [FORS.java](files/src/org/minima/utils/sphincs/FORS/FORS.md) | authored | unported |
-| [FORSSignature.java](files/src/org/minima/utils/sphincs/FORS/FORSSignature.md) | authored | unported |
+| [FORS.java](files/src/org/minima/utils/sphincs/FORS/FORS.md) | authored | implemented_partial |
+| [FORSSignature.java](files/src/org/minima/utils/sphincs/FORS/FORSSignature.md) | authored | implemented_partial |
 
 ## src/org/minima/utils/sphincs/HORST
 

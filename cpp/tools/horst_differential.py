@@ -33,7 +33,7 @@ def independent(seed):
             'privateHash':digest(b''.join(secrets)),'publicHash':digest(b''.join(publics)),
             'privateSize':65536,'publicSize':65536,'rootIdentity':True,'logCount':0,'logKinds':[]},secrets,publics
 
-def proof_root(encoded,public,index):
+def proof_root(encoded,public,index,steps=16):
     offset=0
     def num():
         nonlocal offset
@@ -47,7 +47,7 @@ def proof_root(encoded,public,index):
         value=encoded[offset:offset+length];offset+=length
         return value
     assert num()==0
-    count=num();assert count==16
+    count=num();assert count==steps
     current=hashlib.sha3_256(number(0)+data(public)+number(index)).digest();total=index
     for _ in range(count):
         left=encoded[offset];offset+=1;sibling=blob();total+=num()
