@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 250: CONCATTests
+1/2 Test #250: CONCATTests ......................   Passed    0.70 sec
+    Start 251: concat_original_tests
+2/2 Test #251: concat_original_tests ............   Passed    4.32 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   5.05 sec

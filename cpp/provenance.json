@@ -3884,5 +3884,19 @@
     "validation": "Both complete builds PASS; normal71cases/428checks pass2.618s, sanitized71/428 pass4.137s; same d0d478ed...transcript and exact payload hashes; native stderr empty.",
     "evidence": "validation/text-commands-work-in-progress",
     "full_parity_verified": false
+  },
+  "concat_original_tests": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "files_sha256": {
+      "upstream-study/test/org/minima/tests/kissvm/functions/base/CONCATTests.java": "72e7c053ab5da3db91169dbce8211741c5702c5249a70cae46a72c97c8c93366",
+      "cpp/test/org/minima/tests/kissvm/functions/base/CONCATTests.cpp": "f4746e64824c3b122482d6c83c9a80544f00ce10ed3851fb9d2dd871c2fa42f3",
+      "cpp/support/CONCATOriginalTests.java": "59b7b14da1028909fb7d84047ca077210b8dee75f96eea0cab9851d580bde83d",
+      "cpp/tools/script_value_original_tests.py": "d0da06d45c4ec5ab6a15f0ebf8693ce8badd0ada9c2007afd020c1344d645a39"
+    },
+    "reuse": "Actual native hex/CONCAT, MinimaFunction registry/validation, ConstantExpression, Contract and Value types. Native fixture adapters follow LENTests; unchanged Java methods invoked using the existing original-test driver.",
+    "sibling_search": "Read tools/minima-core-cpp/src/kissvm/functions/Functions.cpp CONCAT and tests/kissvm/test_kissvm.cpp; sibling accepts string concatenation and exactly two arguments, incompatible with pinned two-or-more hex-only behavior. Current native implementation reused unchanged.",
+    "validation": "Both complete builds and two registered tests per build pass. Three original methods and21assertions per runtime; normal5.05s andsanitized3.87s CTest totals; native stderr empty, UBSANhalt.",
+    "evidence": "validation/concat-original-tests",
+    "full_parity_verified": false
   }
 }

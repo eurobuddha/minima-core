@@ -1,3 +1,34 @@
+# Latest checkpoint — original CONCAT tests pass in both builds
+
+Local branch/project MinimaCoreC++; previous HEAD a3b0140, git log gives current.
+Goal ACTIVE.404counterparts=359production+45tests;53absent=10production+43tests.
+Allpresentimplemented_partial;allparitynot_verified.251CTestentries/fullsuiteNOT run.
+Bothcompletebuilds andCONCATTests/concat_original_tests PASS (normal5.05s,san3.87s).
+Nativefixture followsLENTests adapters; Javawrappercalls3unchangedsource methods;
+21assertions perruntime. ProductionCONCAT unchanged. Native stderr empty,UBSANhalt.
+Sourceemptyhex case succeeds despiteinvalid-section heading; preserved exactly.
+Evidencevalidation/concat-original-tests; lessonandlabupdatedbefore/aftertests.
+Terminal59912normal and38512san PASS/closed; doNOTpollagain.
+
+LIVE24343fullSANSPHINCScommand and41760resumedSANsigner remainactive; latest127/0
+and156/0respectively. Signer nowgeneratingmissing empty-messagefullsignature after
+explicitlycheckingbothsavedmatchedrecords. No reductioninforests or fullpassclaim.
+See previouscheckpoint below for logs,resumecommand,oldtimeout andterminalhandles.
+
+Previousa3b0140recoverybundle verified; all42changedpaths bytechecked:
+local-backups/MinimaCoreC++-20260911T092301Z.bundle SHA256
+ d16b4f6ef2f8d1f3db73b29d9930372688e340e113589f85d9ff309a86dc8993.
+Recoveryclone.../minimacorecpp-recovery-3dqt7h4x/MinimaCoreC++.
+Create thischeckpoint's bundleaftercommit andbyteverifyallchangedpaths.
+Nextindependentscope: remainingGET/SUBSEToriginaltests (sourcewaspartiallyread,
+repeatcomplete targetedreads before adapting), or unresolvedproductionfiles.
+Streamable andfullycommentedP2PSwapLink source fullyread butnoimplementationedits.
+No pending GitHub push; remote destination unspecified. JNI source questionpending.
+
+Earliernotes arehistoricalwherecontradictedbythischeckpoint.
+
+---
+
 # Latest checkpoint — exact text commands; normal SPHINCS command complete
 
 Local branch/project remains MinimaCoreC++. Previous HEAD aa5edad; git log gives

@@ -1,3 +1,30 @@
+## Original CONCAT test review
+
+### Summary
+
+The mapped test preserves all active inputs and observations in the three pinned
+Java methods. It reuses the existing native function and LEN fixture conventions.
+The source's commented-out empty-input rejection remains inactive; the active
+empty-result assertions pass. Exception catches require ExecutionException.
+
+### Findings
+
+No correctness issue was found in this test translation. The Java wrapper executes
+the unchanged source methods, and the native test executes the corresponding 21
+assertions. Both complete builds and both registered tests pass in each build.
+Native stderr is empty; UBSAN is configured to halt. The tests do not cover maximum
+size or side effects during parameter evaluation, so full API parity remains open.
+
+### Verdict
+
+Approve this local checkpoint. No production implementation changed. There are
+404 mapped counterparts (359 production,45 tests),53 absent files and251 registered
+CTest entries. The complete CTest suite has not run. The full sanitized SPHINCS
+command and resumed signer runs remain active. See the
+[CONCAT evidence](validation/concat-original-tests/progress.json).
+
+---
+
 ## Text command and signer validation checkpoint review
 
 ### Summary

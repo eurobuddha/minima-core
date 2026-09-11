@@ -1,0 +1,18 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "previous_head": "a3b0140937f6e1b7d88c27382c62e5e8fb146646",
+  "status": "Both complete builds and both registered CONCAT tests pass in each build.",
+  "original_methods": 3,
+  "assertions_per_runtime": 21,
+  "normal_ctest_seconds": 5.05,
+  "sanitized_ctest_seconds": 3.87,
+  "native_stderr": "",
+  "ubsan_options": "halt_on_error=1",
+  "counterparts": 404,
+  "production": 359,
+  "original_tests": 45,
+  "absent": 53,
+  "ctest_entries": 251,
+  "full_ctest_suite_run": false,
+  "full_parity_verified": false
+}

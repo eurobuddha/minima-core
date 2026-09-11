@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/tests/kissvm/functions/base/CONCATTests.java](../../../../../../../../../../upstream-study/test/org/minima/tests/kissvm/functions/base/CONCATTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -42,7 +42,7 @@ assertEquals("0x0123456789ABCDEF0123456789ABCDEF01234567", ((HexValue) res).toSt
 assertThrows(ExecutionException.class, () -> { Value res = mf.runFunction(ctr); });
 ```
 
-An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this page does not claim that the Java suite was executed successfully.
+An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; current execution results are recorded below.
 
 The fixture names these Minima dependencies (links are for tracing the test setup and calls):
 
@@ -62,11 +62,23 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/tests/kissvm/functions/base/CONCATTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+The [mapped native test](../../../../../../../../../test/org/minima/tests/kissvm/functions/base/CONCATTests.cpp)
+reuses the existing native CONCAT, factory registry, ConstantExpression and Contract.
+Its fixture and exception adapters follow LENTests. Each source argument and result
+is retained, including the successful empty-hex case and eight type rejections.
+The Java wrapper calls all three unchanged source methods directly.
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
+There are 21 executed assertions on a passing run: four metadata checks, six
+result type/value checks, three arity rejections and eight type rejections. The
+navigation table counts source call sites including fail() handlers; those
+handlers are not reached on a passing run. The commented-out empty-input rejection
+remains inactive. Expected ExecutionException catches reject unrelated exceptions.
 
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+Both complete builds and both registered tests pass in each build, with 21
+assertions per runtime and empty native stderr. See the
+[concatenation lab](../../../../../../../../../student-guide/new-tests/concatenation-original-tests.md)
+for the plan, completed results and limits. The source cases do not test maximum
+size or expression-evaluation side effects and cannot establish full API parity.
 
 ## What students should conclude
 
