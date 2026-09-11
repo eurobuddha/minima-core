@@ -1482,3 +1482,8 @@ add_executable(txbody_ids support/txbody_ids.cpp)
 target_link_libraries(txbody_ids PRIVATE minima_file_port)
 add_test(NAME txbody_ids_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/txbody_ids_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(txbody_ids_differential PROPERTIES TIMEOUT 180)
+
+add_executable(minima_magic support/magic.cpp)
+target_link_libraries(minima_magic PRIVATE minima_file_port)
+add_test(NAME magic_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/magic_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(magic_differential PROPERTIES TIMEOUT 2500)

@@ -64,7 +64,7 @@ void NIOMessage::receiveTxPoW(std::span<const uint8_t> data,size_t& offset){
     if(!txpow->getChainID().isEqual(TxPoWChecker::CURRENT_NETWORK)){log("Wrong Block ChainID! from "+mClientUID.value_or("null")+" "+txpow->getChainID().to0xString()+" "+txpow->getTxPoWID());disconnect=true;}
     else if(!TxPoWChecker::checkTxPoWBasic(*txpow)){log("TxPoW FAILS Basic checks from "+mClientUID.value_or("null")+" "+txpow->getTxPoWID());disconnect=true;}
     else if(!TxPoWChecker::checkSignatures(*txpow)){log("Invalid signatures on txpow from "+mClientUID.value_or("null")+" "+txpow->getTxPoWID());disconnect=true;}
-    else if(!RelayPolicy::checkMaxStateStoreSize(*txpow,tip->getTxPoW().getMagic().getMaxTxPoWSize().getAsLong())){log("TxPoW state store too large..");disconnect=true;}
+    else if(!RelayPolicy::checkMaxStateStoreSize(*txpow,Magic::required(tip->getTxPoW().getMagic().getMaxTxPoWSize()).getAsLong())){log("TxPoW state store too large..");disconnect=true;}
     if(disconnect){manager()->disconnect(mClientUID);return;}
     (void)now();bool valid=true;
     if(txpow->isBlock()&&ratio.isLess(MMREntryNumber(BigInt(1),2)))valid=false;
@@ -77,7 +77,7 @@ void NIOMessage::receiveTxPoW(std::span<const uint8_t> data,size_t& offset){
     }
     (void)now();
     if(txpow->isBlock()&&txpow->getTimeMilli().isMore(MiniNumber(plus(now(),7200000)))){log("TxPoW block received with millitime MORE than 2 hours in future "+javaDateString(txpow->getTimeMilli().getAsLong())+" "+txpow->getTxPoWID());valid=false;}
-    auto size=txpow->getSizeinBytesWithoutBlockTxns();if(size>tip->getTxPoW().getMagic().getMaxTxPoWSize().getAsLong()){log("TxPoW received size too large.. "+std::to_string(size)+" "+txpow->getTxPoWID());valid=false;}
+    auto size=txpow->getSizeinBytesWithoutBlockTxns();if(size>Magic::required(tip->getTxPoW().getMagic().getMaxTxPoWSize()).getAsLong()){log("TxPoW received size too large.. "+std::to_string(size)+" "+txpow->getTxPoWID());valid=false;}
     (void)now();if(TxPoWChecker::checkMemPoolCoins(*txpow))valid=false;
     (void)now();if(!TxPoWChecker::checkMMR(tip->getMMR().get(),*txpow,false))valid=false;
     (void)now();if(TxPoWGenerator::isMempoolFull()){auto burn=txpow->getBurn();if(burn.isLessEqual(TxPoWGenerator::getMinMempoolBurn())){log("Received TxPoW with low burn when MEMPOOL full "+burn.toString());valid=false;}}

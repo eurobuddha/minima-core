@@ -235,7 +235,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             else if(op=="mineNext")sqlRequired(WalletMiningFixture::miner).processNext();
             else if(op=="mineState"){}
             else if(op=="postHeld"){auto command=CommandRunner::getRunner().getCommandOnly("txnminepost");command->getParams()->put("data",MiniData(WalletMiningFixture::held.back()->serialise()).to0xString());result=command->runCommand();}
-            else if(op=="limitSize"){auto tip=MinimaDB::getDB()->getTxPoWTree()->getTip();tip->getTxPoW().getMagic().mCurrentMaxTxPoWSize=MiniNumber(config->getString("size"));}
+            else if(op=="limitSize"){auto tip=MinimaDB::getDB()->getTxPoWTree()->getTip();tip->getTxPoW().getMagic().mCurrentMaxTxPoWSize()=std::make_shared<MiniNumber>(MiniNumber(config->getString("size")));}
 
             else if(op=="coinStore")CoinDB::createCoinDB(std::filesystem::path(root)/"control-coins",services.sql);
             else if(op=="coinSQL")GeneralParams::USE_SQL_COINDB=flag("enabled");

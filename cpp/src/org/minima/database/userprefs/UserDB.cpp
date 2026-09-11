@@ -31,11 +31,11 @@ bool UserDB::getMDSINIT() {return getBoolean("mdsinitdapps", false);}
 void UserDB::setMDSINIT(bool zInit) {setBoolean("mdsinitdapps", zInit);}
 bool UserDB::isAutoBackup() {return getBoolean("autobackup", false);}
 void UserDB::setAutoBackup(bool zAuto) {setBoolean("autobackup", zAuto);}
-MiniNumber UserDB::getMagicDesiredKISSVM() {return getNumber("magic_kissvm", Magic::DEFAULT_KISSVM_OPERATIONS);}
+MiniNumber UserDB::getMagicDesiredKISSVM() {return getNumber("magic_kissvm", (*Magic::DEFAULT_KISSVM_OPERATIONS));}
 void UserDB::setMagicDesiredKISSVM(const MiniNumber& zKISSVM) {setNumber("magic_kissvm", zKISSVM);}
-MiniNumber UserDB::getMagicMaxTxPoWSize() {return getNumber("magic_txpowsize", Magic::DEFAULT_TXPOW_SIZE);}
+MiniNumber UserDB::getMagicMaxTxPoWSize() {return getNumber("magic_txpowsize", (*Magic::DEFAULT_TXPOW_SIZE));}
 void UserDB::setMagicMaxTxPoWSize(const MiniNumber& zMaxSize) {setNumber("magic_txpowsize", zMaxSize);}
-MiniNumber UserDB::getMagicMaxTxns() {return getNumber("magic_txns", Magic::DEFAULT_TXPOW_TXNS);}
+MiniNumber UserDB::getMagicMaxTxns() {return getNumber("magic_txns", (*Magic::DEFAULT_TXPOW_TXNS));}
 void UserDB::setMagicMaxTxns(const MiniNumber& zMaxTxns) {setNumber("magic_txns", zMaxTxns);}
 void UserDB::setEncryptedSeed(const MiniData& zEncryptedSeed) {setData("encrypted_seed", zEncryptedSeed);}
 MiniData UserDB::getEncryptedSeed() {return getData("encrypted_seed", MiniData::ZERO_TXPOWID);}

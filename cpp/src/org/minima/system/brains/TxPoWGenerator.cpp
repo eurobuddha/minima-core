@@ -44,7 +44,7 @@ TxPoW TxPoWGenerator::generateTxPoWAt(std::shared_ptr<Transaction> transaction,s
     auto difficulty=getBlockDifficulty(tip);txpow.setBlockDifficulty(difficulty);
     auto minhash=calculateDifficultyData(services.getHashRate());
     if(minhash.isLess(difficulty)) minhash=difficulty;
-    if(minhash.isMore(magic.getMinTxPowWork())) minhash=MiniData(MMREntryNumber::dividePositive(magic.getMinTxPowWork().getDataValue()*BigInt(10),BigInt(11),16).toBigInteger());
+    if(minhash.isMore(Magic::required(magic.getMinTxPowWork()))) minhash=MiniData(MMREntryNumber::dividePositive(Magic::required(magic.getMinTxPowWork()).getDataValue()*BigInt(10),BigInt(11),16).toBigInteger());
     txpow.setTxDifficulty(minhash);
     auto mempool=services.getAllUnusedTxns();
     std::stable_sort(mempool.begin(),mempool.end(),[](const auto& a,const auto& b) {
@@ -69,9 +69,9 @@ TxPoW TxPoWGenerator::generateTxPoWAt(std::shared_ptr<Transaction> transaction,s
             if(mem.getCheckRejectNumber()>3) valid=false;
             if(valid) {
                 if(collision(mem)) {mem.incrementCheckRejectNumber();continue;}
-                if(mem.getSizeinBytesWithoutBlockTxns()>magic.getMaxTxPoWSize().getAsLong()) {
-                    MinimaLogger::log("Mempool txn too big.. "+mem.getTxPoWID()+" size:"+std::to_string(mem.getSizeinBytesWithoutBlockTxns())+" max:"+std::to_string(magic.getMaxTxPoWSize().getAsLong()));valid=false;
-                }else if(mem.getTxnDifficulty().isMore(magic.getMinTxPowWork())) {
+                if(mem.getSizeinBytesWithoutBlockTxns()>Magic::required(magic.getMaxTxPoWSize()).getAsLong()) {
+                    MinimaLogger::log("Mempool txn too big.. "+mem.getTxPoWID()+" size:"+std::to_string(mem.getSizeinBytesWithoutBlockTxns())+" max:"+std::to_string(Magic::required(magic.getMaxTxPoWSize()).getAsLong()));valid=false;
+                }else if(mem.getTxnDifficulty().isMore(Magic::required(magic.getMinTxPowWork()))) {
                     MinimaLogger::log("Mempool txn TxPoW too low.. "+mem.getTxPoWID());valid=false;
                 }
             }
@@ -79,14 +79,14 @@ TxPoW TxPoWGenerator::generateTxPoWAt(std::shared_ptr<Transaction> transaction,s
             else mem.incrementCheckRejectNumber();
         } catch(const std::exception& e) {std::clog<<"ERROR Checking TxPoW "<<mem.getTxPoWID()<<' '<<e.what()<<'\n';valid=false;}
         if(!valid) services.removeMemPoolTxPoW(mem.getTxPoWID());
-        if(int64_t(chosen.size())>=magic.getMaxNumTxns().getAsInt()) break;
+        if(int64_t(chosen.size())>=Magic::required(magic.getMaxNumTxns()).getAsInt()) break;
     }
     txpow.calculateTransactionID();TxPoWTreeNode node(TxBlock(tip->getMMR(),txpow,chosen),false);
     auto root=node.getMMR()->getRoot();if(!root) throw std::invalid_argument("Empty block MMR");txpow.setMMRRoot(root->getData());txpow.setMMRTotal(root->getValue());txpow.calculateTXPOWID();return txpow;
 }
 MiniData TxPoWGenerator::getBlockDifficulty(std::shared_ptr<TxPoWTreeNode> parent) {
     if(!parent) throw std::invalid_argument("Missing parent");
-    if(parent->getBlockNumber().isLess(MiniNumber(8))) return Magic::MIN_TXPOW_WORK;
+    if(parent->getBlockNumber().isLess(MiniNumber(8))) return (*Magic::MIN_TXPOW_WORK);
     auto start=getMedianTimeBlock(parent);
     auto end=getMedianTimeBlock(parent->getParent(GlobalParams::MINIMA_BLOCKS_SPEED_CALC.getAsInt()));
     auto blocks=start->getBlockNumber().sub(end->getBlockNumber());
@@ -102,7 +102,7 @@ MiniData TxPoWGenerator::getBlockDifficulty(std::shared_ptr<TxPoWTreeNode> paren
     while(count<blocks.getAsInt()) {if(!current) throw std::invalid_argument("Missing difficulty ancestor");total=total+current->getTxPoW().getBlockDifficulty().getDataValue();current=current->getParent();++count;}
     auto average=total/BigInt(count);
     MiniData result(MMREntryNumber(average*ratio.getUnscaled(),ratio.getScale()).toBigInteger());
-    return result.isMore(Magic::MIN_TXPOW_WORK)?Magic::MIN_TXPOW_WORK:result;
+    return result.isMore((*Magic::MIN_TXPOW_WORK))?(*Magic::MIN_TXPOW_WORK):result;
 }
 MiniNumber TxPoWGenerator::getChainSpeed(std::shared_ptr<TxPoWTreeNode> start,const MiniNumber& blocksBack) {
     if(!start) throw std::invalid_argument("Missing start block");auto past=start->getParent(blocksBack.getAsInt());

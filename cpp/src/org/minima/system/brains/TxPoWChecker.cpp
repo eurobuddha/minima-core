@@ -40,7 +40,7 @@ bool TxPoWChecker::checkTxPoWBlock(std::shared_ptr<TxPoWTreeNode> parent,std::sh
     try {
         if(!ownedTxPoW)throw JavaNullPointerException("null block TxPoW");auto& txpow=*ownedTxPoW;
         if(!headerValid(parent,txpow)) return false;
-        if(int64_t(TxBody::required(txpow.getBlockTransactions()).size())>txpow.getMagic().getMaxNumTxns().getAsInt()){
+        if(int64_t(TxBody::required(txpow.getBlockTransactions()).size())>Magic::required(txpow.getMagic().getMaxNumTxns()).getAsInt()){
             MinimaLogger::log("Too many transactions in block "+std::to_string(TxBody::required(txpow.getBlockTransactions()).size())+" "+txpow.getTxPoWID());return false;
         }
         // Java gathers every main/burn proof before checking uniqueness. A later
@@ -139,8 +139,8 @@ bool TxPoWChecker::checkTxPoWSimple(const MMR& tip,TxPoW& txpow,const TxPoW& blo
     return checkTxPoWSimple(&tip,txpow,block,log);
 }
 bool TxPoWChecker::checkTxPoWSimple(const MMR* tip,TxPoW& txpow,const TxPoW& block,bool log) {
-    if(txpow.getTxnDifficulty().isMore(block.getMagic().getMinTxPowWork())){MinimaLogger::log("TxPoW difficulty too low.. "+txpow.getTxPoWID());return false;}
-    auto maximum=block.getMagic().getMaxTxPoWSize().getAsLong();
+    if(txpow.getTxnDifficulty().isMore(Magic::required(block.getMagic().getMinTxPowWork()))){MinimaLogger::log("TxPoW difficulty too low.. "+txpow.getTxPoWID());return false;}
+    auto maximum=Magic::required(block.getMagic().getMaxTxPoWSize()).getAsLong();
     auto size=txpow.getSizeinBytesWithoutBlockTxns();
     if(size>maximum){MinimaLogger::log("TxPoW size too large.. "+std::to_string(size)+" "+txpow.getTxPoWID());return false;}
     if(!RelayPolicy::checkMaxStateStoreSize(txpow,maximum)){MinimaLogger::log("TxPoW state store too large..");return false;}
@@ -156,7 +156,7 @@ bool TxPoWChecker::scripts(Transaction& transaction,Witness& witness,const TxPoW
     if(transaction.isCheckedMonotonic()) return transaction.mIsValid();
     transaction.mHaveCheckedMonotonic()=true;transaction.mIsMonotonic()=true;transaction.mIsValid()=false;
     if(transaction.isEmpty()) {transaction.mIsValid()=true;return true;}
-    auto maxops=block.getMagic().getMaxKISSOps().getAsInt();
+    auto maxops=Magic::required(block.getMagic().getMaxKISSOps()).getAsInt();
     const auto proofs=witness.getAllCoinProofs();
     if(proofs->size()!=transaction.getAllInputs()->size()){MinimaLogger::log("Wrong number of MMRProofs("+std::to_string(proofs->size())+") for Inputs("+std::to_string(transaction.getAllInputs()->size())+")");return false;}
     // Contracts execute synchronously; aliases cannot escape this invocation.

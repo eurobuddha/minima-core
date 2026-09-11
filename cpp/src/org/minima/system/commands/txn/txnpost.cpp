@@ -60,7 +60,7 @@ std::shared_ptr<TxPoW> txnpost::postTxn(const std::optional<std::string>& id,con
     }else txpow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness));
     txpow->calculateTXPOWID();auto tip=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWTree()).getTip();
     if(!tip)throw CommandException("Could not find chain tip..");
-    auto size=txpow->getSizeinBytesWithoutBlockTxns();auto maximum=tip->getTxPoW().getMagic().getMaxTxPoWSize().getAsLong();
+    auto size=txpow->getSizeinBytesWithoutBlockTxns();auto maximum=Magic::required(tip->getTxPoW().getMagic().getMaxTxPoWSize()).getAsLong();
     if(size>maximum)throw CommandException("TxPoW size too large.. "+std::to_string(size)+"/"+std::to_string(maximum));
     auto miner=txnutils::getMiner();
     if(mineSync) {if(!sqlRequired(miner).MineMaxTxPoW(false,txpow,120000))throw CommandException("FAILED TO MINE txn in 120 seconds !?");}

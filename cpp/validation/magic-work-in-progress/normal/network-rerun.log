@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 231: native_node_startup
+1/2 Test #231: native_node_startup ..............   Passed   61.73 sec
+    Start 239: native_archive_startup
+2/2 Test #239: native_archive_startup ...........   Passed   50.04 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) = 111.80 sec

@@ -1,0 +1,110 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+      Start 109: txpow_processor_differential
+      Start 231: native_node_startup
+ 1/17 Test #231: native_node_startup .........................***Failed   19.44 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "node_processes": 0,
+  "checks": [],
+  "failures": [
+    {
+      "error": "AssertionError('Minima @ 11/09/2026 16:16:14 [5.3 MB] : **********************************************\\nMinima @ 11/09/2026 16:16:14 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 11/09/2026 16:16:14 [2.5 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 11/09/2026 16:16:14 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 11/09/2026 16:16:14 [2.5 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 11/09/2026 16:16:14 [2.5 MB] : *                                            *\\nMinima @ 11/09/2026 16:16:14 [2.5 MB] : **********************************************\\nMinima @ 11/09/2026 16:16:14 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 11/09/2026 16:16:14 [3.1 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 11/09/2026 16:16:14 [3.2 MB] : Wiping previous config files..\\nMinima @ 11/09/2026 16:16:14 [14.0 MB] : Generating Base Private Seed Key\\nMinima @ 11/09/2026 16:16:14 [14.5 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 11/09/2026 16:16:14 [19.7 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-node-00q60l69/data/1.1/databases/userprefs.db\\nMinima @ 11/09/2026 16:16:14 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-node-00q60l69/data/1.1/databases/cascade.db\\nMinima @ 11/09/2026 16:16:14 [21.4 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 11/09/2026 16:16:14 [21.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-node-00q60l69/data/1.1/databases/chaintree.db\\nMinima @ 11/09/2026 16:16:14 [21.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-node-00q60l69/data/1.1/databases/p2p.db\\nMinima @ 11/09/2026 16:16:14 [21.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-node-00q60l69/data/1.1/databases/p2p2.db\\nMinima @ 11/09/2026 16:16:15 [18.1 MB] : Calculate device hash rate (1000 hashes) : 0.02941 MHs\\nMinima @ 11/09/2026 16:16:18 [52.6 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 11/09/2026 16:16:20 [263.7 MB] : Genesis block created : 0x8C5B10DE18E99835D76D6D887958BD09349A42131BD4452036E516B55D388845\\nMinima @ 11/09/2026 16:16:20 [17.1 MB] : NEW Unspent Coin : {\"coinid\":\"0x1792DCBC00E26BC94ECF64B067E108A16FB5F9BFF3B1B22B50D565D47A27CCCF\",\"amount\":\"1000000000\",\"address\":\"0xAF659AD9A9583FB1A775F4EA9F39342AFC5E754D75B8CED9989196A733308149\",\"miniaddress\":\"MxG085FCMDDJAAZ7UZQETFKTAFJWD1AVHF7AJBYN37DJ64HWQJJ6C4197QRGRPN\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 11/09/2026 16:16:21 [15.5 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')"
+    }
+  ],
+  "scope": "Real pinned Main and native MinimaCoreC++ with H2: solo genesis startup, hash/status/quit, graceful database save, then other runtime and original runtime reopen the same complete node directory; plaintext and encrypted wallets, compact shutdown. Exact selected stable status/chain fields and SHA3 value; timestamps, random genesis across fresh directories, memory/disk size, uptime, log destinations/order and stack text are not compared. No public-peer connection, long-running mining/sync, RPC/daemon or full-node parity certification."
+}
+
+      Start 239: native_archive_startup
+ 2/17 Test #239: native_archive_startup ......................***Failed    8.54 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "node_processes": 0,
+  "exports": [],
+  "checks": [],
+  "failures": [
+    {
+      "stage": "baseline",
+      "error": "RuntimeError('Node exited: Minima @ 11/09/2026 16:16:27 [5.5 MB] : **********************************************\\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : *                                            *\\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : **********************************************\\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 11/09/2026 16:16:27 [3.2 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 11/09/2026 16:16:27 [3.2 MB] : Wiping previous config files..\\nMinima @ 11/09/2026 16:16:28 [11.0 MB] : Generating Base Private Seed Key\\nMinima @ 11/09/2026 16:16:28 [11.6 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 11/09/2026 16:16:28 [16.7 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/userprefs.db\\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/cascade.db\\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/chaintree.db\\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/p2p.db\\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/p2p2.db\\nMinima @ 11/09/2026 16:16:28 [16.9 MB] : Calculate device hash rate (1000 hashes) : 0.07142 MHs\\nMinima @ 11/09/2026 16:16:29 [187.7 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 11/09/2026 16:16:29 [15.8 MB] : Genesis block created : 0x3B025E7F44CAC8A1CD11AE7AEF1736AB0458BA383369159BEF8002B5901977B8\\nMinima @ 11/09/2026 16:16:29 [19.2 MB] : NEW Unspent Coin : {\"coinid\":\"0xF1FB88C41B4D596C2B6045E0F1B93EA6AED0A6D9E1B895E49294406DAF7E32D4\",\"amount\":\"1000000000\",\"address\":\"0x9B4144AD5915559EA498009F389C75FF76133E9A88C50948578F0D9668934310\",\"miniaddress\":\"MxG084R852AQM8YAMFA9600JSS9ZTFVEZ9JT6K8ZK4KGYSF1MB6H4Q322D7FF5Q\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 11/09/2026 16:16:29 [15.1 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')",
+      "nodes": [
+        {
+          "stdout": "Minima @ 11/09/2026 16:16:27 [5.5 MB] : **********************************************\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : * (  \\/  )(_  _)( \\( )(_  _)(  \\/  )  /__\\   *\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\  *\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : * (_/\\/\\_)(____)(_)\\_)(____)(_/\\/\\_)(__)(__) *\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : *                                            *\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : **********************************************\nMinima @ 11/09/2026 16:16:27 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\nMinima @ 11/09/2026 16:16:27 [3.2 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\nMinima @ 11/09/2026 16:16:27 [3.2 MB] : Wiping previous config files..\nMinima @ 11/09/2026 16:16:28 [11.0 MB] : Generating Base Private Seed Key\nMinima @ 11/09/2026 16:16:28 [11.6 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\nMinima @ 11/09/2026 16:16:28 [16.7 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/userprefs.db\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/cascade.db\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Loading TxPowTree size : 0 bytes\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/chaintree.db\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/p2p.db\nMinima @ 11/09/2026 16:16:28 [18.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-node-93zslrmj/baseline/1.1/databases/p2p2.db\nMinima @ 11/09/2026 16:16:28 [16.9 MB] : Calculate device hash rate (1000 hashes) : 0.07142 MHs\nMinima @ 11/09/2026 16:16:29 [187.7 MB] : 3 more initial keys created.. Total now : 3 / 8\nMinima @ 11/09/2026 16:16:29 [15.8 MB] : Genesis block created : 0x3B025E7F44CAC8A1CD11AE7AEF1736AB0458BA383369159BEF8002B5901977B8\nMinima @ 11/09/2026 16:16:29 [19.2 MB] : NEW Unspent Coin : {\"coinid\":\"0xF1FB88C41B4D596C2B6045E0F1B93EA6AED0A6D9E1B895E49294406DAF7E32D4\",\"amount\":\"1000000000\",\"address\":\"0x9B4144AD5915559EA498009F389C75FF76133E9A88C50948578F0D9668934310\",\"miniaddress\":\"MxG084R852AQM8YAMFA9600JSS9ZTFVEZ9JT6K8ZK4KGYSF1MB6H4Q322D7FF5Q\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\nMinima @ 11/09/2026 16:16:29 [15.1 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "Actual pinned Java and native solo nodes with real H2. Valid saved genesis exported identically as H2/raw by both runtimes. Both import formats in both runtimes, real nested resync and worker shutdown, reset restore in both runtimes, opposite-runtime chain/coin/key reopen and signing. Genesis only: cascades, multi-batches, seed replacement, network retries and complete node parity remain unverified."
+}
+
+      Start  41: consensus_differential
+ 3/17 Test #109: txpow_processor_differential ................   Passed   39.70 sec
+      Start 178: unsigned_send_command_differential
+ 4/17 Test #178: unsigned_send_command_differential ..........   Passed   31.56 sec
+      Start 261: streamable_differential
+ 5/17 Test #261: streamable_differential .....................   Passed   36.68 sec
+      Start 189: node_state_commands_differential
+ 6/17 Test #189: node_state_commands_differential ............   Passed   16.50 sec
+      Start  78: nio_message_differential
+ 7/17 Test  #78: nio_message_differential ....................   Passed   37.70 sec
+      Start 177: offline_send_commands_differential
+ 8/17 Test #177: offline_send_commands_differential ..........   Passed   18.19 sec
+      Start 129: checker_logs_differential
+ 9/17 Test  #41: consensus_differential ......................   Passed  165.79 sec
+      Start 212: node_status_command_differential
+10/17 Test #129: checker_logs_differential ...................   Passed   16.02 sec
+      Start 182: custom_address_send_commands_differential
+11/17 Test #212: node_status_command_differential ............   Passed   15.54 sec
+      Start 232: minima_entry_differential
+12/17 Test #182: custom_address_send_commands_differential ...   Passed   13.35 sec
+      Start  30: tree_differential
+13/17 Test #232: minima_entry_differential ...................   Passed   11.84 sec
+      Start   5: object_differential
+14/17 Test  #30: tree_differential ...........................   Passed   13.00 sec
+      Start 110: txpow_processor_worker
+15/17 Test #110: txpow_processor_worker ......................   Passed    1.15 sec
+      Start  44: timed_checker_checks
+16/17 Test  #44: timed_checker_checks ........................   Passed    0.64 sec
+17/17 Test   #5: object_differential .........................   Passed   33.04 sec
+
+88% tests passed, 2 tests failed out of 17
+
+Total Test time (real) = 254.25 sec
+
+The following tests FAILED:
+	231 - native_node_startup (Failed)
+	239 - native_archive_startup (Failed)
+Errors while running CTest

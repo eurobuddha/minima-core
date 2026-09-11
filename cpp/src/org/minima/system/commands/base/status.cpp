@@ -35,7 +35,7 @@ json::JSONValue status::runCommand(){
         if(difficulty.isZero())throw JavaArithmeticException("Division by zero");
         auto weight=MMREntryNumber::dividePositive(Crypto::MAX_VAL,difficulty,7);
         auto rate=sqlRequired(sqlRequired(MinimaDB::getDB()).getUserDB()).getHashRate();
-        if(rate.isLess(Magic::MIN_HASHES))rate=Magic::MIN_HASHES;
+        if(rate.isLess((*Magic::MIN_HASHES)))rate=(*Magic::MIN_HASHES);
         auto ratio=MiniNumber(weight.getUnscaled(),weight.getScale()).div(rate);
         if(!sqlRequired(Main::getInstance()).isNormalMineMode())ratio=ratio.mult(MiniNumber::TEN);
         details.put("devices",ratio.ceil().toString());

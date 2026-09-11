@@ -1,0 +1,526 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "cases": 326,
+  "planned_cases": 326,
+  "independent_assertions": 2412,
+  "seconds": 19.142,
+  "transcript_sha256": "929f3f6a5e18c9a6645e6c32f38c47bea4016ae75e2867873d7feb202dc1bee6",
+  "demo": {},
+  "demo_skipped": true,
+  "failures": [
+    {
+      "case": 1,
+      "request": {
+        "values": [
+          "70000",
+          "1100",
+          "300",
+          "0x001234",
+          "80000",
+          "1400",
+          "400",
+          "0x005678"
+        ],
+        "ops": [
+          {
+            "op": "read",
+            "wire": "0x",
+            "offset": 0
+          },
+          {
+            "op": "write"
+          }
+        ]
+      },
+      "java": [
+        {
+          "error": "java.io.EOFException",
+          "offset": 0,
+          "state": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "alias": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "containing": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "held": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "same": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "wire": "0xAA5500030111700002044C0002012C000000030012340003013880000205780002019000000003005678",
+          "state": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "alias": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "containing": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "held": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "same": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ],
+      "cpp": [
+        {
+          "error": "java.lang.RuntimeException",
+          "offset": 0,
+          "state": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "alias": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "containing": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "held": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "same": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "wire": "0xAA5500030111700002044C0002012C000000030012340003013880000205780002019000000003005678",
+          "state": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "alias": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "containing": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "held": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "same": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "case": 1,
+      "runtime": 1,
+      "row": 0,
+      "key": "error",
+      "expected": "java.io.EOFException",
+      "actual": "java.lang.RuntimeException"
+    },
+    {
+      "case": 2,
+      "request": {
+        "values": [
+          "70000",
+          "1100",
+          "300",
+          "0x001234",
+          "80000",
+          "1400",
+          "400",
+          "0x005678"
+        ],
+        "ops": [
+          {
+            "op": "read",
+            "wire": "0x00",
+            "offset": 0
+          },
+          {
+            "op": "write"
+          }
+        ]
+      },
+      "java": [
+        {
+          "error": "java.io.EOFException",
+          "offset": 1,
+          "state": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "alias": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "containing": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "held": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "same": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "wire": "0xAA5500030111700002044C0002012C000000030012340003013880000205780002019000000003005678",
+          "state": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "alias": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "containing": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "held": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "same": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ],
+      "cpp": [
+        {
+          "error": "java.lang.RuntimeException",
+          "offset": 1,
+          "state": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "alias": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "containing": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "held": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "same": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "wire": "0xAA5500030111700002044C0002012C000000030012340003013880000205780002019000000003005678",
+          "state": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "alias": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "containing": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "held": [
+            "70000",
+            "1100",
+            "300",
+            "0x001234",
+            "80000",
+            "1400",
+            "400",
+            "0x005678"
+          ],
+          "same": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "runtime": 1,
+      "row": 0,
+      "key": "error",
+      "expected": "java.io.EOFException",
+      "actual": "java.lang.RuntimeException"
+    }
+  ],
+  "scope": "Actual pinned Magic: eight nullable shared fields, retained getters/setters and TxPoW setter aliases, complete-field assignment on in-place read, all read prefixes and malformed children, prefix-preserving polymorphic writes with reentrant replacement, eager current comparisons, weighted updates, defaults shared across instances, mutable defaults and work cache. Full original 86400-step demonstration compared unless explicitly skipped. Diagnostic prose, arbitrary streams, non-stream scalar subclass overrides, allocation/concurrency and full containing node parity remain unverified."
+}

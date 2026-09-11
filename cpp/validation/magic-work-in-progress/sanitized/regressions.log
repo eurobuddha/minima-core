@@ -1,0 +1,13 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  41: consensus_differential
+    Start 261: streamable_differential
+1/4 Test #261: streamable_differential ............   Passed  122.14 sec
+    Start 189: node_state_commands_differential
+2/4 Test #189: node_state_commands_differential ...   Passed   54.11 sec
+    Start   5: object_differential
+3/4 Test   #5: object_differential ................   Passed  105.33 sec
+4/4 Test  #41: consensus_differential .............   Passed  547.76 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) = 547.77 sec

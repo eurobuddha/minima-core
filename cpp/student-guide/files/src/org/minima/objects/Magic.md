@@ -45,3 +45,12 @@ If current KISS operations is 1024 and desired is 2048, what is the next current
 The main method is a printed demonstration, not an assertion suite. Consensus callers must decide when current values are checked and desired values refreshed; this container alone does not establish valid chain parameter updates. The source map remains partial/not_verified.
 
 Pinned Java SHA-256: `d244cc2600842c2ca650aba572fa21fad7cccfbc9a0a525a78114559d6cf0bfe`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## Streamable and ownership follow-up
+
+The [Magic lab](../../../../../new-tests/streamable-magic.md) explains nullable
+owned fields, shared default objects, retained aliases through the TxPoW setter,
+source-ordered partial reads, eager comparisons and nested failure prefixes.
+The native main now contains the complete source demonstration. Consult the lab's
+evidence link for the actual build/test status; the earlier object-only counts
+above describe historical coverage. Full class and node parity remain unverified.

@@ -15,15 +15,13 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 46 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-The native Streamable interface connects 23 existing concrete classes. Both builds
-pass 7,623 comparisons and 95,664 assertions. Checked block-ID storage additionally
-passes 1,400 Java/native comparisons per build, including actual tree-consumer
-mutation and cached results. Existing JSON checks pass in both builds; all 23
-affected normal regressions pass, including native node/archive startup. Another
-21 explicit source implementers need integration. See the
-[body ownership lab](student-guide/new-tests/streamable-txbody.md),
-[iteration lab](student-guide/new-tests/txbody-id-iteration.md), and
-[current evidence](validation/txbody-id-iteration-work-in-progress/progress.json).
+The native Streamable interface now connects 24 existing concrete classes. Both
+builds pass 7,705 comparisons and 96,172 assertions. Magic additionally passes
+326 focused programs and 2,412 independent checks in each build. All 17
+selected normal regressions and four selected sanitizer regressions pass. The full
+Magic demonstrations are still pending. Another 20 explicit source implementers need
+integration. See the [Magic lab](student-guide/new-tests/streamable-magic.md) and
+[current evidence](validation/magic-work-in-progress/progress.json).
 
 The help command now preserves the source's 94-entry curated catalogue and detailed
 lookup through the native registry. Both builds pass 761 comparisons and 2,543

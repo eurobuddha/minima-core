@@ -244,7 +244,7 @@ json::JSONValue send::runCommand() {
         auto burned=txnutils::createBurnTransaction(added,transaction->transactionIDValue(),burn);
         pow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness,burned->getTransaction(),burned->getWitness()));
     }else pow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness));
-    pow->calculateTXPOWID();auto size=pow->getSizeinBytesWithoutBlockTxns();auto maximum=tip->getTxPoW().getMagic().getMaxTxPoWSize().getAsLong();
+    pow->calculateTXPOWID();auto size=pow->getSizeinBytesWithoutBlockTxns();auto maximum=Magic::required(tip->getTxPoW().getMagic().getMaxTxPoWSize()).getAsLong();
     if(debug)MinimaLogger::log("TxPoW size "+std::to_string(size)+" max:"+std::to_string(maximum));
     if(size>maximum){if(!dryrun&&passwordLock)vault::passwordLockDB(getParam("password"));throw CommandException("TxPoW size too large.. "+std::to_string(size)+"/"+std::to_string(maximum));}
     if(!dryrun){

@@ -45,6 +45,7 @@ public:
 static std::string category(const std::exception& e){auto text=nativeExceptionText(e);return text.substr(0,text.find(": "));}
 static std::unique_ptr<Streamable> create(const JSONObject& q){
     auto kind=q.getString("kind");
+    if(kind=="magic")return std::make_unique<Magic>();
     if(kind=="body")return std::make_unique<TxBody>();
     if(kind=="transaction"){
         auto result=std::make_unique<FaultTransaction>();

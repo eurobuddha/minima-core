@@ -1,3 +1,67 @@
+# Current checkpoint — Magic ownership and Streamable; demonstrations running
+
+Base HEAD b94c5655b5086133d978eae21466ef053cc1872c. Branch/project/executable
+MinimaCoreC++. Goal ACTIVE and incomplete. 411 counterparts (364 production +
+47 original tests), 46 absent (5 production + 41 tests), all parity not_verified.
+Both builds now have 263 CTest entries; the full suite has NOT been run.
+
+Magic now uses a shared record with eight nullable owned fields and shared mutable
+public default objects. Owned getters/setters preserve aliases; actual TxPoW
+setMagic callers share the record. Streamable writes append directly, reads assign
+only complete child factories, checkSame evaluates all four current comparisons,
+and the full 86400-update source main is translated. Existing arithmetic reused.
+All affected value consumers adapted, with broader source identity propagation
+through UserDB/ConsensusServices and full TxHeader/TxPoW still open.
+
+Both complete builds PASS, including the corrected fixture target. Both focused
+Magic suites PASS: 326 programs / 2412 independent assertions each. Both common Streamable
+suites PASS: 7705 comparisons / 96172 assertions, 24/44 explicit source types.
+Their transcript is f5715f8be897e27df5ee4793b6f59385118ef531d6062afd8127584e1736e94d.
+All 17 selected normal regressions PASS across the initial selection and targeted
+network-enabled rerun. Initial sandbox run passed 15 and failed the two node
+startup listeners; both pass with socket access (111.80s combined). Preserve the
+initial reports; no production workaround was made. All four selected sanitizer regressions PASS in 547.77s.
+
+LIVE — poll these existing handles, do not restart because their logs are quiet:
+- 81444: normal full Magic driver, /tmp/minima-magic-full.log.
+- 51749: sanitized full Magic driver, /tmp/minima-magic-sanitized-full.log.
+
+Both full drivers finished Java's main (1729 lines, 95442 bytes) and are running
+actual native main arithmetic. Native PIDs at the last authoritative inspection:
+31896 normal and 32024 sanitized, both >96% CPU at 6m34/6m09 elapsed. A one-second
+normal sample confirms Magic.main/calculateNewCurrent/MiniNumber.div execution.
+Do not infer full corpus/demo success until final reports exist. Driver demo timeout
+is 1200s per runtime, CTest 2500s; if it actually times out, preserve the result and
+assess the measured runtime before any rerun. Do not reduce the loop count.
+Final reports: cpp/build{,-sanitized}/magic-results.json and magic-demo-{java,cpp}.txt.
+Quick report is deliberately separate; it does not include the full demonstration.
+
+Terminal: first normal build71724=0, final normal3622=0, full sanitized45106=0;
+initial quick27863=1 (two fixture-observation defects), reviewed quick8636=0 and sanitized reviewed quick85019=0;
+initial restricted17-test run51184=8 (two socket-startup failures), rerun82867=0;
+guide/map43549=0, native demo sample38281=0; sanitizer regressions18329=0. Full driver handles above also cover
+successful fixture-target rebuilds before launching their drivers.
+
+Evidence: validation/magic-work-in-progress. New student lab streamable-magic.md;
+all457 guides audited with no errors. Initial fixture report preserved: wrong I/O
+category helper and wrong empty-MiniData text expectation; corrected using existing
+NativeThrowable helper and source BaseConverter behavior. No production fix for
+those findings. Native H2 AOT library reused, outside sanitizer instrumentation.
+
+Next: finish the two active runs, save reports/provenance, update this checkpoint
+and local recovery bundle. Then finish TxHeader caller/test reuse gate and implement
+source ownership/in-place RLE/partial-write behavior. Read next-header-notes.md:
+actual array length differs from the global loop limit; an oversized run can succeed
+in a longer array. A separate MiniData hash-writer dispatch mismatch was identified
+for follow-up. All remaining 46 counterparts and full node parity stay in scope.
+
+Preserve unrelated dirty graphify-out work and external f7f0e08 Java SQL/JAR commit.
+Pinned upstream-study remains unchanged. Git commits/bundles include only CPP work;
+no GitHub push. Backups use adapted /tmp/minima-magic-* helpers with unrelated graph
+snapshots excluded from the C++ commit and preserved separately.
+
+---
+
 # Current checkpoint — checked block-ID iteration
 
 Branch/project/executable MinimaCoreC++. Base HEAD 712558b305a37bbf890b594fd2fab9e6ccd83325.
