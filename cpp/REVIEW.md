@@ -1,3 +1,39 @@
+## Help command review
+
+### Summary
+
+The translation preserves the explicit 94-constructor catalogue, metadata-only
+registry lookup, parameter/error ordering, inherited full help, fresh factory,
+and nullable UTF-16 padding/truncation. It delegates existing command metadata,
+JSON reply aliasing and registry permissions to the native implementations.
+Review compared the complete pinned help source, Command parameter/reply helpers,
+runner lookup and the new production/fixture code. Both complete builds pass.
+
+### Findings
+
+**MINOR — incorrect prior lesson on object order, fixed.** The old source lesson
+said JSONObject used HashMap iteration. Pinned JSONObject extends LinkedHashMap;
+the lesson now explains insertion order. Tests independently extract the curated
+source sequence and compare that order plus complete serialized replies.
+
+**MAJOR — existing JNI registry gap, remains open.** benchmark, jnitest and
+jniminingtest still have no native counterparts, so detailed help cannot describe
+those source commands. The test records all three missing names and compares
+every available native entry; no fake metadata-only command was introduced.
+This prevents any claim of complete help/registry parity.
+
+The public padding helper preserves individual UTF-16 units, including split
+surrogates; negative range and null-input exception classes match. Allocation
+failure timing and arbitrary JDK/platform exception prose remain unverified.
+
+### Verdict
+
+Approve this explicitly incomplete checkpoint. Both help suites pass 761 cases
+and 2,543 assertions with matching transcripts and empty native stderr. The three
+affected runner/text regressions also pass in both builds. Full parity is open.
+
+---
+
 ## Live MySQL archive integration review
 
 ### Summary

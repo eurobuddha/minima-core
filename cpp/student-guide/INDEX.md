@@ -339,7 +339,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [Command.java](files/src/org/minima/system/commands/Command.md) | authored | implemented_partial |
 | [CommandException.java](files/src/org/minima/system/commands/CommandException.md) | authored | implemented_partial |
 | [CommandRunner.java](files/src/org/minima/system/commands/CommandRunner.md) | authored | implemented_partial |
-| [help.java](files/src/org/minima/system/commands/help.md) | authored | unported |
+| [help.java](files/src/org/minima/system/commands/help.md) | authored | implemented_partial |
 | [tutorial.java](files/src/org/minima/system/commands/tutorial.md) | authored | implemented_partial |
 | [whitepaper.java](files/src/org/minima/system/commands/whitepaper.md) | authored | implemented_partial |
 

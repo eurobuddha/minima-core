@@ -1,3 +1,48 @@
+# Latest checkpoint — help counterpart and curated catalogue
+
+Base HEAD 995880769300727fa16fbf1100a2f70b7f39a610. Branch/project/executable
+MinimaCoreC++. Goal ACTIVE, not complete. 410 counterparts = 363 production +
+47 original tests; 47 absent = 6 production + 41 tests. All mapped implementations
+remain implemented_partial and all 457 parity not_verified. 260 default CTest
+entries; full suite NOT run.
+
+New commands/help.hpp/.cpp translates the complete pinned help body and registers
+it in the real runner. Explicit 94-constructor catalogue, metadata-only detailed
+lookup, case-sensitive name selection after Command trim, inherited full help,
+factory and UTF-16 padding/truncation reuse existing native helpers. No JNI
+metadata placeholder. The three absent source registry commands are benchmark,
+jnitest and jniminingtest; full help for them still unavailable.
+
+Both complete builds PASS. Both help suites PASS 761 cases/2,543 assertions,
+94 catalogue entries, exact insertion order and serialized JSON, every existing
+native command's short/full help, null metadata, controlled registry probe that
+must never run, fresh factories, reply parameter aliases, actual chained and
+non-admin dispatch, UTF-16 random/unit-boundary/null/negative padding cases.
+Normal 2.430s; sanitized result has its own duration in saved JSON. Common hash
+44c138190f7cff00e779184893ec20c91647208d80eb1edf519a308c254eb00e.
+NPE/classcast prose normalized; exception class and other messages compared.
+Complete native stderr empty. All three affected runner/errors/text regressions
+PASS in both builds; total four-suite times 11.61s normal / 16.51s SAN.
+Driver tools/help_command_differential.py; fixtures support/HelpCommandOracle.java
+and help_command.cpp. Evidence validation/help-command-work-in-progress.
+Student lab and per-file lesson updated; previous incorrect HashMap explanation
+fixed after inspecting pinned JSONObject extends LinkedHashMap. Teaching != parity.
+
+All handles TERMINAL0/CLOSED: normal initial build 64678, initial comparison1461,
+SAN initial build6156, final normal10917 and SAN77013. No live test/server/container
+from this turn. All old MySQL fixture JSONs remain STALE and fixture CMake caches
+empty. Existing native-h2-archive provider unchanged. No heavy SPHINCS jobs live.
+
+Next production mappings: Streamable.java, entirely commented P2PSwapLink.java,
+base benchmark/jnitest/jniminingtest and utils/jni/jnifunctions. JNI native sources
+still absent: retain prior search/question and do not invent a substitute.
+Remaining 41 original tests and full API/runtime/concurrency/platform fidelity
+also remain. Allocation failure timing and full registry fidelity not certified.
+Use GRAPHIFY_SKIP_HOOK=1 for local commits. Current commit/recovery details are in
+Git log and ignored local-backups manifests. No GitHub push requested.
+
+---
+
 # Latest checkpoint — live MySQL archive integration
 
 Base HEAD 6026383791c31f69739b5f18e948307452b889fa; branch/project/executable

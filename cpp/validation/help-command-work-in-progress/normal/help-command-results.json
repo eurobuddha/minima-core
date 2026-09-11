@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 761,
+  "planned_cases": 761,
+  "independent_assertions": 2543,
+  "curated_commands": 94,
+  "missing_native_registry_commands": [
+    "benchmark",
+    "jniminingtest",
+    "jnitest"
+  ],
+  "transcript_sha256": "44c138190f7cff00e779184893ec20c91647208d80eb1edf519a308c254eb00e",
+  "seconds": 2.43,
+  "failures": [],
+  "scope": "Actual pinned help and native counterpart: full 94-entry curated catalogue, detailed help for every existing native registry command, exact metadata/nulls, fresh factory/parameter aliases, trimmed/blank/wrong-type input, case-sensitive lookup, actual chained runner/non-admin calls, controlled metadata-only target, UTF-16 code-unit padding/truncation/null/negative ranges. NPE/classcast diagnostic prose normalized; native complete stderr empty. Three JNI-dependent source commands remain absent and are explicitly reported, so full registry/node/API/platform parity is not certified."
+}

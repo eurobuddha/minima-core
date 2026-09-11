@@ -2,11 +2,11 @@
 
 **Teaching status:** Authored algorithm and test explanation; full API/parity review remains open.
 
-**Port status:** `unported`; parity `not_verified`. The mapped C++ file is absent. This page does not describe a completed translation.
+**Port status:** `implemented_partial`; parity `not_verified`. The native command compiles and its scoped validation passes.
 
 | Source | Destination |
 |---|---|
-| [src/org/minima/system/commands/help.java](../../../../../../../../upstream-study/src/org/minima/system/commands/help.java) | `src/org/minima/system/commands/help.cpp` (planned) |
+| [src/org/minima/system/commands/help.java](../../../../../../../../upstream-study/src/org/minima/system/commands/help.java) | [src/org/minima/system/commands/help.cpp](../../../../../../../src/org/minima/system/commands/help.cpp) |
 
 ## What this file does
 
@@ -18,15 +18,15 @@ Returns either detailed metadata for one command or a curated table of short des
 2. For a found command, return the requested name, short help and full help. The command object’s metadata is the source of these strings.
 3. With no requested name, construct an explicit sequence of commands and insert their short help into a JSON object. This list is curated in the source, not generated from all registered commands; nodecount is commented out.
 4. Each table key passes through getStrOfLength(15): truncate to the first fifteen Java characters or pad on the right with spaces. A longer name is not preserved as a separate full key.
-5. Because the table is a map, two names sharing the same first fifteen characters would collide. Its observable iteration follows JSONObject/HashMap behavior rather than necessarily matching insertion order.
+5. Because the table is a map, two names sharing the same first fifteen characters would collide. Pinned JSONObject extends LinkedHashMap, so the catalogue retains the source insertion order.
 
 ## How the translation is approached
 
-This mapped command remains unported. Reuse Command reply formatting and the pinned literal text or command metadata. Text-preservation work should keep Java escape interpretation, UTF-16 length and reply nesting explicit rather than editing the content during translation.
+The native counterpart reuses Command replies and parameters, CommandRunner lookup, and the existing command constructors. It preserves the explicit 94-command list, case-sensitive detailed lookup and fresh factories. The padding helper takes nullable UTF-16 strings so truncation can retain a lone surrogate exactly as Java does.
 
 ## What the tests tell us
 
-Proposed validation is an exact Java/native reply comparison after the counterpart exists. Include name/help metadata, fresh function instances, parameter acceptance and every branch described here. No native test pass is claimed for this absent command.
+The [help lab](../../../../../../../student-guide/new-tests/help-command.md) compares exact Java/native replies and serialized JSON, every curated entry in insertion order, metadata for all present registered commands, blank/wrong-type parameters, fresh factories, parameter aliases and chained/non-admin runner calls. A probe with a throwing command body proves metadata lookup never executes the target. Integer UTF-16 arrays test padding, truncation, nulls and negative lengths independently. Both builds pass 761 cases and 2,543 assertions; all three affected regressions also pass.
 
 ## Dependencies and reading map
 
@@ -40,6 +40,6 @@ How would two command names with the same first fifteen UTF-16 code units affect
 
 ## Limits and traceability
 
- The native counterpart is absent; these are source explanations and future validation plans.
+The native registry still lacks benchmark, jnitest and jniminingtest, so detailed help for those source commands remains unavailable. Tests report that gap explicitly. Allocation failures, arbitrary platform diagnostics and full node parity remain unverified.
 
 Pinned Java SHA-256: `c96f3af99df01e4937178cd94cea5778eab2b4899e9a02124475b3c0ffbca898`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).

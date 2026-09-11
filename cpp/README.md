@@ -11,9 +11,14 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **362 production counterparts and 47 mapped test files exist;
-48 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **363 production counterparts and 47 mapped test files exist;
+47 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The help command now preserves the source's 94-entry curated catalogue and detailed
+lookup through the native registry. Both builds pass 761 comparisons and 2,543
+assertions, plus the affected runner/text regressions. The three JNI-dependent
+commands remain absent. See the [help lab](student-guide/new-tests/help-command.md).
 
 The mysql archive command now implements all source actions and its static entry
 points, and is registered in the native runner. Both recording-SQL suites

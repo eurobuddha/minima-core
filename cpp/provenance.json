@@ -4398,5 +4398,126 @@
         "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
       }
     }
+  },
+  "help_command_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/system/commands/help.java": "c96f3af99df01e4937178cd94cea5778eab2b4899e9a02124475b3c0ffbca898",
+      "upstream-study/src/org/minima/system/commands/Command.java": "e9d0f7930391ef3d7da79e80c9965c64459ed40dfd5ddda99abf3d0ebf40bc8a",
+      "upstream-study/src/org/minima/system/commands/CommandRunner.java": "9cb399c8ee1de10286d77c012f00c9b1df3ff172d37e0965559737fe0cd3c15f"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/system/commands/help.hpp": "c66fc9edc87446140b4a53c0112a00db164a73999f291884f10a80ece88e91cb",
+      "cpp/src/org/minima/system/commands/help.cpp": "def8714e0dd3726aa0495f61d4dd2e498425b443613a94ccfeff440ab146377b",
+      "cpp/src/org/minima/system/commands/CommandRunner.cpp": "005a68da1e4e712a6a2283947bf8ac0539177c638eaef374821e35b437583593",
+      "cpp/support/HelpCommandOracle.java": "19eb8a4953b3fe614ed41134151769840698742a13c87e6027857c810f20bd37",
+      "cpp/support/help_command.cpp": "b440b31b653365b1921c97bbf0ef62e1cfabbf30c98e45d61efaa610e741e4cf",
+      "cpp/tools/help_command_differential.py": "00afc4577c4cb38b0c13aa34834b3e25625a80a31597989a56c023983b147684"
+    },
+    "reuse": "Pinned explicit 94-constructor list, existing native Command parameter/reply/factory conventions, actual CommandRunner lookup/permissions, existing command metadata, UTF-16 storage/JavaExceptions and JSONObject insertion-order behavior. Harness reuses TextCommandsOracle/text_commands patterns and peers_checker Runner. No metadata-only placeholders for absent JNI classes.",
+    "sibling_search": "No matching help implementation in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp. Existing current runtime helpers directly reused; only source-specific dispatch/catalogue/padding logic translated.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "goal_complete": false,
+      "counterparts": 410,
+      "production_counterparts": 363,
+      "test_counterparts": 47,
+      "absent": 47,
+      "production_absent": 6,
+      "tests_absent": 41,
+      "parity": "not_verified",
+      "full_normal_build": "passed",
+      "full_sanitized_build": "passed",
+      "default_ctest_entries": 260,
+      "full_ctest_suite_run": false,
+      "results": {
+        "normal": {
+          "passed": true,
+          "cases": 761,
+          "planned_cases": 761,
+          "independent_assertions": 2543,
+          "curated_commands": 94,
+          "missing_native_registry_commands": [
+            "benchmark",
+            "jniminingtest",
+            "jnitest"
+          ],
+          "transcript_sha256": "44c138190f7cff00e779184893ec20c91647208d80eb1edf519a308c254eb00e",
+          "seconds": 2.43,
+          "failures": [],
+          "scope": "Actual pinned help and native counterpart: full 94-entry curated catalogue, detailed help for every existing native registry command, exact metadata/nulls, fresh factory/parameter aliases, trimmed/blank/wrong-type input, case-sensitive lookup, actual chained runner/non-admin calls, controlled metadata-only target, UTF-16 code-unit padding/truncation/null/negative ranges. NPE/classcast diagnostic prose normalized; native complete stderr empty. Three JNI-dependent source commands remain absent and are explicitly reported, so full registry/node/API/platform parity is not certified."
+        },
+        "sanitized": {
+          "passed": true,
+          "cases": 761,
+          "planned_cases": 761,
+          "independent_assertions": 2543,
+          "curated_commands": 94,
+          "missing_native_registry_commands": [
+            "benchmark",
+            "jniminingtest",
+            "jnitest"
+          ],
+          "transcript_sha256": "44c138190f7cff00e779184893ec20c91647208d80eb1edf519a308c254eb00e",
+          "seconds": 3.713,
+          "failures": [],
+          "scope": "Actual pinned help and native counterpart: full 94-entry curated catalogue, detailed help for every existing native registry command, exact metadata/nulls, fresh factory/parameter aliases, trimmed/blank/wrong-type input, case-sensitive lookup, actual chained runner/non-admin calls, controlled metadata-only target, UTF-16 code-unit padding/truncation/null/negative ranges. NPE/classcast diagnostic prose normalized; native complete stderr empty. Three JNI-dependent source commands remain absent and are explicitly reported, so full registry/node/API/platform parity is not certified."
+        }
+      },
+      "affected_regressions": {
+        "normal": {
+          "suites": 3,
+          "passed": true
+        },
+        "sanitized": {
+          "suites": 3,
+          "passed": true
+        }
+      },
+      "active_sessions": {},
+      "completed_sessions": {
+        "normal": {
+          "id": 10917,
+          "exit_code": 0
+        },
+        "sanitized": {
+          "id": 77013,
+          "exit_code": 0
+        }
+      },
+      "open_work": [
+        "Three JNI-dependent commands absent from registry; full help for them unavailable",
+        "Remaining 47 mapped files and full API/runtime parity review",
+        "Allocation-failure and arbitrary platform/runtime diagnostics"
+      ],
+      "guide_audit": {
+        "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+        "source_files": 457,
+        "unique_guides": 457,
+        "native_counterparts": 410,
+        "native_absent": 47,
+        "mapping_counts_by_source_set": {
+          "src": {
+            "total": 369,
+            "counterparts": 363,
+            "absent": 6
+          },
+          "test": {
+            "total": 88,
+            "counterparts": 47,
+            "absent": 41
+          }
+        },
+        "teaching_counts": {
+          "authored_lesson": 369,
+          "source_test_explanation": 88
+        },
+        "links_checked": 9276,
+        "line_anchors_checked": 2632,
+        "errors": [],
+        "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
+      }
+    }
   }
 }

@@ -1464,3 +1464,10 @@ add_executable(minima_mysql_command support/mysql_command.cpp)
 target_link_libraries(minima_mysql_command PRIVATE minima_file_port)
 add_test(NAME mysql_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/mysql_command_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(mysql_command_differential PROPERTIES TIMEOUT 900)
+
+# Pinned curated help catalogue and actual registered metadata.
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/help.cpp)
+add_executable(minima_help_command support/help_command.cpp)
+target_link_libraries(minima_help_command PRIVATE minima_file_port)
+add_test(NAME help_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/help_command_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(help_command_differential PROPERTIES TIMEOUT 180)

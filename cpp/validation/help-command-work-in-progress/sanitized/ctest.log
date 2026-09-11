@@ -1,0 +1,13 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  61: command_runner_differential
+1/4 Test  #61: command_runner_differential ..........   Passed    4.17 sec
+    Start 137: command_runner_errors_differential
+2/4 Test #137: command_runner_errors_differential ...   Passed    4.94 sec
+    Start 251: text_commands_differential
+3/4 Test #251: text_commands_differential ...........   Passed    3.61 sec
+    Start 260: help_command_differential
+4/4 Test #260: help_command_differential ............   Passed    3.79 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =  16.51 sec
