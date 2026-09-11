@@ -1,0 +1,262 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 261: streamable_differential
+1/1 Test #261: streamable_differential ..........***Failed    5.26 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "cases": 1949,
+  "planned_cases": 2771,
+  "independent_assertions": 13207,
+  "seconds": 5.108,
+  "transcript_sha256": "38c379eaf55307eb965e9f359c582c225b17f81bbffad8706ad6459a6bc964ea",
+  "failures": [
+    {
+      "phase": "execution",
+      "cases": 1949,
+      "error": "AssertionError('state tag and retained data match source')"
+    }
+  ],
+  "explicit_source_implementations": [
+    {
+      "java": "src/org/minima/database/cascade/Cascade.java",
+      "type": "Cascade",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/cascade/CascadeNode.java",
+      "type": "CascadeNode",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/txpowdb/sql/TxPoWList.java",
+      "type": "TxPoWList",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/txpowtree/TxPoWTreeNode.java",
+      "type": "TxPoWTreeNode",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/txpowtree/TxPowTree.java",
+      "type": "TxPowTree",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/userprefs/txndb/TxnDB.java",
+      "type": "TxnDB",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/userprefs/txndb/TxnRow.java",
+      "type": "TxnRow",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Address.java",
+      "type": "Address",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/Coin.java",
+      "type": "Coin",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/CoinProof.java",
+      "type": "CoinProof",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/Greeting.java",
+      "type": "Greeting",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/IBD.java",
+      "type": "IBD",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Magic.java",
+      "type": "Magic",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Pulse.java",
+      "type": "Pulse",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/ScriptProof.java",
+      "type": "ScriptProof",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/StateVariable.java",
+      "type": "StateVariable",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/Token.java",
+      "type": "Token",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/Transaction.java",
+      "type": "Transaction",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/TxBlock.java",
+      "type": "TxBlock",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/TxBody.java",
+      "type": "TxBody",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/TxHeader.java",
+      "type": "TxHeader",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/TxPoW.java",
+      "type": "TxPoW",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Witness.java",
+      "type": "Witness",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniByte.java",
+      "type": "MiniByte",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniData.java",
+      "type": "MiniData",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniNumber.java",
+      "type": "MiniNumber",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniString.java",
+      "type": "MiniString",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/keys/Signature.java",
+      "type": "Signature",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/keys/SignatureProof.java",
+      "type": "SignatureProof",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMR.java",
+      "type": "MMR",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMRData.java",
+      "type": "MMRData",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMREntry.java",
+      "type": "MMREntry",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMREntryNumber.java",
+      "type": "MMREntryNumber",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMRProof.java",
+      "type": "MMRProof",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMRProof.java",
+      "type": "MMRProofChunk",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MegaMMR.java",
+      "type": "MegaMMR",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.java",
+      "type": "MegaMMRBackup",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.java",
+      "type": "MegaMMRIBD",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.java",
+      "type": "MegaMMRSyncData",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/utils/JsonDB.java",
+      "type": "JsonDB",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/utils/encrypt/CryptoPackage.java",
+      "type": "CryptoPackage",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/utils/sphincs/FORS/FORSSignature.java",
+      "type": "FORSSignature",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/utils/sphincs/HORST/HORSTSignature.java",
+      "type": "HORSTSignature",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/utils/sphincs/SPHINCSSignature.java",
+      "type": "SPHINCSSignature",
+      "native_interface_adopted": true
+    }
+  ],
+  "adopted_types": 20,
+  "scope": "Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof, Signature, MiniData, MiniNumber, MiniString, StateVariable, Address, ScriptProof, Token, Coin and CoinProof. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Includes per-field MMR/signature readers, explicit flags, retained lists, scalar in-place assignment timing, MiniData zero-filled partial payloads and retained numeric cache with comparisons/shifts. Adds source-ordered object reads, derived identity timing, nested coin/state/token writer prefixes and actual Token failure logging. Prior fourteen-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished."
+}
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   5.27 sec
+
+The following tests FAILED:
+	261 - streamable_differential (Failed)
+Errors while running CTest

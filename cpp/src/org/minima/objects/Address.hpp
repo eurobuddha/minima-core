@@ -3,7 +3,7 @@
 #include "base/MiniString.hpp"
 #include "org/minima/utils/json/JSONObject.hpp"
 namespace minima {
-class Address {
+class Address:public Streamable {
     MiniString mScript;
     MiniData mAddressData;
     std::string mMinimaAddress;
@@ -18,7 +18,9 @@ public:
     const MiniData& getAddressData() const {return mAddressData;}
     const std::string& getMinimaAddress() const {return mMinimaAddress;}
     bool isEqual(const Address& other) const {return mAddressData.isEqual(other.mAddressData);}
+    void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     static Address deserialise(std::span<const uint8_t> data,size_t& offset);
     static std::string makeMinimaAddress(const MiniData& address);
     static MiniData convertMinimaAddress(const std::string& address);

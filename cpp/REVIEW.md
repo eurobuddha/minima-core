@@ -1,3 +1,38 @@
+## Code Review — transaction-object Streamable integration
+
+### Summary
+
+Six object types join the common interface using existing field codecs and source
+assignment timing. Nested writers now preserve preceding bytes on failure. Derived
+IDs update only after complete prerequisite reads. Existing Coin/CoinProof ownership
+readers are unchanged. Token calculation/conversion uses the actual source-style
+logger and catch boundaries.
+
+### Findings
+
+The invalid-state writer mismatch was corrected: Java emits port/type without a
+value when its current type is unknown. The first independent boolean expectation
+was wrong; both implementations already treated nonzero bytes as true. The fixture
+was corrected from the source, with no production change for that observation.
+
+**MAJOR — full API/interface parity remains unfinished.** Twenty of 44 explicit
+implementers are adopted; 24 remain. Default/null graphs, retained child identity,
+custom streams, allocation-failure timing, concurrency, all logger failures and
+subclass dispatch remain unverified. In particular, default Address fields still
+use native empty values instead of Java nulls. This checkpoint is not complete
+class or full-node parity.
+
+### Verdict
+
+Approve this staged checkpoint. Both complete builds and all eight targeted suites
+pass. Each interface suite passes 2,771 comparisons and 20,914 assertions, with
+matching transcripts and empty native stderr. Seven regressions include actual
+coin-reader ownership, object/script behavior and token validation. See
+[saved evidence](validation/streamable-transaction-objects-work-in-progress/progress.json).
+Historical reviews follow below.
+
+---
+
 ## Code Review — scalar Streamable integration
 
 ### Summary

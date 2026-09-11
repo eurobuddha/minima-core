@@ -1,0 +1,5 @@
+{
+  "initial_assumption": "Only byte 1 means true",
+  "source_behavior": "MiniByte.isTrue returns !isFalse; every nonzero byte means true",
+  "effect": "Java and C++ already agreed; corrected the independent boolean expectation. No production change for this fixture correction."
+}

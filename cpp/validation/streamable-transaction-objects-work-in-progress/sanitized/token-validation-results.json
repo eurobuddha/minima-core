@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 126,
+  "total_programs": 126,
+  "operations": 254,
+  "http_requests_per_runtime": 33,
+  "failures": [],
+  "scope": "Actual tokenvalidate, source-generated signatures/tokens, TreeKey, imported/tree discovery and real RPCClient against loopback HTTP. Exact replies/log bodies and request traces except existing enhanced NPE/CCE and selected URL/transport-provider diagnostics. No durable storage, public web traffic, arbitrary TLS/provider/platform or full-node parity certification."
+}

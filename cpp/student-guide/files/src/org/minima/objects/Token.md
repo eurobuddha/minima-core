@@ -23,7 +23,7 @@ Describes a custom token’s originating coin, denomination scale, total backing
 
 ## How the translation is approached
 
-Native members are values and token ID is optional. Native JSON explicitly emits brace-prefixed name text as raw JSON to preserve the Java object serialization behavior. It uses bit-level wraparound for decimal-place subtraction. Its ID calculation catches runtime_error and resets the optional, while Java’s catch is broader and logs; failure parity remains a review item.
+Native members are values and token ID is optional. Native JSON explicitly emits brace-prefixed name text as raw JSON to preserve the Java object serialization behavior. It uses bit-level wraparound for decimal-place subtraction. Its ID calculation now catches mapped exceptions and logs them without clearing the optional; Java Error and native allocation failures escape. The converter catches and logs I/O failures. Broader nullable/subclass and logger-failure behavior remains open.
 
 ## What the tests tell us
 
@@ -46,3 +46,9 @@ A backing amount of 0.001 at scale 3 represents how many token units? Why is rep
 The stored scale is a MiniNumber, so its textual declaration alone does not guarantee it is a valid small nonnegative integer. Validation at token-creation/consensus call sites must be studied separately. Counterpart status remains partial and full parity not_verified.
 
 Pinned Java SHA-256: `01fad2200cb13f9f187d62ac69dd347dd1dbdf9ddc102d693e17e03a80563842`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## Transaction-object Streamable integration
+
+The reader assigns all six serialized fields in source order, then computes the token ID. A failure before that calculation leaves the prior ID intact. ID calculation now logs caught exceptions without clearing an existing ID; Java Error and native allocation failures escape. Conversion logs IOException and returns no token; other runtime exceptions escape. The test independently hashes the length-framed serialized token, preserving the extra MiniData layer.
+
+The [transaction-object interface lab](../../../../../new-tests/streamable-transaction-objects.md) explains the source-order tests and existing generic callers. Both complete builds pass. The expanded interface suite passes 2,771 comparisons and 20,914 assertions per build across 20 types, with matching transcripts and empty native stderr. All seven affected regressions also pass in both builds. Full nullable/reference/API and node parity remain unverified.

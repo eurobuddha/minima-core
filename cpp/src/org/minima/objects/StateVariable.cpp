@@ -18,26 +18,26 @@ StateVariable::StateVariable(int port,const std::string& data):mPort(port) {
     else {mType=STATETYPE_NUMBER;mData=MiniString(MiniNumber(data).toString());}
 }
 json::JSONObject StateVariable::toJSON() const {json::JSONObject obj;obj.put("port",mPort.getValue());obj.put("type",mType.getValue());obj.put("data",mData.toString());return obj;}
-std::vector<uint8_t> StateVariable::serialise() const {
-    auto out=wire::join(mPort,mType);const auto text=mData.toString();
+void StateVariable::writeDataStream(std::vector<uint8_t>& out) const {
+    mPort.writeDataStream(out);mType.writeDataStream(out);const auto text=mData.toString();
     switch(mType.getValue()) {
     case 1:wire::append(out,MiniData::fromHex(text).serialise());break;
     case 2:wire::append(out,MiniNumber(text).serialise());break;
     case 4:wire::append(out,mData.serialise());break;
     case 8:wire::append(out,MiniByte(text=="TRUE").serialise());break;
-    default:throw wire::IOException("Invalid StateVariable type");
+    default:break; // The source writer emits only port/type for an unknown tag.
     }
-    return out;
 }
-StateVariable StateVariable::deserialise(std::span<const uint8_t> data,size_t& offset) {
-    StateVariable state;state.mPort=MiniByte::deserialise(data,offset);state.mType=MiniByte::deserialise(data,offset);
-    switch(state.mType.getValue()) {
-    case 1:state.mData=MiniString(MiniData::deserialise(data,offset).to0xString());break;
-    case 2:state.mData=MiniString(MiniNumber::deserialise(data,offset).toString());break;
-    case 4:state.mData=MiniString::deserialise(data,offset);break;
-    case 8:state.mData=MiniString(MiniByte::deserialise(data,offset).isTrue()?"TRUE":"FALSE");break;
-    default:throw wire::IOException("Invalid StateVariable type : "+state.mType.toString());
+std::vector<uint8_t> StateVariable::serialise() const {return Streamable::serialise();}
+void StateVariable::readDataStream(std::span<const uint8_t> data,size_t& offset) {
+    mPort=MiniByte::deserialise(data,offset);mType=MiniByte::deserialise(data,offset);
+    switch(mType.getValue()) {
+    case 1:mData=MiniString(MiniData::deserialise(data,offset).to0xString());break;
+    case 2:mData=MiniString(MiniNumber::deserialise(data,offset).toString());break;
+    case 4:mData=MiniString::deserialise(data,offset);break;
+    case 8:mData=MiniString(MiniByte::deserialise(data,offset).isTrue()?"TRUE":"FALSE");break;
+    default:throw wire::IOException("Invalid StateVariable type : "+mType.toString());
     }
-    return state;
 }
+StateVariable StateVariable::deserialise(std::span<const uint8_t> data,size_t& offset){StateVariable state;state.readDataStream(data,offset);return state;}
 }

@@ -1,3 +1,61 @@
+# Latest checkpoint — transaction-object Streamable integration
+
+Base HEAD 3505766ffe07baf9edc79c0768917d2f4046c3a1. Branch/project/executable
+MinimaCoreC++. Goal ACTIVE, not complete. 411 counterparts = 364 production +
+47 original tests; 46 absent = 5 production + 41 tests. All present remain
+implemented_partial; all 457 parity not_verified. 261 default CTest entries;
+full suite NOT run. Historical checkpoint notes follow below.
+
+Six more explicit types implement Streamable: StateVariable, Address, ScriptProof,
+Token, Coin and CoinProof. Twenty of 44 adopted; 24 remain. No new mapped-file count.
+Existing scalar/MMR codecs reused. StateVariable reader assigns port/type before
+value; unknown-type writer now emits only the two tag bytes like Java. Address
+updates hash/script before Mx text. ScriptProof updates script/proof before address.
+Token updates six fields before its ID. Failed prerequisite reads retain old derived
+identities. Coin/CoinProof in-place reader bodies unchanged; writers now append
+nested fields directly, preserving output before later hash/null-state failures.
+Token calculation catches/logs mapped exceptions without resetting ID; JavaError
+and std::bad_alloc escape. Token converter now logs IOException and returns null;
+runtime exceptions escape. Source logger body runs in fixtures; only exception
+classes are compared, timestamp/message/frame presentation excluded.
+
+Both complete builds PASS. Both interface suites PASS 2,771 comparisons / 20,914
+assertions; transcript 54dc918cdd7679d94c066bb26cd314b19a6c483dc53f7dcdc0789c142893c32c.
+Twenty-type base calls, all small-fixture prefixes, offsets/trailing bytes, actual
+MiniFile/MiniData/Crypto/NIO callers, derived ID timing, independent token/script-root
+hashes, invalid state tags/nonzero booleans, nested bad writes and Token logging.
+Native complete stderr empty. Initial fixture assumed true only for byte 1; source
+and both implementations use every nonzero byte. Expectation corrected, no
+production change for that assertion. Initial log and correction note saved.
+All seven regressions PASS in both builds: malformed_streams, java_differential,
+object_differential, kissvm_differential, utility_differential,
+coin_streams_differential, token_validation_differential. Eight-suite totals normal
+66.1s, sanitizer 191.66s. Heavy SPHINCS signing NOT rerun.
+All handles terminal: 60239/45257 builds0, 45313 initial fixture8 (superseded),
+27195/87105 final tests0. No active jobs or MySQL containers; old fixtures stale.
+No native H2 provider changes.
+
+Evidence: validation/streamable-transaction-objects-work-in-progress. Student lab:
+student-guide/new-tests/streamable-transaction-objects.md. Six per-file lessons and
+interface lesson/lab updated. Pinned/current object codecs, scalar/MMR dependencies,
+coin-reader fixtures and object/token callers inspected. Sibling objects/StateVariable
+uses wrong tags; Address omits script and uses direct hash; Coin uses wrong spent
+encoding and skips Token; CoinProof depends on those incompatible codecs. Current
+proven implementations reused and minimally adapted.
+
+Next REQUIRED: remaining 24 Streamable implementations, then inherited subclasses
+and complete null/default/reference APIs. Address default null fields and Token /
+ScriptProof child identity remain gaps. Custom streams, allocation failure timing,
+concurrency, all logger failures and subclass dispatch remain unverified. Continue
+with dependent Transaction/Witness and database/tree/runtime containers using source
+read/write timing, preserving partial nested output rather than whole-child buffers.
+Five absent production files still include inactive P2PSwapLink and JNI/benchmark
+wrappers; JNI implementation source remains unavailable, do not invent it. Another
+41 original test counterparts remain absent. Continue full port after the local
+commit and verified recovery bundle; mapped/adopted counts do not prove parity.
+
+---
+
 # Latest checkpoint — scalar Streamable integration and signed normalization
 
 Base HEAD 0f9221cbd63673fea09d9bafe7d626aa4720c25e. Branch/project/executable

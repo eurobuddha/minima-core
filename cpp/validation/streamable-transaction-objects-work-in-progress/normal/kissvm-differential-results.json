@@ -1,0 +1,6 @@
+{
+  "cases": 4471,
+  "passed": 4471,
+  "failures": [],
+  "scope": "Expressions, statements, contract context and currently ported builtins; generic runtime diagnostics normalized"
+}

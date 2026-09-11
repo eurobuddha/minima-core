@@ -1,0 +1,6 @@
+{
+  "cases": 1364,
+  "passed": 1364,
+  "failures": [],
+  "scope": "Crypto interoperability/formatting/gzip and normal isolated file persistence; runtime integration and IO failure parity remain under review"
+}

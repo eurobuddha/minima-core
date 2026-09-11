@@ -3,7 +3,7 @@
 #include "base/MiniString.hpp"
 #include "org/minima/utils/json/JSONObject.hpp"
 namespace minima {
-class StateVariable {
+class StateVariable:public Streamable {
     MiniByte mType,mPort;
     MiniString mData;
     StateVariable()=default;
@@ -15,7 +15,9 @@ public:
     const MiniString& getData() const {return mData;}
     std::string toString() const {return mData.toString();}
     json::JSONObject toJSON() const;
+    void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     static StateVariable deserialise(std::span<const uint8_t> data,size_t& offset);
 };
 }

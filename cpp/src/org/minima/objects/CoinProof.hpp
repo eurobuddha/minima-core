@@ -2,7 +2,7 @@
 #include "Coin.hpp"
 #include "mmr/MMRProof.hpp"
 namespace minima {
-class CoinProof {
+class CoinProof:public Streamable {
     struct Data {
         Coin mCoin;MMRProof mProof;
         Data(Coin coin,MMRProof proof):mCoin(std::move(coin)),mProof(std::move(proof)){}
@@ -17,8 +17,9 @@ public:
     MMRData getMMRData() const;
     json::JSONObject toJSON() const;
     static std::optional<CoinProof> convertMiniDataVersion(const MiniData& data);
+    void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
-    void readDataStream(std::span<const uint8_t> data,size_t& offset);
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     static CoinProof deserialise(std::span<const uint8_t> data,size_t& offset);
 };
 }

@@ -46,3 +46,9 @@ Why can a deserialized address retain a script that does not hash to its stored 
 The checksum detects accidental changes; it does not establish ownership or signature validity. Default Java Address fields are null before reading, whereas the native default contains empty values. Exact null/default behavior and all oversized envelope cases remain open. Counterpart status remains partial and full parity not_verified.
 
 Pinned Java SHA-256: `5fc5d8e77fe88c97804d78b6640d6c2b9a41df779414dadcdae871c44461f881`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## Transaction-object Streamable integration
+
+The in-place reader replaces address bytes and then script text. Only after both succeed does it rebuild the Mx string. Failed script input can therefore expose new address bytes alongside the previous cached Mx text. The append writer preserves hash bytes if the later script write fails. Public default/null field behavior remains a separate gap.
+
+The [transaction-object interface lab](../../../../../new-tests/streamable-transaction-objects.md) explains the source-order tests and existing generic callers. Both complete builds pass. The expanded interface suite passes 2,771 comparisons and 20,914 assertions per build across 20 types, with matching transcripts and empty native stderr. All seven affected regressions also pass in both builds. Full nullable/reference/API and node parity remain unverified.

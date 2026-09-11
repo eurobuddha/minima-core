@@ -39,12 +39,14 @@ Coin Coin::deepCopy() const {
     try {auto bytes=serialise();size_t offset=0;return deserialise(bytes,offset);}
     catch(const wire::IOException& error){MinimaLogger::log(std::make_shared<NativeThrowable>(error));return Coin(nullptr);}
 }
-std::vector<uint8_t> Coin::serialise() const {
-    auto out=fields().mCoinID.serialiseHash();wire::append(out,fields().mAddress.serialiseHash());wire::append(out,fields().mAmount.serialise());wire::append(out,fields().mTokenID.serialiseHash());
-    wire::append(out,wire::join(MiniByte(fields().mStoreState),fields().mMMREntryNumber,fields().mSpent,fields().mBlockCreated,MiniNumber(int64_t(states().size()))));
-    for(const auto& state:states()) wire::append(out,state.serialise());
-    wire::append(out,MiniByte(fields().mToken.has_value()).serialise());if(fields().mToken) wire::append(out,fields().mToken->serialise());return out;
+void Coin::writeDataStream(std::vector<uint8_t>& out) const {
+    wire::append(out,fields().mCoinID.serialiseHash());wire::append(out,fields().mAddress.serialiseHash());fields().mAmount.writeDataStream(out);wire::append(out,fields().mTokenID.serialiseHash());
+    MiniByte(fields().mStoreState).writeDataStream(out);fields().mMMREntryNumber.writeDataStream(out);fields().mSpent.writeDataStream(out);fields().mBlockCreated.writeDataStream(out);
+    MiniNumber(int64_t(states().size())).writeDataStream(out);
+    for(const auto& state:states())state.writeDataStream(out);
+    MiniByte(fields().mToken.has_value()).writeDataStream(out);if(fields().mToken)fields().mToken->writeDataStream(out);
 }
+std::vector<uint8_t> Coin::serialise() const {return Streamable::serialise();}
 void Coin::readDataStream(std::span<const uint8_t> data,size_t& offset) {
     (void)fields(); // A null receiver fails before consuming input.
     fields().mCoinID=MiniData::deserialiseHash(data,offset);

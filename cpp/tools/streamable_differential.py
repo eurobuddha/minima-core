@@ -6,6 +6,19 @@ from peers_checker_differential import Runner
 from horst_differential import ROOT,JAVA,hx,number,data
 from sphincs_signature_differential import wots
 
+def statevar(n):return bytes([n,4])+data(f'[state{n}]'.encode()) if n%2 else bytes([n,2])+number(n+10)
+def address(n):return data(bytes([n+80]))+data(f'script{n}'.encode())
+def scriptproof(n):return data(f'script{n}'.encode())+proof(n)
+def token(n):return data(bytes([n+16]))+data(f'script{n}'.encode())+number(n)+number(n+2)+data(f'name{n}'.encode())+number(n+3)
+def coin(n):return data(bytes([n+48]))+data(bytes([n+64]))+number(n+4)+data(b'\x00')+b'\x01'+entrynumber(n)+bytes([n%2])+number(n+6)+number(1)+statevar(n)+bytes([n%2])+(token(n) if n%2 else b'')
+def coinproof(n):return coin(n)+proof(n)
+def script_root(n):
+    current=hashlib.sha3_256(number(0)+data(f'script{n}'.encode())+number(0)).digest();total=0
+    for i in range(n):
+        sibling=bytes([i+3]);total+=i+11;left,right=(sibling,current) if i%2 else (current,sibling)
+        current=hashlib.sha3_256(number(1)+data(left)+data(right)+number(total)).digest()
+    return hx(current)
+
 def entrynumber(n):return number(n)+data(bytes([n+42]))
 def mmrdata(n):return data(bytes([n+50]))+number(n+22)
 def entry(n):return number(n+3)+entrynumber(n)+mmrdata(n)
@@ -18,7 +31,7 @@ def sphincs(n):return wots(n)+data(bytes([n+61]))+number(n+70)+fors(n)
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');build=ap.parse_args().build.resolve();started=time.monotonic();oracle=build/'streamable-oracle';oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/StreamableOracle.java'];listing=oracle/'sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
-    adopted={'MiniByte','MMRProof','HORSTSignature','FORSSignature','SPHINCSSignature','MMRData','MMREntryNumber','MMREntry','MMRProofChunk','SignatureProof','Signature','MiniData','MiniNumber','MiniString'};implementations=[]
+    adopted={'MiniByte','MMRProof','HORSTSignature','FORSSignature','SPHINCSSignature','MMRData','MMREntryNumber','MMREntry','MMRProofChunk','SignatureProof','Signature','MiniData','MiniNumber','MiniString','StateVariable','Address','ScriptProof','Token','Coin','CoinProof'};implementations=[]
     for path in sorted((JAVA/'src').rglob('*.java')):
         source=re.sub(r'/\*.*?\*/|//[^\n]*','',path.read_text(),flags=re.S)
         for name in re.findall(r'\bclass\s+(\w+)[^{]*?\bimplements\s+Streamable\b',source):implementations.append(dict(java=str(path.relative_to(JAVA)),type=name,native_interface_adopted=name in adopted))
@@ -34,6 +47,7 @@ def main():
             for kind,encode in [('mmrdata',mmrdata),('entrynumber',entrynumber),('entry',entry),('chunk',lambda n:bytes([n%2])+mmrdata(n)),('signatureproof',signatureproof),('signature',wots)]:initial[kind]=encode(1);changed[kind]=encode(2)
             initial.update(data=data(b'\x11\x22'),number=number(7),string=data('old'.encode()))
             changed.update(data=data(b'\x80\x00\xff'),number=number(-129),string=data('new🐼'.encode()))
+            for kind,encode in [('state',statevar),('address',address),('scriptproof',scriptproof),('token',token),('coin',coin),('coinproof',coinproof)]:initial[kind]=encode(1);changed[kind]=encode(2)
             for kind,base in initial.items():
                 target=changed[kind]
                 cases.append(dict(kind=kind,op='write',initial=hx(base)))
@@ -43,6 +57,28 @@ def main():
                     cases.append(dict(kind=kind,op='read',initial=hx(base),wire=hx(b'\xaa'*offset+target+b'\x88\x99'),offset=offset))
                 if kind not in ['byte','data','string']:
                     for prefix in [number(-1),number(2**32),b'\x00\xff',b'\x00\x21']:cases.append(dict(kind=kind,op='read',initial=hx(base),wire=hx(prefix),offset=0))
+            for kind in ['coin','coinproof']:
+                target=coin(3) if kind=='coin' else coinproof(3)
+                for cut in range(len(target)+1):cases.append(dict(kind=kind,op='read',initial=hx(initial[kind]),wire=hx(target[:cut]),offset=0,objectExtra=True))
+            for tag in [0,3,5,16,255]:
+                cases.append(dict(kind='state',op='read',initial=hx(initial['state']),wire=hx(bytes([99,tag,0xff])),offset=0,objectExtra=True,expectedState=hx(b'\xaa\x55'+bytes([99,tag])),expectedText='[state1]',expectedError='java.io.IOException'))
+            for byte in [0,1,2,255]:
+                cases.append(dict(kind='state',op='read',initial=hx(initial['state']),wire=hx(bytes([99,8,byte])),offset=0,objectExtra=True,expectedState=hx(bytes([0xaa,0x55,99,8,int(byte!=0)])),expectedText='TRUE' if byte!=0 else 'FALSE'))
+            prefix=data(b'\x01')+data(b'\x02')+number(3)+data(b'\x00')+b'\x01'+number(0)+data(b'\x00')+b'\x00'+number(0)
+            for kind in ['address','scriptproof','token','coin','coinproof']:
+                faults=['coinid','address','tokenid','state','token'] if kind in ['coin','coinproof'] else ['none']
+                if kind=='coinproof':faults.append('proof')
+                for fault in faults:
+                    partial=b''
+                    if kind=='scriptproof':partial=data(b'RETURN TRUE')+number(7)+number(1)+b'\x01'
+                    elif fault=='address':partial=data(b'\x01')
+                    elif fault=='tokenid':partial=data(b'\x01')+data(b'\x02')+number(3)
+                    elif fault=='state':partial=prefix
+                    elif fault=='token':partial=prefix+number(0)+b'\x01'
+                    elif fault=='proof':partial=prefix+number(0)+b'\x00'+number(7)+number(1)+b'\x01'
+                    cases.append(dict(kind=kind,op='badwrite',initial='0x',fault=fault,objectExtra=True,expectedWrite=dict(appended=hx(b'\xaa\x55'+partial),writeError='java.lang.NullPointerException' if fault=='state' else 'java.io.IOException'),expectedLogs=['java.io.IOException'] if kind=='token' or fault=='token' else []))
+            for payload,logs,error,converted in [(b'', ['java.io.EOFException'],None,False),(bytes.fromhex('00000041'),['java.io.IOException'],None,False),(token(2),[],None,True),(data(b'\x11')+data(b'script1')+b'\x00\x00',[],'java.lang.NumberFormatException',None)]:
+                cases.append(dict(kind='token',op='tokenConvert',initial=hx(initial['token']),wire=hx(payload),objectExtra=True,expectedLogs=logs,expectedConvertError=error,expectedConverted=converted))
             for cache in [False,True]:
                 for mode in [{},{'hashRead':True},{'expectedSize':-1},{'expectedSize':-2},{'expectedSize':0},{'expectedSize':3},{'expectedSize':4}]:
                     for payload in [changed['data'][:cut] for cut in range(len(changed['data'])+1)]+[data(b''),bytes.fromhex('ffffffff'),bytes.fromhex('fffffffe'),bytes.fromhex('20000001'),bytes.fromhex('00000041')]:
@@ -82,6 +118,18 @@ def main():
                 if values[0]!=values[1]:failures.append(dict(case=index,request=q,java=values[0],cpp=values[1]))
                 for value in values:
                     check('error' not in value,'fixture initialization succeeds')
+                    check(value['logs']==q.get('expectedLogs',[]),'actual logger records expected exception classes')
+                    if q['kind'] in ['token','scriptproof'] and q['op']!='badwrite':
+                        n=2 if q['op']=='callers' or (q['op']=='read' and 'readError' not in value) else 1
+                        expected=hx(hashlib.sha3_256(data(token(n))).digest()) if q['kind']=='token' else script_root(n)
+                        check(value['derived']==expected,'derived identity updates only after complete prerequisite reads')
+                    if q.get('objectExtra'):
+                        if 'expectedWrite' in q:check(value['state']==q['expectedWrite'],'nested writer preserves exact prefix before failure')
+                        if 'expectedState' in q:check(value['state']==dict(appended=q['expectedState']) and value['stateText']==q['expectedText'],'state tag and retained data match source')
+                        if 'expectedError' in q:check(value.get('readError')==q['expectedError'],'unknown state read fails with IOException')
+                        if q['op']=='tokenConvert':check(value.get('convertError')==q['expectedConvertError'] and value.get('converted')==q['expectedConverted'],'Token converter logs IO exceptions and lets runtime exceptions escape')
+                        if q['op']=='read':check(value['offset']<=len(bytes.fromhex(q['wire'][2:])),'object read consumes available bytes only')
+                        continue
                     if 'expectedState' in q:check(value['state']==dict(appended=q['expectedState']),'signed coefficient reserializes to minimal two-complement bytes')
                     if q['kind']=='data':
                         wire=bytes.fromhex(q.get('wire',q['initial'])[2:]);previous=bytes.fromhex(q['initial'][2:])[4:];expected=previous
@@ -126,7 +174,7 @@ def main():
                         if wire[offset:].startswith(target):check(value['offset']==offset+len(target) and value['state']==dict(appended=hx(b'\xaa\x55'+target)) and 'readError' not in value,'complete base read consumes exact object and leaves tail')
                         if q['kind']=='byte' and len(wire)==offset:check(value['state']==dict(appended=hx(b'\xaa\x55'+initial['byte'])) and value['readError']=='java.io.EOFException','failed byte read preserves previous value')
                 stable=dict(q);stable.pop('file',None);transcript.update(json.dumps([stable,*values],sort_keys=True,separators=(',',':')).encode())
-    except Exception as error:failures.append(dict(phase='execution',cases=count,error=repr(error)))
+    except Exception as error:failures.append(dict(phase='execution',cases=count,error=repr(error),request=locals().get('q'),observations=locals().get('values')))
     finally:
         for which,r in enumerate(runners):
             with os.fdopen(os.dup(r.err.fileno()),'r') as err:
@@ -134,6 +182,6 @@ def main():
                 except Exception as error:failures.append(dict(phase='cleanup',runtime=which,error=repr(error)))
                 err.seek(0);stderr=err.read()
                 if which==1 and stderr:failures.append(dict(phase='native stderr',stderr=stderr))
-    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,explicit_source_implementations=implementations,adopted_types=len(adopted),scope='Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof, Signature, MiniData, MiniNumber and MiniString. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Includes per-field MMR/signature readers, explicit flags, retained lists, scalar in-place assignment timing, MiniData zero-filled partial payloads and retained numeric cache with comparisons/shifts. Prior eleven-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished.')
+    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,explicit_source_implementations=implementations,adopted_types=len(adopted),scope='Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof, Signature, MiniData, MiniNumber, MiniString, StateVariable, Address, ScriptProof, Token, Coin and CoinProof. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Includes per-field MMR/signature readers, explicit flags, retained lists, scalar in-place assignment timing, MiniData zero-filled partial payloads and retained numeric cache with comparisons/shifts. Adds source-ordered object reads, derived identity timing, nested coin/state/token writer prefixes and actual Token failure logging. Prior fourteen-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished.')
     (build/'streamable-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

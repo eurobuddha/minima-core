@@ -5,6 +5,8 @@
 #include "org/minima/system/network/minima/NIOManager.hpp"
 #include "support/MiniDataVersion.hpp"
 #include "org/minima/objects/base/MiniString.hpp"
+#include "org/minima/objects/CoinProof.hpp"
+#include "org/minima/objects/ScriptProof.hpp"
 #include <iostream>
 #include <type_traits>
 using namespace minima;using namespace minima::json;
@@ -13,6 +15,7 @@ static_assert(std::is_base_of_v<Streamable,MiniByte> && std::is_base_of_v<Stream
 static_assert(std::is_base_of_v<Streamable,sphincs::horst::HORSTSignature> && std::is_base_of_v<Streamable,sphincs::fors::FORSSignature> && std::is_base_of_v<Streamable,sphincs::SPHINCSSignature>);
 static_assert(std::is_base_of_v<Streamable,MMRData> && std::is_base_of_v<Streamable,MMREntryNumber> && std::is_base_of_v<Streamable,MMREntry> && std::is_base_of_v<Streamable,MMRProof::MMRProofChunk> && std::is_base_of_v<Streamable,SignatureProof> && std::is_base_of_v<Streamable,Signature>);
 static_assert(std::is_base_of_v<Streamable,MiniData> && std::is_base_of_v<Streamable,MiniNumber> && std::is_base_of_v<Streamable,MiniString>);
+static_assert(std::is_base_of_v<Streamable,StateVariable> && std::is_base_of_v<Streamable,Address> && std::is_base_of_v<Streamable,ScriptProof> && std::is_base_of_v<Streamable,Token> && std::is_base_of_v<Streamable,Coin> && std::is_base_of_v<Streamable,CoinProof>);
 class Failing:public Streamable {
     uint8_t values[3]={1,2,3};int fail;
 public:
@@ -23,6 +26,22 @@ public:
 static std::string category(const std::exception& e){auto text=nativeExceptionText(e);return text.substr(0,text.find(": "));}
 static std::unique_ptr<Streamable> create(const JSONObject& q){
     auto kind=q.getString("kind");
+    if(q.getString("op")=="badwrite"&&(kind=="address"||kind=="scriptproof"||kind=="token"||kind=="coin"||kind=="coinproof")){
+        MiniData bad(std::vector<uint8_t>(65));MMRProof proof(MiniNumber(7));proof.addProofChunk(true,MMRData(bad,MiniNumber(1)));
+        if(kind=="address")return std::make_unique<Address>(bad);
+        if(kind=="scriptproof")return std::make_unique<ScriptProof>("RETURN TRUE",proof);
+        if(kind=="token")return std::make_unique<Token>(bad,MiniNumber(1),MiniNumber(1),MiniString("name"),MiniString("script"));
+        auto fault=q.getString("fault");Coin coin(MiniData::fromHex("0x01"),fault=="address"?bad:MiniData::fromHex("0x02"),MiniNumber(3),MiniData::fromHex("0x00"));
+        if(fault=="coinid")coin.resetCoinID(bad);if(fault=="tokenid")coin.resetTokenID(bad);if(fault=="state")coin.setSharedState(nullptr);
+        if(fault=="token")coin.setToken(Token(bad,MiniNumber(1),MiniNumber(1),MiniString("name"),MiniString("script")));
+        if(kind=="coin")return std::make_unique<Coin>(coin);return std::make_unique<CoinProof>(coin,fault=="proof"?proof:MMRProof());
+    }
+    if(kind=="state")return std::make_unique<StateVariable>(1,"[seed]");
+    if(kind=="address")return std::make_unique<Address>("RETURN TRUE");
+    if(kind=="scriptproof")return std::make_unique<ScriptProof>("RETURN TRUE");
+    if(kind=="token")return std::make_unique<Token>(MiniData::fromHex("0x01"),MiniNumber(0),MiniNumber(1),MiniString("seed"),MiniString("RETURN TRUE"));
+    if(kind=="coin")return std::make_unique<Coin>(MiniData::fromHex("0x00"),MiniNumber(0),Token::TOKENID_MINIMA);
+    if(kind=="coinproof")return std::make_unique<CoinProof>(Coin(MiniData::fromHex("0x00"),MiniNumber(0),Token::TOKENID_MINIMA),MMRProof());
     if(q.getString("op")=="badwrite"){
         MMRData d(MiniData(std::vector<uint8_t>(65)),MiniNumber(7));MMRProof p(MiniNumber(7));p.addProofChunk(true,d);SignatureProof s(MiniData::fromHex("0xA1"),MiniData::fromHex("0xB2"),p);
         if(kind=="mmrdata")return std::make_unique<MMRData>(d);
@@ -57,8 +76,10 @@ static JSONObject run(const JSONObject& q){
         result.put("data",miniDataVersion(value)->to0xString());result.put("hash",Crypto::getInstance().hashObject(value).to0xString());result.put("pairHash",Crypto::getInstance().hashObjects(value,value).to0xString());result.put("nio",NIOManager::createNIOMessage(MiniByte(13),value).to0xString());
         auto file=std::filesystem::path(q.getString("file"));try{MiniFile::writeObjectToFile(file,value);result.put("file",MiniData(MiniFile::readCompleteFile(file)).to0xString());MiniFile::writeObjectToFile(file,value,true);result.put("appendedFile",MiniData(MiniFile::readCompleteFile(file)).to0xString());MiniFile::writeDataToFile(file,data(q,"wire"));MiniFile::loadObject(file,value);}catch(...){std::filesystem::remove(file);throw;}std::filesystem::remove(file);
     }
+    if(op=="tokenConvert"){try{auto token=Token::convertMiniDataVersion(MiniData(data(q,"wire")));result.put("converted",bool(token));}catch(const std::exception& e){result.put("convertError",category(e));}}
+    if(auto a=dynamic_cast<Address*>(&value))result.put("derived",a->getMinimaAddress());if(auto p=dynamic_cast<ScriptProof*>(&value))result.put("derived",p->getAddressData().to0xString());if(auto t=dynamic_cast<Token*>(&value))result.put("derived",t->getTokenID()?JSONValue(t->getTokenID()->to0xString()):JSONValue(nullptr));if(auto s=dynamic_cast<StateVariable*>(&value))result.put("stateText",s->toString());
     if(auto e=dynamic_cast<MMREntry*>(&value))result.put("empty",e->isEmpty());if(auto d=dynamic_cast<MMRData*>(&value))result.put("unspendable",d->isUnspendable());if(alias){result.put("oldListSize",int64_t(oldList->size()));result.put("sameList",oldList==alias->getAllSignatureProofs());result.put("aliasCount",int64_t(alias->getAllSignatureProofs()->size()));}
     if(auto d=dynamic_cast<MiniData*>(&value)){result.put("numeric",d->getDataValue().toDecimalString());result.put("less128",d->isLess(MiniData::fromHex("0x80")));result.put("shiftLeft",d->shiftl(1).to0xString());result.put("shiftRight",d->shiftr(1).to0xString());}
     result.put("state",state(value));return result;
 }
-int main(){std::cout<<std::unitbuf;std::string line;while(std::getline(std::cin,line)){JSONObject out;try{auto q=std::get<std::shared_ptr<JSONObject>>(JSONValue::parseWithException(line).value);out=run(*q);}catch(const std::exception& e){out.put("error",category(e));out.put("message",e.what());}std::cout<<out.toJSONString()<<'\n';}}
+int main(){std::cout<<std::unitbuf;std::string line;while(std::getline(std::cin,line)){JSONObject out;JSONArray logs;MinimaLogger::Runtime runtime;runtime.println=[&](const auto& line){auto s=unicode::encodeUTF8(line);auto pos=s.find("] : java.");if(pos!=s.npos){auto type=s.substr(pos+4);logs.add(type.substr(0,type.find(": ")));}};MinimaLogger::setRuntime(std::move(runtime));try{auto q=std::get<std::shared_ptr<JSONObject>>(JSONValue::parseWithException(line).value);out=run(*q);}catch(const std::exception& e){out.put("error",category(e));out.put("message",e.what());}MinimaLogger::setRuntime({});out.put("logs",logs);std::cout<<out.toJSONString()<<'\n';}}

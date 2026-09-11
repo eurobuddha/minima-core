@@ -1,0 +1,21 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start   2: malformed_streams
+1/8 Test   #2: malformed_streams ................   Passed    0.39 sec
+    Start   4: java_differential
+2/8 Test   #4: java_differential ................   Passed    1.51 sec
+    Start   5: object_differential
+3/8 Test   #5: object_differential ..............   Passed   24.96 sec
+    Start  16: kissvm_differential
+4/8 Test  #16: kissvm_differential ..............   Passed    4.93 sec
+    Start  31: utility_differential
+5/8 Test  #31: utility_differential .............   Passed    4.08 sec
+    Start 149: coin_streams_differential
+6/8 Test #149: coin_streams_differential ........   Passed   23.40 sec
+    Start 220: token_validation_differential
+7/8 Test #220: token_validation_differential ....   Passed    4.06 sec
+    Start 261: streamable_differential
+8/8 Test #261: streamable_differential ..........   Passed    2.75 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =  66.10 sec

@@ -7,7 +7,7 @@
 #include <memory>
 #include "support/JavaExceptions.hpp"
 namespace minima {
-class Coin {
+class Coin:public Streamable {
     friend class MinimaDB; // Preserve nullable SQL coins through the existing native handle.
 public:
     using States=std::vector<StateVariable>;
@@ -69,8 +69,9 @@ public:
     static std::optional<Coin> convertMiniDataVersion(const MiniData& data,
         const std::function<void(const wire::IOException&)>& onError);
     Coin deepCopy() const;
+    void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
-    void readDataStream(std::span<const uint8_t> data,size_t& offset);
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     static Coin deserialise(std::span<const uint8_t> data,size_t& offset);
 };
 }

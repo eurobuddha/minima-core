@@ -46,3 +46,9 @@ If a caller changes the coin’s spent flag after constructing a proof wrapper, 
  The source map still labels this counterpart partial and parity not_verified. The described fixtures establish their particular observations, not full API equivalence or a working full node.
 
 Pinned Java SHA-256: `3301b3722d2b1875f9682c68d6df13da154af8f3608ad90adc38b532f5cda7ac`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## Transaction-object Streamable integration
+
+CoinProof now implements Streamable using its existing in-place reader. Its writer delegates first to Coin and then MMRProof on the same output buffer. A failed nested coin write leaves the coin prefix; a failed proof hash leaves the complete coin and preceding proof fields. The wrapper does not buffer each child before appending it.
+
+The [transaction-object interface lab](../../../../../new-tests/streamable-transaction-objects.md) explains the source-order tests and existing generic callers. Both complete builds pass. The expanded interface suite passes 2,771 comparisons and 20,914 assertions per build across 20 types, with matching transcripts and empty native stderr. All seven affected regressions also pass in both builds. Full nullable/reference/API and node parity remain unverified.

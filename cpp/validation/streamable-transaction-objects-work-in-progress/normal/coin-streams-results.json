@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "programs": 3045,
+  "failures": [],
+  "scope": "Actual Coin/CoinProof/MMRProof readers, every fixture prefix, malformed/trailing bytes, consumed offsets, retained coin/proof/state owners, deepCopy/rename/floating-search failure and actual logger body/failure effects. Stack frames, logger prefixes and Java NPE expressions excluded; nested proof-chunk/MMRData/value-field identity and full node remain incomplete."
+}

@@ -44,3 +44,9 @@ Why can an empty proof be valid for a single-leaf tree? How would adding one sib
  The source map still labels this counterpart partial and parity not_verified. The described fixtures establish their particular observations, not full API equivalence or a working full node.
 
 Pinned Java SHA-256: `57541a26df77e41613560a6f7aa02c2fc8b3a0be3f5f2d49336cb94288337b3f`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## Transaction-object Streamable integration
+
+The in-place reader replaces script and then the complete proof before calculating the new address. A failed proof read retains the previous derived address and proof while leaving a completed new script visible. The writer delegates directly to the proof writer, so a bad later sibling hash leaves its preceding script, proof header and direction bytes intact.
+
+The [transaction-object interface lab](../../../../../new-tests/streamable-transaction-objects.md) explains the source-order tests and existing generic callers. Both complete builds pass. The expanded interface suite passes 2,771 comparisons and 20,914 assertions per build across 20 types, with matching transcripts and empty native stderr. All seven affected regressions also pass in both builds. Full nullable/reference/API and node parity remain unverified.
