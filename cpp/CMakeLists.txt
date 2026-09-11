@@ -1590,3 +1590,16 @@ add_executable(LETstatementTests test/org/minima/tests/kissvm/statements/command
 target_link_libraries(LETstatementTests PRIVATE minima_file_port)
 add_test(NAME original_let_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_let_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_let_tests PROPERTIES TIMEOUT 120)
+
+foreach(test_name IN ITEMS BooleanExpressionTests OperatorExpressionTests)
+    add_executable(${test_name} test/org/minima/tests/kissvm/expressions/${test_name}.cpp)
+    target_link_libraries(${test_name} PRIVATE minima_file_port)
+endforeach()
+add_test(NAME original_expressions_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_expressions_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_expressions_tests PROPERTIES TIMEOUT 120)
+
+add_executable(KissTokenTests test/org/minima/tests/kissvm/tokens/TokenTests.cpp)
+set_target_properties(KissTokenTests PROPERTIES OUTPUT_NAME KissTokenTests)
+target_link_libraries(KissTokenTests PRIVATE minima_file_port)
+add_test(NAME original_token_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_token_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_token_tests PROPERTIES TIMEOUT 120)

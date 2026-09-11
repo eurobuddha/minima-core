@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 446 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 449 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -402,12 +402,12 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/system/network/p2p/testingutils/QuickState.java` | `test/org/minima/system/network/p2p/testingutils/QuickState.cpp` | implemented_partial | — |
 | `test/org/minima/system/params/ParamConfigurerTest.java` | `test/org/minima/system/params/ParamConfigurerTest.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/ContractTests.java` | `test/org/minima/tests/kissvm/ContractTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/ExpressionParserTests.java` | `test/org/minima/tests/kissvm/expressions/ExpressionParserTests.cpp` | unported | — |
 | `test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/VariableExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/VariableExpressionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/DUMMYFUNCTION.java` | `test/org/minima/tests/kissvm/functions/DUMMYFUNCTION.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/MinimaFunctionTests.java` | `test/org/minima/tests/kissvm/functions/MinimaFunctionTests.cpp` | implemented_partial | — |
@@ -460,7 +460,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/tokens/LexicalTokenizerTests.java` | `test/org/minima/tests/kissvm/tokens/LexicalTokenizerTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/tokens/TokenTests.java` | `test/org/minima/tests/kissvm/tokens/TokenTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/tokens/TokenTests.java` | `test/org/minima/tests/kissvm/tokens/TokenTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/values/BooleanValueTests.java` | `test/org/minima/tests/kissvm/values/BooleanValueTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/values/HexValueTests.java` | `test/org/minima/tests/kissvm/values/HexValueTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/values/NumberValueTests.java` | `test/org/minima/tests/kissvm/values/NumberValueTests.cpp` | implemented_partial | — |

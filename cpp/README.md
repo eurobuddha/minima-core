@@ -11,13 +11,21 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 82 mapped test files exist;
-11 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 85 mapped test files exist;
+8 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-LETstatementTests now has a working counterpart. Both builds pass two original
+BooleanExpressionTests, OperatorExpressionTests and tokens/TokenTests now have
+working counterparts. Both builds pass eight methods / 993 original assertions,
+12 supplemental comparisons / 24 independent checks, the 1,164-case expanded base
+API suite and 3,802 primitive comparisons. MiniNumber now exposes decimal limit
+constants, MAXIMUM and a decimal-carrier constructor. Both node targets build.
+Inventory: **449 counterparts, 8 absent**; full parity remains unverified. See the
+[expression/token lab](student-guide/new-tests/original-expression-token-tests.md).
+
+At the preceding checkpoint, LETstatementTests gained a counterpart. Both builds pass two original
 methods / 30 assertions and four supplemental array comparisons / eight independent
-checks. Both node targets build. Inventory: **446 counterparts, 11 absent**; full
+checks. Both node targets build. That checkpoint had **446 counterparts, 11 absent**; full
 parity remains unverified. See the [LET lab](student-guide/new-tests/original-let-tests.md).
 The saved Magic sanitizer full demo ended with a 7200-second timeout; terminal
 [evidence](validation/original-let-tests-work-in-progress/magic-sanitizer-timeout/magic-demo-replay-results.json)

@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.java](../../../../../../../../../upstream-study/test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -41,7 +41,7 @@ assertTrue(be.getBooleanValue(ctr).isFalse());
 assertThrows(IllegalArgumentException.class, () -> { BooleanExpression be1 = new BooleanExpression(cet, cet, BooleanExpression.BOOLEAN_AND); be1.getValue(ctr); });
 ```
 
-An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this page does not claim that the Java suite was executed successfully.
+An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this checkpoint records successful execution of unchanged Java tests and native counterparts.
 
 The fixture names these Minima dependencies (links are for tracing the test setup and calls):
 
@@ -58,11 +58,16 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+[Native counterpart](../../../../../../../../test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp) retains every active original method and 116
+assertions per runtime. Unchanged Java and native tests pass in normal and
+sanitizer builds. All truth-table/equality/order cases, shared Contract fixtures, unary defaults, distinct exception expectations and fourteen display checks remain active.
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
-
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+[Expression/token lab](../../../../../../../new-tests/original-expression-token-tests.md)
+explains types, evaluation, exact spelling and source coverage limits. Twelve
+supplemental comparisons/twenty-four independent checks pass across the batch;
+the expanded base API and full primitive regressions also pass in both builds.
+[Evidence](../../../../../../../../validation/original-expression-token-tests-work-in-progress/progress.json).
+Full production API, mutable-registry/alias behavior and node parity remain unverified.
 
 ## What students should conclude
 

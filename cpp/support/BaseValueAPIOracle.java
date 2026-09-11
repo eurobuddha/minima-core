@@ -5,7 +5,9 @@ import org.minima.utils.json.*;
 public class BaseValueAPIOracle {
     static JSONObject decimal(BigDecimal value){var r=new JSONObject();r.put("coefficient",value.unscaledValue().toString());r.put("scale",value.scale());r.put("text",value.toString());return r;}
     static JSONObject run(JSONObject q){var r=new JSONObject();try{
-        if(q.getString("op").equals("data")){
+        if(q.getString("op").equals("limits")){
+            r.put("maximum",decimal(MiniNumber.MAX_MININUMBER));r.put("minimum",decimal(MiniNumber.MIN_MININUMBER));r.put("maximumNumber",decimal(MiniNumber.MAXIMUM.getAsBigDecimal()));
+        }else if(q.getString("op").equals("data")){
             var value=new MiniData(q.getString("value"));var other=new MiniData(q.getString("other"));BigDecimal before=null;
             if(q.getBoolean("warm"))before=value.getDataValueDecimal();
             if(q.get("replacement")!=null){var bytes=new ByteArrayOutputStream();new MiniData(q.getString("replacement")).writeDataStream(new DataOutputStream(bytes));value.readDataStream(new DataInputStream(new ByteArrayInputStream(bytes.toByteArray())));}
@@ -13,7 +15,7 @@ public class BaseValueAPIOracle {
             r.put("compare",value.compare(other));r.put("lessEqual",value.isLessEqual(other));r.put("moreEqual",value.isMoreEqual(other));r.put("equalBytes",value.isEqual(other));
             r.put("limited",value.to0xString(((Number)q.get("length")).intValue()));
         }else{
-            var value=q.getString("op").equals("bigint")?new MiniNumber(new BigInteger(q.getString("value"))):new MiniNumber(q.getString("value"));var before=value.getAsBigDecimal();
+            var value=q.getString("op").equals("decimal")?new MiniNumber(new BigDecimal(new BigInteger(q.getString("value")),((Number)q.get("scale")).intValue())):q.getString("op").equals("bigint")?new MiniNumber(new BigInteger(q.getString("value"))):new MiniNumber(q.getString("value"));var before=value.getAsBigDecimal();
             if(q.get("wire")!=null)value.readDataStream(new DataInputStream(new ByteArrayInputStream(new MiniData(q.getString("wire")).getBytes())));
             r.put("before",decimal(before));r.put("decimal",decimal(value.getAsBigDecimal()));var bytes=new ByteArrayOutputStream();value.writeDataStream(new DataOutputStream(bytes));r.put("wire",new MiniData(bytes.toByteArray()).to0xString());
             r.put("compareToZero",value.compareTo(MiniNumber.ZERO));r.put("decimalCompareToZero",value.getAsBigDecimal().compareTo(BigDecimal.ZERO));

@@ -797,12 +797,12 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [BooleanExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.md) | test explanation | unported |
+| [BooleanExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.md) | test explanation | implemented_partial |
 | [ConstantExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.md) | test explanation | implemented_partial |
 | [ExpressionParserTests.java](files/test/org/minima/tests/kissvm/expressions/ExpressionParserTests.md) | test explanation | unported |
 | [FunctionExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.md) | test explanation | implemented_partial |
 | [GlobalExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.md) | test explanation | implemented_partial |
-| [OperatorExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.md) | test explanation | unported |
+| [OperatorExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.md) | test explanation | implemented_partial |
 | [VariableExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/VariableExpressionTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/functions
@@ -915,7 +915,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | File | Teaching state | Native state |
 |---|---|---|
 | [LexicalTokenizerTests.java](files/test/org/minima/tests/kissvm/tokens/LexicalTokenizerTests.md) | test explanation | implemented_partial |
-| [TokenTests.java](files/test/org/minima/tests/kissvm/tokens/TokenTests.md) | test explanation | unported |
+| [TokenTests.java](files/test/org/minima/tests/kissvm/tokens/TokenTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/values
 

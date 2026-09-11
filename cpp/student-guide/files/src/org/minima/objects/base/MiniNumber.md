@@ -45,7 +45,7 @@ Show why floor(-1.2) is -2 but truncation toward zero is -1. Then encode the con
 
 ## Limits and traceability
 
-Division now uses JavaArithmeticException: 0/0 reports Division undefined, while nonzero/0 reports Division by zero. Seven supplemental observations in NumberValueOriginalTests compare exact class/message text for 0, 1 and -1 over both 0 and 0.000, plus zero to power -1; both inspected normal and sanitized reports pass alongside 99 original NumberValue assertions. Negative square root and invalid significant digits still use generic standard exceptions in the inspected bodies. Generic primitive ERROR comparisons cannot establish their Java error parity. The native header also lacks matching exposed MAXIMUM and BigDecimal-returning APIs; exhaustive API parity remains open. The source-map status remains partial and parity not_verified.
+Division now uses JavaArithmeticException: 0/0 reports Division undefined, while nonzero/0 reports Division by zero. Seven supplemental observations in NumberValueOriginalTests compare exact class/message text for 0, 1 and -1 over both 0 and 0.000, plus zero to power -1; both inspected normal and sanitized reports pass alongside 99 original NumberValue assertions. Negative square root and invalid significant digits still use generic standard exceptions in the inspected bodies. Generic primitive ERROR comparisons cannot establish their Java error parity. The native header now exposes MAXIMUM, both decimal limit constants, a decimal view and a decimal-carrier constructor; exhaustive API parity remains open. The source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `62a458d5269f9adf6bcd0aaa051f57f6cd742afaebc46842854b4310c6b22bc0`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
 
@@ -100,3 +100,9 @@ The original tests add the BigInt constructor overload and a decimal view that p
 The shared BigInt compareTo previously returned memcmp's byte difference for equal-length magnitudes. The new API corpus caught 2 compared with 0 returning 2 instead of Java's 1. Normalizing only the public comparison result fixes MiniData, MiniNumber and MMREntryNumber results while preserving ordering predicates. Both builds pass the 1,108-case API corpus, 3,802-case primitive regression and all original base assertions. This is a bounded result, not full MiniNumber/JDK parity.
 
 See the [base-test lab](../../../../../../new-tests/original-base-tests.md) for the retained initial failure and complete scope.
+
+## Decimal constructor and numeric limits
+
+The original OperatorExpression tests now exercise both signed Minima limit constants and their decimal-carrier construction. MAXIMUM and the immutable MAX_MININUMBER/MIN_MININUMBER decimal values expose ±(2^64−1). The new constructor delegates to the existing coefficient/scale path, so rounding and range checks remain shared. Fifty-six new cases supplement the complete earlier base corpus: both builds pass 1,164 comparisons / 19,160 independent checks, all original base assertions and 3,802 primitive comparisons. Full class parity remains unverified.
+
+See the [expression/token lab](../../../../../../new-tests/original-expression-token-tests.md) and [checkpoint evidence](../../../../../../../validation/original-expression-token-tests-work-in-progress/progress.json).

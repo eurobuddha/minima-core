@@ -1,0 +1,219 @@
+{
+  "passed": true,
+  "original_methods": 4,
+  "original_assertions_per_runtime": 699,
+  "results": [
+    {
+      "name": "TokenTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-tokens-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalTokenTests",
+            "TokenTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_TOKENS_RESULT {\"class\":\"TokenTests\",\"tests\":4,\"assertions\":699,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/KissTokenTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_TOKENS_RESULT {\"class\":\"TokenTests\",\"tests\":4,\"assertions\":699,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "supplemental": {
+    "passed": true,
+    "comparisons": 4,
+    "independent_checks": 8,
+    "cases": [
+      [
+        "[ abc [ def ] ghi ]",
+        [
+          [
+            3,
+            "[ abc [ def ] ghi ]",
+            "VALUE:[ abc [ def ] ghi ]"
+          ]
+        ]
+      ],
+      [
+        "0x1 0xab 0x00AB",
+        [
+          [
+            3,
+            "0x1",
+            "VALUE:0x1"
+          ],
+          [
+            3,
+            "0xab",
+            "VALUE:0xab"
+          ],
+          [
+            3,
+            "0x00AB",
+            "VALUE:0x00AB"
+          ]
+        ]
+      ],
+      [
+        "TRUE FALSE ( )",
+        [
+          [
+            9,
+            "TRUE",
+            "TRUE:TRUE"
+          ],
+          [
+            10,
+            "FALSE",
+            "FALSE:FALSE"
+          ],
+          [
+            7,
+            "(",
+            "OPENBRACKET:("
+          ],
+          [
+            8,
+            ")",
+            "CLOSEBRACKET:)"
+          ]
+        ]
+      ],
+      [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        [
+          [
+            4,
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "VARIABLE:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        ]
+      ]
+    ],
+    "observations": [
+      [
+        [
+          [
+            3,
+            "[ abc [ def ] ghi ]",
+            "VALUE:[ abc [ def ] ghi ]"
+          ]
+        ],
+        [
+          [
+            3,
+            "0x1",
+            "VALUE:0x1"
+          ],
+          [
+            3,
+            "0xab",
+            "VALUE:0xab"
+          ],
+          [
+            3,
+            "0x00AB",
+            "VALUE:0x00AB"
+          ]
+        ],
+        [
+          [
+            9,
+            "TRUE",
+            "TRUE:TRUE"
+          ],
+          [
+            10,
+            "FALSE",
+            "FALSE:FALSE"
+          ],
+          [
+            7,
+            "(",
+            "OPENBRACKET:("
+          ],
+          [
+            8,
+            ")",
+            "CLOSEBRACKET:)"
+          ]
+        ],
+        [
+          [
+            4,
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "VARIABLE:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            3,
+            "[ abc [ def ] ghi ]",
+            "VALUE:[ abc [ def ] ghi ]"
+          ]
+        ],
+        [
+          [
+            3,
+            "0x1",
+            "VALUE:0x1"
+          ],
+          [
+            3,
+            "0xab",
+            "VALUE:0xab"
+          ],
+          [
+            3,
+            "0x00AB",
+            "VALUE:0x00AB"
+          ]
+        ],
+        [
+          [
+            9,
+            "TRUE",
+            "TRUE:TRUE"
+          ],
+          [
+            10,
+            "FALSE",
+            "FALSE:FALSE"
+          ],
+          [
+            7,
+            "(",
+            "OPENBRACKET:("
+          ],
+          [
+            8,
+            ")",
+            "CLOSEBRACKET:)"
+          ]
+        ],
+        [
+          [
+            4,
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "VARIABLE:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        ]
+      ]
+    ],
+    "failures": []
+  },
+  "scope": "All four annotated TokenTests methods and 699 source assertions, full registry loops, exact source token lists and five random sizes 4/8/16/32/64 bytes retained. Source comments questioning variable length and numeric syntax do not replace active expectations. Supplemental fixed tokens compare exact type, spelling and display metadata for nested strings, hex preservation, brackets, Booleans and 32-character variables. Full token/registry mutation and node parity remain unverified."
+}

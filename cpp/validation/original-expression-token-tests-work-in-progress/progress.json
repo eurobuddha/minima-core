@@ -1,0 +1,55 @@
+{
+  "base_head": "57547d1e2222c50a5c4f7c7f865dc5190347ef90",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp",
+    "test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.cpp",
+    "test/org/minima/tests/kissvm/tokens/TokenTests.cpp"
+  ],
+  "counterparts": 449,
+  "production_counterparts": 364,
+  "test_counterparts": 85,
+  "remaining": 8,
+  "remaining_production": 5,
+  "remaining_tests": 3,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "existing_api_additions": [
+    "MiniNumber MAX_MININUMBER and MIN_MININUMBER constants using existing immutable decimal carrier; MAXIMUM; MiniNumber decimal-carrier constructor delegates to existing coefficient/scale rounding and range checks."
+  ],
+  "builds": {
+    "normal": "PASS all three new targets, both KISS probes, base API/base test/primitive probes and actual MinimaCoreCpp node",
+    "sanitized": "PASS same targets",
+    "full_suite": "not repeated; 280 registered tests"
+  },
+  "tests": {
+    "original_methods": 8,
+    "original_assertions_per_runtime": 993,
+    "assertions_by_class": {
+      "expressions/BooleanExpressionTests": 116,
+      "expressions/OperatorExpressionTests": 178,
+      "tokens/TokenTests": 699
+    },
+    "supplemental_comparisons_per_build": 12,
+    "independent_checks_per_build": 24,
+    "base_api_cases_per_build": 1164,
+    "base_api_independent_assertions_per_build": 19160,
+    "base_api_new_cases": 56,
+    "base_api_transcript_sha256": "bf35d806dfaa21743a51839039c882ffe35f1c0a9ee772e5d5969e6d3c84e0ee",
+    "base_regression": "12 original methods / 74 assertions per runtime PASS",
+    "primitive_regression": "3802 comparisons PASS per build",
+    "normal": "PASS",
+    "sanitized": "PASS"
+  },
+  "scope": "All three active original test files and exact assertions retained. Constructor-only and commented source cases remain distinguished. New native decimal APIs reuse proven paths. No full expression/token/base API, mutable-registry, arbitrary alias/concurrency or node parity certification.",
+  "blockers": [
+    "Four JNI-dependent production files lack native bodies/ABI or authoritative vectors in inspected candidates; independent work remains.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Do not credit empty assertions as parity."
+  ],
+  "next_action": "Convert ExpressionParserTests and StatementParserTests next; preserve inactive source and delay helpers faithfully. Complete remaining JNI-dependent functionality when evidence is available, then full production API/runtime audit.",
+  "long_demos": {
+    "normal": "Saved 9ae7039 full Magic replay passed earlier, terminal exit 0.",
+    "sanitized": "41123 TERMINAL exit 1 at preceding checkpoint; saved 9ae7039 binary hit 7200s timeout with empty stderr. Full sanitizer demo validation failed; evidence retained in original-let-tests-work-in-progress/magic-sanitizer-timeout. No live handles; do not repeat long demo while independent work remains."
+  }
+}

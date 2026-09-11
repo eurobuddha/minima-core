@@ -1,0 +1,552 @@
+{
+  "passed": true,
+  "original_methods": 4,
+  "original_assertions_per_runtime": 294,
+  "results": [
+    {
+      "name": "BooleanExpressionTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-expressions-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalExpressionsTests",
+            "BooleanExpressionTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_EXPRESSIONS_RESULT {\"class\":\"BooleanExpressionTests\",\"tests\":2,\"assertions\":116,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/BooleanExpressionTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_EXPRESSIONS_RESULT {\"class\":\"BooleanExpressionTests\",\"tests\":2,\"assertions\":116,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "OperatorExpressionTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-expressions-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalExpressionsTests",
+            "OperatorExpressionTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_EXPRESSIONS_RESULT {\"class\":\"OperatorExpressionTests\",\"tests\":2,\"assertions\":178,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/OperatorExpressionTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_EXPRESSIONS_RESULT {\"class\":\"OperatorExpressionTests\",\"tests\":2,\"assertions\":178,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "supplemental": {
+    "passed": true,
+    "comparisons": 8,
+    "independent_checks": 16,
+    "cases": [
+      [
+        "9223372036854775807+1",
+        [
+          2,
+          "9223372036854775808"
+        ]
+      ],
+      [
+        "-9223372036854775808-1",
+        [
+          2,
+          "-9223372036854775809"
+        ]
+      ],
+      [
+        "-3.14 % 0.5",
+        [
+          2,
+          "-0.14"
+        ]
+      ],
+      [
+        "0x01 << -3",
+        [
+          1,
+          "0x00"
+        ]
+      ],
+      [
+        "0x01 >> -3",
+        [
+          1,
+          "0x08"
+        ]
+      ],
+      [
+        "~0x00FFFF",
+        [
+          1,
+          "0xFF0000"
+        ]
+      ],
+      [
+        "NOT TRUE",
+        [
+          8,
+          "FALSE"
+        ]
+      ],
+      [
+        "TRUE NXOR FALSE",
+        [
+          8,
+          "FALSE"
+        ]
+      ]
+    ],
+    "observations": [
+      [
+        [
+          "( 9223372036854775807 + 1 )",
+          [
+            2,
+            "9223372036854775808",
+            "0x0009008000000000000000"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          ""
+        ],
+        [
+          "( -9223372036854775808 - 1 )",
+          [
+            2,
+            "-9223372036854775809",
+            "0x0009FF7FFFFFFFFFFFFFFF"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( -9223372036854775808 - 1 ) returns:-9223372036854775809\n"
+        ],
+        [
+          "( -3.14 % 0.5 )",
+          [
+            2,
+            "-0.14",
+            "0x0201F2"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( -3.14 % 0.5 ) returns:-0.14\n"
+        ],
+        [
+          "( 0x01 << -3 )",
+          [
+            1,
+            "0x00"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( 0x01 << -3 ) returns:0x00\n"
+        ],
+        [
+          "( 0x01 >> -3 )",
+          [
+            1,
+            "0x08"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( 0x01 >> -3 ) returns:0x08\n"
+        ],
+        [
+          " ~ ( 0x00FFFF )",
+          [
+            1,
+            "0xFF0000"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] -  ~ ( 0x00FFFF ) returns:0xFF0000\n"
+        ],
+        [
+          "NOT ( TRUE )",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - NOT ( TRUE ) returns:FALSE\n"
+        ],
+        [
+          "( TRUE NXOR FALSE )",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( TRUE NXOR FALSE ) returns:FALSE\n"
+        ]
+      ],
+      [
+        [
+          "( 9223372036854775807 + 1 )",
+          [
+            2,
+            "9223372036854775808",
+            "0x0009008000000000000000"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          ""
+        ],
+        [
+          "( -9223372036854775808 - 1 )",
+          [
+            2,
+            "-9223372036854775809",
+            "0x0009FF7FFFFFFFFFFFFFFF"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( -9223372036854775808 - 1 ) returns:-9223372036854775809\n"
+        ],
+        [
+          "( -3.14 % 0.5 )",
+          [
+            2,
+            "-0.14",
+            "0x0201F2"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( -3.14 % 0.5 ) returns:-0.14\n"
+        ],
+        [
+          "( 0x01 << -3 )",
+          [
+            1,
+            "0x00"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( 0x01 << -3 ) returns:0x00\n"
+        ],
+        [
+          "( 0x01 >> -3 )",
+          [
+            1,
+            "0x08"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( 0x01 >> -3 ) returns:0x08\n"
+        ],
+        [
+          " ~ ( 0x00FFFF )",
+          [
+            1,
+            "0xFF0000"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] -  ~ ( 0x00FFFF ) returns:0xFF0000\n"
+        ],
+        [
+          "NOT ( TRUE )",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - NOT ( TRUE ) returns:FALSE\n"
+        ],
+        [
+          "( TRUE NXOR FALSE )",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          3,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - ( TRUE NXOR FALSE ) returns:FALSE\n"
+        ]
+      ]
+    ],
+    "failures": []
+  },
+  "scope": "Both complete active BooleanExpressionTests and OperatorExpressionTests, four annotated methods and exact source assertions, fixture sizes, shared method contracts, numeric extrema, typed casts, exception categories and commented-case exclusions are retained. Supplemental fixed expressions require known values and full 13-field Java/native observations. MiniNumber limit constants and decimal constructor reuse the native decimal carrier and existing rounding/range validation. Full expression and node parity remain unverified."
+}

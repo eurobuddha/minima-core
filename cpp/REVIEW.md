@@ -1,3 +1,60 @@
+# Current checkpoint — original expressions/tokens and MiniNumber API additions
+
+Base HEAD: 57547d1e2222c50a5c4f7c7f865dc5190347ef90. Goal ACTIVE and incomplete.
+New: expressions/BooleanExpressionTests.cpp, expressions/OperatorExpressionTests.cpp,
+tokens/TokenTests.cpp under test/org/minima/tests/kissvm. Token executable KissTokenTests.
+Inventory: **449 counterparts** (364 production, 85 tests), **8 absent**
+(5 production, 3 tests). All partial; full parity not_verified.
+
+MiniNumber adds MAX_MININUMBER/MIN_MININUMBER decimal constants, MAXIMUM and a
+constructor using the existing MMREntryNumber decimal carrier. Existing coefficient/
+scale rounding/range logic reused. No expression/tokenizer algorithm correction.
+Both builds pass all new targets, probes and actual MinimaCoreCpp node target.
+Original tests: 8 methods / 993 assertions per runtime (116 Boolean, 178 Operator,
+699 Token). All active fixtures/casts/exception categories/random sizes retained.
+Supplemental: 12 comparisons / 24 independent checks PASS per build.
+Base API: 1,164 comparisons / 19,160 checks PASS, retaining previous 1,108 cases.
+Base transcript SHA-256: bf35d806dfaa21743a51839039c882ffe35f1c0a9ee772e5d5969e6d3c84e0ee.
+Original base regression 12 methods / 74 assertions and all 3,802 primitive cases
+PASS in both builds. Full suite not repeated; 280 registered tests.
+
+Lab: student-guide/new-tests/original-expression-token-tests.md; evidence/remaining:
+validation/original-expression-token-tests-work-in-progress. Three test lessons and
+MiniNumber lesson updated; 457-page structural audit retained. NEXT: original
+ExpressionParserTests and StatementParserTests. TxPoWProcessorTest has empty test
+bodies and active delay helpers. Four JNI-dependent production files lack native
+bodies/ABI in inspected candidates; P2PSwapLink is wholly commented. Independent
+work remains, followed by full production API/runtime completion audit.
+
+Magic sanitizer 41123 terminal exit 1 at preceding checkpoint (7200s timeout,
+empty stderr on saved 9ae7039 binary); normal full replay passed. Terminal evidence
+retained under original-let-tests-work-in-progress/magic-sanitizer-timeout. No live
+Magic handles. Do not restart long demos while independent conversion work remains.
+Preserve graphify outputs and external Java SQL/JAR f7f0e08; cpp-only commits,
+no push, source pin unchanged. Previous verified bundle: MinimaCoreC++-20260911T185410Z.bundle,
+SHA-256 67931d42e7cd20626eddcdd528b518a7cc8817e0235cb1238e5fc5f31e676a99;
+29 changed files byte-verified in a fresh recovery clone.
+
+## Code Review
+
+### Summary
+Reviewed pinned/native expression and token tests, reused dependencies and probes,
+MiniNumber additions, full base corpus extension, Java annotation runners, CMake,
+lessons and terminal normal/sanitizer results. Every active source case is retained.
+
+### Findings
+No unresolved blocking finding in this bounded checkpoint. Native decimal APIs
+reuse existing rounding/range validation; tests independently assert values,
+coefficient/scale, wire bytes and source errors. Exception categories and typed
+casts remain distinct. Original inactive cases and mutable registry/alias behavior
+are not credited as covered. One generator guard and an incorrect probe target
+name were corrected before the final successful builds/tests.
+
+### Verdict
+✅ Approve this checkpoint; full working-port goal remains active and incomplete.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — original LET tests and terminal Magic demo evidence
 
 Base HEAD: 1ef5145a60813220f5e1d9b595c430c1104ee660. Goal ACTIVE and incomplete.

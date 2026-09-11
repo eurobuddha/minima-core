@@ -110,10 +110,13 @@ public:
     static const MiniNumber TRILLION;
     static const MiniNumber MINUSONE;
     static const MiniNumber MINI_UNIT;
+    static const MMREntryNumber MAX_MININUMBER, MIN_MININUMBER;
+    static const MiniNumber MAXIMUM;
 
     MiniNumber();
     explicit MiniNumber(int64_t v);
     explicit MiniNumber(const BigInt& v);
+    explicit MiniNumber(const MMREntryNumber& v);
     explicit MiniNumber(const std::string& s);
     MiniNumber(BigInt unscaled, int scale);
     static MiniNumber fromBytes(const std::vector<uint8_t>& bigEndianBytes);  // from raw big-endian bytes (e.g. SHA2 hash)

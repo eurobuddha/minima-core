@@ -308,6 +308,7 @@ BigInt BigInt::operator-() const {
 MiniNumber::MiniNumber() : m_unscaled(0LL), m_scale(0) {}
 MiniNumber::MiniNumber(int64_t v) : m_unscaled(v), m_scale(0) { checkLimits(); }
 MiniNumber::MiniNumber(const BigInt& v):MiniNumber(v,0) {}
+MiniNumber::MiniNumber(const MMREntryNumber& v):MiniNumber(v.getUnscaled(),v.getScale()) {}
 
 
 MiniNumber MiniNumber::fromBytes(const std::vector<uint8_t>& bigEndianBytes) {
@@ -667,6 +668,9 @@ MiniNumber MiniNumber::deserialise(std::span<const uint8_t> data, size_t& offset
 // Static constants
 std::shared_ptr<MiniNumber> MiniNumber::sharedZero() {static const auto value=std::make_shared<MiniNumber>("0");return value;}
 const MiniNumber& MiniNumber::ZERO=*sharedZero();
+const MMREntryNumber MiniNumber::MAX_MININUMBER(BigInt("18446744073709551615"));
+const MMREntryNumber MiniNumber::MIN_MININUMBER(BigInt("-18446744073709551615"));
+const MiniNumber MiniNumber::MAXIMUM(MAX_MININUMBER);
 const MiniNumber MiniNumber::ONE        ("1");
 const MiniNumber MiniNumber::TWO        ("2");
 const MiniNumber MiniNumber::THREE      ("3");

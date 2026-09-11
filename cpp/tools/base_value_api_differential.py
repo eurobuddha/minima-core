@@ -36,6 +36,21 @@ def cases():
   result.append((q,expected))
  for value in [str(2**64),str(-2**64),'9'*100,'-'+'9'*100]:
   result.append((dict(op='bigint',value=value,wire=None),dict(__error_class__='java.lang.NumberFormatException')))
+ # Additional immutable decimal constructor/limit API cases; prior corpus retained.
+ from decimal import Decimal,Context,ROUND_DOWN
+ context=Context(prec=64,rounding=ROUND_DOWN)
+ limit=2**64-1
+ result.append((dict(op='limits'),dict(maximum=integer_decimal(limit),minimum=integer_decimal(-limit),maximumNumber=integer_decimal(limit))))
+ for coefficient,scale in itertools.product([0,1,-1,12300,-12300,limit,-limit,limit+1,-limit-1,int('1234567890'*7),-int('1234567890'*7)],[-3,0,4,44,70]):
+  q=dict(op='decimal',value=str(coefficient),scale=scale,wire=None)
+  # Java passes the decimal's plain spelling through its 64-digit DOWN context.
+  value=context.create_decimal(format(Decimal(str(coefficient)+'E'+str(-scale)),'f'))
+  if value.as_tuple().exponent < -44:value=context.quantize(value,Decimal('1E-44'))
+  if value.copy_abs()>Decimal(limit):expected=dict(__error_class__='java.lang.NumberFormatException')
+  else:
+   record=decimal_record(str(value));number=int(record['coefficient']);sign=(number>0)-(number<0)
+   expected=dict(before=record,decimal=record,wire=wire(number,record['scale']),compareToZero=sign,decimalCompareToZero=sign)
+  result.append((q,expected))
  return result
 
 def main():
@@ -65,6 +80,6 @@ def main():
     errors.seek(0);stderr=errors.read()
     if stderr:failures.append(dict(phase='stderr',runtime=runtime,stderr=stderr))
  if count!=len(corpus):failures.append(dict(phase='accounting',executed=count,planned=len(corpus)))
- report=dict(passed=not failures,cases=count,planned_cases=len(corpus),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,scope='New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt constructor and raw decimal view. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim.')
+ report=dict(passed=not failures,cases=count,planned_cases=len(corpus),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,scope='New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt and decimal-carrier constructors, exact min/max constants, MAXIMUM and raw decimal view. Decimal constructor cases retain coefficient/scale, plain-string conversion, 64-digit rounding, 44-place truncation, numeric range checks and immutable snapshots. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim.')
  (build/'base-value-api-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({**report,'failures':failures[:5]},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())
