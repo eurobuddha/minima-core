@@ -67,7 +67,7 @@ json::JSONValue run(Command& command,bool readOnly){
         auto signedFile=parent.empty()?std::filesystem::path(name):javaUnixChildFile(parent,name);
         auto imported=command_result::first("txnimport id:"+randomID+" file:"+file+";");
         if(!command_result::status(imported)){auto error=imported.get("error");if(error.isNull())throw JavaNullPointerException("null import error");throw CommandException(send_detail::stateText(error));}
-        std::string text;auto wallet=sqlRequired(MinimaDB::getDB()).getWallet();auto db=sqlRequired(MinimaDB::getDB()).getCustomTxnDB();auto row=sqlRequired(db).getTransactionRow(randomID);auto transaction=sqlRequired(row).getTransaction();auto& inputs=sqlRequired(transaction).getAllInputs();
+        std::string text;auto wallet=sqlRequired(MinimaDB::getDB()).getWallet();auto db=sqlRequired(MinimaDB::getDB()).getCustomTxnDB();auto row=sqlRequired(db).getTransactionRow(randomID);auto transaction=sqlRequired(row).getTransaction();const auto inputsOwner=sqlRequired(transaction).getAllInputs();auto& inputs=*inputsOwner;
         if(inputs.empty())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index 0 out of bounds for length 0");
         for(const auto& state:inputs.front().getState()){auto key=state.getData().toString();if(sqlRequired(wallet).getKeyFromPublic(key))text+="txnsign id:"+randomID+" publickey:"+key+";";}
         text+="txnexport id:"+randomID+" file:"+javaUnixAbsoluteFile(signedFile)+";txndelete id:"+randomID;

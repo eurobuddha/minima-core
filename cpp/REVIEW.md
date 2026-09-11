@@ -1,3 +1,49 @@
+# Latest checkpoint — Transaction Streamable, shared caches and nullable IDs
+
+Base HEAD 9b2c4e14cf3a04cbdb8a9b44815c42f84fb9b9ec. Branch/project/executable MinimaCoreC++.
+Goal ACTIVE, incomplete. 411 counterparts = 364 production + 47 original tests;
+46 absent = 5 production + 41 tests. All present implemented_partial, all 457 parity
+not_verified. 261 default CTest entries; full suite NOT run.
+
+Transaction adopts Streamable: 22 of 44 explicit implementers integrated, 22 remain.
+Copies share the containing record, list handles, caches and public validation flags.
+All three lists are replaced before the first read count; completed children append.
+State removal replaces/sorts only on a match; clear mutates the current list.
+Nested writers preserve partial output. Crypto catches/logs Exceptions and returns
+null for Transaction's ID assignment; Error escapes and preserves the old ID.
+Nullable TreeKey verification checks proofs/root before dereferencing final data.
+Affected production callers retain list owners and use shared flag accessors.
+
+Both complete builds PASS. Both 21-suite selected CTest runs PASS, including the
+original TransactionTests and affected object/VM/consensus/database/command/send/
+wallet/token/multisig/search workflows. Totals: normal 458.28s,
+sanitizer 1681.41s. Each common interface suite passes
+3,782 comparisons / 39,522 assertions; transcript c57881b7fc50153c4b079d25de5558590e87b475a5aaaa6eb6aea677988e3ffa.
+Native interface stderr empty. Both saved SPHINCS replays PASS 268 comparisons /
+1,677 assertions, including actual transaction state installation and KISS VM checks.
+No signing forest was regenerated. Replay transcript 04c3b45c0b9ca9e4430e5a516ca8599d2540af246d9f98437a9e0f43a08c8618.
+All final handles terminal0; no live jobs remain. Initial 3,775-case interface result
+is retained and superseded by seven additional null-ID verification cases.
+
+Evidence: validation/streamable-transaction-work-in-progress. Student Transaction,
+Crypto, TreeKey and Streamable lessons and new transaction lab updated. No dependency
+change. Native H2 AOT dependency reused; sanitizer instruments C++, not that library.
+No live MySQL fixture is configured; stale temporary fixtures must not be reused.
+
+Next: inspect pinned/native/sibling TxBody and its complete callers/tests, then
+TxHeader/TxPoW and remaining containers through the same common interface. Preserve
+source-ordered partial mutations and owned child identities. Do not infer complete
+parity from mapped files or successful wire comparisons. Transaction null entries,
+child/StateVariable identity, full collection APIs, shared ZERO_TXPOWID identity,
+subclass/custom stream behavior, full downstream nullable value-adapter audit and
+allocation/concurrent/reentrant cases remain open. State-size failure logging follows
+the source but failing-child/allocation fixtures are not yet represented.
+Five absent production files include inactive P2PSwapLink and unavailable native JNI
+implementations; do not invent them. Continue the full 457-file goal after committing
+and verifying a local recovery bundle. No GitHub push is authorized/requested here.
+
+---
+
 # Latest checkpoint — Witness Streamable and owned evidence lists
 
 Base HEAD 0cb6200d944830e42ce7ff0db2066e1c6563a48c. Branch/project/executable MinimaCoreC++.

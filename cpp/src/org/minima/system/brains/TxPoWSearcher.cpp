@@ -46,19 +46,19 @@ std::vector<std::shared_ptr<TxPoW>> TxPoWSearcher::searchTxPoWviaAddress(const M
     return result;
 }
 bool TxPoWSearcher::checkTxPoWForAddress(const TxPoW& txpow,const MiniData& address){
-    for(const auto& coin:txpow.getTransaction().getAllInputs())if(coin.getAddress().isEqual(address))return true;
-    for(const auto& coin:txpow.getBurnTransaction().getAllInputs())if(coin.getAddress().isEqual(address))return true;
-    for(const auto& coin:txpow.getTransaction().getAllOutputs())if(coin.getAddress().isEqual(address))return true;
-    for(const auto& coin:txpow.getBurnTransaction().getAllOutputs())if(coin.getAddress().isEqual(address))return true;
+    for(const auto txnItems=txpow.getTransaction().getAllInputs();const auto& coin:*txnItems)if(coin.getAddress().isEqual(address))return true;
+    for(const auto txnItems=txpow.getBurnTransaction().getAllInputs();const auto& coin:*txnItems)if(coin.getAddress().isEqual(address))return true;
+    for(const auto txnItems=txpow.getTransaction().getAllOutputs();const auto& coin:*txnItems)if(coin.getAddress().isEqual(address))return true;
+    for(const auto txnItems=txpow.getBurnTransaction().getAllOutputs();const auto& coin:*txnItems)if(coin.getAddress().isEqual(address))return true;
     return false;
 }
 bool TxPoWSearcher::checkTxPoWRelevant(const TxPoW& txpow,const ChainServices& wallet){
     auto relevantState=[&](const std::vector<StateVariable>& state){for(const auto& value:state)if(value.getType().isEqual(StateVariable::STATETYPE_HEX)&&(wallet.isAddressRelevant(value.toString())||wallet.isKeyRelevant(value.toString())))return true;return false;};
-    for(const auto& coin:txpow.getTransaction().getAllInputs())if(wallet.isAddressRelevant(coin.getAddress().to0xString())||relevantState(coin.getState()))return true;
-    for(const auto& coin:txpow.getBurnTransaction().getAllInputs())if(wallet.isAddressRelevant(coin.getAddress().to0xString())||relevantState(coin.getState()))return true;
-    for(const auto& coin:txpow.getTransaction().getAllOutputs())if(wallet.isAddressRelevant(coin.getAddress().to0xString()))return true;
-    for(const auto& coin:txpow.getBurnTransaction().getAllOutputs())if(wallet.isAddressRelevant(coin.getAddress().to0xString()))return true;
-    return relevantState(txpow.getTransaction().getCompleteState())||relevantState(txpow.getBurnTransaction().getCompleteState());
+    for(const auto txnItems=txpow.getTransaction().getAllInputs();const auto& coin:*txnItems)if(wallet.isAddressRelevant(coin.getAddress().to0xString())||relevantState(coin.getState()))return true;
+    for(const auto txnItems=txpow.getBurnTransaction().getAllInputs();const auto& coin:*txnItems)if(wallet.isAddressRelevant(coin.getAddress().to0xString())||relevantState(coin.getState()))return true;
+    for(const auto txnItems=txpow.getTransaction().getAllOutputs();const auto& coin:*txnItems)if(wallet.isAddressRelevant(coin.getAddress().to0xString()))return true;
+    for(const auto txnItems=txpow.getBurnTransaction().getAllOutputs();const auto& coin:*txnItems)if(wallet.isAddressRelevant(coin.getAddress().to0xString()))return true;
+    return relevantState(*txpow.getTransaction().getCompleteState())||relevantState(*txpow.getBurnTransaction().getCompleteState());
 }
 std::vector<std::shared_ptr<Token>> TxPoWSearcher::getAllTokens(){std::lock_guard lock(mImportedMutex);std::vector<std::shared_ptr<Token>> result;std::unordered_set<std::string> added;
     for(auto tip=services.getTip();tip;tip=tip->getParent())for(const auto& coin:tip->getAllCoins()){auto id=coin.getTokenID().to0xString();if(id!="0x00"&&added.insert(id).second)result.push_back(token(coin));}

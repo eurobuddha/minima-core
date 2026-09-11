@@ -64,3 +64,7 @@ A test samples behavior. Passing the shown cases would establish those observati
 Exercise: identify one boundary or state transition in the source, predict its result before running it, and explain which single assertion would detect an incorrect port. For a helper, identify a caller that would reveal an incorrectly generated fixture.
 
 Pinned Java SHA-256: `9a8695307c362e24e588006e1a0db4c634db7d23b39480a40b09b63c401bf744`.
+
+## Transaction ownership follow-up
+
+The [Transaction lab](../../../../../../student-guide/new-tests/streamable-transaction.md) explains why list getters now return owned handles. This mapped test uses `->size()` and `->empty()` to inspect those lists; its existing assertions are unchanged. The separate differential harness checks retained old lists, shared cache flags and failure timing that the simple 5-to-2-plus-3 example does not cover. See the lab evidence for dated execution results.

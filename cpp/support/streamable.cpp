@@ -8,6 +8,8 @@
 #include "org/minima/objects/CoinProof.hpp"
 #include "org/minima/objects/ScriptProof.hpp"
 #include "org/minima/objects/Witness.hpp"
+#include "org/minima/objects/keys/TreeKey.hpp"
+#include "org/minima/system/brains/TxPoWChecker.hpp"
 #include <iostream>
 #include <type_traits>
 using namespace minima;using namespace minima::json;
@@ -17,7 +19,18 @@ static_assert(std::is_base_of_v<Streamable,sphincs::horst::HORSTSignature> && st
 static_assert(std::is_base_of_v<Streamable,MMRData> && std::is_base_of_v<Streamable,MMREntryNumber> && std::is_base_of_v<Streamable,MMREntry> && std::is_base_of_v<Streamable,MMRProof::MMRProofChunk> && std::is_base_of_v<Streamable,SignatureProof> && std::is_base_of_v<Streamable,Signature>);
 static_assert(std::is_base_of_v<Streamable,MiniData> && std::is_base_of_v<Streamable,MiniNumber> && std::is_base_of_v<Streamable,MiniString>);
 static_assert(std::is_base_of_v<Streamable,StateVariable> && std::is_base_of_v<Streamable,Address> && std::is_base_of_v<Streamable,ScriptProof> && std::is_base_of_v<Streamable,Token> && std::is_base_of_v<Streamable,Coin> && std::is_base_of_v<Streamable,CoinProof>);
-static_assert(std::is_base_of_v<Streamable,Witness>);
+static_assert(std::is_base_of_v<Streamable,Witness> && std::is_base_of_v<Streamable,Transaction>);
+class FaultTransaction:public Transaction {
+public:
+    std::string fault;
+    void writeDataStream(std::vector<uint8_t>& out) const override {
+        if(fault.empty()){Transaction::writeDataStream(out);return;}
+        out.push_back(42);
+        if(fault=="io")throw wire::IOException("fixture");
+        if(fault=="runtime")throw JavaIllegalArgumentException("fixture");
+        throw JavaError("java.lang.AssertionError","fixture");
+    }
+};
 class Failing:public Streamable {
     uint8_t values[3]={1,2,3};int fail;
 public:
@@ -28,6 +41,15 @@ public:
 static std::string category(const std::exception& e){auto text=nativeExceptionText(e);return text.substr(0,text.find(": "));}
 static std::unique_ptr<Streamable> create(const JSONObject& q){
     auto kind=q.getString("kind");
+    if(kind=="transaction"){
+        auto result=std::make_unique<FaultTransaction>();
+        if(q.getString("op")=="badwrite"){
+            auto bytes=MiniData::fromHex(q.getString("base"));size_t offset=0;result->readDataStream(bytes.bytes(),offset);auto fault=q.getString("fault");
+            if(fault=="link")result->setLinkHash(MiniData(std::vector<uint8_t>(65)));
+            else {JSONObject child=q;child.put("kind","coin");child.put("fault","coinid");auto coin=dynamic_cast<Coin&>(*create(child));if(fault=="input")result->addInput(coin);else result->addOutput(coin);}
+        }
+        return result;
+    }
     if(kind=="witness"){
         auto result=std::make_unique<Witness>();
         if(q.getString("op")=="badwrite"){
@@ -86,10 +108,35 @@ static JSONObject run(const JSONObject& q){
     JSONObject result;auto owner=create(q);Streamable& value=*owner;auto initial=data(q,"initial");size_t offset=0;if(q.getString("op")!="badwrite"&&(!q.containsKey("empty")||!q.getBoolean("empty")))value.readDataStream(initial,offset);if(auto d=dynamic_cast<MMRData*>(&value))d->setUnspendable(true);std::optional<Signature> alias;if(auto sig=dynamic_cast<Signature*>(&value))alias=*sig;auto oldList=alias?alias->getAllSignatureProofs():nullptr;auto op=q.getString("op");if(q.containsKey("cache")&&q.getBoolean("cache"))dynamic_cast<MiniData&>(value).getDataValue();
     std::optional<Witness> witnessAlias;std::shared_ptr<Witness::Signatures> oldSignatures;std::shared_ptr<Witness::CoinProofs> oldCoins;std::shared_ptr<Witness::Scripts> oldScripts;TxPoW containing;
     if(auto w=dynamic_cast<Witness*>(&value)){witnessAlias=*w;oldSignatures=w->getAllSignatures();oldCoins=w->getAllCoinProofs();oldScripts=w->getAllScripts();containing.setWitness(*w);}
+    std::optional<Transaction> transactionAlias;std::shared_ptr<Transaction::Coins> oldInputs,oldOutputs;std::shared_ptr<Transaction::State> oldState;std::shared_ptr<MiniData> oldID,oldLink;
+    if(auto t=dynamic_cast<Transaction*>(&value)){t->mHaveCheckedMonotonic()=true;t->mIsMonotonic()=true;t->mIsValid()=true;transactionAlias=*t;oldInputs=t->getAllInputs();oldOutputs=t->getAllOutputs();oldState=t->getCompleteState();oldID=t->getTransactionID();oldLink=t->getLinkHash();containing.setTransaction(*t);}
     if(op=="read"){auto storage=data(q,"wire");std::span<const uint8_t> bytes=q.containsKey("selfInput")?std::span<const uint8_t>(dynamic_cast<MiniData&>(value).bytes()):std::span<const uint8_t>(storage);offset=size_t(std::get<int64_t>(q.get("offset").value));try{if(q.containsKey("hashRead"))dynamic_cast<MiniData&>(value).readHashFromStream(bytes,offset);else if(q.containsKey("expectedSize"))dynamic_cast<MiniData&>(value).readDataStream(bytes,offset,int(std::get<int64_t>(q.get("expectedSize").value)));else value.readDataStream(bytes,offset);}catch(const std::exception& e){result.put("readError",category(e));}result.put("offset",int64_t(offset));}
     else if(op=="callers"){
         result.put("data",miniDataVersion(value)->to0xString());result.put("hash",Crypto::getInstance().hashObject(value).to0xString());result.put("pairHash",Crypto::getInstance().hashObjects(value,value).to0xString());result.put("nio",NIOManager::createNIOMessage(MiniByte(13),value).to0xString());
         auto file=std::filesystem::path(q.getString("file"));try{MiniFile::writeObjectToFile(file,value);result.put("file",MiniData(MiniFile::readCompleteFile(file)).to0xString());MiniFile::writeObjectToFile(file,value,true);result.put("appendedFile",MiniData(MiniFile::readCompleteFile(file)).to0xString());MiniFile::writeDataToFile(file,data(q,"wire"));MiniFile::loadObject(file,value);}catch(...){std::filesystem::remove(file);throw;}std::filesystem::remove(file);
+    }
+    if(transactionAlias){
+        auto& t=*transactionAlias;
+        if(op=="transactionRemove")t.removeStateVariable(int(std::get<int64_t>(q.get("port").value)));
+        if(op=="transactionAdd")t.addStateVariable(StateVariable(1,"[replacement]"));
+        if(op=="transactionClear")t.clearState();
+        if(op=="transactionFlags"){t.clearIsMonotonic();t.mIsValid()=false;}
+        if(op=="transactionNullLink")t.setLinkHash(std::shared_ptr<MiniData>());
+        try{if(op=="transactionFault"){dynamic_cast<FaultTransaction&>(value).fault=q.getString("fault");dynamic_cast<Transaction&>(value).calculateTransactionID();}else if(op=="transactionNullLink")t.calculateTransactionID();else if(op=="transactionJSON")t.toJSON();}catch(const std::exception& error){result.put("calculationError",category(error));}
+        // Clear the artificial writer fault after observing the actual calculation path.
+        dynamic_cast<FaultTransaction&>(value).fault.clear();
+        if(q.containsKey("verifyMode")){
+            auto mode=q.getString("verifyMode");Signature sig;SignatureProof proof(MiniData::fromHex("0xA1"),MiniData::fromHex("0xB2"),MMRProof());if(mode!="empty")sig.addSignatureProof(proof);if(mode=="excess")for(int i=1;i<9;++i)sig.addSignatureProof(proof);TreeKey key;key.setPublicKey(mode=="mismatch"?MiniData::fromHex("0x00"):proof.getRootPublicKey());
+            try{bool verified;if(mode=="checkerEmpty"||mode=="checkerProof"){if(mode=="checkerProof")containing.getWitness().addSignature(sig);verified=TxPoWChecker::checkSignatures(containing);}else if(mode=="nullSignature")verified=key.verify(t.getTransactionID().get(),static_cast<const Signature*>(nullptr));else verified=key.verify(t.getTransactionID().get(),sig);result.put("verified",verified);}catch(const std::exception& error){result.put("verifyError",category(error));}
+        }
+        JSONArray same,counts,flags;for(bool b:{oldInputs==t.getAllInputs(),oldOutputs==t.getAllOutputs(),oldState==t.getCompleteState()})same.add(b);
+        counts.add(int64_t(t.getAllInputs()->size()));counts.add(int64_t(t.getAllOutputs()->size()));counts.add(int64_t(t.getCompleteState()->size()));
+        for(bool b:{t.mHaveCheckedMonotonic(),t.mIsMonotonic(),t.mIsValid()})flags.add(b);
+        Transaction previous;*previous.getAllInputs()=*oldInputs;*previous.getAllOutputs()=*oldOutputs;*previous.getCompleteState()=*oldState;previous.setLinkHash(oldLink);
+        result.put("oldTransaction",state(previous));result.put("transactionAlias",state(t));result.put("containingTransaction",state(containing.getTransaction()));
+        result.put("sameTransactionLists",same);result.put("transactionCounts",counts);result.put("transactionFlags",flags);
+        result.put("sameID",oldID==t.getTransactionID());result.put("sameLink",oldLink==t.getLinkHash());result.put("oldID",oldID->to0xString());result.put("transactionID",t.getTransactionID()?JSONValue(t.getTransactionID()->to0xString()):JSONValue());
+        JSONArray ownerFlags,containingFlags;auto& ownerTransaction=dynamic_cast<Transaction&>(value);auto& contained=containing.getTransaction();for(bool b:{ownerTransaction.mHaveCheckedMonotonic(),ownerTransaction.mIsMonotonic(),ownerTransaction.mIsValid()})ownerFlags.add(b);for(bool b:{contained.mHaveCheckedMonotonic(),contained.mIsMonotonic(),contained.mIsValid()})containingFlags.add(b);result.put("ownerFlags",ownerFlags);result.put("containingFlags",containingFlags);result.put("stateSize",t.calculateStateSize());
     }
     if(witnessAlias){
         auto& w=*witnessAlias;

@@ -15,12 +15,13 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 46 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-The native Streamable interface now connects 21 existing concrete classes to
+The native Streamable interface now connects 22 existing concrete classes to
 the common read/write path and existing file/hash/network-message helpers.
-Both builds pass 3,447 comparisons and 31,650 assertions, plus six affected
-regressions. Another 23 explicit source implementers still need integration.
+Both builds pass 3,782 comparisons and 39,522 assertions. All 21 selected
+CTest suites and saved SPHINCS replays pass in both builds. Another 22 explicit
+source implementers still need integration.
 See the [interface lab](student-guide/new-tests/streamable-interface.md) and
-[Witness follow-up](student-guide/new-tests/streamable-witness.md).
+[Transaction follow-up](student-guide/new-tests/streamable-transaction.md).
 
 The help command now preserves the source's 94-entry curated catalogue and detailed
 lookup through the native registry. Both builds pass 761 comparisons and 2,543

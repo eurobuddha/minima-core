@@ -8,7 +8,7 @@ namespace minima {
 json::JSONObject TxnRow::toJSON(bool showWitness){
     json::JSONObject ret;ret.put("id",mID?json::JSONValue(*mID):json::JSONValue());
     if(!mTransaction)throw std::invalid_argument("Null transaction");TxPoWGenerator::precomputeTransactionCoinID(*mTransaction);ret.put("transaction",mTransaction->toJSON());
-    if(showWitness){if(!mWitness)throw std::invalid_argument("Null witness");ret.put("witness",mWitness->toJSON());json::JSONArray coins;for(const auto& coin:mTransaction->getAllOutputs())coins.add(MiniData(coin.serialise()).to0xString());ret.put("outputcoindata",coins);}return ret;
+    if(showWitness){if(!mWitness)throw std::invalid_argument("Null witness");ret.put("witness",mWitness->toJSON());json::JSONArray coins;for(const auto txnItems=mTransaction->getAllOutputs();const auto& coin:*txnItems)coins.add(MiniData(coin.serialise()).to0xString());ret.put("outputcoindata",coins);}return ret;
 }
 std::vector<uint8_t> TxnRow::serialise() const {if(!mTransaction||!mWitness)throw std::invalid_argument("Null transaction/witness");return wire::join(MiniString(mID.value()),*mTransaction,*mWitness);}
 void TxnRow::readDataStream(std::span<const uint8_t> data,size_t& offset){mID=MiniString::deserialise(data,offset).toString();mTransaction=std::make_shared<Transaction>();mTransaction->readDataStream(data,offset);mWitness=std::make_shared<Witness>();mWitness->readDataStream(data,offset);}

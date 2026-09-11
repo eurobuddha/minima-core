@@ -27,7 +27,9 @@ public:
     void setLogger(std::function<void(const std::string&)> logger){mLogger=std::move(logger);}
     Signature sign(const MiniData* data);
     Signature sign(const MiniData& data){return sign(&data);}
-    bool verify(const MiniData& data,const Signature& signature) const;
+    bool verify(const MiniData* data,const Signature& signature) const;
+    bool verify(const MiniData& data,const Signature& signature) const {return verify(&data,signature);}
+    bool verify(const MiniData* data,const Signature* signature) const;
     bool verify(const MiniData& data,const Signature* signature) const;
 };
 }

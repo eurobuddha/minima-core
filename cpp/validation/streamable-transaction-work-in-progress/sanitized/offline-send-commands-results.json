@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 201,
+  "total_programs": 201,
+  "operations": 558,
+  "sql_calls": 9773,
+  "failures": [],
+  "scope": "Actual sendview/sendpost/sendsign, metadata and runner permission/parameter gates. Complete TxPoW file bytes, recursive file/directory observations, SQL calls, logs, verified signatures, retained miner queues and response snapshots are compared. Repeated inputs produce repeated signing calls but duplicate-root witness entries are omitted by actual Witness. Missing/truncated/NUL/directory/path errors and writer append/replace/error ordering are compared. The 512-line demonstration main is compared for null/empty arguments. Generated wall-clock filenames are shape-checked then normalized; actual file bytes remain compared. Vault cases normalize independently random ciphertext using existing vault observations. Java-specific NPE/class-cast diagnostics, stack frames and logger prefixes excluded. Recording SQL rows do not establish durable storage; key-use write counts are observed, not persisted. Synthetic fixtures are not consensus-valid network transactions. Full Main construction, node/network acceptance, stream races, all Java reference APIs and filesystem/platform equivalence remain unverified."
+}

@@ -19098,5 +19098,326 @@
         "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
       }
     }
+  },
+  "streamable_transaction_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/objects/Transaction.java": "e523aa0ae28d69ce6069434964e9c0ea12b6bcb085b328f934bfc24a2831d9cd",
+      "upstream-study/src/org/minima/utils/Crypto.java": "fcbd60a6f3fd72897c0820d25a14b3b2a28c57179ac43de358254705de2b4df3",
+      "upstream-study/src/org/minima/objects/keys/TreeKey.java": "3483c44a628382707674b615ae9f0cdfb9998d6dd1663848421ea200b27fabdd",
+      "upstream-study/src/org/minima/objects/keys/Winternitz.java": "b25af05c370428a13a9c19bf3e91b2dbfff663ba18e90f5d72f91dda55d228d2",
+      "upstream-study/test/org/minima/objects/TransactionTests.java": "9a8695307c362e24e588006e1a0db4c634db7d23b39480a40b09b63c401bf744"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/database/userprefs/txndb/TxnRow.cpp": "b55349b369739edfc58b9ec7850cb91f5dddbef891e8e69a42faae3e86c0e9dd",
+      "cpp/src/org/minima/kissvm/Contract.cpp": "41d088e01cd380ee77fda150191bf425fd68d19dfbd7264945c23688afcf4b3d",
+      "cpp/src/org/minima/kissvm/functions/txn/input/GETINADDR.cpp": "375fd72a95e0edcb8c07f4900f3f1d4547ffeb0c8d6a2680058658d70b3bd43f",
+      "cpp/src/org/minima/kissvm/functions/txn/input/GETINAMT.cpp": "af99fb147ef35be46d63daac2dfab982eadf6a2f7e3faebf648836af29524d8b",
+      "cpp/src/org/minima/kissvm/functions/txn/input/GETINID.cpp": "594fdf047d4fff064ee90fde02104192c85a7fb4d80caa1e14cbfbd73b5c94b8",
+      "cpp/src/org/minima/kissvm/functions/txn/input/GETINTOK.cpp": "31bf73162c22e7582084f48e9dccef2483ba0ff4c486f59929896a4ac6825946",
+      "cpp/src/org/minima/kissvm/functions/txn/input/SUMINPUTS.cpp": "992ecb74e6339cb66cd663737e2ed3cc0c47a4d4671f7916e90fe4db82624f7e",
+      "cpp/src/org/minima/kissvm/functions/txn/input/VERIFYIN.cpp": "5f1a71bbeee60cb01d6e5dd3977a44f23ac6250ee83cec353460b15ec2e44450",
+      "cpp/src/org/minima/kissvm/functions/txn/output/GETOUTADDR.cpp": "8dd24f0f78e437b2f513f2d6f67702ad289a3ce452a32f3a81f4f6b4bdaf41b7",
+      "cpp/src/org/minima/kissvm/functions/txn/output/GETOUTAMT.cpp": "8accaaf8890a505e500a8c2f298eeac50db5348da7f1c1e8c6bc452e791b3410",
+      "cpp/src/org/minima/kissvm/functions/txn/output/GETOUTKEEPSTATE.cpp": "34b680fed53a1640c0ff310d01502f4a94b15a5c47e8de2dc46cbf896f112b9a",
+      "cpp/src/org/minima/kissvm/functions/txn/output/GETOUTTOK.cpp": "17ab1e411532db7faf6ce30dedd3e53c4412d3eb941f4dd6d6c8f1d2a85bb7e7",
+      "cpp/src/org/minima/kissvm/functions/txn/output/SUMOUTPUTS.cpp": "07ee600c6e0dd86ffd3a297712bb58b3cf0ea640005bf01684d84b0d1eaf55e0",
+      "cpp/src/org/minima/kissvm/functions/txn/output/VERIFYOUT.cpp": "b62305acb7ef658eaf8b44a308c9912ba63c9e4a051d34f989660ba209f250e9",
+      "cpp/src/org/minima/objects/Transaction.cpp": "0cd7624c25b016d54033b4e3d50ca56e470e6adbe64d713c4e5e9e442a87376d",
+      "cpp/src/org/minima/objects/Transaction.hpp": "14f616a6853ef0b8470ade71501d5fdb8288589981ee0a1530eba2f4d9cc3dd9",
+      "cpp/src/org/minima/objects/TxBlock.cpp": "f4fd1846bebed99b4649b625f3699a9d04e9a32e0880ca78407ea704263a2a7d",
+      "cpp/src/org/minima/objects/keys/TreeKey.cpp": "c95dc052385e81e54e52bed2f03c41c92df8dbf53b5e1045c109c513169ad1ba",
+      "cpp/src/org/minima/objects/keys/TreeKey.hpp": "45e2ee5c84ff5d57f4ea8bfc2d5f2f011120122b61a2eb98340066d76ffd7690",
+      "cpp/src/org/minima/system/brains/TxPoWChecker.cpp": "8076c4cd7c522386dd6159d7177e812ec9a65763de22d5f06e80e46ea9fc56f6",
+      "cpp/src/org/minima/system/brains/TxPoWGenerator.cpp": "8bc8966762e15f3757ea19b36a956a26cb631be52de4f0ff9a832dd43ee3b77a",
+      "cpp/src/org/minima/system/brains/TxPoWMiner.cpp": "23ec602e58867245ecd1ccba1b5a8aa10b1c2dbc1747b131d80def365e7ebbd1",
+      "cpp/src/org/minima/system/brains/TxPoWSearcher.cpp": "e369a41a130468f767ee1c67a56776dea7134bf124c5173f7c1a3afe255a70ad",
+      "cpp/src/org/minima/system/commands/base/sphincs.cpp": "b6cc24ca6ee5d6585288d66b0bf1c93fcb7e111be3c63a3e778cd4e34589795a",
+      "cpp/src/org/minima/system/commands/base/tokencreate.cpp": "3850d8f1d2af6b9c262676933e0bfa9ec3e4411b497bdcc896b139b198332797",
+      "cpp/src/org/minima/system/commands/search/history.cpp": "c48c7e6fe85a5638ff5e02e5081f5fdad9932b14c512de0138666e22e22e1ff1",
+      "cpp/src/org/minima/system/commands/send/send.cpp": "38de2aac4ca676bd3c9f3bb40b6cb3497a08ffc99f85fa8512549bf59870f99f",
+      "cpp/src/org/minima/system/commands/send/sendnosign.cpp": "52e49538988635119e220c0a5359066b4c7a14f9b707dc547be05f5d6c004a97",
+      "cpp/src/org/minima/system/commands/send/sendsign.cpp": "4135bef61f138de0eb74ed9ca781962fb65067cd8fca1770386e4356731c7a36",
+      "cpp/src/org/minima/system/commands/send/wallet/createtokenfrom.cpp": "1afa3c184fd20d2ad37624ca4da208b9275758ad78f6c0b156ad0524f1a30c1d",
+      "cpp/src/org/minima/system/commands/txn/txncheck.cpp": "e4fb3fe79487acd72e86d89fffbdccc7f997f0b16b08269beb1dad7bc460a1f4",
+      "cpp/src/org/minima/system/commands/txn/txnmmr.cpp": "71a3f666c66bcdfe99c6a754bc12c580ee978dab404fb3c07de640d9f12d430c",
+      "cpp/src/org/minima/system/commands/txn/txnpost.cpp": "56857085b96ba8945d6016f19f0092932f99bc128a946033367be2fd47c89dde",
+      "cpp/src/org/minima/system/commands/txn/txnscript.cpp": "32bf296a9cdd59ed4c3854e37d1ff999e5e3111f338a6fbba18030b47a69ed9e",
+      "cpp/src/org/minima/system/commands/txn/txnsign.cpp": "d20a1a27aca97f11dfed95a22d95f6d86c7f81de15afa7e4bf2294df997cec8a",
+      "cpp/src/org/minima/system/commands/txn/txnutils.cpp": "ca275b8e6ffc9940f29b9b31d6016cd7f253e9bdba1762c6e9057ff0bef707dc",
+      "cpp/src/org/minima/system/network/minima/RelayPolicy.cpp": "a9656636bab8e53708f2b9f38bda85a505863eeffd601e3be3885c29a02890aa",
+      "cpp/src/org/minima/utils/Crypto.cpp": "f16b4d837db64b2e7c873a63204af205b5daf22a34b7a0977988a26c1d28b66d",
+      "cpp/src/org/minima/utils/Crypto.hpp": "d1e55b6567949d2d258a858fc8b95309aac5d84e177775fa4be739ac7b126d59",
+      "cpp/src/org/minima/utils/sphincs/SPHINCSUtils.cpp": "6a2f73076101ade35c67f461f9ec3bba96bcdfcb3b0604a38fb02f7a2056887d",
+      "cpp/src/org/minima/utils/sphincs/TransactionTest.cpp": "5c9813ed451c5c35111089299136fb692f28ca361ab653cb7d1dbddbdd6fe67d",
+      "cpp/src/support/MultisigCommands.cpp": "4c1b58b1b85f030bbdae07bf128acd1c3d8571c8ba2ae06e0988df0b2daa07be",
+      "cpp/support/SharedCheckerFixture.hpp": "40668c24e980dc283c66e7629357af42a1392e8c8ccb645a90dd0e20541539e4",
+      "cpp/support/StreamableOracle.java": "6a565dd2086687d9b851d87d8d634f300361ee0c796badb0ec864f637af6908c",
+      "cpp/support/WalletMiningFixture.hpp": "76ef1d62502fb07fec4574d762fbbb3768a0437e8a71bda2bc8a754702d721fe",
+      "cpp/support/WalletVaultFixture.hpp": "4b7127b3ef9436c6f7969ddadd8e131888033599f3a8f16a7370c4400fbd9a36",
+      "cpp/support/checker_logs.cpp": "a4b2c7e79288954f622f673aedcf6fba15c7cf019874653d754e2547cf805564",
+      "cpp/support/consensus.cpp": "467e9a6596a3fcbe6dc4e3cf15c6b13688c5b72cce77697b9b21f61a51050983",
+      "cpp/support/objects.cpp": "30328b8792f0a29c08b031d8b19a9e20874e69044fa62b069792134a47364a02",
+      "cpp/support/sphincs_utils.cpp": "a669835345ce1ad35fe62883cc7f3781f85e7c4d3109458baa5addb3557cb169",
+      "cpp/support/streamable.cpp": "8bf15d27b7b932108260f0ac3a8721471689331b544d9481be325c23e05b888c",
+      "cpp/support/transaction_commands.cpp": "dfdd4ed7a02f9f506b47f68c46a39f2d9d806ac20627792c76805c063ce7eed9",
+      "cpp/support/txndb.cpp": "35ea2135635c128a55181ac24baa6448b88f70d457fd84c52e2ac3c77487d368",
+      "cpp/support/wallet_commands.cpp": "b98483ebd193f549f03a6d5c3e0731abd2f6075936be4dd8e1a839683165993f",
+      "cpp/support/wallet_wrappers.cpp": "7e6594da38bf510f813bd4aa9b0025e4f676ed3b45f22af7ef173e4f2118c78b",
+      "cpp/test/org/minima/objects/TransactionTests.cpp": "42517edb9501bf6375680b557280c715371f546ebb505d726b25a38a1b3437ce",
+      "cpp/tools/streamable_differential.py": "a78fcf07bbe5452c1103cfa683d828614f68a100799f4eeb29e9722fd9b5f669"
+    },
+    "reuse": "Current Transaction codecs, amount/token validation and coin-ID calculation; Witness/Signature shared record and owned lists; existing Crypto SHA3 and logging; existing TreeKey proof verification and differential fixtures. No new dependency.",
+    "sibling_search": "Read tools/minima-core-cpp/src/objects/Transaction.hpp/.cpp. It requires outputs/equal balance, differs in coin-ID hashing, omits state sorting and uses pointer-only readers with different hash bounds. Current proven native logic retained.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "stage": "validated_incremental_checkpoint",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "base_head": "9b2c4e14cf3a04cbdb8a9b44815c42f84fb9b9ec",
+      "goal_complete": false,
+      "counterparts": 411,
+      "production_counterparts": 364,
+      "test_counterparts": 47,
+      "absent": 46,
+      "production_absent": 5,
+      "tests_absent": 41,
+      "parity": "not_verified",
+      "full_normal_build": "passed",
+      "full_sanitized_build": "passed",
+      "default_ctest_entries": 261,
+      "full_ctest_suite_run": false,
+      "explicit_implementations": 44,
+      "adopted_types": 22,
+      "remaining_interface_implementations": 22,
+      "results": {
+        "normal": {
+          "passed": true,
+          "cases": 3782,
+          "planned_cases": 3782,
+          "independent_assertions": 39522,
+          "seconds": 4.913,
+          "transcript_sha256": "c57881b7fc50153c4b079d25de5558590e87b475a5aaaa6eb6aea677988e3ffa",
+          "adopted_types": 22
+        },
+        "sanitized": {
+          "passed": true,
+          "cases": 3782,
+          "planned_cases": 3782,
+          "independent_assertions": 39522,
+          "seconds": 9.757,
+          "transcript_sha256": "c57881b7fc50153c4b079d25de5558590e87b475a5aaaa6eb6aea677988e3ffa",
+          "adopted_types": 22
+        }
+      },
+      "affected_regressions": {
+        "normal": {
+          "selected_ctest_suites": 21,
+          "passed": true,
+          "full_ctest_suite_run": false,
+          "seconds": 458.28,
+          "original_TransactionTests": "passed",
+          "reports": {
+            "object-differential-results.json": {
+              "cases": 9464,
+              "passed": 9464
+            },
+            "kissvm-differential-results.json": {
+              "cases": 4471,
+              "passed": 4471
+            },
+            "consensus-differential-results.json": {
+              "cases": 2890,
+              "passed": 2890
+            },
+            "txndb-differential-results.json": {
+              "cases": 2503,
+              "passed": 2503
+            },
+            "transaction-commands-differential-results.json": {
+              "cases": 1129,
+              "passed": 1129
+            },
+            "checker-logs-results.json": {
+              "cases": 1343,
+              "passed": true
+            },
+            "wallet-witness-commands-results.json": {
+              "passed": true
+            },
+            "coin-streams-results.json": {
+              "passed": true
+            },
+            "transaction-input-commands-results.json": {
+              "passed": true
+            },
+            "transaction-check-command-results.json": {
+              "passed": true
+            },
+            "transaction-mining-commands-results.json": {
+              "passed": true
+            },
+            "offline-send-commands-results.json": {
+              "passed": true
+            },
+            "unsigned-send-command-results.json": {
+              "passed": true
+            },
+            "raw-transaction-commands-differential-results.json": {
+              "passed": 656
+            },
+            "custom-address-send-commands-differential-results.json": {
+              "passed": 492
+            },
+            "transaction-history-command-results.json": {
+              "passed": true
+            },
+            "txpow-search-command-results.json": {
+              "passed": true
+            },
+            "token-creation-results.json": {
+              "passed": true
+            },
+            "multisig-results.json": {
+              "passed": true
+            }
+          }
+        },
+        "sanitized": {
+          "selected_ctest_suites": 21,
+          "passed": true,
+          "full_ctest_suite_run": false,
+          "seconds": 1681.41,
+          "original_TransactionTests": "passed",
+          "reports": {
+            "object-differential-results.json": {
+              "cases": 9464,
+              "passed": 9464
+            },
+            "kissvm-differential-results.json": {
+              "cases": 4471,
+              "passed": 4471
+            },
+            "consensus-differential-results.json": {
+              "cases": 2890,
+              "passed": 2890
+            },
+            "txndb-differential-results.json": {
+              "cases": 2503,
+              "passed": 2503
+            },
+            "transaction-commands-differential-results.json": {
+              "cases": 1129,
+              "passed": 1129
+            },
+            "checker-logs-results.json": {
+              "cases": 1343,
+              "passed": true
+            },
+            "wallet-witness-commands-results.json": {
+              "passed": true
+            },
+            "coin-streams-results.json": {
+              "passed": true
+            },
+            "transaction-input-commands-results.json": {
+              "passed": true
+            },
+            "transaction-check-command-results.json": {
+              "passed": true
+            },
+            "transaction-mining-commands-results.json": {
+              "passed": true
+            },
+            "offline-send-commands-results.json": {
+              "passed": true
+            },
+            "unsigned-send-command-results.json": {
+              "passed": true
+            },
+            "raw-transaction-commands-differential-results.json": {
+              "passed": 656
+            },
+            "custom-address-send-commands-differential-results.json": {
+              "passed": 492
+            },
+            "transaction-history-command-results.json": {
+              "passed": true
+            },
+            "txpow-search-command-results.json": {
+              "passed": true
+            },
+            "token-creation-results.json": {
+              "passed": true
+            },
+            "multisig-results.json": {
+              "passed": true
+            }
+          }
+        }
+      },
+      "sphincs_replay": {
+        "normal": {
+          "cases": 268,
+          "passed": 268,
+          "independent_assertions": 1677,
+          "seconds": 7.486,
+          "transcript_sha256": "04c3b45c0b9ca9e4430e5a516ca8599d2540af246d9f98437a9e0f43a08c8618",
+          "performed_full_signing": false,
+          "replayed_vector_sha256": "cf04c5628efbe3eb071826153b44bc9eed7133a48b3fe9e8f3fc4d0ed6b7a7b4"
+        },
+        "sanitized": {
+          "cases": 268,
+          "passed": 268,
+          "independent_assertions": 1677,
+          "seconds": 27.025,
+          "transcript_sha256": "04c3b45c0b9ca9e4430e5a516ca8599d2540af246d9f98437a9e0f43a08c8618",
+          "performed_full_signing": false,
+          "replayed_vector_sha256": "cf04c5628efbe3eb071826153b44bc9eed7133a48b3fe9e8f3fc4d0ed6b7a7b4"
+        }
+      },
+      "active_sessions": {},
+      "completed_sessions": {
+        "final_normal_build": {
+          "id": 79767,
+          "exit_code": 0
+        },
+        "final_sanitized_build": {
+          "id": 20470,
+          "exit_code": 0
+        },
+        "final_normal_tests": {
+          "id": 41796,
+          "exit_code": 0
+        },
+        "final_sanitized_tests": {
+          "id": 10139,
+          "exit_code": 0
+        },
+        "normal_replay": {
+          "id": 8471,
+          "exit_code": 0
+        },
+        "sanitized_replay": {
+          "id": 21851,
+          "exit_code": 0
+        }
+      },
+      "initial_interface": {
+        "cases": 3775,
+        "independent_assertions": 39382,
+        "passed": true,
+        "superseded": "Final suites add seven nullable-verification cases."
+      },
+      "scope": "Transaction common Streamable dispatch, shared lists/caches/flags, source read replacement and state removal, writer prefixes, hash catch/log/null assignment and nullable verification check order. Current native callers adapted.",
+      "open_work": [
+        "22 remaining explicit Streamable implementers and inherited subclasses",
+        "Nullable list entries, child identity and retained StateVariable pointers",
+        "Complete Java collection APIs and fail-fast iteration",
+        "Global shared ZERO_TXPOWID identity and deeper MiniData object identity",
+        "Arbitrary subclasses/copy runtime type, custom streams and reentrant/concurrent mutation",
+        "State-size failing child/allocation paths and complete downstream null/error/value-adapter lifetime audit",
+        "46 absent mapped counterparts and full native node parity"
+      ]
+    }
   }
 }

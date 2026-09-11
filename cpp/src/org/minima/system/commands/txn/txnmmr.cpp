@@ -10,7 +10,7 @@ json::JSONValue txnmmr::runCommand(){
     auto transaction=row->getTransaction();auto witness=row->getWitness();auto proofs=sqlRequired(witness).getAllCoinProofs()->size();
     auto tip=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWTree()).getTip();
     auto current=sqlRequired(tip).getBlockNumber();auto minimum=current.sub(GlobalParams::MINIMA_MMR_PROOF_HISTORY);
-    const auto& coins=sqlRequired(transaction).getAllInputs();
+    const auto coinsOwner=sqlRequired(transaction).getAllInputs();const auto& coins=*coinsOwner;
     for(const auto& input:coins)if(input.getBlockCreated().isMore(minimum))minimum=input.getBlockCreated();
     auto node=tip->getPastNode(minimum);size_t counter=0;
     for(const auto& input:coins){

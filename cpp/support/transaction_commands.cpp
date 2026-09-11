@@ -14,7 +14,7 @@ static JSONValue run(const JSONObject& request){
         auto& op=*std::get<std::shared_ptr<JSONObject>>(value.value);JSONValue result="OK";
         try{
             if(op.containsKey("fixture")){
-                auto fixture=row(op.get("id").asString(),int(std::get<int64_t>(op.get("fixture").value)));fixture->getTransaction()->mHaveCheckedMonotonic=true;fixture->getTransaction()->mIsMonotonic=true;
+                auto fixture=row(op.get("id").asString(),int(std::get<int64_t>(op.get("fixture").value)));fixture->getTransaction()->mHaveCheckedMonotonic()=true;fixture->getTransaction()->mIsMonotonic()=true;
                 fixture->getWitness()->addCoinProof(CoinProof(Coin(MiniData::fromHex("0x01"),MiniData::fromHex("0xab"),MiniNumber::ONE,Token::TOKENID_MINIMA),MMRProof()));Signature signature;signature.addSignatureProof(SignatureProof(MiniData::fromHex("0x11"),MiniData::fromHex("0x22"),MMRProof()));fixture->getWitness()->addSignature(signature);db.addCompleteTransaction(fixture);
             }else if(op.containsKey("line"))result=CommandRunner::getRunner().runMultiCommand(op.containsKey("caller")?op.get("caller").asString():"0x00",op.get("line").asString());
             else{

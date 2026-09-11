@@ -1,0 +1,10 @@
+{
+  "source_mapping_check": "passed",
+  "mapped_java_files": 457,
+  "native_counterparts": 411,
+  "absent": 46,
+  "normal_ctest_entries": 261,
+  "sanitized_ctest_entries": 261,
+  "git_diff_check": "passed",
+  "full_ctest_suite_run": false
+}

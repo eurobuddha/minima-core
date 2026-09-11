@@ -31,7 +31,7 @@ json::JSONValue txnscript::runCommand(){
     auto witness=row->getWitness();std::vector<std::string> addedScripts;
     if(automatic){
         auto transaction=row->getTransaction();auto wallet=sqlRequired(MinimaDB::getDB()).getWallet();
-        for(const auto& input:sqlRequired(transaction).getAllInputs()){
+        for(const auto txnItems=sqlRequired(transaction).getAllInputs();const auto& input:*txnItems){
             if(!sqlRequired(witness).getScript(input.getAddress())){
                 auto scriptRow=sqlRequired(wallet).getScriptFromAddress(input.getAddress().to0xString());
                 if(scriptRow){

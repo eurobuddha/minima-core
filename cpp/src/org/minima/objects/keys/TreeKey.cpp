@@ -35,15 +35,16 @@ Signature TreeKey::sign(const MiniData* data) {
     }
     mUses=std::bit_cast<int32_t>(uint32_t(mUses)+1u);return signature;
 }
-bool TreeKey::verify(const MiniData& data,const Signature* signature) const {
+bool TreeKey::verify(const MiniData& data,const Signature* signature) const {return verify(&data,signature);}
+bool TreeKey::verify(const MiniData* data,const Signature* signature) const {
     if(!signature)throw JavaNullPointerException("Cannot invoke \"org.minima.objects.keys.Signature.getAllSignatureProofs()\" because \"<parameter2>\" is null");
     return verify(data,*signature);
 }
-bool TreeKey::verify(const MiniData& data,const Signature& signature) const {
+bool TreeKey::verify(const MiniData* data,const Signature& signature) const {
     const auto proofs=signature.getAllSignatureProofs();if(proofs->size()>MAX_KEY_LEVELS){log("[!] INVALID KEY found with "+std::to_string(proofs->size())+" levels MAX:"+std::to_string(MAX_KEY_LEVELS));return false;}
     for(size_t depth=0;depth<proofs->size();++depth) {
         const auto& proof=(*proofs)[depth];if(depth==0) {auto root=proof.getRootPublicKey();if(!mPublicKey)throw JavaNullPointerException("");if(!root.isEqual(*mPublicKey))return false;}
-        if(depth==proofs->size()-1) return Winternitz::verify(proof.getPublicKey(),data,proof.getSignature());
+        if(depth==proofs->size()-1) {if(!data)throw JavaNullPointerException("null verification data");return Winternitz::verify(proof.getPublicKey(),*data,proof.getSignature());}
         if(!Winternitz::verify(proof.getPublicKey(),(*proofs)[depth+1].getRootPublicKey(),proof.getSignature())) return false;
     }
     return false;

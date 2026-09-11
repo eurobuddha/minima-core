@@ -30,7 +30,7 @@ Contract::Contract(std::string script,const std::vector<MiniData>& signatures,st
     traceLog("Contract   : "+mRamScript);traceLog("Size       : "+std::to_string(unicode::decodeUTF8(mRamScript).size()));
     traceLog("Transaction   : "+mTransaction->toString());traceLog("Witness       : "+mWitness->toString());
     for(const auto& sig:signatures) {traceLog("Signature : "+sig.to0xString());mSignatures.emplace_back(sig);}
-    for(const auto& state:mTransaction->getCompleteState()) traceLog("State["+std::to_string(state.getPort())+"] : "+state.toString());
+    for(const auto txnItems=mTransaction->getCompleteState();const auto& state:*txnItems) traceLog("State["+std::to_string(state.getPort())+"] : "+state.toString());
     for(const auto& state:mPrevState) traceLog("PrevState["+std::to_string(state.getPort())+"] : "+state.toString());
     try {
         auto tokens=ScriptTokenizer(mRamScript).tokenize();int count=0;
@@ -39,7 +39,7 @@ Contract::Contract(std::string script,const std::vector<MiniData>& signatures,st
     } catch(const std::exception& error) {mException=true;mExceptionString=exceptionString(error);traceLog("PARSE ERROR : "+mExceptionString);}
 }
 void Contract::setGlobals(const MiniNumber& block,const MiniNumber& time,const Transaction& txn,int input,const MiniNumber& created,const std::string& script) {
-    const auto& coin=txn.getAllInputs().at(input);
+    const auto& coin=txn.getAllInputs()->at(input);
     setGlobalVariable("@BLOCK",std::make_shared<NumberValue>(block));setGlobalVariable("@BLOCKMILLI",std::make_shared<NumberValue>(time));
     setGlobalVariable("@CREATED",std::make_shared<NumberValue>(created));setGlobalVariable("@COINAGE",std::make_shared<NumberValue>(block.sub(created)));
     setGlobalVariable("@INPUT",std::make_shared<NumberValue>(int64_t(input)));setGlobalVariable("@COINID",std::make_shared<HexValue>(coin.getCoinID()));
@@ -49,7 +49,7 @@ void Contract::setGlobals(const MiniNumber& block,const MiniNumber& time,const T
     }
     setGlobalVariable("@AMOUNT",std::make_shared<NumberValue>(amount));setGlobalVariable("@ADDRESS",std::make_shared<HexValue>(coin.getAddress()));
     setGlobalVariable("@TOKENID",std::make_shared<HexValue>(coin.getTokenID()));setGlobalVariable("@SCRIPT",std::make_shared<StringValue>(script));
-    setGlobalVariable("@TOTIN",std::make_shared<NumberValue>(int64_t(txn.getAllInputs().size())));setGlobalVariable("@TOTOUT",std::make_shared<NumberValue>(int64_t(txn.getAllOutputs().size())));
+    setGlobalVariable("@TOTIN",std::make_shared<NumberValue>(int64_t(txn.getAllInputs()->size())));setGlobalVariable("@TOTOUT",std::make_shared<NumberValue>(int64_t(txn.getAllOutputs()->size())));
 }
 void Contract::setGlobalVariable(const std::string& name,ValuePtr value) {if(!value) throw std::invalid_argument("Null global value");mGlobals->put(name,value);traceLog("Global ["+name+"] : "+value->toString());}
 ValuePtr Contract::getGlobal(const std::string& name) {auto value=mGlobals->get(name);if(!value) throw ExecutionException("Global not found - "+name);if(name=="@BLOCK"||name=="@BLOCKMILLI"||name=="@COINAGE") mMonotonic=false;return *value;}

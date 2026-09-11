@@ -50,7 +50,7 @@ struct WalletMiningFixture {
         JSONObject value;value.put("calls",calls);JSONArray sent,pending,retained,coins;
         for(const auto& message:posted)sent.add(describe(message));if(miner)for(const auto& message:miner->queue())pending.add(describe(message));
         for(const auto& pow:held)retained.add(MiniData(pow->serialise()).to0xString());
-        if(miner)for(const auto& pow:held)for(const auto* txn:{&pow->getTransaction(),&pow->getBurnTransaction()})for(const auto& coin:txn->getAllInputs())coins.add(miner->checkForMiningCoin(coin.getCoinID().to0xString()));
+        if(miner)for(const auto& pow:held)for(const auto* txn:{&pow->getTransaction(),&pow->getBurnTransaction()})for(const auto txnItems=txn->getAllInputs();const auto& coin:*txnItems)coins.add(miner->checkForMiningCoin(coin.getCoinID().to0xString()));
         value.put("posted",sent);value.put("pending",pending);value.put("held",retained);value.put("coins",coins);return value;
     }
 };

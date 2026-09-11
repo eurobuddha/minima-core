@@ -24,7 +24,7 @@ ScriptProof scriptProof(const ScriptRow& row) {
 void txnutils::setMMRandScripts(Transaction& transaction, Witness& witness, bool exitOnFail) {
     auto tip=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWTree()).getTip();
     std::vector<Coin> inputs;
-    for(const auto& coin:transaction.getAllInputs()) {
+    for(const auto txnItems=transaction.getAllInputs();const auto& coin:*txnItems) {
         if(coin.getCoinID().isEqual(Coin::COINID_ELTOO)) {
             auto current=TxPoWSearcher::getFloatingCoin(tip,coin.getAmount(),coin.getAddress(),coin.getTokenID());
             if(current) inputs.push_back(*current);
@@ -122,7 +122,7 @@ std::shared_ptr<TxnRow> automatic_transaction::create(const std::vector<std::str
     TxPoWGenerator::precomputeTransactionCoinID(*transaction);
     transaction->calculateTransactionID();
     if(sign) for(const auto& key:keys) {
-        auto signature=sqlRequired(wallet).signData(key,transaction->getTransactionID());
+        auto signature=sqlRequired(wallet).signData(key,transaction->getTransactionID().get());
         if(!signature) throw JavaIllegalArgumentException("Cannot add a NULL Signature");
         witness->addSignature(*signature);
     }

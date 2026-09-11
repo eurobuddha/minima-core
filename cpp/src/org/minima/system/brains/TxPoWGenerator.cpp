@@ -115,8 +115,8 @@ std::shared_ptr<TxPoWTreeNode> TxPoWGenerator::getMedianTimeBlock(std::shared_pt
     return nodes.at(nodes.size()/2);
 }
 void TxPoWGenerator::precomputeTransactionCoinID(Transaction& transaction) {
-    const auto& inputs=transaction.getAllInputs();if(inputs.empty()) return;
+    const auto inputsOwner=transaction.getAllInputs();const auto& inputs=*inputsOwner;if(inputs.empty()) return;
     const auto base=inputs[0].getCoinID();int number=0;
-    for(auto& output:transaction.getAllOutputs()) {output.resetCoinID(base.isEqual(Coin::COINID_ELTOO)?Coin::COINID_OUTPUT:transaction.calculateCoinID(base,number));++number;}
+    for(const auto txnItems=transaction.getAllOutputs();auto& output:*txnItems) {output.resetCoinID(base.isEqual(Coin::COINID_ELTOO)?Coin::COINID_OUTPUT:transaction.calculateCoinID(base,number));++number;}
 }
 }

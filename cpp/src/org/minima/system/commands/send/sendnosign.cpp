@@ -179,7 +179,7 @@ json::JSONValue sendnosign::runCommand() {
     if(debug)MinimaLogger::log("Total signatures required : "+std::to_string(signatures.size()));
     std::shared_ptr<TxPoW> pow;
     if(tokenid!="0x00"&&burn.isMore(MiniNumber::ZERO)){
-        auto burned=txnutils::createBurnTransaction(added,transaction->getTransactionID(),burn,false);
+        auto burned=txnutils::createBurnTransaction(added,transaction->transactionIDValue(),burn,false);
         pow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness,burned->getTransaction(),burned->getWitness()));
     }else pow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness));
     pow->calculateTXPOWID();std::filesystem::path file;

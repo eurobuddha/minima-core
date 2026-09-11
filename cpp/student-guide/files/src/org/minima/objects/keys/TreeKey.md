@@ -57,3 +57,7 @@ The SPHINCS integration adds a nullable public-key setter and preserves Java nul
 ## SPHINCS transaction error follow-up
 
 A nullable Signature overload now preserves the source null-dereference boundary, including the observed pinned-JDK diagnostic. Valid references delegate to the existing verifier. See the [transaction lab](../../../../../../new-tests/sphincs-transactions.md).
+
+## Nullable verification data
+
+The pointer-data overload now preserves source rejection order for a null transaction ID: empty/overlong proof lists and mismatching roots return false first; only the final matching proof dereferences the message. A null signature still fails first. The existing value overload delegates to the same verifier. See the [Transaction lab](../../../../../../new-tests/streamable-transaction.md).

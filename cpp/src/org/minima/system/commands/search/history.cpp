@@ -91,7 +91,7 @@ std::shared_ptr<json::JSONObject> history::getTxnDetails(TxPoW* txpow){
             }
         }
     };
-    accumulate(sqlRequired(transaction).getAllInputs(),inputs);accumulate(transaction->getAllOutputs(),outputs);
+    accumulate(*sqlRequired(transaction).getAllInputs(),inputs);accumulate(*transaction->getAllOutputs(),outputs);
     JavaHashMap<bool> tokens;json::JSONObject ins,outs,differences;
     for(const auto& key:inputs.keys()){ins.put(key,inputs.get(key)->toString());tokens.put(key,true);}
     for(const auto& key:outputs.keys()){outs.put(key,outputs.get(key)->toString());tokens.put(key,true);}

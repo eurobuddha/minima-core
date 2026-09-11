@@ -52,8 +52,8 @@ quadratic in the number of inputs, matching the source algorithm.
 `addStateVariable` first removes the same port, inserts the new value, and sorts
 by port. `removeStateVariable` leaves the list alone when no matching port exists;
 when one is found, Java replaces its state-list object and sorts the survivors.
-The native vector currently preserves values and ordering but does not reproduce
-all Java collection-alias identities.
+The native shared record now replaces its owned state-list handle at that same
+point. Retained old lists stay alive; clearState instead empties the current list.
 
 `getTransactionID()` returns a cached hash. `calculateTransactionID()` recomputes
 it from serialization. Surprisingly, `toJSON()` also recomputes it. Therefore,
@@ -62,8 +62,8 @@ looking presentation code is not necessarily free of side effects.
 
 Serialization writes the input count and coins, output count and coins, state
 count and values, and finally the link hash. Counts use MiniNumber's wire format,
-not the C++ vector's in-memory representation. Reading clears the lists and
-reconstructs them in that order before recomputing the transaction ID.
+not the C++ vector's in-memory representation. Reading replaces all three lists before reading the first count, reconstructs
+them in wire order, then recomputes the transaction ID after the complete link hash.
 
 ### How the tests support the translation
 
@@ -87,8 +87,8 @@ fixtures. It also observes cached transaction IDs and validation flags.
 
 This file is still partial. Nullable list entries and Java reference aliases are
 not completely represented by the value-based native containers. The native
-`calculateStateSize()` catch still lacks the source's error logging and has a
-broader exception boundary. Passing amount, wire, and checker fixtures does not
+`calculateStateSize()` now logs source failures and lets Error/allocation failures
+escape, although its failing child paths remain untested. Passing amount, wire, and checker fixtures does not
 establish these remaining behaviors or full-node integration.
 
 **Exercise:** predict which log is last, and whether the cached transaction ID is
@@ -116,3 +116,7 @@ Pinned Java SHA-256: `e523aa0ae28d69ce6069434964e9c0ea12b6bcb085b328f934bfc24a28
 ## Retained coin objects
 
 The [coin ownership lab](../../../../../new-tests/coin-ownership.md) follows a single coin retained in transaction inputs, outputs and a witness proof. Ordinary native Coin copies now share field storage, while explicit deep copies reconstruct independent records. The new experiment checks mutation visibility, container growth/removal/clear and handle reassignment. Other collection and element identities remain separate fidelity questions; consult the lab for measured results and exclusions.
+
+## Shared caches and Streamable follow-up
+
+The [Transaction lab](../../../../../new-tests/streamable-transaction.md) explains owned lists and hash handles, shared flag accessors, partial reads, ID failure timing, direct nested writers and actual checker/signing callers. It distinguishes verified behavior from the remaining default/child/null APIs.

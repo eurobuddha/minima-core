@@ -91,11 +91,11 @@ bool TxPoWChecker::checkTxPoWBasic(const TxPoW& txpow) {
     }
     const auto& transaction=txpow.getTransaction();const auto& burn=txpow.getBurnTransaction();
     if(!basic(txpow.getTxPoWID(),transaction,txpow.getWitness())) return false;
-    if(!transaction.getLinkHash().isEqual(MiniData::ZERO_TXPOWID)){
+    if(!transaction.linkHashValue().isEqual(MiniData::ZERO_TXPOWID)){
         MinimaLogger::log("Invalid LinkHash for Transaction ( NOT 0x00 ) "+txpow.getTxPoWID());return false;
     }
     if(!burn.isEmpty()) {
-        if(!burn.getLinkHash().isEqual(transaction.getTransactionID())){
+        if(!burn.linkHashValue().isEqual(transaction.transactionIDValue())){
             MinimaLogger::log("Invalid LinkHash for Burn Transaction "+txpow.getTxPoWID());return false;
         }
         return basic(txpow.getTxPoWID(),burn,txpow.getBurnWitness());
@@ -106,7 +106,7 @@ bool TxPoWChecker::basic(const std::string& txpowID,const Transaction& transacti
     auto reject=[](const std::string& text){MinimaLogger::log(text);return false;};
     if(transaction.isEmpty()) return true;
     if(!transaction.checkValid())return reject("Invalid Transaction Inputs and Outputs.. "+transaction.toJSON().toJSONString());
-    const auto& inputs=transaction.getAllInputs();
+    const auto inputsOwner=transaction.getAllInputs();const auto& inputs=*inputsOwner;
     if(inputs.empty())return reject("Transaction MUST have at least 1 input @ "+txpowID);
     const auto proofs=witness.getAllCoinProofs();
     if(inputs.size()!=proofs->size())return reject("Wrong Number of MMR Proofs Inputs:"+std::to_string(inputs.size())+" MMRProofs:"+std::to_string(proofs->size())+" @ "+txpowID);
@@ -126,7 +126,7 @@ bool TxPoWChecker::basic(const std::string& txpowID,const Transaction& transacti
         if(coin.getSpent())return reject("Trying to spend spent coin..");
         if(!witness.getScript(input.getAddress()))return reject("Script Missing from TxPoW for address "+input.getAddress().to0xString());
     }
-    for(const auto& coin:transaction.getAllOutputs()) {
+    for(const auto txnItems=transaction.getAllOutputs();const auto& coin:*txnItems) {
         if(!coin.getTokenID().isEqual(Token::TOKENID_MINIMA)&&!coin.getTokenID().isEqual(Token::TOKENID_CREATE)) {
             if(!coin.getToken())return reject("Incorrect output token with NULL token..");
             if(!coin.getToken()->getTokenID())throw JavaNullPointerException("null output tokenid");
@@ -153,12 +153,12 @@ bool TxPoWChecker::checkTxPoWScripts(const MMR*,TxPoW& txpow,const TxPoW& block)
     return scripts(txpow.getTransaction(),txpow.getWitness(),block)&&scripts(txpow.getBurnTransaction(),txpow.getBurnWitness(),block);
 }
 bool TxPoWChecker::scripts(Transaction& transaction,Witness& witness,const TxPoW& block) {
-    if(transaction.isCheckedMonotonic()) return transaction.mIsValid;
-    transaction.mHaveCheckedMonotonic=true;transaction.mIsMonotonic=true;transaction.mIsValid=false;
-    if(transaction.isEmpty()) {transaction.mIsValid=true;return true;}
+    if(transaction.isCheckedMonotonic()) return transaction.mIsValid();
+    transaction.mHaveCheckedMonotonic()=true;transaction.mIsMonotonic()=true;transaction.mIsValid()=false;
+    if(transaction.isEmpty()) {transaction.mIsValid()=true;return true;}
     auto maxops=block.getMagic().getMaxKISSOps().getAsInt();
     const auto proofs=witness.getAllCoinProofs();
-    if(proofs->size()!=transaction.getAllInputs().size()){MinimaLogger::log("Wrong number of MMRProofs("+std::to_string(proofs->size())+") for Inputs("+std::to_string(transaction.getAllInputs().size())+")");return false;}
+    if(proofs->size()!=transaction.getAllInputs()->size()){MinimaLogger::log("Wrong number of MMRProofs("+std::to_string(proofs->size())+") for Inputs("+std::to_string(transaction.getAllInputs()->size())+")");return false;}
     // Contracts execute synchronously; aliases cannot escape this invocation.
     auto txn=std::shared_ptr<Transaction>(&transaction,[](Transaction*){});
     auto wit=std::shared_ptr<Witness>(&witness,[](Witness*){});
@@ -168,7 +168,7 @@ bool TxPoWChecker::scripts(Transaction& transaction,Witness& witness,const TxPoW
         auto run=[&](const std::string& script,bool tokenScript) {
             kissvm::Contract contract(script,witness.getAllSignatureKeys(),wit,txn,coin.getState());
             contract.setMaxInstructions(maxops);contract.setGlobals(block.getBlockNumber(),block.getTimeMilli(),transaction,int(i),coin.getBlockCreated(),script);contract.run();
-            if(!contract.isMonotonic()) transaction.mIsMonotonic=false;
+            if(!contract.isMonotonic()) transaction.mIsMonotonic()=false;
             if(!contract.isSuccess())MinimaLogger::log(std::string(tokenScript?"Token Script FAIL input:":"Script FAIL input:")+std::to_string(i)+" "+(GeneralParams::SCRIPTLOGS?contract.getCompleteTraceLog():script));
             return contract.isSuccess();
         };
@@ -181,7 +181,7 @@ bool TxPoWChecker::scripts(Transaction& transaction,Witness& witness,const TxPoW
             if(script!="RETURN TRUE"&&!run(script,true)) return false;
         }
     }
-    transaction.mIsValid=true;return true;
+    transaction.mIsValid()=true;return true;
 }
 bool TxPoWChecker::checkMMR(const MMR& tip,const TxPoW& txpow,bool log) {
     return checkMMR(&tip,txpow,log);
@@ -199,7 +199,7 @@ bool TxPoWChecker::checkMMR(const MMR* tip,const TxPoW& txpow,bool log) {
 bool TxPoWChecker::checkSignatures(const TxPoW& txpow) {
     auto check=[&](const Transaction& txn,const Witness& wit) {
         const auto transactionID=txn.getTransactionID();
-        for(const auto witnessItems=wit.getAllSignatures();const auto& sig:*witnessItems) {TreeKey key;key.setPublicKey(sig.getRootPublicKey());if(!key.verify(transactionID,sig)){MinimaLogger::log("SIGNATURE FAIL : "+txpow.getTxPoWID());return false;}}
+        for(const auto witnessItems=wit.getAllSignatures();const auto& sig:*witnessItems) {TreeKey key;key.setPublicKey(sig.getRootPublicKey());if(!key.verify(transactionID.get(),sig)){MinimaLogger::log("SIGNATURE FAIL : "+txpow.getTxPoWID());return false;}}
         return true;
     };
     return check(txpow.getTransaction(),txpow.getWitness())&&check(txpow.getBurnTransaction(),txpow.getBurnWitness());

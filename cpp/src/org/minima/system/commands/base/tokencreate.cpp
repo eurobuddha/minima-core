@@ -110,8 +110,8 @@ json::JSONValue tokencreate::runCommand(){
     Coin recipient(Coin::COINID_OUTPUT,sendAddress,color,Token::TOKENID_CREATE,true);
     if(existsParam("webvalidate"))name->put("webvalidate",getParam("webvalidate"));
     if(existsParam("signtoken")){
-        if(transaction->getAllInputs().empty())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index 0 out of bounds for length 0");
-        auto first=transaction->getAllInputs().front().getCoinID();auto id=transaction->calculateCoinID(first,0);auto publicKey=getParam("signtoken");
+        if(transaction->getAllInputs()->empty())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index 0 out of bounds for length 0");
+        auto first=transaction->getAllInputs()->front().getCoinID();auto id=transaction->calculateCoinID(first,0);auto publicKey=getParam("signtoken");
         auto signature=sqlRequired(wallet).signData(publicKey,id);auto data=MiniData(sqlRequired(signature).serialise());
         name->put("signtype","minima");name->put("signedby",publicKey);name->put("signature",data.to0xString());
     }
@@ -127,7 +127,7 @@ json::JSONValue tokencreate::runCommand(){
         transaction->addStateVariable(StateVariable(number,*text));
     }
     TxPoWGenerator::precomputeTransactionCoinID(*transaction);transaction->calculateTransactionID();
-    for(const auto& key:signatures)witness->addSignature(sqlRequired(wallet).signData(key,transaction->getTransactionID()));
+    for(const auto& key:signatures)witness->addSignature(sqlRequired(wallet).signData(key,transaction->getTransactionID().get()));
     auto pow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness));pow->calculateTXPOWID();
     auto active=txnutils::getMiner();
     if(mineSync){if(!sqlRequired(active).MineMaxTxPoW(false,pow,120000))throw CommandException("FAILED TO MINE txn in 120 seconds !?");}

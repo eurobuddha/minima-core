@@ -33,13 +33,13 @@ TxPoWMiner::TxPoWMiner(TxPoWMinerServices services):MessageProcessor("MINER",ser
 }
 std::shared_ptr<TxPoWMiner> TxPoWMiner::create(TxPoWMinerServices services){auto miner=std::shared_ptr<TxPoWMiner>(new TxPoWMiner(std::move(services)));miner->startMessageProcessor();return miner;}
 void TxPoWMiner::addMiningCoins(const std::shared_ptr<TxPoW>& txpow){
-    auto add=[&](const Transaction& txn){if(!txn.isEmpty())for(const auto& coin:txn.getAllInputs()){
+    auto add=[&](const Transaction& txn){if(!txn.isEmpty())for(const auto txnItems=txn.getAllInputs();const auto& coin:*txnItems){
         auto id=coin.getCoinID().to0xString();std::lock_guard lock(mCoinsLock);
         if(std::find(mMiningCoins.begin(),mMiningCoins.end(),id)==mMiningCoins.end())mMiningCoins.push_back(std::move(id));
     }};add(required(txpow).getTransaction());add(txpow->getBurnTransaction());
 }
 void TxPoWMiner::removeMiningCoins(const std::shared_ptr<TxPoW>& txpow){
-    auto remove=[&](const Transaction& txn){if(!txn.isEmpty())for(const auto& coin:txn.getAllInputs()){
+    auto remove=[&](const Transaction& txn){if(!txn.isEmpty())for(const auto txnItems=txn.getAllInputs();const auto& coin:*txnItems){
         auto id=coin.getCoinID().to0xString();std::lock_guard lock(mCoinsLock);
         auto it=std::find(mMiningCoins.begin(),mMiningCoins.end(),id);if(it!=mMiningCoins.end())mMiningCoins.erase(it);
     }};remove(required(txpow).getTransaction());remove(txpow->getBurnTransaction());

@@ -32,7 +32,7 @@ json::JSONValue createtokenfrom::runCommand(){
     Coin output(Coin::COINID_OUTPUT,MiniData::fromHex(from),minimamount,Token::TOKENID_CREATE,true);
     Token token(Coin::COINID_OUTPUT,MiniNumber(scale),minimamount,MiniString(name->toJSONString()),MiniString("RETURN TRUE"));output.setToken(token);
     auto db=sqlRequired(MinimaDB::getDB()).getCustomTxnDB();auto row=sqlRequired(db).getTransactionRow(id);auto transaction=sqlRequired(row).getTransaction();
-    auto& outputs=sqlRequired(transaction).getAllOutputs();
+    const auto outputsOwner=sqlRequired(transaction).getAllOutputs();auto& outputs=*outputsOwner;
     if(outputs.empty())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index 0 out of bounds for length 0");
     outputs[0]=output;
     runCommand("txnscript id:"+id+" scripts:{\""+script+"\":\"\"}");runCommand("txnmmr id:"+id);

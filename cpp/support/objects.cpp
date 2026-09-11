@@ -62,14 +62,14 @@ static std::string coinAliases(int n,int growth,int mode) {
     auto renamed=c.getSameCoinWithCoinID(MiniData::fromHex("0xCAFE"));
     Transaction txn;txn.addInput(c);txn.addInput(c);txn.addOutput(c);
     CoinProof cp(c,MMRProof(MiniNumber(42)));Witness witness;witness.addCoinProof(cp);
-    auto held=txn.getAllInputs().at(0);
+    auto held=txn.getAllInputs()->at(0);
     for(int i=0;i<growth;++i) {txn.addInput(coin(i%32));witness.addCoinProof(CoinProof(coin(i%32),MMRProof()));}
-    auto removed=txn.getAllInputs().at(0);txn.getAllInputs().erase(txn.getAllInputs().begin());
+    auto removed=txn.getAllInputs()->at(0);txn.getAllInputs()->erase(txn.getAllInputs()->begin());
     auto bytes=cp.serialise();size_t offset=0;auto decoded=CoinProof::deserialise(bytes,offset);
     Coin* target=nullptr;
     switch(mode) {
         case 0:target=&c;break;case 1:target=&alias;break;case 2:target=&held;break;case 3:target=&removed;break;
-        case 4:target=&txn.getAllInputs().at(0);break;case 5:target=&txn.getAllOutputs().at(0);break;
+        case 4:target=&txn.getAllInputs()->at(0);break;case 5:target=&txn.getAllOutputs()->at(0);break;
         case 6:target=&cp.getCoin();break;case 7:target=&witness.getAllCoinProofs()->at(0).getCoin();break;
         case 8:target=&detached;break;case 9:target=&renamed;break;case 10:target=&decoded.getCoin();break;
         default:throw std::invalid_argument("Invalid coin alias mode");
@@ -80,10 +80,10 @@ static std::string coinAliases(int n,int growth,int mode) {
     target->setMMREntryNumber(MMREntryNumber(BigInt("1267650600228229401496703205376")));
     target->setToken(std::nullopt);target->getState().emplace_back(255,"[shared mutation]");
     auto first=result(c)+"|"+result(alias)+"|"+result(held)+"|"+result(removed)
-        +"|"+result(txn.getAllInputs().at(0))+"|"+result(txn.getAllOutputs().at(0))
+        +"|"+result(txn.getAllInputs()->at(0))+"|"+result(txn.getAllOutputs()->at(0))
         +"|"+result(cp)+"|"+result(witness.getAllCoinProofs()->at(0))+"|"+result(cp.getMMRData())
         +"|"+result(detached)+"|"+result(renamed)+"|"+result(decoded);
-    txn.getAllInputs().clear();txn.getAllOutputs().clear();witness.clearCoinProofs();
+    txn.getAllInputs()->clear();txn.getAllOutputs()->clear();witness.clearCoinProofs();
     held.setState({});held.setToken(coin(1).getToken());
     alias=coin((n+1)%32);
     return first+"|"+result(c)+"|"+result(cp)+"|"+result(removed)+"|"+result(alias)

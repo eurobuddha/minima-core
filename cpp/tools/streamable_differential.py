@@ -19,6 +19,9 @@ def script_root(n):
         current=hashlib.sha3_256(number(1)+data(left)+data(right)+number(total)).digest()
     return hx(current)
 
+def transaction_lists(n):return [[coin(n)],[coin(n+1)],[statevar(n),statevar(n+2),statevar(n)]]
+def transaction(n):return b"".join(number(len(items))+b"".join(items) for items in transaction_lists(n))+data(bytes([n+10]))
+
 def witness_lists(n):return [[encode(i+1) for i in range(n)] for encode in [wots,coinproof,scriptproof]]
 def witness(n):return b"".join(number(len(items))+b"".join(items) for items in witness_lists(n))
 
@@ -34,7 +37,7 @@ def sphincs(n):return wots(n)+data(bytes([n+61]))+number(n+70)+fors(n)
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');build=ap.parse_args().build.resolve();started=time.monotonic();oracle=build/'streamable-oracle';oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/StreamableOracle.java'];listing=oracle/'sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
-    adopted={'MiniByte','MMRProof','HORSTSignature','FORSSignature','SPHINCSSignature','MMRData','MMREntryNumber','MMREntry','MMRProofChunk','SignatureProof','Signature','MiniData','MiniNumber','MiniString','StateVariable','Address','ScriptProof','Token','Coin','CoinProof','Witness'};implementations=[]
+    adopted={'MiniByte','MMRProof','HORSTSignature','FORSSignature','SPHINCSSignature','MMRData','MMREntryNumber','MMREntry','MMRProofChunk','SignatureProof','Signature','MiniData','MiniNumber','MiniString','StateVariable','Address','ScriptProof','Token','Coin','CoinProof','Witness','Transaction'};implementations=[]
     for path in sorted((JAVA/'src').rglob('*.java')):
         source=re.sub(r'/\*.*?\*/|//[^\n]*','',path.read_text(),flags=re.S)
         for name in re.findall(r'\bclass\s+(\w+)[^{]*?\bimplements\s+Streamable\b',source):implementations.append(dict(java=str(path.relative_to(JAVA)),type=name,native_interface_adopted=name in adopted))
@@ -50,7 +53,7 @@ def main():
             for kind,encode in [('mmrdata',mmrdata),('entrynumber',entrynumber),('entry',entry),('chunk',lambda n:bytes([n%2])+mmrdata(n)),('signatureproof',signatureproof),('signature',wots)]:initial[kind]=encode(1);changed[kind]=encode(2)
             initial.update(data=data(b'\x11\x22'),number=number(7),string=data('old'.encode()))
             changed.update(data=data(b'\x80\x00\xff'),number=number(-129),string=data('new🐼'.encode()))
-            for kind,encode in [('state',statevar),('address',address),('scriptproof',scriptproof),('token',token),('coin',coin),('coinproof',coinproof),('witness',witness)]:initial[kind]=encode(1);changed[kind]=encode(2)
+            for kind,encode in [('state',statevar),('address',address),('scriptproof',scriptproof),('token',token),('coin',coin),('coinproof',coinproof),('witness',witness),('transaction',transaction)]:initial[kind]=encode(1);changed[kind]=encode(2)
             for kind,base in initial.items():
                 target=changed[kind]
                 cases.append(dict(kind=kind,op='write',initial=hx(base)))
@@ -60,6 +63,18 @@ def main():
                     cases.append(dict(kind=kind,op='read',initial=hx(base),wire=hx(b'\xaa'*offset+target+b'\x88\x99'),offset=offset))
                 if kind not in ['byte','data','string']:
                     for prefix in [number(-1),number(2**32),b'\x00\xff',b'\x00\x21']:cases.append(dict(kind=kind,op='read',initial=hx(base),wire=hx(prefix),offset=0))
+            for op in ['transactionAdd','transactionClear','transactionFlags','transactionJSON','transactionNullLink']:
+                q=dict(kind='transaction',op=op,initial=hx(transaction(1)),transactionExtra=True)
+                if op=='transactionNullLink':q['expectedLogs']=['java.lang.NullPointerException']
+                cases.append(q)
+            for mode,verified in [('checkerEmpty',True),('checkerProof',None),('empty',False),('mismatch',False),('excess',False),('root',None),('nullSignature',None)]:
+                cases.append(dict(kind='transaction',op='transactionNullLink',initial=hx(transaction(1)),transactionExtra=True,expectedLogs=['java.lang.NullPointerException'],verifyMode=mode,expectedVerified=verified))
+            for port in [1,3,99]:cases.append(dict(kind='transaction',op='transactionRemove',initial=hx(transaction(1)),port=port,transactionExtra=True))
+            for fault in ['io','runtime','error']:
+                cases.append(dict(kind='transaction',op='transactionFault',initial=hx(transaction(1)),fault=fault,transactionExtra=True,expectedLogs=[] if fault=='error' else ['java.io.IOException' if fault=='io' else 'java.lang.IllegalArgumentException']))
+            ins,outs,states=[number(len(items))+b''.join(items) for items in transaction_lists(1)]
+            for fault,partial in [('input',number(2)+coin(1)),('output',ins+number(2)+coin(2)),('link',ins+outs+states)]:
+                cases.append(dict(kind='transaction',op='badwrite',initial='0x',base=hx(transaction(1)),fault=fault,transactionExtra=True,expectedWrite=dict(appended=hx(b'\xaa\x55'+partial),writeError='java.io.IOException')))
             for op in ['witnessClear','witnessDuplicates']:
                 cases.append(dict(kind='witness',op=op,initial=hx(witness(1)),witnessExtra=True))
             for target in [number(0)*3,number(-1)*3,number(2**32)*3]:
@@ -137,6 +152,44 @@ def main():
                         n=2 if q['op']=='callers' or (q['op']=='read' and 'readError' not in value) else 1
                         expected=hx(hashlib.sha3_256(data(token(n))).digest()) if q['kind']=='token' else script_root(n)
                         check(value['derived']==expected,'derived identity updates only after complete prerequisite reads')
+                    if q['kind']=='transaction':
+                        check(value['transactionAlias']==value['state'] and value['containingTransaction']==value['state'],'Transaction copies and real TxPoW setters retain shared object state')
+                        check(value['ownerFlags']==value['containingFlags']==value['transactionFlags']==([False,True,False] if q['op']=='transactionFlags' else [True]*3),'reads and ID calculations preserve cached flags; explicit clears share state')
+                        base=transaction(1);old_id=hx(hashlib.sha3_256(base).digest());expected_id=old_id
+                        if q['op']=='callers' or (q['op']=='read' and 'readError' not in value):expected_id=hx(hashlib.sha3_256(bytes.fromhex(value['state']['appended'][6:])).digest())
+                        if q['op']=='transactionNullLink' or (q['op']=='transactionFault' and q['fault']!='error'):expected_id=None
+                        check(value['oldID']==old_id and value['transactionID']==expected_id,'retained ID survives while current ID follows completed reads and catch/null failure boundary')
+                        check(value['sameID']==(q['op'] not in ['callers','transactionJSON','transactionNullLink'] and not(q['op']=='read' and 'readError' not in value) and not(q['op']=='transactionFault' and q['fault']!='error')),'ID handle replaced only after hashing returns')
+                        if 'expectedWrite' in q:check(value['state']==q['expectedWrite'],'Transaction writer preserves previous lists/counts before invalid child or link hash')
+                        if q['op']=='transactionFault' or q['op']=='transactionNullLink':check(value.get('calculationError')==('java.lang.AssertionError' if q.get('fault')=='error' else 'java.lang.IllegalArgumentException'),'Errors escape before ID assignment; caught exceptions log, null the ID, then reject')
+                        if q['op'] in ['write','read','callers','transactionJSON','transactionFlags','transactionFault','transactionNullLink']:
+                            check(value['oldTransaction']==dict(appended=hx(b'\xaa\x55'+base)),'retained old transaction lists and link keep their complete bytes')
+                            check(value['sameTransactionLists']==([False]*3 if q['op'] in ['read','callers'] else [True]*3),'all three transaction lists replace before the first count read')
+                        if q['op']=='read':
+                            incoming=bytes.fromhex(q['wire'][2:])[q['offset']:];target=transaction(2)
+                            if target.startswith(incoming) or incoming.startswith(target):
+                                consumed=min(len(incoming),len(target));cursor=0;partial=[];counts=[]
+                                for items in transaction_lists(2):
+                                    cursor+=len(number(len(items)));kept=[]
+                                    for item in items:
+                                        cursor+=len(item)
+                                        if consumed>=cursor:kept.append(item)
+                                    counts.append(len(kept));partial.append(number(len(kept))+b''.join(kept))
+                                link=data(bytes([12 if consumed==len(target) else 11]));expected=b''.join(partial)+link
+                                check(value['state']==dict(appended=hx(b'\xaa\x55'+expected)) and value['transactionCounts']==counts,'independent complete-child partial Transaction model')
+                                check(value['stateSize']==len(partial[2]) and value['sameLink']==(consumed<len(target)),'state size uses current list; link assigns only after full hash read')
+                                check(value['offset']==q['offset']+consumed and value.get('readError')==('java.io.EOFException' if consumed<len(target) else None),'transaction read consumes exact prefix and leaves trailing bytes')
+                        if q['op'] in ['transactionRemove','transactionAdd','transactionClear']:
+                            old_items=transaction_lists(1);items=list(old_items[2]);replaced=False
+                            if q['op']=='transactionClear':items=[];old_items[2]=[]
+                            elif q['op']=='transactionRemove':
+                                replaced=q['port'] in [1,3];items=sorted((item for item in items if item[0]!=q['port']),key=lambda item:item[0]) if replaced else items
+                            else:replaced=True;items=[bytes([1,4])+data(b'[replacement]'),statevar(3)]
+                            expected=b''.join(number(len(x))+b''.join(x) for x in old_items[:2])+number(len(items))+b''.join(items)+data(b'\x0b')
+                            previous=b''.join(number(len(x))+b''.join(x) for x in old_items)+data(b'\x0b')
+                            check(value['sameTransactionLists']==[True,True,not replaced] and value['state']==dict(appended=hx(b'\xaa\x55'+expected)) and value['oldTransaction']==dict(appended=hx(b'\xaa\x55'+previous)),'remove replaces only on match, sorts survivors and removes duplicates; clear mutates old state')
+                        if 'verifyMode' in q:check(value.get('verified')==q['expectedVerified'] and value.get('verifyError')==('java.lang.NullPointerException' if q['expectedVerified'] is None else None),'nullable ID reaches actual checker and TreeKey; signature/root/level checks precede data dereference')
+                        if q.get('transactionExtra'):continue
                     if q['kind']=='witness':
                         check(value['witnessAlias']==value['state'] and value['containingWitness']==value['state'],'Witness copy and TxPoW setter retain the same underlying object')
                         if 'expectedWrite' in q:check(value['state']==q['expectedWrite'],'Witness nested failure preserves prior lists, count and child prefix')
@@ -221,6 +274,6 @@ def main():
                 err.seek(0);stderr=err.read()
                 if which==1 and stderr:failures.append(dict(phase='native stderr',stderr=stderr))
     if count!=len(cases):failures.append(dict(phase='case accounting',executed=count,planned=len(cases)))
-    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,explicit_source_implementations=implementations,adopted_types=len(adopted),scope='Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof, Signature, MiniData, MiniNumber, MiniString, StateVariable, Address, ScriptProof, Token, Coin, CoinProof and Witness. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Includes per-field MMR/signature readers, explicit flags, retained lists, scalar in-place assignment timing, MiniData zero-filled partial payloads and retained numeric cache with comparisons/shifts. Adds source-ordered object reads, derived identity timing, nested coin/state/token writer prefixes and actual Token failure logging. Witness shared container aliases, owned list replacement, clear/deduplication, TxPoW setter aliases and independent partial-list serialization. Prior twenty-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished.')
+    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,explicit_source_implementations=implementations,adopted_types=len(adopted),scope='Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof, Signature, MiniData, MiniNumber, MiniString, StateVariable, Address, ScriptProof, Token, Coin, CoinProof, Witness and Transaction. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Includes per-field MMR/signature readers, explicit flags, retained lists, scalar in-place assignment timing, MiniData zero-filled partial payloads and retained numeric cache with comparisons/shifts. Adds source-ordered object reads, derived identity timing, nested coin/state/token writer prefixes and actual Token failure logging. Witness shared container aliases, owned list replacement, clear/deduplication, TxPoW setter aliases and independent partial-list serialization. Transaction shared caches and list ownership, nullable ID failure timing and derived writer dispatch. Prior twenty-one-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished.')
     (build/'streamable-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

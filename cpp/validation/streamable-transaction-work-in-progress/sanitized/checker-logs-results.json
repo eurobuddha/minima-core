@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "cases": 1343,
+  "fixtures": 100,
+  "failures": [],
+  "scope": "Actual pinned basic/simple/script/MMR/signature checks and native methods using source consensus fixtures, duplicate-ID set capacity transitions and invalid input amount. Exact rejection logs, optional MMR logging, token script labels, selected full VM traces, failed logger propagation, cache flags and transaction IDs. Java-generated NPE diagnostic expressions excluded; categories and all other text compared. Complete object aliases, null list entries and full node integration remain unverified."
+}

@@ -31,8 +31,8 @@ void TransactionTest::main() {
     // Preserve this demo's fixed script key/one iteration and absence of the
     // SPHINCSUtils precomputeTransactionCoinID/calculateTransactionID calls.
     kissvm::Contract contract(script,std::vector<MiniData>{},witness,transaction,{},false);
-    contract.setGlobalVariable("@TOTIN",std::make_shared<kissvm::NumberValue>(int64_t(transaction->getAllInputs().size())));
-    contract.setGlobalVariable("@TOTOUT",std::make_shared<kissvm::NumberValue>(int64_t(transaction->getAllOutputs().size())));
+    contract.setGlobalVariable("@TOTIN",std::make_shared<kissvm::NumberValue>(int64_t(transaction->getAllInputs()->size())));
+    contract.setGlobalVariable("@TOTOUT",std::make_shared<kissvm::NumberValue>(int64_t(transaction->getAllOutputs()->size())));
     contract.run();log(std::string("Valid Contract : ")+(contract.isSuccess()?"true":"false"));
     log("Operations     : "+std::to_string(contract.getNumberOfInstructions()));
     log("Variables      : "+contract.getAllVariables().toJSONString());

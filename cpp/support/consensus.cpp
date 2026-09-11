@@ -9,7 +9,7 @@ using namespace minima;
 static std::string str(bool b){return b?"true":"false";}
 template<class F> static std::string result(F op){try {if constexpr(std::is_same_v<decltype(op()),bool>)return str(op());else return op();}catch(const std::exception&){return "ERROR";}}
 template<class T> static T read(std::istream& in){std::string s;in>>s;auto bytes=BaseConverter::decode16(s);size_t offset=0;return T::deserialise(bytes,offset);}
-static std::string flags(const TxPoW& t){const auto& a=t.getTransaction();const auto& b=t.getBurnTransaction();return str(a.mHaveCheckedMonotonic)+":"+str(a.mIsMonotonic)+":"+str(a.mIsValid)+":"+str(b.mHaveCheckedMonotonic)+":"+str(b.mIsMonotonic)+":"+str(b.mIsValid);}
+static std::string flags(const TxPoW& t){const auto& a=t.getTransaction();const auto& b=t.getBurnTransaction();return str(a.mHaveCheckedMonotonic())+":"+str(a.mIsMonotonic())+":"+str(a.mIsValid())+":"+str(b.mHaveCheckedMonotonic())+":"+str(b.mIsMonotonic())+":"+str(b.mIsValid());}
 static std::string generate(std::istream& in){
     auto mmr=read<MMR>(in);auto source=read<TxPoW>(in);int count,own,reject;std::string hash,time,max;in>>count>>own>>reject>>hash>>time>>max;
     TxPoW parent;parent.setBlockNumber(mmr.getBlockTime());parent.setTimeMilli(MiniNumber(time));parent.setBlockDifficulty(Magic::MIN_TXPOW_WORK);parent.getMagic().mCurrentMaxTxnPerBlock=MiniNumber(max);parent.getMagic().mDesiredMaxTxnPerBlock=MiniNumber(max);parent.getTxBody()->mPRNG=MiniData::fromHex("0x12");for(int i=0;i<GlobalParams::MINIMA_CASCADE_LEVELS;++i)parent.setSuperParent(i,MiniData::ZERO_TXPOWID);parent.setHeaderBodyHash();parent.calculateTXPOWID();

@@ -70,8 +70,8 @@ json::JSONValue sphincs::runCommand(){
         child=runCommand("txnaddamount id:"+id+" fromaddress:"+source.getMinimaAddress()+" address:"+address+" amount:"+amount.toString()+" tokenid:"+tokenid.to0xString());
         if(!command_result::status(child)){runCommand("txndelete id:"+id);command_result::reject(child);}
         auto db=sqlRequired(MinimaDB::getDB()).getCustomTxnDB();auto row=sqlRequired(db).getTransactionRow(id);auto transaction=sqlRequired(row).getTransaction();
-        if(sqlRequired(transaction).getAllInputs().size()>8){runCommand("txndelete id:"+id);throw CommandException("Input Coin number too great.. MAX 8. Pls Send a smaller amount.");}
-        for(auto& coin:transaction->getAllOutputs())coin.setStoreState(false);
+        if(sqlRequired(transaction).getAllInputs()->size()>8){runCommand("txndelete id:"+id);throw CommandException("Input Coin number too great.. MAX 8. Pls Send a smaller amount.");}
+        for(const auto txnItems=transaction->getAllOutputs();auto& coin:*txnItems)coin.setStoreState(false);
         auto message=SPHINCSUtils::calculateTransactionID(transaction.get());auto signature=signer.signMessage(message);SPHINCSUtils::setupTransaction(transaction.get(),&signature);
         runCommand("txnscript id:"+id+" scripts:{\""+script+"\":\"\"}");runCommand("txnmmr id:"+id);
         child=runCommand("txnpost id:"+id+" mine:"+(mine?"true":"false"));runCommand("txndelete id:"+id);

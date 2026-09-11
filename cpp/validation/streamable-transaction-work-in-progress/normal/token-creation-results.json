@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 335,
+  "total_programs": 335,
+  "operations": 1349,
+  "sql_calls": 26719,
+  "failures": [],
+  "scope": "Actual tokencreate with real wallet, MMR proofs, token/transaction signatures, generator, queued/synchronous miner and recording SQL. Exact replies/wire/effects and shared-name mutation. Independent coloring/conservation/supply/signature checks. Generated PRNG fixed at existing miner entry fixture; selected VM diagnostic prose normalized. No durable SQL, network acceptance, arbitrary inherited/reference/concurrency or full native-node parity certification."
+}

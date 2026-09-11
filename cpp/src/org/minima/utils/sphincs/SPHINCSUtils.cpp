@@ -15,7 +15,7 @@ std::string SPHINCSUtils::getOutCoinString(const Coin& coin) {
     return detail::formatOutputCoin(coin,"SPHINCS","SPHINCS");
 }
 MiniData SPHINCSUtils::calculateTransactionID(const Transaction* transaction) {
-    const auto& inputs=required(transaction).getAllInputs();const auto& outputs=transaction->getAllOutputs();
+    const auto inputsOwner=required(transaction).getAllInputs();const auto& inputs=*inputsOwner;const auto outputsOwner=transaction->getAllOutputs();const auto& outputs=*outputsOwner;
     if(inputs.empty())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index 0 out of bounds for length 0");
     auto input=inputs[0].getCoinID().to0xString();for(size_t i=1;i<inputs.size();++i)input+=inputs[i].getCoinID().to0xString();
     std::string output;for(const auto& coin:outputs)output+=getOutCoinString(coin);

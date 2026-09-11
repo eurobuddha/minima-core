@@ -220,7 +220,7 @@ json::JSONValue send::runCommand() {
         if(tokenid!="0x00"){output.resetTokenID(MiniData::fromHex(tokenid));output.setToken(token);}
         transaction->addOutput(output);if(debug)MinimaLogger::log("Change Output : "+output.toJSON().toJSONString());
     }
-    auto outputCount=transaction->getAllOutputs().size();
+    auto outputCount=transaction->getAllOutputs()->size();
     if(int64_t(outputCount)>GeneralParams::MAX_RELAY_OUTPUTCOINS)throw CommandException("Too many outputs "+std::to_string(outputCount)+" - will not be relayed by network");
     for(const auto& [port,value]:sqlRequired(state).entries())transaction->addStateVariable(StateVariable(javaParseInt(unicode::encodeUTF8(port)),stateText(value)));
     TxPoWGenerator::precomputeTransactionCoinID(*transaction);transaction->calculateTransactionID();
@@ -234,14 +234,14 @@ json::JSONValue send::runCommand() {
     }else MinimaLogger::log("DRYRUN so NOT Unlocking password DB");
     for(const auto& key:signatures){
         if(debug)MinimaLogger::log("Signing transction with : "+key.value_or("null"));
-        if(!dryrun){try{witness->addSignature(sqlRequired(wallet).signData(key,transaction->getTransactionID()));}
+        if(!dryrun){try{witness->addSignature(sqlRequired(wallet).signData(key,transaction->getTransactionID().get()));}
             catch(const JavaError&){throw;}catch(const std::bad_alloc&){throw;}
             catch(const std::exception& error){throw CommandException(nativeExceptionText(error));}}
         else MinimaLogger::log("DRY RUN - not signing");
     }
     std::shared_ptr<TxPoW> pow;
     if(tokenid!="0x00"&&burn.isMore(MiniNumber::ZERO)){
-        auto burned=txnutils::createBurnTransaction(added,transaction->getTransactionID(),burn);
+        auto burned=txnutils::createBurnTransaction(added,transaction->transactionIDValue(),burn);
         pow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness,burned->getTransaction(),burned->getWitness()));
     }else pow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness));
     pow->calculateTXPOWID();auto size=pow->getSizeinBytesWithoutBlockTxns();auto maximum=tip->getTxPoW().getMagic().getMaxTxPoWSize().getAsLong();
@@ -258,8 +258,8 @@ json::JSONValue send::runCommand() {
         json::JSONObject sizes,inputcoins,outputcoins;sizes.put("txpow",pow->getSizeinBytes());
         // Searcher de-duplicates input IDs; precompute generates each output ID.
         // Their string representations are the keys emitted by Java's JSON writer.
-        for(const auto& coin:pow->getTransaction().getAllInputs())inputcoins.put(coin.getCoinID().to0xString(),int64_t(coin.serialise().size()));
-        for(const auto& coin:pow->getTransaction().getAllOutputs())outputcoins.put(coin.getCoinID().to0xString(),int64_t(coin.serialise().size()));
+        for(const auto txnItems=pow->getTransaction().getAllInputs();const auto& coin:*txnItems)inputcoins.put(coin.getCoinID().to0xString(),int64_t(coin.serialise().size()));
+        for(const auto txnItems=pow->getTransaction().getAllOutputs();const auto& coin:*txnItems)outputcoins.put(coin.getCoinID().to0xString(),int64_t(coin.serialise().size()));
         sizes.put("inputcoins",inputcoins);sizes.put("outputcoins",outputcoins);sizes.put("witness",int64_t(pow->getWitness().serialise().size()));result.put("bytesize",sizes);
     }
     return result;

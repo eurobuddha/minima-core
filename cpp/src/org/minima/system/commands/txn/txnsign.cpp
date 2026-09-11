@@ -50,22 +50,22 @@ json::JSONValue txnsign::runCommand(){
     auto wallet=sqlRequired(MinimaDB::getDB()).getWallet();json::JSONArray missing,found,nonsimple;json::JSONObject response;bool passwordLock=false;
     if(existsParam("password")&&!sqlRequired(sqlRequired(MinimaDB::getDB()).getWallet()).isBaseSeedAvailable()){vault::passowrdUnlockDB(getParam("password"));passwordLock=true;}
     if(publicKey=="auto"){
-        for(const auto& coin:transaction->getAllInputs()){
+        for(const auto txnItems=transaction->getAllInputs();const auto& coin:*txnItems){
             auto script=sqlRequired(wallet).getScriptFromAddress(coin.getAddress().to0xString());
             if(!script){missing.add(coin.getAddress().to0xString());continue;}
             if(!script->isSimple()){nonsimple.add(script->getAddress()?json::JSONValue(*script->getAddress()):json::JSONValue());continue;}
             if(!sqlRequired(witness).isSignedBy(script->getPublicKey())){
                 found.add(script->getPublicKey()?json::JSONValue(*script->getPublicKey()):json::JSONValue());
-                auto signature=wallet->signData(script->getPublicKey(),transaction->getTransactionID());witness->addSignature(signature);
+                auto signature=wallet->signData(script->getPublicKey(),transaction->getTransactionID().get());witness->addSignature(signature);
             }
         }
     }else if(publicKey=="custom"){
         auto privateKey=getDataParam("privatekey");auto uses=getNumberParam("keyuses");auto tree=TreeKey::createDefault(privateKey);tree.setUses(uses.getAsInt());
-        sqlRequired(witness).addSignature(tree.sign(transaction->getTransactionID()));
+        sqlRequired(witness).addSignature(tree.sign(transaction->getTransactionID().get()));
     }else{
         auto key=sqlRequired(wallet).getKeyFromPublic(publicKey);
         if(!key){if(passwordLock)vault::passwordLockDB(getParam("password"));throw CommandException("Public Key not found : "+publicKey);}
-        found.add(key->getPublicKey()?json::JSONValue(*key->getPublicKey()):json::JSONValue());auto signature=wallet->signData(key->getPublicKey(),transaction->getTransactionID());sqlRequired(witness).addSignature(signature);
+        found.add(key->getPublicKey()?json::JSONValue(*key->getPublicKey()):json::JSONValue());auto signature=wallet->signData(key->getPublicKey(),transaction->getTransactionID().get());sqlRequired(witness).addSignature(signature);
     }
     if(passwordLock)vault::passwordLockDB(getParam("password"));
     response.put("keys",found);if(nonsimple.size()>0)response.put("nonsimple",nonsimple);if(missing.size()>0)response.put("notfound",missing);

@@ -1,0 +1,250 @@
+{
+  "project": "MinimaCoreC++",
+  "stage": "validated_incremental_checkpoint",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "base_head": "9b2c4e14cf3a04cbdb8a9b44815c42f84fb9b9ec",
+  "goal_complete": false,
+  "counterparts": 411,
+  "production_counterparts": 364,
+  "test_counterparts": 47,
+  "absent": 46,
+  "production_absent": 5,
+  "tests_absent": 41,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "default_ctest_entries": 261,
+  "full_ctest_suite_run": false,
+  "explicit_implementations": 44,
+  "adopted_types": 22,
+  "remaining_interface_implementations": 22,
+  "results": {
+    "normal": {
+      "passed": true,
+      "cases": 3782,
+      "planned_cases": 3782,
+      "independent_assertions": 39522,
+      "seconds": 4.913,
+      "transcript_sha256": "c57881b7fc50153c4b079d25de5558590e87b475a5aaaa6eb6aea677988e3ffa",
+      "adopted_types": 22
+    },
+    "sanitized": {
+      "passed": true,
+      "cases": 3782,
+      "planned_cases": 3782,
+      "independent_assertions": 39522,
+      "seconds": 9.757,
+      "transcript_sha256": "c57881b7fc50153c4b079d25de5558590e87b475a5aaaa6eb6aea677988e3ffa",
+      "adopted_types": 22
+    }
+  },
+  "affected_regressions": {
+    "normal": {
+      "selected_ctest_suites": 21,
+      "passed": true,
+      "full_ctest_suite_run": false,
+      "seconds": 458.28,
+      "original_TransactionTests": "passed",
+      "reports": {
+        "object-differential-results.json": {
+          "cases": 9464,
+          "passed": 9464
+        },
+        "kissvm-differential-results.json": {
+          "cases": 4471,
+          "passed": 4471
+        },
+        "consensus-differential-results.json": {
+          "cases": 2890,
+          "passed": 2890
+        },
+        "txndb-differential-results.json": {
+          "cases": 2503,
+          "passed": 2503
+        },
+        "transaction-commands-differential-results.json": {
+          "cases": 1129,
+          "passed": 1129
+        },
+        "checker-logs-results.json": {
+          "cases": 1343,
+          "passed": true
+        },
+        "wallet-witness-commands-results.json": {
+          "passed": true
+        },
+        "coin-streams-results.json": {
+          "passed": true
+        },
+        "transaction-input-commands-results.json": {
+          "passed": true
+        },
+        "transaction-check-command-results.json": {
+          "passed": true
+        },
+        "transaction-mining-commands-results.json": {
+          "passed": true
+        },
+        "offline-send-commands-results.json": {
+          "passed": true
+        },
+        "unsigned-send-command-results.json": {
+          "passed": true
+        },
+        "raw-transaction-commands-differential-results.json": {
+          "passed": 656
+        },
+        "custom-address-send-commands-differential-results.json": {
+          "passed": 492
+        },
+        "transaction-history-command-results.json": {
+          "passed": true
+        },
+        "txpow-search-command-results.json": {
+          "passed": true
+        },
+        "token-creation-results.json": {
+          "passed": true
+        },
+        "multisig-results.json": {
+          "passed": true
+        }
+      }
+    },
+    "sanitized": {
+      "selected_ctest_suites": 21,
+      "passed": true,
+      "full_ctest_suite_run": false,
+      "seconds": 1681.41,
+      "original_TransactionTests": "passed",
+      "reports": {
+        "object-differential-results.json": {
+          "cases": 9464,
+          "passed": 9464
+        },
+        "kissvm-differential-results.json": {
+          "cases": 4471,
+          "passed": 4471
+        },
+        "consensus-differential-results.json": {
+          "cases": 2890,
+          "passed": 2890
+        },
+        "txndb-differential-results.json": {
+          "cases": 2503,
+          "passed": 2503
+        },
+        "transaction-commands-differential-results.json": {
+          "cases": 1129,
+          "passed": 1129
+        },
+        "checker-logs-results.json": {
+          "cases": 1343,
+          "passed": true
+        },
+        "wallet-witness-commands-results.json": {
+          "passed": true
+        },
+        "coin-streams-results.json": {
+          "passed": true
+        },
+        "transaction-input-commands-results.json": {
+          "passed": true
+        },
+        "transaction-check-command-results.json": {
+          "passed": true
+        },
+        "transaction-mining-commands-results.json": {
+          "passed": true
+        },
+        "offline-send-commands-results.json": {
+          "passed": true
+        },
+        "unsigned-send-command-results.json": {
+          "passed": true
+        },
+        "raw-transaction-commands-differential-results.json": {
+          "passed": 656
+        },
+        "custom-address-send-commands-differential-results.json": {
+          "passed": 492
+        },
+        "transaction-history-command-results.json": {
+          "passed": true
+        },
+        "txpow-search-command-results.json": {
+          "passed": true
+        },
+        "token-creation-results.json": {
+          "passed": true
+        },
+        "multisig-results.json": {
+          "passed": true
+        }
+      }
+    }
+  },
+  "sphincs_replay": {
+    "normal": {
+      "cases": 268,
+      "passed": 268,
+      "independent_assertions": 1677,
+      "seconds": 7.486,
+      "transcript_sha256": "04c3b45c0b9ca9e4430e5a516ca8599d2540af246d9f98437a9e0f43a08c8618",
+      "performed_full_signing": false,
+      "replayed_vector_sha256": "cf04c5628efbe3eb071826153b44bc9eed7133a48b3fe9e8f3fc4d0ed6b7a7b4"
+    },
+    "sanitized": {
+      "cases": 268,
+      "passed": 268,
+      "independent_assertions": 1677,
+      "seconds": 27.025,
+      "transcript_sha256": "04c3b45c0b9ca9e4430e5a516ca8599d2540af246d9f98437a9e0f43a08c8618",
+      "performed_full_signing": false,
+      "replayed_vector_sha256": "cf04c5628efbe3eb071826153b44bc9eed7133a48b3fe9e8f3fc4d0ed6b7a7b4"
+    }
+  },
+  "active_sessions": {},
+  "completed_sessions": {
+    "final_normal_build": {
+      "id": 79767,
+      "exit_code": 0
+    },
+    "final_sanitized_build": {
+      "id": 20470,
+      "exit_code": 0
+    },
+    "final_normal_tests": {
+      "id": 41796,
+      "exit_code": 0
+    },
+    "final_sanitized_tests": {
+      "id": 10139,
+      "exit_code": 0
+    },
+    "normal_replay": {
+      "id": 8471,
+      "exit_code": 0
+    },
+    "sanitized_replay": {
+      "id": 21851,
+      "exit_code": 0
+    }
+  },
+  "initial_interface": {
+    "cases": 3775,
+    "independent_assertions": 39382,
+    "passed": true,
+    "superseded": "Final suites add seven nullable-verification cases."
+  },
+  "scope": "Transaction common Streamable dispatch, shared lists/caches/flags, source read replacement and state removal, writer prefixes, hash catch/log/null assignment and nullable verification check order. Current native callers adapted.",
+  "open_work": [
+    "22 remaining explicit Streamable implementers and inherited subclasses",
+    "Nullable list entries, child identity and retained StateVariable pointers",
+    "Complete Java collection APIs and fail-fast iteration",
+    "Global shared ZERO_TXPOWID identity and deeper MiniData object identity",
+    "Arbitrary subclasses/copy runtime type, custom streams and reentrant/concurrent mutation",
+    "State-size failing child/allocation paths and complete downstream null/error/value-adapter lifetime audit",
+    "46 absent mapped counterparts and full native node parity"
+  ]
+}

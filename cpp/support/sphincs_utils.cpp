@@ -13,10 +13,10 @@ static Object error(const std::exception& e){Object r;auto text=nativeExceptionT
 static std::shared_ptr<Transaction> transaction(const Object& q){
     if(flag(q,"nullTransaction"))return nullptr;auto t=std::make_shared<Transaction>();
     for(auto key:{"inputs","outputs"})for(const auto& n:std::get<std::shared_ptr<json::JSONArray>>(q.get(key).value)->elements()){auto c=support::coinFixture(int(std::get<int64_t>(n.value)));if(std::string(key)=="inputs")t->addInput(c);else t->addOutput(c);}
-    if(flag(q,"eltoo")&&!t->getAllInputs().empty())t->getAllInputs()[0].resetCoinID(Coin::COINID_ELTOO);
+    if(flag(q,"eltoo")&&!t->getAllInputs()->empty())t->getAllInputs()->at(0).resetCoinID(Coin::COINID_ELTOO);
     if(flag(q,"oldState")){for(int i=0;i<80;++i)t->addStateVariable(StateVariable(i,"[old]"));t->addStateVariable(StateVariable(100,"[old]"));t->addStateVariable(StateVariable(101,"[old]"));t->addStateVariable(StateVariable(200,"[keep]"));}return t;
 }
-static Object snapshot(const std::shared_ptr<Transaction>& t){Object r;if(!t){r.put("null",true);return r;}r.put("cachedID",t->getTransactionID().to0xString());json::JSONArray states,ids;for(const auto& s:t->getCompleteState())states.add(s.toJSON());for(const auto& c:t->getAllOutputs())ids.add(c.getCoinID().to0xString());r.put("state",states);r.put("outputIDs",ids);r.put("wire",MiniData(t->serialise()).to0xString());return r;}
+static Object snapshot(const std::shared_ptr<Transaction>& t){Object r;if(!t){r.put("null",true);return r;}r.put("cachedID",t->transactionIDValue().to0xString());json::JSONArray states,ids;for(const auto txnItems=t->getCompleteState();const auto& s:*txnItems)states.add(s.toJSON());for(const auto txnItems=t->getAllOutputs();const auto& c:*txnItems)ids.add(c.getCoinID().to0xString());r.put("state",states);r.put("outputIDs",ids);r.put("wire",MiniData(t->serialise()).to0xString());return r;}
 static void mutate(fors::FORSSignature& s,const Object& q){
     auto h=s.getHORSTSignature();
     for(auto key:{"roots","outerProofs","values","proofs"})if(q.containsKey(key)){size_t n=size_t(integer(q,key));if(std::string(key)=="roots")s.getHORSTRoots()->resize(std::min(n,s.getHORSTRoots()->size()));else if(std::string(key)=="outerProofs")s.getHORSTTreeProofs()->resize(std::min(n,s.getHORSTTreeProofs()->size()));else if(std::string(key)=="values")h->getSignatureValues()->resize(std::min(n,h->getSignatureValues()->size()));else h->getPublicKeyTreeProofs()->resize(std::min(n,h->getPublicKeyTreeProofs()->size()));}
@@ -29,10 +29,10 @@ static void mutate(fors::FORSSignature& s,const Object& q){
 }
 static Object run(const std::shared_ptr<Transaction>& t,const MiniData& pub,const Object& q){
     if(q.containsKey("changeState"))t->addStateVariable(StateVariable(integer(q,"changeState"),"0x00"));
-    if(flag(q,"changeInput"))t->getAllInputs()[0].resetCoinID(MiniData::fromHex("0xAB"));
-    if(flag(q,"changeOutput"))t->getAllOutputs()[0].setStoreState(!t->getAllOutputs()[0].storeState());
-    auto w=std::make_shared<Witness>();for(const auto& coin:t->getAllInputs())w->addCoinProof(CoinProof(coin,MMRProof()));
-    kissvm::Contract c(SPHINCSUtils::getKISSVMScript(pub),std::vector<MiniData>{},w,t);c.setGlobalVariable("@TOTIN",std::make_shared<kissvm::NumberValue>(int64_t(t->getAllInputs().size())));c.setGlobalVariable("@TOTOUT",std::make_shared<kissvm::NumberValue>(int64_t(t->getAllOutputs().size())));c.run();
+    if(flag(q,"changeInput"))t->getAllInputs()->at(0).resetCoinID(MiniData::fromHex("0xAB"));
+    if(flag(q,"changeOutput"))t->getAllOutputs()->at(0).setStoreState(!t->getAllOutputs()->at(0).storeState());
+    auto w=std::make_shared<Witness>();for(const auto txnItems=t->getAllInputs();const auto& coin:*txnItems)w->addCoinProof(CoinProof(coin,MMRProof()));
+    kissvm::Contract c(SPHINCSUtils::getKISSVMScript(pub),std::vector<MiniData>{},w,t);c.setGlobalVariable("@TOTIN",std::make_shared<kissvm::NumberValue>(int64_t(t->getAllInputs()->size())));c.setGlobalVariable("@TOTOUT",std::make_shared<kissvm::NumberValue>(int64_t(t->getAllOutputs()->size())));c.run();
     Object r;r.put("valid",c.isSuccess());r.put("parse",c.isParseOK());r.put("exception",c.isException());r.put("error",c.getException());r.put("operations",c.getNumberOfInstructions());r.put("variables",c.getAllVariables());return r;
 }
 int main(){std::cout<<std::unitbuf;std::string line;while(std::getline(std::cin,line)){

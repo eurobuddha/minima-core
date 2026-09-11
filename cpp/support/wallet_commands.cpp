@@ -171,12 +171,12 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             else if(op=="fileDirectory")std::filesystem::create_directories(offlineRoot/config->getString("file"));
             else if(op=="verifyTxnFile"){
                 auto bytes=MiniFile::readCompleteFile(offlineRoot/config->getString("file"));size_t offset=0;auto row=TxnRow::deserialise(bytes,offset);JSONArray valid;
-                for(const auto witnessItems=row->getWitness()->getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(row->getTransaction()->getTransactionID(),signature));}
+                for(const auto witnessItems=row->getWitness()->getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(row->getTransaction()->getTransactionID().get(),signature));}
                 JSONObject value;value.put("signatures",valid);value.put("consumed",int64_t(offset));value.put("bytes",int64_t(bytes.size()));result=value;
             }
             else if(op=="verifyFile"){
                 auto bytes=MiniFile::readCompleteFile(offlineRoot/signedFile());auto pow=TxPoW::convertMiniDataVersion(MiniData(bytes));if(!pow)throw JavaNullPointerException("null file TxPoW");
-                JSONObject value;for(bool burn:{false,true}){JSONArray valid;auto& txn=burn?pow->getBurnTransaction():pow->getTransaction();auto& witness=burn?pow->getBurnWitness():pow->getWitness();for(const auto witnessItems=witness.getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(txn.getTransactionID(),signature));}value.put(burn?"burn":"main",valid);}result=value;
+                JSONObject value;for(bool burn:{false,true}){JSONArray valid;auto& txn=burn?pow->getBurnTransaction():pow->getTransaction();auto& witness=burn?pow->getBurnWitness():pow->getWitness();for(const auto witnessItems=witness.getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(txn.getTransactionID().get(),signature));}value.put(burn?"burn":"main",valid);}result=value;
             }
             else if(op=="vaultMain"){WalletMiningFixture::init();WalletVaultFixture::init();}
             else if(op=="vaultStores")WalletVaultFixture::stores();
@@ -216,12 +216,12 @@ static JSONObject run(const JSONObject& input,const std::string& root){
             }
             else if(op=="verifyMined"){
                 JSONArray valid;for(const auto& pow:WalletMiningFixture::held)for(const auto witnessItems=pow->getWitness().getAllSignatures();const auto& signature:*witnessItems){
-                    TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(pow->getTransaction().getTransactionID(),signature));
+                    TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(pow->getTransaction().getTransactionID().get(),signature));
                 }result=valid;
             }
             else if(op=="verifyMinted"){
                 JSONArray valid;for(const auto& pow:WalletMiningFixture::held){
-                    const auto& coin=pow->getTransaction().getAllOutputs().at(0);auto token=coin.getToken();if(!token)throw JavaNullPointerException("null minted token");
+                    const auto& coin=pow->getTransaction().getAllOutputs()->at(0);auto token=coin.getToken();if(!token)throw JavaNullPointerException("null minted token");
                     auto name=object(JSONValue::parse(token->getName().toString()));
                     if(name.containsKey("signature")){auto signature=Signature::convertMiniDataVersion(MiniData::fromHex(name.getString("signature")));if(!signature)throw JavaNullPointerException("null token signature");TreeKey key;key.setPublicKey(MiniData::fromHex(name.getString("signedby")));valid.add(key.verify(coin.getCoinID(),*signature));}
                 }result=valid;
@@ -327,7 +327,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 }
                 for(const auto& proof:array(config->get("proofs")).elements())witness->addCoinProof(CoinProof::convertMiniDataVersion(MiniData::fromHex(proof.asString())).value());
                 for(const auto& script:array(config->get("scripts")).elements())witness->addScript(ScriptProof(script.asString()));
-                transaction->mHaveCheckedMonotonic=true;transaction->mIsMonotonic=true;
+                transaction->mHaveCheckedMonotonic()=true;transaction->mIsMonotonic()=true;
                 TxnDB::getRuntimeDB()->addCompleteTransaction(std::make_shared<TxnRow>(config->getString("id"),transaction,witness));
             }
             else if(op=="validationFixture") {
@@ -335,7 +335,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 auto pow=TxPoW::convertMiniDataVersion(MiniData::fromHex(config->getString("pow"))).value();
                 auto parent=TxPoW::convertMiniDataVersion(MiniData::fromHex(config->getString("block"))).value();parent.setBlockNumber(mmr.getBlockTime());parent.calculateTXPOWID();
                 auto node=std::make_shared<TxPoWTreeNode>(parent);*node->getMMR()=mmr;MinimaDB::getDB()->getTxPoWTree()->setRoot(node);
-                auto txn=pow.getSharedTransaction();txn->mHaveCheckedMonotonic=true;txn->mIsMonotonic=true;txn->mIsValid=false;
+                auto txn=pow.getSharedTransaction();txn->mHaveCheckedMonotonic()=true;txn->mIsMonotonic()=true;txn->mIsValid()=false;
                 auto row=std::make_shared<TxnRow>("test",txn,pow.getSharedWitness());MinimaDB::getDB()->getCustomTxnDB()->addCompleteTransaction(row);
                 if(config->containsKey("hashrate"))MinimaDB::getDB()->getUserDB()->setHashRate(MiniNumber(config->getString("hashrate")));
                 if(flag("proofCoins"))for(const auto witnessItems=pow.getWitness().getAllCoinProofs();const auto& proof:*witnessItems){node->addCoinToNode(proof.getCoin());node->getRelevantCoins().push_back(proof.getCoin());}
@@ -366,7 +366,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 result=value;
             }else if(op=="utilities") {
                 auto row=sqlRequired(MinimaDB::getDB()->getCustomTxnDB()).getTransactionRow(config->getString("id"));
-                if(flag("single")) commands::txnutils::setMMRandScripts(row->getTransaction()->getAllInputs().at(0),*row->getWitness());
+                if(flag("single")) commands::txnutils::setMMRandScripts(row->getTransaction()->getAllInputs()->at(0),*row->getWitness());
                 else commands::txnutils::setMMRandScripts(*row->getTransaction(),*row->getWitness(),!config->containsKey("exit")||flag("exit"));
                 result=row->toJSON();
             }else if(op=="miner") {
@@ -410,7 +410,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 std::optional<MiniNumber> amount;if(!config->get("amount").isNull())amount.emplace(config->getString("amount"));
                 auto row=commands::txnauto::createTransaction(string(config->get("address")),amount?&*amount:nullptr);
                 JSONObject value;value.put("row",row->toJSON());value.put("wire",MiniData(row->serialise()).to0xString());JSONArray verified;
-                for(const auto witnessItems=row->getWitness()->getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());verified.add(key.verify(row->getTransaction()->getTransactionID(),signature));}
+                for(const auto witnessItems=row->getWitness()->getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());verified.add(key.verify(row->getTransaction()->getTransactionID().get(),signature));}
                 value.put("verified",verified);result=value;
             }else if(op=="burn") {
                 std::vector<std::string> excluded;for(const auto& id:array(config->get("exclude")).elements()) excluded.push_back(id.asString());
@@ -447,7 +447,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
         if(flag("echoParams"))out.put("parameterState",config->get("params"));
         if(input.containsKey("history")){out.put("before",before);out.put("after",TimerMessage::currentTimeMillis());out.put("historyCalls",historyCalls);}
         try{out.put("txnwire",MiniData(TxnDB::getRuntimeDB()->serialise()).to0xString());}catch(const std::exception& e){out.put("txnwireError",nativeExceptionText(e));}
-        JSONArray txnflags;for(const auto& row:*TxnDB::getRuntimeDB()->listTxns()){JSONArray flags;auto txn=row->getTransaction();flags.add(txn->mHaveCheckedMonotonic);flags.add(txn->mIsMonotonic);flags.add(txn->mIsValid);txnflags.add(flags);}out.put("txnflags",txnflags);
+        JSONArray txnflags;for(const auto& row:*TxnDB::getRuntimeDB()->listTxns()){JSONArray flags;auto txn=row->getTransaction();flags.add(txn->mHaveCheckedMonotonic());flags.add(txn->mIsMonotonic());flags.add(txn->mIsValid());txnflags.add(flags);}out.put("txnflags",txnflags);
         JSONArray checked;for(const auto& row:*TxnDB::getRuntimeDB()->listTxns())checked.add(row->getTransaction()->isCheckedMonotonic());out.put("checked",checked);out.put("mining",WalletMiningFixture::snapshot());
         if(WalletVaultFixture::enabled)out.put("vault",WalletVaultFixture::snapshot());
         if(input.containsKey("consolidation")||input.containsKey("txpowSearch"))out.put("forwarded",forwarded);

@@ -42,3 +42,7 @@ The strongest missing facade tests would use a controlled Streamable whose write
 Why does hashing the raw bytes0x1234 differ from hashing a serialized MiniData that contains those bytes? What extra bytes does the serializer contribute?
 
 Pinned Java SHA-256: `fcbd60a6f3fd72897c0820d25a14b3b2a28c57179ac43de358254705de2b4df3`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).
+
+## Nullable Transaction hashing
+
+The new hashObjectOrNull adapter preserves the pinned hashObject catch/log/null boundary for Transaction. It reuses the existing serializer and SHA3 implementation, lets JavaError and allocation failures escape, and logs caught exceptions. Other native hash convenience APIs remain under review. See the [Transaction lab](../../../../../new-tests/streamable-transaction.md).

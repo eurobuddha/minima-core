@@ -24,8 +24,8 @@ json::JSONValue txncheck::runCommand() {
     auto id=getParam("id");auto row=sqlRequired(db).getTransactionRow(getParam("id"));
     if(!row) throw CommandException("Transaction not found : "+id);
     auto transaction=row->getTransaction();auto witness=row->getWitness();
-    const auto& inputs=sqlRequired(row->getTransaction()).getAllInputs();
-    const auto& outputs=sqlRequired(row->getTransaction()).getAllOutputs();
+    const auto inputsOwner=sqlRequired(row->getTransaction()).getAllInputs();const auto& inputs=*inputsOwner;
+    const auto outputsOwner=sqlRequired(row->getTransaction()).getAllOutputs();const auto& outputs=*outputsOwner;
     json::JSONObject details;std::vector<std::string> tokens;
     for(const auto* list:{&inputs,&outputs}) for(const auto& coin:*list) {
         auto token=coin.getTokenID().isEqual(Token::TOKENID_CREATE)?Token::TOKENID_MINIMA:coin.getTokenID();
@@ -57,7 +57,7 @@ json::JSONValue txncheck::runCommand() {
     for(const auto witnessItems=witness->getAllSignatures();const auto& signature:*witnessItems) {
         TreeKey key;key.setPublicKey(signature.getRootPublicKey());
         json::JSONObject item;item.put("publickey",signature.getRootPublicKey().to0xString());
-        bool valid=key.verify(idToVerify,signature);if(!valid)allValid=false;
+        bool valid=key.verify(idToVerify.get(),signature);if(!valid)allValid=false;
         item.put("valid",valid);allSignatures.add(item);
     }
     details.put("allsignaturesvalid",allValid);

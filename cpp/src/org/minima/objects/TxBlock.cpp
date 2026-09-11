@@ -39,10 +39,10 @@ void TxBlock::calculateCoins(MMR& previous,const Transaction& txn,const Witness&
         mSpentCoins.emplace_back(coin,previous.getProofToPeak(entry));
     }
     if(spent->empty()) return;
-    const auto& state=txn.getCompleteState();
-    const auto& baseID=previous.getBlockTime().isEqual(MiniNumber(1))?txn.getTransactionID():spent->front().getCoin().getCoinID();
+    const auto stateOwner=txn.getCompleteState();const auto& state=*stateOwner;
+    const auto& baseID=previous.getBlockTime().isEqual(MiniNumber(1))?txn.transactionIDValue():spent->front().getCoin().getCoinID();
     int index=0;
-    for(const auto& output:txn.getAllOutputs()) {
+    for(const auto txnItems=txn.getAllOutputs();const auto& output:*txnItems) {
         auto id=txn.calculateCoinID(baseID,index++);auto coin=output.getSameCoinWithCoinID(id);
         if(coin.storeState()) coin.setState(state);else mRemovedStates.put(id.to0xString(),state);
         if(output.getTokenID().isEqual(Token::TOKENID_CREATE)) {

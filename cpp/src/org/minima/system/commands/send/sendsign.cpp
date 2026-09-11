@@ -52,12 +52,12 @@ json::JSONValue sendsign::runCommand(){
     for(bool burn:{false,true}){
         auto& transaction=burn?pow->getBurnTransaction():pow->getTransaction();
         auto& witness=burn?pow->getBurnWitness():pow->getWitness();
-        for(const auto& input:transaction.getAllInputs()){
+        for(const auto txnItems=transaction.getAllInputs();const auto& input:*txnItems){
             auto address=input.getAddress().to0xString();auto row=sqlRequired(wallet).getScriptFromAddress(address);
             if(!row)throw CommandException("SERIOUS ERROR script missing for simple address : "+address);
             if(!row->getScript())throw JavaNullPointerException("null script");witness.addScript(ScriptProof(*row->getScript()));
             auto key=row->getPublicKey();
-            if(std::find(requiredSignatures.begin(),requiredSignatures.end(),key)==requiredSignatures.end())witness.addSignature(wallet->signData(key,transaction.getTransactionID()));
+            if(std::find(requiredSignatures.begin(),requiredSignatures.end(),key)==requiredSignatures.end())witness.addSignature(wallet->signData(key,transaction.getTransactionID().get()));
         }
     }
     if(passwordLock)vault::passwordLockDB(getParam("password"));

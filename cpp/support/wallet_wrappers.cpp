@@ -121,7 +121,7 @@ static JSONObject run(const JSONObject& input){
                 auto bytes=MiniData::fromHex(data.asString());size_t offset=0;auto row=TxnRow::deserialise(bytes.bytes(),offset);
                 JSONObject observation;observation.put("consumed",int64_t(offset));observation.put("wire",MiniData(row->serialise()).to0xString());
                 auto transaction=row->getTransaction();transaction->calculateTransactionID();JSONArray valid;
-                for(const auto witnessItems=row->getWitness()->getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(transaction->getTransactionID(),signature));}
+                for(const auto witnessItems=row->getWitness()->getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(transaction->getTransactionID().get(),signature));}
                 observation.put("signatures",valid);out.put("export",observation);
             }
         }
