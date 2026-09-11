@@ -11,14 +11,22 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 81 mapped test files exist;
-12 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 82 mapped test files exist;
+11 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-RETURNstatementTests, WHILEstatementTests, IFstatementTests and MASTstatementTests
-now have working counterparts. Both builds pass eight original methods / 84
+LETstatementTests now has a working counterpart. Both builds pass two original
+methods / 30 assertions and four supplemental array comparisons / eight independent
+checks. Both node targets build. Inventory: **446 counterparts, 11 absent**; full
+parity remains unverified. See the [LET lab](student-guide/new-tests/original-let-tests.md).
+The saved Magic sanitizer full demo ended with a 7200-second timeout; terminal
+[evidence](validation/original-let-tests-work-in-progress/magic-sanitizer-timeout/magic-demo-replay-results.json)
+is retained. Its normal replay passed earlier; sanitizer full-demo completion is unresolved.
+
+At the preceding checkpoint, RETURNstatementTests, WHILEstatementTests,
+IFstatementTests and MASTstatementTests gained counterparts. Both builds pass eight original methods / 84
 assertions per runtime and eight supplemental comparisons / sixteen independent
-checks, including explicit loop outcomes. Both node targets build. Inventory:
+checks, including explicit loop outcomes. Both node targets build. That checkpoint had
 **445 counterparts, 12 absent**, with full parity unverified. See the
 [statement command lab](student-guide/new-tests/original-statement-commands.md).
 

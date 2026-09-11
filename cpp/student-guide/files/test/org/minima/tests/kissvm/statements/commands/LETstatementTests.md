@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/tests/kissvm/statements/commands/LETstatementTests.java](../../../../../../../../../../upstream-study/test/org/minima/tests/kissvm/statements/commands/LETstatementTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -35,7 +35,7 @@ assertEquals("LET a = ( TRUE AND TRUE )", ls.toString());
 assertEquals("LET a = ( FALSE EQ FALSE )", ls.toString());
 ```
 
-An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this page does not claim that the Java suite was executed successfully.
+An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this checkpoint records successful execution of unchanged Java tests and their native counterpart.
 
 The fixture names these Minima dependencies (links are for tracing the test setup and calls):
 
@@ -61,11 +61,17 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/tests/kissvm/statements/commands/LETstatementTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+[Native counterpart](../../../../../../../../../test/org/minima/tests/kissvm/statements/commands/LETstatementTests.cpp) retains both annotated methods, all twenty
+constructor assertions and ten execution assertions. Both Java and native suites
+pass in normal and sanitizer builds. Runtime casts preserve the expected value
+types; constructor-only function/global/variable/array fixtures remain unevaluated.
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
-
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+[LET lab](../../../../../../../../new-tests/original-let-tests.md) explains variable
+storage, numeric array keys and the distinction between display and execution.
+Four supplemental full-record Java/C++ comparisons and eight independent outcome
+checks cover multidimensional, negative/fractional, overwritten and computed keys.
+[Evidence](../../../../../../../../../validation/original-let-tests-work-in-progress/progress.json).
+No production correction was needed. Full LET API and node parity remain unverified.
 
 ## What students should conclude
 

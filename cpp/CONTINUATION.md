@@ -1,3 +1,39 @@
+# Current checkpoint — original LET tests and terminal Magic demo evidence
+
+Base HEAD: 1ef5145a60813220f5e1d9b595c430c1104ee660. Goal ACTIVE and incomplete.
+New: test/org/minima/tests/kissvm/statements/commands/LETstatementTests.cpp.
+Inventory: **446 counterparts** (364 production, 82 tests), **11 absent**
+(5 production, 6 tests). Full parity remains not_verified. No production changes.
+
+Both builds pass LETstatementTests, minima_kissvm and actual MinimaCoreCpp node.
+Both suites PASS 2 methods / 30 source assertions (20 constructor, 10 execution),
+retaining every active fixture, runtime type cast and commented-case exclusion.
+Four full 11-field numeric-array comparisons / 8 independent checks PASS per build.
+Transcript SHA-256: 3a335c5e170f580320c44fdfb64974aa7baeb5825b471a5dd3be153942377008.
+Normal CTest 2.69s; sanitizer 2.71s. Full suite not repeated; 278 registered tests.
+Lab: student-guide/new-tests/original-let-tests.md; evidence/remaining inventory:
+validation/original-let-tests-work-in-progress. Lesson updated, 457-page audit retained.
+
+Magic sanitizer session **41123 TERMINAL exit 1** this turn. Saved 9ae7039 binary
+hit its 7200-second timeout with empty stderr. Java completed 1729 lines; native
+buffered output has 675 lines. Full sanitizer demo validation FAILED (timeout);
+no completed-run mismatch can be inferred. Full normal replay passed earlier.
+Terminal evidence is saved under original-let-tests-work-in-progress/magic-sanitizer-timeout.
+No live Magic handles remain. Do not repeat long demos while missing-file work remains.
+
+NEXT: BooleanExpressionTests, OperatorExpressionTests, ExpressionParserTests,
+StatementParserTests, tokens/TokenTests. TxPoWProcessorTest has two empty test bodies
+and active delay helpers. Four JNI-dependent production files lack external native
+bodies/ABI in inspected candidates; P2PSwapLink is wholly commented. Independent
+work remains. Full production API/runtime audit remains after counterpart completion.
+
+Preserve graphify work and external Java SQL/JAR f7f0e08; commit only cpp, no push.
+Source pin unchanged. Preceding verified bundle: MinimaCoreC++-20260911T184929Z.bundle,
+SHA-256 a07f195236fe99ac0bb6cb1ad55e7b90569c4f699c7fe1e4f5d38e37fcc0a6e9;
+30 changed files byte-verified in a fresh recovery clone.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — four original statement command tests
 
 Base HEAD: 29254491bde00b5bea42275da9aca9380bb6d473. Goal ACTIVE and incomplete.

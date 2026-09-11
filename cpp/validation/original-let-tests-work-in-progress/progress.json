@@ -1,0 +1,43 @@
+{
+  "base_head": "1ef5145a60813220f5e1d9b595c430c1104ee660",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/statements/commands/LETstatementTests.cpp"
+  ],
+  "counterparts": 446,
+  "production_counterparts": 364,
+  "test_counterparts": 82,
+  "remaining": 11,
+  "remaining_production": 5,
+  "remaining_tests": 6,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "builds": {
+    "normal": "PASS LETstatementTests, minima_kissvm and actual MinimaCoreCpp node",
+    "sanitized": "PASS LETstatementTests, minima_kissvm and actual MinimaCoreCpp node",
+    "full_suite": "not repeated; 278 registered tests"
+  },
+  "tests": {
+    "original_methods": 2,
+    "original_assertions_per_runtime": 30,
+    "assertions_by_class": {
+      "LETstatementTests": 30
+    },
+    "supplemental_comparisons_per_build": 4,
+    "independent_checks_per_build": 8,
+    "supplemental_transcript_sha256": "3a335c5e170f580320c44fdfb64974aa7baeb5825b471a5dd3be153942377008",
+    "normal": "PASS 2.69s",
+    "sanitized": "PASS 2.71s"
+  },
+  "scope": "Original LETstatementTests retains both annotated methods, all 20 constructor and 10 execution assertions. Constructor-only function/global/variable and heterogeneous array fixtures are not claimed as executed expressions; commented source execution cases remain inactive. Four supplemental numeric-array scripts check multidimensional, negative/fractional, overwritten and evaluated keys through LET and GET, with complete 11-field Java/native records and independent success expectations. Full LET API and node parity remain unverified.",
+  "blockers": [
+    "Four JNI-dependent production files lack native bodies/ABI or authoritative vectors in inspected candidates; independent work remains.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Preserve source behavior without crediting empty assertions as parity."
+  ],
+  "next_action": "Convert BooleanExpressionTests, OperatorExpressionTests, ExpressionParserTests, StatementParserTests and tokens/TokenTests. Preserve inactive source separately. Full production API/runtime parity audit remains after counterpart work.",
+  "long_demos": {
+    "normal": "55636 terminal exit 0; saved 9ae7039 full Magic replay passed at SHA checkpoint.",
+    "sanitized": "41123 TERMINAL exit 1 this turn. Saved 9ae7039 Magic binary timed out at 7200s, empty stderr; Java completed 1729 lines, native buffered partial output 675 lines. Full sanitizer demo validation FAILED (timeout), not evidence of output mismatch on completed runs. Evidence retained; do not repeat long demo while independent conversion work remains."
+  }
+}

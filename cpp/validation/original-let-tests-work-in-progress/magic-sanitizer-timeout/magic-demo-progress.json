@@ -1,0 +1,31 @@
+{
+  "native_source_commit": "9ae70398b8f1c453d2242a6ae88cf8f5a62a26ef",
+  "native_binary": "/private/tmp/minima-magic-checkpoint-sanitized",
+  "native_binary_sha256": "a62cd67fc9cccaf43eddbadd6d5602d276ad4e4bd056725adbef1c415d4bcd51",
+  "java_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "iterations": 86400,
+  "expected_lines": 1729,
+  "timeout_per_runtime": 7200,
+  "active_runtime": null,
+  "completed": {
+    "java": {
+      "exit": 0,
+      "timed_out": false,
+      "seconds": 0.712,
+      "bytes": 95442,
+      "lines": 1729,
+      "sha256": "bae7127df55b4f57c82a75c1a0583cd268075e9c64ad21654b49f1dac0b93ae2",
+      "stderr": ""
+    },
+    "cpp": {
+      "exit": null,
+      "timed_out": true,
+      "seconds": 7200.095,
+      "bytes": 36864,
+      "lines": 675,
+      "sha256": "dd4d6dacdc5fa499c55ca334d30984c00ccabf640c3693085ed8c63250cfb0a5",
+      "stderr": ""
+    }
+  },
+  "passed": false
+}

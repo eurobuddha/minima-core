@@ -1585,3 +1585,8 @@ foreach(test_name IN ITEMS RETURNstatementTests WHILEstatementTests IFstatementT
 endforeach()
 add_test(NAME original_statement_commands_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_statement_commands_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_statement_commands_tests PROPERTIES TIMEOUT 120)
+
+add_executable(LETstatementTests test/org/minima/tests/kissvm/statements/commands/LETstatementTests.cpp)
+target_link_libraries(LETstatementTests PRIVATE minima_file_port)
+add_test(NAME original_let_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_let_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_let_tests PROPERTIES TIMEOUT 120)
