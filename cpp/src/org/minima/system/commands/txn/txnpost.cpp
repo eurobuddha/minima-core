@@ -54,7 +54,7 @@ std::shared_ptr<TxPoW> txnpost::postTxn(const std::optional<std::string>& id,con
     std::shared_ptr<TxPoW> txpow;
     if(burn.isMore(MiniNumber::ZERO)) {
         std::vector<std::string> excluded;
-        for(const auto& proof:sqlRequired(witness).getAllCoinProofs())excluded.push_back(proof.getCoin().getCoinID().to0xString());
+        for(const auto witnessItems=sqlRequired(witness).getAllCoinProofs();const auto& proof:*witnessItems)excluded.push_back(proof.getCoin().getCoinID().to0xString());
         auto burned=txnutils::createBurnTransaction(excluded,transaction->getTransactionID(),burn);
         txpow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness,burned->getTransaction(),burned->getWitness()));
     }else txpow=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(transaction,witness));

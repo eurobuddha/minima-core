@@ -49,3 +49,5 @@ the earlier results above are historical checkpoints. Thirty implementers remain
 The [transaction-object follow-up](streamable-transaction-objects.md) brings adoption
 to 20 of 44 explicit implementers. Both expanded suites pass 2,771 comparisons and
 20,914 assertions; the earlier results above are historical checkpoints.
+
+The [Witness follow-up](streamable-witness.md) brings adoption to 21 of 44 explicit implementers. Both suites pass 3,447 comparisons and 31,650 assertions, plus six affected regressions. Earlier results above remain historical checkpoints.

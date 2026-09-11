@@ -40,21 +40,21 @@ json::JSONValue txncheck::runCommand() {
     }
     details.put("coins",allTokens);details.put("tokens",int64_t(tokens.size()));
     details.put("inputs",int64_t(inputs.size()));
-    details.put("mmrproofs",int64_t(sqlRequired(witness).getAllCoinProofs().size()));
-    details.put("scripts",int64_t(witness->getAllScripts().size()));
-    bool correctProofCount=inputs.size()==witness->getAllCoinProofs().size();
+    details.put("mmrproofs",int64_t(sqlRequired(witness).getAllCoinProofs()->size()));
+    details.put("scripts",int64_t(witness->getAllScripts()->size()));
+    bool correctProofCount=inputs.size()==witness->getAllCoinProofs()->size();
     auto totalIn=MiniNumber::ZERO;for(const auto& coin:inputs)totalIn=totalIn.add(coin.getAmount());
     details.put("outputs",int64_t(outputs.size()));json::JSONArray allOutputs;auto totalOut=MiniNumber::ZERO;
     for(const auto& coin:outputs) {totalOut=totalOut.add(coin.getAmount());allOutputs.add(coin.toJSON());}
     details.put("alloutputs",allOutputs);details.put("burn",totalIn.sub(totalOut).toString());
     details.put("validamounts",sqlRequired(row->getTransaction()).checkValid());
-    details.put("signatures",int64_t(sqlRequired(row->getWitness()).getAllSignatures().size()));
+    details.put("signatures",int64_t(sqlRequired(row->getWitness()).getAllSignatures()->size()));
     auto tip=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWTree()).getTip();
     auto temporary=TxPoWGenerator::generateTxPoW(transaction,witness);
     transaction->clearIsMonotonic();
     bool basic=TxPoWChecker::checkTxPoWBasic(temporary);
     json::JSONArray allSignatures;auto idToVerify=transaction->getTransactionID();bool allValid=true;
-    for(const auto& signature:witness->getAllSignatures()) {
+    for(const auto witnessItems=witness->getAllSignatures();const auto& signature:*witnessItems) {
         TreeKey key;key.setPublicKey(signature.getRootPublicKey());
         json::JSONObject item;item.put("publickey",signature.getRootPublicKey().to0xString());
         bool valid=key.verify(idToVerify,signature);if(!valid)allValid=false;

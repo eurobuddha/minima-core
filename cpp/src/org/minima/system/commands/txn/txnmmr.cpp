@@ -7,7 +7,7 @@ std::vector<std::string> txnmmr::getValidParams() const {return {"id"};}
 json::JSONValue txnmmr::runCommand(){
     auto result=getJSONReply();auto db=TxnDB::getRuntimeDB();auto id=getParam("id");
     auto row=db->getTransactionRow(getParam("id"));if(!row)throw CommandException("Transaction not found : "+id);
-    auto transaction=row->getTransaction();auto witness=row->getWitness();auto proofs=sqlRequired(witness).getAllCoinProofs().size();
+    auto transaction=row->getTransaction();auto witness=row->getWitness();auto proofs=sqlRequired(witness).getAllCoinProofs()->size();
     auto tip=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWTree()).getTip();
     auto current=sqlRequired(tip).getBlockNumber();auto minimum=current.sub(GlobalParams::MINIMA_MMR_PROOF_HISTORY);
     const auto& coins=sqlRequired(transaction).getAllInputs();

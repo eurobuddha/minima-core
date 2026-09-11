@@ -70,7 +70,7 @@ static std::string coinAliases(int n,int growth,int mode) {
     switch(mode) {
         case 0:target=&c;break;case 1:target=&alias;break;case 2:target=&held;break;case 3:target=&removed;break;
         case 4:target=&txn.getAllInputs().at(0);break;case 5:target=&txn.getAllOutputs().at(0);break;
-        case 6:target=&cp.getCoin();break;case 7:target=&witness.getAllCoinProofs().at(0).getCoin();break;
+        case 6:target=&cp.getCoin();break;case 7:target=&witness.getAllCoinProofs()->at(0).getCoin();break;
         case 8:target=&detached;break;case 9:target=&renamed;break;case 10:target=&decoded.getCoin();break;
         default:throw std::invalid_argument("Invalid coin alias mode");
     }
@@ -81,7 +81,7 @@ static std::string coinAliases(int n,int growth,int mode) {
     target->setToken(std::nullopt);target->getState().emplace_back(255,"[shared mutation]");
     auto first=result(c)+"|"+result(alias)+"|"+result(held)+"|"+result(removed)
         +"|"+result(txn.getAllInputs().at(0))+"|"+result(txn.getAllOutputs().at(0))
-        +"|"+result(cp)+"|"+result(witness.getAllCoinProofs().at(0))+"|"+result(cp.getMMRData())
+        +"|"+result(cp)+"|"+result(witness.getAllCoinProofs()->at(0))+"|"+result(cp.getMMRData())
         +"|"+result(detached)+"|"+result(renamed)+"|"+result(decoded);
     txn.getAllInputs().clear();txn.getAllOutputs().clear();witness.clearCoinProofs();
     held.setState({});held.setToken(coin(1).getToken());

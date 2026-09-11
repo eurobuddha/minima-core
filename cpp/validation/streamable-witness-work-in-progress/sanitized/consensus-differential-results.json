@@ -1,0 +1,6 @@
+{
+  "cases": 2890,
+  "passed": 2890,
+  "failures": [],
+  "scope": "Basic, signatures, MMR, scripts and monotonic caches, relay, coin IDs, difficulty, median time, superparents block validation and deterministic block generation/mempool selection; timed checking, live database wiring and complete API parity pending"
+}

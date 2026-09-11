@@ -29,7 +29,7 @@ std::vector<std::shared_ptr<TxPoW>> RamDB::getAllUnusedTxns() const {
 }
 bool RamDB::checkForCoinID(const MiniData& id) const {
     for(const auto& data:getCompleteMemPool()->elements())if(data->getTxPoW()->isTransaction()&&!data->isInCascade()){
-        for(const Witness* wit:{&data->getTxPoW()->getWitness(),&data->getTxPoW()->getBurnWitness()})for(const auto& proof:wit->getAllCoinProofs())if(proof.getCoin().getCoinID().isEqual(id))return true;
+        for(const Witness* wit:{&data->getTxPoW()->getWitness(),&data->getTxPoW()->getBurnWitness()})for(const auto witnessItems=wit->getAllCoinProofs();const auto& proof:*witnessItems)if(proof.getCoin().getCoinID().isEqual(id))return true;
     }
     return false;
 }

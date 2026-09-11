@@ -33,6 +33,6 @@ struct WalletVaultFixture {
         if(!encrypted.isEqual(MiniData::ZERO_TXPOWID))try{auto password=sql_fixture::config->containsKey("observePassword")?sql_fixture::config->getString("observePassword"):"fixture pass";value.put("decrypted",MiniString(PasswordCrypto::decryptPassword(password,encrypted).bytes()).toString());}catch(const std::exception&){value.put("decrypted","DECRYPT_ERROR");}
         json::JSONArray files;for(const auto* name:{"archive.mv.db","cascade.db","chaintree.db","p2p.db"})files.add(std::filesystem::exists(std::filesystem::path(root)/"databases"/name));value.put("files",files);return value;
     }
-    static json::JSONValue verify(){json::JSONArray valid;auto row=MinimaDB::getDB()->getCustomTxnDB()->getTransactionRow("test");for(const auto& signature:sqlRequired(row->getWitness()).getAllSignatures()){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(row->getTransaction()->getTransactionID(),signature));}return valid;}
+    static json::JSONValue verify(){json::JSONArray valid;auto row=MinimaDB::getDB()->getCustomTxnDB()->getTransactionRow("test");for(const auto witnessItems=sqlRequired(row->getWitness()).getAllSignatures();const auto& signature:*witnessItems){TreeKey key;key.setPublicKey(signature.getRootPublicKey());valid.add(key.verify(row->getTransaction()->getTransactionID(),signature));}return valid;}
 };
 }

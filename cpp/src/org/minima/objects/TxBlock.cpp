@@ -32,15 +32,15 @@ void TxBlock::calculateCoins(MMR& previous,const TxPoW& txpow) {
 }
 void TxBlock::calculateCoins(MMR& previous,const Transaction& txn,const Witness& witness) {
     if(txn.isEmpty()) return;
-    const auto& spent=witness.getAllCoinProofs();
-    for(const auto& input:spent) {
+    const auto spent=witness.getAllCoinProofs();
+    for(const auto& input:*spent) {
         const auto& coin=input.getCoin();const auto& entry=coin.getMMREntryNumber();
         previous.updateEntry(entry,input.getMMRProof(),input.getMMRData());
         mSpentCoins.emplace_back(coin,previous.getProofToPeak(entry));
     }
-    if(spent.empty()) return;
+    if(spent->empty()) return;
     const auto& state=txn.getCompleteState();
-    const auto& baseID=previous.getBlockTime().isEqual(MiniNumber(1))?txn.getTransactionID():spent.front().getCoin().getCoinID();
+    const auto& baseID=previous.getBlockTime().isEqual(MiniNumber(1))?txn.getTransactionID():spent->front().getCoin().getCoinID();
     int index=0;
     for(const auto& output:txn.getAllOutputs()) {
         auto id=txn.calculateCoinID(baseID,index++);auto coin=output.getSameCoinWithCoinID(id);

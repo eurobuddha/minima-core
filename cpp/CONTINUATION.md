@@ -1,3 +1,51 @@
+# Latest checkpoint — Witness Streamable and owned evidence lists
+
+Base HEAD 0cb6200d944830e42ce7ff0db2066e1c6563a48c. Branch/project/executable MinimaCoreC++.
+Goal ACTIVE, not complete. 411 counterparts = 364 production + 47 original tests;
+46 absent = 5 production + 41 tests. All present implemented_partial, all 457 parity
+not_verified. 261 default CTest entries; full suite NOT run.
+
+Witness now implements Streamable: 21 of 44 explicit implementers adopted, 23 remain.
+Reuses Signature shared record/list pattern and current child codecs. Getter handles
+own old lists after source-ordered replacement. Clear methods mutate existing lists.
+Witness copies and real TxPoW value setters retain the containing object identity.
+Production caller loops retain list handles; checker/TxBlock list accesses adapted.
+Writers append nested children directly, preserving source output before errors.
+
+Both complete builds PASS. Both interface suites PASS 3,447 comparisons / 31,650
+assertions, including all 20 prior types. Transcript 89bb03881569758a98fa85bebd5cfce64442fe5c684da7f1bac59d0be10da2b3.
+Independent Witness partial-state/offset/list checks, retained complete contents,
+zero/negative/wrapped counts, direct-wire duplicates, clear/deduplication behavior,
+three bad nested writers and actual MiniFile/MiniData/Crypto/NIO/TxPoW callers.
+Native interface stderr empty. All six affected regressions PASS in both builds:
+object_differential, kissvm_differential, consensus_differential, txndb_differential,
+wallet_witness_commands_differential and coin_streams_differential. Seven-suite totals
+normal 209.55s, sanitizer 657.26s.
+No heavy SPHINCS signing jobs were started. No live test handles remain.
+
+Initial build found two missed TxBlock accessors, corrected. Initial interface
+assertions passed but its case counter was overwritten by a child counter; fixed
+and an executed/planned count gate added. Initial evidence retained and superseded.
+All final handles terminal0: builds20028/2483, tests72261/43464.
+
+Evidence: validation/streamable-witness-work-in-progress. Student lesson/lab updated;
+review and next-transaction-notes.md record findings and remaining source work.
+Sibling Witness readers lack current span bounds and its add methods omit source
+deduplication; current proven implementation reused instead.
+
+Next: Transaction shared lists, monotonic cache flags, cached-ID timing, state-list
+replacement on removal, stream writer prefixes and calculation failure logging.
+Pinned/current Transaction and sibling sources have been read; full caller review
+remains before adaptation. Follow next-transaction-notes.md. Do not create dangling
+reference members to emulate public fields. Then integrate remaining containers.
+Witness null elements, retained getScript pointers, complete ScriptProof identity,
+collection APIs/fail-fast iteration, subclass dispatch, custom streams, allocation
+failures and concurrent/reentrant mutation remain unfinished. Five absent production
+files include inactive P2PSwapLink and unavailable JNI implementations; do not invent
+them. Continue the 457-file port after committing and verifying the recovery bundle.
+
+---
+
 # Latest checkpoint — transaction-object Streamable integration
 
 Base HEAD 3505766ffe07baf9edc79c0768917d2f4046c3a1. Branch/project/executable

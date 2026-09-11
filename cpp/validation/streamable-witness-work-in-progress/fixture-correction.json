@@ -1,0 +1,9 @@
+{
+  "initial_report": "initial-interface-results.json",
+  "problem": "A child-count variable overwrote the total comparison counter: 1037 reported versus 3447 planned. CTest passed, but the total was invalid.",
+  "fix": "Distinct completed_children variable plus executed/planned accounting gate. Retained complete list contents added to final observations.",
+  "superseded_by": [
+    "normal/streamable-results.json",
+    "sanitized/streamable-results.json"
+  ]
+}

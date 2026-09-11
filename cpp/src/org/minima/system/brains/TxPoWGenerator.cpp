@@ -58,8 +58,8 @@ TxPoW TxPoWGenerator::generateTxPoWAt(std::shared_ptr<Transaction> transaction,s
     }
     if(mempool.size()>500) mempool.resize(500);
     std::set<std::string> coins;
-    auto addCoins=[&](const TxPoW& txn) {for(const Witness* wit:{&txn.getWitness(),&txn.getBurnWitness()}) for(const auto& proof:wit->getAllCoinProofs()) coins.insert(proof.getCoin().getCoinID().to0xString());};
-    auto collision=[&](const TxPoW& txn) {for(const Witness* wit:{&txn.getWitness(),&txn.getBurnWitness()}) for(const auto& proof:wit->getAllCoinProofs()) if(coins.contains(proof.getCoin().getCoinID().to0xString())) return true;return false;};
+    auto addCoins=[&](const TxPoW& txn) {for(const Witness* wit:{&txn.getWitness(),&txn.getBurnWitness()}) for(const auto witnessItems=wit->getAllCoinProofs();const auto& proof:*witnessItems) coins.insert(proof.getCoin().getCoinID().to0xString());};
+    auto collision=[&](const TxPoW& txn) {for(const Witness* wit:{&txn.getWitness(),&txn.getBurnWitness()}) for(const auto witnessItems=wit->getAllCoinProofs();const auto& proof:*witnessItems) if(coins.contains(proof.getCoin().getCoinID().to0xString())) return true;return false;};
     addCoins(txpow);std::vector<TxPoW> chosen;
     for(auto& ptr:mempool) {
         if(!ptr) throw std::invalid_argument("Null mempool transaction");auto& mem=*ptr;

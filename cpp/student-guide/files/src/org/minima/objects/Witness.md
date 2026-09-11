@@ -23,7 +23,7 @@ Collects the signatures, input coin proofs and script proofs supplied alongside 
 
 ## How the translation is approached
 
-Native vectors preserve category order and expose mutable getters. readDataStream deliberately clears and fills each vector in sequence to retain observable partial-read ordering. Element storage is by value; a pointer returned by getScript can be invalidated by later vector growth, unlike a Java object reference that remains alive through garbage collection.
+Native Witness now reuses Signature’s shared record and owned list-handle pattern. readDataStream replaces each list immediately before its count; clear methods still mutate the current list. Copies of Witness share the record, so containing TxPoW objects observe replacements. Streamable writers append nested child fields directly. A pointer returned by getScript can still be invalidated by later vector growth, unlike a Java object reference.
 
 ## What the tests tell us
 
@@ -39,7 +39,7 @@ Method navigation (declarations with bodies found in this file): [Witness](../..
 
 ## Vault/signing follow-up
 
-The vault/signing fixture directly tests addSignature(null) and isSignedBy(null), both with and without existing signatures. The new nullable-signature overload reuses the existing deduplicating value overload after rejecting null. isSignedBy still collects existing signature roots before comparing the optional input, preserving failure order. This does not supply Java object identity for vector-held signatures. See the [experiment and results](../../../../../new-tests/vault-and-signing.md).
+The vault/signing fixture directly tests addSignature(null) and isSignedBy(null), both with and without existing signatures. The new nullable-signature overload reuses the existing deduplicating value overload after rejecting null. isSignedBy still collects existing signature roots before comparing the optional input, preserving failure order. Signature now shares its own record; this earlier fixture does not by itself establish complete collection or child identity. See the [experiment and results](../../../../../new-tests/vault-and-signing.md).
 
 ## Check your understanding
 
@@ -58,3 +58,7 @@ The [coin ownership lab](../../../../../new-tests/coin-ownership.md) follows a s
 ## Signing calls versus stored signatures
 
 The [offline-file lab](../../../../../new-tests/offline-send-files.md) demonstrates a caller interaction: sendsign signs each repeated input key, but addSignature retains only the first proof for that root in each witness. We verify the retained signature and count SQL key-use writes separately. Deduplicating signing calls would silently change wallet effects even if the final witness bytes matched. Witness production code is reused unchanged in this batch.
+
+## Streamable and list ownership follow-up
+
+The [Witness lab](../../../../../new-tests/streamable-witness.md) explains owned list replacement, retained complete contents, source-ordered partial reads and writes, containing TxPoW aliases, direct-wire duplicates and clear-versus-replace behavior. It extends the common interface differential suite and independently predicts partial list contents. Full class parity remains open.

@@ -7,6 +7,7 @@
 #include "org/minima/objects/base/MiniString.hpp"
 #include "org/minima/objects/CoinProof.hpp"
 #include "org/minima/objects/ScriptProof.hpp"
+#include "org/minima/objects/Witness.hpp"
 #include <iostream>
 #include <type_traits>
 using namespace minima;using namespace minima::json;
@@ -16,6 +17,7 @@ static_assert(std::is_base_of_v<Streamable,sphincs::horst::HORSTSignature> && st
 static_assert(std::is_base_of_v<Streamable,MMRData> && std::is_base_of_v<Streamable,MMREntryNumber> && std::is_base_of_v<Streamable,MMREntry> && std::is_base_of_v<Streamable,MMRProof::MMRProofChunk> && std::is_base_of_v<Streamable,SignatureProof> && std::is_base_of_v<Streamable,Signature>);
 static_assert(std::is_base_of_v<Streamable,MiniData> && std::is_base_of_v<Streamable,MiniNumber> && std::is_base_of_v<Streamable,MiniString>);
 static_assert(std::is_base_of_v<Streamable,StateVariable> && std::is_base_of_v<Streamable,Address> && std::is_base_of_v<Streamable,ScriptProof> && std::is_base_of_v<Streamable,Token> && std::is_base_of_v<Streamable,Coin> && std::is_base_of_v<Streamable,CoinProof>);
+static_assert(std::is_base_of_v<Streamable,Witness>);
 class Failing:public Streamable {
     uint8_t values[3]={1,2,3};int fail;
 public:
@@ -26,6 +28,17 @@ public:
 static std::string category(const std::exception& e){auto text=nativeExceptionText(e);return text.substr(0,text.find(": "));}
 static std::unique_ptr<Streamable> create(const JSONObject& q){
     auto kind=q.getString("kind");
+    if(kind=="witness"){
+        auto result=std::make_unique<Witness>();
+        if(q.getString("op")=="badwrite"){
+            auto bytes=MiniData::fromHex(q.getString("base"));size_t offset=0;result->readDataStream(bytes.bytes(),offset);
+            auto fault=q.getString("fault");JSONObject child=q;child.put("kind",fault);
+            if(fault=="signature")result->getAllSignatures()->push_back(dynamic_cast<Signature&>(*create(child)));
+            else if(fault=="coinproof"){child.put("fault","coinid");result->addCoinProof(dynamic_cast<CoinProof&>(*create(child)));}
+            else result->getAllScripts()->push_back(dynamic_cast<ScriptProof&>(*create(child)));
+        }
+        return result;
+    }
     if(q.getString("op")=="badwrite"&&(kind=="address"||kind=="scriptproof"||kind=="token"||kind=="coin"||kind=="coinproof")){
         MiniData bad(std::vector<uint8_t>(65));MMRProof proof(MiniNumber(7));proof.addProofChunk(true,MMRData(bad,MiniNumber(1)));
         if(kind=="address")return std::make_unique<Address>(bad);
@@ -71,10 +84,23 @@ static wire::Bytes data(const JSONObject& q,const std::string& name){return Mini
 static JSONObject state(const Streamable& value){JSONObject out;wire::Bytes bytes={0xaa,0x55};try{value.writeDataStream(bytes);}catch(const std::exception& e){out.put("writeError",category(e));}out.put("appended",MiniData(bytes).to0xString());return out;}
 static JSONObject run(const JSONObject& q){
     JSONObject result;auto owner=create(q);Streamable& value=*owner;auto initial=data(q,"initial");size_t offset=0;if(q.getString("op")!="badwrite"&&(!q.containsKey("empty")||!q.getBoolean("empty")))value.readDataStream(initial,offset);if(auto d=dynamic_cast<MMRData*>(&value))d->setUnspendable(true);std::optional<Signature> alias;if(auto sig=dynamic_cast<Signature*>(&value))alias=*sig;auto oldList=alias?alias->getAllSignatureProofs():nullptr;auto op=q.getString("op");if(q.containsKey("cache")&&q.getBoolean("cache"))dynamic_cast<MiniData&>(value).getDataValue();
+    std::optional<Witness> witnessAlias;std::shared_ptr<Witness::Signatures> oldSignatures;std::shared_ptr<Witness::CoinProofs> oldCoins;std::shared_ptr<Witness::Scripts> oldScripts;TxPoW containing;
+    if(auto w=dynamic_cast<Witness*>(&value)){witnessAlias=*w;oldSignatures=w->getAllSignatures();oldCoins=w->getAllCoinProofs();oldScripts=w->getAllScripts();containing.setWitness(*w);}
     if(op=="read"){auto storage=data(q,"wire");std::span<const uint8_t> bytes=q.containsKey("selfInput")?std::span<const uint8_t>(dynamic_cast<MiniData&>(value).bytes()):std::span<const uint8_t>(storage);offset=size_t(std::get<int64_t>(q.get("offset").value));try{if(q.containsKey("hashRead"))dynamic_cast<MiniData&>(value).readHashFromStream(bytes,offset);else if(q.containsKey("expectedSize"))dynamic_cast<MiniData&>(value).readDataStream(bytes,offset,int(std::get<int64_t>(q.get("expectedSize").value)));else value.readDataStream(bytes,offset);}catch(const std::exception& e){result.put("readError",category(e));}result.put("offset",int64_t(offset));}
     else if(op=="callers"){
         result.put("data",miniDataVersion(value)->to0xString());result.put("hash",Crypto::getInstance().hashObject(value).to0xString());result.put("pairHash",Crypto::getInstance().hashObjects(value,value).to0xString());result.put("nio",NIOManager::createNIOMessage(MiniByte(13),value).to0xString());
         auto file=std::filesystem::path(q.getString("file"));try{MiniFile::writeObjectToFile(file,value);result.put("file",MiniData(MiniFile::readCompleteFile(file)).to0xString());MiniFile::writeObjectToFile(file,value,true);result.put("appendedFile",MiniData(MiniFile::readCompleteFile(file)).to0xString());MiniFile::writeDataToFile(file,data(q,"wire"));MiniFile::loadObject(file,value);}catch(...){std::filesystem::remove(file);throw;}std::filesystem::remove(file);
+    }
+    if(witnessAlias){
+        auto& w=*witnessAlias;
+        if(op=="witnessClear"){w.clearSignatures();w.clearCoinProofs();w.clearScriptProofs();}
+        if(op=="witnessDuplicates"){w.addSignature(oldSignatures->at(0));w.addCoinProof(oldCoins->at(0));w.addScript(oldScripts->at(0));auto keys=w.getAllSignatureKeys();keys.clear();}
+        if(q.containsKey("clearHeld")){oldSignatures->clear();oldCoins->clear();oldScripts->clear();}
+        JSONArray oldSizes,sameLists,currentSizes;oldSizes.add(int64_t(oldSignatures->size()));oldSizes.add(int64_t(oldCoins->size()));oldSizes.add(int64_t(oldScripts->size()));
+        sameLists.add(oldSignatures==w.getAllSignatures());sameLists.add(oldCoins==w.getAllCoinProofs());sameLists.add(oldScripts==w.getAllScripts());
+        currentSizes.add(int64_t(w.getAllSignatures()->size()));currentSizes.add(int64_t(w.getAllCoinProofs()->size()));currentSizes.add(int64_t(w.getAllScripts()->size()));
+        Witness oldWitness;*oldWitness.getAllSignatures()=*oldSignatures;*oldWitness.getAllCoinProofs()=*oldCoins;*oldWitness.getAllScripts()=*oldScripts;result.put("oldState",state(oldWitness));
+        result.put("oldSizes",oldSizes);result.put("sameLists",sameLists);result.put("currentSizes",currentSizes);result.put("witnessAlias",state(w));result.put("containingWitness",state(containing.getWitness()));
     }
     if(op=="tokenConvert"){try{auto token=Token::convertMiniDataVersion(MiniData(data(q,"wire")));result.put("converted",bool(token));}catch(const std::exception& e){result.put("convertError",category(e));}}
     if(auto a=dynamic_cast<Address*>(&value))result.put("derived",a->getMinimaAddress());if(auto p=dynamic_cast<ScriptProof*>(&value))result.put("derived",p->getAddressData().to0xString());if(auto t=dynamic_cast<Token*>(&value))result.put("derived",t->getTokenID()?JSONValue(t->getTokenID()->to0xString()):JSONValue(nullptr));if(auto s=dynamic_cast<StateVariable*>(&value))result.put("stateText",s->toString());

@@ -1,0 +1,170 @@
+{
+  "project": "MinimaCoreC++",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "base_head": "0cb6200d944830e42ce7ff0db2066e1c6563a48c",
+  "goal_complete": false,
+  "counterparts": 411,
+  "production_counterparts": 364,
+  "test_counterparts": 47,
+  "absent": 46,
+  "production_absent": 5,
+  "tests_absent": 41,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "default_ctest_entries": 261,
+  "full_ctest_suite_run": false,
+  "explicit_implementations": 44,
+  "adopted_types": 21,
+  "remaining_interface_implementations": 23,
+  "results": {
+    "normal": {
+      "passed": true,
+      "cases": 3447,
+      "planned_cases": 3447,
+      "independent_assertions": 31650,
+      "seconds": 4.58,
+      "transcript_sha256": "89bb03881569758a98fa85bebd5cfce64442fe5c684da7f1bac59d0be10da2b3",
+      "adopted_types": 21
+    },
+    "sanitized": {
+      "passed": true,
+      "cases": 3447,
+      "planned_cases": 3447,
+      "independent_assertions": 31650,
+      "seconds": 8.334,
+      "transcript_sha256": "89bb03881569758a98fa85bebd5cfce64442fe5c684da7f1bac59d0be10da2b3",
+      "adopted_types": 21
+    }
+  },
+  "affected_regressions": {
+    "normal": {
+      "suites": 6,
+      "passed": true,
+      "total_with_interface_seconds": 209.55,
+      "reports": {
+        "object-differential-results.json": {
+          "cases": 9464,
+          "passed": 9464
+        },
+        "kissvm-differential-results.json": {
+          "cases": 4471,
+          "passed": 4471
+        },
+        "consensus-differential-results.json": {
+          "cases": 2890,
+          "passed": 2890
+        },
+        "txndb-differential-results.json": {
+          "cases": 2503,
+          "passed": 2503
+        },
+        "wallet-witness-commands-results.json": {
+          "passed": true
+        },
+        "coin-streams-results.json": {
+          "passed": true
+        }
+      }
+    },
+    "sanitized": {
+      "suites": 6,
+      "passed": true,
+      "total_with_interface_seconds": 657.26,
+      "reports": {
+        "object-differential-results.json": {
+          "cases": 9464,
+          "passed": 9464
+        },
+        "kissvm-differential-results.json": {
+          "cases": 4471,
+          "passed": 4471
+        },
+        "consensus-differential-results.json": {
+          "cases": 2890,
+          "passed": 2890
+        },
+        "txndb-differential-results.json": {
+          "cases": 2503,
+          "passed": 2503
+        },
+        "wallet-witness-commands-results.json": {
+          "passed": true
+        },
+        "coin-streams-results.json": {
+          "passed": true
+        }
+      }
+    }
+  },
+  "active_sessions": {},
+  "completed_sessions": {
+    "initial_build": {
+      "id": 29213,
+      "exit_code": 2
+    },
+    "intermediate_normal_build": {
+      "id": 67616,
+      "exit_code": 0
+    },
+    "intermediate_sanitized_build": {
+      "id": 40580,
+      "exit_code": 0
+    },
+    "initial_interface_check": {
+      "id": 45020,
+      "exit_code": 0,
+      "report_counter_invalid": true
+    },
+    "final_normal_build": {
+      "id": 20028,
+      "exit_code": 0
+    },
+    "final_sanitized_build": {
+      "id": 2483,
+      "exit_code": 0
+    },
+    "final_normal_tests": {
+      "id": 72261,
+      "exit_code": 0
+    },
+    "final_sanitized_tests": {
+      "id": 43464,
+      "exit_code": 0
+    }
+  },
+  "scope": "Witness common Streamable dispatch, source-ordered list replacement, retained list contents, shared containing-object identity, direct nested writer prefixes, duplicate and clear behavior; affected production callers adapted.",
+  "open_work": [
+    "Transaction and 22 other explicit implementing types plus inherited subclasses",
+    "Witness nullable elements, complete ScriptProof identity, retained getScript pointers and full collection APIs",
+    "Custom streams, fail-fast iteration, subclass dispatch, allocation failures, concurrency and reentrant mutation",
+    "Remaining 46 counterparts and full native node parity"
+  ],
+  "guide_audit": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "source_files": 457,
+    "unique_guides": 457,
+    "native_counterparts": 411,
+    "native_absent": 46,
+    "mapping_counts_by_source_set": {
+      "src": {
+        "total": 369,
+        "counterparts": 364,
+        "absent": 5
+      },
+      "test": {
+        "total": 88,
+        "counterparts": 47,
+        "absent": 41
+      }
+    },
+    "teaching_counts": {
+      "authored_lesson": 369,
+      "source_test_explanation": 88
+    },
+    "links_checked": 9319,
+    "line_anchors_checked": 2632,
+    "errors": [],
+    "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
+  }
+}

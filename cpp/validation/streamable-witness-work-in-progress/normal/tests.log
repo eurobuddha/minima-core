@@ -1,0 +1,19 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start   5: object_differential
+1/7 Test   #5: object_differential ....................   Passed   24.21 sec
+    Start  16: kissvm_differential
+2/7 Test  #16: kissvm_differential ....................   Passed    4.64 sec
+    Start  41: consensus_differential
+3/7 Test  #41: consensus_differential .................   Passed  140.44 sec
+    Start  50: txndb_differential
+4/7 Test  #50: txndb_differential .....................   Passed    5.89 sec
+    Start 148: wallet_witness_commands_differential
+5/7 Test #148: wallet_witness_commands_differential ...   Passed    6.75 sec
+    Start 149: coin_streams_differential
+6/7 Test #149: coin_streams_differential ..............   Passed   22.93 sec
+    Start 261: streamable_differential
+7/7 Test #261: streamable_differential ................   Passed    4.68 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) = 209.55 sec

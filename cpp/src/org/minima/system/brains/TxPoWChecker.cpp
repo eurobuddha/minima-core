@@ -48,7 +48,7 @@ bool TxPoWChecker::checkTxPoWBlock(std::shared_ptr<TxPoWTreeNode> parent,std::sh
         std::vector<std::string> allCoins;
         auto appendCoins=[&](const TxPoW& value){
             if(value.isTransaction())for(const Witness* wit:{&value.getWitness(),&value.getBurnWitness()})
-                for(const auto& proof:wit->getAllCoinProofs())allCoins.push_back(proof.getCoin().getCoinID().to0xString());
+                for(const auto witnessItems=wit->getAllCoinProofs();const auto& proof:*witnessItems)allCoins.push_back(proof.getCoin().getCoinID().to0xString());
         };
         appendCoins(txpow);
         if(!transactions)throw JavaNullPointerException("null block transaction list");
@@ -80,7 +80,7 @@ bool TxPoWChecker::checkTxPoWBasic(const TxPoW& txpow) {
     }
     std::vector<std::string> allCoins;
     if(txpow.isTransaction())for(const Witness* wit:{&txpow.getWitness(),&txpow.getBurnWitness()})
-        for(const auto& proof:wit->getAllCoinProofs())allCoins.push_back(proof.getCoin().getCoinID().to0xString());
+        for(const auto witnessItems=wit->getAllCoinProofs();const auto& proof:*witnessItems)allCoins.push_back(proof.getCoin().getCoinID().to0xString());
     JavaHashMap<bool> coins;coins.reserveForPutAll(std::max(size_t(12),allCoins.size()));
     for(const auto& coin:allCoins)coins.put(coin,true);
     if(coins.size()!=allCoins.size()){
@@ -108,11 +108,11 @@ bool TxPoWChecker::basic(const std::string& txpowID,const Transaction& transacti
     if(!transaction.checkValid())return reject("Invalid Transaction Inputs and Outputs.. "+transaction.toJSON().toJSONString());
     const auto& inputs=transaction.getAllInputs();
     if(inputs.empty())return reject("Transaction MUST have at least 1 input @ "+txpowID);
-    const auto& proofs=witness.getAllCoinProofs();
-    if(inputs.size()!=proofs.size())return reject("Wrong Number of MMR Proofs Inputs:"+std::to_string(inputs.size())+" MMRProofs:"+std::to_string(proofs.size())+" @ "+txpowID);
+    const auto proofs=witness.getAllCoinProofs();
+    if(inputs.size()!=proofs->size())return reject("Wrong Number of MMR Proofs Inputs:"+std::to_string(inputs.size())+" MMRProofs:"+std::to_string(proofs->size())+" @ "+txpowID);
     std::set<std::string> used;
     for(size_t i=0;i<inputs.size();++i) {
-        const auto& input=inputs[i];const auto& coin=proofs[i].getCoin();
+        const auto& input=inputs[i];const auto& coin=(*proofs)[i].getCoin();
         if(!used.insert(coin.getCoinID().to0xString()).second)return reject("CoinID used more than once @ "+std::to_string(i)+" in "+txpowID);
         bool amount=input.getAmount().isEqual(coin.getAmount()),address=input.getAddress().isEqual(coin.getAddress()),token=input.getTokenID().isEqual(coin.getTokenID());
         if(!amount||!address||!token)return reject("Input coin details don't match coinproof "+txpowID);
@@ -157,13 +157,13 @@ bool TxPoWChecker::scripts(Transaction& transaction,Witness& witness,const TxPoW
     transaction.mHaveCheckedMonotonic=true;transaction.mIsMonotonic=true;transaction.mIsValid=false;
     if(transaction.isEmpty()) {transaction.mIsValid=true;return true;}
     auto maxops=block.getMagic().getMaxKISSOps().getAsInt();
-    const auto& proofs=witness.getAllCoinProofs();
-    if(proofs.size()!=transaction.getAllInputs().size()){MinimaLogger::log("Wrong number of MMRProofs("+std::to_string(proofs.size())+") for Inputs("+std::to_string(transaction.getAllInputs().size())+")");return false;}
+    const auto proofs=witness.getAllCoinProofs();
+    if(proofs->size()!=transaction.getAllInputs().size()){MinimaLogger::log("Wrong number of MMRProofs("+std::to_string(proofs->size())+") for Inputs("+std::to_string(transaction.getAllInputs().size())+")");return false;}
     // Contracts execute synchronously; aliases cannot escape this invocation.
     auto txn=std::shared_ptr<Transaction>(&transaction,[](Transaction*){});
     auto wit=std::shared_ptr<Witness>(&witness,[](Witness*){});
-    for(size_t i=0;i<proofs.size();++i) {
-        const auto& coin=proofs[i].getCoin();auto proof=witness.getScript(coin.getAddress());
+    for(size_t i=0;i<proofs->size();++i) {
+        const auto& coin=(*proofs)[i].getCoin();auto proof=witness.getScript(coin.getAddress());
         if(!proof){MinimaLogger::log("Script NOT found for address : "+coin.getAddress().to0xString());return false;}
         auto run=[&](const std::string& script,bool tokenScript) {
             kissvm::Contract contract(script,witness.getAllSignatureKeys(),wit,txn,coin.getState());
@@ -187,7 +187,7 @@ bool TxPoWChecker::checkMMR(const MMR& tip,const TxPoW& txpow,bool log) {
     return checkMMR(&tip,txpow,log);
 }
 bool TxPoWChecker::checkMMR(const MMR* tip,const TxPoW& txpow,bool log) {
-    for(const Witness* wit:{&txpow.getWitness(),&txpow.getBurnWitness()}) for(const auto& proof:wit->getAllCoinProofs()) {
+    for(const Witness* wit:{&txpow.getWitness(),&txpow.getBurnWitness()}) for(const auto witnessItems=wit->getAllCoinProofs();const auto& proof:*witnessItems) {
         const auto& coin=proof.getCoin();auto leaf=MMRData::CreateMMRDataLeafNode(coin,coin.getAmount());
         if(!tip) throw JavaNullPointerException("null MMR receiver");
         if(!tip->checkProofTimeValid(coin.getMMREntryNumber(),leaf,proof.getMMRProof())) {
@@ -199,13 +199,13 @@ bool TxPoWChecker::checkMMR(const MMR* tip,const TxPoW& txpow,bool log) {
 bool TxPoWChecker::checkSignatures(const TxPoW& txpow) {
     auto check=[&](const Transaction& txn,const Witness& wit) {
         const auto transactionID=txn.getTransactionID();
-        for(const auto& sig:wit.getAllSignatures()) {TreeKey key;key.setPublicKey(sig.getRootPublicKey());if(!key.verify(transactionID,sig)){MinimaLogger::log("SIGNATURE FAIL : "+txpow.getTxPoWID());return false;}}
+        for(const auto witnessItems=wit.getAllSignatures();const auto& sig:*witnessItems) {TreeKey key;key.setPublicKey(sig.getRootPublicKey());if(!key.verify(transactionID,sig)){MinimaLogger::log("SIGNATURE FAIL : "+txpow.getTxPoWID());return false;}}
         return true;
     };
     return check(txpow.getTransaction(),txpow.getWitness())&&check(txpow.getBurnTransaction(),txpow.getBurnWitness());
 }
 bool TxPoWChecker::checkMemPoolCoins(const TxPoW& txpow) {
-    for(const Witness* wit:{&txpow.getWitness(),&txpow.getBurnWitness()}) for(const auto& proof:wit->getAllCoinProofs()) if(services.checkMempoolCoins(proof.getCoin().getCoinID())) return true;
+    for(const Witness* wit:{&txpow.getWitness(),&txpow.getBurnWitness()}) for(const auto witnessItems=wit->getAllCoinProofs();const auto& proof:*witnessItems) if(services.checkMempoolCoins(proof.getCoin().getCoinID())) return true;
     return false;
 }
 bool TxPoWChecker::checkParents(std::shared_ptr<TxPoWTreeNode> tip,const TxPoW& block) {

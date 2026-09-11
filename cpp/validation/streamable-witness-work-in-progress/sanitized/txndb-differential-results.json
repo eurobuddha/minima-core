@@ -1,0 +1,6 @@
+{
+  "cases": 2503,
+  "passed": 2503,
+  "failures": [],
+  "scope": "Transaction rows/database wire import, corrupt and partial reads, output CoinID JSON side effects, duplicate IDs, row/list aliases and UserDB persistence; complete stream/container APIs remain under review"
+}
