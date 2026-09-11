@@ -1,0 +1,74 @@
+{
+  "project": "MinimaCoreC++",
+  "base_head": "9b8c2a6d8fb8beee8c489d6b875425cb8dca47c2",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "newly_converted_files": [],
+  "counterparts": 411,
+  "absent": 46,
+  "default_ctest_entries": 265,
+  "full_ctest_suite_run": false,
+  "normal_full_build": "passed",
+  "sanitized_full_build": "passed",
+  "normal_txheader": {
+    "passed": true,
+    "cases": 3219,
+    "planned_cases": 3219,
+    "independent_assertions": 44120,
+    "seconds": 4.287,
+    "transcript_sha256": "3fe78b10f32fa6067aa68a8c9385469bf63d029677ba28b05f72f6058ef7b6f1",
+    "failures": [],
+    "scope": "Actual TxHeader shared fields/defaults, retained wrappers/arrays/body getter, complete-field factory assignment, every byte prefix of represented RLE streams, zero/oversized runs versus actual array length, per-run alias matrix, nullable fields/arrays/slots, direct polymorphic write prefixes with self replacement, JSON errors. Existing TxPoW convenience return references, arbitrary streams, non-stream scalar overrides, allocation/concurrency and full node parity remain open."
+  },
+  "sanitized_txheader": {
+    "passed": true,
+    "cases": 3219,
+    "planned_cases": 3219,
+    "independent_assertions": 44120,
+    "seconds": 8.323,
+    "transcript_sha256": "3fe78b10f32fa6067aa68a8c9385469bf63d029677ba28b05f72f6058ef7b6f1",
+    "failures": [],
+    "scope": "Actual TxHeader shared fields/defaults, retained wrappers/arrays/body getter, complete-field factory assignment, every byte prefix of represented RLE streams, zero/oversized runs versus actual array length, per-run alias matrix, nullable fields/arrays/slots, direct polymorphic write prefixes with self replacement, JSON errors. Existing TxPoW convenience return references, arbitrary streams, non-stream scalar overrides, allocation/concurrency and full node parity remain open."
+  },
+  "regressions": {
+    "normal": {
+      "session": 50125,
+      "selected": 7,
+      "passed": 7,
+      "seconds": 169.88
+    },
+    "sanitized": {
+      "session": 36824,
+      "selected": 3,
+      "passed": 3,
+      "seconds": 95.73
+    }
+  },
+  "initial_findings": [
+    "Mapped TxHeaderTests still used the old field syntax; adapted setup and getter calls, preserving its assertions.",
+    "New fixture needed the JSONArray include and a fieldWire name distinct from the wire namespace.",
+    "Converter cases omitted the fixture nullInput boolean; both runtimes threw at the fixture lookup. Corrected fixture parameter defaults; initial report retained."
+  ],
+  "remaining_priority": "Finish/checkpoint this TxHeader correction, then convert the remaining 46 source/test files. Do not let long demonstrations or repeated covered tests stall independent conversions.",
+  "remaining_inventory": "remaining-files.json",
+  "magic_demo_replays": {
+    "normal_session": 55636,
+    "sanitized_session": 41123,
+    "source_commit": "9ae70398b8f1c453d2242a6ae88cf8f5a62a26ef",
+    "independent_pending": true
+  },
+  "scope_limits": [
+    "Not complete TxPoW field/getter identity",
+    "No arbitrary stream, non-stream scalar overrides, allocation/concurrency parity",
+    "Common Streamable corpus still lists 24 explicitly tested types; TxHeader is validated here",
+    "No full 265-test CTest run",
+    "Native H2 AOT dependency remains outside sanitizer instrumentation"
+  ],
+  "stage": "validated_incremental_checkpoint",
+  "completed_sessions": {
+    "normal_full_build": 4857,
+    "sanitized_full_build": 78953,
+    "normal_txheader": 65125,
+    "sanitized_txheader": 15854
+  }
+}

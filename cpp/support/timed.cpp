@@ -14,7 +14,7 @@ int main(int argc,char** argv){
     TxPoWChecker::services.getCascadeTip=[]{return std::shared_ptr<CascadeNode>{};};
     if(argc==1){
         TimedChecker valid;require(valid.checkTxPoWBlock(tip,block,txns));require(valid.isFinished());
-        block->getTxHeader().mChainID=MiniData::fromHex("0xFF");TimedChecker invalid;require(!invalid.checkTxPoWBlock(tip,block,txns));require(invalid.isFinished());
+        block->getTxHeader().mChainID()=std::make_shared<MiniData>(MiniData::fromHex("0xFF"));TimedChecker invalid;require(!invalid.checkTxPoWBlock(tip,block,txns));require(invalid.isFinished());
         std::cout<<"Timed checker normal valid/invalid cases passed\n";
     }else{
         bool shared=std::string(argv[1])=="--shared-deadline";

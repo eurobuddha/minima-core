@@ -84,7 +84,8 @@ public:
     static constexpr int MAX_DIGITS         = 64;
     static constexpr int MAX_DECIMAL_PLACES = MAX_DIGITS - 20; // 44
 
-    static const MiniNumber ZERO;
+    static const MiniNumber& ZERO;
+    static std::shared_ptr<MiniNumber> sharedZero();
     static const MiniNumber ONE;
     static const MiniNumber TWO;
     static const MiniNumber THREE;

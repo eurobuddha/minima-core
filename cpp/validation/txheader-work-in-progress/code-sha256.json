@@ -1,0 +1,23 @@
+{
+  "cpp/CMakeLists.txt": "89c3764443e3add85dc14e4bbbd79f017479dead62fbd4caa204055d5173b9a0",
+  "cpp/src/org/minima/objects/TxHeader.cpp": "2003e645e3af24caf8014f4af7b32da4f1f5fb46724f74a18d62e0f4c88093f9",
+  "cpp/src/org/minima/objects/TxHeader.hpp": "cc44d3a408e75bda866adc90e5de01b146e9f7e55da22dec0a1008c44af6a1fe",
+  "cpp/src/org/minima/objects/TxPoW.cpp": "e62aa08ee510fef0c0f5ae6c8b940751a15f3b51d7665d0d25501b9f52add31c",
+  "cpp/src/org/minima/objects/TxPoW.hpp": "d44480f0a290cf8ad43e8c41d24c773a954ee8327ff86a03365b0c29ab996ba7",
+  "cpp/src/org/minima/objects/base/MiniData.cpp": "24f3b0a24e204aa01c90228e3d89c3e4cc80e8f04cee2319d73311dd50bffb4e",
+  "cpp/src/org/minima/objects/base/MiniData.hpp": "acbec48ee7b16e87d57b6eb418efcbe15150f8c7e4330547423bb86a4b6a1dd7",
+  "cpp/src/org/minima/objects/base/MiniNumber.cpp": "6edb9bb4e2ac1c647f5045e86aaf16b687c858385ae5f5c2f3b9296839367cd4",
+  "cpp/src/org/minima/objects/base/MiniNumber.hpp": "818f1ae091fe5397bd60abbff6231e5fa9a3dd605680df58466733cd8e5e253f",
+  "cpp/src/org/minima/system/brains/TxPoWMiner.cpp": "a8ef2a3ee8c9b9d0cb0b8a9830d8e783b0b6a913e625cc1156442954726842db",
+  "cpp/src/org/minima/utils/Crypto.cpp": "3e2623a2831eb69fab867180c5575fcdf7ed9aedf5ca47ff3382f933697a85f8",
+  "cpp/src/org/minima/utils/Crypto.hpp": "c745a03a4bf35d72e5016a29dac74b1edad32286ba8a08d26f2a84df22708f51",
+  "cpp/support/SharedCheckerFixture.hpp": "957dc28719800b94eb584eb12723d2a8c59aa9f70ffd245f9add9e55d6e4ed0d",
+  "cpp/support/TxHeaderOracle.java": "928625b8da03d2f70c6ec0427b26dddefcae0760d9f432f09ad4d402c225974a",
+  "cpp/support/objects.cpp": "245319c5c180e2981cc059a281441f3aadb7f497081f8ae815ba205c60905190",
+  "cpp/support/timed.cpp": "a6346b0e9fa5b713c323337305417afe6fef0cb1d57f056b6b4e197c0b81033e",
+  "cpp/support/timed_checker_errors.cpp": "165c36e64ab3049c06aee8b9b42a0cfb0f30241f74086ecd0e8d258778f91668",
+  "cpp/support/txheader.cpp": "43937b33cc7cd7c270558bca78c9d9c116e1e815dde4311477b1db20bd27ed01",
+  "cpp/support/txpow_processor.cpp": "96fccfa17e22b4539d1e97a0c724cbf72fe7ae5d858324514da76029b4804b03",
+  "cpp/test/org/minima/objects/TxHeaderTests.cpp": "3bc93d021eeeca610d02eaf4d178dbabd82925621c74cb5260ba9d060dbee410",
+  "cpp/tools/txheader_differential.py": "a7adc14a68520061cde751f34be03a595cd5143ca8de516b2de306abb8ee0637"
+}

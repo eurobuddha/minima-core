@@ -1,0 +1,283 @@
+{
+  "total": 46,
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "rows": [
+    {
+      "java": "src/org/minima/system/commands/base/benchmark.java",
+      "cpp": "src/org/minima/system/commands/base/benchmark.cpp",
+      "group": "external_native_dependency",
+      "next_action": "jnifunctions declares methods from System.loadLibrary(\"native\"); native bodies/binary not found in inspected repository and sibling. Command parameter/control logic can be ported independently; complete native-method fidelity needs that implementation or authoritative vectors."
+    },
+    {
+      "java": "src/org/minima/system/commands/base/jniminingtest.java",
+      "cpp": "src/org/minima/system/commands/base/jniminingtest.cpp",
+      "group": "external_native_dependency",
+      "next_action": "jnifunctions declares methods from System.loadLibrary(\"native\"); native bodies/binary not found in inspected repository and sibling. Command parameter/control logic can be ported independently; complete native-method fidelity needs that implementation or authoritative vectors."
+    },
+    {
+      "java": "src/org/minima/system/commands/base/jnitest.java",
+      "cpp": "src/org/minima/system/commands/base/jnitest.cpp",
+      "group": "external_native_dependency",
+      "next_action": "jnifunctions declares methods from System.loadLibrary(\"native\"); native bodies/binary not found in inspected repository and sibling. Command parameter/control logic can be ported independently; complete native-method fidelity needs that implementation or authoritative vectors."
+    },
+    {
+      "java": "src/org/minima/system/network/p2p/messages/P2PSwapLink.java",
+      "cpp": "src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp",
+      "group": "inactive_commented_source",
+      "next_action": "Entire pinned file is commented out; preserve an explicitly inactive counterpart/archive without claiming implemented runtime behavior."
+    },
+    {
+      "java": "src/org/minima/utils/jni/jnifunctions.java",
+      "cpp": "src/org/minima/utils/jni/jnifunctions.cpp",
+      "group": "external_native_dependency",
+      "next_action": "jnifunctions declares methods from System.loadLibrary(\"native\"); native bodies/binary not found in inspected repository and sibling. Command parameter/control logic can be ported independently; complete native-method fidelity needs that implementation or authoritative vectors."
+    },
+    {
+      "java": "test/org/minima/objects/AddressTests.java",
+      "cpp": "test/org/minima/objects/AddressTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/objects/CoinTests.java",
+      "cpp": "test/org/minima/objects/CoinTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/objects/TokenTests.java",
+      "cpp": "test/org/minima/objects/TokenTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/objects/base/MiniDataTests.java",
+      "cpp": "test/org/minima/objects/base/MiniDataTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/objects/base/MiniNumberTests.java",
+      "cpp": "test/org/minima/objects/base/MiniNumberTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/system/brains/TxPoWProcessorTest.java",
+      "cpp": "test/org/minima/system/brains/TxPoWProcessorTest.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/system/network/p2p/SwapLinksFunctionsTest.java",
+      "cpp": "test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/system/network/p2p/UtilFuncsTest.java",
+      "cpp": "test/org/minima/system/network/p2p/UtilFuncsTest.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/system/network/p2p/WalkLinksFuncsTest.java",
+      "cpp": "test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/system/network/p2p/testingutils/QuickClients.java",
+      "cpp": "test/org/minima/system/network/p2p/testingutils/QuickClients.cpp",
+      "group": "test_helpers",
+      "next_action": "Port generators using existing NIOClientInfo, InetSocketAddress, P2PState and Java-compatible collections/randomness; unlock the three P2P test classes."
+    },
+    {
+      "java": "test/org/minima/system/network/p2p/testingutils/QuickInetLists.java",
+      "cpp": "test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp",
+      "group": "test_helpers",
+      "next_action": "Port generators using existing NIOClientInfo, InetSocketAddress, P2PState and Java-compatible collections/randomness; unlock the three P2P test classes."
+    },
+    {
+      "java": "test/org/minima/system/network/p2p/testingutils/QuickState.java",
+      "cpp": "test/org/minima/system/network/p2p/testingutils/QuickState.cpp",
+      "group": "test_helpers",
+      "next_action": "Port generators using existing NIOClientInfo, InetSocketAddress, P2PState and Java-compatible collections/randomness; unlock the three P2P test classes."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.java",
+      "cpp": "test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/expressions/ExpressionParserTests.java",
+      "cpp": "test/org/minima/tests/kissvm/expressions/ExpressionParserTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.java",
+      "cpp": "test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/sha/SHA2Tests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/sha/SHA3Tests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/sha/SHA3Tests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/state/PREVSTATETests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/state/PREVSTATETests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/state/SAMESTATETests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/state/SAMESTATETests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/state/STATETests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/state/STATETests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.java",
+      "cpp": "test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/statements/StatementParserTests.java",
+      "cpp": "test/org/minima/tests/kissvm/statements/StatementParserTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/statements/commands/IFstatementTests.java",
+      "cpp": "test/org/minima/tests/kissvm/statements/commands/IFstatementTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/statements/commands/LETstatementTests.java",
+      "cpp": "test/org/minima/tests/kissvm/statements/commands/LETstatementTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.java",
+      "cpp": "test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.java",
+      "cpp": "test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.java",
+      "cpp": "test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/tests/kissvm/tokens/TokenTests.java",
+      "cpp": "test/org/minima/tests/kissvm/tokens/TokenTests.cpp",
+      "group": "active_original_tests",
+      "next_action": "Inspect complete source test, reuse corresponding native implementation and established original-test harness; validate all active methods."
+    },
+    {
+      "java": "test/org/minima/utils/TestUtils.java",
+      "cpp": "test/org/minima/utils/TestUtils.cpp",
+      "group": "test_helpers",
+      "next_action": "Directly reuse existing TxPoW testing constructor; overload delegates (block=1, weight=0)."
+    }
+  ],
+  "note": "Planning inventory, not parity evidence. Complete-source review performed for five absent production files, TestUtils and all six absent P2P test/helper files; other tests still need method-level inspection. No new counterpart counted in this checkpoint."
+}

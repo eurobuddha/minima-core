@@ -660,7 +660,8 @@ MiniNumber MiniNumber::deserialise(std::span<const uint8_t> data, size_t& offset
 }
 
 // Static constants
-const MiniNumber MiniNumber::ZERO       ("0");
+std::shared_ptr<MiniNumber> MiniNumber::sharedZero() {static const auto value=std::make_shared<MiniNumber>("0");return value;}
+const MiniNumber& MiniNumber::ZERO=*sharedZero();
 const MiniNumber MiniNumber::ONE        ("1");
 const MiniNumber MiniNumber::TWO        ("2");
 const MiniNumber MiniNumber::THREE      ("3");

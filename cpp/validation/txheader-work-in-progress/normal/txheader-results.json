@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": 3219,
+  "planned_cases": 3219,
+  "independent_assertions": 44120,
+  "seconds": 4.287,
+  "transcript_sha256": "3fe78b10f32fa6067aa68a8c9385469bf63d029677ba28b05f72f6058ef7b6f1",
+  "failures": [],
+  "scope": "Actual TxHeader shared fields/defaults, retained wrappers/arrays/body getter, complete-field factory assignment, every byte prefix of represented RLE streams, zero/oversized runs versus actual array length, per-run alias matrix, nullable fields/arrays/slots, direct polymorphic write prefixes with self replacement, JSON errors. Existing TxPoW convenience return references, arbitrary streams, non-stream scalar overrides, allocation/concurrency and full node parity remain open."
+}

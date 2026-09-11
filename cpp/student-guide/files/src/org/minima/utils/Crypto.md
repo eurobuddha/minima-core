@@ -46,3 +46,10 @@ Pinned Java SHA-256: `fcbd60a6f3fd72897c0820d25a14b3b2a28c57179ac43de358254705de
 ## Nullable Transaction hashing
 
 The new hashObjectOrNull adapter preserves the pinned hashObject catch/log/null boundary for Transaction. It reuses the existing serializer and SHA3 implementation, lets JavaError and allocation failures escape, and logs caught exceptions. Other native hash convenience APIs remain under review. See the [Transaction lab](../../../../../new-tests/streamable-transaction.md).
+
+
+## TxHeader reference and stream update
+
+The [TxHeader lab](../../../../../new-tests/txheader.md) explains the shared default objects, retained field and
+array identities, run-length partial writes, and interrupted child factories.
+Its evidence is scoped to these behaviors; full class and node parity remain open.

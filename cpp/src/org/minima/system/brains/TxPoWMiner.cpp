@@ -18,7 +18,7 @@ void nextNonce(std::vector<uint8_t>& header,BigInt& nonce){
 }
 MiniNumber readNonce(const std::vector<uint8_t>& header){
     auto value=TxHeader::convertMiniDataVersion(MiniData(header));
-    if(!value)throw JavaNullPointerException("null decoded mining header");return value->mNonce;
+    if(!value)throw JavaNullPointerException("null decoded mining header");return TxHeader::required(value->mNonce());
 }
 std::shared_ptr<Message> txMessage(const std::string& type,const std::shared_ptr<TxPoW>& txpow){
     auto message=std::make_shared<Message>(type);message->addObject("txpow",MessageObject(txpow));return message;

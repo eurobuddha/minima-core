@@ -54,3 +54,10 @@ The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinc
 length limits, partial output and receiver lifetime during field replacement.
 Both builds pass 1,848 comparisons and 12,752 independent assertions for the
 represented paths. This update does not establish full field identity or class parity.
+
+
+## TxHeader reference and stream update
+
+The [TxHeader lab](../../../../../new-tests/txheader.md) explains the shared default objects, retained field and
+array identities, run-length partial writes, and interrupted child factories.
+Its evidence is scoped to these behaviors; full class and node parity remain open.

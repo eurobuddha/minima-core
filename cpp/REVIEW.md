@@ -1,4 +1,53 @@
-# Current checkpoint — separate hash writers validated
+# Current checkpoint — TxHeader validated; remaining-file conversions next
+
+Branch/project/executable MinimaCoreC++. Base HEAD 9b8c2a6d8fb8beee8c489d6b875425cb8dca47c2.
+The full457-file goal remains active. No new counterpart in this correction:
+411 exist (364 production +47 original tests);46 absent (5 production +41 tests).
+All full parity remains not_verified. Both full builds pass;265 CTest entries,
+full suite not run.
+
+TxHeader now uses nullable owned fields and a retained shared superparent array.
+Child factories replace fields only after completion. Runs share decoded children,
+retain partial array writes, and distinguish actual array length from global
+cascade levels. Writers preserve prefixes and receiver lifetime. Shared globals
+and MAIN_NET replacement match the represented source aliases. The converter logs
+IOException only. Existing TxPoW value/reference convenience boundaries remain open.
+
+Both focused suites PASS:3219 comparisons/44120 assertions; transcript
+3fe78b10f32fa6067aa68a8c9385469bf63d029677ba28b05f72f6058ef7b6f1.
+Normal selected7 regressions PASS169.88s; sanitizer selected3 PASS95.73s.
+Build handles4857/78953=0; focused65125/15854=0; regression50125/36824=0.
+Saved source review, failures, evidence and remaining-file inventory:
+validation/txheader-work-in-progress. Student lab:student-guide/new-tests/txheader.md.
+All457 lessons pass the structural audit.
+
+USER PRIORITY: checkpoint this work, then convert the remaining46 files. Complete
+independent files without waiting for long demos or repeating covered tests.
+Report separately: new mapped files/names/count; existing behavior corrections;
+build/test results; actual dependencies/blockers and next action. Keep teaching
+pages, local commits and verified recovery bundles current. Do not count
+placeholders, compilation alone or partial tests as full parity.
+
+Remaining inventory:41 tests/helpers can proceed against existing implementations;
+four source files need the external JNI implementation for complete native-method
+fidelity (command control logic can proceed independently); P2PSwapLink.java is
+entirely commented out and must be labelled inactive, not fabricated as a live API.
+Read remaining-files.json. TestUtils, six P2P tests/helpers and all five absent
+production sources were read completely. Other absent tests need complete source
+inspection before conversion. Existing original-test harness and CONCAT/GET/SUBSET
+counterparts are candidates for reuse. Prioritize batches of complete source tests.
+
+LIVE independent Magic replays:55636 normal,41123 sanitized, both using preserved
+9ae7039 binaries and7200-second runtime limits. Do not restart solely due to quiet
+buffered output. Reports:cpp/build{,-sanitized}/magic-demo-replay-results.json.
+Initial1200-second timeouts are preserved in magic-work-in-progress.
+
+Only cpp work is committed. Preserve unrelated graphify-out edits and external
+f7f0e08 Java SQL/JAR changes; pinned upstream-study remains unchanged. No push.
+
+---
+
+# Historical checkpoint — separate hash writers validated
 
 Project, branch and executable: MinimaCoreC++. Base HEAD 9ae70398b8f1c453d2242a6ae88cf8f5a62a26ef.
 Goal ACTIVE and incomplete: 411 counterparts (364 production + 47 original tests),

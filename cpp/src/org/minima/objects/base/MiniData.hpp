@@ -16,7 +16,8 @@ public:
     static int MINIMA_MAX_HASH_LENGTH;
     static int MINIMA_MAX_MINIDATA_LENGTH;
 
-    static const MiniData ZERO_TXPOWID;
+    static const MiniData& ZERO_TXPOWID;
+    static std::shared_ptr<MiniData> sharedZeroTxPoWID();
     static const MiniData ONE_TXPOWID;
 
     MiniData() = default;

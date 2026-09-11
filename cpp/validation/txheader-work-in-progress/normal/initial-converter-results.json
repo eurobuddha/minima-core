@@ -1,0 +1,238 @@
+{
+  "passed": false,
+  "cases": 3219,
+  "planned_cases": 3219,
+  "independent_assertions": 44120,
+  "seconds": 13.862,
+  "transcript_sha256": "b8d12430f31248adef4a48465f19c0e5cea883a2e5cf2c78bb22bdfedb56ab5f",
+  "failures": [
+    {
+      "case": 3213,
+      "request": {
+        "op": "convert",
+        "wire": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A",
+        "initial": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A"
+      },
+      "java": {
+        "error": "java.lang.NullPointerException",
+        "logs": []
+      },
+      "cpp": {
+        "error": "java.lang.RuntimeException",
+        "logs": []
+      }
+    },
+    {
+      "case": 3213,
+      "runtime": 0,
+      "key": "converted",
+      "expected": true,
+      "actual": null
+    },
+    {
+      "case": 3213,
+      "runtime": 0,
+      "key": "wire",
+      "expected": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A",
+      "actual": null
+    },
+    {
+      "case": 3213,
+      "runtime": 0,
+      "unexpected_error": "java.lang.NullPointerException"
+    },
+    {
+      "case": 3213,
+      "runtime": 1,
+      "key": "converted",
+      "expected": true,
+      "actual": null
+    },
+    {
+      "case": 3213,
+      "runtime": 1,
+      "key": "wire",
+      "expected": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A",
+      "actual": null
+    },
+    {
+      "case": 3213,
+      "runtime": 1,
+      "unexpected_error": "java.lang.RuntimeException"
+    },
+    {
+      "case": 3214,
+      "request": {
+        "op": "convert",
+        "wire": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010AFF",
+        "initial": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A"
+      },
+      "java": {
+        "error": "java.lang.NullPointerException",
+        "logs": []
+      },
+      "cpp": {
+        "error": "java.lang.RuntimeException",
+        "logs": []
+      }
+    },
+    {
+      "case": 3214,
+      "runtime": 0,
+      "key": "converted",
+      "expected": true,
+      "actual": null
+    },
+    {
+      "case": 3214,
+      "runtime": 0,
+      "key": "wire",
+      "expected": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A",
+      "actual": null
+    },
+    {
+      "case": 3214,
+      "runtime": 0,
+      "unexpected_error": "java.lang.NullPointerException"
+    },
+    {
+      "case": 3214,
+      "runtime": 1,
+      "key": "converted",
+      "expected": true,
+      "actual": null
+    },
+    {
+      "case": 3214,
+      "runtime": 1,
+      "key": "wire",
+      "expected": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A",
+      "actual": null
+    },
+    {
+      "case": 3214,
+      "runtime": 1,
+      "unexpected_error": "java.lang.RuntimeException"
+    },
+    {
+      "case": 3215,
+      "request": {
+        "op": "convert",
+        "wire": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D0000000109000000010900000001",
+        "initial": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A"
+      },
+      "java": {
+        "error": "java.lang.NullPointerException",
+        "logs": []
+      },
+      "cpp": {
+        "error": "java.lang.RuntimeException",
+        "logs": []
+      }
+    },
+    {
+      "case": 3215,
+      "runtime": 0,
+      "key": "converted",
+      "expected": false,
+      "actual": null
+    },
+    {
+      "case": 3215,
+      "runtime": 0,
+      "key": "logs",
+      "expected": [
+        "java.io.EOFException"
+      ],
+      "actual": []
+    },
+    {
+      "case": 3215,
+      "runtime": 0,
+      "unexpected_error": "java.lang.NullPointerException"
+    },
+    {
+      "case": 3215,
+      "runtime": 1,
+      "key": "converted",
+      "expected": false,
+      "actual": null
+    },
+    {
+      "case": 3215,
+      "runtime": 1,
+      "key": "logs",
+      "expected": [
+        "java.io.EOFException"
+      ],
+      "actual": []
+    },
+    {
+      "case": 3215,
+      "runtime": 1,
+      "unexpected_error": "java.lang.RuntimeException"
+    },
+    {
+      "case": 3216,
+      "request": {
+        "op": "convert",
+        "wire": "0x0001020000000103000104000105000000010606000000011F000000010700010800030100020002040200020102000000010200030111720002057A0002012E000000010A000000010A000000010B",
+        "initial": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A"
+      },
+      "java": {
+        "error": "java.lang.NullPointerException",
+        "logs": []
+      },
+      "cpp": {
+        "error": "java.lang.RuntimeException",
+        "logs": []
+      }
+    },
+    {
+      "case": 3216,
+      "runtime": 0,
+      "key": "error",
+      "expected": "java.lang.ArrayIndexOutOfBoundsException",
+      "actual": "java.lang.NullPointerException"
+    },
+    {
+      "case": 3216,
+      "runtime": 1,
+      "key": "error",
+      "expected": "java.lang.ArrayIndexOutOfBoundsException",
+      "actual": "java.lang.RuntimeException"
+    },
+    {
+      "case": 3218,
+      "request": {
+        "op": "convert",
+        "wire": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A",
+        "levels": -1,
+        "initial": "0x0001010000000102000103000104000000010502000000011502000000011600000001060001070003010001000204010002010100000001010003011171000205790002012D00000001090000000109000000010A"
+      },
+      "java": {
+        "error": "java.lang.NullPointerException",
+        "logs": []
+      },
+      "cpp": {
+        "error": "java.lang.RuntimeException",
+        "logs": []
+      }
+    },
+    {
+      "case": 3218,
+      "runtime": 0,
+      "key": "error",
+      "expected": "java.lang.NegativeArraySizeException",
+      "actual": "java.lang.NullPointerException"
+    },
+    {
+      "case": 3218,
+      "runtime": 1,
+      "key": "error",
+      "expected": "java.lang.NegativeArraySizeException",
+      "actual": "java.lang.RuntimeException"
+    }
+  ],
+  "scope": "Actual TxHeader shared fields/defaults, retained wrappers/arrays/body getter, complete-field factory assignment, every byte prefix of represented RLE streams, zero/oversized runs versus actual array length, per-run alias matrix, nullable fields/arrays/slots, direct polymorphic write prefixes with self replacement, JSON errors. Existing TxPoW convenience return references, arbitrary streams, non-stream scalar overrides, allocation/concurrency and full node parity remain open."
+}

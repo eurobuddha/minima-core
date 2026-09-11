@@ -15,7 +15,7 @@ inline json::JSONObject sharedCheckerFixture(const json::JSONObject& input){
     TxPoWChecker::services.getCascadeTip=[]{return std::shared_ptr<CascadeNode>{};};
     auto block=std::make_shared<TxPoW>(TxPoWGenerator::generateTxPoW(Transaction{},Witness{}));auto list=std::make_shared<TxPoWChecker::TxPoWs>();
     auto txn=std::make_shared<TxPoW>();txn->setTxDifficulty((*Magic::MIN_TXPOW_WORK));txn->calculateTXPOWID();for(int i=0;i<integer(input,"count",2);++i)list->push_back(txn);
-    int mode=int(integer(input,"mode"));if(mode==1)list.reset();else if(mode==2)list->insert(list->begin(),nullptr);else if(mode==3)list->push_back(nullptr);else if(mode==4)block.reset();else if(mode==5)block->getTxHeader().mChainID=MiniData::fromHex("0x01");
+    int mode=int(integer(input,"mode"));if(mode==1)list.reset();else if(mode==2)list->insert(list->begin(),nullptr);else if(mode==3)list->push_back(nullptr);else if(mode==4)block.reset();else if(mode==5)block->getTxHeader().mChainID()=std::make_shared<MiniData>(MiniData::fromHex("0x01"));
     JSONArray steps;for(int i=0;i<3;++i){JSONObject row;bool valid;if(input.get("timed").asBool()){TimedChecker checker;valid=checker.checkTxPoWBlock(tip,block,list);row.put("finished",checker.isFinished());}else valid=TxPoWChecker::checkTxPoWBlock(tip,block,list);row.put("valid",valid);JSONArray flags;for(auto* t:{&txn->getTransaction(),&txn->getBurnTransaction()}){flags.add(t->mHaveCheckedMonotonic());flags.add(t->mIsMonotonic());flags.add(t->mIsValid());}row.put("flags",flags);steps.add(row);if(i==0)txn->getTransaction().mIsValid()=false;if(i==1)txn->getTransaction().clearIsMonotonic();}
     JSONObject out;out.put("steps",steps);return out;
 }

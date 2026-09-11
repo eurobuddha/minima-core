@@ -87,7 +87,8 @@ namespace minima {
 
 int MiniData::MINIMA_MAX_HASH_LENGTH=64;
 int MiniData::MINIMA_MAX_MINIDATA_LENGTH=512*1024*1024;
-const MiniData MiniData::ZERO_TXPOWID = MiniData::fromHex("0x00");
+std::shared_ptr<MiniData> MiniData::sharedZeroTxPoWID() {static const auto value=std::make_shared<MiniData>(MiniData::fromHex("0x00"));return value;}
+const MiniData& MiniData::ZERO_TXPOWID=*sharedZeroTxPoWID();
 const MiniData MiniData::ONE_TXPOWID  = MiniData::fromHex("0x01");
 
 static uint8_t hexNibble(char c) {

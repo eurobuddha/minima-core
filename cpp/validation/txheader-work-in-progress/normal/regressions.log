@@ -1,0 +1,19 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  41: consensus_differential
+    Start 127: timed_checker_errors_differential
+1/7 Test #127: timed_checker_errors_differential ...   Passed   34.33 sec
+    Start   5: object_differential
+2/7 Test   #5: object_differential .................   Passed   33.07 sec
+    Start 105: txpow_miner_differential
+3/7 Test #105: txpow_miner_differential ............   Passed    9.99 sec
+    Start   4: java_differential
+4/7 Test   #4: java_differential ...................   Passed    1.43 sec
+    Start   7: TxHeaderTests
+5/7 Test   #7: TxHeaderTests .......................   Passed    0.27 sec
+    Start 264: hash_writers_differential
+6/7 Test #264: hash_writers_differential ...........   Passed    2.48 sec
+7/7 Test  #41: consensus_differential ..............   Passed  169.86 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) = 169.88 sec

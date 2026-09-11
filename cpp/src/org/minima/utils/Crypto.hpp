@@ -5,7 +5,8 @@
 namespace minima {
 class Crypto {
 public:
-    static const MiniData MAX_HASH;
+    static const MiniData& MAX_HASH;
+    static std::shared_ptr<MiniData> sharedMaxHash();
     static const BigInt MAX_VAL;
     static Crypto& getInstance();
     std::vector<uint8_t> hashSHA2(std::span<const uint8_t> data) const;

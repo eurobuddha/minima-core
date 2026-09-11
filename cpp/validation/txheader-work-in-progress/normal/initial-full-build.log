@@ -1,0 +1,490 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/params/TestParams.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/MinimaRPCClient.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/params/ParamConfigurer.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/MinimaLogger.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/webhooks/NotifyManager.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWMiner.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWProcessor.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PManager.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PPeersChecker.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/WalkLinksFuncs.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/SwapLinksFunctions.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PFunctions.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/UtilFuncs.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOManager.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOMessage.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOServer.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOClient.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOClientInfo.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PDB.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2DB.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2Functions.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2Manager.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/rpc/CMDHandler.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/NetworkManager.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PState.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PGreeting.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PDoSwap.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PWalkLinks.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/IBD.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/archive/TxBlockDB.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/archive/RawArchiveInput.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/wallet/ScriptRow.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/sql/TxPoWList.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/TxPoWDB.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowtree/CoinDB.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/wallet/Wallet.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/archive/ArchiveManager.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/MinimaDB.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/userprefs/txndb/TxnRow.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/userprefs/txndb/TxnDB.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/Maths.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/TimedRequest.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/userprefs/UserDB.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/JsonDB.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/mysql/MySQLConnect.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/mysql/ArchiveServer.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/SqlDB.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/BIP39.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/Command.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/debugflag.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnlock.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/CommandRunner.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/block.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/printmmr.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/printtree.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/automine.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/hash.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/newaddress.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/getaddress.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coinnotify.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/slavenode.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/maths.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/mmrcreate.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/mmrproof.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/runscript.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/scripts.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/newscript.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/removescript.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/signatures/sign.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/signatures/verify.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txncreate.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txndelete.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnlist.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnclear.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnstate.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnexport.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnimport.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnview.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnoutput.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnutils.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txninput.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnbasics.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendview.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendpost.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendsign.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/rawfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/sendfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/consolidatefrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/createtokenfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/rawtxnfrom.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/createfrom.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/constructfrom.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/postfrom.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/signfrom.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendpoll.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendnosign.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/send.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnaddamount.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txncoinlock.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/keys.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/vault.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnsign.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnpost.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnmine.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnminepost.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txncheck.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnmmr.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnscript.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/tokens.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/connect.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/webhooks.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coincheck.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coinexport.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/consolidate.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/balance.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/coins.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/seedrandom.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/mempool.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/cointrack.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/magic.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/txpow.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/history.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/convert.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/random.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/checkaddress.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/missingcmd.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/rpc/Authorizer.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOTraffic.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/ram/RamDB.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/ram/RamData.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TimedChecker.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWSearcher.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWChecker.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWGenerator.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/RelayPolicy.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/MiniFile.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/HORST/PrivateKey.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/HORST/PublicKey.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/HORST/HORST.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/FORS/FORS.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/FORS/FORSSignature.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/TransactionTest.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/SPHINCSUtils.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/SPHINCS.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/sphincs/SPHINCSSignature.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/MiniFormat.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/GenerateKey.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/javajs/AesUtil.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/EncryptDecrypt.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/SignVerify.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/CryptoPackage.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/PasswordCrypto.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowtree/TxPowTree.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowtree/TxPoWTreeNode.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/cascade/Cascade.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/cascade/CascadeNode.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/GETINADDR.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/GETINID.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/GETINAMT.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/GETINTOK.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/SUMINPUTS.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/VERIFYIN.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/GETOUTADDR.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/GETOUTAMT.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/GETOUTKEEPSTATE.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/GETOUTTOK.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/SUMOUTPUTS.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/VERIFYOUT.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/ASCII.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/BOOL.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/HEX.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/NUMBER.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/STRING.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/UTF8.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/general/ADDRESS.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/general/EXISTS.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/general/GET.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/general/FUNCTION.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/BITCOUNT.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/BITGET.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/BITSET.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/CONCAT.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/LEN.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/OVERWRITE.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/REV.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/SETLEN.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/SUBSET.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sha/PROOF.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sha/SHA2.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sha/SHA3.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sigs/CHECKSIG.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sigs/MULTISIG.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sigs/SIGNEDBY.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/state/PREVSTATE.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/state/SAMESTATE.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/state/STATE.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/string/REPLACE.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/string/REPLACEFIRST.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/string/SUBSTR.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/Contract.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/ConstantExpression.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/BooleanExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/ExpressionParser.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/FunctionExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/GlobalExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/OperatorExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/VariableExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/ABS.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/CEIL.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/DEC.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/FLOOR.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/INC.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/MAX.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/MIN.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/POW.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/SIGDIG.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/SQRT.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/StatementBlock.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/StatementParser.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/ASSERTstatement.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/EXECstatement.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/IFstatement.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/LETstatement.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/MASTstatement.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/RETURNstatement.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/WHILEstatement.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/values/HexValue.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/values/NumberValue.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/values/Value.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/base/MiniData.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/base/MiniNumber.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/base/MiniString.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/BaseConverter.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/Crypto.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMRData.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMRProof.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Address.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/StateVariable.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Token.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMREntryNumber.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMREntry.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Coin.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/ScriptProof.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/CoinProof.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Transaction.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/Winternitz.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/SignatureProof.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/Signature.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Witness.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/params/GeneralParams.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMR.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/TreeKeyNode.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/TreeKey.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Magic.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/TxBody.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/params/GlobalParams.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/TxHeader.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/genesis/GenesisCoin.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/genesis/GenesisMMR.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/genesis/GenesisTxPoW.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Greeting.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Pulse.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/TxBlock.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MegaMMR.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/sendpoll/SendPollMessage.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/sendpoll/SendPollManager.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/TxPoW.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/Main.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/quit.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/rescue.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/disconnect.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/message.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/p2pstate.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/ping.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/network.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/trace.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/timemilli.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/healthcheck.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/logs.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/status.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/rpc.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/hashtest.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coinimport.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/scanchain.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/tokenvalidate.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/peers.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnauto.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/burn.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/tokencreate.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/multisig.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/multisigread.cpp.o
+[ 41%] Building CXX object CMakeFiles/minima_file_port.dir/src/support/MultisigCommands.cpp.o
+[ 41%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/nodecount.cpp.o
+[ 41%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/incentivecash.cpp.o
+[ 41%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/Minima.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/decryptbackup.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/backup.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/restore.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/reset.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/archive.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/restoresync.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/megammr.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/systemcheck.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/sphincs.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/test.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/tutorial.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/tutorial.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/whitepaper.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mysqlcoins.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mysql.cpp.o
+[ 44%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/help.cpp.o
+[ 44%] Linking CXX static library libminima_file_port.a
+[ 49%] Built target minima_file_port
+[ 50%] Linking CXX executable MiniByteTests
+[ 50%] Building CXX object CMakeFiles/minima_objects.dir/support/objects.cpp.o
+[ 50%] Building CXX object CMakeFiles/minima_primitives.dir/support/primitives.cpp.o
+[ 50%] Building CXX object CMakeFiles/malformed_streams.dir/tests/malformed_streams.cpp.o
+[ 50%] Built target MiniByteTests
+[ 50%] Building CXX object CMakeFiles/TransactionTests.dir/test/org/minima/objects/TransactionTests.cpp.o
+[ 50%] Linking CXX executable malformed_streams
+[ 50%] Linking CXX executable TransactionTests
+[ 50%] Linking CXX executable minima_primitives
+[ 50%] Built target malformed_streams
+[ 50%] Building CXX object CMakeFiles/TxHeaderTests.dir/test/org/minima/objects/TxHeaderTests.cpp.o
+[ 50%] Built target TransactionTests
+[ 50%] Built target minima_primitives
+[ 50%] Building CXX object CMakeFiles/minima_json.dir/support/json.cpp.o
+[ 50%] Building CXX object CMakeFiles/minima_kiss_values.dir/support/kiss.cpp.o
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:28: error: reference to non-static member function must be called; did you mean to call it with no arguments?
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                     ~~~~~~~^~~~~~~~~~~
+      |                                       ()
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:48:32: note: possible target for call
+   48 |     std::shared_ptr<MiniData>& mTxBodyHash() {return mData->mTxBodyHash;}
+      |                                ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:49:31: note: possible target for call
+   49 |     std::shared_ptr<MiniData> mTxBodyHash() const {return mData->mTxBodyHash;}
+      |                               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:39: error: no viable overloaded '='
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                     ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:564:42: note: candidate function not viable: no known conversion from 'MiniData' to 'const shared_ptr<minima::MiniData>' for 1st argument
+  564 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:575:42: note: candidate function not viable: no known conversion from 'MiniData' to 'shared_ptr<minima::MiniData>' for 1st argument
+  575 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr&& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:570:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniData'
+  570 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr<_Yp>& __r) _NOEXCEPT {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:581:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniData'
+  581 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr<_Yp>&& __r) {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:601:42: note: candidate template ignored: could not match 'unique_ptr<_Yp, _Dp>' against 'MiniData'
+  601 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(unique_ptr<_Yp, _Dp>&& __r) {
+      |                                          ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:109: error: reference to non-static member function must be called; did you mean to call it with no arguments?
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                                                                                                      ~~~~~~~^~~~~~~~~~~~~~~~
+      |                                                                                                                             ()
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:36:32: note: possible target for call
+   36 |     std::shared_ptr<MiniData>& mBlockDifficulty() {return mData->mBlockDifficulty;}
+      |                                ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:37:31: note: possible target for call
+   37 |     std::shared_ptr<MiniData> mBlockDifficulty() const {return mData->mBlockDifficulty;}
+      |                               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:125: error: no viable overloaded '='
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                                                                                                      ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:564:42: note: candidate function not viable: no known conversion from 'MiniData' to 'const shared_ptr<minima::MiniData>' for 1st argument
+  564 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:575:42: note: candidate function not viable: no known conversion from 'MiniData' to 'shared_ptr<minima::MiniData>' for 1st argument
+  575 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr&& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:570:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniData'
+  570 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr<_Yp>& __r) _NOEXCEPT {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:581:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniData'
+  581 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr<_Yp>&& __r) {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:601:42: note: candidate template ignored: could not match 'unique_ptr<_Yp, _Dp>' against 'MiniData'
+  601 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(unique_ptr<_Yp, _Dp>&& __r) {
+      |                                          ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:161: error: reference to non-static member function must be called; did you mean to call it with no arguments?
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                                                                                                                                                          ~~~~~~~^~~~~~~~~~
+      |                                                                                                                                                                           ()
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:32:34: note: possible target for call
+   32 |     std::shared_ptr<MiniNumber>& mTimeMilli() {return mData->mTimeMilli;}
+      |                                  ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:33:33: note: possible target for call
+   33 |     std::shared_ptr<MiniNumber> mTimeMilli() const {return mData->mTimeMilli;}
+      |                                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:171: error: no viable overloaded '='
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                                                                                                                                                          ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:564:42: note: candidate function not viable: no known conversion from 'MiniNumber' to 'const shared_ptr<minima::MiniNumber>' for 1st argument
+  564 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:575:42: note: candidate function not viable: no known conversion from 'MiniNumber' to 'shared_ptr<minima::MiniNumber>' for 1st argument
+  575 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr&& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:570:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniNumber'
+  570 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr<_Yp>& __r) _NOEXCEPT {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:581:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniNumber'
+  581 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr<_Yp>&& __r) {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:601:42: note: candidate template ignored: could not match 'unique_ptr<_Yp, _Dp>' against 'MiniNumber'
+  601 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(unique_ptr<_Yp, _Dp>&& __r) {
+      |                                          ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:200: error: reference to non-static member function must be called; did you mean to call it with no arguments?
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                                                                                                                                                                                                 ~~~~~~~^~~~~~~~~~~~
+      |                                                                                                                                                                                                                    ()
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:34:34: note: possible target for call
+   34 |     std::shared_ptr<MiniNumber>& mBlockNumber() {return mData->mBlockNumber;}
+      |                                  ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:35:33: note: possible target for call
+   35 |     std::shared_ptr<MiniNumber> mBlockNumber() const {return mData->mBlockNumber;}
+      |                                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:212: error: no viable overloaded '='
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                                                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:564:42: note: candidate function not viable: no known conversion from 'MiniNumber' to 'const shared_ptr<minima::MiniNumber>' for 1st argument
+  564 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:575:42: note: candidate function not viable: no known conversion from 'MiniNumber' to 'shared_ptr<minima::MiniNumber>' for 1st argument
+  575 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr&& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:570:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniNumber'
+  570 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr<_Yp>& __r) _NOEXCEPT {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:581:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniNumber'
+  581 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr<_Yp>&& __r) {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:601:42: note: candidate template ignored: could not match 'unique_ptr<_Yp, _Dp>' against 'MiniNumber'
+  601 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(unique_ptr<_Yp, _Dp>&& __r) {
+      |                                          ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:239: error: reference to non-static member function must be called; did you mean to call it with no arguments?
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                                                                                                                                                                                                                                        ~~~~~~~^~~~~~
+      |                                                                                                                                                                                                                                                     ()
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:28:34: note: possible target for call
+   28 |     std::shared_ptr<MiniNumber>& mNonce() {return mData->mNonce;}
+      |                                  ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/TxHeader.hpp:29:33: note: possible target for call
+   29 |     std::shared_ptr<MiniNumber> mNonce() const {return mData->mNonce;}
+      |                                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:6:245: error: no viable overloaded '='
+    6 |     TxHeader header;header.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));header.mBlockDifficulty=MiniData::fromHex("0xFFFF");header.mTimeMilli=MiniNumber(99999999);header.mBlockNumber=MiniNumber(123450);header.mNonce=MiniNumber(900000);
+      |                                                                                                                                                                                                                                        ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:564:42: note: candidate function not viable: no known conversion from 'MiniNumber' to 'const shared_ptr<minima::MiniNumber>' for 1st argument
+  564 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:575:42: note: candidate function not viable: no known conversion from 'MiniNumber' to 'shared_ptr<minima::MiniNumber>' for 1st argument
+  575 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr&& __r) _NOEXCEPT {
+      |                                          ^         ~~~~~~~~~~~~~~~~
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:570:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniNumber'
+  570 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(const shared_ptr<_Yp>& __r) _NOEXCEPT {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:581:42: note: candidate template ignored: could not match 'shared_ptr<_Yp>' against 'MiniNumber'
+  581 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(shared_ptr<_Yp>&& __r) {
+      |                                          ^
+/Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:601:42: note: candidate template ignored: could not match 'unique_ptr<_Yp, _Dp>' against 'MiniNumber'
+  601 |   _LIBCPP_HIDE_FROM_ABI shared_ptr<_Tp>& operator=(unique_ptr<_Yp, _Dp>&& __r) {
+      |                                          ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/objects/TxHeaderTests.cpp:7:29: error: no member named 'isMore' in 'std::shared_ptr<minima::MiniData>'; did you mean to use '->' instead of '.'?
+    7 |     if(!header.getBodyHash().isMore(MiniData::fromHex("0x00"))) throw std::runtime_error("Missing body hash");
+      |                             ^
+      |                             ->
+11 errors generated.
+make[2]: *** [CMakeFiles/TxHeaderTests.dir/test/org/minima/objects/TxHeaderTests.cpp.o] Error 1
+make[1]: *** [CMakeFiles/TxHeaderTests.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[ 50%] Linking CXX executable minima_objects
+[ 50%] Linking CXX executable minima_json
+[ 50%] Linking CXX executable minima_kiss_values
+[ 50%] Built target minima_objects
+[ 50%] Built target minima_json
+[ 50%] Built target minima_kiss_values
+make: *** [all] Error 2

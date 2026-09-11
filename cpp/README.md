@@ -15,6 +15,13 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 46 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
+TxHeader now preserves shared field/array identities, partial run decoding and
+nested writer prefixes. Both builds pass 3,219 focused comparisons and 44,120
+independent checks, plus the selected regressions. This corrects an existing file;
+411 counterparts remain. The next priority is converting the 46 absent files.
+See the [TxHeader lab](student-guide/new-tests/txheader.md) and
+[remaining inventory](validation/txheader-work-in-progress/remaining-files.json).
+
 Distinct MiniData hash writers now preserve Java override dispatch and nested
 failure prefixes. Both builds pass 1,848 comparisons and 12,752 independent
 assertions, plus eight affected regressions across restricted and local-network

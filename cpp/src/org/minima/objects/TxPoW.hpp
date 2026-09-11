@@ -29,18 +29,18 @@ public:
     std::vector<std::string> getTransactions() const;
     TxHeader& getTxHeader() {return mHeader;}
     const TxHeader& getTxHeader() const {return mHeader;}
-    const MiniData& getTxHeaderBodyHash() const {return mHeader.getBodyHash();}
+    const MiniData& getTxHeaderBodyHash() const {return TxHeader::required(mHeader.getBodyHash());}
     void setHeaderBodyHash();
     bool isMonotonic() const;
     std::shared_ptr<TxBody> getTxBody() const {return mBody;}
     bool hasBody() const {return bool(mBody);}
     void clearBody() {mBody.reset();}
-    void setNonce(MiniNumber nonce) {mHeader.mNonce=std::move(nonce);}
-    const MiniNumber& getNonce() const {return mHeader.mNonce;}
-    const MiniData& getChainID() const {return mHeader.mChainID;}
-    Magic& getMagic() {return mHeader.mMagic;}
-    const Magic& getMagic() const {return mHeader.mMagic;}
-    void setMagic(Magic magic) {mHeader.mMagic=std::move(magic);}
+    void setNonce(MiniNumber nonce) {mHeader.mNonce()=std::make_shared<MiniNumber>(std::move(nonce));}
+    const MiniNumber& getNonce() const {return TxHeader::required(mHeader.mNonce());}
+    const MiniData& getChainID() const {return TxHeader::required(mHeader.mChainID());}
+    Magic& getMagic() {return TxHeader::required(mHeader.mMagic());}
+    const Magic& getMagic() const {return TxHeader::required(mHeader.mMagic());}
+    void setMagic(Magic magic) {mHeader.mMagic()=std::make_shared<Magic>(std::move(magic));}
     void setTxDifficulty(std::shared_ptr<MiniData> difficulty) {TxBody::required(mBody).mTxnDifficulty()=std::move(difficulty);}
     void setTxDifficulty(MiniData difficulty) {setTxDifficulty(std::make_shared<MiniData>(std::move(difficulty)));}
     const MiniData& getTxnDifficulty() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return TxBody::required(mBody->mTxnDifficulty());}
@@ -67,23 +67,23 @@ public:
     void addBlockTxPOW(std::shared_ptr<MiniData> id) {TxBody::required(TxBody::required(mBody).mTxPowIDList()).add(std::move(id));}
     void addBlockTxPOW(MiniData id) {addBlockTxPOW(std::make_shared<MiniData>(std::move(id)));}
     std::shared_ptr<TxBody::IDs> getBlockTransactions() const {return mBody?mBody->mTxPowIDList():std::make_shared<TxBody::IDs>();}
-    const MiniData& getBlockDifficulty() const {return mHeader.mBlockDifficulty;}
-    void setBlockDifficulty(MiniData difficulty) {mHeader.mBlockDifficulty=std::move(difficulty);}
+    const MiniData& getBlockDifficulty() const {return TxHeader::required(mHeader.mBlockDifficulty());}
+    void setBlockDifficulty(MiniData difficulty) {mHeader.mBlockDifficulty()=std::make_shared<MiniData>(std::move(difficulty));}
     MiniData getParentID() const {return mIsTesting?mTestParent:getSuperParent(0);}
-    void setSuperParent(int level,MiniData parent) {mHeader.mSuperParents.at(size_t(level))=std::move(parent);}
-    const MiniData& getSuperParent(int level) const {return mHeader.mSuperParents.at(size_t(level));}
+    void setSuperParent(int level,MiniData parent) {TxHeader::parentAt(mHeader.mSuperParents(),level)=std::make_shared<MiniData>(std::move(parent));}
+    const MiniData& getSuperParent(int level) const {return TxHeader::required(TxHeader::parentAt(mHeader.mSuperParents(),level));}
     MiniNumber getBurn() const {return getTransaction().getBurn().add(getBurnTransaction().getBurn());}
     void setTimeMilli();
-    void setTimeMilli(MiniNumber millis) {mHeader.mTimeMilli=std::move(millis);}
-    const MiniNumber& getTimeMilli() const {return mHeader.mTimeMilli;}
-    void setBlockNumber(MiniNumber block) {mHeader.mBlockNumber=std::move(block);}
-    const MiniNumber& getBlockNumber() const {return mIsTesting?mTestBlockNumber:mHeader.mBlockNumber;}
-    const MiniData& getMMRRoot() const {return mHeader.mMMRRoot;}
-    void setMMRRoot(MiniData root) {mHeader.mMMRRoot=std::move(root);}
-    const MiniNumber& getMMRTotal() const {return mHeader.mMMRTotal;}
-    void setMMRTotal(MiniNumber total) {mHeader.mMMRTotal=std::move(total);}
-    const MiniData& getCustomHash() const {return mHeader.mCustomHash;}
-    void setCustomHash(MiniData hash) {mHeader.mCustomHash=std::move(hash);}
+    void setTimeMilli(MiniNumber millis) {mHeader.mTimeMilli()=std::make_shared<MiniNumber>(std::move(millis));}
+    const MiniNumber& getTimeMilli() const {return TxHeader::required(mHeader.mTimeMilli());}
+    void setBlockNumber(MiniNumber block) {mHeader.mBlockNumber()=std::make_shared<MiniNumber>(std::move(block));}
+    const MiniNumber& getBlockNumber() const {return mIsTesting?mTestBlockNumber:TxHeader::required(mHeader.mBlockNumber());}
+    const MiniData& getMMRRoot() const {return TxHeader::required(mHeader.mMMRRoot());}
+    void setMMRRoot(MiniData root) {mHeader.mMMRRoot()=std::make_shared<MiniData>(std::move(root));}
+    const MiniNumber& getMMRTotal() const {return TxHeader::required(mHeader.mMMRTotal());}
+    void setMMRTotal(MiniNumber total) {mHeader.mMMRTotal()=std::make_shared<MiniNumber>(std::move(total));}
+    const MiniData& getCustomHash() const {return TxHeader::required(mHeader.mCustomHash());}
+    void setCustomHash(MiniData hash) {mHeader.mCustomHash()=std::make_shared<MiniData>(std::move(hash));}
     int getCheckRejectNumber() const {return mCheckNumber;}
     void incrementCheckRejectNumber();
     json::JSONObject toJSON() const;

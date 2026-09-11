@@ -1492,3 +1492,8 @@ add_executable(hash_writers support/hash_writers.cpp)
 target_link_libraries(hash_writers PRIVATE minima_file_port)
 add_test(NAME hash_writers_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/hash_writers_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(hash_writers_differential PROPERTIES TIMEOUT 240)
+
+add_executable(txheader support/txheader.cpp)
+target_link_libraries(txheader PRIVATE minima_file_port)
+add_test(NAME txheader_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/txheader_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(txheader_differential PROPERTIES TIMEOUT 240)

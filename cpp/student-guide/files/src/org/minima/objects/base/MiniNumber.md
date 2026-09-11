@@ -85,3 +85,10 @@ The scalar suite exposed redundant sign bytes in BigInt byte construction. Both
 byte factories now call the existing normalise method, so number serialization
 uses the same minimal signed coefficient as Java. The same fix applies to
 MMREntryNumber; explicit sign-padding tests cover both callers.
+
+
+## TxHeader reference and stream update
+
+The [TxHeader lab](../../../../../../new-tests/txheader.md) explains the shared default objects, retained field and
+array identities, run-length partial writes, and interrupted child factories.
+Its evidence is scoped to these behaviors; full class and node parity remain open.

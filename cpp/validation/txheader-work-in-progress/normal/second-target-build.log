@@ -1,0 +1,55 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/txheader.dir/support/txheader.cpp.o
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/txheader.cpp:12:18: error: incomplete result type 'JSONArray' in function definition
+   12 | static JSONArray parents(const std::shared_ptr<TxHeader::Parents>& p){JSONArray a;if(p)for(const auto& value:*p)a.add(value?JSONValue(value->to0xString()):JSONValue(nullptr));return a;}
+      |                  ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/json/JSONValue.hpp:8:7: note: forward declaration of 'minima::json::JSONArray'
+    8 | class JSONArray;
+      |       ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/txheader.cpp:12:81: error: variable has incomplete type 'JSONArray'
+   12 | static JSONArray parents(const std::shared_ptr<TxHeader::Parents>& p){JSONArray a;if(p)for(const auto& value:*p)a.add(value?JSONValue(value->to0xString()):JSONValue(nullptr));return a;}
+      |                                                                                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/json/JSONValue.hpp:8:7: note: forward declaration of 'minima::json::JSONArray'
+    8 | class JSONArray;
+      |       ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/txheader.cpp:13:70: error: variable has incomplete type 'JSONArray'
+   13 | static JSONObject snapshot(const TxHeader& h){JSONObject r;JSONArray f,aliases;for(int i=0;i<10;++i)f.add(fieldWire(field(h,i)));r.put("fields",f);r.put("parents",h.mSuperParents()?JSONValue(parents(h.mSuperParents())):JSONValue(nullptr));if(h.mSuperParents())for(const auto& a:*h.mSuperParents())for(const auto& b:*h.mSuperParents())aliases.add(a==b);r.put("parentAliases",aliases);return r;}
+      |                                                                      ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/json/JSONValue.hpp:8:7: note: forward declaration of 'minima::json::JSONArray'
+    8 | class JSONArray;
+      |       ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/txheader.cpp:13:72: error: variable has incomplete type 'JSONArray'
+   13 | static JSONObject snapshot(const TxHeader& h){JSONObject r;JSONArray f,aliases;for(int i=0;i<10;++i)f.add(fieldWire(field(h,i)));r.put("fields",f);r.put("parents",h.mSuperParents()?JSONValue(parents(h.mSuperParents())):JSONValue(nullptr));if(h.mSuperParents())for(const auto& a:*h.mSuperParents())for(const auto& b:*h.mSuperParents())aliases.add(a==b);r.put("parentAliases",aliases);return r;}
+      |                                                                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/json/JSONValue.hpp:8:7: note: forward declaration of 'minima::json::JSONArray'
+    8 | class JSONArray;
+      |       ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/txheader.cpp:21:134: error: variable has incomplete type 'JSONArray'
+   21 |   TxHeader a,b;auto chain=a.mChainID();TxHeader::MAIN_NET=std::make_shared<MiniData>(MiniData::fromHex("0x77"));TxHeader c;JSONArray checks;checks.add(a.mChainID()==b.mChainID());checks.add(a.mChainID()!=c.mChainID());checks.add(c.mChainID()==TxHeader::MAIN_NET);checks.add(a.mBlockDifficulty()==Crypto::sharedMaxHash());checks.add(a.mMMRTotal()==MiniNumber::sharedZero());checks.add(a.mCustomHash()==MiniData::sharedZeroTxPoWID());checks.add(a.mNonce()!=b.mNonce());checks.add(a.mNonce()!=a.mBlockNumber());checks.add(a.mMMRRoot()!=a.mTxBodyHash());checks.add(a.mMagic()!=b.mMagic());checks.add(a.mSuperParents()!=b.mSuperParents());checks.add((*a.mSuperParents())[0]!=(*a.mSuperParents())[1]);r.put("checks",checks);
+      |                                                                                                                                      ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/json/JSONValue.hpp:8:7: note: forward declaration of 'minima::json::JSONArray'
+    8 | class JSONArray;
+      |       ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/txheader.cpp:22:167: error: variable has incomplete type 'JSONArray'
+   22 |   *chain=MiniData::fromHex("0x66");*a.mBlockDifficulty()=MiniData::fromHex("0x55");*a.mMMRTotal()=MiniNumber(44);*a.mCustomHash()=MiniData::fromHex("0x33");JSONArray values;values.add(b.mChainID()->to0xString());values.add(c.mChainID()->to0xString());values.add(Crypto::MAX_HASH.to0xString());values.add(MiniNumber::ZERO.toString());values.add(MiniData::ZERO_TXPOWID.to0xString());r.put("values",values);return r;
+      |                                                                                                                                                                       ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/json/JSONValue.hpp:8:7: note: forward declaration of 'minima::json::JSONArray'
+    8 | class JSONArray;
+      |       ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/txheader.cpp:32:104: error: variable has incomplete type 'JSONArray'
+   32 |   r.put("offset",int64_t(offset));r.put("state",snapshot(*h));r.put("alias",snapshot(alias));JSONArray same;for(int i=0;i<10;++i)same.add(old[i]==field(*h,i));r.put("sameFields",same);r.put("sameArray",oldParents==h->mSuperParents());r.put("oldParents",oldParents?JSONValue(parents(oldParents)):JSONValue(nullptr));return r;
+      |                                                                                                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/json/JSONValue.hpp:8:7: note: forward declaration of 'minima::json::JSONArray'
+    8 | class JSONArray;
+      |       ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/txheader.cpp:35:248: error: variable has incomplete type 'JSONArray'
+   35 |   TxHeader alias=*h;auto old=h->getBodyHash();auto oldArray=h->mSuperParents();h->mTxBodyHash()=std::make_shared<MiniData>(MiniData::fromHex("0x99"));(*oldArray)[0]=(*oldArray)[1];h->mSuperParents()=std::make_shared<TxHeader::Parents>();JSONArray checks;checks.add(alias.getBodyHash()==h->getBodyHash());checks.add(old!=h->getBodyHash());checks.add(oldArray!=alias.mSuperParents());checks.add((*oldArray)[0]==(*oldArray)[1]);r.put("checks",checks);r.put("oldBody",old->to0xString());return r;
+      |                                                                                                                                                                                                                                                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/json/JSONValue.hpp:8:7: note: forward declaration of 'minima::json::JSONArray'
+    8 | class JSONArray;
+      |       ^
+8 errors generated.
+make[3]: *** [CMakeFiles/txheader.dir/support/txheader.cpp.o] Error 1
+make[2]: *** [CMakeFiles/txheader.dir/all] Error 2
+make[1]: *** [CMakeFiles/txheader.dir/rule] Error 2
+make: *** [txheader] Error 2
