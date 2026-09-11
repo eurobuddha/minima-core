@@ -41,8 +41,9 @@ posting order and row deletion are observed. It does not test network admission.
 
 See the [test lab](../../../../../../../../student-guide/new-tests/sphincs-command.md).
 The full normal run passes 131 cases/34 independent assertions, including all
-five full-size signing paths. Sanitizer validation is still underway; consult the [current evidence](../../../../../../../../validation/sphincs-command-work-in-progress/progress.json)
-for actual completed results and pending phases.
+five full-size signing paths. The full sanitizer run also passes 131 cases and 34
+assertions, including all five signatures, in 8,573.312 seconds. Consult the [current evidence](../../../../../../../../validation/sphincs-command-work-in-progress/progress.json)
+for the saved results and their precise scope. Network admission remains unverified.
 
 - [Signature script and transaction helpers](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSUtils.java)
 - [Custom signature construction](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCS.java)

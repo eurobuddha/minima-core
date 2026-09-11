@@ -37,4 +37,8 @@ operations per runtime. Results are pending at the time this lab is introduced.
 The full normal run now passes 131 cases and 34 independent assertions in
 1,529.766 seconds. It generated all five genuine full-size signatures: inline,
 file, test action, one-input transaction and eight-input rejected-post transaction.
-The sanitizer command run remains active; no full sanitizer pass is claimed.
+The full sanitizer run also passes all 131 cases and 34 independent assertions,
+including all five full-size signatures, in 8,573.312 seconds. Both transcript
+hashes are `1ffd436dddf5a578cdf8b3e4d8036455efdec772ef7d87f986a3ea143f1f53e4`.
+These are command orchestration checks with controlled child commands; actual
+funding, mining, and network admission are still outside this test.
