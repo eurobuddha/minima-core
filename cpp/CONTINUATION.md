@@ -1,3 +1,48 @@
+# Latest checkpoint — mysqlcoins command validated through recording SQL
+
+Previous HEAD71d34a6; git log gives current. Local branch MinimaCoreC++. GoalACTIVE.
+407counterparts=360production+47tests;50absent=9production+41tests.
+Allpresentimplemented_partial/allparitynot_verified.256CTest entries/fullsuiteNOT run.
+Both complete builds and mysqlcoins suites PASS771cases/1007checks/24372SQL events.
+Normal14.523s,sanitizer25.142s; same59a346cf...transcript; native stderr empty.
+Source allfiveactions translated, actualMySQLConnect/UserDB/codecs/dateformatter.
+Retain respnse spelling, autologin precedence, whole-block strictcoinlimit,
+blocklimitbeforeprocessing, Java-widthwrap, parameter/error order and explicit
+shutdownonlyon normalpath. Optional logger memorycollection hint for System.gc.
+Fixture uses unchangedSqlDBOracle/SqlRecordingFixture+Archive/Coin helpers.
+NO live native MySQL provider is configured; runtime gap remains, not fakeengine.
+No durablepaging/concurrency/>5sprogresslog test. Repeated ranges bounded maxblocks.
+Initialnormal4thcase fixture CommandException mislabel fixedusingexistingSPHINCS
+adapter; originalreport retained. Terminal70825exit1(initialfixture),49371normalPASS,
+47075fullSAN+suitePASS areclosed. DoNOTpollagain. Earlier56907recoveryterminalPASS.
+
+LIVE41760 resumedSANsigner now299comparisons/0mismatches; lastcomparison1375checks.
+Two saved signatures explicitlyrechecked plusmissingempty-message fullsignature
+newlygenerated. Comparisonprocessesexit0/stderrEMPTY. Actualsource mains running.
+Copied comparisonprogress/process-results/3vectors tosanitized/resumed-comparison-*.
+No finalfullsuite reportyet. Log/tmp/minima-sphincs-sanitized-resumed.log.
+LIVE24343 fullSANcommand latest127/0, firstinlinefullsignaturematched,restremain.
+Log/tmp/minima-sphincs-command-sanitized-full.log. Revalidatebeforestatusinference;
+neverrestartmerelyforquietoutput. Original31941timedout;89965normalcommandPASS.
+
+Previous71d34a6bundle verified/all27changedpathsbytechecked:
+local-backups/MinimaCoreC++-20260911T093445Z.bundle SHA256
+ ec981148243c529eb939752359c1faa3f939c7e966d3c64e5ab60fdd7f193eae.
+Clone.../minimacorecpp-recovery-nkfblls_/MinimaCoreC++.
+Create owncheckpointbundle aftercommit andbyteverify allchangedpaths.
+
+Remainingproduction:mysql.java,help.java,ArchiveServer.java,Streamable.java,
+P2PSwapLink.java(entirelycommented),benchmark/jnitest/jniminingtest/jnifunctions.
+Plus41originaltests andallfidelitygaps. Help dependsnowonlyonmysql commandmetadata.
+NativeMySQLdriverabsence explicit inMainServices/MySQLConnect::runtimeServices;
+complete working backend required forfullgoal. JNI librarysource questionpending.
+Continue reuse-first read/current/sibling/fullcandidate/report beforeedits.
+Keepverifiedlocalcommits; no GitHubpushdestination specified.
+
+Earlier notes are historical where contradicted by this checkpoint.
+
+---
+
 # Latest checkpoint — original GET and SUBSET tests pass
 
 PreviousHEADb601c5e; gitlog givescurrent. LocalbranchMinimaCoreC++. GoalACTIVE.

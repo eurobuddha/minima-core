@@ -3770,7 +3770,8 @@
     "full_parity_verified": false,
     "log_fixture_correction": "Null println argument in Java fixture normalized with String.valueOf; explicit null/empty/text audits passed in both builds. Original full run records one fixture mismatch, superseded only by saved log audit. No production signer change.",
     "resumed_validation_driver_sha256": "fd4596b542e13eb3e2167e3d15fbd3be0ccd3461f13b591dca01ffb4b4285606",
-    "sanitized_timeout_and_resume": "Original31941 terminal1:1800s response timeout on empty-message thirdsignature, cleanup120s timedoutandkilledchild. First158cases/twosignatures matched. Resumed41760using saved initial-two-signatures.json,3600sresponse/demo timeout, separate sphincs-resumed artifacts; no fullpassclaim."
+    "sanitized_timeout_and_resume": "Original31941 terminal1:1800s response timeout on empty-message thirdsignature, cleanup120s timedoutandkilledchild. First158cases/twosignatures matched. Resumed41760using saved initial-two-signatures.json,3600sresponse/demo timeout, separate sphincs-resumed artifacts; no fullpassclaim.",
+    "resumed_comparison_phase": "41760 completed299live comparisons with0mismatches; two explicit saved signatures plus one newly generated full signature; process diagnostics empty. Actual source mains stillrunning; no finalsanitizer suite result."
   },
   "sphincs_utils_work_in_progress": {
     "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
@@ -3914,6 +3915,23 @@
     "sibling_search": "Read tools/minima-core-cpp/src/kissvm/functions/Functions.cpp SUBSET and tests/kissvm/test_kissvm.cpp; sibling argument order and length semantics differ. No corresponding indexed GET found in that registry. Current native functions reused unchanged.",
     "validation": "Both complete builds and four tests per build pass; three original methods per file,31 GET and33 SUBSET assertions per runtime; native stderr empty,UBSANhalt.",
     "evidence": "validation/get-subset-original-tests",
+    "full_parity_verified": false
+  },
+  "mysql_coins_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "files_sha256": {
+      "upstream-study/src/org/minima/system/commands/backup/mysqlcoins.java": "0af8db811a7fe9e852ed5e0407c1bfedbc1113a5abde21fa1ca9b8bd97689a1f",
+      "cpp/src/org/minima/system/commands/backup/mysqlcoins.cpp": "b41a57715c4e94c8cbf5c98211fc86f08cbb1fc2b47fe53781efd725d9e398ec",
+      "cpp/src/org/minima/system/commands/backup/mysqlcoins.hpp": "c89aed44483c68a1ccab8a0a0ef768e0a39c5a7b7969a4b5240bae8b27a6359f",
+      "cpp/support/MySQLCoinsOracle.java": "274c27ddc918b01486fa6f986e46e7e0f32bb6ee5751a559d3c281b84d4ea29f",
+      "cpp/support/mysql_coins.cpp": "a206857be3e3a2d6d3cd3a8d7a8b273fbbec00cc1188fdc32155625ad44d93bc",
+      "cpp/tools/mysql_coins_differential.py": "ba99931e013f685fa45df7008d025aceae5281030a1b0e56bcf5dc3630a29660"
+    },
+    "reuse": "Actual native Command/MySQLConnect/UserDB/TxBlock/Coin/MinimaLogger DATEFORMAT; explicit Java-width wrap for counters. Existing SqlDBOracle/SqlRecordingFixture, ArchiveFixture/CoinFixture and equivalent pinned Java helpers; database setup follows minima_db.cpp, explicit CommandException adapter from sphincs_command.cpp. No shared fixture or production backend hooks added.",
+    "sibling_search": "No mysqlcoins/MySQLConnect/JDBC MySQL implementation found in tools/minima-core-cpp/src or tests. Existing current native MySQLConnect reused without changes.",
+    "validation": "Both full builds PASS; normal771cases/1007checks/24372SQLevents14.523s, sanitizer same25.142s; identical transcript hash and empty native stderr. Initial fixture label mismatch retained.",
+    "runtime_gap": "No live native MySQL provider is configured. This is command/body validation through recording SQL, not live-database parity.",
+    "evidence": "validation/mysql-coins-work-in-progress",
     "full_parity_verified": false
   }
 }

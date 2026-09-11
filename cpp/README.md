@@ -11,9 +11,14 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **359 production counterparts and 47 mapped test files exist;
-51 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **360 production counterparts and 47 mapped test files exist;
+50 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mysqlcoins command now compiles with all five actions. Both builds pass
+771 command/SQL comparisons; a live native MySQL driver remains a runtime gap.
+See the [coin-index lab](student-guide/new-tests/mysql-coins-command.md) and
+[evidence](validation/mysql-coins-work-in-progress/progress.json).
 
 The original GET and SUBSET tests now have mapped C++ files. Both builds pass
 31 and 33 assertions per runtime respectively. See the

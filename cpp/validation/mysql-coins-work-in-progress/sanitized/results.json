@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": 771,
+  "independent_assertions": 1007,
+  "sql_events": 24372,
+  "seconds": 25.142,
+  "transcript_sha256": "59a346cffbadbb7cc9839480db744e6f2509e08d671ecaafdcabed7ff2539cef",
+  "failures": [],
+  "scope": "Actual pinned mysqlcoins and native counterpart with real MySQLConnect bodies/codecs and shared recording SQL: all action paths, metadata, parsing and error order, preferences, exact SQL/bindings, per-event SQL/runtime failures, bounded synthetic block ranges. Duration checked against operation window before normalization; NPE/class-cast prose normalized. No live MySQL driver, durable paging, concurrent archive updates, >5s progress-log timing or full node parity certification."
+}

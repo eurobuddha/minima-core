@@ -44,3 +44,8 @@ suite uses those records explicitly as saved observations, rechecks their proofs
 and actual verifiers, then generates the missing full-size signature and runs the
 source mains. Its 3,600-second per-operation timeout changes only test orchestration.
 No full sanitizer completion is claimed until that resumed run finishes.
+
+The resumed comparison phase now completes 299 live comparisons without mismatches.
+It generated the missing empty-message signature and checked the two saved records.
+The comparison processes exited successfully with empty stderr; actual source
+demonstrations are still running, so the full resumed suite remains unfinished.

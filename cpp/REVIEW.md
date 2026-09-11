@@ -1,3 +1,39 @@
+## MySQL coin-index command review
+
+### Summary
+
+The native command translates all five pinned actions using the existing connection
+layer and object codecs. It preserves argument order, saved-login precedence,
+preference mutations, SQL construction, whole-block limits, reply spelling and
+explicit shutdown behavior. Counter arithmetic uses Java-width wrapping.
+
+### Findings
+
+**Fixture issue, fixed:** the initial direct-call fixture labeled CommandException
+as RuntimeException. The existing SPHINCS fixture's typed adapter corrects the label;
+the initial failure is retained. No production exception behavior changed.
+
+**Open runtime gap:** no live native MySQL provider is configured. Recording SQL
+validates real command/connection bodies and exact bindings, but cannot establish
+durability, real pagination, database permissions or concurrent archive behavior.
+The greater-than-five-second progress-log branch is translated but not timed in
+this comparison. No full API or complete-node parity claim is made.
+
+Both full builds and both suites pass771cases/1007independent assertions and24372
+SQL events, with identical transcript hashes and empty native stderr. Tests inject
+SQL/runtime failures at every event in each complete baseline action. Block fixtures
+use real serialized objects and bounded repeated ranges; they are not SQL engines.
+
+### Verdict
+
+Approve this local command checkpoint with the stated runtime gap.407counterparts
+exist (360production,47tests);50mapped files remain absent.256CTest entries are
+registered; fullsuite NOT run. Resumed signer comparisons now finish299/0 with
+empty stderr; its source mains and the full sanitized command suite remain active.
+See the [evidence](validation/mysql-coins-work-in-progress/progress.json).
+
+---
+
 ## Original GET and SUBSET test review
 
 ### Summary

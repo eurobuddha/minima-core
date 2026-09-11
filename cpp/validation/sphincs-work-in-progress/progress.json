@@ -42,5 +42,15 @@
   "normal_seconds": 1138.085,
   "normal_source_mains_matched": true,
   "normal_fixture_failure_resolved_by": "../sphincs-utils-work-in-progress/normal/sphincs-log-audit.json",
-  "resume_vectors": "sanitized/initial-two-signatures.json"
+  "resume_vectors": "sanitized/initial-two-signatures.json",
+  "resumed_comparison_phase": {
+    "cases": 299,
+    "mismatches": 0,
+    "independent_assertions_at_last_comparison": 1375,
+    "new_signatures": 1,
+    "saved_signature_records": 2,
+    "native_runner_stderr": "",
+    "source_mains": "running",
+    "final_report_produced": false
+  }
 }

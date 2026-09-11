@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/mysqlcoins.java) · `src/org/minima/system/commands/backup/mysqlcoins.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/mysqlcoins.java) · [Native counterpart](../../../../../../../../src/org/minima/system/commands/backup/mysqlcoins.cpp)
 
 ## Purpose
 
@@ -21,22 +21,41 @@ mysqlcoins derives a searchable coin table from archived TxBlocks and exposes me
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse the pinned MySQLConnect schema, insertCoin and query conversion. The helper’s readonly flag does not itself make every operation read-only; SQL behavior and database permissions need direct integration tests.
+The native class reuses Command, MySQLConnect, UserDB, actual TxBlock/Coin codecs
+and MinimaLogger's date formatter. It preserves every action, parameter order,
+reply key and explicit shutdown point. Integer increments use Java-width wrapping
+without C++ signed-overflow undefined behavior. The optional native memory collection
+hint corresponds to the source's periodic System.gc request. The helper's readonly
+flag does not itself enforce database permissions.
 
 ## Understanding the tests
 
-The runner fixture checks mysqlcoins’s classification only. Proposed fixtures record exact credential choice and SQL text, where/address/query precedence, state substring matching, spent filtering and hidetoken. Update tests check input-object mutation, output creation height, maxblocks zero and maxcoins equality/overshoot, retry/resume positions and shutdown after injected failures.
+The actual Java command and native class are now compared through the existing
+recording SQL driver and actual MySQLConnect bodies. Both complete builds pass.
+Both suites pass 771 cases, 1,007 independent assertions and 24,372 SQL events,
+with identical transcript hashes (normal14.523s; sanitizer25.142s). Native stderr
+is empty. The tests cover metadata, parameter order/errors, mobile rejection,
+auto-login choice, preference updates, all five actions, exact SQL and bindings,
+and SQL/runtime failures injected at every event in each baseline action.
 
-- [Runner fixture using selected fake commands](../../../../../../../../support/CommandRunnerOracle.java)
-- [Native runner fixture](../../../../../../../../support/command_runner.cpp)
-- [Runner-only dispatch/permission coverage](../../../../../../../../tools/command_runner_differential.py)
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+Update fixtures deserialize real synthetic block bytes and observe input-spent
+and output-creation changes through the actual insertCoin bindings. They preserve
+whole-block limits, equality/overshoot behavior and insertion-attempt counts.
+Search tests exercise where/address/query precedence, spent/limit and hidetoken.
+Durations are checked against each operation's clock window before normalization.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+The first normal run found a fixture exception-labeling error. The existing
+CommandException adapter from the SPHINCS command fixture fixed it; the failed
+report is retained. Production exception behavior did not change.
+
+- [Command test lab](../../../../../../../../student-guide/new-tests/mysql-coins-command.md)
+- [Comparison driver](../../../../../../../../tools/mysql_coins_differential.py)
+- [Saved evidence](../../../../../../../../validation/mysql-coins-work-in-progress/progress.json)
+- [Shared command implementation](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
 ## Limits
 
-No database was contacted. coinsadded counts calls rather than proving successful distinct stored rows. A restart from maximum recorded coin block depends on how the connector represents partial updates and blocks containing no coins.
+No live database was contacted. The runtime MySQL provider is still missing; this command checkpoint does not claim a working live MySQL backend. Synthetic SQL ranges are bounded using maxblocks and do not prove durable pagination, concurrent updates, or the greater-than-five-second progress-log timing. coinsadded counts calls rather than proving successful distinct stored rows. A restart from maximum recorded coin block depends on how the connector represents partial updates and blocks containing no coins.
 
 ## Check your understanding
 

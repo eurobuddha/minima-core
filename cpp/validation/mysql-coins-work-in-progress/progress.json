@@ -1,0 +1,26 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "previous_head": "71d34a69dfab1c22dbbe94a7eee932dcee567467",
+  "status": "Both complete builds and both mysqlcoins comparison suites pass.",
+  "cases_per_runtime": 771,
+  "independent_assertions": 1007,
+  "sql_events": 24372,
+  "normal_seconds": 14.523,
+  "sanitized_seconds": 25.142,
+  "transcript_sha256": "59a346cffbadbb7cc9839480db744e6f2509e08d671ecaafdcabed7ff2539cef",
+  "counterparts": 407,
+  "production": 360,
+  "original_tests": 47,
+  "absent": 50,
+  "ctest_entries": 256,
+  "full_ctest_suite_run": false,
+  "full_parity_verified": false,
+  "live_mysql_driver_available": false,
+  "fixture_correction": "First normal run mislabeled native CommandException as RuntimeException. Reused sphincs_command.cpp explicit typed catch; production exception behavior unchanged.",
+  "limits": [
+    "Shared recording SQL, not live database or durable paging.",
+    "Repeated synthetic ranges bounded by maxblocks.",
+    "No concurrency or greater-than-five-second progress-log timing assertion.",
+    "Full Java-width counter iteration space not exhaustively executed."
+  ]
+}
