@@ -25,6 +25,13 @@ comparisons, 1,373 assertions and actual source mains (20,667-byte signature,
 verify true, exact stdout). Its original case299 failure remains saved; the audit
 supersedes only that fixture defect.
 
+### Progress reporting correction
+
+Replay and live full-signing runs now use distinct progress files. A fresh normal
+268-case/1,677-assertion replay passed after this bookkeeping fix. The original
+shared progress file was not evidence that a full run had completed; final reports
+and live process handles remain authoritative.
+
 ### Validation and limits
 
 Both complete builds pass. Object9464, KISSVM4471, envelope1449 and log3 regressions

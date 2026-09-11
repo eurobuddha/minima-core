@@ -1,0 +1,10 @@
+{
+  "replay_progress_file": "build/sphincs-utils-replay-progress.json",
+  "full_signing_progress_file": "build/sphincs-utils-progress.json",
+  "cases": 268,
+  "passed": 268,
+  "independent_assertions": 1677,
+  "transcript_sha256": "04c3b45c0b9ca9e4430e5a516ca8599d2540af246d9f98437a9e0f43a08c8618",
+  "seconds": 8.432,
+  "failures": []
+}

@@ -32,7 +32,8 @@
     "sanitized_fixed_build_regressions": 69483,
     "normal_replay": 72585,
     "sanitized_replay": 57201,
-    "one_second_cpu_sample": 94021
+    "one_second_cpu_sample": 94021,
+    "replay_progress_isolation_audit": 26053
   },
   "notes": [
     "Revalidate live handles; saved snapshots are not evidence that processes remain live.",
@@ -44,7 +45,8 @@
     "Normal Utils269-case original run ended1: only cases255/264 contract error text differed when malformed state100 produced null Signature. Actual full transaction signatures, valid937-op scripts and remaining267 cases matched. New TreeKey nullable signature overload, CHECKSIG delegation and Contract JavaNPE formatting fix the production gap.",
     "Fixed replay reruns all250 utility cases and18 script cases using actual original transaction signatures (no fresh forest generation). Both268 cases/1677 assertions passed, matching transcript hashes. Original full sanitizer process loaded old code and may report the same two already-fixed errors; preserve it and compare evidence honestly.",
     "Verified owned sanitized signer process56123 at99.6%CPU/22MBRSS and sanitized Utils64722 at98.8%CPU/404MBRSS. Large signing work still live; no OOM evidence and no restart.",
-    "One-second sample of live signer56123 completed successfully: actual FORS::FORS -> HORST construction -> public-key/MMR building. Excerpt saved. This is active full-size computation, not evidence of a hung process."
+    "One-second sample of live signer56123 completed successfully: actual FORS::FORS -> HORST construction -> public-key/MMR building. Excerpt saved. This is active full-size computation, not evidence of a hung process.",
+    "Replay progress originally shared the full-run filename. Fixed to separate sphincs-utils-replay-progress.json; normal replay268/1677 passed again. An older full-run progress snapshot with268cases/cross-writer-script18 may be a replay snapshot until the live original next writes; never use it to infer original run completion. Full-run process handles and final reports are authoritative."
   ],
   "sanitized_regressions": "object9464/KISSVM4471/envelope1449/log3 passed;135.50s total",
   "replay_cases_each_build": 268,

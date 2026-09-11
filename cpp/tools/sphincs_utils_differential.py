@@ -35,7 +35,7 @@ def main():
         nonlocal cases
         values=[r.ask(q) for r in runners];cases+=1;groups[group]=groups.get(group,0)+1;transcript.update(json.dumps([q,*values],sort_keys=True,separators=(',',':')).encode())
         if values[0]!=values[1]:failures.append(dict(index=cases,group=group,request=q,java=values[0],cpp=values[1]))
-        (build/'sphincs-utils-progress.json').write_text(json.dumps(dict(cases=cases,groups=groups,failures=failures,independent_assertions=checks),indent=2)+'\n');return values
+        (build/('sphincs-utils-replay-progress.json' if args.replay else 'sphincs-utils-progress.json')).write_text(json.dumps(dict(cases=cases,groups=groups,failures=failures,independent_assertions=checks),indent=2)+'\n');return values
     def setup(q,updates=66,failed=False):
         values=compare('setup-partial' if failed else 'setup-complete',q)
         for v in values:

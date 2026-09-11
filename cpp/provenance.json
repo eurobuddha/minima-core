@@ -3785,7 +3785,7 @@
       "cpp/src/org/minima/utils/sphincs/FORS/FORSSignature.cpp": "8d2545620f4cb9828a43fcea52c010ff4ebf5472830eb1cd091345368c505841",
       "cpp/support/SPHINCSUtilsOracle.java": "f20f80bf90747f1f14283c414d978c149c2b6ffd1a56b032f03446b313a928a1",
       "cpp/support/sphincs_utils.cpp": "1854d2ac99dc5825d8257d3807cb5c0e18cc57e0ba6cd2329da8f56d46603517",
-      "cpp/tools/sphincs_utils_differential.py": "cdc1d26815fe3d300c496010cb063fd8b4f12da10fc97a22ded5d5140320772a",
+      "cpp/tools/sphincs_utils_differential.py": "5049af9245dc1ca7e2e2326e8f2735b99caf8c3fea8be0453bea5f87356b47ef",
       "cpp/support/SPHINCSOracle.java": "9c5b95b6c026d9cf7b934a4ef8812acd4932158cb3040f89a79458bad3610450",
       "cpp/tools/sphincs_log_audit.py": "3556777e4a5a74d9b0c0944e27b38d9a6197412e7a3e853273429a3ab70ba106",
       "cpp/src/org/minima/objects/keys/TreeKey.hpp": "30262f82af3d7b5114351c40d11fe8774401468daaad9c1cc6826926b26ef69a",
@@ -3799,6 +3799,7 @@
     "input_vector_sha256": "271fd03c67ca873e57fe5e3bc42705a7eb5ed86c339cae9d86e574077b5b137b",
     "evidence": "validation/sphincs-utils-work-in-progress",
     "full_parity_verified": false,
-    "production_followup": "Actual script mutation exposed generic native exception for null converted Signature. Reuse TreeKey verification through a nullable pointer overload preserving the pinned Java null dereference diagnostic; CHECKSIG delegates; Contract formats JavaNullPointerException via existing javaExceptionText. Both replay transcripts now match exactly."
+    "production_followup": "Actual script mutation exposed generic native exception for null converted Signature. Reuse TreeKey verification through a nullable pointer overload preserving the pinned Java null dereference diagnostic; CHECKSIG delegates; Contract formats JavaNullPointerException via existing javaExceptionText. Both replay transcripts now match exactly.",
+    "progress_isolation": "Replay writes sphincs-utils-replay-progress.json separately from live full signing. Re-executed normal replay268/1677 passed after bookkeeping fix."
   }
 }

@@ -69,6 +69,14 @@ validation/sphincs-utils-work-in-progress. VectorreplaySHA256
 cf04c5628efbe3eb071826153b44bc9eed7133a48b3fe9e8f3fc4d0ed6b7a7b4.
 NormalSignerfinalevidenceunder validation/sphincs-work-in-progress/normal.
 
+## Progress file isolation
+
+Replay nowwrites sphincs-utils-replay-progress.json; fullrunuses
+sphincs-utils-progress.json. Initialreplayssharedthefullrunprogressfilename,so
+older268case/cross-writer-script18snapshotcanbereplay,NOToriginalfullrun.
+Do not infer fullruncompletionfromit; revalidate31941/11888andfinalreports.
+26053progressisolationauditterminal0; reran268/1677normalreplayPASS.
+
 ## Next actions
 
 Revalidate31941/11888;preserveoriginalfullsanreports,oldfixture/fidelityfailures,
