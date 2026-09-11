@@ -110,6 +110,7 @@ exec "$preview_dir/bin/MinimaCoreC++" \\
     shutil.copy2('/opt/homebrew/opt/icu4c@78/share/icu/78.3/LICENSE', output/'licenses/ICU_LICENSE.txt')
     with zipfile.ZipFile(ROOT/'upstream-study/lib/mysql-connector-java-8.0.24.jar') as jar:
         (output/'licenses/MYSQL_CONNECTOR_LICENSE').write_bytes(jar.read('META-INF/LICENSE'))
+    shutil.copytree(CPP/'native/h2/licenses',output/'licenses/native-database')
     provider_source = args.build.resolve()/'native-h2-archive/manifest.json'
     provider = json.loads(provider_source.read_text()) if provider_source.exists() else None
     if provider:

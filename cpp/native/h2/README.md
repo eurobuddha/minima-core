@@ -42,8 +42,8 @@ Limits: H2 describes native-image support as experimental. Arbitrary Java
 extensions, dynamically loaded classes, public-network synchronization,
 daemon/RPC node control, resource exhaustion and full Minima behavior are not
 certified. The current macOS shared library has a build-directory install name;
-rebuild it in a recovery checkout. Relocatable binary packaging and other
-operating systems have not been validated. ASAN/UBSAN instruments the C++ adapter
+rebuild it in a recovery checkout. The macOS preview packager rewrites that install name and bundles the library;
+see [preview packaging](../../PREVIEW.md). Other operating systems have not been validated. ASAN/UBSAN instruments the C++ adapter
 and application, not the AOT-compiled H2 dependency. Preserve H2 and GraalVM's
 applicable licenses when redistributing those dependencies.
 

@@ -60,8 +60,8 @@ def main():
                             last_ping=time.monotonic()
                             process.stdin.write('ping host:eurobuddha.com:9001\nstatus\n');process.stdin.flush()
                             continue
-                        for ping in reversed(pings):
-                            for status in reversed(statuses):
+                        for ping in pings[-1:]:
+                            for status in statuses[-1:]:
                                 chain=status['chain']
                                 if chain['block']==int(ping['topblock']) and chain['hash']==ping['tophash']:
                                     assert chain['block']>=2309561

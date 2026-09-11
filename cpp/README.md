@@ -1,5 +1,9 @@
 # MinimaCoreC++ — incomplete
 
+The current team handover is in [delivery/START_HERE.md](delivery/START_HERE.md), with
+[reproducible node build instructions](delivery/BUILD_AND_TEST.md), an editable
+presentation and explicit known gaps. Final delivery testing is in progress.
+
 A frozen **runnable macOS preview** is now available on local port **21001**,
 connecting to eurobuddha.com:9001 with separate data. See [PREVIEW.md](PREVIEW.md)
 for the double-click launcher, commands, package and scoped verification results.

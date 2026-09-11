@@ -25,7 +25,10 @@ def export_tree(repo,revision,prefix,destination,paths=None):
                 p=Path(item.name)
                 if p.is_absolute() or '..' in p.parts or item.issym() or item.islnk():
                     raise RuntimeError('Unsafe/unexpected source archive member: '+item.name)
-            archive.extractall(destination,filter='data')
+            members=archive.getmembers()
+            excluded=[item.name for item in members if Path(item.name).name=='.DS_Store']
+            archive.extractall(destination,members=[item for item in members if item.name not in excluded],filter='data')
+            return excluded
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--build',type=Path,default=CPP/'build');args=parser.parse_args()
@@ -45,8 +48,8 @@ def main():
     runtime.with_suffix('.zip.sha256').unlink()
     runtime_archive.with_suffix('.zip.sha256').write_text(sha(runtime_archive)+'  '+runtime_archive.name+'\n')
     top=run('git','ls-tree','--name-only',head).splitlines()
-    export_tree(ROOT,head,'project/',output,[p for p in top if p not in ['graphify-out','upstream-study']])
-    export_tree(ROOT/'upstream-study',pin,'project/upstream-study/',output)
+    excluded=export_tree(ROOT,head,'project/',output,[p for p in top if p not in ['graphify-out','upstream-study']])
+    excluded+=export_tree(ROOT/'upstream-study',pin,'project/upstream-study/',output)
     # Source/docs stay in their repository layout, preserving every relative student link.
     handover=output/'project/cpp/delivery'
     if not (handover/'START_HERE.md').is_file():raise RuntimeError('Delivery overview missing from checkpoint')
@@ -59,7 +62,7 @@ The package creates a separate wallet and chain directory on first use.
 Start the team handover at [project/cpp/delivery/START_HERE.md](project/cpp/delivery/START_HERE.md).
 Student lessons start at [project/cpp/student-guide/README.md](project/cpp/student-guide/README.md).
 The complete source snapshot, pinned original Java and validation evidence are under `project/`.
-This source archive omits only the unrelated graphify outputs and untracked working files.
+This source archive omits unrelated graphify outputs, Finder .DS_Store metadata and untracked working files.
 It contains no `.git` working directory. Source identity and file hashes are in `delivery-manifest.json`.
 
 Full behavioral parity remains unverified. Read the known gaps before relying on this build.
@@ -69,7 +72,8 @@ Full behavioral parity remains unverified. Read the known gaps before relying on
         if path.is_file() and (path.suffix=='.db' or path.name.endswith('.mv.db') or path.name in ['.env','.DS_Store']):forbidden.append(str(path.relative_to(output)))
     if forbidden:raise RuntimeError('Unexpected private/runtime file in delivery: '+repr(forbidden))
     manifest=dict(source_head=head,upstream_pin=pin,utc=datetime.now(timezone.utc).isoformat(),full_parity=False,
-        source_scope='All committed root entries except unrelated graphify-out, plus complete pinned upstream; no untracked files, wallet databases or .git configuration',
+        source_scope='All committed root entries except unrelated graphify-out and Finder metadata, plus pinned upstream; no untracked files, wallet databases or .git configuration',
+        excluded_finder_metadata=excluded,
         runtime_archive=runtime_archive.name,runtime_archive_sha256=sha(runtime_archive),
         file_sha256={str(p.relative_to(output)):sha(p) for p in sorted(output.rglob('*')) if p.is_file()})
     (output/'delivery-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

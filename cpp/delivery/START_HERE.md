@@ -29,7 +29,7 @@ a fresh peer response when demonstrating synchronization.
 
 - **Team demonstration:** [offline presentation](presentation.html), [editable outline and speaker notes](PRESENTATION.md), and [demo script](DEMO.md).
 - **Students:** [guide index](../student-guide/README.md), then [study route](../student-guide/how-to-study-this-port.md).
-- **Developers:** [build instructions](../README.md), [native database dependency](../native/h2/README.md), and [current continuation](../CONTINUATION.md).
+- **Developers:** [build and test instructions](BUILD_AND_TEST.md), [native database dependency](../native/h2/README.md), and [current continuation](../CONTINUATION.md).
 - **Reviewers:** [known gaps](KNOWN_GAPS.md), the validation directory, and the delivery test report when the final run completes.
 
 Each source file lesson links the pinned Java file, native counterpart, logic and

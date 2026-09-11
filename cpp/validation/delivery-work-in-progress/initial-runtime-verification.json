@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "resumed_existing_data": false,
+  "verification_port": 22001,
+  "launcher_port_override": true,
+  "source_head": "41a9c5f67e68116ba29c5ff28e0946dcfad086a3",
+  "archive_sha256": "24046d8573258b06c6e4052191577297a9aaf02f08c87c1f30d5140fb019d111",
+  "checks": [
+    "Every extracted payload file matches its manifest SHA-256",
+    "Relocated launcher runs -help with system-only PATH",
+    "fresh: exact SHA3 command, matching live peer height/hash, isolated data/port, saved databases and clean exit"
+  ],
+  "observations": [
+    {
+      "step": "fresh",
+      "block": 2309788,
+      "hash": "0x0000005478C93EEC2ABE92BBE2DD3122E570F15BAD5D029788D1566E89294F74",
+      "peer": "eurobuddha.com:9001",
+      "matches_peer": true
+    }
+  ],
+  "failure": "AssertionError('Packaged node did not match the designated peer tip within 150 seconds')",
+  "relocated_folder": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation o6v2r6ud/MinimaCoreC++-macos-arm64",
+  "scope": "Actual shipped ZIP and launcher (port override recorded), no modified Minima source, system-only PATH; mainnet lifecycle steps explicitly listed in observations; resumed verification does not claim a new fresh start. Tests packaging and this workflow, not full node parity. Test wallet data remains only in the temporary extracted directory."
+}
