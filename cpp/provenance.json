@@ -3822,5 +3822,23 @@
     "validation": "Both complete builds passed. Normal169cases/342 assertions and exact full-size source mains passed286.371s;demo rejects in221operations. Sanitized169/338 public APIs passed;actual main stillrunning. Both268/1677 sharedreplays passed16.026s/29.676s.",
     "evidence": "validation/transaction-test-work-in-progress",
     "full_parity_verified": false
+  },
+  "sphincs_command_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/system/commands/base/sphincs.java": "12256a1e04b166ffecc71063ad99ab74ee5acc1213845548a61800e68bbb8228"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/system/commands/base/sphincs.hpp": "d8ea77e1d81c139a1aa9fc25f1569cd47f628523b85fa13cf5e4019acfdab40d",
+      "cpp/src/org/minima/system/commands/base/sphincs.cpp": "9cef60bd07568539ef21dad4d783c600849c195967eb57dde46fcea8ecf47ae0",
+      "cpp/support/SPHINCSCommandOracle.java": "c1f382c9c059d6f28183e7e7a50e91471de13e74d4fab8694d3f7b31624efc0d",
+      "cpp/support/sphincs_command.cpp": "2ab927a076480c04d94f2d4031ba98cf615f96743472569ec77de230b90a7525",
+      "cpp/tools/sphincs_command_differential.py": "cb43e0499a8a22b492bfdf8037e87062a612c033fbad66be0cca0b6e88c0769f"
+    },
+    "reuse": "Actual native SPHINCS and SPHINCSUtils; Command/CommandRunner and CommandResult first/status/reject; MiniFile plus JavaUnixFile path/length; shared private output formatter. Fixtures adapt WalletWrappers isolated TxnDB/registry setup and SPHINCS output capture; driver reuses ForestRunner and UUID/JDK-prose normalization.",
+    "sibling_search": "No SPHINCS/FORS match in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src or tests; current actual pinned signer is reused.",
+    "validation": "Both complete builds passed. Initial normal quick125cases/24 independent checks passed113.224s. Added NUL path guard/regression afterward. Expanded full normal/sanitized runs live; evidence records snapshots, not full passes.",
+    "evidence": "validation/sphincs-command-work-in-progress",
+    "full_parity_verified": false
   }
 }

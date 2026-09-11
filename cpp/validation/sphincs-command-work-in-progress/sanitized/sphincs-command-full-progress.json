@@ -1,0 +1,12 @@
+{
+  "cases": 91,
+  "groups": {
+    "metadata": 1,
+    "missing": 1,
+    "action": 9,
+    "required-order": 10,
+    "parameter-types": 70
+  },
+  "independent_assertions": 2,
+  "failures": []
+}

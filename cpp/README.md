@@ -11,9 +11,15 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **354 production counterparts and 44 mapped test files exist;
-59 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **355 production counterparts and 44 mapped test files exist;
+58 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The `sphincs` command now has all five source actions and is registered in the
+native runner. It reuses the actual full-size signer, transaction helpers and
+file implementation. Its differential tests are underway; see the
+[command lab](student-guide/new-tests/sphincs-command.md) and
+[current evidence](validation/sphincs-command-work-in-progress/progress.json).
 
 TransactionTest now compiles with its pinned script and full-size signing logic.
 Both builds pass 169 formatter/logging comparisons and 338 independent assertions;

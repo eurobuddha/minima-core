@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/sphincs.java) · `src/org/minima/system/commands/base/sphincs.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/sphincs.java) · [Native C++ counterpart](../../../../../../../../src/org/minima/system/commands/base/sphincs.cpp)
 
 ## Purpose
 
@@ -21,21 +21,37 @@ sphincs exposes this repository’s custom hash-signature helpers and a multi-co
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse the pinned SPHINCS, SPHINCSSig and SPHINCSUtils algorithms and wire format, which are themselves unported. The workflow also needs real custom transaction commands; substituting a standard cryptography package would not reproduce this source.
+The native counterpart delegates to the existing Command parameter/reply helpers, SPHINCS signer, SPHINCSUtils transaction helpers, and MiniFile file operations. It is registered in the actual native CommandRunner. The private first-result helper reuses support/CommandResult.hpp, preserving Boolean unboxing, String casts and nullable error messages. The unused private coin formatter delegates to the shared SPHINCS formatter. The algorithms and complete forest sizes remain unchanged.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. Proposed tests cover fixed seed bytes, Unicode charset assumptions, file precedence, malformed signatures and inline/file round trips. For transactions, record exact subcommand order, eight-input boundary, output storeState changes, ignored intermediate failures and row existence after each injected exception. The Java utility experiment checking one tree is not proof of the full sixteen-tree script.
+The differential driver executes the actual pinned Java and native command classes.
+It compares help text, parameter order, errors, Unicode seed derivation, valid and
+malformed signatures, file precedence, and missing files. Python independently
+computes the seed/private-key hashes. An embedded NUL path must not access or
+remove an existing file with the same prefix.
+
+The fixture replaces child command prototypes only within its isolated process.
+Actual txncreate/txndelete and real TxnDB rows are retained; recording children
+supply input coins and capture each transaction before subsequent calls. We check
+funding-error cleanup, more-than-eight-input rejection, and empty-input failure.
+Full mode also signs inline, overwrites a file, executes the test action, and signs
+one/eight-input transactions. Exact signature bytes, 66 state values, output flags,
+posting order and row deletion are observed. It does not test network admission.
+
+See the [test lab](../../../../../../../../student-guide/new-tests/sphincs-command.md).
+Validation is underway; consult the [current evidence](../../../../../../../../validation/sphincs-command-work-in-progress/progress.json)
+for actual completed results and pending phases.
 
 - [Signature script and transaction helpers](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSUtils.java)
 - [Custom signature construction](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCS.java)
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+The new native command fixture compiles. Test results are recorded separately so unfinished full-size runs are not presented as passes.
 
 ## Limits
 
-No keys were generated and no transaction or filesystem action was executed for this lesson. A returned test boolean is a diagnostic, not an automated assertion suite or security audit. Nested commands do not inherit MiniDapp identity through this helper.
+Only test keys, temporary files and isolated transaction rows are used. A returned test boolean is a diagnostic, not a security audit. Nested commands do not inherit MiniDapp identity through this helper.
 
 ## Check your understanding
 

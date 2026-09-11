@@ -1,0 +1,68 @@
+{
+  "status": "work_in_progress",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "mapping": {
+    "total": 457,
+    "counterparts": 399,
+    "production": 355,
+    "original_tests": 44,
+    "absent": 58
+  },
+  "complete_builds": {
+    "normal": "passed",
+    "sanitized": "passed"
+  },
+  "initial_normal_quick": {
+    "passed": true,
+    "cases": 125,
+    "independent_assertions": 24,
+    "seconds": 113.224,
+    "transcript_sha256": "18a858bfcf96a262b6544a8e2d67e61caf1d522f9a62e71bb7d764f44acacc41",
+    "limitation": "Before embedded-NUL path guard and added regression; full runs exercise final source."
+  },
+  "active_sessions": {
+    "normal_full_command": 89965,
+    "sanitized_full_command": 24343,
+    "earlier_sanitized_signer": 31941,
+    "earlier_sanitized_TransactionTest": 23405
+  },
+  "full_parity_verified": false,
+  "normal_full_progress": {
+    "cases": 126,
+    "groups": {
+      "metadata": 1,
+      "missing": 1,
+      "action": 9,
+      "required-order": 10,
+      "parameter-types": 70,
+      "generate": 6,
+      "short-private": 6,
+      "verify-known": 1,
+      "wrong-message": 1,
+      "wrong-public": 1,
+      "signature-decode": 5,
+      "file-precedence": 1,
+      "missing-file": 1,
+      "malformed-file": 1,
+      "nul-file-path": 1,
+      "registered-runner": 4,
+      "funding-failure": 5,
+      "input-cap": 1,
+      "empty-input": 1
+    },
+    "independent_assertions": 24,
+    "failures": 0
+  },
+  "sanitized_full_progress": {
+    "cases": 91,
+    "groups": {
+      "metadata": 1,
+      "missing": 1,
+      "action": 9,
+      "required-order": 10,
+      "parameter-types": 70
+    },
+    "independent_assertions": 2,
+    "failures": 0
+  }
+}

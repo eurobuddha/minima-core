@@ -1,3 +1,42 @@
+Normal expanded preliminary cases now126/126 match, including the NUL-path regression; full signing remains live. Sanitized preliminary progress91cases/0failures at this snapshot.
+
+## SPHINCS command review
+
+### Summary
+
+The wrapper preserves all five pinned source actions and delegates to the actual
+native signer, transaction helpers and file operations. It is registered in the
+actual CommandRunner. The source's parameter order, file precedence, eight-input
+limit, output state flags, ignored intermediate statuses and explicit cleanup
+points are preserved. No replacement signing algorithm or production test hook
+was introduced.
+
+### Findings
+
+**Major, fixed — embedded NUL file paths could address a prefix path.** Java's
+File.exists rejects these paths. The command now checks for NUL before filesystem
+lookup or deletion. The expanded comparison includes an existing prefix file and
+checks its unchanged bytes. This new regression is part of the running full suites.
+
+The fixture initially omitted TxnDB initialization and exited before any cases.
+It now uses the existing wallet fixture's isolated database setup; the initial
+normal comparison passed125cases/24independent assertions in113.224s, with zero
+mismatches and empty native stderr. Both complete builds pass. Full suites add
+five actual full-size signatures per runtime and remain live. The initial quick
+report predates the NUL-path addition and is labeled accordingly.
+
+### Verdict
+
+Approve as a compiled work-in-progress checkpoint. Full signing results are
+pending. The fixture controls funding, scripts, proof-building and posting; it
+does not certify real funding/mining/network admission. Intermediate ignored
+failure statuses and arbitrary inherited API/reference behavior need broader
+validation. Full246-entryCTest suite has not been run. All457lessons pass their
+structural audit (9243links); this does not establish behavioral parity.
+[Evidence](validation/sphincs-command-work-in-progress/progress.json).
+
+---
+
 ## TransactionTest counterpart and shared-helper review
 
 ### Summary

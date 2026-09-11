@@ -1,0 +1,44 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{"cases": 25, "group": "parameter-types", "failures": 0}
+{"cases": 50, "group": "parameter-types", "failures": 0}
+{"cases": 75, "group": "parameter-types", "failures": 0}
+{"cases": 100, "group": "short-private", "failures": 0}
+{"cases": 125, "group": "empty-input", "failures": 0}
+{
+  "passed": true,
+  "cases": 125,
+  "groups": {
+    "metadata": 1,
+    "missing": 1,
+    "action": 9,
+    "required-order": 10,
+    "parameter-types": 70,
+    "generate": 6,
+    "short-private": 6,
+    "verify-known": 1,
+    "wrong-message": 1,
+    "wrong-public": 1,
+    "signature-decode": 5,
+    "file-precedence": 1,
+    "missing-file": 1,
+    "malformed-file": 1,
+    "registered-runner": 4,
+    "funding-failure": 5,
+    "input-cap": 1,
+    "empty-input": 1
+  },
+  "independent_assertions": 24,
+  "seconds": 113.224,
+  "transcript_sha256": "18a858bfcf96a262b6544a8e2d67e61caf1d522f9a62e71bb7d764f44acacc41",
+  "scope": "Actual registered Java/C++ sphincs, exact replies and metadata, deterministic key derivation, saved valid and malformed signatures, signature-file precedence, and real custom-transaction rows with controlled offline child commands. Full mode additionally executes five genuine full-size signing forests, comparing inline/file signatures and one/eight-input transaction state. Random transaction IDs and JDK NPE/ClassCast prose normalized. Does not certify actual funding, mining or network admission."
+}

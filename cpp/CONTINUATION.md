@@ -1,3 +1,58 @@
+Normal expanded preliminary cases now126/126 match, including the NUL-path regression; full signing remains live. Sanitized preliminary progress91cases/0failures at this snapshot.
+
+# Latest checkpoint — sphincs command compiled; full suites LIVE
+
+PreviousHEADf62253e; gitlog identifies latestcheckpoint. Full457-filegoalACTIVE.
+399counterparts=355production+44originaltests;58absent=14production+44tests.
+Allpresentimplemented_partial/allparitynot_verified. BothcompletebuildsPASS.
+246CTestentries/fullsuiteNOT run.457guides/9243links/noauditerrors.
+
+Newcommands/base/sphincs.cpp/hpp preservesallfiveactions andactualrunnerregistry.
+ReuseSPHINCS/SPHINCSUtils/MiniFile/CommandResultfirst,status,reject;sharedprivatecoin
+formatterandJavaUnixFileabsolute/length. JavaStringgetString iscast,so bothsource
+errorbranchesuseexistingreject. Preservefileprecedence,MAX8inputs,outputsfalse,
+sourcechildorderandexplicitcleanuponly. GuardNULbeforeexists/delete(JavaFile).
+
+FixturesSPHINCSCommandOracle.java/support/sphincs_command.cpp executeactualclass
+andrunner. Actualtxncreate/deletewithrealTxnDB; otherchildprototypesrecordrows
+andfundsyntheticcoinswithinfixtureonly. No productionhooks/networksubmissions.
+DriverreuseForestRunner/walletwrappernormalization(UUIDs,NPE/ClassCastprose).
+Quickinitial125cases/24checksPASS113.224s (beforeNULguard/regression). Preserved
+normal/initial-quick-results.json. Firstsetupfailurebeforeanycase wasfixtureTxnDB
+notinitialized; fixedusingexistingWalletCommandsFixture/reflectionapproach.
+Newfullsuites126quickcases+5fullsignatures: inline,file,test,1inputsuccess,8input
+postfailure. Eachactualsignforestfull16x65536,TreeKey192/4. CTesttimeout14400;
+Runnerresponse3600,teardown120;nativeemptystderrrequired. No fullpassclaimyet.
+
+LIVE — revalidatehandles,neverrestartsolelybecausequiet:
+89965 normalcompletebuildPASS then fullcommanddriver /tmp/minima-sphincs-command-full.log
+24343 sanitizedfullcommanddriver /tmp/minima-sphincs-command-sanitized-full.log
+31941 earlieroriginalfullsanitizedSPHINCSsigner /tmp/minima-sphincs-sanitized-test.log
+23405 earlierTransactionTestsanitizedactualmain /tmp/minima-transaction-test-sanitized.log
+Finalcommandreports:build{,-sanitized}/sphincs-command-full-results.json.
+Incrementalcommandreports:sphincs-command-full-progress.json. Quickreportseparate.
+Oldsigner31941loadedoldnull-logfixture;oneexpectedcase299errorresolvedbylogaudit.
+MostrecentownedCPUcheck56123signer84%CPU/58min;77776Transactiondemo89.5%/18min,
+bothactualnativecompute. Oldsignerprogress158cases0failures(twofullsignaturesdone).
+
+TERMINALnew:62772initialfixturebuildPASS;69210initialfixturetestFAILbeforecases;
+67212fixedinitialquickPASS;68746fullsanitizedbuildPASS. Don'tpolltheseagain.
+4989 wasfunctions-execwaitcell,closed andreturned67212.
+Normalfullbuildlog/tmp/minima-sphincs-command-full-build.log reaches100%;driver
+launchedvia&&,so normalcompletebuildPASS. No reboot/restartneeded.
+
+NEXT: inspectliveprogress,finishactualterminalreports/evidence/reviewwhenready.
+Ifcommandtests fail, inspectactualfailurebeforeediting. Driverpostedassertions
+expecttransactionJSONstatearray66 andalloutputstorestatefalse. Controlledpost
+rejectionmustcleanup; source'signoredintermediatefailurestatusesneedbroadercases.
+Do notrerunfullforestsforfixture-onlychangeswhenexistingvalidvectorscanreplay.
+Keepcode+evidence+guides/provenance/source-mapreviewconsistentandcommit/bundle.
+Fullnodeparityandremaining58filesstillrequired; do notdeclare100percent.
+
+Earliernotesbelowhistoricalwherecontradictedbythischeckpoint.
+
+---
+
 # Latest checkpoint — TransactionTest translated; two sanitizer runs LIVE
 
 PreviousHEAD2087648; gitlogidentifiesnewercommit. Map398=354production+44tests;
