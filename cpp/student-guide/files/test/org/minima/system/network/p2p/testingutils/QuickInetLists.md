@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/system/network/p2p/testingutils/QuickInetLists.java](../../../../../../../../../../upstream-study/test/org/minima/system/network/p2p/testingutils/QuickInetLists.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -27,11 +27,13 @@ There are no active assertions in this helper. Its outputs become the inputs to 
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [QuickInetLists.cpp](../../../../../../../../../test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp).
 
-To port this helper, preserve its generated values, collection order, defaults, and error behavior. Reuse the corresponding native Minima types and test the helper through its consuming tests.
+All three generators now call native collection and address types. The list loop appends one-based suffixes. A nonpositive count returns an empty list without dereferencing its prefix. The hostname overload concatenates before entering that loop, so a null hostname or prefix still fails with zero elements. The map captures `port <= 0` once, then draws a new port for every entry; changing the port inside the loop must not turn later entries into fixed-port entries.
 
-Compile the eventual helper with its consuming native tests and run those tests after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+The native factory reuses `InetSocketAddress::resolve` once and throws UnknownHostException before checking the port. Thus `bad/1` with port 65536 fails as an unknown host, while `192.168.0.1` with that port fails as an illegal argument. The differential corpus covers these priorities, IPv4/IPv6, nullable prefixes, empty results, real generated addresses and map keys. Random ports are checked against 7000–9999 before their values are normalized for comparison. This does not compare unseeded random sequences.
+
+Both normal and sanitizer builds pass the original test suite (13 active methods, 15 assertions per runtime) and the helper corpus (1,302 comparisons, 16,100 independent checks per build). These are batch totals, not assertions attributed individually to this file. The [P2P lab](../../../../../../../../new-tests/original-p2p.md) records inputs, results and limits. Full production parity remains not_verified.
 
 ## What students should conclude
 

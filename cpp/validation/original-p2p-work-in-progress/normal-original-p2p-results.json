@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "original_methods": 13,
+  "assertions_per_runtime": 15,
+  "results": [
+    {
+      "name": "UtilFuncsTest",
+      "passed": true,
+      "expected": {
+        "passed": true,
+        "tests": 2,
+        "assertions": 2,
+        "class": "UtilFuncsTest"
+      },
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-p2p-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalP2PTests",
+            "UtilFuncsTest"
+          ],
+          "returncode": 0,
+          "stdout": "{\"class\":\"UtilFuncsTest\",\"tests\":2,\"assertions\":2,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/UtilFuncsTest"
+          ],
+          "returncode": 0,
+          "stdout": "{\"class\":\"UtilFuncsTest\",\"tests\":2,\"assertions\":2,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "WalkLinksFuncsTest",
+      "passed": true,
+      "expected": {
+        "passed": true,
+        "tests": 3,
+        "assertions": 3,
+        "class": "WalkLinksFuncsTest"
+      },
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-p2p-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalP2PTests",
+            "WalkLinksFuncsTest"
+          ],
+          "returncode": 0,
+          "stdout": "{\"class\":\"WalkLinksFuncsTest\",\"tests\":3,\"assertions\":3,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/WalkLinksFuncsTest"
+          ],
+          "returncode": 0,
+          "stdout": "{\"class\":\"WalkLinksFuncsTest\",\"tests\":3,\"assertions\":3,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "SwapLinksFunctionsTest",
+      "passed": true,
+      "expected": {
+        "passed": true,
+        "tests": 8,
+        "assertions": 10,
+        "class": "SwapLinksFunctionsTest"
+      },
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-p2p-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalP2PTests",
+            "SwapLinksFunctionsTest"
+          ],
+          "returncode": 0,
+          "stdout": "{\"class\":\"SwapLinksFunctionsTest\",\"tests\":8,\"assertions\":10,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/SwapLinksFunctionsTest"
+          ],
+          "returncode": 0,
+          "stdout": "{\"class\":\"SwapLinksFunctionsTest\",\"tests\":8,\"assertions\":10,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "All active methods and assertions in the three pinned original P2P test classes. Java counts assertions from inspected source; native counts executed assertions. Random peer ports and secrets remain independently random. Passing these source tests is not full production P2P parity."
+}

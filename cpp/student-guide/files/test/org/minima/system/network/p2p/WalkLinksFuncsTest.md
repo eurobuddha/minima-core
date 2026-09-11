@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/system/network/p2p/WalkLinksFuncsTest.java](../../../../../../../../../upstream-study/test/org/minima/system/network/p2p/WalkLinksFuncsTest.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -49,11 +49,13 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [WalkLinksFuncsTest.cpp](../../../../../../../../test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp).
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
+The mapped test executes all three source methods and three assertions. Removing a five-address list from ten peers leaves five results; removing from an empty map leaves an empty result; a returned walk cannot request more outgoing links when the state already has five and the target is five. It reuses the real map, QuickState, P2PWalkLinks and WalkLinksFuncs implementations.
 
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+The source checks sizes and emptiness. It does not assert the complete remaining address sequence or every state transition. Keep those distinctions when interpreting a passing run.
+
+Both normal and sanitizer builds pass the original test suite (13 active methods, 15 assertions per runtime) and the helper corpus (1,302 comparisons, 16,100 independent checks per build). These are batch totals, not assertions attributed individually to this file. The [P2P lab](../../../../../../../new-tests/original-p2p.md) records inputs, results and limits. Full production parity remains not_verified.
 
 ## What students should conclude
 

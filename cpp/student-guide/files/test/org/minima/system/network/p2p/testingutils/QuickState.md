@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/system/network/p2p/testingutils/QuickState.java](../../../../../../../../../../upstream-study/test/org/minima/system/network/p2p/testingutils/QuickState.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -36,11 +36,13 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/system/network/p2p/testingutils/QuickState.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [QuickState.cpp](../../../../../../../../../test/org/minima/system/network/p2p/testingutils/QuickState.cpp).
 
-To port this helper, preserve its generated values, collection order, defaults, and error behavior. Reuse the corresponding native Minima types and test the helper through its consuming tests.
+All seven factories now create real native P2PState objects and populate their existing maps and sets through QuickInetLists. Incoming peers use 60.0.0.*, outgoing peers use 70.0.0.*, non-P2P peers use 10.0.1.*, and peers refusing connections use 50.0.1.*. A factory changes only its specified collections; the all-links map starts empty.
 
-Compile the eventual helper with its consuming native tests and run those tests after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+The known-peer-only factory inserts the same address object in the known set and incoming map. An equal copy would miss the source identity relationship. The probe checks that identity, then clears the set and checks that its copied list retains the address. It also changes global defaults before construction to check the local port, connection limits and loop delay. No-connections without an address keeps the wildcard at port 9001 and the host flag false. The new helper corpus executes each factory, positive/nonpositive counts and port failures.
+
+Both normal and sanitizer builds pass the original test suite (13 active methods, 15 assertions per runtime) and the helper corpus (1,302 comparisons, 16,100 independent checks per build). These are batch totals, not assertions attributed individually to this file. The [P2P lab](../../../../../../../../new-tests/original-p2p.md) records inputs, results and limits. Full production parity remains not_verified.
 
 ## What students should conclude
 

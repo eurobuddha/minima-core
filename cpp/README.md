@@ -11,19 +11,25 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 49 mapped test files exist;
-44 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 54 mapped test files exist;
+39 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-Two original helper files now have working mapped implementations: TestUtils and
+Five P2P original files now have working counterparts: QuickInetLists, QuickState,
+UtilFuncsTest, WalkLinksFuncsTest and SwapLinksFunctionsTest. Both builds pass all
+13 original methods/15 assertions and the 1,302-case helper corpus with 16,100
+independent checks. The inventory is **418 counterparts, 39 absent**; full parity
+remains unverified. See the [P2P lab](student-guide/new-tests/original-p2p.md).
+
+The preceding two original helper files gained mapped implementations: TestUtils and
 QuickClients. Both builds pass 584 comparisons and 5,472 independent checks.
-The inventory is 413 counterparts and 44 absent files; full parity remains
+That checkpoint had 413 counterparts and 44 absent files; full parity remains
 unverified. See the [helper lab](student-guide/new-tests/original-test-helpers.md).
 
 TxHeader now preserves shared field/array identities, partial run decoding and
 nested writer prefixes. Both builds pass 3,219 focused comparisons and 44,120
 independent checks, plus the selected regressions. This corrects an existing file;
-That checkpoint retained 411 counterparts; the helper batch below raises it to 413.
+That checkpoint retained 411 counterparts; the earlier helper batch raised it to 413.
 See the [TxHeader lab](student-guide/new-tests/txheader.md) and
 [remaining inventory](validation/txheader-work-in-progress/remaining-files.json).
 

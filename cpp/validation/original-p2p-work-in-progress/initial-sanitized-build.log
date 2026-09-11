@@ -1,0 +1,146 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/MinimaRPCClient.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/params/ParamConfigurer.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/webhooks/NotifyManager.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWMiner.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWProcessor.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PManager.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/params/P2PTestParams.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PPeersChecker.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/WalkLinksFuncs.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/SwapLinksFunctions.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PFunctions.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/UtilFuncs.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/support/P2PEnvironment.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOManager.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOMessage.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/support/NIOConnections.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOServer.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PDB.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2Functions.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2Manager.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/rpc/CMDHandler.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/NetworkManager.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PState.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/params/P2PParams.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PGreeting.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/support/InetSocketAddress.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/InetSocketAddressIO.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PDoSwap.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PWalkLinks.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/IBD.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/archive/RawArchiveInput.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/MinimaDB.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/mysql/ArchiveServer.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/CommandRunner.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/block.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/printmmr.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/printtree.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/newaddress.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/getaddress.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coinnotify.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/slavenode.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/scripts.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/newscript.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/removescript.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/signatures/sign.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnutils.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txninput.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnbasics.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendpost.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendsign.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/consolidatefrom.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/createtokenfrom.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/createfrom.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/constructfrom.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/postfrom.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/signfrom.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendnosign.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/send.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnaddamount.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/keys.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/vault.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnsign.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnpost.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnmine.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnminepost.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txncheck.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnmmr.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnscript.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/consolidate.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/balance.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/coins.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/seedrandom.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/mempool.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/cointrack.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/magic.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/txpow.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/history.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/rpc/Authorizer.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Greeting.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Pulse.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/Main.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/quit.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/rescue.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/disconnect.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/message.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/p2pstate.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/ping.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/network.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/trace.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/healthcheck.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/status.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/rpc.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coinimport.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/scanchain.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/peers.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnauto.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/burn.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/tokencreate.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/support/MultisigCommands.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/nodecount.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/incentivecash.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/Minima.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/support/ConsoleInput.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/backup.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/restore.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/reset.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/archive.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/restoresync.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/megammr.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/systemcheck.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/sphincs.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/test.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mysqlcoins.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mysql.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/help.cpp.o
+[ 34%] Linking CXX static library libminima_file_port.a
+[ 96%] Built target minima_file_port
+[ 96%] Building CXX object CMakeFiles/original_p2p_helpers.dir/test/org/minima/system/network/p2p/testingutils/QuickState.cpp.o
+[ 98%] Building CXX object CMakeFiles/original_p2p_helpers.dir/test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp.o
+[ 98%] Linking CXX static library liboriginal_p2p_helpers.a
+[ 98%] Built target original_p2p_helpers
+[100%] Building CXX object CMakeFiles/UtilFuncsTest.dir/test/org/minima/system/network/p2p/UtilFuncsTest.cpp.o
+[100%] Linking CXX executable UtilFuncsTest
+[100%] Built target UtilFuncsTest
+[ 97%] Built target minima_file_port
+[100%] Built target original_p2p_helpers
+[100%] Building CXX object CMakeFiles/WalkLinksFuncsTest.dir/test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp.o
+[100%] Linking CXX executable WalkLinksFuncsTest
+[100%] Built target WalkLinksFuncsTest
+[ 96%] Built target minima_file_port
+[ 98%] Built target original_p2p_helpers
+[ 98%] Building CXX object CMakeFiles/SwapLinksFunctionsTest.dir/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp.o
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp:13:250: error: no member named 'getJSONObject' in 'minima::json::JSONObject'
+   13 | static void testProcessRequestIPMsg(){auto q=std::make_shared<json::JSONObject>();auto secret=MiniData::getRandomData(12).to0xString();q->put("req_ip",secret);auto response=SwapLinksFunctions::processRequestIPMsg(q,"147.258.369.1");require(response.getJSONObject("swap_links_p2p")->getString("secret")==secret);}
+      |                                                                                                                                                                                                                                                 ~~~~~~~~ ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp:14:354: error: no member named 'getJSONObject' in 'minima::json::JSONObject'
+   14 | static void testProcessResponseIPMsgIncorrectSecret(){auto q=std::make_shared<json::JSONObject>();auto secret=MiniData::getRandomData(12);auto state=QuickState::stateInAndOutLinks(1,2,0);q->put("req_ip",secret.to0xString());auto response=SwapLinksFunctions::processRequestIPMsg(q,"147.258.369.1");SwapLinksFunctions::processResponseIPMsg(state,response.getJSONObject("swap_links_p2p"));require(InetSocketAddress(std::string("10.0.0.1"),GeneralParams::MINIMA_PORT).equals(*state->getMyMinimaAddress()));}
+      |                                                                                                                                                                                                                                                                                                                                                         ~~~~~~~~ ^
+2 errors generated.
+make[3]: *** [CMakeFiles/SwapLinksFunctionsTest.dir/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp.o] Error 1
+make[2]: *** [CMakeFiles/SwapLinksFunctionsTest.dir/all] Error 2
+make[1]: *** [CMakeFiles/SwapLinksFunctionsTest.dir/rule] Error 2
+make: *** [SwapLinksFunctionsTest] Error 2

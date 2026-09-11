@@ -762,9 +762,9 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | File | Teaching state | Native state |
 |---|---|---|
 | [P2PDBTest.java](files/test/org/minima/system/network/p2p/P2PDBTest.md) | test explanation | implemented_partial |
-| [SwapLinksFunctionsTest.java](files/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.md) | test explanation | unported |
-| [UtilFuncsTest.java](files/test/org/minima/system/network/p2p/UtilFuncsTest.md) | test explanation | unported |
-| [WalkLinksFuncsTest.java](files/test/org/minima/system/network/p2p/WalkLinksFuncsTest.md) | test explanation | unported |
+| [SwapLinksFunctionsTest.java](files/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.md) | test explanation | implemented_partial |
+| [UtilFuncsTest.java](files/test/org/minima/system/network/p2p/UtilFuncsTest.md) | test explanation | implemented_partial |
+| [WalkLinksFuncsTest.java](files/test/org/minima/system/network/p2p/WalkLinksFuncsTest.md) | test explanation | implemented_partial |
 
 ## test/org/minima/system/network/p2p/messages
 
@@ -778,8 +778,8 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | File | Teaching state | Native state |
 |---|---|---|
 | [QuickClients.java](files/test/org/minima/system/network/p2p/testingutils/QuickClients.md) | test explanation | implemented_partial |
-| [QuickInetLists.java](files/test/org/minima/system/network/p2p/testingutils/QuickInetLists.md) | test explanation | unported |
-| [QuickState.java](files/test/org/minima/system/network/p2p/testingutils/QuickState.md) | test explanation | unported |
+| [QuickInetLists.java](files/test/org/minima/system/network/p2p/testingutils/QuickInetLists.md) | test explanation | implemented_partial |
+| [QuickState.java](files/test/org/minima/system/network/p2p/testingutils/QuickState.md) | test explanation | implemented_partial |
 
 ## test/org/minima/system/params
 

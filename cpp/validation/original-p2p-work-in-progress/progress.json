@@ -1,0 +1,51 @@
+{
+  "base_head": "78e4166bb694ecd1ca5438194faf5969fa1d3746",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp",
+    "test/org/minima/system/network/p2p/testingutils/QuickState.cpp",
+    "test/org/minima/system/network/p2p/UtilFuncsTest.cpp",
+    "test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp",
+    "test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp"
+  ],
+  "counterparts": 418,
+  "production_counterparts": 364,
+  "test_counterparts": 54,
+  "remaining": 39,
+  "remaining_production": 5,
+  "remaining_tests": 34,
+  "parity": "not_verified",
+  "builds": {
+    "normal": "new targets and dependent native core PASS",
+    "sanitized": "new targets and dependent instrumented native core PASS",
+    "full_suite": "not repeated; scoped validation only"
+  },
+  "tests": {
+    "original_methods": 13,
+    "original_assertions_per_runtime": 15,
+    "helper_comparisons_per_build": 1302,
+    "helper_independent_checks_per_build": 16100,
+    "normal": "PASS",
+    "sanitized": "PASS",
+    "transcript_sha256": "67b6c08f901023386b45216a419930d7965bc7c78f954a841f3bcb8880d51190"
+  },
+  "existing_changes": [
+    "Add InetSocketAddress::fromResolvedHost: resolve once, throw UnknownHostException before port check. No existing constructor body or P2P algorithm changed."
+  ],
+  "initial_failures": [
+    "New SwapLinksFunctionsTest used an unavailable getJSONObject accessor; fixed to existing variant API.",
+    "Helper expected a one-byte-zero default secret; pinned source and both runtimes use empty bytes. Corrected expectation; preserved initial reports."
+  ],
+  "blockers": [
+    "Four remaining production files depend on JNI method bodies/library absent from inspected repository and sibling candidates. Can translate caller control logic independently; complete JNI behavior still needs implementation or authoritative vectors.",
+    "P2PSwapLink.java is wholly commented; no live class to translate. Preserve inactive source status; do not count an invented API or placeholder."
+  ],
+  "next_action": "Port independent remaining original KISS and object tests using existing production implementations; retain all active assertions and meaningful Java comparisons. Do not wait for long Magic demos.",
+  "long_demos": {
+    "normal_session": 55636,
+    "sanitized_session": 41123,
+    "last_observed": "Both still live when polled during this batch; saved 9ae7039 binaries, not current code."
+  },
+  "scope": "All 5 counterpart files contain actual source logic. Broad production/API, node, nondeterministic DNS, allocation and concurrency parity remains incomplete."
+}

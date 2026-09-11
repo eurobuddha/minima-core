@@ -1,4 +1,52 @@
-# Current checkpoint — two original helpers converted
+# Current checkpoint — five P2P original files converted
+
+MinimaCoreC++ branch/project/executable. Base HEAD 78e4166bb694ecd1ca5438194faf5969fa1d3746.
+Goal active and incomplete. Newly mapped files:
+- test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp
+- test/org/minima/system/network/p2p/testingutils/QuickState.cpp
+- test/org/minima/system/network/p2p/UtilFuncsTest.cpp
+- test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp
+- test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp
+
+Inventory: 418 counterparts (364 production + 54 original tests), 39 absent
+(5 production + 34 tests). All full parity labels remain not_verified.
+
+Existing behavior: add a resolved-host address factory that throws for unknown
+hosts before port validation, reusing the existing resolver once. Existing
+constructors and peer algorithms are unchanged. Initial fixture compile error
+(JSON accessor) and wrong expected empty-secret value are fixed and preserved
+in validation/original-p2p-work-in-progress.
+
+Both new target/core dependency builds PASS. Original Java/JUnit and native
+suites PASS 13 methods/15 assertions per runtime. Both helper suites PASS 1,302
+comparisons/16,100 independent checks; transcript
+67b6c08f901023386b45216a419930d7965bc7c78f954a841f3bcb8880d51190.
+Random ports are checked for 7000–9999 before normalization; unseeded sequences
+are not claimed identical. Full suite not repeated. 268 CTest entries registered.
+Student lab: student-guide/new-tests/original-p2p.md; all five file lessons updated.
+
+NEXT: prioritize the remaining 34 independent original test files (KISS, objects,
+base types, TxPoWProcessor) using existing production counterparts. Current list:
+validation/original-p2p-work-in-progress/remaining-files.json. Retain all source
+assertions; fix actual dependencies without returning to broad covered tests.
+
+Four absent production files use external JNI method bodies not found in the
+inspected repository/sibling projects. Caller control logic can proceed; full JNI
+fidelity needs actual bodies/ABI or authoritative vectors. P2PSwapLink.java is
+entirely commented and has no active class. Neither issue blocks remaining tests.
+Long Magic demos are independent saved-9ae7039 binaries: sessions 55636 normal,
+41123 sanitizer were both still live when polled this batch. Do not restart due
+to buffered output or wait for them before more conversions.
+
+Preserve unrelated graphify-out edits and external f7f0e08 Java SQL/JAR commit.
+Pinned upstream-study unchanged. Commit only cpp; no push. Create --all local
+bundle, verify/clone/fsck and byte-check every checkpoint file; separately snapshot
+unrelated work. Prior verified recovery: local-backups/MinimaCoreC++-20260911T171853Z.bundle,
+HEAD 78e4166, SHA ec879ea2fa968c5d5918b9d8da885617869d3a214279242756084595debd3e80.
+
+---
+
+# Historical checkpoint — two original helpers converted
 
 MinimaCoreC++ branch/project/executable. Base HEAD e90111f64cbda2fac4bb1f3191d5bc394cd9c5af.
 Goal active and incomplete. NEW mapped implementations:

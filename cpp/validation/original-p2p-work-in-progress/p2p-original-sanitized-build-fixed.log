@@ -1,0 +1,5 @@
+[ 96%] Built target minima_file_port
+[ 98%] Built target original_p2p_helpers
+[ 98%] Building CXX object CMakeFiles/SwapLinksFunctionsTest.dir/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp.o
+[100%] Linking CXX executable SwapLinksFunctionsTest
+[100%] Built target SwapLinksFunctionsTest

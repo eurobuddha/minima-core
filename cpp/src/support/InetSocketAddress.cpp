@@ -1,4 +1,5 @@
 #include "InetSocketAddress.hpp"
+#include "JavaExceptions.hpp"
 #include "JavaLowerCase.hpp"
 #include "JavaUnicode.hpp"
 #include "JavaStringIgnoreCase.hpp"
@@ -63,6 +64,11 @@ InetSocketAddress::InetSocketAddress(const std::optional<std::string>& host,int3
     if(!host)throw std::invalid_argument("hostname can't be null");resolve(*host);portCheck(port);mPort=port;
 }
 InetSocketAddress::InetSocketAddress(int32_t port) {portCheck(port);mPort=port;mHostname="0.0.0.0";mAddress={0,0,0,0};}
+SocketAddressPtr InetSocketAddress::fromResolvedHost(const std::string& host,int32_t port) {
+    auto result=SocketAddressPtr(new InetSocketAddress);result->resolve(host);
+    if(result->isUnresolved())throw JavaTypedException("java.net.UnknownHostException",host);
+    portCheck(port);result->mPort=port;return result;
+}
 SocketAddressPtr InetSocketAddress::createUnresolved(const std::optional<std::string>& host,int32_t port) {
     portCheck(port);if(!host)throw std::invalid_argument("hostname can't be null");
     auto result=SocketAddressPtr(new InetSocketAddress);result->mHostname=*host;result->mPort=port;return result;

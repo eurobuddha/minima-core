@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "cases": 1302,
+  "planned_cases": 1302,
+  "independent_assertions": 16100,
+  "seconds": 4.507,
+  "transcript_sha256": "67b6c08f901023386b45216a419930d7965bc7c78f954a841f3bcb8880d51190",
+  "failures": [],
+  "mapped_files": [
+    "test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp",
+    "test/org/minima/system/network/p2p/testingutils/QuickState.cpp"
+  ],
+  "scope": "All three address/map generators and seven state factories. Numeric IPv4/IPv6 addresses, prefixes, counts, fixed ports, random-port bounds checked before normalization, null/error precedence, map membership, list aliases, state defaults and known-peer identity/copy. Unseeded port sequences are not compared; external DNS variation, allocation failure, scheduling and complete production P2P parity remain outside this corpus."
+}

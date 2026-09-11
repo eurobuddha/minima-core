@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 413 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 418 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -392,14 +392,14 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/objects/base/MiniStringTests.java` | `test/org/minima/objects/base/MiniStringTests.cpp` | implemented_partial | — |
 | `test/org/minima/system/brains/TxPoWProcessorTest.java` | `test/org/minima/system/brains/TxPoWProcessorTest.cpp` | unported | — |
 | `test/org/minima/system/network/p2p/P2PDBTest.java` | `test/org/minima/system/network/p2p/P2PDBTest.cpp` | implemented_partial | — |
-| `test/org/minima/system/network/p2p/SwapLinksFunctionsTest.java` | `test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp` | unported | — |
-| `test/org/minima/system/network/p2p/UtilFuncsTest.java` | `test/org/minima/system/network/p2p/UtilFuncsTest.cpp` | unported | — |
-| `test/org/minima/system/network/p2p/WalkLinksFuncsTest.java` | `test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp` | unported | — |
+| `test/org/minima/system/network/p2p/SwapLinksFunctionsTest.java` | `test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp` | implemented_partial | — |
+| `test/org/minima/system/network/p2p/UtilFuncsTest.java` | `test/org/minima/system/network/p2p/UtilFuncsTest.cpp` | implemented_partial | — |
+| `test/org/minima/system/network/p2p/WalkLinksFuncsTest.java` | `test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp` | implemented_partial | — |
 | `test/org/minima/system/network/p2p/messages/GreetingTest.java` | `test/org/minima/system/network/p2p/messages/GreetingTest.cpp` | implemented_partial | — |
 | `test/org/minima/system/network/p2p/messages/InetSocketAddressIOTest.java` | `test/org/minima/system/network/p2p/messages/InetSocketAddressIOTest.cpp` | implemented_partial | — |
 | `test/org/minima/system/network/p2p/testingutils/QuickClients.java` | `test/org/minima/system/network/p2p/testingutils/QuickClients.cpp` | implemented_partial | — |
-| `test/org/minima/system/network/p2p/testingutils/QuickInetLists.java` | `test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp` | unported | — |
-| `test/org/minima/system/network/p2p/testingutils/QuickState.java` | `test/org/minima/system/network/p2p/testingutils/QuickState.cpp` | unported | — |
+| `test/org/minima/system/network/p2p/testingutils/QuickInetLists.java` | `test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp` | implemented_partial | — |
+| `test/org/minima/system/network/p2p/testingutils/QuickState.java` | `test/org/minima/system/network/p2p/testingutils/QuickState.cpp` | implemented_partial | — |
 | `test/org/minima/system/params/ParamConfigurerTest.java` | `test/org/minima/system/params/ParamConfigurerTest.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/ContractTests.java` | `test/org/minima/tests/kissvm/ContractTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp` | unported | — |

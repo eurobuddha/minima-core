@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/system/network/p2p/UtilFuncsTest.java](../../../../../../../../../upstream-study/test/org/minima/system/network/p2p/UtilFuncsTest.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -43,11 +43,13 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/system/network/p2p/UtilFuncsTest.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [UtilFuncsTest.cpp](../../../../../../../../test/org/minima/system/network/p2p/UtilFuncsTest.cpp).
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
+The mapped test preserves both active source methods and both assertions. A list of ten generated peers produces a non-null random selection; an empty list produces null. The commented client-search example remains excluded from the executed test count. The native test calls the existing UtilFuncs implementation, not a fixture replacement.
 
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+These two assertions do not establish a uniform random distribution or prove membership of every possible result. The original test checks only nullness; the lesson preserves that scope explicitly.
+
+Both normal and sanitizer builds pass the original test suite (13 active methods, 15 assertions per runtime) and the helper corpus (1,302 comparisons, 16,100 independent checks per build). These are batch totals, not assertions attributed individually to this file. The [P2P lab](../../../../../../../new-tests/original-p2p.md) records inputs, results and limits. Full production parity remains not_verified.
 
 ## What students should conclude
 

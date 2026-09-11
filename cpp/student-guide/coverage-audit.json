@@ -2,8 +2,8 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 413,
-  "native_absent": 44,
+  "native_counterparts": 418,
+  "native_absent": 39,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
@@ -12,15 +12,15 @@
     },
     "test": {
       "total": 88,
-      "counterparts": 49,
-      "absent": 39
+      "counterparts": 54,
+      "absent": 34
     }
   },
   "teaching_counts": {
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9403,
+  "links_checked": 9414,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -3883,9 +3883,9 @@
       "java": "test/org/minima/system/network/p2p/SwapLinksFunctionsTest.java",
       "cpp": "test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp",
       "guide": "files/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -3893,9 +3893,9 @@
       "java": "test/org/minima/system/network/p2p/UtilFuncsTest.java",
       "cpp": "test/org/minima/system/network/p2p/UtilFuncsTest.cpp",
       "guide": "files/test/org/minima/system/network/p2p/UtilFuncsTest.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -3903,9 +3903,9 @@
       "java": "test/org/minima/system/network/p2p/WalkLinksFuncsTest.java",
       "cpp": "test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp",
       "guide": "files/test/org/minima/system/network/p2p/WalkLinksFuncsTest.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -3943,9 +3943,9 @@
       "java": "test/org/minima/system/network/p2p/testingutils/QuickInetLists.java",
       "cpp": "test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp",
       "guide": "files/test/org/minima/system/network/p2p/testingutils/QuickInetLists.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -3953,9 +3953,9 @@
       "java": "test/org/minima/system/network/p2p/testingutils/QuickState.java",
       "cpp": "test/org/minima/system/network/p2p/testingutils/QuickState.cpp",
       "guide": "files/test/org/minima/system/network/p2p/testingutils/QuickState.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },

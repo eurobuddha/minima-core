@@ -1504,3 +1504,18 @@ add_executable(original_helpers support/original_helpers.cpp
 target_link_libraries(original_helpers PRIVATE minima_file_port)
 add_test(NAME original_helpers_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_helpers_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_helpers_differential PROPERTIES TIMEOUT 120)
+
+add_library(original_p2p_helpers STATIC
+    test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp
+    test/org/minima/system/network/p2p/testingutils/QuickState.cpp)
+target_link_libraries(original_p2p_helpers PUBLIC minima_file_port)
+add_executable(original_p2p_helper_probe support/original_p2p_helpers.cpp)
+target_link_libraries(original_p2p_helper_probe PRIVATE original_p2p_helpers)
+add_test(NAME original_p2p_helpers_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_p2p_helpers_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_p2p_helpers_differential PROPERTIES TIMEOUT 120)
+foreach(test_name IN ITEMS UtilFuncsTest WalkLinksFuncsTest SwapLinksFunctionsTest)
+    add_executable(${test_name} test/org/minima/system/network/p2p/${test_name}.cpp)
+    target_link_libraries(${test_name} PRIVATE original_p2p_helpers)
+endforeach()
+add_test(NAME original_p2p_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_p2p_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_p2p_tests PROPERTIES TIMEOUT 120)

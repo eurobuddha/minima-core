@@ -16,6 +16,8 @@ class InetSocketAddress {
 public:
     explicit InetSocketAddress(int32_t port);
     InetSocketAddress(const std::optional<std::string>& host,int32_t port);
+    // InetAddress.getByName followed by InetSocketAddress(InetAddress, port).
+    static std::shared_ptr<InetSocketAddress> fromResolvedHost(const std::string& host,int32_t port);
     static std::shared_ptr<InetSocketAddress> createUnresolved(const std::optional<std::string>& host,int32_t port);
     bool isUnresolved() const {return mAddress.empty();}
     int32_t getPort() const {return mPort;}
