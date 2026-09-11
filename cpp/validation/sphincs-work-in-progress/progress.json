@@ -1,0 +1,38 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "previous_head": "06b81aa9a843ea9600689c8f3718ae5d80a8f4fe",
+  "goal_complete": false,
+  "status": "Both complete builds and object/envelope regressions passed; normal and sanitized full signer differential runs in progress",
+  "mapped": 457,
+  "counterparts": 396,
+  "production_counterparts": 352,
+  "test_counterparts": 44,
+  "absent": 61,
+  "production_absent": 17,
+  "tests_absent": 44,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "full_ctest_suite_run": false,
+  "normal_regressions": "object 9464 and envelope 1449 passed; 46.80 seconds total",
+  "active_sessions": {
+    "normal_signer": 3008,
+    "sanitized_signer": 31941
+  },
+  "terminal_sessions": {
+    "initial_normal_driver": 33552,
+    "normal_fixture_build": 63719,
+    "normal_build_and_regressions": 26534,
+    "full_sanitized_build": 45525,
+    "sanitized_regressions": 69424
+  },
+  "notes": [
+    "Revalidate live handles rather than inferring process status from this saved snapshot.",
+    "Initial driver expectation used 0x for empty MiniData display; Java and native both returned empty string. Fixed expectation, preserved failure log, confirmed original process terminal before restart.",
+    "Full-size signing uses all 1048576 FORS leaves and TreeKey192/4. No parameter reduction.",
+    "FORS prior checkpoint final reports and explicit sanitized demo audit are now saved and passed.",
+    "No full signer pass claimed until reports and actual source mains finish."
+  ],
+  "sanitized_regressions": "object 9464 and envelope 1449 passed; 111.79 seconds total",
+  "ctest_entries": 242
+}

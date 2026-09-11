@@ -16,6 +16,7 @@ public:
     TreeKey()=default;
     TreeKey(const MiniData& seed,int keys,int levels);
     void setPublicKey(MiniData key) {mPublicKey=std::move(key);}
+    void setPublicKey(const MiniData* key) {mPublicKey=key?std::optional<MiniData>(*key):std::nullopt;}
     const std::optional<MiniData>& getPublicKey() const {return mPublicKey;}
     const std::optional<MiniData>& getPrivateKey() const {return mPrivateSeed;}
     int getMaxUses() const {return mMaxUses;}

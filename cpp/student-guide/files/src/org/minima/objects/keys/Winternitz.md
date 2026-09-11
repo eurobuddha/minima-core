@@ -44,3 +44,7 @@ Why does a signature reveal a point partway along each hash chain rather than th
 Short seeds, default construction and malformed signature sizes have Java null/library failure behavior that the native std::invalid_argument/optional failures do not exactly reproduce. This lesson describes a one-time scheme; repeated signing with the same private key requires explicit application policy. Source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `b25af05c370428a13a9c19bf3e91b2dbfff663ba18e90f5d72f91dda55d228d2`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## SPHINCS integration follow-up
+
+The SPHINCS integration aligns malformed signature length with Java: Bouncy Castle returns a null byte array and the following MiniData comparison throws NullPointerException. Valid key and signature algorithms are unchanged. See the [signer lab](../../../../../../../student-guide/new-tests/sphincs-signer.md) for validation in progress.

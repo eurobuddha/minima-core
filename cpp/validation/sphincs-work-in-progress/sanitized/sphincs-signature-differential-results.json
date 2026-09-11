@@ -1,0 +1,22 @@
+{
+  "cases": 1449,
+  "passed": 1449,
+  "independent_assertions": 158,
+  "groups": {
+    "construct": 15,
+    "null-components": 8,
+    "default": 1,
+    "mutation-alias-and-write": 6,
+    "read-existing": 472,
+    "read-empty": 472,
+    "converter": 472,
+    "null-converter": 1,
+    "complete-read": 1,
+    "complete-convert": 1
+  },
+  "failures": [],
+  "seconds": 16.394,
+  "transcript_sha256": "5076d25ed76ef08867eebd47b24da244b22481bb79d13624ba9826ef7fcf6728",
+  "full_fors_vector_sha256": "e58c40f85fc86f9471efbbc3d6353a4c64e9c9d187c1a9883a07950e1a27ce55",
+  "scope": "Pinned SPHINCSSignature constructor/getters, exact component wire and JSON, partial assignments/output, alias mutations, typed errors and converter logs. Full SPHINCS signing not exercised; synthetic WOTS proofs are structural inputs. Null SignatureProof internals/list entries, MiniData raw aliases, arbitrary subclasses/streams and concurrent mutation not certified. NPE/EOF prose and stack frames normalized."
+}

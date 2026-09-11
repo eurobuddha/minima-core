@@ -1,10 +1,10 @@
 # SPHINCS — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the Java source, native composition, and full-size validation in progress.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCS.java) · `src/org/minima/utils/sphincs/SPHINCS.cpp` (absent)
+[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCS.java) · [Native C++ implementation](../../../../../../../src/org/minima/utils/sphincs/SPHINCS.cpp)
 
 ## Purpose
 
@@ -18,22 +18,41 @@ This repository-specific construction joins a Minima TreeKey signature to a FORS
 4. The selected integer is converted to decimal text and passed to new MiniData(text), whose interpretation is hexadecimal text, not a fixed-width binary integer. Concatenating those bytes with the FORS base seed and hashing derives the per-index FORS seed.
 5. Build the FORS tree, sign its root data with TreeKey, and sign the message with FORS. Verification first checks the TreeKey signature on the root data, then FORS on the message; it prints a stage-specific failure and returns false when either check fails.
 
-## Translation work still required
+## Native translation and reuse
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. TreeKey, Crypto, MiniData, and FORS must be reused with the exact key-index encoding and source parameters. Replacing the construction with a library SPHINCS API would not preserve this wire/signature format.
+The native class directly calls TreeKey with 192 keys per level and four levels,
+then the existing full-size FORS implementation. It retains the private-key input
+reference before checking its bytes. The interleaved copy loop reproduces the
+first failing index for every short length; the old seeds/public key survive.
+The nullable total count and public key preserve the default uninitialized state.
+Verification checks WOTS before FORS and preserves each stage's printed failure.
+
+Two shared key error paths were aligned with Java: null public-key comparison
+throws at the first proof comparison (empty or overlong proof lists can return
+false first), and an invalid WOTS signature length throws NullPointerException.
+Neither change replaces the existing key generation or hashing algorithm.
 
 ## Understanding the tests
 
-The source main derives a key from a fixed seed, signs a fixed message, serializes/re-reads SPHINCSSignature, and prints size and verification. Proposed tests should compare seed derivation, private-key reinitialization, selected index and its MiniData bytes, roots and full signature, then separately mutate the TreeKey signature and FORS component.
+The [signer lab](../../../../../../../student-guide/new-tests/sphincs-signer.md)
+was written before execution. The new driver invokes the unmodified pinned Java
+class and the actual compiled native class. It checks every short private-key
+length before/after initialization, input identity, retained old fields, seed
+suffix hashing, extra private bytes, and recovery after failed reinitialization.
+Full signatures compare all bytes and JSON, then both readers verify both writers.
+Python independently checks leaf selection, the decimal-text-as-hex encoding,
+selected secrets, all FORS paths, selected WOTS keys, chains, and MMR paths.
 
-- [FORS construction](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/FORS/FORS.java)
-- [Combined signature encoding](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSSignature.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+The normal and sanitized full builds pass. Object/key and envelope regressions also pass in both builds; see [current evidence](../../../../../../../validation/sphincs-work-in-progress/progress.json).
+Full signer validation is still in progress; no final pass is claimed here.
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work. Building the forest is expensive; test design should reuse deterministic fixtures where possible without changing the algorithm.
+Raw mutable Java MiniData arrays, arbitrary subclasses and concurrent mutation
+remain unverified. Existing SignatureProof null internals/list entries are not yet
+represented. The public key construction and signature size are those of the
+pinned repository; agreement does not establish security or standardized SPHINCS
+conformance. Full transaction/script integration remains subsequent work.
 
 ## Check your understanding
 

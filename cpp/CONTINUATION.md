@@ -1,3 +1,58 @@
+# Current work — SPHINCS signer compiled; full-size validation LIVE
+
+Previous HEAD06b81aa. Map396=352production+44originaltests;61absent=17prod+44tests.
+Full goal active, all parity not_verified. Both complete builds passed.
+Object9464/envelope1449 regressions passed both builds; normal46.80s/san111.79s.
+242CTestentries; fullsuiteNOT run.
+
+Revalidate these LIVE handles before assuming terminal or restarting:
+3008 normal signer driver, /tmp/minima-sphincs-normal-test.log.
+31941 sanitized signer driver, /tmp/minima-sphincs-sanitized-test.log.
+69424 sanitized object/envelope regressions is now TERMINAL0/PASS, do not poll.
+Each full signer run performs three million-leaf signatures plus both actual mains.
+Driver response/demo timeout1800s, CTest7200s. ForestRunner teardown120s.
+Progress and vectors saved incrementally under each build directory; final report
+only after demos. Runner and demos enable UBSAN halt; native stderr checked.
+
+TERMINAL:63719 signer fixture build PASS,45525 complete sanitized build PASS,
+26534 complete normal build/object+envelope PASS. Initialdriver33552 terminal1:
+independent expected empty MiniData hex as0x; both Java/native correctlyreturned
+empty string. Fixed expectation, savedlog, confirmedexit before restart3008.
+Prior FORS25692/89215 terminal0, final reports/demo audit now versioned and reviewed.
+
+New SPHINCS.cpp/hpp compose actual TreeKey192/4 and full FORS. Private input retained
+before interleaved boundschecked32+32 copy; oldseeds/public/count preservedonfailure.
+RawSHA3 seed+ASCIIWOTS/FORS; unsignedhash modulo192^4; decimalindextext parsedasHEX.
+SharedTreeKey nullable public setter/comparison and WOTS invalidlengthNPE aligned.
+Normal initial144 cases zero mismatches; full signing in progress at this snapshot.
+New Java fixture extendsFORSOracle; driver independentlyencodesenvelope,checks all
+selectedsecrets/FORSpaths andselectedWOTSleafkeys/chains/MMRpaths. Source mainsrun
+with checked_demo. Scope/limits in review/studentlab/provenance.
+
+NEXT: poll live runs, investigate actual mismatches if any, copy final evidence,
+update sourceguides/lab/README/provenance/review and commit+verify recoverybundle.
+After signer proceed pinned SPHINCSUtils.java,TransactionTest.java,commandbase/sphincs.
+SPHINCSUtils was read; actual precomputeTransactionCoinID exists in native
+system/brains/TxPoWGenerator.cpp:117; finish reuse gate before implementing Utils.
+Earlier sections below are historical; old LIVE declarations are superseded.
+
+---
+
+# Current update — FORS audit complete; SPHINCS signer next
+
+HEAD before closure: 06b81aa. Both FORS handles 25692 and 89215 are terminal zero;
+do not poll or restart. Sanitized final report: 1246 cases, 757 independent
+assertions, 1814.258 seconds, zero failures. Explicit demo audit: exact pinned Java
+stdout, empty stderr, exit zero, UBSAN halt enabled. Evidence now versioned under
+validation/fors-work-in-progress/sanitized. Map still 395 (351 production + 44
+original tests), 62 absent. Goal active, full parity not verified.
+
+Next: implement pinned SPHINCS.java using existing TreeKey192/4, FORS and signature
+envelope. Preserve decimal-text-as-hex leaf encoding and private-key partial state.
+Previous sections below are historical; their LIVE declarations are superseded.
+
+---
+
 # Current work — SPHINCSSignature validated; two FORS demo processes LIVE
 
 Full457-file goalACTIVE. PreviousHEAD bb3d67c; gitlog identifies finalcheckpoint.

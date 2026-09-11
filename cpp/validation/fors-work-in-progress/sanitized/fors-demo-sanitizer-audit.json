@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/minima_fors",
+    "--demo"
+  ],
+  "UBSAN_OPTIONS": "halt_on_error=1",
+  "reference": "validation/fors-work-in-progress/normal/fors-demo-output.json",
+  "reference_stdout_sha256": "470a7c6fadd2b042ffa049ee35214e9d9c43d3dd51ba77742b2f6aac5764c405",
+  "stdout": "Start FORS Test\nMessage : 0xFFEEDD\nGenerate FORS signing key..\nFORS public key root.. {\"data\":\"0x0AE29F1FC10F474718ED250A1C4EAFF8627C21B434469FDDFDC173325F0652C6\",\"value\":\"120\"}\nSign message..\nSignature Size : 14861\nSignature : \n\nVerify : true\n",
+  "stderr": "",
+  "returncode": 0,
+  "matched_pinned_java_demo": true
+}

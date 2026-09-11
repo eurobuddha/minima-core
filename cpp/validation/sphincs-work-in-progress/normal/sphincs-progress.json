@@ -1,0 +1,18 @@
+{
+  "cases": 144,
+  "groups": {
+    "default": 1,
+    "uninitialized-sign": 1,
+    "null-sign": 1,
+    "null-seed": 2,
+    "short-private": 128,
+    "null-private": 2,
+    "initialize": 1,
+    "seed-derivation": 3,
+    "private-roundtrip-extra": 3,
+    "failed-reinitialize": 1,
+    "failed-seed-reinitialize": 1
+  },
+  "failures": [],
+  "independent_assertions": 786
+}

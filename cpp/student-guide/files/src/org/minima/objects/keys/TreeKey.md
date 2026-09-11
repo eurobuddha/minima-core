@@ -49,3 +49,7 @@ For two keys per level and three levels, write the path for uses=3. Which parent
 The exhaustion reset must be documented faithfully but is not a safe application key-use policy. Wallet persistence and backup/restore must prevent unintended one-time key reuse. These fixtures establish selected parity behavior, not a cryptographic audit or complete durability guarantee. Source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `3483c44a628382707674b615ae9f0cdfb9998d6dd1663848421ea200b27fabdd`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## SPHINCS integration follow-up
+
+The SPHINCS integration adds a nullable public-key setter and preserves Java null-comparison failure after computing the first proof root. Empty and overlong signature lists still return false before that comparison. See the [signer lab](../../../../../../../student-guide/new-tests/sphincs-signer.md) for validation in progress.

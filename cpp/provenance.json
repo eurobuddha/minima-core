@@ -3716,7 +3716,7 @@
     "reuse": "Actual native HORST, Crypto/MiniData/MiniNumber/MMR. Extract tested partial proof writer from HORSTSignature into MMRProof. Java fixture extends HORSTOracle; driver reuses Runner and independent HORST tree/proof reconstruction. ForestRunner only widens teardown timeout.",
     "sibling_search": "No FORS/HORST/SPHINCS in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; previously inspected sibling TreeKey has incompatible tree/signature format.",
     "evidence": "validation/fors-work-in-progress",
-    "validation": "Both full builds and object/HORST regressions passed; normal FORS full1246 and mains passed; sanitizer1246 comparisons passed, final demos/stderr audit pending.",
+    "validation": "Both full builds, object/HORST regressions, normal and sanitized full-size FORS 1246 cases/757 independent assertions and both source mains passed. Explicit sanitized demo audit matched Java stdout, exit 0, empty stderr with UBSAN halt enabled.",
     "full_parity_verified": false
   },
   "sphincs_signature_checkpoint": {
@@ -3745,5 +3745,28 @@
       "FORS final sanitizer demo and explicit stderr audit remain pending; do not restart without revalidating handles.",
       "Full native node parity and full CTest suite remain open; H2 AOT is outside C++ sanitizer instrumentation."
     ]
+  },
+  "sphincs_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/utils/sphincs/SPHINCS.java": "3ac529ef2dd400856175514ea73a9a956a8b44a7e2ed1e1ec00d06d159ca6690",
+      "upstream-study/src/org/minima/objects/keys/TreeKey.java": "3483c44a628382707674b615ae9f0cdfb9998d6dd1663848421ea200b27fabdd",
+      "upstream-study/src/org/minima/objects/keys/Winternitz.java": "b25af05c370428a13a9c19bf3e91b2dbfff663ba18e90f5d72f91dda55d228d2"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/utils/sphincs/SPHINCS.hpp": "3731d6315efa2c48069fa89c0c1e54c9811afad7fd95365e53103dfa4f4bc527",
+      "cpp/src/org/minima/utils/sphincs/SPHINCS.cpp": "cbd4f317d0585db653c8c8b38957100850173babdd357189b3b818928d6de760",
+      "cpp/src/org/minima/objects/keys/TreeKey.hpp": "86890f2d1c0e50a6c38430d59dd30fd5249329b0328785cd5c61af20ae6ff15b",
+      "cpp/src/org/minima/objects/keys/TreeKey.cpp": "8a5d3ef5a7dc08b9d14435f50cf34ac208490a9f1ff869cc902b01f936217c2b",
+      "cpp/src/org/minima/objects/keys/Winternitz.cpp": "5227b572f4c7588bed01c37889accc0c0371e69aaefd8cf596058d45d5fb6162",
+      "cpp/support/SPHINCSOracle.java": "60884c17c5aaaa3a3cce50382fbf3a859c4b5e422106fd3dbaf6682bd70bca6b",
+      "cpp/support/sphincs.cpp": "49cb6f42023e0d9c163acb76927cbdf592a0a84adb08e55568ed9c44d92bdf61",
+      "cpp/tools/sphincs_differential.py": "f48fdeb99c3d575890590b60293c315ae259aa364e6874bd8a391562d64291fe"
+    },
+    "reuse": "Direct composition of current TreeKey192/4, Crypto/MiniData/BigInt, FORS and SPHINCSSignature. Nullable public-key setter/comparison and invalid WOTS-length exception minimally aligned with pinned Java. Oracle extends existing FORS/HORST fixtures; driver reuses ForestRunner, checked_demo and independent MMR wire/proof helpers.",
+    "sibling_search": "Read /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/crypto/TreeKey.hpp and tests/crypto/test_treekey.cpp: binary2^depth/raw hash nodes/different WOTS representation cannot replace pinned indexed MMR192/4. No sibling SPHINCS implementation found.",
+    "validation": "Both complete builds and object/envelope regressions passed; normal and sanitized full signer differential runs in progress",
+    "evidence": "validation/sphincs-work-in-progress",
+    "full_parity_verified": false
   }
 }

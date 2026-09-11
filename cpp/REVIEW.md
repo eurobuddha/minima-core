@@ -1,3 +1,50 @@
+## SPHINCS signer work-in-progress review
+
+### Summary
+
+The signer directly composes existing native TreeKey192/4 and full FORS, preserving
+seed suffix bytes, unsigned message-index reduction, decimal-text-as-hex index
+encoding, nullable initial fields, private-input assignment before interleaved
+copying, WOTS-before-FORS verification, stage logs and the source main.
+
+### Findings and validation limits
+
+The changed native classes, fixtures, driver, source map and teaching notes have
+been read against pinned source. No parameter reductions or alternative signature
+scheme were introduced. Two shared key exception paths were aligned with source:
+null public comparison and invalid WOTS signature length. Both full builds and
+object/envelope regressions in both builds pass (46.80s/111.79s). All 144 initial normal signer cases
+matched; expensive full signatures, source mains and full sanitized signer validation remain
+pending. The first driver failure was an independent empty-MiniData display
+expectation, not a Java/native mismatch; its log is preserved.
+
+Raw MiniData byte-array aliases, mutable package-private source fields, null
+SignatureProof internals/list entries, arbitrary subclasses and concurrency remain
+unverified. The native total-key getter exposes const BigInt to respect Java's
+immutable BigInteger. Passing this corpus will not certify full node parity.
+
+### Verdict
+
+Work-in-progress checkpoint only. Full signer review approval is pending final
+reports, cross-writer signatures, independent chain/proof checks and source mains.
+[Evidence and live handles](validation/sphincs-work-in-progress/progress.json).
+
+---
+
+## FORS validation closure
+
+Both actual full-size Java/native FORS runs passed 1,246 comparisons and 757
+independent assertions, with identical transcript hashes. Both source mains matched.
+The separate sanitized native main audit also passed with UBSAN halt enabled,
+empty stderr and exit zero, closing the demo harness finding recorded below.
+Object and HORST regressions passed in both complete builds. No production code
+changed for this closure. Approve this bounded FORS checkpoint; full SPHINCS and
+node parity remain unfinished. [Evidence](validation/fors-work-in-progress/progress.json).
+
+Earlier process status sections below are historical.
+
+---
+
 ## SPHINCS signature envelope code review
 
 ### Summary

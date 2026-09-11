@@ -1,5 +1,6 @@
 #include "Winternitz.hpp"
 #include "support/ByteIO.hpp"
+#include "support/JavaExceptions.hpp"
 namespace minima {
 // Bouncy Castle GMSS WinternitzOTSignature, w=8 and SHA3-256.
 // w counts bits: 32 message chains + 2 checksum chains, each up to 255 hashes.
@@ -29,7 +30,7 @@ MiniData Winternitz::sign(const MiniData& data) const {
 }
 bool Winternitz::verify(const MiniData& publicKey,const MiniData& data,const MiniData& signature) {
     // Java's wrapper constructs MiniData(null) if BC rejects the signature size.
-    if(signature.size()!=34*32) throw std::invalid_argument("Invalid Winternitz signature length");
+    if(signature.size()!=34*32) throw JavaNullPointerException("");
     auto values=digits(data);std::vector<uint8_t> publicParts;
     for(size_t i=0;i<values.size();++i) wire::append(publicParts,chain(signature.subset(int(i*32),32),255-values[i]).bytes());
     return MiniData(std::move(publicParts)).sha3().isEqual(publicKey);

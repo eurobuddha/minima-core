@@ -1,0 +1,33 @@
+{
+  "cases": 1246,
+  "passed": 1246,
+  "independent_assertions": 757,
+  "groups": {
+    "full-forest": 1,
+    "sign": 4,
+    "cross-writer": 8,
+    "wrong-message": 8,
+    "wrong-root": 8,
+    "wrong-sum": 8,
+    "extra": 8,
+    "aliases": 1,
+    "null-sign": 1,
+    "missing-null": 128,
+    "wrong-secret": 16,
+    "wrong-inner-root": 16,
+    "wrong-inner-sum": 16,
+    "empty-proof": 32,
+    "failure-order": 10,
+    "proof-bytes": 88,
+    "partial-read": 358,
+    "converter": 358,
+    "null-convert": 1,
+    "partial-write-json": 160,
+    "unused-root-serialization": 16
+  },
+  "failures": [],
+  "seconds": 1814.258,
+  "full_forest_leaves": 1048576,
+  "transcript_sha256": "42512adedf5a8a842c2ad75159a10121fa8cc26775fc7e0381a86bd70ee6864f",
+  "scope": "Full-size pinned FORS and nested signature APIs, both source mains, independent million-leaf forest and proof reconstruction; NPE/EOF prose and stack frames normalized. Raw MiniData aliases, arbitrary subclasses, concurrent mutation and full SPHINCS/node parity not certified."
+}

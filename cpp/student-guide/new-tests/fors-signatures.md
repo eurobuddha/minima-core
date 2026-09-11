@@ -33,5 +33,19 @@ value would otherwise throw.
 - Run the actual source main and compare its output, then regress the shared MMR
   writer through existing object and HORST tests in both native builds.
 
-Results will be added after execution. Full SPHINCS integration and full node
-parity remain unverified. These comparisons do not establish cryptographic security.
+## Observed results
+
+Both builds passed all **1,246 comparisons and 757 independent assertions** using
+all 1,048,576 leaves. Normal execution took 452.181 seconds; the sanitized run took
+1,814.258 seconds. Their normalized transcript SHA-256 values match. Each actual
+source main produced the same root, sum 120, 14,861-byte signature and successful
+verification. Object (9,464 cases) and HORST (1,438 cases) regressions also passed
+in both builds.
+
+Review found that the original demo helper discarded stderr. A separate full-size
+sanitized demonstration closed that gap: UBSAN halted on errors, stderr was empty,
+the process exited zero, and stdout exactly matched pinned Java. This teaches an
+important distinction: matching stdout alone does not establish sanitizer success.
+See the [saved evidence](../../validation/fors-work-in-progress/progress.json).
+Full SPHINCS integration and full node parity remain unverified. These comparisons
+do not establish cryptographic security.
