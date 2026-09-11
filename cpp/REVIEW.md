@@ -1,3 +1,53 @@
+# Native H2 and solo-node startup checkpoint — full port unfinished
+
+## Code Review
+
+### Summary
+
+The optional H2 provider supplies actual MVStore/AES storage through the existing
+SqlConnection interfaces. Main/SqlDB application bodies remain unchanged. The
+executable now injects the native connector. Review covered the C ABI adapter,
+thread attachment, handle ownership, exception transport, builder/CMake wiring,
+Java and native fixtures, differential/startup drivers and student lessons.
+
+### Findings resolved
+
+- Result-view destruction must not close a JDBC result retained by its statement.
+  The bridge now drops the view; explicit close calls retain JDBC behavior.
+  Native children retain their parent connection and isolate.
+- Empty BLOB test rendering removed two characters from an empty string. The
+  fixture now uses the existing MiniData.toHexString(false); production byte
+  handling was already correct. The initial failure is preserved.
+- Generic SqlException text erased H2 exception subtypes. Virtual exception text
+  preserves the actual class/message, while existing recording defaults remain.
+- CMake cached library discovery could reuse a previous provider directory.
+  Discovery now clears that cached entry. The native target also avoids linking
+  minima_file_port twice. Python artifact pin checks remain active under -O.
+
+### Remaining limitations
+
+The approval below covers an experimental local checkpoint. H2 native-image
+extensions, arbitrary reflection/runtime classes, OOM response/handle rollback,
+crash recovery, and cross-platform/relocatable packaging remain unverified.
+The dylib currently references its build directory. ASAN/UBSAN covers C++, not
+the AOT dependency. Logs/memory counters do not yet match a JVM process.
+MySQL, daemon/RPC end-to-end control, successful mainStarter, public-peer sync,
+long-running mining and complete source API behavior remain open. There are
+still 36 absent production files and 44 absent mapped original tests.
+
+### Validation and verdict
+
+See validation/native-h2-work-in-progress for exact final results and scope.
+Real-engine tests compare 122 programs / 1,974 operations and four cross-runtime
+files without exception normalization. The concurrent test checks 512 inserts
+from eight workers and retained-parent ownership. Twelve real startup processes
+cross-open complete node directories in Java/C++ with plaintext/AES wallets and
+compact shutdown, comparing stable chain fields and an exact SHA3 result.
+
+✅ Approve this bounded local checkpoint. Full 1:1 port approval remains withheld.
+
+---
+
 # Minima entry boundary checkpoint — full launcher integration unfinished
 
 ## Code Review

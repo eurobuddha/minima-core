@@ -1,3 +1,45 @@
+# Current work — native H2 and real solo startup checkpoint
+
+Project/branch/binary: MinimaCoreC++. Full 457-file port remains active/incomplete.
+Provider: cpp/native/h2/NativeH2Bridge.java compiles the existing H2 2.4.240
+third-party dependency into libminima_h2.dylib using GraalVM native-image.
+No org.minima Java classes or JVM subprocess implement the native application.
+NativeH2Connection implements existing interfaces; support/minima_entry.cpp
+injects its connector through MainServices.sql when MINIMA_NATIVE_H2_DIR is set.
+Main and SqlDB bodies remain unchanged. SqlException now preserves H2 subtype text.
+
+Real tests: 122 storage programs / 1,974 operations, four cross-runtime files,
+eight workers / 512 inserts with ownership checks, twelve actual Java/native
+solo-node startup/reopen/compact processes with plain/encrypted wallets. Full
+normal/sanitized builds and selected regressions are recorded in
+validation/native-h2-work-in-progress/progress.json. Read final reports there;
+do not infer full parity from a passing subset. Every mapping stays partial/
+not_verified: 377 counterparts (333 production +44 tests),80 absent,221 CTest
+entries with H2 configured. All457 authored guides pass structural audit.
+
+Toolchain (temporary, can be rebuilt/downloaded from documented official source):
+/tmp/minima-native-h2-toolchain/graalvm-community-25.3.4.1+1.1/Contents/Home.
+Native library/headers: cpp/build/native-h2. Both build caches point there.
+See native/h2/README.md for hashes, build steps and installation-name limitation.
+Evidence includes actual native Mach-O dependency inspection; no libjvm linked.
+The empty-BLOB initial failure was a fixture .substr(2) bug, now fixed using
+MiniData.toHexString(false). Result-view release does not close JDBC retained
+results. Parent chain keeps connection/isolate alive; concurrent tests exercise it.
+
+NEXT: implement the remaining production counterparts, starting with source
+backup/decryptbackup/restore paths now that actual storage is available, and
+extend meaningful runtime coverage. Inspect pinned Java/current/sibling candidates
+first and write student labs before new tests. Full public-peer/mining/sync,
+MySQL, daemon/RPC control, successful mainStarter, crash recovery and native-image
+extensions remain unverified. Do not label the full node or any whole class done.
+
+Previous HEAD db0537f29cdab40cf6f1bab5b72b5978b63bb615; next checkpoint commit
+and verified recovery bundle contain this work. Use git log for final HEAD and
+local-backups manifests for recovery. No GitHub push; fork and ghfork remain
+unresolved remote destinations. Bundle is local-only, not an off-machine backup.
+
+---
+
 # Current work — Minima entry boundary saved; successful startup unfinished
 
 Project, branch and binary: MinimaCoreC++. Root README now names the project and

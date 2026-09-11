@@ -2,7 +2,7 @@
 
 **Teaching status:** Authored explanation of the complete Java body, current native boundary tests and remaining runtime integration. No completed native node is claimed.
 
-**Port status:** `implemented_partial`; parity `not_verified`. The mapped C++ file compiles; successful full-node startup remains unfinished.
+**Port status:** `implemented_partial`; parity `not_verified`. The mapped C++ file compiles; real solo startup now has bounded integration evidence, while full-node parity remains unfinished.
 
 | Source | Destination |
 |---|---|
@@ -10,7 +10,7 @@
 
 ## What this file does
 
-Minima is the application's outer launcher and embedding interface. [Main](system/Main.md) owns the running node; this class prepares settings, constructs Main, arranges shutdown, and handles terminal input. Its native counterpart now connects the existing configuration, runner, logger and Main APIs. The missing native SQL provider still prevents a complete node startup.
+Minima is the application's outer launcher and embedding interface. [Main](system/Main.md) owns the running node; this class prepares settings, constructs Main, arranges shutdown, and handles terminal input. Its native counterpart now connects the existing configuration, runner, logger and Main APIs. An optional native H2 provider now supplies real storage through MainServices.sql.
 
 `mainStarter` starts a separate unnamed Java thread whose body calls static `main` with the supplied argument array. `getMain` forwards to the current Main singleton. The `runMinimaCMD` overloads default to pretty JSON and user ID `0x00`, then call the shared CommandRunner. The method computes a trimmed local string but passes the original input to `runMultiCommand`; a port must not silently substitute that local variable. Pretty mode formats the entire result array. Compact mode unwraps exactly one result into an object string; zero or multiple results remain an array.
 
@@ -34,15 +34,15 @@ The source does not break merely because readLine returns null at EOF. It simply
 
 ## What can be reused, and what is missing
 
-Native implementations already exist for configuration, CommandRunner, JSON formatting, the logger and the uncaught-thread boundary. Their individual tests are explained in their linked lessons. They must be connected to an actual native Main instance and storage provider before this launcher can implement the source lifecycle. The RPC client and this launcher now share ConsoleInput, extracted from the already-tested RPC stdin reader. The RPC client remains a client of another node.
+Native implementations already exist for configuration, CommandRunner, JSON formatting, the logger and the uncaught-thread boundary. Their individual tests are explained in their linked lessons. The H2-enabled executable now connects them to an actual native Main and storage provider. The RPC client and this launcher now share ConsoleInput, extracted from the already-tested RPC stdin reader. The RPC client remains a client of another node.
 
-The native executable is named MinimaCoreC++. It exposes a real missing-provider failure rather than supplying a successful recording database. Passing that limitation check does not fulfill the source startup responsibilities.
+The native executable is named MinimaCoreC++. With MINIMA_NATIVE_H2_DIR configured, its entry point supplies NativeH2Runtime().connector() to MainServices.sql. Without that build option it retains the explicit missing-provider failure.
 
 ## Proposed tests for this file
 
-Use isolated subprocesses and temporary data directories when a future native runtime exists. Compare configuration precedence and derived ports; inspect the precise catch/exit behavior for unknown arguments and other failures; exercise daemon completion; feed terminal commands with zero, one and multiple results; and check single versus batched quit behavior. Drive EOF under a bounded observation window so the test records the source loop instead of hanging indefinitely. Embedding tests should compare compact JSON shape and the original-versus-trimmed input passed to CommandRunner.
+Use isolated subprocesses and temporary data directories for remaining native runtime checks. Compare configuration precedence and derived ports; inspect the precise catch/exit behavior for unknown arguments and other failures; exercise daemon completion; feed terminal commands with zero, one and multiple results; and check single versus batched quit behavior. Drive EOF under a bounded observation window so the test records the source loop instead of hanging indefinitely. Embedding tests should compare compact JSON shape and the original-versus-trimmed input passed to CommandRunner.
 
-Shutdown tests must observe which receiver is used by the hook, whether a repeated request is skipped, the order of reader closure, and whether the process actually terminates. Successful CLI/daemon startup, shutdown receiver integration and shared argument mutation remain proposed validation cases. The public API and process-boundary evidence below covers a smaller, explicit scope.
+Shutdown tests must observe which receiver is used by the hook, whether a repeated request is skipped, the order of reader closure, and whether the process actually terminates. Daemon startup, shutdown receiver integration and shared argument mutation remain proposed validation cases; solo CLI startup now has the additional evidence below. The public API and process-boundary evidence below covers a smaller, explicit scope.
 
 ## Executed boundary tests
 
@@ -65,7 +65,7 @@ pinned Minima class with the C++ class. Both normal and ASAN/UBSAN runs pass:
 
 The singleton probe checks identity and clearing using a constructor-free Java
 Main object and an unstarted native Main. It proves getMain forwards the current
-owner; it does not prove Main initialization. A separate native process must fail
+owner; it does not prove Main initialization. When H2 is not configured, a separate native process must fail
 with the missing SQL/Main service message and exit after cleaning up its workers.
 That expected failure is a limitation assertion, excluded from parity counts.
 
@@ -79,10 +79,21 @@ remain exact. Isolated surrogate command input still crosses the existing UTF-8
 runner boundary and is not certified by these tests.
 
 The console reader, source-order CLI/daemon loops and hook registration compile,
-but those loops still require controlled Java comparisons and real database/node
-integration. Native host process retention, arbitrary concurrent starters, signal
+and solo CLI startup has now been exercised with real database/node integration.
+The remaining CLI/daemon boundaries still require controlled Java comparisons. Native host process retention, arbitrary concurrent starters, signal
 handler ownership under failed installation and resource exhaustion are not
 established. Do not infer these from passing wrapper tests.
+
+## Real storage integration
+
+The [native H2 lab](../../../../new-tests/native-h2-storage.md) explains the new
+provider and [startup test](../../../../../tools/native_node_startup.py). Twelve
+processes start genuine Java/native Main instances, issue hash/status/quit, save
+their node directories, and reopen them in the other runtime and then the original
+runtime. Both plain and AES-encrypted wallets are used; the final shutdown compacts
+the databases. The test checks an exact SHA3 result, stable chain/status fields,
+zero peer connections and successful shutdown. It excludes dynamic memory sizes,
+uptime and log ordering. This is a bounded solo-node check, not full parity.
 
 ## Check your understanding
 

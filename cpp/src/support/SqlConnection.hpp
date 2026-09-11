@@ -11,6 +11,7 @@ namespace minima {
 class SqlException : public std::runtime_error {
 public:
     using std::runtime_error::runtime_error;
+    virtual std::string toString() const {return std::string("java.sql.SQLException: ")+what();}
 };
 class SqlRuntimeException : public std::runtime_error {
     std::string mClass;
@@ -20,8 +21,8 @@ public:
     const std::string& className() const { return mClass; }
 };
 inline std::string sqlExceptionText(const std::exception& error) {
-    if (dynamic_cast<const SqlException*>(&error))
-        return std::string("java.sql.SQLException: ") + error.what();
+    if (auto sql = dynamic_cast<const SqlException*>(&error))
+        return sql->toString();
     if (auto typed = dynamic_cast<const SqlRuntimeException*>(&error))
         return typed->className() + ": " + error.what();
     return javaExceptionText(error);

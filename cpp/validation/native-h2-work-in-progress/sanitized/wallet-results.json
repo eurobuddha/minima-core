@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 1433,
+  "operations": 6521,
+  "effects": 85452,
+  "failures": [],
+  "scope": "Actual pinned Wallet/rows/BIP39/Address/TreeKey/Winternitz and native counterparts. SQL and failure ordering, seed/retained-row identity, cache membership, default-key gates, script flags, seed clearing, key derivation/signing and use updates. Fixture JDBC only; no native H2 persistence or live wallet. Private cache sets sorted for membership; NPE expression diagnostics and logger prefixes/stacks excluded. Random default selection exercised only with zero or one candidate; generated seed phrases use a supplied fixture phrase."
+}

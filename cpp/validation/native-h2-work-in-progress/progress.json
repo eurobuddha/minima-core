@@ -1,0 +1,37 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "db0537f29cdab40cf6f1bab5b72b5978b63bb615",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "real native H2 and solo startup checkpoint; full 1:1 port unfinished",
+  "counterparts": 377,
+  "production_counterparts": 333,
+  "mapped_tests": 44,
+  "absent": 80,
+  "ctest_entries": 221,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "selected_distinct_checks_per_build": 14,
+  "normal_validation": "12 CTest checks plus direct native_h2_differential and native_node_startup",
+  "sanitized_validation": "14 CTest checks, all passed",
+  "h2_programs_per_build": 122,
+  "h2_operations_per_build": 1974,
+  "h2_cross_runtime_files_per_build": 4,
+  "concurrent_workers": 8,
+  "concurrent_insertions": 512,
+  "node_processes_per_build": 12,
+  "student_guides": 457,
+  "complete_native_node": false,
+  "full_current_suite_run": false,
+  "github_pushed": false,
+  "remaining": [
+    "36 absent production files and44 absent mapped original tests",
+    "Full source API and behavior parity",
+    "Public-peer sync and long-running mining",
+    "Daemon/RPC integration and successful mainStarter",
+    "MySQL, recovery and native-image extensions",
+    "Cross-platform/relocatable packaging",
+    "Resource-exhaustion and crash recovery"
+  ]
+}

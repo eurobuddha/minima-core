@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 2592,
+  "operations": 8729,
+  "driver_calls": 86333,
+  "failures": [],
+  "scope": "Actual pinned TxPoWSqlDB methods through recording JDBC/native drivers: schema and prepared identities, serialized bytes and metadata, queries/pagination, single-pass filtering, cleanup arithmetic, reopen, SQL/runtime failures, null/partial results and every truncated prefix of four TxPoWs including a non-empty transaction; malformed MiniNumber and MiniData inputs, serialization failure timing and transaction logs. Clock values checked before normalization; NPE diagnostics and logger prefixes/stacks excluded. Native H2 execution, persistence and full runtime integration remain absent."
+}

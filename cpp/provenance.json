@@ -3050,5 +3050,52 @@
       "36 absent production and44 absent original-test counterparts plus full API/runtime parity audit"
     ],
     "driver_sha256": "da18b0ef93b1ef5d352d131afc401c8ee55c957621a5f719e75f875ab99992fd"
+  },
+  "native_h2_checkpoint": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "source_inspected": [
+      "upstream-study/src/org/minima/utils/SqlDB.java",
+      "upstream-study/src/org/minima/Minima.java",
+      "upstream-study/src/org/minima/system/Main.java",
+      "upstream-study/src/org/minima/system/params/ParamConfigurer.java",
+      "upstream-study/lib/h2-2.4.240.jar native-image metadata",
+      "H2 2.4.240 sources: org/h2/Driver.java"
+    ],
+    "existing_native_reused": [
+      "src/org/minima/utils/SqlDB.cpp",
+      "src/support/SqlConnection.hpp",
+      "src/support/ByteIO.hpp",
+      "src/support/JavaUnicode.hpp",
+      "src/org/minima/objects/base/MiniData.cpp",
+      "src/org/minima/Minima.cpp",
+      "src/org/minima/system/Main.cpp",
+      "support/sql_db_concurrent.cpp barrier/join test pattern",
+      "tools/peers_checker_differential.py Runner"
+    ],
+    "sibling_inspected": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/persistence/Database.hpp; SQLite file format, encryption and SQL administration do not preserve pinned H2 behavior",
+    "adaptation": "AOT compile existing H2 dependency with a small C ABI bridge, implement existing C++ SqlConnection interfaces and inject connector into executable MainServices.sql. Preserve Main and SqlDB bodies. SqlException gains virtual text to preserve exact H2 SQL exception subtype.",
+    "dependency": "H2 2.4.240 compiled with GraalVM CE 25.3.4.1+1.1; no org.minima Java classes, no JVM subprocess. Bridge is not a mapped Minima counterpart.",
+    "h2_sha256": "b80baaf431ce458c926d72ec2b8cc33b120c76b73abe4301278bb2044ddde9f5",
+    "fixture_correction": "Empty BLOB output uses MiniData.toHexString(false); stripping two prefix characters from an empty string raised basic_string.",
+    "ownership": "Concurrent handle registry; C++ child retains parent and engine; dropping JDBC result view does not close retained statement result; explicit closes forward.",
+    "build_review": "Re-resolve H2 library when configured directory changes; reject changed H2 hash even under python -O; reject unrelated bridge class files.",
+    "evidence": "validation/native-h2-work-in-progress",
+    "limits": [
+      "All counterparts remain implemented_partial/not_verified",
+      "80 absent mapped files",
+      "Full public-peer mining/sync and API parity",
+      "Daemon/RPC node control and successful mainStarter",
+      "MySQL and arbitrary native-image extensions",
+      "Resource exhaustion and crash recovery",
+      "C++ sanitizers do not instrument AOT H2",
+      "macOS ARM64 tested; relocatable packaging and other targets unverified"
+    ],
+    "hashes": {
+      "native/h2/NativeH2Bridge.java": "d210d8422d2ba869f798583756fc97b215ddb65dbd2f4ceceafabbaa2d8ffe41",
+      "src/support/NativeH2Connection.cpp": "d5d638153b08a04f733490bfd962a2c3bc027b157fbad9b25e8852253d32ab36",
+      "tools/build_native_h2.py": "f90406c4cdf707af0c7e366221f7a75a92463acc1c4047a0b32e5e2270040888",
+      "tools/native_h2_differential.py": "a6d1a16a759f16a616c0560387846ba29694967bb2a21536a8648e62ad147c98",
+      "tools/native_node_startup.py": "bd8590f8ea6184133ddbf30f755f645e5623ceb964149b77b0b38d58d65cdeae"
+    }
   }
 }

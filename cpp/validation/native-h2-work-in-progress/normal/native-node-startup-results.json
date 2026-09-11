@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "node_processes": 12,
+  "checks": [
+    {
+      "encrypted_wallet": false,
+      "writer": "java",
+      "runtime": "java",
+      "step": 0,
+      "compact": false,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": false,
+      "writer": "java",
+      "runtime": "cpp",
+      "step": 1,
+      "compact": false,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": false,
+      "writer": "java",
+      "runtime": "java",
+      "step": 2,
+      "compact": true,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": false,
+      "writer": "cpp",
+      "runtime": "cpp",
+      "step": 0,
+      "compact": false,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": false,
+      "writer": "cpp",
+      "runtime": "java",
+      "step": 1,
+      "compact": false,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": false,
+      "writer": "cpp",
+      "runtime": "cpp",
+      "step": 2,
+      "compact": true,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": true,
+      "writer": "java",
+      "runtime": "java",
+      "step": 0,
+      "compact": false,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": true,
+      "writer": "java",
+      "runtime": "cpp",
+      "step": 1,
+      "compact": false,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": true,
+      "writer": "java",
+      "runtime": "java",
+      "step": 2,
+      "compact": true,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": true,
+      "writer": "cpp",
+      "runtime": "cpp",
+      "step": 0,
+      "compact": false,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": true,
+      "writer": "cpp",
+      "runtime": "java",
+      "step": 1,
+      "compact": false,
+      "chain_preserved": true
+    },
+    {
+      "encrypted_wallet": true,
+      "writer": "cpp",
+      "runtime": "cpp",
+      "step": 2,
+      "compact": true,
+      "chain_preserved": true
+    }
+  ],
+  "failures": [],
+  "scope": "Real pinned Main and native MinimaCoreC++ with H2: solo genesis startup, hash/status/quit, graceful database save, then other runtime and original runtime reopen the same complete node directory; plaintext and encrypted wallets, compact shutdown. Exact selected stable status/chain fields and SHA3 value; timestamps, random genesis across fresh directories, memory/disk size, uptime, log destinations/order and stack text are not compared. No public-peer connection, long-running mining/sync, RPC/daemon or full-node parity certification."
+}

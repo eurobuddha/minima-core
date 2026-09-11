@@ -9,13 +9,24 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 80 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-The `MinimaCoreC++` launcher now compiles. Both builds pass 487 public-wrapper
-cases, five configuration-exit comparisons, three starter-thread subprocess cases,
-and 16 shutdown-hook process comparisons. Normal startup still reports the missing
-native SQL/Main provider; a compiled launcher is not a working full node.
-Successful CLI/daemon integration remains unverified. See the
-[launcher lab](student-guide/new-tests/minima-entry-point.md) and
-[saved evidence](validation/minima-entry-work-in-progress).
+The `MinimaCoreC++` executable now starts a real solo node when built with the
+optional native H2 provider. It creates genesis and databases, answers hash/status,
+and saves on quit. Twelve Java/native startup processes cross-open complete node
+directories in both directions, including encrypted wallets and compact shutdown.
+Real H2 comparisons cover 122 programs / 1,974 operations plus four file cross-opens.
+An eight-worker ownership/concurrency check inserts and verifies 512 rows.
+
+H2 is the pinned dependency compiled to a native shared library; no Java Minima
+classes or JVM process supply application behavior. See [build instructions](native/h2/README.md),
+the [student lab](student-guide/new-tests/native-h2-storage.md), and
+[saved evidence](validation/native-h2-work-in-progress). Without the optional
+provider configuration, startup still reports the missing SQL provider.
+Public-network sync, long-running mining, daemon/RPC integration, MySQL, all
+remaining files and full behavior parity remain unfinished.
+
+The existing launcher boundary checks cover 487 public-wrapper cases, five
+configuration-exit comparisons, three starter-thread cases and 16 shutdown-hook
+process comparisons. These are separate from the real solo startup tests.
 
 ItemList now compiles with its source constructor and array-cast quirks intact.
 Both builds pass 1,493 programs / 11,690 operations, comparing UTF-16 strings,

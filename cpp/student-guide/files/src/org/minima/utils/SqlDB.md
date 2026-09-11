@@ -20,7 +20,7 @@ SqlDB is a lifecycle and result-formatting wrapper around H2 JDBC. Subclasses su
 
 ## How the C++ translation works
 
-The native wrapper reproduces these calls through SqlConnection/Statement/ResultSet interfaces and requires a connection provider at construction. Shared references model nullable driver objects; a recursive mutex preserves synchronized subclass reentry. Explicit unsigned conversions preserve Java narrowing and count overflow. There is no native H2 storage/encryption implementation supplied by this wrapper. GC is a JVM hint with no native equivalent, and the fallback logger is std::clog.
+The native wrapper reproduces these calls through SqlConnection/Statement/ResultSet interfaces and requires a connection provider at construction. Shared references model nullable driver objects; a recursive mutex preserves synchronized subclass reentry. Explicit unsigned conversions preserve Java narrowing and count overflow. The wrapper remains independent of the engine; the optional NativeH2Runtime provider now supplies the pinned H2 dependency as a native shared library. GC is a JVM hint with no native equivalent, and the fallback logger is std::clog.
 
 ## Understanding the tests
 
@@ -32,14 +32,34 @@ The Java fixture deregisters real JDBC drivers and installs a recording driver; 
 - [Concurrency and reentry assertions](../../../../../../support/sql_db_concurrent.cpp)
 - [Explicit native driver boundary](../../../../../../src/support/SqlConnection.hpp)
 
-The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
+The recording evidence above tests wrapper behavior. The additional real-engine evidence below tests actual storage rather than simulated calls.
 
 ## Limits and a useful next test
 
-The recordings establish wrapper call sequences only; they do not execute SQL, encrypt a database, recover a backup, or prove persistence. NPE/class-cast wording and logger prefixes/stacks are normalized. Actual native H2 compatibility and a real encrypted reopen/restore test remain required.
+The recordings establish wrapper call sequences only; they do not execute SQL, encrypt a database, recover a backup, or prove persistence. NPE/class-cast wording and logger prefixes/stacks are normalized. Actual H2 encrypted reopen/restore is now covered below; arbitrary extensions, recovery failures and full runtime parity remain unverified.
 
 ## Check your understanding
 
 Why can checkOpen return false for a healthy database? Trace the returned JSON when closing the statement fails after all query rows have been read.
 
 Pinned Java SHA-256: `3b7a0ccc8e0dea2e638df47273b1088c10a0777d4d515bcf8baf4e23b9c9678f`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).
+
+## Real-engine test and the language boundary
+
+[NativeH2Connection.cpp](../../../../../../src/support/NativeH2Connection.cpp)
+implements the existing interfaces. It sends operation numbers and bounded binary
+arguments to the AOT-compiled H2 dependency. Integers use big-endian bytes, strings
+use UTF-16 code units, and -1 lengths distinguish null from empty. It forwards
+the actual SQL exception class and message. Parent references keep a connection
+alive while a result or statement still needs it. Releasing a result view does
+not close a JDBC result that its statement can return again.
+
+The [real-engine driver](../../../../../../tools/native_h2_differential.py)
+compares 122 programs and 1,974 operations without exception normalization.
+It additionally cross-opens plain and AES MVStore files in four directions.
+Tests cover bindings, transaction rollback, conversions, metadata, CLOB bounds,
+SCRIPT/RUNSCRIPT and compact reopen. An independent eight-worker native test
+inserts 512 uniquely numbered rows and checks their count/sum and ownership.
+The [lab](../../../../../new-tests/native-h2-storage.md) explains the initial
+empty-BLOB test bug: empty bytes encode as an empty string, so blindly removing
+a two-character prefix throws. Reusing toHexString(false) fixes the observer.

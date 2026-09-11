@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 464,
+  "operations": 1260,
+  "driver_calls": 8352,
+  "failures": [],
+  "scope": "Pinned SqlDB lifecycle, sticky encrypted reopen URL/credentials, failure and partial-state order, shutdown, backup/restore SQL and file deletion, generic SQL metadata/row/null/CLOB handling, failure-result reset, statement close, JSON/MiniData conversion. Exact recording driver events and logger bodies except Java-specific NPE/class-cast messages and stack/date/memory prefixes. JDBC driver/storage/encryption execution, prepared statements, full logger notifications, and full node integration remain absent/unverified."
+}

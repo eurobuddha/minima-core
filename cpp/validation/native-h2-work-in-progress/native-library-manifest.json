@@ -1,0 +1,22 @@
+{
+  "h2_version": "2.4.240",
+  "h2_sha256": "b80baaf431ce458c926d72ec2b8cc33b120c76b73abe4301278bb2044ddde9f5",
+  "bridge_sha256": "d210d8422d2ba869f798583756fc97b215ddb65dbd2f4ceceafabbaa2d8ffe41",
+  "toolchain": "native-image 25.0.4.1 2026-08-18\nGraalVM Runtime Environment GraalVM CE 25.3.4.1+1.1 (build 25.0.4.1+1-jvmci-25.3-b22)\nSubstrate VM GraalVM CE 25.3.4.1+1.1 (build 25.0.4.1+1, serial gc, compressed references)\n",
+  "command": [
+    "/private/tmp/minima-native-h2-toolchain/graalvm-community-25.3.4.1+1.1/Contents/Home/bin/native-image",
+    "-J-Xmx8g",
+    "--parallelism=4",
+    "-O1",
+    "--no-fallback",
+    "--shared",
+    "-cp",
+    "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2/classes:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/h2-2.4.240.jar",
+    "-o",
+    "libminima_h2"
+  ],
+  "library": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2/libminima_h2.dylib",
+  "library_sha256": "67c2bcab00d09c7cd18e055c46198002fab674785f6fc5507d59866ac1fbafb8",
+  "minima_java_classes_included": false,
+  "jvm_fallback": false
+}

@@ -35,7 +35,7 @@ def project(output):
     if output.get('exception','').startswith('java.lang.NullPointerException:'):output['exception']='java.lang.NullPointerException'
     return output
 
-def process_checks(build,classpath,folder):
+def process_checks(build,classpath,folder,native_h2=False):
     environment={k:v for k,v in os.environ.items() if not k.lower().startswith('minima_')}
     environment.update(TZ='UTC',UBSAN_OPTIONS='halt_on_error=1')
     commands=[['java','-cp',classpath,'org.minima.Minima'],[str(build/'MinimaCoreC++')]]
@@ -50,9 +50,10 @@ def process_checks(build,classpath,folder):
         count+=1
     # The native executable must expose the missing provider and clean up its
     # started Main/timer workers. This is a limitation check, not Java parity.
-    process=subprocess.run(commands[1]+['-data',str(folder/'native-data'),'-noconnect'],capture_output=True,text=True,timeout=15,env=environment,cwd=folder)
-    assert process.returncode==1,(process.returncode,process.stdout,process.stderr)
-    assert 'MinimaDB requires native SQL and Main runtime services' in process.stdout,(process.stdout,process.stderr)
+    if not native_h2:
+        process=subprocess.run(commands[1]+['-data',str(folder/'native-data'),'-noconnect'],capture_output=True,text=True,timeout=15,env=environment,cwd=folder)
+        assert process.returncode==1,(process.returncode,process.stdout,process.stderr)
+        assert 'MinimaDB requires native SQL and Main runtime services' in process.stdout,(process.stdout,process.stderr)
     starter_commands=[['java','-cp',classpath,'MinimaEntryOracle'],[str(build/'minima_entry_boundary')]]
     for mode in ['starter-null','starter-help','starter-unknown']:
         outputs=[]
@@ -64,7 +65,7 @@ def process_checks(build,classpath,folder):
         assert outputs[0]==outputs[1],(mode,outputs)
         assert outputs[0][0]==(0 if mode=='starter-null' else 1),outputs
         if mode=='starter-null':assert outputs[0][1]==['uncaught:Thread-0:java.lang.NullPointerException'],outputs
-    return count,1,3
+    return count,int(not native_h2),3
 
 def hooks_checks(build,classpath):
     commands=[['java','-cp',classpath,'MinimaShutdownHooksOracle'],[str(build/'minima_shutdown_hooks')]]
@@ -92,7 +93,7 @@ def hooks_checks(build,classpath):
     return count
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--build',type=Path,default=ROOT/'build');build=parser.parse_args().build.resolve()
+    parser=argparse.ArgumentParser();parser.add_argument('--build',type=Path,default=ROOT/'build');parser.add_argument('--native-h2',type=int,choices=[0,1],default=0);args=parser.parse_args();build=args.build.resolve()
     oracle=build/'minima-entry-oracle';oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/MinimaEntryOracle.java',ROOT/'support/MinimaShutdownHooksOracle.java']
     listing=build/'minima-entry-java-sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n')
@@ -111,10 +112,10 @@ def main():
         for runner in runners:runner.close()
     if not failures:
         try:
-            with tempfile.TemporaryDirectory(prefix='minima-entry-',dir=build) as scratch:processes,limitations,starters=process_checks(build,classpath,Path(scratch))
+            with tempfile.TemporaryDirectory(prefix='minima-entry-',dir=build) as scratch:processes,limitations,starters=process_checks(build,classpath,Path(scratch),bool(args.native_h2))
             hooks=hooks_checks(build,classpath)
         except Exception as error:failures.append(dict(process_error=repr(error)))
     report=dict(passed=not failures,wrapper_cases=completed,configuration_processes=processes,hook_process_pairs=hooks,native_limitation_processes=limitations,starter_processes=starters,failures=failures,
-        scope='Unmodified pinned Minima direct wrapper overloads and real command registry, nullable caller ordering, exact formatted strings and zero/one/multi-result shapes; controlled singleton identity only. Real help/unknown/missing-config process exits plus three mainStarter null/help/unknown subprocesses. Native hooks compared with JVM Runtime for concurrent hooks, names, return/exit/halt, HUP/INT/TERM, throws and late registration. Only NPE prose normalized in wrappers; starter exception type/name checked, main/worker print order excluded. UTF-16 isolated surrogate command input, successful mainStarter, normal CLI/daemon Main integration, host lifecycle and resource exhaustion remain unverified; missing SQL provider is explicitly asserted, not counted as parity.')
+        scope='Unmodified pinned Minima direct wrapper overloads and real command registry, nullable caller ordering, exact formatted strings and zero/one/multi-result shapes; controlled singleton identity only. Real help/unknown/missing-config process exits plus three mainStarter null/help/unknown subprocesses. Native hooks compared with JVM Runtime for concurrent hooks, names, return/exit/halt, HUP/INT/TERM, throws and late registration. Only NPE prose normalized in wrappers; starter exception type/name checked, main/worker print order excluded. UTF-16 isolated surrogate command input, successful mainStarter, normal CLI/daemon Main integration, host lifecycle and resource exhaustion remain unverified; a build without native H2 explicitly asserts the missing-provider limitation; H2-enabled node startup is covered separately by native_node_startup.')
     (build/'minima-entry-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

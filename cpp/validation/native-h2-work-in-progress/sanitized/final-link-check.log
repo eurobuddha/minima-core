@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 219: native_h2_concurrent
+1/2 Test #219: native_h2_concurrent .............   Passed    0.21 sec
+    Start 221: minima_entry_differential
+2/2 Test #221: minima_entry_differential ........   Passed    6.27 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   6.48 sec

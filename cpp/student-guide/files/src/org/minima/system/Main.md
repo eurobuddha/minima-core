@@ -10,7 +10,7 @@
 
 ## What this file does
 
-Main extends MessageProcessor and owns the node's processor, miner, network manager, send-poll manager and notification manager. It publishes a singleton, exposes lifecycle flags, and dispatches periodic and event messages. The complete pinned Java body has been read for this lesson. The native class now assembles the existing component implementations and attaches their runtime callbacks. Successful full startup is still unverified.
+Main extends MessageProcessor and owns the node's processor, miner, network manager, send-poll manager and notification manager. It publishes a singleton, exposes lifecycle flags, and dispatches periodic and event messages. The complete pinned Java body has been read for this lesson. The native class now assembles the existing component implementations and attaches their runtime callbacks. Solo startup and cross-runtime database reopen now have real integration tests; public-network and full lifecycle parity remain unverified.
 
 ## Construction is an ordered sequence of effects
 
@@ -63,7 +63,7 @@ The constructor uses different **initial** delays for some periodic tasks: RAM c
 
 `NotifyMainListenerOfShutDown` clears the singleton first, then uses a flag to avoid repeating the listener event. `setHasShutDown` only sets the shutdown flag. It does not perform the shutdown sequence. Similar-looking methods are not interchangeable.
 
-`restoreReady` sets restoring and stops services without saving everything as a normal shutdown would. `restoreReadyForSync` creates a replacement processor and reloads restore-sync databases. `archiveResetReady` selectively saves/deletes/reloads archive, TxPoW and optionally wallet storage, and can reset the cascade/tree. These are real persistence operations still needing a native backend.
+`restoreReady` sets restoring and stops services without saving everything as a normal shutdown would. `restoreReadyForSync` creates a replacement processor and reloads restore-sync databases. `archiveResetReady` selectively saves/deletes/reloads archive, TxPoW and optionally wallet storage, and can reset the cascade/tree. These are real persistence operations; the native H2 backend now exists, but these restore/reset paths still need end-to-end coverage.
 
 `resetMemFull` restarts database resources, replaces the processor and requests garbage collection. `restartNIO` returns during shutdown; otherwise it takes the database read lock, shuts down/waits for networking, waits another five seconds and creates a new NetworkManager. Its finally block releases the lock even after a caught Exception.
 
@@ -97,7 +97,7 @@ The [native ownership test](../../../../../../support/main_ownership.cpp) separa
 
 ## What remains to validate
 
-A successful startup fixture must still check private first-run/CLEAN behavior, every initialization stage, genesis insertion, initial timers and full worker shutdown. Restart tests need the strict 10-second timeout, interrupted-sleep behavior and database-lock release. Enabled backup/rescue commands require their own implementations. Real persistence across restart, a native SQL backend, a native MySQL driver, the Minima entry point and compatible peer behavior remain necessary for a working node. These finite comparisons do not certify the complete Main API, every reference alias, platform behavior or concurrency.
+A successful startup fixture must still check private first-run/CLEAN behavior, every initialization stage, genesis insertion, initial timers and full worker shutdown. Restart tests need the strict 10-second timeout, interrupted-sleep behavior and database-lock release. Enabled backup/rescue commands require their own implementations. The H2 backend, native entry point and solo cross-runtime restart now have integration evidence below. A native MySQL driver and compatible public-peer behavior remain unfinished. These finite comparisons do not certify the complete Main API, every reference alias, platform behavior or concurrency.
 
 Pulse prerequisites retain their separate evidence: 152 programs and 946 operations in both builds verify actual DB locking, tree/pulse list identity, list replacement and partial decoding. That evidence supports MAIN_PULSE's dependency; it does not prove live network delivery.
 
@@ -144,3 +144,13 @@ uses real RPC listener and handler threads with a stable logging sink; it does
 not swap a stream buffer while those threads run. Database replacement reuses
 Main's existing databaseServices binding. Full node workers and durable SQL
 remain outside this fixture.
+
+## Native H2 startup milestone
+
+The [storage lab](../../../../../new-tests/native-h2-storage.md) follows Main with
+a real native H2 connector, preserving the existing initialize/shutdown bodies.
+The [startup comparison](../../../../../../tools/native_node_startup.py) creates
+a solo genesis chain, checks hash/status commands, saves all databases, and opens
+the same directory across Java and C++ in both directions. Plain and encrypted
+wallets and compact shutdown are covered. These tests do not certify public-peer
+sync, daemon/RPC control, long-running mining, recovery or all Main callbacks.

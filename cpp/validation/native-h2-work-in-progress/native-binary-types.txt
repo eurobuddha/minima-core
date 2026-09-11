@@ -1,0 +1,2 @@
+cpp/build/MinimaCoreC++:                Mach-O 64-bit executable arm64
+cpp/build/native-h2/libminima_h2.dylib: Mach-O 64-bit dynamically linked shared library arm64

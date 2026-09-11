@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 3333,
+  "operations": 10831,
+  "driver_calls": 125655,
+  "failures": [],
+  "scope": "Actual pinned ArchiveManager schema/prepared SQL, save retry, lookups, high/low two-query reads, ranges/order, shutdown boundary, cleanup long arithmetic, cascade validation/replacement and reopen with recording JDBC/native drivers. Serialized fixture/output bytes and I/O logs compared; every truncated prefix of three blocks and three cascades; checked/runtime/null/partial failures. Clock values checked against operation windows before normalization; Java NPE expression text and logger prefixes/stacks excluded. Native H2 SQL execution, persistence, concurrent lifecycle, demonstration main and full node integration remain absent/unverified."
+}
