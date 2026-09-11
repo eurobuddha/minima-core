@@ -1,0 +1,59 @@
+{
+  "base_head": "6c281098751b967291b1c5b35ba3ec030bdca2d2",
+  "goal_complete": false,
+  "new_mapped_files": [],
+  "counterparts": 456,
+  "absent": 1,
+  "production_behavior_changes": [],
+  "package": {
+    "folder": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/preview-builds/MinimaCoreC++-6c28109-port21001-macos-arm64",
+    "launcher": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/preview-builds/MinimaCoreC++-6c28109-port21001-macos-arm64/Start MinimaCoreC++.command",
+    "archive": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/preview-builds/MinimaCoreC++-6c28109-port21001-macos-arm64.zip",
+    "source_head": "6c281098751b967291b1c5b35ba3ec030bdca2d2",
+    "bundled_libraries": 5,
+    "zip_sha256": "97140f57b18bada4772b8f725f630c6edd952172f3cc8cc4acf0d1bcc4a97350"
+  },
+  "local_data": "Validation wallet/chain moved after graceful shutdown into ignored preview folder; ZIP has no wallet. Do not reuse the old extracted test folder.",
+  "validation": {
+    "payload_hashes_and_relocation": "PASS",
+    "system_only_path_help": "PASS; pinned Java exits 1 for help",
+    "native_rebuild": "PASS",
+    "first_port17001_attempts": "Failed to reach a valid chain connection within 150 seconds; cause not established. Development node was stopped during diagnosis.",
+    "port21001_fresh": "Connected, downloaded and advanced to 2309598; fixed hash command passed; shutdown completed. Exact-tip test retained a stale peer sample for height 2309596 that local status sampling skipped; that run reported failure, preserved.",
+    "port21001_reopen": {
+      "passed": true,
+      "resumed_existing_data": true,
+      "source_head": "6c281098751b967291b1c5b35ba3ec030bdca2d2",
+      "archive_sha256": "97140f57b18bada4772b8f725f630c6edd952172f3cc8cc4acf0d1bcc4a97350",
+      "checks": [
+        "Every extracted payload file matches its manifest SHA-256",
+        "Relocated launcher runs -help with system-only PATH",
+        "resumed-reopen: exact SHA3 command, matching live peer height/hash, isolated data/port, saved databases and clean exit"
+      ],
+      "observations": [
+        {
+          "step": "resumed-reopen",
+          "block": 2309602,
+          "hash": "0x000000274AE7CC8958DFE206C2B92B62C733C1C00BAA29E2DF25B08DA86FD0FF",
+          "peer": "eurobuddha.com:9001",
+          "matches_peer": true
+        }
+      ],
+      "failure": null,
+      "relocated_folder": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64",
+      "scope": "Actual shipped ZIP and default launcher, no modified Minima source, system-only PATH; mainnet lifecycle steps explicitly listed in observations; resumed verification does not claim a new fresh start. Tests packaging and this workflow, not full node parity. Test wallet data remains only in the temporary extracted directory."
+    },
+    "test_corrections": [
+      "Expect pinned help exit 1 rather than 0",
+      "Refresh moving peer-tip samples every 15 seconds after chain data exists",
+      "Resolve /var versus /private/var aliases for data-folder comparison",
+      "Label resumed existing-data validation explicitly; do not count it as a new fresh start"
+    ]
+  },
+  "limitations": [
+    "Preview is macOS 26+ arm64 and ad-hoc signed for local testing, not notarized public release",
+    "Full original 457-file parity remains incomplete, including JNI external implementation",
+    "Port17001 connection failure not isolated to a proven root cause"
+  ],
+  "next_action": "User may run the isolated frozen preview on 21001. Continue JNI and production/runtime parity work independently. Development node on 16001 is currently stopped after clean shutdown; data retained."
+}

@@ -1,5 +1,9 @@
 # MinimaCoreC++ — incomplete
 
+A frozen **runnable macOS preview** is now available on local port **21001**,
+connecting to eurobuddha.com:9001 with separate data. See [PREVIEW.md](PREVIEW.md)
+for the double-click launcher, commands, package and scoped verification results.
+
 The actual C++ node now starts after fixing command-registry initialization and
 registering all 116 source commands. Both full builds and affected tests pass.
 After a user-requested fresh reset, initial connection to eurobuddha.com:9001

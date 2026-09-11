@@ -3,3 +3,6 @@ __pycache__/
 
 # Local mainnet runtime data and logs (never commit wallets or chain databases).
 /local-mainnet/
+
+# Frozen executable previews and their separate private runtime data.
+/preview-builds/

@@ -1,0 +1,1971 @@
+[
+  {
+    "command": "hash",
+    "params": {
+      "data": "hello"
+    },
+    "status": true,
+    "pending": false,
+    "response": {
+      "input": "hello",
+      "data": "0x68656C6C6F",
+      "type": "sha3",
+      "hash": "0x3338BE694F50C5F338814986CDF0686453A888B84F424D792AF4B9202398F392"
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 10 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 0,
+      "weight": "0",
+      "minima": "0",
+      "coins": "0",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "1.0 MB",
+        "disk": "92.0 KB",
+        "files": {
+          "txpowdb": "16.0 KB",
+          "archivedb": "16.0 KB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "28.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 0,
+        "time": "NO BLOCKS YET",
+        "hash": "0x00",
+        "length": 0,
+        "branches": 0,
+        "cascade": {
+          "start": -1,
+          "length": 0,
+          "weight": "0"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 0,
+        "txpowdb": 0,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 0,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 10 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 0,
+      "weight": "0",
+      "minima": "0",
+      "coins": "0",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "1.0 MB",
+        "disk": "92.0 KB",
+        "files": {
+          "txpowdb": "16.0 KB",
+          "archivedb": "16.0 KB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "28.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 0,
+        "time": "NO BLOCKS YET",
+        "hash": "0x00",
+        "length": 0,
+        "branches": 0,
+        "cascade": {
+          "start": -1,
+          "length": 0,
+          "weight": "0"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 0,
+        "txpowdb": 0,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 0,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 10 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 0,
+      "weight": "0",
+      "minima": "0",
+      "coins": "0",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "1.0 MB",
+        "disk": "92.0 KB",
+        "files": {
+          "txpowdb": "16.0 KB",
+          "archivedb": "16.0 KB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "28.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 0,
+        "time": "NO BLOCKS YET",
+        "hash": "0x00",
+        "length": 0,
+        "branches": 0,
+        "cascade": {
+          "start": -1,
+          "length": 0,
+          "weight": "0"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 0,
+        "txpowdb": 0,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 0,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 14 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 0,
+      "weight": "0",
+      "minima": "0",
+      "coins": "0",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "1.0 MB",
+        "disk": "96.0 KB",
+        "files": {
+          "txpowdb": "16.0 KB",
+          "archivedb": "16.0 KB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "32.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 0,
+        "time": "NO BLOCKS YET",
+        "hash": "0x00",
+        "length": 0,
+        "branches": 0,
+        "cascade": {
+          "start": -1,
+          "length": 0,
+          "weight": "0"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 0,
+        "txpowdb": 0,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 0,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 19 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 0,
+      "weight": "0",
+      "minima": "0",
+      "coins": "0",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "1.0 MB",
+        "disk": "96.0 KB",
+        "files": {
+          "txpowdb": "16.0 KB",
+          "archivedb": "16.0 KB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "32.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 0,
+        "time": "NO BLOCKS YET",
+        "hash": "0x00",
+        "length": 0,
+        "branches": 0,
+        "cascade": {
+          "start": -1,
+          "length": 0,
+          "weight": "0"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 0,
+        "txpowdb": 0,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 0,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 24 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 0,
+      "weight": "0",
+      "minima": "0",
+      "coins": "0",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "13.4 MB",
+        "disk": "96.0 KB",
+        "files": {
+          "txpowdb": "16.0 KB",
+          "archivedb": "16.0 KB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "32.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 0,
+        "time": "NO BLOCKS YET",
+        "hash": "0x00",
+        "length": 0,
+        "branches": 0,
+        "cascade": {
+          "start": -1,
+          "length": 0,
+          "weight": "0"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 0,
+        "txpowdb": 0,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 29 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 0,
+      "weight": "0",
+      "minima": "0",
+      "coins": "0",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "31.5 MB",
+        "disk": "96.0 KB",
+        "files": {
+          "txpowdb": "16.0 KB",
+          "archivedb": "16.0 KB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "32.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 0,
+        "time": "NO BLOCKS YET",
+        "hash": "0x00",
+        "length": 0,
+        "branches": 0,
+        "cascade": {
+          "start": -1,
+          "length": 0,
+          "weight": "0"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 0,
+        "txpowdb": 0,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 34 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 3342,
+      "weight": "839206696411040",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1696675",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "34.4 MB",
+        "disk": "2.4 MB",
+        "files": {
+          "txpowdb": "132.0 KB",
+          "archivedb": "2.2 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "32.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2308515,
+        "time": "Fri Sep 11 06:26:57 BST 2026",
+        "hash": "0x00000081560316F8AAA979C842830BC89489D907CA66969C60CD9A02889D1A67",
+        "speed": -1,
+        "difficulty": "0x0000008B58517E9AF6E2094BF1E264861960678F8040813ACF45644159AF78DA",
+        "size": 103,
+        "length": 1,
+        "branches": 102,
+        "weight": "30822540",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 104,
+        "txpowdb": 104,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "ping",
+    "params": {
+      "host": "eurobuddha.com:9001"
+    },
+    "status": true,
+    "pending": false,
+    "response": {
+      "host": "eurobuddha.com",
+      "port": 9001,
+      "valid": true,
+      "version": "1.0.48",
+      "extradata": {
+        "welcome": "hi there!",
+        "topblock": "2309596",
+        "tophash": "0x00000061E5072B3774F86A45BABC09E8ED3FAD0F847729712B747A3BF31B339D",
+        "50block": "2309496",
+        "50hash": "0x0000007023F128FEAC3FB4BE8E1A2FB373793913BF94C7B5E75187768D48DBCD",
+        "connections": {
+          "total": 53,
+          "incoming": 46,
+          "outgoing": 7
+        },
+        "peers-list": [
+          "192.248.151.55:8001",
+          "79.116.193.140:9001",
+          "65.109.31.226:9101",
+          "119.205.92.38:9001",
+          "62.97.39.121:9001",
+          "116.203.77.134:37001",
+          "91.219.60.118:9001",
+          "95.165.169.188:6001",
+          "79.116.28.213:9001",
+          "45.77.57.24:9001",
+          "77.246.100.146:9001",
+          "93.93.105.231:9001",
+          "65.109.31.226:8001",
+          "79.116.2.190:9001",
+          "192.248.151.55:9001",
+          "79.112.99.132:9001",
+          "141.148.226.161:9001",
+          "152.70.188.61:9001",
+          "79.120.8.41:6001",
+          "79.112.34.105:9001",
+          "173.212.202.190:9011",
+          "45.77.57.24:9101",
+          "168.138.15.32:8001",
+          "95.179.179.181:9001",
+          "70.34.244.170:9001",
+          "79.112.44.27:9001",
+          "38.172.51.111:9001",
+          "193.181.210.24:9001",
+          "213.171.24.170:9001",
+          "5.38.156.54:9001",
+          "34.105.180.174:9001",
+          "187.127.102.88:9001"
+        ],
+        "clients": 5.0
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 40 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4112,
+      "weight": "839206696411040",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697213",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "49.5 MB",
+        "disk": "5.2 MB",
+        "files": {
+          "txpowdb": "2.9 MB",
+          "archivedb": "2.2 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "32.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309285,
+        "time": "Fri Sep 11 16:59:30 BST 2026",
+        "hash": "0x0000002198625D9F0D268D0FA1A7AE5B60C880847AA97614C8BBC16C9D343E92",
+        "speed": 0.019406,
+        "difficulty": "0x0000008267A8829CFEDC469499226D1576671C27D6833673C9B25A2389F65448",
+        "size": 1028,
+        "length": 771,
+        "branches": 257,
+        "weight": "30822540",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 51,
+        "ramdb": 1079,
+        "txpowdb": 1079,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 40 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4112,
+      "weight": "839206696411040",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697213",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "49.4 MB",
+        "disk": "5.2 MB",
+        "files": {
+          "txpowdb": "2.9 MB",
+          "archivedb": "2.2 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "32.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309285,
+        "time": "Fri Sep 11 16:59:30 BST 2026",
+        "hash": "0x0000002198625D9F0D268D0FA1A7AE5B60C880847AA97614C8BBC16C9D343E92",
+        "speed": 0.019406,
+        "difficulty": "0x0000008267A8829CFEDC469499226D1576671C27D6833673C9B25A2389F65448",
+        "size": 1028,
+        "length": 771,
+        "branches": 257,
+        "weight": "30822540",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 52,
+        "ramdb": 1080,
+        "txpowdb": 1080,
+        "archivedb": 0
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 45 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "56.8 MB",
+        "disk": "20.3 MB",
+        "files": {
+          "txpowdb": "3.6 MB",
+          "archivedb": "16.6 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "80.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 4,
+        "ramdb": 1153,
+        "txpowdb": 1153,
+        "archivedb": 3072
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 55 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "56.8 MB",
+        "disk": "20.3 MB",
+        "files": {
+          "txpowdb": "3.6 MB",
+          "archivedb": "16.6 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "80.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 4,
+        "ramdb": 1153,
+        "txpowdb": 1153,
+        "archivedb": 3072
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 55 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "56.8 MB",
+        "disk": "20.3 MB",
+        "files": {
+          "txpowdb": "3.6 MB",
+          "archivedb": "16.6 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "80.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 4,
+        "ramdb": 1153,
+        "txpowdb": 1153,
+        "archivedb": 3072
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 0 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "58.4 MB",
+        "disk": "26.8 MB",
+        "files": {
+          "txpowdb": "3.6 MB",
+          "archivedb": "23.1 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "80.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 4,
+        "ramdb": 1153,
+        "txpowdb": 1153,
+        "archivedb": 4096
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 5 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "56.4 MB",
+        "disk": "34.9 MB",
+        "files": {
+          "txpowdb": "3.6 MB",
+          "archivedb": "31.3 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "80.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 4,
+        "ramdb": 1153,
+        "txpowdb": 1153,
+        "archivedb": 5376
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 10 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "54.9 MB",
+        "disk": "54.8 MB",
+        "files": {
+          "txpowdb": "3.7 MB",
+          "archivedb": "50.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "148.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 8,
+        "ramdb": 1159,
+        "txpowdb": 1159,
+        "archivedb": 8192
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 20 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "54.4 MB",
+        "disk": "54.8 MB",
+        "files": {
+          "txpowdb": "3.7 MB",
+          "archivedb": "50.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "148.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 8,
+        "ramdb": 1159,
+        "txpowdb": 1159,
+        "archivedb": 8192
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 20 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "52.3 MB",
+        "disk": "54.8 MB",
+        "files": {
+          "txpowdb": "3.7 MB",
+          "archivedb": "50.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "148.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 8,
+        "ramdb": 1159,
+        "txpowdb": 1159,
+        "archivedb": 8192
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 25 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "54.8 MB",
+        "disk": "62.4 MB",
+        "files": {
+          "txpowdb": "4.4 MB",
+          "archivedb": "57.8 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "160.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 14,
+        "ramdb": 1240,
+        "txpowdb": 1240,
+        "archivedb": 9216
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 30 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "53.8 MB",
+        "disk": "72.0 MB",
+        "files": {
+          "txpowdb": "5.0 MB",
+          "archivedb": "66.8 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "160.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 14,
+        "ramdb": 1326,
+        "txpowdb": 1326,
+        "archivedb": 10752
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 35 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "105.6 MB",
+        "disk": "95.0 MB",
+        "files": {
+          "txpowdb": "5.5 MB",
+          "archivedb": "89.3 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "160.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 14,
+        "ramdb": 1374,
+        "txpowdb": 1374,
+        "archivedb": 11264
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 40 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "87.9 MB",
+        "disk": "132.4 MB",
+        "files": {
+          "txpowdb": "6.1 MB",
+          "archivedb": "126.1 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "172.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 14,
+        "ramdb": 1443,
+        "txpowdb": 1443,
+        "archivedb": 11520
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 45 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "95.8 MB",
+        "disk": "132.4 MB",
+        "files": {
+          "txpowdb": "6.1 MB",
+          "archivedb": "126.1 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "184.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 14,
+        "ramdb": 1443,
+        "txpowdb": 1443,
+        "archivedb": 11520
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 50 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "143.6 MB",
+        "disk": "132.4 MB",
+        "files": {
+          "txpowdb": "6.1 MB",
+          "archivedb": "126.1 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "196.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 14,
+        "ramdb": 1443,
+        "txpowdb": 1443,
+        "archivedb": 11520
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 1 Minutes 55 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4422,
+      "weight": "839241868858110",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "150.4 MB",
+        "disk": "132.5 MB",
+        "files": {
+          "txpowdb": "6.2 MB",
+          "archivedb": "126.1 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "196.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309595,
+        "time": "Fri Sep 11 21:13:51 BST 2026",
+        "hash": "0x00000011C02911C7F2B3A79195DB465709C4F5A284AA62DA63FDF7084DED40F4",
+        "speed": 0.019899,
+        "difficulty": "0x00000083D10A6FE1FDA406FB529948BF56559D0E0270F696A623E09E21082DA4",
+        "size": 1081,
+        "length": 1081,
+        "branches": 0,
+        "weight": "35203269610",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 14,
+        "ramdb": 1457,
+        "txpowdb": 1457,
+        "archivedb": 11520
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 2 Minutes 0 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4424,
+      "weight": "839241934422180",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "114.1 MB",
+        "disk": "209.0 MB",
+        "files": {
+          "txpowdb": "8.9 MB",
+          "archivedb": "199.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "196.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309597,
+        "time": "Fri Sep 11 21:16:16 BST 2026",
+        "hash": "0x000000580AD76B105CDE00E929921F95F2A8CAD385F1FF5F6CADAC22127E7284",
+        "speed": 0.020073,
+        "difficulty": "0x000000829E3318639F1247FC47064319B28D40ED2EFC3BC7C070E1BC6147B62A",
+        "size": 1083,
+        "length": 1083,
+        "branches": 0,
+        "weight": "35268833680",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 1569,
+        "txpowdb": 1569,
+        "archivedb": 11776
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 2 Minutes 5 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4424,
+      "weight": "839241934422180",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "146.0 MB",
+        "disk": "209.0 MB",
+        "files": {
+          "txpowdb": "8.9 MB",
+          "archivedb": "199.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "220.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309597,
+        "time": "Fri Sep 11 21:16:16 BST 2026",
+        "hash": "0x000000580AD76B105CDE00E929921F95F2A8CAD385F1FF5F6CADAC22127E7284",
+        "speed": 0.020073,
+        "difficulty": "0x000000829E3318639F1247FC47064319B28D40ED2EFC3BC7C070E1BC6147B62A",
+        "size": 1083,
+        "length": 1083,
+        "branches": 0,
+        "weight": "35268833680",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 1569,
+        "txpowdb": 1569,
+        "archivedb": 11776
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 2 Minutes 10 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4424,
+      "weight": "839241934422180",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "146.0 MB",
+        "disk": "209.0 MB",
+        "files": {
+          "txpowdb": "8.9 MB",
+          "archivedb": "199.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "220.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309597,
+        "time": "Fri Sep 11 21:16:16 BST 2026",
+        "hash": "0x000000580AD76B105CDE00E929921F95F2A8CAD385F1FF5F6CADAC22127E7284",
+        "speed": 0.020073,
+        "difficulty": "0x000000829E3318639F1247FC47064319B28D40ED2EFC3BC7C070E1BC6147B62A",
+        "size": 1083,
+        "length": 1083,
+        "branches": 0,
+        "weight": "35268833680",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 1569,
+        "txpowdb": 1569,
+        "archivedb": 11776
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 2 Minutes 15 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4424,
+      "weight": "839241934422180",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "152.6 MB",
+        "disk": "209.3 MB",
+        "files": {
+          "txpowdb": "9.1 MB",
+          "archivedb": "199.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "232.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309597,
+        "time": "Fri Sep 11 21:16:16 BST 2026",
+        "hash": "0x000000580AD76B105CDE00E929921F95F2A8CAD385F1FF5F6CADAC22127E7284",
+        "speed": 0.020073,
+        "difficulty": "0x000000829E3318639F1247FC47064319B28D40ED2EFC3BC7C070E1BC6147B62A",
+        "size": 1083,
+        "length": 1083,
+        "branches": 0,
+        "weight": "35268833680",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 1593,
+        "txpowdb": 1593,
+        "archivedb": 11843
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 2 Minutes 20 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4425,
+      "weight": "839241967391830",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "88.0 MB",
+        "disk": "209.6 MB",
+        "files": {
+          "txpowdb": "9.5 MB",
+          "archivedb": "199.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "232.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309598,
+        "time": "Fri Sep 11 21:16:36 BST 2026",
+        "hash": "0x0000003EB504D98D0CE5C248BD319E95F7612125C1CAE371B289500773D2C6B3",
+        "speed": 0.020083,
+        "difficulty": "0x000000824535D35E5C289C1F533AA9EB560CE9DDA1E5CC76D3141009CF744D8E",
+        "size": 1084,
+        "length": 1084,
+        "branches": 0,
+        "weight": "35301803330",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 1594,
+        "txpowdb": 1594,
+        "archivedb": 12544
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  },
+  {
+    "command": "status",
+    "status": true,
+    "pending": false,
+    "response": {
+      "version": "1.1.2.8",
+      "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 2 Minutes 25 Seconds",
+      "locked": false,
+      "megammr": false,
+      "length": 4425,
+      "weight": "839241967391830",
+      "minima": "999978154.12318354243151269097224749309776437321940043",
+      "coins": "1697402",
+      "data": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64/data/1.1",
+      "memory": {
+        "ram": "118.1 MB",
+        "disk": "209.6 MB",
+        "files": {
+          "txpowdb": "9.5 MB",
+          "archivedb": "199.9 MB",
+          "cascade": "0 bytes",
+          "chaintree": "0 bytes",
+          "wallet": "232.0 KB",
+          "userdb": "0 bytes",
+          "p2pdb": "0 bytes"
+        }
+      },
+      "chain": {
+        "block": 2309598,
+        "time": "Fri Sep 11 21:16:36 BST 2026",
+        "hash": "0x0000003EB504D98D0CE5C248BD319E95F7612125C1CAE371B289500773D2C6B3",
+        "speed": 0.020083,
+        "difficulty": "0x000000824535D35E5C289C1F533AA9EB560CE9DDA1E5CC76D3141009CF744D8E",
+        "size": 1084,
+        "length": 1084,
+        "branches": 0,
+        "weight": "35301803330",
+        "cascade": {
+          "start": 2308514,
+          "length": 3341,
+          "weight": "839206665588500"
+        }
+      },
+      "txpow": {
+        "mempool": 0,
+        "ramdb": 1594,
+        "txpowdb": 1594,
+        "archivedb": 12544
+      },
+      "network": {
+        "host": "127.0.0.1",
+        "hostset": true,
+        "port": 21001,
+        "connecting": 0,
+        "connected": 1,
+        "rpc": {
+          "enabled": false,
+          "port": 21005
+        }
+      }
+    }
+  }
+]

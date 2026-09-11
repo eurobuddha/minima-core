@@ -108,3 +108,11 @@ Method navigation (declarations with bodies found in this file): [Minima](../../
 ## Traceability
 
 Pinned Java SHA-256: `8aa046e25cc30190f3ff96434608f05d2eb6cf5c928c1807a8ef063b6de81d97`. Mapping: [source-map.json](../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../REVIEW.md).
+
+## Runnable local preview
+
+The actual native entry point is available in a frozen macOS arm64 package. Its
+launcher uses separate data, port 21001 and initial peer eurobuddha.com:9001. The
+[packaging lab](../../../../new-tests/executable-preview.md) explains dependency
+relocation, snapshot identity and the actual startup/restart verification. This
+is runtime evidence for the entry point, not a complete parity declaration.

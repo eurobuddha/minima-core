@@ -1,3 +1,38 @@
+# Current checkpoint — runnable local preview on port 21001
+
+Source executable checkpoint: 6c281098751b967291b1c5b35ba3ec030bdca2d2.
+No new mapped files or production behavior changes: 456 paths, one absent JNI
+implementation; full 457-file parity remains incomplete and the goal ACTIVE.
+
+User preview: cpp/preview-builds/MinimaCoreC++-6c28109-port21001-macos-arm64/
+Start MinimaCoreC++.command. Local data contains its separate validation wallet
+and chain after clean shutdown; ZIP contains no private data. Initial peer
+eurobuddha.com:9001, local port 21001, RPC disabled. The snapshot bundles five
+native libraries; development rebuilds cannot change it. macOS 26+ arm64.
+
+Packaging relocation/hash/signature checks PASS; system-only PATH loads help.
+Fresh port21001 startup downloaded/advanced to 2309598 and shut down cleanly.
+Initial exact-tip validator held a stale peer sample at 2309596; node status
+polling skipped that intermediate height. Failure retained; peer refresh and
+macOS path-alias comparisons corrected. Resumed saved-chain restart PASS at
+2309602 with exact peer hash, fixed SHA3 result, private data/port and clean exit.
+Port17001 attempts failed to connect fully; no definitive cause is claimed.
+
+Tools: package_macos_preview.py and verify_macos_preview.py. Instructions PREVIEW.md;
+student lab executable-preview.md. Evidence validation/executable-preview-work-in-progress.
+The development node on16001 was stopped cleanly for diagnosis; its data is retained
+in cpp/local-mainnet/data. No preview test process is left running. Do not reuse
+the old extracted validation folder: its test data was moved to the user preview.
+NEXT: finish JNI and the production API/runtime audit while keeping the user
+preview frozen. Do not replace/delete its data or its executable during rebuilds.
+
+Previous checkpoint6c28109 bundle: MinimaCoreC++-20260911T195929Z.bundle, SHA-256
+26865dc9b241ace99fc8b7c119a6b459cb390c6a0cdccdca0dd14b64d9ef28d0;
+all59 changed files byte-verified in a fresh recovery clone. Preserve unrelated
+graphify changes; local C++ commits/recovery bundles, no push.
+
+## Prior checkpoint (historical)
+
 # Current checkpoint — startup fix, exact registry and newer mainnet peer
 
 Base HEAD: 1ec2e6aa92a6c943f7a5459df41f8e425a37a67a. Goal ACTIVE, incomplete.

@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "resumed_existing_data": true,
+  "source_head": "6c281098751b967291b1c5b35ba3ec030bdca2d2",
+  "archive_sha256": "97140f57b18bada4772b8f725f630c6edd952172f3cc8cc4acf0d1bcc4a97350",
+  "checks": [
+    "Every extracted payload file matches its manifest SHA-256",
+    "Relocated launcher runs -help with system-only PATH",
+    "resumed-reopen: exact SHA3 command, matching live peer height/hash, isolated data/port, saved databases and clean exit"
+  ],
+  "observations": [
+    {
+      "step": "resumed-reopen",
+      "block": 2309602,
+      "hash": "0x000000274AE7CC8958DFE206C2B92B62C733C1C00BAA29E2DF25B08DA86FD0FF",
+      "peer": "eurobuddha.com:9001",
+      "matches_peer": true
+    }
+  ],
+  "failure": null,
+  "relocated_folder": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64",
+  "scope": "Actual shipped ZIP and default launcher, no modified Minima source, system-only PATH; mainnet lifecycle steps explicitly listed in observations; resumed verification does not claim a new fresh start. Tests packaging and this workflow, not full node parity. Test wallet data remains only in the temporary extracted directory."
+}

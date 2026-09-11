@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "source_head": "6c281098751b967291b1c5b35ba3ec030bdca2d2",
+  "archive_sha256": "97140f57b18bada4772b8f725f630c6edd952172f3cc8cc4acf0d1bcc4a97350",
+  "checks": [
+    "Every extracted payload file matches its manifest SHA-256",
+    "Relocated launcher runs -help with system-only PATH"
+  ],
+  "observations": [],
+  "failure": "AssertionError('Packaged node did not match the designated peer tip within 150 seconds')",
+  "relocated_folder": "/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima preview relocation usjvakrw/MinimaCoreC++-6c28109-port21001-macos-arm64",
+  "scope": "Actual shipped ZIP and default launcher, no modified Minima source, system-only PATH; mainnet first start and restart with distinct private data. Tests packaging and this workflow, not full node parity. Test wallet data remains only in the temporary extracted directory."
+}
