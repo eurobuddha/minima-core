@@ -3383,11 +3383,11 @@
     "java": "src/org/minima/utils/json/ItemList.java",
     "cpp": "src/org/minima/utils/json/ItemList.cpp",
     "guide": "files/src/org/minima/utils/json/ItemList.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+    "teaching_note": "Authored explanation of the Java source, native translation, and executed comparison. This is not a parity certification."
   },
   {
     "java": "src/org/minima/utils/json/JSONArray.java",

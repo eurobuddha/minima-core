@@ -5,9 +5,15 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **331 production counterparts and 44 mapped test files exist;
-82 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **332 production counterparts and 44 mapped test files exist;
+81 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+ItemList now compiles with its source constructor and array-cast quirks intact.
+Both builds pass 1,493 programs / 11,690 operations, comparing UTF-16 strings,
+mutable list aliases, raw objects, all declared overloads and bounded observation
+of the non-advancing empty-separator loop. See the
+[student lab](student-guide/new-tests/item-list.md).
 
 incentivecash now compiles and is registered. Both builds pass 106 programs /
 207 operations and 79 real loopback PUT requests per runtime, including exact
@@ -42,7 +48,7 @@ txnauto now compiles and is registered. Its static helper shares the existing
 burn builder while retaining the early validity check and default link hash.
 Both normal and sanitizer comparisons pass 414 programs / 1,655 operations.
 Affected proof/burn, funding and runner checks pass, as do both full builds. See the [student lab](student-guide/new-tests/automatic-transaction.md).
-There are 216 registered CTest entries; full-node parity remains unfinished.
+There are 217 registered CTest entries; full-node parity remains unfinished.
 
 peers now compiles and is registered. Both builds pass 271 programs / 1,355
 operations, including 48 loopback HTTP requests per runtime, real file writes

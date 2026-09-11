@@ -2963,5 +2963,48 @@
     "evidence": "validation/incentive-cash-work-in-progress",
     "limitations": "All counterparts partial. No public incentive service/TLS account interaction, durable SQL, complete native node, full current 216-suite or arbitrary reference/concurrency/streaming failure parity certification. saveObjectDirect still serializes in memory after open; late iostream error text may differ. Fixture strips Java stack frames and normalizes listed provider prose only; preference bytes, URLs and service data remain exact.",
     "test_driver_sha256": "97ccfcba8ce2af065ea19e8cf57f5cec469db0c35de0631d3b976d8d83105db7"
+  },
+  "item_list_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "counterparts": 376,
+    "production": 332,
+    "mapped_tests": 44,
+    "absent": 81,
+    "ctest_registered": 217,
+    "status": "focused comparison, both full builds and five affected checks pass both configurations",
+    "programs": 1493,
+    "operations": 11690,
+    "normal": true,
+    "sanitized": true,
+    "normal_full_build": true,
+    "sanitized_full_build": true,
+    "reuse": [
+      "src/support/JavaList.hpp",
+      "src/support/JavaStringTrim.hpp",
+      "src/support/JavaUnicode.hpp",
+      "src/org/minima/utils/messages/Message.hpp",
+      "src/org/minima/utils/json/JSONValue.cpp",
+      "src/support/SendRecipients.hpp",
+      "src/org/minima/system/commands/send/wallet/constructfrom.cpp",
+      "support/JSONCollectionsOracle.java",
+      "support/json_collections.cpp",
+      "tools/json_collections_differential.py",
+      "tools/peers_checker_differential.py"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; no ItemList or general StringTokenizer implementation found",
+    "adaptation": "JavaList adds indexed insertion and virtual append/destruction; JavaStringTrim adds UTF16 overload. ItemList uses UTF16 String plus existing MessageObject shared raw-value adapter; substring split and code-point delimiter loop preserve source quirks. Copy current raw item before rendering to retain ownership across callback mutation.",
+    "source_quirks": [
+      "Two-argument constructor stores input as separator",
+      "getArray always fails Object[] to String[] cast",
+      "Exact empty separator does not advance; test append-list throws after four successful additions",
+      "Null items ignored before indexed bounds validation",
+      "Null input/separator returns without dereferencing append list",
+      "Joining visits new items appended by rendering callbacks"
+    ],
+    "jdk_source_inspected": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/lib/src.zip: java.base/java/util/StringTokenizer.java setMaxDelimCodePoint/skipDelimiters/scanToken/isDelimiter",
+    "graph_query": "ItemList split getItems getArray: 16 nodes, 750-token output marked truncated; full pinned source and runtime oracle used for behavioral conclusions",
+    "limitations": "All counterparts partial. All declared ItemList constructors/method overloads exercised, but inherited List APIs, constructor/subclass dispatch, arbitrary Object rendering/UTF8 adapters, concurrent mutation and resource-exhaustion parity not certified. Empty exact separator retains source unbounded non-advancing loop with ordinary list. No complete native node, durable SQL or full current217-suite claim.",
+    "evidence": "validation/item-list-work-in-progress",
+    "test_driver_sha256": "cae302798acd853fbd912aebed343ae88042e212f3a60b28f089ee1b2a2b351b"
   }
 }

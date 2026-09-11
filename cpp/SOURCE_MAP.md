@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 375 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 376 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -348,7 +348,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/utils/encrypt/SignVerify.java` | `src/org/minima/utils/encrypt/SignVerify.cpp` | implemented_partial | — |
 | `src/org/minima/utils/encrypt/javajs/AesUtil.java` | `src/org/minima/utils/encrypt/javajs/AesUtil.cpp` | unported | — |
 | `src/org/minima/utils/jni/jnifunctions.java` | `src/org/minima/utils/jni/jnifunctions.cpp` | unported | — |
-| `src/org/minima/utils/json/ItemList.java` | `src/org/minima/utils/json/ItemList.cpp` | unported | — |
+| `src/org/minima/utils/json/ItemList.java` | `src/org/minima/utils/json/ItemList.cpp` | implemented_partial | — |
 | `src/org/minima/utils/json/JSONArray.java` | `src/org/minima/utils/json/JSONArray.cpp` | implemented_partial | — |
 | `src/org/minima/utils/json/JSONAware.java` | `src/org/minima/utils/json/JSONAware.cpp` | implemented_partial | — |
 | `src/org/minima/utils/json/JSONObject.java` | `src/org/minima/utils/json/JSONObject.cpp` | implemented_partial | — |

@@ -658,7 +658,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [ItemList.java](files/src/org/minima/utils/json/ItemList.md) | authored | unported |
+| [ItemList.java](files/src/org/minima/utils/json/ItemList.md) | authored | implemented_partial |
 | [JSONArray.java](files/src/org/minima/utils/json/JSONArray.md) | authored | implemented_partial |
 | [JSONAware.java](files/src/org/minima/utils/json/JSONAware.md) | authored | implemented_partial |
 | [JSONObject.java](files/src/org/minima/utils/json/JSONObject.md) | authored | implemented_partial |

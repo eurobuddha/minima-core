@@ -1,10 +1,10 @@
 # ItemList — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the Java source, native translation, and executed comparison. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/json/ItemList.java) · `src/org/minima/utils/json/ItemList.cpp` (absent)
+[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/json/ItemList.java) · [Mapped C++ body](../../../../../../../src/org/minima/utils/json/ItemList.cpp) · [C++ header](../../../../../../../src/org/minima/utils/json/ItemList.hpp)
 
 ## Purpose
 
@@ -18,20 +18,27 @@ ItemList is a string splitting/joining helper, separate from JSON parsing. It su
 4. add ignores null and trims nonnull strings; getItems returns the mutable raw list. Joining inserts the stored separator between elements. clear retains the separator, whereas reset restores comma.
 5. getArray casts the Object[] produced by no-argument List.toArray to String[], which normally throws ClassCastException rather than returning a valid string array.
 
-## Translation work still required
+## How the C++ translation works
 
-The mapped C++ counterpart is absent. A future port must preserve or explicitly resolve these source quirks; ordinary std::split-like behavior cannot be substituted without changing constructor state, empty-token behavior, null handling, and getArray failure.
+The native class reuses JavaList storage and the MessageObject shared-object adapter. It adds indexed insertion to that storage and a UTF-16 overload of the existing Java trim helper. String items retain their code units rather than passing through UTF-8; nonstring values retain their native type and shared object identity. get casts strings and returns null for a null item, while a nonstring raw item fails with ClassCastException.
+
+Exact split searches UTF-16 substrings and preserves empty fields. Multi-token split recognizes Unicode code points, matching the inspected JDK StringTokenizer surrogate behavior. The constructor assignment and getArray failure are preserved. addAll takes a snapshot before appending, so adding a list to itself duplicates the original contents once. getItems returns the same shared mutable list; a retained alias can still mutate it after a caller replaces its ItemList variable.
+
+Joining checks current size for each iteration and calls each object's toString. A local copy retains the item while its callback runs, so an object that appends to the same list cannot invalidate the currently rendering C++ value. New elements appended during rendering are visited, matching the source loop.
 
 ## Understanding the tests
 
-No native ItemList test is claimed. Proposed cases should compare split("a::b:", ":") with multi-token mode, inspect toString after the two-argument constructor, mutate getItems, and assert the getArray failure. The empty-separator case needs an isolated timeout test to observe nontermination safely.
+The [student lab](../../../../../../new-tests/item-list.md) was written before testing. The [driver](../../../../../../../tools/item_list_differential.py) reuses the existing JSON oracle/Runner pattern and compares all public constructors and overloads against the pinned Java class. It records every string as UTF-16 hex, preserving isolated-surrogate differences that ordinary console output could hide.
 
+Cases cover exact separators versus delimiter sets, nulls, ASCII trim versus nonbreaking space, empty tokens, indexes, separator changes, raw values, mutable aliases, clear/reset, self-add, and a retained object whose rendering changes or throws. A mutating object appends a new string during join; the result must include it. getArray must throw even for an empty list.
 
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+For an empty exact separator, a supplied test list throws after four successful adds. Both runtimes must have appended four empty strings before that exception. This safely demonstrates the non-advancing loop without changing the production loop or relying on a timeout.
 
-## Limits and a useful next test
+Normal and ASAN/UBSAN comparisons each pass 1,493 programs and 11,690 operations. Both full builds and five affected checks pass per build; the lab links to saved evidence.
 
-These are future tests, not executed validation. The helper’s name and initial comments are insufficient to infer behavior; the constructor assignment and raw-array cast are particularly instructive counterexamples.
+## Limits
+
+The map remains partial. Tests cover the class's declared API and specific raw-list/object behavior, not every inherited Java List method, subclass-constructor dispatch, arbitrary Object.toString implementation, concurrency or resource-exhaustion behavior. An empty separator with an ordinary unbounded append list remains the source's non-advancing loop. Retaining that behavior is fidelity evidence, not a recommendation for new callers.
 
 ## Check your understanding
 

@@ -1,3 +1,38 @@
+# Current work — ItemList validated; preserve this checkpoint
+
+Project/branch MinimaCoreC++. Added utils/json/ItemList.cpp/hpp with all declared
+constructors/method overloads. Reuses JavaList storage, MessageObject shared raw
+objects, UTF16 JSON strings and existing trim rule. JavaList adds indexed insertion
+and virtual append/destruction; JavaStringTrim adds a UTF16 overload only.
+
+Normal and ASAN/UBSAN pass 1,493 programs / 11,690 operations. Exact UTF16 code units,
+mutable retained lists, raw object mutation/errors, self-add, constructor separator
+bug and getArray ClassCastException match. Empty exact separator is observed with
+a supplied list that throws after four appends; production loop is unchanged.
+A current-item copy keeps raw rendering callbacks alive across list reallocation.
+
+Both full builds pass. Five affected checks pass each: peer state 874 cases /
+26,348 ops, messages 905 cases, JSON collections 67 programs / 606 ops,
+nodecount 171 programs / 314 real pings, peer concurrency. All handles terminal.
+All 457 guides authored/audited. Map 376 counterparts (332 production + 44 mapped
+tests), 81 absent (37 production + 44 tests), 217 CTest entries. No full 217-suite
+claim. All counterparts remain implemented_partial/not_verified. Evidence in
+validation/item-list-work-in-progress, scoped review/provenance/lab updated.
+
+Ready for local commit and verified recovery bundle. Prior HEAD
+a17e737ebccbd7738124ea313f50a66ffe50432f; prior bundle 20260910T235005Z verified.
+Use /tmp/minima-hashtest-backup.py and verify ItemList.cpp/hpp, JavaList.hpp,
+JavaStringTrim.hpp, lab and final sanitizer report in recovery clone. No GitHub push.
+
+Read-ahead Minima.java fully read this turn. Next meaningful integration is native
+entry point, mainStarter/runMinimaCMD, argument/environment configuration, actual
+Main startup, daemon/CLI and shutdown. Must inspect existing Main runtime,
+ParamConfigurer, MinimaRPCClient CLI, uncaught/line-reader/SQL service boundaries
+and sibling main before design. No entry-point implementation started. Durable
+SQL and numerous command/crypto/test counterparts still unfinished. Streamable
+active interface remains absent; P2PSwapLink source entirely commented. Full goal
+remains active. Historical notes follow.
+
 # Current work — incentivecash validated; preserve this checkpoint
 
 Project/branch MinimaCoreC++. Added base/incentivecash.cpp/hpp and registration.

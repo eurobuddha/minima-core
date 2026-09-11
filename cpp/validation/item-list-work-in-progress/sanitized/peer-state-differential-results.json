@@ -1,0 +1,7 @@
+{
+  "cases": 874,
+  "operations": 26348,
+  "passed": 874,
+  "failures": [],
+  "scope": "Peer state defaults/getters/setters, map ordering/aliases/nulls, address-set equality/retention/resizing, snapshots, greeting constructors/JSON/aliases/equality, P2PParams fixed-list checks, P2PTestParams defaults/scalar copy/shared-list application and mutation, P2PDB wire/default/type failures and detached lists. State-constructor shuffle compared as a permutation; declared non-Comparable HashSet tree-bin cases compare membership because JDK identityHashCode order is unspecified. Exceptions normalized; concurrent mutation not compared."
+}

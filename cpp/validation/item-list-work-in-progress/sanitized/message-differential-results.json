@@ -1,0 +1,6 @@
+{
+  "cases": 905,
+  "passed": 905,
+  "failures": [],
+  "scope": "Primitive boxes and wrong casts, null values/keys/types, message diagnostics, timer content aliasing and signed deadlines, FIFO and filtering; live thread timing and complete Object/HashMap APIs not asserted"
+}

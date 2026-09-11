@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 1493,
+  "total_programs": 1493,
+  "operations": 11690,
+  "failures": [],
+  "scope": "All public ItemList constructors/method overloads; UTF-16 exact separator versus code-point tokenizer; trimming, nulls, bounds, raw values, mutable List aliases, shared mutating/throwing objects, self-add and getArray cast failure. Empty exact separator observed with test append-list throwing after four additions; production loop unchanged. String code units and state exact; enhanced NPE/CCE provider prose normalized. Full inherited Java List API/concurrency/arbitrary Object and resource-limit parity not certified."
+}

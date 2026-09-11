@@ -1,3 +1,57 @@
+# Code Review — ItemList source semantics
+
+## Summary
+
+ItemList preserves its declared source API behavior using existing native list,
+Unicode, trimming and shared raw-object components. Both focused builds and
+selected regressions pass. The 457-file working native node remains unfinished.
+
+## Findings
+
+No unresolved defect was found in this scoped translation review. Null strings
+return before append-list dereference; null indexed additions bypass bounds
+checks. Exact UTF16 splitting keeps empty tokens and does not advance for an
+empty separator. Multi-token splitting recognizes supplementary code points and
+retains isolated surrogate units. The inspected JDK source supports this behavior.
+
+Two source mistakes remain deliberately observable: the two-argument constructor
+stores input as its future separator, and getArray's raw Object[] cast fails even
+for an empty list. These are documented in the student guide and asserted against
+Java. A bounded supplied append list makes the non-advancing loop test finite
+without adding a guard or substituting different production behavior.
+
+Raw List values retain native type and shared identity through MessageObject.
+Self-add copies original elements before mutation. Joining checks size repeatedly
+and retains the current item while calling its renderer; this protects the
+executing object across callback-driven vector reallocation and includes newly
+appended elements, matching Java. Existing JavaList storage and fixed-list checks
+remain intact; the additions are indexed insertion and virtual append/destruction.
+
+## Validation
+
+Normal and ASAN/UBSAN focused comparisons pass 1,493 programs and 11,690 operations.
+Every declared ItemList constructor and overload is called. UTF16 values, list
+snapshots, callback counts, exceptions and self/retained aliases are compared.
+Both full builds pass. Five affected checks pass each: peer state 874 cases /
+26,348 operations; messages 905; JSON collections 67 programs / 606 operations;
+nodecount 171 programs / 314 loopback pings; peer-state concurrency. All 457 student
+guides pass structural audit. The map contains 376 counterparts, 81 absent files
+and 217 registered CTest entries. No full current 217-suite pass is asserted.
+
+## Limits
+
+Enhanced NPE/CCE provider prose is normalized; string code units and other errors
+remain exact. The raw object adapter uses its existing UTF8 rendering boundary;
+full inherited Java List APIs, arbitrary object adapters, subclass/constructor
+virtual dispatch, resource exhaustion and concurrent mutation remain unverified.
+An ordinary list with an empty exact separator retains non-advancing source
+behavior. No full native-node or durable-storage certification is implied.
+
+## Verdict
+
+Approve this scoped local checkpoint. Full-goal completion is not asserted.
+Historical reviews follow.
+
 # Code Review — incentivecash persistence and PUT
 
 ## Summary

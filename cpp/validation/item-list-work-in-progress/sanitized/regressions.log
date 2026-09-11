@@ -1,0 +1,15 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  57: peer_state_differential
+    Start 215: node_count_differential
+    Start  76: peer_state_concurrent
+1/5 Test  #76: peer_state_concurrent ............   Passed    1.86 sec
+    Start  39: message_differential
+2/5 Test #215: node_count_differential ..........   Passed    9.90 sec
+    Start 203: json_collections_differential
+3/5 Test  #39: message_differential .............   Passed    8.79 sec
+4/5 Test #203: json_collections_differential ....   Passed    0.99 sec
+5/5 Test  #57: peer_state_differential ..........   Passed   62.84 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =  62.84 sec
