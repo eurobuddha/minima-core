@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 423 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 426 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -432,9 +432,9 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/tests/kissvm/functions/maths/MINTests.java` | `test/org/minima/tests/kissvm/functions/maths/MINTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/maths/POWTests.java` | `test/org/minima/tests/kissvm/functions/maths/POWTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/maths/SIGDIGTests.java` | `test/org/minima/tests/kissvm/functions/maths/SIGDIGTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.java` | `test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/sha/SHA2Tests.java` | `test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/sha/SHA3Tests.java` | `test/org/minima/tests/kissvm/functions/sha/SHA3Tests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.java` | `test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/sha/SHA2Tests.java` | `test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/sha/SHA3Tests.java` | `test/org/minima/tests/kissvm/functions/sha/SHA3Tests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.java` | `test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.cpp` | unported | — |
 | `test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.java` | `test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.cpp` | unported | — |
 | `test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.java` | `test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.cpp` | unported | — |

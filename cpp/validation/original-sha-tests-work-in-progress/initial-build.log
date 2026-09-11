@@ -1,0 +1,238 @@
+[ 97%] Built target minima_file_port
+[ 97%] Building CXX object CMakeFiles/SHA2Tests.dir/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp.o
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:946:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator.h:17:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocate_at_least.h:14:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator_traits.h:28:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/limits:118:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:946:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator.h:17:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocate_at_least.h:14:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator_traits.h:28:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/limits:524:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/type_traits:562:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:16:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:34:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_count.h:14:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/typeinfo:69:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:16:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:34:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_count.h:14:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/typeinfo:390:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef:40:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:16:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:35:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/uninitialized_algorithms.h:13:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/copy.h:14:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/min.h:16:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/initializer_list:50:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:24:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:273:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:24:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:278:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/compare:164:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:24:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:278:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/compare:171:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cmath:328:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:24:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:1438:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/exception:88:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:24:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:1438:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/exception:97:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/new:112:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:24:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:1439:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iosfwd:121:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:950:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h:24:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:1443:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/utility:286:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:981:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:991:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic:605:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/aliases.h:12:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic.h:12:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_sync.h:15:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/duration.h:21:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/ratio:91:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:991:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic:617:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:992:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/concepts:162:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:998:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iterator:715:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/common_iterator.h:33:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/variant:274:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:2:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:998:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iterator:732:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/OriginalFunctionTestSupport.hpp:3:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/Contract.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/BooleanValue.hpp:2:
+In file included from /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/kissvm/values/Value.hpp:3:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/string:654:
+In file included from /Applications/Xcode-26.6.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/string_view:246:
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/version:1:1: error: expected unqualified-id
+    1 | 0.2.0-dev
+      | ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[3]: *** [CMakeFiles/SHA2Tests.dir/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp.o] Error 1
+make[2]: *** [CMakeFiles/SHA2Tests.dir/all] Error 2
+make[1]: *** [CMakeFiles/SHA2Tests.dir/rule] Error 2
+make: *** [SHA2Tests] Error 2

@@ -1,3 +1,55 @@
+# Current checkpoint — original SHA tests
+
+Base HEAD: 32fc1d0868ef9138656485fcd91c9fc2d4415f16. Goal ACTIVE and incomplete.
+New files: SHA2Tests.cpp, SHA3Tests.cpp and CHAINSHATests.cpp under
+`test/org/minima/tests/kissvm/functions/sha`. Inventory: **426 counterparts**
+(364 production, 62 tests), **31 absent** (5 production, 26 tests).
+All full parity labels remain not_verified. No production algorithm changed.
+
+Both builds pass real MinimaCoreCpp node target, new tests and minima_kissvm.
+Both CTest runs pass nine original methods / 263 assertions per runtime and
+46 supplemental comparisons / 92 independent value checks. Transcript:
+`fa657a58958ad2501438ab35c45939ad11a2c363efdc0e008ed38be7d18e9cdc`.
+Full CTest suite not repeated; 272 registered entries. Source SHA3/CHAINSHATests
+valid bodies contain no active assertions; original PROOF rejections are arity
+only. Supplemental fixed hash inputs and four proof fixtures are separate evidence.
+
+Lab: student-guide/new-tests/original-sha-tests.md. Evidence and remaining list:
+validation/original-sha-tests-work-in-progress. Three lessons updated; all 457
+student pages retained. Commit only cpp; preserve unrelated graphify work and
+external f7f0e08 Java SQL/JAR commit. No push; pinned upstream-study unchanged.
+
+NEXT: remaining KISS state tests, then signature/transaction/expression/statement/
+token counterparts. Inspect pinned source and existing native dependencies first.
+Four JNI-dependent production files still lack native bodies/ABI in inspected
+candidates; independent conversions can proceed. Inactive P2PSwapLink and empty
+TxPoWProcessor test bodies must not be credited as active behavior.
+
+Magic replay: normal session 55636 TERMINAL exit 0, full 86400 updates/1729 lines
+exactly match Java; evidence copied here. Sanitizer session 41123 remained live
+when polled this turn. These are saved 9ae7039 binaries, not current binaries;
+poll existing handle without restarting or blocking independent work.
+
+## Code Review
+
+### Summary
+All active pinned source assertions, original fixtures and random trial counts
+are retained. The direct Java runner follows the existing annotation-checked
+runner. Supplemental independent digests and known boolean outcomes prevent two
+matching error paths from passing. Production code is unchanged.
+
+### Findings
+No unresolved blocking finding in this bounded test translation. Build include
+issues were fixed using existing conventions. Source coverage limitations are
+explicit: empty valid methods and arity-only PROOF assertions are not full parity.
+Reviewed all three native files, helper, Java/Python runners, CMake additions,
+source mapping changes, lessons and saved build/test results.
+
+### Verdict
+✅ Approve for this checkpoint; full 457-file working-port goal remains incomplete.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — original base tests and missing value APIs
 
 MinimaCoreC++ branch/project/executable. Base HEAD 325ec81a5ede1e0407eaeefc410f1018f9963ea5.

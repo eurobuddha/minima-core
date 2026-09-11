@@ -852,9 +852,9 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [CHAINSHATests.java](files/test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.md) | test explanation | unported |
-| [SHA2Tests.java](files/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.md) | test explanation | unported |
-| [SHA3Tests.java](files/test/org/minima/tests/kissvm/functions/sha/SHA3Tests.md) | test explanation | unported |
+| [CHAINSHATests.java](files/test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.md) | test explanation | implemented_partial |
+| [SHA2Tests.java](files/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.md) | test explanation | implemented_partial |
+| [SHA3Tests.java](files/test/org/minima/tests/kissvm/functions/sha/SHA3Tests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/functions/sigs
 

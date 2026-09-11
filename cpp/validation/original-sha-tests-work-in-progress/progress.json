@@ -1,0 +1,48 @@
+{
+  "base_head": "32fc1d0868ef9138656485fcd91c9fc2d4415f16",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp",
+    "test/org/minima/tests/kissvm/functions/sha/SHA3Tests.cpp",
+    "test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.cpp"
+  ],
+  "counterparts": 426,
+  "production_counterparts": 364,
+  "test_counterparts": 62,
+  "remaining": 31,
+  "remaining_production": 5,
+  "remaining_tests": 26,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "builds": {
+    "normal": "PASS new targets, minima_kissvm and real MinimaCoreCpp node target",
+    "sanitized": "PASS new targets, minima_kissvm and real MinimaCoreCpp node target",
+    "full_suite": "not repeated; 272 CTest entries"
+  },
+  "tests": {
+    "original_methods": 9,
+    "original_assertions_per_runtime": 263,
+    "SHA2Tests_assertions": 212,
+    "SHA3Tests_assertions": 27,
+    "CHAINSHATests_assertions": 24,
+    "supplemental_comparisons_per_build": 46,
+    "independent_value_checks_per_build": 92,
+    "transcript_sha256": "fa657a58958ad2501438ab35c45939ad11a2c363efdc0e008ed38be7d18e9cdc",
+    "normal": "PASS",
+    "sanitized": "PASS"
+  },
+  "scope": "All active original methods and assertions, including 100 random SHA2 trials per runtime. Random inputs are independently generated, not a shared differential corpus. SHA3 valid body has only setup; CHAINSHATests valid body is commented out. All 20 original PROOF rejections are arity checks. Supplementary fixed SHA2/SHA3 raw byte and UTF-8 inputs have independent hashlib expectations; four existing Java-generated proof fixtures exercise valid/wrong sums for hex/script leaves. Exact probe traces compared for these successful evaluations; no generic error normalization is relied on. Full hashing/proof API and node parity not certified.",
+  "initial_build_issues": "Test helper include resolution, project VERSION shadowing standard <version> on macOS, and missing explicit MinimaFunction include. Resolved by existing relative-include convention and explicit dependency. No production algorithm changes.",
+  "blockers": [
+    "Four production JNI-dependent files need native bodies/ABI or authoritative vectors absent from inspected repository/sibling candidates; independent caller/test work can continue.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and actual delay helpers. Preserve source semantics without inventing active APIs or claiming empty assertions as behavior coverage."
+  ],
+  "next_action": "Continue remaining independent KISS state/signature/transaction/expression/statement/token tests using existing production implementations. Start with state tests. Full production and runtime parity audit remains after counterparts.",
+  "long_demos": {
+    "normal_session": 55636,
+    "normal": "Terminal exit 0; saved 9ae7039 binary passes full 86400-update Magic replay, 1729 lines exactly matching Java.",
+    "sanitized_session": 41123,
+    "sanitized": "Live when polled this turn; saved 9ae7039 binary, not current code."
+  }
+}
