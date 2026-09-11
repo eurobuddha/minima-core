@@ -1,0 +1,1219 @@
+{
+  "passed": true,
+  "original_methods": 21,
+  "original_assertions_per_runtime": 107,
+  "results": [
+    {
+      "name": "GETINADDRTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-getter-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalGetterTests",
+            "GETINADDRTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETINADDRTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/GETINADDRTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETINADDRTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GETINAMTTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-getter-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalGetterTests",
+            "GETINAMTTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETINAMTTests\",\"tests\":3,\"assertions\":16,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/GETINAMTTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETINAMTTests\",\"tests\":3,\"assertions\":16,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GETINIDTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-getter-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalGetterTests",
+            "GETINIDTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETINIDTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/GETINIDTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETINIDTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GETINTOKTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-getter-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalGetterTests",
+            "GETINTOKTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETINTOKTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/GETINTOKTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETINTOKTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GETOUTADDRTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-getter-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalGetterTests",
+            "GETOUTADDRTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETOUTADDRTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/GETOUTADDRTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETOUTADDRTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GETOUTAMTTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-getter-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalGetterTests",
+            "GETOUTAMTTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETOUTAMTTests\",\"tests\":3,\"assertions\":16,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/GETOUTAMTTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETOUTAMTTests\",\"tests\":3,\"assertions\":16,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GETOUTTOKTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-getter-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalGetterTests",
+            "GETOUTTOKTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETOUTTOKTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/GETOUTTOKTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_GETTER_RESULT {\"class\":\"GETOUTTOKTests\",\"tests\":3,\"assertions\":15,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "supplemental": {
+    "passed": true,
+    "comparisons": 19,
+    "independent_checks": 38,
+    "expressions": [
+      "GETINADDR(0)",
+      "GETINADDR(1)",
+      "GETINADDR(2)",
+      "GETINAMT(0)",
+      "GETINAMT(1)",
+      "GETINID(0)",
+      "GETINID(1)",
+      "GETINID(2)",
+      "GETINTOK(0)",
+      "GETINTOK(1) EQ tok",
+      "GETINTOK(2)",
+      "GETOUTADDR(0)",
+      "GETOUTADDR(1)",
+      "GETOUTADDR(2)",
+      "GETOUTAMT(0)",
+      "GETOUTAMT(1)",
+      "GETOUTTOK(0)",
+      "GETOUTTOK(1) EQ tok",
+      "GETOUTTOK(2)"
+    ],
+    "observations": [
+      [
+        [
+          "function:GETINADDR, params:[0]",
+          [
+            1,
+            "0x20"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINADDR, params:[0] returns:0x20\n"
+        ],
+        [
+          "function:GETINADDR, params:[1]",
+          [
+            1,
+            "0x21"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINADDR, params:[1] returns:0x21\n"
+        ],
+        [
+          "function:GETINADDR, params:[2]",
+          [
+            1,
+            "0x22"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINADDR, params:[2] returns:0x22\n"
+        ],
+        [
+          "function:GETINAMT, params:[0]",
+          [
+            2,
+            "7",
+            "0x000107"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINAMT, params:[0] returns:7\n"
+        ],
+        [
+          "function:GETINAMT, params:[1]",
+          [
+            2,
+            "25",
+            "0x000119"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINAMT, params:[1] returns:25\n"
+        ],
+        [
+          "function:GETINID, params:[0]",
+          [
+            1,
+            "0xA0"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINID, params:[0] returns:0xA0\n"
+        ],
+        [
+          "function:GETINID, params:[1]",
+          [
+            1,
+            "0xA1"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINID, params:[1] returns:0xA1\n"
+        ],
+        [
+          "function:GETINID, params:[2]",
+          [
+            1,
+            "0xA2"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINID, params:[2] returns:0xA2\n"
+        ],
+        [
+          "function:GETINTOK, params:[0]",
+          [
+            1,
+            "0x00"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINTOK, params:[0] returns:0x00\n"
+        ],
+        [
+          "( function:GETINTOK, params:[1] EQ variable:tok )",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          4,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - function:GETINTOK, params:[1] returns:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0\nINST[4] - ( function:GETINTOK, params:[1] EQ variable:tok ) returns:TRUE\n"
+        ],
+        [
+          "function:GETINTOK, params:[2]",
+          [
+            1,
+            "0x77"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINTOK, params:[2] returns:0x77\n"
+        ],
+        [
+          "function:GETOUTADDR, params:[0]",
+          [
+            1,
+            "0x20"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTADDR, params:[0] returns:0x20\n"
+        ],
+        [
+          "function:GETOUTADDR, params:[1]",
+          [
+            1,
+            "0x21"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTADDR, params:[1] returns:0x21\n"
+        ],
+        [
+          "function:GETOUTADDR, params:[2]",
+          [
+            1,
+            "0x22"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTADDR, params:[2] returns:0x22\n"
+        ],
+        [
+          "function:GETOUTAMT, params:[0]",
+          [
+            2,
+            "5",
+            "0x000105"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTAMT, params:[0] returns:5\n"
+        ],
+        [
+          "function:GETOUTAMT, params:[1]",
+          [
+            2,
+            "12.5",
+            "0x01017D"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTAMT, params:[1] returns:12.5\n"
+        ],
+        [
+          "function:GETOUTTOK, params:[0]",
+          [
+            1,
+            "0x00"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTTOK, params:[0] returns:0x00\n"
+        ],
+        [
+          "( function:GETOUTTOK, params:[1] EQ variable:tok )",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          4,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - function:GETOUTTOK, params:[1] returns:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0\nINST[4] - ( function:GETOUTTOK, params:[1] EQ variable:tok ) returns:TRUE\n"
+        ],
+        [
+          "function:GETOUTTOK, params:[2]",
+          [
+            1,
+            "0x77"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTTOK, params:[2] returns:0x77\n"
+        ]
+      ],
+      [
+        [
+          "function:GETINADDR, params:[0]",
+          [
+            1,
+            "0x20"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINADDR, params:[0] returns:0x20\n"
+        ],
+        [
+          "function:GETINADDR, params:[1]",
+          [
+            1,
+            "0x21"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINADDR, params:[1] returns:0x21\n"
+        ],
+        [
+          "function:GETINADDR, params:[2]",
+          [
+            1,
+            "0x22"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINADDR, params:[2] returns:0x22\n"
+        ],
+        [
+          "function:GETINAMT, params:[0]",
+          [
+            2,
+            "7",
+            "0x000107"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINAMT, params:[0] returns:7\n"
+        ],
+        [
+          "function:GETINAMT, params:[1]",
+          [
+            2,
+            "25",
+            "0x000119"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINAMT, params:[1] returns:25\n"
+        ],
+        [
+          "function:GETINID, params:[0]",
+          [
+            1,
+            "0xA0"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINID, params:[0] returns:0xA0\n"
+        ],
+        [
+          "function:GETINID, params:[1]",
+          [
+            1,
+            "0xA1"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINID, params:[1] returns:0xA1\n"
+        ],
+        [
+          "function:GETINID, params:[2]",
+          [
+            1,
+            "0xA2"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINID, params:[2] returns:0xA2\n"
+        ],
+        [
+          "function:GETINTOK, params:[0]",
+          [
+            1,
+            "0x00"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINTOK, params:[0] returns:0x00\n"
+        ],
+        [
+          "( function:GETINTOK, params:[1] EQ variable:tok )",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          4,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - function:GETINTOK, params:[1] returns:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0\nINST[4] - ( function:GETINTOK, params:[1] EQ variable:tok ) returns:TRUE\n"
+        ],
+        [
+          "function:GETINTOK, params:[2]",
+          [
+            1,
+            "0x77"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETINTOK, params:[2] returns:0x77\n"
+        ],
+        [
+          "function:GETOUTADDR, params:[0]",
+          [
+            1,
+            "0x20"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTADDR, params:[0] returns:0x20\n"
+        ],
+        [
+          "function:GETOUTADDR, params:[1]",
+          [
+            1,
+            "0x21"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTADDR, params:[1] returns:0x21\n"
+        ],
+        [
+          "function:GETOUTADDR, params:[2]",
+          [
+            1,
+            "0x22"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTADDR, params:[2] returns:0x22\n"
+        ],
+        [
+          "function:GETOUTAMT, params:[0]",
+          [
+            2,
+            "5",
+            "0x000105"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTAMT, params:[0] returns:5\n"
+        ],
+        [
+          "function:GETOUTAMT, params:[1]",
+          [
+            2,
+            "12.5",
+            "0x01017D"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTAMT, params:[1] returns:12.5\n"
+        ],
+        [
+          "function:GETOUTTOK, params:[0]",
+          [
+            1,
+            "0x00"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTTOK, params:[0] returns:0x00\n"
+        ],
+        [
+          "( function:GETOUTTOK, params:[1] EQ variable:tok )",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          4,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[3] - function:GETOUTTOK, params:[1] returns:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0\nINST[4] - ( function:GETOUTTOK, params:[1] EQ variable:tok ) returns:TRUE\n"
+        ],
+        [
+          "function:GETOUTTOK, params:[2]",
+          [
+            1,
+            "0x77"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          2,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[2] - function:GETOUTTOK, params:[2] returns:0x77\n"
+        ]
+      ]
+    ],
+    "failures": []
+  },
+  "scope": "All seven original getter test files, 21 annotated methods and newSimpleAddress helpers, with exact active fixtures, random sizes and assertions. Native shared Coin handles preserve source token metadata clearing after transaction insertion; valid/invalid amount fixture differences retained. GETINID valid fixture retains both witness proofs, invalid fixture has none. Additional rich KISS fixture checks distinct witness IDs, non-Minima token IDs and scaled amounts; exact result/context/trace comparisons and known values required. Random source inputs independent per runtime. Full getter API, malformed input, mutation/concurrency and node parity not certified."
+}

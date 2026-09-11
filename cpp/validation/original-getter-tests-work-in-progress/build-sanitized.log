@@ -1,0 +1,33 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/GETINADDRTests.dir/test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.cpp.o
+[100%] Linking CXX executable GETINADDRTests
+[100%] Built target GETINADDRTests
+[ 97%] Built target minima_file_port
+[ 97%] Building CXX object CMakeFiles/GETINAMTTests.dir/test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.cpp.o
+[100%] Linking CXX executable GETINAMTTests
+[100%] Built target GETINAMTTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/GETINIDTests.dir/test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.cpp.o
+[100%] Linking CXX executable GETINIDTests
+[100%] Built target GETINIDTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/GETINTOKTests.dir/test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.cpp.o
+[100%] Linking CXX executable GETINTOKTests
+[100%] Built target GETINTOKTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/GETOUTADDRTests.dir/test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp.o
+[100%] Linking CXX executable GETOUTADDRTests
+[100%] Built target GETOUTADDRTests
+[ 97%] Built target minima_file_port
+[ 97%] Building CXX object CMakeFiles/GETOUTAMTTests.dir/test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.cpp.o
+[100%] Linking CXX executable GETOUTAMTTests
+[100%] Built target GETOUTAMTTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/GETOUTTOKTests.dir/test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.cpp.o
+[100%] Linking CXX executable GETOUTTOKTests
+[100%] Built target GETOUTTOKTests
+[100%] Built target minima_file_port
+[100%] Built target minima_kissvm
+[ 97%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Built target MinimaCoreCpp

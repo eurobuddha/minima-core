@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 432 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 439 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -441,14 +441,14 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/tests/kissvm/functions/state/PREVSTATETests.java` | `test/org/minima/tests/kissvm/functions/state/PREVSTATETests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/state/SAMESTATETests.java` | `test/org/minima/tests/kissvm/functions/state/SAMESTATETests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/state/STATETests.java` | `test/org/minima/tests/kissvm/functions/state/STATETests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.java` | `test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.cpp` | unported | — |
 | `test/org/minima/tests/kissvm/statements/StatementBlockTests.java` | `test/org/minima/tests/kissvm/statements/StatementBlockTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/statements/StatementParserTests.java` | `test/org/minima/tests/kissvm/statements/StatementParserTests.cpp` | unported | — |

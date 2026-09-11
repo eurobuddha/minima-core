@@ -11,14 +11,21 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 68 mapped test files exist;
-25 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 75 mapped test files exist;
+18 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-SIGNEDBYTests, MULTISIGTests and CHECKSIGTests now have working counterparts.
+Seven original transaction getter test files now have working counterparts:
+GETINADDR, GETINAMT, GETINID, GETINTOK, GETOUTADDR, GETOUTAMT and GETOUTTOK tests.
+Both builds pass 21 methods/107 assertions per runtime, plus 19 fixed-input
+comparisons/38 independent checks. Both node targets build. Inventory: **439
+counterparts, 18 absent**, with full parity unverified. See the
+[getter test lab](student-guide/new-tests/original-getter-tests.md).
+
+At the preceding checkpoint, SIGNEDBYTests, MULTISIGTests and CHECKSIGTests gained working counterparts.
 Both builds pass all nine original methods/148 assertions per runtime, plus
 14 fixed-input comparisons/28 independent checks of keys, signature bytes and
-cross-runtime verification. Both node targets build. Inventory: **432 counterparts,
+cross-runtime verification. Both node targets build. That checkpoint had **432 counterparts,
 25 absent**, with full parity unverified. See the
 [signature test lab](student-guide/new-tests/original-signature-tests.md).
 

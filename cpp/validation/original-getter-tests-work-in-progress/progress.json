@@ -1,0 +1,55 @@
+{
+  "base_head": "7a3413e585c8070d9021688c811dcefab7752da9",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.cpp",
+    "test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.cpp",
+    "test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.cpp",
+    "test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.cpp",
+    "test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp",
+    "test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.cpp",
+    "test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.cpp"
+  ],
+  "counterparts": 439,
+  "production_counterparts": 364,
+  "test_counterparts": 75,
+  "remaining": 18,
+  "remaining_production": 5,
+  "remaining_tests": 13,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "builds": {
+    "normal": "PASS all seven new targets, existing minima_kissvm probe and real MinimaCoreCpp node target",
+    "sanitized": "PASS all seven new targets, existing minima_kissvm probe and real MinimaCoreCpp node target",
+    "full_suite": "not repeated; 275 registered tests"
+  },
+  "tests": {
+    "original_methods": 21,
+    "original_assertions_per_runtime": 107,
+    "assertions_by_class": {
+      "GETINADDRTests": 15,
+      "GETINAMTTests": 16,
+      "GETINIDTests": 15,
+      "GETINTOKTests": 15,
+      "GETOUTADDRTests": 15,
+      "GETOUTAMTTests": 16,
+      "GETOUTTOKTests": 15
+    },
+    "supplemental_comparisons_per_build": 19,
+    "independent_checks_per_build": 38,
+    "supplemental_transcript_sha256": "64198cc546569b656a5a93b27c06a2855e3abc8994f5e8ce00230a32015c7734",
+    "normal": "PASS",
+    "sanitized": "PASS"
+  },
+  "scope": "All seven original getter test files, 21 annotated methods and newSimpleAddress helpers, with exact active fixtures, random sizes and assertions. Native shared Coin handles preserve source token metadata clearing after transaction insertion; valid/invalid amount fixture differences retained. GETINID valid fixture retains both witness proofs, invalid fixture has none. Additional rich KISS fixture checks distinct witness IDs, non-Minima token IDs and scaled amounts; exact result/context/trace comparisons and known values required. Random source inputs independent per runtime. Full getter API, malformed input, mutation/concurrency and node parity not certified.",
+  "blockers": [
+    "Four JNI-dependent production files lack native bodies/ABI or authoritative vectors in inspected candidates; independent work remains.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Preserve source behavior without crediting empty assertions as parity."
+  ],
+  "next_action": "Convert VERIFYINTests and VERIFYOUTTests, then remaining expression, statement and token original tests. After counterparts, full production API/runtime parity audit remains.",
+  "long_demos": {
+    "normal": "55636 terminal exit 0; saved 9ae7039 full Magic replay passed at SHA checkpoint.",
+    "sanitized": "41123 confirmed LIVE this turn; saved 9ae7039 binary, not current code. Poll same handle, do not restart from buffered output or block independent conversions."
+  }
+}

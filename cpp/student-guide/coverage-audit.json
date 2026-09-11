@@ -2,8 +2,8 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 432,
-  "native_absent": 25,
+  "native_counterparts": 439,
+  "native_absent": 18,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
@@ -12,15 +12,15 @@
     },
     "test": {
       "total": 88,
-      "counterparts": 68,
-      "absent": 20
+      "counterparts": 75,
+      "absent": 13
     }
   },
   "teaching_counts": {
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9459,
+  "links_checked": 9481,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -4373,9 +4373,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4383,9 +4383,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4393,9 +4393,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4403,9 +4403,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4423,9 +4423,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4433,9 +4433,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4443,9 +4443,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },

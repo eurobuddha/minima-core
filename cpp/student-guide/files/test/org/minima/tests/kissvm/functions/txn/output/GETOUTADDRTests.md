@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.java](../../../../../../../../../../../upstream-study/test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -43,7 +43,7 @@ assertEquals(addr4.getAddressData(), ((HexValue) res).getMiniData());
 assertThrows(ExecutionException.class, () -> { Value res = mf.runFunction(ctr); });
 ```
 
-An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this page does not claim that the Java suite was executed successfully.
+An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; the checkpoint below records successful execution of unchanged Java tests and their native counterparts.
 
 The fixture names these Minima dependencies (links are for tracing the test setup and calls):
 
@@ -69,11 +69,17 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+[Mapped native counterpart](../../../../../../../../../../test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp) runs all three annotated methods and
+15 original assertions per runtime, and preserves newSimpleAddress.
+Unchanged Java tests and their C++ counterparts pass in normal and sanitizer builds.
+Both requested addresses and all random address helper calls remain active in the valid/invalid fixtures.
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
-
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+[Transaction getter lab](../../../../../../../../../new-tests/original-getter-tests.md) explains
+coin selection, token units, witness IDs, shared-handle mutations and source limitations.
+Nineteen supplemental comparisons and 38 independent checks use fixed rich KISS
+fixtures, including distinct witness IDs and a fractional scaled amount.
+[Checkpoint evidence](../../../../../../../../../../validation/original-getter-tests-work-in-progress/progress.json).
+Full getter API, arbitrary mutation/concurrency and node parity remain unverified.
 
 ## What students should conclude
 

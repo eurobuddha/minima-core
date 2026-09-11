@@ -1,3 +1,41 @@
+# Current checkpoint — original transaction getter tests
+
+Base HEAD: 7a3413e585c8070d9021688c811dcefab7752da9. Goal ACTIVE and incomplete.
+Seven new files: GETINADDRTests, GETINAMTTests, GETINIDTests, GETINTOKTests,
+GETOUTADDRTests, GETOUTAMTTests and GETOUTTOKTests under their original txn packages.
+Inventory: **439 counterparts** (364 production, 75 tests), **18 absent**
+(5 production, 13 tests). Full parity remains not_verified. No production changes.
+
+Both builds pass all new targets, minima_kissvm probe and real MinimaCoreCpp node.
+Both original suites PASS 21 methods / 107 assertions per runtime. All random
+address helpers, exact source coin/token assignments and valid/invalid differences
+retained; GETINID retains witness proofs only in its valid fixture. Supplemental
+rich KISS contexts distinguish witness IDs, custom token IDs and token units:
+19 comparisons / 38 independent checks PASS in both builds, with exact full rows.
+Supplemental transcript SHA-256: 64198cc546569b656a5a93b27c06a2855e3abc8994f5e8ce00230a32015c7734.
+Normal CTest 5.48s, sanitizer 6.69s. Full suite not repeated; 275 registered tests.
+
+Lab: student-guide/new-tests/original-getter-tests.md. Evidence/remaining files:
+validation/original-getter-tests-work-in-progress. All seven lessons updated;
+457-page structural audit retained. NEXT: VERIFYINTests/VERIFYOUTTests, then
+remaining expressions/statements/tokens. Four JNI-dependent production files lack
+native bodies/ABI in inspected candidates but independent work can proceed.
+P2PSwapLink is inactive; TxPoWProcessorTest has empty bodies plus delay helpers.
+No invented active behavior or credit for empty assertions. Full API/runtime
+parity still requires broader completion audit after counterpart work.
+
+Magic sanitizer session 41123 confirmed LIVE this turn; saved 9ae7039 binary.
+Normal session 55636 terminal exit 0, saved full replay matches Java. Poll the same
+sanitizer handle without restarting from buffered output or delaying other files.
+
+Preserve graphify work and externally committed Java SQL/JAR f7f0e08. Commit only
+cpp; no push; upstream-study remains pinned. Preceding verified recovery bundle:
+local-backups/MinimaCoreC++-20260911T183014Z.bundle, SHA-256
+6d0c2b6ef5e0fffb70dd727cfca44e2f7e0150e9f006ac2b60bc33c0a5b8595c,
+28 checkpoint files byte-verified in a fresh recovery clone.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — original signature tests
 
 Base HEAD: d9a98bab251c671e6e843406d121faf9f7e81a39. Goal ACTIVE and incomplete.

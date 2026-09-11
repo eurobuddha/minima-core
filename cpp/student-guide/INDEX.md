@@ -876,19 +876,19 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [GETINADDRTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.md) | test explanation | unported |
-| [GETINAMTTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.md) | test explanation | unported |
-| [GETINIDTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.md) | test explanation | unported |
-| [GETINTOKTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.md) | test explanation | unported |
+| [GETINADDRTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.md) | test explanation | implemented_partial |
+| [GETINAMTTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.md) | test explanation | implemented_partial |
+| [GETINIDTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.md) | test explanation | implemented_partial |
+| [GETINTOKTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.md) | test explanation | implemented_partial |
 | [VERIFYINTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.md) | test explanation | unported |
 
 ## test/org/minima/tests/kissvm/functions/txn/output
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [GETOUTADDRTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.md) | test explanation | unported |
-| [GETOUTAMTTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.md) | test explanation | unported |
-| [GETOUTTOKTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.md) | test explanation | unported |
+| [GETOUTADDRTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.md) | test explanation | implemented_partial |
+| [GETOUTAMTTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.md) | test explanation | implemented_partial |
+| [GETOUTTOKTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.md) | test explanation | implemented_partial |
 | [VERIFYOUTTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.md) | test explanation | unported |
 
 ## test/org/minima/tests/kissvm/statements
