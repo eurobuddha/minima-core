@@ -1,3 +1,53 @@
+# decryptbackup checkpoint — full port unfinished
+
+## Code Review
+
+### Summary
+
+The new mapped command preserves source file effects and exception boundaries,
+using existing cryptographic, file and formatting implementations. GzipInput gains
+a reader callback while retaining its previous file path. Review covered the full
+command/header, stream adapters, GenerateKey changes, registry/CMake wiring, Java
+and native fixtures, driver, source-map changes and student lessons.
+
+### Findings resolved
+
+- Output creation must precede backup decoding, including when both names resolve
+  to the same file. The implementation and snapshots preserve the destructive
+  ordering; this port does not silently introduce atomic-output semantics.
+- A bulk decrypt-then-inflate operation would move padding/trailer failures ahead
+  of source-visible output. The new adapter instead reuses Cipher.update in
+  8192-byte input chunks and the gzip reader in 512-byte input chunks.
+- The copy-loop catch must not swallow JavaError/std::bad_alloc. Explicit catches
+  preserve those categories while ordinary payload failures remain swallowed.
+- PBEKeySpec empty-salt text and invalid-IV checked exception type now survive
+  GenerateKey's native validation. Existing utility tests still pass.
+- Consumed cipher output is cleared before refill/finalization so a failed final
+  cannot leave stale plaintext available. Callback byte counts are bounded.
+- The first fixture used a slash-containing output as though it were a base-folder
+  name. MiniFile treats it as an explicit path; the fixture was corrected and its
+  verified stray output removed. The initial report is preserved.
+
+### Validation
+
+422 Java/native cases compare replies/exceptions and exact file snapshots. Valid
+plaintext is independently required, and 113 damaged cases demonstrate the source
+success-with-partial-output behavior. Source metadata, parameter/factory behavior,
+real registry calls, Unicode passwords, salt/IV gates, aliasing/directories and
+cipher/gzip corruption are included. See validation/decrypt-backup-work-in-progress
+for normal/ASAN/UBSAN builds, six selected suites and final adapter reruns.
+
+### Remaining limits and verdict
+
+Direct EOF/NPE/class-cast diagnostic prose is normalized; virtual threads, resource
+exhaustion, special-device write errors and unused private helper invocation remain
+unverified. Native RAII releases descriptors rather than reproducing JVM leaks.
+All mappings remain partial/not_verified. Backup/restore themselves are still absent.
+
+✅ Approve this local partial checkpoint. Full 1:1 parity remains unproven.
+
+---
+
 # Native H2 and solo-node startup checkpoint — full port unfinished
 
 ## Code Review

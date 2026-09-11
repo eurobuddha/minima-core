@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  46: raw_archive_differential
+    Start 222: decrypt_backup_differential
+1/2 Test #222: decrypt_backup_differential ......   Passed    9.26 sec
+2/2 Test  #46: raw_archive_differential .........   Passed   98.30 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  98.31 sec

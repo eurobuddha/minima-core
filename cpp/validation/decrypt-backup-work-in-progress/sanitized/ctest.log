@@ -1,0 +1,17 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  46: raw_archive_differential
+    Start 221: minima_entry_differential
+    Start  31: utility_differential
+1/6 Test  #31: utility_differential .................   Passed    4.46 sec
+    Start 128: command_runner_errors_differential
+2/6 Test #221: minima_entry_differential ............   Passed    9.43 sec
+    Start  52: command_runner_differential
+3/6 Test #128: command_runner_errors_differential ...   Passed    5.10 sec
+    Start 222: decrypt_backup_differential
+4/6 Test  #52: command_runner_differential ..........   Passed    5.02 sec
+5/6 Test #222: decrypt_backup_differential ..........   Passed    8.65 sec
+6/6 Test  #46: raw_archive_differential .............   Passed   99.18 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =  99.18 sec

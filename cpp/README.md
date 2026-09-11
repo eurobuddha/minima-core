@@ -5,9 +5,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **333 production counterparts and 44 mapped test files exist;
-80 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **334 production counterparts and 44 mapped test files exist;
+79 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mapped `decryptbackup` command now compiles and is registered. Both normal
+and sanitizer comparisons pass 422 cases with exact output-file snapshots,
+including 113 damaged inputs that preserve Java's success-with-partial-output
+behavior. It reuses the existing cipher, file helpers and gzip decoder. See the
+[student lab](student-guide/new-tests/decrypt-backup.md) and
+[saved evidence](validation/decrypt-backup-work-in-progress).
 
 The `MinimaCoreC++` executable now starts a real solo node when built with the
 optional native H2 provider. It creates genesis and databases, answers hash/status,

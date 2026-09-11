@@ -29,7 +29,7 @@ The utility driver derives keys for empty, Unicode, embedded-NUL, and spaced pas
 - [Native utility fixture](../../../../../../../support/utility.cpp)
 - [Utility differential driver](../../../../../../../tools/utility_differential.py)
 
-The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
+The utility suite has been rerun for the decryptbackup integration. The added evidence below preserves a narrower distinction between specific provider exceptions.
 
 ## Limits and a useful next test
 
@@ -40,3 +40,14 @@ Random key bytes should not match between runs; tests require interoperability a
 Why can two runs derive exactly the same password key but generate different RSA keys? What breaks if the same raw RSA integers are encoded in the wrong ASN.1 container?
 
 Pinned Java SHA-256: `07d825bb6355b69010a21100d014eebd6e8523c64badcdb36a5ef634d896fdc4`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+
+## Backup decryption integration
+
+The [decrypt-backup lab](../../../../../../new-tests/decrypt-backup.md) reuses this
+implementation through a streaming CipherInput adapter. The command comparison
+requires the exact empty-salt IllegalArgumentException message and the invalid-IV
+InvalidAlgorithmParameterException type/message, so those two native validations
+now retain their Java meanings. It exercises update/final buffering through
+truncated and damaged encrypted gzip files. This adds selected failure timing
+coverage; it does not certify every Cipher provider operation or reset state.

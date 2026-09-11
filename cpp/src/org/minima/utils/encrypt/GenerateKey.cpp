@@ -1,5 +1,6 @@
 #include "GenerateKey.hpp"
 #include "org/minima/objects/base/MiniString.hpp"
+#include "support/JavaExceptions.hpp"
 #include <openssl/rsa.h>
 #include <openssl/x509.h>
 #include <openssl/core_names.h>
@@ -28,7 +29,7 @@ CryptoKey GenerateKey::convertBytesToPrivate(std::span<const uint8_t> bytes) {
 std::vector<uint8_t> GenerateKey::secretKey() {return MiniData::getRandomData(16).bytes();}
 SecretKey GenerateKey::convertSecret(std::span<const uint8_t> secret) {if(secret.empty()) throw std::invalid_argument("Empty key");return SecretKey{std::vector<uint8_t>(secret.begin(),secret.end())};}
 SecretKey GenerateKey::secretKey(const std::string& password,std::span<const uint8_t> salt) {
-    if(salt.empty()) throw std::invalid_argument("Empty salt");auto utf8=MiniString(password).toString();std::vector<uint8_t> key(16);
+    if(salt.empty()) throw JavaIllegalArgumentException("the salt parameter must not be empty");auto utf8=MiniString(password).toString();std::vector<uint8_t> key(16);
     checked(PKCS5_PBKDF2_HMAC(utf8.data(),sizeInt(utf8.size()),salt.data(),sizeInt(salt.size()),65536,EVP_sha256(),16,key.data()),"PBKDF2");return SecretKey{std::move(key)};
 }
 std::vector<uint8_t> GenerateKey::IvParam() {return MiniData::getRandomData(16).bytes();}
@@ -36,7 +37,9 @@ Cipher GenerateKey::getCipherSYM(int mode,std::span<const uint8_t> iv,std::span<
 void Cipher::init(int mode,CryptoKey key) {if(mSymmetric || (mode!=ENCRYPT_MODE && mode!=DECRYPT_MODE)) throw std::invalid_argument("Invalid RSA mode");mRSA=std::move(key);mMode=mode;}
 void Cipher::init(int mode,const SecretKey& key,std::span<const uint8_t> iv) {
     if(!mSymmetric || (mode!=ENCRYPT_MODE && mode!=DECRYPT_MODE)) throw std::invalid_argument("Invalid AES mode");
-    if(iv.size()!=16 || (key.bytes.size()!=16 && key.bytes.size()!=24 && key.bytes.size()!=32)) throw std::invalid_argument("Invalid AES key or IV");mMode=mode;mSecret=key.bytes;mIV.assign(iv.begin(),iv.end());
+    if(key.bytes.size()!=16 && key.bytes.size()!=24 && key.bytes.size()!=32)throw std::invalid_argument("Invalid AES key or IV");
+    if(iv.size()!=16)throw JavaTypedException("java.security.InvalidAlgorithmParameterException","Wrong IV length: must be 16 bytes long");
+    mMode=mode;mSecret=key.bytes;mIV.assign(iv.begin(),iv.end());
     mContext={EVP_CIPHER_CTX_new(),EVP_CIPHER_CTX_free};if(!mContext) throw std::bad_alloc();
     auto algorithm=mSecret.size()==16?EVP_aes_128_cbc():mSecret.size()==24?EVP_aes_192_cbc():EVP_aes_256_cbc();
     checked(EVP_CipherInit_ex(mContext.get(),algorithm,nullptr,mSecret.data(),mIV.data(),mMode==ENCRYPT_MODE),"AES init");

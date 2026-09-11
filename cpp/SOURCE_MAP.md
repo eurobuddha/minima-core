@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 377 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 378 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -161,7 +161,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/CommandRunner.java` | `src/org/minima/system/commands/CommandRunner.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/backup/archive.java` | `src/org/minima/system/commands/backup/archive.cpp` | unported | — |
 | `src/org/minima/system/commands/backup/backup.java` | `src/org/minima/system/commands/backup/backup.cpp` | unported | — |
-| `src/org/minima/system/commands/backup/decryptbackup.java` | `src/org/minima/system/commands/backup/decryptbackup.cpp` | unported | — |
+| `src/org/minima/system/commands/backup/decryptbackup.java` | `src/org/minima/system/commands/backup/decryptbackup.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.java` | `src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.java` | `src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.java` | `src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.cpp` | implemented_partial | — |

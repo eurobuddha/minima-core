@@ -3,24 +3,32 @@
 #include <array>
 #include <filesystem>
 #include <fstream>
+#include <functional>
 #include <zlib.h>
 namespace minima {
 // Streaming counterpart to Gzip.hpp. Raw inflate keeps trailer validation on
 // the next read, as in GZIPInputStream, rather than rejecting returned payload.
 class GzipInput {
     std::ifstream mFile;
+    std::function<size_t(std::span<uint8_t>)> mReader;
+    std::function<void()> mClose;
+    size_t mReadSize=65536;
     std::array<uint8_t,65536> mInput{};
     size_t mBegin=0,mEnd=0;
     z_stream mStream{};
     bool mInitialized=false,mClosed=false,mEndMember=false,mEOF=false;
     uint32_t mCRC=0,mSize=0;
-    bool fill() {
+    bool fill(size_t requested=65536) {
         if(mBegin<mEnd)return true;
+        if(mReader){
+            auto capacity=std::min(requested,mReadSize);mBegin=0;mEnd=mReader(std::span(mInput).first(capacity));
+            if(mEnd>capacity)throw wire::IOException("Invalid gzip reader byte count");return mEnd!=0;
+        }
         mFile.read(reinterpret_cast<char*>(mInput.data()),mInput.size());
         mBegin=0;mEnd=size_t(mFile.gcount());
         if(mFile.bad())throw wire::IOException("Gzip input read failed");return mEnd!=0;
     }
-    uint8_t byte() {if(!fill())throw wire::EOFException("Truncated gzip");return mInput[mBegin++];}
+    uint8_t byte() {if(!fill(mReader?1:65536))throw wire::EOFException("Truncated gzip");return mInput[mBegin++];}
     uint32_t little32() {uint32_t value=0;for(unsigned shift=0;shift<32;shift+=8)value|=uint32_t(byte())<<shift;return value;}
     void header() {
         uint32_t crc=0;
@@ -35,6 +43,9 @@ class GzipInput {
         mCRC=0;mSize=0;
     }
 public:
+    GzipInput(std::function<size_t(std::span<uint8_t>)> reader,std::function<void()> close):mReader(std::move(reader)),mClose(std::move(close)),mReadSize(512){
+        header();if(inflateInit2(&mStream,-MAX_WBITS)!=Z_OK)throw wire::IOException("Gzip inflate initialization failed");mInitialized=true;
+    }
     explicit GzipInput(const std::filesystem::path& file):mFile(file,std::ios::binary) {
         if(!mFile)throw wire::IOException("Cannot open gzip input");header();
         if(inflateInit2(&mStream,-MAX_WBITS)!=Z_OK)throw wire::IOException("Gzip inflate initialization failed");mInitialized=true;
@@ -42,7 +53,7 @@ public:
     GzipInput(const GzipInput&)=delete;
     GzipInput& operator=(const GzipInput&)=delete;
     ~GzipInput(){if(mInitialized)inflateEnd(&mStream);}
-    void close(){if(mClosed)return;mClosed=true;mFile.close();if(mFile.bad())throw wire::IOException("Gzip input close failed");}
+    void close(){if(mClosed)return;mClosed=true;if(mReader){if(mClose)mClose();return;}mFile.close();if(mFile.bad())throw wire::IOException("Gzip input close failed");}
     size_t read(std::span<uint8_t> output) {
         if(mClosed)throw wire::IOException("Stream closed");if(output.empty()||mEOF)return 0;
         for(;;){

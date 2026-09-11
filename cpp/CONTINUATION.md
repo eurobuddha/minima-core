@@ -1,3 +1,44 @@
+# Current work — decryptbackup mapped and validated
+
+Project/branch/binary MinimaCoreC++. Previous goal turn made verified progress.
+New mapped decryptbackup.cpp/hpp is registered in CommandRunner. Source body,
+metadata, fresh function and both unused private helpers are present. Reuses
+GenerateKey/MiniData/MiniFile/MiniFormat and GzipInput. GzipInput adds reader/
+close callbacks with 512-byte input, leaving its 65536-byte file path unchanged.
+CipherInput uses existing Cipher.update in 8192-byte chunks; BufferedFileOutput
+reuses POSIX open/write patterns with 8192-byte explicit buffering. Ordinary
+payload read/write exceptions are swallowed exactly as source; Errors escape.
+Empty salt and invalid IV now retain Java validation category/message.
+
+Both builds pass 422 comparisons; 113 damaged inputs return success with partial
+output. Exact fixture files are compared. The first nested-output failure was
+an observer assumption about BASE_FILE_FOLDER; fixed to an explicit isolated path.
+No untracked stray fixture remains. Evidence/provenance/review/lessons are in
+validation/decrypt-backup-work-in-progress and the linked student pages.
+Six selected suites per build pass; final stream-adapter reruns are recorded
+there. Read final progress.json and reports for exact scope and terminal checks.
+
+Map now 378 counterparts: 334 production+44 original tests. 79 absent:35 production
+and 44 original tests. 222 CTest entries with H2 configured. 457 authored guides
+pass structural audit. All parity labels remain not_verified; no full 222-suite run.
+
+NEXT: backup.java was fully read this turn and remains the next production
+counterpart. It gates on vault.checkAllKeysCreated, optionally changes autoBackup,
+saves state under readLock, emits wallet SQL/cascade/tree/user/P2P plus relevant
+TxPoWList as six MiniData frames, then gzip/AES with framed salt/IV. Randomness must
+be tested through cross-decryption/content, not equal ciphertext. Preserve auto
+side effects, parameter ordering, cleanup/error lock behavior and complete param
+quirk (read but absent from valid params). Existing native H2 enables real SQL.
+Its backupfolder cleanup has existing MiniFile prefix semantics. Read current
+source and tests before implementing; student lab first. decryptbackup now supplies
+a native consumer, while unmodified Java can validate the produced file too.
+
+The H2 checkpoint remains available below. No GitHub push. Save future coherent
+steps locally and verify recovery bundles. Prior HEAD 277e4ac651014ad11139bb9a3eb6d242f2889cc9;
+use git log and local-backups manifest for the new final checkpoint/bundle.
+
+---
+
 # Current work — native H2 and real solo startup checkpoint
 
 Project/branch/binary: MinimaCoreC++. Full 457-file port remains active/incomplete.

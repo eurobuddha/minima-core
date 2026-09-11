@@ -3097,5 +3097,63 @@
       "tools/native_h2_differential.py": "a6d1a16a759f16a616c0560387846ba29694967bb2a21536a8648e62ad147c98",
       "tools/native_node_startup.py": "bd8590f8ea6184133ddbf30f755f645e5623ceb964149b77b0b38d58d65cdeae"
     }
+  },
+  "decrypt_backup_checkpoint": {
+    "source": "upstream-study/src/org/minima/system/commands/backup/decryptbackup.java",
+    "source_sha256": "bfa3112e48bedd5709a710467dd8d239ce7c2332dfa4490910978fb7f9f02d7a",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "reused_inspected": [
+      "src/org/minima/utils/encrypt/GenerateKey.cpp",
+      "src/org/minima/utils/encrypt/PasswordCrypto.cpp",
+      "src/org/minima/utils/MiniFile.cpp",
+      "src/org/minima/utils/MiniFormat.cpp formatSize",
+      "src/org/minima/objects/base/MiniData.cpp",
+      "src/support/GzipInput.hpp",
+      "src/support/Gzip.hpp",
+      "src/support/JavaUnixFile.hpp",
+      "src/org/minima/system/commands/network/nodecount.cpp POSIX writer",
+      "src/org/minima/system/commands/send/sendview.cpp",
+      "support/UtilityOracle.java",
+      "support/utility.cpp",
+      "tools/utility_differential.py",
+      "src/org/minima/database/archive/RawArchiveInput.cpp",
+      "support/raw_archive.cpp",
+      "tools/raw_archive_differential.py",
+      "tools/peers_checker_differential.py Runner"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src: crypto implementation catalogue; no backup/cipher-gzip reader implementation found. Existing current-repository cipher/gzip/file implementations are the compatible candidates.",
+    "platform_source": "Installed OpenJDK26.0.1 java.base javax/crypto/CipherInputStream.java and java/util/zip/GZIPInputStream.java read completely; java/io/BufferedOutputStream.java buffer/flush implementation read from local src.zip.",
+    "adaptation": "Map decryptbackup and both unused private helper bodies; reuse GenerateKey/MiniData/MiniFile/MiniFormat. Add CipherInput around existing AES state, BufferedFileOutput from existing POSIX patterns, and a GzipInput reader callback preserving file constructor behavior. Register actual command.",
+    "behavior_preserved": [
+      "Output is deleted/opened before input read",
+      "Salt and IV frames precede gzip construction",
+      "Only gzip constructor failures become Incorrect Password",
+      "Payload loop exceptions are swallowed; later flush can still throw",
+      "113 corpus cases return success with partial output",
+      "Errors and allocation failures escape source Exception catches"
+    ],
+    "shared_fixes": [
+      "Exact PBEKeySpec empty-salt diagnostic",
+      "Invalid IV throws java.security.InvalidAlgorithmParameterException",
+      "Consumed cipher output cleared before a failing refill",
+      "Reader callback length checked against supplied buffer"
+    ],
+    "fixture_fix": "Slash-containing output bypasses BASE_FILE_FOLDER; isolate nested output through an explicit temporary path. Initial failure preserved.",
+    "native_ownership": "RAII closes file descriptor without implicit flush on exceptional exits; does not reproduce JVM resource leakage.",
+    "evidence": "validation/decrypt-backup-work-in-progress",
+    "limits": [
+      "Whole class/API parity remains not_verified",
+      "Direct EOF/NPE/class-cast diagnostic prose normalized",
+      "Virtual-thread buffering and resource exhaustion",
+      "Special-device write failures and unused private helpers",
+      "Full backup/restore command implementations still absent"
+    ],
+    "hashes": {
+      "src/org/minima/system/commands/backup/decryptbackup.cpp": "bd98b206f84a26afce60ce5226ef96558d31b90fcac9046f320c2c3af8c1865d",
+      "src/support/CipherInput.hpp": "fc9f6850aa7f7ef94c7c973f13db1318ccd5b5622c601409e359cff93f85d992",
+      "src/support/BufferedFileOutput.hpp": "43c70c3cef05fa396fbc1cab803e1f429835e3c814b971e26e74671557f1e5b5",
+      "src/support/GzipInput.hpp": "9e680bda4cdd357d8ffc073cbcfdb03400eee2cf7d394fb971a48dd37220ce64",
+      "tools/decrypt_backup_differential.py": "8a02779db1612f908806654fb5bd608945a0f7f0b465c9e2567c58600257e910"
+    }
   }
 }

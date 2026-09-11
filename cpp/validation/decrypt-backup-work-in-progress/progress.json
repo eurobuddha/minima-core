@@ -1,0 +1,31 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "277e4ac651014ad11139bb9a3eb6d242f2889cc9",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "decryptbackup mapped/compiled/registered; full 1:1 port unfinished",
+  "counterparts": 378,
+  "production_counterparts": 334,
+  "mapped_tests": 44,
+  "absent": 79,
+  "ctest_entries": 222,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "selected_suites_per_build": 6,
+  "final_adapter_rerun_suites_per_build": 2,
+  "decrypt_cases_per_build": 422,
+  "partial_success_cases_per_build": 113,
+  "student_guides": 457,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "35 absent production and44 absent mapped original tests",
+    "backup/restore commands and real full-node workflows",
+    "Complete API/runtime/network/mining parity",
+    "Virtual-thread stream behavior and resource-exhaustion/special-device IO failures",
+    "Unused private helper invocation and exact NPE/class-cast prose"
+  ]
+}
