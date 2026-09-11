@@ -1,0 +1,23 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  39: message_differential
+1/9 Test  #39: message_differential .................   Passed    7.28 sec
+    Start  40: message_workers
+2/9 Test  #40: message_workers ......................   Passed    1.81 sec
+    Start  52: command_runner_differential
+3/9 Test  #52: command_runner_differential ..........   Passed    3.62 sec
+    Start 106: minima_logger_differential
+4/9 Test #106: minima_logger_differential ...........   Passed    3.26 sec
+    Start 107: minima_logger_worker
+5/9 Test #107: minima_logger_worker .................   Passed    0.79 sec
+    Start 128: command_runner_errors_differential
+6/9 Test #128: command_runner_errors_differential ...   Passed    4.79 sec
+    Start 192: main_runtime_differential
+7/9 Test #192: main_runtime_differential ............   Passed    4.51 sec
+    Start 235: systemcheck_commands_differential
+8/9 Test #235: systemcheck_commands_differential ....   Passed    2.60 sec
+    Start 236: native_systemcheck_startup
+9/9 Test #236: native_systemcheck_startup ...........   Passed  136.70 sec
+
+100% tests passed, 0 tests failed out of 9
+
+Total Test time (real) = 165.38 sec

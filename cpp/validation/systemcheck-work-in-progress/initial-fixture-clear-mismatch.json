@@ -1,0 +1,220 @@
+{
+  "passed": false,
+  "programs": 98,
+  "total_programs": 227,
+  "operations": 325,
+  "failures": [
+    {
+      "case": 97,
+      "request": {
+        "ops": [
+          {
+            "cmd": "systemSetup",
+            "rows": [],
+            "columns": [],
+            "missing": "main",
+            "nullNetwork": false,
+            "nullNIO": false,
+            "peer": "real"
+          },
+          {
+            "cmd": "direct",
+            "rows": [],
+            "columns": [],
+            "name": "systemcheck",
+            "params": {},
+            "systemTimer": true
+          },
+          {
+            "cmd": "systemSnapshot",
+            "rows": [],
+            "columns": []
+          }
+        ]
+      },
+      "java": {
+        "ops": [
+          {
+            "value": null,
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": false,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "webhooks": []
+            }
+          },
+          {
+            "exception": "java.lang.NullPointerException",
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": false,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "webhooks": []
+            }
+          },
+          {
+            "value": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ],
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": false,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "webhooks": []
+            }
+          }
+        ]
+      },
+      "cpp": {
+        "ops": [
+          {
+            "value": null,
+            "logs": [
+              "Main Instance Cleared.."
+            ],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": false,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "webhooks": []
+            }
+          },
+          {
+            "exception": "java.lang.NullPointerException",
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": false,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "webhooks": []
+            }
+          },
+          {
+            "value": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ],
+            "logs": [],
+            "timers": [],
+            "events": [],
+            "listeners": [],
+            "held": [],
+            "state": {
+              "startup": false,
+              "error": false,
+              "errorMessage": "",
+              "shutdown": false,
+              "restoring": false,
+              "either": false,
+              "sync": false,
+              "normal": true,
+              "automine": 50000,
+              "keys": false,
+              "instance": false,
+              "listener": false,
+              "queue": 0
+            },
+            "user": {
+              "webhooks": []
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "Actual systemcheck command and seven unstarted native/Java processors, queue/last-message state, lock diagnostics, checker posts and bounded one-second timer. Exact metadata, parameter and missing-service failures, details selectors and logger/notification effects. No atomic runtime snapshot or exhaustive concurrent scheduling claim."
+}

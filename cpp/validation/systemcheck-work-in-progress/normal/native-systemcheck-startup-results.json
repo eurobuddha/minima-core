@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "node_processes": 2,
+  "checks": [
+    {
+      "runtime": "java",
+      "processors": 7,
+      "details_selectors": 10,
+      "real_checker_delivery": [
+        "TXPOWPROCESSOR Checker Call Recieved..",
+        "MAIN Checker Call Recieved.. timer:false",
+        "MAIN Checker Call Recieved.. timer:true"
+      ],
+      "report_shapes_valid": true,
+      "graceful_shutdown": true
+    },
+    {
+      "runtime": "cpp",
+      "processors": 7,
+      "details_selectors": 10,
+      "real_checker_delivery": [
+        "TXPOWPROCESSOR Checker Call Recieved..",
+        "MAIN Checker Call Recieved.. timer:false",
+        "MAIN Checker Call Recieved.. timer:true"
+      ],
+      "report_shapes_valid": true,
+      "graceful_shutdown": true
+    }
+  ],
+  "failures": [],
+  "scope": "Actual pinned Java/native solo nodes and real H2, seven processor report shapes, all details selectors, real TxPoWProcessor/Main/immediate and delayed timer checker delivery, graceful shutdown. Live queue counts and scheduling are not compared for equality; no atomic report or exhaustive concurrency claim."
+}

@@ -5,9 +5,17 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **341 production counterparts and 44 mapped test files exist;
-72 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **342 production counterparts and 44 mapped test files exist;
+71 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mapped `systemcheck` command now reports all source processor and lock fields,
+posts both checker calls and the one-second timer, and logs selected queue details.
+Shared queue logging now uses MinimaLogger and preserves reentrant callbacks and
+LinkedList-style modification detection. Both builds pass 262 comparison programs
+and actual-node checker delivery, plus seven affected regression groups. See the
+[student lab](student-guide/new-tests/system-check.md) and
+[saved evidence](validation/systemcheck-work-in-progress).
 
 The mapped `megammr` and `megammrsync` classes now compile and are registered.
 Main supplies the MegaMMR serving callback by default. Both builds pass 579

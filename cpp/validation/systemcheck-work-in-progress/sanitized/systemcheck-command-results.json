@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 262,
+  "total_programs": 262,
+  "operations": 718,
+  "failures": [],
+  "scope": "Actual systemcheck command and seven unstarted native/Java processors, queue/last-message state, lock diagnostics, checker posts and bounded one-second timer. Exact metadata, parameter and missing-service failures, details selectors and logger/notification effects. No atomic runtime snapshot or exhaustive concurrent scheduling claim."
+}

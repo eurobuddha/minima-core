@@ -1,3 +1,71 @@
+# Current work — systemcheck port and reentrant queue diagnostics validated
+
+MinimaCoreC++ branch/project/executable. Full457-file goal remains active/incomplete.
+PreviousHEAD254cb34; gitlog and local-backups identify savedcheckpoint/recovery.
+No GitHub push. Allbuild/testhandles terminal. Bothfullbuilds PASS.
+Map386=342production+44originaltests;71absent=27production+44tests.
+All457studentlessons authored/audited; everyparity remainsnot_verified.
+236CTestentries; fullsuite NOTrun. H2 AOT outside C++ sanitizer instrumentation.
+
+New systemcheck.cpp/hpp maps every declared source method and is registered.
+List reports sevenqueues/lastmessages, timer count, lock info/writerthreadstate,
+shutdown; then three logcalls and actualProcessorCheck/MainCheck/1000mstimertrue.
+Details uses existingUnicodecasehelper and exactsource selectors/typos, returns
+Sent to Minima Log evenunknownselector; unknownactionemptyresponse. Helpersnull
+receivers preserveNPEcategory. Uses synchronizedcurrentWriteLockThread accessor.
+
+Shared MessageStack::printAllMessages now callsMinimaLogger(false), preserves
+JavaNPE fornullmessage. Review foundloggercallbackreentry neededrecursive lock;
+mLock nowrecursive_mutex and condition_variable_any. uint32modificationcounter
+incrementedpost/pop/clear/filter(commit1+keptsize). Printing usesindex<size then
+checksmodcount beforecopyingnextsharedptr; noiterator heldacrosscallback. Local
+OpenJDK26.0.1src.zip LinkedList.ListItr/linkLast/unlinkFirst/clear fullyinspectedfor
+these rules (aninitialOpenJDK11lookup also read). Loggercallbackclear/retainfirst
+canendloopwithoutCME; append alwaysCMEonnext, retainallCMEifsize>1. Corefilter
+failure-before-mutationandFIFO unchanged. ArbitraryMessageoverrideequalsandother
+subclasscallbackpaths remainpartial; TimerProcessor loggingreentry notfixedhere.
+
+ExistingMainRuntimeOracle/main_runtime extended withSystemCheckFixture.hpp,
+MainFixture diagnosticowner setter, MessageProcessor friendfixture forlaststate.
+Sevenactualtyped unstartedworkers + existingMainNetworkfixture. JavaUnsafeobserver
+initializesonlyneededfields inclnames/stacks/last; nativeprotectedconstructors.
+TimerJavamanualinstance; nativecreates/stops/joinsactualtimerbeforeseedingqueue.
+CurrentwriterthreadinitializedbyactualwriteLock(true/false), notprivatefieldedit.
+ManualMain PostTimerMessage recordsoptionalpayloadonlysystemTimerflag. Existing
+othergroups unchangedexceptshared1000msdelaylookup. TestswithsystemCheckflagcount
+nonstackprefixedlogs. PlatformstackframeNOTIFY_POSTs taggedfromloggerdata andremoved
+bynewprojector; otherqueueevents retained. Reentrantprintln wrappers restoreeven
+onexception, callread/post/clear/retainall/retainfirst. Javadisambiguatesobservation
+frominheritedPrintStream.out. Nativefixture setMainnullusesMainFixtureinstall(null)
+tomatchJavaUnsafe removalwithoutanextraneousproductionClearMainInstance log.
+
+BothcommandCTests PASS262programs718ops, including35callbackprograms.
+Normal2.11s,sanitized2.60s. BothliveCTests PASS2actualnodeseach,normal24.79s,
+sanitized136.70s. Actualsolo nodes useNode/ready (eightkeys7), systemcheck reports
+shapes,10detailsselectors,unknownaction, waitup to30s forProcessor/immediateMain/
+delayedMain logdelivery via repeatedstatuscalls, thenrealgracefulquit.
+Livequeuecounts intentionallynotcompared (workersactive).
+
+Sevenaffectedregressiongroups PASSeach: messages, messageworkers, runner,
+logger,loggerworker,runnererrors,Mainruntime. Sanitized9groupfinalrunPASS165.38s.
+Normalfirst9grouprunpassed7 butMain/systemcheckJavaobservercompilefaileddue
+PrintStream.out shadowing; aliasfix thenbothgroupsPASS5.15s. NoC++changeafter
+thatfullbuild; livecompiledonlypinnedproductionJava, unaffectedbyobserveralias.
+Retainedinitialreports: fixtureClearMain extralog, platformstackframecount difference,
+Javaobservercompilelog. All currentpassedreports and fullbuildlogs saved under
+validation/systemcheck-work-in-progress. FirstC++compilealsoattemptedprivateDB
+writerfieldassignment; replacedwithrealwriteLockAPI beforefinalbuild.
+
+NEXT: continue27absentproductionfiles (and44originaltests). Candidates backup/mysql
+andmysqlcoins orbasecommands/systemdiagnostics; benchmark/jnitest/jniminingtest
+require separatelyloadedJNI nativeimplementation, so inspectnamed/provencodefirst,
+neverinvent JNI behavior. Streamable interface, ZipExtractor, AesUtil and legacy
+SPHINCS/FORS/HORST remainabsent. Reusegate, fullsource/dependency/caller/tests review,
+pre-testlesson, normal/sanitizer validation and localcommit+verifiedbundle required.
+Fullruntime/mining/network/APIparity stillrequired for allpresentcounterparts.
+
+---
+
 # Current work — live MegaMMR recovery validated
 
 MinimaCoreC++ branch/project/executable. Full 457-file goal active/incomplete.

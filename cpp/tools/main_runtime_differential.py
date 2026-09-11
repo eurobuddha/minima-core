@@ -47,7 +47,7 @@ def cases():
 def project(raw,request):
     assert 'ops' in raw,raw
     value=normalize(raw);uptime=0
-    delays={'MAIN_PULSE':None,'MAIN_SYSTEMCLEAN':300000,'MAIN_CLEANDB_RAM':1800000,'MAIN_CLEANDB_SQL':43200000,'MAIN_AUTOBACKUP_MYSQL':7200000,'MAIN_AUTOBACKUP':86400000,'MAIN_CHECKER':180000,'MAIN_P2PNETMDS_CHECKER':1800000,'MAIN_INIT_KEYS':10000,'MAIN_NETRESET':86400000}
+    delays={'MAIN_CALLCHECKER':1000,'MAIN_PULSE':None,'MAIN_SYSTEMCLEAN':300000,'MAIN_CLEANDB_RAM':1800000,'MAIN_CLEANDB_SQL':43200000,'MAIN_AUTOBACKUP_MYSQL':7200000,'MAIN_AUTOBACKUP':86400000,'MAIN_CHECKER':180000,'MAIN_P2PNETMDS_CHECKER':1800000,'MAIN_INIT_KEYS':10000,'MAIN_NETRESET':86400000}
     for row,step in zip(value['ops'],request['ops']):
         before=row.pop('before');after=row.pop('after')
         if step['cmd']=='fields':uptime=step['values'].get('uptime',uptime)
@@ -62,9 +62,12 @@ def project(raw,request):
     return value
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--group',choices=['main','commands','network','status','diagnostics','health','logs','node-status','rpc','hashtest'],default='main');ap.add_argument('--native-target',default='minima_main_runtime');args=ap.parse_args();build=args.build.resolve();oracle=build/('main-runtime-oracle-'+args.group);oracle.mkdir(exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--group',choices=['main','commands','network','status','diagnostics','health','logs','node-status','rpc','hashtest','systemcheck'],default='main');ap.add_argument('--native-target',default='minima_main_runtime');args=ap.parse_args();build=args.build.resolve();oracle=build/('main-runtime-oracle-'+args.group);oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support'/x for x in ['MainRuntimeOracle.java','MainNetworkOracle.java','SqlDBOracle.java','NIOClientOracle.java','ArchiveManagerOracle.java']];listing=build/('main-runtime-java-sources-'+args.group+'.txt');listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
     failures=[];operations=0;corpus=cases();projector=project;validate=lambda request,output:None
+    if args.group=='systemcheck':
+        from systemcheck_commands_corpus import cases as system_cases,validate,project as projector
+        corpus=system_cases()
     if args.group=='commands':
         from main_lifecycle_commands_corpus import cases as command_cases,validate
         corpus=command_cases()
@@ -116,5 +119,6 @@ def main():
     if args.group=='node-status':report['scope']='Actual status command, database child objects, synthetic chain/cascade, controlled SQL and files, device arithmetic and debug order. JVM heap validated for shape/bounds; native heap and collection hint checked independently. Uptime bounded before normalization. No durable SQL, full-node startup, actual JVM/native heap equality or exhaustive concurrent scheduling.'
     if args.group=='rpc':report['scope']='RPC user management, registered command metadata, actual UserDB arrays, malformed state, enable precedence, actual stopped NetworkManager disable path and interrupted sleep boundary. Successful live enable/authentication/concurrent mutation integration remains pending.'
     if args.group=='hashtest':report['scope']='Actual registered hashtest wrapper and real TxPoWMiner hashing, default amount, direct and runner dispatch, metadata and typed failures. Clock bounds, raw rate consistency and four-digit MH/s truncation validated independently before normalizing timing/speed. No cross-runtime performance equality or full native node claim.'
-    (build/('hashtest-command-results.json' if args.group=='hashtest' else 'rpc-command-results.json' if args.group=='rpc' else 'node-status-command-results.json' if args.group=='node-status' else 'logs-command-results.json' if args.group=='logs' else 'healthcheck-command-results.json' if args.group=='health' else 'trace-clock-command-results.json' if args.group=='diagnostics' else 'network-status-command-results.json' if args.group=='status' else 'main-runtime-results.json' if args.group=='main' else 'main-lifecycle-commands-results.json' if args.group=='commands' else 'network-peer-commands-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
+    if args.group=='systemcheck':report['scope']='Actual systemcheck command and seven unstarted native/Java processors, queue/last-message state, lock diagnostics, checker posts and bounded one-second timer. Exact metadata, parameter and missing-service failures, details selectors and logger/notification effects. No atomic runtime snapshot or exhaustive concurrent scheduling claim.'
+    (build/('systemcheck-command-results.json' if args.group=='systemcheck' else 'hashtest-command-results.json' if args.group=='hashtest' else 'rpc-command-results.json' if args.group=='rpc' else 'node-status-command-results.json' if args.group=='node-status' else 'logs-command-results.json' if args.group=='logs' else 'healthcheck-command-results.json' if args.group=='health' else 'trace-clock-command-results.json' if args.group=='diagnostics' else 'network-status-command-results.json' if args.group=='status' else 'main-runtime-results.json' if args.group=='main' else 'main-lifecycle-commands-results.json' if args.group=='commands' else 'network-peer-commands-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='failures'},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

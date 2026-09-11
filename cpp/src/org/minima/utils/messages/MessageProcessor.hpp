@@ -5,6 +5,7 @@
 namespace minima {
 class TimerMessage;
 class MessageProcessor : public MessageStack, public std::enable_shared_from_this<MessageProcessor> {
+    friend class SystemCheckFixture;
     std::string mName;
     std::function<void()> mReleaseLocks;
     std::thread mMainThread;

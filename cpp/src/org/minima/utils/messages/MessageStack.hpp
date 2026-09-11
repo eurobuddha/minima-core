@@ -5,9 +5,10 @@
 namespace minima {
 class MessageStack {
 protected:
-    mutable std::mutex mLock;
-    std::condition_variable mNotify;
+    mutable std::recursive_mutex mLock;
+    std::condition_variable_any mNotify;
     std::deque<std::shared_ptr<Message>> mMessages;
+    uint32_t mModificationCount=0;
     void notifyLock(){mNotify.notify_all();}
     std::shared_ptr<Message> getNextMessage();
 public:

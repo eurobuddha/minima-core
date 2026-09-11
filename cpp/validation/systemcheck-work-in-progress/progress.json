@@ -1,0 +1,59 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "254cb34fbfbd0640b3ef022d51da448e5d16687b",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "new_counterparts": [
+    "src/org/minima/system/commands/base/systemcheck.cpp"
+  ],
+  "state": "All systemcheck source methods compiled and source-derived command, callback and actual-worker tests pass",
+  "counterparts": 386,
+  "production_counterparts": 342,
+  "mapped_tests": 44,
+  "absent": 71,
+  "absent_production": 27,
+  "ctest_entries": 236,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "programs_per_build": 262,
+  "operations_per_build": 718,
+  "callback_reentry_programs": 35,
+  "live_nodes_per_build": 2,
+  "normal_command_ctest_seconds": 2.11,
+  "sanitized_command_ctest_seconds": 2.6,
+  "normal_live_ctest_seconds": 24.79,
+  "sanitized_live_ctest_seconds": 136.7,
+  "selected_ctest_groups_per_build": 9,
+  "selected_groups": [
+    "message_differential",
+    "message_workers",
+    "command_runner_differential",
+    "minima_logger_differential",
+    "minima_logger_worker",
+    "command_runner_errors_differential",
+    "main_runtime_differential",
+    "systemcheck_commands_differential",
+    "native_systemcheck_startup"
+  ],
+  "normal_execution_note": "Seven selected groups passed in initial 9-group run; Main/systemcheck Java observers failed compilation due PrintStream.out shadowing the result variable. After fixture alias fix, those two groups passed in 5.15 seconds. Both logs retained; no claim that initial 9-group run passed.",
+  "sanitized_selected_ctest_seconds": 165.38,
+  "student_guides": 457,
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "normalizations": [
+    "Clock-bounded timer deadlines/delays",
+    "Read/write lock object identity only; lock counts asserted",
+    "Existing NPE/ClassCast expression prose",
+    "Platform-specific exception stack-frame notifications; non-stack errors and logger-prefix counts retained"
+  ],
+  "remaining": [
+    "27 absent production counterparts and 44 absent original mapped tests",
+    "TimerProcessor print callback reentry and arbitrary Message subclass behavior",
+    "Complete existing counterpart APIs, registry order, mining/network runtime parity and full current suite"
+  ]
+}

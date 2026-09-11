@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 192: main_runtime_differential
+1/2 Test #192: main_runtime_differential ...........   Passed    3.04 sec
+    Start 235: systemcheck_commands_differential
+2/2 Test #235: systemcheck_commands_differential ...   Passed    2.11 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   5.15 sec

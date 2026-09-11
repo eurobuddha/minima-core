@@ -3513,5 +3513,52 @@
       "src/org/minima/system/commands/backup/mmrsync/megammr.cpp": "e8f66eb65947e196ab99f839c1b537624b649e9b1492c824c7868654bd56b5fb",
       "src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp": "f600e1e79ac1cfa06143b64ed292a200c598c3fcffa0d49e1c0fc40fef5701f9"
     }
+  },
+  "systemcheck_checkpoint": {
+    "previous_commit": "254cb34fbfbd0640b3ef022d51da448e5d16687b",
+    "pinned_sources": [
+      "upstream-study/src/org/minima/system/commands/base/systemcheck.java",
+      "upstream-study/src/org/minima/utils/messages/MessageStack.java",
+      "upstream-study/src/org/minima/utils/messages/MessageProcessor.java",
+      "upstream-study/src/org/minima/utils/messages/TimerProcessor.java"
+    ],
+    "reuse": [
+      "Command parameter/envelope/factory and JavaStringIgnoreCase helper",
+      "Main/NetworkManager seven existing processor types and TimerMessage",
+      "MinimaDB synchronized writer diagnostic accessor and ReentrantReadWriteLock",
+      "MinimaLogger formatting and notification flag",
+      "MainRuntimeOracle/main_runtime and MainNetwork fixtures",
+      "native_restore_startup.Node/ready and actual node launch harness"
+    ],
+    "sibling_search": "Searched /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src for systemcheck and printAllMessages; no command candidate. Current pinned-format processors already provide required behavior.",
+    "adaptations": [
+      "Map every declared systemcheck method and register in runner",
+      "Route indexed queue diagnostics through MinimaLogger without notifications",
+      "Recursive queue mutex/condition_variable_any and modification count preserve callback reentry and LinkedList iterator order",
+      "Extend existing unstarted Main fixture and add actual-node checker-delivery driver"
+    ],
+    "local_jdk_iterator_source": {
+      "path": "/opt/homebrew/Cellar/openjdk/26.0.1/libexec/openjdk.jdk/Contents/Home/lib/src.zip",
+      "entry": "java.base/java/util/LinkedList.java",
+      "sha256": "b477f3683fd6f4b7a7d9eda5e8adef65b1eda271fe0ff9fba077e4d0aa3f88d6",
+      "rule": "ListItr.hasNext checks nextIndex<size, then next checks expectedModCount; clear may end iteration before checking modification"
+    },
+    "validation": "validation/systemcheck-work-in-progress/progress.json",
+    "parity": "not_verified",
+    "hashes": {
+      "src/org/minima/system/commands/base/systemcheck.cpp": "d3e43e75b3130143023b5f8573997907669e3da65541f449d4452beb6e756327",
+      "src/org/minima/system/commands/base/systemcheck.hpp": "0ca7c238ffb3d977ce25ebd104abc92c5642d60e9f51baf32f5c918778bfc654",
+      "src/org/minima/system/commands/CommandRunner.cpp": "50abe048a24d513030fca04b026c8edfd5c5c7f783261adf060e1ba21664eb7d",
+      "src/org/minima/utils/messages/MessageStack.cpp": "4a32c0eee67dafeb2bd0228c268c9c37ae68cdd6b1b23f1b08eb58f768f4c6d7",
+      "src/org/minima/utils/messages/MessageStack.hpp": "289698418aef7ea100d548ec73baa597a56418b93152fae0825ddb9f6a219789",
+      "src/org/minima/utils/messages/MessageProcessor.hpp": "ac27f92a7b1980271e7a87220d3a6af291ab7416b7d4c3325e9ee83ae12b0210",
+      "support/MainFixture.hpp": "1c5cf0e1961a3fa8147e37d9bd295b972955969cf3b22dd65e5d5f400bef36c3",
+      "support/SystemCheckFixture.hpp": "3433f1d78fe33a6a8affeccc0a2eb2182302a78c757295da40eb54ed366a4e30",
+      "support/MainRuntimeOracle.java": "201acd5e63cbaa83492958ef6fa3978ef2d36bad5098ddf3d25a2f7c8fdb6543",
+      "support/main_runtime.cpp": "358cbe7f49a93abb1c331f1dd6fbe455709fd93caadf757f6944ea752beb2fe3",
+      "tools/main_runtime_differential.py": "bb285f2c2836ac3eca84397091165aa97271752d94e465d8f40410cce409fa27",
+      "tools/systemcheck_commands_corpus.py": "b6e8a3b30172b1dd5c553a43327a5c39a3d2fff41891cafda0e7382dcea238a5",
+      "tools/native_systemcheck_startup.py": "f3bea599b7df782fa636f0efe25430dfb320057ca335f5788922a4a41c79ad8b"
+    }
   }
 }

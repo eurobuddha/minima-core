@@ -1,0 +1,120 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  39: message_differential
+1/9 Test  #39: message_differential .................   Passed    4.34 sec
+    Start  40: message_workers
+2/9 Test  #40: message_workers ......................   Passed    1.61 sec
+    Start  52: command_runner_differential
+3/9 Test  #52: command_runner_differential ..........   Passed    2.35 sec
+    Start 106: minima_logger_differential
+4/9 Test #106: minima_logger_differential ...........   Passed    2.66 sec
+    Start 107: minima_logger_worker
+5/9 Test #107: minima_logger_worker .................   Passed    0.59 sec
+    Start 128: command_runner_errors_differential
+6/9 Test #128: command_runner_errors_differential ...   Passed    3.38 sec
+    Start 192: main_runtime_differential
+7/9 Test #192: main_runtime_differential ............***Failed    1.65 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/MainRuntimeOracle.java:67: error: cannot find symbol
+                        @Override public void println(String text){super.println(text);if(!called&&text.contains("MSG_PROC [0]")){called=true;out.put("reentryBefore",selected.getSize());if(mode.equals("post"))selected.PostMessage("CALLBACK_ADDED");else if(mode.equals("clear"))selected.clear();else if(mode.equals("keep"))selected.clearExceptString("QUEUED_");else if(mode.equals("first"))selected.clearExceptString("QUEUED_0");out.put("reentryAfter",selected.getSize());}}
+                                                                                                                                                 ^
+  symbol:   method put(String,int)
+  location: variable out of type OutputStream
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/MainRuntimeOracle.java:67: error: cannot find symbol
+                        @Override public void println(String text){super.println(text);if(!called&&text.contains("MSG_PROC [0]")){called=true;out.put("reentryBefore",selected.getSize());if(mode.equals("post"))selected.PostMessage("CALLBACK_ADDED");else if(mode.equals("clear"))selected.clear();else if(mode.equals("keep"))selected.clearExceptString("QUEUED_");else if(mode.equals("first"))selected.clearExceptString("QUEUED_0");out.put("reentryAfter",selected.getSize());}}
+                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+  symbol:   method put(String,int)
+  location: variable out of type OutputStream
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 errors
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/main_runtime_differential.py", line 124, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/main_runtime_differential.py", line 66, in main
+    sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support'/x for x in ['MainRuntimeOracle.java','MainNetworkOracle.java','SqlDBOracle.java','NIOClientOracle.java','ArchiveManagerOracle.java']];listing=build/('main-runtime-java-sources-'+args.group+'.txt');listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
+                                                                                                                                                                                                                                                                                                                                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['javac', '-cp', '/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar', '-d', '/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/main-runtime-oracle-main', '@/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/main-runtime-java-sources-main.txt']' returned non-zero exit status 1.
+
+    Start 235: systemcheck_commands_differential
+8/9 Test #235: systemcheck_commands_differential ....***Failed    1.67 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/MainRuntimeOracle.java:67: error: cannot find symbol
+                        @Override public void println(String text){super.println(text);if(!called&&text.contains("MSG_PROC [0]")){called=true;out.put("reentryBefore",selected.getSize());if(mode.equals("post"))selected.PostMessage("CALLBACK_ADDED");else if(mode.equals("clear"))selected.clear();else if(mode.equals("keep"))selected.clearExceptString("QUEUED_");else if(mode.equals("first"))selected.clearExceptString("QUEUED_0");out.put("reentryAfter",selected.getSize());}}
+                                                                                                                                                 ^
+  symbol:   method put(String,int)
+  location: variable out of type OutputStream
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/MainRuntimeOracle.java:67: error: cannot find symbol
+                        @Override public void println(String text){super.println(text);if(!called&&text.contains("MSG_PROC [0]")){called=true;out.put("reentryBefore",selected.getSize());if(mode.equals("post"))selected.PostMessage("CALLBACK_ADDED");else if(mode.equals("clear"))selected.clear();else if(mode.equals("keep"))selected.clearExceptString("QUEUED_");else if(mode.equals("first"))selected.clearExceptString("QUEUED_0");out.put("reentryAfter",selected.getSize());}}
+                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+  symbol:   method put(String,int)
+  location: variable out of type OutputStream
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 errors
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/main_runtime_differential.py", line 124, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/main_runtime_differential.py", line 66, in main
+    sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support'/x for x in ['MainRuntimeOracle.java','MainNetworkOracle.java','SqlDBOracle.java','NIOClientOracle.java','ArchiveManagerOracle.java']];listing=build/('main-runtime-java-sources-'+args.group+'.txt');listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
+                                                                                                                                                                                                                                                                                                                                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['javac', '-cp', '/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar', '-d', '/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/main-runtime-oracle-systemcheck', '@/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/main-runtime-java-sources-systemcheck.txt']' returned non-zero exit status 1.
+
+    Start 236: native_systemcheck_startup
+9/9 Test #236: native_systemcheck_startup ...........   Passed   24.79 sec
+
+78% tests passed, 2 tests failed out of 9
+
+Total Test time (real) =  43.02 sec
+
+The following tests FAILED:
+	192 - main_runtime_differential (Failed)
+	235 - systemcheck_commands_differential (Failed)
+Errors while running CTest

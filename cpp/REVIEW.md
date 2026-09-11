@@ -1,3 +1,57 @@
+# Systemcheck checkpoint — full port unfinished
+
+## Code Review
+
+### Summary
+
+Reviewed pinned systemcheck, queue/processor/timer/logger dependencies and local
+JDK LinkedList iterator behavior; the native command, shared queue changes,
+registry, fixtures, corpus, live-node driver, CMake, maps, provenance and lessons.
+The source command's diagnostic posts, unusual spellings and response behavior are
+preserved. No blocking finding remains in this checkpoint's changes.
+
+### Findings addressed
+
+The prior native queue printer bypassed MinimaLogger. Calling the logger while
+holding its ordinary mutex would deadlock on queue reentry. It now uses a recursive
+mutex and matching condition variable; modification counts and a size-first loop
+preserve LinkedList's callback-mutation behavior without invalid deque iterators.
+Thirty-five callback programs exercise reading, appending, clearing, retaining all
+and retaining the first element across queue sizes one through seven. Existing
+concurrent queue/worker tests still pass.
+
+Two comparison differences were observer boundaries: native singleton removal
+logged when Java's reflective fixture removal did not, and platform stack-frame
+counts differed after a runner error. The first fixture was aligned; the latter is
+explicitly classified and excluded, retaining non-stack notifications and checking
+logger-prefix counts. A Java PrintStream subclass initially shadowed the result
+variable with inherited out; the observer now captures a distinct alias. Initial
+failed evidence is retained alongside final passes.
+
+Both complete builds pass. Each passes262programs718operations plus two actual-node
+checks for report shapes, ten details selectors, real checker/timer delivery and
+shutdown. Seven affected regression groups pass in both. Sanitized final9group run
+passes165.38seconds. Normal initially passed7groups butfailed2observercompilations;
+afteraliasfix those2passed5.15seconds. Finalcommandtimes2.11/2.60seconds,
+livetimes24.79/136.70seconds. All handles terminal. Full236CTest suite notrun;
+H2 AOT outside C++ sanitizer instrumentation.
+
+### Remaining scope
+
+The report is not an atomic snapshot. The fixture's workers are unstarted; actual
+nodes separately prove delivery, without asserting deterministic live queue counts.
+TimerProcessor's own logger-callback reentry, arbitrary Message subclass behavior,
+registry ordering, and exhaustive concurrent singleton replacement remain open.
+These are partial-port limits, not complete parity or production-readiness approval.
+
+### Verdict
+
+Approve saving this tested partial-port checkpoint. Map386counterparts
+(342production+44tests),71absent. All457lessons audited. Evidence:
+validation/systemcheck-work-in-progress; student lab new-tests/system-check.md.
+
+---
+
 # Live MegaMMR checkpoint — full port unfinished
 
 ## Code Review

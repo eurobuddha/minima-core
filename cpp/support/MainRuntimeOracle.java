@@ -19,12 +19,36 @@ public class MainRuntimeOracle extends SqlDBOracle {
         ManualMain(){super();}
         public Message take(){return getNextMessage();}
         public void dispatch(Message message)throws Exception{super.processMessage(message);}
-        public void PostTimerMessage(TimerMessage timer){timers.add(new JSONArray(Arrays.asList(timer.getMessageType(),timer.getTimer())));if(flag("timerFail"))throw new RuntimeException("fixture timer failure");}
+        public void PostTimerMessage(TimerMessage timer){var entry=new JSONArray(Arrays.asList(timer.getMessageType(),timer.getTimer()));if(flag("systemTimer"))entry.add(timer.getBoolean("timer",false));timers.add(entry);if(flag("timerFail"))throw new RuntimeException("fixture timer failure");}
     }
     static class Listener implements MessageListener {
         public void processMessage(Message message)throws Exception{held.add((JSONObject)message.getObject("notify"));var info=new JSONObject();info.put("main",Main.getInstance()!=null);info.put("type",message.getMessageType());listenerCalls.add(info);if(flag("listenerError"))throw new AssertionError("fixture listener failure");if(flag("listenerFail"))throw new RuntimeException("fixture listener failure");}
     }
     static void install(Main main)throws Exception{NIOClientOracle.field(Main.class,"mMainInstance").set(null,main);}
+    static MessageProcessor[] systemProcessors(Main main){var net=main.getNetworkManager();return new MessageProcessor[]{main,main.getTxPoWProcessor(),main.getTxPoWMiner(),net==null?null:net.getNIOManager(),net==null?null:net.getP2PManager(),main.getSendPoll(),main.getNotifyManager()};}
+    static void systemSetup(Main main,JSONObject input)throws Exception{
+        String missing=input.getString("missing","");
+        var types=new Class<?>[]{org.minima.system.brains.TxPoWProcessor.class,org.minima.system.brains.TxPoWMiner.class,org.minima.system.commands.sendpoll.SendPollManager.class,org.minima.system.network.webhooks.NotifyManager.class};
+        String[] fields={"mTxPoWProcessor","mTxPoWMiner","mSendPoll","mNotifyManager"},keys={"processor","miner","poll","notify"};
+        for(int i=0;i<types.length;i++)NIOClientOracle.set(main,fields[i],missing.equals(keys[i])?null:NIOClientOracle.U.allocateInstance(types[i]));
+        if(!missing.equals("notify"))MinimaDB.getDB().getUserDB().getWebHooks();
+        String[] names={"MAIN","TXPOWPROCESSOR","MINER","NIOMANAGER","P2PMANAGER","SENDPOLL_MANAGER","NOTIFYMANAGER"};int index=0;
+        for(var proc:systemProcessors(main)){
+            if(proc!=null){MainNetworkOracle.stack(proc);NIOClientOracle.set(proc,"mName",names[index]);NIOClientOracle.set(proc,"mLastMessage",input.get("last")==null?null:new Message(input.getString("last")));
+                if(Boolean.TRUE.equals(input.get("queued")))for(int i=0;i<=index;i++)proc.PostMessage(new Message("QUEUED_"+i));
+                if(Boolean.TRUE.equals(input.get("nullQueue")))proc.PostMessage((Message)null);
+            }index++;
+        }
+        if(!Boolean.TRUE.equals(input.get("skipTimer"))){
+            var timer=(TimerProcessor)NIOClientOracle.U.allocateInstance(TimerProcessor.class);NIOClientOracle.set(timer,"mMessagesLock",new Object());NIOClientOracle.set(timer,"mTimerMessages",new ArrayList<TimerMessage>());NIOClientOracle.field(TimerProcessor.class,"mTimerProcessor").set(null,timer);
+            if(Boolean.TRUE.equals(input.get("queued"))){var message=new TimerMessage(100000,"FIXTURE_TIMER");NIOClientOracle.set(message,"mTimer",101000L);timer.PostMessage(message);}
+        }
+        MinimaDB.getDB().writeLock(true);MinimaDB.getDB().writeLock(false);
+        if(missing.equals("main"))install(null);
+    }
+    static JSONArray systemSnapshot(Main main)throws Exception{
+        var all=new JSONArray();for(var proc:systemProcessors(main)){if(proc==null){all.add(null);continue;}var queue=new JSONArray();for(var message:(LinkedList<Message>)NIOClientOracle.field(MessageStack.class,"mMessages").get(proc)){if(message==null){queue.add(null);continue;}var row=new JSONObject();row.put("type",message.getMessageType());row.put("timer",message.getBoolean("timer",false));if(message.isMessageType("NOTIFY_POST")){var notify=(JSONObject)message.getObject("notify");var data=(JSONObject)notify.get("data");String text=data.getString("message","");int pos=text.indexOf("] : ");row.put("stackFrame",pos>=0&&text.substring(pos+4).startsWith("     "));}queue.add(row);}all.add(queue);}return all;
+    }
     static JSONObject snapshot(ManualMain main){var out=new JSONObject();out.put("startup",main.isStartUpComplete());out.put("error",main.isStartupError());out.put("errorMessage",main.getStartupErrorMsg());out.put("shutdown",main.isShuttingDown());out.put("restoring",main.isRestoring());out.put("either",main.isShuttongDownOrRestoring());out.put("sync",main.isSyncIBD());out.put("normal",main.isNormalMineMode());out.put("automine",main.AUTOMINE_TIMER);out.put("keys",main.getAllKeysCreated());out.put("instance",Main.getInstance()==main);out.put("listener",Main.getMinimaListener()!=null);out.put("queue",main.getSize());return out;}
     static JSONObject run(JSONObject input,String root)throws Exception {
         config=input;events=new JSONArray();GeneralParams.DATA_FOLDER=root;GeneralParams.RESCUE_MEGAMMR_NODE="";GeneralParams.USE_SQL_COINDB=false;GeneralParams.P2P_ENABLED=false;GeneralParams.P2P2_ENABLED=false;GeneralParams.MYSQL_DB_DELAY=0;GeneralParams.MYSQL_STORE_ALLTXPOW=false;GeneralParams.IBDSYNC_LOGS=false;GeneralParams.DB_IGNORE_LOCKS=false;GeneralParams.IS_MEGAMMR=false;Main.STARTUP_DEBUG_LOGS=false;Main.setMinimaListener(null);held.clear();connectionID=preparedID=0;
@@ -34,6 +58,16 @@ public class MainRuntimeOracle extends SqlDBOracle {
         for(Object step:(JSONArray)input.get("ops")){
             config=(JSONObject)step;events=new JSONArray();calls=0;timers=new JSONArray();listenerCalls=new JSONArray();var out=new JSONObject();var bytes=new ByteArrayOutputStream();var previous=System.out;System.setOut(new PrintStream(bytes,true,"UTF-8"));long before=System.currentTimeMillis();
             if(input.containsKey("rpcFixture")&&flag("interruptThread"))Thread.currentThread().interrupt();try{Object value=null;String cmd=config.getString("cmd");switch(cmd){
+                case "systemSetup":network=new MainNetworkOracle(config,main);if(flag("nullNetwork"))NIOClientOracle.set(main,"mNetwork",null);systemSetup(main,config);break;
+                case "systemSnapshot":value=systemSnapshot(main);break;
+                case "systemHelper":{var selected=flag("null")?null:systemProcessors(main)[integer(config,"index",0)];var command=new org.minima.system.commands.base.systemcheck();if(config.containsKey("reentry")){
+                    String mode=config.getString("reentry");var previousPrint=System.out;var observation=out;
+                    System.setOut(new PrintStream(previousPrint,true,"UTF-8"){
+                        boolean called=false;
+                        @Override public void println(String text){super.println(text);if(!called&&text.contains("MSG_PROC [0]")){called=true;observation.put("reentryBefore",selected.getSize());if(mode.equals("post"))selected.PostMessage("CALLBACK_ADDED");else if(mode.equals("clear"))selected.clear();else if(mode.equals("keep"))selected.clearExceptString("QUEUED_");else if(mode.equals("first"))selected.clearExceptString("QUEUED_0");observation.put("reentryAfter",selected.getSize());}}
+                    });try{command.printDetails(selected);}finally{System.setOut(previousPrint);}
+                }else if(flag("details"))command.printDetails(selected);else value=command.getInfo(selected);break;}
+                case "systemLock":if(flag("write"))MinimaDB.getDB().writeLock(flag("enabled"));else MinimaDB.getDB().readLock(flag("enabled"));break;
                 case "rpcConfig":{
                     if(config.containsKey("locale"))Locale.setDefault(Locale.forLanguageTag(config.getString("locale")));
                     if(config.containsKey("enabled"))GeneralParams.RPC_ENABLED=flag("enabled");
@@ -110,7 +144,7 @@ public class MainRuntimeOracle extends SqlDBOracle {
                 case "info":break;default:throw new IllegalArgumentException(cmd);
             }out.put("value",value);}catch(Throwable error){out.put("exception",error.toString());}finally{System.setOut(previous);}
             long after=System.currentTimeMillis();var logs=new JSONArray();for(String line:bytes.toString("UTF-8").split("\n")){int at=line.indexOf("] : ");if(at>=0&&!line.substring(at+4).startsWith("     "))logs.add(line.substring(at+4));}
-            if(input.containsKey("rpcFixture"))out.put("interrupted",Thread.interrupted());if(input.containsKey("nodeStatus"))out.put("jvmMaxMemory",Runtime.getRuntime().maxMemory());out.put("before",before);out.put("after",after);out.put("logs",logs);out.put("timers",timers);out.put("events",events);out.put("listeners",listenerCalls);out.put("held",new JSONArray(held));out.put("state",snapshot(main));out.put("user",new JSONObject(MinimaDB.getDB().getUserDB().getAllData()));outputs.add(out);
+            if(input.containsKey("systemCheck"))out.put("prefixedLogs",bytes.toString("UTF-8").lines().filter(line->line.startsWith("Minima @ ")&&!line.contains("] :      ")).count());if(input.containsKey("rpcFixture"))out.put("interrupted",Thread.interrupted());if(input.containsKey("nodeStatus"))out.put("jvmMaxMemory",Runtime.getRuntime().maxMemory());out.put("before",before);out.put("after",after);out.put("logs",logs);out.put("timers",timers);out.put("events",events);out.put("listeners",listenerCalls);out.put("held",new JSONArray(held));out.put("state",snapshot(main));out.put("user",new JSONObject(MinimaDB.getDB().getUserDB().getAllData()));outputs.add(out);
         }Main.setMinimaListener(null);install(null);var result=new JSONObject();result.put("ops",outputs);return result;
     }
     public static void main(String[] args)throws Exception{installDriver("jdbc:");var in=new BufferedReader(new InputStreamReader(System.in));String line;while((line=in.readLine())!=null)try{System.out.println(run((JSONObject)new JSONParser().parse(line),args[0]).toJSONString());}catch(Throwable e){e.printStackTrace(System.err);System.out.println("{\"fatal\":true}");}}

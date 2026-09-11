@@ -20,7 +20,13 @@ Despite its name, this class is a first-in, first-out queue. Producers append at
 
 ## How the C++ translation works
 
-The native deque preserves FIFO and shared_ptr preserves message identity. One mutex plus condition_variable protects queue access and wakeups; this differs structurally from Java’s two monitors. Filtering builds a replacement deque before assignment, preserving failure-before-mutation behavior. Native printAllMessages currently writes std::clog rather than calling MinimaLogger, so notification/format/reentry parity is incomplete.
+The native deque preserves FIFO and shared_ptr preserves message identity. A
+recursive mutex plus condition_variable_any protects queue access and wakeups;
+this differs structurally from Java's two monitors. Filtering builds a replacement
+deque before assignment, preserving failure-before-mutation behavior. Printing now
+uses MinimaLogger with notification disabled. Reentrant callbacks can read or
+modify the queue. A modification counter and size check preserve LinkedList's
+fail-fast iteration order without retaining invalidated deque iterators.
 
 ## Understanding the tests
 
@@ -31,11 +37,20 @@ Message operation programs compare queue size, availability, and popped object i
 - [Differential operation programs](../../../../../../../tools/message_differential.py)
 - [Native worker and timer assertions](../../../../../../../support/message_workers.cpp)
 
-The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
+The [systemcheck lab](../../../../../../../student-guide/new-tests/system-check.md)
+adds Java/native logging-callback tests. Reading queue size is safe; appending causes
+ConcurrentModificationException before the next message. Clearing or retaining just
+the already-visited first message ends the iteration without that exception.
+Keeping an unchanged multi-element list still invalidates the iterator because
+clearExceptString rebuilds the list. Tests cover queue sizes one through seven.
 
 ## Limits and a useful next test
 
-ERROR normalization hides exception details, and the concurrency test is native-only. Java permits Message subclasses to override equals, which may affect LinkedList.remove(Object); native pop_front does not invoke a custom equality method. Logger callback reentry and all possible scheduling interleavings are not certified.
+Older message tests normalize ERROR details, and the concurrency test is
+native-only. Java permits Message subclasses to override equals, which may affect
+LinkedList.remove(Object); native pop_front does not invoke custom equality.
+The new logging callbacks cover the listed mutations, not arbitrary subclass
+callbacks or every scheduling interleaving.
 
 ## Check your understanding
 

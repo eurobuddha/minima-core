@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "cases": 2016,
+  "failures": [],
+  "scope": "Unchanged pinned MinimaLogger, controlled DateFormat/PrintStream/Main and explicit Throwable frames. Runtime heap-dependent prefix and automatic NPE details normalized; formatSize has separate exact tests. Fixed source date pattern across four default timezones and signed-long timestamps. Full mutable SimpleDateFormat and native exception capture remain incomplete."
+}

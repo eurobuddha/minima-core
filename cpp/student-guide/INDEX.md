@@ -410,7 +410,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [slavenode.java](files/src/org/minima/system/commands/base/slavenode.md) | authored | implemented_partial |
 | [sphincs.java](files/src/org/minima/system/commands/base/sphincs.md) | authored | unported |
 | [status.java](files/src/org/minima/system/commands/base/status.md) | authored | implemented_partial |
-| [systemcheck.java](files/src/org/minima/system/commands/base/systemcheck.md) | authored | unported |
+| [systemcheck.java](files/src/org/minima/system/commands/base/systemcheck.md) | authored | implemented_partial |
 | [test.java](files/src/org/minima/system/commands/base/test.md) | authored | unported |
 | [timemilli.java](files/src/org/minima/system/commands/base/timemilli.md) | authored | implemented_partial |
 | [tokencreate.java](files/src/org/minima/system/commands/base/tokencreate.md) | authored | implemented_partial |

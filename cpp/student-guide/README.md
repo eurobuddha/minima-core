@@ -91,3 +91,6 @@ peer-file replacement and payload-only network traffic.
 The [MegaMMR live-node lab](new-tests/mega-mmr-live-node.md) checks actual exports,
 import and loopback resync, then reopens the result with the other runtime and
 verifies the saved chain, coin proofs and wallet signing.
+
+The [system-check lab](new-tests/system-check.md) follows queue reports, active
+checker posts, delayed delivery and reentrant diagnostic logging.
