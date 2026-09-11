@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "original_methods": 2,
+  "original_assertions": 0,
+  "delay_comparisons": 10,
+  "known_outcome_checks": 20,
+  "native_unrelated_exception_check": true,
+  "inactive_source_checks": 4,
+  "java": "original_methods=2;original_assertions=0\ndefault=100ms\ndelay(0)=returned\ndelay(1)=returned\ndelay(-1)=java.lang.IllegalArgumentException: timeout value is negative\ndelay(-100)=java.lang.IllegalArgumentException: timeout value is negative\ndelay(-9223372036854775808)=java.lang.IllegalArgumentException: timeout value is negative\ninterrupted(0)=returned;status=false\ninterrupted(1)=returned;status=false\ninterrupted(9223372036854775807)=returned;status=false\ninterrupted(-1)=java.lang.IllegalArgumentException: timeout value is negative;status=true\n",
+  "cpp": "original_methods=2;original_assertions=0\ndefault=100ms\ndelay(0)=returned\ndelay(1)=returned\ndelay(-1)=java.lang.IllegalArgumentException: timeout value is negative\ndelay(-100)=java.lang.IllegalArgumentException: timeout value is negative\ndelay(-9223372036854775808)=java.lang.IllegalArgumentException: timeout value is negative\ninterrupted(0)=returned;status=false\ninterrupted(1)=returned;status=false\ninterrupted(9223372036854775807)=returned;status=false\ninterrupted(-1)=java.lang.IllegalArgumentException: timeout value is negative;status=true\n",
+  "scope": "Original empty tests provide no processor coverage. Default/zero/positive/negative delays use real sleep. Native interrupted observations use an injected runtime callback; no native Thread.interrupt implementation is claimed. P2PSwapLink preserves comments only and is not functional conversion credit."
+}

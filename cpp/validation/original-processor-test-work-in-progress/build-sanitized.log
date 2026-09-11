@@ -1,0 +1,10 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/TxPoWProcessorTest.dir/support/original_processor_test.cpp.o
+[100%] Building CXX object CMakeFiles/TxPoWProcessorTest.dir/test/org/minima/system/brains/TxPoWProcessorTest.cpp.o
+[100%] Linking CXX executable TxPoWProcessorTest
+[100%] Built target TxPoWProcessorTest
+Building CXX object CMakeFiles/minima_inactive_source.dir/src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp.o
+Built target minima_inactive_source
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Built target MinimaCoreCpp

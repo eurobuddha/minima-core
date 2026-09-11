@@ -2,18 +2,18 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 451,
-  "native_absent": 6,
+  "native_counterparts": 453,
+  "native_absent": 4,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
-      "counterparts": 364,
-      "absent": 5
+      "counterparts": 365,
+      "absent": 4
     },
     "test": {
       "total": 88,
-      "counterparts": 87,
-      "absent": 1
+      "counterparts": 88,
+      "absent": 0
     }
   },
   "teaching_counts": {
@@ -21,7 +21,7 @@
     "source_test_explanation": 88
   },
   "links_checked": 9525,
-  "line_anchors_checked": 2632,
+  "line_anchors_checked": 2628,
   "errors": [],
   "ownership_exclusions": [
     "new-tests/command-runner-errors.md",
@@ -3033,11 +3033,11 @@
       "java": "src/org/minima/system/network/p2p/messages/P2PSwapLink.java",
       "cpp": "src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp",
       "guide": "files/src/org/minima/system/network/p2p/messages/P2PSwapLink.md",
-      "port_status": "unported",
+      "port_status": "inactive_source_preserved",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored algorithm and test explanation; full API/parity review remains open."
+      "teaching_note": "Authored source and validation explanation; full parity remains open."
     },
     {
       "java": "src/org/minima/system/network/p2p/messages/P2PWalkLinks.java",
@@ -3863,11 +3863,11 @@
       "java": "test/org/minima/system/brains/TxPoWProcessorTest.java",
       "cpp": "test/org/minima/system/brains/TxPoWProcessorTest.cpp",
       "guide": "files/test/org/minima/system/brains/TxPoWProcessorTest.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
-      "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
+      "teaching_note": "Authored source and validation explanation; full parity remains open."
     },
     {
       "java": "test/org/minima/system/network/p2p/P2PDBTest.java",

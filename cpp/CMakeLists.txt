@@ -1611,3 +1611,11 @@ add_executable(StatementParserTests test/org/minima/tests/kissvm/statements/Stat
 target_link_libraries(StatementParserTests PRIVATE minima_file_port)
 add_test(NAME original_parser_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_parser_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_parser_tests PROPERTIES TIMEOUT 120)
+
+# The original processor test has empty test bodies and two active delay helpers.
+add_executable(TxPoWProcessorTest support/original_processor_test.cpp test/org/minima/system/brains/TxPoWProcessorTest.cpp)
+target_link_libraries(TxPoWProcessorTest PRIVATE minima_file_port)
+# Wholly commented source: compile separately, and do not add a protocol class.
+add_library(minima_inactive_source OBJECT src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp)
+add_test(NAME original_processor_test COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_processor_test.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_processor_test PROPERTIES TIMEOUT 60)

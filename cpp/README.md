@@ -11,14 +11,20 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 87 mapped test files exist;
+`.cpp` paths. **365 production paths (one inactive) and 88 mapped test files exist;
 6 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-ExpressionParserTests and StatementParserTests now have working counterparts.
+TxPoWProcessorTest now preserves its empty tests and implements both delay helpers.
+P2PSwapLink is explicitly inactive-source preservation, with no functional credit.
+Both builds pass ten supplemental delay comparisons and the inactive-source checks.
+Inventory: **453 paths (452 active partial, one inactive), four absent**. See the
+[student lab](student-guide/new-tests/original-processor-test.md).
+
+At the preceding checkpoint, ExpressionParserTests and StatementParserTests gained counterparts.
 Both builds pass fifteen methods / 1,269 assertions / 747 direct parser calls and
 eight supplemental comparisons / sixteen independent checks. Both node targets
-build. Inventory: **451 counterparts, 6 absent**; full parity remains unverified.
+build. That checkpoint had **451 counterparts, 6 absent**; full parity remains unverified.
 See the [parser lab](student-guide/new-tests/original-parser-tests.md).
 
 At the preceding checkpoint, BooleanExpressionTests, OperatorExpressionTests and

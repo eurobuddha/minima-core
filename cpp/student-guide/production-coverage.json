@@ -2973,11 +2973,11 @@
     "java": "src/org/minima/system/network/p2p/messages/P2PSwapLink.java",
     "cpp": "src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp",
     "guide": "files/src/org/minima/system/network/p2p/messages/P2PSwapLink.md",
-    "port_status": "unported",
+    "port_status": "inactive_source_preserved",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored algorithm and test explanation; full API/parity review remains open."
+    "teaching_note": "Authored source and validation explanation; full parity remains open."
   },
   {
     "java": "src/org/minima/system/network/p2p/messages/P2PWalkLinks.java",

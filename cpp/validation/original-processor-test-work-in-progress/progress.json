@@ -1,0 +1,37 @@
+{
+  "base_head": "a3c261e6cad6745f4798a414074b33e7656f5982",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "parity": "not_verified",
+  "counterpart_paths": 453,
+  "active_partial_counterparts": 452,
+  "inactive_source_preserved": 1,
+  "production_paths": 365,
+  "test_paths": 88,
+  "absent": 4,
+  "new_active_counterpart": "test/org/minima/system/brains/TxPoWProcessorTest.cpp",
+  "new_inactive_source": "src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp",
+  "existing_behavior_corrections": [],
+  "tests": {
+    "passed": true,
+    "original_methods": 2,
+    "original_assertions": 0,
+    "delay_comparisons": 10,
+    "known_outcome_checks": 20,
+    "native_unrelated_exception_check": true,
+    "inactive_source_checks": 4,
+    "java": "original_methods=2;original_assertions=0\ndefault=100ms\ndelay(0)=returned\ndelay(1)=returned\ndelay(-1)=java.lang.IllegalArgumentException: timeout value is negative\ndelay(-100)=java.lang.IllegalArgumentException: timeout value is negative\ndelay(-9223372036854775808)=java.lang.IllegalArgumentException: timeout value is negative\ninterrupted(0)=returned;status=false\ninterrupted(1)=returned;status=false\ninterrupted(9223372036854775807)=returned;status=false\ninterrupted(-1)=java.lang.IllegalArgumentException: timeout value is negative;status=true\n",
+    "cpp": "original_methods=2;original_assertions=0\ndefault=100ms\ndelay(0)=returned\ndelay(1)=returned\ndelay(-1)=java.lang.IllegalArgumentException: timeout value is negative\ndelay(-100)=java.lang.IllegalArgumentException: timeout value is negative\ndelay(-9223372036854775808)=java.lang.IllegalArgumentException: timeout value is negative\ninterrupted(0)=returned;status=false\ninterrupted(1)=returned;status=false\ninterrupted(9223372036854775807)=returned;status=false\ninterrupted(-1)=java.lang.IllegalArgumentException: timeout value is negative;status=true\n",
+    "scope": "Original empty tests provide no processor coverage. Default/zero/positive/negative delays use real sleep. Native interrupted observations use an injected runtime callback; no native Thread.interrupt implementation is claimed. P2PSwapLink preserves comments only and is not functional conversion credit."
+  },
+  "builds": {
+    "normal": "PASS new test, inactive translation unit and MinimaCoreCpp; CTest 1.47s",
+    "sanitized": "PASS same targets; CTest 1.29s",
+    "full_suite": "not repeated; 282 registered tests"
+  },
+  "blockers": [
+    "External native library/method bodies for five JNI methods absent from inspected repo, sibling and expanded local file searches. JNI caller logic can proceed independently.",
+    "No default native Thread.interrupt facility; helper interruption propagation validated through the existing runtime callback pattern."
+  ],
+  "next_action": "Port JNI command caller logic against explicit library boundary, retain missing-library failure and distinguish fixture-backed validation from actual external-library parity; then full production/runtime audit."
+}

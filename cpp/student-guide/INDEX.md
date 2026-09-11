@@ -567,7 +567,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [InetSocketAddressIO.java](files/src/org/minima/system/network/p2p/messages/InetSocketAddressIO.md) | authored | implemented_partial |
 | [P2PDoSwap.java](files/src/org/minima/system/network/p2p/messages/P2PDoSwap.md) | authored | implemented_partial |
 | [P2PGreeting.java](files/src/org/minima/system/network/p2p/messages/P2PGreeting.md) | authored | implemented_partial |
-| [P2PSwapLink.java](files/src/org/minima/system/network/p2p/messages/P2PSwapLink.md) | authored | unported |
+| [P2PSwapLink.java](files/src/org/minima/system/network/p2p/messages/P2PSwapLink.md) | authored | inactive_source_preserved |
 | [P2PWalkLinks.java](files/src/org/minima/system/network/p2p/messages/P2PWalkLinks.md) | authored | implemented_partial |
 
 ## src/org/minima/system/network/p2p/params
@@ -755,7 +755,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [TxPoWProcessorTest.java](files/test/org/minima/system/brains/TxPoWProcessorTest.md) | test explanation | unported |
+| [TxPoWProcessorTest.java](files/test/org/minima/system/brains/TxPoWProcessorTest.md) | test explanation | implemented_partial |
 
 ## test/org/minima/system/network/p2p
 

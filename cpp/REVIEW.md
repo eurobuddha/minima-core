@@ -1,3 +1,34 @@
+# Current checkpoint — processor test helpers and inactive swap source
+
+Base HEAD: a3c261e6cad6745f4798a414074b33e7656f5982. Goal ACTIVE, incomplete. 453 mapped paths: **452 active partial
+counterparts + one inactive-source preservation**. 365 production paths (one inactive),
+88 test paths; **four absent**, all JNI-related production sources.
+New active counterpart: test/org/minima/system/brains/TxPoWProcessorTest.cpp.
+New inactive source: src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp.
+No existing production behavior correction. The two empty original tests establish
+zero processor assertions. Ten delay comparisons / twenty expected-outcome checks,
+one native unrelated-exception check and four inactive-source checks pass in both
+builds. Native interrupt cases inject the sleep runtime; no native Thread.interrupt
+facility is claimed. Real default/zero/positive/negative delay checks retained.
+Normal/sanitizer new targets, inactive unit and actual MinimaCoreCpp node build PASS.
+Focused CTests: 1.47s / 1.29s; 282 registered tests, full suite not repeated.
+
+Lessons/evidence: student-guide/new-tests/original-processor-test.md and
+validation/original-processor-test-work-in-progress. NEXT: JNI caller logic against
+explicit external-library boundary; five native method bodies/library absent from
+inspected candidates. Source/Main default JNI loader also remains unresolved.
+Independent caller work and full production/runtime audit remain. Magic full
+sanitizer replay still failed on timeout at prior checkpoint; do not repeat long
+demos while independent work remains. No live Magic handles.
+
+Previous checkpoint a3c261e was restored and all 26 changed files byte-verified
+from local-backups/MinimaCoreC++-20260911T191652Z.bundle (SHA-256
+893d3bbe18a14c3b584f4910ef30c1522e10ef2c7b49ba58db4b3145f96764de).
+Preserve unrelated graphify changes and external Java commit f7f0e08. CPP-only
+local commits, no push, upstream-study pin unchanged.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — both original parser tests
 
 Base HEAD: 7b8065cd6e225cfaee1fcc2635d49b84acde0436. Goal ACTIVE and incomplete.

@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 451 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 453 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -307,7 +307,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/network/p2p/messages/InetSocketAddressIO.java` | `src/org/minima/system/network/p2p/messages/InetSocketAddressIO.cpp` | implemented_partial | — |
 | `src/org/minima/system/network/p2p/messages/P2PDoSwap.java` | `src/org/minima/system/network/p2p/messages/P2PDoSwap.cpp` | implemented_partial | — |
 | `src/org/minima/system/network/p2p/messages/P2PGreeting.java` | `src/org/minima/system/network/p2p/messages/P2PGreeting.cpp` | implemented_partial | — |
-| `src/org/minima/system/network/p2p/messages/P2PSwapLink.java` | `src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp` | unported | — |
+| `src/org/minima/system/network/p2p/messages/P2PSwapLink.java` | `src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp` | inactive_source_preserved | — |
 | `src/org/minima/system/network/p2p/messages/P2PWalkLinks.java` | `src/org/minima/system/network/p2p/messages/P2PWalkLinks.cpp` | implemented_partial | — |
 | `src/org/minima/system/network/p2p/params/P2PParams.java` | `src/org/minima/system/network/p2p/params/P2PParams.cpp` | implemented_partial | — |
 | `src/org/minima/system/network/p2p/params/P2PTestParams.java` | `src/org/minima/system/network/p2p/params/P2PTestParams.cpp` | implemented_partial | — |
@@ -390,7 +390,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/objects/base/MiniDataTests.java` | `test/org/minima/objects/base/MiniDataTests.cpp` | implemented_partial | — |
 | `test/org/minima/objects/base/MiniNumberTests.java` | `test/org/minima/objects/base/MiniNumberTests.cpp` | implemented_partial | — |
 | `test/org/minima/objects/base/MiniStringTests.java` | `test/org/minima/objects/base/MiniStringTests.cpp` | implemented_partial | — |
-| `test/org/minima/system/brains/TxPoWProcessorTest.java` | `test/org/minima/system/brains/TxPoWProcessorTest.cpp` | unported | — |
+| `test/org/minima/system/brains/TxPoWProcessorTest.java` | `test/org/minima/system/brains/TxPoWProcessorTest.cpp` | implemented_partial | — |
 | `test/org/minima/system/network/p2p/P2PDBTest.java` | `test/org/minima/system/network/p2p/P2PDBTest.cpp` | implemented_partial | — |
 | `test/org/minima/system/network/p2p/SwapLinksFunctionsTest.java` | `test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp` | implemented_partial | — |
 | `test/org/minima/system/network/p2p/UtilFuncsTest.java` | `test/org/minima/system/network/p2p/UtilFuncsTest.cpp` | implemented_partial | — |

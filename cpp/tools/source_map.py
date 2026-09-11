@@ -40,10 +40,16 @@ def inventory():
         target = Path(rel).with_suffix(".cpp")
         existing = ROOT / target
         stem = source.stem
+        status = "implemented_partial" if existing.is_file() else "unported"
+        if rel == "src/org/minima/system/network/p2p/messages/P2PSwapLink.java" and existing.is_file():
+            for checked in (source, existing):
+                if any(line.strip() and not line.lstrip().startswith("//") for line in checked.read_text().splitlines()):
+                    raise ValueError(f"Inactive source unexpectedly contains active code: {checked}")
+            status = "inactive_source_preserved"
         entries.append({
             "java": rel, "java_sha256": sha(source),
             "cpp": target.as_posix(), "cpp_exists": existing.is_file(),
-            "status": "implemented_partial" if existing.is_file() else "unported",
+            "status": status,
             "parity": "not_verified",
             "reuse_candidates": candidates.get(stem, candidates.get(aliases.get(stem), [])),
             "candidate_evidence": "name_or_explicit_role_match_only; requires_source_review",
