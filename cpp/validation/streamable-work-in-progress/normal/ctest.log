@@ -1,0 +1,17 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  1: MiniByteTests
+1/6 Test  #1: MiniByteTests ....................   Passed    0.35 sec
+    Start  2: malformed_streams
+2/6 Test  #2: malformed_streams ................   Passed    0.29 sec
+    Start  4: java_differential
+3/6 Test  #4: java_differential ................   Passed    1.74 sec
+    Start  5: object_differential
+4/6 Test  #5: object_differential ..............   Passed   28.69 sec
+    Start 31: utility_differential
+5/6 Test #31: utility_differential .............   Passed    3.38 sec
+    Start 37: sphincs_signature_differential
+6/6 Test #37: sphincs_signature_differential ...   Passed    9.97 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =  44.42 sec

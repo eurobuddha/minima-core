@@ -1,3 +1,60 @@
+# Latest checkpoint — Streamable base and five concrete integrations
+
+Base HEAD 6b01bd6e0f4f43211813776c90d8411772a17431. Branch/project/executable
+MinimaCoreC++. Goal ACTIVE, not complete. 411 counterparts = 364 production +
+47 original tests; 46 absent = 5 production + 41 tests. All present remain
+implemented_partial; all 457 parity not_verified. 261 default CTest entries;
+full suite NOT run.
+
+New utils/Streamable.hpp/.cpp defines pure virtual writeDataStream(vector&) const
+and readDataStream(span,offset&), virtual destructor, serialise() collection bridge.
+Existing MiniFile/Crypto/MiniDataVersion/NIO templates can now accept base references.
+MiniByte inherits and reuses wire::byte for in-place read; static deserialise uses
+that reader and serialise uses the shared collection bridge. MMRProof,
+HORSTSignature, FORSSignature and SPHINCSSignature inherit/override with their
+existing method bodies unchanged. All dependent native objects rebuilt normally
+and with sanitizers. No native H2 provider change.
+
+Both interface suites PASS 909 comparisons / 3,850 assertions. Normal 2.934s,
+SAN 3.253s. Same transcript 2f82001a4a4239116bfe8e7659ec48922a4787219f288e38ac9b8ae5a808e359.
+Actual base references, prefix writes, all truncations of small proof/signature
+vectors, read offsets/trailing bytes and partial reserialization, custom failing
+writer, actual generic file write/append/in-place load, MiniData conversion,
+single/pair SHA3 and NIO payload construction. Exception classes compared, prose
+excluded. Native complete stderr empty. All six regressions PASS in both builds:
+MiniByteTests, malformed_streams, java_differential, object_differential,
+utility_differential, sphincs_signature_differential. Normal six-suite 44.42s;
+SAN seven suites including interface 116.87s. Heavy SPHINCS signing not rerun;
+existing container codec/partial-state suite rerun and passed.
+
+Driver tools/streamable_differential.py; support/StreamableOracle.java and
+streamable.cpp. Evidence validation/streamable-work-in-progress. The pinned source
+has 44 explicit implementing classes; only five adopted. Saved
+explicit-implementations.json records the remaining 39, including MMRProofChunk.
+Next REQUIRED: continue real interface adoption with source write/read bodies and
+partial-state validation for those 39; validate inherited subclasses as bases join.
+Do not use assignment from deserialise where source exposes partial mutation.
+Vector/span backend is not certification of arbitrary Java streams, blocking I/O,
+allocation failures, custom subclasses, concurrency or complete caller error paths.
+
+Read pinned Streamable and P2PSwapLink, current generic helpers/ByteIO, complete
+MiniByte and existing proof/signature stream methods, relevant tests. Sibling
+serialization/DataStream.hpp/.cpp has incompatible 2-byte string framing and
+whole-read bounds behavior; reuse current proven codecs instead. Student interface
+lab and all six affected per-file lessons updated. Teaching != parity.
+
+All handles TERMINAL0/CLOSED: normal build81683, normal interface80764,
+normal regressions14826, SAN build11509, SAN tests47729. No new live containers.
+All previous fixture JSONs remain STALE, fixture CMake caches empty. No heavy
+SPHINCS jobs live. Remaining absent production files: P2PSwapLink.java (every line
+commented), base benchmark/jnitest/jniminingtest, utils/jni/jnifunctions. JNI native
+sources still missing; retain prior source search/question and do not invent a
+replacement. Also 41 original test mappings and complete node/API fidelity remain.
+Use GRAPHIFY_SKIP_HOOK=1 for local commits. Commit/recovery details in Git log and
+ignored local-backups manifests. No GitHub push requested.
+
+---
+
 # Latest checkpoint — help counterpart and curated catalogue
 
 Base HEAD 995880769300727fa16fbf1100a2f70b7f39a610. Branch/project/executable

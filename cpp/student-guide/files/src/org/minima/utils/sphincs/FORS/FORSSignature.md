@@ -30,6 +30,15 @@ The [FORS lab](../../../../../../../../student-guide/new-tests/fors-signatures.m
 records the plan and execution results. The [driver](../../../../../../../../tools/fors_differential.py)
 calls unmodified pinned Java classes and the compiled native library.
 
+## Common interface integration
+
+This class now implements the native Streamable interface. Its existing byte
+format is retained; reads dispatch into the same object and writers append to the
+supplied output. The [interface lab](../../../../../../../new-tests/streamable-interface.md) tests base-reference calls,
+partial reads and existing generic file/hash/network-message helpers. Both normal and sanitizer
+runs pass 909 comparisons and 3,850 assertions across all five adopted types;
+this does not establish full interface adoption or complete class parity.
+
 ## Limits and a useful next test
 
 Raw MiniData byte-array aliases, arbitrary Java subclasses, concurrent mutation,

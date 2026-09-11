@@ -2,13 +2,13 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 410,
-  "native_absent": 47,
+  "native_counterparts": 411,
+  "native_absent": 46,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
-      "counterparts": 363,
-      "absent": 6
+      "counterparts": 364,
+      "absent": 5
     },
     "test": {
       "total": 88,
@@ -20,7 +20,7 @@
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9276,
+  "links_checked": 9285,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -3343,11 +3343,11 @@
       "java": "src/org/minima/utils/Streamable.java",
       "cpp": "src/org/minima/utils/Streamable.cpp",
       "guide": "files/src/org/minima/utils/Streamable.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored source algorithm and proposed validation; native counterpart remains unported."
+      "teaching_note": "Authored source, translation and test explanation. Full integration remains open."
     },
     {
       "java": "src/org/minima/utils/TimedRequest.java",

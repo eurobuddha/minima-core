@@ -3283,11 +3283,11 @@
     "java": "src/org/minima/utils/Streamable.java",
     "cpp": "src/org/minima/utils/Streamable.cpp",
     "guide": "files/src/org/minima/utils/Streamable.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored source algorithm and proposed validation; native counterpart remains unported."
+    "teaching_note": "Authored source, translation and test explanation. Full integration remains open."
   },
   {
     "java": "src/org/minima/utils/TimedRequest.java",

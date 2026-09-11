@@ -1,9 +1,10 @@
 #pragma once
+#include "org/minima/utils/Streamable.hpp"
 #include "MMRData.hpp"
 #include <memory>
 #include "org/minima/objects/base/MiniByte.hpp"
 namespace minima {
-class MMRProof {
+class MMRProof:public Streamable {
 public:
     struct MMRProofChunk {
         MiniByte mLeft;
@@ -29,9 +30,9 @@ public:
     MMRData calculateProof(MMRData data) const;
     json::JSONObject toJSON() const;
     std::string toString() const {return toJSON().toJSONString();}
-    void writeDataStream(std::vector<uint8_t>& output) const;
+    void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
-    void readDataStream(std::span<const uint8_t> data,size_t& offset);
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     static MMRProof deserialise(std::span<const uint8_t> data,size_t& offset);
     static MMRProof convertMiniDataVersion(const MiniData& data) {size_t offset=0;return deserialise(data.bytes(),offset);}
 };

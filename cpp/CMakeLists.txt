@@ -1471,3 +1471,10 @@ add_executable(minima_help_command support/help_command.cpp)
 target_link_libraries(minima_help_command PRIVATE minima_file_port)
 add_test(NAME help_command_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/help_command_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(help_command_differential PROPERTIES TIMEOUT 180)
+
+# Actual serialization interface and initial concrete integration.
+target_sources(minima_file_port PRIVATE src/org/minima/utils/Streamable.cpp)
+add_executable(minima_streamable support/streamable.cpp)
+target_link_libraries(minima_streamable PRIVATE minima_file_port)
+add_test(NAME streamable_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/streamable_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(streamable_differential PROPERTIES TIMEOUT 300)

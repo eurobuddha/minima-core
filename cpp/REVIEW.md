@@ -1,3 +1,39 @@
+## Streamable interface review
+
+### Summary
+
+The mapped class supplies the two virtual stream operations, a virtual destructor,
+and a byte-collection bridge for existing native generic callers. MiniByte now
+shares its byte reader with the static factory and appends its single byte through
+the writer. Four proof/signature classes retain their existing method bodies and
+add inheritance/override declarations. No new wire format or decode-then-replace
+adapter was introduced. Both complete builds pass after the layout changes.
+
+### Findings
+
+**MAJOR — interface adoption remains incomplete.** The pinned source has 44 explicit
+implementing classes, including nested MMRProofChunk. Five now implement the native
+base; 39 remain. Their existing standalone codecs are not evidence that they can
+be substituted through Streamable. The saved inventory names every remaining type.
+This checkpoint must not be presented as complete serialization-interface parity.
+
+The vector/span representation reuses current production conventions. Arbitrary
+Java stream backends, blocking I/O, custom subclasses, allocation failure timing,
+concurrency and all generic caller error paths still need broader validation.
+These are explicit limits of the current integration, not invented placeholder
+implementations. The inactive P2PSwapLink sketch remains unported and inactive.
+
+### Verdict
+
+Approve this staged integration checkpoint. Both common-interface suites pass
+909 comparisons and 3,850 assertions with matching transcripts and empty native
+stderr. Tests exercise actual generic MiniFile, Crypto, MiniData conversion and
+NIO message construction through base references, all small-vector truncations,
+prefix writes and a synthetic failing writer. All six affected regressions pass
+in both builds. Full node and interface integration remain unfinished.
+
+---
+
 ## Help command review
 
 ### Summary

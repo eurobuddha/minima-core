@@ -42,6 +42,15 @@ Method navigation (declarations with bodies found in this file): [MMRProofChunk]
 
 Write the parent expressions for two chunks: first left, then right. Explain why reversing their order changes the result even if all sibling hashes are unchanged.
 
+## Common interface integration
+
+This class now implements the native Streamable interface. Its existing byte
+format is retained; reads dispatch into the same object and writers append to the
+supplied output. The [interface lab](../../../../../../new-tests/streamable-interface.md) tests base-reference calls,
+partial reads and existing generic file/hash/network-message helpers. Both normal and sanitizer
+runs pass 909 comparisons and 3,850 assertions across all five adopted types;
+this does not establish full interface adoption or complete class parity.
+
 ## Limits and traceability
 
  The source map still labels this counterpart partial and parity not_verified. The described fixtures establish their particular observations, not full API equivalence or a working full node.

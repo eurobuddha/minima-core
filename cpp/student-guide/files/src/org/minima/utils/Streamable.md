@@ -1,82 +1,76 @@
-# Streamable — logic and a future translation
+# Streamable — one contract, many byte formats
 
-**Teaching status:** Authored source algorithm and proposed validation; native counterpart remains unported.
+**Teaching status:** Authored source, translation and test explanation. Full integration remains open.
 
-**Port status:** `unported`; parity `not_verified`. The mapped C++ file is absent. This page does not describe a completed translation.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-| Source | Destination |
-|---|---|
-| [src/org/minima/utils/Streamable.java](../../../../../../../upstream-study/src/org/minima/utils/Streamable.java) | `src/org/minima/utils/Streamable.cpp` (planned) |
+[Pinned Java interface](../../../../../../../upstream-study/src/org/minima/utils/Streamable.java) · [C++ interface](../../../../../../src/org/minima/utils/Streamable.hpp) · [C++ implementation](../../../../../../src/org/minima/utils/Streamable.cpp)
 
-## Teacher's worked explanation
+## What the interface promises
 
-Streamable is a two-method Java interface. It says that an implementing object
-can write its representation to a DataOutputStream and read its representation
-from a DataInputStream. Both operations may throw IOException. The interface
-contains no fields, byte layout, loop, or default implementation.
+Streamable declares two operations. writeDataStream appends an object's fields to
+a supplied stream. readDataStream reads those fields into the existing object.
+The interface defines no fields, wire format, rollback, stream ownership or closing
+policy. Each implementing class determines its own byte layout and failure state.
 
-**Its mapped C++ counterpart is still absent.** Many native objects already have
-serialization methods, but that does not mean this interface's translation or
-all substitutable stream behavior has been completed.
+The C++ class has two corresponding pure virtual methods. It uses the existing
+byte-vector output and span/offset input conventions. A virtual destructor permits
+safe ownership through a base pointer. The small serialise convenience method
+collects bytes by calling the virtual writer; it lets the existing generic native
+callers use a Streamable reference without knowing its concrete class.
 
-### What the interface promises—and what it leaves to each class
+## Reuse and integration
 
-`writeDataStream(zOut)` writes an object's fields to the supplied stream. The
-implementing class determines the exact order and encoding. `readDataStream(zIn)`
-changes an existing object by reading those fields back. It is not a factory
-method returning a fresh object.
+MiniByte, MMRProof, HORSTSignature, FORSSignature and SPHINCSSignature now inherit
+from Streamable. The four proof/signature implementations retain their existing
+writer and in-place reader bodies. MiniByte appends its stored byte and reuses
+ByteIO's byte reader. Its static factory calls the same in-place reader.
 
-For example, Transaction writes its input list, output list, state list and link
-hash, with counts encoded as MiniNumber values. A caller using only Streamable
-does not need to know those fields to ask the object to serialize itself. This
-is the role of an interface: state a common operation while letting each class
-supply the behavior.
+MiniFile's generic reader already selects readDataStream when available. Given a
+Streamable reference, that call now dispatches to the actual object's reader.
+Crypto, MiniData conversion and NIOManager similarly use the convenience serializer,
+which dispatches to the actual writer. The interface has real callers and concrete
+implementations; it is not an empty inventory entry.
 
-The interface alone does not promise atomic reading, rollback after failure,
-automatic stream closing, or identity preservation for nested fields. Those
-questions require reading the implementing method. Transaction clears lists
-before reading new contents, so a failed read can leave partially changed state.
-A native implementation that decodes into a temporary and replaces the object
-only after complete success would provide different failure behavior.
+The sibling DataStream was inspected but not substituted: its two-byte string
+length and read-boundary behavior differ from these already-tested codecs.
 
-### What the current C++ code does
+## Why failed reads matter
 
-Native objects commonly expose `serialise()` returning a vector of bytes,
-`readDataStream(span, offset)` for an in-place read, or a static `deserialise()`
-that returns a new value. ByteIO.hpp supplies common byte composition and
-read-boundary helpers. MiniFile's templated reader checks whether an object has
-an in-place method; otherwise it assigns a newly deserialized value.
+A Java reader may change some fields before EOF. For example, a proof can replace
+its block time and clear its chain before reading the next count. A signature can
+replace one nested object before another nested read fails. Decoding into a new
+object and assigning only on success would hide those changes. The interface
+therefore exposes the existing in-place methods directly.
 
-These are useful existing building blocks, but their signatures are not a
-complete common native Streamable contract. Static creation and in-place mutation
-must be distinguished, especially when callers retain references to existing
-objects or inspect state after an exception. Simply adding an empty `.cpp` file
-would fill a mapping slot without solving that behavior.
+## Understanding the tests
 
-### How to test an interface translation
+The [interface lab](../../../../../../student-guide/new-tests/streamable-interface.md)
+compares calls through Java and C++ base references. It checks prefixed output,
+every truncation of small encoded objects, cursor advancement, trailing bytes and
+partial reserialization. A synthetic writer appends some bytes and then throws,
+showing that the common interface preserves partial output and exceptions.
 
-An interface has no standalone algorithm to run. Its tests should exercise
-representative implementations **through the common interface or adapter** and
-check that callers can rely on the promised operations.
+Successful file write/append/load, MiniData conversion, single/pair hashes and
+network-message construction use the actual generic helpers. Independent byte
+concatenation and SHA3 calculations check their outputs. Both complete builds
+pass. Each interface suite passes 909 comparisons and 3,850 assertions with
+matching transcripts and empty native stderr; all six affected regressions pass.
 
-Existing object differential tests compare many native wire formats against
-Java. They are evidence for those objects, not a passing test of this missing
-mapped interface. Future Streamable validation should write different object
-types through the native common path, compare exact Java bytes, read into existing
-objects, and check offset advancement and partially changed state on truncated
-input. A stream that fails after a chosen byte count can reveal whether writes
-and exceptions occur in the same order. Closing and ownership must be observed
-where an implementing class or caller actually specifies them.
+## Remaining work
 
-Do not invent a universal wire layout for Streamable: the source interface does
-not define one. Reuse the proven serializers and preserve each class's format.
+The pinned source declares 44 explicit implementing classes, including the nested
+MMRProofChunk. Five are integrated; 39 still need native interface adoption and
+behavior review. Inherited subclasses also require validation when their bases
+join the interface. The commented P2PSwapLink sketch is not an active implementer.
 
-**Exercise:** explain why `object = T::deserialise(bytes)` can differ from
-`object.readDataStream(bytes, offset)` even if both produce identical objects
-when the input is valid. Use a truncated transaction and a retained reference
-as your counterexample.
+Vector/span backends do not prove arbitrary Java stream, blocking I/O, custom
+subclass, allocation-failure, concurrency or full-node parity. Existing individual
+codec tests remain useful evidence, but do not prove all common-interface behavior.
 
-## Dependencies and reading map
+For students: explain why assigning a completely deserialized temporary can differ
+from reading into an existing object. What state and cursor observations would
+reveal that difference after a truncated input?
 
-
-Pinned Java SHA-256: `c88b27270aec6207289dab7fabb149904ce0e2d286e1cf3356a066e046c4a933`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+Pinned Java SHA-256: `c88b27270aec6207289dab7fabb149904ce0e2d286e1cf3356a066e046c4a933`.
+[Mapping](../../../../../../source-map.json) · [Limitations](../../../../../../REVIEW.md).

@@ -31,6 +31,15 @@ The [test driver](../../../../../../../../tools/horst_differential.py) calls the
 unmodified Java sources and the compiled native library. The source demonstration
 alone contains no assertions; the driver adds explicit acceptance and rejection checks.
 
+## Common interface integration
+
+This class now implements the native Streamable interface. Its existing byte
+format is retained; reads dispatch into the same object and writers append to the
+supplied output. The [interface lab](../../../../../../../new-tests/streamable-interface.md) tests base-reference calls,
+partial reads and existing generic file/hash/network-message helpers. Both normal and sanitizer
+runs pass 909 comparisons and 3,850 assertions across all five adopted types;
+this does not establish full interface adoption or complete class parity.
+
 ## Limits and a useful next test
 
 These cases cover the specified algorithm and error boundaries, not all possible

@@ -11,9 +11,15 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **363 production counterparts and 47 mapped test files exist;
-47 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 47 mapped test files exist;
+46 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The native Streamable interface now connects five existing concrete classes to
+the common read/write path and existing file/hash/network-message helpers.
+Both builds pass 909 comparisons and 3,850 assertions, plus six affected
+regressions. Another 39 explicit source implementers still need integration.
+See the [interface lab](student-guide/new-tests/streamable-interface.md).
 
 The help command now preserves the source's 94-entry curated catalogue and detailed
 lookup through the native registry. Both builds pass 761 comparisons and 2,543

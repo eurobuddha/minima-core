@@ -1,0 +1,31 @@
+import java.io.*;
+import org.minima.utils.*;
+import org.minima.utils.json.*;
+import org.minima.objects.base.*;
+import org.minima.objects.mmr.*;
+import org.minima.utils.sphincs.SPHINCSSignature;
+import org.minima.utils.sphincs.HORST.HORSTSignature;
+import org.minima.utils.sphincs.FORS.FORSSignature;
+import org.minima.system.network.minima.NIOManager;
+public class StreamableOracle {
+    static class Failing implements Streamable {
+        byte[] values={1,2,3};int fail;
+        Failing(int n){fail=n;}
+        public void writeDataStream(DataOutputStream out)throws IOException{for(int i=0;i<values.length;i++){if(i==fail)throw new IOException("fixture write");out.writeByte(values[i]);}if(fail==3)throw new IOException("fixture write");}
+        public void readDataStream(DataInputStream in)throws IOException{for(int i=0;i<values.length;i++)values[i]=in.readByte();}
+    }
+    static Streamable create(JSONObject q){return switch(q.getString("kind")){case "byte"->new MiniByte();case "proof"->new MMRProof();case "horst"->new HORSTSignature();case "fors"->new FORSSignature();case "sphincs"->new SPHINCSSignature();case "failing"->new Failing(((Number)q.get("fail")).intValue());default->throw new IllegalArgumentException();};}
+    static byte[] data(JSONObject q,String name){return new MiniData(q.getString(name)).getBytes();}
+    static String hex(byte[] bytes){return new MiniData(bytes).to0xString();}
+    static JSONObject state(Streamable value){var out=new JSONObject();var buffer=new ByteArrayOutputStream();buffer.write(0xaa);buffer.write(0x55);try{value.writeDataStream(new DataOutputStream(buffer));}catch(Exception e){out.put("writeError",e.getClass().getName());}out.put("appended",hex(buffer.toByteArray()));return out;}
+    static JSONObject run(JSONObject q)throws Exception{
+        var result=new JSONObject();Streamable value=create(q);var initial=data(q,"initial");value.readDataStream(new DataInputStream(new ByteArrayInputStream(initial)));String op=q.getString("op");
+        if(op.equals("read")){byte[] bytes=data(q,"wire");var buffer=new ByteArrayInputStream(bytes);int start=((Number)q.get("offset")).intValue();buffer.skip(start);try{value.readDataStream(new DataInputStream(buffer));}catch(Exception e){result.put("readError",e.getClass().getName());}result.put("offset",bytes.length-buffer.available());}
+        else if(op.equals("callers")){
+            result.put("data",MiniData.getMiniDataVersion(value).to0xString());result.put("hash",Crypto.getInstance().hashObject(value).to0xString());result.put("pairHash",Crypto.getInstance().hashObjects(value,value).to0xString());result.put("nio",NIOManager.createNIOMessage(new MiniByte(13),value).to0xString());
+            File file=new File(q.getString("file"));try{MiniFile.writeObjectToFile(file,value);result.put("file",hex(MiniFile.readCompleteFile(file)));MiniFile.writeObjectToFile(file,value,true);result.put("appendedFile",hex(MiniFile.readCompleteFile(file)));MiniFile.writeDataToFile(file,data(q,"wire"));MiniFile.loadObject(file,value);}finally{file.delete();}
+        }
+        result.put("state",state(value));return result;
+    }
+    public static void main(String[] args)throws Exception{var input=new BufferedReader(new InputStreamReader(System.in));String line;while((line=input.readLine())!=null){JSONObject result;try{result=run((JSONObject)JSONValue.parseWithException(line));}catch(Exception e){result=new JSONObject();result.put("error",e.getClass().getName());result.put("message",e.getMessage());}System.out.println(result.toJSONString());}}
+}

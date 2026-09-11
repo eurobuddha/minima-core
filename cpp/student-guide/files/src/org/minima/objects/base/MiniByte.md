@@ -39,6 +39,15 @@ Method navigation (declarations with bodies found in this file): [MiniByte](../.
 
 Explain why MiniByte(257) has unsigned value 1 and why MiniByte(255).isTrue is true even though its signed value is -1.
 
+## Common interface integration
+
+This class now implements the native Streamable interface. Its existing byte
+format is retained; reads dispatch into the same object and writers append to the
+supplied output. The [interface lab](../../../../../../new-tests/streamable-interface.md) tests base-reference calls,
+partial reads and existing generic file/hash/network-message helpers. Both normal and sanitizer
+runs pass 909 comparisons and 3,850 assertions across all five adopted types;
+this does not establish full interface adoption or complete class parity.
+
 ## Limits and traceability
 
 Boolean truth is not restricted to the canonical serialized values 0 and 1. Callers that need canonical validation must perform it separately. The source-map status remains partial and parity not_verified.

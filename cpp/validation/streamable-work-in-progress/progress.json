@@ -1,0 +1,110 @@
+{
+  "project": "MinimaCoreC++",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "counterparts": 411,
+  "production_counterparts": 364,
+  "test_counterparts": 47,
+  "absent": 46,
+  "production_absent": 5,
+  "tests_absent": 41,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "default_ctest_entries": 261,
+  "full_ctest_suite_run": false,
+  "explicit_implementations": 44,
+  "adopted_types": 5,
+  "remaining_interface_implementations": 39,
+  "results": {
+    "normal": {
+      "passed": true,
+      "cases": 909,
+      "planned_cases": 909,
+      "independent_assertions": 3850,
+      "seconds": 2.934,
+      "transcript_sha256": "2f82001a4a4239116bfe8e7659ec48922a4787219f288e38ac9b8ae5a808e359",
+      "failures": [],
+      "adopted_types": 5,
+      "scope": "Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Existing proof/signature bodies unchanged. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished."
+    },
+    "sanitized": {
+      "passed": true,
+      "cases": 909,
+      "planned_cases": 909,
+      "independent_assertions": 3850,
+      "seconds": 3.253,
+      "transcript_sha256": "2f82001a4a4239116bfe8e7659ec48922a4787219f288e38ac9b8ae5a808e359",
+      "failures": [],
+      "adopted_types": 5,
+      "scope": "Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Existing proof/signature bodies unchanged. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished."
+    }
+  },
+  "affected_regressions": {
+    "normal": {
+      "suites": 6,
+      "passed": true,
+      "seconds": 44.42
+    },
+    "sanitized": {
+      "suites": 6,
+      "passed": true,
+      "total_with_interface_seconds": 116.87
+    }
+  },
+  "active_sessions": {},
+  "completed_sessions": {
+    "normal_build": {
+      "id": 81683,
+      "exit_code": 0
+    },
+    "normal_interface": {
+      "id": 80764,
+      "exit_code": 0
+    },
+    "normal_regressions": {
+      "id": 14826,
+      "exit_code": 0
+    },
+    "sanitized_build": {
+      "id": 11509,
+      "exit_code": 0
+    },
+    "sanitized_tests": {
+      "id": 47729,
+      "exit_code": 0
+    }
+  },
+  "open_work": [
+    "Adopt remaining 39 explicit Streamable implementations and validate inherited subclasses",
+    "Arbitrary custom stream backends, allocation failures, concurrency and complete caller/API fidelity",
+    "Remaining 46 mapped files and complete node parity"
+  ],
+  "guide_audit": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "source_files": 457,
+    "unique_guides": 457,
+    "native_counterparts": 411,
+    "native_absent": 46,
+    "mapping_counts_by_source_set": {
+      "src": {
+        "total": 369,
+        "counterparts": 364,
+        "absent": 5
+      },
+      "test": {
+        "total": 88,
+        "counterparts": 47,
+        "absent": 41
+      }
+    },
+    "teaching_counts": {
+      "authored_lesson": 369,
+      "source_test_explanation": 88
+    },
+    "links_checked": 9285,
+    "line_anchors_checked": 2632,
+    "errors": [],
+    "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
+  }
+}

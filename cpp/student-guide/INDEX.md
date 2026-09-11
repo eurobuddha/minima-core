@@ -628,7 +628,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [RPCClient.java](files/src/org/minima/utils/RPCClient.md) | authored | implemented_partial |
 | [SqlDB.java](files/src/org/minima/utils/SqlDB.md) | authored | implemented_partial |
 | [Stack.java](files/src/org/minima/utils/Stack.md) | authored | implemented_partial |
-| [Streamable.java](files/src/org/minima/utils/Streamable.md) | authored | unported |
+| [Streamable.java](files/src/org/minima/utils/Streamable.md) | authored | implemented_partial |
 | [TimedRequest.java](files/src/org/minima/utils/TimedRequest.md) | authored | implemented_partial |
 | [ZipExtractor.java](files/src/org/minima/utils/ZipExtractor.md) | authored | implemented_partial |
 

@@ -4519,5 +4519,137 @@
         "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
       }
     }
+  },
+  "streamable_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/utils/Streamable.java": "c88b27270aec6207289dab7fabb149904ce0e2d286e1cf3356a066e046c4a933",
+      "upstream-study/src/org/minima/objects/base/MiniByte.java": "5b94c4e0c9678079998358e10a18fa1ebfafdce0e91acedc3c4e3b9f1920d5b2"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/utils/Streamable.hpp": "c150da4b6d02517d352890df426c15667401a62c4e5b01abb0764f1502420c17",
+      "cpp/src/org/minima/utils/Streamable.cpp": "ccbd385abd78421c1715b6a3a89504cf64e5e97ca0232572c9d34292bc02ef50",
+      "cpp/src/org/minima/objects/base/MiniByte.hpp": "0eab0e9d2bbcc1a545e814e85d2eb051e77c62b2afcfb8cf2b3ff3c3f1f3cd98",
+      "cpp/src/org/minima/objects/base/MiniByte.cpp": "20c8538d90aae9fd92461bc3ce2eeee8c1b45f52d1ad1e69359a22b326ce8880",
+      "cpp/src/org/minima/objects/mmr/MMRProof.hpp": "d0d0aef784e1af1bd9cc991642da2a3677c9bbc7a52f392b24b25007c55eca04",
+      "cpp/src/org/minima/utils/sphincs/HORST/HORSTSignature.hpp": "1744c84bef8b61cccf04d6710bb806fec39c8efb227235f2a175b2638bce34f8",
+      "cpp/src/org/minima/utils/sphincs/FORS/FORSSignature.hpp": "03ddf5d0f34ce0851c63ba7003e6b2a292f8c95a3447edaecad99e5f60df9ed8",
+      "cpp/src/org/minima/utils/sphincs/SPHINCSSignature.hpp": "a7cfcca9e7ee818b0bcd1be248bf6f9d09b189957ce61b3ff88ae422c9b556a2",
+      "cpp/support/StreamableOracle.java": "ee8ca0e0a437ac45374d6f907ed87dacde54f856257d6be1d16ae898b09cdb65",
+      "cpp/support/streamable.cpp": "cf8af1b3b58d382224277db22e40ef029b4c3eb1a7920eb482c5255db9ecb336",
+      "cpp/tools/streamable_differential.py": "ea19f4e300e7d2e73bf2debc56cbc40dadca1157f0f07639c5b75fff6dc7c32b"
+    },
+    "reuse": "Existing ByteIO byte reader/vector output, unchanged MMRProof/HORSTSignature/FORSSignature/SPHINCSSignature in-place readers and append writers, MiniByte codec, MiniFile generic in-place path, MiniDataVersion conversion, Crypto and NIO serialization callers. Source two-method interface becomes a native abstract base with virtual destructor and collection bridge for existing generic callers. Actual generic helpers tested through base references. Existing Runner and independent signature/number/data fixture framing reused.",
+    "sibling_search": "Inspected /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/serialization/DataStream.hpp and .cpp: two-byte string framing and whole-read boundary behavior do not fit current pinned codecs; current proven byte/span implementations reused.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "goal_complete": false,
+      "counterparts": 411,
+      "production_counterparts": 364,
+      "test_counterparts": 47,
+      "absent": 46,
+      "production_absent": 5,
+      "tests_absent": 41,
+      "parity": "not_verified",
+      "full_normal_build": "passed",
+      "full_sanitized_build": "passed",
+      "default_ctest_entries": 261,
+      "full_ctest_suite_run": false,
+      "explicit_implementations": 44,
+      "adopted_types": 5,
+      "remaining_interface_implementations": 39,
+      "results": {
+        "normal": {
+          "passed": true,
+          "cases": 909,
+          "planned_cases": 909,
+          "independent_assertions": 3850,
+          "seconds": 2.934,
+          "transcript_sha256": "2f82001a4a4239116bfe8e7659ec48922a4787219f288e38ac9b8ae5a808e359",
+          "failures": [],
+          "adopted_types": 5,
+          "scope": "Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Existing proof/signature bodies unchanged. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished."
+        },
+        "sanitized": {
+          "passed": true,
+          "cases": 909,
+          "planned_cases": 909,
+          "independent_assertions": 3850,
+          "seconds": 3.253,
+          "transcript_sha256": "2f82001a4a4239116bfe8e7659ec48922a4787219f288e38ac9b8ae5a808e359",
+          "failures": [],
+          "adopted_types": 5,
+          "scope": "Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Existing proof/signature bodies unchanged. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished."
+        }
+      },
+      "affected_regressions": {
+        "normal": {
+          "suites": 6,
+          "passed": true,
+          "seconds": 44.42
+        },
+        "sanitized": {
+          "suites": 6,
+          "passed": true,
+          "total_with_interface_seconds": 116.87
+        }
+      },
+      "active_sessions": {},
+      "completed_sessions": {
+        "normal_build": {
+          "id": 81683,
+          "exit_code": 0
+        },
+        "normal_interface": {
+          "id": 80764,
+          "exit_code": 0
+        },
+        "normal_regressions": {
+          "id": 14826,
+          "exit_code": 0
+        },
+        "sanitized_build": {
+          "id": 11509,
+          "exit_code": 0
+        },
+        "sanitized_tests": {
+          "id": 47729,
+          "exit_code": 0
+        }
+      },
+      "open_work": [
+        "Adopt remaining 39 explicit Streamable implementations and validate inherited subclasses",
+        "Arbitrary custom stream backends, allocation failures, concurrency and complete caller/API fidelity",
+        "Remaining 46 mapped files and complete node parity"
+      ],
+      "guide_audit": {
+        "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+        "source_files": 457,
+        "unique_guides": 457,
+        "native_counterparts": 411,
+        "native_absent": 46,
+        "mapping_counts_by_source_set": {
+          "src": {
+            "total": 369,
+            "counterparts": 364,
+            "absent": 5
+          },
+          "test": {
+            "total": 88,
+            "counterparts": 47,
+            "absent": 41
+          }
+        },
+        "teaching_counts": {
+          "authored_lesson": 369,
+          "source_test_explanation": 88
+        },
+        "links_checked": 9285,
+        "line_anchors_checked": 2632,
+        "errors": [],
+        "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
+      }
+    }
   }
 }
