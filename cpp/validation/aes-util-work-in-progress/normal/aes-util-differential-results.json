@@ -1,0 +1,13 @@
+{
+  "programs": 1957,
+  "operations": 10728,
+  "independent_key_checks": 99,
+  "cross_decryption_and_recovery_checks": 3270,
+  "demonstration": [
+    "TUEUg15Q5yEtyBIK++aDJw==",
+    "helloyou!"
+  ],
+  "corpus_sha256": "3ee77033db92a89159a8cc5fa63c26c80b993b22824cbd1edeca1f10d0b3d791",
+  "failures": [],
+  "scope": "UTF-8 default charset; nullable UTF-16 public APIs, private derivation/final/fail, exact codecs and error categories/messages except NPE prose, retained cipher failure recovery and opposite-runtime ciphertexts. No non-UTF-8 default charset, provider substitution, arbitrary modes, allocation exhaustion or concurrent cipher access certification."
+}

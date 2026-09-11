@@ -1,3 +1,61 @@
+# Current work — AesUtil translated and cipher edge cases validated
+
+MinimaCoreC++ branch/project/executable. Full 457-file goal remains active.
+Previous HEAD 81c8f64; git log and local-backups identify final checkpoint/recovery.
+Both complete builds pass. All build/test handles terminal. No GitHub push.
+Map 387 = 343 production + 44 original tests; 70 absent = 26 production + 44 tests.
+All 457 student lessons authored/audited; all parity remains not_verified.
+237 CTest entries; full suite NOT run. H2 AOT outside C++ ASAN instrumentation.
+
+New src/org/minima/utils/encrypt/javajs/AesUtil.cpp/hpp maps constructor, encrypt,
+decrypt, generateKey, doFinal, Base64/hex helpers, fail and demo main. Nullable
+UTF-16 API supports null and unpaired surrogates. Reuses Cipher/GenerateKey,
+Base64.hpp, MiniData, MiniString and JavaUnicode. PBKDF2 uses existing OpenSSL
+PKCS5_PBKDF2_HMAC with SHA1, requested iterations and floor(bits/8); no replacement
+with GenerateKey SHA256. Selected PBE validation order/messages retained. Public
+wrappers return null for Exceptions but propagate JavaError/std::bad_alloc.
+Default plaintext encoding is UTF-8; other Java default charsets remain open.
+
+AesUtil doFinal parses hex IV before initializing. Supported SunJCE lazy provider
+selection is represented by cipherSelected/providerExhausted flags: first invalid
+key/IV exhausts candidates and future initializations fail; failures after one
+successful init can recover. Parse failures before init do not consume providers.
+Null buffer after valid init raises IllegalArgumentException(Null input buffer).
+Local JDK26 source Cipher.chooseProvider, PBEKeySpec, PBKDF2KeyImpl/PBEUtil and
+CipherCore inspected. Other providers/acquisition failures, arbitrary private
+modes, exhaustion and unsynchronized concurrent Cipher access not certified.
+
+Shared GenerateKey.cpp Cipher::doFinal now returns empty bytes for decryption
+when accumulated input and current input are both empty, matching SunJCE rather
+than OpenSSL's rejecting padding finalizer. Existing utility driver adds three
+empty-decryption cases (one per AES key size). No other shared behavior changed.
+
+New support/AesUtilOracle.java + aes_util.cpp use actual source/native methods,
+reflection/friend only for private helpers, UTF-16 unit input, exact output bytes/
+text/null/errors except NPE prose. Each program retains one object across ops.
+New tools/aes_util_differential.py compiles all pinned production Java, compares
+1957 programs / 10728 operations each build; 99 hashlib independent key checks,
+3270 plaintext/re-encryption assertions, raw malformed UTF-8 ciphertext from both
+runtimes, demo main exact TUEUg15Q5yEtyBIK++aDJw== then helloyou!.
+Initial 1253 programs had 123 disagreements, retained as initial-mismatches.json.
+They exposed empty decryption, null buffer category, and initial provider failure;
+expanded final corpus covers failures both before/after successful initialization.
+
+Both test groups pass: AesUtil normal16.07s/sanitized27.65s; utility1364cases;
+network_utilities5668; decrypt_backup422 including113partialsuccess; restore128
+including16success/49savedisabled cases. Normal selected3 total23.67s plus backup2
+30.91s; sanitizer all5 total72.19s. Evidence under validation/aes-util-work-in-progress.
+No production callers of AesUtil at pin; library/demo integration exercised.
+
+NEXT: continue26 absent production files and44 original tests. ZipExtractor,
+Streamable, legacy SPHINCS/FORS/HORST, MySQL archive commands/server and remaining
+base/documentation commands still absent. Benchmark/JNI require inspected native
+source, never invented substitutes. Reuse gate, pre-test student explanation,
+source comparisons, both builds, review, local commit and verified recovery remain
+required. All already-present files still need full API/runtime parity audit.
+
+---
+
 # Current work — systemcheck port and reentrant queue diagnostics validated
 
 MinimaCoreC++ branch/project/executable. Full457-file goal remains active/incomplete.

@@ -3363,11 +3363,11 @@
     "java": "src/org/minima/utils/encrypt/javajs/AesUtil.java",
     "cpp": "src/org/minima/utils/encrypt/javajs/AesUtil.cpp",
     "guide": "files/src/org/minima/utils/encrypt/javajs/AesUtil.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+    "teaching_note": "Authored explanation of the source algorithm, native translation, comparison tests and remaining limits. This is not a full parity certification."
   },
   {
     "java": "src/org/minima/utils/jni/jnifunctions.java",

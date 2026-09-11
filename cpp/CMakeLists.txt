@@ -182,6 +182,7 @@ add_library(minima_file_port STATIC
     src/org/minima/utils/MiniFile.cpp
     src/org/minima/utils/MiniFormat.cpp
     src/org/minima/utils/encrypt/GenerateKey.cpp
+    src/org/minima/utils/encrypt/javajs/AesUtil.cpp
     src/org/minima/utils/encrypt/EncryptDecrypt.cpp
     src/org/minima/utils/encrypt/SignVerify.cpp
     src/org/minima/utils/encrypt/CryptoPackage.cpp
@@ -450,6 +451,12 @@ add_executable(minima_utility support/utility.cpp)
 target_link_libraries(minima_utility PRIVATE minima_file_port)
 add_test(NAME utility_differential COMMAND ${Python3_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR}/tools/utility_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+
+add_executable(minima_aes_util support/aes_util.cpp)
+target_link_libraries(minima_aes_util PRIVATE minima_file_port)
+add_test(NAME aes_util_differential COMMAND ${Python3_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/tools/aes_util_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(aes_util_differential PROPERTIES TIMEOUT 180)
 
 add_executable(minima_consensus support/consensus.cpp)
 target_link_libraries(minima_consensus PRIVATE minima_file_port)

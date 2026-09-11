@@ -646,7 +646,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [AesUtil.java](files/src/org/minima/utils/encrypt/javajs/AesUtil.md) | authored | unported |
+| [AesUtil.java](files/src/org/minima/utils/encrypt/javajs/AesUtil.md) | authored | implemented_partial |
 
 ## src/org/minima/utils/jni
 

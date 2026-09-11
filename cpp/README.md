@@ -5,9 +5,18 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **342 production counterparts and 44 mapped test files exist;
-71 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **343 production counterparts and 44 mapped test files exist;
+70 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mapped `AesUtil` now compiles with PBKDF2-HMAC-SHA1, nullable UTF-16 text,
+Base64/hex helpers and the source's persistent cipher behavior. Its comparison
+found and fixed empty-decryption and initial-provider-failure differences. Both
+full builds pass 1,957 programs / 10,728 operations and four affected regression
+groups. All 457 student lessons remain authored and audited. See the
+[student lab](student-guide/new-tests/aes-text-interoperability.md) and
+[saved evidence](validation/aes-util-work-in-progress). Non-UTF-8 default charsets
+and other provider configurations remain unverified.
 
 The mapped `systemcheck` command now reports all source processor and lock fields,
 posts both checker calls and the one-second timer, and logs selected queue details.

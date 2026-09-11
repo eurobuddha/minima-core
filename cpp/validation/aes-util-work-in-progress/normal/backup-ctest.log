@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 223: decrypt_backup_differential
+1/2 Test #223: decrypt_backup_differential ......   Passed    7.67 sec
+    Start 225: restore_differential
+2/2 Test #225: restore_differential .............   Passed   23.24 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  30.91 sec

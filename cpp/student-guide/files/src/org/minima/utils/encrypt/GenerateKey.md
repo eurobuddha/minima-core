@@ -62,3 +62,13 @@ input with invalid padding. It retains the inspected SunJCE IllegalBlockSizeExce
 or BadPaddingException text. CipherInput wraps the full cause in IOException.
 Previously a generic AES padding message hid this observable distinction.
 Successful encryption/decryption and padding calculations are reused unchanged.
+
+## Empty-decryption correction from AesUtil
+
+The AesUtil comparison found that SunJCE returns empty bytes when decrypting no
+ciphertext, provided no update input has accumulated. OpenSSL's padding finalizer
+rejects this case. Cipher::doFinal now preserves the SunJCE result with that exact
+empty-input guard. The existing utility corpus adds a direct empty-decryption
+case for each valid AES key size. The new AesUtil corpus also checks public empty
+text results, private helper bytes, and subsequent cipher reuse. See the
+[AES text lab](../../../../../../new-tests/aes-text-interoperability.md).

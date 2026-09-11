@@ -1,3 +1,52 @@
+## AesUtil checkpoint review
+
+### Summary
+
+The source class is translated into its mapped native body and header, with
+existing Cipher, codec and Unicode components reused. Both full builds and the
+five selected Java/native test groups pass. This review approves the bounded
+checkpoint, not full parity for this class or the 457-file project.
+
+### Findings resolved before commit
+
+- **MAJOR — first initialization failure changed later behavior.** The first
+  corpus found that the native cipher recovered when the Java provider search
+  had been exhausted. AesUtil now retains provider-selection state for the
+  supported SunJCE configuration. The expanded corpus tests failures before and
+  after selection, repeated retries, and parsing failures outside initialization.
+- **MAJOR — empty padded decryption returned failure.** Shared Cipher called
+  OpenSSL's padding finalizer for zero accumulated/current input; SunJCE returns
+  empty bytes. The precise empty-input guard now retains that result. The utility
+  corpus and AesUtil public/private cases prove the correction for all AES sizes.
+- **MINOR — null buffer exception category differed.** The private helper now
+  emits IllegalArgumentException with the source message after successful init.
+  Public wrappers still return null. Error ordering and later recovery are tested.
+
+### Validation and limits
+
+Normal and ASAN/UBSAN builds pass. New corpus: 1957 programs, 10728 operations,
+99 independent PBKDF2 checks and3270 plaintext/re-encryption assertions per build.
+Shared utility1364, network utilities5668, decryptbackup422 and restore128 cases
+pass per build. Full237-test suite was not run. H2 AOT is outside C++ sanitizer
+instrumentation. Test observers invoke actual source algorithms; only NPE prose
+is normalized. Ciphertext/key bytes, UTF-16 text, other error messages, null and
+state transitions are compared directly. The initial123 failed programs remain
+in the saved evidence, alongside final reports and full build logs.
+
+The UTF-8-default/SunJCE configuration is explicit. Other default charsets, added
+providers, constructor acquisition failure, arbitrary unused private cipher modes,
+allocation exhaustion and concurrent mutable cipher access remain uncertified.
+The source has no production callers outside its demo main; running a node would
+not expand this class's coverage. All457 map parity fields remain not_verified.
+
+### Verdict
+
+Approve this checkpoint: identified regressions fixed and selected checks pass;
+continue the full native port. See [evidence](validation/aes-util-work-in-progress)
+and [student lab](student-guide/new-tests/aes-text-interoperability.md).
+
+---
+
 # Systemcheck checkpoint — full port unfinished
 
 ## Code Review

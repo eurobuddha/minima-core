@@ -1,0 +1,45 @@
+{
+  "previous_head": "81c8f642899090106a1dacf793e428646b38a7a6",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "mapped": 457,
+  "counterparts": 387,
+  "production_counterparts": 343,
+  "test_counterparts": 44,
+  "absent": 70,
+  "production_absent": 26,
+  "tests_absent": 44,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "ctest_inventory": 237,
+  "full_ctest_suite_run": false,
+  "new_test_programs": 1957,
+  "new_test_operations": 10728,
+  "independent_key_checks": 99,
+  "cross_decryption_and_recovery_checks": 3270,
+  "normal_test_seconds": {
+    "aes_util": 16.07,
+    "utility": 3.76,
+    "network_utilities": 3.83,
+    "decrypt_backup": 7.67,
+    "restore": 23.24
+  },
+  "sanitized_test_seconds": {
+    "aes_util": 27.65,
+    "utility": 3.63,
+    "network_utilities": 6.12,
+    "decrypt_backup": 10.06,
+    "restore": 24.71
+  },
+  "all_process_handles_terminal": true,
+  "teaching_guides": 457,
+  "initial_failed_programs": 123,
+  "limits": [
+    "UTF-8 default charset only; non-default charsets remain open",
+    "Supported SunJCE provider-selection state; other providers and constructor acquisition failure not certified",
+    "No arbitrary private modes, allocation exhaustion or concurrent mutable Cipher access certification",
+    "H2 AOT library outside C++ sanitizer instrumentation",
+    "Full native node/mining/network/API parity remains open"
+  ]
+}

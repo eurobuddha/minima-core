@@ -23,6 +23,8 @@ def main():
         return out
     def hx(s):return '0x'+(s.encode() if isinstance(s,str) else s).hex()
     cases=[];rng=random.Random(5564)
+    # SunJCE accepts no ciphertext as a successful empty padded decryption.
+    for size in [16,24,32]:cases.append(f'aesdec {hx(bytes(16))} {hx(bytes(size))} 0x')
     for password in ['', 'password','🐼 é','a\x00b','  spaces  ']:
         for length in [0,1,8,16,32]:cases.append(f'derive {hx(password)} {hx(rng.randbytes(length))}')
     for length in [0,1,2,15,16,17,31,32,33,255,512,2048]:

@@ -3560,5 +3560,40 @@
       "tools/systemcheck_commands_corpus.py": "b6e8a3b30172b1dd5c553a43327a5c39a3d2fff41891cafda0e7382dcea238a5",
       "tools/native_systemcheck_startup.py": "f3bea599b7df782fa636f0efe25430dfb320057ca335f5788922a4a41c79ad8b"
     }
+  },
+  "aes_util_checkpoint": {
+    "source": "upstream-study/src/org/minima/utils/encrypt/javajs/AesUtil.java",
+    "source_sha256": "480ce14c7856cb887c04620df7791203f5a5d8ef77bd90c04107a1925c371e46",
+    "counterpart": "src/org/minima/utils/encrypt/javajs/AesUtil.cpp",
+    "translation": "Pinned source methods; reuse Cipher/codec/Unicode, add SHA1 configurable PBKDF2 and supported SunJCE provider-selection state; shared Cipher empty-decrypt correction.",
+    "sibling_candidate": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/crypto/BIP39.hpp mnemonicToSeed is an incompatible SHA3 chain; tests/crypto/test_bip39.cpp inspected.",
+    "evidence": "validation/aes-util-work-in-progress",
+    "files_sha256": {
+      "cpp/src/org/minima/utils/encrypt/javajs/AesUtil.cpp": "ac476a9d79a87a184bf725169eed08e77dd708fb04bbe8c330bbd92ef4520890",
+      "cpp/src/org/minima/utils/encrypt/javajs/AesUtil.hpp": "a46db157b159a0e9a3ab29d9102e5e2a78473591b6bc8f5c6eec5a6d8c4dccaa",
+      "cpp/src/org/minima/utils/encrypt/GenerateKey.cpp": "2e62a18a28bf4933eaf2ebc32fb2426d3626979dec5891a2bf0341eb6ce2f9d5",
+      "cpp/src/support/Base64.hpp": "1ce42fff54e3d4aa2c407d5bc8e518ddd8022f750812846959ac9bd93248a024",
+      "cpp/src/support/JavaUnicode.hpp": "c8e14661d89a6aec6796a7efa1276d094166b400e6e6f56e253078f3a587ef89",
+      "cpp/src/org/minima/objects/base/MiniData.cpp": "837bd9bca996f8d6b20471284526dcfa7d9220ea9db4e51da2fc09522e3e95cc",
+      "cpp/src/org/minima/objects/base/MiniString.cpp": "b8cb0db660602687b04d51c68a9ed90b78c34ff6a7fcedd790a3a519a3069a7c",
+      "cpp/support/AesUtilOracle.java": "e3c06cb9349db5e2cba9a9f275933267266b8bbd11b25284fa6451f439ce8261",
+      "cpp/support/aes_util.cpp": "648b18a8660cb8feb02767869c7107b69cb6ef1325d9921d9a4af9373ac92f7a",
+      "cpp/tools/aes_util_differential.py": "344bf18945dea1e4e5930490c47d3c2e2ab4f2c1d9bad5e50efd0710c482cdba",
+      "cpp/tools/utility_differential.py": "7f5f8ff0cbe04eaf7fbc5a5ede1196840094b800cc2351dbdb52a57808e6261e",
+      "cpp/support/UtilityOracle.java": "2fe84ad9690d7c1543dc973814d7517442db03318f6b381a9716ceb5be618a76",
+      "cpp/support/utility.cpp": "0a54636f6c97740420730d7be12af028163958fb8ed8507dfead3619fb3e179a",
+      "cpp/tools/network_utilities_differential.py": "899c9a6e97d8b65c1b69dc498eca327edc4189e46fa53f5944e0e3517568a207"
+    },
+    "full_parity_verified": false,
+    "local_jdk_source": {
+      "archive": "/opt/homebrew/Cellar/openjdk/26.0.1/libexec/openjdk.jdk/Contents/Home/lib/src.zip",
+      "entries_sha256": {
+        "java.base/javax/crypto/Cipher.java": "1f4a787c27053455b3f37803d897caca5f02e432959d3211882174410c6d2480",
+        "java.base/javax/crypto/spec/PBEKeySpec.java": "b511c906cb05911b66db7d2ec2a574dee140cacd9ce9c2ba638cff5747d0fa58",
+        "java.base/com/sun/crypto/provider/PBKDF2KeyImpl.java": "2fbf08d833e293318049ab5a9a8292461c869c7b91bd49fd84f111aef0992b38",
+        "java.base/sun/security/util/PBEUtil.java": "b76e2f051b8ba706532c02b9c5a32dc7318c78b65c478db00b56869e979d9fb1",
+        "java.base/com/sun/crypto/provider/CipherCore.java": "c8ddc7b1a31c7b27b6170cc3c41e782a90502d8631babece51421d9cd59dbfc5"
+      }
+    }
   }
 }

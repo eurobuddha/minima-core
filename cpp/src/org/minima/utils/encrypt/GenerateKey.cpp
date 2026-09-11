@@ -59,6 +59,9 @@ std::vector<uint8_t> Cipher::update(std::span<const uint8_t> input) const {
 std::vector<uint8_t> Cipher::doFinal(std::span<const uint8_t> input) const {
     if(!mMode) throw std::logic_error("Cipher not initialized");
     if(mSymmetric) {
+        // SunJCE accepts an empty padded decryption when no update data exists.
+        // OpenSSL's padding finalizer rejects it; no cipher state was consumed.
+        if(mMode==DECRYPT_MODE && mInputBytes==0 && input.empty()) return {};
         auto out=update(input);out.insert(out.end(),mPendingOutput.begin(),mPendingOutput.end());auto length=out.size();out.resize(length+16);int final=0;
         if(EVP_CipherFinal_ex(mContext.get(),out.data()+length,&final)!=1){
             if(mMode==DECRYPT_MODE){
