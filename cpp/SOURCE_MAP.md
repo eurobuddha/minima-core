@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 387 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 388 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -340,7 +340,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/utils/Stack.java` | `src/org/minima/utils/Stack.cpp` | implemented_partial | — |
 | `src/org/minima/utils/Streamable.java` | `src/org/minima/utils/Streamable.cpp` | unported | — |
 | `src/org/minima/utils/TimedRequest.java` | `src/org/minima/utils/TimedRequest.cpp` | implemented_partial | — |
-| `src/org/minima/utils/ZipExtractor.java` | `src/org/minima/utils/ZipExtractor.cpp` | unported | — |
+| `src/org/minima/utils/ZipExtractor.java` | `src/org/minima/utils/ZipExtractor.cpp` | implemented_partial | — |
 | `src/org/minima/utils/encrypt/CryptoPackage.java` | `src/org/minima/utils/encrypt/CryptoPackage.cpp` | implemented_partial | — |
 | `src/org/minima/utils/encrypt/EncryptDecrypt.java` | `src/org/minima/utils/encrypt/EncryptDecrypt.cpp` | implemented_partial | — |
 | `src/org/minima/utils/encrypt/GenerateKey.java` | `src/org/minima/utils/encrypt/GenerateKey.cpp` | implemented_partial | — |

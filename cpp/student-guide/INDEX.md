@@ -630,7 +630,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [Stack.java](files/src/org/minima/utils/Stack.md) | authored | implemented_partial |
 | [Streamable.java](files/src/org/minima/utils/Streamable.md) | authored | unported |
 | [TimedRequest.java](files/src/org/minima/utils/TimedRequest.md) | authored | implemented_partial |
-| [ZipExtractor.java](files/src/org/minima/utils/ZipExtractor.md) | authored | unported |
+| [ZipExtractor.java](files/src/org/minima/utils/ZipExtractor.md) | authored | implemented_partial |
 
 ## src/org/minima/utils/encrypt
 

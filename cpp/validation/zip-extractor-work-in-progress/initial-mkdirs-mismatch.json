@@ -1,0 +1,74 @@
+{
+  "passed": false,
+  "cases": 33,
+  "total_cases": 671,
+  "groups": {
+    "standard": 26,
+    "paths": 7
+  },
+  "observations": [],
+  "failures": [
+    {
+      "index": 33,
+      "label": "paths",
+      "request": {
+        "bytes": "0x504b03041400000000000000000000dfeaf00c0000000c0000000b0000006469722f2e2e2f66696c6570617468207061796c6f6164000000000000000000000000000000000000000000000000000000000000",
+        "destination": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/zip-extractor-x9c3iqrb/files/target"
+      },
+      "java": {
+        "reply": {
+          "exception": "java.io.FileNotFoundException",
+          "message": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/zip-extractor-x9c3iqrb/files/target/dir/../file (No such file or directory)",
+          "position": 41,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      },
+      "cpp": {
+        "reply": {
+          "exception": "java.io.IOException",
+          "message": "Failed to create directory /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/zip-extractor-x9c3iqrb/files/target/dir/..",
+          "position": 41,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    }
+  ],
+  "corpus_sha256": "3da393ae007a8f302bf40ed4611be843979dc80e6ff3eda4b8ceb807159dd157",
+  "scope": "Pinned ZipExtractor and native library with actual filesystem extraction: exact files, symlinks, ordered logs, exception category/message except NPE prose, reader calls/position and close count. STORED/DEFLATED/ZIP64/descriptors, short reads, malformed/truncated entries, failures and canonical containment. No central-directory use (source ignores it), concurrent filesystem replacement, Java GC descriptor timing, special-device write failures or actual >4GiB archives certification."
+}

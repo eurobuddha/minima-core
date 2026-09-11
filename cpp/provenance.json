@@ -3595,5 +3595,48 @@
         "java.base/com/sun/crypto/provider/CipherCore.java": "c8ddc7b1a31c7b27b6170cc3c41e782a90502d8631babece51421d9cd59dbfc5"
       }
     }
+  },
+  "zip_extractor_checkpoint": {
+    "source": "upstream-study/src/org/minima/utils/ZipExtractor.java",
+    "source_sha256": "d32637c33ca47eb0a64f172b9318ed121e2e2dc3286aae7240a20e6e5c2ccb19",
+    "translation": "Source extraction/path loop plus streaming ZIP dependency; reuse JavaUnixFile, direct output, MinimaLogger and zlib/GzipInput pattern. Canonical mkdirs return-value correction and source-derived canonical prefix resolution.",
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src has no ZIP extraction candidate; unrelated SQLite unzip example is not a compatible implementation.",
+    "files_sha256": {
+      "cpp/src/org/minima/utils/ZipExtractor.cpp": "ea3c9a3b5a70748318ccb713586c2a95d4f2c4aa91731073892e06504cb1ff30",
+      "cpp/src/org/minima/utils/ZipExtractor.hpp": "fd7d8553173b6c3b4b9cd972700d352b53ec560c9e32aaceed57ac2310bcf1c4",
+      "cpp/src/support/ZipInput.hpp": "7faf2154e90df5e68ce1c21c3514a2162fd308017ee038b5e076378fa98bbe11",
+      "cpp/src/support/JavaUnixCanonicalFile.hpp": "97e9f3e6630e6724419ef209b438e0efbe7dd5ef925e1ed42d43188535fa67e1",
+      "cpp/src/support/JavaUnixFile.hpp": "3356a0066e1c2c4cbd0169ba0d5e2d61bf3b50da37badabfcca9ae69319f361a",
+      "cpp/src/support/GzipInput.hpp": "9e680bda4cdd357d8ffc073cbcfdb03400eee2cf7d394fb971a48dd37220ce64",
+      "cpp/src/support/BufferedFileOutput.hpp": "bdda5493370554b2670081307b576c90a84e31fca13c21ed1b9e0e4c3d461188",
+      "cpp/src/support/UTF8Spans.hpp": "b711d1cf0092a0aa05e2cf36b4668922d7408241ee8bfbf72aa863abc8012d2f",
+      "cpp/support/ZipExtractorOracle.java": "508ec7f359939bd38be8a40202110b14b5c47acd243cb3b33a1813afdde4bf68",
+      "cpp/support/zip_extractor.cpp": "091ce8de713da75debb3c72b3870299b0ac40d3e731b6b5f9b24ae5e2eec4eff",
+      "cpp/tools/zip_extractor_differential.py": "2492bac0e4477860572eefea24745dbf839177f08f5b76599efc9c31906cbddf"
+    },
+    "native_canonicalization_sources": {
+      "canonicalize_md.c": {
+        "url": "https://raw.githubusercontent.com/openjdk/jdk/b09fc1755ffd6d85524ae2d9aa73149b2a25a4aa/src/java.base/unix/native/libjava/canonicalize_md.c",
+        "sha256": "d56f5ddf8d0d3b89ace65e8024865e5f5b3f45235a446031e3585aad5614a0a4"
+      },
+      "path_util.c": {
+        "url": "https://raw.githubusercontent.com/openjdk/jdk/b09fc1755ffd6d85524ae2d9aa73149b2a25a4aa/src/java.base/unix/native/libjava/path_util.c",
+        "sha256": "bf994d83837ef6af9323faa8a02a7b26bf133b200c1efe95df691873c1f233bf"
+      }
+    },
+    "license": "OPENJDK_TIMSORT_LICENSE (GPL2 with Classpath exception), original notices in support adapters",
+    "evidence": "validation/zip-extractor-work-in-progress",
+    "full_parity_verified": false,
+    "local_jdk_source": {
+      "archive": "/opt/homebrew/Cellar/openjdk/26.0.1/libexec/openjdk.jdk/Contents/Home/lib/src.zip",
+      "entries_sha256": {
+        "java.base/java/util/zip/ZipInputStream.java": "071a73337bb9b52bb89de50c54b417875a33cbdaa40ba3d8ea5b0849e6886ea4",
+        "java.base/java/util/zip/InflaterInputStream.java": "fc01da4a4de36aabf315fbdde8e90282de2a6d941f2fcbf06cc92ee86f090061",
+        "java.base/java/util/zip/ZipEntry.java": "115b8ab9cbe476c6de5b21313763f3c6e00ab9ad3be19fa8cc90ce6b9f3098eb",
+        "java.base/java/util/zip/ZipUtils.java": "e619e1a52218d3785627ef59003d7518fc33d81af716bedf43f9a9b118b598e1",
+        "java.base/java/io/PushbackInputStream.java": "97d8f35870f16853b7d2078e5bcda6fc75a8e7e833744d46c5b1a7f013383644",
+        "java.base/java/io/UnixFileSystem.java": "92f5d44d0e26d40e9bd6544625dec0f0022d6c5d954414a45c96e610135e4dfe"
+      }
+    }
   }
 }

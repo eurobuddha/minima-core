@@ -5,9 +5,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **343 production counterparts and 44 mapped test files exist;
-70 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **344 production counterparts and 44 mapped test files exist;
+69 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mapped `ZipExtractor` now performs streaming extraction with canonical path
+checks and source-compatible partial-file/error behavior. Both full builds and
+708 Java/native extraction cases pass, plus shared file, SQL and backup regressions.
+The tests exposed and fixed canonical mkdirs and symlink error-boundary differences.
+See the [student lab](student-guide/new-tests/zip-extraction.md) and
+[saved evidence](validation/zip-extractor-work-in-progress).
 
 The mapped `AesUtil` now compiles with PBKDF2-HMAC-SHA1, nullable UTF-16 text,
 Base64/hex helpers and the source's persistent cipher behavior. Its comparison
@@ -883,6 +890,9 @@ input hashes. MiniByte is adapted from the existing header implementation.
 The original C++ license is preserved in [REUSED_CODE_LICENSE](REUSED_CODE_LICENSE).
 The nullable-number sort adapts OpenJDK TimSort run scheduling and insertion;
 its original notices remain in the header and [license](OPENJDK_TIMSORT_LICENSE).
+The streaming ZIP and Unix canonicalization adapters also retain OpenJDK notices
+and use this GPLv2-with-Classpath-exception license. Their source hashes and exact
+upstream paths are recorded in provenance.json.
 Other candidate paths in the map are name/role search matches, not claims
 that the files have been reviewed or proven compatible.
 

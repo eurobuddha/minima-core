@@ -3303,11 +3303,11 @@
     "java": "src/org/minima/utils/ZipExtractor.java",
     "cpp": "src/org/minima/utils/ZipExtractor.cpp",
     "guide": "files/src/org/minima/utils/ZipExtractor.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored source algorithm and proposed validation; native counterpart remains unported."
+    "teaching_note": "Authored explanation of the pinned algorithm, native translation, actual comparison tests and remaining limits."
   },
   {
     "java": "src/org/minima/utils/encrypt/CryptoPackage.java",

@@ -1,0 +1,52 @@
+{
+  "previous_head": "f60e0f665e6bce3c2fc186ec09bf8dbe58582170",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "mapped": 457,
+  "counterparts": 388,
+  "production_counterparts": 344,
+  "test_counterparts": 44,
+  "absent": 69,
+  "production_absent": 25,
+  "tests_absent": 44,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "ctest_inventory": 238,
+  "full_ctest_suite_run": false,
+  "new_test_cases": 708,
+  "normal_seconds": {
+    "zip": 4.01,
+    "utility": 2.99,
+    "sql": 3.77,
+    "decrypt_backup": 7.15,
+    "total": 17.93
+  },
+  "sanitized_seconds": {
+    "zip": 5.43,
+    "utility": 3.9,
+    "sql": 3.33,
+    "decrypt_backup": 8.67,
+    "total": 21.33
+  },
+  "regressions": {
+    "utility_cases": 1364,
+    "sql_programs": 464,
+    "sql_operations": 1260,
+    "sql_driver_calls": 8352,
+    "decrypt_backup_cases": 422,
+    "decrypt_backup_partial_successes": 113
+  },
+  "all_process_handles_terminal": true,
+  "teaching_guides": 457,
+  "initial_failures": [
+    "mkdirs canonical trailing separator returned false after creation",
+    "two final cyclic-symlink error boundaries differed"
+  ],
+  "limits": [
+    "Full CTest suite not run",
+    "Actual >4GiB archives, filesystem races, special-device output failures, other operating systems and Java GC timing not certified",
+    "H2 AOT outside C++ sanitizer instrumentation",
+    "Full native node/mining/network/API parity remains open"
+  ]
+}

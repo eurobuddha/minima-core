@@ -1,3 +1,67 @@
+# Current work — ZipExtractor translated and streaming/path effects validated
+
+MinimaCoreC++ branch/project/executable. Full457-file goal remains active.
+PreviousHEAD f60e0f6; gitlog/local-backups identify final checkpoint and recovery.
+Both full builds pass. All build/test handles terminal after final verification.
+No GitHub push. Map388=344production+44originaltests;69absent=25prod+44tests.
+All457 lessons authored/audited; all parity not_verified.238CTestentries;
+fullsuite NOT run. H2 AOT outside C++ sanitizer instrumentation.
+
+New utils/ZipExtractor.cpp/hpp maps unzip/newFile. Reader callback returns0EOF,
+separate close callback invoked only on successful extraction (or fails onclose).
+Uses JavaUnixFile parent/child and mkdirs, BufferedFileOutput.writeUnbuffered,
+MinimaLogger actual calls and source1024byte extraction buffer. Existing files
+logged then truncated in place; no MiniFile remove/replace or atomic prevalidation.
+Destination optional null onlyfailswhenanentryneedsit; nullInput immediateNPE.
+Canonical destination separator check retained, includingroot '/' prefixquirk.
+
+New support/ZipInput.hpp implements needed OpenJDK26 ZipInputStream surface:
+512byte input/pushback; localheaders/strictUTF8 names; UTF16combinedCEN46length
+validation; stored/deflated; 32/64bit signed/unsigned descriptors (4byte lookahead
+pushedback); CRC/compressed/uncompressed size validation; tolerant extra parsing,
+ZIP64 fields and descriptor flag discovery. Native zlib decode pattern reusedfrom
+GzipInput. Directory payload drains512bytes in getNextEntry; file writes1024.
+Stored badCRC rejects final chunk beforewrite; deflatedchecks nextread afteroutput;
+emptyStored skipsCRC. Initial30byteheaderEOF returnsnoentry; name/extra/descriptorEOF
+throws. Exact readcounts/positions andclose boundary compared. RAII freesnative
+zlib/outputresources onexception; no attempt to replicate JavaGC descriptor timing.
+
+Initialcase33 exposed JavaUnixMkdirs trailingcanonicalseparator bug for missing/..
+paths: correctdirectorycreatedbutfalse returned. Shared helpernowstripstrailing
+separatorbeforeparentselection. Nextcomplete671cases found2finalsymlinkcycle
+errorboundarymismatches. New JavaUnixCanonicalFile.hpp followsOpenJDKrealpathprefix
+search: initialfailureignored; progressiveprefixes tolerateonly ENOENT/ENOTDIR/EACCES;
+PATH_MAX limits andlexicalcollapse; finalunresolvedlink canreachFileNotFoundopen.
+Sourcecanonicalize_md.c/path_util.c downloaded/read atOpenJDKcommit
+b09fc1755ffd6d85524ae2d9aa73149b2a25a4aa; /tmp/minima-zip-{name}.c filespersist.
+Fulloriginalcopyrightnotice +GPLv2Classpathlicense retained. LocalJDKsrc.zip ZIP,
+Inflater,ZipEntry,Pushback,ZipUtils,UnixFileSystem inspected/hashesprovenance.
+
+New support/ZipExtractorOracle.java +zip_extractor.cpp callactualsource/library;
+JavaInputStream/nativecallbacks recordreadrequests/results,position,closecount,
+caninjectread/closefailures; reflection/friendforprivatepathhelper. Logprefixremoved
+byobserver; message exact. Both runin same reset temporaryfilesystem via existing
+Runner; Python snapshotsfiles/directories/symlinks and independentlychecks successful
+files, CRCpartialoutput andoutside markers. OnlyNPEprosenormalized.
+
+BothnewCTests PASS708cases: normal4.01s/sanitized5.43s.52standardarchives;paths,
+existingfiles/dirs/symlinks,duplicates,100truncations,descriptors+ZIP64+extra+namenulls,
+UTF8badnames,longfields,readfailures,72pathhelper+30canonicalhelper+6pathlength.
+BothregressionsPASS:utility1364,SQL464programs1260ops8352drivercalls,
+decryptbackup422/113partialsuccess. Selected4 totals17.93s/21.33s.
+Finalheadercleanup onlyadds explicitalgorithminclude andzeroEOFcomment; bothfull
+buildsverifiedaftercleanup. Evidence validation/zip-extractor-work-in-progress;
+initialmkdirs andcyclemismatchreportsretained. No sourcecallersoutsideutilityatpin.
+
+NEXT: continue25absentproductionfiles and44originaltests: Streamableinterface,
+legacySPHINCS/FORS/HORST,MySQLarchivecommands/server,remainingbase/docscommands.
+JNI-backedbenchmarksrequire actualnativeimplementation inspection/reuse. Existing
+files stillneedfullAPI/runtime/mining/networkparity. Reusegate,pre-teststudentlab,
+Java/nativecomparison,bothbuilds,review,localcommitandverifiedbundle remainrequired.
+Actual>4GiB ZIPs,filesystemraces,specialdevicefailures,otherOS/GCtiminguncertified.
+
+---
+
 # Current work — AesUtil translated and cipher edge cases validated
 
 MinimaCoreC++ branch/project/executable. Full 457-file goal remains active.

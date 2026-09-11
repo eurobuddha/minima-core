@@ -1,3 +1,65 @@
+## ZipExtractor checkpoint review
+
+### Summary
+
+ZipExtractor's public extraction loop and private path helper are mapped and
+compiled. The native ZIP reader follows the required OpenJDK streaming subset,
+with existing zlib, direct-file-write, Java File and logger components reused.
+Both complete builds and the selected comparisons pass. This is a reviewed
+checkpoint toward the full port, not full-project or complete-class certification.
+
+### Findings fixed before commit
+
+- **MAJOR — mkdirs returned the wrong value for missing/.. paths.** Shared
+  JavaUnixMkdirs retained a canonical trailing separator, recursively created
+  the same directory, then returned false. Stripping the separator before parent
+  selection preserves the Java return value and reaches the same later file-open
+  failure with identical directory effects. The first mismatch report is retained.
+- **MAJOR — cyclic final symlink failed at the wrong boundary.** C++
+  weakly_canonical threw IOException before Java did. The source-derived
+  JavaUnixCanonicalFile adapter follows realpath's progressively shorter prefix
+  search and its precise tolerated error set. It leaves an unresolved final
+  component when the parent resolves, so opening can raise FileNotFoundException.
+  Intermediate cyclic-prefix failures still raise IOException. Two initial
+  mismatches and the expanded canonical-helper/length cases are retained.
+
+### Validation and limits
+
+The normal ZIP corpus passes708 cases in4.01s; ASAN/UBSAN passes708 in5.43s.
+It compares exact filesystem bytes/directories/symlinks, logs, errors other than
+VM-specific NPE prose, input positions/read traces and explicit close calls.
+Independent assertions verify successful payloads, unchanged outside markers and
+method-dependent CRC partial output. Includes STORED/DEFLATED, 32/64-bit descriptors,
+unsigned descriptor lookahead, ZIP64 sizes, strict UTF-8 names, header/extra length
+limits, truncations, read/close failures and canonical path boundaries.
+
+Utility1364 cases, SQL464 programs/1260 operations/8352 driver calls and
+DecryptBackup422 cases (including113 partial successes) pass per build. Selected
+four-test totals17.93s normal and21.33s sanitized. Full238-test suite was not run;
+H2 AOT remains outside C++ sanitizer instrumentation. The final header-only cleanup
+adds an explicit algorithm include and documents zero-as-EOF; final full builds
+are verified after this nonfunctional change.
+
+The source has no production caller at this pin; the fixture invokes the actual
+linked library and performs real extraction. ZIP central-directory metadata is
+not interpreted because the source does not read it. Metadata timestamps are
+unobservable in this extraction loop and are not applied to output files.
+Concurrent filesystem replacement, special-device write/close failures, actual
+archives over4GiB, other operating systems and Java GC timing remain uncertified.
+Native RAII frees zlib state/output descriptors on exceptions; input-close callback
+order retains the explicit source boundary. All457 parity fields remain not_verified.
+
+OpenJDK source notices and GPLv2/Classpath license retained for both support
+adapters; canonicalization source is pinned by commit and hash in provenance.
+
+### Verdict
+
+Approve the checkpoint: identified differences fixed and selected validation
+passes. Continue the full native port. See [evidence](validation/zip-extractor-work-in-progress)
+and [student lab](student-guide/new-tests/zip-extraction.md).
+
+---
+
 ## AesUtil checkpoint review
 
 ### Summary

@@ -180,6 +180,7 @@ add_library(minima_file_port STATIC
     src/org/minima/system/brains/TxPoWGenerator.cpp
     src/org/minima/system/network/minima/RelayPolicy.cpp
     src/org/minima/utils/MiniFile.cpp
+    src/org/minima/utils/ZipExtractor.cpp
     src/org/minima/utils/MiniFormat.cpp
     src/org/minima/utils/encrypt/GenerateKey.cpp
     src/org/minima/utils/encrypt/javajs/AesUtil.cpp
@@ -457,6 +458,12 @@ target_link_libraries(minima_aes_util PRIVATE minima_file_port)
 add_test(NAME aes_util_differential COMMAND ${Python3_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR}/tools/aes_util_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(aes_util_differential PROPERTIES TIMEOUT 180)
+
+add_executable(minima_zip_extractor support/zip_extractor.cpp)
+target_link_libraries(minima_zip_extractor PRIVATE minima_file_port)
+add_test(NAME zip_extractor_differential COMMAND ${Python3_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/tools/zip_extractor_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(zip_extractor_differential PROPERTIES TIMEOUT 240)
 
 add_executable(minima_consensus support/consensus.cpp)
 target_link_libraries(minima_consensus PRIVATE minima_file_port)

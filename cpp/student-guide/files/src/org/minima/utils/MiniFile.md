@@ -43,3 +43,13 @@ The original utility fixture describes normal persistence; the new lab adds sele
 Why can saveObjectDirect destroy previous content before serialization finishes while saveObject may leave it alone? Does a textual startsWith check distinguish /tmp/a from /tmp/ab?
 
 Pinned Java SHA-256: `240fda1137363bb3e52760d4c48aa3f032361e52d2108ee167b103ebaaa605c5`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).
+
+## Shared mkdirs correction from ZIP extraction
+
+The [ZIP lab](../../../../../new-tests/zip-extraction.md) exposed a return-value
+bug in JavaUnixMkdirs for missing/.. paths. C++ weakly_canonical retained a trailing
+separator, making parent_path refer to the directory itself. The helper created
+that directory and then failed to create it again. Trimming the separator preserves
+Java's canonical File representation and mkdirs return value. MiniFile reuses this
+helper; the utility, SQL-database and decrypt-backup regressions pass in both builds.
+This correction does not change MiniFile.isChild into a canonical containment check.

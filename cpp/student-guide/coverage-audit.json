@@ -2,13 +2,13 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 387,
-  "native_absent": 70,
+  "native_counterparts": 388,
+  "native_absent": 69,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
-      "counterparts": 343,
-      "absent": 26
+      "counterparts": 344,
+      "absent": 25
     },
     "test": {
       "total": 88,
@@ -20,8 +20,8 @@
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9196,
-  "line_anchors_checked": 2634,
+  "links_checked": 9204,
+  "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
     "new-tests/command-runner-errors.md",
@@ -3363,11 +3363,11 @@
       "java": "src/org/minima/utils/ZipExtractor.java",
       "cpp": "src/org/minima/utils/ZipExtractor.cpp",
       "guide": "files/src/org/minima/utils/ZipExtractor.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored source algorithm and proposed validation; native counterpart remains unported."
+      "teaching_note": "Authored explanation of the pinned algorithm, native translation, actual comparison tests and remaining limits."
     },
     {
       "java": "src/org/minima/utils/encrypt/CryptoPackage.java",

@@ -1,0 +1,13 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  31: utility_differential
+1/4 Test  #31: utility_differential .............   Passed    3.90 sec
+    Start  33: zip_extractor_differential
+2/4 Test  #33: zip_extractor_differential .......   Passed    5.43 sec
+    Start  87: sql_db_differential
+3/4 Test  #87: sql_db_differential ..............   Passed    3.33 sec
+    Start 224: decrypt_backup_differential
+4/4 Test #224: decrypt_backup_differential ......   Passed    8.67 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =  21.33 sec

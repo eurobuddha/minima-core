@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "cases": 422,
+  "partial_success_cases": 113,
+  "failures": [],
+  "scope": "Unmodified pinned decryptbackup metadata/direct calls and real registry, exact output snapshots, password/framing gates, output-before-read ordering, aliasing, directories, Unicode passwords, empty/large/random payloads, damaged CBC padding, truncated/corrupt/concatenated gzip and source-swallowed payload failures. Only EOF/NPE/class-cast diagnostic prose normalized for direct exceptions. Virtual threads, resource exhaustion, special-device write failures and private unused helpers remain unverified."
+}

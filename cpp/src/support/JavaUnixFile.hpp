@@ -31,6 +31,11 @@ inline bool javaUnixMkdirs(const std::filesystem::path& path) {
     auto absolute=std::filesystem::absolute(path,error);if(error)return false;
     auto canonical=std::filesystem::weakly_canonical(absolute,error);
     if(error||canonical.empty()||canonical==canonical.root_path())return false;
+    // File.getCanonicalFile strips a trailing separator. Without this step,
+    // missing/.. can make parent_path() equal the canonical directory itself.
+    auto canonicalText=canonical.string();
+    while(canonicalText.size()>1&&canonicalText.back()=='/')canonicalText.pop_back();
+    canonical=std::filesystem::path(canonicalText);
     auto parent=canonical.parent_path();
     return !parent.empty()&&(javaUnixMkdirs(parent)||std::filesystem::exists(parent,error))&&::mkdir(canonical.c_str(),0777)==0;
 }

@@ -1,0 +1,600 @@
+{
+  "passed": true,
+  "cases": 708,
+  "total_cases": 708,
+  "groups": {
+    "standard": 52,
+    "paths": 30,
+    "existing-file": 10,
+    "existing-directory": 10,
+    "existing-parent-file": 10,
+    "existing-inside-link": 10,
+    "existing-outside-link": 10,
+    "existing-dangling-inside": 10,
+    "existing-dangling-outside": 10,
+    "existing-cycle-link": 10,
+    "multiple": 8,
+    "crc-timing": 2,
+    "empty-crc": 2,
+    "truncated": 100,
+    "size-crc": 24,
+    "invalid-name": 20,
+    "method-flags": 25,
+    "descriptor": 12,
+    "descriptor-truncation": 84,
+    "descriptor-mismatch": 36,
+    "zip64-sizes": 8,
+    "extra-fields": 28,
+    "empty-or-invalid-signature": 7,
+    "null-destination": 7,
+    "long-fields": 4,
+    "invalid-deflate": 4,
+    "short-reads": 11,
+    "read-failure": 52,
+    "close-failure": 1,
+    "null-input": 1,
+    "null-input-null-destination": 1,
+    "path-helper": 72,
+    "canonical-helper": 30,
+    "path-length": 6,
+    "null-destination-valid": 1
+  },
+  "observations": [
+    {
+      "index": 81,
+      "label": "multiple",
+      "result": {
+        "reply": {
+          "success": true,
+          "position": 104,
+          "closes": 1,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              30,
+              30
+            ]
+          ],
+          "logs": [
+            "processing zip entry /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/zip-extractor-ph29bt81/files/target but it already exists"
+          ]
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/file": "74776f",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 82,
+      "label": "multiple",
+      "result": {
+        "reply": {
+          "success": true,
+          "position": 119,
+          "closes": 1,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              30,
+              30
+            ],
+            [
+              14,
+              14
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              30,
+              30
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/directory": "directory",
+          "target/directory/file": "6368696c64",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 83,
+      "label": "multiple",
+      "result": {
+        "reply": {
+          "exception": "java.io.IOException",
+          "message": "Entry is outside of the target dir: ../outside/marker",
+          "position": 86,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              30,
+              30
+            ],
+            [
+              17,
+              17
+            ]
+          ],
+          "logs": [
+            "processing zip entry /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/zip-extractor-ph29bt81/files/target but it already exists"
+          ]
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/first": "6b657074",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 84,
+      "label": "multiple",
+      "result": {
+        "reply": {
+          "success": true,
+          "position": 117,
+          "closes": 1,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              30,
+              30
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              12,
+              12
+            ],
+            [
+              30,
+              30
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/broken": "6e6f742072657475726e6564",
+          "target/first": "6b657074",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 85,
+      "label": "crc-timing",
+      "result": {
+        "reply": {
+          "exception": "java.util.zip.ZipException",
+          "message": "invalid entry CRC (expected 0xb4b11d6c but got 0xb4b11d6d)",
+          "position": 2084,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              1024,
+              1024
+            ],
+            [
+              1024,
+              1024
+            ],
+            [
+              2,
+              2
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/file": "2a2c2a056970c35dde525c638600398dcf04648a980aa62414c73310c94203e3fbf5c791ff273f28b9003cd642a6b8a07eb2cce5f7980d341649a52618fa9fc9537c764555f23a8a5c906405e54a19c60a6dc99bf6f4d1605a6d7a27465879526562e9b96db3f4818cefb333e5b78606c1ad26cfb4b353b88f92e965db557a179066f8de43236a53e2207680522464c19cd8e789bdc38f3eec6b9c3f8f8a93dcc62db24e9bbe1ba839050cf48765573af9c20f295fef7cdbba0edc826a81d7bec0e94a1048e649a42d8bf22574257e859e292e681d4a4a0814b55cf369ad38692805867c4d353abe842d5a9b6fc52d88e2aba7bf05f8f8cb271f38756fb8a1289ada07ffe6b8e17878bd9973da2a2bea4bedf4f26e3bbd15ff20f6826a33d0597b14e87c9ee8d37b9467e6284a952410694ba36c4e494c74f95d50d770d41bf89fb869c25f99867ab94cfb302102bbd0c32ff147fa8109369b2a74dd98363f44e03e43b1c3be029548d49a22a235d4087307e119bb8ce258f52e54cf68929bb0fabac312b2b43b237b255f353a0d8ebf7c732b85a1309ea92a1923eb2f48661bb51a2b1aebd9f1115a530316485a163c3d7210ed323466c699f3340944d9598309bdaee86949701c83e28b372ef80229628ddc9defbd6448aee19c914e5a33a7864c2bdbb68253605c094b6275dae5a664702f8cb1abb361e2a7130fe3f83e7dc97c4a4c47b4232e8db610d0659b5714290b9220eff1fc2b586d77341ec43ef35fa3295d6a472a66fb385736bcd3651693892d662fb38a50ca87d495502b0f67d09c8c56cc4bce231d9e1174efe469ae851c8ec6150b641f1b55affd63edf45304ce36ed0f0ad376158dfdfcf8d6842ff16a7178950cf6264acc05894800268f80432f4391f7f5736236dbb218bb8d075ec803e525958c223c6ffb5a7344a48324150ba7450d633030f8667308a1e5092269d8e1cd83c4ee639a572b81c0e0c90cff225b3c75d4365f93a3af475e60dcc414940e7dee4642eb75e62ee968dcc9f352e49808d86d94dbfd9fdec1d48b2ae520a7d2da041f6efac3a84eec8b32977605cba4c8b3acaa2438966988f4c0280ad53a534599a54370a4caaff65685caae2c1da3bae1152b2b9ce73c0879c02646eee19cd751719cf0bda97745169b5ce0f9ee3bf2d14f28b55dd19cc9c890c1bba56e97294bd314d6d6b8ee31a7b4401a6ef9579e951f0291bc3fa76e0a3b3845d5343f186a9a3a4987ed0584d840a69d641e54d7b47fbcd186685092b7ee9defbe49319ac7b7c2fc15b4fce3f238fdf4b568676a381f8979363d6d1cc6672f56e4e4204b2d465f89bdb19d68593d57f77b4956a22f5e944eb713537da3f2900f1d990d456efd8b705930558e4d4b151a67467b82c3b9ab35085ae9b5151a0df32726419c49bb3bc6b92983815ec3fbd0cd1b24a479f30328f23e4f6343735090313cf53c45ec985a1de14fed5aea3ba0a40bd5407ae0eb3943385ec3e98b3e69f5ac6fc58554b1a1de2f22b7f135cb6b8786753de00c79bf42cc7a0bd41ee090967485f14091ac709682e63b967c8c1abddf4f4282828dabac9c7830d6940cbec81f87769f68cc5133f099a9b6053ad6b7fd87382cfcc5eca7e560fa3ea6df65f22eef27a48e71c429ff4773281b7115b0124c5ce7afa3a3a076721cc38d4bb6805b7ad9d924d082bdbfd30e49cfb371ace5f0875de09d629678d7292db5c487aa6c895d08b158b0c3481a15abbfb9948b0ed510d142d8fb4a962f6267b37f11bf333b813e552eb36c15102cc1650975d8cf811230efcaf3024f8169189840640e384451a0bbc5777b43345bb54d1c5c1133c9bbb3ac85141da410f7069aa5692b7863e2ac6f3bc5dc769bcd94ff476abec1920acf00027f63b7b5ce6da8403f682ccdd4112740cc6fa4be7aaa3d60cf24c340334f5e69593333d513c6aaa7f1ed83a4d80d0d73fc6ad531fdad7d4bd4120ea62873657b26dc3b2583c3b7b8bad24475946a28a168731cca13b88ff9c5a52ee39e1785021e9a474951774e3063182435d4163408be0161c4e82ed98e5fa87d7d2c3864cdfe5bbbcccc13270105f7c7bca2c49293c630ae486179f174a57c1f93737cc096564023c142946c24b36e033bf2f86677b8c7421ce8f358645468f64f9c5daa78a9689d62e8ac0a89c2ce8d2bcf7ce98ea3a851ddfef02cea84e61b49492b2855975fec6f817f8d3f99bc09aae93be1f630823ced1de4f50dce2fdf99445b9b920f236593cdf1cbb5b7de5ec196d1bca3c3781c8bbc7a034a7bfcfd36bc0135deaaae554e2853a52c6672bd43d79c78179059d2bf0c50def97fa9d4fdcd538425c687e14f62ac344ab2042f2185e1a04e8b1e520f3b8f36251ab8f5630632254cbf04c464c4d0b17a22fb126e1f6f499f805f12bdf54f60c59cff02e3eb5e6adc1faac8b9643fbbde9b2fa64ee9fe20acb37f5bb9210c74210410922793fe7f2067fc322dab2e677f9cf8c49f21224c47fcfd6e2646ccb2e654c99f011b17603024b1186283ef294f630073cf7afa5dba82427907439663272bc452caeb0074edda4ea9a0b56970d1c812b29b51ef376becc690afe556219e0c52166681b7314cbeb96b3683bcdb4312cb09ec5d7be05111491790f3351022db2802516e18937a33c1ec5e99d2fc7fd5451900875f270ecc9801e485b735cade88874c123e8b6d32863e4e4d151fda2f975b9e79c83a2c2d38c06dedbfa1014ec0e9371c13eb7ceaa772413b41fca02bc7b8583a7f8d04fbd4dc828659e9e5ae056571036cda2e2a8cd99959a32a138c8514acb93c68a42b82e849dcbc93733f458b475b3b413f7d879ee2208e421f1142bf07300611d5aa0d2899993ce3d2",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 86,
+      "label": "empty-crc",
+      "result": {
+        "reply": {
+          "success": true,
+          "position": 64,
+          "closes": 1,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              30,
+              30
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/file": "",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 230,
+      "label": "multiple",
+      "result": {
+        "reply": {
+          "success": true,
+          "position": 108,
+          "closes": 1,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              512,
+              74
+            ],
+            [
+              477,
+              -1
+            ]
+          ],
+          "logs": [
+            "processing zip entry /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/zip-extractor-ph29bt81/files/target but it already exists"
+          ]
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/file": "74776f",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 231,
+      "label": "multiple",
+      "result": {
+        "reply": {
+          "success": true,
+          "position": 123,
+          "closes": 1,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              512,
+              83
+            ],
+            [
+              475,
+              -1
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/directory": "directory",
+          "target/directory/file": "6368696c64",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 232,
+      "label": "multiple",
+      "result": {
+        "reply": {
+          "exception": "java.io.IOException",
+          "message": "Entry is outside of the target dir: ../outside/marker",
+          "position": 123,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              512,
+              88
+            ]
+          ],
+          "logs": [
+            "processing zip entry /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/zip-extractor-ph29bt81/files/target but it already exists"
+          ]
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/first": "6b657074",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 233,
+      "label": "multiple",
+      "result": {
+        "reply": {
+          "success": true,
+          "position": 121,
+          "closes": 1,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              512,
+              86
+            ],
+            [
+              468,
+              -1
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/broken": "6e6f742072657475726e6564",
+          "target/first": "6b657074",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 234,
+      "label": "crc-timing",
+      "result": {
+        "reply": {
+          "exception": "java.util.zip.ZipException",
+          "message": "invalid entry CRC (expected 0xb68fc864 but got 0xb68fc865)",
+          "position": 2119,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              512,
+              512
+            ],
+            [
+              512,
+              512
+            ],
+            [
+              512,
+              512
+            ],
+            [
+              512,
+              512
+            ],
+            [
+              512,
+              37
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/file": "021be59d665773dbc78a9fb7cd62e54e5dc2043ee11508aba296a67ac61b809cba6e3b74cf1ae5022ffb494432d8944e90036db64bdfb1741827089f20fb5c43605f1e555b3d83d960b49977e5cb0cd0240a8f8083550ef7d3a6413e08e3e44c81fc0353a5b96e2ae478832a5f34b7b691d9ab1467e7ae41c7392c7227f2d38deaf34a9947a93735103039a809ae428ac411115f4fc1668d8e37f5da83fc31f7b19c06b1d201468a41c5e3632d55ad2915e74bfdd4961b23aeb7cc0a5b40e47a908345c73dc12a646bc77098a917bc2eab5c28793a83995610cf7293fb33d4335a18f7ff57a880b242c8a96603347a6bb7f44a8259305dbf91df80e8fe288a1039fb9a5885b60d7d3e7c622003f7adf73716817471cc278eb1a195027139dec8a18e1d9ac00cd49ebc783f5cb5963cad58d5125564e1f8603cbc53dd2a1881f4ba8498e1a59b80b78b777169400c637fc8e4fb205e618b78e9a8bd049edf87044f5903b2195201de7490ce3aa3f1a54dc5a0edbdb9d096381560e4fa6643c0280b337577134cfdd10871ac0bcb22cd450aa327e3c98807efc641cf34edb6bc7636914a48b7aab7ef2dfaaa08c7a3ad35d3f73ba7d5c130847d36e03107920bc5b5a3d00350ac4806a30f3ed65fd29d6b2910d9e0a7de5cb14ca7732eba3f0696300ff6c79dbaece83d98d00f6942f2870a234d59c35dbad16f082c9107833067e9ed2a8a275aee689cece226b72ee7a97288326b21bff2cf485e6f62324f6e86b75ba3624dec4f24ff50fd44fa0bed808adf8c179af7e55feb681e25d8f83c0ad1ae7a2f7e3b20a620bd05a7cf91995ec8df504db54584e355f6299617ec4c9544fa30ae5135c44ae72a2d61aca575fd6c420a64967640d03272498d417ef1bcc5191de3017407b6724ba12ce952eec0a0ea8d58dedb50fe115dfeacec144d6550dcc599959c30cf2f25963dcd1033588737f03f73a5fc26987ed9ffca3ce5d7e1bf78d6a2fd796647e416069eace85d22d2aaaa2f69d1d69bd3b050474741f2a360b3973ba027e510102f718d27793c7a1334149b153d0adda2f286da708b576793e989a11a605c3fcfc049bba0986a60dfd5d65da77f3198478b53e37312b0f7cf6aafd70b67c4113c3a827826b2a835a1ee3e35eaeb7d203c14b3950e846702ea72ca7bbf8362415d275e75fe771364beb8423289608f3194997734e0ab7cc848654d244cfa7279694f4540f1d2e2a42c0dd0137ac089d132725537fc1b5c49e8e95c6874db69ccc699fdfd0d38752564cfee587f368c61a2e1526dd772c55bb1b350a5b8ed28417f3cd17ace1292ea1bb610e440c6f014c9ac5ed2a5ff095a9b4ced142a0b9873307b94725f89ace7f796aa2b0f29cd4fed76e63efd485e2b04f1ff65cc675f0f09a881ca7e58a6d10345ff08412ea06dbf0c444078aff3ced9ce5c43b84c136fa927029d245125c148fe20c49da095da1d79f0e66d4f38c6e0ac4bab901bc80ef1d0f70286c4292b1fae2d52214a3691d565c4a834382dcce5938d8037e2db97eeee9008d680fa8459158b01cb081572ccfeb84c0f6e5b469eba8f3e4f9cedcb0f469a5e6a1ddcf2794d19b5a30e01f255f5b3c9f0607563ea09e75cc454ced8bf01e3ea6b68e36984c7473c90ed2b7aa76ec586a84e97c72fc6024ddb79b11079f24b848dcb8eae7ab71a15ec06f2ca960cd73a9e877f1c1ca5ea9752cceae773cdd8c4e4909a084d6f9e37207be0cb8880fdd563d825505a0dd493c0b3647d61ecf3a5a86cae72f0a6db474078331cf4b5e90ace72b26680cf06cd17baf10ce615a40a0bc7c7a77d6108c2880ed35aa32f68c81453062126f7c6b8b11cec719d8bfcf9bf6bc51ac06d96b8ae1a6788b1b76dc8d5475460815fd8de320b3b45020ae2fd530ed089a2f645204d8ef82dcd6016819b9010ace9e30b4e46698fed3b686dec6040d9c52aaa5e89cb5ebb72b5b0b62356cea007f10bfa6c3b6ce850464cb7fe9af8b60a186abdef2a30a2e976810ec6e392a5d571a2f64a33fbbebaf95ce0a2ca64400254f16973ea39ae1d7338a66a453d6e656f53198a19ee795d5853651d8850075bd29df4aa3a9a848e793b5466ce62db38e938a96cbb0e3e32a3748446abe1c81989069c113507c83719a4aed92053831fb36034381b0aa2ef600c2166e5a57ce5bb51d64de407b085ee4f5462616c3f23f603b5c3c7803551c5a6473eb6655f6750ee631371fd2646cf495c64a779bf93a29db4942457d624af6645fc4a2292dd04347d188136fb0282b6e66827d5483fd10008fde1cb88bf1771f94423904c1c4e973fcfb300514fca1306548c6726ae0605e9ef13d6b50ad3e774491a6eaa83982acfe30f22bf8e9b2a986342dd7ac5c5200d2525f51a9e15f26b007024557c4263329d47682e779a13ac51933ccc667c2c2558472c376bffd82ba938ff7ab81565ee5a13e0ab0349ae080e1c85cce0419e537d5acf0b10c5442b7356ee8489446fff59f2d21cff97c4fe2333ff72a03773ebab37847c6166f078c37d0372f4ca752a86da083ee4d7afdc7a882249bc8c9c50f026fd9e9d74b9c6a8592769c49c3ae55633305997711921f4f68750c94758f6d318172c85b7c090a926e000ddfaf3a498f440108058565639faf6666b47c948fda45e2b82e3a82d583b22557ce0899dbd6c2f43bdc225872efff4d65c1483ed55c610be5c615f005a16e852c8c991422997b03a6ccd136844bbab094aee3bd11a4020b18cb42b70b30f7c30dc1031f8dcc843b3947e866591394528d73576624d04197693e07b484b5df116d8c0f15f76c81b8db1894269f3b8c84b32e1982d75dab6a2d732b39f5c8b937ffef6d71b37a2f45a9353b45b0a2aff0518b2",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 235,
+      "label": "empty-crc",
+      "result": {
+        "reply": {
+          "exception": "java.util.zip.ZipException",
+          "message": "invalid entry CRC (expected 0x7b but got 0x0)",
+          "position": 66,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              512,
+              32
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/file": "",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 596,
+      "label": "close-failure",
+      "result": {
+        "reply": {
+          "exception": "java.io.IOException",
+          "message": "fixture close failure",
+          "position": 136,
+          "closes": 1,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              512,
+              96
+            ],
+            [
+              469,
+              -1
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/directory": "directory",
+          "target/file": "68656c6c6f20776f726c64",
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "corpus_sha256": "e4a00ddb5b37d0b98c9a9182c5fa5b6269fc9c2bedf37f6ddc23a9e84df910b9",
+  "scope": "Pinned ZipExtractor and native library with actual filesystem extraction: exact files, symlinks, ordered logs, exception category/message except NPE prose, reader calls/position and close count. STORED/DEFLATED/ZIP64/descriptors, short reads, malformed/truncated entries, failures and canonical containment. No central-directory use (source ignores it), concurrent filesystem replacement, Java GC descriptor timing, special-device write failures or actual >4GiB archives certification."
+}

@@ -1,101 +1,112 @@
-# ZipExtractor — logic and a future translation
+# ZipExtractor — extracting entries without losing source behavior
 
-**Teaching status:** Authored source algorithm and proposed validation; native counterpart remains unported.
+**Teaching status:** Authored explanation of the pinned algorithm, native translation, actual comparison tests and remaining limits.
 
-**Port status:** `unported`; parity `not_verified`. The mapped C++ file is absent. This page does not describe a completed translation.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-| Source | Destination |
-|---|---|
-| [src/org/minima/utils/ZipExtractor.java](../../../../../../../upstream-study/src/org/minima/utils/ZipExtractor.java) | `src/org/minima/utils/ZipExtractor.cpp` (planned) |
+[Pinned Java source](../../../../../../../upstream-study/src/org/minima/utils/ZipExtractor.java) · [Mapped C++ body](../../../../../../src/org/minima/utils/ZipExtractor.cpp) · [Native header](../../../../../../src/org/minima/utils/ZipExtractor.hpp)
 
-## Teacher's worked explanation
+## Follow an entry from stream to disk
 
-ZipExtractor expands a ZIP archive into a destination directory. The input is an
-InputStream, so the archive can arrive as a stream rather than an already-open
-ZIP file. This pinned Java file has one public operation, `unzip`, and a private
-destination-path check. **Its mapped C++ counterpart is still absent.** The
-following describes source behavior and the work needed for a future translation.
+The class exposes unzip and has one private destination-check helper. It wraps
+its input stream in ZipInputStream, reads the first entry and repeats this sequence:
 
-### Follow one entry from archive to disk
+1. Build the output path using Java's File(parent, child) rules. If that path
+   already exists, log the destination directory. Existence is not a rejection.
+2. Canonicalize the destination and output path. Require the latter to begin with
+   the former plus a separator. This rejects traversal and existing symlinks that
+   resolve outside the destination, before the output file is opened.
+3. Create the directory entry, or ensure a file entry's parent exists. Failed
+   directory creation raises an IOException naming that path.
+4. Open a file entry for output, truncating existing content, and write each
+   positive read from the 1,024-byte buffer. Close the file when its entry ends.
+5. Move to the next entry, consuming any unread directory payload. At the end,
+   close the entry and input stream.
 
-`unzip()` creates a 1,024-byte buffer and wraps the supplied stream in Java's
-ZipInputStream. It gets the first entry, then repeats these steps:
+This is not an atomic extraction. Earlier files remain if a later entry fails,
+and read errors can leave the current file partially written. There is no source
+finally block that closes input on every exceptional path.
 
-1. Construct the entry's destination path and validate canonical containment.
-2. For a directory entry, ensure that directory exists. If it cannot be created,
-   throw an IOException naming the path.
-3. For a file entry, ensure its parent directory exists. This also supports
-   archives that contain files without separate entries for every parent folder.
-4. Open the file for output, read archive data into the buffer, and write each
-   positive-length chunk. Close the output after the entry is exhausted.
-5. Ask for the next entry. After the loop, close the current entry and ZIP stream.
+## How the native code reuses existing work
 
-This algorithm can create and overwrite real files. It does not build a complete
-in-memory directory tree and then commit it atomically. If a later entry fails,
-earlier extracted files remain. An error while reading a file can leave a partial
-file. The source has no `finally`/try-with-resources around these operations, so
-successful-path closing must not be mistaken for a guarantee on every error path.
+JavaUnixFile handles Unix parent/child construction and mkdirs. An absolute child
+still stays under a non-null Java parent, so ordinary C++ path joining would be
+wrong here. BufferedFileOutput supplies direct writes through writeUnbuffered;
+MiniFile.writeDataToFile would remove an existing file first, changing the source's
+in-place truncation behavior. MinimaLogger supplies the actual log calls.
 
-### Why the destination check matters
+ZipInput is a native dependency adapter following the installed OpenJDK reader.
+It reuses the GzipInput raw-DEFLATE/zlib pattern, but parses ZIP local headers,
+STORED entries, CRCs, optional data descriptors and ZIP64 lengths. It retains the
+512-byte compressed input and pushback buffer. It does not use the central
+directory, whose information Java ZipInputStream also ignores. UTF-8 entry names
+are validated strictly rather than replaced on decoding errors. Reader callbacks
+return zero for EOF; a separate callback records the source's explicit close.
 
-The helper creates `new File(destinationDir, entryName)`. If that file already
-exists, it logs an informational message; existence is not a rejection. It then
-obtains canonical paths for both the destination directory and the candidate.
-The candidate must start with the destination's canonical path **plus the file
-separator**, otherwise extraction throws an IOException.
+The canonical-path adapter follows OpenJDK's realpath-prefix search. A final
+self-referencing symlink can remain unresolved after its parent is canonicalized;
+opening that file then raises FileNotFoundException. A cyclic intermediate prefix
+can instead fail during canonicalization. This distinction affects error timing.
+The support adapters retain OpenJDK notices and the GPLv2/Classpath license.
 
-The separator prevents a sibling path such as `/work/app-copy` from being accepted
-merely because it starts with `/work/app`. Canonicalization also matters for `..`
-segments and existing symbolic links. A lexical string-prefix comparison is not
-an adequate replacement for this source check. This check happens before opening
-the output file. It is not an atomic defense against a concurrently changed
-filesystem; the source does not provide such a guarantee.
+## Why partial output is part of correctness
 
-### What a native translation can reuse
+For a STORED entry, Java checks CRC before returning its last chunk. A bad CRC
+therefore prevents that chunk from being written. For a DEFLATED entry, the last
+output chunk is returned first and CRC/size validation happens on the next read.
+The corrupt file can therefore contain all decompressed bytes. The corpus uses
+2,050-byte inputs to prove these different outcomes: 2,048 bytes for the STORED
+case and 2,050 for DEFLATED with the chosen reader buffer. Empty STORED entries
+skip CRC validation in the source; the native reader preserves that behavior.
 
-The repository already has JavaUnixFile helpers for Unix File constructor
-normalization, parent/child resolution, and mkdirs behavior. In particular, Java's
-Unix parent/child constructor does not behave exactly like joining an absolute
-child with C++ `std::filesystem::path`'s `/` operator.
+Truncated initial headers can mean end-of-archive, while truncated entry names or
+descriptors raise EOF errors. Unsupported compression can be discovered only after
+the output file has been created. Those effects would disappear in an implementation
+that validated every archive entry before writing anything.
 
-The existing GzipInput helper demonstrates incremental raw DEFLATE decoding,
-zlib cleanup and CRC handling. ZIP is not GZIP, however: its entry headers,
-compression methods, optional data descriptors and ZIP64 size fields differ.
-Reusing the entire GZIP decoder as if the formats were identical would be wrong.
-MiniFile's present `isChild()` uses lexical prefix checking and cannot supply
-ZipExtractor's canonical containment rule.
+## Understanding the actual tests
 
-No native ZIP implementation was added during this lesson. The installed JDK's
-ZipInputStream source was inspected for relevant dependencies, but this is not a
-claim that its full API or all formats have already been translated.
+The Java fixture calls the unmodified pinned class. Its custom InputStream records
+requested read sizes, returned counts, consumed bytes and close calls, and can
+inject read or close errors. The native fixture invokes the real library through
+the corresponding callbacks. Reflection/a friend accessor observes the private
+path helper without replacing its algorithm.
 
-### How to test the eventual port
+Both fixtures extract into the same reset temporary tree. Python snapshots every
+file's bytes, directory and symlink target. It compares those snapshots, ordered
+logs, exception categories/messages, input-read traces, input position and close
+counts. Only VM-dependent null-pointer prose is normalized. Independent checks
+require expected successful files, the specific CRC partial outputs, and unchanged
+files outside the destination.
 
-The pinned file contains no test methods, and its mapped native file is absent.
-The scenarios below are **proposed validation**, not reported passing tests.
+Both builds pass all 708 cases: standard Python-generated archives, hand-encoded
+headers, both compression methods, descriptors with/without signatures, ZIP64,
+extra fields, invalid names, lengths, CRCs, truncation, short reads, injected errors,
+existing files/directories, duplicates, traversal and symlinks. The normal run took
+4.01 seconds and ASAN/UBSAN took 5.43 seconds. Three shared regression groups also
+pass in both builds: utility, SQL database and backup decryption.
 
-A Java oracle should extract identical archive bytes in an isolated temporary
-directory and record files, contents, directory structure, ordered logs, and any
-exception. A native fixture should do the same in a separate directory. Compare
-relative paths and bytes while accounting explicitly for the different temporary
-directory prefixes.
+The first run found a trailing-separator error in shared mkdirs: for missing/..,
+the native helper created the right directory but returned false. Removing the
+canonical trailing separator fixed it. The next complete run found two cyclic-link
+error-boundary mismatches; the source-derived canonicalization adapter fixed both.
+Initial failure reports are preserved with the final results.
 
-Start with empty archives, nested files with and without directory entries,
-stored and deflated data, empty files, Unicode names, repeated entries, and
-preexisting files. Then test malformed headers, truncated payloads, CRC errors,
-unsupported compression, optional descriptors and ZIP64 size fields. Include
-path traversal, sibling-prefix paths and symlinks pointing both inside and
-outside the destination. After failure, compare partial files and stream-close
-observations as well as the exception; returning the same error is insufficient
-if one implementation already wrote different data.
+[Java fixture](../../../../../../support/ZipExtractorOracle.java) · [Native fixture](../../../../../../support/zip_extractor.cpp) · [Comparison driver](../../../../../../tools/zip_extractor_differential.py) · [Student lab](../../../../../new-tests/zip-extraction.md) · [Saved evidence](../../../../../../validation/zip-extractor-work-in-progress)
 
-**Exercise:** an archive's first file is valid and its second entry escapes the
-destination. Predict which files remain after the failure. Then explain why a
-test that checks only the thrown exception would miss part of the behavior.
+## Limits and next questions
 
-## Dependencies and reading map
+There are no production callers at this source pin, so actual extraction through
+the linked library is the integration test; node startup would not exercise it.
+The reader supports streaming, but the corpus does not certify actual archives
+larger than four gigabytes. Concurrent filesystem replacement, special-device
+write failures and all operating systems remain unverified. Native RAII releases
+zlib state and output descriptors on exceptions; Java garbage-collection timing
+is not reproduced. Input close callbacks preserve the source's explicit boundary.
+No complete-node or complete-class parity certification follows from these tests.
 
-Method navigation (declarations with bodies found in this file): [unzip](../../../../../../../upstream-study/src/org/minima/utils/ZipExtractor.java#L12), [newFile](../../../../../../../upstream-study/src/org/minima/utils/ZipExtractor.java#L48).
+Predict what remains after a valid first entry and a second entry named
+../outside/marker. Why is checking only the exception insufficient? Why would
+replacing canonical containment with a lexical prefix comparison be incorrect?
 
-
-Pinned Java SHA-256: `d32637c33ca47eb0a64f172b9318ed121e2e2dc3286aae7240a20e6e5c2ccb19`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+Pinned Java SHA-256: `d32637c33ca47eb0a64f172b9318ed121e2e2dc3286aae7240a20e6e5c2ccb19`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).

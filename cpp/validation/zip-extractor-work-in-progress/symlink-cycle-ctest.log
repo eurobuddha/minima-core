@@ -1,0 +1,198 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 33: zip_extractor_differential
+1/1 Test #33: zip_extractor_differential .......***Failed    3.94 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "cases": 671,
+  "total_cases": 671,
+  "groups": {
+    "standard": 52,
+    "paths": 30,
+    "existing-file": 10,
+    "existing-directory": 10,
+    "existing-parent-file": 10,
+    "existing-inside-link": 10,
+    "existing-outside-link": 10,
+    "existing-dangling-inside": 10,
+    "existing-dangling-outside": 10,
+    "existing-cycle-link": 10,
+    "multiple": 8,
+    "crc-timing": 2,
+    "empty-crc": 2,
+    "truncated": 100,
+    "size-crc": 24,
+    "invalid-name": 20,
+    "method-flags": 25,
+    "descriptor": 12,
+    "descriptor-truncation": 84,
+    "descriptor-mismatch": 36,
+    "zip64-sizes": 8,
+    "extra-fields": 28,
+    "empty-or-invalid-signature": 7,
+    "null-destination": 7,
+    "long-fields": 4,
+    "invalid-deflate": 4,
+    "short-reads": 11,
+    "read-failure": 52,
+    "close-failure": 1,
+    "null-input": 1,
+    "null-input-null-destination": 1,
+    "path-helper": 72
+  },
+  "failures": [
+    {
+      "index": 79,
+      "label": "existing-cycle-link",
+      "request": {
+        "bytes": "0x504b0304140000000000000000004af4d5540b0000000b000000040000006c696e6b7265706c6163656d656e74000000000000000000000000000000000000000000000000000000000000",
+        "destination": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/zip-extractor-rx4az9dd/files/target"
+      },
+      "java": {
+        "reply": {
+          "exception": "java.io.FileNotFoundException",
+          "message": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/zip-extractor-rx4az9dd/files/target/link (Too many levels of symbolic links)",
+          "position": 34,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/link": {
+            "symlink": "link"
+          },
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      },
+      "cpp": {
+        "reply": {
+          "exception": "java.io.IOException",
+          "message": "Too many levels of symbolic links",
+          "position": 34,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/link": {
+            "symlink": "link"
+          },
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    },
+    {
+      "index": 228,
+      "label": "existing-cycle-link",
+      "request": {
+        "bytes": "0x504b0304140000000800000000004af4d5540d0000000b000000040000006c696e6b2b4a2dc8494c4ecd4dcd2b0100000000000000000000000000000000000000000000000000000000000000",
+        "destination": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/zip-extractor-rx4az9dd/files/target"
+      },
+      "java": {
+        "reply": {
+          "exception": "java.io.FileNotFoundException",
+          "message": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/zip-extractor-rx4az9dd/files/target/link (Too many levels of symbolic links)",
+          "position": 34,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/link": {
+            "symlink": "link"
+          },
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      },
+      "cpp": {
+        "reply": {
+          "exception": "java.io.IOException",
+          "message": "Too many levels of symbolic links",
+          "position": 34,
+          "closes": 0,
+          "reads": [
+            [
+              30,
+              30
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "logs": []
+        },
+        "files": {
+          "outside": "directory",
+          "outside/marker": "756e6368616e676564",
+          "target": "directory",
+          "target/link": {
+            "symlink": "link"
+          },
+          "target-copy": "directory",
+          "target-copy/marker": "756e6368616e676564"
+        }
+      }
+    }
+  ],
+  "corpus_sha256": "5531c46674dec14b336934098972d67456b15ef0a4bf0dd6e27c66f09ee9f979",
+  "scope": "Pinned ZipExtractor and native library with actual filesystem extraction: exact files, symlinks, ordered logs, exception category/message except NPE prose, reader calls/position and close count. STORED/DEFLATED/ZIP64/descriptors, short reads, malformed/truncated entries, failures and canonical containment. No central-directory use (source ignores it), concurrent filesystem replacement, Java GC descriptor timing, special-device write failures or actual >4GiB archives certification."
+}
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   3.94 sec
+
+The following tests FAILED:
+	 33 - zip_extractor_differential (Failed)
+Errors while running CTest
