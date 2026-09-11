@@ -2,13 +2,13 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 453,
-  "native_absent": 4,
+  "native_counterparts": 456,
+  "native_absent": 1,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
-      "counterparts": 365,
-      "absent": 4
+      "counterparts": 368,
+      "absent": 1
     },
     "test": {
       "total": 88,
@@ -1723,11 +1723,11 @@
       "java": "src/org/minima/system/commands/base/benchmark.java",
       "cpp": "src/org/minima/system/commands/base/benchmark.cpp",
       "guide": "files/src/org/minima/system/commands/base/benchmark.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
+      "teaching_note": "Authored logic, translation and validation explanation; full parity remains open."
     },
     {
       "java": "src/org/minima/system/commands/base/block.java",
@@ -1893,21 +1893,21 @@
       "java": "src/org/minima/system/commands/base/jniminingtest.java",
       "cpp": "src/org/minima/system/commands/base/jniminingtest.cpp",
       "guide": "files/src/org/minima/system/commands/base/jniminingtest.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
+      "teaching_note": "Authored logic, translation and validation explanation; full parity remains open."
     },
     {
       "java": "src/org/minima/system/commands/base/jnitest.java",
       "cpp": "src/org/minima/system/commands/base/jnitest.cpp",
       "guide": "files/src/org/minima/system/commands/base/jnitest.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
+      "teaching_note": "Authored logic, translation and validation explanation; full parity remains open."
     },
     {
       "java": "src/org/minima/system/commands/base/logs.java",

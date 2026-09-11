@@ -11,14 +11,21 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **365 production paths (one inactive) and 88 mapped test files exist;
+`.cpp` paths. **368 production paths (one inactive) and 88 mapped test files exist;
 6 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-TxPoWProcessorTest now preserves its empty tests and implements both delay helpers.
+benchmark, jnitest and jniminingtest now have native caller counterparts with an
+explicit external-library boundary. Both builds pass 129 caller cases / 2,628 checks,
+all 1,164 base API comparisons and 74 original base assertions. MiniData adds borrowed
+mutable byte access, preserving cached numeric values. **456 paths exist (455 partial,
+one inactive); jnifunctions.cpp remains absent.** The actual JNI library and full
+runtime parity remain unresolved. See the [caller lab](student-guide/new-tests/jni-command-callers.md).
+
+At the preceding checkpoint, TxPoWProcessorTest preserved its empty tests and gained both delay helpers.
 P2PSwapLink is explicitly inactive-source preservation, with no functional credit.
 Both builds pass ten supplemental delay comparisons and the inactive-source checks.
-Inventory: **453 paths (452 active partial, one inactive), four absent**. See the
+That checkpoint had **453 paths (452 active partial, one inactive), four absent**. See the
 [student lab](student-guide/new-tests/original-processor-test.md).
 
 At the preceding checkpoint, ExpressionParserTests and StatementParserTests gained counterparts.

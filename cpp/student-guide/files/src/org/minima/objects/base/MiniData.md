@@ -103,3 +103,12 @@ The original base-test conversion adds `compare`, `isLessEqual`, `isMoreEqual`, 
 The extra corpus exposed raw byte differences leaking through BigInt comparison. That shared primitive now returns exactly -1, 0 or 1. Both builds pass 1,108 API comparisons and 18,632 independent checks, including leading zero bytes, large magnitudes, warmed caches, retained decimal snapshots and negative substring bounds. Complete mutable-byte alias/JDK API behavior remains outside this result.
 
 See the [base-test lab](../../../../../../new-tests/original-base-tests.md) for the retained initial failure and complete scope.
+
+## Borrowed byte access for JNI callers
+
+The native getBytes accessor exposes a fixed-size mutable span over the owned bytes.
+Like Java, writes deliberately leave the lazy numeric cache unchanged. The owner
+must remain alive; stream replacement expires the view. [JNI caller lab](../../../../../../new-tests/jni-command-callers.md)
+explains twelve mutation cases that distinguish cached comparisons from current
+hexadecimal display. This API addition does not certify general retained-array or
+concurrent mutation parity.

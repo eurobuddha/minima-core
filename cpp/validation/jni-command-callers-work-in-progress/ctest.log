@@ -1,0 +1,11 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 270: original_base_tests
+1/3 Test #270: original_base_tests ..............   Passed    3.12 sec
+    Start 271: base_value_api_differential
+2/3 Test #271: base_value_api_differential ......   Passed    3.01 sec
+    Start 283: jni_command_callers
+3/3 Test #283: jni_command_callers ..............   Passed   13.28 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =  19.42 sec

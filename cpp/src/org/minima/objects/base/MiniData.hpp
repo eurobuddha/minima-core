@@ -45,6 +45,9 @@ public:
     static MiniData getRandomData(int len);
 
     const std::vector<uint8_t>& bytes() const { return m_bytes; }
+    // Borrowed Java getBytes() view: element writes deliberately retain the lazy
+    // numeric cache. The owner must outlive the view; stream replacement expires it.
+    std::span<uint8_t> getBytes() {return m_bytes;}
     const uint8_t* data() const { return m_bytes.data(); }
     size_t size() const { return m_bytes.size(); }
     int    getLength() const { return (int)m_bytes.size(); }

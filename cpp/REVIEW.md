@@ -1,3 +1,60 @@
+# Current checkpoint — three JNI command callers
+
+Base HEAD: b1ae9cc4efa52ae1e3737c915112982b7908c665. Goal ACTIVE, incomplete. **456 mapped paths**: 455 active
+partial counterparts plus one inactive-source preservation. 368 production paths
+(one inactive), 88 test paths; **one absent: utils/jni/jnifunctions.cpp**.
+New: commands/base/benchmark.cpp, jnitest.cpp and jniminingtest.cpp. Each retains
+source methods, help/params, exact nonce constants, full requested ordinary loops,
+serialization, replies and explicit external-call boundary. They remain unregistered
+as in the pin. The missing library is not replaced by a claimed mining algorithm.
+
+MiniData adds a borrowed getBytes mutable span retaining its lazy numeric cache.
+Caller review corrected initial copied difficulty bytes and preserved shared default
+target identity. All previous 117 caller cases retained; 12 mutation cases added.
+Normal and sanitizer: **129 caller programs / 2,628 independent checks PASS**.
+Existing base API: all 1,164 programs / 19,160 assertions PASS, transcript unchanged
+bf35d806dfaa21743a51839039c882ffe35f1c0a9ee772e5d5969e6d3c84e0ee.
+Original base: 12 methods / 74 assertions PASS in both builds, full original loop.
+Actual MinimaCoreCpp node, probe and affected tests build PASS in both configurations.
+Focused 3 CTests: normal 19.42s, sanitized 27.20s. 283 registered tests; full suite not
+repeated. Test-only Java JNI recorder/native provider validate callers, not the
+unavailable library. Scope explicitly covers normalized timing/random body hash/
+creation time after independent per-call SHA3 validation; some JVM prose normalized.
+
+Lab: student-guide/new-tests/jni-command-callers.md. Evidence and remaining inventory:
+validation/jni-command-callers-work-in-progress. Three caller lessons, MiniData and
+unported jnifunctions lesson updated. NEXT: the actual jnifunctions dependency plus
+full existing production API/runtime audit. No placeholder to reach 457. Independent
+parity work remains, so the goal is not blocked. Magic full sanitizer replay still
+has the prior terminal 7200s timeout; no live handles or repeat long demo here.
+
+Previous checkpoint b1ae9cc: bundle MinimaCoreC++-20260911T192204Z.bundle, SHA-256
+172911f6482f9a4f1f8e48167f0b643ef6cf34703f37923375b9ff7f4899c046, fresh recovery clone,
+all 30 changed files byte-verified. Preserve unrelated graphify outputs and external
+Java SQL/JAR f7f0e08. Local CPP-only commits, no push; source pin unchanged.
+
+## Scoped review findings
+
+Compared all three complete original caller bodies and inspected Command, TxPoW,
+TxHeader, MiniNumber/BigInt, Crypto, MiniData cache/stream behavior and hashtest.
+JNI declarations and sibling Hash/TxPoWMiner were read. No reusable native JNI
+method bodies were found. Source behavior preserved includes duplicate valid params,
+unused private format helpers, int wrapping, offset-four nonce bytes, strict target
+comparison, trailing returned bytes, default amounts and omission of benchmark's
+computed validity from its reply. The borrow avoids silently copying a mutable
+Java byte array; its lifetime limit is documented. Defaults retain the shared target.
+
+The first test run failed because this JDK requires explicit native-access enablement
+for the test-only library. The runner now passes --enable-native-access=ALL-UNNAMED;
+stderr is not ignored. The comparison explicitly handles source-generated timestamps
+and random body hashes only after validating IDs against original captured bytes.
+All 117 initial cases passed; subsequent array review added 12 cases, and all 129
+passed. Production library algorithms, arbitrary retained-array lifetimes, all shared
+alias/concurrency cases and full node parity remain unverified. The callback boundary
+is support code; it does not count as the missing jnifunctions counterpart.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — processor test helpers and inactive swap source
 
 Base HEAD: a3c261e6cad6745f4798a414074b33e7656f5982. Goal ACTIVE, incomplete. 453 mapped paths: **452 active partial

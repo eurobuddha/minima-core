@@ -1,0 +1,4140 @@
+{
+  "passed": true,
+  "programs": 129,
+  "planned_programs": 129,
+  "independent_checks": 2628,
+  "seconds": 19.877,
+  "failures": [],
+  "observations": [
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "meta",
+        "params": {
+          "unused": "ignored"
+        }
+      },
+      "normalized": {
+        "value": {
+          "name": "benchmark",
+          "help": "(hashes:) - Check the speed of header hashing with JNI and JAVA calls. Defaults to 1000 hashes",
+          "fullhelp": "\nnoncetest\n\nCheck the speed of hashing of this device. Defaults to 1 million hashes.\n\nReturns the time taken in milliseconds and speed in megahashes/second.\n\nE.g. A speed of 0.5 MH/s indicates 500000 hashes per second.\n\namount: (optional)\n    Number of hashes to execute.\n\nExamples:\n\nhashtest\n\nbenchmark hashes:2000000\n",
+          "validparams": [
+            "hashes",
+            "testnonce",
+            "maxattempts",
+            "targetdifficulty"
+          ],
+          "freshname": "benchmark",
+          "freshparams": {},
+          "distinct": true,
+          "byteformat": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,-128,-127,-126,-125,-124,-123,-122,-121,-120,-119,-118,-117,-116,-115,-114,-113,-112,-111,-110,-109,-108,-107,-106,-105,-104,-103,-102,-101,-100,-99,-98,-97,-96,-95,-94,-93,-92,-91,-90,-89,-88,-87,-86,-85,-84,-83,-82,-81,-80,-79,-78,-77,-76,-75,-74,-73,-72,-71,-70,-69,-68,-67,-66,-65,-64,-63,-62,-61,-60,-59,-58,-57,-56,-55,-54,-53,-52,-51,-50,-49,-48,-47,-46,-45,-44,-43,-42,-41,-40,-39,-38,-37,-36,-35,-34,-33,-32,-31,-30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,"
+        },
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "unloaded",
+        "params": {
+          "hashes": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.UnsatisfiedLinkError",
+        "message": "'void org.minima.utils.jni.jnifunctions.sayHello()'",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 1000,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1000,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "-1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "-1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": -1,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": -1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 1,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "127",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "127",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 127,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 127,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "128",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "128",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 128,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 128,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "255",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "255",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 255,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 255,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "256",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "256",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 256,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 256,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "513",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "513",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 513,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 513,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "1.9",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "1.9",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 1,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "4294967296",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "4294967296",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "1",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "1",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 1,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "2",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "2",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 2,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 2,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "513",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "513",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 513,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 513,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "testnonce": "0",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "testnonce": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x000100",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "testnonce": "-1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "testnonce": "-1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x0001FF",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "testnonce": "-12345.54321",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "testnonce": "-12345.54321",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x0504B66A322F",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "testnonce": "0.00000000000000000000000000000000000000001",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "testnonce": "0.00000000000000000000000000000000000000001",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x290101",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "testnonce": "18446744073709551615",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "testnonce": "18446744073709551615",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x000900FFFFFFFFFFFFFFFF",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": null
+      },
+      "normalized": {
+        "error": "java.lang.NullPointerException",
+        "message": "<runtime diagnostic>",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x00"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0000"
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0021"
+      },
+      "normalized": {
+        "error": "java.io.IOException",
+        "message": "ERROR reading MiniNumber - input too large or negative 33",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0001"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x000100AABB"
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0xFF0101"
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x00028000"
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "hello_error",
+        "params": {
+          "hashes": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.IllegalStateException",
+        "message": "fixture hello error",
+        "events": {
+          "hello": true
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "hash_error",
+        "params": {
+          "hashes": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.IllegalStateException",
+        "message": "fixture hash error",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": ""
+        }
+      },
+      "normalized": {
+        "error": "org.minima.system.commands.CommandException",
+        "message": "BLANK param not allowed : hashes",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": null
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NullPointerException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": true
+        }
+      },
+      "normalized": {
+        "error": "java.lang.ClassCastException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "bad"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "xyz"
+        }
+      },
+      "normalized": {
+        "error": "org.minima.system.commands.CommandException",
+        "message": "Invalid Data param specified : targetdifficulty xyz",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "testnonce": "bad"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        },
+        "mutate": 0
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "mutate": 255
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "1",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        },
+        "mutate": 0
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "1",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 1,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "1",
+          "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "mutate": 255
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "1",
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 1,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "benchmark",
+        "mode": "run",
+        "params": {
+          "hashes": "0",
+          "unused": "ignored",
+          "maxattempts": "0"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "benchmark",
+          "params": {
+            "hashes": "0",
+            "unused": "ignored",
+            "maxattempts": "0"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "hashes": 0,
+            "java": {
+              "millitime": "<elapsed milliseconds>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "meta",
+        "params": {
+          "unused": "ignored"
+        }
+      },
+      "normalized": {
+        "value": {
+          "name": "jnitest",
+          "help": "(maxattempts:) - Check the speed of header hashing with JNI calls. Defaults to 1000 hashes",
+          "fullhelp": "\nnoncetest\n\nCheck the speed of hashing of this device. Defaults to 1 million hashes.\n\nReturns the time taken in milliseconds and speed in megahashes/second.\n\nE.g. A speed of 0.5 MH/s indicates 500000 hashes per second.\n\namount: (optional)\n    Number of hashes to execute.\n\nExamples:\n\nhashtest\n\nhashtest maxattempts:2000000\n",
+          "validparams": [
+            "testnonce",
+            "maxattempts",
+            "targetdifficulty"
+          ],
+          "freshname": "jnitest",
+          "freshparams": {},
+          "distinct": true,
+          "byteformat": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,-128,-127,-126,-125,-124,-123,-122,-121,-120,-119,-118,-117,-116,-115,-114,-113,-112,-111,-110,-109,-108,-107,-106,-105,-104,-103,-102,-101,-100,-99,-98,-97,-96,-95,-94,-93,-92,-91,-90,-89,-88,-87,-86,-85,-84,-83,-82,-81,-80,-79,-78,-77,-76,-75,-74,-73,-72,-71,-70,-69,-68,-67,-66,-65,-64,-63,-62,-61,-60,-59,-58,-57,-56,-55,-54,-53,-52,-51,-50,-49,-48,-47,-46,-45,-44,-43,-42,-41,-40,-39,-38,-37,-36,-35,-34,-33,-32,-31,-30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,"
+        },
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "unloaded",
+        "params": {
+          "maxattempts": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.UnsatisfiedLinkError",
+        "message": "'void org.minima.utils.jni.jnifunctions.sayHello()'",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "txpowid": "<checked against captured header>",
+            "success": true
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1000,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "-1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "-1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": -1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "127",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "127",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 127,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "128",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "128",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 128,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "255",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "255",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 255,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "256",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "256",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 256,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "513",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "513",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 513,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1.9",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "1.9",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "4294967296",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "4294967296",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "1",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "txpowid": "<checked against captured header>",
+            "success": true
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "2",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "2",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "txpowid": "<checked against captured header>",
+            "success": true
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 2,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "513",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "513",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "txpowid": "<checked against captured header>",
+            "success": true
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 513,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "0",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "0,1,0,",
+            "nonce": 0,
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x000100",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "-1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "-1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "0,1,-1,",
+            "nonce": -1,
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x0001FF",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "-12345.54321",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "-12345.54321",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,-74,106,50,47,",
+            "nonce": "-12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x0504B66A322F",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "0.00000000000000000000000000000000000000001",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "0.00000000000000000000000000000000000000001",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "41,1,1,",
+            "nonce": "1E-41",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x290101",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "18446744073709551615",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "18446744073709551615",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "0,9,0,-1,-1,-1,-1,-1,-1,-1,-1,",
+            "nonce": 18446744073709551615,
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x000900FFFFFFFFFFFFFFFF",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": null
+      },
+      "normalized": {
+        "error": "java.lang.NullPointerException",
+        "message": "<runtime diagnostic>",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x00"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0000"
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0021"
+      },
+      "normalized": {
+        "error": "java.io.IOException",
+        "message": "ERROR reading MiniNumber - input too large or negative 33",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0001"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x000100AABB"
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "0,1,0,-86,-69,",
+            "nonce": 0,
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0xFF0101"
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "-1,1,1,",
+            "nonce": 10,
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x00028000"
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "0,2,-128,0,",
+            "nonce": -32768,
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x00",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "hello_error",
+        "params": {
+          "maxattempts": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.IllegalStateException",
+        "message": "fixture hello error",
+        "events": {
+          "hello": true
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "hash_error",
+        "params": {
+          "maxattempts": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.IllegalStateException",
+        "message": "fixture hash error",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": ""
+        }
+      },
+      "normalized": {
+        "error": "org.minima.system.commands.CommandException",
+        "message": "BLANK param not allowed : maxattempts",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": null
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NullPointerException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": true
+        }
+      },
+      "normalized": {
+        "error": "java.lang.ClassCastException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "bad"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "xyz"
+        }
+      },
+      "normalized": {
+        "error": "org.minima.system.commands.CommandException",
+        "message": "Invalid Data param specified : targetdifficulty xyz",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "bad"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        },
+        "mutate": 0
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "mutate": 255
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "txpowid": "<checked against captured header>",
+            "success": true
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        },
+        "mutate": 0
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "1",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1",
+          "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "mutate": 255
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "1",
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "txpowid": "<checked against captured header>",
+            "success": true
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jnitest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "unused": "ignored"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jnitest",
+          "params": {
+            "maxattempts": "0",
+            "unused": "ignored"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "result": "5,4,73,-107,-51,-47,",
+            "nonce": "12345.54321",
+            "millitime": "<elapsed milliseconds>",
+            "targetdifficulty": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+            "txpowid": "<checked against captured header>",
+            "success": false
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "meta",
+        "params": {
+          "unused": "ignored"
+        }
+      },
+      "normalized": {
+        "value": {
+          "name": "jniminingtest",
+          "help": "(maxattempts:) - Check the speed of header hashing with JNI and JAVA calls. Defaults to 1000 hashes",
+          "fullhelp": "\nnoncetest\n\nCheck the speed of hashing of this device. Defaults to 1 million hashes.\n\nReturns the time taken in milliseconds and speed in megahashes/second.\n\nE.g. A speed of 0.5 MH/s indicates 500000 hashes per second.\n\namount: (optional)\n    Number of hashes to execute.\n\nExamples:\n\nhashtest\n\nbenchmark hashes:2000000\n",
+          "validparams": [
+            "maxattempts",
+            "testnonce",
+            "maxattempts",
+            "targetdifficulty"
+          ],
+          "freshname": "jniminingtest",
+          "freshparams": {},
+          "distinct": true,
+          "byteformat": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,-128,-127,-126,-125,-124,-123,-122,-121,-120,-119,-118,-117,-116,-115,-114,-113,-112,-111,-110,-109,-108,-107,-106,-105,-104,-103,-102,-101,-100,-99,-98,-97,-96,-95,-94,-93,-92,-91,-90,-89,-88,-87,-86,-85,-84,-83,-82,-81,-80,-79,-78,-77,-76,-75,-74,-73,-72,-71,-70,-69,-68,-67,-66,-65,-64,-63,-62,-61,-60,-59,-58,-57,-56,-55,-54,-53,-52,-51,-50,-49,-48,-47,-46,-45,-44,-43,-42,-41,-40,-39,-38,-37,-36,-35,-34,-33,-32,-31,-30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,"
+        },
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "unloaded",
+        "params": {
+          "maxattempts": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.UnsatisfiedLinkError",
+        "message": "'void org.minima.utils.jni.jnifunctions.sayHello()'",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 1000000,
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 1,
+              "nonce": "99796944340835269.72626751901890258403317051706631067271169",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1000000,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "-1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "-1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": -1,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": -1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 1,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 1,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "127",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "127",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 127,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 127,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 127,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "128",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "128",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 128,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 128,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 128,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "255",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "255",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 255,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 255,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 255,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "256",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "256",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 256,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 256,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 256,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "513",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "513",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 513,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 513,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 513,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1.9",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "1.9",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 1,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 1,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "4294967296",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "4294967296",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "1",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 1,
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 1,
+              "nonce": "99796944340835269.72626751901890258403317051706631067271169",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "2",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "2",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 2,
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 1,
+              "nonce": "99796944340835269.72626751901890258403317051706631067271169",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 2,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "513",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "513",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 513,
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 1,
+              "nonce": "99796944340835269.72626751901890258403317051706631067271169",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 513,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "0",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x000100",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "-1",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "-1",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": -1,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x0001FF",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "-12345.54321",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "-12345.54321",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "-12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x0504B66A322F",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "0.00000000000000000000000000000000000000001",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "0.00000000000000000000000000000000000000001",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "1E-41",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x290101",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "18446744073709551615",
+          "targetdifficulty": "0x00"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "testnonce": "18446744073709551615",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": 18446744073709551615,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x000900FFFFFFFFFFFFFFFF",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": null
+      },
+      "normalized": {
+        "error": "java.lang.NullPointerException",
+        "message": "<runtime diagnostic>",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x00"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0000"
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0021"
+      },
+      "normalized": {
+        "error": "java.io.IOException",
+        "message": "ERROR reading MiniNumber - input too large or negative 33",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x0001"
+      },
+      "normalized": {
+        "error": "java.io.EOFException",
+        "message": null,
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x000100AABB"
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0xFF0101"
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": 10,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x00"
+        },
+        "result": "0x00028000"
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x00"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x00",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": -32768,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x00",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "hello_error",
+        "params": {
+          "maxattempts": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.IllegalStateException",
+        "message": "fixture hello error",
+        "events": {
+          "hello": true
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "hash_error",
+        "params": {
+          "maxattempts": "0"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.IllegalStateException",
+        "message": "fixture hash error",
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": ""
+        }
+      },
+      "normalized": {
+        "error": "org.minima.system.commands.CommandException",
+        "message": "BLANK param not allowed : maxattempts",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": null
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NullPointerException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": true
+        }
+      },
+      "normalized": {
+        "error": "java.lang.ClassCastException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "bad"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "xyz"
+        }
+      },
+      "normalized": {
+        "error": "org.minima.system.commands.CommandException",
+        "message": "Invalid Data param specified : targetdifficulty xyz",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "testnonce": "bad"
+        }
+      },
+      "normalized": {
+        "error": "java.lang.NumberFormatException",
+        "message": "<runtime diagnostic>",
+        "events": {}
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        },
+        "mutate": 0
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "mutate": 255
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1",
+          "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        },
+        "mutate": 0
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "1",
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 1,
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 1,
+              "nonce": "99796944340835269.72626751901890258403317051706631067271169",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": true,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "1",
+          "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "mutate": 255
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "1",
+            "targetdifficulty": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 1,
+            "targetdifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 1,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 1,
+          "difficulty": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000",
+          "mutateddifficulty": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      }
+    },
+    {
+      "request": {
+        "name": "jniminingtest",
+        "mode": "run",
+        "params": {
+          "maxattempts": "0",
+          "unused": "ignored"
+        }
+      },
+      "normalized": {
+        "value": {
+          "command": "jniminingtest",
+          "params": {
+            "maxattempts": "0",
+            "unused": "ignored"
+          },
+          "status": true,
+          "pending": false,
+          "response": {
+            "maxattempts": 0,
+            "targetdifficulty": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+            "java": {
+              "millitime": "<elapsed milliseconds>",
+              "attempts": 0,
+              "nonce": 0,
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            },
+            "jni": {
+              "millitime": "<elapsed milliseconds>",
+              "nonce": "12345.54321",
+              "found": false,
+              "txpowid": "<checked against captured header>"
+            }
+          }
+        },
+        "events": {
+          "hello": true,
+          "nonce": "0x05044995CDD1",
+          "attempts": 0,
+          "difficulty": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+          "header": "0x2919019700DF19D605767337E9F14D3EEC8920E400000000000001000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA430000000100000000200000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    }
+  ],
+  "scope": "Unchanged Java commands use an explicit recording JNI fixture, native callers use a corresponding provider. Metadata, signed-byte formatting, defaults, full nonce loops, fixed-offset header mutation, failure propagation, nonce decoding and independently recomputed SHA3 IDs are checked. Only timing, validated creation timestamps/IDs and random body hashes and selected JVM diagnostic prose are normalized. Target-buffer mutation and warmed versus cold numeric-cache behavior are checked with fixture writes. No original JNI library algorithm, arbitrary JNI buffer/lifetime behavior, JNI loader or full caller/runtime parity is claimed."
+}

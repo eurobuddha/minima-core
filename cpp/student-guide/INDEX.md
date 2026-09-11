@@ -374,7 +374,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 |---|---|---|
 | [automine.java](files/src/org/minima/system/commands/base/automine.md) | authored | implemented_partial |
 | [balance.java](files/src/org/minima/system/commands/base/balance.md) | authored | implemented_partial |
-| [benchmark.java](files/src/org/minima/system/commands/base/benchmark.md) | authored | unported |
+| [benchmark.java](files/src/org/minima/system/commands/base/benchmark.md) | authored | implemented_partial |
 | [block.java](files/src/org/minima/system/commands/base/block.md) | authored | implemented_partial |
 | [burn.java](files/src/org/minima/system/commands/base/burn.md) | authored | implemented_partial |
 | [checkaddress.java](files/src/org/minima/system/commands/base/checkaddress.md) | authored | implemented_partial |
@@ -391,8 +391,8 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [hashtest.java](files/src/org/minima/system/commands/base/hashtest.md) | authored | implemented_partial |
 | [healthcheck.java](files/src/org/minima/system/commands/base/healthcheck.md) | authored | implemented_partial |
 | [incentivecash.java](files/src/org/minima/system/commands/base/incentivecash.md) | authored | implemented_partial |
-| [jniminingtest.java](files/src/org/minima/system/commands/base/jniminingtest.md) | authored | unported |
-| [jnitest.java](files/src/org/minima/system/commands/base/jnitest.md) | authored | unported |
+| [jniminingtest.java](files/src/org/minima/system/commands/base/jniminingtest.md) | authored | implemented_partial |
+| [jnitest.java](files/src/org/minima/system/commands/base/jnitest.md) | authored | implemented_partial |
 | [logs.java](files/src/org/minima/system/commands/base/logs.md) | authored | implemented_partial |
 | [magic.java](files/src/org/minima/system/commands/base/magic.md) | authored | implemented_partial |
 | [maths.java](files/src/org/minima/system/commands/base/maths.md) | authored | implemented_partial |

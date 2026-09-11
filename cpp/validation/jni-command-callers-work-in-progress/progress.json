@@ -1,0 +1,50 @@
+{
+  "base_head": "b1ae9cc4efa52ae1e3737c915112982b7908c665",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "parity": "not_verified",
+  "counterpart_paths": 456,
+  "active_partial_counterparts": 455,
+  "inactive_source_preserved": 1,
+  "production_paths": 368,
+  "test_paths": 88,
+  "absent": 1,
+  "new_counterparts": [
+    "src/org/minima/system/commands/base/benchmark.cpp",
+    "src/org/minima/system/commands/base/jnitest.cpp",
+    "src/org/minima/system/commands/base/jniminingtest.cpp"
+  ],
+  "existing_api_additions": [
+    "MiniData.getBytes: borrowed fixed-size mutable span; writes retain lazy numeric cache"
+  ],
+  "behavior_corrections": [
+    "During caller review, replaced initial copied target bytes with the actual target array and retained default Magic target alias; 12 added cases cover mutation and cold/warmed comparison cache."
+  ],
+  "tests": {
+    "jni_callers_per_build": 129,
+    "independent_checks_per_build": 2628,
+    "previous_117_cases_retained": true,
+    "added_mutation_cases": 12,
+    "base_api_cases": 1164,
+    "base_api_assertions": 19160,
+    "base_api_transcript": "bf35d806dfaa21743a51839039c882ffe35f1c0a9ee772e5d5969e6d3c84e0ee",
+    "original_base_methods": 12,
+    "original_base_assertions": 74,
+    "normal": "PASS 19.42s for 3 CTests; JNI 13.28s",
+    "sanitized": "PASS 27.20s for 3 CTests; JNI 19.93s"
+  },
+  "builds": {
+    "normal": "PASS minima_jni_commands, actual MinimaCoreCpp, base_value_api, MiniNumberTests, MiniDataTests after full affected library rebuild",
+    "sanitized": "PASS same targets",
+    "registered_tests": 283,
+    "full_suite": "not repeated; focused affected regressions passed"
+  },
+  "scope": "Unchanged Java commands use an explicit recording JNI fixture, native callers use a corresponding provider. Metadata, signed-byte formatting, defaults, full nonce loops, fixed-offset header mutation, failure propagation, nonce decoding and independently recomputed SHA3 IDs are checked. Only timing, validated creation timestamps/IDs and random body hashes and selected JVM diagnostic prose are normalized. Target-buffer mutation and warmed versus cold numeric-cache behavior are checked with fixture writes. No original JNI library algorithm, arbitrary JNI buffer/lifetime behavior, JNI loader or full caller/runtime parity is claimed.",
+  "blockers": [
+    "jnifunctions.cpp remains absent: the pinned source declares five external native methods, but their implementation/library is absent from inspected repository and sibling candidates. Callback fixtures do not close this gap.",
+    "No production JNI loader/provider integration; these three commands are unregistered in the pin and remain unregistered.",
+    "Full production/API/runtime parity audit remains open; source-map presence is not completion.",
+    "Saved full Magic sanitizer replay previously failed at 7200s timeout; no rerun here."
+  ],
+  "next_action": "Resolve remaining jnifunctions library/source/ABI dependency while auditing existing production APIs and runtime integration; implement independent missing behavior and retain meaningful native/Java validation. Do not generate a placeholder to reach 457 or mark full parity from tests/counts."
+}

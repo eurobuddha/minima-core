@@ -39,3 +39,11 @@ No JNI library execution, native counterpart, or ABI parity is claimed. Null han
 Why does returning some nonce that decodes successfully not prove that the native search obeyed its attempt bound?
 
 Pinned Java SHA-256: `2a20a3d98019533799bda8f58db62f934fe5c80e3bc99ab20f405bfee3d5425c`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+## Caller progress and the remaining dependency
+
+The three callers now have partial native counterparts. [JNI caller lab](../../../../../../new-tests/jni-command-callers.md)
+documents their explicit runtime boundary and recording fixture. This source still
+has no mapped C++ implementation: five external native bodies and the loader are
+not supplied by the pinned repository or inspected sibling. Fixture callbacks are
+not counted as the missing JNI implementation. Full library parity remains open.

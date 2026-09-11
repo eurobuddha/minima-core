@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 453 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 456 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -176,7 +176,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/backup/vault.java` | `src/org/minima/system/commands/backup/vault.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/automine.java` | `src/org/minima/system/commands/base/automine.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/balance.java` | `src/org/minima/system/commands/base/balance.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/base/benchmark.java` | `src/org/minima/system/commands/base/benchmark.cpp` | unported | — |
+| `src/org/minima/system/commands/base/benchmark.java` | `src/org/minima/system/commands/base/benchmark.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/block.java` | `src/org/minima/system/commands/base/block.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/burn.java` | `src/org/minima/system/commands/base/burn.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/checkaddress.java` | `src/org/minima/system/commands/base/checkaddress.cpp` | implemented_partial | — |
@@ -193,8 +193,8 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/base/hashtest.java` | `src/org/minima/system/commands/base/hashtest.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/healthcheck.java` | `src/org/minima/system/commands/base/healthcheck.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/incentivecash.java` | `src/org/minima/system/commands/base/incentivecash.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/base/jniminingtest.java` | `src/org/minima/system/commands/base/jniminingtest.cpp` | unported | — |
-| `src/org/minima/system/commands/base/jnitest.java` | `src/org/minima/system/commands/base/jnitest.cpp` | unported | — |
+| `src/org/minima/system/commands/base/jniminingtest.java` | `src/org/minima/system/commands/base/jniminingtest.cpp` | implemented_partial | — |
+| `src/org/minima/system/commands/base/jnitest.java` | `src/org/minima/system/commands/base/jnitest.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/logs.java` | `src/org/minima/system/commands/base/logs.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/magic.java` | `src/org/minima/system/commands/base/magic.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/maths.java` | `src/org/minima/system/commands/base/maths.cpp` | implemented_partial | — |

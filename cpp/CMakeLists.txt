@@ -14,6 +14,9 @@ set_source_files_properties(src/support/fdlibm/e_log.cpp src/support/fdlibm/e_lo
 
 # Only actual implementations belong here. Unported manifest rows are not stubs.
 add_library(minima_file_port STATIC
+    src/org/minima/system/commands/base/benchmark.cpp
+    src/org/minima/system/commands/base/jniminingtest.cpp
+    src/org/minima/system/commands/base/jnitest.cpp
     src/support/NativeThread.cpp
     src/org/minima/utils/MinimaUncaughtException.cpp
     src/org/minima/system/params/TestParams.cpp
@@ -1619,3 +1622,8 @@ target_link_libraries(TxPoWProcessorTest PRIVATE minima_file_port)
 add_library(minima_inactive_source OBJECT src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp)
 add_test(NAME original_processor_test COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_processor_test.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_processor_test PROPERTIES TIMEOUT 60)
+
+add_executable(minima_jni_commands support/jni_command_probe.cpp)
+target_link_libraries(minima_jni_commands PRIVATE minima_file_port)
+add_test(NAME jni_command_callers COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/jni_command_callers.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(jni_command_callers PROPERTIES TIMEOUT 180)

@@ -1,0 +1,13 @@
+[
+  {
+    "java": "src/org/minima/utils/jni/jnifunctions.java",
+    "java_sha256": "2a20a3d98019533799bda8f58db62f934fe5c80e3bc99ab20f405bfee3d5425c",
+    "cpp": "src/org/minima/utils/jni/jnifunctions.cpp",
+    "cpp_exists": false,
+    "status": "unported",
+    "parity": "not_verified",
+    "reuse_candidates": [],
+    "candidate_evidence": "name_or_explicit_role_match_only; requires_source_review",
+    "lines": 25
+  }
+]
