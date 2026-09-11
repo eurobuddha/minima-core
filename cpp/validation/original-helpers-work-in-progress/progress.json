@@ -1,0 +1,62 @@
+{
+  "project": "MinimaCoreC++",
+  "base_head": "e90111f64cbda2fac4bb1f3191d5bc394cd9c5af",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "newly_converted_files": [
+    "test/org/minima/utils/TestUtils.cpp",
+    "test/org/minima/system/network/p2p/testingutils/QuickClients.cpp"
+  ],
+  "counterparts": 413,
+  "absent": 44,
+  "production_counterparts": 364,
+  "original_test_counterparts": 49,
+  "production_absent": 5,
+  "original_test_absent": 39,
+  "parity": "not_verified",
+  "normal": {
+    "passed": true,
+    "cases": 584,
+    "planned_cases": 584,
+    "independent_assertions": 5472,
+    "seconds": 3.186,
+    "transcript_sha256": "5c5f3b72195f23e6fe2e4f65a5c14dc64512ab01d6a2000b9474f1522a81c2dc",
+    "failures": [],
+    "mapped_files": [
+      "test/org/minima/utils/TestUtils.cpp",
+      "test/org/minima/system/network/p2p/testingutils/QuickClients.cpp"
+    ],
+    "scope": "Both TestUtils overloads and the complete QuickClients generation loop call existing production constructors. Exact output fields/defaults, signed integer boundaries, nonpositive counts, nullable prefixes, ordered identities, retained child after list clear, independent TxPoW test transactions. Native TestUtils string IDs do not yet expose Java null-ID representation; underlying full TxPoW/NIOClientInfo and arbitrary allocation/concurrency parity remain unverified."
+  },
+  "sanitized": {
+    "passed": true,
+    "cases": 584,
+    "planned_cases": 584,
+    "independent_assertions": 5472,
+    "seconds": 2.414,
+    "transcript_sha256": "5c5f3b72195f23e6fe2e4f65a5c14dc64512ab01d6a2000b9474f1522a81c2dc",
+    "failures": [],
+    "mapped_files": [
+      "test/org/minima/utils/TestUtils.cpp",
+      "test/org/minima/system/network/p2p/testingutils/QuickClients.cpp"
+    ],
+    "scope": "Both TestUtils overloads and the complete QuickClients generation loop call existing production constructors. Exact output fields/defaults, signed integer boundaries, nonpositive counts, nullable prefixes, ordered identities, retained child after list clear, independent TxPoW test transactions. Native TestUtils string IDs do not yet expose Java null-ID representation; underlying full TxPoW/NIOClientInfo and arbitrary allocation/concurrency parity remain unverified."
+  },
+  "builds": "New consuming target and dependencies built in both existing configurations; no production edits, no repeated full-suite run.",
+  "completed_sessions": {
+    "normal": 28596,
+    "sanitized": 84805
+  },
+  "next": [
+    "Convert QuickInetLists and QuickState, then the three original P2P test classes they support",
+    "Batch the remaining KISS source tests against their existing native implementations",
+    "Keep external JNI method dependency separate; port independent work without waiting"
+  ],
+  "concrete_dependency": "Four absent production sources rely on external native method bodies not found in inspected local repository/sibling; full ABI/behavior needs the actual implementation or authoritative vectors.",
+  "inactive_source": "P2PSwapLink.java is entirely commented out and is not an active API.",
+  "limits": [
+    "TestUtils native string parameter lacks Java null-ID representation",
+    "Underlying complete TxPoW/NIOClientInfo APIs and allocation/concurrency not certified",
+    "No placeholder or whole-file parity credit claimed from compilation or this corpus alone"
+  ]
+}

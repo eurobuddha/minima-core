@@ -777,7 +777,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [QuickClients.java](files/test/org/minima/system/network/p2p/testingutils/QuickClients.md) | test explanation | unported |
+| [QuickClients.java](files/test/org/minima/system/network/p2p/testingutils/QuickClients.md) | test explanation | implemented_partial |
 | [QuickInetLists.java](files/test/org/minima/system/network/p2p/testingutils/QuickInetLists.md) | test explanation | unported |
 | [QuickState.java](files/test/org/minima/system/network/p2p/testingutils/QuickState.md) | test explanation | unported |
 
@@ -931,4 +931,4 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [TestUtils.java](files/test/org/minima/utils/TestUtils.md) | test explanation | unported |
+| [TestUtils.java](files/test/org/minima/utils/TestUtils.md) | test explanation | implemented_partial |

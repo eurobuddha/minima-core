@@ -1,0 +1,10 @@
+{
+  "cpp/CMakeLists.txt": "162770e29c42d11a24de60f2ad9a747773ef0cc58036158148c16afdbd08eb88",
+  "cpp/test/org/minima/utils/TestUtils.cpp": "1fb15272db71fb38d2714dadbec871e80f9b8212935560fb83b0ea08c0f46031",
+  "cpp/test/org/minima/utils/TestUtils.hpp": "945b7f3d83539914d75e0d65cdf6c91990caab584a18c70107705ba442c877ed",
+  "cpp/test/org/minima/system/network/p2p/testingutils/QuickClients.cpp": "4f4dc5eea5d5b46b3030db2a25a5dea2e8676059050825d9e20c00a8d9145969",
+  "cpp/test/org/minima/system/network/p2p/testingutils/QuickClients.hpp": "b417abf7d4af6d4b5977136d661e9205b0a13d82ed74afafc337e1018cb5c327",
+  "cpp/support/original_helpers.cpp": "9512fa5a414936f482749f256abebf69df7b10a8781f7570b75db0abdd797d6a",
+  "cpp/support/OriginalHelpersOracle.java": "021b768c922bded359415a973ef33d26299967c0e2779c54cbe2f070db7ac879",
+  "cpp/tools/original_helpers_differential.py": "d83eed7f52700e32b1fd824c0ff39e96a44f81d794e5fe18f979a423012e9d22"
+}

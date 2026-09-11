@@ -1,4 +1,51 @@
-# Current checkpoint — TxHeader validated; remaining-file conversions next
+# Current checkpoint — two original helpers converted
+
+MinimaCoreC++ branch/project/executable. Base HEAD e90111f64cbda2fac4bb1f3191d5bc394cd9c5af.
+Goal active and incomplete. NEW mapped implementations:
+- test/org/minima/utils/TestUtils.cpp: both overloads delegate to the existing TxPoW test constructor.
+- test/org/minima/system/network/p2p/testingutils/QuickClients.cpp: complete source generation loop, nullable prefixes, owned mutable result list and real NIOClientInfo objects.
+
+Inventory now413 counterparts (364production+49original tests),44 absent
+(5production+39tests). Full parity remains not_verified. No placeholders or
+compilation-only parity claims. TestUtils nullable Java ID representation remains
+an explicit underlying native API gap; helper constructors/control logic are real.
+
+Both new target builds PASS. Both suites PASS584 comparisons/5472 assertions;
+transcript5c5f3b72195f23e6fe2e4f65a5c14dc64512ab01d6a2000b9474f1522a81c2dc.
+Sessions28596/84805 terminal0. No production changes; unrelated full tests not
+repeated. Prior TxHeader full builds and selected regressions passed at e90111f.
+Evidence:validation/original-helpers-work-in-progress. Student lab:
+student-guide/new-tests/original-test-helpers.md. Source map and457lessons audited.
+266 CTest entries now; full suite not run.
+
+USER PRIORITY: continue converting the remaining44. Next QuickInetLists and
+QuickState, then the three P2P original test classes they support. Their complete
+Java sources have been read; finish native candidate/dependency/caller inspection
+before edits. QuickInetLists uses real address resolution and Java Random ports;
+preserve those semantics. TestUtils/QuickClients can now be reused by tests.
+Then batch remaining KISS source tests against existing native implementations.
+Do not let repeated covered tests or long demonstrations stall independent work.
+Report new files/count, existing corrections, build/tests, and actual blockers
+separately. Keep lessons current and make regular local commits/recovery bundles.
+
+Four absent production files depend on external JNI method bodies. Inspected
+repository/sibling searches found declarations/callers but no native body/library.
+Command control logic may proceed independently; complete native fidelity needs
+that implementation or authoritative vectors. P2PSwapLink.java is entirely
+commented source, not a live API. Full remaining inventory and prior source
+inspection notes:validation/txheader-work-in-progress/remaining-files.json
+(historical46 list; remove the two helpers above when selecting next files).
+
+Long Magic demos remain separate9ae7039 checkpoint runs:normal55636,
+sanitized41123. Last verified live earlier this turn; poll exact handles before
+relying on status. No restart due solely to buffered output. Final reports at
+cpp/build{,-sanitized}/magic-demo-replay-results.json. Full86400 loops unchanged.
+Only cpp work is committed; preserve unrelated graphify-out edits and external
+f7f0e08 Java SQL/JAR commit. Pinned upstream-study unchanged. No push.
+
+---
+
+# Historical checkpoint — TxHeader validated
 
 Branch/project/executable MinimaCoreC++. Base HEAD 9b8c2a6d8fb8beee8c489d6b875425cb8dca47c2.
 The full457-file goal remains active. No new counterpart in this correction:

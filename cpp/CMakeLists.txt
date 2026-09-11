@@ -1497,3 +1497,10 @@ add_executable(txheader support/txheader.cpp)
 target_link_libraries(txheader PRIVATE minima_file_port)
 add_test(NAME txheader_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/txheader_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(txheader_differential PROPERTIES TIMEOUT 240)
+
+add_executable(original_helpers support/original_helpers.cpp
+    test/org/minima/utils/TestUtils.cpp
+    test/org/minima/system/network/p2p/testingutils/QuickClients.cpp)
+target_link_libraries(original_helpers PRIVATE minima_file_port)
+add_test(NAME original_helpers_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_helpers_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_helpers_differential PROPERTIES TIMEOUT 120)

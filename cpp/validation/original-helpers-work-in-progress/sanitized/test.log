@@ -1,0 +1,25 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "cases": 584,
+  "planned_cases": 584,
+  "independent_assertions": 5472,
+  "seconds": 2.414,
+  "transcript_sha256": "5c5f3b72195f23e6fe2e4f65a5c14dc64512ab01d6a2000b9474f1522a81c2dc",
+  "failures": [],
+  "mapped_files": [
+    "test/org/minima/utils/TestUtils.cpp",
+    "test/org/minima/system/network/p2p/testingutils/QuickClients.cpp"
+  ],
+  "scope": "Both TestUtils overloads and the complete QuickClients generation loop call existing production constructors. Exact output fields/defaults, signed integer boundaries, nonpositive counts, nullable prefixes, ordered identities, retained child after list clear, independent TxPoW test transactions. Native TestUtils string IDs do not yet expose Java null-ID representation; underlying full TxPoW/NIOClientInfo and arbitrary allocation/concurrency parity remain unverified."
+}

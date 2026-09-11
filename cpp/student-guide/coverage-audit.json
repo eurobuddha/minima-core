@@ -2,8 +2,8 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 411,
-  "native_absent": 46,
+  "native_counterparts": 413,
+  "native_absent": 44,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
@@ -12,15 +12,15 @@
     },
     "test": {
       "total": 88,
-      "counterparts": 47,
-      "absent": 41
+      "counterparts": 49,
+      "absent": 39
     }
   },
   "teaching_counts": {
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9391,
+  "links_checked": 9403,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -3933,9 +3933,9 @@
       "java": "test/org/minima/system/network/p2p/testingutils/QuickClients.java",
       "cpp": "test/org/minima/system/network/p2p/testingutils/QuickClients.cpp",
       "guide": "files/test/org/minima/system/network/p2p/testingutils/QuickClients.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4623,9 +4623,9 @@
       "java": "test/org/minima/utils/TestUtils.java",
       "cpp": "test/org/minima/utils/TestUtils.cpp",
       "guide": "files/test/org/minima/utils/TestUtils.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     }

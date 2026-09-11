@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/utils/TestUtils.java](../../../../../../../upstream-study/test/org/minima/utils/TestUtils.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -31,11 +31,11 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/utils/TestUtils.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
-
-To port this helper, preserve its generated values, collection order, defaults, and error behavior. Reuse the corresponding native Minima types and test the helper through its consuming tests.
-
-Compile the eventual helper with its consuming native tests and run those tests after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+The [mapped counterpart](../../../../../../test/org/minima/utils/TestUtils.cpp) now implements the source helper's active
+methods using the existing production constructors. The [helper lab](../../../../../new-tests/original-test-helpers.md)
+explains the exact delegation, generated data, retained references, test inputs
+and remaining limitations. Both builds pass 584 comparisons and 5,472 independent
+checks for this two-helper batch. Full dependent API parity remains not_verified.
 
 ## What students should conclude
 
