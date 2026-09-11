@@ -32,6 +32,9 @@ private:
     void prune(const Entry& entry);
     bool scanUnspendable(const Entry& entry);
 public:
+    static void main(const std::vector<std::string>* args);
+    static void printinfo(MMR* tree);
+    static void printmmrtree(MMR* tree);
     MMR()=default;
     explicit MMR(std::shared_ptr<MMR> parent);
     void calculateEntryNumberFromPeaks();

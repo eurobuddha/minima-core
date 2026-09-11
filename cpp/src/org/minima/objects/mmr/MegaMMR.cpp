@@ -51,4 +51,28 @@ MMRData MegaMMR::getCoinData(const MiniNumber& number) {return MMRData::CreateMM
 namespace minima {
 void MegaMMR::loadMMR(const std::filesystem::path& file) {std::clog<<"Loading MegaMMR size : "<<MiniFormat::formatSize(javaUnixFileLength(file))<<'\n';MiniFile::loadObjectSlow(file,*this);}
 void MegaMMR::saveMMR(const std::filesystem::path& file) {MiniFile::saveObjectDirect(file,*this);}
+void MegaMMR::main(const std::vector<std::string>*) {
+    MegaMMR mega;auto& mmr=mega.getMMR();
+    for(int i=0;i<10;++i) {
+        auto address=MiniData::getRandomData(32);address=MiniData::ZERO_TXPOWID;
+        auto amount=MiniNumber::ONE;
+        auto coin=std::make_shared<Coin>(MiniData::getRandomData(32),address,amount,Token::TOKENID_MINIMA);
+        coin->setMMREntryNumber(mmr.getEntryNumber());
+        mmr.addEntry(MMRData::CreateMMRDataLeafNode(*coin,amount));
+        mega.getAllCoins().put(coin->getCoinID().to0xString(),coin);
+    }
+    MMR::printmmrtree(&mmr);mmr.pruneTree();mega.pruneUnspendable(true);
+    MMR::printmmrtree(&mmr);mega.pruneUnspendable(true);MMR::printmmrtree(&mmr);
+    for(int i=0;i<10;++i) {
+        auto address=MiniData::getRandomData(32);if(i>4&&i<9)address=MiniData::ZERO_TXPOWID;
+        auto amount=MiniNumber::ONE;if(i<=1)amount=MiniNumber::ZERO;if(i==9)amount=MiniNumber::ZERO;
+        auto coin=std::make_shared<Coin>(MiniData::getRandomData(32),address,amount,Token::TOKENID_MINIMA);
+        coin->setMMREntryNumber(mmr.getEntryNumber());
+        mmr.addEntry(MMRData::CreateMMRDataLeafNode(*coin,amount));
+        mega.getAllCoins().put(coin->getCoinID().to0xString(),coin);
+    }
+    MMR::printmmrtree(&mmr);mega.pruneUnspendable(true);mmr.pruneTree();
+    MMR::printmmrtree(&mmr);mega.pruneUnspendable(true);MMR::printmmrtree(&mmr);
+}
+
 }

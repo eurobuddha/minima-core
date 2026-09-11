@@ -51,3 +51,16 @@ Draw an MMR with five leaves: which peak rows exist? Add a sixth and identify th
 The lesson follows upstream-study’s pinned source. The workspace’s separate src copy adds a heap-watermark check in readDataStream; that fork-only addition is not treated as an obligation of this pinned port. Native logging is missing in several paths, deepCopy propagates errors instead of Java’s logged null, and invalid rows are rejected before some Java partial mutations. Parent/cache aliasing and finalized-receiver reads need focused review beyond the ordinary object fixture. The source-map status remains partial and full parity not_verified.
 
 Pinned Java SHA-256: `29f4316c48db75e2644b793e95b6e7b71fc599cecc88f69d199f094b352b03be`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Added main and diagnostic evidence
+
+The source demonstration now runs through the native tree methods. MMR.printinfo
+and printmmrtree are also available. The printer preserves the source's 2,048-char
+rows, partially initialized spaces and embedded NULs. MegaMMR keeps the source's
+random coin/address draws and all six printing stages around pruning.
+
+See the [MMR main lab](../../../../../../new-tests/mmr-main-methods.md) and
+[batch results](../../../../../../../validation/mmr-mains-work-in-progress/README.md).
+Normal and sanitizer runs each passed 30 comparisons and 112 assertions, including
+complete output and unchanged serialized trees after direct printer calls. Full
+class parity remains unverified.

@@ -1,3 +1,16 @@
+# Timed delivery — MMR main checkpoint
+
+MMR/MegaMMR mains and MMR printers added; 30 comparisons112assertions PASS normal
+and sanitized. Existing tree/pruning helpers unchanged. Six main candidates remain.
+No new mapped paths, 456/457; full parity unverified. Lessons and lab current.
+The normal292 full test session96386 and sanitized293 session77277 continue on
+previous binaries; do not overwrite active test binaries. MMR focused binaries are
+separate. Relink actual nodes after the appropriate full run or final build.
+Next inspect/finish TxPoWMiner, TreeKey, Cascade and three database demos, then
+final tests/package/recovery before01:30UTC. Deadline is not extended.
+
+## Previous checkpoint (historical)
+
 # Timed delivery — crypto entry-point checkpoint
 
 Goal active/incomplete. Cutoff remains 02:30 London / 01:30 UTC, 12 September.

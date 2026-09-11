@@ -1,0 +1,17 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "comparisons": 30,
+  "assertions": 112,
+  "scope": "Exact complete main/printer output including embedded NULs, source arguments, pruning on/off, direct empty/multileaf/overflow/negative/fractional-index diagnostics and unchanged serialized tree. Null diagnostic error class compared, VM-generated helpful-null message not equated. Actual randomized MegaMMR coin draws remain, but random identities are not printed and their distribution is not certified. Full MMR API/concurrency parity remains unverified."
+}

@@ -45,3 +45,16 @@ Why could calling serialise reduce getAllCoins().size()? Explain which configura
 Policy changes between creation/read/write, retained table aliases, logger/error fidelity and arbitrary file failures remain open. A matching root fixture does not prove full consensus validation: this method only logs mismatches. Partial counterpart, parity not_verified.
 
 Pinned Java SHA-256: `071b2e965d2ae1b99b5b99827f210f94b8203ac57cedb6401c378693a1a88593`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Added main and diagnostic evidence
+
+The source demonstration now runs through the native tree methods. MMR.printinfo
+and printmmrtree are also available. The printer preserves the source's 2,048-char
+rows, partially initialized spaces and embedded NULs. MegaMMR keeps the source's
+random coin/address draws and all six printing stages around pruning.
+
+See the [MMR main lab](../../../../../../new-tests/mmr-main-methods.md) and
+[batch results](../../../../../../../validation/mmr-mains-work-in-progress/README.md).
+Normal and sanitizer runs each passed 30 comparisons and 112 assertions, including
+complete output and unchanged serialized trees after direct printer calls. Full
+class parity remains unverified.

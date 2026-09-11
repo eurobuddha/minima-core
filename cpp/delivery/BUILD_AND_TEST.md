@@ -59,7 +59,7 @@ ctest --test-dir cpp/build --output-on-failure -j4 \
   --output-junit "$PWD/cpp/build/delivery-junit.xml"
 ```
 
-The delivery candidate has 293 registered tests. Several tests perform real
+The delivery candidate has 294 registered tests. Several tests perform real
 120-second waits or substantial cryptographic work. Do not shorten those source
 operations and report the reduced run as equivalent coverage. Optional MySQL tests
 are not registered when `MINIMA_MYSQL_FIXTURE_FILE` is empty. Their absence must

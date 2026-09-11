@@ -1,4 +1,7 @@
 #include "MMR.hpp"
+#include "support/JavaExceptions.hpp"
+#include <bit>
+#include <iostream>
 #include "org/minima/system/params/GeneralParams.hpp"
 #include "org/minima/utils/json/JSONArray.hpp"
 namespace minima {
@@ -135,4 +138,51 @@ bool MMR::scanUnspendable(const Entry& entry) {
     return unspendable;
 }
 void MMR::scanUnspendableTree() {mPrunedCoins.clear();for(const auto& peak:getPeaks()) scanUnspendable(peak);}
+void MMR::main(const std::vector<std::string>*) {
+    std::cout<<"** MMR Tree Prune POC **\n";MMR tree;
+    [[maybe_unused]] MMRData zero(MiniData::fromHex("0x00"),MiniNumber::ZERO);
+    auto one=std::make_shared<MMRData>(MiniData::fromHex("0x01"),MiniNumber::ONE);
+    for(int i=0;i<10;++i)tree.addEntry(one);
+    printmmrtree(&tree);std::cout<<'\n';
+}
+void MMR::printinfo(MMR* tree) {
+    std::cout<<"\nMMR TREE DATA\n";
+    if(!tree)throw JavaNullPointerException("null MMR tree");
+    std::cout<<"Block Time      : "<<tree->getBlockTime().toString()<<'\n'
+             <<"Total tree size : "<<tree->getTotalEntries()<<'\n'
+             <<"Current entry   : "<<tree->getEntryNumber().toString()<<'\n';
+    for(const auto& peak:tree->getPeaks())std::cout<<"PEAK : "<<peak->toString()<<'\n';
+    std::cout<<"Peaks : "<<tree->getPeaks().size()<<'\n';
+    auto root=tree->getRoot();std::cout<<"Root  : "<<(root?root->toString():"null")<<'\n';
+}
+void MMR::printmmrtree(MMR* tree) {
+    if(!tree)throw JavaNullPointerException("null MMR tree");
+    for(int row=tree->mMaxRow;row>=0;--row) {
+        // These exact powers of two reproduce Math.pow followed by Java's
+        // saturating double-to-int conversion and wrapping int multiplication.
+        uint32_t start=row>=31?uint32_t(INT32_MAX):((uint32_t(1)<<row)-1);
+        uint32_t gap=row>=30?uint32_t(INT32_MAX):(uint32_t(1)<<(row+1));
+        start*=3;gap*=3;
+        std::string line(2048,'\0');std::fill_n(line.begin(),512,' ');
+        for(const auto& entry:tree->mEntries.elements()) {
+            if(entry->getRow()!=row)continue;
+            auto integer=entry->getEntryNumber().toBigInteger();
+            uint32_t position=integer.isNegative()?UINT32_MAX:0;
+            // Reuse MiniNumber's low-bits conversion algorithm for unbounded
+            // BigDecimal entry indexes, avoiding MiniNumber's magnitude limit.
+            for(auto byte:integer.toJavaBytes())position=(position<<8)|byte;
+            auto finalPosition=std::bit_cast<int32_t>(start+position*gap);
+            auto data=entry->getMMRData();if(!data)throw JavaNullPointerException("null MMR data");
+            auto value=std::to_string(data->getValue().getAsInt());if(data->isUnspendable())value+='*';
+            if(finalPosition<0)throw JavaArrayIndexOutOfBoundsException("arraycopy: destination index "+std::to_string(finalPosition)+" out of bounds for char[2048]");
+            if(uint64_t(finalPosition)+value.size()>line.size())throw JavaArrayIndexOutOfBoundsException("arraycopy: last destination index "+std::to_string(uint64_t(finalPosition)+value.size())+" out of bounds for char[2048]");
+            line.replace(size_t(finalPosition),value.size(),value);
+        }
+        std::cout<<line<<'\n';
+    }
+    std::cout<<"Total Entries       : "<<tree->mEntries.size()<<'\n';
+    if(!tree->getRoot())std::cout<<"Tree Peak Sum Value : null\n";
+    else std::cout<<"Tree Peak Sum Value : "<<tree->getRoot()->getValue().toString()<<'\n';
+}
+
 }

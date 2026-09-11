@@ -10,6 +10,7 @@ class MegaMMR {
     void scanUnspendable();
     void pruneUnspendable(bool scanMMR);
 public:
+    static void main(const std::vector<std::string>* args);
     MMR& getMMR() {return *mMMR;}
     const MMR& getMMR() const {return *mMMR;}
     std::shared_ptr<MMR> getSharedMMR() const {return mMMR;}

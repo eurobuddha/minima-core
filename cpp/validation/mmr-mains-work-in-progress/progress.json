@@ -1,0 +1,25 @@
+{
+  "goal": "active_incomplete",
+  "deadline_utc": "2026-09-12T01:30:00Z",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "missing": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "full_parity": "not_verified",
+  "new_main_methods": [
+    "MMR",
+    "MegaMMR"
+  ],
+  "new_helper_methods": [
+    "MMR.printinfo",
+    "MMR.printmmrtree"
+  ],
+  "existing_behavior_changes": [],
+  "remaining_main_candidates": 6,
+  "normal_pass": true,
+  "sanitized_pass": true,
+  "comparisons_per_build": 30,
+  "assertions_per_build": 112,
+  "whole_node_relink": "Final delivery build pending; focused linked targets passed"
+}
