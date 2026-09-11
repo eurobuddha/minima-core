@@ -8,6 +8,7 @@
 #include "support/JavaUnicode.hpp"
 #include <bit>
 #include <algorithm>
+#include <iostream>
 
 namespace minima::kissvm {
 ValuePtr REPLACE::runFunction(Contract& contract) {
@@ -45,5 +46,7 @@ std::u16string replaceQuoted(const std::u16string& original,const std::u16string
 std::u16string REPLACE::safeReplaceAll(const std::u16string& original,const std::u16string& search,const std::u16string& replacement) {return replaceQuoted(original,search,replacement,false);}
 std::string REPLACE::safeReplaceAll(const std::string& original,const std::string& search,const std::string& replacement) {return unicode::encodeUTF8(safeReplaceAll(unicode::decodeUTF8(original),unicode::decodeUTF8(search),unicode::decodeUTF8(replacement)));}
 std::u16string REPLACE::replaceFirst(const std::u16string& original,const std::u16string& search,const std::u16string& replacement) {return replaceQuoted(original,search,replacement,true);}
+
+void REPLACE::main(const std::vector<std::string>*){std::cout<<safeReplaceAll("$1$1$1$1","$1","3")<<std::endl;}
 
 }

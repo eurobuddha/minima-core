@@ -43,3 +43,12 @@ A base 32 round trip cannot be assumed to preserve leading zero bytes: 0x000001 
 Predict decode16("0xABC") byte by byte. Why does an encode32/decode32 round trip need a different invariant from an encode16/decode16 round trip?
 
 Pinned Java SHA-256: `6b915a2e4d254188307e01a79c81189b55e473c054915ce25eebc87cb999a97d`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).
+
+## Original entry-point follow-up
+
+The original main prints HEX : 8 0x000001 and B32 : 3 Mx1, then passes Mx1 to the hex-only MiniData constructor. Its NumberFormatException is retained; the later equality print remains unreachable, as in Java.
+
+The [utility main lab](../../../../../new-tests/utility-main-methods.md) records five passing entry-point comparisons and
+36 formatter cases (31 finite, five bounded loop observations) in both builds.
+Existing utility and original POW regressions also pass. This is scoped evidence;
+complete file API and behavior parity remain unverified.

@@ -46,3 +46,12 @@ Why is a literal-search replacement still different from an unconditional string
 A corresponding file and a passing finite suite do not establish complete 1:1 behavior. Full node startup and native H2/MVStore storage remain unfinished. This lesson explains the inspected built-in body and the stated KISS cases; it does not certify all public API, allocator, locale or exception semantics.
 
 Pinned Java SHA-256: `76c41c08ad5db6603420bd7bff819afa26801a9644d21be7e058087a48ad7fa5`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Original entry-point follow-up
+
+The original main searches the literal $1 in $1$1$1$1 and replaces each match with 3, printing 3333. It invokes the existing safeReplaceAll rather than hardcoding the result.
+
+The [utility main lab](../../../../../../../new-tests/utility-main-methods.md) records five passing entry-point comparisons and
+36 formatter cases (31 finite, five bounded loop observations) in both builds.
+Existing utility and original POW regressions also pass. This is scoped evidence;
+complete file API and behavior parity remain unverified.

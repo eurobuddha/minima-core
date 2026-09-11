@@ -3,6 +3,7 @@
 #include "org/minima/objects/base/MiniNumber.hpp"
 namespace minima {
 struct Maths {
+    static void main(const std::vector<std::string>* args=nullptr);
     static const BigInt BI_TWO;
     static const MiniNumber BD_TWO;
     static double log2(double value);

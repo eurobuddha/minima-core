@@ -1,0 +1,35 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": true,
+  "main_comparisons": 5,
+  "debug_comparisons": 31,
+  "nonreturning_comparisons": 5,
+  "assertions": 251,
+  "literal": {
+    "bytes": 9954,
+    "sha256": "9de4f0df4fa880762b00fda9ce4d3756b8b4c4a5ef72cc15ed9d95c289e055d0"
+  },
+  "scope": "Five actual main methods with unused null arguments, exact source sample and complete 1000-iteration POW loop. Raw stdout retained; only logger runtime prefix and final POW elapsed value normalized for comparison. 36 JSONPretty matrix cases: 31 finite comparisons of exact output/error/logs, notifications, render counts, trim, UTF-16 length, fallback and logger failures, plus five bounded observations of the original leading-unmatched-quote loop in fixture-owned child processes. Bounded liveness observation alone is not a proof of nontermination; source control flow supplies the loop evidence. Complete APIs/IO failures, localization and arbitrary subclass behavior remain unverified."
+}

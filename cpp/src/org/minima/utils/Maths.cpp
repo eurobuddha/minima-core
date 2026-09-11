@@ -4,6 +4,7 @@
 #include "support/fdlibm/fdlibm.hpp"
 #include <bit>
 #include <cmath>
+#include <iostream>
 namespace minima {
 const BigInt Maths::BI_TWO(2);
 const MiniNumber Maths::BD_TWO(2);
@@ -47,4 +48,6 @@ int Maths::compareVersions(const std::string& first,const std::string& second) {
     }
     return 0;
 }
+void Maths::main(const std::vector<std::string>*){std::cout<<compareVersions("1.0.4","1.0.3")<<std::endl;}
+
 }

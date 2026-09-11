@@ -4,6 +4,8 @@ A frozen **runnable macOS preview** is now available on local port **21001**,
 connecting to eurobuddha.com:9001 with separate data. See [PREVIEW.md](PREVIEW.md)
 for the double-click launcher, commands, package and scoped verification results.
 
+Five more original entry points are present: Maths, BaseConverter, MiniFormat, POW and REPLACE. Their complete demonstrations and 36 formatter cases pass in both builds; two existing regression suites also pass. MiniFormat debug/fallback behavior now matches the tested source paths. See the [utility main lab](student-guide/new-tests/utility-main-methods.md). The saved main-candidate list is down to 19; full parity remains unfinished.
+
 The missing NIOServer standalone main now uses the real server and workers, retaining its two starts/stops, eight seconds of waits and exit behavior. Six Java/native scenarios / 103 assertions and both NIO regressions pass in each build. See the [server main lab](student-guide/new-tests/nio-server-main.md). A saved audit identifies 24 further entry-point candidates; full parity remains unfinished.
 
 Timer reentrancy and list replacement now match 48 new Java/native comparisons / 688 assertions per build. Existing worker, interruption and collection regressions also pass in both builds. See the [timer reentrancy lab](student-guide/new-tests/timer-reentrancy.md). Full API and lifecycle parity remain open.

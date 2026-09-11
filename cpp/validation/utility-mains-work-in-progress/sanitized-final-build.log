@@ -1,0 +1,22 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/MiniFormat.cpp.o
+[  0%] Linking CXX static library libminima_file_port.a
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/utility_mains.dir/support/utility_mains.cpp.o
+[100%] Linking CXX executable utility_mains
+[100%] Built target utility_mains
+[ 97%] Built target minima_file_port
+[100%] Linking CXX executable minima_utility
+[100%] Built target minima_utility
+[ 97%] Built target minima_file_port
+[ 97%] Linking CXX executable minima_small_utilities
+[100%] Built target minima_small_utilities
+[100%] Built target minima_file_port
+[100%] Linking CXX executable minima_kissvm
+[100%] Built target minima_kissvm
+[100%] Built target minima_file_port
+[100%] Linking CXX executable POWTests
+[100%] Built target POWTests
+[ 97%] Built target minima_file_port
+[ 97%] Built target minima_native_h2
+[ 97%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp

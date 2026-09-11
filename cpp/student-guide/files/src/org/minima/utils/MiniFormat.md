@@ -41,3 +41,12 @@ Locale-sensitive String.format behavior, debug logger failures, all malformed pr
 Predict zeroPad(5,−1.1) after the floor operation. Why should a test compare literal whitespace for JSONPretty rather than parse both results and compare the resulting objects?
 
 Pinned Java SHA-256: `580c7aee6fcd3539b3cf1d3953a1d9e53143c2af7866f9fb9976f3c9716f014f`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).
+
+## Original entry-point follow-up
+
+The original main keeps its full 9954-byte sample, including the data URL. JSONPretty now trims work text, logs UTF-16 length plus a second serialization through MinimaLogger, and logs caught failure without notification. A leading unmatched quote leaves the Java cursor at zero; native code preserves that loop and tests isolate it in child processes.
+
+The [utility main lab](../../../../../new-tests/utility-main-methods.md) records five passing entry-point comparisons and
+36 formatter cases (31 finite, five bounded loop observations) in both builds.
+Existing utility and original POW regressions also pass. This is scoped evidence;
+complete file API and behavior parity remain unverified.

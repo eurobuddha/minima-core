@@ -1,0 +1,3 @@
+HEX : 8 0x000001
+B32 : 3 Mx1
+EXCEPTION:java.lang.NumberFormatException: Invalid HEX string in decode16 : Mx1

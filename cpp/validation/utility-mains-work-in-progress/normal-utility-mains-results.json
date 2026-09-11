@@ -1,0 +1,888 @@
+{
+  "passed": true,
+  "main_comparisons": 5,
+  "debug_comparisons": 31,
+  "nonreturning_comparisons": 5,
+  "assertions": 251,
+  "observations": [
+    {
+      "main": "Maths",
+      "bytes": [
+        2,
+        2
+      ],
+      "sha256": [
+        "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+      ],
+      "normalized_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "main": "BaseConverter",
+      "bytes": [
+        109,
+        109
+      ],
+      "sha256": [
+        "803df9ff57467a962a64c2ae9691ee71a53b18530f1c7ed6ddc61b5c65395e4f",
+        "803df9ff57467a962a64c2ae9691ee71a53b18530f1c7ed6ddc61b5c65395e4f"
+      ],
+      "normalized_sha256": "803df9ff57467a962a64c2ae9691ee71a53b18530f1c7ed6ddc61b5c65395e4f"
+    },
+    {
+      "main": "MiniFormat",
+      "bytes": [
+        29923,
+        29923
+      ],
+      "sha256": [
+        "fe25a1dc0d9a97b30351caf31ae2a420da34eeb340e154b9e551591f198cf4ad",
+        "fe25a1dc0d9a97b30351caf31ae2a420da34eeb340e154b9e551591f198cf4ad"
+      ],
+      "normalized_sha256": "fe25a1dc0d9a97b30351caf31ae2a420da34eeb340e154b9e551591f198cf4ad"
+    },
+    {
+      "main": "POW",
+      "bytes": [
+        2010,
+        2010
+      ],
+      "sha256": [
+        "4c38ebd67aa181b27ed2079309a288a913b5ebc6b71a0b2830e6b3de089fd7c1",
+        "7e9077c83f7044d25cdc6441f8a5ae3c05776b45700a09ebad0a0e00ef3062d3"
+      ],
+      "normalized_sha256": "57e23140ca36aaa207df617550816f56341812d1f83a32298ad88af812505c99"
+    },
+    {
+      "main": "REPLACE",
+      "bytes": [
+        5,
+        5
+      ],
+      "sha256": [
+        "42be91b53cef780395770991423973633e735a102c93ff558bda5e530e202521",
+        "42be91b53cef780395770991423973633e735a102c93ff558bda5e530e202521"
+      ],
+      "normalized_sha256": "42be91b53cef780395770991423973633e735a102c93ff558bda5e530e202521"
+    },
+    {
+      "debug": [
+        "{}",
+        "false",
+        "0"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{}",
+        "false",
+        "1"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{}",
+        "false",
+        "2"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{}",
+        "true",
+        "0"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:2 obj:{}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:2 obj:{}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{}",
+        "true",
+        "1"
+      ],
+      "java": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:2 obj:{}"
+        ],
+        "notifications": 0,
+        "renders": 2
+      },
+      "cpp": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:2 obj:{}"
+        ],
+        "notifications": 0,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{}",
+        "true",
+        "2"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:2 obj:{}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:2 obj:{}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "  {} \n",
+        "false",
+        "0"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "  {} \n",
+        "false",
+        "1"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "  {} \n",
+        "false",
+        "2"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "  {} \n",
+        "true",
+        "0"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:2 obj:  {} \n"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:2 obj:  {} \n"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "  {} \n",
+        "true",
+        "1"
+      ],
+      "java": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:2 obj:  {} \n"
+        ],
+        "notifications": 0,
+        "renders": 2
+      },
+      "cpp": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:2 obj:  {} \n"
+        ],
+        "notifications": 0,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "  {} \n",
+        "true",
+        "2"
+      ],
+      "java": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:2 obj:  {} \n"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\n  \n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:2 obj:  {} \n"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{\"\ud83d\udc3c\":\"\u00e9\"}",
+        "false",
+        "0"
+      ],
+      "java": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"\ud83d\udc3c\":\"\u00e9\"}",
+        "false",
+        "1"
+      ],
+      "java": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"\ud83d\udc3c\":\"\u00e9\"}",
+        "false",
+        "2"
+      ],
+      "java": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"\ud83d\udc3c\":\"\u00e9\"}",
+        "true",
+        "0"
+      ],
+      "java": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:10 obj:{\"\ud83d\udc3c\":\"\u00e9\"}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:10 obj:{\"\ud83d\udc3c\":\"\u00e9\"}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{\"\ud83d\udc3c\":\"\u00e9\"}",
+        "true",
+        "1"
+      ],
+      "java": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:10 obj:{\"\ud83d\udc3c\":\"\u00e9\"}"
+        ],
+        "notifications": 0,
+        "renders": 2
+      },
+      "cpp": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:10 obj:{\"\ud83d\udc3c\":\"\u00e9\"}"
+        ],
+        "notifications": 0,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{\"\ud83d\udc3c\":\"\u00e9\"}",
+        "true",
+        "2"
+      ],
+      "java": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:10 obj:{\"\ud83d\udc3c\":\"\u00e9\"}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\n  \"\ud83d\udc3c\":\"\u00e9\"\n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:10 obj:{\"\ud83d\udc3c\":\"\u00e9\"}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"unterminated",
+        "false",
+        "0"
+      ],
+      "java": {
+        "output": "{\"x\":\"unterminated",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\"x\":\"unterminated",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"unterminated",
+        "false",
+        "1"
+      ],
+      "java": {
+        "output": "{\"x\":\"unterminated",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\"x\":\"unterminated",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"unterminated",
+        "false",
+        "2"
+      ],
+      "java": {
+        "output": "{\"x\":\"unterminated",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\"x\":\"unterminated",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"unterminated",
+        "true",
+        "0"
+      ],
+      "java": {
+        "output": "{\"x\":\"unterminated",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:18 obj:{\"x\":\"unterminated",
+          "[!] Error JSONPretty.. return unmodified : {\"x\":\"unterminated"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\"x\":\"unterminated",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:18 obj:{\"x\":\"unterminated",
+          "[!] Error JSONPretty.. return unmodified : {\"x\":\"unterminated"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"unterminated",
+        "true",
+        "1"
+      ],
+      "java": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:18 obj:{\"x\":\"unterminated"
+        ],
+        "notifications": 0,
+        "renders": 2
+      },
+      "cpp": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:18 obj:{\"x\":\"unterminated"
+        ],
+        "notifications": 0,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"unterminated",
+        "true",
+        "2"
+      ],
+      "java": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:18 obj:{\"x\":\"unterminated",
+          "[!] Error JSONPretty.. return unmodified : {\"x\":\"unterminated"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:18 obj:{\"x\":\"unterminated",
+          "[!] Error JSONPretty.. return unmodified : {\"x\":\"unterminated"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "nonreturning": [
+        "\"",
+        "false",
+        "0"
+      ],
+      "java": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      },
+      "cpp": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      }
+    },
+    {
+      "nonreturning": [
+        "\"",
+        "false",
+        "1"
+      ],
+      "java": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      },
+      "cpp": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      }
+    },
+    {
+      "nonreturning": [
+        "\"",
+        "false",
+        "2"
+      ],
+      "java": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      },
+      "cpp": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      }
+    },
+    {
+      "nonreturning": [
+        "\"",
+        "true",
+        "0"
+      ],
+      "java": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      },
+      "cpp": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      }
+    },
+    {
+      "debug": [
+        "\"",
+        "true",
+        "1"
+      ],
+      "java": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:1 obj:\""
+        ],
+        "notifications": 0,
+        "renders": 2
+      },
+      "cpp": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:1 obj:\""
+        ],
+        "notifications": 0,
+        "renders": 2
+      }
+    },
+    {
+      "nonreturning": [
+        "\"",
+        "true",
+        "2"
+      ],
+      "java": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      },
+      "cpp": {
+        "entered": true,
+        "still_running_after_seconds": 0.3,
+        "output_after_entry": "",
+        "fixture_terminated": true
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"a\\n/b\"}",
+        "false",
+        "0"
+      ],
+      "java": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"a\\n/b\"}",
+        "false",
+        "1"
+      ],
+      "java": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"a\\n/b\"}",
+        "false",
+        "2"
+      ],
+      "java": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      },
+      "cpp": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [],
+        "notifications": 0,
+        "renders": 1
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"a\\n/b\"}",
+        "true",
+        "0"
+      ],
+      "java": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:13 obj:{\"x\":\"a\\n/b\"}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:13 obj:{\"x\":\"a\\n/b\"}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"a\\n/b\"}",
+        "true",
+        "1"
+      ],
+      "java": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:13 obj:{\"x\":\"a\\n/b\"}"
+        ],
+        "notifications": 0,
+        "renders": 2
+      },
+      "cpp": {
+        "output": null,
+        "error": "java.lang.IllegalStateException: logger",
+        "logs": [
+          "JSONPRETTY len:13 obj:{\"x\":\"a\\n/b\"}"
+        ],
+        "notifications": 0,
+        "renders": 2
+      }
+    },
+    {
+      "debug": [
+        "{\"x\":\"a\\n/b\"}",
+        "true",
+        "2"
+      ],
+      "java": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:13 obj:{\"x\":\"a\\n/b\"}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      },
+      "cpp": {
+        "output": "{\n  \"x\":\"a\n/b\"\n}",
+        "error": "none",
+        "logs": [
+          "JSONPRETTY len:13 obj:{\"x\":\"a\\n/b\"}"
+        ],
+        "notifications": 1,
+        "renders": 2
+      }
+    }
+  ],
+  "literal": {
+    "bytes": 9954,
+    "sha256": "9de4f0df4fa880762b00fda9ce4d3756b8b4c4a5ef72cc15ed9d95c289e055d0"
+  },
+  "scope": "Five actual main methods with unused null arguments, exact source sample and complete 1000-iteration POW loop. Raw stdout retained; only logger runtime prefix and final POW elapsed value normalized for comparison. 36 JSONPretty matrix cases: 31 finite comparisons of exact output/error/logs, notifications, render counts, trim, UTF-16 length, fallback and logger failures, plus five bounded observations of the original leading-unmatched-quote loop in fixture-owned child processes. Bounded liveness observation alone is not a proof of nontermination; source control flow supplies the loop evidence. Complete APIs/IO failures, localization and arbitrary subclass behavior remain unverified."
+}

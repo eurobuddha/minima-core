@@ -1,0 +1,60 @@
+{
+  "goal": "active_incomplete",
+  "previous_goal_turn": "progress: 18d44c7 and verified 27-file recovery",
+  "base_commit": "18d44c7c46865188056275d5183b99f0b7e149bd",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "active_partial": 455,
+  "inactive_source_preserved": 1,
+  "absent": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "full_parity": "not_verified",
+  "new_main_methods": [
+    "utils/Maths.main",
+    "utils/BaseConverter.main",
+    "utils/MiniFormat.main",
+    "kissvm/functions/number/POW.main",
+    "kissvm/functions/string/REPLACE.main"
+  ],
+  "remaining_main_candidates": 19,
+  "corrected": [
+    "MiniFormat debug uses actual MinimaLogger, source UTF-16 length, second serialization and notifications",
+    "MiniFormat trims initial work text and logs caught-format fallback without notification",
+    "Java Error/bad_alloc escape formatting catch",
+    "Leading unmatched quote at position zero preserves source no-progress loop rather than incorrect fallback"
+  ],
+  "validation": {
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "actual_executable_builds_pass": true,
+    "main_comparisons_per_build": 5,
+    "finite_formatter_comparisons_per_build": 31,
+    "bounded_loop_observations_per_build": 5,
+    "driver_assertions_per_build": 251,
+    "full_pow_demo_iterations": 1000,
+    "source_literal_bytes": 9954,
+    "regression_ctests_per_build": 2,
+    "utility_cases_per_build": 1364,
+    "original_pow_assertions_per_build": 25,
+    "regression_seconds": {
+      "normal": 4.39,
+      "sanitized": 4.57
+    },
+    "full_suite_rerun": false
+  },
+  "resolved_fixture_issues": [
+    "Added explicit JavaUnicode include after fixture compile failure",
+    "Removed Java Main.ClearMainInstance fixture cleanup from captured results because it appended an unrelated log after result construction; all formatting logs remain compared"
+  ],
+  "limits": [
+    "Bounded child liveness observation is not proof of infinite execution; inspected source control flow establishes the leading quote loop",
+    "Logger time/heap prefix and final POW elapsed milliseconds normalized; complete output otherwise retained",
+    "Custom JSONObject fixture approximates Java toString override through native virtual toJSONString; complete subclass API remains open",
+    "Whole-file API/parity remains not_verified; entry-point candidate list is not a complete API audit",
+    "JNI external bodies unavailable in inspected sources"
+  ],
+  "next_action": "Inspect and port further independent entry points from the 19-candidate list, starting with Address/MiniData and TxPoWGenerator; preserve random/time semantics through existing runtime and differential fixtures.",
+  "preview": "Frozen 6c28109 port21001 preview and user data untouched"
+}

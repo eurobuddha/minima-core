@@ -1,3 +1,31 @@
+# Current checkpoint — five utility entry points
+
+Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,
+one inactive), one absent jnifunctions.cpp. Full parity remains not_verified.
+
+Added main to Maths, BaseConverter, MiniFormat, POW and REPLACE. Existing native
+helpers reused; source BaseConverter failure preserved. Full MiniFormat sample and
+1000 POW iterations retained. MiniFormat now uses source debug logger/UTF-16 length,
+second serialization, trim, fallback logging and Error catch boundary. Its leading
+unmatched quote preserves the Java no-progress loop (isolated bounded test children).
+
+Both actual executable builds PASS. Per build: five main comparisons, 31 finite
+formatter comparisons, five bounded loop observations and 251 driver assertions.
+Two selected regressions pass (4.39 s / 4.57 s): utility 1364 cases and original
+POW tests 25 assertions. Full suite not rerun. Source literal 9954 bytes verified.
+
+Evidence: validation/utility-mains-work-in-progress, including raw stdout and saved
+initial fixture failure. Student lab: student-guide/new-tests/utility-main-methods.md;
+five file lessons updated. Remaining entry-point candidates reduced 24 -> 19.
+
+NEXT: inspect/port further independent entries (Address, MiniData, TxPoWGenerator)
+from remaining-main-candidates.json; reuse existing random/time fixture boundaries.
+This list is not the complete API audit. JNI native bodies remain unavailable;
+independent work can proceed. Preserve frozen 6c28109 port21001 preview/data and
+unrelated graphify outputs. Local commits and verified bundles only; no push.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — NIOServer standalone main
 
 Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,

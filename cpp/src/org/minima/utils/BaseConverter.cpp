@@ -1,6 +1,7 @@
 #include "BaseConverter.hpp"
 #include "org/minima/objects/base/MiniNumber.hpp"
 #include <bit>
+#include <iostream>
 #include <algorithm>
 #include "support/JavaExceptions.hpp"
 #include "support/JavaLowerCase.hpp"
@@ -75,4 +76,15 @@ std::vector<uint8_t> BaseConverter::decode32(const std::string& encoded) {
     if(bytes.size()>1 && bytes.front()==0) bytes.erase(bytes.begin());
     return bytes;
 }
+void BaseConverter::main(const std::vector<std::string>*){
+    auto hex=MiniData::fromHex("0x000001");auto hstr=hex.to0xString();
+    std::cout<<"HEX : "<<hstr.size()<<" "<<hstr<<std::endl;
+    auto base32=encode32(hex.bytes());std::cout<<"B32 : "<<base32.size()<<" "<<base32<<std::endl;
+    // The source uses the hex-only MiniData(String) constructor here. Preserve
+    // its NumberFormatException for Mx1 rather than silently changing the demo.
+    auto conv=MiniData::fromHex(base32);auto convstr=conv.to0xString();
+    std::cout<<"COV : "<<convstr.size()<<" "<<convstr<<std::endl;
+    std::cout<<(conv.isEqual(hex)?"true":"false")<<std::endl;
+}
+
 }

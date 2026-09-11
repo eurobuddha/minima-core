@@ -49,3 +49,12 @@ Pinned Java SHA-256: `9f1980e13136d4d951a005a7663cd6c864a39aec048d4ee479a73d08bc
 ## Mapped source-test follow-up
 
 The original POWTests now has a compiled-test destination with 25 active assertions per runtime. See the [worked lab](../../../../../../../new-tests/power-significant-digits.md) for the tested examples and limitations. Both native and original-test entries pass in normal and sanitizer builds.
+
+## Original entry-point follow-up
+
+The original main repeats MiniNumber("0.01").pow(1000) exactly 1000 times and prints all results plus elapsed milliseconds. The decimal scale limit makes each printed result zero. Only the final elapsed value is normalized for comparison; no iteration is skipped.
+
+The [utility main lab](../../../../../../../new-tests/utility-main-methods.md) records five passing entry-point comparisons and
+36 formatter cases (31 finite, five bounded loop observations) in both builds.
+Existing utility and original POW regressions also pass. This is scoped evidence;
+complete file API and behavior parity remain unverified.

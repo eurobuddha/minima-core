@@ -40,3 +40,12 @@ Most non-number-format failures are collapsed to ERROR in the fixture. Matching 
 Why should 1.2 and 1.2.0 compare equally, while 1..2 can fail? Why is raw floating-point bit comparison stronger than checking six printed decimal places?
 
 Pinned Java SHA-256: `435e4c4154bf7b92826c794f07f77bf8c36b897c82a78cf8b04921a139b6bfb6`. [Source mapping](../../../../../../source-map.json). [Project-wide limitations](../../../../../../REVIEW.md).
+
+## Original entry-point follow-up
+
+The original main now calls compareVersions("1.0.4", "1.0.3") and prints 1. The test invokes the actual method with unused null arguments and checks exact output.
+
+The [utility main lab](../../../../../new-tests/utility-main-methods.md) records five passing entry-point comparisons and
+36 formatter cases (31 finite, five bounded loop observations) in both builds.
+Existing utility and original POW regressions also pass. This is scoped evidence;
+complete file API and behavior parity remain unverified.

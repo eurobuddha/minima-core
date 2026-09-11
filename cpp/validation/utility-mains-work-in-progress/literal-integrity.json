@@ -1,0 +1,6 @@
+{
+  "bytes": 9954,
+  "sha256": "9de4f0df4fa880762b00fda9ce4d3756b8b4c4a5ef72cc15ed9d95c289e055d0",
+  "decoded_from": "upstream-study/src/org/minima/utils/MiniFormat.java",
+  "native": "cpp/src/org/minima/utils/MiniFormat.cpp"
+}

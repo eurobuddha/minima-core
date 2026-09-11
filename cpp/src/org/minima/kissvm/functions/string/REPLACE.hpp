@@ -3,6 +3,7 @@
 namespace minima::kissvm {
 class REPLACE : public MinimaFunction {
 public:
+    static void main(const std::vector<std::string>* args=nullptr);
     REPLACE():MinimaFunction("REPLACE"){}
     ValuePtr runFunction(Contract& contract) override;
     int requiredParams() const override {return 3;}

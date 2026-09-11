@@ -3,6 +3,7 @@
 namespace minima::kissvm {
 class POW : public MinimaFunction {
 public:
+    static void main(const std::vector<std::string>* args=nullptr);
     POW():MinimaFunction("POW"){}
     ValuePtr runFunction(Contract& contract) override;
     int requiredParams() const override {return 2;}
