@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": 1848,
+  "planned_cases": 1848,
+  "independent_assertions": 12752,
+  "seconds": 3.235,
+  "transcript_sha256": "9076114459382964503e027f5b41f9d5270d425d1745c69cecb9aa1cdd921b53",
+  "failures": [],
+  "scope": "Actual ordinary/hash writers and readers; independent byte prefixes, virtual and qualified-base dispatch, source mutable length limits including negatives and 64/65 boundaries; actual Transaction link, TxBody PRNG/ID and Magic work writers with self-replacement while executing. Both native convenience serializers model staged output explicitly. Diagnostic text compared for represented errors. Java arbitrary stream implementations, byte-array identity/overridden non-stream methods, allocation and concurrency remain open."
+}

@@ -113,3 +113,11 @@ Pinned Java SHA-256: `79a341889c63d2088faec31518c15c5a0c3273b99aed97ec72d75d3c55
 Coin now implements Streamable using its existing in-place reader. Its append writer emits each field directly, checks the state list only at its source position and delegates to StateVariable and Token writers. Oversized later hashes and null state lists leave precisely the preceding fields in the supplied output. Retained owner behavior continues to use the existing shared storage.
 
 The [transaction-object interface lab](../../../../../new-tests/streamable-transaction-objects.md) explains the source-order tests and existing generic callers. Both complete builds pass. The expanded interface suite passes 2,771 comparisons and 20,914 assertions per build across 20 types, with matching transcripts and empty native stderr. All seven affected regressions also pass in both builds. Full nullable/reference/API and node parity remain unverified.
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

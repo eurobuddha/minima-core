@@ -85,6 +85,8 @@ static std::vector<uint8_t> sha2_256(const uint8_t* msg, size_t len) {
 
 namespace minima {
 
+int MiniData::MINIMA_MAX_HASH_LENGTH=64;
+int MiniData::MINIMA_MAX_MINIDATA_LENGTH=512*1024*1024;
 const MiniData MiniData::ZERO_TXPOWID = MiniData::fromHex("0x00");
 const MiniData MiniData::ONE_TXPOWID  = MiniData::fromHex("0x01");
 
@@ -193,10 +195,14 @@ MiniData MiniData::readFromStream(const std::function<size_t(std::span<uint8_t>)
     std::array<uint8_t,4> prefix;fully(prefix);size_t offset=0;auto len=checkedDataLength(prefix,offset,expectedSize);
     std::vector<uint8_t> bytes(static_cast<size_t>(len));fully(bytes);return MiniData(std::move(bytes));
 }
-std::vector<uint8_t> MiniData::serialiseHash() const {
+void MiniData::writeHashToStream(std::vector<uint8_t>& output) const {
     if((int)m_bytes.size()>MINIMA_MAX_HASH_LENGTH)
         throw wire::IOException("Write Error : HASH Length greater than "+std::to_string(MINIMA_MAX_HASH_LENGTH)+"! "+std::to_string(m_bytes.size()));
-    return serialise();
+    // Java hash writes do not invoke an ordinary writeDataStream override.
+    MiniData::writeDataStream(output);
+}
+std::vector<uint8_t> MiniData::serialiseHash() const {
+    std::vector<uint8_t> output;writeHashToStream(output);return output;
 }
 MiniData MiniData::deserialiseHash(std::span<const uint8_t> data, size_t& offset) {
     auto len=std::bit_cast<int32_t>(wire::integer(data,offset));

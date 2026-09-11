@@ -94,6 +94,8 @@ usable after the Magic variable itself is released?
 Both focused suites pass 326 programs and 2,412 independent assertions. Both
 common-interface suites pass 7,705 comparisons and 96,172 assertions across
 24 explicit source classes. All 17 selected normal regressions and four selected
-sanitizer regressions pass. The two full demonstrations are still running; their
-final reports must be checked separately before claiming demo parity. The saved
+sanitizer regressions pass. The first full native demonstrations each timed out at 1,200 seconds. Their
+reports are preserved. Replays use saved checkpoint binaries and a 7,200-second
+limit per runtime, retaining partial output. Their final reports must be checked
+separately before claiming demo parity. The saved
 initial failures explain two corrected fixture observations, not production fixes.

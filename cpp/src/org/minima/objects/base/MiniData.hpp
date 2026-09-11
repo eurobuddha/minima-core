@@ -13,8 +13,8 @@ class BigInt;
 
 class MiniData:public Streamable {
 public:
-    static constexpr int MINIMA_MAX_HASH_LENGTH     = 64;
-    static constexpr int MINIMA_MAX_MINIDATA_LENGTH  = 512 * 1024 * 1024;
+    static int MINIMA_MAX_HASH_LENGTH;
+    static int MINIMA_MAX_MINIDATA_LENGTH;
 
     static const MiniData ZERO_TXPOWID;
     static const MiniData ONE_TXPOWID;
@@ -86,7 +86,8 @@ public:
         return deserialise(std::span<const uint8_t>(data), offset);
     }
 
-    // Hash serialisation: same but max 64 bytes enforced
+    // Hash serialisation uses the mutable hash limit (64 bytes by default).
+    virtual void writeHashToStream(std::vector<uint8_t>& output) const;
     std::vector<uint8_t> serialiseHash() const;
     static MiniData deserialiseHash(std::span<const uint8_t> data, size_t& offset);
     static MiniData deserialiseHash(const std::vector<uint8_t>& data, size_t& offset) {

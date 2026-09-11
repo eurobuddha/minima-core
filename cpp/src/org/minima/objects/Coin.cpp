@@ -40,7 +40,7 @@ Coin Coin::deepCopy() const {
     catch(const wire::IOException& error){MinimaLogger::log(std::make_shared<NativeThrowable>(error));return Coin(nullptr);}
 }
 void Coin::writeDataStream(std::vector<uint8_t>& out) const {
-    wire::append(out,fields().mCoinID.serialiseHash());wire::append(out,fields().mAddress.serialiseHash());fields().mAmount.writeDataStream(out);wire::append(out,fields().mTokenID.serialiseHash());
+    fields().mCoinID.writeHashToStream(out);fields().mAddress.writeHashToStream(out);fields().mAmount.writeDataStream(out);fields().mTokenID.writeHashToStream(out);
     MiniByte(fields().mStoreState).writeDataStream(out);fields().mMMREntryNumber.writeDataStream(out);fields().mSpent.writeDataStream(out);fields().mBlockCreated.writeDataStream(out);
     MiniNumber(int64_t(states().size())).writeDataStream(out);
     for(const auto& state:states())state.writeDataStream(out);

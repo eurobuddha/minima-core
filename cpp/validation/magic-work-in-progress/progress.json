@@ -3,10 +3,10 @@
   "base_head": "b94c5655b5086133d978eae21466ef053cc1872c",
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "goal_complete": false,
-  "stage": "demonstrations_running",
+  "stage": "longer_checkpoint_demo_replays_running",
   "active_sessions": {
-    "normal_magic_full": 81444,
-    "sanitized_magic_full": 51749
+    "normal_checkpoint_demo_replay": 55636,
+    "sanitized_checkpoint_demo_replay": 41123
   },
   "full_ctest_suite_run": false,
   "counterparts": 411,
@@ -527,13 +527,23 @@
     "guide_map_checks": 43549,
     "demo_sample": 38281,
     "sanitized_regressions": 18329,
-    "sanitized_reviewed_quick": 85019
+    "sanitized_reviewed_quick": 85019,
+    "initial_full_normal": {
+      "id": 81444,
+      "exit": 1,
+      "native_demo_timeout_seconds": 1200
+    },
+    "initial_full_sanitized": {
+      "id": 51749,
+      "exit": 1,
+      "native_demo_timeout_seconds": 1200
+    }
   },
   "review": "Approve the incremental implementation checkpoint; both complete demonstrations remain pending.",
   "open_work": [
-    "Complete the active full Magic demonstrations and sanitized consensus validation",
+    "Finish active full Magic checkpoint demonstrations",
     "TxHeader nullable ownership, in-place readers and run-length aliases/errors",
-    "MiniData hash-vs-ordinary writer dispatch audit",
+    "Hash-writer incremental validation is recorded separately in hash-writers-work-in-progress",
     "Reference propagation through UserDB/ConsensusServices and full TxPoW ownership",
     "Remaining 46 counterparts and full native node parity"
   ],
@@ -548,5 +558,12 @@
     "demo_skipped": true,
     "failures": [],
     "scope": "Actual pinned Magic: eight nullable shared fields, retained getters/setters and TxPoW setter aliases, complete-field assignment on in-place read, all read prefixes and malformed children, prefix-preserving polymorphic writes with reentrant replacement, eager current comparisons, weighted updates, defaults shared across instances, mutable defaults and work cache. Full original 86400-step demonstration compared unless explicitly skipped. Diagnostic prose, arbitrary streams, non-stream scalar subclass overrides, allocation/concurrency and full containing node parity remain unverified."
+  },
+  "demo_replays": {
+    "native_source_commit": "9ae70398b8f1c453d2242a6ae88cf8f5a62a26ef",
+    "timeout_per_runtime": 7200,
+    "driver": "cpp/tools/magic_demo_differential.py",
+    "uses_preserved_checkpoint_binaries": true,
+    "scope": "Initial full runs timed out in native arithmetic after the field corpus passed. Initial reports and completed Java output retained. Replays retain streaming output and use unchanged 86400-step checkpoint binaries."
   }
 }

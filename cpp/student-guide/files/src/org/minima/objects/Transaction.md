@@ -120,3 +120,11 @@ The [coin ownership lab](../../../../../new-tests/coin-ownership.md) follows a s
 ## Shared caches and Streamable follow-up
 
 The [Transaction lab](../../../../../new-tests/streamable-transaction.md) explains owned lists and hash handles, shared flag accessors, partial reads, ID failure timing, direct nested writers and actual checker/signing callers. It distinguishes verified behavior from the remaining default/child/null APIs.
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

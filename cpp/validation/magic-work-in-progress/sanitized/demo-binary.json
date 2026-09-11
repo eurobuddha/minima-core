@@ -1,0 +1,6 @@
+{
+  "source_commit": "9ae70398b8f1c453d2242a6ae88cf8f5a62a26ef",
+  "binary": "/tmp/minima-magic-checkpoint-sanitized",
+  "sha256": "a62cd67fc9cccaf43eddbadd6d5602d276ad4e4bd056725adbef1c415d4bcd51",
+  "scope": "Magic checkpoint before hash-writer edits; original two full runs terminated by 1200-second driver timeout."
+}

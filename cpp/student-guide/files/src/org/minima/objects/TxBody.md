@@ -49,3 +49,11 @@ Pinned Java SHA-256: `30288d222f98694cd3cad1b6ff1a99a1e8b5ae4fe358948307ae22567c
 ## Block-ID iteration follow-up
 
 The ID list now reuses the existing checked JSONSequence storage. Reads retain their append order, and writes/JSON traverse an owned checked range. Indexed set is nonstructural; clear changes the iterator counter even on an empty list. See the [iteration lab](../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

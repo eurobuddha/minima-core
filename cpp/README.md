@@ -15,11 +15,17 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 46 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
+Distinct MiniData hash writers now preserve Java override dispatch and nested
+failure prefixes. Both builds pass 1,848 comparisons and 12,752 independent
+assertions, plus eight affected regressions across restricted and local-network
+runs. See the [hash-writer lab](student-guide/new-tests/hash-writers.md) and
+[checkpoint evidence](validation/hash-writers-work-in-progress/progress.json).
+
 The native Streamable interface now connects 24 existing concrete classes. Both
 builds pass 7,705 comparisons and 96,172 assertions. Magic additionally passes
 326 focused programs and 2,412 independent checks in each build. All 17
 selected normal regressions and four selected sanitizer regressions pass. The full
-Magic demonstrations are still pending. Another 20 explicit source implementers need
+Magic demonstrations timed out at 1,200 seconds; longer saved-binary replays remain pending. Another 20 explicit source implementers need
 integration. See the [Magic lab](student-guide/new-tests/streamable-magic.md) and
 [current evidence](validation/magic-work-in-progress/progress.json).
 

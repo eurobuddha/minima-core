@@ -52,3 +52,11 @@ Pinned Java SHA-256: `01fad2200cb13f9f187d62ac69dd347dd1dbdf9ddc102d693e17e03a80
 The reader assigns all six serialized fields in source order, then computes the token ID. A failure before that calculation leaves the prior ID intact. ID calculation now logs caught exceptions without clearing an existing ID; Java Error and native allocation failures escape. Conversion logs IOException and returns no token; other runtime exceptions escape. The test independently hashes the length-framed serialized token, preserving the extra MiniData layer.
 
 The [transaction-object interface lab](../../../../../new-tests/streamable-transaction-objects.md) explains the source-order tests and existing generic callers. Both complete builds pass. The expanded interface suite passes 2,771 comparisons and 20,914 assertions per build across 20 types, with matching transcripts and empty native stderr. All seven affected regressions also pass in both builds. Full nullable/reference/API and node parity remain unverified.
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

@@ -1,0 +1,84 @@
+{
+  "project": "MinimaCoreC++",
+  "base_head": "9ae70398b8f1c453d2242a6ae88cf8f5a62a26ef",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "stage": "validated_incremental_checkpoint",
+  "counterparts": 411,
+  "absent": 46,
+  "parity": "not_verified",
+  "default_ctest_entries": 264,
+  "full_ctest_suite_run": false,
+  "normal_full_build": "passed",
+  "sanitized_full_build": "passed",
+  "normal_hash": {
+    "passed": true,
+    "cases": 1848,
+    "planned_cases": 1848,
+    "independent_assertions": 12752,
+    "seconds": 2.752,
+    "transcript_sha256": "9076114459382964503e027f5b41f9d5270d425d1745c69cecb9aa1cdd921b53",
+    "failures": [],
+    "scope": "Actual ordinary/hash writers and readers; independent byte prefixes, virtual and qualified-base dispatch, source mutable length limits including negatives and 64/65 boundaries; actual Transaction link, TxBody PRNG/ID and Magic work writers with self-replacement while executing. Both native convenience serializers model staged output explicitly. Diagnostic text compared for represented errors. Java arbitrary stream implementations, byte-array identity/overridden non-stream methods, allocation and concurrency remain open."
+  },
+  "sanitized_hash": {
+    "passed": true,
+    "cases": 1848,
+    "planned_cases": 1848,
+    "independent_assertions": 12752,
+    "seconds": 3.235,
+    "transcript_sha256": "9076114459382964503e027f5b41f9d5270d425d1745c69cecb9aa1cdd921b53",
+    "failures": [],
+    "scope": "Actual ordinary/hash writers and readers; independent byte prefixes, virtual and qualified-base dispatch, source mutable length limits including negatives and 64/65 boundaries; actual Transaction link, TxBody PRNG/ID and Magic work writers with self-replacement while executing. Both native convenience serializers model staged output explicitly. Diagnostic text compared for represented errors. Java arbitrary stream implementations, byte-array identity/overridden non-stream methods, allocation and concurrency remain open."
+  },
+  "regressions": {
+    "each_configuration": {
+      "selected": 8,
+      "restricted_passed": 7,
+      "restricted_socket_permission_failure": 1,
+      "network_enabled_rerun_passed": 1
+    },
+    "normal_restricted_seconds": 71.04,
+    "sanitized_restricted_seconds": 194.01,
+    "additional_magic_quick": "Both passed 326 programs and 2412 independent assertions, identical transcript; full demonstrations explicitly skipped."
+  },
+  "completed_sessions": {
+    "normal_full_build": 69249,
+    "sanitized_full_build": 61112,
+    "normal_hash": 67784,
+    "sanitized_hash": 88625,
+    "normal_restricted_regressions": {
+      "id": 71120,
+      "exit": 8
+    },
+    "sanitized_restricted_regressions": {
+      "id": 27528,
+      "exit": 8
+    },
+    "normal_network_rerun": 31837,
+    "sanitized_network_rerun": 13589,
+    "normal_magic_quick": 84728,
+    "sanitized_magic_quick": 71088
+  },
+  "magic_demo_replays": {
+    "normal_session": 55636,
+    "sanitized_session": 41123,
+    "source_commit": "9ae70398b8f1c453d2242a6ae88cf8f5a62a26ef",
+    "pending": true,
+    "timeout_per_runtime": 7200,
+    "scope": "Saved previous-checkpoint executables; do not attribute these runs to the current hash-writer code."
+  },
+  "limits": [
+    "Not full class or node parity",
+    "Hash-reader/non-stream subclass dispatch and mutable byte-array identity remain open",
+    "Value fields in several adapted containers still lack Java child identity",
+    "Arbitrary streams, allocations and concurrency unverified",
+    "Native H2 AOT dependency is not sanitizer-instrumented",
+    "No full CTest run"
+  ],
+  "next": [
+    "Complete TxHeader caller/test reuse inspection, then nullable shared fields, source-ordered streams and RLE array aliases",
+    "Collect actual terminal Magic replay results without reducing iterations",
+    "Continue remaining mapped files and source behavior audits"
+  ]
+}

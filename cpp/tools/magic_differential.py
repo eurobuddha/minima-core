@@ -93,7 +93,8 @@ def cases():
     return result
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--skip-demo',action='store_true');args=ap.parse_args();build=args.build.resolve();started=time.monotonic()
+    ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');ap.add_argument('--skip-demo',action='store_true');ap.add_argument('--demo-timeout',type=int,default=7200);args=ap.parse_args();build=args.build.resolve();started=time.monotonic()
+    if args.demo_timeout<=0:ap.error('--demo-timeout must be positive')
     oracle=build/'magic-oracle';oracle.mkdir(exist_ok=True);sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/MagicOracle.java'];listing=oracle/'sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n')
     subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
     corpus=cases();runners=[];failures=[];executed=assertions=0;transcript=hashlib.sha256();demo={}
@@ -121,7 +122,7 @@ def main():
         try:
             observations=[]
             for runtime,command in [('java',['java','-cp',f'{oracle}:{JAVA}/jar/minima.jar','org.minima.objects.Magic']),('cpp',[str(build/'minima_magic'),'--demo'])]:
-                now=time.monotonic();p=subprocess.run(command,capture_output=True,timeout=1200,env={**os.environ,'UBSAN_OPTIONS':'halt_on_error=1'})
+                now=time.monotonic();p=subprocess.run(command,capture_output=True,timeout=args.demo_timeout,env={**os.environ,'UBSAN_OPTIONS':'halt_on_error=1'})
                 (build/f'magic-demo-{runtime}.txt').write_bytes(p.stdout);observations.append(p.stdout)
                 demo[runtime]=dict(exit=p.returncode,seconds=round(time.monotonic()-now,3),sha256=hashlib.sha256(p.stdout).hexdigest(),lines=len(p.stdout.splitlines()),stderr=p.stderr.decode())
                 assertions+=1

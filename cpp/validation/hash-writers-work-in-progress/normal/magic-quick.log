@@ -1,0 +1,23 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "cases": 326,
+  "planned_cases": 326,
+  "independent_assertions": 2412,
+  "seconds": 15.925,
+  "transcript_sha256": "f6909a6d4a0615b4fc1e7ce7b4a19c8b008a88410343cf68c1460091dbe3a021",
+  "demo": {},
+  "demo_skipped": true,
+  "failures": [],
+  "scope": "Actual pinned Magic: eight nullable shared fields, retained getters/setters and TxPoW setter aliases, complete-field assignment on in-place read, all read prefixes and malformed children, prefix-preserving polymorphic writes with reentrant replacement, eager current comparisons, weighted updates, defaults shared across instances, mutable defaults and work cache. Full original 86400-step demonstration compared unless explicitly skipped. Diagnostic prose, arbitrary streams, non-stream scalar subclass overrides, allocation/concurrency and full containing node parity remain unverified."
+}

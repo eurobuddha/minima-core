@@ -1,0 +1,17 @@
+{
+  "cpp/CMakeLists.txt": "77d6239a0a2207ef740a135532e767e9d64c071337c39b0e2b8837f3b46d7041",
+  "cpp/src/org/minima/objects/Address.cpp": "4f6a062439853bcf7cb32cc78350a41568868cb57f6cc758e1af0abe3a1a1ab6",
+  "cpp/src/org/minima/objects/Coin.cpp": "58b25cb4ba576325f321b1b437c5afb59c840dc7d37d3492149955dd7a873c46",
+  "cpp/src/org/minima/objects/Token.cpp": "5ace3db32f30103283b62e99d1cdf26b6273ab81fc2d23f0b7143af521851a43",
+  "cpp/src/org/minima/objects/Transaction.cpp": "8f41b7f4d647d709c50cbced2b5881b2df939d0a51a2adf19e2d357d0323d302",
+  "cpp/src/org/minima/objects/TxBody.cpp": "2a3687b1a0d55bb5c21c67569d62ad207d5d6b0c568fa35205f9f36d07141c65",
+  "cpp/src/org/minima/objects/TxHeader.cpp": "6c696a88135ba14ef8abafb1968c301a50ae5872aa59117ea1ec250a4bc5116e",
+  "cpp/src/org/minima/objects/base/MiniData.cpp": "477e1ed88d1374048a9884610d9392a11b9029aca4c059bb1c15160854af0ff9",
+  "cpp/src/org/minima/objects/base/MiniData.hpp": "3e2667c48a29e9f25c177832097d484148ab7e74e557448714b748add097ed00",
+  "cpp/src/org/minima/objects/mmr/MMRData.cpp": "a379e0474fe436f6c7c9fe52319e45d684c5a8f1cee964f0f5ec738fbbff904b",
+  "cpp/support/HashWritersOracle.java": "b76ebe0eeec58b51bc986aed5543aca0f8dce991a127e6869d9349c2763feb8d",
+  "cpp/support/hash_writers.cpp": "bcbce45d9752d5ad4075dfa23143875de5ffad5df9d73f4d2cc98087fa383832",
+  "cpp/tools/hash_writers_differential.py": "183bc3783f679038d562b5abf9efdd0e3b683d7407d06ee2d2ffcd010f27871e",
+  "cpp/tools/magic_demo_differential.py": "b2d41300b5bf50541216d5947b327e7554fd0a941c99b1f33b0ab8f7e74cd773",
+  "cpp/tools/magic_differential.py": "8d318b59a26be56f48d85db46223eb565e01798be30acffde60a6bbc6070cfac"
+}

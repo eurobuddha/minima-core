@@ -54,3 +54,11 @@ source-ordered partial reads, eager comparisons and nested failure prefixes.
 The native main now contains the complete source demonstration. Consult the lab's
 evidence link for the actual build/test status; the earlier object-only counts
 above describe historical coverage. Full class and node parity remain unverified.
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

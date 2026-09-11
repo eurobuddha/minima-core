@@ -80,3 +80,11 @@ mutable-array reference API. Static decoders retain their existing bounded path;
 allocation-failure timing and arbitrary stream backends remain open.
 
 See the [scalar interface lab](../../../../../../new-tests/streamable-scalars.md) for the test logic. Both expanded interface suites pass 2,095 comparisons and 12,220 assertions across 14 types with matching transcripts and empty native stderr. All nine affected regressions pass in both builds. Full class parity remains unverified.
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

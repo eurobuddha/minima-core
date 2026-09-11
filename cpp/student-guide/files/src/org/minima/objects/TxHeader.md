@@ -46,3 +46,11 @@ Encode the conceptual ancestor list A,A,B,B,B as count/hash pairs. Why must chan
 Public Java reference fields and native value fields have different alias semantics. Malformed run counts, mutable globals, default-array references, date locale and converter logging still require full API review. The source map remains partial/not_verified.
 
 Pinned Java SHA-256: `f8c85b692975c5f5fbdc26ec7a4f79e448ee757a39ed09177a550bd5a61da6a5`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

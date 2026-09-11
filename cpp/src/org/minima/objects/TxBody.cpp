@@ -6,11 +6,11 @@ json::JSONObject TxBody::toJSON() const {
     json::JSONArray ids;for(const auto owner=mTxPowIDList();const auto id:required(owner).range())ids.add(required(id).to0xString());obj.put("txnlist",ids);return obj;
 }
 void TxBody::writeDataStream(std::vector<uint8_t>& out) const {
-    wire::append(out,required(mPRNG()).serialiseHash());required(mTxnDifficulty()).writeDataStream(out);
+    required(mPRNG()).writeHashToStream(out);required(mTxnDifficulty()).writeDataStream(out);
     required(mTransaction()).writeDataStream(out);required(mWitness()).writeDataStream(out);
     required(mBurnTransaction()).writeDataStream(out);required(mBurnWitness()).writeDataStream(out);
     MiniNumber(int64_t(required(mTxPowIDList()).size())).writeDataStream(out);
-    for(const auto owner=mTxPowIDList();const auto id:required(owner).range())wire::append(out,required(id).serialiseHash());
+    for(const auto owner=mTxPowIDList();const auto id:required(owner).range())required(id).writeHashToStream(out);
 }
 std::vector<uint8_t> TxBody::serialise() const {return Streamable::serialise();}
 void TxBody::readDataStream(std::span<const uint8_t> data,size_t& offset) {

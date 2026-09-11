@@ -57,7 +57,7 @@ json::JSONObject Transaction::toJSON() const {
     obj.put("inputs",ins);obj.put("outputs",outs);obj.put("state",states);obj.put("linkhash",linkHashValue().to0xString());calculateTransactionID();obj.put("transactionid",mData->transactionID?mData->transactionID->to0xString():"null");return obj;
 }
 int64_t Transaction::calculateStateSize() const {try {std::vector<uint8_t> out;writeList(out,(*mData->state));return int64_t(out.size());}catch(const JavaError&) {throw;}catch(const std::bad_alloc&) {throw;}catch(const std::exception& error) {MinimaLogger::log("Calcualte state size error!");MinimaLogger::log(std::make_shared<NativeThrowable>(error));return 1000000;}}
-void Transaction::writeDataStream(std::vector<uint8_t>& out) const {writeList(out,(*mData->inputs));writeList(out,(*mData->outputs));writeList(out,(*mData->state));wire::append(out,linkHashValue().serialiseHash());}
+void Transaction::writeDataStream(std::vector<uint8_t>& out) const {writeList(out,(*mData->inputs));writeList(out,(*mData->outputs));writeList(out,(*mData->state));const auto link=getLinkHash();if(!link)throw JavaNullPointerException("null Transaction link hash");link->writeHashToStream(out);}
 std::vector<uint8_t> Transaction::serialise() const {return Streamable::serialise();}
 void Transaction::readDataStream(std::span<const uint8_t> data,size_t& offset) {
     mData->inputs=std::make_shared<Coins>();mData->outputs=std::make_shared<Coins>();mData->state=std::make_shared<State>();int count=MiniNumber::deserialise(data,offset).getAsInt();for(int i=0;i<count;++i)(*mData->inputs).push_back(Coin::deserialise(data,offset));

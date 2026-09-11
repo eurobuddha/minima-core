@@ -1,4 +1,48 @@
-# Current checkpoint — Magic ownership and Streamable; demonstrations running
+# Current checkpoint — separate hash writers validated
+
+Project, branch and executable: MinimaCoreC++. Base HEAD 9ae70398b8f1c453d2242a6ae88cf8f5a62a26ef.
+Goal ACTIVE and incomplete: 411 counterparts (364 production + 47 original tests),
+46 absent (5 production + 41 tests), all full parity not_verified. Both builds
+have 264 CTest entries. The full suite has NOT been run.
+
+Both full builds PASS. Both hash-writer suites PASS: 1848 comparisons / 12752
+independent assertions, transcript 9076114459382964503e027f5b41f9d5270d425d1745c69cecb9aa1cdd921b53.
+MiniData now has distinct virtual writeHashToStream; qualified base encoding avoids
+ordinary override dispatch. Mutable public size limits preserve source behavior.
+Transaction retains its child while writing. Inspected hash-field callers append
+directly, retaining nested exception prefixes. Value-field identity remains open.
+See validation/hash-writers-work-in-progress and student-guide/new-tests/hash-writers.md.
+
+Both eight-test selections pass across restricted runs (seven pass, token HTTP
+bind denied) and targeted network-enabled token reruns (pass). Both extra quick
+Magic suites pass 326 programs / 2412 checks. All 457 guides pass structural audit.
+Terminal builds69249/61112=0; hash tests67784/88625=0; restricted regressions71120/
+27528=8 (one socket restriction each); token reruns31837/13589=0; quick84728/71088=0.
+
+LIVE checkpoint Magic replays: normal55636 (/tmp/minima-magic-demo-replay.log),
+sanitized41123 (/tmp/minima-magic-demo-sanitized-replay.log). Both use preserved
+9ae7039 executables at /tmp/minima-magic-checkpoint-{normal,sanitized}, not current
+hash-writer binaries. Timeout7200 per runtime; full86400 steps unchanged. Output:
+cpp/build{,-sanitized}/magic-demo-replay-{java,cpp}.txt; final report
+magic-demo-replay-results.json. Do not restart because output is buffered.
+Old full handles81444/51749 terminated1 after native1200-second timeouts;
+initial reports/Java output are saved under magic-work-in-progress. The older
+checkpoint section below describes its earlier state and is historical.
+
+Next: finish TxHeader caller/test reuse inspection; preserve nullable shared fields,
+in-place partial reads/writes and actual-array RLE alias/error semantics. Detailed
+source notes: validation/magic-work-in-progress/next-header-notes.md. Hash-writer
+dependency is addressed here, but hash-reader/non-stream scalar overrides and
+identity propagation through containing objects remain unfinished. Collect actual
+Magic terminal evidence, then continue remaining counterparts and node behavior.
+
+Preserve unrelated dirty graphify-out output and external f7f0e08 Java SQL/JAR
+commit. Pinned upstream-study stays unchanged. Only cpp work enters this checkpoint;
+local bundles and separate unrelated snapshots provide recovery. No GitHub push.
+
+---
+
+# Historical checkpoint — Magic ownership and Streamable
 
 Base HEAD b94c5655b5086133d978eae21466ef053cc1872c. Branch/project/executable
 MinimaCoreC++. Goal ACTIVE and incomplete. 411 counterparts (364 production +

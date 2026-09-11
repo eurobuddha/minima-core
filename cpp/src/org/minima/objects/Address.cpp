@@ -11,7 +11,7 @@ Address::Address(const std::string& script):mScript(script) {
 }
 Address::Address(MiniData address):mAddressData(std::move(address)),mMinimaAddress(makeMinimaAddress(mAddressData)){}
 json::JSONObject Address::toJSON() const {json::JSONObject obj;obj.put("script",mScript.toString());obj.put("hexaddress",mAddressData.to0xString());obj.put("miniaddress",mMinimaAddress);return obj;}
-void Address::writeDataStream(std::vector<uint8_t>& out) const {wire::append(out,mAddressData.serialiseHash());mScript.writeDataStream(out);}
+void Address::writeDataStream(std::vector<uint8_t>& out) const {mAddressData.writeHashToStream(out);mScript.writeDataStream(out);}
 std::vector<uint8_t> Address::serialise() const {return Streamable::serialise();}
 void Address::readDataStream(std::span<const uint8_t> data,size_t& offset) {
     mAddressData=MiniData::deserialiseHash(data,offset);mScript=MiniString::deserialise(data,offset);

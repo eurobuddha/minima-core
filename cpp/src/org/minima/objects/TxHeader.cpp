@@ -21,12 +21,12 @@ json::JSONObject TxHeader::toJSON() const {
 }
 std::vector<uint8_t> TxHeader::serialise() const {
     auto out=wire::join(mNonce,mChainID,mTimeMilli,mBlockNumber,mBlockDifficulty);int count=0;const MiniData* previous=nullptr;
-    auto add=[&]() {wire::append(out,MiniByte(count).serialise());wire::append(out,previous->serialiseHash());};
+    auto add=[&]() {wire::append(out,MiniByte(count).serialise());previous->writeHashToStream(out);};
     for(int i=0;i<GlobalParams::MINIMA_CASCADE_LEVELS;++i) {
         const auto& current=mSuperParents.at(size_t(i));if(!previous) {previous=&current;++count;}else if(previous->isEqual(current)) ++count;else {add();previous=&current;count=1;}
         if(i==GlobalParams::MINIMA_CASCADE_LEVELS-1) add();
     }
-    wire::append(out,mMMRRoot.serialiseHash());wire::append(out,wire::join(mMMRTotal,mMagic));wire::append(out,mCustomHash.serialiseHash());wire::append(out,mTxBodyHash.serialiseHash());return out;
+    mMMRRoot.writeHashToStream(out);wire::append(out,wire::join(mMMRTotal,mMagic));mCustomHash.writeHashToStream(out);mTxBodyHash.writeHashToStream(out);return out;
 }
 TxHeader TxHeader::deserialise(std::span<const uint8_t> data,size_t& offset) {
     TxHeader header;header.mNonce=MiniNumber::deserialise(data,offset);header.mChainID=MiniData::deserialise(data,offset);header.mTimeMilli=MiniNumber::deserialise(data,offset);header.mBlockNumber=MiniNumber::deserialise(data,offset);header.mBlockDifficulty=MiniData::deserialise(data,offset);

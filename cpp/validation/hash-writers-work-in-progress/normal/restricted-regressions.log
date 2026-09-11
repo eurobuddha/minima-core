@@ -1,0 +1,66 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 261: streamable_differential
+    Start 149: coin_streams_differential
+1/8 Test #149: coin_streams_differential ........   Passed   37.08 sec
+    Start 220: token_validation_differential
+2/8 Test #220: token_validation_differential ....***Failed    3.62 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                                                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/token_validation_differential.py", line 134, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/token_validation_differential.py", line 106, in main
+    failures=[];completed=operations=requests=0;cases=[];server=Server()
+                                                                ~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 44, in __init__
+    self.server=ThreadingHTTPServer(('127.0.0.1',0),handler);self.server.daemon_threads=True;self.server.lock=threading.Lock();self.server.requests=[]
+                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+    Start   5: object_differential
+3/8 Test #261: streamable_differential ..........   Passed   47.09 sec
+    Start  16: kissvm_differential
+4/8 Test  #16: kissvm_differential ..............   Passed    6.32 sec
+    Start   4: java_differential
+5/8 Test   #4: java_differential ................   Passed    1.62 sec
+    Start   2: malformed_streams
+6/8 Test   #2: malformed_streams ................   Passed    0.29 sec
+    Start 262: txbody_ids_differential
+7/8 Test #262: txbody_ids_differential ..........   Passed    6.36 sec
+8/8 Test   #5: object_differential ..............   Passed   30.33 sec
+
+88% tests passed, 1 tests failed out of 8
+
+Total Test time (real) =  71.04 sec
+
+The following tests FAILED:
+	220 - token_validation_differential (Failed)
+Errors while running CTest

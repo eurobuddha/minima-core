@@ -51,3 +51,11 @@ Pinned Java SHA-256: `fea38cf0f064be9b07c1dd2f2f51a52ee369a303ece9b2b19387146f14
 The in-place reader assigns the decoded hash before reading the sum. If that later read fails, the new hash remains and the previous sum survives. The unspendable flag stays unchanged; it is not part of the stream. The writer appends the hash and then the sum using the existing codecs.
 
 The [MMR/signature interface lab](../../../../../../new-tests/streamable-mmr-signatures.md) explains every-prefix reads, partial writes, offsets and actual generic callers. Both complete builds and six affected regressions pass. The expanded interface corpus passes 1,299 comparisons and 6,290 assertions per build across 11 types; these are suite totals, not per-file counts. Full class parity remains unverified.
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

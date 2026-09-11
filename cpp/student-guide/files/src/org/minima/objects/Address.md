@@ -52,3 +52,11 @@ Pinned Java SHA-256: `5fc5d8e77fe88c97804d78b6640d6c2b9a41df779414dadcdae871c444
 The in-place reader replaces address bytes and then script text. Only after both succeed does it rebuild the Mx string. Failed script input can therefore expose new address bytes alongside the previous cached Mx text. The append writer preserves hash bytes if the later script write fails. Public default/null field behavior remains a separate gap.
 
 The [transaction-object interface lab](../../../../../new-tests/streamable-transaction-objects.md) explains the source-order tests and existing generic callers. Both complete builds pass. The expanded interface suite passes 2,771 comparisons and 20,914 assertions per build across 20 types, with matching transcripts and empty native stderr. All seven affected regressions also pass in both builds. Full nullable/reference/API and node parity remain unverified.
+
+
+## Separate hash-writer update
+
+The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinct ordinary/hash dispatch, mutable
+length limits, partial output and receiver lifetime during field replacement.
+Both builds pass 1,848 comparisons and 12,752 independent assertions for the
+represented paths. This update does not establish full field identity or class parity.

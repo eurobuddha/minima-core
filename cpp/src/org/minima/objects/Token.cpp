@@ -24,7 +24,7 @@ json::JSONObject Token::toJSON() const {
     obj.put("totalamount",mTokenMinimaAmount.toString());obj.put("scale",mTokenScale.toString());obj.put("created",mTokenCreated.toString());
     obj.put("tokenid",mTokenID?json::JSONValue(mTokenID->to0xString()):json::JSONValue(nullptr));return obj;
 }
-void Token::writeDataStream(std::vector<uint8_t>& out) const {wire::append(out,mCoinID.serialiseHash());mTokenScript.writeDataStream(out);mTokenScale.writeDataStream(out);mTokenMinimaAmount.writeDataStream(out);mTokenName.writeDataStream(out);mTokenCreated.writeDataStream(out);}
+void Token::writeDataStream(std::vector<uint8_t>& out) const {mCoinID.writeHashToStream(out);mTokenScript.writeDataStream(out);mTokenScale.writeDataStream(out);mTokenMinimaAmount.writeDataStream(out);mTokenName.writeDataStream(out);mTokenCreated.writeDataStream(out);}
 std::vector<uint8_t> Token::serialise() const {return Streamable::serialise();}
 void Token::readDataStream(std::span<const uint8_t> data,size_t& offset) {
     mCoinID=MiniData::deserialiseHash(data,offset);mTokenScript=MiniString::deserialise(data,offset);
