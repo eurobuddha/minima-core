@@ -1,5 +1,6 @@
 #include "org/minima/utils/MiniFile.hpp"
 #include "Cascade.hpp"
+#include "org/minima/utils/MinimaLogger.hpp"
 #include "support/JavaIOExceptionText.hpp"
 #include "org/minima/system/params/GlobalParams.hpp"
 #include <bit>
@@ -45,7 +46,7 @@ std::optional<Cascade> Cascade::convertMiniDataVersion(const MiniData& data,cons
 }
 bool Cascade::checkPastNodeExists(std::shared_ptr<CascadeNode> node,const std::string& id) {for(;node;node=node->getParent()) if(node->getTxPoW().getTxPoWID()==id) return true;return false;}
 bool Cascade::checkCascadeCorrect(const Cascade& cascade) {
-    return checkCascadeCorrect(cascade,[](const std::string& text){std::clog<<text<<'\n';});
+    return checkCascadeCorrect(cascade,[](const std::string& text){MinimaLogger::log(text);});
 }
 bool Cascade::checkCascadeCorrect(const Cascade& cascade,const std::function<void(const std::string&)>& log) {
     auto current=cascade.getTip();if(current && current->getLevel()!=0) {log("Cascade does not start at level 0.. "+std::to_string(current->getLevel()));return false;}
@@ -73,4 +74,10 @@ bool Cascade::checkCascadeCorrect(const Cascade& cascade,const std::function<voi
 namespace minima {
 void Cascade::loadDB(const std::filesystem::path& file) {MiniFile::loadObjectSlow(file,*this);}
 void Cascade::saveDB(const std::filesystem::path& file) {MiniFile::saveObjectDirect(file,*this);}
+void Cascade::main(const std::vector<std::string>*) {
+    std::filesystem::path file(R"(C:\Users\spartacusrex\.minima\1.0\databases\cascade.db)");
+    Cascade cascade;cascade.loadDB(file);bool correct=checkCascadeCorrect(cascade);
+    std::cout<<"Correct:"<<(correct?"true":"false")<<'\n';
+}
+
 }

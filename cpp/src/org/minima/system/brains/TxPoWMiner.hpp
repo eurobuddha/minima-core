@@ -24,6 +24,7 @@ protected:
     explicit TxPoWMiner(TxPoWMinerServices services);
     void processMessage(std::shared_ptr<Message> message) override;
 public:
+    static void main(const std::vector<std::string>* args);
     inline static const std::string TXPOWMINER_MINETXPOW="TXPOWMINER_MINETXPOW",
         TXPOWMINER_MINEPULSE="TXPOWMINER_MINEPULSE",TXPOWMINER_TXBLOCKMINER="TXPOWMINER_TXBLOCKMINER";
     static std::shared_ptr<TxPoWMiner> create(TxPoWMinerServices services);

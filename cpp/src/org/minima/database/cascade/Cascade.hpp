@@ -6,6 +6,7 @@ class Cascade {
     std::shared_ptr<CascadeNode> mTip;
     MMREntryNumber mTotalWeight;
 public:
+    static void main(const std::vector<std::string>* args);
     void addToTip(const TxPoW& txpow);
     std::shared_ptr<CascadeNode> getTip() const {return mTip;}
     const MMREntryNumber& getTotalWeight() const {return mTotalWeight;}

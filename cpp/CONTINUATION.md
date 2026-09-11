@@ -1,3 +1,21 @@
+# Timed delivery — runtime main checkpoint
+
+TxPoWMiner, TreeKey and Cascade mains: normal and ASAN/UBSAN PASS 18 comparisons,
+121 assertions each. Full miner loops retained. Cascade default and MiniFile
+missing-file logging use MinimaLogger. Four lessons and a lab updated.
+No new mapped paths: 456/457, JNI absent, full parity not_verified.
+Three remaining main candidates: ArchiveManager, TxPoWOnChainDB, TxPoWSqlDB.
+
+Normal full292 run session96386:291 passed, Magic still running. Sanitized full293
+run session77277 active; HORST all1438 comparisons passed but five-second teardown
+failed. Bounded60-second HORST targeted recheck session41128 active; retain both
+initial cleanup failures and do not count a stale prior result as this pass.
+Runtime focused tests are separate new binaries; do not overwrite full-suite binaries.
+Deadline remains01:30UTC. Finish independent database demos, then final node build,
+package/source/docs/presentation/runtime verification and verified recovery.
+
+## Previous checkpoint (historical)
+
 # Timed delivery — MMR main checkpoint
 
 MMR/MegaMMR mains and MMR printers added; 30 comparisons112assertions PASS normal

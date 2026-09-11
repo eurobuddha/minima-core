@@ -1,4 +1,5 @@
 #include "TreeKey.hpp"
+#include "org/minima/utils/MiniFormat.hpp"
 #include <bit>
 #include <cmath>
 #include <limits>
@@ -49,4 +50,11 @@ bool TreeKey::verify(const MiniData* data,const Signature& signature) const {
     }
     return false;
 }
+void TreeKey::main(const std::vector<std::string>*) {
+    MiniData seed=MiniData::fromHex("0x000102");TreeKey key(seed,4,4);
+    [[maybe_unused]] auto publicKey=key.getPublicKey();auto data=MiniData::fromHex("0xFF");
+    auto signature=key.sign(data);MinimaLogger::log("1");MinimaLogger::log(MiniFormat::JSONPretty(signature.toJSON()));
+    signature=key.sign(data);MinimaLogger::log("2");MinimaLogger::log(MiniFormat::JSONPretty(signature.toJSON()));
+}
+
 }

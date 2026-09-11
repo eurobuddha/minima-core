@@ -50,3 +50,13 @@ Pinned Java SHA-256: `faf2b371e08eb2275726b9a405d7f66e7cea1b7536e5b5b5e85ad2da04
 ## Mining-command integration
 
 The native async and synchronous entry methods now permit virtual dispatch, as Java does. The command fixture fixes only the generated PRNG bytes at entry and delegates to the actual miner bodies. It compares wire bytes, posted and pending messages, retained owners and coin reservations after row deletion. False/throwing results are separate injected failure cases. See the [mining/posting lab](../../../../../../new-tests/transaction-mining.md).
+
+## Runtime demonstration update
+
+The added source main calls the old hash-rate helper for 10,000 hashes, again
+for 1,000,000, then the header hash-speed helper for 1,000,000. Those full counts
+remain in the native entry point. The source logging is commented out, so successful
+execution produces no output. The test executes the real calls and records duration;
+it does not instrument internal loop counts or claim speed equality between languages.
+
+See the [runtime main lab](../../../../../../new-tests/runtime-main-methods.md) for the actual test evidence and limits.

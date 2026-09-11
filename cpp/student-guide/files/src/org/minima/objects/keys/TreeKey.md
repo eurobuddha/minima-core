@@ -61,3 +61,14 @@ A nullable Signature overload now preserves the source null-dereference boundary
 ## Nullable verification data
 
 The pointer-data overload now preserves source rejection order for a null transaction ID: empty/overlong proof lists and mismatching roots return false first; only the final matching proof dereferences the message. A null signature still fails first. The existing value overload delegates to the same verifier. See the [Transaction lab](../../../../../../new-tests/streamable-transaction.md).
+
+## Runtime demonstration update
+
+The added source main creates the fixed seed 0x000102 and a four-key,
+four-level tree. It signs 0xFF twice on the same object and logs both complete pretty
+signature JSON objects, labelled 1 and 2. The counter advances between signatures;
+recreating the tree for the second call would change the output. The test compares
+every printed byte and all four logger notifications, and checks that the two
+parsed signature objects differ.
+
+See the [runtime main lab](../../../../../../new-tests/runtime-main-methods.md) for the actual test evidence and limits.

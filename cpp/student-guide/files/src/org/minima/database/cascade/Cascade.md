@@ -46,3 +46,14 @@ Why can getTotalWeight be stale immediately after addToTip? Explain how deepCopy
 This test corpus establishes cascade algorithms and format observations, not durable file replacement, full chain consensus, arbitrary shared-list mutations or exact diagnostics. Port status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `23e3d5da3465cfafec3415816b88de2648ceb443b749245f090e2f89c882572f`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Runtime demonstration update
+
+The added source main loads the literal Windows-style path from Java,
+checks the cascade and prints Correct:true or Correct:false. On this Unix test host
+the backslashes are ordinary filename characters. The test owns a temporary current
+directory and places that exact filename there. Missing, empty, valid and invalid-parent
+cases use identical Java-produced bytes for both languages; the input must stay
+unchanged. The default cascade checker now routes its diagnostics through MinimaLogger.
+
+See the [runtime main lab](../../../../../../new-tests/runtime-main-methods.md) for the actual test evidence and limits.

@@ -53,3 +53,14 @@ that directory and then failed to create it again. Trimming the separator preser
 Java's canonical File representation and mkdirs return value. MiniFile reuses this
 helper; the utility, SQL-database and decrypt-backup regressions pass in both builds.
 This correction does not change MiniFile.isChild into a canonical containment check.
+
+## Runtime demonstration update
+
+The Cascade demonstration exposed a logging mismatch in loadObjectSlow's
+missing-file path. Its message now goes through the existing MinimaLogger instead
+of directly to std::clog. That restores the logger notification as well as the
+printed message. The focused test checks the exact missing path and one notification.
+This correction is limited to that path: malformed file error logging and the
+other loading methods still need their own full parity review.
+
+See the [runtime main lab](../../../../../new-tests/runtime-main-methods.md) for the actual test evidence and limits.

@@ -101,4 +101,10 @@ MiniNumber TxPoWMiner::calculateHashSpeed(const MiniNumber& hashes,const std::fu
     for(int i=0;i<count;++i){nextNonce(data,nonce);(void)Crypto::getInstance().hashData(data);}
     auto time=elapsed(now(),start);if(time<=0)time=1;return hashes.div(MiniNumber(time).div(MiniNumber::THOUSAND));
 }
+void TxPoWMiner::main(const std::vector<std::string>*) {
+    calculateHashRateOld(MiniNumber(10000));
+    calculateHashRateOld(MiniNumber::MILLION);
+    calculateHashSpeed(MiniNumber::MILLION);
+}
+
 }

@@ -11,6 +11,7 @@ class TreeKey {
     void log(const std::string& text) const;
     static std::vector<int> baseConversion(int number,int base,int levels);
 public:
+    static void main(const std::vector<std::string>* args);
     static constexpr int MAX_KEY_LEVELS=8,DEFAULT_KEYSPERLEVEL=64,DEFAULT_LEVELS=3;
     static TreeKey createDefault(const MiniData& seed) {return TreeKey(seed,DEFAULT_KEYSPERLEVEL,DEFAULT_LEVELS);}
     TreeKey()=default;

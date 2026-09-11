@@ -20,10 +20,10 @@ state/ownership tests, concurrency/error tests, and native node workflows. Each
 suite states its limits. Passing a finite corpus does not certify all Java virtual
 dispatch, object aliasing, exceptional paths, runtime/provider behavior or races.
 
-The current entry-point audit leaves six candidates: TxPoWMiner, TreeKey, ArchiveManager,
-Cascade, TxPoWOnChainDB and TxPoWSqlDB. These classes already have native bodies,
-but their source demonstration entry points remain missing. See the latest
-validation candidate list for source paths and dependency details.
+The current entry-point audit leaves three candidates: ArchiveManager,
+TxPoWOnChainDB and TxPoWSqlDB. These classes already have native bodies, but their
+source database demonstration entry points remain missing. See
+[remaining candidates](../validation/runtime-mains-work-in-progress/remaining-main-candidates.json).
 
 ## Platform and delivery
 

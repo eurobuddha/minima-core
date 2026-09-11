@@ -1,0 +1,29 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": true,
+  "comparisons": 18,
+  "assertions": 121,
+  "scope": "18 exact Java/native main comparisons with null/empty/unused arguments. Full miner work retained (10000+1000000 old hashes, 1000000 new header hashes); silent completion/timing recorded, internal invocation counts not instrumented. Two complete fixed-seed signature JSON outputs and logger notifications. Cascade missing/empty/valid/invalid-parent files under fixture-owned cwd with exact shared source bytes, read-only input and notifications. Full class/provider/concurrency parity and malformed file error logging remain unverified."
+}

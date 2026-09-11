@@ -50,6 +50,9 @@ std::ofstream MiniFile::openObjectOutput(const fs::path& file) {
     if(!out.is_open())throw wire::TypedIOException("java.io.FileNotFoundException",path.string()+" ("+std::strerror(errno)+")");
     out.exceptions(std::ios::badbit|std::ios::failbit);return out;
 }
+void MiniFile::logObjectMissing(const fs::path& file) {
+    MinimaLogger::log("Load Object file does not exist : "+javaUnixAbsoluteFile(file));
+}
 void MiniFile::logObjectOutput(const wire::IOException& error) {
     MinimaLogger::log(std::make_shared<NativeThrowable>(error));
 }

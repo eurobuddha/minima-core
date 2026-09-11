@@ -19,7 +19,7 @@ public:
     static std::vector<uint8_t> readAllBytes(std::istream& stream);
     template<class T> static void loadObject(const std::filesystem::path& file,T& object) {loadObjectSlow(file,object);}
     template<class T> static void loadObjectSlow(const std::filesystem::path& file,T& object) {
-        std::error_code ec;if(!std::filesystem::exists(file,ec)) {std::clog<<"Load Object file does not exist : "<<std::filesystem::absolute(file).string()<<'\n';return;}
+        std::error_code ec;if(!std::filesystem::exists(file,ec)) {logObjectMissing(file);return;}
         try {auto bytes=readCompleteFile(file);readObject(object,bytes);}catch(const std::ios_base::failure& e){log(e);}catch(const wire::IOException& e){log(e);}
     }
     template<class T> static void loadObjectEncrypted(const std::string& password,const std::filesystem::path& file,T& object) {
@@ -41,6 +41,7 @@ public:
 private:
     static std::ofstream openObjectOutput(const std::filesystem::path& file);
     static void logObjectOutput(const wire::IOException& error);
+    static void logObjectMissing(const std::filesystem::path& file);
     static void prepareFile(const std::filesystem::path& file,bool append);
 };
 }
