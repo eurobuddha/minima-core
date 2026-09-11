@@ -23,7 +23,7 @@ Own the nonblocking listener and connected-client registry, using selector event
 
 ## How the translation is approached
 
-C++ reuses NIOClient framing and shared socket/selection-key registrations. SocketWakeup plus poll replaces the Java selector; an IPv6 dual-stack listener has an IPv4 fallback. Atomics and queue/selector locks protect native threads. Weak manager callbacks, explicit closing and getBoundPort support lifetime management and observation; the source demo main and custom JVM networking settings remain outside this API translation.
+C++ reuses NIOClient framing and shared socket/selection-key registrations. SocketWakeup plus poll replaces the Java selector; an IPv6 dual-stack listener has an IPv4 fallback. Atomics and queue/selector locks protect native threads. Weak manager callbacks, explicit closing and getBoundPort support lifetime management and observation; custom JVM networking settings remain outside this API translation; the source demo main is covered by the follow-up below.
 
 ## What the tests tell us
 
@@ -44,3 +44,18 @@ Why does pre-start disconnect leave a queued UID despite throwing? Contrast that
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `0a3d023c8e9baa8a4d9d2139a5fefbea7336c2027b6423f7043c1273aafea9ca`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Standalone main follow-up
+
+The [server main lab](../../../../../../../new-tests/nio-server-main.md) explains the
+new native entry point and its actual Java/C++ process experiment. The original
+program starts/stops port 9002 twice, retains four two-second waits and exits through
+shutdown hooks. Real hello workers log SERVERSTARTED, then fail their finally cleanup
+when no MinimaDB exists; the native implementation preserves that source behavior.
+Each wait is interrupted in a separate case. The flag is consumed and a server
+already running remains alive after the caller throws; a previously stopped server
+closes. An occupied-port child halts without executing a shutdown hook.
+
+Six scenarios / 103 assertions pass in each normal and sanitizer build. The actual
+loopback lifecycle and 63 error-boundary cases also pass. Only fixture-owned child
+processes are stopped. Complete server/thread/API parity remains unverified.

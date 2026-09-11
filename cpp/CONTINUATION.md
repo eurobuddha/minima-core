@@ -1,3 +1,32 @@
+# Current checkpoint — NIOServer standalone main
+
+Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,
+one inactive), one absent jnifunctions.cpp. Full parity remains not_verified.
+
+Added NIOServer.main using real NIOServer, hello MessageProcessor, NativeThread
+ownership and std::exit hooks. Source port 9002 and four 2000-ms waits retained.
+Interrupted callers leave separately running server workers alive; null singleton
+DB cleanup retains the source hello-worker NullPointerException.
+
+Normal and ASAN/UBSAN executable builds PASS. All three selected NIO CTests pass
+(44.94 s / 71.84 s; sanitizer time includes fixed-port fixture lock wait).
+Six main scenarios / 103 assertions per build cover full original demo, all four
+sleep boundaries and fatal bind hook bypass. Existing loopback lifecycle and 63
+server error cases pass. Full suite not rerun; no source interval shortened.
+
+Evidence: validation/nio-server-main-work-in-progress. Student lab:
+student-guide/new-tests/nio-server-main.md; NIOServer lesson updated.
+
+NEXT: inspect/port independent utility entry points Maths, BaseConverter, MiniFormat,
+then work through remaining-main-candidates.json (24 compiled live Java mains with
+no mapped native main token). This is a candidate list, not a complete API audit.
+Broader virtual dispatch, ownership and runtime/API gaps remain. JNI bodies are
+unavailable in inspected sources; independent work can proceed. Preserve frozen
+6c28109 port21001 preview/data and unrelated graphify outputs. Local commits/bundles;
+no push and no stopping the user's node.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — timer reentrancy and list identity
 
 Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,

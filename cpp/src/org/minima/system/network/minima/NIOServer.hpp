@@ -44,6 +44,8 @@ public:
     void sendMessageAll(const std::shared_ptr<MiniData>& data);
     bool isRunning() const {return mIsRunning;}
     void run();
+    // Original standalone demonstration; arguments are unused, including null.
+    static void main(const std::vector<std::string>* args=nullptr);
     // Native observation for a kernel-assigned port; mPort retains Java's input.
     int32_t getBoundPort() const {return mBoundPort;}
 };

@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "cases": 63,
+  "failures": [],
+  "scope": "Unmodified pinned NIOServer/NIOClient, real selector worker and loopback channels. Controlled application receiver fails at startup, accepted/outgoing registration, decoded message and explicit disconnect; selection keys fail in direct/broadcast send and cancellation. Runtime/Error/OOM/IO distinctions, catch logger failures, trace notify behavior, event order, running flags, map and pending-list effects. Explicit handler prevents fatal OOM halt. Generated client IDs and automatic JVM/native stack lines excluded. Full node startup is not exercised."
+}

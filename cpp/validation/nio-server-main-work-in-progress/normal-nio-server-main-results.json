@@ -1,0 +1,622 @@
+{
+  "passed": true,
+  "comparisons": 6,
+  "assertions": 103,
+  "observations": [
+    {
+      "stage": 0,
+      "java": [
+        {
+          "code": 0,
+          "main": [
+            "Started.. waiting..",
+            "Stopping..",
+            "Started again.. waiting..",
+            "Stopping.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]",
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException",
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [],
+          "hooks": [
+            "exit"
+          ],
+          "listener_after_catch": null
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "log",
+              "value": "Started again.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "hook",
+              "value": "exit"
+            }
+          ],
+          "seconds": 8.128317624970805
+        }
+      ],
+      "cpp": [
+        {
+          "code": 0,
+          "main": [
+            "Started.. waiting..",
+            "Stopping..",
+            "Started again.. waiting..",
+            "Stopping.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]",
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException",
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [],
+          "hooks": [
+            "exit"
+          ],
+          "listener_after_catch": null
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "log",
+              "value": "Started again.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "hook",
+              "value": "exit"
+            }
+          ],
+          "seconds": 8.431061165989377
+        }
+      ]
+    },
+    {
+      "stage": 1,
+      "java": [
+        {
+          "code": 7,
+          "main": [
+            "Started.. waiting.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [
+            "java.lang.InterruptedException:false"
+          ],
+          "hooks": [],
+          "listener_after_catch": true
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "caught",
+              "value": "java.lang.InterruptedException:false"
+            }
+          ],
+          "seconds": 0.39533541700802743
+        }
+      ],
+      "cpp": [
+        {
+          "code": 7,
+          "main": [
+            "Started.. waiting.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [
+            "java.lang.InterruptedException:false"
+          ],
+          "hooks": [],
+          "listener_after_catch": true
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "caught",
+              "value": "java.lang.InterruptedException:false"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            }
+          ],
+          "seconds": 0.02989912504563108
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "java": [
+        {
+          "code": 7,
+          "main": [
+            "Started.. waiting..",
+            "Stopping.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [
+            "java.lang.InterruptedException:false"
+          ],
+          "hooks": [],
+          "listener_after_catch": false
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "caught",
+              "value": "java.lang.InterruptedException:false"
+            }
+          ],
+          "seconds": 2.0988879579817876
+        }
+      ],
+      "cpp": [
+        {
+          "code": 7,
+          "main": [
+            "Started.. waiting..",
+            "Stopping.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [
+            "java.lang.InterruptedException:false"
+          ],
+          "hooks": [],
+          "listener_after_catch": false
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "caught",
+              "value": "java.lang.InterruptedException:false"
+            }
+          ],
+          "seconds": 2.0664491659845226
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "java": [
+        {
+          "code": 7,
+          "main": [
+            "Started.. waiting..",
+            "Stopping..",
+            "Started again.. waiting.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]",
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException",
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [
+            "java.lang.InterruptedException:false"
+          ],
+          "hooks": [],
+          "listener_after_catch": true
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "log",
+              "value": "Started again.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "caught",
+              "value": "java.lang.InterruptedException:false"
+            }
+          ],
+          "seconds": 4.517609874950722
+        }
+      ],
+      "cpp": [
+        {
+          "code": 7,
+          "main": [
+            "Started.. waiting..",
+            "Stopping..",
+            "Started again.. waiting.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]",
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException",
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [
+            "java.lang.InterruptedException:false"
+          ],
+          "hooks": [],
+          "listener_after_catch": true
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "log",
+              "value": "Started again.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "caught",
+              "value": "java.lang.InterruptedException:false"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            }
+          ],
+          "seconds": 4.039525083964691
+        }
+      ]
+    },
+    {
+      "stage": 4,
+      "java": [
+        {
+          "code": 7,
+          "main": [
+            "Started.. waiting..",
+            "Stopping..",
+            "Started again.. waiting..",
+            "Stopping.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]",
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException",
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [
+            "java.lang.InterruptedException:false"
+          ],
+          "hooks": [],
+          "listener_after_catch": false
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "log",
+              "value": "Started again.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "caught",
+              "value": "java.lang.InterruptedException:false"
+            }
+          ],
+          "seconds": 6.106585166009609
+        }
+      ],
+      "cpp": [
+        {
+          "code": 7,
+          "main": [
+            "Started.. waiting..",
+            "Stopping..",
+            "Started again.. waiting..",
+            "Stopping.."
+          ],
+          "worker_logs": [
+            "[ NIO_SERVERSTARTED,  ]",
+            "[ NIO_SERVERSTARTED,  ]"
+          ],
+          "workers": [
+            "hello:java.lang.NullPointerException",
+            "hello:java.lang.NullPointerException"
+          ],
+          "caught": [
+            "java.lang.InterruptedException:false"
+          ],
+          "hooks": [],
+          "listener_after_catch": false
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "log",
+              "value": "Started again.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[ NIO_SERVERSTARTED,  ]"
+            },
+            {
+              "event": "uncaught",
+              "value": "hello:java.lang.NullPointerException"
+            },
+            {
+              "event": "log",
+              "value": "Stopping.."
+            },
+            {
+              "event": "caught",
+              "value": "java.lang.InterruptedException:false"
+            }
+          ],
+          "seconds": 6.059402792016044
+        }
+      ]
+    },
+    {
+      "occupied": true,
+      "java": [
+        {
+          "code": 0,
+          "main": [
+            "Started.. waiting.."
+          ],
+          "worker_logs": [],
+          "workers": [],
+          "caught": [],
+          "hooks": [],
+          "listener_after_catch": null
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "Started.. waiting.."
+            },
+            {
+              "event": "log",
+              "value": "[!] NIO ERROR - MAIN PORT 9002 ALREADY IN USE. SHUTTING DOWN"
+            }
+          ],
+          "seconds": 0.07318220799788833
+        }
+      ],
+      "cpp": [
+        {
+          "code": 0,
+          "main": [],
+          "worker_logs": [],
+          "workers": [],
+          "caught": [],
+          "hooks": [],
+          "listener_after_catch": null
+        },
+        {
+          "rows": [
+            {
+              "event": "log",
+              "value": "[!] NIO ERROR - MAIN PORT 9002 ALREADY IN USE. SHUTTING DOWN"
+            }
+          ],
+          "seconds": 0.01773124997271225
+        }
+      ]
+    }
+  ],
+  "scope": "Actual original NIOServer.main on port 9002 with four unchanged 2000-ms waits, two real server starts/stops, default missing-DB hello worker failures, successful System.exit shutdown hook, each sleep interrupted from actual logger boundary, surviving/closed listener observed without connecting, and occupied-port Runtime.halt bypassing hook. Null unused arguments supplied. Fixtures halt after interrupted caller evidence to clean up only their own child. No user database or existing node touched; all broader server/thread API parity unverified."
+}

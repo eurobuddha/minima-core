@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "startup": [
+    "invalid-port:-1",
+    "invalid-port:65536",
+    "shutdown-before-run",
+    "occupied-port:halt(0)"
+  ],
+  "java": [
+    "started",
+    "incoming4",
+    "incoming6",
+    "outgoing",
+    "frame:0",
+    "frame:1",
+    "frame:8193",
+    "frame:65536",
+    "broadcast-filter",
+    "explicit-disconnect",
+    "outgoing-eof",
+    "oversized-frame",
+    "shutdown-retains-map",
+    "traffic:73750:73760"
+  ],
+  "cpp": [
+    "started",
+    "incoming4",
+    "incoming6",
+    "outgoing",
+    "frame:0",
+    "frame:1",
+    "frame:8193",
+    "frame:65536",
+    "broadcast-filter",
+    "explicit-disconnect",
+    "outgoing-eof",
+    "oversized-frame",
+    "shutdown-retains-map",
+    "traffic:73750:73760"
+  ],
+  "scope": "Actual NIOServer event loop over IPv4/IPv6 loopback; port zero, incoming/outgoing metadata and identity, framed binary traffic, direct/broadcast send and greeting filter, explicit disconnect, outgoing EOF reconnect, oversized incoming frame, shutdown retained map and traffic totals. Manager collection replaces node startup. No remote network or full-node integration."
+}

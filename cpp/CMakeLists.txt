@@ -655,6 +655,10 @@ target_link_libraries(minima_nio_server PRIVATE minima_file_port)
 add_test(NAME nio_server_differential COMMAND ${Python3_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR}/tools/nio_server_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(nio_server_differential PROPERTIES TIMEOUT 120)
+add_executable(nio_server_main support/nio_server_main.cpp)
+target_link_libraries(nio_server_main PRIVATE minima_file_port)
+add_test(NAME nio_server_main_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/nio_server_main_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(nio_server_main_differential PROPERTIES TIMEOUT 180 RESOURCE_LOCK nio_demo_port_9002)
 
 add_executable(minima_p2p2_db support/p2p2_db.cpp)
 target_link_libraries(minima_p2p2_db PRIVATE minima_file_port)

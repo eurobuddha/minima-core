@@ -2,6 +2,8 @@
 #include "support/SocketWakeup.hpp"
 #include "support/InetSocketAddress.hpp"
 #include "support/NativeThrowable.hpp"
+#include "org/minima/utils/messages/MessageProcessor.hpp"
+#include "org/minima/database/MinimaDB.hpp"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
@@ -16,6 +18,16 @@
 namespace minima {
 std::atomic<bool> NIOServer::mTraceON{false};
 namespace {
+class DemoProcessor final:public MessageProcessor {
+    DemoProcessor():MessageProcessor("hello",[]{
+        auto db=MinimaDB::getDB();
+        if(!db)throw JavaNullPointerException("null MinimaDB");
+        db->safeReleaseReadWriteLock();
+    }){}
+    void processMessage(std::shared_ptr<Message> message)override{MinimaLogger::log(message->toString());}
+public:
+    static auto create(){auto worker=std::shared_ptr<DemoProcessor>(new DemoProcessor);worker->startMessageProcessor();return worker;}
+};
 struct Descriptor {
     int value=-1;
     explicit Descriptor(int descriptor):value(descriptor){}
@@ -34,6 +46,25 @@ std::pair<std::string,int32_t> remoteAddress(int descriptor){
 }
 }
 NIOServer::~NIOServer()=default;
+void NIOServer::main(const std::vector<std::string>*){
+    auto start=[] {
+        auto server=std::make_shared<NIOServer>(9002,DemoProcessor::create());
+        auto name=nextNativeThreadName();
+        // As with NIOManager's connector, the worker owns its target even if
+        // interruption unwinds the calling method. Java does not join it here.
+        std::thread([server,name=std::move(name)]{
+            runNativeThread(NativeThread{name},[&]{server->run();});
+        }).detach();
+        return server;
+    };
+    auto server=start();
+    MinimaLogger::log("Started.. waiting..");nativeThreadSleep(2000);
+    MinimaLogger::log("Stopping..");server->shutdown();nativeThreadSleep(2000);
+    server=start();
+    MinimaLogger::log("Started again.. waiting..");nativeThreadSleep(2000);
+    MinimaLogger::log("Stopping..");server->shutdown();nativeThreadSleep(2000);
+    std::exit(0);
+}
 void NIOServer::wakeup(){auto selector=this->selector();if(!selector)throw std::runtime_error("Null selector");selector->wake();}
 void NIOServer::shutdown(){mShutDown=true;if(auto selector=this->selector())selector->wake();}
 void NIOServer::post(std::shared_ptr<Message> message){mPostMessage(std::move(message));}

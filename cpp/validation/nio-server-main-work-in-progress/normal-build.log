@@ -1,0 +1,56 @@
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PPeersChecker.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/WalkLinksFuncs.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PManager.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWProcessor.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/SwapLinksFunctions.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWMiner.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PFunctions.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/UtilFuncs.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOManager.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOMessage.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOServer.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2Functions.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2Manager.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/rpc/CMDHandler.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/NetworkManager.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/mysql/ArchiveServer.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/Main.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/quit.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/rescue.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/disconnect.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/message.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/p2pstate.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/ping.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/network.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/trace.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/status.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/rpc.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/peers.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/nodecount.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/Minima.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/restore.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/reset.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/archive.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/restoresync.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/megammr.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/systemcheck.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mysql.cpp.o
+[ 11%] Linking CXX static library libminima_file_port.a
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/nio_server_main.dir/support/nio_server_main.cpp.o
+[100%] Linking CXX executable nio_server_main
+[100%] Built target nio_server_main
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_nio_server.dir/support/nio_server.cpp.o
+[100%] Linking CXX executable minima_nio_server
+[100%] Built target minima_nio_server
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/nio_server_errors.dir/support/nio_server_errors.cpp.o
+[100%] Linking CXX executable nio_server_errors
+[100%] Built target nio_server_errors
+[ 97%] Built target minima_file_port
+[ 97%] Built target minima_native_h2
+[100%] Building CXX object CMakeFiles/MinimaCoreCpp.dir/support/minima_entry.cpp.o
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp

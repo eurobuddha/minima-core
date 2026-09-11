@@ -1,0 +1,11 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 130: nio_server_errors_differential
+    Start  71: nio_server_differential
+    Start  72: nio_server_main_differential
+1/3 Test  #71: nio_server_differential ..........   Passed    4.61 sec
+2/3 Test #130: nio_server_errors_differential ...   Passed   10.15 sec
+3/3 Test  #72: nio_server_main_differential .....   Passed   44.93 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =  44.94 sec
