@@ -1,0 +1,45 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 137: command_runner_errors_differential
+1/3 Test #137: command_runner_errors_differential ...   Passed    9.24 sec
+    Start 223: burn_metrics_differential
+2/3 Test #223: burn_metrics_differential ............   Passed   39.13 sec
+    Start 260: help_command_differential
+3/3 Test #260: help_command_differential ............***Failed    4.12 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "cases": 0,
+  "planned_cases": 0,
+  "independent_assertions": 1,
+  "curated_commands": 94,
+  "missing_native_registry_commands": [],
+  "transcript_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "seconds": 3.993,
+  "failures": [
+    {
+      "phase": "execution",
+      "cases": 0,
+      "error": "AssertionError('only known unported JNI commands absent')"
+    }
+  ],
+  "scope": "Actual pinned help and native counterpart: full 94-entry curated catalogue, detailed help for every existing native registry command, exact metadata/nulls, fresh factory/parameter aliases, trimmed/blank/wrong-type input, case-sensitive lookup, actual chained runner/non-admin calls, controlled metadata-only target, UTF-16 code-unit padding/truncation/null/negative ranges. NPE/classcast diagnostic prose normalized; native complete stderr empty. Three JNI-dependent source commands remain absent and are explicitly reported, so full registry/node/API/platform parity is not certified."
+}
+
+
+67% tests passed, 1 tests failed out of 3
+
+Total Test time (real) =  52.55 sec
+
+The following tests FAILED:
+	260 - help_command_differential (Failed)
+Errors while running CTest

@@ -46,5 +46,11 @@
     "Full production/API/runtime parity audit remains open; source-map presence is not completion.",
     "Saved full Magic sanitizer replay previously failed at 7200s timeout; no rerun here."
   ],
-  "next_action": "Resolve remaining jnifunctions library/source/ABI dependency while auditing existing production APIs and runtime integration; implement independent missing behavior and retain meaningful native/Java validation. Do not generate a placeholder to reach 457 or mark full parity from tests/counts."
+  "next_action": "Resolve remaining jnifunctions library/source/ABI dependency while auditing existing production APIs and runtime integration; implement independent missing behavior and retain meaningful native/Java validation. Do not generate a placeholder to reach 457 or mark full parity from tests/counts.",
+  "subsequent_correction": {
+    "claim": "The three JNI commands were described as unregistered in the pinned source.",
+    "finding": "They are registered in CommandRunner.java. The previous audit checked Command.java.",
+    "historical_native_state": "The native registry at this checkpoint omitted these commands; direct caller tests passed as recorded.",
+    "followup": "command-registry-startup-work-in-progress restores source registration and adds full registry/dispatch validation."
+  }
 }

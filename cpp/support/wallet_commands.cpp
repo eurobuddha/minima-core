@@ -53,8 +53,8 @@ protected:
 };
 struct IncentiveRecordingScope {
     bool enabled;std::vector<std::shared_ptr<Command>> saved;
-    explicit IncentiveRecordingScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS;for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="incentivecash")command=std::make_shared<RecordingIncentiveCash>();}}
-    ~IncentiveRecordingScope(){if(enabled)CommandRunner::ALL_COMMANDS=std::move(saved);}
+    explicit IncentiveRecordingScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS();for(auto& command:CommandRunner::ALL_COMMANDS())if(command->getName()=="incentivecash")command=std::make_shared<RecordingIncentiveCash>();}}
+    ~IncentiveRecordingScope(){if(enabled)CommandRunner::ALL_COMMANDS()=std::move(saved);}
 };
 class RecordingHistory:public commands::history {
 public:
@@ -83,8 +83,8 @@ public:
 };
 struct SendRecordingScope {
     bool enabled;std::vector<std::shared_ptr<Command>> saved;
-    explicit SendRecordingScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS;for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="send")command=std::make_shared<RecordingSend>();}}
-    ~SendRecordingScope(){if(enabled)CommandRunner::ALL_COMMANDS=std::move(saved);}
+    explicit SendRecordingScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS();for(auto& command:CommandRunner::ALL_COMMANDS())if(command->getName()=="send")command=std::make_shared<RecordingSend>();}}
+    ~SendRecordingScope(){if(enabled)CommandRunner::ALL_COMMANDS()=std::move(saved);}
 };
 class TracingCommand:public Command {
     std::shared_ptr<Command> delegate;
@@ -102,8 +102,8 @@ public:
 };
 struct TraceScope {
     bool enabled;std::vector<std::shared_ptr<Command>> saved;
-    explicit TraceScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS;for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()->starts_with("txn"))command=std::make_shared<TracingCommand>(command);}}
-    ~TraceScope(){if(enabled)CommandRunner::ALL_COMMANDS=std::move(saved);}
+    explicit TraceScope(bool active):enabled(active){if(enabled){saved=CommandRunner::ALL_COMMANDS();for(auto& command:CommandRunner::ALL_COMMANDS())if(command->getName()->starts_with("txn"))command=std::make_shared<TracingCommand>(command);}}
+    ~TraceScope(){if(enabled)CommandRunner::ALL_COMMANDS()=std::move(saved);}
 };
 class RecordingMysql:public Command {
 public:
@@ -119,9 +119,9 @@ public:
 struct MysqlRecordingScope {
     bool enabled;std::vector<std::shared_ptr<Command>> saved;
     explicit MysqlRecordingScope(bool active):enabled(active){
-        if(enabled){saved=CommandRunner::ALL_COMMANDS;for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="mysql"){command=std::make_shared<RecordingMysql>();return;}CommandRunner::ALL_COMMANDS.push_back(std::make_shared<RecordingMysql>());}
+        if(enabled){saved=CommandRunner::ALL_COMMANDS();for(auto& command:CommandRunner::ALL_COMMANDS())if(command->getName()=="mysql"){command=std::make_shared<RecordingMysql>();return;}CommandRunner::ALL_COMMANDS().push_back(std::make_shared<RecordingMysql>());}
     }
-    ~MysqlRecordingScope(){if(enabled)CommandRunner::ALL_COMMANDS=std::move(saved);}
+    ~MysqlRecordingScope(){if(enabled)CommandRunner::ALL_COMMANDS()=std::move(saved);}
 };
 static JSONObject unsignedFileObservation(std::span<const uint8_t> data){
     JSONObject result;

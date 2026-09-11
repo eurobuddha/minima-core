@@ -1,0 +1,16 @@
+(lldb) target create "cpp/build/MinimaCoreC++"
+Current executable set to '/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/MinimaCoreC++' (arm64).
+(lldb) run -help
+Process 14894 launched: '/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/MinimaCoreC++' (arm64)
+Process 14894 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BAD_ACCESS (code=1, address=0x8)
+    frame #0: 0x0000000100081460 MinimaCoreC++`std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>::vector[abi:nqe210106](this=size=0, __x=size=0) at vector.h:266:26
+   263 	
+   264 	  _LIBCPP_CONSTEXPR_SINCE_CXX20 _LIBCPP_HIDE_FROM_ABI vector(const vector& __x)
+   265 	      : __alloc_(__alloc_traits::select_on_container_copy_construction(__x.__alloc_)) {
+-> 266 	    __init_with_size(__x.__begin_, __x.__end_, __x.size());
+    	                         ^
+   267 	  }
+   268 	  _LIBCPP_CONSTEXPR_SINCE_CXX20 _LIBCPP_HIDE_FROM_ABI
+   269 	  vector(const vector& __x, const __type_identity_t<allocator_type>& __a)
+Target 0: (MinimaCoreC++) stopped.

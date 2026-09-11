@@ -1,0 +1,62 @@
+{
+  "command": "status",
+  "status": true,
+  "pending": false,
+  "response": {
+    "version": "1.1.2.8",
+    "uptime": "0 Years 0 Months 0 Weeks 0 Days 0 Hours 0 Minutes 46 Seconds",
+    "locked": false,
+    "megammr": false,
+    "length": 4396,
+    "weight": "839241012647290",
+    "minima": "999978154.12318354243151269097224749309776437321940043",
+    "coins": "1697388",
+    "data": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/local-mainnet/data/1.1",
+    "memory": {
+      "ram": "50.8 MB",
+      "disk": "12.0 MB",
+      "files": {
+        "txpowdb": "3.5 MB",
+        "archivedb": "8.4 MB",
+        "cascade": "0 bytes",
+        "chaintree": "0 bytes",
+        "wallet": "56.0 KB",
+        "userdb": "0 bytes",
+        "p2pdb": "0 bytes"
+      }
+    },
+    "chain": {
+      "block": 2309569,
+      "time": "Fri Sep 11 20:55:16 BST 2026",
+      "hash": "0x0000001FB45F9F04FB1343F582467753EB68CC9414B66C15C0CDBD871338B122",
+      "speed": 0.019781,
+      "difficulty": "0x00000083FB78D0BB3D32981800A54F60BBBF21E0D0528714B42AF8E45A765E46",
+      "size": 1055,
+      "length": 1055,
+      "branches": 0,
+      "weight": "34347058790",
+      "cascade": {
+        "start": 2308514,
+        "length": 3341,
+        "weight": "839206665588500"
+      }
+    },
+    "txpow": {
+      "mempool": 0,
+      "ramdb": 1130,
+      "txpowdb": 1126,
+      "archivedb": 1280
+    },
+    "network": {
+      "host": "127.0.0.1",
+      "hostset": true,
+      "port": 16001,
+      "connecting": 0,
+      "connected": 1,
+      "rpc": {
+        "enabled": false,
+        "port": 16005
+      }
+    }
+  }
+}

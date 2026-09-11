@@ -1,3 +1,48 @@
+# Current checkpoint — startup fix, exact registry and newer mainnet peer
+
+Base HEAD: 1ec2e6aa92a6c943f7a5459df41f8e425a37a67a. Goal ACTIVE, incomplete.
+New mapped files: none. **456 paths: 455 active partial + one inactive; one absent,
+utils/jni/jnifunctions.cpp.** Full parity remains not_verified.
+
+CommandRunner now initializes its prototypes on first use, reusing the existing
+MinimaFunction registry pattern. This fixes the before-main burn/MiniNumber::ZERO
+initialization crash seen in the actual node and sanitizer. All 116 source commands
+are registered in exact order. CORRECTION: the preceding checkpoint incorrectly
+said JNI commands were unregistered in the pin; CommandRunner.java registers them.
+The earlier audit checked Command.java. Native registry callers use ALL_COMMANDS().
+
+Both complete builds PASS. Registry: 116 entries / 480 independent checks per build,
+eight concurrent first callers; exact metadata, fresh factories, mutable prototypes,
+configured RPC port and missing-library dispatch. Help: all 761 prior cases retained,
+six added, 767 comparisons / 2,579 assertions PASS per build. Initial help runs failed
+an obsolete missing-command assertion; corrected runs PASS, failures retained.
+Runner (1,265), runner errors (1,680), burn (364 programs) and executable-entry
+regressions PASS both builds. No full-suite parity certification.
+
+The initial local Java peer was OLD. Its 2,226,688 block matched native JSON and
+native reopened 2,226,689, but that did not prove current mainnet synchronization.
+User reported 2,309,561 and requested reset/initial connection eurobuddha.com:9001.
+Old isolated data was preserved by rename, and the fresh native node received
+1,053-block / 5.0 MB normal IBD with cascade tip 2,308,514, reaching 2,309,569.
+No MegaMMR resync was performed. Subsequent peer ping and native status both report **2,309,573** with
+hash `0x000000788D1C288566FCB61FE9C49C593B104418978FE7B83D66FA32F3C8C6E8`;
+four further blocks were accepted after the first observation. The fresh node remains running; further observations
+are recorded in validation/command-registry-startup-work-in-progress. Private node
+wallet/data/logs remain ignored under cpp/local-mainnet.
+
+Lessons corrected/expanded: three JNI callers, JNI lab, CommandRunner, help and new
+command-registry-startup lab. Evidence contains scoped tests and public observations.
+NEXT: verify continued advancement and newer-chain persistence, then resolve JNI
+external bodies/loader and complete the production API/runtime audit. Saved Magic
+sanitizer full-demo timeout remains unresolved; do not repeat it ahead of useful work.
+
+Previous verified recovery: local-backups/MinimaCoreC++-20260911T193456Z.bundle,
+SHA-256 be26014ca4c17a1ea7b59a48ba59f5722e68fab3c7d05fb493825fee570f649b;
+all 43 changed files byte-verified in a fresh recovery clone. Preserve unrelated
+graphify output and external Java commit f7f0e08. Local C++ commits only; no push.
+
+## Previous checkpoints (historical; corrections above supersede old claims)
+
 # Current checkpoint — three JNI command callers
 
 Base HEAD: b1ae9cc4efa52ae1e3737c915112982b7908c665. Goal ACTIVE, incomplete. **456 mapped paths**: 455 active

@@ -40,7 +40,7 @@ static JSONObject run(const JSONObject& request){
     JSONObject out;out.put("result",result);out.put("events",events);out.put("logs",logs);return out;
 }
 int main(){
-    for(const auto* name:{"fixture","send"})CommandRunner::ALL_COMMANDS.insert(CommandRunner::ALL_COMMANDS.begin(),std::make_shared<Probe>(name));
+    for(const auto* name:{"fixture","send"})CommandRunner::ALL_COMMANDS().insert(CommandRunner::ALL_COMMANDS().begin(),std::make_shared<Probe>(name));
     std::string line;while(std::getline(std::cin,line))try{auto request=std::get<std::shared_ptr<JSONObject>>(JSONValue::parseWithException(line).value);std::cout<<run(*request).toJSONString()<<'\n';}
     catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}
 }

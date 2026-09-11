@@ -1627,3 +1627,8 @@ add_executable(minima_jni_commands support/jni_command_probe.cpp)
 target_link_libraries(minima_jni_commands PRIVATE minima_file_port)
 add_test(NAME jni_command_callers COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/jni_command_callers.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(jni_command_callers PROPERTIES TIMEOUT 180)
+
+add_executable(minima_command_registry support/command_registry.cpp)
+target_link_libraries(minima_command_registry PRIVATE minima_file_port)
+add_test(NAME command_registry_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/command_registry_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(command_registry_differential PROPERTIES TIMEOUT 60)

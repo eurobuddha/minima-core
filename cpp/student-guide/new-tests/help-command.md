@@ -20,10 +20,11 @@ and space-fill calculation supplies expected output.
 The command tests compare actual Java/C++ metadata and replies, exact catalogue
 keys and descriptions, trimmed/blank/wrong-type parameters, case-sensitive detailed
 lookup, fresh factories, parameter aliases, chained commands and non-admin help.
-The three JNI-dependent commands are still absent from the native registry; that
-gap must be reported, not replaced with fake command implementations.
+The startup/registry checkpoint adds the three JNI caller commands in source
+order. The help suite now requires all 116 names and retains every previous case,
+adding six detailed-help cases for those commands.
 
-Both complete builds pass. Each help suite passes 761 comparisons and 2,543
+Both complete builds pass. Each expanded help suite passes 767 comparisons and 2,579
 independent assertions, including exact serialized replies and catalogue insertion
 order. The transcript hashes match. All three affected runner/text regressions
 also pass in both builds. [Saved evidence](../../validation/help-command-work-in-progress/progress.json).

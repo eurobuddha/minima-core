@@ -21,7 +21,8 @@ validation, full ordinary loops and precise normalization limits.
 [Terminal results](../../../../../../../../validation/jni-command-callers-work-in-progress/progress.json).
 The unchanged Java command runs against a recording JNI fixture; native uses an
 explicit provider. Neither fixture proves the unavailable external algorithm.
-The JNI library remains missing, and this command is not newly registered in the
-runner because the pinned source does not register it. Full runtime parity is open.
+The JNI library remains missing. This command is registered in the pinned
+CommandRunner.java and now in the native registry. The earlier claim that the
+source did not register it was incorrect. Full runtime parity is open.
 
 Pinned Java SHA-256: `c87bcae3173abad172c140740c56e7aeb7546639e401fd230dfac048e05ec5c4`.

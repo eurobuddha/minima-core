@@ -40,6 +40,6 @@ How would two command names with the same first fifteen UTF-16 code units affect
 
 ## Limits and traceability
 
-The native registry still lacks benchmark, jnitest and jniminingtest, so detailed help for those source commands remains unavailable. Tests report that gap explicitly. Allocation failures, arbitrary platform diagnostics and full node parity remain unverified.
+The native registry now includes benchmark, jnitest and jniminingtest. The expanded comparison retains all prior cases and checks detailed help for all 116 commands: 767 comparisons and 2,579 independent assertions per build. Allocation failures, arbitrary platform diagnostics and full node parity remain unverified.
 
 Pinned Java SHA-256: `c96f3af99df01e4937178cd94cea5778eab2b4899e9a02124475b3c0ffbca898`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).

@@ -20,8 +20,10 @@ mutation, so they cannot substitute for the missing library.
 All three constructors, help strings, valid-parameter lists, fresh-command factories
 and private signed-byte formatting helpers are retained. Even misleading source
 help, an unused parameter and a duplicated maxattempts entry remain unchanged.
-These three classes are not in the pinned Command registration list, so this port
-does not silently make them newly available through the command runner.
+Correction: all three classes are in the pinned CommandRunner.java registry.
+The earlier audit checked Command.java and incorrectly described them as absent.
+The startup/registry checkpoint restores their exact source positions and tests
+real dispatch, including the unloaded-library error.
 
 ## Follow the caller logic
 

@@ -51,11 +51,11 @@ public:
 };
 struct ResetChildrenScope {
     std::vector<std::shared_ptr<Command>> saved;
-    explicit ResetChildrenScope(bool active):saved(CommandRunner::ALL_COMMANDS){
-        if(active){for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="restore"||command->getName()=="archive")command=std::make_shared<ResetChild>(*command->getName());
-            if(!CommandRunner::getRunner().getCommandOnly("archive"))CommandRunner::ALL_COMMANDS.push_back(std::make_shared<ResetChild>("archive"));}
+    explicit ResetChildrenScope(bool active):saved(CommandRunner::ALL_COMMANDS()){
+        if(active){for(auto& command:CommandRunner::ALL_COMMANDS())if(command->getName()=="restore"||command->getName()=="archive")command=std::make_shared<ResetChild>(*command->getName());
+            if(!CommandRunner::getRunner().getCommandOnly("archive"))CommandRunner::ALL_COMMANDS().push_back(std::make_shared<ResetChild>("archive"));}
     }
-    ~ResetChildrenScope(){CommandRunner::ALL_COMMANDS=std::move(saved);}
+    ~ResetChildrenScope(){CommandRunner::ALL_COMMANDS()=std::move(saved);}
 };
 class RestoreListener:public MessageListener {public:void processMessage(std::shared_ptr<Message> message) override{events.add(message->getMessageType().value_or("null"));}};
 JSONObject run(const JSONObject& input,NativeH2Runtime& engine){

@@ -36,9 +36,9 @@ static JSONObject run(const JSONObject& input){
     services.isShuttingDown=[]{return false;};services.postMainMessage=[](auto){};services.postMainTimer=[](auto){};services.postNotifyEvent=[](const auto&,const auto&){};services.setStartupError=[](bool,const auto&){};services.halt=[](int){throw std::runtime_error("unexpected halt");};services.currentThreadName=[]{return "main";};
     MinimaDB::createDB(services);WalletCommandsFixture::init();db=MinimaDB::getDB()->getCustomTxnDB();GeneralParams::BASE_FILE_FOLDER=input.getString("base");
     if(input.containsKey("write")){auto file=MiniFile::createBaseFile(input.getString("path"));MiniFile::writeDataToFile(file,MiniData::fromHex(input.getString("write")).bytes());}
-    auto saved=CommandRunner::ALL_COMMANDS;struct Restore{decltype(saved) value;~Restore(){CommandRunner::ALL_COMMANDS=std::move(value);}}restore{saved};JSONObject out;
+    auto saved=CommandRunner::ALL_COMMANDS();struct Restore{decltype(saved) value;~Restore(){CommandRunner::ALL_COMMANDS()=std::move(value);}}restore{saved};JSONObject out;
     try{
-        if(input.containsKey("inputs"))for(auto& cmd:CommandRunner::ALL_COMMANDS)if(cmd->getName()=="txncreate"||cmd->getName()=="txnaddamount"||cmd->getName()=="txnscript"||cmd->getName()=="txnmmr"||cmd->getName()=="txnpost"||cmd->getName()=="txndelete")cmd=std::make_shared<Child>(cmd);
+        if(input.containsKey("inputs"))for(auto& cmd:CommandRunner::ALL_COMMANDS())if(cmd->getName()=="txncreate"||cmd->getName()=="txnaddamount"||cmd->getName()=="txnscript"||cmd->getName()=="txnmmr"||cmd->getName()=="txnpost"||cmd->getName()=="txndelete")cmd=std::make_shared<Child>(cmd);
         commands::sphincs cmd;*cmd.getParams()=object(input.get("params"));
         if(input.containsKey("meta")&&input.get("meta").asBool()){JSONObject m;m.put("help",cmd.getHelp().value());m.put("fullhelp",cmd.getFullHelp().value());JSONArray params;for(auto p:cmd.getValidParams())params.add(p);m.put("params",params);m.put("fresh",cmd.getFunction()->getJSONReply());out.put("value",m);}
         else if(input.containsKey("runner"))out.put("value",CommandRunner::getRunner().runMultiCommand(input.getString("runner")));

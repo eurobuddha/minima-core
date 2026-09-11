@@ -45,7 +45,7 @@ Successful earlier commands are not rolled back after a later failure. Errors du
 
 ## Native reuse and remaining differences
 
-The native runner reuses Command, the native JSON parser, Java-style lowercasing and missingcmd. It uses shared command prototypes to construct fresh command receivers, retaining parameter ownership through shared JSON objects. The source's registry is larger than the currently implemented native registry; absent concrete commands have not been represented by fake successful implementations.
+The native runner reuses Command, the native JSON parser, Java-style lowercasing and missingcmd. It uses shared command prototypes to construct fresh command receivers, retaining parameter ownership through shared JSON objects. The native registry now contains all 116 pinned prototypes in their exact source order. A function-local static vector constructs them on first access, after runtime initialization. Its accessor returns the same mutable vector, preserving prototype replacement and fresh-command lookup.
 
 The native generic runCommand catch now calls the actual MinimaLogger through NativeThrowable, preserves I/O exception names, and rethrows native JavaError and std::bad_alloc representations before its generic Exception handler. Null strings/prototypes, regex/Unicode corner cases and arbitrary registry mutation retain further parity gaps. The launcher comparison now covers the empty-token array access and nullable caller ordering. The tests below intentionally do not claim to cover those complete boundaries.
 
@@ -109,3 +109,7 @@ bodies use existing nested coinexport/coinimport and restore commands. Metadata,
 unknown-action envelopes and invalid parameters are compared through the runner;
 full live reset/proof/shutdown effects remain separate integration work. Both
 existing runner suites pass after the registration change. See the [MegaMMR lab](../../../../../../new-tests/mega-mmr-commands.md).
+
+## Startup initialization and complete registry
+
+Constructing every prototype before main caused burn to read MiniNumber::ZERO before its backing object was initialized. Java initializes a class on first active use; C++ global initialization across source files does not provide that dependency order. The native accessor reuses the existing MinimaFunction registry pattern. Eight concurrent first callers must obtain the same initialized registry. The new comparison checks every name, position, help string, parameter list and fresh factory, plus configured RPC port capture and prototype mutation. See the [startup and registry lab](../../../../../../new-tests/command-registry-startup.md).

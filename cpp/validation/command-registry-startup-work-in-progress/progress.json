@@ -1,0 +1,67 @@
+{
+  "base_head": "1ec2e6aa92a6c943f7a5459df41f8e425a37a67a",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "parity": "not_verified",
+  "new_counterparts": [],
+  "counterpart_paths": 456,
+  "active_partial_counterparts": 455,
+  "inactive_source_preserved": 1,
+  "absent": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "behavior_corrections": [
+    "Construct CommandRunner registry on first access using existing MinimaFunction registry pattern; fixes before-main burn/MiniNumber initialization crash.",
+    "Register all 116 pinned commands in exact order, including three JNI caller classes.",
+    "Configured RPC port is captured on registry initialization; preserve mutable prototype registry and fresh factories."
+  ],
+  "tests": {
+    "normal_full_build": "PASS",
+    "sanitized_full_build": "PASS",
+    "registry_commands": 116,
+    "registry_independent_checks_per_build": 480,
+    "concurrent_initialization_threads": 8,
+    "help_cases_per_build": 767,
+    "help_independent_checks_per_build": 2579,
+    "previous_help_cases_retained": true,
+    "runner_errors_cases": 1680,
+    "burn_programs": 364,
+    "entry_and_runner_regressions": "PASS both builds; see logs",
+    "initial_help_failure": "Both initial help runs expected three absent commands. Corrected assertion now requires all 116 and adds six cases; reruns PASS.",
+    "full_suite": "Not repeated. Full builds and affected tests completed."
+  },
+  "mainnet": {
+    "initial_peer": "127.0.0.1:15001",
+    "initial_peer_limit": "Old Java node. Agreement at block 2226688 and reopen at 2226689 do not establish current mainnet synchronization.",
+    "user_reported_tip": 2309561,
+    "reset": "User requested reset and eurobuddha.com:9001 initial connection. Old isolated data preserved by rename; fresh data created.",
+    "new_peer": "eurobuddha.com:9001",
+    "ibd_bytes_display": "5.0 MB",
+    "ibd_blocks": 1053,
+    "cascade_tip": 2308514,
+    "new_tip_observed": 2309569,
+    "new_tip_hash": "0x0000001FB45F9F04FB1343F582467753EB68CC9414B66C15C0CDBD871338B122",
+    "megammr_resync_performed": false,
+    "scope": "Fresh normal IBD and newer-chain acceptance. Subsequent tip observations recorded separately; sustained operation, current-chain restart and full consensus parity remain open.",
+    "private_data": "Ignored cpp/local-mainnet; wallet files are not committed.",
+    "peer_tip_comparison": {
+      "passed": true,
+      "block": 2309573,
+      "hash": "0x000000788D1C288566FCB61FE9C49C593B104418978FE7B83D66FA32F3C8C6E8",
+      "method": "Native ping received eurobuddha.com greeting extradata; subsequent native status matched both topblock and tophash.",
+      "advanced_from": 2309569,
+      "advanced_blocks": 4
+    }
+  },
+  "corrections": [
+    "Previous claim that JNI classes are absent from pinned registration was wrong: CommandRunner.java includes all three.",
+    "Earlier local-peer mainnet wording overstated current synchronization; local peer was behind."
+  ],
+  "blockers": [
+    "JNI external native bodies and loader unresolved.",
+    "Full API/runtime audit remains open.",
+    "Saved Magic sanitizer full demo previously timed out."
+  ],
+  "next_action": "Verify continued advancement from eurobuddha.com and current-chain persistence; finish remaining JNI dependency and production API/runtime audit.",
+  "utc": "2026-09-11T19:56:36.641340+00:00"
+}

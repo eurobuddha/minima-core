@@ -1,5 +1,16 @@
 # MinimaCoreC++ — incomplete
 
+The actual C++ node now starts after fixing command-registry initialization and
+registering all 116 source commands. Both full builds and affected tests pass.
+After a user-requested fresh reset, initial connection to eurobuddha.com:9001
+reached block **2,309,569** through normal IBD. Earlier local-peer agreement at
+2,226,688 was against an old node and did not prove current synchronization.
+[Startup/registry lab](student-guide/new-tests/command-registry-startup.md) and
+[recorded observations](validation/command-registry-startup-work-in-progress/progress.json).
+Full 457-file parity is still unfinished. Subsequent peer ping and native status both report **2,309,573** with
+hash `0x000000788D1C288566FCB61FE9C49C593B104418978FE7B83D66FA32F3C8C6E8`;
+four further blocks were accepted after the first observation.
+
 FORS validation is complete for the documented scope: both builds passed 1,246
 comparisons and 757 independent assertions using the full million-leaf forest.
 The explicit sanitizer demo audit passed with empty stderr and exact Java output.
@@ -12,7 +23,7 @@ Pinned Java source: `../upstream-study`, commit
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
 `.cpp` paths. **368 production paths (one inactive) and 88 mapped test files exist;
-6 mapped files remain unported.** These existing files are still classified
+1 mapped file remains unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
 benchmark, jnitest and jniminingtest now have native caller counterparts with an
@@ -136,8 +147,8 @@ integration. See the [Magic lab](student-guide/new-tests/streamable-magic.md) an
 
 The help command now preserves the source's 94-entry curated catalogue and detailed
 lookup through the native registry. Both builds pass 761 comparisons and 2,543
-assertions, plus the affected runner/text regressions. The three JNI-dependent
-commands remain absent. See the [help lab](student-guide/new-tests/help-command.md).
+assertions, plus the affected runner/text regressions. A later checkpoint adds the
+three JNI caller commands and expands help validation to all 116 registry entries. See the [help lab](student-guide/new-tests/help-command.md).
 
 The mysql archive command now implements all source actions and its static entry
 points, and is registered in the native runner. Both recording-SQL suites

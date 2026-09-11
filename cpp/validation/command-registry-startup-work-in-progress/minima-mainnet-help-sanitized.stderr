@@ -1,0 +1,65 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/system/commands/base/burn.hpp:16:67: runtime error: reference binding to null pointer of type 'const MiniNumber'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/system/commands/base/burn.hpp:16:67 
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/base/MiniNumber.hpp:83:7: runtime error: reference binding to null pointer of type 'const Streamable'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/base/MiniNumber.hpp:83:7 
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==14789==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x00010291ce14 bp 0x00016d6d7ba0 sp 0x00016d6d7ae0 T0)
+==14789==The signal is caused by a READ memory access.
+==14789==Hint: address points to the zero page.
+==14789==WARNING: external symbolizer didn't start up correctly!
+==14789==WARNING: Can't write to symbolizer at fd 4
+==14789==WARNING: external symbolizer didn't start up correctly!
+==14789==WARNING: Can't write to symbolizer at fd 5
+==14789==WARNING: external symbolizer didn't start up correctly!
+==14789==WARNING: Can't write to symbolizer at fd 6
+==14789==WARNING: external symbolizer didn't start up correctly!
+==14789==WARNING: Can't write to symbolizer at fd 7
+==14789==WARNING: external symbolizer didn't start up correctly!
+==14789==WARNING: Failed to use and restart external symbolizer!
+    #0 0x00010291ce14 in std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>::vector[abi:nqe210106](std::__1::vector<unsigned char, std::__1::allocator<unsigned char>> const&)+0x1ac (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1001fce14)
+    #1 0x00010291cc54 in std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>::vector[abi:nqe210106](std::__1::vector<unsigned char, std::__1::allocator<unsigned char>> const&)+0x58 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1001fcc54)
+    #2 0x00010291cbe8 in minima::BigInt::BigInt(minima::BigInt const&)+0x90 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1001fcbe8)
+    #3 0x00010291cb44 in minima::BigInt::BigInt(minima::BigInt const&)+0x58 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1001fcb44)
+    #4 0x00010291c9c0 in minima::MiniNumber::MiniNumber(minima::MiniNumber const&)+0x1a0 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1001fc9c0)
+    #5 0x000102901ae0 in minima::MiniNumber::MiniNumber(minima::MiniNumber const&)+0x58 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1001e1ae0)
+    #6 0x000103acae88 in minima::commands::burn::Window::Window()+0xf0 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1013aae88)
+    #7 0x000103ac4a48 in minima::commands::burn::Window::Window()+0x50 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1013a4a48)
+    #8 0x000103ac47f0 in minima::commands::burn::burn()+0x258 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1013a47f0)
+    #9 0x000103ac4b10 in minima::commands::burn::burn()+0x50 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1013a4b10)
+    #10 0x0001030ecd54 in minima::commands::burn* std::__1::construct_at[abi:nqe210106]<minima::commands::burn, minima::commands::burn*>(minima::commands::burn*)+0x4c (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1009ccd54)
+    #11 0x0001030eccf8 in minima::commands::burn* std::__1::__construct_at[abi:nqe210106]<minima::commands::burn, minima::commands::burn*>(minima::commands::burn*)+0x14 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1009cccf8)
+    #12 0x0001030ec750 in void std::__1::allocator_traits<std::__1::allocator<minima::commands::burn>>::construct[abi:nqe210106]<minima::commands::burn, 0>(std::__1::allocator<minima::commands::burn>&, minima::commands::burn*)+0x18 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1009cc750)
+    #13 0x0001030ec4c4 in std::__1::__shared_ptr_emplace<minima::commands::burn, std::__1::allocator<minima::commands::burn>>::__shared_ptr_emplace[abi:nqe210106]<std::__1::allocator<minima::commands::burn>, 0>(std::__1::allocator<minima::commands::burn>)+0x22c (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1009cc4c4)
+    #14 0x0001030eb848 in std::__1::__shared_ptr_emplace<minima::commands::burn, std::__1::allocator<minima::commands::burn>>::__shared_ptr_emplace[abi:nqe210106]<std::__1::allocator<minima::commands::burn>, 0>(std::__1::allocator<minima::commands::burn>)+0x50 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1009cb848)
+    #15 0x0001030eb4cc in std::__1::shared_ptr<minima::commands::burn> std::__1::allocate_shared[abi:nqe210106]<minima::commands::burn, std::__1::allocator<minima::commands::burn>, 0>(std::__1::allocator<minima::commands::burn> const&)+0x194 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1009cb4cc)
+    #16 0x0001030672f8 in std::__1::shared_ptr<minima::commands::burn> std::__1::make_shared[abi:nqe210106]<minima::commands::burn, 0>()+0x128 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1009472f8)
+    #17 0x0001032438f0 in __cxx_global_var_init.5+0x103c (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x100b238f0)
+    #18 0x00010324821c in _GLOBAL__sub_I_CommandRunner.cpp+0x14 (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x100b2821c)
+    #19 0x000185684e2c in invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const::$_0::operator()() const+0xb0 (/usr/lib/dyld:arm64e+0x4ce2c)
+    #20 0x000185690110 in invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const+0x13c (/usr/lib/dyld:arm64e+0x58110)
+    #21 0x0001856c685c in invocation function for block in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const+0x134 (/usr/lib/dyld:arm64e+0x8e85c)
+    #22 0x0001856c3390 in mach_o::UnsafeHeader::forEachLoadCommand(void (load_command const*, bool&) block_pointer) const+0xcc (/usr/lib/dyld:arm64e+0x8b390)
+    #23 0x0001856c4c38 in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const+0x78 (/usr/lib/dyld:arm64e+0x8cc38)
+    #24 0x00018568fc04 in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const+0x200 (/usr/lib/dyld:arm64e+0x57c04)
+    #25 0x00018567f7d0 in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const+0x20c (/usr/lib/dyld:arm64e+0x477d0)
+    #26 0x000185678408 in dyld4::JustInTimeLoader::runInitializers(dyld4::RuntimeState&) const+0x20 (/usr/lib/dyld:arm64e+0x40408)
+    #27 0x00018567feec in dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, lsl::Vector<AuthenticatedValue<dyld4::Loader const*>>&, lsl::Vector<AuthenticatedValue<dyld4::Loader const*>>&) const+0x234 (/usr/lib/dyld:arm64e+0x47eec)
+    #28 0x000185684ec4 in dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const::$_0::operator()() const+0x70 (/usr/lib/dyld:arm64e+0x4cec4)
+    #29 0x0001856801d4 in dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const+0x2c8 (/usr/lib/dyld:arm64e+0x481d4)
+    #30 0x00018565938c in dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)+0xf24 (/usr/lib/dyld:arm64e+0x2138c)
+    #31 0x000185658448 in dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const+0x13c (/usr/lib/dyld:arm64e+0x20448)
+    #32 0x000185657da4 in start+0x1af4 (/usr/lib/dyld:arm64e+0x1fda4)
+
+==14789==Register values:
+ x[0] = 0x0000000000000018   x[1] = 0x0000000000000008   x[2] = 0x0000000000000103   x[3] = 0x000000010b101ab0  
+ x[4] = 0x0000000063000000   x[5] = 0x0000000000000000   x[6] = 0x0000000000000000   x[7] = 0x0000000000000000  
+ x[8] = 0x0000000000000008   x[9] = 0x0000000000000008  x[10] = 0x000000000000003e  x[11] = 0x0000000000000007  
+x[12] = 0x0000000000000000  x[13] = 0x0000000108e78b96  x[14] = 0x000000016d6d6da0  x[15] = 0x0000000108e78b8e  
+x[16] = 0x000000010291ced8  x[17] = 0x0000000108dd05d8  x[18] = 0x0000000000000000  x[19] = 0x000000016d6d7f20  
+x[20] = 0x0000000103248208  x[21] = 0x00000001f18e13c0  x[22] = 0x0000000103c4a4dc  x[23] = 0x0000000102720160  
+x[24] = 0x0000000000000006  x[25] = 0x00000000000000a0  x[26] = 0x0000000102720380  x[27] = 0x0000000102720108  
+x[28] = 0x0000000000000010     fp = 0x000000016d6d7ba0     lr = 0x000000010291cdbc     sp = 0x000000016d6d7ae0  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/MinimaCoreC++:arm64+0x1001fce14) in std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>::vector[abi:nqe210106](std::__1::vector<unsigned char, std::__1::allocator<unsigned char>> const&)+0x1ac
+==14789==ABORTING

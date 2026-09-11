@@ -1,0 +1,60 @@
+{
+  "command": "network",
+  "status": true,
+  "pending": false,
+  "response": {
+    "connections": [
+      {
+        "welcome": "Minima v1.0.48",
+        "uid": "5TMVH2DMTVA54",
+        "incoming": false,
+        "host": "65.109.31.226",
+        "port": 9001,
+        "minimaport": 9001,
+        "isconnected": true,
+        "valid": true,
+        "connected": "Fri Sep 11 20:54:57 BST 2026"
+      }
+    ],
+    "details": {
+      "host": "127.0.0.1",
+      "hostset": true,
+      "port": 16001,
+      "connecting": 0,
+      "connected": 1,
+      "rpc": {
+        "enabled": false,
+        "port": 16005
+      },
+      "p2p": "disabled",
+      "p2p2": "disabled",
+      "traffic": {
+        "from": "Fri Sep 11 20:54:46 BST 2026",
+        "totalread": "11.5 MB",
+        "totalwrite": "9.1 KB",
+        "breakdown": {
+          "reads": {
+            "MAXIMA_CTRL": "277 bytes",
+            "TXPOW": "620.1 KB",
+            "TXPOWID": "74 bytes",
+            "IBD": "5.0 MB",
+            "GREETING": "37.8 KB",
+            "TXBLOCKID": "74 bytes",
+            "P2P": "1.7 KB",
+            "MSG_IBD_RESP": "4.9 MB"
+          },
+          "writes": {
+            "TXPOWREQ_single": "3.0 KB",
+            "TXBLOCKID_all": "74 bytes",
+            "IBD_single": "5 bytes",
+            "GREETING_single": "88 bytes",
+            "MSG_IBD_REQ_single": "4.8 KB",
+            "TXPOWID_all": "703 bytes"
+          }
+        },
+        "read": "11.5 MB/min",
+        "write": "9.1 KB/min"
+      }
+    }
+  }
+}

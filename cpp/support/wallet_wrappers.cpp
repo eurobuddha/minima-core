@@ -101,9 +101,9 @@ static JSONObject run(const JSONObject& input){
         }
         else if(flag("meta")){JSONObject meta;meta.put("help",cmd->getHelp().value());meta.put("fullhelp",cmd->getFullHelp().value());JSONArray params;for(const auto& p:cmd->getValidParams())params.add(p);meta.put("params",params);meta.put("fresh",cmd->getFunction()->getJSONReply());out.put("value",meta);}
         else if(input.containsKey("runner")){
-            auto saved=CommandRunner::ALL_COMMANDS;
-            struct Restore {std::vector<std::shared_ptr<Command>> saved;~Restore(){CommandRunner::ALL_COMMANDS=std::move(saved);}}restore{saved};
-            if(flag("recordRunner"))CommandRunner::ALL_COMMANDS.insert(CommandRunner::ALL_COMMANDS.begin(),command(name));
+            auto saved=CommandRunner::ALL_COMMANDS();
+            struct Restore {std::vector<std::shared_ptr<Command>> saved;~Restore(){CommandRunner::ALL_COMMANDS()=std::move(saved);}}restore{saved};
+            if(flag("recordRunner"))CommandRunner::ALL_COMMANDS().insert(CommandRunner::ALL_COMMANDS().begin(),command(name));
             out.put("value",CommandRunner::getRunner().runMultiCommand("0x00",input.getString("runner")));
         }
         else if(input.containsKey("helper")){

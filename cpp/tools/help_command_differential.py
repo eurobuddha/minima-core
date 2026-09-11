@@ -25,7 +25,7 @@ def main():
             return value
         return value
     try:
-        names=[r.ask(dict(op='registry',params={}))['names'] for r in runners];missing=sorted(set(names[0])-set(names[1]));check(missing==['benchmark','jniminingtest','jnitest'],'only known unported JNI commands absent');check(not set(names[1])-set(names[0]),'no invented native commands');check(set(curated)<=set(names[1]),'every curated constructor available');transcript.update(json.dumps(names).encode())
+        names=[r.ask(dict(op='registry',params={}))['names'] for r in runners];missing=sorted(set(names[0])-set(names[1]));check(names[0]==names[1] and len(names[1])==116,'all 116 pinned command names present');check(not set(names[1])-set(names[0]),'no invented native commands');check(set(curated)<=set(names[1]),'every curated constructor available');transcript.update(json.dumps(names).encode())
         for params in [{},{'ignored':'value'},{'command':'hash'}]:add('meta',params)
         for op in ['run','alias']:
             for params in [{},{'ignored':None},{'ignored':[]},{'command':'help'},{'command':'hash','ignored':True}]:add(op,params)
@@ -75,6 +75,6 @@ def main():
                 except Exception as error:failures.append(dict(phase='cleanup',runtime=which,error=repr(error)))
                 errors.seek(0);stderr=errors.read()
                 if which==1 and stderr:failures.append(dict(phase='native stderr',stderr=stderr))
-    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,curated_commands=len(curated),missing_native_registry_commands=missing,transcript_sha256=transcript.hexdigest(),seconds=round(time.monotonic()-started,3),failures=failures,scope='Actual pinned help and native counterpart: full 94-entry curated catalogue, detailed help for every existing native registry command, exact metadata/nulls, fresh factory/parameter aliases, trimmed/blank/wrong-type input, case-sensitive lookup, actual chained runner/non-admin calls, controlled metadata-only target, UTF-16 code-unit padding/truncation/null/negative ranges. NPE/classcast diagnostic prose normalized; native complete stderr empty. Three JNI-dependent source commands remain absent and are explicitly reported, so full registry/node/API/platform parity is not certified.')
+    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,curated_commands=len(curated),missing_native_registry_commands=missing,transcript_sha256=transcript.hexdigest(),seconds=round(time.monotonic()-started,3),failures=failures,scope='Actual pinned help and native counterpart: full 94-entry curated catalogue, detailed help for all 116 registry commands, exact metadata/nulls, fresh factory/parameter aliases, trimmed/blank/wrong-type input, case-sensitive lookup, actual chained runner/non-admin calls, controlled metadata-only target, UTF-16 code-unit padding/truncation/null/negative ranges. All previous cases retained plus detailed help for three JNI commands. NPE/classcast diagnostic prose normalized; native complete stderr empty. Successful JNI calls and full node/API/platform parity are not certified.')
     (build/'help-command-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

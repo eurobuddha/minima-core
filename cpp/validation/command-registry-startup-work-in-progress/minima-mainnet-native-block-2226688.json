@@ -1,0 +1,126 @@
+{
+  "command": "txpow",
+  "params": {
+    "block": "2226688"
+  },
+  "status": true,
+  "pending": false,
+  "response": {
+    "txpowid": "0x00003976EC2C3390ACB201752E72402933FCD598D832A4AC9D65BE1CEE6F04A5",
+    "isblock": true,
+    "istransaction": false,
+    "superblock": 0,
+    "size": 827,
+    "burn": 0,
+    "header": {
+      "chainid": "0x00",
+      "block": "2226688",
+      "blkdiff": "0x3DAE7249ABE790D11656F110303BE0A25328BEAAC5F40202EA0B4C9DCD94",
+      "cascadelevels": 32,
+      "superparents": [
+        {
+          "difficulty": 0,
+          "count": 1,
+          "parent": "0x000025C28C4D3B58BCC6D6FB7363575D8CEE47BF19D54EB1933546BBB4438255"
+        },
+        {
+          "difficulty": 1,
+          "count": 1,
+          "parent": "0x000014BD48D8F6D6943FCB4EBC84A1671E059D828DCB37E9D489DD1662F618F3"
+        },
+        {
+          "difficulty": 4,
+          "count": 3,
+          "parent": "0x0000028A2AF9E1A0A2795E8BA175EDC8B4CE12B65E9F14735EF04B477DEF971F"
+        },
+        {
+          "difficulty": 8,
+          "count": 4,
+          "parent": "0x000000254F87788DEAC769F2CD17CE6EBC562E7DA6929AFD2EAD118228A7196E"
+        },
+        {
+          "difficulty": 9,
+          "count": 1,
+          "parent": "0x0000000FB4E9F94108906C74E35BCAB711A207496E9784BB63C9F67721C952D6"
+        },
+        {
+          "difficulty": 10,
+          "count": 1,
+          "parent": "0x0000000A8608866C3F4FF686D23B5B5D44836A179E2CC449928CC765AFF453FE"
+        },
+        {
+          "difficulty": 12,
+          "count": 2,
+          "parent": "0x0000000390A20C95E5E776F4ADAF1691BAEC58568B01FC0810410AB4D8997103"
+        },
+        {
+          "difficulty": 15,
+          "count": 3,
+          "parent": "0x0000000000A9D3B2956454118D6572F1A123FD5D9A2729796661B46806C6C9A5"
+        },
+        {
+          "difficulty": 16,
+          "count": 1,
+          "parent": "0x00000000003BBABAE5D504D32B6C6DF7BF1DDAE9BE584945403968AFC1BAFC2C"
+        },
+        {
+          "difficulty": 21,
+          "count": 5,
+          "parent": "0x00000000000266ED860FC3A912F251B0C6DB74DB3D5DBE00FA1F7CF433E6793F"
+        },
+        {
+          "difficulty": 31,
+          "count": 10,
+          "parent": "0x00"
+        }
+      ],
+      "magic": {
+        "currentmaxtxpowsize": "65536",
+        "currentmaxkissvmops": "1024",
+        "currentmaxtxn": "256",
+        "currentmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+        "desiredmaxtxpowsize": "65536",
+        "desiredmaxkissvmops": "1024",
+        "desiredmaxtxn": "256",
+        "desiredmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43"
+      },
+      "mmr": "0x4A24A9C78A81887FC79D183DF8453E1A7F5C71347CAACEDFD81F094E005F0519",
+      "total": "999978166.22318354501151269097224750309776437341840059",
+      "customhash": "0x00",
+      "txbodyhash": "0x22A5EB29E978F40E0E9AA3437D840793F4A0FF605B5BA69D5093B64D526346C5",
+      "nonce": "99801187840069292.74950858178188807241524374845956785438721",
+      "timemilli": "1789156185477",
+      "date": "Fri Sep 11 20:49:45 BST 2026"
+    },
+    "hasbody": true,
+    "body": {
+      "prng": "0x70CC5B2DFFD71800277603D481F511EDD886AFE550415D448F5882AEA48A1EEE",
+      "txndiff": "0x3DAE7249ABE790D11656F110303BE0A25328BEAAC5F40202EA0B4C9DCD94",
+      "txn": {
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "linkhash": "0x00",
+        "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+      },
+      "witness": {
+        "signatures": [],
+        "mmrproofs": [],
+        "scripts": []
+      },
+      "burntxn": {
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "linkhash": "0x00",
+        "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+      },
+      "burnwitness": {
+        "signatures": [],
+        "mmrproofs": [],
+        "scripts": []
+      },
+      "txnlist": []
+    }
+  }
+}
