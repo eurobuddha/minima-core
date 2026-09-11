@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 400 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 403 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -218,7 +218,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/base/tokencreate.java` | `src/org/minima/system/commands/base/tokencreate.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/tokenvalidate.java` | `src/org/minima/system/commands/base/tokenvalidate.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/base/trace.java` | `src/org/minima/system/commands/base/trace.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/base/tutorial.java` | `src/org/minima/system/commands/base/tutorial.cpp` | unported | — |
+| `src/org/minima/system/commands/base/tutorial.java` | `src/org/minima/system/commands/base/tutorial.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/help.java` | `src/org/minima/system/commands/help.cpp` | unported | — |
 | `src/org/minima/system/commands/network/connect.java` | `src/org/minima/system/commands/network/connect.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/network/disconnect.java` | `src/org/minima/system/commands/network/disconnect.cpp` | implemented_partial | — |
@@ -260,7 +260,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/sendpoll/SendPollMessage.java` | `src/org/minima/system/commands/sendpoll/SendPollMessage.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/signatures/sign.java` | `src/org/minima/system/commands/signatures/sign.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/signatures/verify.java` | `src/org/minima/system/commands/signatures/verify.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/tutorial.java` | `src/org/minima/system/commands/tutorial.cpp` | unported | — |
+| `src/org/minima/system/commands/tutorial.java` | `src/org/minima/system/commands/tutorial.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/txn/txnaddamount.java` | `src/org/minima/system/commands/txn/txnaddamount.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/txn/txnauto.java` | `src/org/minima/system/commands/txn/txnauto.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/txn/txnbasics.java` | `src/org/minima/system/commands/txn/txnbasics.cpp` | implemented_partial | — |
@@ -284,7 +284,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/txn/txnstate.java` | `src/org/minima/system/commands/txn/txnstate.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/txn/txnutils.java` | `src/org/minima/system/commands/txn/txnutils.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/txn/txnview.java` | `src/org/minima/system/commands/txn/txnview.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/whitepaper.java` | `src/org/minima/system/commands/whitepaper.cpp` | unported | — |
+| `src/org/minima/system/commands/whitepaper.java` | `src/org/minima/system/commands/whitepaper.cpp` | implemented_partial | — |
 | `src/org/minima/system/genesis/GenesisCoin.java` | `src/org/minima/system/genesis/GenesisCoin.cpp` | implemented_partial | `src/objects/Genesis.hpp` |
 | `src/org/minima/system/genesis/GenesisMMR.java` | `src/org/minima/system/genesis/GenesisMMR.cpp` | implemented_partial | `src/objects/Genesis.hpp` |
 | `src/org/minima/system/genesis/GenesisTxPoW.java` | `src/org/minima/system/genesis/GenesisTxPoW.cpp` | implemented_partial | `src/objects/Genesis.hpp` |

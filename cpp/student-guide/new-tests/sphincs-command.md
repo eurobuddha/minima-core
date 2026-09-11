@@ -33,3 +33,8 @@ Before execution, the test plan is:
 Driver: `cpp/tools/sphincs_command_differential.py`. `--quick` performs the helper
 and boundary cases; the default additionally performs five full-size signing
 operations per runtime. Results are pending at the time this lab is introduced.
+
+The full normal run now passes 131 cases and 34 independent assertions in
+1,529.766 seconds. It generated all five genuine full-size signatures: inline,
+file, test action, one-input transaction and eight-input rejected-post transaction.
+The sanitizer command run remains active; no full sanitizer pass is claimed.

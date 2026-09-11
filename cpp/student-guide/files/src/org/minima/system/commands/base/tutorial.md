@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/tutorial.java) · `src/org/minima/system/commands/base/tutorial.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/base/tutorial.java) · [Native counterpart](../../../../../../../../src/org/minima/system/commands/base/tutorial.cpp)
 
 ## Purpose
 
@@ -19,15 +19,15 @@ tutorial returns a fixed KISS VM grammar and function-reference string. It neith
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse the exact pinned literal as data. A raw C++ string or generated escaped literal can preserve bytes, but Java source escape sequences must be evaluated correctly rather than copied as visible backslashes.
+The native counterpart reuses Command and preserves this older tutorial separately as minima::commands::base::tutorial. It retains its full-help override and all 6,733 payload bytes. The registered root tutorial has different text and is a different native class; replacing one with the other would change behavior.
 
 ## Understanding the tests
 
-No direct native assertion for this absent command is claimed. The appropriate proposed assertion is byte-for-byte equality of the complete response string and command metadata/fresh reply. Separately compare examples and names with actual parser/function behavior to assess documentation accuracy; a literal equality test does not establish grammar correctness.
+Both differential suites pass 71 cases and 428 independent assertions. It compares complete text, metadata, reply shape, the public WP constant, fresh factories, ignored direct-call parameters, parameter aliases, ordinary/non-admin callers, invalid runner parameters and the registered tutorial variant. Python independently decodes the pinned literal expressions and records exact lengths and SHA-256 hashes. Both full builds pass; the normal comparison took 2.618 seconds and the sanitizer comparison took 4.137 seconds, with identical transcript hashes and empty native stderr. A literal equality test does not establish grammar correctness.
 
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+The test plan was written before execution. See the [text-preservation lab](../../../../../../../../student-guide/new-tests/static-command-text.md) for method and current results.
 
 ## Limits
 

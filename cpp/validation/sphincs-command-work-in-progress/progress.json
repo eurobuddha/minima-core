@@ -21,9 +21,8 @@
     "limitation": "Before embedded-NUL path guard and added regression; full runs exercise final source."
   },
   "active_sessions": {
-    "normal_full_command": 89965,
     "sanitized_full_command": 24343,
-    "earlier_sanitized_signer": 31941
+    "resumed_sanitized_signer": 41760
   },
   "full_parity_verified": false,
   "normal_full_progress": {
@@ -80,5 +79,11 @@
     },
     "independent_assertions": 24,
     "failures": 0
+  },
+  "normal_full_result": {
+    "passed": true,
+    "cases": 131,
+    "independent_assertions": 34,
+    "seconds": 1529.766
   }
 }

@@ -36,3 +36,11 @@ actual source and native log methods with null, empty and ordinary text; all thr
 cases and six independent assertions passed in each build. The original driver
 artifact is retained, and this audit supersedes only its erroneous log case.
 It does not replace any full-size signature, proof, verification or main check.
+
+The original sanitizer run stopped on a response timeout during its third
+(empty-message) signature. Its first 158 comparisons and two complete signature
+pairs matched; these records and the timeout log are preserved. The resumed
+suite uses those records explicitly as saved observations, rechecks their proofs
+and actual verifiers, then generates the missing full-size signature and runs the
+source mains. Its 3,600-second per-operation timeout changes only test orchestration.
+No full sanitizer completion is claimed until that resumed run finishes.

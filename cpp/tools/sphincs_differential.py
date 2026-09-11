@@ -30,11 +30,15 @@ def wots_verify(message,signature):
     return sha(result)
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--build',type=Path,default=ROOT/'build');args=p.parse_args();build=args.build.resolve();oracle=build/'sphincs-oracle';oracle.mkdir(exist_ok=True)
+    p=argparse.ArgumentParser();p.add_argument('--build',type=Path,default=ROOT/'build');p.add_argument('--resume-vectors',type=Path);p.add_argument('--response-timeout',type=int,default=3600);args=p.parse_args();build=args.build.resolve();oracle=build/'sphincs-oracle';oracle.mkdir(exist_ok=True)
+    resumed=args.resume_vectors is not None;prefix='sphincs-resumed' if resumed else 'sphincs'
+    saved=json.loads(args.resume_vectors.read_text()) if resumed else []
+    if len(saved)>3:raise ValueError('At most three completed signature records may be resumed')
+    saved_hash=hashlib.sha256(args.resume_vectors.read_bytes()).hexdigest() if resumed else None
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support'/s for s in ['HORSTOracle.java','FORSOracle.java','SPHINCSOracle.java']]
     listing=oracle/'sources.txt';listing.write_text('\n'.join(map(str,sources))+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
     commands=[['java','-XX:-OmitStackTraceInFastThrow','-Xmx2g','-cp',f'{oracle}:{JAVA}/jar/minima.jar','SPHINCSOracle'],[str(build/'minima_sphincs')]]
-    runners=[ForestRunner(c,response_timeout=1800) for c in commands];cases=0;checks=0;failures=[];groups={};vectors=[];transcript=hashlib.sha256();start=time.monotonic()
+    runners=[ForestRunner(c,response_timeout=args.response_timeout) for c in commands];cases=0;checks=0;failures=[];groups={};vectors=[];transcript=hashlib.sha256();start=time.monotonic()
     def check(condition,description):
         nonlocal checks
         checks+=1
@@ -44,7 +48,7 @@ def main():
         values=[r.ask(q) for r in runners];cases+=1;groups[group]=groups.get(group,0)+1
         transcript.update(json.dumps([q,*values],sort_keys=True,separators=(',',':')).encode())
         if values[0]!=values[1]:failures.append(dict(index=cases,group=group,request=q,java=values[0],cpp=values[1]))
-        (build/'sphincs-progress.json').write_text(json.dumps(dict(cases=cases,groups=groups,failures=failures,independent_assertions=checks),indent=2)+'\n')
+        (build/(prefix+'-progress.json')).write_text(json.dumps(dict(cases=cases,groups=groups,failures=failures,independent_assertions=checks),indent=2)+'\n')
         return values
     def verify(group,q,expected=None):
         values=compare(group,q)
@@ -77,9 +81,19 @@ def main():
         # These failures preserve the initialized signing seeds. The first real
         # signature below therefore also tests recovery after failed reinitialization.
         compare('failed-reinitialize',dict(action='private',private='0x01'));compare('failed-seed-reinitialize',dict(action='seed',seed=None))
-        for action,message in [('sign',bytes.fromhex('FFEEDD')),('static',bytes.fromhex('FFEEDD')),('sign',b'')]:
-            print(json.dumps(dict(progress='starting full-size signature',action=action,message=hx(message),cases=cases)),flush=True)
-            values=compare('full-sign',dict(action=action,message=hx(message),private=hx(private)))
+        for position,(action,message) in enumerate([('sign',bytes.fromhex('FFEEDD')),('static',bytes.fromhex('FFEEDD')),('sign',b'')]):
+            if position<len(saved):
+                prior=saved[position]
+                check((prior['action'],prior['message'],prior['private'],prior['public'])==(action,hx(message),hx(private),public),'resume record inputs match this corpus')
+                check(prior['java']==prior['cpp'] and hx(envelope(prior['json']))==prior['java'],'resume record retains exact matched Java/native wire')
+                # These are saved observations, not newly executed sign calls.
+                # All independent proof checks and cross-writer verifiers below
+                # still run; the original generating run remains separate evidence.
+                values=[dict(wire=prior[writer],json=prior['json']) for writer in ['java','cpp']]
+                print(json.dumps(dict(progress='checking saved matched signature',record=position,action=action,message=hx(message))),flush=True)
+            else:
+                print(json.dumps(dict(progress='starting full-size signature',action=action,message=hx(message),cases=cases)),flush=True)
+                values=compare('full-sign',dict(action=action,message=hx(message),private=hx(private)))
             hashed=sha(message);index=int.from_bytes(hashed,'big')%(192**4);text=str(index);indexbytes=bytes.fromhex(('0' if len(text)%2 else '')+text);forsseed=sha(private[32:]+indexbytes)
             for v in values:
                 j=v['json'];check(hx(envelope(j))==v['wire'],'independently encoded full envelope')
@@ -97,7 +111,7 @@ def main():
                     node_seed=sha(number(nodes[i])+data(sha(data(node_seed))))
                 check(signatures[0]['rootkey']==public,'WOTS root is SPHINCS public key')
             record=dict(action=action,message=hx(message),private=hx(private),public=public,index=index,index_bytes=hx(indexbytes),fors_seed=hx(forsseed),java=values[0]['wire'],cpp=values[1]['wire'],json=values[0]['json']);vectors.append(record)
-            (build/'sphincs-known-vectors.json').write_text(json.dumps(vectors,indent=2)+'\n')
+            (build/(prefix+'-known-vectors.json')).write_text(json.dumps(vectors,indent=2)+'\n')
             if action=='static':check(vectors[0]['java']==record['java'] and vectors[0]['cpp']==record['cpp'],'static and instance deterministic equality after failed reinit')
             for writer in ['java','cpp']:
                 q=dict(action='verify',wire=record[writer],message=hx(message),public=public)
@@ -132,11 +146,19 @@ def main():
         for text in [None,'','student log']:compare('log',dict(action='log',message=text))
         # The runner enables UBSAN halt; inspect stderr before its temporary file closes.
         check(not runners[1].errors(),'native runner stderr must be empty')
+    except Exception as error:
+        failures.append(dict(phase='execution',cases=cases,error=repr(error)))
     finally:
-        for runner in runners:runner.close()
+        diagnostics=[dict(runtime=name,stderr=runner.errors()) for name,runner in zip(['java','cpp'],runners)]
+        for name,runner in zip(['java','cpp'],runners):
+            try:runner.close()
+            except Exception as error:failures.append(dict(phase='cleanup',runtime=name,error=repr(error)))
+        (build/(prefix+'-process-results.json')).write_text(json.dumps(dict(cases=cases,groups=groups,failures=failures,diagnostics=diagnostics,resumed_signature_records=len(saved),resume_vectors_sha256=saved_hash),indent=2)+'\n')
+    if any(f.get('phase') in ['execution','cleanup'] for f in failures):
+        print(json.dumps(dict(phase='incomplete execution',cases=cases,failures=failures)),flush=True);return 1
     print(json.dumps(dict(progress='comparisons complete, running actual source mains',cases=cases,failures=len(failures))),flush=True)
-    demos=[checked_demo(c) for c in commands];check(demos[0].stdout==demos[1].stdout,'actual source main stdout')
-    (build/'sphincs-demo-output.json').write_text(json.dumps(dict(stdout=demos[0].stdout,native_stderr=demos[1].stderr,returncodes=[d.returncode for d in demos],UBSAN_OPTIONS='halt_on_error=1'),indent=2)+'\n')
-    report=dict(cases=cases,passed=cases-len(failures),independent_assertions=checks,groups=groups,failures=failures,seconds=round(time.monotonic()-start,3),transcript_sha256=transcript.hexdigest(),full_forest_leaves_per_sign=1048576,source_mains_matched=True,scope='Actual pinned SPHINCS with TreeKey192/4 and full FORS, private-key partial state, all signature bytes/JSON, cross-writer verification, independent selected secrets/WOTS chains/MMR paths, source mains. NPE/EOF prose normalized. Raw MiniData byte aliases, package-private field mutation, null SignatureProof internals/list entries, arbitrary subclasses/concurrency and full node parity not certified.')
-    (build/'sphincs-differential-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({**report,'failures':failures[:2]},indent=2));return bool(failures)
+    demos=[checked_demo(c,timeout=args.response_timeout) for c in commands];check(demos[0].stdout==demos[1].stdout,'actual source main stdout')
+    (build/(prefix+'-demo-output.json')).write_text(json.dumps(dict(stdout=demos[0].stdout,native_stderr=demos[1].stderr,returncodes=[d.returncode for d in demos],UBSAN_OPTIONS='halt_on_error=1'),indent=2)+'\n')
+    report=dict(cases=cases,passed=cases-len(failures),resumed_signature_records=len(saved),new_signatures=3-len(saved),resume_vectors_sha256=saved_hash,independent_assertions=checks,groups=groups,failures=failures,seconds=round(time.monotonic()-start,3),transcript_sha256=transcript.hexdigest(),full_forest_leaves_per_sign=1048576,source_mains_matched=True,scope='Actual pinned SPHINCS with TreeKey192/4 and full FORS, private-key partial state, all signature bytes/JSON, cross-writer verification, independent selected secrets/WOTS chains/MMR paths, source mains. NPE/EOF prose normalized. Raw MiniData byte aliases, package-private field mutation, null SignatureProof internals/list entries, arbitrary subclasses/concurrency and full node parity not certified.')
+    (build/(prefix+'-differential-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({**report,'failures':failures[:2]},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

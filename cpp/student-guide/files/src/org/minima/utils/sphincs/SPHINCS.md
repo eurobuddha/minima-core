@@ -59,3 +59,11 @@ conformance. Full transaction/script integration remains subsequent work.
 Why must decimal index 10 become the bytes obtained by parsing text "10" as hex, rather than an assumed binary encoding of decimal ten?
 
 Pinned Java SHA-256: `3ac529ef2dd400856175514ea73a9a956a8b44a7e2ed1e1ec00d06d159ca6690`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+The original sanitizer run stopped on a response timeout during its third
+(empty-message) signature. Its first 158 comparisons and two complete signature
+pairs matched; these records and the timeout log are preserved. The resumed
+suite uses those records explicitly as saved observations, rechecks their proofs
+and actual verifiers, then generates the missing full-size signature and runs the
+source mains. Its 3,600-second per-operation timeout changes only test orchestration.
+No full sanitizer completion is claimed until that resumed run finishes.

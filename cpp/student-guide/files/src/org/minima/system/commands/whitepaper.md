@@ -2,11 +2,11 @@
 
 **Teaching status:** Authored algorithm and test explanation; full API/parity review remains open.
 
-**Port status:** `unported`; parity `not_verified`. The mapped C++ file is absent. This page does not describe a completed translation.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
 | Source | Destination |
 |---|---|
-| [src/org/minima/system/commands/whitepaper.java](../../../../../../../../upstream-study/src/org/minima/system/commands/whitepaper.java) | `src/org/minima/system/commands/whitepaper.cpp` (planned) |
+| [src/org/minima/system/commands/whitepaper.java](../../../../../../../../upstream-study/src/org/minima/system/commands/whitepaper.java) | [Native counterpart](../../../../../../../src/org/minima/system/commands/whitepaper.cpp) |
 
 ## What this file does
 
@@ -21,11 +21,11 @@ Exposes the white-paper text embedded as the class’s WP constant.
 
 ## How the translation is approached
 
-This mapped command remains unported. Reuse Command reply formatting and the pinned literal text or command metadata. Text-preservation work should keep Java escape interpretation, UTF-16 length and reply nesting explicit rather than editing the content during translation.
+The native counterpart reuses Command reply formatting and copies the exact pinned literal expressions. Java and C++ escapes are checked against the actual compiled Java output. The two tutorial classes retain distinct namespaces and text; only the root-package tutorial is registered, matching the source. The white-paper constant remains public and immutable.
 
 ## What the tests tell us
 
-Proposed validation is an exact Java/native reply comparison after the counterpart exists. Include name/help metadata, fresh function instances, parameter acceptance and every branch described here. No native test pass is claimed for this absent command.
+Both differential suites pass 71 cases and 428 independent assertions. It compares complete text, metadata, reply shape, the public WP constant, fresh factories, ignored direct-call parameters, parameter aliases, ordinary/non-admin callers, invalid runner parameters and the registered tutorial variant. Python independently decodes the pinned literal expressions and records exact lengths and SHA-256 hashes. Both full builds pass; the normal comparison took 2.618 seconds and the sanitizer comparison took 4.137 seconds, with identical transcript hashes and empty native stderr.
 
 ## Dependencies and reading map
 
@@ -39,6 +39,6 @@ A client expects response to be a string because tutorial returned one. What ass
 
 ## Limits and traceability
 
-This lesson reviews the executable wrapper and the constant’s role. It does not independently fact-check the historical paper or present its claims as current protocol guarantees. The native counterpart is absent; these are source explanations and future validation plans.
+This lesson reviews the executable wrapper and the constant’s role. It does not independently fact-check the historical paper or present its claims as current protocol guarantees. The native text is compared with the source; this does not certify the rest of the node.
 
 Pinned Java SHA-256: `1a94c714ff2910d68ab638da024ad00e4de66b79fd5118467b5f1423193c2329`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).

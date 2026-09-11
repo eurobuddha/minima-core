@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "cases": 71,
+  "planned_cases": 71,
+  "independent_assertions": 428,
+  "seconds": 4.137,
+  "text_payloads": {
+    "tutorial": {
+      "utf8_bytes": 6825,
+      "sha256": "ad5181c32b34e1ed52cf3507ece6bac7e744b73f7aa110e382babe5c3ca6e32a"
+    },
+    "base/tutorial": {
+      "utf8_bytes": 6733,
+      "sha256": "13ce996abf354994bcec362ed110b65add7b0e2c4fd0ff1d703ce6de0c6331b0"
+    },
+    "whitepaper": {
+      "utf8_bytes": 43554,
+      "sha256": "8e8b5249105e03846c57ca3b939f4ce7348ba89ebccda9ac60fe03b4748c516c"
+    }
+  },
+  "transcript_sha256": "d0d478edc06336bc6746dcf24c8b91c3cc2b8f3b96e685477d85511e2bc5b036",
+  "failures": [],
+  "scope": "Actual pinned tutorial variants and whitepaper: complete exact payloads, public WP constant, constructor metadata, base-only full-help override, fresh factories, direct ignored parameters, reply parameter aliases, actual registered root tutorial, chained commands, case-insensitive parsing and non-admin callers. Native empty stderr. Does not validate historical paper claims or execute tutorial examples; full project parity remains unverified."
+}

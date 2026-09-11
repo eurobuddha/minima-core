@@ -1,0 +1,12 @@
+{
+  "session": 31941,
+  "terminal_exit": 1,
+  "completed_comparisons": 158,
+  "mismatches_before_timeout": 0,
+  "complete_signature_pairs": 2,
+  "failed_phase": "Third full-size signature for empty message: response timeout1800seconds; cleanup timeout120seconds then native child killed by ForestRunner.",
+  "final_report_produced": false,
+  "native_stderr_retained": false,
+  "source_mains_executed": false,
+  "resume_vector_sha256": "912772056ea24f15dad3207df07275a27a42f6a1458cc8d8e35a2097184b7dc4"
+}

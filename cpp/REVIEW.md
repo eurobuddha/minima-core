@@ -1,3 +1,40 @@
+## Text command and signer validation checkpoint review
+
+### Summary
+
+The two tutorial classes and whitepaper command preserve their pinned literals,
+metadata and response shapes using the existing Command implementation. The two
+tutorial classes have separate native namespaces. The real runner selects the
+root variant, and the white-paper constant remains public and immutable.
+
+### Findings
+
+No production correctness issue was found in the new text wrappers. Both complete
+builds pass. Java/native comparisons pass 71 cases and 428 independent assertions
+in both builds, with identical transcript hashes and empty native stderr. The
+independent source-literal decoder also verifies complete payload bytes. Tests
+cover factories, metadata, parameter aliases, chaining and runner validation.
+These tests preserve historical documentation; they do not validate its claims.
+
+The full normal SPHINCS command suite completed 131 cases and 34 independent
+assertions, including all five full-size signatures. The sanitizer command suite
+remains active. The original sanitizer signer timed out during its third signature;
+its first two matched signature records and timeout evidence remain intact.
+The resumed driver distinguishes saved observations from newly executed signatures,
+reruns verifiers and independent proof checks, and writes separate artifacts.
+Timeouts affect test orchestration only. Full sanitizer completion remains pending.
+
+### Verdict
+
+Approve this local checkpoint with the documented incomplete validation. There
+are 403 counterparts and 54 absent files; no full-project parity certification.
+249 CTest entries are registered; the entire suite has not run. All 457 teaching
+pages are present. See [text evidence](validation/text-commands-work-in-progress/progress.json),
+[command evidence](validation/sphincs-command-work-in-progress/progress.json), and
+[signer evidence](validation/sphincs-work-in-progress/progress.json).
+
+---
+
 ## Database test command and completed TransactionTest review
 
 ### Summary

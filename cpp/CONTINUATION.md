@@ -1,3 +1,55 @@
+# Latest checkpoint — exact text commands; normal SPHINCS command complete
+
+Local branch/project remains MinimaCoreC++. Previous HEAD aa5edad; git log gives
+this checkpoint. Goal ACTIVE: 403 counterparts (359 production, 44 original tests),
+54 absent (10 production, 44 tests). All present remain implemented_partial;
+all parity not_verified. Both full builds pass. 249 CTest entries; full suite NOT run.
+
+New root tutorial, base tutorial, and whitepaper classes retain exact pinned text,
+metadata, reply shapes and fresh factories. The tutorial classes remain distinct;
+only the root variant is registered. Public whitepaper::WP is immutable.
+Both differential suites pass 71 cases/428 independent assertions (2.618s normal,
+4.137s sanitizer), identical d0d478ed... transcript. Payloads 6825/6733/43554 bytes.
+Evidence: validation/text-commands-work-in-progress. All 457 lessons audited.
+
+Normal full SPHINCS command session89965 is TERMINAL0/closed: 131 cases/34 checks,
+1529.766s; all five actual full-size signatures matched. No live network funding
+or transaction-admission claim. Do NOT poll89965 again.
+Original sanitizer signer31941 is TERMINAL1/closed: third signature response
+exceeded1800s; cleanup120s timed out and killed native child. First158 comparisons
+and two signature pairs matched. No final report, mains or retained native stderr.
+Original evidence preserved under sphincs-work-in-progress/sanitized/initial-*.
+
+LIVE — revalidate, do not restart merely for quiet output:
+24343 full sanitized SPHINCS command, /tmp/minima-sphincs-command-sanitized-full.log.
+Latest127 cases/0 mismatches; inline full signature matched, four signatures remain.
+41760 resumed sanitizer signer, /tmp/minima-sphincs-sanitized-resumed.log.
+Latest156 live comparisons/0 mismatches,1065 independent checks. Two saved signature
+records explicitly rechecked, missing empty-message signature and mains remain.
+Driver uses --resume-vectors validation/sphincs-work-in-progress/sanitized/
+initial-two-signatures.json --response-timeout3600; separate sphincs-resumed-* files.
+It does not count saved signatures as new live comparisons. Full CTest timeout28800.
+No complete sanitizer suite claim until actual terminal result.
+
+Text terminal sessions47675,83619,47594 all PASS/closed; do not poll again.
+Previous aa5edad bundle verified and all38 changed paths byte checked:
+local-backups/MinimaCoreC++-20260911T085951Z.bundle, SHA256
+6400b5b78456a71a02749731decfe039c570d43e98d01255f607f5da395a13ac.
+Create and byte-verify this checkpoint's own recovery bundle after committing.
+
+Remaining production: mysql/mysqlcoins, benchmark/jnitest/jniminingtest, help,
+P2PSwapLink (entirely commented Java), Streamable, jnifunctions, ArchiveServer.
+Help source fully inspected but unported: its fixed default list depends on both
+MySQL command constructors. Do not omit them or introduce fake backend stubs.
+JNI source query remains pending; no library bodies found in pinned/sibling code
+or exact public GitHub symbol search. Continue independent work without inventing
+those implementations. Base test private resource helper remains unrepresented.
+Keep local commits and verified recovery bundles; GitHub destination unspecified.
+
+Earlier notes below are historical where contradicted by this checkpoint.
+
+---
+
 # Latest checkpoint — test command validated; TransactionTest sanitizer complete
 
 PreviousHEAD83afe92; gitlog identifies currentcommit. Full457-file goalACTIVE.

@@ -3765,10 +3765,12 @@
     },
     "reuse": "Direct composition of current TreeKey192/4, Crypto/MiniData/BigInt, FORS and SPHINCSSignature. Nullable public-key setter/comparison and invalid WOTS-length exception minimally aligned with pinned Java. Oracle extends existing FORS/HORST fixtures; driver reuses ForestRunner, checked_demo and independent MMR wire/proof helpers.",
     "sibling_search": "Read /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/crypto/TreeKey.hpp and tests/crypto/test_treekey.cpp: binary2^depth/raw hash nodes/different WOTS representation cannot replace pinned indexed MMR192/4. No sibling SPHINCS implementation found.",
-    "validation": "Normal actual full signatures, independent checks and both mains completed; original case299 fixture null-log error resolved by separate3-case audit. Full sanitizer original run remains active.",
+    "validation": "Normal actual full signatures, independent checks and both mains completed; original case299 fixture null-log error resolved by separate3-case audit. Original sanitizer timed out after158matching comparisons/two signature pairs; resumed validation remains active with separate artifacts.",
     "evidence": "validation/sphincs-work-in-progress",
     "full_parity_verified": false,
-    "log_fixture_correction": "Null println argument in Java fixture normalized with String.valueOf; explicit null/empty/text audits passed in both builds. Original full run records one fixture mismatch, superseded only by saved log audit. No production signer change."
+    "log_fixture_correction": "Null println argument in Java fixture normalized with String.valueOf; explicit null/empty/text audits passed in both builds. Original full run records one fixture mismatch, superseded only by saved log audit. No production signer change.",
+    "resumed_validation_driver_sha256": "fd4596b542e13eb3e2167e3d15fbd3be0ccd3461f13b591dca01ffb4b4285606",
+    "sanitized_timeout_and_resume": "Original31941 terminal1:1800s response timeout on empty-message thirdsignature, cleanup120s timedoutandkilledchild. First158cases/twosignatures matched. Resumed41760using saved initial-two-signatures.json,3600sresponse/demo timeout, separate sphincs-resumed artifacts; no fullpassclaim."
   },
   "sphincs_utils_work_in_progress": {
     "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
@@ -3837,7 +3839,7 @@
     },
     "reuse": "Actual native SPHINCS and SPHINCSUtils; Command/CommandRunner and CommandResult first/status/reject; MiniFile plus JavaUnixFile path/length; shared private output formatter. Fixtures adapt WalletWrappers isolated TxnDB/registry setup and SPHINCS output capture; driver reuses ForestRunner and UUID/JDK-prose normalization.",
     "sibling_search": "No SPHINCS/FORS match in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src or tests; current actual pinned signer is reused.",
-    "validation": "Both complete builds passed. Initial normal quick125cases/24 independent checks passed113.224s. Added NUL path guard/regression afterward. Expanded full normal/sanitized runs live; evidence records snapshots, not full passes.",
+    "validation": "Both complete builds passed; full normal command131cases/34assertions PASS1529.766s with five full-size signatures; sanitizerfullsuite stillrunning24343.",
     "evidence": "validation/sphincs-command-work-in-progress",
     "full_parity_verified": false
   },
@@ -3858,6 +3860,29 @@
     "validation": "Both full builds and274programs/616operations/114assertions PASS; normal30.943s/sanitized62.695s, identical transcript. All100000-iteration mains pass. Actual H2/restart passes4processes/12commands/8preservedkeys each: normal29.629s/sanitized149.797s. Allprocessesexit0; native lifecycle logs retained, no sanitizer diagnostics. Initialnormalnode failure was over-strict empty-stderr expectation, preserved separately.",
     "unrepresented": "Unused private Java classloader resource helper; no native classpath resource service yet.",
     "evidence": "validation/base-test-command-work-in-progress",
+    "full_parity_verified": false
+  },
+  "text_commands_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/system/commands/tutorial.java": "ea36e30e00b5a8c0f040dc8dbba47d3faa3f330d3cca6391c210d03fc479d2d1",
+      "upstream-study/src/org/minima/system/commands/base/tutorial.java": "8bf9c613dcf56938e804c70b18283a153a6b1586a13ddffd4704aa16ca578ced",
+      "upstream-study/src/org/minima/system/commands/whitepaper.java": "1a94c714ff2910d68ab638da024ad00e4de66b79fd5118467b5f1423193c2329"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/system/commands/tutorial.cpp": "6c542ca3866e77205b0d627d543f505103712fa86911a5a63329fe33588f585a",
+      "cpp/src/org/minima/system/commands/tutorial.hpp": "3d66fef0caad36e27873ae77d1d28d6c338f1bb0308e843c76649f34b34219a0",
+      "cpp/src/org/minima/system/commands/base/tutorial.cpp": "9553e01a373a4c1166cfbdf40fd0f5f19408c8e5b4c953f4aba2c677f30a3ca4",
+      "cpp/src/org/minima/system/commands/base/tutorial.hpp": "3c826513deb36255798c342bc7a235d967d633711199ca7fdfdb0513ddb4d2d8",
+      "cpp/src/org/minima/system/commands/whitepaper.cpp": "d115903b28e6cc95d7e8299c7c467e1fa6cf0bc990e2e8f51899ab7b6e390a3a",
+      "cpp/src/org/minima/system/commands/whitepaper.hpp": "09777f361e9bcf440d9152fe3f9946133e748b111f0194e5143c669fc3fff55c",
+      "cpp/support/TextCommandsOracle.java": "5ef16fb001c0854a17ef23704a866c527fe97c42107075b473d6ee92717657b3",
+      "cpp/support/text_commands.cpp": "41167e1f7ba9a99f452d11f83f21958596dcda2bd3cca771eaed3b6ca9ca3b9c",
+      "cpp/tools/text_commands_differential.py": "cdd231d47ae5ae6b8c2f97c3064ebd8f3b8a398d72ec7142b1853c51c77b4cd8"
+    },
+    "reuse": "Existing Command metadata/reply/factory/runner; adjacent-literal pattern from hash.cpp. Complete pinned literals inspected as concatenation-only expressions; tutorial variants remain separate classes/namespaces. No corresponding sibling text implementation found.",
+    "validation": "Both complete builds PASS; normal71cases/428checks pass2.618s, sanitized71/428 pass4.137s; same d0d478ed...transcript and exact payload hashes; native stderr empty.",
+    "evidence": "validation/text-commands-work-in-progress",
     "full_parity_verified": false
   }
 }

@@ -340,8 +340,8 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [CommandException.java](files/src/org/minima/system/commands/CommandException.md) | authored | implemented_partial |
 | [CommandRunner.java](files/src/org/minima/system/commands/CommandRunner.md) | authored | implemented_partial |
 | [help.java](files/src/org/minima/system/commands/help.md) | authored | unported |
-| [tutorial.java](files/src/org/minima/system/commands/tutorial.md) | authored | unported |
-| [whitepaper.java](files/src/org/minima/system/commands/whitepaper.md) | authored | unported |
+| [tutorial.java](files/src/org/minima/system/commands/tutorial.md) | authored | implemented_partial |
+| [whitepaper.java](files/src/org/minima/system/commands/whitepaper.md) | authored | implemented_partial |
 
 ## src/org/minima/system/commands/backup
 
@@ -416,7 +416,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [tokencreate.java](files/src/org/minima/system/commands/base/tokencreate.md) | authored | implemented_partial |
 | [tokenvalidate.java](files/src/org/minima/system/commands/base/tokenvalidate.md) | authored | implemented_partial |
 | [trace.java](files/src/org/minima/system/commands/base/trace.md) | authored | implemented_partial |
-| [tutorial.java](files/src/org/minima/system/commands/base/tutorial.md) | authored | unported |
+| [tutorial.java](files/src/org/minima/system/commands/base/tutorial.md) | authored | implemented_partial |
 
 ## src/org/minima/system/commands/network
 

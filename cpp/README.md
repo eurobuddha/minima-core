@@ -11,9 +11,14 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **356 production counterparts and 44 mapped test files exist;
-57 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **359 production counterparts and 44 mapped test files exist;
+54 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+Both distinct tutorial classes and the white-paper command now preserve their
+pinned text and reply shapes. Both full builds and comparisons pass 71 cases and
+428 independent assertions. See the [text lab](student-guide/new-tests/static-command-text.md)
+and [evidence](validation/text-commands-work-in-progress/progress.json).
 
 The `test` command now delegates to the native database refresh implementation,
 and its separate demonstration executes100000random-address iterations. The
@@ -24,7 +29,8 @@ See the [lab](student-guide/new-tests/database-test-command.md) and
 
 The `sphincs` command now has all five source actions and is registered in the
 native runner. It reuses the actual full-size signer, transaction helpers and
-file implementation. Its differential tests are underway; see the
+file implementation. Its normal full suite passes131cases, including five full-size signatures; the
+sanitizer suite remains active. See the
 [command lab](student-guide/new-tests/sphincs-command.md) and
 [current evidence](validation/sphincs-command-work-in-progress/progress.json).
 
@@ -47,7 +53,9 @@ See the [transaction lab](student-guide/new-tests/sphincs-transactions.md) and
 SPHINCS now composes the actual TreeKey192/4 and full-size FORS implementations.
 Both complete builds and object/key/envelope regressions pass.
 The normal signer run completed its signatures and mains; its one null-log
-fixture error is resolved by a separate audit. Full sanitized signing remains active. The
+fixture error is resolved by a separate audit. The original sanitizer run timed out on its third signature after158matching
+cases and two matching signature pairs. Its unfinished work is resuming with
+a longer timeout and separate evidence. The
 [signer lab](student-guide/new-tests/sphincs-signer.md) and
 [current evidence](validation/sphincs-work-in-progress/progress.json) distinguish
 compiled code from completed validation.

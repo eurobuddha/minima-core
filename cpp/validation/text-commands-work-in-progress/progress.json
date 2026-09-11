@@ -1,0 +1,13 @@
+{
+  "status": "Both complete builds and exact text comparisons pass; full project parity remains open.",
+  "normal_differential": "71cases/428independent assertions pass2.618s",
+  "normal_full_build": "passed",
+  "sanitized_full_build_and_differential": "71cases/428checks pass4.137s; complete build passed",
+  "counterparts": 403,
+  "production": 359,
+  "original_tests": 44,
+  "absent": 54,
+  "full_parity_verified": false,
+  "ctest_entries": 249,
+  "full_ctest_suite_run": false
+}

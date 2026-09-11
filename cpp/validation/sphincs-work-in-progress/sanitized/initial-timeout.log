@@ -1,0 +1,43 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{"progress": "starting full-size signature", "action": "sign", "message": "0xFFEEDD", "cases": 144}
+{"progress": "starting full-size signature", "action": "static", "message": "0xFFEEDD", "cases": 151}
+{"progress": "starting full-size signature", "action": "sign", "message": "0x", "cases": 158}
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/sphincs_differential.py", line 82, in main
+    values=compare('full-sign',dict(action=action,message=hx(message),private=hx(private)))
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/sphincs_differential.py", line 44, in compare
+    values=[r.ask(q) for r in runners];cases+=1;groups[group]=groups.get(group,0)+1
+            ~~~~~^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 14, in ask
+    if not select.select([self.child.stdout],[],[],self.response_timeout)[0]:raise TimeoutError('Checker oracle did not respond')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: Checker oracle did not respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/sphincs_differential.py", line 142, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/sphincs_differential.py", line 136, in main
+    for runner in runners:runner.close()
+                          ~~~~~~~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/fors_differential.py", line 21, in close
+    try:code=self.child.wait(timeout=120)
+             ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1279, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2076, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/minima_sphincs']' timed out after 120 seconds

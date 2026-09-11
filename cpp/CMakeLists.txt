@@ -485,7 +485,7 @@ add_executable(minima_sphincs support/sphincs.cpp)
 target_link_libraries(minima_sphincs PRIVATE minima_file_port)
 add_test(NAME sphincs_differential COMMAND ${Python3_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sphincs_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
-set_tests_properties(sphincs_differential PROPERTIES TIMEOUT 7200)
+set_tests_properties(sphincs_differential PROPERTIES TIMEOUT 28800)
 add_test(NAME sphincs_log_audit COMMAND ${Python3_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sphincs_log_audit.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(sphincs_log_audit PROPERTIES TIMEOUT 120)
@@ -1403,3 +1403,12 @@ add_test(NAME base_test_command_differential COMMAND ${Python3_EXECUTABLE} ${CMA
 set_tests_properties(base_test_command_differential PROPERTIES TIMEOUT 900)
 add_test(NAME native_base_test_startup COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/native_base_test_startup.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(native_base_test_startup PROPERTIES TIMEOUT 1800 DEPENDS base_test_command_differential)
+
+target_sources(minima_file_port PRIVATE
+    src/org/minima/system/commands/tutorial.cpp
+    src/org/minima/system/commands/base/tutorial.cpp
+    src/org/minima/system/commands/whitepaper.cpp)
+add_executable(minima_text_commands support/text_commands.cpp)
+target_link_libraries(minima_text_commands PRIVATE minima_file_port)
+add_test(NAME text_commands_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/text_commands_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(text_commands_differential PROPERTIES TIMEOUT 180)

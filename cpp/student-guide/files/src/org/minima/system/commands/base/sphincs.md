@@ -40,7 +40,8 @@ one/eight-input transactions. Exact signature bytes, 66 state values, output fla
 posting order and row deletion are observed. It does not test network admission.
 
 See the [test lab](../../../../../../../../student-guide/new-tests/sphincs-command.md).
-Validation is underway; consult the [current evidence](../../../../../../../../validation/sphincs-command-work-in-progress/progress.json)
+The full normal run passes 131 cases/34 independent assertions, including all
+five full-size signing paths. Sanitizer validation is still underway; consult the [current evidence](../../../../../../../../validation/sphincs-command-work-in-progress/progress.json)
 for actual completed results and pending phases.
 
 - [Signature script and transaction helpers](../../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSUtils.java)

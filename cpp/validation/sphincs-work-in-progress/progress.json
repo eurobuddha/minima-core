@@ -2,7 +2,7 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "previous_head": "06b81aa9a843ea9600689c8f3718ae5d80a8f4fe",
   "goal_complete": false,
-  "status": "Normal full signer actual signatures and mains completed; one Java output-capture error resolved by independent log audit; full sanitized signer remains active",
+  "status": "Normal full signer completed. Original sanitizer timed out on third signature after158matches; two completed pairs retained. Unfinished signer work resumed separately with3600stimeout.",
   "mapped": 457,
   "counterparts": 396,
   "production_counterparts": 352,
@@ -16,7 +16,7 @@
   "full_ctest_suite_run": false,
   "normal_regressions": "object 9464 and envelope 1449 passed; 46.80 seconds total",
   "active_sessions": {
-    "sanitized_signer": 31941
+    "resumed_sanitized_signer": 41760
   },
   "terminal_sessions": {
     "initial_normal_driver": 33552,
@@ -24,7 +24,8 @@
     "normal_build_and_regressions": 26534,
     "full_sanitized_build": 45525,
     "sanitized_regressions": 69424,
-    "normal_signer": 3008
+    "normal_signer": 3008,
+    "original_sanitized_signer": 31941
   },
   "notes": [
     "Revalidate live handles rather than inferring process status from this saved snapshot.",
@@ -40,5 +41,6 @@
   "normal_independent_assertions": 1373,
   "normal_seconds": 1138.085,
   "normal_source_mains_matched": true,
-  "normal_fixture_failure_resolved_by": "../sphincs-utils-work-in-progress/normal/sphincs-log-audit.json"
+  "normal_fixture_failure_resolved_by": "../sphincs-utils-work-in-progress/normal/sphincs-log-audit.json",
+  "resume_vectors": "sanitized/initial-two-signatures.json"
 }
