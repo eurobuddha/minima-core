@@ -86,10 +86,24 @@ public class TxPoWSqlDB extends SqlDB {
 			
 			//Create some fast indexes..
 			String index = "CREATE INDEX IF NOT EXISTS fastsearch ON txpow ( txpowid, parentid )";
-					
+
 			//Run it..
 			stmt.execute(index);
-			
+
+			//timemilli was unindexed, so every ORDER BY / range scan below was a full table scan
+			//that dragged each row's txpowdata BLOB through the sort. All these methods are
+			//synchronized on this instance, so one 'history' call stalled every other node DB
+			//read - including the single-threaded IPC command executor. Measured 2026-09-11 on a
+			//500MB+ txpow store: 47s monitor holds against a 30s companion read timeout.
+			//Serves getLatestTxPoW's ORDER BY, getLatestTxPoWSize's COUNT, and the cleanup DELETE.
+			String indextime = "CREATE INDEX IF NOT EXISTS txpowtime ON txpow ( timemilli )";
+			stmt.execute(indextime);
+
+			//Composite, isrelevant first: serves getAllRelevant's WHERE isrelevant=1 ORDER BY
+			//timemilli DESC, getRelevantSize's COUNT, and the isrelevant=0 half of the DELETE.
+			String indexrelevant = "CREATE INDEX IF NOT EXISTS txpowrelevant ON txpow ( isrelevant, timemilli )";
+			stmt.execute(indexrelevant);
+
 			//All done..
 			stmt.close();
 			
@@ -107,7 +121,13 @@ public class TxPoWSqlDB extends SqlDB {
 			SQL_SELECT_RELEVANT 	= mSQLConnection.prepareStatement("SELECT * FROM txpow WHERE isrelevant=1 ORDER BY timemilli DESC LIMIT ? OFFSET ?");
 			SQL_SELECT_RELEVANTSIZE = mSQLConnection.prepareStatement("SELECT Count(*) AS tot FROM txpow WHERE isrelevant=1");
 			
-			SQL_SELECT_TOPTXPOW 	 = mSQLConnection.prepareStatement("SELECT * FROM txpow ORDER BY timemilli DESC LIMIT ? OFFSET ?");
+			//The `timemilli > 0` looks redundant - every row has a real epoch time - but it is
+			//LOAD BEARING and must not be "tidied away". H2 will not use an index for a bare
+			//ORDER BY .. LIMIT with no WHERE, so without it this stays a full table scan that
+			//sorts every row's txpowdata BLOB. Measured on H2 2.1.214 (the version the APK
+			//ships) with 60k rows: 25,535 page reads as a tableScan versus 3,755 using
+			//txpowtime - and the gap widens with the table, because the scan is O(rows).
+			SQL_SELECT_TOPTXPOW 	 = mSQLConnection.prepareStatement("SELECT * FROM txpow WHERE timemilli > 0 ORDER BY timemilli DESC LIMIT ? OFFSET ?");
 			SQL_SELECT_TOPTXPOW_SIZE = mSQLConnection.prepareStatement("SELECT Count(*) AS tot FROM txpow WHERE timemilli > ?");
 	}
 	
