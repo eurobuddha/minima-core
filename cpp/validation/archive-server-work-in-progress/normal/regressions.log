@@ -1,0 +1,13 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  52: ibd_differential
+1/4 Test  #52: ibd_differential .................   Passed   31.89 sec
+    Start  90: http_server_differential
+2/4 Test  #90: http_server_differential .........   Passed    2.52 sec
+    Start 227: native_h2_differential
+3/4 Test #227: native_h2_differential ...........   Passed    5.39 sec
+    Start 228: native_h2_concurrent
+4/4 Test #228: native_h2_concurrent .............   Passed    0.29 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =  40.10 sec

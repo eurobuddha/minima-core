@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 407 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 408 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -367,7 +367,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/utils/messages/MessageStack.java` | `src/org/minima/utils/messages/MessageStack.cpp` | implemented_partial | — |
 | `src/org/minima/utils/messages/TimerMessage.java` | `src/org/minima/utils/messages/TimerMessage.cpp` | implemented_partial | — |
 | `src/org/minima/utils/messages/TimerProcessor.java` | `src/org/minima/utils/messages/TimerProcessor.cpp` | implemented_partial | — |
-| `src/org/minima/utils/mysql/ArchiveServer.java` | `src/org/minima/utils/mysql/ArchiveServer.cpp` | unported | — |
+| `src/org/minima/utils/mysql/ArchiveServer.java` | `src/org/minima/utils/mysql/ArchiveServer.cpp` | implemented_partial | — |
 | `src/org/minima/utils/mysql/MySQLConnect.java` | `src/org/minima/utils/mysql/MySQLConnect.cpp` | implemented_partial | — |
 | `src/org/minima/utils/sphincs/FORS/FORS.java` | `src/org/minima/utils/sphincs/FORS/FORS.cpp` | implemented_partial | — |
 | `src/org/minima/utils/sphincs/FORS/FORSSignature.java` | `src/org/minima/utils/sphincs/FORS/FORSSignature.cpp` | implemented_partial | — |

@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "cases": 81,
+  "independent_assertions": 52,
+  "failures": [
+    {
+      "cases": 81,
+      "error": "AssertionError({'case': 80, 'request': {'op': 'handler', 'rows': [{'syncdata': '0x00'}], 'columns': [], 'frame': '0x000000040F000101'}, 'java': {'closed': False, 'reply': '', 'logs': ['Received request first block : 1', 'java.io.EOFException', 'java.lang.NullPointerException', 'System Clean..'], 'events': [['prepared.clearParameters', 4], ['prepared.setLong', 4, 1, 1], ['prepared.executeQuery', 4], ['rows.next'], ['rows.getBytes', 'syncdata'], ['rows.next']]}, 'cpp': {'closed': False, 'reply': '', 'logs': ['Received request first block : 1', 'java.io.EOFException', 'java.lang.IllegalArgumentException: Null IBD dependency', 'System Clean..'], 'events': [['prepared.clearParameters', 4], ['prepared.setLong', 4, 1, 1], ['prepared.executeQuery', 4], ['rows.next'], ['rows.getBytes', 'syncdata'], ['rows.next']]}})"
+    }
+  ],
+  "seconds": 93.434,
+  "transcript_sha256": "2042e2812556baf1ab782a46e42321820e0e143b239b29954190d1e40d773dee",
+  "scope": "Actual pinned ArchiveServer constructor/handler/retry/clean and native class. Reuses recording SQL and actual codecs; exact events/logs/framed bytes, actual socket I/O, ignored type/trailing bytes, cascade/probe/ranges, malformed input/explicit close, real ten-second waits and one-second retry. Java TCP socket pairs and native local socket pairs; constructor listeners actual TCP. NPE/ClassCast/EOF prose normalized and stack frames excluded. No real MySQL standalone main, complete GC/subclass/concurrency/resource/platform parity claim."
+}

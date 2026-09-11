@@ -1,0 +1,52 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_head": "d6624fd7940c2cc6745afd95d98dd07b2bae60f3",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "counterparts": 408,
+  "production_counterparts": 361,
+  "test_counterparts": 47,
+  "absent": 49,
+  "production_absent": 8,
+  "tests_absent": 41,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "full_ctest_suite_run": false,
+  "default_ctest_entries": 258,
+  "optional_mysql_tests": 3,
+  "handler_cases_per_build": 81,
+  "handler_checks_per_build": 53,
+  "handler_seconds": {
+    "normal": 94.016,
+    "sanitized": 94.269
+  },
+  "handler_transcript_sha256": "36220f1e4abe82c4cd3005469de38d4da1a1aba9a4ec676e13d7abf20e900809",
+  "clean_audit_cases": 4,
+  "clean_audit_checks": 11,
+  "clean_audit": "All signed-elapsed branches and recursive logger callback pass both builds; separate reports claim only those four programs.",
+  "main_cli_cases_per_build": 19,
+  "main_server_processes_per_build": 2,
+  "main_tcp_requests_per_runtime": 4,
+  "main_independent_checks_per_build": 110,
+  "main_seconds": {
+    "normal": 23.441,
+    "sanitized": 24.47
+  },
+  "regressions": {
+    "normal": "IBD1057 + HTTPServer3 + H2 differential/concurrent:4/4pass,40.10s",
+    "sanitized": "IBD1057 + HTTPServer3 + H2 differential/concurrent:4/4pass,102.10s"
+  },
+  "fixes": [
+    "IBD serializer now throws source NullPointerException for a decoded null block; original81st-case failure retained.",
+    "SystemClean monitor made recursive to match Java synchronized; actual Main log callback reentry passes."
+  ],
+  "fixture_removed": true,
+  "fixture_cleanup": "fixture-cleanup.json",
+  "remaining": [
+    "Exact GC timing, interruption delivery, missing-driver stack frames and resource exhaustion",
+    "Arbitrary MySQL subclass/collection aliases/public-field concurrent mutations",
+    "Complete platform and node parity;8production and41originaltests absent"
+  ],
+  "github_pushed": false
+}

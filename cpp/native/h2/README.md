@@ -99,3 +99,19 @@ observed single-server driver paths, not arbitrary JDBC URL modes, plugins or
 platforms. Preserve Connector/J's bundled `META-INF/LICENSE` when distributing
 its compiled code. The student [MySQL lab](../../student-guide/new-tests/native-mysql-storage.md)
 separates driver agreement from actual node-command validation.
+
+## Standalone archive service
+
+`minima_archive_server` translates the pinned ArchiveServer main and serves its
+binary MiniData/IBD protocol. Build the optional provider with `--mysql` before
+using it. Its explicit driver check uses the same compiled driver as connections.
+The executable accepts `-mysqlhost`, `-mysqldb`, `-mysqluser`, `-mysqlpassword`,
+`-port`, and `-help`, plus the source MYSQL_HOST/DB/USER/PASSWORD and ARCHIVE_PORT
+environment variables. The source default port is 8888; console `quit` stops it.
+
+The opt-in `archive_server_main_differential` test uses the same
+MINIMA_MYSQL_FIXTURE_FILE setting and an isolated disposable database. It wipes
+and seeds its fixture archive through pinned Java, then exercises both actual
+servers. Ordinary `archive_server_differential` and `archive_server_clean_audit`
+need no MySQL server. See the [student lab](../../student-guide/new-tests/archive-server.md)
+and [recorded scope](../../validation/archive-server-work-in-progress/progress.json).

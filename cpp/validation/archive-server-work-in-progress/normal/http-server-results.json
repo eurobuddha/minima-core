@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "programs": 3,
+  "tcp_handlers": 10,
+  "scope": "Actual pinned Java HTTPServer and native listener, automatic/manual startup, configured versus ephemeral bound ports, concurrent independent handlers with exact binary payloads, bind collision logs and shutdown completion. Kernel-assigned port numbers normalized. RPC CMDHandler parsing and complete NetworkManager ownership remain pending; repeated concurrent starts and generic resource/exception identity require further audit."
+}

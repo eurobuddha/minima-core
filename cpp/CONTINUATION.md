@@ -1,3 +1,78 @@
+# Latest checkpoint — ArchiveServer compiled and validated through real MySQL/TCP
+
+Previous HEAD d6624fd7940c2cc6745afd95d98dd07b2bae60f3; gitlog gives current.
+Branch/project/executable MinimaCoreC++; goalACTIVE, notcomplete.
+408counterparts=361production+47tests;49absent=8production+41tests.
+All present implemented_partial; all457 parity not_verified.258defaultCTestentries,
+3optionalMySQL tests iffixture configured. Full suite NOT run.
+
+New ArchiveServer.hpp/.cpp and minima_archive_server standalone entry translate
+allsourceflows using existing HTTPServer shared-owner factory, NIOConnections,
+MiniData::readFromStream, IBD/MySQLConnect, ConsoleInput/JavaInteger/trim/logger.
+Keep ignoredtype/trailingbytes, -1probeatZERO+emptyIBD, cachedcascadeonlyatZERO,
+range order/nullentries, catchExceptionnotError, one-secondretrywithoutreinit,
+ten-secondsleepafterwrite, distinctearlyreturnclose/clean behavior, EOFloop,
+v1.3startup/v0.8help, argument/environmentorder and sourcequit/shutdownlogs.
+SystemClean usesrecursive staticmonitor, Java-width subtraction andloggerclock/GC.
+Handler mMySQL returns currentvector API; arbitrary subclass/alias/fieldrace and
+GC/interruption/platform/stackframe fidelity stillopen. Sourceconstructor becomes
+existing create factory so shared ownershipexistsbefore start.
+
+Native JDBC bridge addsopcode62 Class.forName, NativeH2Runtime::loadMySQLDriver.
+Freshcompiledprovider cpp/build/native-h2-archive, bothbuildsconfiguredtoit.
+LibrarySHA9edf7d22f394875edb0d5b15ead0ce1e192c7f7781b5a84f0fc2c807ad2aa4bf.
+NoMinimaJavaclasses/noJVMfallback. ExistingreviewedMySQLmetadataunchanged.
+Both complete buildsPASS. Handlerdifferential81cases/53checksPASS both:
+normal94.016s,san94.269s;same36220f1e...transcript. Real10secondwaitsretained.
+Originalnormalcase81found IBD::serialise nullblockthrowswrongexception; fixedonly
+thatpath toJavaNullPointerException. Initialreportretained. BothIBD1057regressionsPASS.
+Reviewcaught nonrecursiveSystemClean lock; changedtorecursive andactualMainnotify
+reentryaudit4cases/11checksPASSboth,70b3fba6...hash. Separatecleanreportscopes.
+RealstandaloneMain suites19CLIcases+2serverprocesses+110checksPASSboth,
+normal23.441s,san24.47s. JavaSeed writes3realTxBlocks+3nodeCascade torealMySQL;
+4TCPrequests perruntime verifyprobe/cachedcascade/ranges/empty,10secclose,console
+unknown/trim/quit. This isactualserver, notstubSQL. Native shutdownstderrEMPTY.
+Selected4regressions bothpass: IBD,HTTPServer,H2diff,H2concurrent40.10s/102.10s.
+
+Fixtureminima-cpp-mysql-archive-b7050737d3,IDf0c1f91958e7917a67588ee1ca22e36a98071799165811966ac5e9c6f0c719b2
+wasREMOVEDandverified; othercontainersuntouched. /tmp/minima-archive-fixture.json
+isnowSTALE; create a NEW isolatedtmpfs/localhostfixture to rerunliveSQLtests.
+CMake MINIMA_MYSQL_FIXTURE_FILEclearedinbothbuilds. Optionalarchive_mainDEPENDS
+archive_server_differential tocompilepinnedoraclefirst. Standalonecanbeconfigured
+withsourceMySQLenvironmentvariables/-port flags. Readnative/h2/README.md.
+
+AllArchiveServerjobhandlesTERMINAL/CLOSED:31316providerPASS,65562initialcompileFAIL
+(missingSocketExceptioninclude),17133initialfullFAIL(fixtureboolean/referenceAPI),
+28361fixedfullPASS,83091initialcomparisonFAIL(nullIBDblockcategory),40493SANbuildPASS,
+22916normalfull+comparison+regsPASS,66775SANfull+comparison+regsPASS,
+76052fixturecreatePASS,2339/59528normal/SANmainPASS,66077/94013finalbuildsPASS,
+99112/51638reviewbuild+cleanauditPASS,8050/95371finalscopedcleanauditPASS.
+functions cell5201cleanupDONE;doNOTpolltheseagain.
+
+LIVE24343 fullsanitizedSPHINCScommands, /tmp/minima-sphincs-command-sanitized-full.log.
+Latest130cases/0mismatches: inline/file/test/1inputfullsignaturesmatched; final8input
+transactionfullsignature remains. Revalidatehandle; neverrestartmerelyforquiet.
+Reportbuild-sanitized/sphincs-command-full-results.json onlyafterterminal.
+Resumedsigner41760wasPASSc6fdf53;alreadyclosed299comparisons/1377checks+mains.
+
+Remainingproduction:mysql.java(1446lines),help.java,Streamable.java,P2PSwapLink.java
+(entirelycommented),benchmark,jnitest,jniminingtest,jnifunctions. Plus41originaltests
+andallfullparitygaps. JNIimplementation sourcequestionpending;donotinventlibrary.
+Base test unusedprivateclassloaderhelper stillunrepresented. MySQL largecommand
+andhelp nowhave actualnativeSQLprovider; inspectpinnedsource/fullcurrentcandidates/
+callers/tests/siblingthenreportreusebeforeadapting. Keepstudentguidepagescurrent.
+
+Previous d6624fd recoverybundleverified all49changedpaths acrossbothcommits:
+local-backups/MinimaCoreC++-20260911T102016Z.bundle SHA256
+ a799ea7568266da1608b79f5f556edae6cfb095fdda91686abdb1bd005cbb4cd.
+Createcurrentcheckpointbundleaftercommitusingalreadyread/tmp/minima-hashtest-backup.py,
+awaitterminal, clone/fsck/sourcepincheck then byteverifyALLHEADchangedpaths.
+NoGitHubpushdestination; localbundles areNOT off-machinebackup.
+
+Earliernotesbelowhistoricalwherecontradictedbythischeckpoint.
+
+---
+
 # Latest checkpoint — native MySQL provider and real node tests pass
 
 Branch/project/executable MinimaCoreC++. Goal ACTIVE; not complete.

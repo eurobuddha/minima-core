@@ -1,0 +1,11 @@
+{
+  "name": "minima-cpp-mysql-archive-b7050737d3",
+  "id": "f0c1f91958e7917a67588ee1ca22e36a98071799165811966ac5e9c6f0c719b2",
+  "image": "mysql@sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b",
+  "localhost_only": true,
+  "tmpfs_data": true,
+  "owned_label_verified": true,
+  "removed": true,
+  "removal_verified": true,
+  "other_containers_untouched": true
+}

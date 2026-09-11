@@ -1,3 +1,49 @@
+## ArchiveServer review
+
+### Summary
+
+The native class and standalone executable preserve the pinned binary protocol,
+constructor SQL/cascade loading, ignored request type, probe/range behavior, retry,
+console parsing and explicit close/clean boundaries. Existing listener, SQL,
+framing, codecs, integer parsing, console and logger components are reused.
+
+### Findings
+
+**MAJOR — null IBD block exception, fixed.** A corrupted stored block decodes to
+null, is retained in the range, then fails serialization. Java throws
+NullPointerException; the existing native serializer threw IllegalArgumentException.
+Only that write path was corrected. The original81st-case failure is retained;
+both full server comparisons and both IBD regressions now pass.
+
+**MAJOR — monitor reentrancy, fixed.** SystemClean's source synchronized monitor
+allows same-thread reentry from notification callbacks. Its native lock is now
+recursive. A real Main logging receiver re-enters once in both implementations;
+the focused4-program/11-assertion audit completes and matches the two cleanup logs.
+
+No remaining correctness defect was found in the tested scope. Both complete
+builds pass. Both handler suites pass81cases/53checks with actual ten-second waits;
+both standalone suites pass19CLI cases,2server processes and110checks, reading
+Java-written real MySQL blocks/cascade and serving exact TCP reply bytes.
+IBD1057cases, HTTPServer, native H2 differential and concurrent regressions pass
+in both builds. Native stderr is empty for fixtures and has no sanitizer findings
+through actual process shutdown. The owned tmpfs MySQL fixture was removed and
+removal verified. The optional live test setting was cleared.
+
+**Open scope:** exact missing-driver stack frames, Java GC timing, interruption
+delivery, arbitrary MySQL subclasses and collection/public-field mutation,
+resource failures, other platforms and complete node parity remain unverified.
+The source early returns intentionally do not gain unconditional explicit close
+or cleanup calls. Native destruction cannot promise the same GC timing.
+
+### Verdict
+
+Approve this bounded checkpoint with the documented parity limits.408counterparts
+exist (361production/47originaltests);49mapped files remain absent.258default
+CTest entries; full suite NOT run. See the [evidence](validation/archive-server-work-in-progress/progress.json)
+and [student lab](student-guide/new-tests/archive-server.md).
+
+---
+
 ## Native MySQL driver and node integration review
 
 ### Summary

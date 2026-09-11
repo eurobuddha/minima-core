@@ -2,13 +2,13 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 407,
-  "native_absent": 50,
+  "native_counterparts": 408,
+  "native_absent": 49,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
-      "counterparts": 360,
-      "absent": 9
+      "counterparts": 361,
+      "absent": 8
     },
     "test": {
       "total": 88,
@@ -20,7 +20,7 @@
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9263,
+  "links_checked": 9267,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -3633,11 +3633,11 @@
       "java": "src/org/minima/utils/mysql/ArchiveServer.java",
       "cpp": "src/org/minima/utils/mysql/ArchiveServer.cpp",
       "guide": "files/src/org/minima/utils/mysql/ArchiveServer.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent."
+      "teaching_note": "Authored explanation of the source, native translation, tests and remaining limits."
     },
     {
       "java": "src/org/minima/utils/mysql/MySQLConnect.java",

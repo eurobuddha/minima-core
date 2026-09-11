@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "cases": 81,
+  "independent_assertions": 53,
+  "failures": [],
+  "seconds": 94.269,
+  "transcript_sha256": "36220f1e4abe82c4cd3005469de38d4da1a1aba9a4ec676e13d7abf20e900809",
+  "scope": "Actual pinned ArchiveServer constructor/handler/retry/clean and native class. Reuses recording SQL and actual codecs; exact events/logs/framed bytes, actual socket I/O, ignored type/trailing bytes, cascade/probe/ranges, malformed input/explicit close, real ten-second waits and one-second retry. Java TCP socket pairs and native local socket pairs; constructor listeners actual TCP. NPE/ClassCast/EOF prose normalized and stack frames excluded. No real MySQL standalone main, complete GC/subclass/concurrency/resource/platform parity claim."
+}

@@ -692,7 +692,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [ArchiveServer.java](files/src/org/minima/utils/mysql/ArchiveServer.md) | authored | unported |
+| [ArchiveServer.java](files/src/org/minima/utils/mysql/ArchiveServer.md) | authored | implemented_partial |
 | [MySQLConnect.java](files/src/org/minima/utils/mysql/MySQLConnect.md) | authored | implemented_partial |
 
 ## src/org/minima/utils/sphincs/FORS

@@ -4001,5 +4001,84 @@
     "evidence": "validation/native-mysql-work-in-progress",
     "native_dependency_manifest": "validation/native-mysql-work-in-progress/native-provider-manifest.json",
     "full_parity_verified": false
+  },
+  "archive_server_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/utils/mysql/ArchiveServer.java": "3b2918c85d07ee57035e4b5a2d0f7033cdf78706f426f973075d338aea34dfa5",
+      "upstream-study/src/org/minima/objects/IBD.java": "7c02ec42010d47545f3ac5ef1abe701ac32c50e54d12f971b107d1880e4d3ece",
+      "upstream-study/src/org/minima/utils/mysql/MySQLConnect.java": "eea5c8d3727a177cfb6e67359830ad53b90d5f061cef5c723b2e0ae461af46e2",
+      "upstream-study/src/org/minima/system/network/rpc/HTTPServer.java": "8b97e8f2faf4c7eb98bb7e4b98a662929c6abd9e48cedd03ca9de713ffc821d3"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/utils/mysql/ArchiveServer.hpp": "770012802c211773fa781aa19185b2e43f2a37e700951942703a2a7ae690a9d8",
+      "cpp/src/org/minima/utils/mysql/ArchiveServer.cpp": "cd6bcde807281ee97bbd0c4a11be9d401e606e8a63753af97ae9a08fe5eac59b",
+      "cpp/src/org/minima/objects/IBD.cpp": "69ad98112c12602a762292119dac93cac0b8b676125a64363e6d68e9292fc9b7",
+      "cpp/src/support/NativeH2Connection.hpp": "321d52aea09cc0cda6e16f2e5b3a7892f81532444954ada656226a3c3b8c4c6c",
+      "cpp/src/support/NativeH2Connection.cpp": "6517c1a0f67edb7584caf9bb4f50a71633dfaa7f4fa848f81af156313b092e69",
+      "cpp/native/h2/NativeH2Bridge.java": "d4d596804ad6047ce667bcb2a9d3fe29d3143869dd41e9645a8bd91a0af0acfd",
+      "cpp/support/archive_server_entry.cpp": "7f143eb86de5f3deb7dbe8c160d856e44b2aafbc2ed9db251252476bca418ee7",
+      "cpp/support/archive_server.cpp": "e34b0d7c5a460d5176190619c27fcb734b66043dcaacc94ea3c054e7a04c0dec",
+      "cpp/support/ArchiveServerOracle.java": "b03fea93e722b887961cc42a03783e70baa9e4fbfdf816cc0d564afaaf191260",
+      "cpp/support/ArchiveServerSeed.java": "f79b4f629500812d3411b0fc3c9e0fb2585c84a7202115cb6cc34fa697f39cc3",
+      "cpp/tools/archive_server_differential.py": "1d342757533202a53756efbd72c347d239f2b339874072d37c8c189481a88b39",
+      "cpp/tools/archive_server_main_differential.py": "ce18068dc9e25edb7ceb4ea8f679a2b55bf4769efab87c62865053e4c2d3da0a"
+    },
+    "reuse": "Existing HTTPServer shared-owner listener, NIOConnections and PosixNIOSocket, MiniData::readFromStream, MiniNumber/IBD/Cascade/TxBlock codecs, MySQLConnect, ConsoleInput, JavaInteger/JavaStringTrim and MinimaLogger runtime. Native JDBC provider adds only explicit driver load. Fixtures reuse SqlDBOracle/SqlRecordingFixture, ArchiveManagerOracle/ArchiveFixture, NIOClientOracle reflection, Runner/Responder, signed-number/frame helpers and existing normalization.",
+    "sibling_search": "No ArchiveServer implementation or test found in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src or tests; current native listener and SQL components are reused.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "previous_head": "d6624fd7940c2cc6745afd95d98dd07b2bae60f3",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "goal_complete": false,
+      "counterparts": 408,
+      "production_counterparts": 361,
+      "test_counterparts": 47,
+      "absent": 49,
+      "production_absent": 8,
+      "tests_absent": 41,
+      "parity": "not_verified",
+      "full_normal_build": "passed",
+      "full_sanitized_build": "passed",
+      "full_ctest_suite_run": false,
+      "default_ctest_entries": 258,
+      "optional_mysql_tests": 3,
+      "handler_cases_per_build": 81,
+      "handler_checks_per_build": 53,
+      "handler_seconds": {
+        "normal": 94.016,
+        "sanitized": 94.269
+      },
+      "handler_transcript_sha256": "36220f1e4abe82c4cd3005469de38d4da1a1aba9a4ec676e13d7abf20e900809",
+      "clean_audit_cases": 4,
+      "clean_audit_checks": 11,
+      "clean_audit": "All signed-elapsed branches and recursive logger callback pass both builds; separate reports claim only those four programs.",
+      "main_cli_cases_per_build": 19,
+      "main_server_processes_per_build": 2,
+      "main_tcp_requests_per_runtime": 4,
+      "main_independent_checks_per_build": 110,
+      "main_seconds": {
+        "normal": 23.441,
+        "sanitized": 24.47
+      },
+      "regressions": {
+        "normal": "IBD1057 + HTTPServer3 + H2 differential/concurrent:4/4pass,40.10s",
+        "sanitized": "IBD1057 + HTTPServer3 + H2 differential/concurrent:4/4pass,102.10s"
+      },
+      "fixes": [
+        "IBD serializer now throws source NullPointerException for a decoded null block; original81st-case failure retained.",
+        "SystemClean monitor made recursive to match Java synchronized; actual Main log callback reentry passes."
+      ],
+      "fixture_removed": true,
+      "fixture_cleanup": "fixture-cleanup.json",
+      "remaining": [
+        "Exact GC timing, interruption delivery, missing-driver stack frames and resource exhaustion",
+        "Arbitrary MySQL subclass/collection aliases/public-field concurrent mutations",
+        "Complete platform and node parity;8production and41originaltests absent"
+      ],
+      "github_pushed": false
+    },
+    "evidence": "validation/archive-server-work-in-progress",
+    "full_parity_verified": false
   }
 }

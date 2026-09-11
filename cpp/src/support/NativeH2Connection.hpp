@@ -13,5 +13,6 @@ public:
     NullableConnect nullableConnector() const;
     std::string version() const;
     int32_t liveHandles() const;
+    void loadMySQLDriver() const;
 };
 }

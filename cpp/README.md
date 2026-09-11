@@ -11,9 +11,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **360 production counterparts and 47 mapped test files exist;
-50 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **361 production counterparts and 47 mapped test files exist;
+49 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+ArchiveServer now has a native counterpart and standalone `minima_archive_server`
+executable. Both builds pass81handler comparisons, a4-case reentrancy audit and
+19CLI cases plus real MySQL/TCP service tests. Pinned Java writes the archive data;
+both servers return exact bytes and retain the ten-second close delay. See the
+[archive-server lab](student-guide/new-tests/archive-server.md) and
+[evidence](validation/archive-server-work-in-progress/progress.json).
 
 The mysqlcoins command now compiles with all five actions. Both builds pass
 771 command/SQL comparisons. The optional native dependency now includes the pinned

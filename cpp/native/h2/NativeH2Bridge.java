@@ -80,6 +80,7 @@ public final class NativeH2Bridge {
             case 53:string(out,((Clob)object(id)).getSubString(in.readLong(),in.readInt()));break;
             case 60:out.writeInt(objects.size());break;
             case 61:string(out,org.h2.engine.Constants.FULL_VERSION);break;
+            case 62:Class.forName("com.mysql.cj.jdbc.Driver");break;
             default:throw new IllegalArgumentException("Unknown native H2 operation: "+op);
         }
     }

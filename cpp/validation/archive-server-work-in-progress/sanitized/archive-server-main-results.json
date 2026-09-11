@@ -1,0 +1,379 @@
+{
+  "passed": true,
+  "cli_programs": 19,
+  "server_processes": 2,
+  "independent_assertions": 110,
+  "cli": [
+    {
+      "args": [
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3",
+          "Minima Archive Server v0.8 Help",
+          " -mysqlhost      : The MySQL Host server",
+          " -mysqldb        : The MySQL Database",
+          " -mysqluser      : The MySQL User",
+          " -mysqlpassword  : The MySQL password",
+          " -help           : Print this help"
+        ],
+        "exception": null
+      }
+    },
+    {
+      "args": [
+        "-HELP"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3",
+          "Unknown parameter : -HELP"
+        ],
+        "exception": null
+      }
+    },
+    {
+      "args": [
+        "unknown",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3",
+          "Unknown parameter : unknown"
+        ],
+        "exception": null
+      }
+    },
+    {
+      "args": [
+        "-port",
+        "0",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3",
+          "Minima Archive Server v0.8 Help",
+          " -mysqlhost      : The MySQL Host server",
+          " -mysqldb        : The MySQL Database",
+          " -mysqluser      : The MySQL User",
+          " -mysqlpassword  : The MySQL password",
+          " -help           : Print this help"
+        ],
+        "exception": null
+      }
+    },
+    {
+      "args": [
+        "-port",
+        "\uff11\uff12",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3",
+          "Minima Archive Server v0.8 Help",
+          " -mysqlhost      : The MySQL Host server",
+          " -mysqldb        : The MySQL Database",
+          " -mysqluser      : The MySQL User",
+          " -mysqlpassword  : The MySQL password",
+          " -help           : Print this help"
+        ],
+        "exception": null
+      }
+    },
+    {
+      "args": [
+        "-mysqlhost",
+        "ignored",
+        "-mysqluser",
+        "ignored",
+        "-mysqlpassword",
+        "synthetic",
+        "-mysqldb",
+        "ignored",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3",
+          "Minima Archive Server v0.8 Help",
+          " -mysqlhost      : The MySQL Host server",
+          " -mysqldb        : The MySQL Database",
+          " -mysqluser      : The MySQL User",
+          " -mysqlpassword  : The MySQL password",
+          " -help           : Print this help"
+        ],
+        "exception": null
+      }
+    },
+    {
+      "args": [
+        "-port"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1"
+      }
+    },
+    {
+      "args": [
+        "-mysqlhost"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1"
+      }
+    },
+    {
+      "args": [
+        "-mysqluser"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1"
+      }
+    },
+    {
+      "args": [
+        "-mysqlpassword"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1"
+      }
+    },
+    {
+      "args": [
+        "-mysqldb"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1"
+      }
+    },
+    {
+      "args": [
+        "-port",
+        "",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.NumberFormatException: For input string: \"\""
+      }
+    },
+    {
+      "args": [
+        "-port",
+        " 1",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.NumberFormatException: For input string: \" 1\""
+      }
+    },
+    {
+      "args": [
+        "-port",
+        "2147483648",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.NumberFormatException: For input string: \"2147483648\""
+      }
+    },
+    {
+      "args": [
+        "-port",
+        "-2147483649",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.NumberFormatException: For input string: \"-2147483649\""
+      }
+    },
+    {
+      "args": [
+        "-port",
+        "1.5",
+        "-help"
+      ],
+      "environment": {},
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.NumberFormatException: For input string: \"1.5\""
+      }
+    },
+    {
+      "args": [
+        "-help"
+      ],
+      "environment": {
+        "ARCHIVE_PORT": "bad"
+      },
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.NumberFormatException: For input string: \"bad\""
+      }
+    },
+    {
+      "args": [
+        "-port",
+        "0",
+        "-help"
+      ],
+      "environment": {
+        "ARCHIVE_PORT": "bad"
+      },
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3"
+        ],
+        "exception": "java.lang.NumberFormatException: For input string: \"bad\""
+      }
+    },
+    {
+      "args": [
+        "-help"
+      ],
+      "environment": {
+        "ARCHIVE_PORT": "8888"
+      },
+      "result": {
+        "status": 1,
+        "lines": [
+          "Starting Archive Server v1.3",
+          "Minima Archive Server v0.8 Help",
+          " -mysqlhost      : The MySQL Host server",
+          " -mysqldb        : The MySQL Database",
+          " -mysqluser      : The MySQL User",
+          " -mysqlpassword  : The MySQL password",
+          " -help           : Print this help"
+        ],
+        "exception": null
+      }
+    }
+  ],
+  "servers": [
+    {
+      "runtime": "java",
+      "requests": [
+        {
+          "first": -1,
+          "type": 255,
+          "reply": "0x000000051000000100"
+        },
+        {
+          "first": 0,
+          "type": 0,
+          "reply": "0x000005FA10010001030001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C3000001000001010000000100000203E800010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C300000100000100000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C300000100000103000100000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000100000100000100000000010000010000010000010000010000010000010000000001000001000001000001000001000001000001000001000001010000000100000203E800010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000100000100000100000000010000010000010000010000010000010000010000000001000001000001000001000001000001000001000001000001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100"
+        },
+        {
+          "first": 2,
+          "type": 15,
+          "reply": "0x0000013310000001010001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100"
+        },
+        {
+          "first": 4,
+          "type": 16,
+          "reply": "0x000000051000000100"
+        }
+      ],
+      "stdout": "Minima @ 11/09/2026 10:39:17 [3.1 MB] : Starting Archive Server v1.3\nMinima @ 11/09/2026 10:39:17 [11.0 MB] : Cascade found.. tip:2\nMinima @ 11/09/2026 10:39:17 [11.2 MB] : Server started on port : 56894\nMinima @ 11/09/2026 10:39:17 [11.4 MB] : Received request first block : -1\nMinima @ 11/09/2026 10:39:17 [11.7 MB] : Received request first block : 0\nMinima @ 11/09/2026 10:39:17 [11.7 MB] : Adding cascade..\nMinima @ 11/09/2026 10:39:17 [11.7 MB] : Received request first block : 2\nMinima @ 11/09/2026 10:39:17 [11.9 MB] : Received request first block : 4\nMinima @ 11/09/2026 10:39:27 [12.0 MB] : System Clean..\nMinima @ 11/09/2026 10:39:27 [5.8 MB] : Unknown command : unknown\nMinima @ 11/09/2026 10:39:27 [5.8 MB] : Unknown command : \nMinima @ 11/09/2026 10:39:27 [5.9 MB] : Archive Server stopped\n",
+      "stderr": "",
+      "graceful_exit": true
+    },
+    {
+      "runtime": "cpp",
+      "requests": [
+        {
+          "first": -1,
+          "type": 255,
+          "reply": "0x000000051000000100"
+        },
+        {
+          "first": 0,
+          "type": 0,
+          "reply": "0x000005FA10010001030001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C3000001000001010000000100000203E800010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C300000100000100000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C300000100000103000100000000010000010000010000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000100000100000100000000010000010000010000010000010000010000010000000001000001000001000001000001000001000001000001000001010000000100000203E800010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000100000100000100000000010000010000010000010000010000010000010000000001000001000001000001000001000001000001000001000001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100"
+        },
+        {
+          "first": 2,
+          "type": 15,
+          "reply": "0x0000013310000001010001020000000100000207D000010200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100"
+        },
+        {
+          "first": 4,
+          "type": 16,
+          "reply": "0x000000051000000100"
+        }
+      ],
+      "stdout": "Minima @ 11/09/2026 10:39:27 [335.9 KB] : Starting Archive Server v1.3\nMinima @ 11/09/2026 10:39:28 [3.3 MB] : Cascade found.. tip:2\nMinima @ 11/09/2026 10:39:28 [3.3 MB] : Server started on port : 56998\nMinima @ 11/09/2026 10:39:28 [3.3 MB] : Received request first block : -1\nMinima @ 11/09/2026 10:39:28 [4.0 MB] : Received request first block : 0\nMinima @ 11/09/2026 10:39:28 [4.0 MB] : Adding cascade..\nMinima @ 11/09/2026 10:39:28 [4.6 MB] : Received request first block : 2\nMinima @ 11/09/2026 10:39:28 [4.9 MB] : Received request first block : 4\nMinima @ 11/09/2026 10:39:38 [4.9 MB] : System Clean..\nMinima @ 11/09/2026 10:39:38 [4.9 MB] : Unknown command : unknown\nMinima @ 11/09/2026 10:39:38 [4.9 MB] : Unknown command : \nMinima @ 11/09/2026 10:39:38 [4.9 MB] : Archive Server stopped\n",
+      "stderr": "",
+      "graceful_exit": true
+    }
+  ],
+  "failures": [],
+  "seconds": 24.47,
+  "scope": "Actual unmodified pinned Java ArchiveServer and native executable, explicit compiled-driver loading, CLI help/error/environment order, Java-written real MySQL blocks/cascade, actual TCP archive replies and ten-second closes, console trim/quit and process shutdown. Dynamic log prefixes/ports and stack frames excluded from CLI comparison; exact exception class/message and status retained. Live fixture is synthetic, localhost-only, tmpfs. No arbitrary SQL faults, GC timing, full subclass/platform/network parity claim."
+}

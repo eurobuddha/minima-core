@@ -53,3 +53,10 @@ index -1 and length 0. Native vector::at had exposed a generic runtime error.
 getTreeTip and getTreeRoot now explicitly preserve the Java index category and
 message. Both IBD regression suites pass after this correction. This does not
 certify every other nullable receiver or collection error boundary. See the [MegaMMR lab](../../../../../new-tests/mega-mmr-commands.md).
+
+The ArchiveServer comparison now checks a corrupt stored block that decodes to
+null. Java retains that null in the list, then throws NullPointerException when
+serializing the IBD. The native serializer previously exposed IllegalArgumentException;
+that specific write path now preserves the source category. Both 81-case server
+comparisons and both 1,057-case IBD regressions pass. See the
+[archive-server lab](../../../../../../student-guide/new-tests/archive-server.md).

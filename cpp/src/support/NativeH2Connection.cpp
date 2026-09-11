@@ -199,4 +199,5 @@ NativeH2Runtime::NullableConnect NativeH2Runtime::nullableConnector() const{
 }
 std::string NativeH2Runtime::version() const{return unicode::encodeUTF8(required(mEngine->call(61,0).string()));}
 int32_t NativeH2Runtime::liveHandles() const{return mEngine->call(60,0).integer();}
+void NativeH2Runtime::loadMySQLDriver() const{mEngine->call(62,0);}
 }
