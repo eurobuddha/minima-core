@@ -6,6 +6,10 @@ from peers_checker_differential import Runner
 from horst_differential import ROOT,JAVA,hx,number,data
 from sphincs_signature_differential import wots
 
+def entrynumber(n):return number(n)+data(bytes([n+42]))
+def mmrdata(n):return data(bytes([n+50]))+number(n+22)
+def entry(n):return number(n+3)+entrynumber(n)+mmrdata(n)
+def signatureproof(n):return data(bytes([n+4]))+data(bytes([n+10]))+proof(n)
 def proof(n):return number(n+7)+number(n)+b''.join(bytes([i%2])+data(bytes([i+3]))+number(i+11) for i in range(n))
 def horst(n):return number(n)+b''.join(data(bytes([i+21,i+22]))+proof(n) for i in range(n))
 def fors(n):return horst(n)+number(n)+b''.join(data(bytes([i+31]))+number(i+40)+proof(n) for i in range(n))
@@ -14,7 +18,7 @@ def sphincs(n):return wots(n)+data(bytes([n+61]))+number(n+70)+fors(n)
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');build=ap.parse_args().build.resolve();started=time.monotonic();oracle=build/'streamable-oracle';oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/StreamableOracle.java'];listing=oracle/'sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
-    adopted={'MiniByte','MMRProof','HORSTSignature','FORSSignature','SPHINCSSignature'};implementations=[]
+    adopted={'MiniByte','MMRProof','HORSTSignature','FORSSignature','SPHINCSSignature','MMRData','MMREntryNumber','MMREntry','MMRProofChunk','SignatureProof','Signature'};implementations=[]
     for path in sorted((JAVA/'src').rglob('*.java')):
         source=re.sub(r'/\*.*?\*/|//[^\n]*','',path.read_text(),flags=re.S)
         for name in re.findall(r'\bclass\s+(\w+)[^{]*?\bimplements\s+Streamable\b',source):implementations.append(dict(java=str(path.relative_to(JAVA)),type=name,native_interface_adopted=name in adopted))
@@ -27,6 +31,7 @@ def main():
     try:
         with tempfile.TemporaryDirectory(prefix='streamable-',dir=build) as scratch:
             initial={'byte':b'\x11','proof':proof(1),'horst':horst(1),'fors':fors(1),'sphincs':sphincs(1)};changed={'byte':b'\xff','proof':proof(2),'horst':horst(2),'fors':fors(2),'sphincs':sphincs(2)}
+            for kind,encode in [('mmrdata',mmrdata),('entrynumber',entrynumber),('entry',entry),('chunk',lambda n:bytes([n%2])+mmrdata(n)),('signatureproof',signatureproof),('signature',wots)]:initial[kind]=encode(1);changed[kind]=encode(2)
             for kind,base in initial.items():
                 target=changed[kind]
                 cases.append(dict(kind=kind,op='write',initial=hx(base)))
@@ -36,6 +41,11 @@ def main():
                     cases.append(dict(kind=kind,op='read',initial=hx(base),wire=hx(b'\xaa'*offset+target+b'\x88\x99'),offset=offset))
                 if kind!='byte':
                     for prefix in [number(-1),number(2**32),b'\x00\xff',b'\x00\x21']:cases.append(dict(kind=kind,op='read',initial=hx(base),wire=hx(prefix),offset=0))
+            cases.append(dict(kind='entrynumber',op='read',initial=hx(initial['entrynumber']),wire=hx(number(0)+data(b'')),offset=0))
+            for null_data in [False,True]:
+                cases.append(dict(kind='entry',op='write',initial='0x',empty=True,nullData=null_data))
+                for cut in range(len(changed['entry'])+1):cases.append(dict(kind='entry',op='read',initial='0x',empty=True,nullData=null_data,wire=hx(changed['entry'][:cut]),offset=0))
+            for kind in ['mmrdata','entry','chunk','signatureproof','signature']:cases.append(dict(kind=kind,op='badwrite',initial='0x'))
             for fail in [-1,0,1,2,3]:
                 cases.append(dict(kind='failing',op='write',initial='0x010203',fail=fail))
                 for cut in range(4):cases.append(dict(kind='failing',op='read',initial='0x010203',wire=hx(b'\x04\x05\x06'[:cut]),offset=0,fail=fail))
@@ -44,7 +54,17 @@ def main():
                 if values[0]!=values[1]:failures.append(dict(case=index,request=q,java=values[0],cpp=values[1]))
                 for value in values:
                     check('error' not in value,'fixture initialization succeeds')
-                    if q['kind']=='failing':
+                    if q['kind']=='mmrdata':check(value['unspendable'],'read does not reset unspendable flag')
+                    if q['kind']=='entry':check(value['empty']==(q.get('empty',False) and not q.get('nullData',False) and q['op']=='write'),'explicit empty flag clears before first read')
+                    if q['kind']=='signature':check(value['oldListSize']==1 and value['sameList']==(q['op'] in ['write','badwrite']),'retained signature list survives replacement');check(value['aliasCount']>=0,'signature alias observes current list')
+                    if q['op']=='badwrite':
+                        signature_prefix=data(b'\xa1')+data(b'\xb2')+number(7)+number(1)+b'\x01'
+                        prefix={'mmrdata':b'','entry':number(7)+number(0)+data(b'\x04'),'chunk':b'\x01','signatureproof':signature_prefix,'signature':number(1)+signature_prefix}[q['kind']]
+                        check(value['state']==dict(appended=hx(b'\xaa\x55'+prefix),writeError='java.io.IOException'),'oversized nested hash preserves all preceding fields')
+                    elif q.get('empty',False):
+                        if q['op']=='write':check(value['state']==dict(appended=hx(b'\xaa\x55'+number(7)+number(0)+data(b'\x04')),writeError='java.lang.NullPointerException'),'empty entry writes row/entry before null data error')
+                        else:check(value['offset']<=len(bytes.fromhex(q['wire'][2:])),'empty-entry read consumes only available bytes')
+                    elif q['kind']=='failing':
                         expected=bytearray(b'\x01\x02\x03');n=0
                         if q['op']=='read':n=len(bytes.fromhex(q['wire'][2:]));expected[:n]=b'\x04\x05\x06'[:n];check(value['offset']==n,'failing-object consumed bytes');check(('readError' in value)==(n<3),'read EOF boundary')
                         fail=q['fail'];check(value['state']['appended']==hx(b'\xaa\x55'+expected[:fail if fail>=0 else 3]),'partial writer output remains appended');check(('writeError' in value['state'])==(fail>=0),'writer exception propagates through base')
@@ -70,6 +90,6 @@ def main():
                 except Exception as error:failures.append(dict(phase='cleanup',runtime=which,error=repr(error)))
                 err.seek(0);stderr=err.read()
                 if which==1 and stderr:failures.append(dict(phase='native stderr',stderr=stderr))
-    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,explicit_source_implementations=implementations,adopted_types=len(adopted),scope='Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Existing proof/signature bodies unchanged. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished.')
+    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,explicit_source_implementations=implementations,adopted_types=len(adopted),scope='Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof and Signature. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Adds per-field MMR/signature readers, explicit MMREntry empty flag and retained Signature list semantics; original five-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished.')
     (build/'streamable-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

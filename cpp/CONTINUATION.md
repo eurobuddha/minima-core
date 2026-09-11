@@ -1,3 +1,58 @@
+# Latest checkpoint — MMR and signature Streamable integration
+
+Base HEAD 1c3d2d6824c1682e8f0465a44c7ffa1bcdc98b9e. Branch/project/executable
+MinimaCoreC++. Goal ACTIVE, not complete. 411 counterparts = 364 production +
+47 original tests; 46 absent = 5 production + 41 tests. All present remain
+implemented_partial; all 457 parity not_verified. 261 default CTest entries;
+full suite NOT run. Historical checkpoint notes follow below.
+
+Six additional explicit source implementers now use Streamable: MMRData,
+MMREntryNumber, MMREntry, nested MMRProofChunk, SignatureProof and Signature.
+Eleven of 44 are integrated; 33 remain. No new mapped-file count this checkpoint.
+Existing codecs supply values; in-place readers preserve pinned assignment order.
+MMREntry has an explicit empty flag, cleared before reading any bytes. Its null
+writer appends row and entry first, then throws JavaNullPointerException.
+MMREntryNumber assigns only after the complete decimal is decoded; empty unscaled
+bytes now throw JavaNumberFormatException. Signature uses HORSTSignature's shared
+Data/list pattern: old list handles survive replacement, containing aliases see
+the replacement. TreeKey and envelope fixture retain/dereference shared list handles.
+Nested writers append directly, preserving output prefixes on oversized hash errors.
+
+Both complete builds PASS. Both interface suites PASS 1,299 comparisons / 6,290
+assertions, normal 3.293s and sanitizer 3.250s. Matching transcript SHA256:
+6e5a3aebfbb1ebadd2f687923034cc077084ece8acfe98e86a176d02430fb50b.
+Every small-vector truncation, offsets/trailing bytes, in-place partial state,
+explicit empty/unspendable flags, retained lists/object aliases, null and oversized
+hash partial writes, actual generic MiniFile/MiniData/Crypto/NIO callers.
+Exception classes compared; diagnostic prose excluded. Native complete stderr empty.
+All six regressions PASS both builds: MiniByteTests, malformed_streams,
+java_differential, object_differential, utility_differential,
+sphincs_signature_differential. Normal six-suite 36.27s; sanitizer seven-suite
+including interface 117.11s. Object corpus includes actual TreeKey signing and
+verification. Heavy SPHINCS signing NOT rerun; container codec/state suite rerun.
+No active test handles; 59949, 9804, 34954, 75828 and 6123 all terminal exit0.
+No MySQL containers; old /tmp fixtures stale. No native H2 provider changes.
+
+Evidence: validation/streamable-mmr-signatures-work-in-progress. New teaching lab:
+student-guide/new-tests/streamable-mmr-signatures.md. Six source lessons plus
+interface lesson/lab updated. All 457 lessons remain authored, teaching != parity.
+Pinned source and current native codecs/callers/tests inspected. Sibling
+/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/mmr/MMRData.hpp/.cpp
+and MMREntry.hpp/.cpp use incompatible framing/spent flag/fixed integers. Current
+codecs reused; no algorithm replacement or new dependency.
+
+Next REQUIRED: integrate remaining 33 source Streamable implementers with actual
+source read/write timing and partial-state validation, then inherited subclasses.
+Complete constructors/null/reference APIs remain open, including MMRProofChunk's
+no-argument construction and nullable SignatureProof entries. Vector/span does not
+certify custom streams, allocation failures, concurrency or full node/API parity.
+Five production counterparts still absent: inactive P2PSwapLink, benchmark,
+jnitest, jniminingtest, jnifunctions. JNI implementation source remains unavailable;
+do not fabricate it. Another 41 original test counterparts also remain absent.
+Continue full port work after this local commit and verified recovery bundle.
+
+---
+
 # Latest checkpoint — Streamable base and five concrete integrations
 
 Base HEAD 6b01bd6e0f4f43211813776c90d8411772a17431. Branch/project/executable

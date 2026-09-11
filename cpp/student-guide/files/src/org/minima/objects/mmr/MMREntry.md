@@ -22,7 +22,7 @@ A position in an MMR: row, entry number and optional hash-and-sum data. It provi
 
 ## How the translation is approached
 
-Native data is a shared_ptr, so entry copies can share mutable MMRData. Absence of that pointer represents emptiness. Row arithmetic explicitly uses unsigned addition/subtraction followed by bit_cast to reproduce Java int wraparound without C++ signed-overflow undefined behavior. Static deserialization returns a new populated entry.
+Native data is a shared_ptr, so entry copies can share mutable MMRData. A separate explicit flag represents emptiness, matching the source constructor and read timing. Row arithmetic explicitly uses unsigned addition/subtraction followed by bit_cast to reproduce Java int wraparound without C++ signed-overflow undefined behavior. Static deserialization returns a new populated entry.
 
 ## What the tests tell us
 
@@ -42,6 +42,12 @@ For row 2 and entry 5, calculate sibling, parent row/entry and both child positi
 
 ## Limits and traceability
 
-Serializing an empty entry throws a native runtime_error versus a Java null dereference; generic error normalization does not settle this exception difference. The source map still labels this counterpart partial and parity not_verified. The described fixtures establish their particular observations, not full API equivalence or a working full node.
+The common-interface suite now checks the exact null-data exception class and preserved output prefix. Broader constructor and reference behavior still needs review. The source map still labels this counterpart partial and parity not_verified. The described fixtures establish their particular observations, not full API equivalence or a working full node.
 
 Pinned Java SHA-256: `10da033e42a356f69f4578295ee04dda8c8178f447a55a8c7efef46ebd33b77f`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## MMR and signature interface follow-up
+
+The empty flag is now separate from the data pointer. The position-only constructor sets it true; the data constructor sets it false even when explicitly given null. Reading clears it before the first byte, then assigns row, entry number and data as each read completes. Writing null data preserves the row and entry bytes already appended, then throws the source NullPointerException.
+
+The [MMR/signature interface lab](../../../../../../new-tests/streamable-mmr-signatures.md) explains every-prefix reads, partial writes, offsets and actual generic callers. Both complete builds and six affected regressions pass. The expanded interface corpus passes 1,299 comparisons and 6,290 assertions per build across 11 types; these are suite totals, not per-file counts. Full class parity remains unverified.

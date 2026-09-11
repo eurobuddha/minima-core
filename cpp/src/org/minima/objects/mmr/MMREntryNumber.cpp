@@ -1,6 +1,7 @@
 #include "MMREntryNumber.hpp"
 #include "org/minima/objects/base/MiniData.hpp"
 #include "support/ByteIO.hpp"
+#include "support/JavaExceptions.hpp"
 #include "support/JavaBigDecimalText.hpp"
 #include <limits>
 namespace minima {
@@ -93,10 +94,12 @@ std::string MMREntryNumber::toString() const {
     }
     return negative?"-"+value:value;
 }
-std::vector<uint8_t> MMREntryNumber::serialise() const {return wire::join(MiniNumber(mScale),MiniData(mUnscaled.toJavaBytes()));}
+void MMREntryNumber::writeDataStream(std::vector<uint8_t>& output) const {wire::append(output,MiniNumber(mScale).serialise());wire::append(output,MiniData(mUnscaled.toJavaBytes()).serialise());}
+std::vector<uint8_t> MMREntryNumber::serialise() const {return Streamable::serialise();}
+void MMREntryNumber::readDataStream(std::span<const uint8_t> data,size_t& offset){auto value=deserialise(data,offset);mUnscaled=std::move(value.mUnscaled);mScale=value.mScale;}
 MMREntryNumber MMREntryNumber::deserialise(std::span<const uint8_t> data,size_t& offset) {
     int scale=MiniNumber::deserialise(data,offset).getAsInt();auto raw=MiniData::deserialise(data,offset);
-    if(raw.empty()) throw std::invalid_argument("Empty BigInteger");
+    if(raw.empty()) throw JavaNumberFormatException("Zero length BigInteger");
     return MMREntryNumber(BigInt::fromJavaBytes(raw.bytes()),scale);
 }
 }

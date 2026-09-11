@@ -42,6 +42,12 @@ For entry number -3, what are div2 and floor(div2)? Why would ordinary integer d
 
 ## Limits and traceability
 
-Exact BigDecimal-returning APIs are adapted rather than exposed literally. Empty BigInteger and scale-overflow errors use native exception categories; generic comparison failures do not establish those categories. The source-map status remains partial and full parity not_verified.
+Exact BigDecimal-returning APIs are adapted rather than exposed literally. The common-interface suite now establishes the empty BigInteger exception class for its explicit malformed case. Scale-overflow and other error categories still need broader validation. The source-map status remains partial and full parity not_verified.
 
 Pinned Java SHA-256: `2b9839210ee877ae25e13d98556fd1a845c572ef2dfb5b372a374d3d7fb09891`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## MMR and signature interface follow-up
+
+The in-place reader constructs the whole decimal before replacing the stored number. A truncated unscaled value therefore leaves the old decimal intact. A zero-length BigInteger now throws the source NumberFormatException; the suite compares its exception class explicitly.
+
+The [MMR/signature interface lab](../../../../../../new-tests/streamable-mmr-signatures.md) explains every-prefix reads, partial writes, offsets and actual generic callers. Both complete builds and six affected regressions pass. The expanded interface corpus passes 1,299 comparisons and 6,290 assertions per build across 11 types; these are suite totals, not per-file counts. Full class parity remains unverified.

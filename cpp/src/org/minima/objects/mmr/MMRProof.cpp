@@ -2,7 +2,9 @@
 #include "org/minima/utils/json/JSONArray.hpp"
 namespace minima {
 json::JSONObject MMRProof::MMRProofChunk::toJSON() const {json::JSONObject obj;obj.put("left",isLeft());obj.put("data",mMMRData.toJSON());return obj;}
-std::vector<uint8_t> MMRProof::MMRProofChunk::serialise() const {return wire::join(mLeft,mMMRData);}
+void MMRProof::MMRProofChunk::writeDataStream(std::vector<uint8_t>& output) const {mLeft.writeDataStream(output);mMMRData.writeDataStream(output);}
+void MMRProof::MMRProofChunk::readDataStream(std::span<const uint8_t> data,size_t& offset){mLeft=MiniByte::deserialise(data,offset);mMMRData=MMRData::deserialise(data,offset);}
+std::vector<uint8_t> MMRProof::MMRProofChunk::serialise() const {return Streamable::serialise();}
 MMRProof::MMRProofChunk MMRProof::MMRProofChunk::deserialise(std::span<const uint8_t> data,size_t& offset) {
     auto left=MiniByte::deserialise(data,offset);
     auto mmr=MMRData::deserialise(data,offset);
@@ -20,10 +22,7 @@ json::JSONObject MMRProof::toJSON() const {
 void MMRProof::writeDataStream(std::vector<uint8_t>& output) const {
     wire::append(output,mData->mBlockTime.serialise());
     wire::append(output,MiniNumber(getProofLength()).serialise());
-    for(const auto& chunk:mData->mProofChain) {
-        wire::append(output,chunk.mLeft.serialise());
-        wire::append(output,chunk.mMMRData.serialise());
-    }
+    for(const auto& chunk:mData->mProofChain)chunk.writeDataStream(output);
 }
 std::vector<uint8_t> MMRProof::serialise() const {std::vector<uint8_t> output;writeDataStream(output);return output;}
 void MMRProof::readDataStream(std::span<const uint8_t> data,size_t& offset) {

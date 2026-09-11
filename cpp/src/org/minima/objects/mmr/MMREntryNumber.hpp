@@ -1,7 +1,8 @@
 #pragma once
+#include "org/minima/utils/Streamable.hpp"
 #include "org/minima/objects/base/MiniNumber.hpp"
 namespace minima {
-class MMREntryNumber {
+class MMREntryNumber:public Streamable {
     BigInt mUnscaled;
     int32_t mScale=0;
     static BigInt scaleUp(const BigInt& value,int64_t places);
@@ -33,7 +34,9 @@ public:
     bool isMore(const MMREntryNumber& other) const {return compareTo(other)>0;}
     bool isMoreEqual(const MMREntryNumber& other) const {return compareTo(other)>=0;}
     std::string toString() const;
+    void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     static MMREntryNumber deserialise(std::span<const uint8_t> data,size_t& offset);
 };
 }

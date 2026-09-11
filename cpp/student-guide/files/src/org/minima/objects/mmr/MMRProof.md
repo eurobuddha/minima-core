@@ -48,7 +48,7 @@ This class now implements the native Streamable interface. Its existing byte
 format is retained; reads dispatch into the same object and writers append to the
 supplied output. The [interface lab](../../../../../../new-tests/streamable-interface.md) tests base-reference calls,
 partial reads and existing generic file/hash/network-message helpers. Both normal and sanitizer
-runs pass 909 comparisons and 3,850 assertions across all five adopted types;
+runs now pass 1,299 comparisons and 6,290 assertions across all 11 adopted types;
 this does not establish full interface adoption or complete class parity.
 
 ## Limits and traceability
@@ -66,3 +66,9 @@ throws. HORSTSignature and FORSSignature share this method; serialise wraps it
 with a fresh vector. The [FORS lab](../../../../../../../student-guide/new-tests/fors-signatures.md)
 checks nested failures, while the existing object and HORST comparisons regress
 unchanged successful proof bytes. This does not model every failing Java output stream.
+
+## MMR and signature interface follow-up
+
+The nested MMRProofChunk also implements Streamable. It replaces its direction byte before decoding the complete sibling data. A failed sibling read keeps the previous sibling. Both the chunk and outer proof writers delegate directly to nested writers, preserving bytes already appended when a later field fails. The Java no-argument chunk constructor and fully nullable field semantics remain unfinished.
+
+The [MMR/signature interface lab](../../../../../../new-tests/streamable-mmr-signatures.md) explains every-prefix reads, partial writes, offsets and actual generic callers. Both complete builds and six affected regressions pass. The expanded interface corpus passes 1,299 comparisons and 6,290 assertions per build across 11 types; these are suite totals, not per-file counts. Full class parity remains unverified.

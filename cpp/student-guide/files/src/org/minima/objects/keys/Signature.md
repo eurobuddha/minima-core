@@ -22,7 +22,7 @@ An ordered chain of SignatureProof objects linking a tree’s root public key do
 
 ## How the translation is approached
 
-Native storage is a vector with mutable access. Its root getter explicitly throws a Java-typed IndexOutOfBoundsException for an empty list. Static deserialization returns a fresh object; the optional-returning converter now catches only wire::IOException, logs through MinimaLogger and returns an empty optional. Other exceptions propagate as in Java.
+Native storage is a shared object containing a replaceable shared vector with mutable access. Its root getter explicitly throws a Java-typed IndexOutOfBoundsException for an empty list. Static deserialization returns a fresh object; the optional-returning converter now catches only wire::IOException, logs through MinimaLogger and returns an empty optional. Other exceptions propagate as in Java.
 
 ## What the tests tell us
 
@@ -40,7 +40,7 @@ Why can an empty Signature round-trip successfully but fail when added to Witnes
 
 ## Limits and traceability
 
-The [token-validation lab](../../../../../../../student-guide/new-tests/token-validation.md) now checks converter I/O logging and the escaping NumberFormatException for a zero-length BigInteger. Mutable list identity across reads, inherited APIs and exhaustive logger failure behavior remain open. The empty-list getter’s typed fix does not establish every Signature error path. Source-map status remains partial and parity not_verified.
+The [token-validation lab](../../../../../../../student-guide/new-tests/token-validation.md) now checks converter I/O logging and the escaping NumberFormatException for a zero-length BigInteger. Retained list identity and containing-object aliases across reads are now checked by the common-interface suite. Nullable proof entries, inherited APIs and exhaustive logger failure behavior remain open. The empty-list getter’s typed fix does not establish every Signature error path. Source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `5fd453e5f2df679cf33afc68d993cc8c0b10d781418c78a024b5e7fe9e65059c`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
 
@@ -54,3 +54,9 @@ this writer with a fresh vector, preserving successful output bytes.
 The [envelope lab](../../../../../../../student-guide/new-tests/sphincs-signature-envelope.md)
 checks this failure boundary, and the existing object corpus regresses normal wire
 behavior. This does not add representation of Java null proof-list entries.
+
+## MMR and signature interface follow-up
+
+Signature now reuses the shared-data/list ownership pattern from HORSTSignature. Reading installs a new list before reading its count, then appends complete proofs. An old list handle retains the old contents, while an alias to the containing Signature sees the new list. TreeKey.verify keeps the returned shared handle while traversing it; its verification algorithm is unchanged. Nullable proof-list entries remain unfinished.
+
+The [MMR/signature interface lab](../../../../../../new-tests/streamable-mmr-signatures.md) explains every-prefix reads, partial writes, offsets and actual generic callers. Both complete builds and six affected regressions pass. The expanded interface corpus passes 1,299 comparisons and 6,290 assertions per build across 11 types; these are suite totals, not per-file counts. Full class parity remains unverified.

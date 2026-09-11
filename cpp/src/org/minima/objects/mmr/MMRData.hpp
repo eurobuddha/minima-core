@@ -1,8 +1,9 @@
 #pragma once
+#include "org/minima/utils/Streamable.hpp"
 #include "org/minima/utils/Crypto.hpp"
 #include "org/minima/utils/json/JSONObject.hpp"
 namespace minima {
-class MMRData {
+class MMRData:public Streamable {
     MiniData mData;
     MiniNumber mValue;
 public:
@@ -19,7 +20,9 @@ public:
     bool isEqual(const MMRData& other) const;
     json::JSONObject toJSON() const;
     std::string toString() const {return toJSON().toJSONString();}
+    void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     static MMRData deserialise(std::span<const uint8_t> data,size_t& offset);
 };
 }

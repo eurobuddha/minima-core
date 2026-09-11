@@ -6,13 +6,15 @@
 namespace minima {
 class MMRProof:public Streamable {
 public:
-    struct MMRProofChunk {
+    struct MMRProofChunk:public Streamable {
         MiniByte mLeft;
         MMRData mMMRData;
         MMRProofChunk(bool left,MMRData data):mLeft(left),mMMRData(std::move(data)){}
         bool isLeft() const {return mLeft.isTrue();}
         const MMRData& getMMRData() const {return mMMRData;}
         json::JSONObject toJSON() const;
+        void writeDataStream(std::vector<uint8_t>& output) const override;
+        void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
         std::vector<uint8_t> serialise() const;
         static MMRProofChunk deserialise(std::span<const uint8_t> data,size_t& offset);
     };

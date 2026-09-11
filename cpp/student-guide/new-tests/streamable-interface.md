@@ -36,3 +36,8 @@ both builds. [Saved evidence](../../validation/streamable-work-in-progress/progr
 For students: why must readDataStream modify the same object? Why is the offset
 a reference? Which bytes should remain in the output if a writer fails after
 appending two bytes? Why can two Streamable classes use entirely different formats?
+
+The [MMR/signature follow-up](streamable-mmr-signatures.md) extends this same suite
+to 11 types, passing 1,299 comparisons and 6,290 assertions per build. The five-type
+results above describe the initial checkpoint. Another 33 explicit source
+implementers still need integration.

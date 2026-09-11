@@ -1,3 +1,38 @@
+## Code Review — MMR and signature Streamable follow-up
+
+### Summary
+
+Six additional types use the common interface while reusing existing codecs.
+Source assignment order, explicit empty state and retained Signature list ownership
+are preserved in tested paths. TreeKey's shared-list traversal change passes real
+signing/verification regressions. Both complete builds and targeted tests pass.
+
+### Findings
+
+**MAJOR — full interface/API parity is still unfinished.** Eleven of 44 explicit
+source implementers are adopted; 33 remain. Default/null/reference APIs, including
+MMRProofChunk's no-argument constructor and nullable SignatureProof list entries,
+are not fully represented. These are tracked remaining port work, not proof of
+completion from file counts. Custom stream backends, allocation failures,
+concurrency and exhaustive runtime behavior remain outside this corpus.
+
+No new blocking defect found in the reviewed integration. MMRData's metadata is
+retained on in-place reads, MMREntry clears its flag before reads, entry-number
+assignment waits for complete decimal construction, and Signature preserves old
+list handles while replacing the containing object's list. Oversized nested hash
+and null-data writes preserve preceding fields and throw the observed Java types.
+
+### Verdict
+
+Approve this staged checkpoint. Normal and sanitizer interface suites each pass
+1,299 comparisons and 6,290 assertions with matching transcripts and empty native
+stderr. All six affected regressions pass in each build. Evidence is in
+[the checkpoint report](validation/streamable-mmr-signatures-work-in-progress/progress.json).
+The full 261-entry suite and complete node parity have not been certified.
+Earlier reviews below describe historical checkpoints.
+
+---
+
 ## Streamable interface review
 
 ### Summary

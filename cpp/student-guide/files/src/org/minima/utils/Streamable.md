@@ -26,6 +26,10 @@ from Streamable. The four proof/signature implementations retain their existing
 writer and in-place reader bodies. MiniByte appends its stored byte and reuses
 ByteIO's byte reader. Its static factory calls the same in-place reader.
 
+The [MMR/signature follow-up](../../../../../../student-guide/new-tests/streamable-mmr-signatures.md)
+adds MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof and Signature,
+preserving each reader's assignment timing and Signature's retained-list behavior.
+
 MiniFile's generic reader already selects readDataStream when available. Given a
 Streamable reference, that call now dispatches to the actual object's reader.
 Crypto, MiniData conversion and NIOManager similarly use the convenience serializer,
@@ -54,13 +58,13 @@ showing that the common interface preserves partial output and exceptions.
 Successful file write/append/load, MiniData conversion, single/pair hashes and
 network-message construction use the actual generic helpers. Independent byte
 concatenation and SHA3 calculations check their outputs. Both complete builds
-pass. Each interface suite passes 909 comparisons and 3,850 assertions with
+pass. Each expanded interface suite passes 1,299 comparisons and 6,290 assertions with
 matching transcripts and empty native stderr; all six affected regressions pass.
 
 ## Remaining work
 
 The pinned source declares 44 explicit implementing classes, including the nested
-MMRProofChunk. Five are integrated; 39 still need native interface adoption and
+MMRProofChunk. Eleven are integrated; 33 still need native interface adoption and
 behavior review. Inherited subclasses also require validation when their bases
 join the interface. The commented P2PSwapLink sketch is not an active implementer.
 

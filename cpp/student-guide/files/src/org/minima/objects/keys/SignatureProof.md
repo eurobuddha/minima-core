@@ -55,3 +55,9 @@ this writer with a fresh vector, preserving successful output bytes.
 The [envelope lab](../../../../../../../student-guide/new-tests/sphincs-signature-envelope.md)
 checks this failure boundary, and the existing object corpus regresses normal wire
 behavior. This does not add representation of Java null proof-list entries.
+
+## MMR and signature interface follow-up
+
+The reader updates public key, signature and proof in source order. Each completed field survives a failure in a later field. The existing MMRProof decoder supplies the final field, so an incomplete new proof does not replace the previous one. This does not certify the full default/null API or all field-reference identities.
+
+The [MMR/signature interface lab](../../../../../../new-tests/streamable-mmr-signatures.md) explains every-prefix reads, partial writes, offsets and actual generic callers. Both complete builds and six affected regressions pass. The expanded interface corpus passes 1,299 comparisons and 6,290 assertions per build across 11 types; these are suite totals, not per-file counts. Full class parity remains unverified.

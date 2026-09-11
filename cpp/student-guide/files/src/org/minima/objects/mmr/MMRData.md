@@ -17,7 +17,7 @@ A hash-and-sum commitment used at every MMR node. The hash commits to structure 
 1. Create a leaf by hashing serialized MiniNumber.ZERO, the serialized object, and its sum. The zero prefix distinguishes a leaf from an internal node.
 2. Create a parent by adding left and right values, then hashing MiniNumber.ONE, left hash, right hash and the combined sum. Left/right order matters even when addition gives the same sum.
 3. Equality requires both hash and value to match. Comparing only the hash would omit part of the object’s explicit equality contract.
-4. The unspendable flag is mutable in-memory metadata. It is absent from serialization and JSON, so a round trip does not preserve it.
+4. The unspendable flag is mutable in-memory metadata. It is absent from serialization and JSON, so decoding a new object resets it to its default, while reading into an existing object leaves it unchanged.
 5. Write the hash using the hash-specific MiniData encoding, followed by MiniNumber value. Read the same order.
 
 ## How the translation is approached
@@ -45,3 +45,9 @@ Construct two conceptual leaves with sums 2 and 3. Explain why swapping them pre
  The source map still labels this counterpart partial and parity not_verified. The described fixtures establish their particular observations, not full API equivalence or a working full node.
 
 Pinned Java SHA-256: `fea38cf0f064be9b07c1dd2f2f51a52ee369a303ece9b2b19387146f14e0088a`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## MMR and signature interface follow-up
+
+The in-place reader assigns the decoded hash before reading the sum. If that later read fails, the new hash remains and the previous sum survives. The unspendable flag stays unchanged; it is not part of the stream. The writer appends the hash and then the sum using the existing codecs.
+
+The [MMR/signature interface lab](../../../../../../new-tests/streamable-mmr-signatures.md) explains every-prefix reads, partial writes, offsets and actual generic callers. Both complete builds and six affected regressions pass. The expanded interface corpus passes 1,299 comparisons and 6,290 assertions per build across 11 types; these are suite totals, not per-file counts. Full class parity remains unverified.
