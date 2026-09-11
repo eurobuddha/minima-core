@@ -80,6 +80,9 @@ public:
     static void bindRuntime();
     static ChainServices chainServices();
     static IBDServices ibdServices();
+    // Native dependency wiring, also used by temporary archive commands.
+    std::shared_ptr<ArchiveManager> newArchive();
+    static std::shared_ptr<IBDArchive> archiveServices(std::shared_ptr<ArchiveManager> archive);
     static ConsensusServices consensusServices();
 protected:
     MinimaDBServices mServices;
@@ -105,7 +108,6 @@ private:
     std::set<std::optional<std::u16string>> mCoinNotify;
     std::mutex mNotifyLock;
     std::atomic<bool> mAllowSaveState{true};
-    std::shared_ptr<ArchiveManager> newArchive();
     std::shared_ptr<TxPoWDB> newTxPoWDB();
     void loadWallet(const std::filesystem::path& base,bool announceEncryption);
     int64_t getDBFileSie(const std::string& name);

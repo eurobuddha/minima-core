@@ -184,13 +184,16 @@ void MinimaDB::bindRuntime(){
         []{return sqlRequired(getDB()).getMegaMMR();},
         [](bool lock){sqlRequired(getDB()).readLock(lock);},[](const auto& id){return sqlRequired(sqlRequired(getDB()).getTxPoWDB()).getTxPoW(id);}};
 }
-IBDServices MinimaDB::ibdServices(){
-    return {[]{return sqlRequired(getDB()).getTxPoWTree();},[]{return sqlRequired(getDB()).getCascade();},[]{
-        auto archive=sqlRequired(getDB()).getArchive();auto result=std::make_shared<IBDArchive>();
+std::shared_ptr<IBDArchive> MinimaDB::archiveServices(std::shared_ptr<ArchiveManager> archive){
+    auto result=std::make_shared<IBDArchive>();
         result->exists=[archive](const auto& id){return sqlRequired(archive).exists(id);};
         result->loadBlockRange=[archive](const auto& a,const auto& b,bool descending){return sqlRequired(archive).loadBlockRange(a,b,descending);};
         result->loadSyncBlockRange=[archive](const auto& start){return sqlRequired(archive).loadSyncBlockRange(start);};
         result->loadLastBlock=[archive]{return sqlRequired(archive).loadLastBlock();};result->loadCascade=[archive]{return sqlRequired(archive).loadCascade();};return result;
+}
+IBDServices MinimaDB::ibdServices(){
+    return {[]{return sqlRequired(getDB()).getTxPoWTree();},[]{return sqlRequired(getDB()).getCascade();},[]{
+        return archiveServices(sqlRequired(getDB()).getArchive());
     },[](bool lock){sqlRequired(getDB()).readLock(lock);},[]{return sqlRequired(getDB()).mServices.isShuttingDown();}};
 }
 ConsensusServices MinimaDB::consensusServices(){

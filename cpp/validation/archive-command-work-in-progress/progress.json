@@ -1,0 +1,36 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "28d4e686c2352df1ca857959442fab7cfe2cbdc6",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "All archive source action branches and helpers mapped/compiled/registered; real H2 storage/file/query cases verified, live resync and network helpers still require tests",
+  "counterparts": 382,
+  "production_counterparts": 338,
+  "mapped_tests": 44,
+  "absent": 75,
+  "ctest_entries": 227,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "archive_cases_per_build": 509,
+  "raw_exports_per_build": 40,
+  "h2_exports_per_build": 6,
+  "selected_regression_suites_per_build": 8,
+  "normal_ctest_seconds": 121.27,
+  "sanitized_ctest_seconds": 140.52,
+  "regression_timing": "Eight dependency suites passed before the final archive-only NUL exception fix and address fixture correction; final full builds and both full 509-case archive comparisons passed after those edits.",
+  "student_guides": 457,
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "31 absent production and 44 absent mapped original tests",
+    "Actual-node archive import/resync, reset integration and restoresync",
+    "Loopback sendArchiveReq framing/traffic/retry tests",
+    "Cascaded exports, concurrent/repeated sources and malformed object serialization failure boundaries",
+    "Full existing counterpart public API, mining, network and runtime parity"
+  ]
+}

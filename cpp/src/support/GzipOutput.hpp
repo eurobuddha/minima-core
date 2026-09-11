@@ -9,7 +9,7 @@ namespace minima {
 class GzipOutput {
     z_stream mStream{};
     std::function<void(std::span<const uint8_t>)> mWrite;
-    std::array<uint8_t,512> mBuffer{};
+    std::vector<uint8_t> mBuffer;
     uint32_t mCRC=0;
     bool mFinished=false;
     size_t pump(int flush){
@@ -23,7 +23,8 @@ class GzipOutput {
         for(int i=0;i<4;++i){output[i]=uint8_t(mCRC>>(8*i));output[i+4]=uint8_t(size>>(8*i));}
     }
 public:
-    explicit GzipOutput(std::function<void(std::span<const uint8_t>)> write):mWrite(std::move(write)){
+    explicit GzipOutput(std::function<void(std::span<const uint8_t>)> write,size_t bufferSize=512):mWrite(std::move(write)),mBuffer(bufferSize){
+        if(bufferSize==0||bufferSize>std::numeric_limits<uInt>::max())throw std::invalid_argument("Invalid gzip buffer size");
         if(deflateInit2(&mStream,Z_DEFAULT_COMPRESSION,Z_DEFLATED,-15,8,Z_DEFAULT_STRATEGY)!=Z_OK)throw wire::IOException("Gzip init");
         constexpr std::array<uint8_t,10> header{31,139,8,0,0,0,0,0,0,255};
         try{mWrite(header);}catch(...){deflateEnd(&mStream);throw;}
@@ -43,7 +44,7 @@ public:
     void finish(){
         if(mFinished)return;
         while(!mFinished){auto count=pump(Z_FINISH);
-            if(mFinished&&count<=mBuffer.size()-8){trailer(std::span(mBuffer).subspan(count,8));mWrite(std::span(mBuffer).first(count+8));return;}
+            if(mFinished&&mBuffer.size()>=8&&count<=mBuffer.size()-8){trailer(std::span(mBuffer).subspan(count,8));mWrite(std::span(mBuffer).first(count+8));return;}
             if(count)mWrite(std::span(mBuffer).first(count));
         }
         std::array<uint8_t,8> tail;trailer(tail);mWrite(tail);

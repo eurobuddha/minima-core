@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "cases": 1,
+  "raw_exports": 0,
+  "h2_exports": 0,
+  "observations": [
+    {
+      "case": 0,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    }
+  ],
+  "failures": [
+    {
+      "case": 1,
+      "error": "AssertionError({'result': {'command': 'archive', 'params': {'action': 'integrity'}, 'status': True, 'pending': False, 'response': {'message': 'Archive integrity check completed', 'cascade': {'exists': False}, 'archive': {'start': '0', 'end': '0', 'blocks': 0}, 'valid': True, 'from': -1, 'errors': 0, 'recommend': 'Your ArchiveDB is correct and has no errors.'}}, 'events': [], 'static': {'h2': True, 'temp': False, 'raw': False}, 'archiveSize': 0, 'shutdown': False, 'restoring': False})"
+    }
+  ],
+  "scope": "Real H2 archive integrity/inspection/export and exact cross-runtime H2/raw bytes; malformed imports and scoped recursive resync forwarding, address events, listener and parser gates. Resync body/actual processor/network helpers require separate tests. Direct EOF/NPE/class-cast prose and wall-clock duration normalized. Full archive/node parity remains unverified."
+}

@@ -1,3 +1,54 @@
+# Current work — archive storage checkpoint
+
+Project/branch/executable MinimaCoreC++. Full 457-file port remains active/incomplete.
+Archive.cpp/hpp now map all source action branches, exact metadata/factory,
+NotifyListener and both sendArchiveReq overloads. Registered in actual runner.
+MinimaDB exposes existing newArchive factory and extracted unchanged archiveServices
+adapter. Existing GzipOutput/BufferedFileOutput gained sizes with defaults retained.
+Archive missing-file exceptions use existing length-aware JavaTypedException.
+
+Both full builds and all 509 archive differential cases per build PASS; 40 raw
+exports and six H2 exports per build. Real H2 files, exact cross-runtime gzip bytes,
+query/parameter gates, address records, listener envelope and scoped recursive
+resync forwarding. Eight dependency regressions PASS each (121.27s/140.52s); these
+preceded final archive-only NUL fix/address fixture correction, followed by full
+builds and all archive cases. Full 227 CTest entries not run. H2 AOT not C++ ASAN
+instrumented. All build/test processes terminal. See validation/archive-command-work-in-progress.
+Five initial failed observer/production/fixture reports retained and explained.
+Map382=338production+44tests,75absent=31production+44tests. All457guides audited;
+all full parity remains not_verified. PreviousHEAD28d4e68; Git/local-backups gives
+current commit and verified recovery bundle. No GitHub push.
+
+NEXT: actual-node archive import/resync and reset workflows, loopback sendArchiveReq
+wire/type/traffic/retry testing, then restoresync. Do not equate all branch bodies
+with validated live synchronization. Current archive fixtures use an unstarted Main
+and scoped resync probe. All helpers have production bodies, not stubs.
+
+Reuse tools/native_restore_startup.py Node, ready, key_state and chain; fully read.
+An actual Java baseline solo node can create keys, backup and quit. Extend existing
+archive fixture with seedFromTree/exportTree to load that baseline's real TxBlock,
+save it in ArchiveManager and call actual archive export/exportraw. Verify identical
+Java/native source exports. Reuse valid chain blocks, not synthetic empty proofs.
+Then actual opposite-runtime import(raw/H2), clean shutdown and cross-runtime reopen
+should preserve chain/key state; reset action:restore adds nested backup restoration.
+Write a focused pre-test lab before new tests. The existing node harness uses
+-data -solo -noconnect -host127.0.0.1 -port0 -hashtest1000 -nossl; no public peers.
+
+Network sendArchiveReq keeps real 10second connect/read/retry delay; use loopback
+and existing NIO fixtures. Verify exact framed requests, payload traffic counts,
+ignored reply type and failure/retry count. Current resync pause has no clock seam.
+Concurrent pointer storage is guarded, raw stream operations remain unverified.
+Raw export object .serialise() creates whole vectors before gzip.write; exact
+partial serialization failure boundary needs work. Actual cascades/multibatches,
+phrase/key reset and source timeout behaviors remain required beyond genesis tests.
+
+Pinned restoresync.java previously read completely; source sections restore all six
+backup sections, wallet save, restoreReadyForSync, age/host check, adjustablekeyuses
+read but absent validparams, performResync reuses archive helpers, 128parent start,
+memory-threshold reset every fifth batch. Preserve its separate behavior.
+
+---
+
 # Current work — reset wrapper and real restore/reopen checkpoint
 
 Project/branch/executable MinimaCoreC++. Previous goal turn made verified progress.

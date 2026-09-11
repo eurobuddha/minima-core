@@ -1,3 +1,49 @@
+# Archive checkpoint — full port unfinished
+
+## Code Review
+
+Reviewed the pinned archive.java and native class/header, existing MinimaDB archive
+factory and IBD adapter, gzip/file output changes, runner/CMake wiring, Java/native
+fixtures, differential driver, mapping and student lesson. Every source action
+branch and helper has a native body. No blocking finding remains for saving this
+partial implementation checkpoint; live resync and network validation remain open.
+
+The MinimaDB adapter extraction retains the same five callbacks and shared archive
+owner. Gzip/file buffer parameters preserve old defaults; raw archive chooses 65536.
+The gzip trailer guard avoids unsigned underflow for buffers smaller than eight.
+Static source pointers use the existing mutex/shared-owner pattern; this does not
+make stream operations or whole commands atomic. Error catches retain the source
+Exception/Error distinction. Missing-file messages reuse JavaTypedException to
+preserve embedded NULs that the older what()-based carrier truncated.
+
+Five initial failure reports are retained: empty-archive observer expectation,
+default timestamp filenames, partial default timestamp filenames, the real NUL
+exception mismatch, and invalid query fixture construction. The query fixture now
+attaches synthetic records after constructing an empty tree node; it tests address
+ordering/filtering and does not claim valid MMR proofs. Default filename and elapsed
+time projections require measured bounds before normalization. EOF/NPE/class-cast
+prose is normalized; byte hashes and error categories remain compared.
+
+Both full builds pass. Both complete 509-case archive comparisons pass, including
+40 raw exports and six H2 exports each. Eight selected dependency regressions pass
+per build: backup, raw archive, restore, reset, runner, runner-errors, Main runtime
+and native H2 (121.27s normal / 140.52s sanitized). These regressions preceded the
+last archive-only NUL fix and address fixture correction; final builds and full
+archive comparisons followed them. The full 227-test CTest suite was not run.
+Native H2 AOT code is outside C++ sanitizer instrumentation.
+
+Recursive resync is a scoped fixture probe. No actual-node sync, socket retries,
+cascaded export, concurrent streams or malformed object serialization boundary is
+certified by these cases. The native body serializes objects into a complete byte
+vector before gzip.write; partial output on an object serialization failure needs
+separate comparison. No full-file or node parity claim follows from file presence.
+Map: 382 counterparts (338 production + 44 source tests); 75 absent. All 457 student
+lessons are present and their structural audit passes. All parity stays not_verified.
+Evidence: validation/archive-command-work-in-progress. Next: real-node archive
+import/resync and reset integration plus loopback helpers, then restoresync.
+
+---
+
 # reset checkpoint — full port unfinished
 
 ## Code Review

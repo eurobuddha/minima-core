@@ -11,6 +11,7 @@ namespace minima {
 class BufferedFileOutput {
     int mDescriptor=-1;
     wire::Bytes mPending;
+    size_t mCapacity;
     void direct(std::span<const uint8_t> data){
         while(!data.empty()){
             auto count=::write(mDescriptor,data.data(),data.size());
@@ -20,7 +21,8 @@ class BufferedFileOutput {
         }
     }
 public:
-    explicit BufferedFileOutput(const std::filesystem::path& file){
+    explicit BufferedFileOutput(const std::filesystem::path& file,size_t capacity=8192):mCapacity(capacity){
+        if(!capacity)throw std::invalid_argument("Invalid output buffer size");
         auto path=file.string();if(path.find('\0')!=path.npos)throw wire::TypedIOException("java.io.FileNotFoundException","Invalid file path");
         do{mDescriptor=::open(path.c_str(),O_WRONLY|O_CREAT|O_TRUNC,0666);}while(mDescriptor<0&&errno==EINTR);
         if(mDescriptor<0)throw wire::TypedIOException("java.io.FileNotFoundException",path+" ("+std::strerror(errno)+")");
@@ -29,8 +31,8 @@ public:
     BufferedFileOutput& operator=(const BufferedFileOutput&)=delete;
     ~BufferedFileOutput(){if(mDescriptor>=0)::close(mDescriptor);} // No implicit flush on an exceptional path.
     void write(std::span<const uint8_t> data){
-        if(data.size()>=8192){flush();direct(data);return;}
-        if(data.size()>8192-mPending.size())flush();wire::append(mPending,data);
+        if(data.size()>=mCapacity){flush();direct(data);return;}
+        if(data.size()>mCapacity-mPending.size())flush();wire::append(mPending,data);
     }
     void writeUnbuffered(std::span<const uint8_t> data){flush();direct(data);}
     void flush(){if(!mPending.empty()){direct(mPending);mPending.clear();}}

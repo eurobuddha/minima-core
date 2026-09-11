@@ -5,9 +5,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **337 production counterparts and 44 mapped test files exist;
-76 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **338 production counterparts and 44 mapped test files exist;
+75 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mapped `archive` class now includes every source action branch and both network
+helpers. Both builds pass 509 Java/native comparisons each, including exact raw
+and H2 gzip export bytes, damaged-file effects, address records and listener events.
+Recursive resync is recorded by a scoped test probe; real-node import/resync and loopback request tests remain required. See the
+[student lab](student-guide/new-tests/archive.md) and
+[saved evidence](validation/archive-command-work-in-progress).
 
 The mapped `reset` command now compiles and coordinates nested commands through
 the real runner. Both builds pass 224 Java/native cases, including four real H2

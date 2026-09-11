@@ -1,0 +1,1858 @@
+{
+  "passed": false,
+  "cases": 172,
+  "raw_exports": 40,
+  "h2_exports": 6,
+  "observations": [
+    {
+      "case": 0,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 1,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 2,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 3,
+      "action": "exportraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 4,
+      "action": "exportraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 5,
+      "action": "exportraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 6,
+      "action": "exportraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 7,
+      "action": "exportraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 8,
+      "action": "exportraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 9,
+      "action": "exportraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 10,
+      "action": "exportraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 11,
+      "action": "export",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 12,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 13,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 14,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 15,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 16,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 17,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 18,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 19,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 20,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 21,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 22,
+      "action": "export",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 23,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 24,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 25,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 26,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 27,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 28,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 29,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 30,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 31,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 32,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 33,
+      "action": "export",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 34,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 35,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 36,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 37,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 38,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 39,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 40,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 41,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 42,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 43,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 44,
+      "action": "export",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 45,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 46,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 47,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 48,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 49,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 50,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 51,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 52,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 53,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 54,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 55,
+      "action": "export",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 56,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 57,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 58,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 59,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 60,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 61,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 62,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 63,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 64,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 65,
+      "action": "exportraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 66,
+      "action": "export",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 67,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 68,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 69,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 70,
+      "action": "importold",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 71,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 72,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 73,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 74,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 75,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 76,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 77,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 78,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 79,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 80,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 81,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 82,
+      "action": "inspectraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 83,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 84,
+      "action": "importold",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 85,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 86,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": true
+      }
+    },
+    {
+      "case": 87,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 88,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": true
+      }
+    },
+    {
+      "case": 89,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 90,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": true
+      }
+    },
+    {
+      "case": 91,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 92,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 93,
+      "action": "inspectraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 94,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 95,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 96,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 97,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 98,
+      "action": "inspect",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 99,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 100,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 101,
+      "action": "importold",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 102,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 103,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 104,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 105,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 106,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 107,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 108,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 109,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 110,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 111,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 112,
+      "action": "inspect",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 113,
+      "action": "inspectraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 114,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 115,
+      "action": "importold",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 116,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 117,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": true
+      }
+    },
+    {
+      "case": 118,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 119,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": true
+      }
+    },
+    {
+      "case": 120,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 121,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": true
+      }
+    },
+    {
+      "case": 122,
+      "action": "inspectraw",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 123,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 124,
+      "action": "inspectraw",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 125,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 126,
+      "action": "import",
+      "exception": false,
+      "static": {
+        "h2": false,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 127,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 128,
+      "action": "import",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 129,
+      "action": null,
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 130,
+      "action": false,
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 131,
+      "action": 1,
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 132,
+      "action": {},
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 133,
+      "action": [],
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 134,
+      "action": "",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 135,
+      "action": "  ",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 136,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 137,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 138,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 139,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 140,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 141,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 142,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 143,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 144,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 145,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 146,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 147,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 148,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 149,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 150,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 151,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 152,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 153,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 154,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 155,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 156,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 157,
+      "action": "integrity",
+      "exception": false,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 158,
+      "action": null,
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 159,
+      "action": false,
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 160,
+      "action": 1,
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 161,
+      "action": {},
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 162,
+      "action": [],
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 163,
+      "action": "",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 164,
+      "action": "  ",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 165,
+      "action": "export",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 166,
+      "action": "export",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 167,
+      "action": "export",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 168,
+      "action": "export",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 169,
+      "action": "export",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 170,
+      "action": "export",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    },
+    {
+      "case": 171,
+      "action": "export",
+      "exception": true,
+      "static": {
+        "h2": true,
+        "temp": false,
+        "raw": false
+      }
+    }
+  ],
+  "failures": [
+    {
+      "case": 172,
+      "request": {
+        "params": {
+          "action": "export",
+          "logs": null
+        }
+      },
+      "java": {
+        "reply": {
+          "result": {
+            "command": "archive",
+            "params": {
+              "action": "export",
+              "logs": null
+            },
+            "status": true,
+            "pending": false,
+            "response": {
+              "message": "Archive DB GZIPPED",
+              "rows": 3,
+              "file": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-command-3c6yqyyc/node/archivebackup-1789095531338.gzip",
+              "size": "948 bytes"
+            }
+          },
+          "events": [],
+          "static": {
+            "h2": true,
+            "temp": false,
+            "raw": false
+          },
+          "archiveSize": 3,
+          "shutdown": false,
+          "restoring": false
+        },
+        "files": {
+          "archivebackup-1789095531338.gzip": {
+            "size": 948,
+            "sha256": "5e4421fbf03128bd1effc0e82c1a09918ac727d420ed9a69cce580378fc205aa"
+          },
+          "databases": "directory",
+          "databases/archivesql": "directory",
+          "databases/cascade.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/chaintree.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/coindb": "directory",
+          "databases/p2p.db": {
+            "size": 6,
+            "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+          },
+          "databases/p2p2.db": {
+            "size": 26,
+            "sha256": "7bc3ae3eb0c246aa4ca4a8f39c1a1772fcf42d2a8460372156cfede8ff9bc522"
+          },
+          "databases/txpowsql": "directory",
+          "databases/userprefs.db": {
+            "size": 38,
+            "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+          },
+          "databases/walletsql": "directory"
+        }
+      },
+      "cpp": {
+        "reply": {
+          "result": {
+            "command": "archive",
+            "params": {
+              "action": "export",
+              "logs": null
+            },
+            "status": true,
+            "pending": false,
+            "response": {
+              "message": "Archive DB GZIPPED",
+              "rows": 3,
+              "file": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/archive-command-3c6yqyyc/node/archivebackup-1789095531387.gzip",
+              "size": "948 bytes"
+            }
+          },
+          "events": [],
+          "static": {
+            "h2": true,
+            "temp": false,
+            "raw": false
+          },
+          "archiveSize": 3,
+          "shutdown": false,
+          "restoring": false
+        },
+        "files": {
+          "archivebackup-1789095531387.gzip": {
+            "size": 948,
+            "sha256": "5e4421fbf03128bd1effc0e82c1a09918ac727d420ed9a69cce580378fc205aa"
+          },
+          "databases": "directory",
+          "databases/archivesql": "directory",
+          "databases/cascade.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/chaintree.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/coindb": "directory",
+          "databases/p2p.db": {
+            "size": 6,
+            "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+          },
+          "databases/p2p2.db": {
+            "size": 26,
+            "sha256": "7bc3ae3eb0c246aa4ca4a8f39c1a1772fcf42d2a8460372156cfede8ff9bc522"
+          },
+          "databases/txpowsql": "directory",
+          "databases/userprefs.db": {
+            "size": 38,
+            "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+          },
+          "databases/walletsql": "directory"
+        }
+      }
+    }
+  ],
+  "scope": "Real H2 archive integrity/inspection/export and exact cross-runtime H2/raw bytes; malformed imports and scoped recursive resync forwarding, address events, listener and parser gates. Resync body/actual processor/network helpers require separate tests. Direct EOF/NPE/class-cast prose and wall-clock duration normalized. Full archive/node parity remains unverified."
+}

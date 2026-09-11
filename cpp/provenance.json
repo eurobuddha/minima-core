@@ -3251,5 +3251,47 @@
     ],
     "validation": "validation/reset-work-in-progress/progress.json",
     "parity": "not_verified"
+  },
+  "archive_checkpoint": {
+    "source": "upstream-study/src/org/minima/system/commands/backup/archive.java",
+    "source_sha256": "a7bdbe6083655474292fc8782885efd98ec37fa87c92b89864f07696b223ae31",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "reused_inspected": [
+      "src/org/minima/database/archive/ArchiveManager.cpp",
+      "src/org/minima/database/archive/RawArchiveInput.cpp",
+      "src/org/minima/objects/IBD.cpp",
+      "src/org/minima/system/brains/TxPoWProcessor.cpp",
+      "src/org/minima/database/MinimaDB.cpp newArchive/ibdServices",
+      "src/org/minima/system/Main.cpp",
+      "src/support/GzipOutput.hpp",
+      "src/support/BufferedFileOutput.hpp",
+      "src/support/NIOConnections.hpp",
+      "src/support/CommandResult.hpp",
+      "support/MainFixture.hpp",
+      "support/ArchiveFixture.hpp",
+      "support/ArchiveCacheOracle.java",
+      "support/NIOClientOracle.java",
+      "tools/peers_checker_differential.py Runner"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp: no compatible archive/restore command; SQLite persistence cannot substitute for the pinned H2 archive format",
+    "adaptations": [
+      "Mapped all source action branches, full help/factory and network/listener helpers",
+      "Exposed existing MinimaDB archive factory and extracted unchanged IBDArchive adapter for temporary archives",
+      "Parameterized existing gzip/file buffers, retaining existing defaults",
+      "Reused length-aware JavaTypedException for embedded-NUL missing-file messages",
+      "Copied real-H2 fixtures and scoped recursive resync probe; no production stub"
+    ],
+    "validation": "validation/archive-command-work-in-progress/progress.json",
+    "parity": "not_verified",
+    "hashes": {
+      "src/org/minima/system/commands/backup/archive.cpp": "38abbe05807b893d5d3eae905240ab540201bd158b0779e64485d1649ca5f720",
+      "src/org/minima/system/commands/backup/archive.hpp": "35c2ffa8ad7cf17481214ca5e3a088c7e65875797205d28a5832d5e41e14c8e5",
+      "src/org/minima/database/MinimaDB.cpp": "7e41e7d408247835d817478db67156fac9546d09c6b0e6c1ac634936d9138f5f",
+      "src/support/GzipOutput.hpp": "9a21f3817b318164fbcad4bd96a815cfd8e1ba1638f049cbf0a5f2e5320a7501",
+      "src/support/BufferedFileOutput.hpp": "bdda5493370554b2670081307b576c90a84e31fca13c21ed1b9e0e4c3d461188",
+      "support/archive_command.cpp": "8995212f65138b3415a1e38b62e9c660f8b55f39677ef668a635274f997c87bf",
+      "support/ArchiveCommandOracle.java": "d8c39034e8278c0c9bf4a4e1292533d712828d521e1c999de1ba7344bdba0879",
+      "tools/archive_command_differential.py": "db455a35f004b803cc191a5d6cdc5b28320c1504b4c61d53f693b3589ae7a7fc"
+    }
   }
 }

@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/archive.java) · `src/org/minima/system/commands/backup/archive.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/archive.java) · [C++ counterpart](../../../../../../../../src/org/minima/system/commands/backup/archive.cpp)
 
 ## Purpose
 
@@ -24,22 +24,63 @@ archive coordinates archive inspection, export, import, resynchronization and hi
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse ArchiveManager, RawArchiveInput, IBD/TxBlock framing, NIO messages and TxPoWProcessor. H2 SQL archive portability and Java thread/socket lifecycle require explicit native work; a raw archive reader alone is not the entire command.
+The native class now maps all action branches, metadata/factory, NotifyListener
+and both sendArchiveReq overloads. It reuses ArchiveManager/H2, RawArchiveInput,
+IBD/TxBlock codecs, TxPoWProcessor, command parsing, date formatting and native
+socket adapters. Temporary archives use MinimaDB's existing factory and the same
+extracted IBDArchive adapter as normal runtime requests.
+
+The two temporary source pointers use the existing mutex-protected shared-owner
+pattern, retaining an object across a call while allowing later replacement. The
+format flag is atomic. This prevents pointer-storage data races; it does not prove
+concurrent stream or command parity. Static values are not unconditionally reset by
+the production body. Native RAII releases resources without adding database rollback.
+
+GzipOutput and BufferedFileOutput accept buffer sizes while preserving previous
+512/8192 defaults. Raw export selects 65536 for both. Gzip finishing still attempts
+to close the destination after a finish failure; the source catch logs ordinary
+close failures. Exact source file/API parity remains unverified.
 
 ## Understanding the tests
 
-The inspected runner fixture checks archive permission classification only. Proposed tests must separate actions: linkage versus cascade-alignment flags; raw header/count/record bytes and maxexport 0; format suffix case; nested command forwarding/static cleanup; address overlap order; wrong response type; retries and first/later null IBD. Controlled processor/clock fixtures should exercise both timeout breaks and final-short-batch behavior without real waits. Cross-language raw fixtures and isolated H2 restore tests are separate requirements.
+The [pre-test lab](../../../../../../../../student-guide/new-tests/archive.md) explains
+the distinct storage, parser, network and processor requirements. The
+[Java oracle](../../../../../../../../support/ArchiveCommandOracle.java) and
+[native fixture](../../../../../../../../support/archive_command.cpp) use copied
+real H2 databases. Block fixtures reuse the existing ArchiveCache/ArchiveFixture
+constructors, with linked parents, gaps, wrong parents and created/spent coins.
+Native fixture block bytes are checked against Java before command comparisons.
 
-- [Runner fixture using selected fake commands](../../../../../../../../support/CommandRunnerOracle.java)
-- [Native runner fixture](../../../../../../../../support/command_runner.cpp)
-- [Runner-only dispatch/permission coverage](../../../../../../../../tools/command_runner_differential.py)
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+The [driver](../../../../../../../../tools/archive_command_differential.py) compares
+exact H2/raw gzip exports in both directions, integrity/inspect replies, malformed
+files, partial outputs, parameter ordering, address records and listener messages.
+A scoped recursive-resync probe records forwarded parameters and static state; it
+returns an explicit failed result so source cleanup and nested failure handling are
+observable. The registry is restored after each request. This probe does not test
+real synchronization. The production archive body remains the full implementation.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Direct EOF/NPE/class-cast prose is normalized. Default filename timestamps must fall
+within measured command bounds before replacing the name for file comparisons.
+Reported inspectraw duration must match the source format and measured time bound.
+Content hashes, error categories and static state remain compared. The first empty
+integrity assertion was corrected: source defaults permit valid:true even with zero
+blocks. Saved failed observer reports document that correction.
+
+Both builds pass all 509 cases each, including 40 raw exports and six H2 exports.
+Eight selected dependency regression suites also pass in both builds.
+
+See [evidence](../../../../../../../../validation/archive-command-work-in-progress)
+for the current validation results; these do not certify every synchronization or
+network branch. Real-node import/resync and loopback request/retry tests remain
+separate required work.
 
 ## Limits
 
-No archive file, database or host was used. Integrity checks adjacency/alignment, not all consensus rules. Static temporary sources and cleanup without finally make concurrent/repeated invocation important. Several success messages survive incomplete processing; they cannot be used as parity evidence.
+Integrity checks adjacency/alignment, not all consensus rules. Static temporary
+sources and cleanup without finally make concurrent/repeated invocation important.
+Several success messages survive incomplete processing. Real-node synchronization,
+network retries/timeouts, cascaded exports, concurrent streams, malformed object
+serialization failure boundaries and full API parity remain unverified.
 
 ## Check your understanding
 
