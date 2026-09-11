@@ -1,0 +1,17 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 226: reset_differential
+    Start 224: restore_differential
+1/6 Test #224: restore_differential .................   Passed   50.60 sec
+    Start 192: main_runtime_differential
+2/6 Test #192: main_runtime_differential ............   Passed    5.37 sec
+    Start 128: command_runner_errors_differential
+3/6 Test #128: command_runner_errors_differential ...   Passed    5.36 sec
+    Start  52: command_runner_differential
+4/6 Test  #52: command_runner_differential ..........   Passed    3.75 sec
+    Start 225: native_restore_startup
+5/6 Test #226: reset_differential ...................   Passed   68.53 sec
+6/6 Test #225: native_restore_startup ...............   Passed   16.98 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =  82.10 sec

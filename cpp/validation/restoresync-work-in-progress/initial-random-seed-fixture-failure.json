@@ -1,0 +1,1150 @@
+{
+  "passed": false,
+  "cases": 109,
+  "successful_restores": 14,
+  "save_disabled_cases": 45,
+  "observations": [
+    {
+      "case": 0,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 1,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 2,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 3,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 4,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 5,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 6,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 7,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 8,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 9,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 10,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 11,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 12,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 13,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 14,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 15,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 16,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 17,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 18,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 19,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 20,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 21,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 22,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 23,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 24,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 25,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 26,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 27,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 28,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 29,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 30,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 31,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 32,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 33,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 34,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 35,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 36,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 37,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 38,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 39,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 40,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 41,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 42,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 43,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 44,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 45,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 46,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 47,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 48,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 49,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 50,
+      "label": "cipher-prefix",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 51,
+      "label": "outer-frame",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 52,
+      "label": "outer-frame",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 53,
+      "label": "outer-frame",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 54,
+      "label": "outer-frame",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 55,
+      "label": "destination-directory",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 56,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 57,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 58,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 59,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 60,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 61,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 62,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 63,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 64,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 65,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 66,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 67,
+      "label": "invalid-length-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 68,
+      "label": "invalid-length-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 69,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 70,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 71,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 72,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 73,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 74,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 75,
+      "label": "invalid-length-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 76,
+      "label": "invalid-length-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 77,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 78,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 79,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 80,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 81,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 82,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 83,
+      "label": "invalid-length-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 84,
+      "label": "invalid-length-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 85,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 86,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 87,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 88,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 89,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 90,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 91,
+      "label": "invalid-length-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 92,
+      "label": "invalid-length-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 93,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 94,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 95,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 96,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 97,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 98,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 99,
+      "label": "invalid-length-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 100,
+      "label": "invalid-length-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 101,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 102,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 103,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 104,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 105,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 106,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 107,
+      "label": "invalid-length-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 108,
+      "label": "invalid-length-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    }
+  ],
+  "failures": [
+    {
+      "case": 109,
+      "label": "wallet-sql-failure",
+      "params": {
+        "file": "input.bak"
+      },
+      "java": {
+        "reply": {
+          "result": {
+            "command": "restoresync",
+            "params": {
+              "file": "input.bak"
+            },
+            "status": true,
+            "pending": false,
+            "restore": {
+              "file": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/restoresync-compare-dwg6jnkr/node/input.bak"
+            },
+            "message": "Restart Minima for restore to take effect!"
+          },
+          "events": [
+            [
+              "ready",
+              false
+            ],
+            "readyForSync",
+            "shutdown",
+            "stop",
+            "NOTIFY_POST"
+          ],
+          "restoring": true,
+          "shutdown": true,
+          "published": false,
+          "running": false,
+          "allowSave": true,
+          "user": {
+            "fixture_marker": "source",
+            "minidapps_uninstalled": [],
+            "custom_transactions": "0x000100"
+          },
+          "p2p": {
+            "fixture_marker": "source"
+          },
+          "cascade": "0x000100",
+          "tree": "0x0001010001010000000100000603BB2CC3D80000010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000100000100000100000000010000010000010000010000010000010000010000000001000001000001000001000001000001000001000001000001000001000000000100000100000100000100",
+          "cachedSeedHash": "0xCCC68A572583E5DE6A1ACB72B002AB7FD05446AF008E134023A7F798FD1FD01F",
+          "walletOpen": false,
+          "historyOpen": false,
+          "archiveOpen": false,
+          "archiveFile": true,
+          "keys": {
+            "sql": "SELECT publickey,uses FROM keys ORDER BY publickey",
+            "status": true,
+            "results": true,
+            "count": 0,
+            "rows": []
+          },
+          "seed": {
+            "sql": "SELECT RAWTOHEX(HASH('SHA-256',seed)) AS seedhash FROM seed",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "SEEDHASH": "a9e67c69e05ff7157b6338d717243e8715b9aefd042803177cccc86a6205eb95"
+              }
+            ]
+          },
+          "history": {
+            "sql": "SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid",
+            "status": true,
+            "results": true,
+            "count": 7,
+            "rows": [
+              {
+                "TXPOWID": "0x62FF5A63EC6362369B3BD7557468CD5BCC842FA1332097E0B0B6C3152E62FA3F",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0x9C6E0E8D655096AC2E6C314AD35C05283B71052607DE6206C29844760E15B6F0",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xA9C6FAE1DA79D4CB0E6BE5FFE75C62073DA4E5E19D368A254E27BF26D1702E7A",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xBB86EF573FC7E2E18E4FD4B7BC1864551B49A0C91ED4779126C3E08F02D5319F",
+                "ISRELEVANT": "0"
+              },
+              {
+                "TXPOWID": "0xE8B0994ABF90ADD7799BAD6682D59530C7926267D246F5AB1892781A9BDFE11A",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xF265515B8A99C187456124AC823181C1A1DD441D9A51488A421399974F67953C",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xFA776378801B3586AB8B20C5EC5F68AC5ED8B42A914BCAD3F11C20DD33AB6383",
+                "ISRELEVANT": "1"
+              }
+            ]
+          },
+          "tipID": "0xBB86EF573FC7E2E18E4FD4B7BC1864551B49A0C91ED4779126C3E08F02D5319F",
+          "processorCreated": true,
+          "walletReplaced": true
+        },
+        "files": {
+          "databases": "directory",
+          "databases/archivesql": "directory",
+          "databases/cascade.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/chaintree.db": {
+            "size": 329,
+            "sha256": "b43d78c21bc56473523c04e04b30f329efb3a1e4da886fec875c4a1baaa4b2f4"
+          },
+          "databases/coindb": "directory",
+          "databases/p2p.db": {
+            "size": 31,
+            "sha256": "a0337f2d1d39cadafce1b2154eb9099d65bc910e9f4a3df5f3e0477eaaf768fa"
+          },
+          "databases/p2p2.db": {
+            "size": 26,
+            "sha256": "7bc3ae3eb0c246aa4ca4a8f39c1a1772fcf42d2a8460372156cfede8ff9bc522"
+          },
+          "databases/txpowsql": "directory",
+          "databases/userprefs.db": {
+            "size": 91,
+            "sha256": "6504b823fb2f96f2a84d4c332c707831a8c893ddaa9cec4a03d554420e11d025"
+          },
+          "databases/walletsql": "directory"
+        }
+      },
+      "cpp": {
+        "reply": {
+          "result": {
+            "command": "restoresync",
+            "params": {
+              "file": "input.bak"
+            },
+            "status": true,
+            "pending": false,
+            "restore": {
+              "file": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/restoresync-compare-dwg6jnkr/node/input.bak"
+            },
+            "message": "Restart Minima for restore to take effect!"
+          },
+          "events": [
+            [
+              "ready",
+              false
+            ],
+            "readyForSync",
+            "shutdown",
+            "stop",
+            "NOTIFY_POST"
+          ],
+          "restoring": true,
+          "shutdown": true,
+          "published": false,
+          "running": false,
+          "allowSave": true,
+          "user": {
+            "fixture_marker": "source",
+            "minidapps_uninstalled": [],
+            "custom_transactions": "0x000100"
+          },
+          "p2p": {
+            "fixture_marker": "source"
+          },
+          "cascade": "0x000100",
+          "tree": "0x0001010001010000000100000603BB2CC3D80000010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000000001000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000002014FC05329EF6A35C988378B3B9C3642B620CEAA04B66BA747FF327D4A7BE43C301000000011200000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000100000100000100000000010000010000010000010000010000010000010000000001000001000001000001000001000001000001000001000001000001000000000100000100000100000100",
+          "cachedSeedHash": "0xF2FC3429C794DFC99529D085FD034CB2D954172251B3DBE7D35BDB927035750F",
+          "walletOpen": false,
+          "historyOpen": false,
+          "archiveOpen": false,
+          "archiveFile": true,
+          "keys": {
+            "sql": "SELECT publickey,uses FROM keys ORDER BY publickey",
+            "status": true,
+            "results": true,
+            "count": 0,
+            "rows": []
+          },
+          "seed": {
+            "sql": "SELECT RAWTOHEX(HASH('SHA-256',seed)) AS seedhash FROM seed",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "SEEDHASH": "92dc389729c7ec279037dd5d54dbceeda4212c1be3c9cd3fd70dcddc0a2156fc"
+              }
+            ]
+          },
+          "history": {
+            "sql": "SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid",
+            "status": true,
+            "results": true,
+            "count": 7,
+            "rows": [
+              {
+                "TXPOWID": "0x62FF5A63EC6362369B3BD7557468CD5BCC842FA1332097E0B0B6C3152E62FA3F",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0x9C6E0E8D655096AC2E6C314AD35C05283B71052607DE6206C29844760E15B6F0",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xA9C6FAE1DA79D4CB0E6BE5FFE75C62073DA4E5E19D368A254E27BF26D1702E7A",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xBB86EF573FC7E2E18E4FD4B7BC1864551B49A0C91ED4779126C3E08F02D5319F",
+                "ISRELEVANT": "0"
+              },
+              {
+                "TXPOWID": "0xE8B0994ABF90ADD7799BAD6682D59530C7926267D246F5AB1892781A9BDFE11A",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xF265515B8A99C187456124AC823181C1A1DD441D9A51488A421399974F67953C",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xFA776378801B3586AB8B20C5EC5F68AC5ED8B42A914BCAD3F11C20DD33AB6383",
+                "ISRELEVANT": "1"
+              }
+            ]
+          },
+          "tipID": "0xBB86EF573FC7E2E18E4FD4B7BC1864551B49A0C91ED4779126C3E08F02D5319F",
+          "processorCreated": true,
+          "walletReplaced": true
+        },
+        "files": {
+          "databases": "directory",
+          "databases/archivesql": "directory",
+          "databases/cascade.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/chaintree.db": {
+            "size": 329,
+            "sha256": "b43d78c21bc56473523c04e04b30f329efb3a1e4da886fec875c4a1baaa4b2f4"
+          },
+          "databases/coindb": "directory",
+          "databases/p2p.db": {
+            "size": 31,
+            "sha256": "a0337f2d1d39cadafce1b2154eb9099d65bc910e9f4a3df5f3e0477eaaf768fa"
+          },
+          "databases/p2p2.db": {
+            "size": 26,
+            "sha256": "7bc3ae3eb0c246aa4ca4a8f39c1a1772fcf42d2a8460372156cfede8ff9bc522"
+          },
+          "databases/txpowsql": "directory",
+          "databases/userprefs.db": {
+            "size": 91,
+            "sha256": "6504b823fb2f96f2a84d4c332c707831a8c893ddaa9cec4a03d554420e11d025"
+          },
+          "databases/walletsql": "directory"
+        }
+      }
+    }
+  ],
+  "scope": "Pinned restoresync and native full class: real H2 six-section restore/reopen, old/future/empty trees, source key-use behavior and runner rejection, malformed backup partial effects, invalid performResync hosts, real processor final shutdown with fixture MDS already stopped. EOF/NPE/class-cast diagnostic prose normalized. Successful remote synchronization, exact age-boundary timing, memory reset and full parity require separate evidence."
+}

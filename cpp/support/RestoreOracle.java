@@ -58,13 +58,15 @@ public class RestoreOracle {
             var sql=db.getTxPoWDB().getSQLDB();for(int i=0;i<(source?10:2);i++)sql.addTxPoW(ArchiveCacheOracle.txpow(source?i:i+20,0),source?i%3!=0:true);sql.executeGenericSQL("UPDATE txpow SET timemilli=id*1000");
             String query=source?"INSERT INTO keys(size,depth,uses,maxuses,modifier,privatekey,publickey) VALUES(2,2,5,1000,'0x01','0xABCD','0x01'),(2,2,100,1000,'0x02','0x1234','0x02')":"INSERT INTO keys(size,depth,uses,maxuses,modifier,privatekey,publickey) VALUES(2,2,999,1000,'0x03','0x5678','0x03')";
             var result=db.getWallet().executeGenericSQL(query);if(!Boolean.TRUE.equals(result.get("status")))throw new RuntimeException("fixture wallet insert failed");
+            if(input.containsKey("treeTime")){var pow=ArchiveCacheOracle.txpow(1,0);pow.setTimeMilli(new MiniNumber(input.getString("treeTime")));pow.calculateTXPOWID();db.getTxPoWTree().setRoot(new org.minima.database.txpowtree.TxPoWTreeNode(pow));}
             if(source){var command=new backup();command.getParams().put("file","source.bak");out.put("backup",command.runCommand());}
             db.saveAllDB(false);out.put("seeded",true);Main.setMinimaListener(null);return out;
         }
-        var oldWallet=db.getWallet();var oldTxPoWDB=db.getTxPoWDB();var oldArchive=db.getArchive();boolean resetCommand="reset".equals(input.get("name"));
+        var oldWallet=db.getWallet();var oldTxPoWDB=db.getTxPoWDB();var oldArchive=db.getArchive();boolean resetCommand="reset".equals(input.get("name")),restoreSync="restoresync".equals(input.get("name"));if(restoreSync){NIOClientOracle.set(main,"mHaveShutDownMDS",true);GeneralParams.SEED_PHRASE="restore sync deterministic fixture seed";GeneralParams.ANYSEED_PHRASE=true;}
         try(var children=new ResetChildrenScope(resetCommand)){
-            Command command=resetCommand?new reset():new restore();
+            Command command=resetCommand?new reset():restoreSync?new restoresync():new restore();
             if("meta".equals(op)){out.put("name",command.getName());out.put("help",command.getHelp());out.put("fullHelp",command.getFullHelp());var params=new JSONArray();params.addAll(command.getValidParams());out.put("params",params);command.getParams().put("file","fixture");out.put("fresh",command.getFunction().getParams());}
+            else if("performResync".equals(op))out.put("result",((restoresync)command).performResync((String)input.get("host"),256,input.get("start")==null?null:new MiniNumber(input.getString("start")),true));
             else if("runner".equals(op))out.put("result",CommandRunner.getRunner().runMultiCommand(input.containsKey("caller")?input.getString("caller"):"0x00",(String)input.get("command")));
             else{command.getParams().putAll((JSONObject)input.get("params"));out.put("result",command.runCommand());}
         }catch(Throwable error){out.put("exception",error.toString());}
@@ -73,7 +75,8 @@ public class RestoreOracle {
         String cached=db.getWallet().getBaseSeed().getSeed();out.put("cachedSeedHash",cached==null?"null":new MiniData(Crypto.getInstance().hashData(new MiniString(cached).getData())).to0xString());
         out.put("walletOpen",db.getWallet().isOpen());out.put("historyOpen",db.getTxPoWDB().getSQLDB().isOpen());out.put("archiveOpen",db.getArchive().isOpen());out.put("archiveFile",db.getArchive().getSQLFile().exists());
         out.put("keys",db.getWallet().executeGenericSQL("SELECT publickey,uses FROM keys ORDER BY publickey"));out.put("seed",db.getWallet().executeGenericSQL("SELECT RAWTOHEX(HASH('SHA-256',seed)) AS seedhash FROM seed"));out.put("history",db.getTxPoWDB().getSQLDB().executeGenericSQL("SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid"));
-        if(resetCommand){out.put("processorCreated",main.getTxPoWProcessor()!=null);out.put("walletReplaced",oldWallet!=db.getWallet());}
+        if(restoreSync){var tip=db.getTxPoWTree().getTip();out.put("tipID",tip==null?null:tip.getTxPoW().getTxPoWID());}
+        if(resetCommand||restoreSync){out.put("processorCreated",main.getTxPoWProcessor()!=null);out.put("walletReplaced",oldWallet!=db.getWallet());}
         if(main.getTxPoWProcessor()!=null){main.getTxPoWProcessor().stopMessageProcessor();main.getTxPoWProcessor().waitToShutDown();}
         oldWallet.hardCloseDB();oldTxPoWDB.hardCloseSQLDB();oldArchive.hardCloseDB();
         db.getWallet().hardCloseDB();db.getTxPoWDB().hardCloseSQLDB();db.getArchive().hardCloseDB();CoinDB.getTxPoWTreeCoinDB().hardCloseDB();Main.setMinimaListener(null);return out;

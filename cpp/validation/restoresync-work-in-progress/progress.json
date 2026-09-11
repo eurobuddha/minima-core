@@ -1,0 +1,41 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "2e94fd307db21e51dfa48d221f21b939d637f2a1",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "Full restoresync class mapped/compiled/registered, six-section restoration and local node path validated; successful remote helper integration remains open",
+  "counterparts": 383,
+  "production_counterparts": 339,
+  "mapped_tests": 44,
+  "absent": 74,
+  "ctest_entries": 231,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "restoresync_cases_per_build": 181,
+  "success_replies_per_build": 39,
+  "save_disabled_cases_per_build": 49,
+  "network_startup_cases_per_build": 532,
+  "native_restoresync_processes_per_build": 6,
+  "selected_pre_fix_regression_suites_per_build": 6,
+  "normal_pre_fix_ctest_seconds": 82.1,
+  "sanitized_pre_fix_ctest_seconds": 128.24,
+  "normal_final_differential_seconds": 81.88,
+  "sanitized_final_differential_seconds": 86.02,
+  "normal_final_live_seconds": 17.63,
+  "sanitized_final_live_seconds": 61.79,
+  "regression_timing": "Six restore/reset/runner/Main/original live-restore suites passed before the final shared connect null-host fix. Final full builds, 181 restoresync cases, 532 connect/Greeting cases and live restoresync all passed after the fix.",
+  "student_guides": 457,
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "30 absent production and 44 absent mapped source tests",
+    "Successful remote restoresync old-backup path, increment/set helper paths and preflight failure effects",
+    "Memory threshold resets, cascades/multibatches, exact two-day boundary timing and timeouts",
+    "Full existing counterpart API, mining, network and runtime parity"
+  ]
+}

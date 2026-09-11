@@ -3327,5 +3327,52 @@
       "tools/native_archive_startup.py": "df7a0abf9e81e8c39a1e0edc03bb512a230e6782c3eec2451b66885a0fe34043",
       "tools/archive_network_differential.py": "ecc402ef6fbd0c156beec5d3e61a9366b812e3f0e9619e178b78290f7ff108ab"
     }
+  },
+  "restoresync_checkpoint": {
+    "source": "upstream-study/src/org/minima/system/commands/backup/restoresync.java",
+    "source_sha256": "4eaff23d3afc7e26d2e15df39bb97613787e03a21dc0030fb26246d0dfe9832c",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "reused_inspected": [
+      "src/org/minima/system/commands/backup/restore.cpp entire body/private readers",
+      "src/org/minima/system/commands/backup/archive.cpp network helpers and batch loop",
+      "src/support/CipherInput.hpp",
+      "src/support/GzipInput.hpp",
+      "src/org/minima/objects/base/MiniData.cpp",
+      "src/org/minima/database/MinimaDB.cpp loadDBsForRestoreSync",
+      "src/org/minima/database/txpowtree/TxPowTree.cpp readDataStream",
+      "src/org/minima/database/txpowtree/TxPoWTreeNode.cpp getParent",
+      "src/org/minima/database/wallet/Wallet.cpp initBaseSeed",
+      "src/org/minima/system/Main.cpp",
+      "src/org/minima/utils/MinimaLogger.cpp memory/time callbacks",
+      "src/org/minima/system/commands/network/connect.cpp",
+      "support/restore.cpp",
+      "support/RestoreOracle.java",
+      "support/MainFixture.hpp",
+      "tools/restore_differential.py",
+      "tools/native_restore_startup.py",
+      "support/network_startup.cpp",
+      "support/NetworkStartupOracle.java",
+      "tools/network_startup_differential.py"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp: no compatible restoresync/restore command; sibling database/MinimaDB.hpp uses SQLite instead of pinned H2",
+    "adaptations": [
+      "Mapped full 515-line source class including performResync, metadata, factory and private section readers",
+      "Preserved distinct wallet close/reopen, age gate, keyuses parsing and remote loop; existing clock/allocator memory callbacks used",
+      "Existing restore fixture adds controlled tree tips and actual processor/database reopen; fixture MDS marked already stopped",
+      "Existing seed phrase option controls only new seed creation after malformed wallet SQL in fixtures",
+      "Existing actual node harness selects restore command with separate oracle directory per command",
+      "Shared connect helper now throws JavaNullPointerException for null input instead of exposing bad_optional_access"
+    ],
+    "validation": "validation/restoresync-work-in-progress/progress.json",
+    "parity": "not_verified",
+    "hashes": {
+      "src/org/minima/system/commands/backup/restoresync.cpp": "1c6752233d15b58a21fd4ef00588ad5cf1317fca78657cacf5e424048d3072ff",
+      "src/org/minima/system/commands/backup/restoresync.hpp": "43af8a4b96c62333c54e999892f406a7d7a542ce8d50c0890d0699e774c7f879",
+      "src/org/minima/system/commands/network/connect.cpp": "1fcd24ee3c3d3a4c00c35298eb6aba7bb735e3cbd1acc46d0a5a22acebfd8c04",
+      "support/restore.cpp": "526e2041eae0a56d1450e8bb0f1cfc93d3ed08c799f04ab641147ed780e074b6",
+      "support/RestoreOracle.java": "0b3d3a68a1659a77d1ec4f1af3928e679fbaad569a83155909a65adbda22dd12",
+      "tools/restore_sync_differential.py": "fb4d0cdf28700e80ce6424162d4a5385909bdcf227471b39a75223f4cdd39ca7",
+      "tools/native_restore_startup.py": "a74910c7ef6cb6cb63cc8e42c781ca761ee0fbe7d6cc8cc9a5b1ebfaca00b1ae"
+    }
   }
 }

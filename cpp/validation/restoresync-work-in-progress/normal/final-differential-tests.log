@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  63: network_startup_differential
+    Start 230: restoresync_differential
+1/2 Test  #63: network_startup_differential .....   Passed   17.95 sec
+2/2 Test #230: restoresync_differential .........   Passed   81.87 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  81.88 sec

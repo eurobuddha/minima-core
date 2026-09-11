@@ -1295,3 +1295,12 @@ if(TARGET minima_native_h2)
     add_test(NAME archive_network_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/archive_network_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
     set_tests_properties(archive_network_differential PROPERTIES TIMEOUT 600)
 endif()
+
+target_sources(minima_file_port PRIVATE src/org/minima/system/commands/backup/restoresync.cpp)
+
+if(TARGET minima_native_h2)
+    add_test(NAME restoresync_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/restore_sync_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+    set_tests_properties(restoresync_differential PROPERTIES TIMEOUT 600)
+    add_test(NAME native_restoresync_startup COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/native_restore_startup.py --build ${CMAKE_CURRENT_BINARY_DIR} --restore-command restoresync)
+    set_tests_properties(native_restoresync_startup PROPERTIES TIMEOUT 1800)
+endif()

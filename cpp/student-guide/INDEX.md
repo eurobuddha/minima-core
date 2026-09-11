@@ -355,7 +355,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [rescue.java](files/src/org/minima/system/commands/backup/rescue.md) | authored | implemented_partial |
 | [reset.java](files/src/org/minima/system/commands/backup/reset.md) | authored | implemented_partial |
 | [restore.java](files/src/org/minima/system/commands/backup/restore.md) | authored | implemented_partial |
-| [restoresync.java](files/src/org/minima/system/commands/backup/restoresync.md) | authored | unported |
+| [restoresync.java](files/src/org/minima/system/commands/backup/restoresync.md) | authored | implemented_partial |
 | [vault.java](files/src/org/minima/system/commands/backup/vault.md) | authored | implemented_partial |
 
 ## src/org/minima/system/commands/backup/mmrsync

@@ -5,9 +5,17 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **338 production counterparts and 44 mapped test files exist;
-75 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **339 production counterparts and 44 mapped test files exist;
+74 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mapped `restoresync` class now compiles, including its remote synchronization
+method. It preserves the source's six-section restore, wallet close/reopen order,
+two-day age gate and configurable key-use increment. Both builds pass 181 Java/native
+comparisons and real nodes in both restore/reopen directions with restored-key
+signing. Full remote synchronization remains unverified. See the
+[student lab](student-guide/new-tests/restore-sync.md) and
+[saved evidence](validation/restoresync-work-in-progress).
 
 The mapped `archive` class includes every source action branch and both network
 helpers. Both builds pass 509 storage/query cases, 37 loopback request/retry cases,

@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 231: native_restoresync_startup
+1/1 Test #231: native_restoresync_startup .......   Passed   61.79 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  61.79 sec

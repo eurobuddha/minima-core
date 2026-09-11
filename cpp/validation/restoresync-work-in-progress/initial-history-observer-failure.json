@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "cases": 1,
+  "successful_restores": 0,
+  "save_disabled_cases": 0,
+  "observations": [
+    {
+      "case": 0,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    }
+  ],
+  "failures": [
+    {
+      "case": 1,
+      "error": "AssertionError({'sql': 'SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid', 'status': True, 'results': True, 'count': 7, 'rows': [{'TXPOWID': '0x62FF5A63EC6362369B3BD7557468CD5BCC842FA1332097E0B0B6C3152E62FA3F', 'ISRELEVANT': '1'}, {'TXPOWID': '0x9C6E0E8D655096AC2E6C314AD35C05283B71052607DE6206C29844760E15B6F0', 'ISRELEVANT': '1'}, {'TXPOWID': '0xA9C6FAE1DA79D4CB0E6BE5FFE75C62073DA4E5E19D368A254E27BF26D1702E7A', 'ISRELEVANT': '1'}, {'TXPOWID': '0xBB86EF573FC7E2E18E4FD4B7BC1864551B49A0C91ED4779126C3E08F02D5319F', 'ISRELEVANT': '0'}, {'TXPOWID': '0xE8B0994ABF90ADD7799BAD6682D59530C7926267D246F5AB1892781A9BDFE11A', 'ISRELEVANT': '1'}, {'TXPOWID': '0xF265515B8A99C187456124AC823181C1A1DD441D9A51488A421399974F67953C', 'ISRELEVANT': '1'}, {'TXPOWID': '0xFA776378801B3586AB8B20C5EC5F68AC5ED8B42A914BCAD3F11C20DD33AB6383', 'ISRELEVANT': '1'}]})"
+    }
+  ],
+  "scope": "Pinned restoresync and native full class: real H2 six-section restore/reopen, old/future/empty trees, source key-use behavior and runner rejection, malformed backup partial effects, invalid performResync hosts, real processor final shutdown with fixture MDS already stopped. EOF/NPE/class-cast diagnostic prose normalized. Successful remote synchronization, exact age-boundary timing, memory reset and full parity require separate evidence."
+}

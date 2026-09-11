@@ -1,3 +1,62 @@
+# Current work — full restoresync class saved, local path verified
+
+MinimaCoreC++ full457-file goal active/incomplete. Previous turn made verified
+progress. New restoresync.cpp/hpp maps every method in the515-line Java class: runCommand,
+performResync,private readers,fullhelp/validparams/factory. Registered actualrunner.
+Reuses restore six-section code and archive request/listener/batch handling.
+Shared connect.cpp now explicitly throws JavaNullPointerException on null host.
+All build/test handles terminal; both finalfullbuilds PASS. No GitHub push.
+
+181differential cases PASS each build (39successreplies,49save-disabled failures).
+532network-startup connect/Greeting cases PASS.6real-node processes perbuild PASS
+restoresync bothrestore directions,originalchain/eightkeys263uses,reopen/sign to264,
+changeddatarejected,invalidhostignoredforrecentbackup. FinalCTest timing81.88/86.02s
+for181+532;17.63/61.79s live.6selectedregressions(restore,reset,runner,runner-errors,
+Main runtime,original native_restore_startup)PASS82.10/128.24s beforelastconnectnull
+fix; finalfullbuilds andnew/affectedtests followthatfix. Full231CTest suite NOT run.
+Native H2 AOT notC++ASANinstrumented. Evidence validation/restoresync-work-in-progress.
+Map383=339production+44tests;74absent=30production+44tests.457guidesaudited/allparity
+not_verified. PreviousHEAD2e94fd3; gitlog/local-backups givesnewcommit/verifiedbundle.
+
+Three retainedfailures: initialhistoryobserverexpected6only, but tree reload calls
+addSQLTxPoW and adds tiprow; independentassertnow6relevant plusonlytipnonrelevant.
+MalformedwalletSQLdropsseedtable andnewrandomseedchangeshash; fixtureafterbaseline
+setsGeneralParams.SEED_PHRASE/ANYSEED_PHRASE existingconfiguration consumedonlyonnew
+seedinit. FinallynullperformResynchostexposedbad_optional_access; sharedconnectfix.
+
+Fixture restore.cpp/RestoreOracle nowselectrestoresync, optionalseedtreeTime, realSync
+callsactualMain.restoreReadyForSync andcreatesworker; MDSmarkalreadyshutdown via
+MainFixture.finalMDSStopped/reflection. Existingrestore/resetfixturesunchangeddefault.
+new tools/restore_sync_differential.py reusesrestorecorpus,project,snapshot; adds
+old/future/emptytrees,keyuseswrongtypes/directvalues,runnerrejectskeyuses,invalid
+performResync hosts inclnull. Generated futuretime4102444800000/old0 bracketage;
+exact2dayboundarynotyettested. Lab student-guide/new-tests/restore-sync.md.
+Existing tools/native_restore_startup.py now --restore-command restore|restoresync,
+defaultrestoreunchanged; separateoracle/listingpercommand anddistinctresultsfilename.
+
+NEXT: successful old-backup remote restoresync withloopbackarchiveandactualnode.
+Full method exists; no successfulremoteperformResync/memorythreshold/cascade/multi
+batch evidence yet. Preserve failedprobe returns emptyobject beforewalletincrement
+and callerthenstillsaves/shutsdown. Validpreflight -1,archiveResetReady(false,false),
+incrementorsetkeyuses,retainedtree/cascade,realprocessor,memory>250MiB reset every5,
+sourceboundedwaits,helperreturnsnoShutdown; callerhandlesShutdown. Startfromtip's
+128thavailableancestor(capsatroot). Nullstart representable; successpreflightcan
+precedelaternullfailure. Existing archive37loopbacktests coverrequesthelperemptyIBD
+andreal10secondretries, notwholeoldbackupworkflow.
+
+Possible nexttest reuse: actualsavedgenesis node/backup fromnative_restore_startup;
+existingarchivefixtureseedTree andrealIBDencoders. Foroldage need a source-created
+oldtimestamp backup withvalidchain (do notclaim fabricatedMMRproofsarevalid). Inspect
+andreuse actualtree/TxBlock codec andbackup APIs. Canextendfixture toretimevalid
+savedgenesis usingrealTxPoW setters/recomputeID andsave tree, thenstartrealJava node
+toexportbackup; validateexpectedchain changesandcrossruntimeencoding. This is a
+plannedtest fixture, notyetimplemented. ExistingNodeandResponder reusable. Add
+pre-testlab forsuccessfulremote case. NonemptyIBD requesthelperalsoopen; source
+archives cancontainactualsavedtreeblocks. Remaining30production/44source-testports
+andfull existing counterpartAPI/mining/networkparity remain required.
+
+---
+
 # Current work — archive runtime validation saved
 
 MinimaCoreC++ active full 457-file goal, incomplete. Previous goal turn made

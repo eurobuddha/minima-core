@@ -1,3 +1,55 @@
+# restoresync checkpoint — full port unfinished
+
+## Code Review
+
+Reviewed all 515 lines of pinned restoresync.java, complete native command/header,
+restore and archive reuse paths, Main/MinimaDB reopening and shutdown, logger
+clock/memory callbacks, shared connect helper and callers, extended fixtures,
+differential driver, live harness selection, CMake/registry and student lessons.
+No blocking finding remains for saving this partial-port checkpoint. Successful
+remote helper execution and complete API parity remain unverified.
+
+The native class includes runCommand, performResync, both private stream readers,
+full help/valid parameters and fresh factory. It preserves wallet save/close before
+reopening, restored tip age comparison, post-reopen keyuses parsing, default 256,
+runner exclusion of keyuses, 128-parent lookup, failed-probe empty return, increment
+versus set, cascade condition, every-fifth-batch memory threshold and bounded waits.
+Time subtraction and counters wrap like Java; polling/retry sleeps are real.
+Native allocator callbacks provide memory usage, not an invented fixed value.
+
+Three initial reports are retained. Tree reopen adds the tip TxPoW into SQL history;
+the observer now requires six relevant rows and allows an extra non-relevant row
+only with the tip ID. Malformed SQL can delete the seed table and generate a fresh
+seed; existing GeneralParams seed options make that fixture branch deterministic.
+Neither correction changed production. The real null-host discrepancy was fixed
+in shared connect.createConnectMessage: explicit JavaNullPointerException replaces
+bad_optional_access. Existing connect parsing and all new invalid helper cases pass.
+
+The fixture uses real H2 and real restoreReadyForSync/processor final shutdown,
+with restoreReady recorded and MDS marked already stopped. Actual executables
+separately exercise full local restore/shutdown/reopen. Java compilation directories
+are separate per selected restore command, avoiding concurrent oracle writes.
+Both directions preserve original chain and eight keys, uses7→263, then valid
+signing at264 and modified-message rejection. Recent supplied invalid host is ignored.
+
+Both full builds pass. Both 181-case command comparisons pass:39success replies,
+49save-disabled failures. Success replies include source quirks on malformed inputs;
+this is not 39 assertions of an intact restored wallet. Existing network-startup
+532cases pass. Final real-node tests pass6processes each (17.63s/61.79s). Six selected
+regressions pass each (82.10s/128.24s) before the last connect-only null check; final
+builds,181cases,532cases and live nodes follow that fix. Full231CTest suite not run.
+NativeH2 AOT outside C++ sanitizer instrumentation. All handles terminal.
+
+Limits: remote performResync success, failed preflight wallet effects, increment/set
+helper paths, cascades/multi-batches, memory resets, exact age boundary, runtime
+interruptions/timeouts and full native API/node parity. Map383=339production+44tests;
+74absent. All457guides present/audited; parity remains not_verified. Evidence:
+validation/restoresync-work-in-progress. Next validation should reach the old-backup
+remote path through a loopback archive and actual node, before treating this command
+as complete.
+
+---
+
 # Archive runtime checkpoint — full port unfinished
 
 ## Code Review

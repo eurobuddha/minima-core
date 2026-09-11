@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "restore_command": "restoresync",
+  "recent_invalid_host_ignored": true,
+  "node_processes": 6,
+  "checks": [
+    {
+      "writer": "java",
+      "restorer": "cpp",
+      "reopen": "java",
+      "keys": 8,
+      "backup_uses": 7,
+      "destination_uses_before": 100,
+      "restored_uses": 263,
+      "chain_preserved": true,
+      "real_worker_shutdown": true,
+      "restored_key_signs": true,
+      "altered_data_rejected": true,
+      "signing_use_count": 264
+    },
+    {
+      "writer": "cpp",
+      "restorer": "java",
+      "reopen": "cpp",
+      "keys": 8,
+      "backup_uses": 7,
+      "destination_uses_before": 100,
+      "restored_uses": 263,
+      "chain_preserved": true,
+      "real_worker_shutdown": true,
+      "restored_key_signs": true,
+      "altered_data_rejected": true,
+      "signing_use_count": 264
+    }
+  ],
+  "failures": [],
+  "scope": "Actual unmodified pinned Java Minima and native MinimaCoreC++ with real H2, all eight solo-mode default keys, both backup/restore directions, real Main worker shutdown, persisted key-use increments and original chain on opposite-runtime reopen. For restoresync the recent-backup path is tested with absent and invalid host; remote sync remains unverified here. Plaintext SQL storage and password-encrypted backups; public network, encrypted wallet database, damaged running-node restores and full parity remain unverified."
+}

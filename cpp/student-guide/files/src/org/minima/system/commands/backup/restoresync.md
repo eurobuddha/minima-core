@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/restoresync.java) · `src/org/minima/system/commands/backup/restoresync.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/restoresync.java) · [C++ counterpart](../../../../../../../../src/org/minima/system/commands/backup/restoresync.cpp)
 
 ## Purpose
 
@@ -21,22 +21,62 @@ restoresync restores the same encrypted backup format, then optionally catches a
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse backup decoding, archive network request framing and asynchronous TxPoW processing. A native synchronous batch loop must preserve the observable wait/error paths or document an intentional change.
+The native class maps the full runCommand, metadata/factory, both private section
+readers and public performResync method. It reuses restore.cpp's proven six-section
+sequence and stream adapters while preserving restoresync's distinct close/reopen
+order. It reuses archive.NotifyListener/sendArchiveReq and the existing real
+processor, wallet and archive methods. The 128-parent lookup stops at the oldest
+available ancestor; it does not require exactly 128 stored ancestors.
+
+Clock and used-memory checks use existing MinimaLogger Runtime callbacks, backed
+by the native allocator and wall clock. Polling and network retry delays remain
+real. Integer counter increments and time subtraction preserve Java wraparound.
+Nullable host/start arguments remain representable in the native public method.
+Missing-file exceptions use the existing length-aware JavaTypedException carrier.
 
 ## Understanding the tests
 
-The runner fixture checks restoresync classification only. Proposed tests use fixed clock/files and controlled archive replies: just below/exactly two days, no host, failed probe, null later batch, cascade at zero/nonzero start, timeouts and key-use increment versus set. Assert saved state and shutdown even when helper reports no data; never treat its completed text as proof of full sync.
+The [pre-test lab](../../../../../../../../student-guide/new-tests/restore-sync.md)
+describes distinct restoration and remote requirements. The extended
+[Java oracle](../../../../../../../../support/RestoreOracle.java) and
+[native fixture](../../../../../../../../support/restore.cpp) use real H2 stores.
+They add old/future tree tips, run actual restoreReadyForSync and stop the resulting
+processor. The fixture marks MDS as already stopped; actual MDS/node shutdown is
+covered separately with running nodes. Restore readiness itself is recorded.
 
-- [Runner fixture using selected fake commands](../../../../../../../../support/CommandRunnerOracle.java)
-- [Native runner fixture](../../../../../../../../support/command_runner.cpp)
-- [Runner-only dispatch/permission coverage](../../../../../../../../tools/command_runner_differential.py)
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+The [driver](../../../../../../../../tools/restore_sync_differential.py) reuses
+restore's malformed encrypted corpus and file snapshots, adding direct keyuses,
+old/future/empty trees, ignored invalid hosts for recent backups, runner rejection
+of keyuses, reopen failure and invalid performResync inputs. It compares SQL rows,
+cache values, tree/cascade bytes, closure/replacement flags and partial files.
+Direct EOF/NPE/class-cast prose is normalized; categories and effects stay compared.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Reopening a tree adds its TxPoW to SQL history. The independent assertion therefore
+requires six relevant backup rows and permits an extra non-relevant row only if it
+is the restored tip. Malformed SQL can delete the seed table; the fixture supplies
+GeneralParams.SEED_PHRASE so both runtimes initialize the same new seed. Neither
+correction changes production behavior. Initial failed reports are retained in
+[validation evidence](../../../../../../../../validation/restoresync-work-in-progress).
+
+The reused [live harness](../../../../../../../../tools/native_restore_startup.py)
+selects restoresync through --restore-command. It runs real nodes in both restore
+directions, checks chain/keys after opposite-runtime reopen and signs with a restored
+key. One recent-backup direction supplies an invalid host that must be ignored.
+Both builds pass 181 differential cases, including 39 success replies and 49
+failures that leave saving disabled. Success replies include source quirks on
+malformed inputs; they do not all mean the original wallet was preserved. The
+source-state and failure observations in the saved report distinguish these cases.
+Both builds also pass six actual node processes for this command, preserving
+eight keys at uses 263 and signing once at 264. A shared-helper null-host mismatch
+was corrected in connect; the existing 532-case network-startup suite also passes.
 
 ## Limits
 
-No restoration or network request ran. Old backups can be partly restored before host parsing/connection fails. Exact-height polling can fail if the processor passes the expected end height, and late errors do not necessarily become status:false.
+Old backups can be partly restored before host parsing/connection fails. Exact-height
+polling can fail if the processor passes the expected end height; late errors may
+still lead to a success response. Successful remote synchronization, memory-threshold
+resets, cascades, multi-batches, exact age-boundary timing, partial stream failure
+boundaries and full public API parity still require validation.
 
 ## Check your understanding
 

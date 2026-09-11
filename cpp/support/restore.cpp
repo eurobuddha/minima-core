@@ -1,6 +1,7 @@
 #include "MainFixture.hpp"
 #include "ArchiveFixture.hpp"
 #include "org/minima/system/commands/backup/restore.hpp"
+#include "org/minima/system/commands/backup/restoresync.hpp"
 #include "org/minima/system/commands/backup/reset.hpp"
 #include "org/minima/system/commands/backup/backup.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
@@ -67,16 +68,21 @@ JSONObject run(const JSONObject& input,NativeH2Runtime& engine){
         auto sql=db->getTxPoWDB()->getSQLDB();for(int i=0;i<(source?10:2);++i)sql->addTxPoW(support::archiveFixtureTxPoW(source?i:i+20,0).get(),source?i%3!=0:true);sql->executeGenericSQL("UPDATE txpow SET timemilli=id*1000");
         auto query=source?"INSERT INTO keys(size,depth,uses,maxuses,modifier,privatekey,publickey) VALUES(2,2,5,1000,'0x01','0xABCD','0x01'),(2,2,100,1000,'0x02','0x1234','0x02')":"INSERT INTO keys(size,depth,uses,maxuses,modifier,privatekey,publickey) VALUES(2,2,999,1000,'0x03','0x5678','0x03')";
         auto result=db->getWallet()->executeGenericSQL(query);if(!result.getBoolean("status"))throw std::runtime_error("fixture wallet insert failed");
+        if(input.containsKey("treeTime")){auto pow=support::archiveFixtureTxPoW(1,0);pow->setTimeMilli(MiniNumber(input.getString("treeTime")));pow->calculateTXPOWID();db->getTxPoWTree()->setRoot(std::make_shared<TxPoWTreeNode>(*pow));}
         if(source){commands::backup command;command.getParams()->put("file","source.bak");out.put("backup",command.runCommand());}
         db->saveAllDB(false);out.put("seeded",true);Main::setMinimaListener(nullptr);return out;
     }
     auto oldWallet=db->getWallet();auto oldTxPoWDB=db->getTxPoWDB();auto oldArchive=db->getArchive();
-    bool resetCommand=input.getString("name","")=="reset";
+    bool resetCommand=input.getString("name","")=="reset",restoreSync=input.getString("name","")=="restoresync";
+    if(restoreSync){MainFixture::finalMDSStopped(*main);GeneralParams::SEED_PHRASE="restore sync deterministic fixture seed";GeneralParams::ANYSEED_PHRASE=true;}
     ResetChildrenScope children(resetCommand);
     try{
-        std::shared_ptr<Command> commandOwner=resetCommand?std::shared_ptr<Command>(std::make_shared<commands::reset>()):std::make_shared<commands::restore>();auto& command=*commandOwner;
+        std::shared_ptr<Command> commandOwner=resetCommand?std::shared_ptr<Command>(std::make_shared<commands::reset>()):std::make_shared<commands::restore>();if(restoreSync)commandOwner=std::make_shared<commands::restoresync>();auto& command=*commandOwner;
         if(op=="meta"){
             out.put("name",*command.getName());out.put("help",*command.getHelp());out.put("fullHelp",*command.getFullHelp());JSONArray params;for(auto& name:command.getValidParams())params.add(name);out.put("params",params);command.getParams()->put("file","fixture");out.put("fresh",*command.getFunction()->getParams());
+        }else if(op=="performResync"){
+            auto host=input.get("host");std::optional<MiniNumber> start;if(!input.get("start").isNull())start=MiniNumber(input.getString("start"));
+            out.put("result",dynamic_cast<commands::restoresync&>(command).performResync(host.isNull()?std::optional<std::string>():std::optional(host.asString()),256,start?&*start:nullptr,true));
         }else if(op=="runner")out.put("result",CommandRunner::getRunner().runMultiCommand(input.getString("caller","0x00"),input.getString("command")));
         else{for(const auto& [key,value]:std::get<std::shared_ptr<JSONObject>>(input.get("params").value)->entries())command.getParams()->put(key,value);out.put("result",command.runCommand());}
     }catch(const CommandException& error){out.put("exception",std::string("org.minima.system.commands.CommandException")+(error.getMessage()?": "+*error.getMessage():""));}
@@ -89,7 +95,8 @@ JSONObject run(const JSONObject& input,NativeH2Runtime& engine){
     out.put("keys",db->getWallet()->executeGenericSQL("SELECT publickey,uses FROM keys ORDER BY publickey"));
     out.put("seed",db->getWallet()->executeGenericSQL("SELECT RAWTOHEX(HASH('SHA-256',seed)) AS seedhash FROM seed"));
     out.put("history",db->getTxPoWDB()->getSQLDB()->executeGenericSQL("SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid"));
-    if(resetCommand){out.put("processorCreated",bool(main->getTxPoWProcessor()));out.put("walletReplaced",oldWallet!=db->getWallet());}
+    if(restoreSync){auto tip=db->getTxPoWTree()->getTip();out.put("tipID",tip?JSONValue(tip->getTxPoW().getTxPoWID()):JSONValue());}
+    if(resetCommand||restoreSync){out.put("processorCreated",bool(main->getTxPoWProcessor()));out.put("walletReplaced",oldWallet!=db->getWallet());}
     if(auto processor=main->getTxPoWProcessor()){processor->stopMessageProcessor();processor->waitToShutDown();}
     oldWallet->hardCloseDB();oldTxPoWDB->hardCloseSQLDB();oldArchive->hardCloseDB();
     db->getWallet()->hardCloseDB();db->getTxPoWDB()->hardCloseSQLDB();db->getArchive()->hardCloseDB();CoinDB::getTxPoWTreeCoinDB()->hardCloseDB();Main::setMinimaListener(nullptr);return out;

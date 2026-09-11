@@ -43,8 +43,8 @@ def ready(node,uses):
 def chain(node):
     row=node.ask('status');assert row['status'],row;status=row['response'];return {k:status['chain'][k] for k in ['block','hash','length','branches','weight']}
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--build',type=Path,default=ROOT/'build');build=parser.parse_args().build.resolve()
-    oracle=build/'restore-node-oracle';oracle.mkdir(exist_ok=True);listing=build/'restore-node-sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sorted((JAVA/'src').rglob('*.java')))+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
+    parser=argparse.ArgumentParser();parser.add_argument('--build',type=Path,default=ROOT/'build');parser.add_argument('--restore-command',choices=['restore','restoresync'],default='restore');args=parser.parse_args();build=args.build.resolve();restore_command=args.restore_command
+    oracle=build/f'{restore_command}-node-oracle';oracle.mkdir(exist_ok=True);listing=build/f'{restore_command}-node-sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sorted((JAVA/'src').rglob('*.java')))+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
     commands=[['java','-cp',f'{oracle}:{JAVA}/jar/minima.jar','org.minima.Minima'],[str(build/'MinimaCoreC++')]];checks=[];failures=[];live=[];processes=0
     try:
         with tempfile.TemporaryDirectory(prefix='restore-node-',dir=build) as scratch:
@@ -59,7 +59,7 @@ def main():
                 node.finish(quit=True);live.remove(node);processes+=1
                 target=root/f'target-{writer}';shutil.copytree(baseline,target)
                 reader=1-writer;node=Node(commands[reader],target,scratch);live.append(node);changed=ready(node,100);assert set(changed)==set(keys)
-                result=node.ask(f'restore file:{backup} password:fixture-restore',timeout=240);assert result['status'] and 'restore' in result,result
+                host=' host:invalid-host' if restore_command=='restoresync' and writer==1 else '';result=node.ask(f'{restore_command} file:{backup} password:fixture-restore'+host,timeout=240);assert result['status'] and 'restore' in result,result
                 node.finish();live.remove(node);processes+=1
                 assert not (target/'1.1/restore').exists()
                 node=Node(commands[writer],target,scratch);live.append(node);restored=key_state(node)
@@ -74,6 +74,6 @@ def main():
     except Exception as error:failures.append(dict(error=repr(error)))
     finally:
         for node in live:node.cancel()
-    report=dict(passed=not failures,node_processes=processes,checks=checks,failures=failures,scope='Actual unmodified pinned Java Minima and native MinimaCoreC++ with real H2, all eight solo-mode default keys, both backup/restore directions, real Main worker shutdown, persisted key-use increments and original chain on opposite-runtime reopen. Plaintext SQL storage and password-encrypted backups; public network, encrypted wallet database, damaged running-node restores and full parity remain unverified.')
-    (build/'native-restore-startup-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return bool(failures)
+    report=dict(passed=not failures,restore_command=restore_command,recent_invalid_host_ignored=restore_command=='restoresync' and len(checks)==2,node_processes=processes,checks=checks,failures=failures,scope='Actual unmodified pinned Java Minima and native MinimaCoreC++ with real H2, all eight solo-mode default keys, both backup/restore directions, real Main worker shutdown, persisted key-use increments and original chain on opposite-runtime reopen. For restoresync the recent-backup path is tested with absent and invalid host; remote sync remains unverified here. Plaintext SQL storage and password-encrypted backups; public network, encrypted wallet database, damaged running-node restores and full parity remain unverified.')
+    (build/f'native-{restore_command}-startup-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

@@ -1,0 +1,7 @@
+{
+  "cases": 532,
+  "greeting_calls": 1764,
+  "passed": 532,
+  "failures": [],
+  "scope": "Actual pinned Greeting.createGreeting against controlled DB/UserDB/P2P services, actual TxPoW tree nodes, lock order/depth, caught/propagated faults, repeated chain append, retained JSON and wire bytes. connect helper/command/runner parsing, checked error text, Unicode integer bounds, metadata and posted message identity/content. Node startup bypassed only in Java fixtures; native services require runtime binding. Generic direct exceptions normalized; no network connection attempted."
+}
