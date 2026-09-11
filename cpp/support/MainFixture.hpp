@@ -5,6 +5,7 @@ namespace minima {class MainFixture {public:
     static void initialize(const std::shared_ptr<Main>& main){main->mUptimeMilli=0;main->bindRuntime();MinimaDB::createDB(main->databaseServices());}
     static void database(const std::shared_ptr<Main>& main){MinimaDB::createDB(main->databaseServices());}
     static void finalMDSStopped(Main& main){main.mHaveShutDownMDS=true;}
+    static void shutdownGeneral(Main& main){main.shutdownGenProcs();}
     static void network(Main& main,std::shared_ptr<NetworkManager> network){main.replace(main.mNetwork,std::move(network));}
     static void diagnosticProcessors(Main& main,std::shared_ptr<TxPoWProcessor> processor,std::shared_ptr<TxPoWMiner> miner,std::shared_ptr<SendPollManager> poll,std::shared_ptr<NotifyManager> notify){main.replace(main.mTxPoWProcessor,std::move(processor));main.replace(main.mTxPoWMiner,std::move(miner));main.replace(main.mSendPoll,std::move(poll));main.replace(main.mNotifyManager,std::move(notify));}
     static void dispatch(Main& main,const std::shared_ptr<Message>& message){main.processMessage(message);}

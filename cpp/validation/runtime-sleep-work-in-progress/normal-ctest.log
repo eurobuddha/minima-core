@@ -1,0 +1,19 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 215: rpc_command_differential
+    Start  86: p2p_manager_differential
+    Start 234: minima_entry_differential
+1/7 Test #234: minima_entry_differential ..............   Passed    6.70 sec
+    Start  84: p2p_manager_native
+2/7 Test  #84: p2p_manager_native .....................   Passed    1.38 sec
+    Start 207: main_lifecycle_commands_differential
+3/7 Test  #86: p2p_manager_differential ...............   Passed    8.75 sec
+    Start 206: main_ownership
+4/7 Test #206: main_ownership .........................   Passed    0.76 sec
+    Start 124: runtime_sleep_differential
+5/7 Test #207: main_lifecycle_commands_differential ...   Passed    3.48 sec
+6/7 Test #215: rpc_command_differential ...............   Passed   14.89 sec
+7/7 Test #124: runtime_sleep_differential .............   Passed    9.25 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) =  18.77 sec

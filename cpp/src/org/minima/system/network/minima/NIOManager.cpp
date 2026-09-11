@@ -70,7 +70,7 @@ void NIOManager::processMessage(std::shared_ptr<Message> message){
         const auto& text=GeneralParams::CONNECT_LIST;size_t start=0;while(start<text.size()){auto end=text.find(',',start);if(end==std::string::npos)end=text.size();if(end>start){auto host=trim(text.substr(start,end-start));auto msg=commands::connect::createConnectMessage(host);if(!msg)std::clog<<"ERROR connect host specified incorrectly : "<<host<<'\n';else{std::clog<<"Attempt to connect to specified host in 10 seconds : "<<host<<'\n';schedule(std::make_shared<TimerMessage>(10000,msg));}}start=end+1;}
         schedule(std::make_shared<TimerMessage>(LASTREAD_CHECKER,NIO_CHECKLASTMSG));
     }else if(type==NIO_SHUTDOWN){
-        mThreadPool.shutdown();mThreadPool.awaitTermination(8000);mNIOServer->shutdown();std::clog<<"Shutdown Networking..\n";while(mNIOServer->isRunning())std::this_thread::sleep_for(std::chrono::milliseconds(50));stopMessageProcessor();
+        mThreadPool.shutdown();mThreadPool.awaitTermination(8000);mNIOServer->shutdown();std::clog<<"Shutdown Networking..\n";while(mNIOServer->isRunning())nativeThreadSleep(50);stopMessageProcessor();
     }else if(type==NIO_CONNECT){
         auto host=message->getString("host");int32_t port=message->getInteger("port");auto full=host.value_or("null")+":"+std::to_string(port);if(mServices.isInvalidPeer(full)){std::clog<<"NIO_CONNECT : Trying to connect to Invalid Peer - disallowed @ "<<full<<'\n';return;}
         auto value=std::make_shared<NIOClient>(host,port);mConnectingClients.put(value->getUID().value(),value);PostMessage(clientMessage(NIO_CONNECTATTEMPT,value));

@@ -38,7 +38,7 @@ std::shared_ptr<TxPoW> powObject(const Message& message){auto value=message.getO
 void removeFile(const SqlDB::File& file){if(!file)throw JavaNullPointerException("null database file");std::error_code error;std::filesystem::remove(*file,error);}
 }
 Main::Main(MainServices services):MessageProcessor("MAIN",releaseLocks),mServices(std::move(services)),mUptimeMilli(mServices.now()){
-    if(!mServices.sleep)mServices.sleep=[](int64_t delay){if(delay<0)throw JavaIllegalArgumentException("timeout value is negative");std::this_thread::sleep_for(std::chrono::milliseconds(delay));};
+    if(!mServices.sleep)mServices.sleep=nativeThreadSleep;
     if(!mServices.halt)mServices.halt=[](int code){std::_Exit(code);};
     if(!mServices.exit)mServices.exit=[](int code){std::exit(code);};
     if(!mServices.currentThreadName)mServices.currentThreadName=currentNativeThreadName;
@@ -127,9 +127,12 @@ void Main::doGenesis(){
     auto block=std::make_shared<TxBlock>(std::make_shared<GenesisMMR>(),genesis,std::make_shared<TxBlock::TxPoWs>());auto node=std::make_shared<TxPoWTreeNode>(block);
     sqlRequired(tree()).setRoot(node);sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWDB()).setOnMainChain(genesis->getTxPoWID());
 }
+void Main::sleepIgnoringInterrupt(int64_t delay){
+    try{mServices.sleep(delay);}catch(const JavaTypedException& error){if(error.className()!="java.lang.InterruptedException")throw;}
+}
 void Main::shutdownGenProcs(){
     TimerProcessor::stopTimerProcessor();sqlRequired(getNetworkManager()).shutdownNetwork();sqlRequired(getTxPoWMiner()).stopMessageProcessor();sqlRequired(getSendPoll()).stopMessageProcessor();
-    int64_t waited=0;while(!sqlRequired(getNetworkManager()).isShutDownComplete()){mServices.sleep(250);waited+=250;if(waited>10000){log("Network shutdown took too long..");getNetworkManager()->hardShutDown();break;}}
+    int64_t waited=0;while(!sqlRequired(getNetworkManager()).isShutDownComplete()){sleepIgnoringInterrupt(250);waited+=250;if(waited>10000){log("Network shutdown took too long..");getNetworkManager()->hardShutDown();break;}}
 }
 void Main::shutdownFinalProcs(bool shutdownMDS){
     if(shutdownMDS&&!mHaveShutDownMDS.exchange(true))sqlRequired(getNotifyManager()).shutDown();
@@ -154,8 +157,8 @@ void Main::resetMemFull(){sqlRequired(MinimaDB::getDB()).fullDBRestartMemFree();
 void Main::restartNIO(){
     if(mShuttingdown)return;sqlRequired(MinimaDB::getDB()).readLock(true);
     try{
-        try{log("Network Shutdown started..");sqlRequired(getNetworkManager()).shutdownNetwork();int64_t waited=0;while(!getNetworkManager()->isShutDownComplete()){mServices.sleep(250);waited+=250;if(waited>10000){getNetworkManager()->hardShutDown();break;}}
-            log("Network Shutdown complete.. restart in 5 seconds");mServices.sleep(5000);replace(mNetwork,newNetwork());log("Network restarted..");}
+        try{log("Network Shutdown started..");sqlRequired(getNetworkManager()).shutdownNetwork();int64_t waited=0;while(!getNetworkManager()->isShutDownComplete()){sleepIgnoringInterrupt(250);waited+=250;if(waited>10000){getNetworkManager()->hardShutDown();break;}}
+            log("Network Shutdown complete.. restart in 5 seconds");sleepIgnoringInterrupt(5000);replace(mNetwork,newNetwork());log("Network restarted..");}
         catch(const JavaError&){throw;}catch(const std::bad_alloc&){throw;}catch(const std::exception&){log("[!] Error restarting Network.. Restart Minima!");}
     }catch(...){sqlRequired(MinimaDB::getDB()).readLock(false);throw;}sqlRequired(MinimaDB::getDB()).readLock(false);
 }

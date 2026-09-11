@@ -50,3 +50,7 @@ If greeting creation fails after setSentGreeting(true), should another NEWCONNEC
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `34724dfafbb4159b894487b23bf071ca89c446ee69d0430c923234784402aa6b`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Runtime sleep follow-up
+
+The 50 ms server-completion wait now uses NativeThread and retains propagation to the caller. The Main restart comparison starts and shuts down a real replacement NIO network on port 0. It does not directly interrupt this NIO shutdown loop; executor and I/O interruption remain separate validation work. See the [runtime sleep lab](../../../../../../../new-tests/runtime-sleep-interruption.md) for the experiment, results and limits. Full parity remains not_verified.

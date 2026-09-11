@@ -7,7 +7,7 @@
 #include <chrono>
 #include <thread>
 namespace minima::commands {
-std::function<void(int64_t)> rpc::sleep=[](int64_t time){std::this_thread::sleep_for(std::chrono::milliseconds(time));};
+std::function<void(int64_t)> rpc::sleep=nativeThreadSleep;
 rpc::rpc():Command("rpc","(enable:) (ssl:) (password:) - Enable and disable RPC on port "+std::to_string(GeneralParams::RPC_PORT)+" (default is off)"){}
 std::optional<std::string> rpc::getFullHelp() const {return "\nrpc\n\nEnable and disable RPC on port " + std::to_string(GeneralParams::RPC_PORT) + " (default is off).\n\nEnsure your RPC port is secured behind a firewall before enabling.\n\nThe Deafult user is minima. That has write mode access. You can add other rpc users with read access.\n\nenable:\n    true or false, true to enable rpc or false to disable.\n\nssl:\n    true or false, true to enable Self signed SSL - you can use stunnel yourself.\n\npassword:\n    the Basic Auth password used in headers - ONLY secure if used with SSL.\n\nusername:\n    the Username of an RPC user.\n\nmode:\n    the read or write mode of an RPC user.\n\naction:\n    adduser - add an RPC user.\n    removeuser - remove an RPC user.\n    listusers - list RPC users.\n\nExamples:\n\nrpc enable:true\n\nrpc enable:true ssl:true password:minimarpcpassword\n\nrpc enable:true password:minima\n\nrpc action:adduser username:rpcuser password:rpcpassword mode:read\n\nrpc action:removeuser username:rpcuser\n\nrpc action:listusers\n\nrpc enable:false\n";}
 json::JSONValue rpc::runCommand(){

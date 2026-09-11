@@ -75,7 +75,7 @@ int Minima::main(const Args* args,Runtime runtime){
     if(!runtime.openInput)runtime.openInput=openStandardConsoleInput;
     if(!runtime.createMain)runtime.createMain=[](MainServices services){return Main::create(std::move(services));};
     if(!runtime.addShutdownHook)runtime.addShutdownHook=addNativeShutdownHook;
-    if(!runtime.sleep)runtime.sleep=[](int64_t delay){std::this_thread::sleep_for(std::chrono::milliseconds(delay));};
+    if(!runtime.sleep)runtime.sleep=nativeThreadSleep;
     auto userHome=runtime.userHome();auto data=userHome?javaUnixChildFile(unicode::encodeUTF8(*userHome),".minima"):std::filesystem::path(".minima");
     auto folder=javaUnixChildFile(data,GlobalParams::MINIMA_BASE_VERSION);GeneralParams::resetDefaults();GeneralParams::DATA_FOLDER=javaUnixAbsoluteFile(folder);
     auto configRuntime=runtime.config;if(!configRuntime.println)configRuntime.println=runtime.println;

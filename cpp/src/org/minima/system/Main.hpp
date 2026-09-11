@@ -97,6 +97,7 @@ private:
     void bindRuntime();
     void doGenesis();
     void shutdownGenProcs();
+    void sleepIgnoringInterrupt(int64_t delay);
     void cleanNativeOwners() noexcept;
     void collectMemory(){if(mServices.collectMemory)mServices.collectMemory();} // JVM GC is a hint; native objects use shared/RAII ownership.
     void schedule(int64_t delay,const std::string& type){PostTimerMessage(std::make_shared<TimerMessage>(delay,type));}

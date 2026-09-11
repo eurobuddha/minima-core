@@ -1,4 +1,6 @@
 # Learning the Minima Java-to-C++ port
+The [runtime sleep lab](new-tests/runtime-sleep-interruption.md) follows actual interruptions through Main restart, RPC, archive retry and P2P discovery, with scoped Java/C++ results.
+
 
 This teaching directory follows all **457 Java source files** in the pinned Minima repository. Each file has its own page under `files/`, mirroring the original package path. `src/` contains the 369 production files; `test/` contains the 88 original test files. Identical short names in different packages have separate pages.
 

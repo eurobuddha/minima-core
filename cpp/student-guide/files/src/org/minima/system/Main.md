@@ -160,3 +160,7 @@ provided. That connects the existing incoming NIO request path to the new native
 command helper. The current-IBD comparison invokes the default binding and checks
 its bytes; actual serving of usable wallet proofs through a live node remains open.
 The existing Main and NIO-message regressions pass in both builds. See the [MegaMMR lab](../../../../../new-tests/mega-mmr-commands.md).
+
+## Runtime sleep follow-up
+
+The default sleep now uses NativeThread. Three source-local catches were missing: shutdown polling, restart polling and the five-second restart pause now ignore only InterruptedException. Real interrupt comparisons verify continued replacement-network construction and database read-lock release. MAIN_NETRESTART retains its separate propagating ten-second wait. See the [runtime sleep lab](../../../../../new-tests/runtime-sleep-interruption.md) for the experiment, results and limits. Full parity remains not_verified.

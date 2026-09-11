@@ -73,3 +73,7 @@ through a handler subclass, not a substituted production database.
 Why can a method named reconnectLoadTxBlocks return an empty response without reconnecting after a database error? Which early returns skip SystemClean?
 
 Pinned Java SHA-256: `3b2918c85d07ee57035e4b5a2d0f7033cdf78706f426f973075d338aea34dfa5`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+## Runtime sleep follow-up
+
+The default sleep now uses NativeThread. Ten new real-interrupt retry comparisons show that escaping runtime errors and null block numbers reach the retry pause and consume interruption; SQLExceptions caught inside MySQLConnect leave it pending. The retry still occurs once after interruption. The separate ten-second post-response interrupt path is not newly validated. See the [runtime sleep lab](../../../../../../new-tests/runtime-sleep-interruption.md) for the experiment, results and limits. Full parity remains not_verified.

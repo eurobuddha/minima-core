@@ -1,4 +1,5 @@
 #include "ArchiveServer.hpp"
+#include "support/NativeThread.hpp"
 #include "org/minima/objects/IBD.hpp"
 #include "org/minima/system/network/minima/NIOManager.hpp"
 #include "org/minima/system/network/minima/NIOMessage.hpp"
@@ -13,7 +14,7 @@
 #include <iostream>
 namespace minima {
 ArchiveServer::Runtime ArchiveServer::configured(Runtime runtime){
-    if(!runtime.sleep)runtime.sleep=[](int64_t delay){std::this_thread::sleep_for(std::chrono::milliseconds(delay));};
+    if(!runtime.sleep)runtime.sleep=nativeThreadSleep;
     if(!runtime.loadDriver)runtime.loadDriver=[]{throw SqlRuntimeException("java.lang.ClassNotFoundException","com.mysql.cj.jdbc.Driver");};
     if(!runtime.environment)runtime.environment=[](const std::string& name)->Text{auto value=std::getenv(name.c_str());return value?Text(value):std::nullopt;};
     if(!runtime.openInput)runtime.openInput=openStandardConsoleInput;

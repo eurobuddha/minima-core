@@ -55,7 +55,7 @@ P2PManager::Messages P2PManager::init(const std::shared_ptr<P2PState>& state){
     }
     if(connectionAddress)messages.push_back(addressMessage(P2P_SEND_CONNECT,connectionAddress));return messages;
 }
-void P2PManager::pauseDiscovery(){std::this_thread::sleep_for(std::chrono::milliseconds(5000));}
+void P2PManager::pauseDiscovery(){nativeThreadSleep(5000);}
 void P2PManager::doDiscoveryPing(){
     if(required(P2PParams::DEFAULT_NODE_LIST).size()==0){auto now=mServices.currentTimeMillis();if(std::bit_cast<int64_t>(uint64_t(now)-uint64_t(mLastNotifyNoPeers))>NOTIFY_NOPEERS_TIMER){P2PFunctions::log("No default Peers found - please use command 'peers' to add a valid peer..");mLastNotifyNoPeers=now;}return;}
     int attempts=0;while(state->isDoingDiscoveryConnection()&&isRunning()){

@@ -1,0 +1,8 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_entry_boundary.dir/support/minima_entry_boundary.cpp.o
+[100%] Linking CXX executable minima_entry_boundary
+[100%] Built target minima_entry_boundary
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/main_ownership.dir/support/main_ownership.cpp.o
+[100%] Linking CXX executable main_ownership
+[100%] Built target main_ownership

@@ -26,8 +26,9 @@ Controls RPC enablement and the additional RPC-user records exposed through User
 The native body uses the existing Main/NetworkManager methods and actual UserDB
 arrays, with RawTxnCommands' checked object/string adapters and JavaLowerCase.
 The existing Main sleep service is bound to the command's one-second pause.
-Synthetic interruption propagates the native InterruptedException category at
-that boundary. No Java thread registry or full interruption mechanism is implied.
+Earlier tests injected an interruption exception at that boundary. The runtime
+sleep follow-up below now exercises real pending interruption; complete Java
+thread lifecycle parity is still not implied.
 
 ## What the tests tell us
 
@@ -83,3 +84,7 @@ checks same-handler restart and disable responses, and replaces the database
 without restarting the listener. Both LF and CRLF match Java. The real one-second
 pauses are measured. This exposed and corrected Authorizer's missing default
 database lookup, which isolated command/server fixtures had not exercised.
+
+## Runtime sleep follow-up
+
+Both the standalone default pause and Main-bound pause now use NativeThread. The new test sets an actual pending interrupt before enable:true with a synthetic password. The pause consumes it and propagates InterruptedException before enablement or authentication changes. This supplements the earlier injected-exception cases. See the [runtime sleep lab](../../../../../../../new-tests/runtime-sleep-interruption.md) for the experiment, results and limits. Full parity remains not_verified.

@@ -40,6 +40,7 @@ public class ArchiveServerOracle extends SqlDBOracle {
                 if(Boolean.TRUE.equals(request.get("cascade"))){var spec=new JSONObject();spec.put("count",3);server.mCascade=ArchiveManagerOracle.cascade(spec);}
                 config=request;events=new JSONArray();calls=0;
                 if(op.equals("retry")){
+                    if(Boolean.TRUE.equals(request.get("interrupt")))Thread.currentThread().interrupt();
                     var handler=server.new ArchiveHandler(null);var first=request.get("first");out.put("blocks",ArchiveManagerOracle.wires(handler.reconnectLoadTxBlocks(first==null?null:new MiniNumber((String)first))));
                 }else{
                     if(!Boolean.TRUE.equals(request.get("nullSocket"))){
@@ -55,7 +56,7 @@ public class ArchiveServerOracle extends SqlDBOracle {
                 }
             }
         }catch(Exception error){out.put("exception",error.toString());}
-        finally{if(accepted!=null)accepted.close();if(client!=null)client.close();System.setOut(previous);}
+        finally{if(request.containsKey("interrupt"))out.put("threadInterrupted",Thread.interrupted());if(accepted!=null)accepted.close();if(client!=null)client.close();System.setOut(previous);}
         var logs=new JSONArray();for(String line:captured.toString("UTF-8").split("\n")){int at=line.indexOf("] : ");if(at>=0&&!line.substring(at+4).startsWith("     "))logs.add(line.substring(at+4));}
         out.put("logs",logs);out.put("events",events);out.put("milliseconds",System.currentTimeMillis()-before);return out;
     }

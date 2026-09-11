@@ -1,3 +1,34 @@
+# Current checkpoint — runtime sleep integration
+
+Goal ACTIVE and incomplete. New mapped files: none. 456 paths remain: 455 active
+partial, one inactive source, one absent jnifunctions.cpp. Full parity not_verified.
+
+Six existing files now use NativeThread sleep: Minima, Main, rpc, NIOManager,
+P2PManager and ArchiveServer. Main also gains its three missing source-local
+InterruptedException catches, so interrupted restart waits still create a new
+network manager. RPC and MAIN_NETRESTART preserve propagation and effect ordering.
+
+Normal and address/undefined sanitizer builds pass affected targets and the actual
+MinimaCoreCpp executable. Nineteen new Java/native comparisons / 167 assertions
+per build pass. Seven focused CTests pass in each build (18.77 s / 23.23 s).
+Full suite not rerun; old archive/discovery corpora remain intact.
+
+Evidence: validation/runtime-sleep-work-in-progress. Student lab:
+student-guide/new-tests/runtime-sleep-interruption.md; six file lessons updated.
+New direct interruption cases cover Main/RPC, archive retry and P2P discovery.
+No direct NIO shutdown interrupt, full daemon interruption or archive post-response
+interrupt test is claimed. P2P's broader native Error catch remains an existing gap.
+
+NEXT: inspect the seven remaining raw sleep sites in backup/vault/TimedChecker,
+including TimedChecker's worker interrupt; continue the complete API/runtime audit.
+JNI native bodies remain unavailable in inspected sources. No blocker prevents
+this independent work. Do not treat compile success or these finite tests as parity.
+
+User preview remains frozen at 6c28109 on port 21001. Preserve its executable/data
+and unrelated graphify changes. Local commits and verified recovery bundles only.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — real worker sleep interruption
 
 Goal ACTIVE and incomplete. No newly mapped files: 456 paths (455 active partial,

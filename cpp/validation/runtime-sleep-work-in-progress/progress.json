@@ -1,0 +1,45 @@
+{
+  "goal": "active_incomplete",
+  "base_commit": "f1cbaa18cb6745d8d20f31cac47677cd1acc665b",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "active_partial": 455,
+  "inactive_source_preserved": 1,
+  "absent": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "corrected": [
+    "Minima launcher, Main, rpc, NIOManager, P2PManager and ArchiveServer default sleeps use NativeThread interruption",
+    "Main catches only InterruptedException at shutdown/restart 250 ms waits and restart 5000 ms pause; other exceptions retain existing handling",
+    "Main MAIN_NETRESTART 10000 ms wait and rpc 1000 ms wait propagate interruption before later state changes"
+  ],
+  "validation": {
+    "comparisons_per_build": 19,
+    "assertions_per_build": 167,
+    "focused_ctests_per_build": 7,
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "normal_ctest_seconds": 18.77,
+    "sanitized_ctest_seconds": 23.23,
+    "full_suite_rerun": false
+  },
+  "builds": {
+    "normal": "PASS affected targets and actual MinimaCoreCpp",
+    "sanitized": "PASS affected targets and actual MinimaCoreCpp; address/undefined sanitizers"
+  },
+  "limits": [
+    "Main fixture controls old-network completion; replacement NetworkManager is real and binds port 0 with P2P/P2P2 disabled and empty CONNECT_LIST",
+    "No wallet SQL load or mainnet node touched; archive SQL driver records calls",
+    "New direct interruption comparisons cover Main, rpc, archive retry and P2P discovery; no direct NIO shutdown-loop interrupt or full Minima daemon test added",
+    "Archive 10-second post-response interrupt path and other I/O/monitor/thread lifecycle semantics remain unverified",
+    "P2P discovery catch still has the existing broader native std::exception versus Java Exception error-category gap",
+    "Seven mapped raw sleep sites remain; complete 457-file API/behavior parity is not_verified"
+  ],
+  "failures_resolved": [
+    "Initial fixture omitted mandatory SQL connector; reused SqlRecordingFixture without opening a database",
+    "Sandbox network-start runs exited before JSON; local socket escalation allowed the unchanged actual network constructor to run",
+    "Replaced 25 ms completion assumption with observation of actual pending interrupt consumption"
+  ],
+  "next_action": "Read and migrate remaining backup/vault/TimedChecker raw sleeps, including TimedChecker worker interrupt, then continue the full API/runtime audit. JNI native bodies remain unavailable in inspected sources."
+}

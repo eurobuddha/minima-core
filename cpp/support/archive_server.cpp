@@ -1,4 +1,5 @@
 #include "SqlRecordingFixture.hpp"
+#include "support/NativeThread.hpp"
 #include "org/minima/utils/mysql/ArchiveServer.hpp"
 #include "ArchiveFixture.hpp"
 #include "support/NIOConnections.hpp"
@@ -37,6 +38,7 @@ JSONObject run(const JSONObject& request){
             if(!request.get("cascade").isNull()&&request.get("cascade").asBool()){server->mCascade=std::make_shared<Cascade>();for(int i=0;i<3;++i)server->mCascade->addToTip(*support::archiveFixtureTxPoW(i,0));}
             config=&request;events=JSONArray();calls=0;
             if(op=="retry"){
+                if(flag("interrupt"))interruptCurrentNativeThread();
                 ArchiveServer::ArchiveHandler handler(server,nullptr);auto first=string(request.get("first"));std::optional<MiniNumber> number=first?std::optional(MiniNumber(*first)):std::nullopt;auto rows=handler.reconnectLoadTxBlocks(number?&*number:nullptr);JSONArray blocks;for(const auto& block:*rows)blocks.add(block?JSONValue(MiniData(block->serialise()).to0xString()):JSONValue());out.put("blocks",blocks);
             }else{
                 if(!flag("nullSocket")){int descriptors[2];if(::socketpair(AF_UNIX,SOCK_STREAM,0,descriptors))throw std::runtime_error("socketpair failed");client=std::make_shared<PosixNIOSocket>(descriptors[0]);socket=std::make_shared<PosixNIOSocket>(descriptors[1]);nioWriteAll(client,MiniData::fromHex(request.getString("frame")).bytes());::shutdown(client->descriptor(),SHUT_WR);if(flag("closed"))socket->close();}
@@ -45,6 +47,7 @@ JSONObject run(const JSONObject& request){
             }
         }
     }catch(const std::exception& error){out.put("exception",nativeExceptionText(error));}
+    if(request.containsKey("interrupt"))out.put("threadInterrupted",nativeThreadInterrupted());
     if(socket)socket->close();if(client)client->close();out.put("logs",captured);out.put("events",events);out.put("milliseconds",int64_t(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now()-start).count()));return out;
 }
 }

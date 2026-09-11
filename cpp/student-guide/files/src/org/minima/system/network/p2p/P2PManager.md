@@ -45,3 +45,7 @@ A greeting and notAcceptingMsg arrive in the same wrapper. Trace both blocks and
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `8e101225ae794c10e859e24dd3dc3f81e7ac3b716ac0739ba9376e896a3c7a51`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Runtime sleep follow-up
+
+Discovery pauses now use NativeThread. Four real TCP comparisons cover INIT/LOOP with immediate success or a dropped reply followed by success. Immediate success retains the interrupt bit; the interrupted retry pause consumes it, advances attempts and permits the second ping. The existing broader native catch for Java Error categories remains a separate gap. See the [runtime sleep lab](../../../../../../../new-tests/runtime-sleep-interruption.md) for the experiment, results and limits. Full parity remains not_verified.

@@ -1,0 +1,17 @@
+[ 97%] Built target minima_file_port
+[100%] Built target runtime_sleep
+[100%] Built target minima_file_port
+[100%] Built target minima_main_runtime
+[ 97%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_p2p_manager.dir/support/p2p_manager.cpp.o
+[100%] Linking CXX executable minima_p2p_manager
+[100%] Built target minima_p2p_manager
+[ 97%] Built target minima_file_port
+[100%] Built target p2p_manager_native
+[ 97%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/archive_server_runtime.dir/support/archive_server.cpp.o
+[100%] Linking CXX executable archive_server_runtime
+[100%] Built target archive_server_runtime
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Built target MinimaCoreCpp

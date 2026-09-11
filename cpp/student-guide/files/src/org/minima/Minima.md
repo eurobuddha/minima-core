@@ -116,3 +116,7 @@ launcher uses separate data, port 21001 and initial peer eurobuddha.com:9001. Th
 [packaging lab](../../../../new-tests/executable-preview.md) explains dependency
 relocation, snapshot identity and the actual startup/restart verification. This
 is runtime evidence for the entry point, not a complete parity declaration.
+
+## Runtime sleep follow-up
+
+The launcher now uses NativeThread for its default 250 ms daemon sleep, retaining the source catch that ignores InterruptedException. The launcher boundary regression passes in both builds. This change does not add a complete interrupted-daemon lifecycle test. See the [runtime sleep lab](../../../../new-tests/runtime-sleep-interruption.md) for the experiment, results and limits. Full parity remains not_verified.
