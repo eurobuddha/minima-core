@@ -1,3 +1,54 @@
+# Current checkpoint — four original statement command tests
+
+Base HEAD: 29254491bde00b5bea42275da9aca9380bb6d473. Goal ACTIVE and incomplete.
+New: RETURNstatementTests, WHILEstatementTests, IFstatementTests and MASTstatementTests
+under test/org/minima/tests/kissvm/statements/commands.
+Inventory: **445 counterparts** (364 production, 81 tests), **12 absent**
+(5 production, 7 tests). Full parity remains not_verified. No production changes.
+
+Normal and sanitizer builds pass all four new targets, minima_kissvm and actual
+MinimaCoreCpp node target. Both suites PASS 8 methods / 84 source assertions per
+runtime (42 RETURN, 1 WHILE, 22 IF, 19 MAST), with all active fixtures retained.
+WHILE source execution has no outcome assertions; supplemental known outcomes
+cover normal termination and early returns. Eight complete 11-field comparisons /
+16 independent checks PASS per build. Transcript SHA-256: f294280e57ee745a4ef1e2d11c6a20505cdef4cd603cc067d69f01327a0fcf0c.
+Normal CTest 3.61s; sanitizer 4.58s. Full suite not repeated; 277 registered tests.
+
+Lab: student-guide/new-tests/original-statement-commands.md. Evidence and remaining
+inventory: validation/original-statement-commands-work-in-progress. Four lessons
+updated; 457-page structural audit retained. NEXT: LETstatementTests and remaining
+expression/parser/token original tests. Four JNI-dependent production files lack
+external native bodies/ABI in inspected candidates. P2PSwapLink is inactive;
+TxPoWProcessorTest has empty test bodies plus delay helpers. Independent work
+remains. Full production API/runtime audit is required after counterpart completion.
+
+Magic sanitizer handle 41123 confirmed LIVE earlier this turn on saved 9ae7039
+binary. Normal full replay passed earlier. Poll same handle, do not block new work.
+Preserve graphify work and external Java SQL/JAR f7f0e08; commit only cpp, no push.
+Source pin unchanged. Preceding verified bundle: MinimaCoreC++-20260911T184428Z.bundle,
+SHA-256 57e99bc93902cdf9cc030c27f7be1dc4f149eba6328c0a9b49917849eefa2960;
+26 changed files byte-verified in a fresh recovery clone.
+
+## Code Review
+
+### Summary
+Reviewed all four complete original/native test files, native command/dependency
+implementations, sibling Interpreter, direct JUnit runner, fixed-input run probes,
+CMake additions, lessons and terminal build/test results. Source assertions and
+fixtures are retained, including IF constructor mistakes and outcome-free WHILE
+execution. Constructor lists are not subsequently mutated in these fixtures.
+
+### Findings
+No unresolved blocking finding in this bounded translation. WHILE's limited
+source assertions are disclosed and supplemented with independently expected
+loop/return outcomes. RETURN and MAST preserve specific exception expectations.
+Full command API, alias behavior, resource limits and node parity are not certified.
+
+### Verdict
+✅ Approve this checkpoint; full working-port goal remains active.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — original VERIFY tests
 
 Base HEAD: e5cfb27e34c2448c30782a691462a8637553d715. Goal ACTIVE and incomplete.

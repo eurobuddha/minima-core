@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 441 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 445 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -454,11 +454,11 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/tests/kissvm/statements/StatementParserTests.java` | `test/org/minima/tests/kissvm/statements/StatementParserTests.cpp` | unported | — |
 | `test/org/minima/tests/kissvm/statements/commands/ASSERTstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/ASSERTstatementTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/statements/commands/EXECstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/EXECstatementTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/statements/commands/IFstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/IFstatementTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/statements/commands/IFstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/IFstatementTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/statements/commands/LETstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/LETstatementTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/tokens/LexicalTokenizerTests.java` | `test/org/minima/tests/kissvm/tokens/LexicalTokenizerTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/tokens/TokenTests.java` | `test/org/minima/tests/kissvm/tokens/TokenTests.cpp` | unported | — |
 | `test/org/minima/tests/kissvm/values/BooleanValueTests.java` | `test/org/minima/tests/kissvm/values/BooleanValueTests.cpp` | implemented_partial | — |

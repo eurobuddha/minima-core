@@ -1578,3 +1578,10 @@ add_executable(VERIFYOUTTests test/org/minima/tests/kissvm/functions/txn/output/
 target_link_libraries(VERIFYOUTTests PRIVATE minima_file_port)
 add_test(NAME original_verify_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_verify_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_verify_tests PROPERTIES TIMEOUT 120)
+
+foreach(test_name IN ITEMS RETURNstatementTests WHILEstatementTests IFstatementTests MASTstatementTests)
+    add_executable(${test_name} test/org/minima/tests/kissvm/statements/commands/${test_name}.cpp)
+    target_link_libraries(${test_name} PRIVATE minima_file_port)
+endforeach()
+add_test(NAME original_statement_commands_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_statement_commands_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_statement_commands_tests PROPERTIES TIMEOUT 120)

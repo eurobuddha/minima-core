@@ -1,0 +1,49 @@
+{
+  "base_head": "29254491bde00b5bea42275da9aca9380bb6d473",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.cpp",
+    "test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.cpp",
+    "test/org/minima/tests/kissvm/statements/commands/IFstatementTests.cpp",
+    "test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.cpp"
+  ],
+  "counterparts": 445,
+  "production_counterparts": 364,
+  "test_counterparts": 81,
+  "remaining": 12,
+  "remaining_production": 5,
+  "remaining_tests": 7,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "builds": {
+    "normal": "PASS all four new targets, minima_kissvm and actual MinimaCoreCpp node target",
+    "sanitized": "PASS all four new targets, minima_kissvm and actual MinimaCoreCpp node target",
+    "full_suite": "not repeated; 277 registered tests"
+  },
+  "tests": {
+    "original_methods": 8,
+    "original_assertions_per_runtime": 84,
+    "assertions_by_class": {
+      "RETURNstatementTests": 42,
+      "WHILEstatementTests": 1,
+      "IFstatementTests": 22,
+      "MASTstatementTests": 19
+    },
+    "supplemental_comparisons_per_build": 8,
+    "independent_checks_per_build": 16,
+    "supplemental_transcript_sha256": "f294280e57ee745a4ef1e2d11c6a20505cdef4cd603cc067d69f01327a0fcf0c",
+    "normal": "PASS 3.61s",
+    "sanitized": "PASS 4.58s"
+  },
+  "scope": "All four original RETURN, WHILE, IF and MAST command test files, eight annotated methods and 84 assertions per runtime retain their complete active fixtures. WHILE execution has no source outcome assertions; supplemental fixed scripts independently check final loop state and early return. Complete 11-field Java/native run records must match. Source constructor mistakes and inactive comments are retained as source behavior. Full production API and node parity remain unverified.",
+  "blockers": [
+    "Four JNI-dependent production files lack native bodies/ABI or authoritative vectors in inspected candidates; independent work remains.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Preserve source behavior without crediting empty assertions as parity."
+  ],
+  "next_action": "Convert LETstatementTests, BooleanExpressionTests, OperatorExpressionTests, ExpressionParserTests, StatementParserTests and tokens/TokenTests. Preserve inactive source separately. Full production API/runtime parity audit remains after counterpart work.",
+  "long_demos": {
+    "normal": "55636 terminal exit 0; saved 9ae7039 full Magic replay passed at SHA checkpoint.",
+    "sanitized": "41123 confirmed LIVE earlier this turn; saved 9ae7039 binary. Poll same handle without blocking independent files."
+  }
+}

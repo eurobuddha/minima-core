@@ -2,8 +2,8 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 441,
-  "native_absent": 16,
+  "native_counterparts": 445,
+  "native_absent": 12,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
@@ -12,15 +12,15 @@
     },
     "test": {
       "total": 88,
-      "counterparts": 77,
-      "absent": 11
+      "counterparts": 81,
+      "absent": 7
     }
   },
   "teaching_counts": {
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9488,
+  "links_checked": 9501,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -4503,9 +4503,9 @@
       "java": "test/org/minima/tests/kissvm/statements/commands/IFstatementTests.java",
       "cpp": "test/org/minima/tests/kissvm/statements/commands/IFstatementTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/statements/commands/IFstatementTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4523,9 +4523,9 @@
       "java": "test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.java",
       "cpp": "test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4533,9 +4533,9 @@
       "java": "test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.java",
       "cpp": "test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4543,9 +4543,9 @@
       "java": "test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.java",
       "cpp": "test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },

@@ -904,11 +904,11 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 |---|---|---|
 | [ASSERTstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/ASSERTstatementTests.md) | test explanation | implemented_partial |
 | [EXECstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/EXECstatementTests.md) | test explanation | implemented_partial |
-| [IFstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/IFstatementTests.md) | test explanation | unported |
+| [IFstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/IFstatementTests.md) | test explanation | implemented_partial |
 | [LETstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/LETstatementTests.md) | test explanation | unported |
-| [MASTstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.md) | test explanation | unported |
-| [RETURNstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.md) | test explanation | unported |
-| [WHILEstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.md) | test explanation | unported |
+| [MASTstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.md) | test explanation | implemented_partial |
+| [RETURNstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.md) | test explanation | implemented_partial |
+| [WHILEstatementTests.java](files/test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/tokens
 

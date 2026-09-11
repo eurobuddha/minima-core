@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.java](../../../../../../../../../../upstream-study/test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -41,7 +41,7 @@ assertEquals("MAST 0xBC05B9280323A07AE6B2C6FA183F20991D38D01BC91F02C439CB5A33113
 assertThrows(ExecutionException.class, () -> { ms.execute(ctr); });
 ```
 
-An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this page does not claim that the Java suite was executed successfully.
+An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this checkpoint records successful execution of unchanged Java tests and their native counterparts.
 
 The fixture names these Minima dependencies (links are for tracing the test setup and calls):
 
@@ -56,11 +56,16 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+[Native counterpart](../../../../../../../../../test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.cpp) retains both annotated methods and 19
+original assertions. Unchanged Java tests and native counterparts pass in normal
+and sanitizer builds. All real ScriptProof/Witness fixtures, malformed/missing scripts and instruction counts remain active.
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
-
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+[Statement command lab](../../../../../../../../new-tests/original-statement-commands.md)
+explains reference translation, direct execution, control flow, instruction counts
+and source coverage limits. Eight supplemental full-record Java/C++ comparisons
+and sixteen independent expected-outcome checks pass across the batch.
+[Evidence](../../../../../../../../../validation/original-statement-commands-work-in-progress/progress.json).
+No production correction was needed. Full command API and node parity remain unverified.
 
 ## What students should conclude
 

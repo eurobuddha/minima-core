@@ -11,13 +11,20 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 77 mapped test files exist;
-16 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 81 mapped test files exist;
+12 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-VERIFYINTests and VERIFYOUTTests now have working counterparts. Both builds pass
+RETURNstatementTests, WHILEstatementTests, IFstatementTests and MASTstatementTests
+now have working counterparts. Both builds pass eight original methods / 84
+assertions per runtime and eight supplemental comparisons / sixteen independent
+checks, including explicit loop outcomes. Both node targets build. Inventory:
+**445 counterparts, 12 absent**, with full parity unverified. See the
+[statement command lab](student-guide/new-tests/original-statement-commands.md).
+
+At the preceding checkpoint, VERIFYINTests and VERIFYOUTTests gained counterparts. Both builds pass
 six original methods / 56 assertions per runtime and 32 supplemental comparisons /
-64 independent checks. Both node targets build. Inventory: **441 counterparts,
+64 independent checks. Both node targets build. That checkpoint had **441 counterparts,
 16 absent**, with full parity unverified. See the
 [VERIFY test lab](student-guide/new-tests/original-verify-tests.md).
 

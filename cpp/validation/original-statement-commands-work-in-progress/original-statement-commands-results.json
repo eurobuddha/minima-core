@@ -1,0 +1,510 @@
+{
+  "passed": true,
+  "original_methods": 8,
+  "original_assertions_per_runtime": 84,
+  "results": [
+    {
+      "name": "RETURNstatementTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-statement-commands-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalStatementCommandsTests",
+            "RETURNstatementTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATEMENTS_RESULT {\"class\":\"RETURNstatementTests\",\"tests\":2,\"assertions\":42,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/RETURNstatementTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATEMENTS_RESULT {\"class\":\"RETURNstatementTests\",\"tests\":2,\"assertions\":42,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "WHILEstatementTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-statement-commands-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalStatementCommandsTests",
+            "WHILEstatementTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATEMENTS_RESULT {\"class\":\"WHILEstatementTests\",\"tests\":2,\"assertions\":1,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/WHILEstatementTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATEMENTS_RESULT {\"class\":\"WHILEstatementTests\",\"tests\":2,\"assertions\":1,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "IFstatementTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-statement-commands-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalStatementCommandsTests",
+            "IFstatementTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATEMENTS_RESULT {\"class\":\"IFstatementTests\",\"tests\":2,\"assertions\":22,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/IFstatementTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATEMENTS_RESULT {\"class\":\"IFstatementTests\",\"tests\":2,\"assertions\":22,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "MASTstatementTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-statement-commands-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalStatementCommandsTests",
+            "MASTstatementTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATEMENTS_RESULT {\"class\":\"MASTstatementTests\",\"tests\":2,\"assertions\":19,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/MASTstatementTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATEMENTS_RESULT {\"class\":\"MASTstatementTests\",\"tests\":2,\"assertions\":19,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "supplemental": {
+    "passed": true,
+    "comparisons": 8,
+    "independent_checks": 16,
+    "cases": [
+      [
+        "LET a=0 WHILE a LT 5 DO LET a=a+1 ENDWHILE",
+        false,
+        false,
+        "5"
+      ],
+      [
+        "LET a=0 WHILE a LT 5 DO LET a=a+1 RETURN TRUE ENDWHILE",
+        true,
+        true,
+        "1"
+      ],
+      [
+        "LET a=0 WHILE FALSE DO LET a=99 ENDWHILE RETURN a EQ 0",
+        true,
+        true,
+        "0"
+      ],
+      [
+        "LET a=0 WHILE a LT 5 DO LET a=a+1 RETURN FALSE ENDWHILE RETURN TRUE",
+        true,
+        false,
+        "1"
+      ],
+      [
+        "IF FALSE THEN RETURN TRUE ELSEIF TRUE THEN RETURN FALSE ELSE RETURN TRUE ENDIF",
+        true,
+        false,
+        null
+      ],
+      [
+        "IF FALSE THEN RETURN FALSE ELSE RETURN TRUE ENDIF",
+        true,
+        true,
+        null
+      ],
+      [
+        "RETURN TRUE RETURN FALSE",
+        true,
+        true,
+        null
+      ],
+      [
+        "RETURN FALSE RETURN TRUE",
+        true,
+        false,
+        null
+      ]
+    ],
+    "observations": [
+      [
+        [
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          41,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "5",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE ( variable:a LT 5 )\nINST[6] - ( variable:a LT 5 ) returns:TRUE\nINST[7] - LET a = ( variable:a + 1 )\nINST[10] - { b = 3, a = 1, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[13] - ( variable:a LT 5 ) returns:TRUE\nINST[14] - LET a = ( variable:a + 1 )\nINST[17] - { b = 3, a = 2, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[20] - ( variable:a LT 5 ) returns:TRUE\nINST[21] - LET a = ( variable:a + 1 )\nINST[24] - { b = 3, a = 3, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[27] - ( variable:a LT 5 ) returns:TRUE\nINST[28] - LET a = ( variable:a + 1 )\nINST[31] - { b = 3, a = 4, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[34] - ( variable:a LT 5 ) returns:TRUE\nINST[35] - LET a = ( variable:a + 1 )\nINST[38] - { b = 3, a = 5, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[41] - ( variable:a LT 5 ) returns:FALSE\nINST[41] - Contract instructions : 41\nINST[41] - Contract finished     : false\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          12,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "1",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE ( variable:a LT 5 )\nINST[6] - ( variable:a LT 5 ) returns:TRUE\nINST[7] - LET a = ( variable:a + 1 )\nINST[10] - { b = 3, a = 1, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[11] - RETURN TRUE\nINST[12] - Contract instructions : 12\nINST[12] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          8,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "0",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE FALSE\nINST[5] - RETURN ( variable:a EQ 0 )\nINST[8] - ( variable:a EQ 0 ) returns:TRUE\nINST[8] - Contract instructions : 8\nINST[8] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          false,
+          true,
+          false,
+          "",
+          "",
+          12,
+          1,
+          true,
+          {
+            "b": "3",
+            "a": "1",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE ( variable:a LT 5 )\nINST[6] - ( variable:a LT 5 ) returns:TRUE\nINST[7] - LET a = ( variable:a + 1 )\nINST[10] - { b = 3, a = 1, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[11] - RETURN FALSE\nINST[12] - Contract instructions : 12\nINST[12] - Contract finished     : false\n"
+        ],
+        [
+          true,
+          false,
+          true,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - IF FALSE, ELSEIF TRUE, ELSEIF TRUE\nINST[4] - RETURN FALSE\nINST[5] - Contract instructions : 5\nINST[5] - Contract finished     : false\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - IF FALSE, ELSEIF TRUE\nINST[4] - RETURN TRUE\nINST[5] - Contract instructions : 5\nINST[5] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          2,
+          1,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - RETURN TRUE\nINST[2] - Contract instructions : 2\nINST[2] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          false,
+          true,
+          false,
+          "",
+          "",
+          2,
+          1,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - RETURN FALSE\nINST[2] - Contract instructions : 2\nINST[2] - Contract finished     : false\n"
+        ]
+      ],
+      [
+        [
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          41,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "5",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE ( variable:a LT 5 )\nINST[6] - ( variable:a LT 5 ) returns:TRUE\nINST[7] - LET a = ( variable:a + 1 )\nINST[10] - { b = 3, a = 1, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[13] - ( variable:a LT 5 ) returns:TRUE\nINST[14] - LET a = ( variable:a + 1 )\nINST[17] - { b = 3, a = 2, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[20] - ( variable:a LT 5 ) returns:TRUE\nINST[21] - LET a = ( variable:a + 1 )\nINST[24] - { b = 3, a = 3, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[27] - ( variable:a LT 5 ) returns:TRUE\nINST[28] - LET a = ( variable:a + 1 )\nINST[31] - { b = 3, a = 4, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[34] - ( variable:a LT 5 ) returns:TRUE\nINST[35] - LET a = ( variable:a + 1 )\nINST[38] - { b = 3, a = 5, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[41] - ( variable:a LT 5 ) returns:FALSE\nINST[41] - Contract instructions : 41\nINST[41] - Contract finished     : false\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          12,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "1",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE ( variable:a LT 5 )\nINST[6] - ( variable:a LT 5 ) returns:TRUE\nINST[7] - LET a = ( variable:a + 1 )\nINST[10] - { b = 3, a = 1, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[11] - RETURN TRUE\nINST[12] - Contract instructions : 12\nINST[12] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          8,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "0",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE FALSE\nINST[5] - RETURN ( variable:a EQ 0 )\nINST[8] - ( variable:a EQ 0 ) returns:TRUE\nINST[8] - Contract instructions : 8\nINST[8] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          false,
+          true,
+          false,
+          "",
+          "",
+          12,
+          1,
+          true,
+          {
+            "b": "3",
+            "a": "1",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE ( variable:a LT 5 )\nINST[6] - ( variable:a LT 5 ) returns:TRUE\nINST[7] - LET a = ( variable:a + 1 )\nINST[10] - { b = 3, a = 1, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[11] - RETURN FALSE\nINST[12] - Contract instructions : 12\nINST[12] - Contract finished     : false\n"
+        ],
+        [
+          true,
+          false,
+          true,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - IF FALSE, ELSEIF TRUE, ELSEIF TRUE\nINST[4] - RETURN FALSE\nINST[5] - Contract instructions : 5\nINST[5] - Contract finished     : false\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - IF FALSE, ELSEIF TRUE\nINST[4] - RETURN TRUE\nINST[5] - Contract instructions : 5\nINST[5] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          2,
+          1,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - RETURN TRUE\nINST[2] - Contract instructions : 2\nINST[2] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          false,
+          true,
+          false,
+          "",
+          "",
+          2,
+          1,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - RETURN FALSE\nINST[2] - Contract instructions : 2\nINST[2] - Contract finished     : false\n"
+        ]
+      ]
+    ],
+    "failures": []
+  },
+  "scope": "All four original RETURN, WHILE, IF and MAST command test files, eight annotated methods and 84 assertions per runtime retain their complete active fixtures. WHILE execution has no source outcome assertions; supplemental fixed scripts independently check final loop state and early return. Complete 11-field Java/native run records must match. Source constructor mistakes and inactive comments are retained as source behavior. Full production API and node parity remain unverified."
+}
