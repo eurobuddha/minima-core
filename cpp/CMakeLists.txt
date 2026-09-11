@@ -1306,3 +1306,13 @@ if(TARGET minima_native_h2)
     add_test(NAME native_restoresync_remote COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/native_restore_sync_remote.py --build ${CMAKE_CURRENT_BINARY_DIR})
     set_tests_properties(native_restoresync_remote PROPERTIES TIMEOUT 2400)
 endif()
+
+
+target_sources(minima_file_port PRIVATE
+    src/org/minima/system/commands/backup/mmrsync/megammr.cpp
+    src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp)
+
+if(TARGET minima_native_h2)
+    add_test(NAME mega_commands_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/mega_commands_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+    set_tests_properties(mega_commands_differential PROPERTIES TIMEOUT 1800)
+endif()

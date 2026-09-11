@@ -1,3 +1,49 @@
+# MegaMMR commands checkpoint — full port unfinished
+
+## Code Review
+
+Reviewed both complete pinned command classes and their native counterparts,
+metadata/factory/registry, MegaMMR/IBD containers and proof helpers, wallet row
+selection, coinexport/coinimport, archive socket reuse, peer persistence, Main's
+constructor/binding, shared empty-IBD errors, extended fixtures and differential
+driver. The source's distinct reset, key-use, polling and shutdown rules are retained.
+
+Main now binds getCurrentMegaMMRIBD by default while retaining explicit adapter
+injection. The native current-IBD fixture invokes that default callback. Search
+preserves backward traversal, matching-before-spent filtering, duplicate suppression,
+deep copies and the null-tip behavior that skips MegaMMR. Import/resync bodies use
+actual command/processor services; there is no fabricated successful production path.
+
+Two failed reports are retained. The observer initially rendered CommandException
+as a generic runtime exception; that was corrected in the fixture. The production
+IBD endpoint methods exposed a generic vector error for empty blocks; they now
+throw the Java index category and observed index/length message. An empty-tree
+export has already written its backup before that later endpoint error occurs.
+The file snapshot comparison checks that side effect.
+
+Both full builds pass. Each configuration passes 579 command/helper comparisons
+and ten real loopback cases. Synthetic H2 key rows test field selection, not signing.
+Network tests assert exact request frames, nonempty response decoding, ignored type,
+malformed inputs, missing receivers and payload-only traffic. Seven affected
+regressions pass in each build: IBD, MMR-sync containers, runner, runner errors,
+Main runtime, NIO messages and archive storage. New CTest times are 92.59/94.92
+seconds; regression times are 146.74/308.98 seconds. Full 233-test suite not run.
+H2 AOT remains outside C++ sanitizer instrumentation. All test handles are terminal.
+
+Required follow-up: actual-node export/import and successful remote resync with
+usable proofs, phrase/backup precedence effects and failure state, indefinite
+processor polling, successful file-overload integrity, demonstration entry point,
+empty-MMR exception categories, exact buffered partial writes and concurrency.
+Synthetic block checks are not consensus evidence. Existing serializers materialize
+whole byte vectors, so a large export can have different partial-write boundaries
+if object serialization fails. Full public API and node parity remain unverified.
+
+Verdict: Approve saving this partial-port checkpoint. It is not a production-readiness
+or complete parity approval. Map: 385 counterparts (341 production, 44 tests),
+72 absent. Evidence: validation/mega-commands-work-in-progress.
+
+---
+
 # Remote restoresync checkpoint — full port unfinished
 
 ## Code Review

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 336,
+  "total_programs": 336,
+  "operations": 897,
+  "failures": [],
+  "scope": "Actual Main lifecycle/message/listener bodies with unstarted workers, real MinimaDB child objects, controlled SQL driver and timers; source MySQL configuration helper. Full startup, worker/network scheduling, durable SQL, enabled backup commands and complete MegaMMR/runtime integration remain unverified."
+}

@@ -3415,5 +3415,71 @@
       "tools/native_archive_startup.py": "df7a0abf9e81e8c39a1e0edc03bb512a230e6782c3eec2451b66885a0fe34043",
       "tools/peers_checker_differential.py": "8abbfed1c04f9cd81ba3cbaf80ebc51de7ba963075b11f199538c429641bab2a"
     }
+  },
+  "mega_commands_checkpoint": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources": {
+      "megammr": "5ec2aedf311d44ba2836aaaa64dd9cdbac38780c84929b39d5145608d78e1cac",
+      "megammrsync": "332dfeabffaff9d0f3cac438d31197f3269c0385c8069af8cca8d7de97504152"
+    },
+    "reused_inspected": [
+      "src/org/minima/objects/mmr/MegaMMR.cpp and header",
+      "src/org/minima/objects/mmr/MMR.cpp proof/finalization helpers",
+      "src/support/BlockMMR.hpp",
+      "src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.cpp",
+      "src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.cpp",
+      "src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.cpp",
+      "src/org/minima/objects/IBD.cpp and header",
+      "src/org/minima/system/commands/backup/archive.cpp request and resync bodies",
+      "src/org/minima/system/commands/base/coinexport.cpp",
+      "src/org/minima/system/commands/base/coinimport.cpp",
+      "src/org/minima/system/commands/network/peers.cpp getPeersList",
+      "src/org/minima/database/wallet/Wallet.cpp SQL creation/getAllKeys/getAllAddresses",
+      "src/org/minima/database/wallet/KeyRow.hpp and ScriptRow.hpp",
+      "src/org/minima/system/Main.cpp constructor/bindRuntime",
+      "src/org/minima/system/brains/TxPoWProcessor.cpp postProcessIBD",
+      "src/org/minima/utils/MiniFile.hpp and MiniFile.cpp prepareFile/output",
+      "src/support/BufferedFileOutput.hpp",
+      "src/support/JavaUnixFile.hpp",
+      "src/support/NIOConnections.cpp and header",
+      "src/support/CommandResult.hpp",
+      "support/ArchiveFixture.hpp",
+      "support/MainFixture.hpp",
+      "support/archive_command.cpp",
+      "support/ArchiveCommandOracle.java",
+      "support/mmrsync.cpp",
+      "support/ibd.cpp",
+      "tools/mmrsync_differential.py",
+      "tools/ibd_differential.py",
+      "tools/archive_command_differential.py",
+      "tools/peers_checker_differential.py"
+    ],
+    "sibling_inspected": [
+      "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/mmr/MegaMMR.hpp (complete)",
+      "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/tests/mmr/test_megammr.cpp coin proof and sync packet sections"
+    ],
+    "sibling_incompatibility": "Sibling coinToMMRData hashes concatenated coinID/address/amount text and its packet is leaf/index lists; pinned native MegaMMR already supplies the required MMR/coin schema",
+    "adaptations": [
+      "Map both command classes, including import/resync and helper methods, onto existing native services",
+      "Default Main MegaMMR callback now calls megammrsync.getCurrentMegaMMRIBD while preserving an explicitly supplied adapter",
+      "Reuse MiniFile exclusive creation block and existing 65536-byte buffered output",
+      "Fix shared IBD empty endpoint methods to throw source-compatible index exceptions",
+      "Extend existing archive fixtures and reuse Runner/Responder/project/snapshot"
+    ],
+    "validation": "validation/mega-commands-work-in-progress/progress.json",
+    "parity": "not_verified",
+    "hashes": {
+      "src/org/minima/system/commands/backup/mmrsync/megammr.cpp": "e8f66eb65947e196ab99f839c1b537624b649e9b1492c824c7868654bd56b5fb",
+      "src/org/minima/system/commands/backup/mmrsync/megammr.hpp": "c10bf808ea62b7fa37b716fce3e8e7301e2b0a2a3736ced498270e9343992f7b",
+      "src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp": "f600e1e79ac1cfa06143b64ed292a200c598c3fcffa0d49e1c0fc40fef5701f9",
+      "src/org/minima/system/commands/backup/mmrsync/megammrsync.hpp": "a279cf13bf57537233143dc094fdb9c8d3cb6fcfe8140f8d038dee2d4710dcea",
+      "src/org/minima/objects/IBD.cpp": "400dda59fa5e7a1387f0f6eea9806e43494221f641a44cac8a45716004dd4a3c",
+      "src/org/minima/system/Main.cpp": "21bf3dc172652e03b27ace8444303d87867197c86b338b7f90162481bf8ac8d6",
+      "src/org/minima/system/commands/CommandRunner.cpp": "9ff5c1811168fd8d528617b0c4ac6e769d8bbf0778209fb64f8db9588db5d290",
+      "support/MegaCommandFixture.hpp": "b93ff2ccbf575dabfcefbbcefd960af6666aba12455d6d4a749e5e2b01377b59",
+      "support/archive_command.cpp": "c2e397b21fcdfe6fc7525ae4e6b50b36a206610e41a79ad3823b353b626f1ef3",
+      "support/ArchiveCommandOracle.java": "728a5273d6f85ff9aaed33923a506a4d1b6b0dddcb1f0fa9c12a01d9013b0444",
+      "tools/mega_commands_differential.py": "9d96b511b8691923be80a7b241f912cd35d73254424304bb430236a08917729a"
+    }
   }
 }

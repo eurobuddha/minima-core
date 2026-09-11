@@ -1553,9 +1553,9 @@
     "java": "src/org/minima/system/commands/backup/mmrsync/megammr.java",
     "cpp": "src/org/minima/system/commands/backup/mmrsync/megammr.cpp",
     "guide": "files/src/org/minima/system/commands/backup/mmrsync/megammr.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
     "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
   },
@@ -1563,9 +1563,9 @@
     "java": "src/org/minima/system/commands/backup/mmrsync/megammrsync.java",
     "cpp": "src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp",
     "guide": "files/src/org/minima/system/commands/backup/mmrsync/megammrsync.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
     "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
   },

@@ -1,0 +1,50 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "7a4b5d8df59a3b11210cd888859d3b698f464fdc",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "Both MegaMMR command classes mapped and compiled; command/helper/file/loopback validation passes; live import/resync remains open",
+  "new_counterparts": [
+    "src/org/minima/system/commands/backup/mmrsync/megammr.cpp",
+    "src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp"
+  ],
+  "counterparts": 385,
+  "production_counterparts": 341,
+  "mapped_tests": 44,
+  "absent": 72,
+  "ctest_entries": 233,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "command_helper_cases_per_build": 579,
+  "network_cases_per_build": 10,
+  "case_tasks": {
+    "meta": 2,
+    "command": 313,
+    "runner": 8,
+    "check": 120,
+    "search": 123,
+    "peers": 8,
+    "details": 2,
+    "current": 3
+  },
+  "selected_regression_suites_per_build": 7,
+  "normal_command_ctest_seconds": 92.59,
+  "sanitized_command_ctest_seconds": 94.92,
+  "normal_regression_ctest_seconds": 146.74,
+  "sanitized_regression_ctest_seconds": 308.98,
+  "student_guides": 457,
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "28 absent production and 44 absent mapped source test files",
+    "Actual-node MegaMMR export/import, successful loopback resync and usable coin proof recovery",
+    "Phrase and backup branch side effects, source indefinite polling, reset/shutdown failures",
+    "Successful file-overload integrity reports, demonstration main, empty-MMR exception categories, exact large-export partial writes",
+    "Delayed socket timeouts, concurrent lock behavior, full existing counterpart API/mining/network parity"
+  ]
+}

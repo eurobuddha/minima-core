@@ -1,0 +1,61 @@
+{
+  "case": 12,
+  "request": {
+    "op": "mega",
+    "task": "command",
+    "name": "megammr",
+    "params": {
+      "action": ""
+    },
+    "coins": [
+      {
+        "id": "0x01",
+        "address": "0x01",
+        "amount": "1"
+      },
+      {
+        "id": "0x02",
+        "address": "0x01",
+        "amount": "2",
+        "state": "0xAA"
+      }
+    ],
+    "time": "0",
+    "tree": [],
+    "cascade": 0,
+    "blocks": [],
+    "addresses": [],
+    "publickeys": [],
+    "megaEnabled": false
+  },
+  "java": [
+    {
+      "exception": "org.minima.system.commands.CommandException: BLANK param not allowed : action",
+      "time": "0",
+      "finalized": false,
+      "mega": "0x0001010001000001000000000102000103000101000100000000010000000020C2197E2034582018D10FB8F2C999FCED27120DDBDE7F0D3CBBC3A3CB0AE1AC3500010300010000010000000001010000002073AE584CC401E250C05B18EEAB2281114F6E20AF1D81FFF88C58D5B1FD2FDD8E000102000100000100000000010000000020470A2A4F87952A6443C12EB18389B9C3C36DB4F0AECC55FBBABBB0C5E588ED3E00010100010200000001020000000101000102000000010001000100000000010100000101000101000100000001AA000000000101000000010100010100000001000100010000000001000000010100010000"
+    },
+    {
+      "databases": "directory",
+      "databases/archivesql": "directory",
+      "databases/coindb": "directory",
+      "databases/txpowsql": "directory",
+      "databases/walletsql": "directory"
+    }
+  ],
+  "cpp": [
+    {
+      "exception": "java.lang.RuntimeException: BLANK param not allowed : action",
+      "time": "0",
+      "finalized": false,
+      "mega": "0x0001010001000001000000000102000103000101000100000000010000000020C2197E2034582018D10FB8F2C999FCED27120DDBDE7F0D3CBBC3A3CB0AE1AC3500010300010000010000000001010000002073AE584CC401E250C05B18EEAB2281114F6E20AF1D81FFF88C58D5B1FD2FDD8E000102000100000100000000010000000020470A2A4F87952A6443C12EB18389B9C3C36DB4F0AECC55FBBABBB0C5E588ED3E00010100010200000001020000000101000102000000010001000100000000010100000101000101000100000001AA000000000101000000010100010100000001000100010000000001000000010100010000"
+    },
+    {
+      "databases": "directory",
+      "databases/archivesql": "directory",
+      "databases/coindb": "directory",
+      "databases/txpowsql": "directory",
+      "databases/walletsql": "directory"
+    }
+  ]
+}

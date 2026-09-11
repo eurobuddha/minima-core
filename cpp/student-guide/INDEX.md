@@ -365,8 +365,8 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [MegaMMRBackup.java](files/src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.md) | authored | implemented_partial |
 | [MegaMMRIBD.java](files/src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.md) | authored | implemented_partial |
 | [MegaMMRSyncData.java](files/src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.md) | authored | implemented_partial |
-| [megammr.java](files/src/org/minima/system/commands/backup/mmrsync/megammr.md) | authored | unported |
-| [megammrsync.java](files/src/org/minima/system/commands/backup/mmrsync/megammrsync.md) | authored | unported |
+| [megammr.java](files/src/org/minima/system/commands/backup/mmrsync/megammr.md) | authored | implemented_partial |
+| [megammrsync.java](files/src/org/minima/system/commands/backup/mmrsync/megammrsync.md) | authored | implemented_partial |
 
 ## src/org/minima/system/commands/base
 

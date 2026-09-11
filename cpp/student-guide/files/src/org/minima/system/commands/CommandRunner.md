@@ -103,3 +103,9 @@ The wallet-consolidation comparison exposed a missing-status mismatch: Java rais
 ## Nullable replies and references
 
 The runner now retains a nullable JSONValue returned by runCommand, appends it, and then reads status outside the catch block. Returning null therefore escapes as NullPointerException; returning an object with missing/null status also fails on that later access, and a non-Boolean status raises ClassCastException. No normal error reply is invented for these cases. The expanded error driver compares 1,680 requests with events and log order, including permission/parameter gates and logger failures. runSingleCommand retains an object return: a null batch result cannot reach its first-element return because the batch already failed at status access. See the [nullable-reply lab](../../../../../../new-tests/nullable-command-replies.md).
+
+The real registry now also contains megammr and megammrsync. Their source method
+bodies use existing nested coinexport/coinimport and restore commands. Metadata,
+unknown-action envelopes and invalid parameters are compared through the runner;
+full live reset/proof/shutdown effects remain separate integration work. Both
+existing runner suites pass after the registration change. See the [MegaMMR lab](../../../../../../new-tests/mega-mmr-commands.md).

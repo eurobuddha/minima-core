@@ -1,4 +1,5 @@
 #include "Main.hpp"
+#include "commands/backup/mmrsync/megammrsync.hpp"
 #include "org/minima/system/commands/network/rpc.hpp"
 #include "commands/CommandRunner.hpp"
 #include "commands/network/connect.hpp"
@@ -41,6 +42,7 @@ Main::Main(MainServices services):MessageProcessor("MAIN",releaseLocks),mService
     if(!mServices.halt)mServices.halt=[](int code){std::_Exit(code);};
     if(!mServices.exit)mServices.exit=[](int code){std::exit(code);};
     if(!mServices.currentThreadName)mServices.currentThreadName=currentNativeThreadName;
+    if(!mServices.getCurrentMegaMMRIBD)mServices.getCurrentMegaMMRIBD=commands::megammrsync::getCurrentMegaMMRIBD;
 }
 std::shared_ptr<Main> Main::getInstance(){std::lock_guard lock(mStaticLock);return mMainInstance;}
 void Main::ClearMainInstance(){std::shared_ptr<Main> retired;{std::lock_guard lock(mStaticLock);retired=std::move(mMainInstance);}if(retired)log("Main Instance Cleared..");}

@@ -1,0 +1,19 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  43: ibd_differential
+1/7 Test  #43: ibd_differential .....................   Passed   94.12 sec
+    Start  44: mmrsync_differential
+2/7 Test  #44: mmrsync_differential .................   Passed   47.43 sec
+    Start  52: command_runner_differential
+3/7 Test  #52: command_runner_differential ..........   Passed    4.30 sec
+    Start  69: nio_message_differential
+4/7 Test  #69: nio_message_differential .............   Passed   84.45 sec
+    Start 128: command_runner_errors_differential
+5/7 Test #128: command_runner_errors_differential ...   Passed    5.00 sec
+    Start 192: main_runtime_differential
+6/7 Test #192: main_runtime_differential ............   Passed    4.42 sec
+    Start 227: archive_command_differential
+7/7 Test #227: archive_command_differential .........   Passed   69.23 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) = 308.98 sec

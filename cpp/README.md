@@ -5,9 +5,17 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **339 production counterparts and 44 mapped test files exist;
-74 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **341 production counterparts and 44 mapped test files exist;
+72 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mapped `megammr` and `megammrsync` classes now compile and are registered.
+Main supplies the MegaMMR serving callback by default. Both builds pass 579
+command/helper comparisons and ten loopback cases, covering export files, mutating
+integrity checks, wallet detail selection, coin search and peer updates. Live
+import/resync and complete proof recovery remain unverified. See the
+[student lab](student-guide/new-tests/mega-mmr-commands.md) and
+[saved evidence](validation/mega-commands-work-in-progress).
 
 The mapped `restoresync` class now compiles, including its remote synchronization
 method. It preserves the source's six-section restore, wallet close/reopen order,

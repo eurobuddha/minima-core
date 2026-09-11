@@ -75,7 +75,7 @@ Getters expose the owned managers and flags. Uptime is the current wall clock mi
 
 ## How the native owner is assembled
 
-The [Main header](../../../../../../src/org/minima/system/Main.hpp) and body reuse MinimaDB, NotifyManager, TxPoWProcessor, TxPoWMiner, NetworkManager and SendPollManager. `bindRuntime` connects NIO dispatch, greetings, IBD, command receivers and logging to the actual Main-owned components. The SQL interfaces require a supplied connection implementation; a missing driver must fail explicitly. The MegaMMR snapshot receiver still needs its command implementation.
+The [Main header](../../../../../../src/org/minima/system/Main.hpp) and body reuse MinimaDB, NotifyManager, TxPoWProcessor, TxPoWMiner, NetworkManager and SendPollManager. `bindRuntime` connects NIO dispatch, greetings, IBD, command receivers and logging to the actual Main-owned components. The SQL interfaces require a supplied connection implementation; a missing driver must fail explicitly. The MegaMMR snapshot receiver now defaults to the native megammrsync helper.
 
 C++ cannot safely start a worker holding shared ownership during an ordinary constructor. `create` first allocates the object, publishes its shared owner, binds callbacks, then starts the processor and runs the startup body. If startup throws, it stops and joins the owners already created, clears the failed singleton and rethrows. It keeps the timer it actually created so failure before timer construction cannot mistakenly require a timer during cleanup.
 
@@ -154,3 +154,9 @@ a solo genesis chain, checks hash/status commands, saves all databases, and open
 the same directory across Java and C++ in both directions. Plain and encrypted
 wallets and compact shutdown are covered. These tests do not certify public-peer
 sync, daemon/RPC control, long-running mining, recovery or all Main callbacks.
+
+Main now supplies megammrsync.getCurrentMegaMMRIBD when no custom callback was
+provided. That connects the existing incoming NIO request path to the new native
+command helper. The current-IBD comparison invokes the default binding and checks
+its bytes; actual serving of usable wallet proofs through a live node remains open.
+The existing Main and NIO-message regressions pass in both builds. See the [MegaMMR lab](../../../../../new-tests/mega-mmr-commands.md).

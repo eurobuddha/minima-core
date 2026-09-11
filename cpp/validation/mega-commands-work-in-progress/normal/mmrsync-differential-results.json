@@ -1,0 +1,6 @@
+{
+  "cases": 3600,
+  "passed": 3600,
+  "failures": [],
+  "scope": "MegaMMRBackup, MegaMMRIBD and MegaMMRSyncData: wire bytes, ignored version, negative counts, constructor list aliases, UTF-8 peers, truncated reads, consumed offsets, partial state and reference replacement"
+}

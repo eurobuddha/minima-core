@@ -83,3 +83,7 @@ The [seed derivation lab](new-tests/seed-random-command.md) teaches deterministi
   shared-name mutation, creator signatures and real mining queue effects.
 
 - [Launcher boundary lab](new-tests/minima-entry-point.md): wrapper shape, nullable callers, starter failures, actual process hooks and the remaining storage/startup gap.
+
+The [MegaMMR command lab](new-tests/mega-mmr-commands.md) explains mutating integrity
+checks, displayed versus transmitted wallet details, spent-coin suppression,
+peer-file replacement and payload-only network traffic.

@@ -2,6 +2,7 @@
 #include "MainNetworkFixture.hpp"
 #include "org/minima/system/network/minima/NIOMessage.hpp"
 #include "ArchiveFixture.hpp"
+#include "MegaCommandFixture.hpp"
 #include "org/minima/system/commands/backup/archive.hpp"
 #include "org/minima/system/commands/CommandRunner.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -30,10 +31,11 @@ class ArchiveListener:public MessageListener{public:void processMessage(std::sha
     if(request->containsKey("listenerThrow")&&request->getBoolean("listenerThrow"))throw JavaTypedException("java.lang.RuntimeException","fixture listener failure");
 }};
 JSONObject run(const JSONObject& input,NativeH2Runtime& engine){
-    commands::ArchiveCommandFixture::clear();request=&input;events=JSONArray();GeneralParams::resetDefaults();auto folder=input.getString("folder"),op=input.getString("op","");GeneralParams::DATA_FOLDER=folder;GeneralParams::BASE_FILE_FOLDER=folder;GeneralParams::USE_SQL_COINDB=false;
+    commands::ArchiveCommandFixture::clear();request=&input;events=JSONArray();GeneralParams::resetDefaults();auto folder=input.getString("folder"),op=input.getString("op","");GeneralParams::DATA_FOLDER=folder;GeneralParams::BASE_FILE_FOLDER=folder;GeneralParams::USE_SQL_COINDB=false;GeneralParams::IS_MEGAMMR=input.containsKey("megaEnabled")&&input.getBoolean("megaEnabled");
     MainServices services;services.sql.connect=engine.connector();services.sql.log=[](const auto& text,bool){std::clog<<text<<'\n';};services.halt=[](int){throw std::runtime_error("fixture startup failed");};auto main=std::make_shared<ArchiveMain>(std::move(services));MainFixture::install(main);MainFixture::initialize(main);auto db=MinimaDB::getDB();db->loadAllDB();JSONObject flags;flags.put("keys",!input.containsKey("keys")||input.getBoolean("keys"));MainFixture::fields(*main,flags);
     auto saved=CommandRunner::ALL_COMMANDS;struct Registry{std::vector<std::shared_ptr<Command>> saved;~Registry(){CommandRunner::ALL_COMMANDS=std::move(saved);}} registry{saved};for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="archive")command=std::make_shared<ArchiveProbe>();
     JSONObject out;try{
+        if(op=="mega"){GeneralParams::P2P_ENABLED=false;auto result=megaFixture(input,db);db->safeReleaseReadWriteLock();db->saveSQL(false);return result;}
         if(op=="retimeGenesis"){
             auto tree=db->getTxPoWTree();auto node=tree->getTip();
             if(!node||node!=tree->getRoot()||!node->getBlockNumber().isEqual(MiniNumber::ONE)||db->getCascade()->getTip())throw std::runtime_error("retime fixture requires genesis only");
@@ -65,6 +67,7 @@ JSONObject run(const JSONObject& input,NativeH2Runtime& engine){
             else if(input.containsKey("noNetwork"))MainFixture::network(*main,nullptr);
             else if(input.containsKey("noNIO")){JSONObject missing;missing.put("nullNIO",true);network=support::MainNetworkFixture::create(missing,[&](auto value){MainFixture::network(*main,value);});}
             std::optional<MiniNumber> start;if(!input.get("start").isNull())start=MiniNumber(input.getString("start"));auto host=input.get("host").isNull()?std::optional<std::string>():std::optional(input.getString("host"));auto port=int32_t(std::get<int64_t>(input.get("port").value));
+            if(input.containsKey("megaRequest")){auto data=MegaMMRSyncData(megaList(input,"addresses"),megaList(input,"publickeys"));auto value=commands::megammrsync::sendMegaMMRSyncReq(host,port,input.containsKey("nullData")?nullptr:&data);out.put("ibd",value?JSONValue(MiniData(value->serialise()).to0xString()):JSONValue());out.put("traffic",nio->getTrafficListener()->getBreakdown());out.put("read",nio->getTrafficListener()->getTotalRead());out.put("write",nio->getTrafficListener()->getTotalWrite());db->saveSQL(false);return out;}
             auto ibd=input.containsKey("attempts")?commands::archive::sendArchiveReq(host,port,start?&*start:nullptr,int32_t(std::get<int64_t>(input.get("attempts").value))):commands::archive::sendArchiveReq(host,port,start?&*start:nullptr);
             out.put("ibd",ibd?JSONValue(MiniData(ibd->serialise()).to0xString()):JSONValue());out.put("traffic",nio->getTrafficListener()->getBreakdown());out.put("read",nio->getTrafficListener()->getTotalRead());out.put("write",nio->getTrafficListener()->getTotalWrite());db->saveSQL(false);return out;
         }

@@ -46,3 +46,10 @@ A peer claims an overlapping height range but shares no IDs. Why can createIBD r
 No real network synchronization or database persistence is established. Generic errors/logs and out-of-memory stack printing are not compared; the native bad_alloc catch does not prove equivalent allocation timing. Null cascades can still fail comparison/printing APIs even though the wire permits absence. Partial counterpart, parity not_verified.
 
 Pinned Java SHA-256: `7c02ec42010d47545f3ac5ef1abe701ac32c50e54d12f971b107d1880e4d3ece`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+The MegaMMR export comparison added a specific endpoint regression. After an
+empty-tree backup is written, getTreeTip must throw IndexOutOfBoundsException for
+index -1 and length 0. Native vector::at had exposed a generic runtime error.
+getTreeTip and getTreeRoot now explicitly preserve the Java index category and
+message. Both IBD regression suites pass after this correction. This does not
+certify every other nullable receiver or collection error boundary. See the [MegaMMR lab](../../../../../new-tests/mega-mmr-commands.md).

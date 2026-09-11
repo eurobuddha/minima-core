@@ -9,8 +9,8 @@ template<class T> T& required(const std::shared_ptr<T>& value){if(!value)throw s
 const TxPoW& txpow(const std::shared_ptr<TxBlock>& block){return required(block).getTxPoW();}
 void prependTree(std::vector<std::shared_ptr<TxBlock>>& blocks,std::shared_ptr<TxPoWTreeNode> tip){for(;tip;tip=tip->getParent())blocks.insert(blocks.begin(),tip->getSharedTxBlock());}
 }
-MiniNumber IBD::getTreeRoot() const {return txpow(blocks().at(0)).getBlockNumber();}
-MiniNumber IBD::getTreeTip() const {return txpow(blocks().at(blocks().size()-1)).getBlockNumber();}
+MiniNumber IBD::getTreeRoot() const {auto& values=blocks();if(values.empty())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index 0 out of bounds for length 0");return txpow(values.at(0)).getBlockNumber();}
+MiniNumber IBD::getTreeTip() const {auto& values=blocks();if(values.empty())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index -1 out of bounds for length 0");return txpow(values.at(values.size()-1)).getBlockNumber();}
 bool IBD::createIBD(const Greeting& greeting){
     auto tree=services.getTree();bool valid=true;if(!required(tree).getTip())return true;services.readLock(true);
     try {

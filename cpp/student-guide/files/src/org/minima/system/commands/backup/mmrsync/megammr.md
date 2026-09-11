@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/mmrsync/megammr.java) · `src/org/minima/system/commands/backup/mmrsync/megammr.cpp` (absent)
+[Pinned Java source](../../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/mmrsync/megammr.java) · [C++ counterpart](../../../../../../../../../src/org/minima/system/commands/backup/mmrsync/megammr.cpp)
 
 ## Purpose
 
@@ -21,24 +21,38 @@ megammr reports, exports, imports or checks a full MegaMMR backup. Its integrity
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  The three native serialization containers cover the data envelope only. Import, chain processing, proof transfer, shutdown and the mutating integrity algorithm remain unported and require MegaMMR/IBD and command services.
+The native class now maps the source methods and is registered in the real command runner. It reuses the existing MegaMMR and IBD codecs, database and wallet services, buffered file output, coin commands, and shutdown processing. The two commands retain their distinct reset and key-use rules. Main now supplies the serving helper as its default incoming MegaMMR callback. Full parity remains unverified.
 
 ## Understanding the tests
 
-The inspected MMR-sync differential driver tests MegaMMRBackup bytes and partial read state, not this command. Proposed direct tests must add disabled-mode guards, export locks/partial files, delayed/never-finished IBD, ignored coinimport failures and integrity sequences. Call checkMegaMMR twice on the same object to observe why applying IBD blocks again is not idempotent.
+The [pre-test lab](../../../../../../../../../student-guide/new-tests/mega-mmr-commands.md)
+explains why a backup check is a mutation, not a read-only assertion. The new
+[driver](../../../../../../../../../tools/mega_commands_differential.py) reuses the
+archive Java/native fixtures and real temporary H2 stores. It compares metadata,
+parameter/type gates, enabled/disabled behavior, export bytes and filesystem effects.
+Default export timestamps are checked against measured time before normalization.
 
-- [Java serialization/state oracle](../../../../../../../../../support/MMRSyncOracle.java)
-- [Native comparison fixture](../../../../../../../../../support/mmrsync.cpp)
-- [Concrete mutation and truncation cases](../../../../../../../../../tools/mmrsync_differential.py)
-- [Deterministic Java TxPoW fixture](../../../../../../../../../support/ArchiveCacheOracle.java)
-- [Native TxPoW fixture](../../../../../../../../../support/ArchiveFixture.hpp)
-- [Shared parameter parsing and reply envelope](../../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+The fixture creates real MMR leaves for synthetic coins and varies starting time,
+IBD heights, cascade alignment and a changed coin ID. Changing the coin after
+hashing its leaf makes the generated proof fail against that changed data.
+After every attempt, compare the MegaMMR bytes, block time and finalized flag.
+Repeated checks of a nonempty IBD must fail at its first old height after the first
+check advances the MegaMMR. These are algorithm fixtures, not valid mined chains.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+An empty-tree export revealed a shared IBD discrepancy: the file was already fully
+written before getTreeTip failed. Java threw IndexOutOfBoundsException; native code
+exposed a generic vector error. Both IBD endpoint methods now preserve Java's index
+exception. A separate initial observer error mislabeled CommandException and was
+fixed only in the fixture. Both failed reports are retained.
+
+Both builds pass 579 combined command/helper comparisons and ten loopback cases.
+The existing container tests remain separate evidence for wire and partial reads.
+Direct EOF/NPE/class-cast diagnostic prose is normalized by the reused observer;
+other responses, mutation and file contents remain compared.
 
 ## Limits
 
-No backup was imported or checked operationally. A successful file decode does not establish integrity, and a finished import response does not prove every coinimport succeeded. The integrity method checks all coins present in its map; that alone is not proof the map omitted none.
+No backup was imported into a running node in this command fixture. Successful file-overload integrity reports, the demonstration main, empty-MMR failure categories, and exact buffered partial-write boundaries still need validation. A successful file decode does not establish integrity, and a finished import response does not prove every coinimport succeeded. The integrity method checks all coins present in its map; that alone is not proof the map omitted none.
 
 ## Check your understanding
 

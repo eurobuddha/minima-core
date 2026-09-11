@@ -1,3 +1,87 @@
+# Current work — MegaMMR command classes compiled and validated
+
+MinimaCoreC++ branch/project/executable. Full457-file goal active/incomplete.
+Previous turn made verified progress: megammr.cpp/hpp and megammrsync.cpp/hpp map
+all source methods, registered in realrunner. Main constructor supplies default
+getCurrentMegaMMRIBD callback; explicit injected callback retained. IBD getTreeRoot/
+getTreeTip emptyblocks now source IndexOutOfBoundsException with index0/-1 length0.
+Both fullbuilds PASS; all test/build handles terminal. No GitHub push. PreviousHEAD
+7a4b5d8; gitlog/local-backups identify currentcommit and verified recovery bundle.
+
+Both final new CTest runs PASS579command/helper+10loopback cases,92.59/94.92seconds.
+Seven affected regressions PASS each: ibd,mmrsync,runner,runner-errors,Mainruntime,
+NIOmessages,archive-command;146.74/308.98seconds. Full233CTest suite NOT run.
+H2 AOT outside C++ sanitizer instrumentation. Map385=341production+44tests;
+72absent=28production+44tests. All457guides audited; allparitynot_verified.
+Evidence validation/mega-commands-work-in-progress; two initialfailedJSONs retained:
+observer mislabeledCommandException, then actualIBD genericvector exception.
+First compile also needed routine exists/ADL rename, includeCommandRunner and
+optionalCoinProof→sharedptr adapter; corrected before finalfullbuilds.
+
+Both entire pinned Java commands read. Reuse current MegaMMR, IBD, three mmrsync
+containers, MMR proof/finalize, BlockMMR, Main/DB, wallet/coin/peers commands,
+MiniFileexclusivecreate block, BufferedFileOutput65536, NIOConnections and archive
+request logic. Sibling complete src/mmr/MegaMMR.hpp and proof/sync tests inspected;
+its concatenated leafhash and leaf/index snapshot schema do not match pin. Exact
+provenance paths/hashes appended to provenance.json. Do NOT rerun /tmp/minima-write-
+mega-commands.py or /tmp/minima-mega-fixture-extend.py; they overwrite/duplicate work.
+
+megammr includesinfo/export/import/integrity, bothcheckMegaMMR overloads andmain.
+Unknown nonblankactions returnenvelope. Info noenablegate; export/import gate.
+Export createsfile beforelock, actualcompleteIBD+MegaMMRBackup bytes; emptyIBDerror
+comesafterwrite. Import realarchiveResetReady(false), clear/hardsetMegaMMR,
+postIBDoverride=true,250msunboundedpoll, actualproofsearch+coinimport(ignorestatus),
+shutdown/save/listener. Integrity mutatesMega, incrementalheights/finalization/
+allcoinproofs, weight; report assumesnonemptycascade. Mainreads ./bin/minima_megammr.mmr.
+megammrsync mapsmydetails/resync,updateP2PDB,getMyDetails,getCurrentMegaMMRIBD,
+getAllCoinProofs,searchMegaCoins,sendMegaMMRSyncReq. Stopnewkeys beforehost; one
+archiveprobe; phrase>file>existingwallet; phrase setsuses, existingdoesnot; backup
+usesunquotedrestore shutdown:false. Realreset,notify,IBDpoll,ignorecoinimportstatus,
+saveallDB thenwriteP2Pfile. Socket180000msconnect/read,no retry,ignoredreplytype,
+payloadtraffic. Search skipsMega wheninitialtipnull; onlymatching spent suppresses;
+lock takenforMega phase, no addedfinally; returnsdeepcopies.
+
+Tests reuse archive_command_runtime and ArchiveCommandOracle with op=mega plus
+support/MegaCommandFixture.hpp. IS_MEGAMMR selected from megaEnabled(defaultfalse).
+Onlymega fixture disablesP2P. Seed syntheticcoin/MMR and tree/IBD based onexisting
+ArchiveFixture/ArchiveCacheOracle, realH2stores. task=check tests time0/1/3,height
+sequences,cascade0/1,badcoinID/repeatedcheck; comparefinalized/time/megabytes.
+Search variesnull/emptytip,coins,address/state/pubkeymatches,duplicates/spent and
+nullarrays/elements. walletRows adds3synthetickeyrows and3actualscripts: displayed
+2nonzerokeys; sent2trackedaddresses+all3keys(including0x00). No signingclaim.
+Peerfiles compareexactbytes. current task callsbounddefaultNIOMessage callback.
+op=request megaRequest flagreusesoriginalNIO fixture andnewhelper; nullData and
+noMain/noNetwork/noNIO. encode taskgeneratesMegaMMRIBD withsyntheticblock1/no proofs;
+requestexpectedbyteshandencoded. DriverreusesRunner/Responder/project/snapshot;
+relativepathcontaining slash movedundertemporaryfolder, defaultfilenametimestamps
+boundedbeforenormalization. GenericEOF/NPE/classcastprose normalized aspriorfixtures.
+
+NEXT: actual-node MegaMMR export/import and loopback resync withrealchain/proofs.
+Use native_restore_startup.Node/ready/key_state/chain andnative_archive_startup.coins,
+previousremoteResponder. Inspect source/runtime dependencies beforeedits andwrite
+pretestlab. Node accepts basecommand list; adding -megammr afterexecutable/class
+andbeforeitsfixed -data/-soloargs should enablemode (verifyParamConfigurer first).
+Actual Java baselinecreateskeys7/genesis; exportmegammr andcoinexport fromrealcoin
+query; C++ writerreopenssamebaselineandshouldexportidenticalbytes/proofs. Target
+baselineuses100; oppositewriterMegaimport should retainwallet100, preservechain/
+coins, cleanexit, opposite-runtimereopen/signuses101. LoopbackMega resync should
+probe-1 once, sendwalletSyncData, receiveactualIBD+coinproofs, reset/process/shutdown,
+retainuses100 andwritepeerfile aftersave. This isplanned,NOTimplemented/tested.
+Existing mega fixture taskwrite canwrite syntheticbackup butnotusedbycurrentcorpus.
+Forliveencoding extendexistingfixture todecodeactualexport's IBD andencode
+MegaMMRIBD withactualproofwires; never claim syntheticproofs establishconsensus.
+NativegetCurrentMegaMMRIBD positiveusableproofreturn still needsvalidation.
+
+Also required: successful file-overload integrity reports/nonemptycascade, static
+main, emptyMMRexception categories (existingMegaMMR/MMR helpers usegenericerrors
+at some boundaries), 5000coinlog boundary, largepartialserialization/streamerrors,
+concurrency/readlocks, phrase/backup resetfailures, indefinitepolling, delayed180s
+sockettimeouts. Earlierarchive/remoterestoresync newheight/cascade/multibatches
+remainopen. Remaining28production and44source-testports/fullAPI/mining/network
+parity stillrequired. Goal staysactive; no completion claim.
+
+---
+
 # Current work — remote restoresync checkpoint verified
 
 MinimaCoreC++ branch/project/executable. Full457-file goal active/incomplete.
