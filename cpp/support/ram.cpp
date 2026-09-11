@@ -7,7 +7,7 @@ static std::string boolean(bool b){return b?"true":"false";}
 static std::string text(const std::string& hex){auto data=BaseConverter::decode16(hex);return MiniString(data).toString();}
 static std::string hex(const std::string& s){return BaseConverter::encode16(std::vector<uint8_t>(s.begin(),s.end()));}
 static std::string ids(const std::vector<std::shared_ptr<TxPoW>>& list){std::string s;for(const auto& t:list)s+=t->getTxPoWID()+",";return s;}
-static auto transaction(int i){auto t=std::make_shared<TxPoW>();t->setTimeMilli(MiniNumber(0));t->setNonce(MiniNumber(i));t->getTxBody()->mPRNG=MiniData::fromHex("0x12");if(i%5!=0){Coin c(MiniData(BigInt(i+1)),MiniData::fromHex("0x1122"),MiniNumber(i%13+1),Token::TOKENID_MINIMA);t->getTransaction().addInput(c);t->getWitness().addCoinProof(CoinProof(c,MMRProof{}));}t->setHeaderBodyHash();t->calculateTXPOWID();return t;}
+static auto transaction(int i){auto t=std::make_shared<TxPoW>();t->setTimeMilli(MiniNumber(0));t->setNonce(MiniNumber(i));t->getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));if(i%5!=0){Coin c(MiniData(BigInt(i+1)),MiniData::fromHex("0x1122"),MiniNumber(i%13+1),Token::TOKENID_MINIMA);t->getTransaction().addInput(c);t->getWitness().addCoinProof(CoinProof(c,MMRProof{}));}t->setHeaderBodyHash();t->calculateTXPOWID();return t;}
 int main(){std::cout<<std::unitbuf;std::string line;while(std::getline(std::cin,line))try{
     std::istringstream in(line);std::string op,out;in>>op;
     if(op=="map"){

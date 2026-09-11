@@ -84,19 +84,19 @@ void NIOMessage::receiveTxPoW(std::span<const uint8_t> data,size_t& offset){
     auto elapsed=difference(now(),start);if(elapsed>20000){log("Message took a long time ("+std::to_string(elapsed)+"ms) to process @ txpowid:"+txpow->getTxPoWID());valid=false;}
     services.postProcessTxPoW(txpow);if(valid)NIOManager::sendNetworkMessageAll(MSG_TXPOWID,txpow->getTxPoWIDData());
     if(!GeneralParams::TXBLOCK_NODE&&txpow->isBlock()&&!beforeCascade){
-        for(const auto& id:txpow->getBlockTransactions())if(!services.txPoWExists(id.to0xString()))NIOManager::sendNetworkMessage(mClientUID,MSG_TXPOWREQ,id);
+        for(const auto blockIDs=txpow->getBlockTransactions();const auto id:TxBody::required(blockIDs))if(!services.txPoWExists(TxBody::required(id).to0xString()))NIOManager::sendNetworkMessage(mClientUID,MSG_TXPOWREQ,TxBody::required(id));
         auto current=txpow;int counter=0;
         while(counter<512){
             if(current->getBlockNumber().isLessEqual(cascadeBlock))break;
             auto parentID=current->getParentID();if(TxPoWSearcher::searchChainForTxPoWBlock(parentID))break;
             auto parent=services.getTxPoW(current->getParentID().to0xString());
             if(!parent){NIOManager::sendNetworkMessage(mClientUID,MSG_TXPOWREQ,current->getParentID());break;}
-            for(const auto& id:parent->getBlockTransactions())if(!services.txPoWExists(id.to0xString()))NIOManager::sendNetworkMessage(mClientUID,MSG_TXPOWREQ,id);
+            for(const auto blockIDs=parent->getBlockTransactions();const auto id:TxBody::required(blockIDs))if(!services.txPoWExists(TxBody::required(id).to0xString()))NIOManager::sendNetworkMessage(mClientUID,MSG_TXPOWREQ,TxBody::required(id));
             current=parent;++counter;
         }
         if(mClientUID.value()=="0x00"||*mClientUID=="0x01")return;
         auto last=mLastChainSync.get(*mClientUID).value_or(0);auto time=now();if(difference(time,last)<600000)return;mLastChainSync.put(*mClientUID,time);
-        counter=0;auto node=tree()->getTip();while(node&&counter<256){++counter;if(!node->checkFullTxns(services.txPoWExists))for(const auto& id:node->getTxPoW().getBlockTransactions())if(!services.txPoWExists(id.to0xString()))NIOManager::sendNetworkMessage(mClientUID,MSG_TXPOWREQ,id);node=node->getParent();}
+        counter=0;auto node=tree()->getTip();while(node&&counter<256){++counter;if(!node->checkFullTxns(services.txPoWExists))for(const auto blockIDs=node->getTxPoW().getBlockTransactions();const auto id:TxBody::required(blockIDs))if(!services.txPoWExists(TxBody::required(id).to0xString()))NIOManager::sendNetworkMessage(mClientUID,MSG_TXPOWREQ,TxBody::required(id));node=node->getParent();}
     }
 }
 void NIOMessage::receivePulse(std::span<const uint8_t> data,size_t& offset){
@@ -107,7 +107,7 @@ void NIOMessage::receivePulse(std::span<const uint8_t> data,size_t& offset){
         if(TxPoWSearcher::searchChainForTxPoWBlock(block)){found=true;break;}
         ++counter;auto id=block.to0xString();auto check=services.getTxPoW(id);
         if(!check)requests.insert(requests.begin(),block);
-        else if(!GeneralParams::TXBLOCK_NODE)for(const auto& txn:check->getBlockTransactions())if(!services.txPoWExists(txn.to0xString()))requests.insert(requests.begin(),txn);
+        else if(!GeneralParams::TXBLOCK_NODE)for(const auto blockIDs=check->getBlockTransactions();const auto txn:TxBody::required(blockIDs))if(!services.txPoWExists(TxBody::required(txn).to0xString()))requests.insert(requests.begin(),TxBody::required(txn));
         if(full.contains(id))found=true;
     }
     auto elapsed=difference(now(),start);if(counter>0)log("PULSE("+std::to_string(counter)+"/"+std::to_string(blocks.size())+") from:"+mClientUID.value_or("null")+" TIME:"+std::to_string(elapsed)+"ms req:"+std::to_string(requests.size())+" crossover:"+boolean(found));
@@ -185,7 +185,7 @@ void NIOMessage::run(){
         case 18:if(GeneralParams::TXBLOCK_NODE){auto id=MiniData::deserialise(data,offset);if(!lookupTxBlock(id.to0xString(),false))NIOManager::sendNetworkMessage(mClientUID,MSG_TXBLOCKREQ,id);}break;
         case 19:{auto id=MiniData::deserialise(data,offset);auto block=lookupTxBlock(id.to0xString(),true);if(block)NIOManager::sendNetworkMessage(mClientUID,MSG_TXBLOCK,block);else log("Request for TxBlock we don't have : "+id.to0xString());break;}
         case 20:if(GeneralParams::TXBLOCK_NODE){auto block=std::make_shared<TxBlock>(TxBlock::deserialise(data,offset));services.postProcessTxBlock(block);auto root=required(tree()->getRoot());if(block->getTxPoW().getBlockNumber().isMoreEqual(root->getBlockNumber())){auto parent=block->getTxPoW().getParentID();if(!lookupTxBlock(parent.to0xString(),false)){log("Request Parent TxBlock.. @ "+block->getTxPoW().getBlockNumber().toString());NIOManager::sendNetworkMessage(mClientUID,MSG_TXBLOCKREQ,parent);}}}break;
-        case 21:if(GeneralParams::TXBLOCK_NODE){auto txpow=std::make_shared<TxPoW>(TxPoW::deserialise(data,offset));txpow->getTxBody().value().resetRandomPRNG();auto time=now();if(difference(time,LAST_TXBLOCKMINE_MSG.load())<services.getAutomineTimer())return;LAST_TXBLOCKMINE_MSG=time;services.mineTxPoWAsync(txpow);}break;
+        case 21:if(GeneralParams::TXBLOCK_NODE){auto txpow=std::make_shared<TxPoW>(TxPoW::deserialise(data,offset));TxBody::required(txpow->getTxBody()).resetRandomPRNG();auto time=now();if(difference(time,LAST_TXBLOCKMINE_MSG.load())<services.getAutomineTimer())return;LAST_TXBLOCKMINE_MSG=time;services.mineTxPoWAsync(txpow);}break;
         case 22:if(!GeneralParams::IS_MEGAMMR){log("[!] Attempt to MegaMMR Sync when -megammr not enabled");manager()->disconnect(mClientUID);return;}else{auto sync=MegaMMRSyncData::deserialise(data,offset);log("Received MegaMMR SYNC request.. addresses:"+std::to_string(sync.getAllAddresses()->size())+" pubkeys:"+std::to_string(sync.getAllPublicKeys()->size()));auto ibd=services.getCurrentMegaMMRIBD(sync);NIOManager::sendNetworkMessage(mClientUID,MSG_MEGAMMRSYNC_RESP,ibd);}break;
         default:log("Unknown Message type received from "+mClientUID.value_or("null")+" type:"+type.toString()+" size:"+std::to_string(data.size()));break;
         }

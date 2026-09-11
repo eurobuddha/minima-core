@@ -43,8 +43,8 @@ json::JSONValue burn::runCommand(){
         auto tip=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWTree()).getTip();int32_t counter=0;
         while(tip&&counter<50){
             auto top=tip->getSharedTxPoW();checkBurn(tip->getSharedTxPoW().get(),counter);
-            for(const auto& id:sqlRequired(top).getBlockTransactions()){
-                auto txpow=sqlRequired(database).getTxPoW(id.to0xString());if(txpow)checkBurn(txpow.get(),counter);
+            for(const auto blockIDs=sqlRequired(top).getBlockTransactions();const auto id:TxBody::required(blockIDs)){
+                auto txpow=sqlRequired(database).getTxPoW(TxBody::required(id).to0xString());if(txpow)checkBurn(txpow.get(),counter);
             }
             tip=tip->getParent();++counter;
         }

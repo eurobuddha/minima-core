@@ -7,7 +7,7 @@
 namespace minima {
 class TxPoW {
     TxHeader mHeader;
-    std::optional<TxBody> mBody{std::in_place};
+    std::shared_ptr<TxBody> mBody=std::make_shared<TxBody>();
     std::string mTxPOWIDStr="0x00";
     MiniData mTxPOWID=MiniData::fromHex("0x00");
 protected:
@@ -32,9 +32,8 @@ public:
     const MiniData& getTxHeaderBodyHash() const {return mHeader.getBodyHash();}
     void setHeaderBodyHash();
     bool isMonotonic() const;
-    std::optional<TxBody>& getTxBody() {return mBody;}
-    const std::optional<TxBody>& getTxBody() const {return mBody;}
-    bool hasBody() const {return mBody.has_value();}
+    std::shared_ptr<TxBody> getTxBody() const {return mBody;}
+    bool hasBody() const {return bool(mBody);}
     void clearBody() {mBody.reset();}
     void setNonce(MiniNumber nonce) {mHeader.mNonce=std::move(nonce);}
     const MiniNumber& getNonce() const {return mHeader.mNonce;}
@@ -42,30 +41,32 @@ public:
     Magic& getMagic() {return mHeader.mMagic;}
     const Magic& getMagic() const {return mHeader.mMagic;}
     void setMagic(Magic magic) {mHeader.mMagic=std::move(magic);}
-    void setTxDifficulty(MiniData difficulty) {mBody.value().mTxnDifficulty=std::move(difficulty);}
-    const MiniData& getTxnDifficulty() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mTxnDifficulty;}
+    void setTxDifficulty(std::shared_ptr<MiniData> difficulty) {TxBody::required(mBody).mTxnDifficulty()=std::move(difficulty);}
+    void setTxDifficulty(MiniData difficulty) {setTxDifficulty(std::make_shared<MiniData>(std::move(difficulty)));}
+    const MiniData& getTxnDifficulty() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return TxBody::required(mBody->mTxnDifficulty());}
     Transaction& getTransaction() {auto owner=getSharedTransaction();if(!owner)throw JavaNullPointerException("null TxPoW Transaction");return *owner;}
     const Transaction& getTransaction() const {auto owner=getSharedTransaction();if(!owner)throw JavaNullPointerException("null TxPoW Transaction");return *owner;}
     Transaction& getBurnTransaction() {auto owner=getSharedBurnTransaction();if(!owner)throw JavaNullPointerException("null TxPoW BurnTransaction");return *owner;}
     const Transaction& getBurnTransaction() const {auto owner=getSharedBurnTransaction();if(!owner)throw JavaNullPointerException("null TxPoW BurnTransaction");return *owner;}
-    std::shared_ptr<Transaction> getSharedTransaction() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mTransaction;}
-    void setTransaction(std::shared_ptr<Transaction> txn) {if(!mBody)throw JavaNullPointerException("null TxPoW body");mBody->mTransaction=std::move(txn);}
+    std::shared_ptr<Transaction> getSharedTransaction() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mTransaction();}
+    void setTransaction(std::shared_ptr<Transaction> txn) {if(!mBody)throw JavaNullPointerException("null TxPoW body");mBody->mTransaction()=std::move(txn);}
     void setTransaction(Transaction txn) {setTransaction(std::make_shared<Transaction>(std::move(txn)));}
-    std::shared_ptr<Witness> getSharedWitness() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mWitness;}
-    void setWitness(std::shared_ptr<Witness> witness) {if(!mBody)throw JavaNullPointerException("null TxPoW body");mBody->mWitness=std::move(witness);}
+    std::shared_ptr<Witness> getSharedWitness() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mWitness();}
+    void setWitness(std::shared_ptr<Witness> witness) {if(!mBody)throw JavaNullPointerException("null TxPoW body");mBody->mWitness()=std::move(witness);}
     void setWitness(Witness witness) {setWitness(std::make_shared<Witness>(std::move(witness)));}
-    std::shared_ptr<Transaction> getSharedBurnTransaction() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mBurnTransaction;}
-    void setBurnTransaction(std::shared_ptr<Transaction> txn) {if(!mBody)throw JavaNullPointerException("null TxPoW body");mBody->mBurnTransaction=std::move(txn);}
+    std::shared_ptr<Transaction> getSharedBurnTransaction() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mBurnTransaction();}
+    void setBurnTransaction(std::shared_ptr<Transaction> txn) {if(!mBody)throw JavaNullPointerException("null TxPoW body");mBody->mBurnTransaction()=std::move(txn);}
     void setBurnTransaction(Transaction txn) {setBurnTransaction(std::make_shared<Transaction>(std::move(txn)));}
-    std::shared_ptr<Witness> getSharedBurnWitness() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mBurnWitness;}
-    void setBurnWitness(std::shared_ptr<Witness> witness) {if(!mBody)throw JavaNullPointerException("null TxPoW body");mBody->mBurnWitness=std::move(witness);}
+    std::shared_ptr<Witness> getSharedBurnWitness() const {if(!mBody)throw JavaNullPointerException("null TxPoW body");return mBody->mBurnWitness();}
+    void setBurnWitness(std::shared_ptr<Witness> witness) {if(!mBody)throw JavaNullPointerException("null TxPoW body");mBody->mBurnWitness()=std::move(witness);}
     void setBurnWitness(Witness witness) {setBurnWitness(std::make_shared<Witness>(std::move(witness)));}
     Witness& getWitness() {auto owner=getSharedWitness();if(!owner)throw JavaNullPointerException("null TxPoW Witness");return *owner;}
     const Witness& getWitness() const {auto owner=getSharedWitness();if(!owner)throw JavaNullPointerException("null TxPoW Witness");return *owner;}
     Witness& getBurnWitness() {auto owner=getSharedBurnWitness();if(!owner)throw JavaNullPointerException("null TxPoW BurnWitness");return *owner;}
     const Witness& getBurnWitness() const {auto owner=getSharedBurnWitness();if(!owner)throw JavaNullPointerException("null TxPoW BurnWitness");return *owner;}
-    void addBlockTxPOW(MiniData id) {mBody.value().mTxPowIDList.push_back(std::move(id));}
-    std::vector<MiniData> getBlockTransactions() const {return mBody?mBody->mTxPowIDList:std::vector<MiniData>{};}
+    void addBlockTxPOW(std::shared_ptr<MiniData> id) {TxBody::required(TxBody::required(mBody).mTxPowIDList()).push_back(std::move(id));}
+    void addBlockTxPOW(MiniData id) {addBlockTxPOW(std::make_shared<MiniData>(std::move(id)));}
+    std::shared_ptr<TxBody::IDs> getBlockTransactions() const {return mBody?mBody->mTxPowIDList():std::make_shared<TxBody::IDs>();}
     const MiniData& getBlockDifficulty() const {return mHeader.mBlockDifficulty;}
     void setBlockDifficulty(MiniData difficulty) {mHeader.mBlockDifficulty=std::move(difficulty);}
     MiniData getParentID() const {return mIsTesting?mTestParent:getSuperParent(0);}

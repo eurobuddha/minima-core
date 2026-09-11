@@ -7,7 +7,7 @@ using namespace minima;
 static std::string weight(const MMREntryNumber& x) {return x.getUnscaled().toDecimalString()+":"+std::to_string(x.getScale())+":"+x.toBigDecimalString();}
 static std::string hex(const std::string& s) {return BaseConverter::encode16(std::vector<uint8_t>(s.begin(),s.end()));}
 static TxPoW pow(int n,int divisor) {
-    TxPoW t;t.setTimeMilli(MiniNumber(1788883200000LL+n));t.setNonce(MiniNumber(n));t.setBlockNumber(MiniNumber(n));t.getTxBody()->mPRNG=MiniData::fromHex("0x000102");
+    TxPoW t;t.setTimeMilli(MiniNumber(1788883200000LL+n));t.setNonce(MiniNumber(n));t.setBlockNumber(MiniNumber(n));t.getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x000102"));
     t.setBlockDifficulty(MiniData(Crypto::MAX_VAL/BigInt(divisor)));t.setHeaderBodyHash();t.calculateTXPOWID();return t;
 }
 static std::string result(const Cascade& c) {

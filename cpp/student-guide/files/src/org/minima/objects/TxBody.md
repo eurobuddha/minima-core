@@ -22,7 +22,7 @@ The transaction-bearing part of a TxPoW, containing normal and burn transactions
 
 ## How the translation is approached
 
-The four transaction/witness fields now use shared_ptr owners, reusing the ownership pattern already used by TxnRow and TxBlock. A mutating readDataStream delegates to the four existing objects in source order; static deserialization constructs a fresh body and calls that reader. PRNG initialization still requests randomness before the incoming bytes overwrite it. Missing field owners throw the existing Java-style null exception. The referenced-ID vector is cleared at the source’s list-reset point; a held Java list reference still has no full native equivalent.
+TxBody now implements Streamable and reuses Transaction/Witness's shared record pattern. All seven fields are nullable owned handles, including a replaceable list of nullable MiniData references. Reads replace the two scalar fields after complete decoding, invoke existing child readers while retaining each receiver, then replace the ID list before its count. Writers append nested children directly. Native public-field accessors use parentheses and support assignment to the shared record. TxPoW exposes owned body/list getters, so retained bodies survive clearBody. See the [ownership lab](../../../../../../student-guide/new-tests/streamable-txbody.md) for the translation, independent model and reentrant-reader experiment.
 
 ## What the tests tell us
 
@@ -42,6 +42,6 @@ Why must a test replace PRNG before comparing independently constructed Java and
 
 ## Limits and traceability
 
-The file is a data container, not a proof-of-work or transaction verifier. Field-owner identity and selected partial reads are now tested; list-reference identity and every malformed payload remain unproved. Source-map status is partial and parity not_verified.
+The file is a data container, not a proof-of-work or transaction verifier. The ownership lab tests nullable fields/entries, retained lists and bodies, partial readers, nested writer prefixes and selected reentrant/JSON behavior. Complete collection, subclass, custom-stream, allocation and concurrency behavior remains unproved. Source-map status is partial and parity not_verified.
 
 Pinned Java SHA-256: `30288d222f98694cd3cad1b6ff1a99a1e8b5ae4fe358948307ae22567c7f012e`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).

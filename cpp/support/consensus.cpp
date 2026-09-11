@@ -12,14 +12,14 @@ template<class T> static T read(std::istream& in){std::string s;in>>s;auto bytes
 static std::string flags(const TxPoW& t){const auto& a=t.getTransaction();const auto& b=t.getBurnTransaction();return str(a.mHaveCheckedMonotonic())+":"+str(a.mIsMonotonic())+":"+str(a.mIsValid())+":"+str(b.mHaveCheckedMonotonic())+":"+str(b.mIsMonotonic())+":"+str(b.mIsValid());}
 static std::string generate(std::istream& in){
     auto mmr=read<MMR>(in);auto source=read<TxPoW>(in);int count,own,reject;std::string hash,time,max;in>>count>>own>>reject>>hash>>time>>max;
-    TxPoW parent;parent.setBlockNumber(mmr.getBlockTime());parent.setTimeMilli(MiniNumber(time));parent.setBlockDifficulty(Magic::MIN_TXPOW_WORK);parent.getMagic().mCurrentMaxTxnPerBlock=MiniNumber(max);parent.getMagic().mDesiredMaxTxnPerBlock=MiniNumber(max);parent.getTxBody()->mPRNG=MiniData::fromHex("0x12");for(int i=0;i<GlobalParams::MINIMA_CASCADE_LEVELS;++i)parent.setSuperParent(i,MiniData::ZERO_TXPOWID);parent.setHeaderBodyHash();parent.calculateTXPOWID();
+    TxPoW parent;parent.setBlockNumber(mmr.getBlockTime());parent.setTimeMilli(MiniNumber(time));parent.setBlockDifficulty(Magic::MIN_TXPOW_WORK);parent.getMagic().mCurrentMaxTxnPerBlock=MiniNumber(max);parent.getMagic().mDesiredMaxTxnPerBlock=MiniNumber(max);parent.getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));for(int i=0;i<GlobalParams::MINIMA_CASCADE_LEVELS;++i)parent.setSuperParent(i,MiniData::ZERO_TXPOWID);parent.setHeaderBodyHash();parent.calculateTXPOWID();
     auto tip=std::make_shared<TxPoWTreeNode>(parent);*tip->getMMR()=mmr;
     std::vector<std::shared_ptr<TxPoW>> pool;std::vector<std::string> removed;
     for(int i=0;i<count;++i){auto t=std::make_shared<TxPoW>(source.deepCopy());t->setNonce(MiniNumber(i));t->calculateTXPOWID();for(int j=0;j<reject;++j)t->incrementCheckRejectNumber();pool.push_back(t);}
     auto& svc=TxPoWGenerator::services;svc={};svc.getTip=[tip]{return tip;};svc.getRoot=[tip]{return tip;};svc.getHashRate=[hash]{return MiniNumber(hash);};svc.getMagicDesiredKISSVM=[]{return Magic::DEFAULT_KISSVM_OPERATIONS;};svc.getMagicMaxTxPoWSize=[]{return Magic::DEFAULT_TXPOW_SIZE;};svc.getMagicMaxTxns=[]{return Magic::DEFAULT_TXPOW_TXNS;};svc.getAllUnusedTxns=[pool]{return pool;};svc.removeMemPoolTxPoW=[&removed](const std::string& id){removed.push_back(id);};
     // Both test timestamps force Java's clock into a deterministic clamp branch.
     auto generated=own?TxPoWGenerator::generateTxPoWAt(source.getTransaction(),source.getWitness(),source.getBurnTransaction(),source.getBurnWitness(),MiniNumber("2000000000000")):TxPoWGenerator::generateTxPoWAt(Transaction{},Witness{},std::nullopt,std::nullopt,MiniNumber("2000000000000"));
-    generated.getTxBody()->mPRNG=MiniData::fromHex("0x12");generated.calculateTXPOWID();
+    generated.getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));generated.calculateTXPOWID();
     auto out=BaseConverter::encode16(generated.serialise())+"|"+str(TxPoWGenerator::isMempoolFull())+"|"+TxPoWGenerator::getMinMempoolBurn().toString()+"|";
     for(const auto& t:pool)out+=std::to_string(t->getCheckRejectNumber())+":"+flags(*t)+",";
     out+="|";for(const auto& id:removed)out+=id+",";svc={};return out;
@@ -37,10 +37,10 @@ int main(){std::cout<<std::unitbuf;GeneralParams::USE_SQL_COINDB=false;TxPoWChec
     else if(op=="divide"){std::string a,b;int precision;in>>a>>b>>precision;out=MMREntryNumber::dividePositive(BigInt(a),BigInt(b),precision).toBigInteger().toDecimalString();}
     else if(op=="chain"){
         int back,count,mutate;in>>back>>count>>mutate;std::vector<std::shared_ptr<TxPoWTreeNode>> nodes;
-        for(int i=0;i<count;++i){std::string height,time,difficulty;in>>height>>time>>difficulty;TxPoW t;t.setBlockNumber(MiniNumber(height));t.setTimeMilli(MiniNumber(time));t.setBlockDifficulty(MiniData::fromHex(difficulty));t.getTxBody()->mPRNG=MiniData::fromHex("0x12");t.setHeaderBodyHash();t.calculateTXPOWID();auto n=std::make_shared<TxPoWTreeNode>(t);if(back!=-7)n->getMMR()->addEntry(MMRData::CreateMMRDataLeafNode(MiniNumber(1),MiniNumber(1)));if(i>0)nodes.back()->addChildNode(n);nodes.push_back(n);}
+        for(int i=0;i<count;++i){std::string height,time,difficulty;in>>height>>time>>difficulty;TxPoW t;t.setBlockNumber(MiniNumber(height));t.setTimeMilli(MiniNumber(time));t.setBlockDifficulty(MiniData::fromHex(difficulty));t.getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));t.setHeaderBodyHash();t.calculateTXPOWID();auto n=std::make_shared<TxPoWTreeNode>(t);if(back!=-7)n->getMMR()->addEntry(MMRData::CreateMMRDataLeafNode(MiniNumber(1),MiniNumber(1)));if(i>0)nodes.back()->addChildNode(n);nodes.push_back(n);}
         auto tip=nodes.at(size_t(count-1));TxPoWGenerator::services.getRoot=[root=nodes.front()]{return root;};
         out=result([&]{return TxPoWGenerator::getMedianTimeBlock(tip,back)->getBlockNumber().toString();})+"|"+result([&]{return TxPoWGenerator::getChainSpeed(tip,MiniNumber(back)).toString();})+"|"+result([&]{return TxPoWGenerator::getBlockDifficulty(tip).to0xString();});
-        TxPoW b;b.setBlockNumber(tip->getBlockNumber().increment());b.setTimeMilli(tip->getTxPoW().getTimeMilli());b.getTxBody()->mPRNG=MiniData::fromHex("0x12");b.setMagic(tip->getTxPoW().getMagic().calculateNewCurrent());
+        TxPoW b;b.setBlockNumber(tip->getBlockNumber().increment());b.setTimeMilli(tip->getTxPoW().getTimeMilli());b.getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));b.setMagic(tip->getTxPoW().getMagic().calculateNewCurrent());
         for(int i=0;i<GlobalParams::MINIMA_CASCADE_LEVELS;++i)b.setSuperParent(i,MiniData::ZERO_TXPOWID);
         int level=0;for(int i=count-1;i>=0;--i)while(nodes[size_t(i)]->getTxPoW().getSuperLevel()>=level)b.setSuperParent(level++,nodes[size_t(i)]->getTxPoW().getTxPoWIDData());
         if(mutate>=0)b.setSuperParent(mutate,MiniData::fromHex("0x1234"));

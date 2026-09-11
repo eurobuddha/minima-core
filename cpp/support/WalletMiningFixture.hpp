@@ -33,7 +33,7 @@ struct WalletMiningFixture {
     }
     static void enter(const std::string& kind,const std::shared_ptr<TxPoW>& pow,bool maxima,int64_t limit,bool post){
         // PRNG is generated at fixed length32. Keep every other generated field.
-        pow->getTxBody()->mPRNG=MiniData(std::vector<uint8_t>(32,0x12));
+        pow->getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData(std::vector<uint8_t>(32,0x12)));
         auto row=MinimaDB::getDB()->getCustomTxnDB()->getTransactionRow("test");JSONObject call;
         call.put("kind",kind);call.put("maxima",maxima);call.put("limit",limit);call.put("post",post);
         call.put("wire",MiniData(pow->serialise()).to0xString());call.put("sameTransaction",row&&row->getTransaction()==pow->getSharedTransaction());

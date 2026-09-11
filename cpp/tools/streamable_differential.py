@@ -34,10 +34,48 @@ def horst(n):return number(n)+b''.join(data(bytes([i+21,i+22]))+proof(n) for i i
 def fors(n):return horst(n)+number(n)+b''.join(data(bytes([i+31]))+number(i+40)+proof(n) for i in range(n))
 def sphincs(n):return wots(n)+data(bytes([n+61]))+number(n+70)+fors(n)
 
+def body_parts(n):return [data(bytes([n+30])),data(bytes([n+40])),transaction(n),witness(n),transaction(n+1),witness(n+1)]
+def body_ids(n):return [bytes([n+50]),bytes([n+51])]
+def body(n):return b''.join(body_parts(n))+number(2)+b''.join(data(x) for x in body_ids(n))
+def partial_lists(old,new,take,replace_all):
+    current=[[] for _ in old] if replace_all else [list(items) for items in old];cursor=0
+    for index,items in enumerate(new):
+        current[index]=[];cursor+=len(number(len(items)))
+        if take<cursor:break
+        for item in items:
+            cursor+=len(item)
+            if take<cursor:return current
+            current[index].append(item)
+    return current
+def partial_transaction(old,new,take):
+    target=transaction(new);lists=partial_lists(transaction_lists(old),transaction_lists(new),take,True)
+    return b''.join(number(len(items))+b''.join(items) for items in lists)+data(bytes([new+10 if take>=len(target) else old+10]))
+def partial_witness(old,new,take):
+    lists=partial_lists(witness_lists(old),witness_lists(new),take,False)
+    return b''.join(number(len(items))+b''.join(items) for items in lists)
+def partial_body(take):
+    parts=body_parts(1);target=body_parts(2);cursor=0;identities=[True]*7;ids=body_ids(1)
+    for i,part in enumerate(target):
+        if i<2:
+            if take<cursor+len(part):break
+            parts[i]=part;identities[i]=False
+        else:
+            n=2 if i<4 else 3
+            parts[i]=(partial_transaction if i%2==0 else partial_witness)(n-1,n,min(take-cursor,len(part)))
+            if take<cursor+len(part):break
+        cursor+=len(part)
+    else:
+        identities[6]=False;ids=[];cursor+=len(number(2))
+        for item in body_ids(2):
+            cursor+=len(data(item))
+            if take<cursor:break
+            ids.append(item)
+    return b''.join(parts)+number(len(ids))+b''.join(data(x) for x in ids),parts,identities,ids
+
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');build=ap.parse_args().build.resolve();started=time.monotonic();oracle=build/'streamable-oracle';oracle.mkdir(exist_ok=True)
     sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/StreamableOracle.java'];listing=oracle/'sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
-    adopted={'MiniByte','MMRProof','HORSTSignature','FORSSignature','SPHINCSSignature','MMRData','MMREntryNumber','MMREntry','MMRProofChunk','SignatureProof','Signature','MiniData','MiniNumber','MiniString','StateVariable','Address','ScriptProof','Token','Coin','CoinProof','Witness','Transaction'};implementations=[]
+    adopted={'MiniByte','MMRProof','HORSTSignature','FORSSignature','SPHINCSSignature','MMRData','MMREntryNumber','MMREntry','MMRProofChunk','SignatureProof','Signature','MiniData','MiniNumber','MiniString','StateVariable','Address','ScriptProof','Token','Coin','CoinProof','Witness','Transaction','TxBody'};implementations=[]
     for path in sorted((JAVA/'src').rglob('*.java')):
         source=re.sub(r'/\*.*?\*/|//[^\n]*','',path.read_text(),flags=re.S)
         for name in re.findall(r'\bclass\s+(\w+)[^{]*?\bimplements\s+Streamable\b',source):implementations.append(dict(java=str(path.relative_to(JAVA)),type=name,native_interface_adopted=name in adopted))
@@ -53,7 +91,7 @@ def main():
             for kind,encode in [('mmrdata',mmrdata),('entrynumber',entrynumber),('entry',entry),('chunk',lambda n:bytes([n%2])+mmrdata(n)),('signatureproof',signatureproof),('signature',wots)]:initial[kind]=encode(1);changed[kind]=encode(2)
             initial.update(data=data(b'\x11\x22'),number=number(7),string=data('old'.encode()))
             changed.update(data=data(b'\x80\x00\xff'),number=number(-129),string=data('new🐼'.encode()))
-            for kind,encode in [('state',statevar),('address',address),('scriptproof',scriptproof),('token',token),('coin',coin),('coinproof',coinproof),('witness',witness),('transaction',transaction)]:initial[kind]=encode(1);changed[kind]=encode(2)
+            for kind,encode in [('state',statevar),('address',address),('scriptproof',scriptproof),('token',token),('coin',coin),('coinproof',coinproof),('witness',witness),('transaction',transaction),('body',body)]:initial[kind]=encode(1);changed[kind]=encode(2)
             for kind,base in initial.items():
                 target=changed[kind]
                 cases.append(dict(kind=kind,op='write',initial=hx(base)))
@@ -63,6 +101,29 @@ def main():
                     cases.append(dict(kind=kind,op='read',initial=hx(base),wire=hx(b'\xaa'*offset+target+b'\x88\x99'),offset=offset))
                 if kind not in ['byte','data','string']:
                     for prefix in [number(-1),number(2**32),b'\x00\xff',b'\x00\x21']:cases.append(dict(kind=kind,op='read',initial=hx(base),wire=hx(prefix),offset=0))
+            empty_transaction=number(0)*3+data(b'\x00')
+            for cut in [sum(map(len,body_parts(2)[:2]))+1,len(body(2))]:
+                parts=body_parts(2) if cut==len(body(2)) else body_parts(2)[:2]+body_parts(1)[2:]
+                parts[2]=empty_transaction;ids=body_ids(2 if cut==len(body(2)) else 1)
+                expected=b''.join(parts)+number(2)+b''.join(data(x) for x in ids)
+                cases.append(dict(kind='body',op='bodyReenter',initial=hx(body(1)),wire=hx(body(2)[:cut]),offset=0,expectedState=hx(b'\xaa\x55'+expected),expectedCompleted=hx(transaction(2)) if cut==len(body(2)) else '',expectedReadError=None if cut==len(body(2)) else 'java.io.EOFException'))
+            bodyfields=['prng','difficulty','transaction','witness','burnTransaction','burnWitness','ids','id']
+            parts=body_parts(1)
+            for field in bodyfields:
+                prefix=b''.join(parts[:bodyfields.index(field)]) if field not in ['ids','id'] else b''.join(parts)+(number(2)+data(body_ids(1)[0]) if field=='id' else b'')
+                cases.append(dict(kind='body',op='write',initial=hx(body(1)),nullField=field,bodyExtra=True,expectedWrite=dict(appended=hx(b'\xaa\x55'+prefix),writeError='java.lang.NullPointerException')))
+                consumed=sum(map(len,body_parts(2)[:bodyfields.index(field)])) if field in bodyfields[2:6] else len(body(2))
+                cases.append(dict(kind='body',op='read',initial=hx(body(1)),wire=hx(body(2)),offset=0,nullField=field,bodyExtra=True,expectedReadOffset=consumed,expectedReadError='java.lang.NullPointerException' if field in bodyfields[2:6] else None))
+            for field in ['prng','id']:
+                prefix=b'' if field=='prng' else b''.join(parts)+number(2)+data(body_ids(1)[0])
+                cases.append(dict(kind='body',op='write',initial=hx(body(1)),badField=field,bodyExtra=True,expectedWrite=dict(appended=hx(b'\xaa\x55'+prefix),writeError='java.io.IOException')))
+            for field in bodyfields[2:6]:
+                prefix=b''.join(parts[:bodyfields.index(field)])+bytes([42])
+                cases.append(dict(kind='body',op='write',initial=hx(body(1)),faultChild=field,bodyExtra=True,expectedWrite=dict(appended=hx(b'\xaa\x55'+prefix),writeError='java.io.IOException')))
+            for null_field in [None,*bodyfields]:cases.append(dict(kind='body',op='bodyJSON',initial=hx(body(1)),bodyExtra=True,**({'nullField':null_field} if null_field else {})))
+            for op in ['bodyClearIDs','bodyReplaceIDs','bodyMutateID','bodyReset','bodyClearOwner']:cases.append(dict(kind='body',op=op,initial=hx(body(1)),bodyExtra=True))
+            for cut in range(len(body(2))+1):cases.append(dict(kind='body',op='read',initial=hx(body(1)),wire=hx(body(2)[:cut]),offset=0,aliasChildren=True,bodyExtra=True))
+            for body_count in [0,-1,2**32]:cases.append(dict(kind='body',op='read',initial=hx(body(1)),wire=hx(b''.join(body_parts(2))+number(body_count)),offset=0,bodyExtra=True,emptyBodyIDs=True))
             for op in ['transactionAdd','transactionClear','transactionFlags','transactionJSON','transactionNullLink']:
                 q=dict(kind='transaction',op=op,initial=hx(transaction(1)),transactionExtra=True)
                 if op=='transactionNullLink':q['expectedLogs']=['java.lang.NullPointerException']
@@ -152,6 +213,33 @@ def main():
                         n=2 if q['op']=='callers' or (q['op']=='read' and 'readError' not in value) else 1
                         expected=hx(hashlib.sha3_256(data(token(n))).digest()) if q['kind']=='token' else script_root(n)
                         check(value['derived']==expected,'derived identity updates only after complete prerequisite reads')
+                    if q['op']=='bodyReenter':
+                        check(value['state']==dict(appended=q['expectedState']) and value['offset']==len(bytes.fromhex(q['wire'][2:])) and value.get('readError')==q['expectedReadError'] and value['completedChild']==q['expectedCompleted'],'reader survives replacing its only parent field and continues on the originally invoked child')
+                        continue
+                    if q['kind']=='body':
+                        check(value['bodyAlias']==value['state']==value['heldBody'],'body copies, retained body and actual TxPoW getter share state')
+                        check(value['ownerHasBody']==(q['op']!='bodyClearOwner') and value['sameBlockList']==(q['op']!='bodyClearOwner'),'actual TxPoW exposes the current body list, including null')
+                        if q['op']=='bodyJSON':
+                            field=q.get('nullField');position=bodyfields.index(field) if field else 8
+                            check(value['bodyOldChildIDSame']==[position<=2,position<=4] and value.get('bodyJSONError')==('java.lang.NullPointerException' if field else None),'body JSON recalculates preceding transaction IDs before a later null field fails')
+                        if q['op']=='bodyClearOwner':check(value['emptyListsDistinct'],'bodyless getter creates independent empty lists and old body remains live')
+                        if 'expectedWrite' in q:check(value['state']==q['expectedWrite'],'nullable or failing body field preserves exact source writer prefix')
+                        if 'expectedReadOffset' in q:check(value['offset']==q['expectedReadOffset'] and value.get('readError')==q['expectedReadError'],'null child fails at its read stage; factory fields/list recover through replacement')
+                        if q.get('emptyBodyIDs'):check(value['bodyIDs']==[] and not value['bodySame'][6] and 'readError' not in value,'nonpositive wrapped list counts still replace the list')
+                        if q['op']=='bodyReset':check(value['randomLength']==32 and value['randomReplaced'] and value['bodyOldPRNG']==hx(bytes([31])),'PRNG reset uses real 32-byte random data and replaces its object')
+                        if q['op']=='bodyClearIDs':check(value['bodyIDs']==value['bodyOldIDs']==[] and value['bodySame'][6],'clear mutates the retained list')
+                        if q['op']=='bodyReplaceIDs':check(value['bodyIDs']==[hx(bytes([51])),None,hx(bytes([51]))] and value['bodyOldIDs']==[hx(x) for x in body_ids(1)] and not value['bodySame'][6],'replacement keeps duplicates/null entries and retains old list')
+                        if q['op']=='bodyMutateID':check(value['bodyIDs']==value['bodyOldIDs']==['0xABCD',hx(bytes([52]))] and value['bodyOldID']=='0xABCD','retained MiniData object mutation is visible through the list')
+                        if not q.get('bodyExtra'):
+                            check(value['bodyOldIDs']==[hx(x) for x in body_ids(1)] and value['bodyOldPRNG']==hx(bytes([31])) and value['bodyOldDifficulty']==hx(bytes([41])),'replaced body fields leave old objects intact')
+                            if q['op']=='read':
+                                incoming=bytes.fromhex(q['wire'][2:])[q['offset']:];target=body(2)
+                                if target.startswith(incoming) or incoming.startswith(target):
+                                    take=min(len(incoming),len(target));expected,parts,same,ids=partial_body(take)
+                                    check(value['state']==dict(appended=hx(b'\xaa\x55'+expected)) and value['bodySame']==same,'independent source-ordered partial body state and field identity')
+                                    check(value['bodyChildren']==value['bodyOldChildren']==[dict(appended=hx(b'\xaa\x55'+part)) for part in parts[2:]],'child readers mutate the same retained child objects')
+                                    check(value['bodyIDs']==[hx(x) for x in ids] and value['offset']==q['offset']+take and value.get('readError')==('java.io.EOFException' if take<len(target) else None),'complete ID children append after list replacement; exact consumed bytes and EOF')
+                        if q.get('bodyExtra'):continue
                     if q['kind']=='transaction':
                         check(value['transactionAlias']==value['state'] and value['containingTransaction']==value['state'],'Transaction copies and real TxPoW setters retain shared object state')
                         check(value['ownerFlags']==value['containingFlags']==value['transactionFlags']==([False,True,False] if q['op']=='transactionFlags' else [True]*3),'reads and ID calculations preserve cached flags; explicit clears share state')
@@ -274,6 +362,6 @@ def main():
                 err.seek(0);stderr=err.read()
                 if which==1 and stderr:failures.append(dict(phase='native stderr',stderr=stderr))
     if count!=len(cases):failures.append(dict(phase='case accounting',executed=count,planned=len(cases)))
-    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,explicit_source_implementations=implementations,adopted_types=len(adopted),scope='Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof, Signature, MiniData, MiniNumber, MiniString, StateVariable, Address, ScriptProof, Token, Coin, CoinProof, Witness and Transaction. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Includes per-field MMR/signature readers, explicit flags, retained lists, scalar in-place assignment timing, MiniData zero-filled partial payloads and retained numeric cache with comparisons/shifts. Adds source-ordered object reads, derived identity timing, nested coin/state/token writer prefixes and actual Token failure logging. Witness shared container aliases, owned list replacement, clear/deduplication, TxPoW setter aliases and independent partial-list serialization. Transaction shared caches and list ownership, nullable ID failure timing and derived writer dispatch. Prior twenty-one-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished.')
+    report=dict(passed=not failures,cases=count,planned_cases=len(cases),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,explicit_source_implementations=implementations,adopted_types=len(adopted),scope='Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof, Signature, MiniData, MiniNumber, MiniString, StateVariable, Address, ScriptProof, Token, Coin, CoinProof, Witness, Transaction and TxBody. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Includes per-field MMR/signature readers, explicit flags, retained lists, scalar in-place assignment timing, MiniData zero-filled partial payloads and retained numeric cache with comparisons/shifts. Adds source-ordered object reads, derived identity timing, nested coin/state/token writer prefixes and actual Token failure logging. Witness shared container aliases, owned list replacement, clear/deduplication, TxPoW setter aliases and independent partial-list serialization. Transaction shared caches and list ownership, nullable ID failure timing and derived writer dispatch. TxBody shared nullable fields/list entries, child aliases, retained body after clear, list replacement, nested failure prefixes and random reset shape. Prior twenty-two-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished.')
     (build/'streamable-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

@@ -2,7 +2,7 @@
 #include "SqlRecordingFixture.hpp"
 #include "ArchiveFixture.hpp"
 namespace minima::sql_fixture {
-inline auto transaction(int i){auto t=std::make_shared<TxPoW>();t->setTimeMilli(MiniNumber(0));t->setNonce(MiniNumber(i));t->getTxBody()->mPRNG=MiniData::fromHex("0x12");if(i%5!=0){Coin c(MiniData(BigInt(i+1)),MiniData::fromHex("0x1122"),MiniNumber(i%13+1),Token::TOKENID_MINIMA);t->getTransaction().addInput(c);t->getWitness().addCoinProof(CoinProof(c,MMRProof{}));}t->setHeaderBodyHash();t->calculateTXPOWID();return t;}
+inline auto transaction(int i){auto t=std::make_shared<TxPoW>();t->setTimeMilli(MiniNumber(0));t->setNonce(MiniNumber(i));t->getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));if(i%5!=0){Coin c(MiniData(BigInt(i+1)),MiniData::fromHex("0x1122"),MiniNumber(i%13+1),Token::TOKENID_MINIMA);t->getTransaction().addInput(c);t->getWitness().addCoinProof(CoinProof(c,MMRProof{}));}t->setHeaderBodyHash();t->calculateTXPOWID();return t;}
 inline std::shared_ptr<TxPoW> fixture(){
     auto txpow=flag("transaction")?transaction(int(integer(*config,"index"))):support::archiveFixtureTxPoW(int(integer(*config,"index")),int(integer(*config,"mode")));
     if(!config->get("state").isNull()){txpow->getTransaction().addStateVariable(StateVariable(2,config->get("state").asString()));txpow->setHeaderBodyHash();txpow->calculateTXPOWID();}

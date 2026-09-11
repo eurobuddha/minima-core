@@ -1,0 +1,50 @@
+{
+  "project": "MinimaCoreC++",
+  "goal_complete": false,
+  "stage": "validation_running",
+  "base_head": "1d7e90dd377d627e0f95653b6cab326551e2c3ac",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "normal_full_build": "passed",
+  "active_sessions": {
+    "sanitized_regressions": 12173
+  },
+  "initial_interface": {
+    "planned_cases": 7612,
+    "reported_cases": 4294974908,
+    "independent_assertions": 95562,
+    "observation_failures": 0,
+    "passed": false,
+    "failure": "A malformed body count loop overwrote the total comparison counter. The accounting gate rejected the run."
+  },
+  "adopted_types": 23,
+  "explicit_implementers": 44,
+  "counterparts": 411,
+  "absent": 46,
+  "parity": "not_verified",
+  "sanitized_full_build": "passed",
+  "normal_interface": {
+    "passed": true,
+    "cases": 7623,
+    "planned_cases": 7623,
+    "independent_assertions": 95664,
+    "seconds": 39.744,
+    "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea"
+  },
+  "sanitized_interface": {
+    "passed": true,
+    "cases": 7623,
+    "planned_cases": 7623,
+    "independent_assertions": 95664,
+    "seconds": 104.114,
+    "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea"
+  },
+  "normal_affected_regressions": {
+    "suites": 23,
+    "passed": true,
+    "seconds": 723.03,
+    "session": 21875,
+    "exit_code": 0
+  },
+  "review": "Request changes: replace vector ID iteration with inspected checked storage before production approval",
+  "next_priority": "next-id-list-notes.md"
+}

@@ -2,7 +2,7 @@
 #include "CoinFixture.hpp"
 #include "org/minima/objects/TxBlock.hpp"
 namespace minima::support {
-inline TxPoW fixedPow(int nonce) {TxPoW t;t.setTimeMilli(MiniNumber(1788883200000LL));t.setNonce(MiniNumber(nonce));t.getTxBody()->mPRNG=MiniData::fromHex("0x000102");return t;}
+inline TxPoW fixedPow(int nonce) {TxPoW t;t.setTimeMilli(MiniNumber(1788883200000LL));t.setNonce(MiniNumber(nonce));t.getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x000102"));return t;}
 inline TxBlock blockFixture(int size,int flags,int time) {
     auto parent=std::make_shared<MMR>();parent->setBlockTime(MiniNumber(time));std::vector<Coin> coins;
     for(int i=0;i<size;++i) {auto c=coinFixture(i);c.setSpent(false);c.setMMREntryNumber(parent->getEntryNumber());parent->addEntry(MMRData::CreateMMRDataLeafNode(c,c.getAmount()));coins.push_back(c);}

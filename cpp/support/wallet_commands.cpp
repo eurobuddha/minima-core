@@ -280,8 +280,8 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 if(!flag("nullTxPoW")){
                     pow=TxPoW::convertMiniDataVersion(MiniData::fromHex(config->getString("data")));
                     if(flag("bodyless"))pow->clearBody();
-                    if(flag("nullTransaction"))pow->getTxBody()->mTransaction.reset();
-                    if(flag("nullBurn"))pow->getTxBody()->mBurnTransaction.reset();
+                    if(flag("nullTransaction"))pow->getTxBody()->mTransaction().reset();
+                    if(flag("nullBurn"))pow->getTxBody()->mBurnTransaction().reset();
                 }
                 commands::scanchain command;auto detail=command.getTransactionDetails(pow?&*pow:nullptr);result=detail?JSONValue(*detail):JSONValue();
             }
@@ -290,7 +290,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 if(!flag("nullTxPoW")){
                     pow=TxPoW::convertMiniDataVersion(MiniData::fromHex(config->getString("data")));
                     if(flag("bodyless"))pow->clearBody();
-                    if(flag("nullTransaction"))pow->getTxBody()->mTransaction.reset();
+                    if(flag("nullTransaction"))pow->getTxBody()->mTransaction().reset();
                 }
                 commands::history command;auto detail=command.getTxnDetails(pow?&*pow:nullptr);result=detail?JSONValue(*detail):JSONValue();
             }
@@ -348,20 +348,20 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 value.put("witness",MiniData(held->getWitness().serialise()).to0xString());result=value;
             }else if(op=="body") {
                 body.emplace();auto row=MinimaDB::getDB()->getCustomTxnDB()->getTransactionRow("test");
-                body->mTransaction=row->getTransaction();body->mWitness=row->getWitness();
-                if(flag("alias")){body->mBurnTransaction=body->mTransaction;body->mBurnWitness=body->mWitness;}
-                body->mPRNG=MiniData::fromHex("0x12");body->mTxPowIDList.push_back(MiniData::fromHex("0x99"));
+                body->mTransaction()=row->getTransaction();body->mWitness()=row->getWitness();
+                if(flag("alias")){body->mBurnTransaction()=body->mTransaction();body->mBurnWitness()=body->mWitness();}
+                body->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));body->mTxPowIDList()->push_back(std::make_shared<MiniData>(MiniData::fromHex("0x99")));
                 for(const auto& field:array(config->get("nulls")).elements()) {
-                    auto key=field.asString();if(key=="transaction")body->mTransaction.reset();else if(key=="witness")body->mWitness.reset();
-                    else if(key=="burnTransaction")body->mBurnTransaction.reset();else body->mBurnWitness.reset();
+                    auto key=field.asString();if(key=="transaction")body->mTransaction().reset();else if(key=="witness")body->mWitness().reset();
+                    else if(key=="burnTransaction")body->mBurnTransaction().reset();else body->mBurnWitness().reset();
                 }
             }else if(op=="bodyread") {
-                auto txn=body->mTransaction;auto wit=body->mWitness;auto burn=body->mBurnTransaction;auto bw=body->mBurnWitness;
+                auto txn=body->mTransaction();auto wit=body->mWitness();auto burn=body->mBurnTransaction();auto bw=body->mBurnWitness();
                 auto bytes=MiniData::fromHex(config->getString("data")).bytes();size_t offset=0;
                 try {body->readDataStream(bytes,offset);}catch(const std::exception& e){out.put("readError",nativeExceptionText(e));}
-                JSONObject value;value.put("offset",int64_t(offset));value.put("prng",body->mPRNG.to0xString());value.put("difficulty",body->mTxnDifficulty.to0xString());
-                value.put("sameTransaction",txn==body->mTransaction);value.put("sameWitness",wit==body->mWitness);value.put("sameBurn",burn==body->mBurnTransaction);value.put("sameBurnWitness",bw==body->mBurnWitness);
-                JSONArray ids;for(const auto& id:body->mTxPowIDList)ids.add(id.to0xString());value.put("ids",ids);
+                JSONObject value;value.put("offset",int64_t(offset));value.put("prng",body->mPRNG()->to0xString());value.put("difficulty",body->mTxnDifficulty()->to0xString());
+                value.put("sameTransaction",txn==body->mTransaction());value.put("sameWitness",wit==body->mWitness());value.put("sameBurn",burn==body->mBurnTransaction());value.put("sameBurnWitness",bw==body->mBurnWitness());
+                JSONArray ids;for(const auto blockIDs=body->mTxPowIDList();const auto& id:TxBody::required(blockIDs))ids.add(TxBody::required(id).to0xString());value.put("ids",ids);
                 try{value.put("wire",MiniData(body->serialise()).to0xString());}catch(const std::exception& e){value.put("wireError",nativeExceptionText(e));}
                 result=value;
             }else if(op=="utilities") {
@@ -380,7 +380,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 }
                 commands::txnutils::getMiner=[miner]{return miner;};
             }else if(op=="pool") {
-                auto pow=std::make_shared<TxPoW>();pow->getTxBody()->mPRNG=MiniData(std::vector<uint8_t>(32,0x12));pow->setTimeMilli(MiniNumber(0));pow->setTxDifficulty(MiniData::fromHex("0x"+std::string(64,'F')));
+                auto pow=std::make_shared<TxPoW>();pow->getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData(std::vector<uint8_t>(32,0x12)));pow->setTimeMilli(MiniNumber(0));pow->setTxDifficulty(MiniData::fromHex("0x"+std::string(64,'F')));
                 for(const auto& data:array(config->get("proofs")).elements()) {
                     auto proof=CoinProof::convertMiniDataVersion(MiniData::fromHex(data.asString())).value();
                     pow->getTransaction().addInput(proof.getCoin());

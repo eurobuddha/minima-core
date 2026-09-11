@@ -15,14 +15,14 @@ TxBlock::TxBlock(std::shared_ptr<MMR> parent,TxPoW txpow,const std::vector<TxPoW
 TxBlock::TxBlock(std::shared_ptr<MMR> parent,std::shared_ptr<TxPoW> txpow,const std::shared_ptr<TxPoWs>& transactions):mTxPoW(std::move(txpow)) {
     if(!parent) throw JavaNullPointerException("null parent MMR");
     mPreviousPeaks=parent->getPeaks();MMR copy(parent);calculateCoins(copy,getTxPoW());
-    for(const auto& id:getTxPoW().getBlockTransactions()) {
+    for(const auto blockIDs=getTxPoW().getBlockTransactions();const auto id:TxBody::required(blockIDs)) {
         if(!transactions)throw JavaNullPointerException("null transaction list");
         std::shared_ptr<TxPoW> match;
         for(const auto& candidate:*transactions){
             if(!candidate)throw JavaNullPointerException("null transaction list entry");
-            if(candidate->getTxPoWIDData().isEqual(id)){match=candidate;break;}
+            if(candidate->getTxPoWIDData().isEqual(TxBody::required(id))){match=candidate;break;}
         }
-        if(!match)throw std::invalid_argument("SERIOUS ERROR : TxBlock creation with missing txns.. "+getTxPoW().getTxPoWID()+" missing "+id.to0xString());
+        if(!match)throw std::invalid_argument("SERIOUS ERROR : TxBlock creation with missing txns.. "+getTxPoW().getTxPoWID()+" missing "+(id?id->to0xString():"null"));
         calculateCoins(copy,*match);
     }
 }

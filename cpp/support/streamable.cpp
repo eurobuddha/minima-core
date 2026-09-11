@@ -19,7 +19,7 @@ static_assert(std::is_base_of_v<Streamable,sphincs::horst::HORSTSignature> && st
 static_assert(std::is_base_of_v<Streamable,MMRData> && std::is_base_of_v<Streamable,MMREntryNumber> && std::is_base_of_v<Streamable,MMREntry> && std::is_base_of_v<Streamable,MMRProof::MMRProofChunk> && std::is_base_of_v<Streamable,SignatureProof> && std::is_base_of_v<Streamable,Signature>);
 static_assert(std::is_base_of_v<Streamable,MiniData> && std::is_base_of_v<Streamable,MiniNumber> && std::is_base_of_v<Streamable,MiniString>);
 static_assert(std::is_base_of_v<Streamable,StateVariable> && std::is_base_of_v<Streamable,Address> && std::is_base_of_v<Streamable,ScriptProof> && std::is_base_of_v<Streamable,Token> && std::is_base_of_v<Streamable,Coin> && std::is_base_of_v<Streamable,CoinProof>);
-static_assert(std::is_base_of_v<Streamable,Witness> && std::is_base_of_v<Streamable,Transaction>);
+static_assert(std::is_base_of_v<Streamable,Witness> && std::is_base_of_v<Streamable,Transaction> && std::is_base_of_v<Streamable,TxBody>);
 class FaultTransaction:public Transaction {
 public:
     std::string fault;
@@ -31,6 +31,10 @@ public:
         throw JavaError("java.lang.AssertionError","fixture");
     }
 };
+class FaultWitness:public Witness {
+public:
+    void writeDataStream(std::vector<uint8_t>& out) const override {out.push_back(42);throw wire::IOException("fixture");}
+};
 class Failing:public Streamable {
     uint8_t values[3]={1,2,3};int fail;
 public:
@@ -41,6 +45,7 @@ public:
 static std::string category(const std::exception& e){auto text=nativeExceptionText(e);return text.substr(0,text.find(": "));}
 static std::unique_ptr<Streamable> create(const JSONObject& q){
     auto kind=q.getString("kind");
+    if(kind=="body")return std::make_unique<TxBody>();
     if(kind=="transaction"){
         auto result=std::make_unique<FaultTransaction>();
         if(q.getString("op")=="badwrite"){
@@ -104,16 +109,53 @@ static std::unique_ptr<Streamable> create(const JSONObject& q){
 }
 static wire::Bytes data(const JSONObject& q,const std::string& name){return MiniData::fromHex(q.getString(name)).bytes();}
 static JSONObject state(const Streamable& value){JSONObject out;wire::Bytes bytes={0xaa,0x55};try{value.writeDataStream(bytes);}catch(const std::exception& e){out.put("writeError",category(e));}out.put("appended",MiniData(bytes).to0xString());return out;}
+class ReenterTransaction:public Transaction {
+public:
+    TxBody* parent=nullptr;std::vector<uint8_t>* completed=nullptr;
+    void readDataStream(std::span<const uint8_t> bytes,size_t& offset) override {
+        if(parent)parent->mTransaction()=std::make_shared<Transaction>();
+        Transaction::readDataStream(bytes,offset);if(completed)*completed=serialise();
+    }
+};
+static JSONObject bodyReenter(const JSONObject& q){
+    TxBody body;auto initial=data(q,"initial");size_t offset=0;body.readDataStream(initial,offset);std::vector<uint8_t> completed;
+    auto child=std::make_shared<ReenterTransaction>();static_cast<Transaction&>(*child)=*body.mTransaction();child->parent=&body;child->completed=&completed;body.mTransaction()=child;child.reset();
+    auto wire=data(q,"wire");offset=0;JSONObject result;try{Streamable& object=body;object.readDataStream(wire,offset);}catch(const std::exception& e){result.put("readError",category(e));}
+    result.put("offset",int64_t(offset));result.put("completedChild",MiniData(completed).to0xString());result.put("state",state(body));return result;
+}
 static JSONObject run(const JSONObject& q){
+    if(q.getString("op")=="bodyReenter")return bodyReenter(q);
     JSONObject result;auto owner=create(q);Streamable& value=*owner;auto initial=data(q,"initial");size_t offset=0;if(q.getString("op")!="badwrite"&&(!q.containsKey("empty")||!q.getBoolean("empty")))value.readDataStream(initial,offset);if(auto d=dynamic_cast<MMRData*>(&value))d->setUnspendable(true);std::optional<Signature> alias;if(auto sig=dynamic_cast<Signature*>(&value))alias=*sig;auto oldList=alias?alias->getAllSignatureProofs():nullptr;auto op=q.getString("op");if(q.containsKey("cache")&&q.getBoolean("cache"))dynamic_cast<MiniData&>(value).getDataValue();
     std::optional<Witness> witnessAlias;std::shared_ptr<Witness::Signatures> oldSignatures;std::shared_ptr<Witness::CoinProofs> oldCoins;std::shared_ptr<Witness::Scripts> oldScripts;TxPoW containing;
     if(auto w=dynamic_cast<Witness*>(&value)){witnessAlias=*w;oldSignatures=w->getAllSignatures();oldCoins=w->getAllCoinProofs();oldScripts=w->getAllScripts();containing.setWitness(*w);}
     std::optional<Transaction> transactionAlias;std::shared_ptr<Transaction::Coins> oldInputs,oldOutputs;std::shared_ptr<Transaction::State> oldState;std::shared_ptr<MiniData> oldID,oldLink;
     if(auto t=dynamic_cast<Transaction*>(&value)){t->mHaveCheckedMonotonic()=true;t->mIsMonotonic()=true;t->mIsValid()=true;transactionAlias=*t;oldInputs=t->getAllInputs();oldOutputs=t->getAllOutputs();oldState=t->getCompleteState();oldID=t->getTransactionID();oldLink=t->getLinkHash();containing.setTransaction(*t);}
+    std::optional<TxBody> bodyAlias;std::shared_ptr<TxBody> heldBody;std::shared_ptr<TxBody::IDs> oldBodyIDs;std::shared_ptr<MiniData> oldPRNG,oldDifficulty,oldBodyID,oldBodyTxnID,oldBodyBurnID;std::shared_ptr<Transaction> oldBodyTxn,oldBodyBurn;std::shared_ptr<Witness> oldBodyWitness,oldBodyBurnWitness;
+    if(auto b=dynamic_cast<TxBody*>(&value)){
+        if(q.containsKey("aliasChildren")){b->mBurnTransaction()=b->mTransaction();b->mBurnWitness()=b->mWitness();}
+        bodyAlias=*b;*containing.getTxBody()=*b;heldBody=containing.getTxBody();oldBodyIDs=b->mTxPowIDList();oldPRNG=b->mPRNG();oldDifficulty=b->mTxnDifficulty();oldBodyID=oldBodyIDs->at(0);oldBodyTxn=b->mTransaction();oldBodyBurn=b->mBurnTransaction();oldBodyWitness=b->mWitness();oldBodyBurnWitness=b->mBurnWitness();oldBodyTxnID=oldBodyTxn->getTransactionID();oldBodyBurnID=oldBodyBurn->getTransactionID();
+        if(q.containsKey("nullField")){auto field=q.getString("nullField");if(field=="prng")b->mPRNG().reset();else if(field=="difficulty")b->mTxnDifficulty().reset();else if(field=="transaction")b->mTransaction().reset();else if(field=="witness")b->mWitness().reset();else if(field=="burnTransaction")b->mBurnTransaction().reset();else if(field=="burnWitness")b->mBurnWitness().reset();else if(field=="ids")b->mTxPowIDList().reset();else b->mTxPowIDList()->at(1).reset();}
+        if(q.containsKey("badField")){auto invalid=std::make_shared<MiniData>(std::vector<uint8_t>(65));if(q.getString("badField")=="prng")b->mPRNG()=invalid;else b->mTxPowIDList()->at(1)=invalid;}
+        if(q.containsKey("faultChild")){auto field=q.getString("faultChild");if(field=="transaction"||field=="burnTransaction"){auto child=std::make_shared<FaultTransaction>();static_cast<Transaction&>(*child)=TxBody::required(field=="transaction"?b->mTransaction():b->mBurnTransaction());child->fault="io";(field=="transaction"?b->mTransaction():b->mBurnTransaction())=child;}else {auto child=std::make_shared<FaultWitness>();static_cast<Witness&>(*child)=TxBody::required(field=="witness"?b->mWitness():b->mBurnWitness());(field=="witness"?b->mWitness():b->mBurnWitness())=child;}}
+    }
     if(op=="read"){auto storage=data(q,"wire");std::span<const uint8_t> bytes=q.containsKey("selfInput")?std::span<const uint8_t>(dynamic_cast<MiniData&>(value).bytes()):std::span<const uint8_t>(storage);offset=size_t(std::get<int64_t>(q.get("offset").value));try{if(q.containsKey("hashRead"))dynamic_cast<MiniData&>(value).readHashFromStream(bytes,offset);else if(q.containsKey("expectedSize"))dynamic_cast<MiniData&>(value).readDataStream(bytes,offset,int(std::get<int64_t>(q.get("expectedSize").value)));else value.readDataStream(bytes,offset);}catch(const std::exception& e){result.put("readError",category(e));}result.put("offset",int64_t(offset));}
     else if(op=="callers"){
         result.put("data",miniDataVersion(value)->to0xString());result.put("hash",Crypto::getInstance().hashObject(value).to0xString());result.put("pairHash",Crypto::getInstance().hashObjects(value,value).to0xString());result.put("nio",NIOManager::createNIOMessage(MiniByte(13),value).to0xString());
         auto file=std::filesystem::path(q.getString("file"));try{MiniFile::writeObjectToFile(file,value);result.put("file",MiniData(MiniFile::readCompleteFile(file)).to0xString());MiniFile::writeObjectToFile(file,value,true);result.put("appendedFile",MiniData(MiniFile::readCompleteFile(file)).to0xString());MiniFile::writeDataToFile(file,data(q,"wire"));MiniFile::loadObject(file,value);}catch(...){std::filesystem::remove(file);throw;}std::filesystem::remove(file);
+    }
+    if(bodyAlias){auto& b=*bodyAlias;
+        if(op=="bodyJSON")try{result.put("bodyJSON",b.toJSON());}catch(const std::exception& error){result.put("bodyJSONError",category(error));}
+        JSONArray sameChildIDs;sameChildIDs.add(oldBodyTxnID==oldBodyTxn->getTransactionID());sameChildIDs.add(oldBodyBurnID==oldBodyBurn->getTransactionID());result.put("bodyOldChildIDSame",sameChildIDs);
+        if(op=="bodyClearIDs")TxBody::required(b.mTxPowIDList()).clear();
+        if(op=="bodyReplaceIDs")b.mTxPowIDList()=std::make_shared<TxBody::IDs>(TxBody::IDs{oldBodyID,nullptr,oldBodyID});
+        if(op=="bodyMutateID"){auto bytes=MiniData::fromHex("0xABCD").serialise();size_t cursor=0;oldBodyID->readDataStream(bytes,cursor);}
+        if(op=="bodyReset"){b.resetRandomPRNG();result.put("randomLength",int64_t(b.mPRNG()->getLength()));result.put("randomReplaced",b.mPRNG()!=oldPRNG);b.mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0xAA"));}
+        if(op=="bodyClearOwner"){containing.clearBody();auto first=containing.getBlockTransactions(),second=containing.getBlockTransactions();first->push_back(oldBodyID);result.put("emptyListsDistinct",first!=second&&second->empty());}
+        auto ids=[](const std::shared_ptr<TxBody::IDs>& list)->JSONValue{if(!list)return JSONValue();JSONArray result;for(const auto& id:*list)result.add(id?JSONValue(id->to0xString()):JSONValue());return result;};
+        JSONArray same,children,oldChildren;for(bool sameField:{oldPRNG==b.mPRNG(),oldDifficulty==b.mTxnDifficulty(),oldBodyTxn==b.mTransaction(),oldBodyWitness==b.mWitness(),oldBodyBurn==b.mBurnTransaction(),oldBodyBurnWitness==b.mBurnWitness(),oldBodyIDs==b.mTxPowIDList()})same.add(sameField);
+        for(const Streamable* child:{static_cast<Streamable*>(b.mTransaction().get()),static_cast<Streamable*>(b.mWitness().get()),static_cast<Streamable*>(b.mBurnTransaction().get()),static_cast<Streamable*>(b.mBurnWitness().get())})children.add(child?JSONValue(state(*child)):JSONValue());
+        for(const Streamable* child:{static_cast<Streamable*>(oldBodyTxn.get()),static_cast<Streamable*>(oldBodyWitness.get()),static_cast<Streamable*>(oldBodyBurn.get()),static_cast<Streamable*>(oldBodyBurnWitness.get())})oldChildren.add(state(*child));
+        result.put("bodySame",same);result.put("bodyChildren",children);result.put("bodyOldChildren",oldChildren);result.put("bodyIDs",ids(b.mTxPowIDList()));result.put("bodyOldIDs",ids(oldBodyIDs));result.put("bodyOldID",oldBodyID->to0xString());result.put("bodyOldPRNG",oldPRNG->to0xString());result.put("bodyOldDifficulty",oldDifficulty->to0xString());result.put("bodyAlias",state(b));result.put("heldBody",state(*heldBody));result.put("ownerHasBody",containing.hasBody());result.put("sameBlockList",containing.hasBody()&&containing.getBlockTransactions()==b.mTxPowIDList());
     }
     if(transactionAlias){
         auto& t=*transactionAlias;

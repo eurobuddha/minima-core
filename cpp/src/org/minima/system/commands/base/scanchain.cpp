@@ -23,8 +23,8 @@ json::JSONValue scanchain::runCommand(){
             block.put("txpowid",top->getTxPoWID());json::JSONArray transactions;
             auto append=[&](TxPoW* value){auto detail=getTransactionDetails(value);transactions.add(detail?json::JSONValue(*detail):json::JSONValue());};
             if(top->isTransaction())append(top.get());
-            for(const auto& id:top->getBlockTransactions()){
-                auto value=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWDB()).getTxPoW(id.to0xString());
+            for(const auto blockIDs=top->getBlockTransactions();const auto id:TxBody::required(blockIDs)){
+                auto value=sqlRequired(sqlRequired(MinimaDB::getDB()).getTxPoWDB()).getTxPoW(TxBody::required(id).to0xString());
                 if(value)append(value.get());
             }
             block.put("transactions",transactions);blocks.add(block);tip=tip->getParent();increment();

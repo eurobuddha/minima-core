@@ -48,7 +48,7 @@ false, and methods listing block transactions return an empty list. However,
 methods such as `getWitness()` still dereference the absent body in Java. Returning
 an empty witness would silently invent a different behavior.
 
-The native body uses `std::optional<TxBody>`. Selected getters now explicitly
+The native body uses an owned `std::shared_ptr<TxBody>`. Selected value getters explicitly
 raise a typed native null-pointer exception instead of exposing C++'s
 `bad_optional_access`. The failure point matters: earlier validation stages may
 reject before a body field is needed.
@@ -82,8 +82,8 @@ in the expanded 1,343-case checker suite.
 
 The current native API offers static deserialization but does not yet reproduce
 Java's complete in-place `readDataStream` behavior on an existing TxPoW object.
-That distinction matters for retained references and failed reads. Several body
-setters still expose native optional-access behavior, and deep-copy
+That distinction matters for retained references and failed reads. The body and
+ID-list getters now retain owners, but full nullable getter/hash behavior and deep-copy
 error logging is not fully equivalent. The default conversion helper now logs
 caught IOException through MinimaLogger/NativeThrowable before returning null;
 the mining-command corpus compares this path with Java. Cached values should not be assumed to
@@ -114,3 +114,7 @@ Pinned Java SHA-256: `46e3867c753cd9dde3814bb01505426e2978c2b97bafbbf3fad7c0a995
 ## Mining-command integration
 
 The mining/posting suite compares full serialized TxPoW objects, retained row owners and message side effects after fixing only the generated PRNG bytes at miner entry. Truncated and bodyless payloads exercise conversion and failure ordering. This does not supply a complete in-place TxPoW reader or full Main runtime.
+
+## Body ownership follow-up
+
+The [TxBody lab](../../../../../../student-guide/new-tests/streamable-txbody.md) changes getTxBody and getBlockTransactions to owned nullable handles. Clearing a body preserves an already retained body; bodyless list getters return independent empty lists. Block-ID entries are owned nullable MiniData references, and addBlockTxPOW can retain an existing reference. The containing TxPoW shared record, remaining value getters and hash failure semantics still require their complete source review.

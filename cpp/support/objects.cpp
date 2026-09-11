@@ -95,7 +95,7 @@ int main() {
         try {
             std::istringstream in(line);std::vector<std::string> a;std::string word;while(in>>word) a.push_back(word);
             auto cmd=a.at(0);std::string out;
-            if(cmd=="genesis") {GenesisTxPoW genesis(a.at(1));genesis.setTimeMilli(MiniNumber(1788883200000LL));genesis.getTxBody()->mPRNG=MiniData::fromHex("0x000102");genesis.setHeaderBodyHash();genesis.calculateTXPOWID();out=result(static_cast<const TxPoW&>(genesis))+"|"+result(GenesisCoin())+"|"+result(GenesisMMR());}
+            if(cmd=="genesis") {GenesisTxPoW genesis(a.at(1));genesis.setTimeMilli(MiniNumber(1788883200000LL));genesis.getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x000102"));genesis.setHeaderBodyHash();genesis.calculateTXPOWID();out=result(static_cast<const TxPoW&>(genesis))+"|"+result(GenesisCoin())+"|"+result(GenesisMMR());}
             else if(cmd=="greeting") {Greeting g;g.setTopBlock(MiniNumber(a.at(1)));g.getExtraData().put("welcome",str(a.at(3)));for(int i=0;i<std::stoi(a.at(2));++i) g.getChain().push_back(MiniData::fromHex(BaseConverter::numberToHex(i+1)));out=result(g);}
             else if(cmd=="pulse") {Pulse p;for(int i=0;i<std::stoi(a.at(1));++i) p.getBlockList().push_back(MiniData::fromHex(BaseConverter::numberToHex(i+1)));out=result(p);}
             else if(cmd=="txblock") out=result(blockFixture(std::stoi(a.at(1)),std::stoi(a.at(2)),std::stoi(a.at(3))));
@@ -103,10 +103,10 @@ int main() {
                 int flags=std::stoi(a.at(2));GeneralParams::MEGAMMR_MEGAPRUNE=flags&1;GeneralParams::MEGAMMR_MEGAPRUNE_STATE=flags&2;GeneralParams::MEGAMMR_MEGAPRUNE_TOKENS=flags&4;
                 auto mega=megaFixture(std::stoi(a.at(1)),flags,std::stoi(a.at(3)));out=result(mega);
             } else if(cmd=="pow") {
-                TxPoW t;t.setTimeMilli(MiniNumber(1788883200000LL));t.setNonce(MiniNumber(a.at(1)));t.setBlockDifficulty(MiniData::fromHex(a.at(2)));t.getTxBody()->mPRNG=MiniData::fromHex("0x000102");
+                TxPoW t;t.setTimeMilli(MiniNumber(1788883200000LL));t.setNonce(MiniNumber(a.at(1)));t.setBlockDifficulty(MiniData::fromHex(a.at(2)));t.getTxBody()->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x000102"));
                 int mode=std::stoi(a.at(3));if(mode==1) t.getTransaction().addInput(coin(0));else if(mode==2) t.getBurnTransaction().addInput(coin(0));t.addBlockTxPOW(MiniData::fromHex("0x1234"));t.setHeaderBodyHash();if(mode==3) t.clearBody();t.calculateTXPOWID();out=result(t);
             } else if(cmd=="magic") {Magic magic;magic.setDesiredMaxTxPoWSize(MiniNumber(a.at(1)));magic.setDesiredKISSVM(MiniNumber(a.at(2)));magic.setDesiredMaxTxns(MiniNumber(a.at(3)));magic.mDesiredMinTxPoWWork=MiniData::fromHex(a.at(4));out=result(magic)+"|"+result(magic.calculateNewCurrent());}
-            else if(cmd=="body") {TxBody body;body.mPRNG=MiniData::fromHex(a.at(1));int count=std::stoi(a.at(2));for(int i=0;i<count;++i) {body.mTxPowIDList.push_back(MiniData::fromHex(BaseConverter::numberToHex(i+1)));body.mTransaction->addInput(coin(i));}out=result(body);}
+            else if(cmd=="body") {TxBody body;body.mPRNG()=std::make_shared<MiniData>(MiniData::fromHex(a.at(1)));int count=std::stoi(a.at(2));for(int i=0;i<count;++i) {body.mTxPowIDList()->push_back(std::make_shared<MiniData>(MiniData::fromHex(BaseConverter::numberToHex(i+1))));body.mTransaction()->addInput(coin(i));}out=result(body);}
             else if(cmd=="header") {TxHeader h;h.mTimeMilli=MiniNumber(a.at(1));int run=std::stoi(a.at(2));for(size_t i=0;i<h.mSuperParents.size();++i) if(run>0) h.mSuperParents[i]=MiniData::fromHex(BaseConverter::numberToHex(int(i)/run));h.mNonce=MiniNumber(900000);h.mBlockNumber=MiniNumber(123450);h.mTxBodyHash=Crypto::getInstance().hashObject(MiniData::fromHex("0x1234"));out=result(h);}
             else if(cmd=="treekey") {
                 TreeKey key(MiniData::fromHex(a.at(1)),std::stoi(a.at(2)),std::stoi(a.at(3)));key.setUses(std::stoi(a.at(4)));auto data=MiniData::fromHex(a.at(6));out=key.getPublicKey()->to0xString()+"|"+std::to_string(key.getMaxUses());

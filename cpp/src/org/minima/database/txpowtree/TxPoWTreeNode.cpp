@@ -63,7 +63,7 @@ void TxPoWTreeNode::copyParentRelevantCoins() {
     mMMR->setFinalized(true);calculateRelevantCoins();
 }
 void TxPoWTreeNode::clearParent() {mParent.reset();mMMR->clearParent();}
-bool TxPoWTreeNode::checkFullTxns(const std::function<bool(const std::string&)>& exists) {if(mHaveCheckedFull) return true;for(const auto& txn:getTxPoW().getBlockTransactions()) if(!exists(txn.to0xString())) return false;mHaveCheckedFull=true;return true;}
+bool TxPoWTreeNode::checkFullTxns(const std::function<bool(const std::string&)>& exists) {if(mHaveCheckedFull) return true;for(const auto blockIDs=getTxPoW().getBlockTransactions();const auto txn:TxBody::required(blockIDs)) if(!exists(TxBody::required(txn).to0xString())) return false;mHaveCheckedFull=true;return true;}
 std::vector<uint8_t> TxPoWTreeNode::serialise() const {
     auto data=wire::join(*mTxBlock,*mMMR);auto coins=getAllCoins();wire::append(data,MiniNumber(int64_t(coins.size())).serialise());for(const auto& coin:coins) wire::append(data,coin.serialise());
     wire::append(data,MiniNumber(int64_t(mRelevantMMRCoins.size())).serialise());for(const auto& entry:mRelevantMMRCoins) wire::append(data,entry.serialise());return data;

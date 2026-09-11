@@ -7,9 +7,9 @@
 #include "support/NativeThrowable.hpp"
 namespace minima {
 TxPoW::TxPoW(std::string id,int block,int weight,bool isBlock,std::string parent,bool isTransaction)
-:mBody(std::nullopt),mTxPOWIDStr(std::move(id)),mBlockWeight(weight),mIsTesting(true),mTestBlockNumber(block),mTestIsBlock(isBlock),mTestIsTxn(isTransaction),mTestParent(MiniData::fromHex(parent)){}
-std::vector<std::string> TxPoW::getTransactions() const {if(mIsTesting) return mTestTransactions;std::vector<std::string> ids;if(mBody) for(const auto& id:mBody->mTxPowIDList) ids.push_back(id.to0xString());return ids;}
-void TxPoW::setHeaderBodyHash() {mHeader.mTxBodyHash=Crypto::getInstance().hashObject(mBody.value());}
+:mBody(nullptr),mTxPOWIDStr(std::move(id)),mBlockWeight(weight),mIsTesting(true),mTestBlockNumber(block),mTestIsBlock(isBlock),mTestIsTxn(isTransaction),mTestParent(MiniData::fromHex(parent)){}
+std::vector<std::string> TxPoW::getTransactions() const {if(mIsTesting) return mTestTransactions;std::vector<std::string> ids;if(mBody) for(const auto blockIDs=mBody->mTxPowIDList();const auto id:TxBody::required(blockIDs)) ids.push_back(TxBody::required(id).to0xString());return ids;}
+void TxPoW::setHeaderBodyHash() {mHeader.mTxBodyHash=Crypto::getInstance().hashObject(TxBody::required(mBody));}
 bool TxPoW::isMonotonic() const {return getTransaction().isCheckedMonotonic()&&(getBurnTransaction().isEmpty()||getBurnTransaction().isCheckedMonotonic());}
 void TxPoW::setTimeMilli() {setTimeMilli(MiniNumber(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count()));}
 void TxPoW::incrementCheckRejectNumber() {mCheckNumber=std::bit_cast<int32_t>(uint32_t(mCheckNumber)+1u);}
@@ -20,7 +20,7 @@ json::JSONObject TxPoW::toJSON() const {
     return obj;
 }
 std::vector<uint8_t> TxPoW::serialise() const {auto out=mHeader.serialise();wire::append(out,MiniByte(hasBody()).serialise());if(mBody) wire::append(out,mBody->serialise());return out;}
-TxPoW TxPoW::deserialise(std::span<const uint8_t> data,size_t& offset) {TxPoW txpow;txpow.mHeader=TxHeader::deserialise(data,offset);if(MiniByte::deserialise(data,offset).isTrue()) txpow.mBody=TxBody::deserialise(data,offset);else txpow.clearBody();txpow.calculateTXPOWID();return txpow;}
+TxPoW TxPoW::deserialise(std::span<const uint8_t> data,size_t& offset) {TxPoW txpow;txpow.mHeader=TxHeader::deserialise(data,offset);if(MiniByte::deserialise(data,offset).isTrue()) txpow.mBody=std::make_shared<TxBody>(TxBody::deserialise(data,offset));else txpow.clearBody();txpow.calculateTXPOWID();return txpow;}
 TxPoW TxPoW::deepCopy() const {auto data=serialise();size_t offset=0;return deserialise(data,offset);}
 std::optional<TxPoW> TxPoW::convertMiniDataVersion(const MiniData& data) {
     return convertMiniDataVersion(data,[](const wire::IOException& error){MinimaLogger::log(std::make_shared<NativeThrowable>(error));});
@@ -32,7 +32,7 @@ std::optional<TxPoW> TxPoW::convertMiniDataVersion(const MiniData& data,
 }
 void TxPoW::calculateTransactionID() {getTransaction().calculateTransactionID();getBurnTransaction().calculateTransactionID();}
 bool TxPoW::isTransaction() const {if(mIsTesting) return mTestIsTxn;return hasBody()&&(!getTransaction().isEmpty()||!getBurnTransaction().isEmpty());}
-int64_t TxPoW::getSizeinBytesWithoutBlockTxns() const {return mTxPoWSize-std::bit_cast<int32_t>(32u*uint32_t(getBlockTransactions().size()));}
+int64_t TxPoW::getSizeinBytesWithoutBlockTxns() const {return mTxPoWSize-std::bit_cast<int32_t>(32u*uint32_t(TxBody::required(getBlockTransactions()).size()));}
 void TxPoW::calculateTXPOWID() {
     mTxPOWID=Crypto::getInstance().hashObject(mHeader);mTxPOWIDStr=mTxPOWID.to0xString();mIsBlockPOW=mTxPOWID.isLess(getBlockDifficulty());mBlockWeight=MMREntryNumber(0);
     if(mIsBlockPOW) mBlockWeight=MMREntryNumber::dividePositive(Crypto::MAX_VAL,getBlockDifficulty().getDataValue(),7);

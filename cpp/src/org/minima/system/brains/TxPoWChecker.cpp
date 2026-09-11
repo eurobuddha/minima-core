@@ -25,7 +25,7 @@ bool headerValid(std::shared_ptr<TxPoWTreeNode> parent,const TxPoW& txpow) {
     if(txpow.getTimeMilli().isLess(minimum))return reject("Invalid TxPoW TimeMilli less than median 1 hr back "+txpow.getTxPoWID());
     if(txpow.getTimeMilli().isMore(minimum.add(TxPoWChecker::MAX_TIME_FUTURE)))return reject("Invalid TxPoW TimeMilli more than 24 hrs in future "+txpow.getTxPoWID());
     if(!txpow.getBlockDifficulty().isEqual(TxPoWGenerator::getBlockDifficulty(parent)))return reject("Incorrect TxPoW block difficulty @ "+txpow.getBlockNumber().toString()+" "+txpow.getTxPoWID());
-    if(!txpow.getMagic().checkSame(parent->getTxPoW().getMagic().calculateNewCurrent()))return reject("Incorrect Magic values "+std::to_string(txpow.getBlockTransactions().size())+" "+txpow.getTxPoWID());
+    if(!txpow.getMagic().checkSame(parent->getTxPoW().getMagic().calculateNewCurrent()))return reject("Incorrect Magic values "+std::to_string(TxBody::required(txpow.getBlockTransactions()).size())+" "+txpow.getTxPoWID());
     return true;
 }
 }
@@ -40,8 +40,8 @@ bool TxPoWChecker::checkTxPoWBlock(std::shared_ptr<TxPoWTreeNode> parent,std::sh
     try {
         if(!ownedTxPoW)throw JavaNullPointerException("null block TxPoW");auto& txpow=*ownedTxPoW;
         if(!headerValid(parent,txpow)) return false;
-        if(int64_t(txpow.getBlockTransactions().size())>txpow.getMagic().getMaxNumTxns().getAsInt()){
-            MinimaLogger::log("Too many transactions in block "+std::to_string(txpow.getBlockTransactions().size())+" "+txpow.getTxPoWID());return false;
+        if(int64_t(TxBody::required(txpow.getBlockTransactions()).size())>txpow.getMagic().getMaxNumTxns().getAsInt()){
+            MinimaLogger::log("Too many transactions in block "+std::to_string(TxBody::required(txpow.getBlockTransactions()).size())+" "+txpow.getTxPoWID());return false;
         }
         // Java gathers every main/burn proof before checking uniqueness. A later
         // invalid transaction must still be visited when an earlier ID repeats.
