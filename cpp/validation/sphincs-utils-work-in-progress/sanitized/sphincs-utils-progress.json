@@ -1,0 +1,14 @@
+{
+  "cases": 250,
+  "groups": {
+    "script": 5,
+    "message": 50,
+    "null-transaction": 1,
+    "setup-complete": 24,
+    "setup-partial": 168,
+    "null-setup-transaction": 1,
+    "null-both": 1
+  },
+  "failures": [],
+  "independent_assertions": 1638
+}

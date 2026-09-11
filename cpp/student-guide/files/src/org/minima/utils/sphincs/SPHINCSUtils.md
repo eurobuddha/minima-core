@@ -1,10 +1,10 @@
 # SPHINCSUtils — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the Java source, native transaction integration, and validation in progress.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSUtils.java) · `src/org/minima/utils/sphincs/SPHINCSUtils.cpp` (absent)
+[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSUtils.java) · [Native implementation](../../../../../../../src/org/minima/utils/sphincs/SPHINCSUtils.cpp)
 
 ## Purpose
 
@@ -18,21 +18,43 @@ SPHINCSUtils connects the signature construction to transaction state and a KISS
 4. The script binds forest proof sums to 120 and inner public-key sums to 2147450880, the sums of indices 0..15 and 0..65535. Both the proof hash and numeric aggregation matter.
 5. After state insertion, precompute output coin IDs through TxPoWGenerator and calculate the transaction’s actual ID. These final calls happen after mutation and can fail after states are present.
 
-## Translation work still required
+## Native translation and reuse
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. Reuse Transaction/StateVariable/MiniString, signature serialization, and KISS VM semantics. The similarly named TransactionTest uses different output separators and a reduced verification loop, so it is not an interchangeable implementation.
+The C++ implementation reuses Transaction, StateVariable, Coin token scaling,
+MiniString, signature writers and TxPoWGenerator's output-ID calculation. The script
+literal is copied exactly from the pinned source. The serialization-to-MiniData
+helper was extracted unchanged from FORSSignature into a shared support header;
+it logs only I/O exceptions and returns an empty optional. The caller's subsequent
+null dereference is represented as a JavaNullPointerException.
+
+State writes are deliberately sequential. A missing inner proof can leave that
+iteration's root, outer proof and secret in the transaction. The cached transaction
+ID is unchanged until every iteration and output-ID update completes. Each gap
+port 5*i+4 and unrelated existing state remains present.
 
 ## Understanding the tests
 
-No native counterpart or dedicated assertion for this helper is claimed. Proposed tests should compare the exact reconstructed signing-message bytes between Java helper and VM variables, all 66 inserted state ports, token amount formatting, input/output order, and a full 16-iteration script. Mutating each signature state or output field should identify the expected failing proof/signature check.
+The [transaction lab](../../../../../../../student-guide/new-tests/sphincs-transactions.md)
+was written before execution. Both builds have matched 250 initial Java/native
+cases: script replacement, independent message bytes, input/output ordering,
+scaled tokens, ELTOO output IDs, all 66 state writes, and failures at each of 16
+positions in each nested list. Null components, preserved unrelated state and
+oversized-proof I/O logging are included. Source and native fixtures reuse the
+existing ObjectOracle/CoinFixture coin builders.
 
-- [Related demonstration with different script/separators](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/TransactionTest.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+Both full builds pass. Object, envelope and KISS VM regressions pass in both builds.
+The normal full-size signature was accepted by both VMs in 937 operations. A
+malformed-signature error-reporting difference was fixed; both builds pass all
+268 replay cases and 1,677 independent assertions. The original sanitizer signing
+run remains active; see [saved status](../../../../../../../validation/sphincs-utils-work-in-progress/progress.json).
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work. Empty outputs also expose a difference: the helper can concatenate no output strings, while the script starts by computing output zero.
+Full node parity, raw Java byte-array aliases, arbitrary subclasses/concurrency,
+and unrepresented null Coin fields/list entries remain unverified. Empty outputs
+expose a source distinction: the helper accepts them but the script asks for output
+zero. Ordinary transaction serialization failures outside the covered fixture
+shapes need a separate audit; no full Transaction API equivalence is claimed.
 
 ## Check your understanding
 

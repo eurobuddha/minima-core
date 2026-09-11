@@ -1,0 +1,13 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  5: object_differential
+1/4 Test  #5: object_differential ..............   Passed   98.74 sec
+    Start 16: kissvm_differential
+2/4 Test #16: kissvm_differential ..............   Passed   15.58 sec
+    Start 35: sphincs_log_audit
+3/4 Test #35: sphincs_log_audit ................   Passed    3.07 sec
+    Start 36: sphincs_signature_differential
+4/4 Test #36: sphincs_signature_differential ...   Passed   18.09 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) = 135.50 sec

@@ -46,3 +46,7 @@ Why should the additional instruction charge be checked even for an invalid sign
 A corresponding file and a passing finite suite do not establish complete 1:1 behavior. Full node startup and native H2/MVStore storage remain unfinished. This lesson explains the inspected built-in body and the stated KISS cases; it does not certify all public API, allocator, locale or exception semantics.
 
 Pinned Java SHA-256: `6fa710f6bff484a228fb95a577b6a2bca48bdceef5bf44b3280415637ef2cf8e`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## SPHINCS transaction error follow-up
+
+Malformed serialized signatures can convert to null after I/O logging. CHECKSIG now passes that null through the actual TreeKey verifier instead of substituting a generic native error. The full SPHINCS script mutation test found and verifies this correction. See the [transaction lab](../../../../../../../new-tests/sphincs-transactions.md).

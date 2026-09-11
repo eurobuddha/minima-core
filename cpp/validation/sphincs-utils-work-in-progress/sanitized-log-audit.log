@@ -1,0 +1,12 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+SPHINCS log audit: 3 cases, 6 independent assertions passed

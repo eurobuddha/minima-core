@@ -21,6 +21,7 @@ std::string exceptionString(const std::exception& error) {
     if(dynamic_cast<const ExecutionException*>(&error)) return std::string("org.minima.kissvm.exceptions.ExecutionException: ")+error.what();
     if(dynamic_cast<const MinimaParseException*>(&error)) return std::string("org.minima.kissvm.exceptions.MinimaParseException: ")+error.what();
     if(dynamic_cast<const MinimaException*>(&error)) return std::string("org.minima.kissvm.exceptions.MinimaException: ")+error.what();
+    if(dynamic_cast<const JavaNullPointerException*>(&error)) return javaExceptionText(error);
     return std::string("NativeException: ")+error.what();
 }
 Contract::Contract(std::string script,const std::string&,std::shared_ptr<Witness> witness,std::shared_ptr<Transaction> transaction,std::vector<StateVariable> previous,bool trace):Contract(std::move(script),std::vector<MiniData>{},std::move(witness),std::move(transaction),std::move(previous),trace){}

@@ -3705,7 +3705,7 @@
       "cpp/src/org/minima/objects/mmr/MMRProof.hpp": "01e563c063bef5d1911f34170af021e475f69ef5f5346e5ede9db72c70178801",
       "cpp/src/org/minima/utils/sphincs/FORS/FORS.cpp": "33777576300c3f043d0ea147f3923f59e127e86f6fd4c99b484ceb8c0ae8a214",
       "cpp/src/org/minima/utils/sphincs/FORS/FORS.hpp": "ccdec2a0e0713c5707105acf81012a36da0af5ee563f6cf093916ae13370ec5a",
-      "cpp/src/org/minima/utils/sphincs/FORS/FORSSignature.cpp": "cf4534ffb26298f18019b73ac86fcdec5a14222105e3da8f0b35e6929dd12ee7",
+      "cpp/src/org/minima/utils/sphincs/FORS/FORSSignature.cpp": "8d2545620f4cb9828a43fcea52c010ff4ebf5472830eb1cd091345368c505841",
       "cpp/src/org/minima/utils/sphincs/FORS/FORSSignature.hpp": "05e437b2767b8eebeb6a009fb66a9de27ca25bdb453106853494705c016bffa8",
       "cpp/src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp": "4535c281be8a0abf2eac1bd56ecbd14e2fc140f80986eb7f8340c875309ac72e",
       "cpp/support/FORSOracle.java": "6a2502148f8cb426ca14c4c9086b259809c5c07e0b3609b41a85969c8a22ca8b",
@@ -3756,17 +3756,49 @@
     "files_sha256": {
       "cpp/src/org/minima/utils/sphincs/SPHINCS.hpp": "3731d6315efa2c48069fa89c0c1e54c9811afad7fd95365e53103dfa4f4bc527",
       "cpp/src/org/minima/utils/sphincs/SPHINCS.cpp": "cbd4f317d0585db653c8c8b38957100850173babdd357189b3b818928d6de760",
-      "cpp/src/org/minima/objects/keys/TreeKey.hpp": "86890f2d1c0e50a6c38430d59dd30fd5249329b0328785cd5c61af20ae6ff15b",
-      "cpp/src/org/minima/objects/keys/TreeKey.cpp": "8a5d3ef5a7dc08b9d14435f50cf34ac208490a9f1ff869cc902b01f936217c2b",
+      "cpp/src/org/minima/objects/keys/TreeKey.hpp": "30262f82af3d7b5114351c40d11fe8774401468daaad9c1cc6826926b26ef69a",
+      "cpp/src/org/minima/objects/keys/TreeKey.cpp": "c75c67f8e966cf087fb1f51e561eab6b9c682704c0bececc57e86192f70b2b7a",
       "cpp/src/org/minima/objects/keys/Winternitz.cpp": "5227b572f4c7588bed01c37889accc0c0371e69aaefd8cf596058d45d5fb6162",
-      "cpp/support/SPHINCSOracle.java": "60884c17c5aaaa3a3cce50382fbf3a859c4b5e422106fd3dbaf6682bd70bca6b",
+      "cpp/support/SPHINCSOracle.java": "9c5b95b6c026d9cf7b934a4ef8812acd4932158cb3040f89a79458bad3610450",
       "cpp/support/sphincs.cpp": "49cb6f42023e0d9c163acb76927cbdf592a0a84adb08e55568ed9c44d92bdf61",
       "cpp/tools/sphincs_differential.py": "f48fdeb99c3d575890590b60293c315ae259aa364e6874bd8a391562d64291fe"
     },
     "reuse": "Direct composition of current TreeKey192/4, Crypto/MiniData/BigInt, FORS and SPHINCSSignature. Nullable public-key setter/comparison and invalid WOTS-length exception minimally aligned with pinned Java. Oracle extends existing FORS/HORST fixtures; driver reuses ForestRunner, checked_demo and independent MMR wire/proof helpers.",
     "sibling_search": "Read /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/crypto/TreeKey.hpp and tests/crypto/test_treekey.cpp: binary2^depth/raw hash nodes/different WOTS representation cannot replace pinned indexed MMR192/4. No sibling SPHINCS implementation found.",
-    "validation": "Both complete builds and object/envelope regressions passed; normal and sanitized full signer differential runs in progress",
+    "validation": "Normal actual full signatures, independent checks and both mains completed; original case299 fixture null-log error resolved by separate3-case audit. Full sanitizer original run remains active.",
     "evidence": "validation/sphincs-work-in-progress",
-    "full_parity_verified": false
+    "full_parity_verified": false,
+    "log_fixture_correction": "Null println argument in Java fixture normalized with String.valueOf; explicit null/empty/text audits passed in both builds. Original full run records one fixture mismatch, superseded only by saved log audit. No production signer change."
+  },
+  "sphincs_utils_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/utils/sphincs/SPHINCSUtils.java": "9a6d8b400151f2c74404b56559e295462115e5d7bb30066fbd957b9f3d2fbffe",
+      "upstream-study/src/org/minima/objects/keys/TreeKey.java": "3483c44a628382707674b615ae9f0cdfb9998d6dd1663848421ea200b27fabdd",
+      "upstream-study/src/org/minima/kissvm/functions/sigs/CHECKSIG.java": "6fa710f6bff484a228fb95a577b6a2bca48bdceef5bf44b3280415637ef2cf8e",
+      "upstream-study/src/org/minima/kissvm/Contract.java": "45c4b194ae723e4d5ba56e011c0c203ba7ea0f5d166153c9f66e9b53d702b969"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/utils/sphincs/SPHINCSUtils.hpp": "322372618bf448de17db389d5a390dda749275e427464ad0b218eddb455a2224",
+      "cpp/src/org/minima/utils/sphincs/SPHINCSUtils.cpp": "28271bc700fb0d8de432f905859ee3f9d4402de3e916ca0af4ebe19a3e78b63e",
+      "cpp/src/support/MiniDataVersion.hpp": "4a0997235a032b28cfa96419f85751c476a3a1186ce704b7d1fa064861d7288b",
+      "cpp/src/org/minima/utils/sphincs/FORS/FORSSignature.cpp": "8d2545620f4cb9828a43fcea52c010ff4ebf5472830eb1cd091345368c505841",
+      "cpp/support/SPHINCSUtilsOracle.java": "f20f80bf90747f1f14283c414d978c149c2b6ffd1a56b032f03446b313a928a1",
+      "cpp/support/sphincs_utils.cpp": "1854d2ac99dc5825d8257d3807cb5c0e18cc57e0ba6cd2329da8f56d46603517",
+      "cpp/tools/sphincs_utils_differential.py": "cdc1d26815fe3d300c496010cb063fd8b4f12da10fc97a22ded5d5140320772a",
+      "cpp/support/SPHINCSOracle.java": "9c5b95b6c026d9cf7b934a4ef8812acd4932158cb3040f89a79458bad3610450",
+      "cpp/tools/sphincs_log_audit.py": "3556777e4a5a74d9b0c0944e27b38d9a6197412e7a3e853273429a3ab70ba106",
+      "cpp/src/org/minima/objects/keys/TreeKey.hpp": "30262f82af3d7b5114351c40d11fe8774401468daaad9c1cc6826926b26ef69a",
+      "cpp/src/org/minima/objects/keys/TreeKey.cpp": "c75c67f8e966cf087fb1f51e561eab6b9c682704c0bececc57e86192f70b2b7a",
+      "cpp/src/org/minima/kissvm/functions/sigs/CHECKSIG.cpp": "cc32995bfb6eb9aa7073214b2f72293667aecbf5de33452e4d5239b9d825616e",
+      "cpp/src/org/minima/kissvm/Contract.cpp": "b1370082dcb4134a5d2358f20900715e9bd4796abdc79b8ad3908d6bf3140061"
+    },
+    "reuse": "Pinned script literal and sequential helper translated with existing Transaction/Coin/Token/StateVariable/MiniString/TxPoWGenerator. Extract unchanged FORSSignature miniDataVersion helper. Reuse ObjectOracle.coin/CoinFixture.hpp, FORS/HORST observers, ForestRunner, Python codecs and actual Contract APIs.",
+    "sibling_search": "No SPHINCS or COINJOIN implementation in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; sibling binary TreeKey is incompatible as already documented.",
+    "validation": "Normal actual full-size transaction signature and937-op script acceptance matched. Both corrected268-case replays/1677 assertions and full builds/object9464/VM4471/envelope1449/log3 regressions passed. Original full sanitizer sign runs remain live.",
+    "input_vector_sha256": "271fd03c67ca873e57fe5e3bc42705a7eb5ed86c339cae9d86e574077b5b137b",
+    "evidence": "validation/sphincs-utils-work-in-progress",
+    "full_parity_verified": false,
+    "production_followup": "Actual script mutation exposed generic native exception for null converted Signature. Reuse TreeKey verification through a nullable pointer overload preserving the pinned Java null dereference diagnostic; CHECKSIG delegates; Contract formats JavaNullPointerException via existing javaExceptionText. Both replay transcripts now match exactly."
   }
 }

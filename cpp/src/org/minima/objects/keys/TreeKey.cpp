@@ -35,6 +35,10 @@ Signature TreeKey::sign(const MiniData* data) {
     }
     mUses=std::bit_cast<int32_t>(uint32_t(mUses)+1u);return signature;
 }
+bool TreeKey::verify(const MiniData& data,const Signature* signature) const {
+    if(!signature)throw JavaNullPointerException("Cannot invoke \"org.minima.objects.keys.Signature.getAllSignatureProofs()\" because \"<parameter2>\" is null");
+    return verify(data,*signature);
+}
 bool TreeKey::verify(const MiniData& data,const Signature& signature) const {
     const auto& proofs=signature.getAllSignatureProofs();if(proofs.size()>MAX_KEY_LEVELS){log("[!] INVALID KEY found with "+std::to_string(proofs.size())+" levels MAX:"+std::to_string(MAX_KEY_LEVELS));return false;}
     for(size_t depth=0;depth<proofs.size();++depth) {

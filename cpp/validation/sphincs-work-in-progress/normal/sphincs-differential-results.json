@@ -1,0 +1,75 @@
+{
+  "cases": 301,
+  "passed": 300,
+  "independent_assertions": 1373,
+  "groups": {
+    "default": 1,
+    "uninitialized-sign": 1,
+    "null-sign": 1,
+    "null-seed": 2,
+    "short-private": 128,
+    "null-private": 2,
+    "initialize": 1,
+    "seed-derivation": 3,
+    "private-roundtrip-extra": 3,
+    "failed-reinitialize": 1,
+    "failed-seed-reinitialize": 1,
+    "full-sign": 3,
+    "cross-writer": 6,
+    "wrong-message": 6,
+    "wrong-public": 6,
+    "null-order": 32,
+    "null-envelope": 1,
+    "all-null": 1,
+    "wots-count": 7,
+    "wots-count-before-null-public": 2,
+    "wots-tamper": 8,
+    "wots-length": 16,
+    "root-tamper": 2,
+    "fors-tamper": 64,
+    "log": 3
+  },
+  "failures": [
+    {
+      "index": 299,
+      "group": "log",
+      "request": {
+        "action": "log",
+        "message": null
+      },
+      "java": {
+        "error": {
+          "exception": "java.lang.NullPointerException",
+          "message": ""
+        },
+        "state": {
+          "public": "0xDBCD39B760A213147B1CB3829B65E98D57EFCE11B4C72E0A431FE4013FB050BF",
+          "private": "0x01",
+          "total": "1358954496"
+        },
+        "samePublic": true,
+        "samePrivate": true,
+        "sameTotal": true,
+        "logs": []
+      },
+      "cpp": {
+        "state": {
+          "public": "0xDBCD39B760A213147B1CB3829B65E98D57EFCE11B4C72E0A431FE4013FB050BF",
+          "private": "0x01",
+          "total": "1358954496"
+        },
+        "samePublic": true,
+        "samePrivate": true,
+        "sameTotal": true,
+        "logs": [
+          "null"
+        ]
+      }
+    }
+  ],
+  "seconds": 1138.085,
+  "transcript_sha256": "c03e6839b26b05aa311cd4472a22e0d9bc552086e8f36323afbab1425aac931d",
+  "full_forest_leaves_per_sign": 1048576,
+  "source_mains_matched": true,
+  "scope": "Actual pinned SPHINCS with TreeKey192/4 and full FORS, private-key partial state, all signature bytes/JSON, cross-writer verification, independent selected secrets/WOTS chains/MMR paths, source mains. NPE/EOF prose normalized. Raw MiniData byte aliases, package-private field mutation, null SignatureProof internals/list entries, arbitrary subclasses/concurrency and full node parity not certified."
+}

@@ -11,13 +11,21 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **352 production counterparts and 44 mapped test files exist;
-61 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **353 production counterparts and 44 mapped test files exist;
+60 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+SPHINCSUtils now builds signing messages, installs all 66 signature state values,
+and recomputes coin/transaction IDs. Both VMs accept the normal full-size signed
+transaction in 937 operations. The corrected 268-case replay and affected
+regressions pass in both builds; original sanitizer full-signing runs remain active.
+See the [transaction lab](student-guide/new-tests/sphincs-transactions.md) and
+[evidence](validation/sphincs-utils-work-in-progress/progress.json).
 
 SPHINCS now composes the actual TreeKey192/4 and full-size FORS implementations.
 Both complete builds and object/key/envelope regressions pass.
-Full normal and sanitized signer comparison runs are in progress. The
+The normal signer run completed its signatures and mains; its one null-log
+fixture error is resolved by a separate audit. Full sanitized signing remains active. The
 [signer lab](student-guide/new-tests/sphincs-signer.md) and
 [current evidence](validation/sphincs-work-in-progress/progress.json) distinguish
 compiled code from completed validation.

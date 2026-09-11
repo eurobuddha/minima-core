@@ -53,3 +53,7 @@ Pinned Java SHA-256: `3483c44a628382707674b615ae9f0cdfb9998d6dd1663848421ea200b2
 ## SPHINCS integration follow-up
 
 The SPHINCS integration adds a nullable public-key setter and preserves Java null-comparison failure after computing the first proof root. Empty and overlong signature lists still return false before that comparison. See the [signer lab](../../../../../../../student-guide/new-tests/sphincs-signer.md) for validation in progress.
+
+## SPHINCS transaction error follow-up
+
+A nullable Signature overload now preserves the source null-dereference boundary, including the observed pinned-JDK diagnostic. Valid references delegate to the existing verifier. See the [transaction lab](../../../../../../new-tests/sphincs-transactions.md).

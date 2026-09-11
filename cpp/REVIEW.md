@@ -1,3 +1,55 @@
+## SPHINCS transaction integration review
+
+### Summary
+
+SPHINCSUtils now reproduces the source script literal, unhashed signing message,
+sequential 66-state installation and final coin/transaction IDs using the existing
+native implementations. The former FORSSignature conversion helper is extracted
+unchanged into MiniDataVersion.hpp. Full normal signatures passed the actual
+sixteen-tree script in both VMs, with identical 937-operation execution.
+
+### Findings and resolutions
+
+**Major, fixed — malformed CHECKSIG signature reported a generic native error.**
+The source converter returns null after an I/O failure; Java then dereferences it
+in TreeKey.verify. Added a nullable Signature overload that delegates valid values
+to the existing verifier, passed the optional through CHECKSIG, and taught Contract
+to format JavaNullPointerException with its Java type/message. The two failing
+normal comparisons remain in the original report. All 268 corrected replay cases
+and 1,677 independent assertions now pass in each build, with identical transcripts.
+
+**Fixture error, fixed — captured println(null) threw in the Java observer.**
+String.valueOf now normalizes that captured argument. Separate null/empty/text
+log audits pass in both builds. The normal signer otherwise completed all 300
+comparisons, 1,373 assertions and actual source mains (20,667-byte signature,
+verify true, exact stdout). Its original case299 failure remains saved; the audit
+supersedes only that fixture defect.
+
+### Validation and limits
+
+Both complete builds pass. Object9464, KISSVM4471, envelope1449 and log3 regressions
+pass in both builds (53.54s normal,135.50s sanitized). Utility replay takes8.382s/
+28.486s; it reuses actual full-size signatures and does not regenerate forests.
+Original full sanitized signer and transaction-signing runs remain live; their
+pending reports are not represented as completed validation. They loaded the
+older fixture/error code and may report the documented, already-fixed differences.
+Full244-entry CTest suite has not run. All457 teaching lessons pass structural audit.
+
+Raw byte-array aliases, unrepresented null fields/list entries, arbitrary subclass
+behavior, concurrency and full Transaction/node parity remain open. The null
+signature diagnostic follows the pinned source under the observed JDK; other
+runtime-specific exception prose is not certified. No algorithm parameters or
+cryptographic format changed to obtain passing tests.
+
+### Verdict
+
+Approve the reviewed utility/helper/error-path changes within the tested scope;
+retain a work-in-progress checkpoint until the original full sanitizer signing
+runs finish. Full457-file goal remains active.
+[Evidence](validation/sphincs-utils-work-in-progress/progress.json).
+
+---
+
 ## SPHINCS signer work-in-progress review
 
 ### Summary

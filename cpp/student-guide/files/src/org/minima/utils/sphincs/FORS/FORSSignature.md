@@ -43,3 +43,7 @@ cryptographic security or complete file parity.
 Why are two length fields present, and why does a decoder that silently forces them equal fail to reproduce this Java source?
 
 Pinned Java SHA-256: `5497bc3135f0a17609a5eb7fa74277e7f424762156003636838f4730aa19792f`. [Source mapping](../../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../../REVIEW.md).
+
+## Shared conversion helper
+
+The SPHINCS transaction integration extracts the existing serialization/I/O-log helper into [MiniDataVersion.hpp](../../../../../../../../src/support/MiniDataVersion.hpp). The helper body and catch boundary are unchanged; envelope and partial-transaction tests exercise it.

@@ -26,3 +26,13 @@ The signature container's wire/error tests are described in the
 [envelope lab](sphincs-signature-envelope.md). These tests examine this pinned
 implementation; they do not establish cryptographic security. Results will be
 recorded after execution, and incomplete parity will remain explicit.
+
+## Output-capture correction
+
+The first full driver reported one mismatch for log(null): its Java PrintStream
+replacement called indexOf on the null argument. Normal System.out.println prints
+"null". The capture now applies String.valueOf first. A separate audit called the
+actual source and native log methods with null, empty and ordinary text; all three
+cases and six independent assertions passed in each build. The original driver
+artifact is retained, and this audit supersedes only its erroneous log case.
+It does not replace any full-size signature, proof, verification or main check.

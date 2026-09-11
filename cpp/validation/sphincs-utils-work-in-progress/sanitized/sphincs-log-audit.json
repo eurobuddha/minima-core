@@ -1,0 +1,105 @@
+{
+  "cases": 3,
+  "passed": 3,
+  "independent_assertions": 6,
+  "failures": [],
+  "records": [
+    {
+      "request": {
+        "action": "log",
+        "message": null
+      },
+      "java": {
+        "state": {
+          "public": null,
+          "private": null,
+          "total": null
+        },
+        "samePublic": true,
+        "samePrivate": true,
+        "sameTotal": true,
+        "logs": [
+          "null"
+        ]
+      },
+      "cpp": {
+        "state": {
+          "public": null,
+          "private": null,
+          "total": null
+        },
+        "samePublic": true,
+        "samePrivate": true,
+        "sameTotal": true,
+        "logs": [
+          "null"
+        ]
+      }
+    },
+    {
+      "request": {
+        "action": "log",
+        "message": ""
+      },
+      "java": {
+        "state": {
+          "public": null,
+          "private": null,
+          "total": null
+        },
+        "samePublic": true,
+        "samePrivate": true,
+        "sameTotal": true,
+        "logs": [
+          ""
+        ]
+      },
+      "cpp": {
+        "state": {
+          "public": null,
+          "private": null,
+          "total": null
+        },
+        "samePublic": true,
+        "samePrivate": true,
+        "sameTotal": true,
+        "logs": [
+          ""
+        ]
+      }
+    },
+    {
+      "request": {
+        "action": "log",
+        "message": "student log"
+      },
+      "java": {
+        "state": {
+          "public": null,
+          "private": null,
+          "total": null
+        },
+        "samePublic": true,
+        "samePrivate": true,
+        "sameTotal": true,
+        "logs": [
+          "student log"
+        ]
+      },
+      "cpp": {
+        "state": {
+          "public": null,
+          "private": null,
+          "total": null
+        },
+        "samePublic": true,
+        "samePrivate": true,
+        "sameTotal": true,
+        "logs": [
+          "student log"
+        ]
+      }
+    }
+  ],
+  "scope": "Actual SPHINCS.log null/empty/text with corrected null-safe Java println capture; no production changes. Supersedes the original full driver null-log fixture mismatch only."
+}

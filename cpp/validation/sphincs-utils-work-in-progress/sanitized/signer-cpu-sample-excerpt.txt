@@ -1,0 +1,82 @@
+Analysis of sampling minima_sphincs (pid 56123) every 1 millisecond
+Process:         minima_sphincs [56123]
+Path:            /Users/USER/*/minima_sphincs
+Load Address:    0x100d60000
+Identifier:      minima_sphincs
+Version:         0
+Code Type:       ARM64
+Platform:        macOS
+Parent Process:  Python [56113]
+Target Type:     live task
+
+Date/Time:       2026-09-11 09:07:15.574 +0100
+Launch Time:     2026-09-11 08:38:26.868 +0100
+OS Version:      macOS 26.5.1 (25F80)
+Report Version:  7
+Analysis Tool:   /usr/bin/sample
+
+Physical footprint:         2.1G
+Physical footprint (peak):  2.7G
+Idle exit:                  untracked
+----
+
+Call graph:
+    654 Thread_11031380   DispatchQueue_1: com.apple.main-thread  (serial)
+      654 start  (in dyld) + 6992  [0x185657e00]
+        654 main  (in minima_sphincs) + 6984  [0x100d64610]
+          654 minima::sphincs::SPHINCS::signMessage(minima::MiniData const*, std::shared_ptr<minima::MiniData>)  (in minima_sphincs) + 476  [0x100e656f0]
+            654 minima::sphincs::SPHINCS::signMessage(minima::MiniData const*) const  (in minima_sphincs) + 2336  [0x100e661d0]
+              654 minima::sphincs::fors::FORS::FORS(minima::MiniData const&)  (in minima_sphincs) + 92  [0x100e5e114]  FORS.hpp:11
+                654 minima::sphincs::fors::FORS::FORS(minima::MiniData const*)  (in minima_sphincs) + 92  [0x100e58aa0]  FORS.cpp:12
+                  654 minima::sphincs::fors::FORS::FORS(minima::MiniData const*)  (in minima_sphincs) + 1504  [0x100e579d4]  FORS.cpp:17
+                    654 std::make_shared[abi:nqe210106]<minima::sphincs::horst::HORST, minima::MiniData*, 0>(minima::MiniData*&&)  (in minima_sphincs) + 364  [0x100e58230]  shared_ptr.h:744
+                      654 std::allocate_shared[abi:nqe210106]<minima::sphincs::horst::HORST, minima::MiniData*, 0>(std::allocator<minima::sphincs::horst::HORST> const&, minima::MiniData*&&)  (in minima_sphincs) + 472  [0x100e5f624]  shared_ptr.h:736
+                        654 std::__shared_ptr_emplace<minima::sphincs::horst::HORST>::__shared_ptr_emplace[abi:nqe210106]<minima::MiniData*, 0>(std::allocator<minima::sphincs::horst::HORST>, minima::MiniData*&&)  (in minima_sphincs) + 92  [0x100e5f9a8]  shared_ptr.h:159
+                          654 std::__shared_ptr_emplace<minima::sphincs::horst::HORST>::__shared_ptr_emplace[abi:nqe210106]<minima::MiniData*, 0>(std::allocator<minima::sphincs::horst::HORST>, minima::MiniData*&&)  (in minima_sphincs) + 628  [0x100e60668]  shared_ptr.h:162
+                            654 std::allocator_traits<std::allocator<minima::sphincs::horst::HORST>>::construct[abi:nqe210106]<minima::sphincs::horst::HORST, minima::MiniData*, 0>(std::allocator<minima::sphincs::horst::HORST>&, minima::sphincs::horst::HORST*, minima::MiniData*&&)  (in minima_sphincs) + 100  [0x100e6093c]  allocator_traits.h:302
+                              654 std::__construct_at[abi:nqe210106]<minima::sphincs::horst::HORST, minima::MiniData*, minima::sphincs::horst::HORST*>(minima::sphincs::horst::HORST*, minima::MiniData*&&)  (in minima_sphincs) + 96  [0x100e60f2c]  construct_at.h:46
+                                654 std::construct_at[abi:nqe210106]<minima::sphincs::horst::HORST, minima::MiniData*, minima::sphincs::horst::HORST*>(minima::sphincs::horst::HORST*, minima::MiniData*&&)  (in minima_sphincs) + 212  [0x100e6100c]  construct_at.h:38
+                                  654 minima::sphincs::horst::HORST::HORST(minima::MiniData const*)  (in minima_sphincs) + 92  [0x100e36b48]  HORST.cpp:13
+                                    654 minima::sphincs::horst::HORST::HORST(minima::MiniData const*)  (in minima_sphincs) + 676  [0x100e35d50]  HORST.cpp:14
+                                      654 std::make_shared[abi:nqe210106]<minima::sphincs::horst::PublicKey, minima::sphincs::horst::PrivateKey&, 0>(minima::sphincs::horst::PrivateKey&)  (in minima_sphincs) + 364  [0x100e36674]  shared_ptr.h:744
+                                        654 std::allocate_shared[abi:nqe210106]<minima::sphincs::horst::PublicKey, minima::sphincs::horst::PrivateKey&, 0>(std::allocator<minima::sphincs::horst::PublicKey> const&, minima::sphincs::horst::PrivateKey&)  (in minima_sphincs) + 472  [0x100e41768]  shared_ptr.h:736
+                                          654 std::__shared_ptr_emplace<minima::sphincs::horst::PublicKey>::__shared_ptr_emplace[abi:nqe210106]<minima::sphincs::horst::PrivateKey&, 0>(std::allocator<minima::sphincs::horst::PublicKey>, minima::sphincs::horst::PrivateKey&)  (in minima_sphincs) + 92  [0x100e41aec]  shared_ptr.h:159
+                                            654 std::__shared_ptr_emplace<minima::sphincs::horst::PublicKey>::__shared_ptr_emplace[abi:nqe210106]<minima::sphincs::horst::PrivateKey&, 0>(std::allocator<minima::sphincs::horst::PublicKey>, minima::sphincs::horst::PrivateKey&)  (in minima_sphincs) + 628  [0x100e427ac]  shared_ptr.h:162
+                                              654 std::allocator_traits<std::allocator<minima::sphincs::horst::PublicKey>>::construct[abi:nqe210106]<minima::sphincs::horst::PublicKey, minima::sphincs::horst::PrivateKey&, 0>(std::allocator<minima::sphincs::horst::PublicKey>&, minima::sphincs::horst::PublicKey*, minima::sphincs::horst::PrivateKey&)  (in minima_sphincs) + 100  [0x100e42a80]  allocator_traits.h:302
+                                                654 std::__construct_at[abi:nqe210106]<minima::sphincs::horst::PublicKey, minima::sphincs::horst::PrivateKey&, minima::sphincs::horst::PublicKey*>(minima::sphincs::horst::PublicKey*, minima::sphincs::horst::PrivateKey&)  (in minima_sphincs) + 96  [0x100e43070]  construct_at.h:46
+                                                  654 std::construct_at[abi:nqe210106]<minima::sphincs::horst::PublicKey, minima::sphincs::horst::PrivateKey&, minima::sphincs::horst::PublicKey*>(minima::sphincs::horst::PublicKey*, minima::sphincs::horst::PrivateKey&)  (in minima_sphincs) + 144  [0x100e4310c]  construct_at.h:38
+                                                    654 minima::sphincs::horst::PublicKey::PublicKey(minima::sphincs::horst::PrivateKey const&)  (in minima_sphincs) + 92  [0x100e43178]  PublicKey.hpp:11
+                                                      654 minima::sphincs::horst::PublicKey::PublicKey(minima::sphincs::horst::PrivateKey const*)  (in minima_sphincs) + 92  [0x100e08294]  PublicKey.cpp:4
+                                                        573 minima::sphincs::horst::PublicKey::PublicKey(minima::sphincs::horst::PrivateKey const*)  (in minima_sphincs) + 2204  [0x100e0679c]  PublicKey.cpp:10
+                                                        + 572 minima::MMR::addEntry(minima::MMRData)  (in minima_sphincs) + 436  [0x100e07814]  MMR.hpp:54
+                                                        + ! 159 minima::MMR::addEntry(std::shared_ptr<minima::MMRData>)  (in minima_sphincs) + 1396  [0x100f86ec0]  MMR.cpp:50
+                                                        + ! : 159 minima::MMREntry::isRight() const  (in minima_sphincs) + 80  [0x100f8770c]  MMREntry.hpp:26
+                                                        + ! :   146 minima::MMREntry::isLeft() const  (in minima_sphincs) + 532  [0x100f67b48]  MMREntry.cpp:9
+                                                        + ! :   | 63 minima::MMREntryNumber::modulo(minima::MMREntryNumber const&) const  (in minima_sphincs) + 904  [0x100f5ccd0]  MMREntryNumber.cpp:20
+                                                        + ! :   | + 53 minima::BigInt::operator/(minima::BigInt const&) const  (in minima_sphincs) + 640  [0x100ecf6a4]  MiniNumber.cpp:282
+                                                        + ! :   | + ! 26 minima::BigInt::divmodMag(std::vector<unsigned char> const&, std::vector<unsigned char> const&, std::vector<unsigned char>&, std::vector<unsigned char>&)  (in minima_sphincs) + 2736  [0x100eccaf8]  MiniNumber.cpp:245
+                                                        + ! :   | + ! : 17 minima::BigInt::mulMag(std::vector<unsigned char> const&, std::vector<unsigned char> const&)  (in minima_sphincs) + 2692  [0x100ecbec8]  MiniNumber.cpp:228
+                                                        + ! :   | + ! : | 14 minima::stripLeadingZeros(std::vector<unsigned char> const&)  (in minima_sphincs) + 796  [0x100ec6330]  MiniNumber.cpp:24
+                                                        + ! :   | + ! : | + 14 std::vector<unsigned char>::vector[abi:nqe210106]<std::__wrap_iter<unsigned char const*>, 0>(std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>)  (in minima_sphincs) + 100  [0x100eada04]  vector.h:212
+                                                        + ! :   | + ! : | +   14 std::vector<unsigned char>::vector[abi:nqe210106]<std::__wrap_iter<unsigned char const*>, 0>(std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>)  (in minima_sphincs) + 376  [0x100ebaaf0]  vector.h:214
+                                                        + ! :   | + ! : | +     6 std::vector<unsigned char>::__init_with_size[abi:nqe210106]<std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>>(std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned long)  (in minima_sphincs) + 632  [0x100ebad78]  vector.h:593
+                                                        + ! :   | + ! : | +     ! 5 std::vector<unsigned char>::__construct_at_end<std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>>(std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned long)  (in minima_sphincs) + 644  [0x100de9c48]  vector.h:945
+                                                        + ! :   | + ! : | +     ! : 3 std::__uninitialized_allocator_copy[abi:nqe210106]<std::allocator<unsigned char>, std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned char*>(std::allocator<unsigned char>&, std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned char*)  (in minima_sphincs) + 376  [0x100dec57c]  uninitialized_algorithms.h:581
+                                                        + ! :   | + ! : | +     ! : | 1 __asan_memcpy  (in libclang_rt.asan_osx_dynamic.dylib) + 268  [0x102ae298c]
+                                                        + ! :   | + ! : | +     ! : | 1 std::__unwrap_range[abi:nqe210106]<std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>>(std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>)  (in minima_sphincs) + 68  [0x100decd6c]  unwrap_range.h:76
+                                                        + ! :   | + ! : | +     ! : | + 1 __asan_memcpy  (in libclang_rt.asan_osx_dynamic.dylib) + 40  [0x102ae28a8]
+                                                        + ! :   | + ! : | +     ! : | 1 std::__unwrap_range[abi:nqe210106]<std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>>(std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>)  (in minima_sphincs) + 80  [0x100decd78]  unwrap_range.h:76
+                                                        + ! :   | + ! : | +     ! : |   1 std::__unwrap_range_impl<std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>>::__unwrap[abi:nqe210106](std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>)  (in minima_sphincs) + 480  [0x100ded544]  unwrap_range.h:65
+                                                        + ! :   | + ! : | +     ! : 1 std::__uninitialized_allocator_copy[abi:nqe210106]<std::allocator<unsigned char>, std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned char*>(std::allocator<unsigned char>&, std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned char*)  (in minima_sphincs) + 320  [0x100dec544]  uninitialized_algorithms.h:580
+                                                        + ! :   | + ! : | +     ! : 1 std::__uninitialized_allocator_copy[abi:nqe210106]<std::allocator<unsigned char>, std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned char*>(std::allocator<unsigned char>&, std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned char*)  (in minima_sphincs) + 536  [0x100dec61c]  uninitialized_algorithms.h:582
+                                                        + ! :   | + ! : | +     ! :   1 std::__uninitialized_allocator_copy_impl[abi:nqe210106]<std::allocator<unsigned char>, unsigned char const*, unsigned char const*, unsigned char*>(std::allocator<unsigned char>&, unsigned char const*, unsigned char const*, unsigned char*)  (in minima_sphincs) + 668  [0x100ded030]  uninitialized_algorithms.h:543
+                                                        + ! :   | + ! : | +     ! :     1 std::allocator_traits<std::allocator<unsigned char>>::construct[abi:nqe210106]<unsigned char, unsigned char const&, 0>(std::allocator<unsigned char>&, unsigned char*, unsigned char const&)  (in minima_sphincs) + 80  [0x100dedf4c]  allocator_traits.h:303
+                                                        + ! :   | + ! : | +     ! 1 std::vector<unsigned char>::__construct_at_end<std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>>(std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned long)  (in minima_sphincs) + 712  [0x100de9c8c]  vector.h:946
+                                                        + ! :   | + ! : | +     !   1 std::vector<unsigned char>::_ConstructTransaction::~_ConstructTransaction[abi:nqe210106]()  (in minima_sphincs) + 84  [0x100dec71c]  vector.h:745
+                                                        + ! :   | + ! : | +     !     1 std::vector<unsigned char>::_ConstructTransaction::~_ConstructTransaction[abi:nqe210106]()  (in minima_sphincs) + 172  [0x100def338]  vector.h:746
+                                                        + ! :   | + ! : | +     5 std::vector<unsigned char>::__init_with_size[abi:nqe210106]<std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>>(std::__wrap_iter<unsigned char const*>, std::__wrap_iter<unsigned char const*>, unsigned long)  (in minima_sphincs) + 568  [0x100ebad38]  vector.h:592
+                                                        + ! :   | + ! : | +     ! 4 std::vector<unsigned char>::__vallocate[abi:nqe210106](unsigned long)  (in minima_sphincs) + 468  [0x100e1b5a4]  vector.h:574
+                                                        + ! :   | + ! : | +     ! : 4 std::__allocate_at_least[abi:nqe210106]<std::allocator<unsigned char>>(std::allocator<unsigned char>&, unsigned long)  (in minima_sphincs) + 32  [0x100df1d98]  allocate_at_least.h:41
+                                                        + ! :   | + ! : | +     ! :   4 std::allocator<unsigned char>::allocate[abi:nqe210106](unsigned long)  (in minima_sphincs) + 168  [0x100df1e60]  allocator.h:105
+                                                        + ! :   | + ! : | +     ! :     4 std::__libcpp_allocate[abi:nqe210106]<unsigned char>(std::__element_count, unsigned long)  (in minima_sphincs) + 144  [0x100df1efc]  allocate.h:61
+                                                        + ! :   | + ! : | +     ! :       2 wrap__Znwm  (in libclang_rt.asan_osx_dynamic.dylib) + 216  [0x102af3fb4]

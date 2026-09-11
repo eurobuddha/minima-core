@@ -28,5 +28,6 @@ public:
     Signature sign(const MiniData* data);
     Signature sign(const MiniData& data){return sign(&data);}
     bool verify(const MiniData& data,const Signature& signature) const;
+    bool verify(const MiniData& data,const Signature* signature) const;
 };
 }

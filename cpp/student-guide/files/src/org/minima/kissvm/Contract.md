@@ -131,3 +131,7 @@ Method navigation (declarations with bodies found in this file): [Contract](../.
 
 
 Pinned Java SHA-256: `45c4b194ae723e4d5ba56e011c0c203ba7ea0f5d166153c9f66e9b53d702b969`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## SPHINCS transaction error follow-up
+
+The contract exception formatter now recognizes JavaNullPointerException and retains its Java type/message. This preserves the source e.toString() behavior exposed by a malformed CHECKSIG signature; other unrepresented native exception categories remain open. See the [transaction lab](../../../../../new-tests/sphincs-transactions.md).

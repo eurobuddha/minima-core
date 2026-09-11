@@ -1,15 +1,12 @@
 #include "FORSSignature.hpp"
 #include "org/minima/utils/json/JSONArray.hpp"
 #include "support/NativeThrowable.hpp"
+#include "support/MiniDataVersion.hpp"
 namespace minima::sphincs::fors {
 namespace {
 template<class T> const T& at(const std::vector<std::shared_ptr<T>>& list,size_t index) {
     if(index>=list.size())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index "+std::to_string(index)+" out of bounds for length "+std::to_string(list.size()));
     if(!list[index])throw JavaNullPointerException("");return *list[index];
-}
-template<class T> std::optional<MiniData> miniDataVersion(const T& object) {
-    try {return MiniData(object.serialise());}
-    catch(const wire::IOException& error) {MinimaLogger::log(std::make_shared<NativeThrowable>(error));return std::nullopt;}
 }
 }
 json::JSONObject FORSSignature::toJSON() const {

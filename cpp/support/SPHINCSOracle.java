@@ -21,7 +21,7 @@ public class SPHINCSOracle extends FORSOracle {
         while((line=in.readLine())!=null) {
             JSONObject q=(JSONObject)JSONValue.parseWithException(line),r=new JSONObject();JSONArray logs=new JSONArray();PrintStream original=System.out;
             var oldPub=signer.getPublicKey();var oldPrivate=signer.getPrivateKey();var oldTotal=signer.getTotalWotsKeys();
-            System.setOut(new PrintStream(new ByteArrayOutputStream()){@Override public void println(String text){int pos=text.indexOf("] : ");logs.add(pos>=0?text.substring(pos+4):text);}});
+            System.setOut(new PrintStream(new ByteArrayOutputStream()){@Override public void println(String text){text=String.valueOf(text);int pos=text.indexOf("] : ");logs.add(pos>=0?text.substring(pos+4):text);}});
             try {
                 String action=(String)q.get("action");
                 if(action.equals("fresh"))signer=new SPHINCS();
