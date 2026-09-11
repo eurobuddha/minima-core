@@ -1,3 +1,42 @@
+# Current checkpoint — original signature tests
+
+Base HEAD: d9a98bab251c671e6e843406d121faf9f7e81a39. Goal ACTIVE and incomplete.
+New files: SIGNEDBYTests.cpp, MULTISIGTests.cpp and CHECKSIGTests.cpp under
+`test/org/minima/tests/kissvm/functions/sigs`. Inventory: **432 counterparts**
+(364 production, 68 tests), **25 absent** (5 production, 20 tests).
+All full parity labels remain not_verified. No production algorithm changed.
+
+Both builds pass new targets, minima_objects probe and real MinimaCoreCpp node.
+Both original suites PASS nine methods / 148 assertions per runtime: 13 SIGNEDBY,
+80 MULTISIG, 55 CHECKSIG. All random sizes, eleven MULTISIG entries/33 valid cases,
+two real TreeKey(seed,16,2) trees/eight CHECKSIG combinations and invalid fixtures
+retained. Independent random values are not byte-differential inputs.
+Supplemental fixed 32/64-byte seeds/messages compare both public keys/full wire
+signatures and cross-verify both writers in both runtimes with valid/altered
+messages and wrong keys: 14 comparisons / 28 independent checks per build PASS.
+Supplemental transcript SHA-256: b33b886cbac0c1691d7308e3def0c289c7f0906269ada3a8b2545deebdffd641.
+Normal CTest 9.75s; sanitizer 43.61s. Full suite not repeated; 274 registered tests.
+
+Lab: student-guide/new-tests/original-signature-tests.md. Evidence/remaining list:
+validation/original-signature-tests-work-in-progress. Three lessons updated; all
+457 pages retained. NEXT: transaction input/output original tests, then remaining
+expressions/statements/tokens. Four production JNI dependencies still lack native
+bodies/ABI in inspected candidates; independent work remains possible. Inactive
+P2PSwapLink and empty TxPoWProcessor test bodies require faithful treatment, not
+invented live behavior or claimed assertion coverage. Full API/runtime audit remains.
+
+Magic normal session 55636 is terminal exit 0 (saved 9ae7039 binary); source demo
+matches Java. Sanitizer session 41123 last confirmed live in state checkpoint;
+poll existing handle, no restart from buffered output. Do not block new files on it.
+
+Preserve unrelated graphify work and externally committed Java SQL/JAR f7f0e08.
+Commit only cpp, no push, upstream-study pinned. Preceding verified recovery bundle:
+local-backups/MinimaCoreC++-20260911T182319Z.bundle, SHA-256
+54513f178c26d05ecaea0b30470bf73f5327dc7c761ebd9ccd0fdac433e6f104,
+31 checkpoint files byte-verified in a fresh recovery clone.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — original state tests
 
 Base HEAD: d87a7467ad168efefa62aba35739d6edc9b68e5d. Goal ACTIVE and incomplete.

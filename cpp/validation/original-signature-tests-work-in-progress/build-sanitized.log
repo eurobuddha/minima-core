@@ -1,0 +1,19 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/SIGNEDBYTests.dir/test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.cpp.o
+[100%] Linking CXX executable SIGNEDBYTests
+[100%] Built target SIGNEDBYTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/MULTISIGTests.dir/test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.cpp.o
+[100%] Linking CXX executable MULTISIGTests
+[100%] Built target MULTISIGTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/CHECKSIGTests.dir/test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.cpp.o
+[100%] Linking CXX executable CHECKSIGTests
+[100%] Built target CHECKSIGTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_objects.dir/support/objects.cpp.o
+[100%] Linking CXX executable minima_objects
+[100%] Built target minima_objects
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Built target MinimaCoreCpp

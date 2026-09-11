@@ -860,9 +860,9 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [CHECKSIGTests.java](files/test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.md) | test explanation | unported |
-| [MULTISIGTests.java](files/test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.md) | test explanation | unported |
-| [SIGNEDBYTests.java](files/test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.md) | test explanation | unported |
+| [CHECKSIGTests.java](files/test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.md) | test explanation | implemented_partial |
+| [MULTISIGTests.java](files/test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.md) | test explanation | implemented_partial |
+| [SIGNEDBYTests.java](files/test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/functions/state
 

@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 429 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 432 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -435,9 +435,9 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.java` | `test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/sha/SHA2Tests.java` | `test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/sha/SHA3Tests.java` | `test/org/minima/tests/kissvm/functions/sha/SHA3Tests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.java` | `test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.java` | `test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.cpp` | unported | — |
-| `test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.java` | `test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.java` | `test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.java` | `test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.cpp` | implemented_partial | — |
+| `test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.java` | `test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/state/PREVSTATETests.java` | `test/org/minima/tests/kissvm/functions/state/PREVSTATETests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/state/SAMESTATETests.java` | `test/org/minima/tests/kissvm/functions/state/SAMESTATETests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/state/STATETests.java` | `test/org/minima/tests/kissvm/functions/state/STATETests.cpp` | implemented_partial | — |

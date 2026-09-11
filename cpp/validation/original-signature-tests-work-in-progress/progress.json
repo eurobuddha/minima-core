@@ -1,0 +1,45 @@
+{
+  "base_head": "d9a98bab251c671e6e843406d121faf9f7e81a39",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.cpp",
+    "test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.cpp",
+    "test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.cpp"
+  ],
+  "counterparts": 432,
+  "production_counterparts": 364,
+  "test_counterparts": 68,
+  "remaining": 25,
+  "remaining_production": 5,
+  "remaining_tests": 20,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "builds": {
+    "normal": "PASS new targets, existing minima_objects probe and real MinimaCoreCpp node target",
+    "sanitized": "PASS new targets, existing minima_objects probe and real MinimaCoreCpp node target",
+    "full_suite": "not repeated; 274 registered tests"
+  },
+  "tests": {
+    "original_methods": 9,
+    "original_assertions_per_runtime": 148,
+    "SIGNEDBYTests_assertions": 13,
+    "MULTISIGTests_assertions": 80,
+    "CHECKSIGTests_assertions": 55,
+    "supplemental_comparisons_per_build": 14,
+    "independent_checks_per_build": 28,
+    "supplemental_transcript_sha256": "b33b886cbac0c1691d7308e3def0c289c7f0906269ada3a8b2545deebdffd641",
+    "normal": "PASS",
+    "sanitized": "PASS"
+  },
+  "scope": "All active original fixtures and assertions, with random values generated independently per runtime. SIGNEDBY membership; MULTISIG retains eleven sizes, all 33 valid cases and the duplicated negative fixture; CHECKSIG retains two real TreeKey(seed,16,2) trees and all eight valid/mismatched combinations, plus 35 rejection assertions. Supplemental fixed 32/64-byte seeds and messages compare public keys/signature bytes and cross-verify both writers with valid/changed data and wrong public key. No generic ERROR replies allowed. No full signature API, malformed-wire, aliasing/concurrency or node parity claim.",
+  "blockers": [
+    "Four production JNI-dependent files need native bodies/ABI or authoritative vectors absent from inspected candidates; independent conversions can continue.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Preserve actual source behavior without inventing live APIs or crediting empty assertions."
+  ],
+  "next_action": "Continue missing transaction input/output tests using native functions and pinned fixtures, then expressions/statements/tokens. Complete API/runtime parity audit remains after counterparts.",
+  "long_demos": {
+    "normal": "55636 terminal exit 0; saved 9ae7039 full Magic replay passed at SHA checkpoint.",
+    "sanitized": "41123 confirmed live at previous state checkpoint; poll existing handle, no restart from buffered output. Saved 9ae7039 binary, not current code."
+  }
+}
