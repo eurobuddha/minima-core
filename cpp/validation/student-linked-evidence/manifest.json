@@ -22,7 +22,7 @@
     },
     {
       "previous_link": "build/transaction-input-commands-syntax-baseline-results.json",
-      "evidence": "validation/student-linked-evidence/build/transaction-input-commands-syntax-baseline-results.json",
+      "evidence": "validation/student-linked-evidence/reports/transaction-input-commands-syntax-baseline-results.json",
       "sha256": "c659ef1c9af6708d9cad6ca670123f4d1d6112d379e375ac1f99c9cdea4dc351",
       "disposition": "snapshot of existing build report; not a new test run"
     },
@@ -64,7 +64,7 @@
     },
     {
       "previous_link": "build/kiss-differential-results.json",
-      "evidence": "validation/student-linked-evidence/build/kiss-differential-results.json",
+      "evidence": "validation/student-linked-evidence/reports/kiss-differential-results.json",
       "sha256": "74ddfd1c8ba4958c87c9287c3489e7a5eef47c9220b5f10bf8c5786d0aba9b1a",
       "disposition": "snapshot of existing build report; not a new test run"
     },
@@ -82,7 +82,7 @@
     },
     {
       "previous_link": "build/coin-db-results.json",
-      "evidence": "validation/student-linked-evidence/build/coin-db-results.json",
+      "evidence": "validation/student-linked-evidence/reports/coin-db-results.json",
       "sha256": "51cec34100ff18b590425be717f699bdd0c805b2188b475915f685be3e883d4d",
       "disposition": "snapshot of existing build report; not a new test run"
     },
@@ -94,7 +94,7 @@
     },
     {
       "previous_link": "build/onchain-db-results.json",
-      "evidence": "validation/student-linked-evidence/build/onchain-db-results.json",
+      "evidence": "validation/student-linked-evidence/reports/onchain-db-results.json",
       "sha256": "ee0e97f806c9c954a7592975d0f7eb98f080c8823f438b16f3976fe0973e066c",
       "disposition": "snapshot of existing build report; not a new test run"
     },

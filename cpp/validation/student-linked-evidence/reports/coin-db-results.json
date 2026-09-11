@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 1350,
+  "operations": 4318,
+  "effects": 28803,
+  "failures": [],
+  "scope": "Actual pinned CoinDB and Coin codec, static instance/held-owner identity, temporary filesystem deletion, constructor publication, schema/prepared statements, SQL/runtime failures, partial/null rows, malformed/truncated coins and serialization failure timing. JDBC calls are recorded; no native H2 storage or full node integration. Java NPE expression details and logger prefixes/stacks excluded."
+}

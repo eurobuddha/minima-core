@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 855,
+  "operations": 3639,
+  "driver_calls": 29167,
+  "failures": [],
+  "scope": "Actual pinned TxPoWOnChainDB schema/prepared SQL, wipe, add, lookup, both block query overloads, first/last/date, count and cleanup through recording JDBC/native drivers. Exact statement identities, call order, result/null/partial-error behavior, checked versus runtime failures, long/int wrap and parameters. Live clock parameters validated against call windows before normalization; Java-specific NPE text and logger prefixes/stack traces excluded. Real native H2 SQL execution, persistence and full runtime integration remain absent."
+}

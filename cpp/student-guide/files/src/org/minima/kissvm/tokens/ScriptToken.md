@@ -27,7 +27,7 @@ C++ stores the same integer constants and strings, including the source spelling
 
 For each tokenized script, the values/tokens harness records numeric type, raw token text and toString. This checks the three views together. Unknown manually constructed type codes are not claimed as directly tested by this driver.
 
-The actual [KissOracle.java](../../../../../../../support/KissOracle.java) and [kiss.cpp](../../../../../../../support/kiss.cpp) execute the operations built by [kiss_differential.py](../../../../../../../tools/kiss_differential.py). Their output contains value type, text and underlying HEX/string bytes or number wire bytes. Generic errors are normalized to ERROR; parser errors retain their message. The existing [normal report](../../../../../../../validation/student-linked-evidence/build/kiss-differential-results.json) records 1,451 cases passed and zero failures; no new run was performed for this lesson.
+The actual [KissOracle.java](../../../../../../../support/KissOracle.java) and [kiss.cpp](../../../../../../../support/kiss.cpp) execute the operations built by [kiss_differential.py](../../../../../../../tools/kiss_differential.py). Their output contains value type, text and underlying HEX/string bytes or number wire bytes. Generic errors are normalized to ERROR; parser errors retain their message. The existing [normal report](../../../../../../../validation/student-linked-evidence/reports/kiss-differential-results.json) records 1,451 cases passed and zero failures; no new run was performed for this lesson.
 
 ## Dependencies and reading map
 

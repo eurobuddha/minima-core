@@ -27,7 +27,7 @@ C++ retains SQL text/call order through SqlDB services, uses atomic retention st
 
 ## What the tests tell us
 
-The [Java oracle](../../../../../../../../support/OnChainDBOracle.java), [native harness](../../../../../../../../support/onchain_db.cpp) and [driver](../../../../../../../../tools/onchain_db_differential.py) exercise all query overloads, null/partial rows, count narrowing, checked versus runtime failures at early JDBC calls, wipe/recreate, retention extremes, two clock calls in hard cleanup and seeded sequences. The inspected [report](../../../../../../../../validation/student-linked-evidence/build/onchain-db-results.json) records 855 programs, 3,639 operations and 29,167 driver calls with zero failures. JDBC is recorded rather than executed by a native H2 engine. Clock arithmetic is validated before normalization; NPE expression text and logger prefixes/stacks are excluded.
+The [Java oracle](../../../../../../../../support/OnChainDBOracle.java), [native harness](../../../../../../../../support/onchain_db.cpp) and [driver](../../../../../../../../tools/onchain_db_differential.py) exercise all query overloads, null/partial rows, count narrowing, checked versus runtime failures at early JDBC calls, wipe/recreate, retention extremes, two clock calls in hard cleanup and seeded sequences. The inspected [report](../../../../../../../../validation/student-linked-evidence/reports/onchain-db-results.json) records 855 programs, 3,639 operations and 29,167 driver calls with zero failures. JDBC is recorded rather than executed by a native H2 engine. Clock arithmetic is validated before normalization; NPE expression text and logger prefixes/stacks are excluded.
 
 ## Dependencies and reading map
 

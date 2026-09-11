@@ -26,7 +26,7 @@ C++ uses an explicit BooleanValue subclass with the same type tag and two static
 
 The value/type/verify/same cases include TRUE, FALSE, lowercase true and mixed Boolean/number/string types. The execution suite additionally tests RETURN/IF/ASSERT requiring Boolean rather than automatically coercing number 1.
 
-The actual [KissOracle.java](../../../../../../../support/KissOracle.java) and [kiss.cpp](../../../../../../../support/kiss.cpp) execute the operations built by [kiss_differential.py](../../../../../../../tools/kiss_differential.py). Their output contains value type, text and underlying HEX/string bytes or number wire bytes. Generic errors are normalized to ERROR; parser errors retain their message. The existing [normal report](../../../../../../../validation/student-linked-evidence/build/kiss-differential-results.json) records 1,451 cases passed and zero failures; no new run was performed for this lesson.
+The actual [KissOracle.java](../../../../../../../support/KissOracle.java) and [kiss.cpp](../../../../../../../support/kiss.cpp) execute the operations built by [kiss_differential.py](../../../../../../../tools/kiss_differential.py). Their output contains value type, text and underlying HEX/string bytes or number wire bytes. Generic errors are normalized to ERROR; parser errors retain their message. The existing [normal report](../../../../../../../validation/student-linked-evidence/reports/kiss-differential-results.json) records 1,451 cases passed and zero failures; no new run was performed for this lesson.
 
 ## Dependencies and reading map
 
