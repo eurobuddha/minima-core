@@ -1,0 +1,9 @@
+{
+  "stdout": "Start SPHINCS..\nSPHINCS public key : 0xDBCD39B760A213147B1CB3829B65E98D57EFCE11B4C72E0A431FE4013FB050BF\nSPHINCS total WOTS keys : 1358954496\nSignature Size : 20667\nVerify : true\n",
+  "native_stderr": "",
+  "returncodes": [
+    0,
+    0
+  ],
+  "UBSAN_OPTIONS": "halt_on_error=1"
+}

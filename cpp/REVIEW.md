@@ -1,3 +1,26 @@
+## Resumed SPHINCS sanitizer review
+
+### Summary
+
+The previously unfinished sanitizer signer run now completes all 299 live
+comparisons and 1,377 independent checks in 3,309.726 seconds. The two saved
+signature records are explicitly rechecked; only the missing signature is counted
+as newly generated. Both actual source mains match and process stderr is empty.
+
+### Findings
+
+No new production change was needed. The original timeout and comparison evidence
+remain retained. These results close the resumed validation run, not the listed
+mutable-array, subclass, null-internal, concurrency or full-node parity gaps.
+The separate full sanitized SPHINCS command suite remains active.
+
+### Verdict
+
+Approve this validation checkpoint. See the [final evidence](validation/sphincs-work-in-progress/sanitized/sphincs-resumed-differential-results.json).
+Earlier progress notes below are historical where superseded by this result.
+
+---
+
 ## MySQL coin-index command review
 
 ### Summary

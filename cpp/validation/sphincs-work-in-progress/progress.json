@@ -2,7 +2,7 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "previous_head": "06b81aa9a843ea9600689c8f3718ae5d80a8f4fe",
   "goal_complete": false,
-  "status": "Normal full signer completed. Original sanitizer timed out on third signature after158matches; two completed pairs retained. Unfinished signer work resumed separately with3600stimeout.",
+  "status": "Resumed sanitizer validation passed299comparisons/1377independent assertions and actualsource mains; two saved signatures rechecked, one missing full signature newly generated. Original timeout preserved.",
   "mapped": 457,
   "counterparts": 396,
   "production_counterparts": 352,
@@ -15,9 +15,7 @@
   "full_sanitized_build": "passed",
   "full_ctest_suite_run": false,
   "normal_regressions": "object 9464 and envelope 1449 passed; 46.80 seconds total",
-  "active_sessions": {
-    "resumed_sanitized_signer": 41760
-  },
+  "active_sessions": {},
   "terminal_sessions": {
     "initial_normal_driver": 33552,
     "normal_fixture_build": 63719,
@@ -25,14 +23,15 @@
     "full_sanitized_build": 45525,
     "sanitized_regressions": 69424,
     "normal_signer": 3008,
-    "original_sanitized_signer": 31941
+    "original_sanitized_signer": 31941,
+    "resumed_sanitized_signer": 41760
   },
   "notes": [
     "Revalidate live handles rather than inferring process status from this saved snapshot.",
     "Initial driver expectation used 0x for empty MiniData display; Java and native both returned empty string. Fixed expectation, preserved failure log, confirmed original process terminal before restart.",
     "Full-size signing uses all 1048576 FORS leaves and TreeKey192/4. No parameter reduction.",
     "FORS prior checkpoint final reports and explicit sanitized demo audit are now saved and passed.",
-    "No full signer pass claimed until reports and actual source mains finish."
+    "Resumed suite passed in3309.726seconds; both actual mains matched. Full node and listed API gaps remain unverified."
   ],
   "sanitized_regressions": "object 9464 and envelope 1449 passed; 111.79 seconds total",
   "ctest_entries": 242,
@@ -50,7 +49,8 @@
     "new_signatures": 1,
     "saved_signature_records": 2,
     "native_runner_stderr": "",
-    "source_mains": "running",
-    "final_report_produced": false
-  }
+    "source_mains": "matched",
+    "final_report_produced": true
+  },
+  "resumed_final_report": "sanitized/sphincs-resumed-differential-results.json"
 }

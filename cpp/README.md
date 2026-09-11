@@ -59,7 +59,7 @@ SPHINCSUtils now builds signing messages, installs all 66 signature state values
 and recomputes coin/transaction IDs. Both VMs accept the normal full-size signed
 transaction in 937 operations. The corrected 268-case replay and affected
 regressions pass in both builds. Full transaction signing has completed in both
-builds; the separate full signer sanitizer run remains active.
+builds; the resumed full signer sanitizer suite has also passed.
 See the [transaction lab](student-guide/new-tests/sphincs-transactions.md) and
 [evidence](validation/sphincs-utils-work-in-progress/progress.json).
 
@@ -67,8 +67,9 @@ SPHINCS now composes the actual TreeKey192/4 and full-size FORS implementations.
 Both complete builds and object/key/envelope regressions pass.
 The normal signer run completed its signatures and mains; its one null-log
 fixture error is resolved by a separate audit. The original sanitizer run timed out on its third signature after158matching
-cases and two matching signature pairs. Its unfinished work is resuming with
-a longer timeout and separate evidence. The
+cases and two matching signature pairs. The resumed suite now passes all 299 live
+comparisons, 1,377 independent assertions and both actual source mains. It explicitly
+rechecks those two saved records and generates the missing full-size signature. The
 [signer lab](student-guide/new-tests/sphincs-signer.md) and
 [current evidence](validation/sphincs-work-in-progress/progress.json) distinguish
 compiled code from completed validation.
@@ -79,7 +80,7 @@ incremental writers so later failures keep their output prefix. Both full builds
 pass 1,449 envelope comparisons and 158 independent assertions, plus the 9,464-case
 object regression. See the [student lab](student-guide/new-tests/sphincs-signature-envelope.md)
 and [evidence](validation/sphincs-signature-work-in-progress). The SPHINCS signer now compiles;
-its full-size differential validation and full node parity remain unfinished.
+its remaining API gaps and full node parity remain unfinished.
 
 The two FORS counterparts compile with sixteen complete HORST trees (1,048,576
 inner leaves), nested signatures, and the shared incremental MMR proof writer.

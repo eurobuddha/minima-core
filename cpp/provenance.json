@@ -3765,13 +3765,14 @@
     },
     "reuse": "Direct composition of current TreeKey192/4, Crypto/MiniData/BigInt, FORS and SPHINCSSignature. Nullable public-key setter/comparison and invalid WOTS-length exception minimally aligned with pinned Java. Oracle extends existing FORS/HORST fixtures; driver reuses ForestRunner, checked_demo and independent MMR wire/proof helpers.",
     "sibling_search": "Read /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/crypto/TreeKey.hpp and tests/crypto/test_treekey.cpp: binary2^depth/raw hash nodes/different WOTS representation cannot replace pinned indexed MMR192/4. No sibling SPHINCS implementation found.",
-    "validation": "Normal actual full signatures, independent checks and both mains completed; original case299 fixture null-log error resolved by separate3-case audit. Original sanitizer timed out after158matching comparisons/two signature pairs; resumed validation remains active with separate artifacts.",
+    "validation": "Normal actual full signatures and mains completed; null-log fixture failure resolved separately. Resumed sanitizer suite passed299/299comparisons and1377assertions with actualsource mains matched,3309.726s. Original timeout retained.",
     "evidence": "validation/sphincs-work-in-progress",
     "full_parity_verified": false,
     "log_fixture_correction": "Null println argument in Java fixture normalized with String.valueOf; explicit null/empty/text audits passed in both builds. Original full run records one fixture mismatch, superseded only by saved log audit. No production signer change.",
     "resumed_validation_driver_sha256": "fd4596b542e13eb3e2167e3d15fbd3be0ccd3461f13b591dca01ffb4b4285606",
-    "sanitized_timeout_and_resume": "Original31941 terminal1:1800s response timeout on empty-message thirdsignature, cleanup120s timedoutandkilledchild. First158cases/twosignatures matched. Resumed41760using saved initial-two-signatures.json,3600sresponse/demo timeout, separate sphincs-resumed artifacts; no fullpassclaim.",
-    "resumed_comparison_phase": "41760 completed299live comparisons with0mismatches; two explicit saved signatures plus one newly generated full signature; process diagnostics empty. Actual source mains stillrunning; no finalsanitizer suite result."
+    "sanitized_timeout_and_resume": "Original31941 terminal1:1800s response timeout on empty-message thirdsignature, cleanup120s timedoutandkilledchild. First158cases/twosignatures matched. Resumed41760using saved initial-two-signatures.json,3600sresponse/demo timeout, separate sphincs-resumed artifacts; no fullpassclaim. Resumed41760nowterminal0: complete report saved.",
+    "resumed_comparison_phase": "Final299/299livecomparisons,1377checks,2savedrecords rechecked,1newfullsignature,actualmainsmatched,emptydiagnostics.",
+    "resumed_final_report": "validation/sphincs-work-in-progress/sanitized/sphincs-resumed-differential-results.json"
   },
   "sphincs_utils_work_in_progress": {
     "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",

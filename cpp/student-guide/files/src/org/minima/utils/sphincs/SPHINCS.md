@@ -1,6 +1,6 @@
 # SPHINCS — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, native composition, and full-size validation in progress.
+**Teaching status:** Authored explanation of the Java source, native composition, and completed full-size validation and remaining limits.
 
 **Port status:** `implemented_partial`; parity `not_verified`.
 
@@ -44,7 +44,7 @@ Python independently checks leaf selection, the decimal-text-as-hex encoding,
 selected secrets, all FORS paths, selected WOTS keys, chains, and MMR paths.
 
 The normal and sanitized full builds pass. Object/key and envelope regressions also pass in both builds; see [current evidence](../../../../../../../validation/sphincs-work-in-progress/progress.json).
-Full signer validation is still in progress; no final pass is claimed here.
+The resumed full-size sanitizer suite and actual source mains now pass; details below.
 
 ## Limits and a useful next test
 
@@ -66,4 +66,4 @@ pairs matched; these records and the timeout log are preserved. The resumed
 suite uses those records explicitly as saved observations, rechecks their proofs
 and actual verifiers, then generates the missing full-size signature and runs the
 source mains. Its 3,600-second per-operation timeout changes only test orchestration.
-No full sanitizer completion is claimed until that resumed run finishes.
+The resumed sanitizer suite finished successfully: 299 live comparisons and 1,377 independent assertions passed in 3,309.726 seconds. It rechecked the two saved signature records, generated the missing full-size signature, and matched both actual source demonstrations. Native process diagnostics were empty. The original timeout remains recorded; these results do not certify the remaining API and full-node gaps.

@@ -1,0 +1,32 @@
+{
+  "cases": 299,
+  "groups": {
+    "default": 1,
+    "uninitialized-sign": 1,
+    "null-sign": 1,
+    "null-seed": 2,
+    "short-private": 128,
+    "null-private": 2,
+    "initialize": 1,
+    "seed-derivation": 3,
+    "private-roundtrip-extra": 3,
+    "failed-reinitialize": 1,
+    "failed-seed-reinitialize": 1,
+    "cross-writer": 6,
+    "wrong-message": 6,
+    "wrong-public": 6,
+    "full-sign": 1,
+    "null-order": 32,
+    "null-envelope": 1,
+    "all-null": 1,
+    "wots-count": 7,
+    "wots-count-before-null-public": 2,
+    "wots-tamper": 8,
+    "wots-length": 16,
+    "root-tamper": 2,
+    "fors-tamper": 64,
+    "log": 3
+  },
+  "failures": [],
+  "independent_assertions": 1375
+}
