@@ -70,12 +70,30 @@ Both builds also pass six actual node processes for this command, preserving
 eight keys at uses 263 and signing once at 264. A shared-helper null-host mismatch
 was corrected in connect; the existing 532-case network-startup suite also passes.
 
+The [old-backup lab](../../../../../../../../student-guide/new-tests/restore-sync-remote.md)
+and [remote driver](../../../../../../../../tools/native_restore_sync_remote.py)
+extend this to actual nodes talking to a loopback archive. The fixture retimes a
+saved solo genesis to timestamp zero, recomputes its ID, and verifies unchanged
+transaction body and MMR bytes plus a valid block difficulty. Both runtimes produce
+identical saved tree and IBD encodings. The real backup command writes each input.
+
+The server records the exact requests. A nonempty retained-block reply advances
+requests from -1 (preflight) to 1 and then 2. An empty archive stops at request 1.
+Failed preflight tries -1 three times and leaves restored key uses at seven;
+failure at request 2 comes after the increment and leaves them at 263. Both return
+the same restart message. Thus checking only that message would miss an essential
+state difference. Opposite-runtime reopen checks every key, chain and coin status,
+valid signing, altered-data rejection and exactly one signing-use increment.
+All eight workflows pass with 19 actual node processes in each build. See the
+[saved remote results](../../../../../../../../validation/restoresync-remote-work-in-progress).
+
 ## Limits
 
 Old backups can be partly restored before host parsing/connection fails. Exact-height
 polling can fail if the processor passes the expected end height; late errors may
-still lead to a success response. Successful remote synchronization, memory-threshold
-resets, cascades, multi-batches, exact age-boundary timing, partial stream failure
+still lead to a success response. The retained genesis exercises duplicate-block
+processing; it does not prove advancement to a new height. Memory-threshold
+resets, cascades, multiple nonempty batches, exact age-boundary timing, partial stream failure
 boundaries and full public API parity still require validation.
 
 ## Check your understanding

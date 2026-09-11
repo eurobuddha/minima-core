@@ -1,0 +1,211 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Actual node key creation: 5 keys
+Actual node key creation: 8 keys
+Actual node key creation: 8 keys
+Verified remote restore: {"restorer": "java", "writer_and_reopen": "cpp", "mode": "nonempty", "request_starts": [-1, 1, 2], "exact_request_frames": true, "seconds": 1.131, "keys": 8, "restored_uses": 263, "chain_and_coins_preserved": true, "graceful_shutdown": true, "signature_valid": true, "altered_data_rejected": true, "signing_use_increment": 1}
+Actual node key creation: 8 keys
+Verified remote restore: {"restorer": "java", "writer_and_reopen": "cpp", "mode": "empty", "request_starts": [-1, 1], "exact_request_frames": true, "seconds": 1.103, "keys": 8, "restored_uses": 263, "chain_and_coins_preserved": true, "graceful_shutdown": true, "signature_valid": true, "altered_data_rejected": true, "signing_use_increment": 1}
+Actual node key creation: 8 keys
+Verified remote restore: {"restorer": "java", "writer_and_reopen": "cpp", "mode": "preflight_failed", "request_starts": [-1, -1, -1], "exact_request_frames": true, "seconds": 21.085, "keys": 8, "restored_uses": 7, "chain_and_coins_preserved": true, "graceful_shutdown": true, "signature_valid": true, "altered_data_rejected": true, "signing_use_increment": 1}
+Actual node key creation: 8 keys
+Verified remote restore: {"restorer": "java", "writer_and_reopen": "cpp", "mode": "later_failed", "request_starts": [-1, 1, 2, 2, 2], "exact_request_frames": true, "seconds": 21.059, "keys": 8, "restored_uses": 263, "chain_and_coins_preserved": true, "graceful_shutdown": true, "signature_valid": true, "altered_data_rejected": true, "signing_use_increment": 1}
+Actual node key creation: 8 keys
+Verified remote restore: {"restorer": "cpp", "writer_and_reopen": "java", "mode": "nonempty", "request_starts": [-1, 1, 2], "exact_request_frames": true, "seconds": 1.121, "keys": 8, "restored_uses": 263, "chain_and_coins_preserved": true, "graceful_shutdown": true, "signature_valid": true, "altered_data_rejected": true, "signing_use_increment": 1}
+Actual node key creation: 8 keys
+Verified remote restore: {"restorer": "cpp", "writer_and_reopen": "java", "mode": "empty", "request_starts": [-1, 1], "exact_request_frames": true, "seconds": 1.225, "keys": 8, "restored_uses": 263, "chain_and_coins_preserved": true, "graceful_shutdown": true, "signature_valid": true, "altered_data_rejected": true, "signing_use_increment": 1}
+Actual node key creation: 8 keys
+Verified remote restore: {"restorer": "cpp", "writer_and_reopen": "java", "mode": "preflight_failed", "request_starts": [-1, -1, -1], "exact_request_frames": true, "seconds": 21.188, "keys": 8, "restored_uses": 7, "chain_and_coins_preserved": true, "graceful_shutdown": true, "signature_valid": true, "altered_data_rejected": true, "signing_use_increment": 1}
+Actual node key creation: 8 keys
+Verified remote restore: {"restorer": "cpp", "writer_and_reopen": "java", "mode": "later_failed", "request_starts": [-1, 1, 2, 2, 2], "exact_request_frames": true, "seconds": 21.174, "keys": 8, "restored_uses": 263, "chain_and_coins_preserved": true, "graceful_shutdown": true, "signature_valid": true, "altered_data_rejected": true, "signing_use_increment": 1}
+{
+  "passed": true,
+  "node_processes": 19,
+  "encodings": {
+    "tree_sha256": "8886f1c4d9c25afab019d2bc51ef4cd555a468ae896f5b9d0dd6c7c51233f71d",
+    "block_sha256": "b3f547f0df5024352890da69e410f1ee00c6e0a834d1ad5a5785db458c16a6cc",
+    "nonempty_ibd_bytes": 872,
+    "java_cpp_identical": true,
+    "body_unchanged": true,
+    "mmr_unchanged": true
+  },
+  "checks": [
+    {
+      "restorer": "java",
+      "writer_and_reopen": "cpp",
+      "mode": "nonempty",
+      "request_starts": [
+        -1,
+        1,
+        2
+      ],
+      "exact_request_frames": true,
+      "seconds": 1.131,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "java",
+      "writer_and_reopen": "cpp",
+      "mode": "empty",
+      "request_starts": [
+        -1,
+        1
+      ],
+      "exact_request_frames": true,
+      "seconds": 1.103,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "java",
+      "writer_and_reopen": "cpp",
+      "mode": "preflight_failed",
+      "request_starts": [
+        -1,
+        -1,
+        -1
+      ],
+      "exact_request_frames": true,
+      "seconds": 21.085,
+      "keys": 8,
+      "restored_uses": 7,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "java",
+      "writer_and_reopen": "cpp",
+      "mode": "later_failed",
+      "request_starts": [
+        -1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "exact_request_frames": true,
+      "seconds": 21.059,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "cpp",
+      "writer_and_reopen": "java",
+      "mode": "nonempty",
+      "request_starts": [
+        -1,
+        1,
+        2
+      ],
+      "exact_request_frames": true,
+      "seconds": 1.121,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "cpp",
+      "writer_and_reopen": "java",
+      "mode": "empty",
+      "request_starts": [
+        -1,
+        1
+      ],
+      "exact_request_frames": true,
+      "seconds": 1.225,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "cpp",
+      "writer_and_reopen": "java",
+      "mode": "preflight_failed",
+      "request_starts": [
+        -1,
+        -1,
+        -1
+      ],
+      "exact_request_frames": true,
+      "seconds": 21.188,
+      "keys": 8,
+      "restored_uses": 7,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "cpp",
+      "writer_and_reopen": "java",
+      "mode": "later_failed",
+      "request_starts": [
+        -1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "exact_request_frames": true,
+      "seconds": 21.174,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    }
+  ],
+  "failures": [],
+  "scope": "Actual pinned Java/native nodes and H2; deliberately retimed valid solo genesis, unchanged body/MMR, identical codecs. Opposite-runtime backups and reopen; real loopback preflight, nonempty retained genesis IBD, empty archive, failed preflight/later batch with real ten-second retries, exact request frames, key-use effects and signing. No new-height advancement, cascades, multiple nonempty batches, memory resets, delayed read/connect timeouts or full parity claim."
+}

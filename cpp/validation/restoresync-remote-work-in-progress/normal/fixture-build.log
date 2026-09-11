@@ -1,0 +1,8 @@
+-- Configuring done (0.3s)
+-- Generating done (0.5s)
+-- Build files have been written to: /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+[ 96%] Built target minima_file_port
+[ 98%] Built target minima_native_h2
+[ 98%] Building CXX object CMakeFiles/archive_command_runtime.dir/support/archive_command.cpp.o
+[ 98%] Linking CXX executable archive_command_runtime
+[100%] Built target archive_command_runtime

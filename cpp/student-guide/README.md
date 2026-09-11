@@ -6,7 +6,7 @@ Start with [how to study this port](how-to-study-this-port.md), then use the [co
 
 ## Read the labels carefully
 
-**Port status** describes code. The current totals are recorded in the [source map](../source-map.json) and [coverage audit](coverage-audit.json). Every counterpart is still partial and every file's full behavioral parity remains `not_verified`. A native entry point and H2/MVStore storage engine remain unfinished.
+**Port status** describes code. The current totals are recorded in the [source map](../source-map.json) and [coverage audit](coverage-audit.json). Every counterpart is still partial and every file's full behavioral parity remains `not_verified`. The native entry point now runs solo nodes with the optional native H2 provider; complete node behavior remains unfinished.
 
 **Teaching status** describes this documentation. All 457 pages now contain file-specific explanations: 369 production lessons and 88 original-test lessons, with no remaining reading drafts. Each explains source logic, translation status, concrete test evidence or explicitly proposed validation, and remaining limits. This completes the requested first teaching pass; it does not certify exhaustive API review or complete translations. The machine-readable [coverage audit](coverage-audit.json) keeps documentation and code counts separate.
 
@@ -20,6 +20,11 @@ Start with [how to study this port](how-to-study-this-port.md), then use the [co
 6. **Commands and original tests:** connect each user operation to its implementation and inspect what the original test actually asserts. Empty methods and commented examples do not provide executable coverage.
 
 ## Keeping the course current
+
+The [old-backup remote restore lab](new-tests/restore-sync-remote.md) shows why
+students must inspect persisted wallet state as well as command success. Failed
+preflight and later archive failure can return the same reply but leave different
+key-use counts. It also explains the limits of a retimed one-block fixture.
 
 For each next implementation/test change, update the corresponding file lesson with the observed discrepancy, reused native building block, minimal adaptation, test inputs/observations, result and remaining limits. The new-test lab can preserve the detailed experiment; file pages should link to it and explain the lasting rule.
 

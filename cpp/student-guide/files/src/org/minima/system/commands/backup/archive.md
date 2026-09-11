@@ -90,13 +90,20 @@ sleep remains real. Traffic breakdown includes payload bytes only; total counter
 stay zero because these methods do not update them. Socket exception log prose is
 not compared. All 509 storage/query cases still pass with the expanded fixture.
 
+The [old-backup remote lab](../../../../../../../../student-guide/new-tests/restore-sync-remote.md)
+also exercises sendArchiveReq from actual restoresync nodes. Both encoders produce
+the same nonempty IBD containing a saved, deliberately retimed genesis block.
+The loopback server returns that retained block and then an empty batch; exact
+requests show the client advancing its next requested height from 1 to 2. This
+reaches nonempty decoding and duplicate processing without advancing the chain.
+
 ## Limits
 
 Integrity checks adjacency/alignment, not all consensus rules. Static temporary
 sources and cleanup without finally make concurrent/repeated invocation important.
 Several success messages survive incomplete processing. Live-node evidence uses
 only genesis; cascades, multi-batches and phrase-based wallet replacement remain
-unverified. Socket delay/timeouts, nonempty/cascaded IBD through the request helper,
+unverified. Socket delay/timeouts, cascaded IBD through the request helper,
 full remote resync, concurrent streams, malformed object serialization failure
 boundaries and complete public API parity remain open.
 

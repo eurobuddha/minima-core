@@ -1,3 +1,43 @@
+# Remote restoresync checkpoint — full port unfinished
+
+## Code Review
+
+Reviewed the extended Java/native archive fixtures, complete new remote driver,
+reused Node/ready/key_state/chain/coins and Responder harnesses, CMake registration,
+source age/preflight/key-use/batch branches, TxPoW ID calculation, tree recalculation,
+IBD codecs, duplicate-block processor behavior and student explanations.
+No production code changed. No blocking finding remains in the test changes.
+
+The retime fixture requires a one-block genesis tree without a cascade. It uses
+real setters, ID calculation and tree recalculation, then checks unchanged body
+and MMR bytes and valid block difficulty. Both runtimes encode identical tree,
+TxBlock and nonempty IBD bytes. Actual nodes create the backups; command execution,
+archive networking, processors, shutdown and reopen use production implementations.
+
+Independent assertions require each framed request in order and the exact restored
+key map. Preflight failure retries -1 three times and leaves key uses at 7; later failure
+retries request 2 after a nonempty batch and leaves uses at 263. Real ten-second sleeps remain.
+The same successful restart reply occurs in all four modes. Opposite-runtime
+reopen preserves chain/coins and verifies signing, changed-data rejection and one
+use increment. Temporary directories and loopback sockets isolate the fixtures.
+
+Both normal and sanitizer runs pass eight workflows using 19 nodes each. Both
+fixture builds pass. Both archive regressions pass 509 storage and 37 network cases
+(CTest: 186.02 seconds normal, 204.06 seconds sanitizer). The new test is registered
+as CTest entry 232; the full suite was not run. Native H2 AOT is outside C++
+sanitizer instrumentation. All 457 lessons retain unverified parity labels.
+
+Limits: deliberately retimed retained genesis proves nonempty decode and duplicate
+processing, not new-height advancement. Cascades, multiple nonempty batches,
+memory resets, exact age-boundary timing, helper set-key-use branch, delayed socket
+timeouts and complete API/node parity remain open. Source-map counts unchanged:
+383 counterparts (339 production and 44 mapped tests), with 74 absent. Evidence
+is saved under validation/restoresync-remote-work-in-progress.
+
+Verdict: Approve this validation checkpoint. The full port remains incomplete.
+
+---
+
 # restoresync checkpoint — full port unfinished
 
 ## Code Review

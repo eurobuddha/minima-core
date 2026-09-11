@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 227: archive_command_differential
+1/2 Test #227: archive_command_differential .....   Passed   79.98 sec
+    Start 229: archive_network_differential
+2/2 Test #229: archive_network_differential .....   Passed  106.03 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) = 186.02 sec

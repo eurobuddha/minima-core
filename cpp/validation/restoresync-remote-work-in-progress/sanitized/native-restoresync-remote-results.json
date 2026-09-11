@@ -1,0 +1,170 @@
+{
+  "passed": true,
+  "node_processes": 19,
+  "encodings": {
+    "tree_sha256": "8886f1c4d9c25afab019d2bc51ef4cd555a468ae896f5b9d0dd6c7c51233f71d",
+    "block_sha256": "b3f547f0df5024352890da69e410f1ee00c6e0a834d1ad5a5785db458c16a6cc",
+    "nonempty_ibd_bytes": 872,
+    "java_cpp_identical": true,
+    "body_unchanged": true,
+    "mmr_unchanged": true
+  },
+  "checks": [
+    {
+      "restorer": "java",
+      "writer_and_reopen": "cpp",
+      "mode": "nonempty",
+      "request_starts": [
+        -1,
+        1,
+        2
+      ],
+      "exact_request_frames": true,
+      "seconds": 1.131,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "java",
+      "writer_and_reopen": "cpp",
+      "mode": "empty",
+      "request_starts": [
+        -1,
+        1
+      ],
+      "exact_request_frames": true,
+      "seconds": 1.103,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "java",
+      "writer_and_reopen": "cpp",
+      "mode": "preflight_failed",
+      "request_starts": [
+        -1,
+        -1,
+        -1
+      ],
+      "exact_request_frames": true,
+      "seconds": 21.085,
+      "keys": 8,
+      "restored_uses": 7,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "java",
+      "writer_and_reopen": "cpp",
+      "mode": "later_failed",
+      "request_starts": [
+        -1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "exact_request_frames": true,
+      "seconds": 21.059,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "cpp",
+      "writer_and_reopen": "java",
+      "mode": "nonempty",
+      "request_starts": [
+        -1,
+        1,
+        2
+      ],
+      "exact_request_frames": true,
+      "seconds": 1.121,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "cpp",
+      "writer_and_reopen": "java",
+      "mode": "empty",
+      "request_starts": [
+        -1,
+        1
+      ],
+      "exact_request_frames": true,
+      "seconds": 1.225,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "cpp",
+      "writer_and_reopen": "java",
+      "mode": "preflight_failed",
+      "request_starts": [
+        -1,
+        -1,
+        -1
+      ],
+      "exact_request_frames": true,
+      "seconds": 21.188,
+      "keys": 8,
+      "restored_uses": 7,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    },
+    {
+      "restorer": "cpp",
+      "writer_and_reopen": "java",
+      "mode": "later_failed",
+      "request_starts": [
+        -1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "exact_request_frames": true,
+      "seconds": 21.174,
+      "keys": 8,
+      "restored_uses": 263,
+      "chain_and_coins_preserved": true,
+      "graceful_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1
+    }
+  ],
+  "failures": [],
+  "scope": "Actual pinned Java/native nodes and H2; deliberately retimed valid solo genesis, unchanged body/MMR, identical codecs. Opposite-runtime backups and reopen; real loopback preflight, nonempty retained genesis IBD, empty archive, failed preflight/later batch with real ten-second retries, exact request frames, key-use effects and signing. No new-height advancement, cascades, multiple nonempty batches, memory resets, delayed read/connect timeouts or full parity claim."
+}

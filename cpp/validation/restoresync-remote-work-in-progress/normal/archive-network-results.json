@@ -1,0 +1,378 @@
+{
+  "passed": true,
+  "cases": 37,
+  "checks": [
+    {
+      "case": 0,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.407,
+        0.324
+      ]
+    },
+    {
+      "case": 1,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.321,
+        0.34
+      ]
+    },
+    {
+      "case": 2,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.104,
+        0.146
+      ]
+    },
+    {
+      "case": 3,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.275,
+        0.483
+      ]
+    },
+    {
+      "case": 4,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.229,
+        0.135
+      ]
+    },
+    {
+      "case": 5,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.294,
+        0.048
+      ]
+    },
+    {
+      "case": 6,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.301,
+        0.357
+      ]
+    },
+    {
+      "case": 7,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.137,
+        0.329
+      ]
+    },
+    {
+      "case": 8,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.163,
+        0.081
+      ]
+    },
+    {
+      "case": 9,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.489,
+        0.264
+      ]
+    },
+    {
+      "case": 10,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.253,
+        0.225
+      ]
+    },
+    {
+      "case": 11,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.321,
+        0.306
+      ]
+    },
+    {
+      "case": 12,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.362,
+        0.335
+      ]
+    },
+    {
+      "case": 13,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        1.186,
+        0.345
+      ]
+    },
+    {
+      "case": 14,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.105,
+        0.148
+      ]
+    },
+    {
+      "case": 15,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.244,
+        0.471
+      ]
+    },
+    {
+      "case": 16,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.232,
+        0.212
+      ]
+    },
+    {
+      "case": 17,
+      "name": "height/type",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.3,
+        0.264
+      ]
+    },
+    {
+      "case": 18,
+      "name": "trailing bytes",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.349,
+        0.27
+      ]
+    },
+    {
+      "case": 19,
+      "name": "malformed",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.335,
+        0.092
+      ]
+    },
+    {
+      "case": 20,
+      "name": "malformed",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.155,
+        0.143
+      ]
+    },
+    {
+      "case": 21,
+      "name": "malformed",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.517,
+        0.439
+      ]
+    },
+    {
+      "case": 22,
+      "name": "malformed",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.139,
+        0.197
+      ]
+    },
+    {
+      "case": 23,
+      "name": "malformed",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.069,
+        0.253
+      ]
+    },
+    {
+      "case": 24,
+      "name": "malformed",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.384,
+        0.332
+      ]
+    },
+    {
+      "case": 25,
+      "name": "malformed",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.313,
+        0.322
+      ]
+    },
+    {
+      "case": 26,
+      "name": "malformed",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.119,
+        0.11
+      ]
+    },
+    {
+      "case": 27,
+      "name": "noMain",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.295,
+        0.254
+      ]
+    },
+    {
+      "case": 28,
+      "name": "noNetwork",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.204,
+        0.203
+      ]
+    },
+    {
+      "case": 29,
+      "name": "noNIO",
+      "requests": 1,
+      "success": false,
+      "seconds": [
+        0.305,
+        0.263
+      ]
+    },
+    {
+      "case": 30,
+      "name": "no attempts",
+      "requests": 0,
+      "success": false,
+      "seconds": [
+        0.303,
+        0.257
+      ]
+    },
+    {
+      "case": 31,
+      "name": "no attempts",
+      "requests": 0,
+      "success": false,
+      "seconds": [
+        0.138,
+        0.106
+      ]
+    },
+    {
+      "case": 32,
+      "name": "null start",
+      "requests": 0,
+      "success": false,
+      "seconds": [
+        0.14,
+        0.141
+      ]
+    },
+    {
+      "case": 33,
+      "name": "default attempts first success",
+      "requests": 1,
+      "success": true,
+      "seconds": [
+        0.476,
+        0.446
+      ]
+    },
+    {
+      "case": 34,
+      "name": "retry succeeds",
+      "requests": 2,
+      "success": true,
+      "seconds": [
+        10.189,
+        10.286
+      ]
+    },
+    {
+      "case": 35,
+      "name": "retry exhausted",
+      "requests": 2,
+      "success": false,
+      "seconds": [
+        10.108,
+        10.268
+      ]
+    },
+    {
+      "case": 36,
+      "name": "default third attempt",
+      "requests": 3,
+      "success": true,
+      "seconds": [
+        20.303,
+        20.183
+      ]
+    }
+  ],
+  "failures": [],
+  "scope": "Real loopback sendArchiveReq in pinned Java/native archive: exact request frames, ignored response type, decoded empty IBD, trailing/malformed frames, missing runtime receivers, payload-only traffic, zero attempts and actual 10-second retries including default third attempt. OS/JVM exception log prose, delayed read/connect timeouts, cascaded/nonempty IBD over this helper and full parity remain unverified."
+}

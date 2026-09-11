@@ -1,3 +1,59 @@
+# Current work — remote restoresync checkpoint verified
+
+MinimaCoreC++ branch/project/executable. Full457-file goal active/incomplete.
+Previous turn made verified progress. Old-backup remote restoresync now tested
+with actual pinned Java/native nodes, real H2, loopback IBD, both backup directions
+and opposite-runtime reopen. No production code changes this checkpoint.
+All build/test processes terminal. No GitHub push. PreviousHEAD6bbeb67; gitlog and
+local-backups identify the saved commit and recovery bundle.
+
+Both normal and ASAN/UBSAN fixture builds PASS. Both remote integration runs PASS:
+8workflows/19realnodes each, direct driver execution plus CTest232registrationcheck.
+Both affected regressions PASS509archive storage+37network cases,186.02s/204.06s.
+Full232CTest suite NOT run. Existing production executable unchanged from prior
+full builds. H2 AOT outside C++ sanitizer instrumentation. All457guides audited;
+map383=339production+44tests,74absent=30production+44tests; allparitynot_verified.
+Evidence validation/restoresync-remote-work-in-progress, no initial failures.
+
+New tools/native_restore_sync_remote.py directly reuses Node/ready/key_state/chain,
+native_archive_startup.coins and peers_checker_differential.Runner/Responder.
+Separate restoresync-remote-oracle/listing per build. Real Java baseline solo node
+creates8keysuses7 and savedgenesis. Each archive fixture retimeGenesis changes only
+time to0/recomputesID/recalculatestree, requires singleheight1root/tip,nocascade,
+unchanged body/MMR bytes and validblockdifficulty. Both runtimes produce identical
+tree/TxBlock bytes. Existing encodeReply accepts optionalblocks with realIBDcodec;
+both encoders produce same empty and872-byte nonemptyIBD (randomgenesisperrun).
+Actual nodes reopen the retimed data and write backups. Target originalbaseline
+uses100; restores backup writtenbyotherruntime. Exactrequests/modes:
+- nonempty: -1,1,2; retainedgenesis thenempty; reopenuses263.
+- empty: -1,1; reopenuses263.
+- preflight_failed: -1,-1,-1; real20sretry, reopenuses7.
+- later_failed: -1,1,2,2,2; real20sretry, reopenuses263.
+All return exactrestartmessage, cleanexit,removedrestorefolder; opposite-runtime
+reopenexactkeymap/retimedchain/coins; valid signing,modifieddatareject,oneuseincrement.
+This tests duplicateblockprocessing, NOT new-height advancement. No productionprobe
+or transport/timeoverride runs inside actual nodes.
+
+Reviewed source restoresync/archive, GenesisTxPoW/GenesisMMR, TxPoW.calculateTXPOWID,
+TxPowTree.recalculateTree/setRoot, IBDcodec and TxPoWProcessor archive duplicatepath.
+Sibling search no compatible H2 command; existing siblingMinimaDBusesSQLite.
+Studentlab new-tests/restore-sync-remote.md written beforetests, allrelevantlessons
+updated with results/limits. Do not overwrite earlier generator outputs.
+
+NEXT: valid new-height archive advancement and more source counterparts. Build a
+multi-height fixture from actual solo-node/miner behavior, inspecting pinned source,
+current generator/miner tests/callers and relevant sibling first; report exactreuse
+and write pre-testlab. Do not claim hand-fabricated proofs establish consensus.
+Reuse actual-node harness and archive seedTree/encodeReply. Remote old-backup test
+currently only retainedgenesis. Still open: cascades, multiple nonemptybatches,
+memorythresholdreset, helper increment=false/setuses, exact2dayboundary anddelayed
+sockettimeouts. Thirty production files absent include megammr/megammrsync, mysql/
+mysqlcoins, remaining base/help/tutorial commands, Streamable/ZipExtractor/AesUtil,
+JNI and sphincs family;44source-test counterparts absent. Full existing API/mining/
+network parity remains required. Goal staysactive and unblocked.
+
+---
+
 # Current work — full restoresync class saved, local path verified
 
 MinimaCoreC++ full457-file goal active/incomplete. Previous turn made verified

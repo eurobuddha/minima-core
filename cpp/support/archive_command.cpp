@@ -34,6 +34,14 @@ JSONObject run(const JSONObject& input,NativeH2Runtime& engine){
     MainServices services;services.sql.connect=engine.connector();services.sql.log=[](const auto& text,bool){std::clog<<text<<'\n';};services.halt=[](int){throw std::runtime_error("fixture startup failed");};auto main=std::make_shared<ArchiveMain>(std::move(services));MainFixture::install(main);MainFixture::initialize(main);auto db=MinimaDB::getDB();db->loadAllDB();JSONObject flags;flags.put("keys",!input.containsKey("keys")||input.getBoolean("keys"));MainFixture::fields(*main,flags);
     auto saved=CommandRunner::ALL_COMMANDS;struct Registry{std::vector<std::shared_ptr<Command>> saved;~Registry(){CommandRunner::ALL_COMMANDS=std::move(saved);}} registry{saved};for(auto& command:CommandRunner::ALL_COMMANDS)if(command->getName()=="archive")command=std::make_shared<ArchiveProbe>();
     JSONObject out;try{
+        if(op=="retimeGenesis"){
+            auto tree=db->getTxPoWTree();auto node=tree->getTip();
+            if(!node||node!=tree->getRoot()||!node->getBlockNumber().isEqual(MiniNumber::ONE)||db->getCascade()->getTip())throw std::runtime_error("retime fixture requires genesis only");
+            auto pow=node->getSharedTxPoW();auto body=pow->getTxBody()->serialise();auto mmr=node->getMMR()->serialise();out.put("oldID",pow->getTxPoWID());
+            pow->setTimeMilli(MiniNumber(input.getString("time")));pow->calculateTXPOWID();tree->recalculateTree();
+            if(body!=pow->getTxBody()->serialise()||mmr!=node->getMMR()->serialise()||!pow->isBlock())throw std::runtime_error("retime fixture changed body/MMR or invalid block proof");
+            out.put("id",pow->getTxPoWID());out.put("tree",MiniData(tree->serialise()).to0xString());out.put("block",MiniData(node->getTxBlock().serialise()).to0xString());out.put("bodyUnchanged",true);out.put("mmrUnchanged",true);db->saveAllDB();return out;
+        }
         if(op=="seedTree"){
             JSONArray wires;auto node=db->getTxPoWTree()->getTip();
             while(node){auto block=node->getSharedTxBlock();db->getArchive()->saveBlock(block.get());wires.add(MiniData(block->serialise()).to0xString());node=node->getParent();}
@@ -50,7 +58,7 @@ JSONObject run(const JSONObject& input,NativeH2Runtime& engine){
         }
         if(input.containsKey("treeBlock")){auto bytes=MiniData::fromHex(input.getString("treeBlock"));size_t offset=0;auto block=std::make_shared<TxBlock>(TxBlock::deserialise(bytes.bytes(),offset));auto node=std::make_shared<TxPoWTreeNode>(std::make_shared<TxBlock>(block->getSharedTxPoW()),false);node->getTxBlock().getOutputCoins()=block->getOutputCoins();node->getTxBlock().getInputCoinProofs()=block->getInputCoinProofs();db->getTxPoWTree()->setRoot(node);}
         if(op=="encodeRequest"){auto start=MiniNumber(input.getString("start"));out.put("wire",MiniData(NIOManager::createNIOMessage(NIOMessage::MSG_ARCHIVE_REQ,start).serialise()).to0xString());db->saveSQL(false);return out;}
-        if(op=="encodeReply"){IBD ibd;auto type=MiniByte(int32_t(std::get<int64_t>(input.get("type").value)));out.put("ibd",MiniData(ibd.serialise()).to0xString());out.put("wire",MiniData(NIOManager::createNIOMessage(type,ibd).serialise()).to0xString());db->saveSQL(false);return out;}
+        if(op=="encodeReply"){IBD ibd;if(input.containsKey("blocks"))for(const auto& wire:std::get<std::shared_ptr<JSONArray>>(input.get("blocks").value)->elements()){auto data=MiniData::fromHex(wire.asString());size_t offset=0;ibd.getTxBlocks()->push_back(std::make_shared<TxBlock>(TxBlock::deserialise(data.bytes(),offset)));}auto type=MiniByte(int32_t(std::get<int64_t>(input.get("type").value)));out.put("ibd",MiniData(ibd.serialise()).to0xString());out.put("wire",MiniData(NIOManager::createNIOMessage(type,ibd).serialise()).to0xString());db->saveSQL(false);return out;}
         if(op=="request"){
             JSONObject config;auto network=support::MainNetworkFixture::create(config,[&](auto value){MainFixture::network(*main,value);});auto nio=network->network()->getNIOManager();
             if(input.containsKey("noMain"))Main::ClearMainInstance();

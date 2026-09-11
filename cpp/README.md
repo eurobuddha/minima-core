@@ -13,9 +13,16 @@ The mapped `restoresync` class now compiles, including its remote synchronizatio
 method. It preserves the source's six-section restore, wallet close/reopen order,
 two-day age gate and configurable key-use increment. Both builds pass 181 Java/native
 comparisons and real nodes in both restore/reopen directions with restored-key
-signing. Full remote synchronization remains unverified. See the
-[student lab](student-guide/new-tests/restore-sync.md) and
-[saved evidence](validation/restoresync-work-in-progress).
+signing. A separate loopback test exercises old backups, a nonempty retained-genesis
+reply, an empty archive, failed preflight and later failure, with exact request
+frames and opposite-runtime key/chain/coin reopen. It preserves real retry sleeps
+and checks different key-use effects despite identical restart replies. Both builds
+pass all eight workflows using 19 real node processes each. Full chain
+advancement and synchronization parity remain unverified. See the
+[student lab](student-guide/new-tests/restore-sync.md),
+[remote lab](student-guide/new-tests/restore-sync-remote.md),
+[command evidence](validation/restoresync-work-in-progress), and
+[remote evidence](validation/restoresync-remote-work-in-progress).
 
 The mapped `archive` class includes every source action branch and both network
 helpers. Both builds pass 509 storage/query cases, 37 loopback request/retry cases,

@@ -3374,5 +3374,46 @@
       "tools/restore_sync_differential.py": "fb4d0cdf28700e80ce6424162d4a5385909bdcf227471b39a75223f4cdd39ca7",
       "tools/native_restore_startup.py": "a74910c7ef6cb6cb63cc8e42c781ca761ee0fbe7d6cc8cc9a5b1ebfaca00b1ae"
     }
+  },
+  "restoresync_remote_checkpoint": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_inspected": [
+      "upstream-study/src/org/minima/system/commands/backup/restoresync.java",
+      "upstream-study/src/org/minima/system/commands/backup/archive.java",
+      "upstream-study/src/org/minima/system/genesis/GenesisTxPoW.java",
+      "upstream-study/src/org/minima/system/genesis/GenesisMMR.java",
+      "upstream-study/src/org/minima/objects/TxPoW.java calculateTXPOWID",
+      "upstream-study/src/org/minima/database/txpowtree/TxPowTree.java setRoot"
+    ],
+    "reused_inspected": [
+      "support/archive_command.cpp",
+      "support/ArchiveCommandOracle.java",
+      "tools/native_restore_sync_remote.py",
+      "tools/native_restore_startup.py",
+      "tools/native_archive_startup.py",
+      "tools/peers_checker_differential.py",
+      "src/org/minima/objects/TxPoW.cpp calculateTXPOWID",
+      "src/org/minima/objects/IBD.cpp serialise/readDataStream",
+      "src/org/minima/database/txpowtree/TxPowTree.cpp recalculateTree/readDataStream",
+      "src/org/minima/system/brains/TxPoWProcessor.cpp archive IBD/duplicate-block processing"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp: archive/restore search found SQLite storage in src/database/MinimaDB.hpp, no compatible H2 restore command or node fixture",
+    "adaptations": [
+      "Reuse actual Node/ready/key_state/chain/coins and loopback Responder unchanged",
+      "Archive fixtures retime saved genesis with real setters, recompute ID, recalculate tree, require unchanged body/MMR and valid block difficulty",
+      "Archive encodeReply accepts real serialized TxBlocks in its IBD",
+      "New actual-node driver covers both backup directions, empty/nonempty archive, preflight/later failure and opposite-runtime reopen/signing"
+    ],
+    "production_changes": false,
+    "validation": "validation/restoresync-remote-work-in-progress/progress.json",
+    "parity": "not_verified",
+    "hashes": {
+      "support/archive_command.cpp": "e511a85ce7b1b4e55c36255a8df3bad9aaef9a664604324203d3b0b6db77d476",
+      "support/ArchiveCommandOracle.java": "da58a4af056f9af3741392b8f10f230adce2d6a4abea4728019f67393b718d11",
+      "tools/native_restore_sync_remote.py": "a095de94bdab76087935816ca35e839fe5d070813596299348bd92de1109a3db",
+      "tools/native_restore_startup.py": "a74910c7ef6cb6cb63cc8e42c781ca761ee0fbe7d6cc8cc9a5b1ebfaca00b1ae",
+      "tools/native_archive_startup.py": "df7a0abf9e81e8c39a1e0edc03bb512a230e6782c3eec2451b66885a0fe34043",
+      "tools/peers_checker_differential.py": "8abbfed1c04f9cd81ba3cbaf80ebc51de7ba963075b11f199538c429641bab2a"
+    }
   }
 }

@@ -1,0 +1,38 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "6bbeb674e17316a9e310f3abc2154620255ac34b",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "Old-backup restoresync with real loopback archive and opposite-runtime reopen validated for retained genesis; full port incomplete",
+  "production_changes": false,
+  "counterparts": 383,
+  "production_counterparts": 339,
+  "mapped_tests": 44,
+  "absent": 74,
+  "ctest_entries": 232,
+  "fixture_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "remote_workflows_per_build": 8,
+  "actual_node_processes_per_build": 19,
+  "archive_storage_cases_per_build": 509,
+  "archive_network_cases_per_build": 37,
+  "normal_regression_ctest_seconds": 186.02,
+  "sanitized_regression_ctest_seconds": 204.06,
+  "remote_test_execution": "Direct registered Python driver in each build; CTest registration separately checked",
+  "new_height_advancement": false,
+  "retimed_genesis": true,
+  "student_guides": 457,
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "30 absent production and 44 absent mapped source tests",
+    "Valid new-height advancement, cascades and multiple nonempty archive batches",
+    "Memory threshold resets, exact two-day boundary, helper set-key-use path, delayed read/connect timeouts",
+    "Full existing counterpart API, mining, network and runtime parity"
+  ]
+}
