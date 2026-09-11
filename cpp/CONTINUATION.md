@@ -1,3 +1,38 @@
+# Latest checkpoint — original GET and SUBSET tests pass
+
+PreviousHEADb601c5e; gitlog givescurrent. LocalbranchMinimaCoreC++. GoalACTIVE.
+406counterparts=359production+47tests;51absent=10production+41tests.
+Allpresentimplemented_partial/allparitynot_verified.255CTestentries/fullsuiteNOT run.
+Bothcompletebuilds andGETTests/SUBSETTests/get_original_tests/subset_original_tests
+PASS:normal7.93s,san7.86s.3unchangedJavamethods/file;31GET+33SUBSETassertions/runtime.
+Nativeempty stderr,UBSANhalt. Sourcefixturesandoperationorder preserved; production
+functions unchanged. Evidencevalidation/get-subset-original-tests;labandlessons.
+Terminal90513normal and43780san arePASS/closed;doNOTpollagain.
+
+LIVE24343SANfullSPHINCScommand and41760resumedSANsigner confirmedlive thisturn.
+Lastobserved127/0 and156/0 respectively. Revalidate;doNOTrestartforquietoutput.
+Original31941signer timedout,89965normalcommandpassed;seeearliercheckpoint.
+Previousb601c5erecoverybundle verified+all22changedpaths bytechecked:
+local-backups/MinimaCoreC++-20260911T092830Z.bundle SHA256
+89ce49ff0aef9d5dd51abc147d35ccd5a3a27f15f74dee3dbc86b9812fe6d2ed.
+Clone.../minimacorecpp-recovery-y53lxze8/MinimaCoreC++.
+
+Nextproductionfocus mysqlcoins.java: entire367lines fullyread, plusnative
+MySQLConnect.hpp/.cpp,MySQLConnectOracle.java,support/mysql_connect.cpp,
+SqlRecordingFixture.hpp,MinimaLogger.hpp/dateformat,UserDBMySQLaccessors.
+No mysqlcoins implementation edits yet. ExistingSQLfixture andruntimeServices
+canvalidatecommand withoutnewproductiontesthooks. Trace actualruntime driver
+configuration too: nativeMySQLConnect::init rejectswhenconnectserviceabsent.
+NeedreadSqlDBOracle/dependenciesandmysql_connect_differential fully,searchsibling,
+reportreusebeforeimplementation. Preservewipe misspelling'respnse',argumentorder,
+autologinprecedence,updatecoins/maxlimits/date/logs,inputspent/outputblockmutations,
+where/address/queryprecedenceandshutdownonlyon normalreturn. No dummybackendclaim.
+JNI source questionpending; plentyindependentworkremains. No GitHubpushdestination.
+
+Earliernotes arehistoricalwherecontradictedbythischeckpoint.
+
+---
+
 # Latest checkpoint — original CONCAT tests pass in both builds
 
 Local branch/project MinimaCoreC++; previous HEAD a3b0140, git log gives current.

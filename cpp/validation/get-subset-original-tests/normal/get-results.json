@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "original_methods": 3,
+  "assertions_per_runtime": 31,
+  "java_stdout": "Original GETTests methods passed: 3 (31 executed assertions)\n",
+  "native_stdout": "",
+  "scope": "Unchanged pinned GETTests active assertions and the mapped native test. Executed assertion count includes source loops. No claim of complete production API parity.",
+  "native_stderr": ""
+}

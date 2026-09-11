@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "original_methods": 3,
+  "assertions_per_runtime": 33,
+  "java_stdout": "Original SUBSETTests methods passed: 3 (33 executed assertions)\n",
+  "native_stdout": "",
+  "scope": "Unchanged pinned SUBSETTests active assertions and the mapped native test. Executed assertion count includes source loops. No claim of complete production API parity.",
+  "native_stderr": ""
+}

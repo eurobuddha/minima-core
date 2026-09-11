@@ -1,3 +1,29 @@
+## Original GET and SUBSET test review
+
+### Summary
+
+Both mapped files reproduce all active inputs and observations in their pinned
+Java tests, using existing production functions and the CONCAT/LEN fixture pattern.
+GET retains the unused mixed-key setup but does not claim it validates mixed inputs.
+SUBSET retains all exceptions inside the valid method and the duplicate range case.
+
+### Findings
+
+No correctness issue was found in these translations. Both complete builds and
+all four registered tests pass in each build. Java calls three unchanged methods
+per file; native code performs the same31 GET and33 SUBSET assertions. Native
+stderr is empty and UBSAN halts. The source fixtures do not certify full function
+behavior, returned-value aliases, expression side effects or overflow boundaries.
+
+### Verdict
+
+Approve this local checkpoint. Production code is unchanged.406counterparts exist
+(359production,47tests);51files remain absent.255CTestentries; fullsuite NOT run.
+Both long sanitized SPHINCS jobs remain active. See the
+[evidence](validation/get-subset-original-tests/progress.json).
+
+---
+
 ## Original CONCAT test review
 
 ### Summary

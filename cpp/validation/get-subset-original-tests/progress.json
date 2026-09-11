@@ -1,0 +1,21 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "previous_head": "b601c5e506300d90c31ce8b541eb603e33975e1b",
+  "status": "Both complete builds and all four registered tests pass in each build.",
+  "methods_per_file": 3,
+  "assertions_per_runtime": {
+    "GET": 31,
+    "SUBSET": 33
+  },
+  "normal_ctest_seconds": 7.93,
+  "sanitized_ctest_seconds": 7.86,
+  "native_stderr": "",
+  "ubsan_options": "halt_on_error=1",
+  "counterparts": 406,
+  "production": 359,
+  "original_tests": 47,
+  "absent": 51,
+  "ctest_entries": 255,
+  "full_ctest_suite_run": false,
+  "full_parity_verified": false
+}

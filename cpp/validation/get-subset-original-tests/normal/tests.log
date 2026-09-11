@@ -1,0 +1,13 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 252: GETTests
+1/4 Test #252: GETTests .........................   Passed    0.98 sec
+    Start 253: get_original_tests
+2/4 Test #253: get_original_tests ...............   Passed    3.10 sec
+    Start 254: SUBSETTests
+3/4 Test #254: SUBSETTests ......................   Passed    0.41 sec
+    Start 255: subset_original_tests
+4/4 Test #255: subset_original_tests ............   Passed    3.43 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   7.93 sec

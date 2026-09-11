@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/tests/kissvm/functions/base/SUBSETTests.java](../../../../../../../../../../upstream-study/test/org/minima/tests/kissvm/functions/base/SUBSETTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -42,7 +42,7 @@ assertEquals("0x01234567", ((HexValue) res).toString());
 assertThrows(ExecutionException.class, () -> { Value res = mf.runFunction(ctr); });
 ```
 
-An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this page does not claim that the Java suite was executed successfully.
+An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; completed execution results are recorded below.
 
 The fixture names these Minima dependencies (links are for tracing the test setup and calls):
 
@@ -63,11 +63,16 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/tests/kissvm/functions/base/SUBSETTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+The [mapped native test](../../../../../../../../../test/org/minima/tests/kissvm/functions/base/SUBSETTests.cpp)
+reuses the actual native function, registry, Contract and ConstantExpression, with
+the existing CONCAT/LEN assertion adapters. The fixture preserves both successful hex slices, all six expected exceptions inside the valid method, and all nineteen exceptions inside the invalid method. The repeated out-of-range case remains repeated, and string slicing remains rejected.
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
-
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+Both complete builds and all four registered GET/SUBSET tests pass in each build.
+The Java wrapper calls three unchanged original methods; the native counterpart
+executes the same 33 assertions. Native stderr is empty and UBSAN halts on errors.
+Source call-site counts above include fail() handlers that a passing run never
+executes. See the [test lab](../../../../../../../../../student-guide/new-tests/get-and-subset-original-tests.md)
+for the assertion breakdown and the limits of this evidence. No production function changed.
 
 ## What students should conclude
 

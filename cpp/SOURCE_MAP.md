@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 404 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 406 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -412,10 +412,10 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/tests/kissvm/functions/DUMMYFUNCTION.java` | `test/org/minima/tests/kissvm/functions/DUMMYFUNCTION.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/MinimaFunctionTests.java` | `test/org/minima/tests/kissvm/functions/MinimaFunctionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/base/CONCATTests.java` | `test/org/minima/tests/kissvm/functions/base/CONCATTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/functions/base/GETTests.java` | `test/org/minima/tests/kissvm/functions/base/GETTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/functions/base/GETTests.java` | `test/org/minima/tests/kissvm/functions/base/GETTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/base/LENTests.java` | `test/org/minima/tests/kissvm/functions/base/LENTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/base/REVTests.java` | `test/org/minima/tests/kissvm/functions/base/REVTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/functions/base/SUBSETTests.java` | `test/org/minima/tests/kissvm/functions/base/SUBSETTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/functions/base/SUBSETTests.java` | `test/org/minima/tests/kissvm/functions/base/SUBSETTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/cast/BOOLTests.java` | `test/org/minima/tests/kissvm/functions/cast/BOOLTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/cast/HEXTests.java` | `test/org/minima/tests/kissvm/functions/cast/HEXTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/cast/NUMBERTests.java` | `test/org/minima/tests/kissvm/functions/cast/NUMBERTests.cpp` | implemented_partial | — |

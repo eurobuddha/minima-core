@@ -817,10 +817,10 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | File | Teaching state | Native state |
 |---|---|---|
 | [CONCATTests.java](files/test/org/minima/tests/kissvm/functions/base/CONCATTests.md) | test explanation | implemented_partial |
-| [GETTests.java](files/test/org/minima/tests/kissvm/functions/base/GETTests.md) | test explanation | unported |
+| [GETTests.java](files/test/org/minima/tests/kissvm/functions/base/GETTests.md) | test explanation | implemented_partial |
 | [LENTests.java](files/test/org/minima/tests/kissvm/functions/base/LENTests.md) | test explanation | implemented_partial |
 | [REVTests.java](files/test/org/minima/tests/kissvm/functions/base/REVTests.md) | test explanation | implemented_partial |
-| [SUBSETTests.java](files/test/org/minima/tests/kissvm/functions/base/SUBSETTests.md) | test explanation | unported |
+| [SUBSETTests.java](files/test/org/minima/tests/kissvm/functions/base/SUBSETTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/functions/cast
 

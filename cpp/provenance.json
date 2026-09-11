@@ -3898,5 +3898,22 @@
     "validation": "Both complete builds and two registered tests per build pass. Three original methods and21assertions per runtime; normal5.05s andsanitized3.87s CTest totals; native stderr empty, UBSANhalt.",
     "evidence": "validation/concat-original-tests",
     "full_parity_verified": false
+  },
+  "get_subset_original_tests": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "files_sha256": {
+      "cpp/tools/script_value_original_tests.py": "cd79e24c07d9b04a7264f8e0256cef9909ff3636af6cf225e2187f3291b38a4c",
+      "upstream-study/test/org/minima/tests/kissvm/functions/base/GETTests.java": "d5f02d5b0eca8d39b1cbe0eb8814d9677e2c50c0a15bbeab5571ac924510a8cf",
+      "cpp/test/org/minima/tests/kissvm/functions/base/GETTests.cpp": "1a9a2a185d65ae0bd7b5c5a4648c7c34c96ce845ca525e8fc0865b020cc54b63",
+      "cpp/support/GETOriginalTests.java": "f4b0e27e81eeccbc0e368f129a019813799683e8242606507bdbec7397f5e3e1",
+      "upstream-study/test/org/minima/tests/kissvm/functions/base/SUBSETTests.java": "fed68bfd05f82f3f826578bc79388087e2bd087d08267d7bba26531d16eeda95",
+      "cpp/test/org/minima/tests/kissvm/functions/base/SUBSETTests.cpp": "536bc0e4e5faf4068244ef66f042affe72a34b82dfdc075737dc2c17346becb0",
+      "cpp/support/SUBSETOriginalTests.java": "f2043cb6af258b907bf8e5650c2760e66d2ede25dcf87475eab057cdfb428aba"
+    },
+    "reuse": "Current native general/GET, hex/SUBSET, registry, ConstantExpression and Contract. Fixture adapters from CONCATTests/LENTests. Existing script_value_original_tests driver calls unchanged Java methods.",
+    "sibling_search": "Read tools/minima-core-cpp/src/kissvm/functions/Functions.cpp SUBSET and tests/kissvm/test_kissvm.cpp; sibling argument order and length semantics differ. No corresponding indexed GET found in that registry. Current native functions reused unchanged.",
+    "validation": "Both complete builds and four tests per build pass; three original methods per file,31 GET and33 SUBSET assertions per runtime; native stderr empty,UBSANhalt.",
+    "evidence": "validation/get-subset-original-tests",
+    "full_parity_verified": false
   }
 }

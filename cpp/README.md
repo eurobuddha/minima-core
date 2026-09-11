@@ -11,9 +11,13 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **359 production counterparts and 45 mapped test files exist;
-53 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **359 production counterparts and 47 mapped test files exist;
+51 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The original GET and SUBSET tests now have mapped C++ files. Both builds pass
+31 and 33 assertions per runtime respectively. See the
+[indexed-variable and slicing lab](student-guide/new-tests/get-and-subset-original-tests.md).
 
 The original CONCAT test now has its mapped C++ file. Both builds pass all three
 source methods and 21 assertions per runtime. See the
