@@ -1,0 +1,21 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{"progress": "full trees and signatures", "cases": 219, "failures": 0}
+{"progress": "full trees and signatures", "cases": 311, "failures": 0}
+{"progress": "full trees and signatures", "cases": 403, "failures": 0}
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/horst_differential.py", line 205, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/horst_differential.py", line 196, in main
+    raise RuntimeError('HORST cleanup failed: '+repr(close_errors))
+RuntimeError: HORST cleanup failed: ["TimeoutExpired(['/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/minima_horst'], 5)"]

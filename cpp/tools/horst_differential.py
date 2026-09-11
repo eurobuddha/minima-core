@@ -64,10 +64,15 @@ def main():
     subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
     commands=[['java','-XX:-OmitStackTraceInFastThrow','-Xmx2g','-cp',f'{oracle}:{JAVA}/jar/minima.jar','HORSTOracle'],[str(build/'minima_horst')]]
     runners=[Runner(command,response_timeout=300) for command in commands]
-    failures=[];groups={};count=0;checks=0;transcript=hashlib.sha256();vectors=[];start=time.monotonic()
+    failures=[];groups={};count=0;checks=0;transcript=hashlib.sha256();vectors=[];start=time.monotonic();pending=None;failure=None;close_errors=[]
     def compare(group,request,expect=None):
-        nonlocal count,checks
-        values=[r.ask(request) for r in runners];count+=1;groups[group]=groups.get(group,0)+1
+        nonlocal count,checks,pending
+        pending={'group':group,'request':request,'runtime':None}
+        values=[]
+        for runtime,runner in zip(['java','cpp'],runners):
+            pending['runtime']=runtime;values.append(runner.ask(request))
+        pending=None
+        count+=1;groups[group]=groups.get(group,0)+1
         transcript.update(json.dumps([request,*values],sort_keys=True,separators=(',',':')).encode())
         if values[0]!=values[1]:failures.append(dict(index=count,group=group,request=request,java=values[0],cpp=values[1]))
         if expect is not None:
@@ -177,8 +182,18 @@ def main():
         if demos[0]!=demos[1]:failures.append(dict(group='source-main',java=demos[0],cpp=demos[1]))
         if not demos[0].endswith('Verify : true\n'):raise AssertionError(demos[0])
         (build/'horst-demo-output.txt').write_text(demos[1])
+    except BaseException as error:
+        failure=error
     finally:
-        for runner in runners:runner.close()
+        for runner in runners:
+            try:runner.close(timeout=60)
+            except BaseException as error:close_errors.append(repr(error))
+    if failure is not None or close_errors:
+        incomplete={'complete':False,'completed_cases':count,'failures':failures,'pending':pending,
+                    'primary_error':repr(failure),'cleanup_errors':close_errors,'seconds':round(time.monotonic()-start,3)}
+        (build/'horst-incomplete-results.json').write_text(json.dumps(incomplete,indent=2)+'\n')
+        if failure is not None:raise failure
+        raise RuntimeError('HORST cleanup failed: '+repr(close_errors))
     report={'cases':count,'passed':count-len({f['index'] for f in failures if 'index' in f}),
             'independent_assertions':checks,'groups':groups,'failures':failures,'seconds':round(time.monotonic()-start,3),
             'full_tree_leaves':65536,'full_tree_seeds':3,'cross_writer_signatures':len(records)*2,

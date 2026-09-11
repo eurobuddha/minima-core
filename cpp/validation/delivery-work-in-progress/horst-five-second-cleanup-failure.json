@@ -1,0 +1,11 @@
+{
+  "complete": false,
+  "completed_cases": 1438,
+  "failures": [],
+  "pending": null,
+  "primary_error": "None",
+  "cleanup_errors": [
+    "TimeoutExpired(['/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/minima_horst'], 5)"
+  ],
+  "seconds": 380.284
+}

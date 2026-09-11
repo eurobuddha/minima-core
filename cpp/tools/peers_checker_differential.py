@@ -20,9 +20,9 @@ class Runner:
                 try:return json.loads(line)
                 except json.JSONDecodeError:pass
     def errors(self):self.err.seek(0);return self.err.read()[-6000:]
-    def close(self):
+    def close(self,timeout=5):
         self.child.stdin.close()
-        try:code=self.child.wait(timeout=5)
+        try:code=self.child.wait(timeout=timeout)
         except subprocess.TimeoutExpired:self.child.kill();self.child.wait();raise
         if code:raise RuntimeError(self.errors())
         self.err.close()
