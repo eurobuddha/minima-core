@@ -1,3 +1,87 @@
+# Latest checkpoint — mysql command implemented; both command suites pass
+
+Previous HEAD 5bece26 (completed full SPHINCS command sanitizer evidence).
+Git log gives the current MySQL checkpoint. Branch/project/executable MinimaCoreC++.
+Goal ACTIVE, not complete. 409 counterparts = 362 production + 47 original tests.
+48 absent = 7 production + 41 tests. All present remain implemented_partial;
+all 457 parity not_verified. 259 default CTest entries; full suite NOT run.
+
+New mysql.hpp/.cpp translates every source action plus convertMySQLParams/main,
+registered in CommandRunner. Reuses MySQLConnect, ArchiveManager, RawArchiveInput,
+Main/vault/wallet/BIP39, CommandResult, streaming GzipOutput/BufferedFileOutput,
+Java-width arithmetic/file/lowercase helpers. Static configuration reuses existing
+MySQLConfiguration (only its comment changed). Preserve fresh login override only
+when BOTH host/database exist, parameter/error order, height-difference totals,
+OR/null edge failure, parent-before-height integrity, source always-true update
+condition ONLY for empty MySQL, exclusive local ranges, explicit normal shutdown,
+resync counters/poll limits/no active cascade installation/shutdown order,
+addresscheck coins reply/blockid, both H2 paths, write-before-cap raw exports,
+rawimport flag exception handling, fixmissing startfix/endfix quirks and reset
+nested command strings. No production loop limits or mock SQL added.
+
+Both complete builds PASS. Both command suites PASS 2,800 comparisons,
+2,061 independent assertions and 73,670 SQL events. Normal 23.841s, SAN 67.013s;
+same transcript 6413869fc68a49dcf8caf2855135f7f7584a54f8b1ec4e8f470a8899f11a3522.
+Driver tools/mysql_command_differential.py. Test fixtures extend the existing
+SqlDBOracle/SqlRecordingFixture with optional finite rowsBySQLBatches, leaving
+production DB code real. Actual command bodies, linked/gap/bad/zero synthetic
+blocks, coin/state codecs, raw gzip files, preferences and per-event SQL/runtime
+failures are compared. Demo SQL failure logs separated from plain stdout;
+stack frames/NPE/classcast prose excluded, timestamps checked then normalized.
+No JVM is used by the native command. Recording fixture is NOT live storage.
+
+Comparisons found real existing dependency defects: missing raw files lost Java
+FileNotFoundException details; truncated deflate EOF lost its explicit message;
+RawArchiveInput bypassed MinimaLogger. Fixed with MiniFile-style open checks,
+opt-in EOF message preservation retaining inheritance, shared logger routing.
+Standalone raw test harness routes logs to stderr. Initial failures retained,
+including two fixture-only mismatches (H2 connect event and demo log capture).
+Both affected 5-suite regressions PASS: raw archive 613, archive command 509,
+mysqlcoins 771, SqlDB and ArchiveServer cleanup. Normal 107.61s, SAN 192.74s.
+Guide audit 457 pages, 9,271 links, 2,632 anchors, zero errors. Teaching != parity.
+Evidence validation/mysql-command-work-in-progress; lab and per-file lessons updated.
+
+NO live MySQL fixture/container was created this turn. Old fixture JSON files in
+/tmp remain STALE. Both builds still use native-h2-archive provider from previous
+checkpoint, SHA 9edf7d22f394875edb0d5b15ead0ce1e192c7f7781b5a84f0fc2c807ad2aa4bf.
+MINIMA_MYSQL_FIXTURE_FILE remains empty. Next REQUIRED: actual MySQL/H2 command
+persistence, nonempty update, cascade-bearing raw/H2 import/export, successful
+Main resync/seed/reset/shutdown flows. Reuse native_mysql_startup.py,
+native_archive_startup.py, ArchiveCommandOracle/native archive fixture and
+ArchiveServerSeed; read full relevant code first and report minimal adaptations.
+Use new owned tmpfs/loopback-only MySQL container, no host volumes or user DBs.
+Additional Error injection/resource/GC/interruption/platform fidelity remains open.
+
+SPHINCS COMMAND sanitizer session 24343 is now TERMINAL0/CLOSED, no need to poll.
+Final 131 cases/34 checks/all five full signatures PASS in 8,573.312s; transcript
+1ffd436dddf5a578cdf8b3e4d8036455efdec772ef7d87f986a3ea143f1f53e4 matches normal.
+Saved by 5bece26, including full result/progress and student explanations. The signer
+41760 was already closed/PASS c6fdf53. NO heavy SPHINCS jobs remain live.
+All this turn's handles CLOSED: 97884 initial private IBD alias compile failure;
+75644 protected Main fixture compile failure; 43787 missing-file comparison;
+54099 H2 fixture event; 60018 gzip EOF comparison; 24802 initial 2749 PASS;
+90804 added demo failure mismatch; 82086 full SAN build PASS then old demo harness
+failure; 86568 normal final PASS; 42971 SAN final PASS. Do not poll again.
+
+Remaining production files: help.java, Streamable.java, P2PSwapLink.java (entirely
+commented), base benchmark/jnitest/jniminingtest and utils/jni/jnifunctions.
+Help's mysql dependency is now present. JNI implementation sources still missing;
+existing search/question retained, do not invent a libnative substitute. Also 41
+original tests and all full parity gaps. Base test private classloader helper still
+unrepresented. Preserve scope: live MySQL/resync validation is not optional merely
+because more mapped files can be added.
+
+Last pre-turn recovery: local-backups/MinimaCoreC++-20260911T105205Z.bundle,
+SHA 4df084567adc6469333008c6690d69216672c2a161d483dac06dcd260b6a91a0,
+50 paths byte-verified. Create new bundle after final commit via already-read
+/tmp/minima-hashtest-backup.py; await terminal, independent clone/fsck/pin check,
+then byte-verify ALL paths changed since 25386a3, covering both new commits.
+No GitHub push destination requested; local bundle is not off-machine backup.
+
+Earlier notes below historical where contradicted by this checkpoint.
+
+---
+
 # Latest checkpoint — ArchiveServer compiled and validated through real MySQL/TCP
 
 Previous HEAD d6624fd7940c2cc6745afd95d98dd07b2bae60f3; gitlog gives current.

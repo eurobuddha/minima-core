@@ -350,7 +350,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [archive.java](files/src/org/minima/system/commands/backup/archive.md) | authored | implemented_partial |
 | [backup.java](files/src/org/minima/system/commands/backup/backup.md) | authored | implemented_partial |
 | [decryptbackup.java](files/src/org/minima/system/commands/backup/decryptbackup.md) | authored | implemented_partial |
-| [mysql.java](files/src/org/minima/system/commands/backup/mysql.md) | authored | unported |
+| [mysql.java](files/src/org/minima/system/commands/backup/mysql.md) | authored | implemented_partial |
 | [mysqlcoins.java](files/src/org/minima/system/commands/backup/mysqlcoins.md) | authored | implemented_partial |
 | [rescue.java](files/src/org/minima/system/commands/backup/rescue.md) | authored | implemented_partial |
 | [reset.java](files/src/org/minima/system/commands/backup/reset.md) | authored | implemented_partial |

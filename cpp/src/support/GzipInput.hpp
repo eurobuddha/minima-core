@@ -4,6 +4,8 @@
 #include <filesystem>
 #include <fstream>
 #include <functional>
+#include <cerrno>
+#include <cstring>
 #include <zlib.h>
 namespace minima {
 // Streaming counterpart to Gzip.hpp. Raw inflate keeps trailer validation on
@@ -46,8 +48,11 @@ public:
     GzipInput(std::function<size_t(std::span<uint8_t>)> reader,std::function<void()> close):mReader(std::move(reader)),mClose(std::move(close)),mReadSize(512){
         header();if(inflateInit2(&mStream,-MAX_WBITS)!=Z_OK)throw wire::IOException("Gzip inflate initialization failed");mInitialized=true;
     }
-    explicit GzipInput(const std::filesystem::path& file):mFile(file,std::ios::binary) {
-        if(!mFile)throw wire::IOException("Cannot open gzip input");header();
+    explicit GzipInput(const std::filesystem::path& file) {
+        auto text=file.string();if(text.find('\0')!=std::string::npos)throw wire::TypedIOException("java.io.FileNotFoundException","Invalid file path");
+        auto fail=[&](int error){throw wire::TypedIOException("java.io.FileNotFoundException",text+" ("+std::strerror(error)+")");};
+        std::error_code error;if(std::filesystem::is_directory(file,error))fail(EISDIR);
+        errno=0;mFile.open(file,std::ios::binary);if(!mFile)fail(errno?errno:ENOENT);header();
         if(inflateInit2(&mStream,-MAX_WBITS)!=Z_OK)throw wire::IOException("Gzip inflate initialization failed");mInitialized=true;
     }
     GzipInput(const GzipInput&)=delete;
@@ -62,7 +67,7 @@ public:
                 try{header();}catch(const wire::IOException&){mEOF=true;return 0;}
                 if(inflateReset(&mStream)!=Z_OK)throw wire::IOException("Gzip reset failed");mEndMember=false;
             }
-            if(!fill())throw wire::EOFException("Truncated deflate stream");
+            if(!fill())throw wire::EOFException("Unexpected end of ZLIB input stream",true);
             mStream.next_in=mInput.data()+mBegin;mStream.avail_in=uInt(mEnd-mBegin);
             auto capacity=std::min(output.size(),size_t(UINT_MAX));mStream.next_out=output.data();mStream.avail_out=uInt(capacity);
             int status=inflate(&mStream,Z_NO_FLUSH);mBegin=mEnd-mStream.avail_in;auto produced=capacity-mStream.avail_out;

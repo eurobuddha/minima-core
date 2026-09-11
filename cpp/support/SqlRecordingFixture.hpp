@@ -2,12 +2,14 @@
 #include "org/minima/utils/SqlDB.hpp"
 #include "org/minima/utils/json/JSONArray.hpp"
 #include <bit>
+#include <map>
 #include "support/JavaFloating.hpp"
 #include "support/JavaUnicode.hpp"
 namespace minima::sql_fixture {
 using namespace json;
 inline const JSONObject* config;
 inline JSONArray events, logs;
+inline std::map<std::string,size_t> queryBatches;
 inline int calls = 0, connectionID = 0, preparedID = 0;
 inline bool flag(const std::string& key) { return config->get(key).isNull() ? false : config->get(key).asBool(); }
 inline int64_t integer(const JSONObject& object,const std::string& key,int64_t fallback=0) {
@@ -57,12 +59,16 @@ public:
 class Rows:public SqlResultSet {
     int mRow=-1;
     std::string mSQL;
+    std::optional<JSONArray> mBatch;
     const JSONArray& rows() const {
+        if(mBatch)return *mBatch;
         if(config->containsKey("rowsBySQL")){const auto& choices=object(config->get("rowsBySQL"));if(choices.containsKey(mSQL))return array(choices.get(mSQL));}
         return array(config->get("rows"));
     }
 public:
-    explicit Rows(std::string sql=""):mSQL(std::move(sql)){}
+    explicit Rows(std::string sql=""):mSQL(std::move(sql)){
+        if(config->containsKey("rowsBySQLBatches")){const auto& choices=object(config->get("rowsBySQLBatches"));if(choices.containsKey(mSQL)){const auto& batches=array(choices.get(mSQL));auto index=queryBatches[mSQL]++;mBatch=index<batches.size()?array(batches.get(index)):JSONArray();}}
+    }
     bool next() override {event("rows.next");return ++mRow<int(rows().size());}
     std::shared_ptr<SqlResultSetMetaData> getMetaData() override {event("rows.getMetaData");return flag("nullMeta")?nullptr:std::make_shared<Metadata>();}
     std::shared_ptr<SqlObject> getObject(int32_t index) override {

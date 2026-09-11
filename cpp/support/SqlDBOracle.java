@@ -14,6 +14,7 @@ public class SqlDBOracle {
     static JSONObject config;
     static JSONArray events;
     static int calls, connectionID, preparedID;
+    static Map<String,Integer> queryBatches=new HashMap<>();
     static int integer(JSONObject o,String key,int fallback) { Object v=o.get(key); return v==null?fallback:((Number)v).intValue(); }
     static boolean flag(String key) { return Boolean.TRUE.equals(config.get(key)); }
     static void event(String method,Object... args) throws SQLException {
@@ -44,14 +45,17 @@ public class SqlDBOracle {
     static ResultSet resultSet() {return resultSet("");}
     static ResultSet resultSet(String sql) {
         int[] row={-1};
+        JSONArray selected=rows(sql);
+        if(config.containsKey("rowsBySQLBatches")){var choices=(JSONObject)config.get("rowsBySQLBatches");if(choices.containsKey(sql)){var batches=(JSONArray)choices.get(sql);int index=queryBatches.getOrDefault(sql,0);queryBatches.put(sql,index+1);selected=index<batches.size()?(JSONArray)batches.get(index):new JSONArray();}}
+        final JSONArray selectedRows=selected;
         return proxy(ResultSet.class,(m,a)->{
             String name=m.getName();
-            if(name.equals("next")){event("rows.next");return ++row[0]<rows(sql).size();}
-            if(name.equals("getObject")){event("rows.getObject",a);return cell(((JSONArray)rows(sql).get(row[0])).get((int)a[0]-1));}
-            if(name.equals("getString")){event("rows.getString",a);return (String)((JSONObject)rows(sql).get(row[0])).get((String)a[0]);}
-            if(name.equals("getBytes")){event("rows.getBytes",a);String v=(String)((JSONObject)rows(sql).get(row[0])).get((String)a[0]);return v==null?null:new MiniData(v).getBytes();}
-            if(name.equals("getLong")){event("rows.getLong",a);Object v=((JSONObject)rows(sql).get(row[0])).get((String)a[0]);return v==null?0L:((Number)v).longValue();}
-            if(name.equals("getInt")){event("rows.getInt",a);return integer((JSONObject)rows(sql).get(row[0]),(String)a[0],0);}
+            if(name.equals("next")){event("rows.next");return ++row[0]<selectedRows.size();}
+            if(name.equals("getObject")){event("rows.getObject",a);return cell(((JSONArray)selectedRows.get(row[0])).get((int)a[0]-1));}
+            if(name.equals("getString")){event("rows.getString",a);return (String)((JSONObject)selectedRows.get(row[0])).get((String)a[0]);}
+            if(name.equals("getBytes")){event("rows.getBytes",a);String v=(String)((JSONObject)selectedRows.get(row[0])).get((String)a[0]);return v==null?null:new MiniData(v).getBytes();}
+            if(name.equals("getLong")){event("rows.getLong",a);Object v=((JSONObject)selectedRows.get(row[0])).get((String)a[0]);return v==null?0L:((Number)v).longValue();}
+            if(name.equals("getInt")){event("rows.getInt",a);return integer((JSONObject)selectedRows.get(row[0]),(String)a[0],0);}
             if(name.equals("getMetaData")){
                 event("rows.getMetaData");if(flag("nullMeta"))return null;
                 return proxy(ResultSetMetaData.class,(mm,aa)->{

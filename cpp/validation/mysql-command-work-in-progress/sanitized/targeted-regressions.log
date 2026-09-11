@@ -1,0 +1,15 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start  55: raw_archive_differential
+1/5 Test  #55: raw_archive_differential .........   Passed   97.41 sec
+    Start  94: sql_db_differential
+2/5 Test  #94: sql_db_differential ..............   Passed    3.11 sec
+    Start 200: archive_server_clean_audit
+3/5 Test #200: archive_server_clean_audit .......   Passed    2.49 sec
+    Start 238: archive_command_differential
+4/5 Test #238: archive_command_differential .....   Passed   69.17 sec
+    Start 258: mysql_coins_differential
+5/5 Test #258: mysql_coins_differential .........   Passed   20.55 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) = 192.74 sec

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": 4,
+  "independent_assertions": 11,
+  "failures": [],
+  "seconds": 2.431,
+  "transcript_sha256": "70b3fba6ef32080d7ffb66cd2b27aa2dfefd562ff145c4f625d0981296b54d69",
+  "scope": "Four actual Java/native SystemClean programs: signed elapsed overflow/no-clean branches and a logger Main receiver that re-enters the synchronized method. Exact logs, changed timestamp state, native stderr and reentrant completion; no handler/SQL/socket/sleep coverage is claimed by this focused audit.",
+  "clean_audit": true
+}

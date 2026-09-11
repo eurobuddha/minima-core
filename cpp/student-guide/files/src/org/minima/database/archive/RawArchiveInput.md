@@ -41,6 +41,9 @@ With 257 declared blocks, how many blocks do the first three successful getNextI
 
 ## Limits and traceability
 
-Passing these fixtures establishes selected incremental/error behavior, not atomic archive import or full chain acceptance. Native pre-connect/null errors and exact logging differ; failed batch recovery and all gzip header combinations need full review. The counterpart remains partial and full parity not_verified.
+Passing these fixtures establishes selected incremental/error behavior, not atomic archive import or full chain acceptance. The MySQL command tests found and corrected missing-file exception details,
+truncated-deflate EOF text, and logger routing. The reader now uses MinimaLogger,
+and its file-open checks follow MiniFile. Native pre-connect/null errors, failed
+batch recovery, and all gzip header combinations still need full review. The counterpart remains partial and full parity not_verified.
 
 Pinned Java SHA-256: `070d351589cc450093976ae070421598e19db1ee6294b0a752e42941c61d1b94`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).

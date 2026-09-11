@@ -11,9 +11,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **361 production counterparts and 47 mapped test files exist;
-49 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **362 production counterparts and 47 mapped test files exist;
+48 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mysql archive command now implements all source actions and its static entry
+points, and is registered in the native runner. Both recording-SQL suites
+pass 2,800 comparisons and 2,061 independent checks. Live command persistence and successful resync remain
+unverified. See the [command lab](student-guide/new-tests/mysql-command.md).
+The full SPHINCS command sanitizer run also completed: 131 comparisons and
+34 independent checks pass, including all five full-size signature paths.
 
 ArchiveServer now has a native counterpart and standalone `minima_archive_server`
 executable. Both builds pass81handler comparisons, a4-case reentrancy audit and

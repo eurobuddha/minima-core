@@ -1,3 +1,44 @@
+## MySQL command review
+
+### Summary
+
+Every source action and both static entry points have a native body. The command
+reuses the existing SQL, archive, streaming gzip, wallet, Main and configuration
+implementations. Review checked source action order, fresh/saved login precedence,
+Java-width arithmetic, exclusive H2 versus inclusive MySQL paging, unchanged
+source quirks, and normal-return-only connection shutdown.
+
+### Findings
+
+**MAJOR — raw file-open exception mismatch, fixed.** Command comparisons exposed
+GzipInput replacing Java FileNotFoundException details with a generic IOException.
+It now uses MiniFile's path/NUL/directory checks and error formatting. The new
+constructor checks the full path before opening it.
+
+**MAJOR — decompressor EOF text and logger routing, fixed.** The shared EOF adapter
+previously erased the decompressor's explicit message. An opt-in flag retains that
+message while keeping the EOF inheritance/catch behavior and existing message-free
+codec errors. RawArchiveInput now routes both source log messages through
+MinimaLogger; its standalone test harness directs those logs to stderr.
+
+The recording driver initially omitted an H2 connection event and collected demo
+logs differently across runtimes. Those harness differences were corrected and
+initial failures retained. Both production and fixture changes remain bounded:
+finite batch selection is test-only; no production loop limit or mock database was
+added. Native command resync contains the source body, but the recording fixture
+only exercises its unfinished-key rejection. Successful resync, cascade-bearing
+imports, durable H2/MySQL command workflows, Java Error injection, resource/GC/
+interrupt behavior and arbitrary platform fidelity still need dedicated evidence.
+
+### Verdict
+
+Approve this explicitly incomplete implementation checkpoint. Both complete
+builds pass; both command suites pass 2,800 comparisons and 2,061 assertions with
+matching transcripts. All five affected regression suites pass in both builds.
+This is not approval of full node parity.
+
+---
+
 ## ArchiveServer review
 
 ### Summary

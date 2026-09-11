@@ -1,0 +1,16 @@
+-- Configuring done (0.3s)
+-- Generating done (0.5s)
+-- Build files have been written to: /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/CommandRunner.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mysql.cpp.o
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/system/commands/backup/mysql.cpp:192:47: error: 'Blocks' is a private member of 'minima::IBD'
+  192 |             auto blocks=std::make_shared<IBD::Blocks>(connection.loadBlockRange(start));auto ibd=std::make_shared<IBD>();ibd->setTxBlocks(blocks);
+      |                                               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/objects/IBD.hpp:7:11: note: implicitly declared private here
+    7 |     using Blocks=std::vector<std::shared_ptr<TxBlock>>;
+      |           ^
+1 error generated.
+make[2]: *** [CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mysql.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [CMakeFiles/minima_file_port.dir/all] Error 2
+make: *** [all] Error 2

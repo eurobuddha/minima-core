@@ -1,14 +1,14 @@
 #include "RawArchiveInput.hpp"
-#include <iostream>
+#include "org/minima/utils/MinimaLogger.hpp"
 namespace minima {
 void RawArchiveInput::connect() {
     mInput=std::make_unique<GzipInput>(mFile);mBuffered.clear();mClosed=false;
     if(readObject<MiniByte>().isTrue()){
-        std::clog<<"Cascade found in RAW archive..\n";
+        MinimaLogger::log("Cascade found in RAW archive..");
         mCascade=std::make_shared<Cascade>(readObject<Cascade>());
     }
     mTotalFound=readObject<MiniNumber>().getAsInt();mTotalAdded=0;
-    std::clog<<"Blocks found in RAW Archive : "<<mTotalFound<<'\n';
+    MinimaLogger::log("Blocks found in RAW Archive : "+std::to_string(mTotalFound));
 }
 void RawArchiveInput::stop() {
     if(!mInput)throw std::invalid_argument("Raw archive is not connected");mClosed=true;mBuffered.clear();mInput->close();

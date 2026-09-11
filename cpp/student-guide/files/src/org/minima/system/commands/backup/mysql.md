@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/mysql.java) · `src/org/minima/system/commands/backup/mysql.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/mysql.java) · [C++ counterpart](../../../../../../../../src/org/minima/system/commands/backup/mysql.cpp)
 
 ## Purpose
 
@@ -25,22 +25,25 @@ mysql connects archive persistence, chain resynchronization and several import/e
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse pinned MySQLConnect, ArchiveManager, RawArchiveInput and TxPoW processing with their exact inclusive/exclusive range semantics. In MySQLConnect, loadFirstBlock means highest and loadLastBlock means lowest; relying on everyday meanings reverses traversal.
+The native counterpart implements every source action and registers with CommandRunner. It reuses Command parameter/reply helpers, MySQLConnect, ArchiveManager, RawArchiveInput and TxPoW processing with their inclusive/exclusive range semantics. The existing MySQLConfiguration helper supplies the static login parser. In MySQLConnect, loadFirstBlock means highest and loadLastBlock means lowest; relying on everyday meanings reverses traversal.
 
 ## Understanding the tests
 
-The runner fixture checks mysql classification only. Proposed direct fixtures assert credential override rules, height-difference versus count, update’s oldest-block boundary, mismatch check order, connection cleanup and nested reset arguments. Format tests compare complete raw bytes and H2 export contents in disposable stores. Failure tests inspect import flags, partial remote rows/settings and sync timeout responses. No live database or credentials are needed for deterministic orchestration tests.
+The new [command lab](../../../../../../../../student-guide/new-tests/mysql-command.md) and [differential driver](../../../../../../../../tools/mysql_command_differential.py) exercise the actual command with recording SQL. Direct fixtures assert credential override rules, height-difference versus count, update’s oldest-block boundary, mismatch check order, connection cleanup and nested reset arguments. Format tests compare complete raw bytes and H2 export contents in disposable stores. Failure tests inspect import flags, partial remote rows/settings and sync timeout responses. No live database or credentials are needed for deterministic orchestration tests.
 
 - [Runner fixture using selected fake commands](../../../../../../../../support/CommandRunnerOracle.java)
 - [Native runner fixture](../../../../../../../../support/command_runner.cpp)
 - [Runner-only dispatch/permission coverage](../../../../../../../../tools/command_runner_differential.py)
 - [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Both builds compile, and both command suites pass 2,800 comparisons, 2,061
+independent checks and 73,670 SQL events. The same transcript hash is recorded in
+the [command evidence](../../../../../../../../validation/mysql-command-work-in-progress/progress.json).
+Successful resync and live persistence for these command actions remain unverified.
 
 ## Limits
 
-No MySQL connection was made. Connector methods can catch SQL errors internally, so a completed copy loop does not necessarily prove all rows were stored. readonly is passed to the helper and should not be presumed to enforce a database-wide access restriction. Full operational recovery needs integration evidence beyond source explanation.
+The recording suite does not make a live MySQL connection. Connector methods can catch SQL errors internally, so a completed copy loop does not necessarily prove all rows were stored. readonly is passed to the helper and should not be presumed to enforce a database-wide access restriction. Full operational recovery needs integration evidence beyond source explanation.
 
 ## Check your understanding
 

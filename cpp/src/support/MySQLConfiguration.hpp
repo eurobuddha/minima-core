@@ -4,7 +4,7 @@
 #include "org/minima/utils/mysql/MySQLConnect.hpp"
 #include "NativeThrowable.hpp"
 namespace minima::mysql_detail {
-// Body of pinned mysql.convertMySQLParams, shared with Main until that command is ported.
+// Body of pinned mysql.convertMySQLParams, shared by Main startup and the mysql command.
 inline void configure(const std::optional<std::string>& details,const std::function<void(int64_t)>& sleep){
     try {
         if(!details)throw JavaNullPointerException("null MySQL details");

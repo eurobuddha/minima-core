@@ -21,7 +21,13 @@ public:
     TypedIOException(std::string name,const std::string& message):IOException(message),mClass(std::move(name)){}
     const std::string& className() const{return mClass;}
 };
-class EOFException : public IOException {public:using IOException::IOException;};
+class EOFException : public IOException {
+    bool mPreserveMessage=false;
+public:
+    using IOException::IOException;
+    EOFException(const std::string& message,bool preserveMessage):IOException(message),mPreserveMessage(preserveMessage){}
+    bool preservesMessage() const noexcept{return mPreserveMessage;}
+};
 using Bytes = std::vector<uint8_t>;
 inline void append(Bytes& to, std::span<const uint8_t> from) { to.insert(to.end(), from.begin(), from.end()); }
 template<class... T> Bytes join(const T&... objects) {

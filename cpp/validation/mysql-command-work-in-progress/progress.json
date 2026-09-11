@@ -1,0 +1,163 @@
+{
+  "project": "MinimaCoreC++",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "counterparts": 409,
+  "production_counterparts": 362,
+  "test_counterparts": 47,
+  "absent": 48,
+  "production_absent": 7,
+  "tests_absent": 41,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "default_ctest_entries": 259,
+  "full_ctest_suite_run": false,
+  "command_results": {
+    "normal": {
+      "passed": true,
+      "cases": 2800,
+      "groups": {
+        "bootstrap": 1,
+        "meta": 2,
+        "info": 232,
+        "None": 21,
+        "True": 21,
+        "bogus": 66,
+        "False": 1,
+        "0": 19,
+        "{}": 1,
+        "[]": 1,
+        "": 1,
+        "  x  ": 1,
+        "bad": 18,
+        "size": 124,
+        "wipe": 173,
+        "setlogin": 115,
+        "clearlogin": 115,
+        "autobackup": 115,
+        "integrity": 176,
+        "update": 146,
+        "findtxpow": 164,
+        "addresscheck": 176,
+        "resync": 57,
+        "rawimport": 266,
+        "fixmissing": 228,
+        "h2import": 57,
+        "h2export": 73,
+        "rawexport": 204,
+        "reset": 57,
+        "runner": 44,
+        "configure": 72,
+        "main": 53
+      },
+      "independent_assertions": 2061,
+      "sql_events": 73670,
+      "seconds": 23.841,
+      "transcript_sha256": "6413869fc68a49dcf8caf2855135f7f7584a54f8b1ec4e8f470a8899f11a3522",
+      "failures": [],
+      "scope": "Actual pinned mysql/native command and real archive/MySQL codecs using recording SQL; metadata, parsing, login precedence, preferences, finite paging, integrity order, raw files, imported blocks, missing-block repair, TxPoW lookup, SQL failures, static configuration and demo. Timestamps checked then normalized; NPE/classcast prose and demo stack frames normalized; demo logger output collected separately from plain stdout. Does not certify live H2/MySQL persistence, successful resync, GC/interruption timing, platform parity or complete node behavior."
+    },
+    "sanitized": {
+      "passed": true,
+      "cases": 2800,
+      "groups": {
+        "bootstrap": 1,
+        "meta": 2,
+        "info": 232,
+        "None": 21,
+        "True": 21,
+        "bogus": 66,
+        "False": 1,
+        "0": 19,
+        "{}": 1,
+        "[]": 1,
+        "": 1,
+        "  x  ": 1,
+        "bad": 18,
+        "size": 124,
+        "wipe": 173,
+        "setlogin": 115,
+        "clearlogin": 115,
+        "autobackup": 115,
+        "integrity": 176,
+        "update": 146,
+        "findtxpow": 164,
+        "addresscheck": 176,
+        "resync": 57,
+        "rawimport": 266,
+        "fixmissing": 228,
+        "h2import": 57,
+        "h2export": 73,
+        "rawexport": 204,
+        "reset": 57,
+        "runner": 44,
+        "configure": 72,
+        "main": 53
+      },
+      "independent_assertions": 2061,
+      "sql_events": 73670,
+      "seconds": 67.013,
+      "transcript_sha256": "6413869fc68a49dcf8caf2855135f7f7584a54f8b1ec4e8f470a8899f11a3522",
+      "failures": [],
+      "scope": "Actual pinned mysql/native command and real archive/MySQL codecs using recording SQL; metadata, parsing, login precedence, preferences, finite paging, integrity order, raw files, imported blocks, missing-block repair, TxPoW lookup, SQL failures, static configuration and demo. Timestamps checked then normalized; NPE/classcast prose and demo stack frames normalized; demo logger output collected separately from plain stdout. Does not certify live H2/MySQL persistence, successful resync, GC/interruption timing, platform parity or complete node behavior."
+    }
+  },
+  "regressions": {
+    "normal": {
+      "passed": true,
+      "suites": 5,
+      "seconds": 107.61
+    },
+    "sanitized": {
+      "passed": true,
+      "suites": 5,
+      "seconds": 192.74
+    }
+  },
+  "active_sessions": {},
+  "open_work": [
+    "Live MySQL/H2 command import/export/update and persistence",
+    "Successful Main resync, seed restoration, reset forwarding/shutdown integration",
+    "Cascade-bearing raw/H2 command imports",
+    "Java Error injection, interruption delivery, GC/resource lifetime and timing",
+    "Remaining 48 absent files and full fidelity review of all 457 counterparts"
+  ],
+  "completed_sessions": {
+    "normal_validation_and_regressions": {
+      "id": 86568,
+      "exit_code": 0
+    },
+    "sanitized_validation_and_regressions": {
+      "id": 42971,
+      "exit_code": 0
+    }
+  },
+  "guide_audit": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "source_files": 457,
+    "unique_guides": 457,
+    "native_counterparts": 409,
+    "native_absent": 48,
+    "mapping_counts_by_source_set": {
+      "src": {
+        "total": 369,
+        "counterparts": 362,
+        "absent": 7
+      },
+      "test": {
+        "total": 88,
+        "counterparts": 47,
+        "absent": 41
+      }
+    },
+    "teaching_counts": {
+      "authored_lesson": 369,
+      "source_test_explanation": 88
+    },
+    "links_checked": 9271,
+    "line_anchors_checked": 2632,
+    "errors": [],
+    "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
+  }
+}

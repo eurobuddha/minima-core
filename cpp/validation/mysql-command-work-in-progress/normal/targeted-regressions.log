@@ -1,0 +1,15 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  55: raw_archive_differential
+1/5 Test  #55: raw_archive_differential .........   Passed   35.02 sec
+    Start  94: sql_db_differential
+2/5 Test  #94: sql_db_differential ..............   Passed    2.70 sec
+    Start 200: archive_server_clean_audit
+3/5 Test #200: archive_server_clean_audit .......   Passed    2.24 sec
+    Start 238: archive_command_differential
+4/5 Test #238: archive_command_differential .....   Passed   58.47 sec
+    Start 258: mysql_coins_differential
+5/5 Test #258: mysql_coins_differential .........   Passed    9.17 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) = 107.61 sec

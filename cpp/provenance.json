@@ -4080,5 +4080,193 @@
     },
     "evidence": "validation/archive-server-work-in-progress",
     "full_parity_verified": false
+  },
+  "mysql_command_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/system/commands/backup/mysql.java": "1cf8f858f0329c43d139ebeca7de58876b036010afaa95e696a1077cde930265",
+      "upstream-study/src/org/minima/system/commands/backup/archive.java": "a7bdbe6083655474292fc8782885efd98ec37fa87c92b89864f07696b223ae31",
+      "upstream-study/src/org/minima/database/archive/RawArchiveInput.java": "070d351589cc450093976ae070421598e19db1ee6294b0a752e42941c61d1b94"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/system/commands/backup/mysql.hpp": "73e6ed598c00633507a07b64fd1ef3936f7cbe0989d5b1c4093485b174e980b6",
+      "cpp/src/org/minima/system/commands/backup/mysql.cpp": "31fd77eb381fdbca0451ce2d4d838fdb8ef37645adbe31e121a3a1cf2521df7e",
+      "cpp/src/org/minima/database/archive/RawArchiveInput.cpp": "b26a6c787f5c7b5c0465fd4af1bae212c69494dd4e744cea219520a8775e36be",
+      "cpp/src/support/ByteIO.hpp": "c0df43229e39b2b09ca4c2673314780d1b3255f4542fd5c9edfe7533e921bdfa",
+      "cpp/src/support/JavaIOExceptionText.hpp": "2cee76f3b19810ebd8d517dcfcf170fecfee5013d1c6a3e7b49b4fa50668b255",
+      "cpp/src/support/GzipInput.hpp": "23264093b138074819274c5cfb92544b8deaf3d0cfd055ee371c9c0590688aa1",
+      "cpp/src/support/MySQLConfiguration.hpp": "97674237168e8bd4d40c8a71a68d947098e1bfb182a549f1e0a5a2850ad02493",
+      "cpp/support/MySQLCommandOracle.java": "a5d98cb0176c83daf47db0fbd6da16d3f955e5384c0c52f5ffe88d2d7b69487c",
+      "cpp/support/mysql_command.cpp": "148d0887cdfe2a69f4223a9423e1c54981c59f6b3ed7a491da17ce06280a07bb",
+      "cpp/support/SqlDBOracle.java": "98508fa04edcc2e929b22b78daeaaf5af120a96e829fccef977d29b042804be6",
+      "cpp/support/SqlRecordingFixture.hpp": "b4f44e5dae82f59f4f0f0749ad78dceaf8188cd9ec3ba1cfe1c8395037afdc20",
+      "cpp/support/raw_archive.cpp": "801ca862e44a1d0c46021955731c88b81347a9c89df3a68e68457007e52f99f1",
+      "cpp/tools/mysql_command_differential.py": "6db3c4b0e9bbd44750a71363a3491f4bfc89248a0070f0c1c9ec1ae20998ace7"
+    },
+    "reuse": "Pinned mysql flow; existing archive/mysqlcoins command conventions, MySQLConnect, ArchiveManager, RawArchiveInput, CommandRunner, Main/vault/wallet, BIP39, GzipOutput/BufferedFileOutput, Java-width helpers, MiniFile path errors and MinimaLogger. MySQLConfiguration reused unchanged except comment. Fixtures reuse SqlDBOracle/SqlRecordingFixture and actual archive/coin constructors; add finite query batches only to recording boundary.",
+    "sibling_search": "No matching mysql command in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src or tests. Existing current native database/runtime/codec implementations reused.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "goal_complete": false,
+      "counterparts": 409,
+      "production_counterparts": 362,
+      "test_counterparts": 47,
+      "absent": 48,
+      "production_absent": 7,
+      "tests_absent": 41,
+      "parity": "not_verified",
+      "full_normal_build": "passed",
+      "full_sanitized_build": "passed",
+      "default_ctest_entries": 259,
+      "full_ctest_suite_run": false,
+      "command_results": {
+        "normal": {
+          "passed": true,
+          "cases": 2800,
+          "groups": {
+            "bootstrap": 1,
+            "meta": 2,
+            "info": 232,
+            "None": 21,
+            "True": 21,
+            "bogus": 66,
+            "False": 1,
+            "0": 19,
+            "{}": 1,
+            "[]": 1,
+            "": 1,
+            "  x  ": 1,
+            "bad": 18,
+            "size": 124,
+            "wipe": 173,
+            "setlogin": 115,
+            "clearlogin": 115,
+            "autobackup": 115,
+            "integrity": 176,
+            "update": 146,
+            "findtxpow": 164,
+            "addresscheck": 176,
+            "resync": 57,
+            "rawimport": 266,
+            "fixmissing": 228,
+            "h2import": 57,
+            "h2export": 73,
+            "rawexport": 204,
+            "reset": 57,
+            "runner": 44,
+            "configure": 72,
+            "main": 53
+          },
+          "independent_assertions": 2061,
+          "sql_events": 73670,
+          "seconds": 23.841,
+          "transcript_sha256": "6413869fc68a49dcf8caf2855135f7f7584a54f8b1ec4e8f470a8899f11a3522",
+          "failures": [],
+          "scope": "Actual pinned mysql/native command and real archive/MySQL codecs using recording SQL; metadata, parsing, login precedence, preferences, finite paging, integrity order, raw files, imported blocks, missing-block repair, TxPoW lookup, SQL failures, static configuration and demo. Timestamps checked then normalized; NPE/classcast prose and demo stack frames normalized; demo logger output collected separately from plain stdout. Does not certify live H2/MySQL persistence, successful resync, GC/interruption timing, platform parity or complete node behavior."
+        },
+        "sanitized": {
+          "passed": true,
+          "cases": 2800,
+          "groups": {
+            "bootstrap": 1,
+            "meta": 2,
+            "info": 232,
+            "None": 21,
+            "True": 21,
+            "bogus": 66,
+            "False": 1,
+            "0": 19,
+            "{}": 1,
+            "[]": 1,
+            "": 1,
+            "  x  ": 1,
+            "bad": 18,
+            "size": 124,
+            "wipe": 173,
+            "setlogin": 115,
+            "clearlogin": 115,
+            "autobackup": 115,
+            "integrity": 176,
+            "update": 146,
+            "findtxpow": 164,
+            "addresscheck": 176,
+            "resync": 57,
+            "rawimport": 266,
+            "fixmissing": 228,
+            "h2import": 57,
+            "h2export": 73,
+            "rawexport": 204,
+            "reset": 57,
+            "runner": 44,
+            "configure": 72,
+            "main": 53
+          },
+          "independent_assertions": 2061,
+          "sql_events": 73670,
+          "seconds": 67.013,
+          "transcript_sha256": "6413869fc68a49dcf8caf2855135f7f7584a54f8b1ec4e8f470a8899f11a3522",
+          "failures": [],
+          "scope": "Actual pinned mysql/native command and real archive/MySQL codecs using recording SQL; metadata, parsing, login precedence, preferences, finite paging, integrity order, raw files, imported blocks, missing-block repair, TxPoW lookup, SQL failures, static configuration and demo. Timestamps checked then normalized; NPE/classcast prose and demo stack frames normalized; demo logger output collected separately from plain stdout. Does not certify live H2/MySQL persistence, successful resync, GC/interruption timing, platform parity or complete node behavior."
+        }
+      },
+      "regressions": {
+        "normal": {
+          "passed": true,
+          "suites": 5,
+          "seconds": 107.61
+        },
+        "sanitized": {
+          "passed": true,
+          "suites": 5,
+          "seconds": 192.74
+        }
+      },
+      "active_sessions": {},
+      "open_work": [
+        "Live MySQL/H2 command import/export/update and persistence",
+        "Successful Main resync, seed restoration, reset forwarding/shutdown integration",
+        "Cascade-bearing raw/H2 command imports",
+        "Java Error injection, interruption delivery, GC/resource lifetime and timing",
+        "Remaining 48 absent files and full fidelity review of all 457 counterparts"
+      ],
+      "completed_sessions": {
+        "normal_validation_and_regressions": {
+          "id": 86568,
+          "exit_code": 0
+        },
+        "sanitized_validation_and_regressions": {
+          "id": 42971,
+          "exit_code": 0
+        }
+      },
+      "guide_audit": {
+        "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+        "source_files": 457,
+        "unique_guides": 457,
+        "native_counterparts": 409,
+        "native_absent": 48,
+        "mapping_counts_by_source_set": {
+          "src": {
+            "total": 369,
+            "counterparts": 362,
+            "absent": 7
+          },
+          "test": {
+            "total": 88,
+            "counterparts": 47,
+            "absent": 41
+          }
+        },
+        "teaching_counts": {
+          "authored_lesson": 369,
+          "source_test_explanation": 88
+        },
+        "links_checked": 9271,
+        "line_anchors_checked": 2632,
+        "errors": [],
+        "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
+      }
+    }
   }
 }
