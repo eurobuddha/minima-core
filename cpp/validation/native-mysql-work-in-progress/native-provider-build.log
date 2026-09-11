@@ -1,0 +1,109 @@
+Warning: Using a deprecated option --no-fallback from command line. No effect, no replacement available
+Warning: Option 'FallbackThreshold' is deprecated and might be removed in a future release: It no longer has any effect, and no replacement is available. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'libminima_h2.dylib' (shared library)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+[1/8] Initializing...                                                                                   (7.3s @ 0.21GiB)
+ Builder configuration:
+ - Java version: 25.0.4.1+1, vendor version: GraalVM CE 25.3.4.1+1.1
+ - Graal compiler: optimization level: 1, target machine: armv8.1-a
+ - C compiler: cc (apple, arm64, 21.0.0)
+ - Assertions: disabled, system assertions: disabled
+ Image configuration:
+ - Garbage collector: Serial GC (max heap size: 80% of RAM)
+ - Assertions: disabled (class-specific config may apply), system assertions: disabled
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 8.00GiB of memory (33.3% of system memory, set via '-Xmx8g')
+ - 4 thread(s) (28.6% of 14 available processor(s), set via '--parallelism=4')
+[2/8] Performing analysis...  [*****]                                                                  (14.2s @ 1.29GiB)
+    9,968 types,  16,696 fields, and  54,181 methods found reachable
+      549 types,      60 fields, and   1,707 methods registered for reflection
+       63 types,      66 fields, and      56 methods registered for JNI access
+       70 resource accesses registered with 0.99MiB total size
+        5 native libraries: -framework CoreServices, -framework Foundation, dl, pthread, z
+[3/8] Building universe...                                                                              (4.2s @ 1.20GiB)
+[4/8] Parsing methods...      [**]                                                                      (2.1s @ 1.33GiB)
+[5/8] Inlining methods...     [***]                                                                     (1.2s @ 1.44GiB)
+[6/8] Compiling methods...    [****]                                                                   (16.1s @ 1.22GiB)
+[7/8] Laying out methods...   [***]                                                                     (7.4s @ 1.62GiB)
+[8/8] Creating image...       [**]                                                                      (2.9s @ 1.80GiB)
+  22.85MiB (51.29%) for code area:    35,944 compilation units
+  21.06MiB (47.28%) for image heap:  270,915 objects and 17 resources
+ 655.09KiB ( 1.44%) for other data
+  44.55MiB in total image size, 44.55MiB in total file size
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   1.18MiB java.base/sun.security.ssl                          6.87MiB byte[] for code metadata
+ 996.53KiB java.base/java.util                                 3.09MiB byte[] for string data
+ 624.03KiB java.base/com.sun.crypto.provider                   1.85MiB java.base/java.lang.String
+ 523.99KiB com.mysql.cj.jdbc                                   1.33MiB java.base/java.lang.Class
+ 485.86KiB java.base/java.lang                                 1.06MiB o.g.n.runtime/c.o.s.core.hub.DynamicHubCompanion
+ 475.10KiB java.base/java.lang.invoke                          0.99MiB byte[] for embedded resources
+ 458.51KiB org.h2.command                                      0.98MiB byte[] for general heap data
+ 409.77KiB org.h2.table                                      577.09KiB heap alignment
+ 404.40KiB o.g.n.runtime/com.oracle.svm.core.code            487.77KiB byte[] for reflection metadata
+ 381.46KiB java.base/sun.security.provider                   362.44KiB java.base/java.util.HashMap$Node
+  17.02MiB for 383 more packages                               3.49MiB for 2339 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ FUTR: Use '--future-defaults=all' to prepare for future releases.
+ AWT:  Use the tracing agent to collect metadata for AWT.
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+------------------------------------------------------------------------------------------------------------------------
+                       4.9s (8.4% of total time) in 1390 GCs | Peak RSS: 1.96GiB | CPU load: 4.13
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/graal_isolate.h (c_header, 6.42KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/graal_isolate_dynamic.h (c_header, 6.53KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libawt.dylib (jdk_library, 520.75KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libawt_lwawt.dylib (jdk_library, 1.15MiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libfontmanager.dylib (jdk_library, 1.07MiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libfreetype.dylib (jdk_library, 629.02KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libjava.dylib (jdk_library_shim, 34.66KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libjavajpeg.dylib (jdk_library, 240.91KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libjvm.dylib (jdk_library_shim, 33.33KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/liblcms.dylib (jdk_library, 291.25KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libminima_h2.dylib (shared_library, 44.55MiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libminima_h2.h (c_header, 350B)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libminima_h2_dynamic.h (c_header, 406B)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libmlib_image.dylib (jdk_library, 477.42KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libosxapp.dylib (jdk_library, 183.97KiB)
+ /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libosxkrb5.dylib (jdk_library, 71.48KiB)
+========================================================================================================================
+Finished generating 'libminima_h2' in 57.2s.
+
+The build process encountered 2 warnings.
+
+{
+  "h2_version": "2.4.240",
+  "h2_sha256": "b80baaf431ce458c926d72ec2b8cc33b120c76b73abe4301278bb2044ddde9f5",
+  "bridge_sha256": "5a51221a6f8ec95695c0462f704fef0d52c896705e219469fa6cc7696a61e217",
+  "toolchain": "native-image 25.0.4.1 2026-08-18\nGraalVM Runtime Environment GraalVM CE 25.3.4.1+1.1 (build 25.0.4.1+1-jvmci-25.3-b22)\nSubstrate VM GraalVM CE 25.3.4.1+1.1 (build 25.0.4.1+1, serial gc, compressed references)\n",
+  "command": [
+    "/private/tmp/minima-native-h2-toolchain/graalvm-community-25.3.4.1+1.1/Contents/Home/bin/native-image",
+    "-H:ConfigurationFileDirectories=/Users/eurobuddha/Projects/minima/core/minima-core/cpp/native/h2/mysql-metadata",
+    "-J-Xmx8g",
+    "--parallelism=4",
+    "-O1",
+    "--no-fallback",
+    "--shared",
+    "-cp",
+    "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/classes:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/h2-2.4.240.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/mysql-connector-java-8.0.24.jar",
+    "-o",
+    "libminima_h2"
+  ],
+  "library": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/native-h2-mysql/libminima_h2.dylib",
+  "library_sha256": "554d480a40932a6fad765ef62179975884c91c154349b77f60fb79ddec7f8c28",
+  "minima_java_classes_included": false,
+  "jvm_fallback": false,
+  "mysql_version": "8.0.24",
+  "mysql_sha256": "99b52da63d9d31d5494a302f3dbb554b730cc20db1fb09eda64ab0e27c130aab",
+  "mysql_metadata_sha256": {
+    "reachability-metadata.json": "b11a1edb5e95a6a0c9a77622bfa327776dfa24e66965e6293ca4ec88fc31b054"
+  }
+}

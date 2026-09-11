@@ -38,3 +38,7 @@ assertions and 24,372 SQL events per run. Normal time14.523seconds; sanitizer ti
 25.142seconds. Transcript hashes match, and native stderr is empty. The initial
 normal run exposed an exception-labeling mistake in the fixture, fixed using the
 existing typed CommandException adapter. The failed report remains in evidence.
+
+The later [native MySQL lab](native-mysql-storage.md) adds real driver and node
+command tests. Keep their narrower live-data scope separate from these exhaustive
+recorded event/failure comparisons.

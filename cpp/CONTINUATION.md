@@ -1,3 +1,72 @@
+# Latest checkpoint — native MySQL provider and real node tests pass
+
+Branch/project/executable MinimaCoreC++. Goal ACTIVE; not complete.
+Previous commit c6fdf534dd67a1d33b94a04ea15da80681c87d8e records completed
+resumed SPHINCS validation; git log gives current MySQL checkpoint.
+407 counterparts=360production+47originaltests;50absent=9production+41tests.
+All present remain implemented_partial; all457 parity not_verified. Full suite NOT run.
+
+The optional native H2 library now includes pinned Connector/J8.0.24 with --mysql.
+Reuse NativeH2Bridge C ABI and NativeH2Connection ownership/metadata/error transport;
+nullableConnector preserves optional credentials. Launcher shares one isolate through
+MainServices.sql and MainServices.mysql. No Java Minima classes/JVM fallback.
+Reviewed tracing-agent metadata in native/h2/mysql-metadata. Initial filter, compiler
+class-version and auth-message assertion failures retained. Profile52programsPASS.
+GraalVM path /private/tmp/minima-native-h2-toolchain/graalvm-community-25.3.4.1+1.1/Contents/Home.
+Fresh provider cpp/build/native-h2-mysql, both builds now configured to it.
+Library SHA256 554d480a40932a6fad765ef62179975884c91c154349b77f60fb79ddec7f8c28.
+Both full C++ builds PASS. Both realdriver suites52programs/444ops/169checksPASS,
+normal38.561s,sanitizer36.356s, same8c0a1971...transcript and empty native stderr.
+Existing H2 differential+concurrent2/2PASS both:4.65s/5.08s.
+Both actual-node suitesPASS4processes/build,17mysqlcoins commands/runtime:
+normal22.666s,sanitizer134.169s. All8keys retained acrossrestart and clean shutdown.
+Checks info/wipe/emptyarchiveupdate/querywrite/search/hiding/doubles/null/errors.
+Nonempty livearchiveupdate/autologin/autobackup/reconnect/TLS/platform/fullparity
+remain open. Evidence validation/native-mysql-work-in-progress; lab+lessons updated.
+Optional CTest fixture setting registers2tests, verified then cleared; default256tests.
+Own MySQL container minima-cpp-mysql-1b8c8a131d was removed and removalverified.
+Its old /tmp/minima-native-mysql-fixture.json is now stale; create a NEW isolated
+fixture to rerun. No user container/host volume touched. See fixture-cleanup.json.
+Tool sessions97650profile,85895provider,78307normalbuild/test,17026sanbuild,
+6376san-driver+bothnode suites,45305/67396H2regs,12552configure,56757cleanup are
+TERMINAL0/CLOSED. functions cell5161 also CLOSED. Do not poll these again.
+
+SPHINCS resumed sanitizer session41760 is TERMINAL0/CLOSED. Final299comparisons,
+1377independent checks,3309.726s; actualsource mainsmatch, emptyprocessstderr.
+Two saved signature records explicitlyrechecked plusone newlygenerated fullsignature.
+Evidence copied to validation/sphincs-work-in-progress/sanitized/sphincs-resumed-*.
+Original timeout stillretained. Commitc6fdf53 saves this result and studentexplanations.
+Do not poll41760 again.
+
+LIVE24343 full sanitized SPHINCS command, /tmp/minima-sphincs-command-sanitized-full.log.
+Latest129cases/0mismatches/30checks: inline/file/test fullsignatures match, two
+transaction signatures remain. Revalidate before inferring status; neverrestart
+merely for quiet output. Final build-sanitized/sphincs-command-full-results.json.
+Normal131/34fullcommand suite alreadyPASS. No full SANcommandpass claim yet.
+
+Guide audit457pages/9263links/2632lineanchors/0errors. Teaching coverage != parity.
+Remaining production mysql.java,help.java,ArchiveServer.java,Streamable.java,
+P2PSwapLink.java(all commented),benchmark/jnitest/jniminingtest/jnifunctions;
+plus41originaltests and all full-fidelity gaps. JNI librarysource questionpending;
+noimplementationfound; do notinvent a loaded library or count failurestubs asport.
+ArchiveServer source fullyread lastturn; reread and inspectHTTPServer/Socket/NIO
+candidates/dependencies/tests and sibling beforeadapting. The realnativeMySQL
+provider now supplies its previouslymissing runtime dependency. mysql.java remains
+large1446lines; help depends on its metadata. Base test privateclassloaderhelper
+stillunrepresented. Continue reuse-first, tests, student explanations and commits.
+
+Last pre-MySQL bundle d4517e3: local-backups/MinimaCoreC++-20260911T094827Z.bundle
+SHA256 8b8567fe48566630a4296db7900957c2b02d988ef4b76cbff7587a5b7fd784f7,
+all31changedpaths byteverified. Create this checkpoint's recovery bundle after
+commit, independentlyclone/fsck/source-pincheck, byteverify ALL changedpaths
+since d4517e3 to cover both signer and MySQL commits. Use alreadyread
+/tmp/minima-hashtest-backup.py; awaitterminal before reading manifest.
+No GitHubpush destination chosen; local bundles are NOT off-machine backups.
+
+Earlier notes below are historical where superseded by this checkpoint.
+
+---
+
 # Latest checkpoint — mysqlcoins command validated through recording SQL
 
 Previous HEAD71d34a6; git log gives current. Local branch MinimaCoreC++. GoalACTIVE.

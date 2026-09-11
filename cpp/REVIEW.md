@@ -1,3 +1,42 @@
+## Native MySQL driver and node integration review
+
+### Summary
+
+The optional native dependency now includes the pinned Connector/J8.0.24 with H2.
+The C++ launcher shares one isolate through the SQL and nullable MySQL connection
+services. Existing packet encoding, JDBC error transport, result metadata and
+owner lifetimes are reused; no Minima Java classes or JVM fallback are included.
+
+### Findings
+
+**Fixture/setup issues, resolved:** metadata collection initially rejected a filter
+wildcard, then newer system-compiler bytecode. The final profile uses exact class
+filters and the GraalVM compiler. An authentication assertion expected an inner
+message; the pinned autoReconnect driver returns its outer reconnect exception.
+The fixture now checks that exact observed exception. Failed reports are retained.
+
+The reviewed metadata excludes Minima and oracle classes. Both full builds pass.
+Both driver suites match52programs/444operations with169independent checks, the
+same transcript and empty native stderr. H2 differential/concurrent regressions
+pass in both builds. Actual Java/native nodes pass info, wipe, empty-archive update,
+query writes/search, null omission, numeric formatting, hiding, SQL errors and
+restart. Four processes per build exit cleanly with all eight keys preserved.
+
+**Open scope:** this does not certify nonempty live archive updates, every JDBC
+URL/plugin/TLS mode, reconnect failures, other platforms, relocatable binaries,
+or complete Minima parity. The AOT dependency is not instrumented by C++ ASAN.
+Live fixtures use a separate tmpfs MySQL container bound to localhost and must be
+removed afterward. Tests are opt-in and serial when a fixture path is configured.
+
+### Verdict
+
+Approve this bounded native-provider checkpoint. Remaining mapped files and parity
+gaps stay open. See the [evidence](validation/native-mysql-work-in-progress/progress.json)
+and [student lab](student-guide/new-tests/native-mysql-storage.md).
+Earlier missing-provider notes below describe their historical checkpoints.
+
+---
+
 ## Resumed SPHINCS sanitizer review
 
 ### Summary

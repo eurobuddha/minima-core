@@ -55,7 +55,7 @@ report is retained. Production exception behavior did not change.
 
 ## Limits
 
-No live database was contacted. The runtime MySQL provider is still missing; this command checkpoint does not claim a working live MySQL backend. Synthetic SQL ranges are bounded using maxblocks and do not prove durable pagination, concurrent updates, or the greater-than-five-second progress-log timing. coinsadded counts calls rather than proving successful distinct stored rows. A restart from maximum recorded coin block depends on how the connector represents partial updates and blocks containing no coins.
+The recording comparison above contacted no database. A subsequent optional native provider and the [live node lab](../../../../../../../../student-guide/new-tests/native-mysql-storage.md) now exercise actual MySQL storage and mysqlcoins commands. This does not certify the complete update path. Synthetic SQL ranges are bounded using maxblocks and do not prove durable pagination, concurrent updates, or the greater-than-five-second progress-log timing. coinsadded counts calls rather than proving successful distinct stored rows. A restart from maximum recorded coin block depends on how the connector represents partial updates and blocks containing no coins.
 
 ## Check your understanding
 

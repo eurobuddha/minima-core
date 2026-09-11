@@ -50,7 +50,7 @@ runtime, taking 40.98 and 110.76 seconds respectively. No production discrepancy
 was found by these cases. The first build exposed a missing complete JSONArray
 include; adding that include fixed compilation. The SQL recording fixture was
 extended with a genuine Double value and setDouble event, retaining the existing
-Clob/string and SQL failure paths. Native-driver and live-server work remains.
+Clob/string and SQL failure paths. Those recording tests did not exercise a live server. The later [native MySQL lab](native-mysql-storage.md) adds a real compiled driver and isolated storage checks.
 
 The shared adapters also passed five regression suites in both builds: SqlDB
 (464 programs), TxPoW SQL (2,592), CoinDB (1,350), ArchiveManager (3,333) and

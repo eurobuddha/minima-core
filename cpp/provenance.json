@@ -3934,5 +3934,72 @@
     "runtime_gap": "No live native MySQL provider is configured. This is command/body validation through recording SQL, not live-database parity.",
     "evidence": "validation/mysql-coins-work-in-progress",
     "full_parity_verified": false
+  },
+  "native_mysql_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "files_sha256": {
+      "cpp/native/h2/NativeH2Bridge.java": "5a51221a6f8ec95695c0462f704fef0d52c896705e219469fa6cc7696a61e217",
+      "cpp/native/h2/mysql-metadata/reachability-metadata.json": "b11a1edb5e95a6a0c9a77622bfa327776dfa24e66965e6293ca4ec88fc31b054",
+      "cpp/src/support/NativeH2Connection.hpp": "94ba973f19af28c82b8ee6a0ed3f3c87beca11f013452642e2e2f7449a492a5c",
+      "cpp/src/support/NativeH2Connection.cpp": "f61ca9d40ec55d03a93bba20dfbca241b31754162017f5394ab269c91f9e9010",
+      "cpp/support/minima_entry.cpp": "e47821a5817558524bceb3e12c941cf1ab18775669adf3a3f205d10dfb962b73",
+      "cpp/support/native_h2.cpp": "2d609857cddd1ed87f958c8ccd10f11a17fbb101687e16d4121034543a803ef2",
+      "cpp/tools/build_native_h2.py": "e62d3ed6fbefc34556690a1c082fcf5f95d90a76bf8dad47e296c118688b41c4",
+      "cpp/tools/native_mysql_differential.py": "e00c4757e95cbb8b370401e117e437b0aabdd681b1bb1dde8a14f8a5e08eaddb",
+      "cpp/tools/native_mysql_startup.py": "830403aa5c50674f62246b8fe9770aed1bf4b29920ffaf1476d0ea721ab092b3"
+    },
+    "reuse": "Existing NativeH2Bridge/NativeH2Connection C ABI, SqlConnection types and nullable packet strings; unchanged NativeH2Oracle plus native SQL fixture. Node/ready/key_state from native_restore_startup and shutdown stderr capture from native_base_test_startup. Pinned upstream MySQLConnect/mysqlcoins and exact Connector/J8.0.24 jar.",
+    "sibling_search": "No compatible native MySQL/MariaDB/ODBC implementation found in current repository or /Users/eurobuddha/Projects/minima/tools/minima-core-cpp; reuse existing tested native JDBC adapter rather than a different SQL connector.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "previous_head": "c6fdf53",
+      "goal_complete": false,
+      "counterparts": 407,
+      "production_counterparts": 360,
+      "test_counterparts": 47,
+      "absent": 50,
+      "production_absent": 9,
+      "tests_absent": 41,
+      "parity": "not_verified",
+      "full_normal_build": "passed",
+      "full_sanitized_build": "passed",
+      "full_ctest_suite_run": false,
+      "default_ctest_entries": 256,
+      "optional_mysql_ctest_entries": 2,
+      "profile_programs": 52,
+      "driver_programs_per_build": 52,
+      "driver_operations_per_build": 444,
+      "driver_independent_assertions_per_build": 169,
+      "driver_transcript_sha256": "8c0a19716d071dce39786741c29546a234a2803b87a4d9c014cfee2b523ebe5b",
+      "driver_seconds": {
+        "normal": 38.561,
+        "sanitized": 36.356
+      },
+      "h2_regressions": {
+        "normal": "2/2pass,4.65seconds",
+        "sanitized": "2/2pass,5.08seconds"
+      },
+      "node_processes_per_build": 4,
+      "node_commands_per_runtime": 17,
+      "node_seconds": {
+        "normal": 22.666,
+        "sanitized": 134.169
+      },
+      "provider": "Pinned H2 2.4.240 and Connector/J8.0.24 AOT-compiled into native C ABI library; C++ application and no Java Minima classes/no JVM fallback.",
+      "platform": "macOS ARM64; local MySQL8.0 digest recorded",
+      "fixture_cleanup": "fixture-cleanup.json",
+      "remaining": [
+        "Nonempty real archive-to-coins updates and durable pagination",
+        "Autologin/autobackup and reconnect fault integration",
+        "Full TLS/plugin/JDBC URL modes and cross-platform dependency behavior",
+        "9production files and41original tests absent, all complete parity reviews open"
+      ],
+      "full_node_parity": false,
+      "github_pushed": false
+    },
+    "evidence": "validation/native-mysql-work-in-progress",
+    "native_dependency_manifest": "validation/native-mysql-work-in-progress/native-provider-manifest.json",
+    "full_parity_verified": false
   }
 }

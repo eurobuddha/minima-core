@@ -189,7 +189,10 @@ public:
 }
 NativeH2Runtime::NativeH2Runtime():mEngine(std::make_shared<NativeH2Engine>()){}
 SqlConnect NativeH2Runtime::connector() const{
-    return [engine=mEngine](const std::string& url,const std::string& user,const std::string& password)->std::shared_ptr<SqlConnection>{
+    return nullableConnector();
+}
+NativeH2Runtime::NullableConnect NativeH2Runtime::nullableConnector() const{
+    return [engine=mEngine](const std::string& url,const std::optional<std::string>& user,const std::optional<std::string>& password)->std::shared_ptr<SqlConnection>{
         Packet packet;packet.putString(url);packet.putString(user);packet.putString(password);
         auto id=engine->call(1,0,std::move(packet)).number();return id?std::make_shared<Connection>(Handle::adopt(engine,id)):nullptr;
     };

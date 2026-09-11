@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "profile_only": true,
+  "programs": 48,
+  "operations": 434,
+  "independent_assertions": 74,
+  "seconds": 12.441,
+  "transcript_sha256": "cb8403fbb372088c186ed659afdbd21a40671ac5c1bf3e3aade09700aa99b827",
+  "failures": [
+    {
+      "programs": 48,
+      "error": "AssertionError('bad credentials rejected')"
+    }
+  ],
+  "mysql_image": "mysql@sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b",
+  "driver_sha256": "99b52da63d9d31d5494a302f3dbb554b730cc20db1fb09eda64ab0e27c130aab",
+  "scope": "Real isolated MySQL server and pinned Connector/J8.0.24. Reuses unchanged NativeH2Oracle and native SQL fixture; exact values/errors and cross-writer durable rows, prepared bindings, null/empty/binary/Unicode/limits, metadata, transactions and authentication failures. Native handle registry must empty per request. Profile-only mode executes Java solely to collect native-image metadata. No complete node/MySQL command/TLS-platform/reflection-extension parity claim."
+}

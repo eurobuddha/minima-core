@@ -3657,7 +3657,7 @@
     "parity": "not_verified",
     "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored explanation of the Java source, native composition, and full-size validation in progress."
+    "teaching_note": "Authored explanation of the Java source, native composition, and completed full-size validation and remaining limits."
   },
   {
     "java": "src/org/minima/utils/sphincs/SPHINCSSignature.java",

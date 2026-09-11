@@ -41,7 +41,11 @@ public final class NativeH2Bridge {
             // getResultSet again). Drop that view without closing the object.
             // Connection owners outlive every native child and close on release.
             case 0:{Object value=objects.remove(id);if(value instanceof Connection connection)connection.close();break;}
-            case 1:{org.h2.Driver.load();out.writeLong(retain(DriverManager.getConnection(string(in),string(in),string(in))));break;}
+            case 1:{
+                org.h2.Driver.load();String url=string(in);
+                if(url!=null&&url.startsWith("jdbc:mysql:"))Class.forName("com.mysql.cj.jdbc.Driver");
+                out.writeLong(retain(DriverManager.getConnection(url,string(in),string(in))));break;
+            }
             case 2:out.writeBoolean(((Connection)object(id)).isClosed());break;
             case 3:((Connection)object(id)).setAutoCommit(in.readBoolean());break;
             case 4:out.writeLong(retain(((Connection)object(id)).createStatement()));break;

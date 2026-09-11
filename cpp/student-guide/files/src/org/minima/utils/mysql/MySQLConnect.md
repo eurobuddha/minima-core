@@ -38,7 +38,7 @@ A useful trace is a range containing one valid block followed by invalid wire by
 
 ## Limits and a useful next test
 
-This is an implemented_partial counterpart, not certified full parity. The recording driver proves calls and observable wrapper behavior, not MySQL's execution of those calls. No native MySQL driver is installed by this class; unconfigured initialization throws an explicit SQL error. Isolated live-server persistence, duplicate INSERT IGNORE behavior, demo-main execution, driver loading, full Main integration and exhaustive concurrency/platform parity remain open. The source demonstration main is not an assertion test. The readOnly flag skips table creation; it does not prohibit writes.
+This is an implemented_partial counterpart, not certified full parity. The recording driver proves calls and observable wrapper behavior, not MySQL's execution of those calls. The launcher now optionally supplies the compiled pinned JDBC driver through MainServices.mysql; unconfigured initialization still throws an explicit SQL error. The [native MySQL lab](../../../../../../../student-guide/new-tests/native-mysql-storage.md) adds isolated live persistence and node command tests. Duplicate INSERT IGNORE behavior, demo-main execution, complete Main integration and exhaustive concurrency/platform parity remain open. The source demonstration main is not an assertion test. The readOnly flag skips table creation; it does not prohibit writes.
 
 ## Check your understanding
 

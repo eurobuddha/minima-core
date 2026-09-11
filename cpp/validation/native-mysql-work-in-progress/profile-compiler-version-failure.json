@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "profile_only": true,
+  "programs": 0,
+  "operations": 0,
+  "independent_assertions": 0,
+  "seconds": 2.731,
+  "transcript_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "failures": [
+    {
+      "programs": 0,
+      "error": "RuntimeError('Checker oracle exited: Error: LinkageError occurred while loading main class NativeH2Oracle\\n\\tjava.lang.UnsupportedClassVersionError: NativeH2Oracle has been compiled by a more recent version of the Java Runtime (class file version 70.0), this version of the Java Runtime only recognizes class file versions up to 69.0\\n')"
+    },
+    {
+      "cleanup": "RuntimeError('Error: LinkageError occurred while loading main class NativeH2Oracle\\n\\tjava.lang.UnsupportedClassVersionError: NativeH2Oracle has been compiled by a more recent version of the Java Runtime (class file version 70.0), this version of the Java Runtime only recognizes class file versions up to 69.0\\n')"
+    }
+  ],
+  "mysql_image": "mysql@sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b",
+  "driver_sha256": "99b52da63d9d31d5494a302f3dbb554b730cc20db1fb09eda64ab0e27c130aab",
+  "scope": "Real isolated MySQL server and pinned Connector/J8.0.24. Reuses unchanged NativeH2Oracle and native SQL fixture; exact values/errors and cross-writer durable rows, prepared bindings, null/empty/binary/Unicode/limits, metadata, transactions and authentication failures. Native handle registry must empty per request. Profile-only mode executes Java solely to collect native-image metadata. No complete node/MySQL command/TLS-platform/reflection-extension parity claim."
+}

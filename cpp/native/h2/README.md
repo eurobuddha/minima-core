@@ -39,7 +39,7 @@ The startup test uses disposable solo nodes and cross-opens their complete data
 directories in Java and C++, including encrypted wallets and compact shutdown.
 
 Limits: H2 describes native-image support as experimental. Arbitrary Java
-extensions, dynamically loaded classes, MySQL, public-network synchronization,
+extensions, dynamically loaded classes, public-network synchronization,
 daemon/RPC node control, resource exhaustion and full Minima behavior are not
 certified. The current macOS shared library has a build-directory install name;
 rebuild it in a recovery checkout. Relocatable binary packaging and other
@@ -49,3 +49,53 @@ applicable licenses when redistributing those dependencies.
 
 References: [H2 native build documentation](https://h2database.com/html/build.html#native_image)
 and [GraalVM shared-library interface](https://www.graalvm.org/dev/reference-manual/native-image/guides/build-native-shared-library/).
+
+## Optional pinned MySQL driver
+
+The same C ABI can include Connector/J 8.0.24. Its pinned jar and reviewed
+[reachability metadata](mysql-metadata/reachability-metadata.json) are compiled
+with H2; the native library still includes no Minima Java classes and no JVM
+fallback. This extends the dependency provider, not the 457-file mapping.
+
+```sh
+python3 cpp/tools/build_native_h2.py --graalvm /path/to/graalvm/Contents/Home --mysql --output cpp/build/native-h2-mysql
+cmake -S cpp -B cpp/build -DMINIMA_NATIVE_H2_DIR="$PWD/cpp/build/native-h2-mysql"
+cmake --build cpp/build -j 4
+```
+
+The launcher supplies this isolate through both `MainServices.sql` and
+`MainServices.mysql`. The latter preserves null credentials via
+`NativeH2Runtime::nullableConnector()`. Build without `--mysql` for the H2-only
+dependency; attempting a MySQL connection then reports a missing driver.
+
+Live tests require a **disposable, empty** MySQL database: they create, populate
+and drop fixture tables. Use the tested local image digest from
+[the profile report](../../validation/native-mysql-work-in-progress/profile-results.json),
+bind its port only to `127.0.0.1`, and use a tmpfs `/var/lib/mysql` with no host
+volume. Do not point these tests at an existing archive or coin database.
+The fixture JSON has `name` (beginning `minima-cpp-mysql-`), `image` (digest),
+`address` (`127.0.0.1:PORT`), `database` (`minima_cpp`), `user`, and `password`.
+The saved tests used synthetic credentials solely for that disposable container.
+
+```sh
+python3 cpp/tools/native_mysql_differential.py --build cpp/build --fixture /tmp/isolated-mysql.json
+python3 cpp/tools/native_mysql_startup.py --build cpp/build --fixture /tmp/isolated-mysql.json
+```
+
+Run different build directories sequentially when sharing one MySQL fixture.
+Optionally configure `-DMINIMA_MYSQL_FIXTURE_FILE=/tmp/isolated-mysql.json` to
+register both in CTest; they run serially and startup depends on the driver test.
+Remove the owned fixture container after testing, then clear this CMake option.
+
+To reproduce metadata collection, use the same GraalVM installation for javac and
+its tracing agent (the default system compiler may produce newer class files):
+
+```sh
+python3 cpp/tools/native_mysql_differential.py --build cpp/build --fixture /tmp/isolated-mysql.json --profile cpp/build/mysql-profile --graalvm /path/to/graalvm/Contents/Home
+```
+
+Review its JSON before replacing the checked-in metadata. This profile covers the
+observed single-server driver paths, not arbitrary JDBC URL modes, plugins or
+platforms. Preserve Connector/J's bundled `META-INF/LICENSE` when distributing
+its compiled code. The student [MySQL lab](../../student-guide/new-tests/native-mysql-storage.md)
+separates driver agreement from actual node-command validation.

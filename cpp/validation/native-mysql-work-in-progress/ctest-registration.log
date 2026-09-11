@@ -1,0 +1,14 @@
+-- Configuring done (0.4s)
+-- Generating done (0.5s)
+-- Build files have been written to: /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+  Test #229: native_mysql_differential
+  Test #230: native_mysql_startup
+
+Total Tests: 2
+-- Configuring done (0.3s)
+-- Generating done (0.3s)
+-- Build files have been written to: /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+-- Configuring done (0.2s)
+-- Generating done (0.5s)
+-- Build files have been written to: /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized

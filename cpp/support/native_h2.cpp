@@ -17,7 +17,7 @@ bool flag(const JSONObject& step,const char* key){auto value=step.get(key);retur
 std::string units(const std::u16string& value){std::ostringstream out;out<<std::hex<<std::uppercase<<std::setfill('0');for(char16_t c:value)out<<std::setw(4)<<int(c);return out.str();}
 std::string bits(double value){std::ostringstream out;out<<std::hex<<std::uppercase<<std::setw(16)<<std::setfill('0')<<std::bit_cast<uint64_t>(value);return out.str();}
 JSONArray run(const JSONObject& request,NativeH2Runtime& engine){
-    auto connect=engine.connector();DB db(connect);
+    auto connect=engine.nullableConnector();DB db(engine.connector());
     std::map<std::string,std::shared_ptr<SqlConnection>> connections;
     std::map<std::string,std::shared_ptr<SqlStatement>> statements;
     std::map<std::string,std::shared_ptr<SqlResultSet>> rows;
@@ -28,7 +28,7 @@ JSONArray run(const JSONObject& request,NativeH2Runtime& engine){
         try{
             auto prepared=[&]{auto p=std::dynamic_pointer_cast<SqlPreparedStatement>(statements.at(id));if(!p)throw JavaClassCastException("Statement is not prepared");return p;};
             if(op=="version")value=engine.version();
-            else if(op=="open")connections[save]=connect(step->getString("url"),step->getString("user"),step->getString("password"));
+            else if(op=="open")connections[save]=connect(step->getString("url"),text(*step,"user"),text(*step,"password"));
             else if(op=="closed")value=connections.at(id)->isClosed();
             else if(op=="autocommit")connections.at(id)->setAutoCommit(flag(*step,"value"));
             else if(op=="statement")statements[save]=connections.at(id)->createStatement();

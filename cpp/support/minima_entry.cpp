@@ -9,7 +9,9 @@ int main(int argc,char** argv){
     int status=1;minima::runNativeThread(minima::NativeThread{u"main"},[&]{
         minima::Minima::Runtime runtime;
 #ifdef MINIMA_NATIVE_H2
-        runtime.services.sql.connect=minima::NativeH2Runtime().connector();
+        minima::NativeH2Runtime databaseRuntime;
+        runtime.services.sql.connect=databaseRuntime.connector();
+        runtime.services.mysql.connect=databaseRuntime.nullableConnector();
 #endif
         status=minima::Minima::main(args,std::move(runtime));minima::Minima::joinStarterThreads();
     });return status;

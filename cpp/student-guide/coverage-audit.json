@@ -20,7 +20,7 @@
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9257,
+  "links_checked": 9263,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -3717,7 +3717,7 @@
       "parity": "not_verified",
       "native_exists": true,
       "teaching_status": "authored_lesson",
-      "teaching_note": "Authored explanation of the Java source, native composition, and full-size validation in progress."
+      "teaching_note": "Authored explanation of the Java source, native composition, and completed full-size validation and remaining limits."
     },
     {
       "java": "src/org/minima/utils/sphincs/SPHINCSSignature.java",

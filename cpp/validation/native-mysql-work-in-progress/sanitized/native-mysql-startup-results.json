@@ -1,0 +1,838 @@
+{
+  "passed": true,
+  "node_processes": 4,
+  "commands_per_runtime": 17,
+  "checks": [
+    {
+      "runtime": "java",
+      "phase": "fresh",
+      "keys": 8,
+      "graceful_shutdown": true,
+      "stderr": ""
+    },
+    {
+      "runtime": "java",
+      "phase": "restart",
+      "keys": 8,
+      "graceful_shutdown": true,
+      "stderr": ""
+    },
+    {
+      "runtime": "cpp",
+      "phase": "fresh",
+      "keys": 8,
+      "graceful_shutdown": true,
+      "stderr": "Generating Base Private Seed Key\nAdding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/mysql-node-a9cuhhtj/data/1.1/databases/userprefs.db\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/mysql-node-a9cuhhtj/data/1.1/databases/cascade.db\nLoading TxPowTree size : 0 bytes\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/mysql-node-a9cuhhtj/data/1.1/databases/chaintree.db\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/mysql-node-a9cuhhtj/data/1.1/databases/p2p.db\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/mysql-node-a9cuhhtj/data/1.1/databases/p2p2.db\n3 more initial keys created.. Total now : 3 / 8\nGenesis block created : 0x88E6990A6D334C8ADFD0F3831C15A62FDCDD26EDDF4AAD02DBC1EAAEFCC691F4\nNEW Unspent Coin : {\"coinid\":\"0x080417F7690DDE9195C5FC5A4FAEAE852E97D398E30E67E0242B0AFA4C7F2F5C\",\"amount\":\"1000000000\",\"address\":\"0x8A2C0284D69D8CECD44777D321744A975CF46062ED1AF1B911FCE976E8369F5C\",\"miniaddress\":\"MxG084A5G189YKTHJMD8HRNQCGN8WKNBJQ60ZND3BZRW4FST5REGDKVBHVV32ZE\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\n1 more initial keys created.. Total now : 5 / 8\n1 more initial keys created.. Total now : 6 / 8\n1 more initial keys created.. Total now : 7 / 8\n1 more initial keys created.. Total now : 8 / 8\nShutdown Networking..\nSaving State..\nSaving SQL..\nWallet shutdown..\nTxPowDB shutdown..\nArchiveDB shutdown..\nCoinDB shutdown..\nAll SQL DB Shutdown..\nAll saved..\n"
+    },
+    {
+      "runtime": "cpp",
+      "phase": "restart",
+      "keys": 8,
+      "graceful_shutdown": true,
+      "stderr": "Loading TxPowTree size : 2.3 KB\nShutdown Networking..\nSaving State..\nSaving SQL..\nWallet shutdown..\nTxPowDB shutdown..\nArchiveDB shutdown..\nCoinDB shutdown..\nAll SQL DB Shutdown..\nAll saved..\n"
+    }
+  ],
+  "transcripts": [
+    [
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "wipe"
+        },
+        "status": true,
+        "pending": false,
+        "respnse": "CoinsDB wiped"
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "info"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "lastblock": 0,
+          "total": 0,
+          "autobackup": false
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "update"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "blocks": 0,
+          "firstblock": -1,
+          "lastblock": -1,
+          "coinsadded": 0,
+          "message": "MySQL CoinsDB Updated.."
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "where": "1=0"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE 1=0",
+          "status": true,
+          "results": true,
+          "count": 0,
+          "rows": []
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "INSERT INTO coins(coinid,address,amount,amountdouble,tokenid,storestate,state,mmrentrynumber,spent,blockcreated,blockspent,date,token,tokenamount) VALUES('0x01','0xFF','1.25',1.25,'0x00',1,'[]',9,0,42,0,'fixture \u03c0\ud83d\ude04','fixture-token',1.25)"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "INSERT INTO coins(coinid,address,amount,amountdouble,tokenid,storestate,state,mmrentrynumber,spent,blockcreated,blockspent,date,token,tokenamount) VALUES('0x01','0xFF','1.25',1.25,'0x00',1,'[]',9,0,42,0,'fixture \u03c0\ud83d\ude04','fixture-token',1.25)",
+          "status": true,
+          "results": false
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "info",
+          "readonly": "true"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "lastblock": 42,
+          "total": 1,
+          "autobackup": false
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "where": "coinid='0x01'"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE coinid='0x01'",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "id": "1",
+              "coinid": "0x01",
+              "address": "0xFF",
+              "amount": "1.25",
+              "amountdouble": "1.250000",
+              "tokenid": "0x00",
+              "storestate": "1",
+              "state": "[]",
+              "mmrentrynumber": "9",
+              "spent": "0",
+              "blockcreated": "42",
+              "blockspent": "0",
+              "date": "fixture \u03c0\ud83d\ude04",
+              "token": "fixture-token",
+              "tokenamount": "1.250000"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "address": "0xFF",
+          "spent": "false",
+          "limit": "1",
+          "hidetoken": "true"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE ( address='0xFF' OR state LIKE '%0xFF%' ) AND spent=0 ORDER BY blockcreated ASC LIMIT 1",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "id": "1",
+              "coinid": "0x01",
+              "address": "0xFF",
+              "amount": "1.25",
+              "amountdouble": "1.250000",
+              "tokenid": "0x00",
+              "storestate": "1",
+              "state": "[]",
+              "mmrentrynumber": "9",
+              "spent": "0",
+              "blockcreated": "42",
+              "blockspent": "0",
+              "date": "fixture \u03c0\ud83d\ude04",
+              "token": "_hidden_",
+              "tokenamount": "1.250000"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "SELECT NULL AS absent, 7 AS number"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT NULL AS absent, 7 AS number",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "number": "7"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "SELECT * FROM NATIVE_MISSING"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM NATIVE_MISSING",
+          "status": false,
+          "results": false,
+          "error": true
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "info",
+          "readonly": "true"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "lastblock": 42,
+          "total": 1,
+          "autobackup": false
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "where": "coinid='0x01'"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE coinid='0x01'",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "id": "1",
+              "coinid": "0x01",
+              "address": "0xFF",
+              "amount": "1.25",
+              "amountdouble": "1.250000",
+              "tokenid": "0x00",
+              "storestate": "1",
+              "state": "[]",
+              "mmrentrynumber": "9",
+              "spent": "0",
+              "blockcreated": "42",
+              "blockspent": "0",
+              "date": "fixture \u03c0\ud83d\ude04",
+              "token": "fixture-token",
+              "tokenamount": "1.250000"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "address": "0xFF",
+          "spent": "false",
+          "limit": "1",
+          "hidetoken": "true"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE ( address='0xFF' OR state LIKE '%0xFF%' ) AND spent=0 ORDER BY blockcreated ASC LIMIT 1",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "id": "1",
+              "coinid": "0x01",
+              "address": "0xFF",
+              "amount": "1.25",
+              "amountdouble": "1.250000",
+              "tokenid": "0x00",
+              "storestate": "1",
+              "state": "[]",
+              "mmrentrynumber": "9",
+              "spent": "0",
+              "blockcreated": "42",
+              "blockspent": "0",
+              "date": "fixture \u03c0\ud83d\ude04",
+              "token": "_hidden_",
+              "tokenamount": "1.250000"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "SELECT NULL AS absent, 7 AS number"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT NULL AS absent, 7 AS number",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "number": "7"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "SELECT * FROM NATIVE_MISSING"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM NATIVE_MISSING",
+          "status": false,
+          "results": false,
+          "error": true
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "wipe"
+        },
+        "status": true,
+        "pending": false,
+        "respnse": "CoinsDB wiped"
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "info"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "lastblock": 0,
+          "total": 0,
+          "autobackup": false
+        }
+      }
+    ],
+    [
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "wipe"
+        },
+        "status": true,
+        "pending": false,
+        "respnse": "CoinsDB wiped"
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "info"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "lastblock": 0,
+          "total": 0,
+          "autobackup": false
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "update"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "blocks": 0,
+          "firstblock": -1,
+          "lastblock": -1,
+          "coinsadded": 0,
+          "message": "MySQL CoinsDB Updated.."
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "where": "1=0"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE 1=0",
+          "status": true,
+          "results": true,
+          "count": 0,
+          "rows": []
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "INSERT INTO coins(coinid,address,amount,amountdouble,tokenid,storestate,state,mmrentrynumber,spent,blockcreated,blockspent,date,token,tokenamount) VALUES('0x01','0xFF','1.25',1.25,'0x00',1,'[]',9,0,42,0,'fixture \u03c0\ud83d\ude04','fixture-token',1.25)"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "INSERT INTO coins(coinid,address,amount,amountdouble,tokenid,storestate,state,mmrentrynumber,spent,blockcreated,blockspent,date,token,tokenamount) VALUES('0x01','0xFF','1.25',1.25,'0x00',1,'[]',9,0,42,0,'fixture \u03c0\ud83d\ude04','fixture-token',1.25)",
+          "status": true,
+          "results": false
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "info",
+          "readonly": "true"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "lastblock": 42,
+          "total": 1,
+          "autobackup": false
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "where": "coinid='0x01'"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE coinid='0x01'",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "id": "1",
+              "coinid": "0x01",
+              "address": "0xFF",
+              "amount": "1.25",
+              "amountdouble": "1.250000",
+              "tokenid": "0x00",
+              "storestate": "1",
+              "state": "[]",
+              "mmrentrynumber": "9",
+              "spent": "0",
+              "blockcreated": "42",
+              "blockspent": "0",
+              "date": "fixture \u03c0\ud83d\ude04",
+              "token": "fixture-token",
+              "tokenamount": "1.250000"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "address": "0xFF",
+          "spent": "false",
+          "limit": "1",
+          "hidetoken": "true"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE ( address='0xFF' OR state LIKE '%0xFF%' ) AND spent=0 ORDER BY blockcreated ASC LIMIT 1",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "id": "1",
+              "coinid": "0x01",
+              "address": "0xFF",
+              "amount": "1.25",
+              "amountdouble": "1.250000",
+              "tokenid": "0x00",
+              "storestate": "1",
+              "state": "[]",
+              "mmrentrynumber": "9",
+              "spent": "0",
+              "blockcreated": "42",
+              "blockspent": "0",
+              "date": "fixture \u03c0\ud83d\ude04",
+              "token": "_hidden_",
+              "tokenamount": "1.250000"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "SELECT NULL AS absent, 7 AS number"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT NULL AS absent, 7 AS number",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "number": "7"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "SELECT * FROM NATIVE_MISSING"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM NATIVE_MISSING",
+          "status": false,
+          "results": false,
+          "error": true
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "info",
+          "readonly": "true"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "lastblock": 42,
+          "total": 1,
+          "autobackup": false
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "where": "coinid='0x01'"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE coinid='0x01'",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "id": "1",
+              "coinid": "0x01",
+              "address": "0xFF",
+              "amount": "1.25",
+              "amountdouble": "1.250000",
+              "tokenid": "0x00",
+              "storestate": "1",
+              "state": "[]",
+              "mmrentrynumber": "9",
+              "spent": "0",
+              "blockcreated": "42",
+              "blockspent": "0",
+              "date": "fixture \u03c0\ud83d\ude04",
+              "token": "fixture-token",
+              "tokenamount": "1.250000"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "address": "0xFF",
+          "spent": "false",
+          "limit": "1",
+          "hidetoken": "true"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM coins WHERE ( address='0xFF' OR state LIKE '%0xFF%' ) AND spent=0 ORDER BY blockcreated ASC LIMIT 1",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "id": "1",
+              "coinid": "0x01",
+              "address": "0xFF",
+              "amount": "1.25",
+              "amountdouble": "1.250000",
+              "tokenid": "0x00",
+              "storestate": "1",
+              "state": "[]",
+              "mmrentrynumber": "9",
+              "spent": "0",
+              "blockcreated": "42",
+              "blockspent": "0",
+              "date": "fixture \u03c0\ud83d\ude04",
+              "token": "_hidden_",
+              "tokenamount": "1.250000"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "SELECT NULL AS absent, 7 AS number"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT NULL AS absent, 7 AS number",
+          "status": true,
+          "results": true,
+          "count": 1,
+          "rows": [
+            {
+              "number": "7"
+            }
+          ]
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "search",
+          "query": "SELECT * FROM NATIVE_MISSING"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "sql": "SELECT * FROM NATIVE_MISSING",
+          "status": false,
+          "results": false,
+          "error": true
+        }
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "wipe"
+        },
+        "status": true,
+        "pending": false,
+        "respnse": "CoinsDB wiped"
+      },
+      {
+        "command": "mysqlcoins",
+        "params": {
+          "host": "127.0.0.1:59659",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "action": "info"
+        },
+        "status": true,
+        "pending": false,
+        "response": {
+          "lastblock": 0,
+          "total": 0,
+          "autobackup": false
+        }
+      }
+    ]
+  ],
+  "failures": [],
+  "seconds": 134.169,
+  "scope": "Actual pinned Java and native solo/noconnect nodes with real H2 and the isolated MySQL fixture: mysqlcoins info, wipe (source respnse spelling), empty-archive update, durable query insert/search, null omission, double formatting, token hiding, SQL errors, read-only reconnect and node restart. Exact command replies except elapsed update duration validated by shape. All eight H2 wallet keys preserved; graceful shutdown and complete stderr checked. Nonempty archive update, autologin/autobackup, reconnect faults, TLS policies and public network remain outside this test."
+}

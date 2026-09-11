@@ -16,7 +16,10 @@ assigns all **457 Java files** (369 production, 88 tests) unique, package-relati
 as partial until their complete API and behavior have been reviewed.
 
 The mysqlcoins command now compiles with all five actions. Both builds pass
-771 command/SQL comparisons; a live native MySQL driver remains a runtime gap.
+771 command/SQL comparisons. The optional native dependency now includes the pinned
+MySQL driver. Both builds pass 52 live driver programs and four actual Java/C++
+node processes across restart. See the [native MySQL lab](student-guide/new-tests/native-mysql-storage.md).
+Nonempty archive updates and complete database/runtime parity remain unverified.
 See the [coin-index lab](student-guide/new-tests/mysql-coins-command.md) and
 [evidence](validation/mysql-coins-work-in-progress/progress.json).
 

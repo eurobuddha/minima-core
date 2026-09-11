@@ -9,6 +9,8 @@ class NativeH2Runtime {
 public:
     NativeH2Runtime();
     SqlConnect connector() const;
+    using NullableConnect=std::function<std::shared_ptr<SqlConnection>(const std::string&,const std::optional<std::string>&,const std::optional<std::string>&)>;
+    NullableConnect nullableConnector() const;
     std::string version() const;
     int32_t liveHandles() const;
 };
