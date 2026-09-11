@@ -94,3 +94,5 @@ verifies the saved chain, coin proofs and wallet signing.
 
 The [system-check lab](new-tests/system-check.md) follows queue reports, active
 checker posts, delayed delivery and reentrant diagnostic logging.
+
+- [Thread interruption lab](new-tests/thread-interruption.md): interrupt flags, real sleeping workers, transaction lock retention and retry scheduling after timeout shutdown.

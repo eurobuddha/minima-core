@@ -20,7 +20,7 @@ MessageProcessor owns a worker loop that consumes queued messages, records the c
 
 ## How the C++ translation works
 
-Native factories start workers only after the most-derived object exists under shared ownership, avoiding virtual calls during C++ construction. A required callback represents MinimaDB lock cleanup; atomics/mutexes protect flags and trace data. NativeThread supplies uncaught failure delivery. joinMessageProcessor is a separate real thread-exit barrier; waitToShutDown changes flags but cannot interrupt arbitrary C++ handler code. The worker retains itself while active.
+Native factories start workers only after the most-derived object exists under shared ownership, avoiding virtual calls during C++ construction. A required callback represents MinimaDB lock cleanup; atomics/mutexes protect flags and trace data. NativeThread supplies uncaught failure delivery. joinMessageProcessor is a separate real thread-exit barrier; waitToShutDown now signals the worker interrupt state as well as changing flags; nativeThreadSleep consumes that signal and throws. Arbitrary external C++ handlers and raw sleeps still require separate integration. The worker retains itself while active.
 
 ## Understanding the tests
 
@@ -39,3 +39,7 @@ These are native concurrency/assertion tests, not a full Java thread-interleavin
 Why must callers use a real join before destroying resources used by a blocked handler, even when isShutdownComplete is true? Which queued message is lost when the current handler stops the loop?
 
 Pinned Java SHA-256: `f4cd66df973edee1e4f7374f955e2b602b76de8cee274652b77bae1976906f64`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+## Interruptible shutdown checkpoint
+
+The [thread interruption lab](../../../../../../new-tests/thread-interruption.md) compares real Java/native timeout shutdown, ordinary shutdown, an interrupted waiting caller, blocked transaction locks, delayed unlocks and actual send-poll processing. The cleanup recorder runs exactly once after the interrupted handler. This extends the earlier tests without claiming every thread interleaving.

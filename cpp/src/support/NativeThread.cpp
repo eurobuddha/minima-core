@@ -3,6 +3,8 @@
 #include <atomic>
 #include <cstdio>
 #include <iostream>
+#include <algorithm>
+#include <utility>
 
 namespace minima {
 namespace {
@@ -10,6 +12,10 @@ std::mutex handlerLock;
 std::shared_ptr<NativeUncaughtExceptionHandler> defaultHandler;
 std::atomic<uint64_t> threadNumber{0};
 thread_local const NativeThread* currentThread=nullptr;
+NativeThread::InterruptState& interruptState(){
+    thread_local NativeThread::InterruptState fallback;
+    return currentThread?*currentThread->interruption:fallback;
+}
 struct UnknownThrowable:MinimaLogger::Throwable {
     MinimaLogger::String toString() const override{return u"native.UnknownException: Non-standard C++ exception";}
     std::optional<std::vector<MinimaLogger::String>> getStackTrace() const override{return std::vector<MinimaLogger::String>{};}
@@ -34,6 +40,34 @@ void setDefaultUncaughtExceptionHandler(std::shared_ptr<NativeUncaughtExceptionH
 }
 std::u16string nextNativeThreadName(){return unicode::decodeUTF8("Thread-"+std::to_string(threadNumber.fetch_add(1)));}
 std::string currentNativeThreadName(){return currentThread?unicode::encodeUTF8(currentThread->name):"main";}
+void NativeThread::interrupt() const {
+    {std::lock_guard lock(interruption->lock);interruption->pending=true;}
+    interruption->wake.notify_all();
+}
+bool NativeThread::isInterrupted() const {
+    std::lock_guard lock(interruption->lock);return interruption->pending;
+}
+void interruptCurrentNativeThread(){
+    auto& state=interruptState();
+    {std::lock_guard lock(state.lock);state.pending=true;}
+    state.wake.notify_all();
+}
+bool nativeThreadInterrupted(){
+    auto& state=interruptState();std::lock_guard lock(state.lock);
+    return std::exchange(state.pending,false);
+}
+void nativeThreadSleep(int64_t milliseconds){
+    if(milliseconds<0)throw JavaIllegalArgumentException("timeout value is negative");
+    auto& state=interruptState();std::unique_lock lock(state.lock);
+    auto check=[&]{if(std::exchange(state.pending,false))throw JavaTypedException("java.lang.InterruptedException","sleep interrupted");};
+    check();
+    // Retain txnlock's bounded conversion for Java's full signed-long range.
+    while(milliseconds>0){
+        auto chunk=std::min(milliseconds,int64_t(86400000));
+        state.wake.wait_for(lock,std::chrono::milliseconds(chunk),[&]{return state.pending;});
+        check();milliseconds-=chunk;
+    }
+}
 void runNativeThread(const NativeThread& thread,const std::function<void()>& run) noexcept {
     struct Restore{const NativeThread* previous;~Restore(){currentThread=previous;}}restore{currentThread};currentThread=&thread;
     try {

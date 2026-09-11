@@ -1,0 +1,28 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/support/NativeThread.cpp.o
+[  0%] Linking CXX static library libminima_file_port.a
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/thread_interrupt.dir/support/thread_interrupt.cpp.o
+[100%] Linking CXX executable thread_interrupt
+[100%] Built target thread_interrupt
+[100%] Built target minima_file_port
+[100%] Linking CXX executable message_workers
+[100%] Built target message_workers
+[100%] Built target minima_file_port
+[100%] Linking CXX executable native_thread_checks
+[100%] Built target native_thread_checks
+[100%] Built target minima_file_port
+[100%] Linking CXX executable txn_lock_workers
+[100%] Built target txn_lock_workers
+[ 97%] Built target minima_file_port
+[ 97%] Linking CXX executable minima_sendpoll
+[100%] Built target minima_sendpoll
+[100%] Built target minima_file_port
+[100%] Linking CXX executable uncaught_workers
+[100%] Built target uncaught_workers
+[100%] Built target minima_file_port
+[100%] Linking CXX executable minima_uncaught
+[100%] Built target minima_uncaught
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp

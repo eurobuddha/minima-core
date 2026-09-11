@@ -1,0 +1,70 @@
+{
+  "scope": "Search leads requiring full source/caller review; raw native sleeps only, not all Java thread or I/O gaps.",
+  "sites": [
+    {
+      "path": "src/org/minima/Minima.cpp",
+      "line": 78,
+      "source": "if(!runtime.sleep)runtime.sleep=[](int64_t delay){std::this_thread::sleep_for(std::chrono::milliseconds(delay));};"
+    },
+    {
+      "path": "src/org/minima/system/Main.cpp",
+      "line": 41,
+      "source": "if(!mServices.sleep)mServices.sleep=[](int64_t delay){if(delay<0)throw JavaIllegalArgumentException(\"timeout value is negative\");std::this_thread::sleep_for(std::chrono::milliseconds(delay));};"
+    },
+    {
+      "path": "src/org/minima/system/brains/TimedChecker.cpp",
+      "line": 42,
+      "source": "std::this_thread::sleep_for(std::chrono::milliseconds(50));"
+    },
+    {
+      "path": "src/org/minima/system/commands/backup/archive.cpp",
+      "line": 27,
+      "source": "void pause(int64_t delay){std::this_thread::sleep_for(std::chrono::milliseconds(delay));}"
+    },
+    {
+      "path": "src/org/minima/system/commands/backup/mmrsync/megammr.cpp",
+      "line": 61,
+      "source": "while(true){std::this_thread::sleep_for(std::chrono::milliseconds(250));if(sqlRequired(mainOwner()->getTxPoWProcessor()).isIBDProcessFinished())break;}"
+    },
+    {
+      "path": "src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp",
+      "line": 23,
+      "source": "void awaitIBD(){while(true){std::this_thread::sleep_for(std::chrono::milliseconds(250));if(sqlRequired(main()->getTxPoWProcessor()).isIBDProcessFinished())break;}}"
+    },
+    {
+      "path": "src/org/minima/system/commands/backup/mysql.cpp",
+      "line": 26,
+      "source": "void pause(int64_t delay){if(delay<0)throw JavaIllegalArgumentException(\"timeout value is negative\");std::this_thread::sleep_for(std::chrono::milliseconds(delay));}"
+    },
+    {
+      "path": "src/org/minima/system/commands/backup/restoresync.cpp",
+      "line": 19,
+      "source": "void pause(int64_t delay){std::this_thread::sleep_for(std::chrono::milliseconds(delay));}"
+    },
+    {
+      "path": "src/org/minima/system/commands/backup/vault.cpp",
+      "line": 101,
+      "source": "void vault::stopAllKeysCreated(){if(sqlRequired(getMain()).getAllKeysCreated())return;sqlRequired(sqlRequired(MinimaDB::getDB()).getWallet()).setStopNewKeys(true);std::this_thread::sleep_for(std::chrono::milliseconds(2000));}"
+    },
+    {
+      "path": "src/org/minima/system/commands/network/rpc.cpp",
+      "line": 10,
+      "source": "std::function<void(int64_t)> rpc::sleep=[](int64_t time){std::this_thread::sleep_for(std::chrono::milliseconds(time));};"
+    },
+    {
+      "path": "src/org/minima/system/network/minima/NIOManager.cpp",
+      "line": 73,
+      "source": "mThreadPool.shutdown();mThreadPool.awaitTermination(8000);mNIOServer->shutdown();std::clog<<\"Shutdown Networking..\\n\";while(mNIOServer->isRunning())std::this_thread::sleep_for(std::chrono::milliseconds(50));stopMessageProcessor();"
+    },
+    {
+      "path": "src/org/minima/system/network/p2p/P2PManager.cpp",
+      "line": 58,
+      "source": "void P2PManager::pauseDiscovery(){std::this_thread::sleep_for(std::chrono::milliseconds(5000));}"
+    },
+    {
+      "path": "src/org/minima/utils/mysql/ArchiveServer.cpp",
+      "line": 16,
+      "source": "if(!runtime.sleep)runtime.sleep=[](int64_t delay){std::this_thread::sleep_for(std::chrono::milliseconds(delay));};"
+    }
+  ]
+}

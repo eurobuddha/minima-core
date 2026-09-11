@@ -21,7 +21,7 @@ Provide a process-global advisory transaction-building lock.
 
 ## How the translation is approached
 
-C++ combines a mutex for lockFunction with an atomic observable flag, explicit counter wraparound and bounded sleep chunks for large delays. Java interruption semantics and arbitrary concurrent caller behavior remain incomplete.
+C++ combines a mutex for lockFunction with an atomic observable flag, explicit counter wraparound and bounded sleep chunks for large delays. Sleep now uses NativeThread interruption; the source timeout loop and lock mutation order are retained. Arbitrary concurrent caller behavior remains incompletely verified.
 
 ## What the tests tell us
 
@@ -44,3 +44,7 @@ If acquisition times out, why does the reply still contain locked:true? Distingu
 The explanation covers the inspected execution path and stated tests. Full API, generic exception, concurrency and node integration parity remain open. 
 
 Pinned Java SHA-256: `93ae0165833a99b6457c01504552c06f67dbf703bf6afcf9f94ce3b320ee7308`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Real interruption evidence
+
+The [thread interruption lab](../../../../../../../new-tests/thread-interruption.md) exercises real sleeps and worker shutdown against the pinned Java classes. An interrupted delayed unlock retains the lock; an interrupted send-poll pause skips rescheduling. The nine-scenario comparison and unchanged concurrency tests extend coverage; full parity remains not_verified.

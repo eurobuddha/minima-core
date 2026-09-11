@@ -1,4 +1,5 @@
 #include "txnlock.hpp"
+#include "support/NativeThread.hpp"
 #include <bit>
 #include <chrono>
 #include <thread>
@@ -41,7 +42,7 @@ bool txnlock::lockFunction(bool enable) {
 bool txnlock::getLock(int64_t timeout) {
     int64_t counter=0;
     while(!lockFunction(true)) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        nativeThreadSleep(100);
         counter=std::bit_cast<int64_t>(uint64_t(counter)+100u);
         if(timeout!=0&&counter>timeout) return false;
     }
@@ -55,10 +56,7 @@ json::JSONValue txnlock::runCommand() {
     json::JSONObject response;
     if(action=="lock") {response.put("success",getLock(timeout));response.put("locked",true);}
     else if(action=="unlock") {
-        if(delay<0) throw std::invalid_argument("timeout value is negative");
-        // Chunk large millisecond values so the platform's nanosecond conversion
-        // cannot overflow. The lock stays held until the entire delay has elapsed.
-        while(delay>0) {auto chunk=std::min(delay,int64_t(86400000));std::this_thread::sleep_for(std::chrono::milliseconds(chunk));delay-=chunk;}
+        if(delay!=0)nativeThreadSleep(delay);
         unlock();response.put("success",true);response.put("locked",false);
     } else response.put("locked",mLocked.load());
     result.put("response",response);return result;

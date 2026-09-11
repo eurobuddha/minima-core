@@ -8,9 +8,9 @@ namespace minima {
 std::mutex MessageProcessor::sTraceLock;
 bool MessageProcessor::sTrace=false;
 std::string MessageProcessor::sTraceFilter,MessageProcessor::sLanguage;
-MessageProcessor::MessageProcessor(std::string name,std::function<void()> releaseLocks):mName(std::move(name)),mReleaseLocks(std::move(releaseLocks)){if(!mReleaseLocks)throw std::invalid_argument("MessageProcessor requires database lock cleanup");}
+MessageProcessor::MessageProcessor(std::string name,std::function<void()> releaseLocks):mName(std::move(name)),mWorkerThread{unicode::decodeUTF8(mName)},mReleaseLocks(std::move(releaseLocks)){if(!mReleaseLocks)throw std::invalid_argument("MessageProcessor requires database lock cleanup");}
 MessageProcessor::~MessageProcessor(){stopMessageProcessor();joinMessageProcessor();}
-void MessageProcessor::startMessageProcessor(){std::lock_guard lock(mJoinLock);if(mMainThread.joinable()||mShutDownComplete||mExecuting)throw std::logic_error("Processor already started");auto self=shared_from_this();auto name=unicode::decodeUTF8(mName);mMainThread=std::thread([self,name=std::move(name)]()mutable{NativeThread thread{std::move(name)};runNativeThread(thread,[&]{self->run();});});}
+void MessageProcessor::startMessageProcessor(){std::lock_guard lock(mJoinLock);if(mMainThread.joinable()||mShutDownComplete||mExecuting)throw std::logic_error("Processor already started");auto self=shared_from_this();mMainThread=std::thread([self]{self->mWorkerThread.id=std::this_thread::get_id();runNativeThread(self->mWorkerThread,[&]{self->run();});});}
 void MessageProcessor::joinMessageProcessor(){std::lock_guard lock(mJoinLock);if(mMainThread.joinable()){if(mMainThread.get_id()==std::this_thread::get_id())mMainThread.detach();else mMainThread.join();}}
 void MessageProcessor::setTrace(bool trace,std::string filter){std::lock_guard lock(sTraceLock);sTrace=trace;sTraceFilter=std::move(filter);}
 void MessageProcessor::setTraceLanguage(std::string language){std::lock_guard lock(sTraceLock);sLanguage=std::move(language);}
@@ -19,7 +19,7 @@ std::string MessageProcessor::getTraceFilter() const {std::lock_guard lock(sTrac
 std::shared_ptr<Message> MessageProcessor::getLastMessage() const {std::lock_guard lock(mLock);return mLastMessage;}
 bool MessageProcessor::checkTraceFilter(const std::string& text) const {std::lock_guard lock(sTraceLock);return sTrace&&unicode::decodeUTF8(javaLowerCase(text,sLanguage)).find(unicode::decodeUTF8(javaLowerCase(sTraceFilter,sLanguage)))!=std::u16string::npos;}
 void MessageProcessor::stopMessageProcessor(){{std::lock_guard lock(mLock);mRunning=false;}notifyLock();}
-void MessageProcessor::waitToShutDown(int64_t timeout){int64_t waited=0;while(!isShutdownComplete()){std::this_thread::sleep_for(std::chrono::milliseconds(250));waited=std::bit_cast<int64_t>(uint64_t(waited)+250);if(waited>timeout){MinimaLogger::log("Failed to shutdown in "+std::to_string(timeout)+" millisecs for "+mName);mShutDownComplete=true;stopMessageProcessor();return;}}}
+void MessageProcessor::waitToShutDown(int64_t timeout){int64_t waited=0;while(!isShutdownComplete()){try{nativeThreadSleep(250);}catch(const JavaTypedException& error){if(error.className()!="java.lang.InterruptedException")throw;}waited=std::bit_cast<int64_t>(uint64_t(waited)+250);if(waited>timeout){MinimaLogger::log("Failed to shutdown in "+std::to_string(timeout)+" millisecs for "+mName);mShutDownComplete=true;stopMessageProcessor();mWorkerThread.interrupt();return;}}}
 void MessageProcessor::PostTimerMessage(const std::shared_ptr<TimerMessage>& message){if(!message)throw JavaNullPointerException("null timer message");message->setProcessor(shared_from_this());auto timers=TimerProcessor::getTimerProcessor();if(!timers)throw JavaNullPointerException("TimerProcessor is not initialized");timers->PostMessage(message);}
 void MessageProcessor::run(){
     if(mExecuting.exchange(true))throw std::logic_error("Processor already executing");

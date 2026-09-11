@@ -20,7 +20,7 @@ void SendPollManager::removeCommand(const std::optional<std::string>& uid) {
     for(const auto& command:mSendCommands){if(!command.getUID())throw std::invalid_argument("Null command UID");if(command.getUID()!=uid)copy.push_back(command);}
     mSendCommands=std::move(copy);
 }
-void SendPollManager::pauseBetweenCommands() {std::this_thread::sleep_for(std::chrono::milliseconds(1000));}
+void SendPollManager::pauseBetweenCommands() {nativeThreadSleep(1000);}
 void SendPollManager::schedulePoll() {PostTimerMessage(std::make_shared<TimerMessage>(SENDPOLL_TIMER.load(),SENDPOLL_FUNCTION));}
 void SendPollManager::processMessage(std::shared_ptr<Message> message) {
     if(!message||!message->getMessageType())throw std::invalid_argument("Null poll message type");

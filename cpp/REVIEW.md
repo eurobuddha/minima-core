@@ -1,3 +1,29 @@
+# Current checkpoint — real worker sleep interruption
+
+Goal ACTIVE and incomplete. No newly mapped files: 456 paths (455 active partial,
+one inactive source), one absent jnifunctions.cpp; full parity remains not_verified.
+
+MessageProcessor timeout now interrupts the worker's NativeThread state. txnlock
+retry/delayed-unlock sleeps and SendPollManager pause use the shared interruptible
+sleep. Interrupted unlock retains the lock; interrupted polling skips rescheduling.
+Ordinary stop still lets a handler finish. Existing ownership/uncaught handling stays.
+
+Both normal and sanitizer builds PASS affected probes and actual MinimaCoreCpp.
+Nine real Java/native scenarios / 158 independent scalar checks per build PASS;
+six focused CTests pass in each configuration. Full suite not rerun. Student lab:
+student-guide/new-tests/thread-interruption.md; three file lessons updated.
+Evidence: validation/thread-interrupt-work-in-progress, including review and
+remaining raw sleep inventory. Full API/runtime audit and JNI bodies remain open.
+NEXT: inspect Main/P2P/backup sleep defaults and preserve exact Java catch boundaries
+while integrating NativeThread interruption. Arbitrary I/O and complete thread
+lifecycle/interleaving parity remain unverified.
+
+User preview remains the frozen 6c28109 package on port21001; development builds
+do not replace it. Preserve user data and unrelated graphify changes. Local commits
+and verified recovery bundles only; no push.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — runnable local preview on port 21001
 
 Source executable checkpoint: 6c281098751b967291b1c5b35ba3ec030bdca2d2.

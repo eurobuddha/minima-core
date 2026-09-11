@@ -1,5 +1,6 @@
 #pragma once
 #include "MessageStack.hpp"
+#include "support/NativeThread.hpp"
 #include <atomic>
 #include <thread>
 namespace minima {
@@ -7,6 +8,7 @@ class TimerMessage;
 class MessageProcessor : public MessageStack, public std::enable_shared_from_this<MessageProcessor> {
     friend class SystemCheckFixture;
     std::string mName;
+    NativeThread mWorkerThread;
     std::function<void()> mReleaseLocks;
     std::thread mMainThread;
     std::mutex mJoinLock;

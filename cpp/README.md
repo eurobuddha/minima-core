@@ -4,6 +4,8 @@ A frozen **runnable macOS preview** is now available on local port **21001**,
 connecting to eurobuddha.com:9001 with separate data. See [PREVIEW.md](PREVIEW.md)
 for the double-click launcher, commands, package and scoped verification results.
 
+Worker timeout shutdown now delivers interruption to transaction-lock and send-poll sleeps. Nine Java/native scenarios pass in normal and sanitizer builds; see the [thread interruption lab](student-guide/new-tests/thread-interruption.md). Other runtime and API parity work remains open.
+
 The actual C++ node now starts after fixing command-registry initialization and
 registering all 116 source commands. Both full builds and affected tests pass.
 After a user-requested fresh reset, initial connection to eurobuddha.com:9001

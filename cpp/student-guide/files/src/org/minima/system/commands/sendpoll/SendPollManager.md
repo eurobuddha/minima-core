@@ -44,3 +44,7 @@ If a command result omits status, does the next poll get scheduled by this funct
 The mapped file is partial and parity remains not_verified. The inspected tests have a finite native scope and do not certify full wallet command execution or every thread schedule.
 
 Pinned Java SHA-256: `57679e54ba260ccb626b91d77d6c9487f9e0312c5ea5063134755e31b35440ef`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Real interruption evidence
+
+The [thread interruption lab](../../../../../../../new-tests/thread-interruption.md) exercises real sleeps and worker shutdown against the pinned Java classes. An interrupted delayed unlock retains the lock; an interrupted send-poll pause skips rescheduling. The nine-scenario comparison and unchanged concurrency tests extend coverage; full parity remains not_verified.

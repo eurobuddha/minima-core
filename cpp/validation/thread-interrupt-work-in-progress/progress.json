@@ -1,0 +1,38 @@
+{
+  "goal": "active_incomplete",
+  "base_commit": "59a8c2a8c90adbba748affa7fdc8ff8fee8097d9",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "active_partial": 455,
+  "inactive_source_preserved": 1,
+  "absent": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "corrected": [
+    "MessageProcessor timeout signals worker interruption; waiting caller consumes its own InterruptedException",
+    "txnlock retry/delayed unlock use interruptible sleep and retain lock on interrupted unlock",
+    "SendPollManager interrupted pause exits before scheduling another timer"
+  ],
+  "builds": {
+    "normal": "PASS targeted probes, regressions and MinimaCoreCpp",
+    "sanitized": "PASS targeted probes, regressions and MinimaCoreCpp"
+  },
+  "validation": {
+    "comparisons_per_build": 9,
+    "independent_scalar_checks_per_build": 158,
+    "focused_ctests_per_build": 6,
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "full_suite_rerun": false
+  },
+  "limits": [
+    "Other raw sleep sites remain, see remaining-raw-sleeps.json",
+    "No complete I/O, monitor-wait, thread lifecycle or interleaving parity",
+    "Database cleanup recorded through existing fixture; no durable DB run",
+    "JNI external bodies remain unavailable in inspected sources",
+    "Whole 457-file API and behavioral parity still not_verified"
+  ],
+  "next_action": "Read and migrate Main/P2P/backup sleep defaults through NativeThread; preserve each Java catch boundary and add real interruption evidence.",
+  "initial_tool_failure": "New target was not yet configured; initial build said No rule to make target thread_interrupt. Configured both CMake build trees, then builds and tests passed. No application behavior failure was masked."
+}

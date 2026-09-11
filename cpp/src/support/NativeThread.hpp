@@ -1,11 +1,20 @@
 #pragma once
 #include "org/minima/utils/MinimaLogger.hpp"
 #include <thread>
+#include <condition_variable>
 
 namespace minima {
 struct NativeThread {
+    struct InterruptState {
+        std::mutex lock;
+        std::condition_variable wake;
+        bool pending=false;
+    };
     std::u16string name;
     std::thread::id id=std::this_thread::get_id();
+    std::shared_ptr<InterruptState> interruption=std::make_shared<InterruptState>();
+    void interrupt() const;
+    bool isInterrupted() const;
 };
 struct NativeUncaughtExceptionHandler {
     virtual ~NativeUncaughtExceptionHandler()=default;
@@ -20,4 +29,9 @@ void setDefaultUncaughtExceptionHandler(std::shared_ptr<NativeUncaughtExceptionH
 void runNativeThread(const NativeThread& thread,const std::function<void()>& run) noexcept;
 std::u16string nextNativeThreadName();
 std::string currentNativeThreadName();
+// Java Thread.sleep semantics: a pending interrupt is consumed and throws,
+// including for zero delay. Negative delay is rejected before consuming it.
+void nativeThreadSleep(int64_t milliseconds);
+void interruptCurrentNativeThread();
+bool nativeThreadInterrupted();
 }

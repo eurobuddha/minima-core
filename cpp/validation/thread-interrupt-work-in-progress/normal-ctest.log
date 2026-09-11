@@ -1,0 +1,17 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 123: thread_interrupt_differential
+    Start 121: minima_uncaught_differential
+    Start  54: sendpoll_workers
+1/6 Test  #54: sendpoll_workers .................   Passed    1.86 sec
+    Start  24: txn_lock_workers
+2/6 Test  #24: txn_lock_workers .................   Passed    0.62 sec
+    Start  49: message_workers
+3/6 Test  #49: message_workers ..................   Passed    1.87 sec
+    Start 122: native_thread_checks
+4/6 Test #122: native_thread_checks .............   Passed    0.28 sec
+5/6 Test #121: minima_uncaught_differential .....   Passed    5.55 sec
+6/6 Test #123: thread_interrupt_differential ....   Passed    6.50 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =   6.50 sec
