@@ -1,0 +1,46 @@
+{
+  "base_head": "d87a7467ad168efefa62aba35739d6edc9b68e5d",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/functions/state/PREVSTATETests.cpp",
+    "test/org/minima/tests/kissvm/functions/state/STATETests.cpp",
+    "test/org/minima/tests/kissvm/functions/state/SAMESTATETests.cpp"
+  ],
+  "counterparts": 429,
+  "production_counterparts": 364,
+  "test_counterparts": 65,
+  "remaining": 28,
+  "remaining_production": 5,
+  "remaining_tests": 23,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "support_changes": [
+    "Optional result marker in existing OriginalFunctionTestSupport report; SHA default unchanged."
+  ],
+  "builds": {
+    "normal": "PASS new state targets, affected SHA targets and real MinimaCoreCpp node target",
+    "sanitized": "PASS new state targets, affected SHA targets and real MinimaCoreCpp node target",
+    "full_suite": "not repeated; 273 registered tests"
+  },
+  "tests": {
+    "original_methods": 9,
+    "original_assertions_per_runtime": 559,
+    "PREVSTATETests_assertions": 139,
+    "STATETests_assertions": 139,
+    "SAMESTATETests_assertions": 281,
+    "normal": "PASS",
+    "sanitized": "PASS",
+    "shared_helper_regression": "Both SHA suites PASS 9 methods/263 assertions plus 46 comparisons/92 independent checks"
+  },
+  "scope": "All nine active pinned methods and fixtures: 64 current and 64 previous ports across four value types; 64 equal and 64 different singleton state comparisons; original arity, type, missing-state and range rejection checks. Native casts and exception class checks retained. Direct Java runner verifies annotation membership/defaults and invokes actual JUnit assertions on fresh instances. No source loops reduced. Original SAMESTATE valid cases are singleton ranges, not multi-port range coverage. No full state API, mutation/aliasing or node parity claim.",
+  "blockers": [
+    "Four production JNI-dependent files need native bodies/ABI or authoritative vectors absent from inspected candidates; independent conversions remain possible.",
+    "P2PSwapLink.java entirely commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Preserve inactive source semantics without claiming empty tests as meaningful behavior."
+  ],
+  "next_action": "Inspect and convert remaining KISS signature tests using pinned source and existing native signature/key code. Then transaction/expression/statement/token tests. Full API/runtime parity still needs broader audit after counterparts.",
+  "long_demos": {
+    "normal": "Session 55636 terminal exit 0 at preceding SHA checkpoint; saved 9ae7039 binary full Magic replay matches Java.",
+    "sanitized": "Session 41123 confirmed live this turn; saved 9ae7039 binary; do not restart or block independent work."
+  }
+}

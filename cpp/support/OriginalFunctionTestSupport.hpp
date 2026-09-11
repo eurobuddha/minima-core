@@ -24,8 +24,8 @@ inline void rejected(const MinimaFunction& prototype,Contract& contract,const st
     try {function->runFunction(contract);}catch(const ExecutionException&) {caught=true;}
     require(caught);
 }
-inline void report(const std::string& name,int expected) {
+inline void report(const std::string& name,int expected,const std::string& marker="ORIGINAL_SHA_RESULT") {
     if(assertions!=expected)throw std::runtime_error("Executed assertion count changed");
-    std::cout<<"ORIGINAL_SHA_RESULT {\"class\":\""<<name<<"\",\"tests\":3,\"assertions\":"<<assertions<<",\"passed\":true}\n";
+    std::cout<<marker<<" {\"class\":\""<<name<<"\",\"tests\":3,\"assertions\":"<<assertions<<",\"passed\":true}\n";
 }
 }

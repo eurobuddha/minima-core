@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 272: original_sha_tests
+1/2 Test #272: original_sha_tests ...............   Passed    6.72 sec
+    Start 273: original_state_tests
+2/2 Test #273: original_state_tests .............   Passed    4.68 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  11.41 sec

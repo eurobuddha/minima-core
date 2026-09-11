@@ -11,13 +11,19 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 62 mapped test files exist;
-31 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 65 mapped test files exist;
+28 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-SHA2Tests, SHA3Tests and CHAINSHATests now have working counterparts. Both builds
+PREVSTATETests, STATETests and SAMESTATETests now have working counterparts.
+Both builds pass all nine original methods/559 assertions per runtime and the
+affected SHA regression. Both node targets build. Inventory: **429 counterparts,
+28 absent**, with full parity unverified. See the
+[state test lab](student-guide/new-tests/original-state-tests.md).
+
+At the preceding checkpoint, SHA2Tests, SHA3Tests and CHAINSHATests gained working counterparts. Both builds
 pass all nine original methods/263 assertions, plus 46 supplemental Java/C++
-comparisons and 92 independent value checks. Both node targets build. Inventory:
+comparisons and 92 independent value checks. Both node targets build. That checkpoint had
 **426 counterparts, 31 absent**, with full parity unverified. See the
 [SHA test lab](student-guide/new-tests/original-sha-tests.md) for source coverage limitations.
 

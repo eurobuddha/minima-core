@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 272: original_sha_tests
+1/2 Test #272: original_sha_tests ...............   Passed    9.27 sec
+    Start 273: original_state_tests
+2/2 Test #273: original_state_tests .............   Passed    3.36 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  12.64 sec

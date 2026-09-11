@@ -868,9 +868,9 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [PREVSTATETests.java](files/test/org/minima/tests/kissvm/functions/state/PREVSTATETests.md) | test explanation | unported |
-| [SAMESTATETests.java](files/test/org/minima/tests/kissvm/functions/state/SAMESTATETests.md) | test explanation | unported |
-| [STATETests.java](files/test/org/minima/tests/kissvm/functions/state/STATETests.md) | test explanation | unported |
+| [PREVSTATETests.java](files/test/org/minima/tests/kissvm/functions/state/PREVSTATETests.md) | test explanation | implemented_partial |
+| [SAMESTATETests.java](files/test/org/minima/tests/kissvm/functions/state/SAMESTATETests.md) | test explanation | implemented_partial |
+| [STATETests.java](files/test/org/minima/tests/kissvm/functions/state/STATETests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/functions/txn/input
 

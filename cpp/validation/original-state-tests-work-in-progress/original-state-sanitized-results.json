@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "original_methods": 9,
+  "original_assertions_per_runtime": 559,
+  "results": [
+    {
+      "name": "PREVSTATETests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-state-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalStateTests",
+            "PREVSTATETests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATE_RESULT {\"class\":\"PREVSTATETests\",\"tests\":3,\"assertions\":139,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/PREVSTATETests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATE_RESULT {\"class\":\"PREVSTATETests\",\"tests\":3,\"assertions\":139,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "STATETests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-state-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalStateTests",
+            "STATETests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATE_RESULT {\"class\":\"STATETests\",\"tests\":3,\"assertions\":139,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/STATETests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATE_RESULT {\"class\":\"STATETests\",\"tests\":3,\"assertions\":139,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "SAMESTATETests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-state-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalStateTests",
+            "SAMESTATETests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATE_RESULT {\"class\":\"SAMESTATETests\",\"tests\":3,\"assertions\":281,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/SAMESTATETests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_STATE_RESULT {\"class\":\"SAMESTATETests\",\"tests\":3,\"assertions\":281,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "All nine active pinned methods and fixtures: 64 current and 64 previous ports across four value types; 64 equal and 64 different singleton state comparisons; original arity, type, missing-state and range rejection checks. Native casts and exception class checks retained. Direct Java runner verifies annotation membership/defaults and invokes actual JUnit assertions on fresh instances. No source loops reduced. Original SAMESTATE valid cases are singleton ranges, not multi-port range coverage. No full state API, mutation/aliasing or node parity claim."
+}

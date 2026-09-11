@@ -1,3 +1,39 @@
+# Current checkpoint — original state tests
+
+Base HEAD: d87a7467ad168efefa62aba35739d6edc9b68e5d. Goal ACTIVE and incomplete.
+New files: PREVSTATETests.cpp, STATETests.cpp and SAMESTATETests.cpp under
+`test/org/minima/tests/kissvm/functions/state`. Inventory: **429 counterparts**
+(364 production, 65 tests), **28 absent** (5 production, 23 tests).
+Full parity labels remain not_verified. No production algorithm changed.
+
+Both builds pass real MinimaCoreCpp node target, new state targets and SHA targets.
+Both state runs pass nine original methods / 559 assertions per runtime: 139 each
+for PREVSTATE and STATE, 281 for SAMESTATE. All 64-port fixtures and invalid cases
+retained. SAMESTATE successful cases are singleton ranges, not multi-port coverage.
+The shared report helper gained an optional marker; both affected SHA suites pass
+again (263 assertions, 46 comparisons, 92 independent value checks). Full CTest
+suite not repeated; 273 registered entries.
+
+Lab: student-guide/new-tests/original-state-tests.md. Evidence/remaining list:
+validation/original-state-tests-work-in-progress. Three lessons updated; all 457
+pages retained. NEXT: original KISS signature tests, then transaction/expression/
+statement/token tests. Missing JNI bodies/ABI affect four production files but
+independent conversions can continue. P2PSwapLink is inactive; TxPoWProcessorTest
+has two empty bodies plus delay helpers; do not invent active behavior or count
+empty assertions as parity. Full API/runtime audit remains after counterpart work.
+
+Magic sanitizer session 41123 confirmed LIVE this turn; saved 9ae7039 binary.
+Normal 55636 is TERMINAL exit 0; full replay evidence in preceding SHA checkpoint.
+Do not restart from buffered output or wait on demos before independent work.
+
+Preserve unrelated graphify work and external f7f0e08 Java SQL/JAR commit. Commit
+only cpp; no push; upstream-study remains pinned. Preceding verified backup:
+local-backups/MinimaCoreC++-20260911T181739Z.bundle, SHA-256
+4643ada991af0042a960728e328b05f7b13894ea93b723b7c5cdd44a071b3ecc,
+34 checkpoint files byte-verified in a fresh recovery clone.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — original SHA tests
 
 Base HEAD: 32fc1d0868ef9138656485fcd91c9fc2d4415f16. Goal ACTIVE and incomplete.

@@ -1,0 +1,27 @@
+[ 97%] Built target minima_file_port
+[ 97%] Building CXX object CMakeFiles/PREVSTATETests.dir/test/org/minima/tests/kissvm/functions/state/PREVSTATETests.cpp.o
+[100%] Linking CXX executable PREVSTATETests
+[100%] Built target PREVSTATETests
+[ 97%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/STATETests.dir/test/org/minima/tests/kissvm/functions/state/STATETests.cpp.o
+[100%] Linking CXX executable STATETests
+[100%] Built target STATETests
+[ 97%] Built target minima_file_port
+[ 97%] Building CXX object CMakeFiles/SAMESTATETests.dir/test/org/minima/tests/kissvm/functions/state/SAMESTATETests.cpp.o
+[100%] Linking CXX executable SAMESTATETests
+[100%] Built target SAMESTATETests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/SHA2Tests.dir/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp.o
+[100%] Linking CXX executable SHA2Tests
+[100%] Built target SHA2Tests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/SHA3Tests.dir/test/org/minima/tests/kissvm/functions/sha/SHA3Tests.cpp.o
+[100%] Linking CXX executable SHA3Tests
+[100%] Built target SHA3Tests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/CHAINSHATests.dir/test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.cpp.o
+[100%] Linking CXX executable CHAINSHATests
+[100%] Built target CHAINSHATests
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Built target MinimaCoreCpp
