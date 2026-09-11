@@ -1,0 +1,578 @@
+{
+  "passed": true,
+  "comparisons": 24,
+  "assertions": 87,
+  "observations": [
+    {
+      "args": [
+        "send",
+        "null"
+      ],
+      "java": {
+        "stdout": "{\"coinid\":\"0x00\",\"amount\":\"10\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.5\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xFF\",\"miniaddress\":\"Mx2001VT24N2FC\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "{\"coinid\":\"0x00\",\"amount\":\"10\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.5\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xFF\",\"miniaddress\":\"Mx2001VT24N2FC\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "send",
+        "empty"
+      ],
+      "java": {
+        "stdout": "{\"coinid\":\"0x00\",\"amount\":\"10\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.5\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xFF\",\"miniaddress\":\"Mx2001VT24N2FC\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "{\"coinid\":\"0x00\",\"amount\":\"10\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.5\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xFF\",\"miniaddress\":\"Mx2001VT24N2FC\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "send",
+        "args"
+      ],
+      "java": {
+        "stdout": "{\"coinid\":\"0x00\",\"amount\":\"10\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.5\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xFF\",\"miniaddress\":\"Mx2001VT24N2FC\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "{\"coinid\":\"0x00\",\"amount\":\"10\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xDD\",\"miniaddress\":\"Mx2001RNSVB87R\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.5\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"0.2\",\"address\":\"0xEE\",\"miniaddress\":\"Mx2001TZUURWF4\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n{\"coinid\":\"0x00\",\"amount\":\"1\",\"address\":\"0xFF\",\"miniaddress\":\"Mx2001VT24N2FC\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "TxPoWTreeNode",
+        "null"
+      ],
+      "java": {
+        "stdout": "{\"test\":\"this\",\"transactions\":\"[one, two, three]\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "{\"test\":\"this\",\"transactions\":\"[one, two, three]\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "TxPoWTreeNode",
+        "empty"
+      ],
+      "java": {
+        "stdout": "{\"test\":\"this\",\"transactions\":\"[one, two, three]\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "{\"test\":\"this\",\"transactions\":\"[one, two, three]\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "TxPoWTreeNode",
+        "args"
+      ],
+      "java": {
+        "stdout": "{\"test\":\"this\",\"transactions\":\"[one, two, three]\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "{\"test\":\"this\",\"transactions\":\"[one, two, three]\"}\n",
+        "error": "none",
+        "events": [],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "Contract",
+        "null"
+      ],
+      "java": {
+        "stdout": "\nScript:LET g = 0xFF << -8\nClean :LET g=0xFF<<-8\nINST[0] STACK[0] - Contract   : LET g=0xFF<<-8\nINST[0] STACK[0] - Size       : 14\nINST[0] STACK[0] - Transaction   : {\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"}\nINST[0] STACK[0] - Witness       : {\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]}\nINST[0] STACK[0] - 0) Token : [COMMAND] LET\nINST[0] STACK[0] - 1) Token : [VARIABLE] g\nINST[0] STACK[0] - 2) Token : [OPERATOR] =\nINST[0] STACK[0] - 3) Token : [VALUE] 0xFF\nINST[0] STACK[0] - 4) Token : [OPERATOR] <<\nINST[0] STACK[0] - 5) Token : [OPERATOR] -\nINST[0] STACK[0] - 6) Token : [VALUE] 8\nINST[0] STACK[0] - Script token parse OK.\nINST[0] STACK[0] - Start executing the contract\nINST[1] STACK[1] - LET g = ( 0xFF << -8 )\nINST[4] STACK[1] - ( 0xFF << -8 ) returns:0x00\nINST[4] STACK[1] - { g = 0x00, }\nINST[4] STACK[0] - Contract instructions : 4\nINST[4] STACK[0] - Contract finished     : false\n",
+        "error": "none",
+        "events": [],
+        "notifications": 21
+      },
+      "cpp": {
+        "stdout": "\nScript:LET g = 0xFF << -8\nClean :LET g=0xFF<<-8\nINST[0] STACK[0] - Contract   : LET g=0xFF<<-8\nINST[0] STACK[0] - Size       : 14\nINST[0] STACK[0] - Transaction   : {\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"}\nINST[0] STACK[0] - Witness       : {\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]}\nINST[0] STACK[0] - 0) Token : [COMMAND] LET\nINST[0] STACK[0] - 1) Token : [VARIABLE] g\nINST[0] STACK[0] - 2) Token : [OPERATOR] =\nINST[0] STACK[0] - 3) Token : [VALUE] 0xFF\nINST[0] STACK[0] - 4) Token : [OPERATOR] <<\nINST[0] STACK[0] - 5) Token : [OPERATOR] -\nINST[0] STACK[0] - 6) Token : [VALUE] 8\nINST[0] STACK[0] - Script token parse OK.\nINST[0] STACK[0] - Start executing the contract\nINST[1] STACK[1] - LET g = ( 0xFF << -8 )\nINST[4] STACK[1] - ( 0xFF << -8 ) returns:0x00\nINST[4] STACK[1] - { g = 0x00, }\nINST[4] STACK[0] - Contract instructions : 4\nINST[4] STACK[0] - Contract finished     : false\n",
+        "error": "none",
+        "events": [],
+        "notifications": 21
+      }
+    },
+    {
+      "args": [
+        "Contract",
+        "empty"
+      ],
+      "java": {
+        "stdout": "\nScript:LET g = 0xFF << -8\nClean :LET g=0xFF<<-8\nINST[0] STACK[0] - Contract   : LET g=0xFF<<-8\nINST[0] STACK[0] - Size       : 14\nINST[0] STACK[0] - Transaction   : {\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"}\nINST[0] STACK[0] - Witness       : {\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]}\nINST[0] STACK[0] - 0) Token : [COMMAND] LET\nINST[0] STACK[0] - 1) Token : [VARIABLE] g\nINST[0] STACK[0] - 2) Token : [OPERATOR] =\nINST[0] STACK[0] - 3) Token : [VALUE] 0xFF\nINST[0] STACK[0] - 4) Token : [OPERATOR] <<\nINST[0] STACK[0] - 5) Token : [OPERATOR] -\nINST[0] STACK[0] - 6) Token : [VALUE] 8\nINST[0] STACK[0] - Script token parse OK.\nINST[0] STACK[0] - Start executing the contract\nINST[1] STACK[1] - LET g = ( 0xFF << -8 )\nINST[4] STACK[1] - ( 0xFF << -8 ) returns:0x00\nINST[4] STACK[1] - { g = 0x00, }\nINST[4] STACK[0] - Contract instructions : 4\nINST[4] STACK[0] - Contract finished     : false\n",
+        "error": "none",
+        "events": [],
+        "notifications": 21
+      },
+      "cpp": {
+        "stdout": "\nScript:LET g = 0xFF << -8\nClean :LET g=0xFF<<-8\nINST[0] STACK[0] - Contract   : LET g=0xFF<<-8\nINST[0] STACK[0] - Size       : 14\nINST[0] STACK[0] - Transaction   : {\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"}\nINST[0] STACK[0] - Witness       : {\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]}\nINST[0] STACK[0] - 0) Token : [COMMAND] LET\nINST[0] STACK[0] - 1) Token : [VARIABLE] g\nINST[0] STACK[0] - 2) Token : [OPERATOR] =\nINST[0] STACK[0] - 3) Token : [VALUE] 0xFF\nINST[0] STACK[0] - 4) Token : [OPERATOR] <<\nINST[0] STACK[0] - 5) Token : [OPERATOR] -\nINST[0] STACK[0] - 6) Token : [VALUE] 8\nINST[0] STACK[0] - Script token parse OK.\nINST[0] STACK[0] - Start executing the contract\nINST[1] STACK[1] - LET g = ( 0xFF << -8 )\nINST[4] STACK[1] - ( 0xFF << -8 ) returns:0x00\nINST[4] STACK[1] - { g = 0x00, }\nINST[4] STACK[0] - Contract instructions : 4\nINST[4] STACK[0] - Contract finished     : false\n",
+        "error": "none",
+        "events": [],
+        "notifications": 21
+      }
+    },
+    {
+      "args": [
+        "Contract",
+        "args"
+      ],
+      "java": {
+        "stdout": "\nScript:LET g = 0xFF << -8\nClean :LET g=0xFF<<-8\nINST[0] STACK[0] - Contract   : LET g=0xFF<<-8\nINST[0] STACK[0] - Size       : 14\nINST[0] STACK[0] - Transaction   : {\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"}\nINST[0] STACK[0] - Witness       : {\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]}\nINST[0] STACK[0] - 0) Token : [COMMAND] LET\nINST[0] STACK[0] - 1) Token : [VARIABLE] g\nINST[0] STACK[0] - 2) Token : [OPERATOR] =\nINST[0] STACK[0] - 3) Token : [VALUE] 0xFF\nINST[0] STACK[0] - 4) Token : [OPERATOR] <<\nINST[0] STACK[0] - 5) Token : [OPERATOR] -\nINST[0] STACK[0] - 6) Token : [VALUE] 8\nINST[0] STACK[0] - Script token parse OK.\nINST[0] STACK[0] - Start executing the contract\nINST[1] STACK[1] - LET g = ( 0xFF << -8 )\nINST[4] STACK[1] - ( 0xFF << -8 ) returns:0x00\nINST[4] STACK[1] - { g = 0x00, }\nINST[4] STACK[0] - Contract instructions : 4\nINST[4] STACK[0] - Contract finished     : false\n",
+        "error": "none",
+        "events": [],
+        "notifications": 21
+      },
+      "cpp": {
+        "stdout": "\nScript:LET g = 0xFF << -8\nClean :LET g=0xFF<<-8\nINST[0] STACK[0] - Contract   : LET g=0xFF<<-8\nINST[0] STACK[0] - Size       : 14\nINST[0] STACK[0] - Transaction   : {\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"}\nINST[0] STACK[0] - Witness       : {\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]}\nINST[0] STACK[0] - 0) Token : [COMMAND] LET\nINST[0] STACK[0] - 1) Token : [VARIABLE] g\nINST[0] STACK[0] - 2) Token : [OPERATOR] =\nINST[0] STACK[0] - 3) Token : [VALUE] 0xFF\nINST[0] STACK[0] - 4) Token : [OPERATOR] <<\nINST[0] STACK[0] - 5) Token : [OPERATOR] -\nINST[0] STACK[0] - 6) Token : [VALUE] 8\nINST[0] STACK[0] - Script token parse OK.\nINST[0] STACK[0] - Start executing the contract\nINST[1] STACK[1] - LET g = ( 0xFF << -8 )\nINST[4] STACK[1] - ( 0xFF << -8 ) returns:0x00\nINST[4] STACK[1] - { g = 0x00, }\nINST[4] STACK[0] - Contract instructions : 4\nINST[4] STACK[0] - Contract finished     : false\n",
+        "error": "none",
+        "events": [],
+        "notifications": 21
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null"
+      ],
+      "java": {
+        "stdout": "NET:true\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "NET:true\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "empty"
+      ],
+      "java": {
+        "stdout": "NET:true\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "NET:true\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "args"
+      ],
+      "java": {
+        "stdout": "NET:true\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "NET:true\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "open",
+        "io"
+      ],
+      "java": {
+        "stdout": "NET:false\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "NET:false\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "open",
+        "error"
+      ],
+      "java": {
+        "stdout": "",
+        "error": "java.lang.AssertionError: fixture",
+        "events": [
+          "open:https://www.google.com"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "",
+        "error": "java.lang.AssertionError: fixture",
+        "events": [
+          "open:https://www.google.com"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "open",
+        "oom"
+      ],
+      "java": {
+        "stdout": "",
+        "error": "java.lang.OutOfMemoryError: fixture",
+        "events": [
+          "open:https://www.google.com"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "",
+        "error": "java.lang.OutOfMemoryError: fixture",
+        "events": [
+          "open:https://www.google.com"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "connect",
+        "io"
+      ],
+      "java": {
+        "stdout": "NET:false\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "NET:false\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "connect",
+        "error"
+      ],
+      "java": {
+        "stdout": "",
+        "error": "java.lang.AssertionError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "",
+        "error": "java.lang.AssertionError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "connect",
+        "oom"
+      ],
+      "java": {
+        "stdout": "",
+        "error": "java.lang.OutOfMemoryError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "",
+        "error": "java.lang.OutOfMemoryError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "input",
+        "io"
+      ],
+      "java": {
+        "stdout": "NET:false\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "NET:false\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "input",
+        "error"
+      ],
+      "java": {
+        "stdout": "",
+        "error": "java.lang.AssertionError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "",
+        "error": "java.lang.AssertionError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "input",
+        "oom"
+      ],
+      "java": {
+        "stdout": "",
+        "error": "java.lang.OutOfMemoryError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "",
+        "error": "java.lang.OutOfMemoryError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "close",
+        "io"
+      ],
+      "java": {
+        "stdout": "NET:false\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "NET:false\n",
+        "error": "none",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "close",
+        "error"
+      ],
+      "java": {
+        "stdout": "",
+        "error": "java.lang.AssertionError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "",
+        "error": "java.lang.AssertionError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      }
+    },
+    {
+      "args": [
+        "P2PFunctions",
+        "null",
+        "close",
+        "oom"
+      ],
+      "java": {
+        "stdout": "",
+        "error": "java.lang.OutOfMemoryError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      },
+      "cpp": {
+        "stdout": "",
+        "error": "java.lang.OutOfMemoryError: fixture",
+        "events": [
+          "open:https://www.google.com",
+          "connect",
+          "input",
+          "close"
+        ],
+        "notifications": 0
+      }
+    }
+  ],
+  "scope": "Four actual mains, null/empty/unused arguments; complete stdout except logger runtime prefix, full coin JSON/list-string/VM traces and logger notifications. Existing offline URL transport boundary covers success and IO/AssertionError/OutOfMemoryError at open/connect/input/close. Does not certify real HTTPS provider semantics or complete class parity."
+}

@@ -24,6 +24,7 @@ class Contract {
     bool mMonotonic=true,mSuccess=false,mSuccessSet=false,mTraceON=false,mParseOK=false,mException=false;
     int32_t mNumInstructions=0,mStackDepth=0;
 public:
+    static void main(const std::vector<std::string>* args=nullptr);
     int MAX_INSTRUCTIONS=1024;
     static constexpr int MAX_STACK_DEPTH=64,MAX_FUNCTION_PARAMS=32,MAX_DATA_SIZE=64*1024;
     static const MiniNumber MAX_BITSHIFT;

@@ -24,7 +24,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--build', type=Path, default=CPP/'build')
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--port', type=int, default=21001)
     args = parser.parse_args()
+    if not 1 <= args.port <= 65535:
+        parser.error('--port must be between 1 and 65535')
     output = args.output.resolve()
     if output.exists():
         raise SystemExit('Choose a new output folder; existing previews and their data are never overwritten.')
@@ -90,7 +93,7 @@ umask 077
 preview_dir="${0:A:h}"
 cd "$preview_dir"
 print -- "MinimaCoreC++ — development preview"
-print -- "Initial peer: eurobuddha.com:9001 | Node port: 21001"
+print -- "Initial peer: eurobuddha.com:9001 | Default node port: 21001"
 print -- "Data: $preview_dir/data"
 print -- "Type help for commands; type quit for a clean shutdown."
 print -- "First startup generates a new wallet and downloads the chain."
@@ -98,7 +101,7 @@ print -- ""
 exec "$preview_dir/bin/MinimaCoreC++" \\
   -data "$preview_dir/data" -port 21001 \\
   -connect eurobuddha.com:9001 -host 127.0.0.1 -desktop -nossl "$@"
-''')
+'''.replace('21001',str(args.port)))
     launcher.chmod(0o755)
     for name in ['LICENSE', 'BOUNCY_CASTLE_LICENSE', 'OPENJDK_TIMSORT_LICENSE', 'REUSED_CODE_LICENSE']:
         shutil.copy2(CPP/name, output/'licenses'/name)
@@ -121,7 +124,7 @@ Double-click "Start MinimaCoreC++.command" to open the native console in Termina
 Keep bin/ and lib/ beside the launcher. No Java installation or build tools are
 needed to run it. This is a fixed snapshot: further source rebuilds do not replace it.
 
-The launcher uses eurobuddha.com:9001, local node port 21001, RPC disabled,
+The launcher uses eurobuddha.com:9001, local node port {args.port}, RPC disabled,
 and its own new wallet/chain under data/ inside this folder. The development
 node uses a different directory and port 16001. Data is preserved across starts.
 The initial key generation and chain download take time. Run one instance of
@@ -161,7 +164,7 @@ checkpoint above. Keep seed phrases, private keys and wallet databases private.
     manifest = dict(source_head=head, utc=datetime.now(timezone.utc).isoformat(),
                     platform='macOS 26+ arm64', source_binary_sha256=original_binary_hash,
                     source_dependencies_sha256=source_hashes, native_database=bool(provider),
-                    package_kind='local development preview', full_parity=False,
+                    package_kind='local development preview', full_parity=False, node_port=args.port,
                     file_sha256={str(p.relative_to(output)):sha(p) for p in sorted(output.rglob('*')) if p.is_file()})
     (output/'manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
     archive = output.with_suffix('.zip')

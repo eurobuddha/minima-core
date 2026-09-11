@@ -84,4 +84,11 @@ void TxPoWTreeNode::CheckTxBlockForNotifyCoins(const TxBlock& block) {
     for(const auto& input:block.getInputCoinProofs()) {const auto& coin=input.getCoin();if(services.checkCoinNotify(coin.getAddress().to0xString())) services.postNotifyEvent("NOTIFYCASCADECOIN",coinEvent(coin,block,true,false,false));}
     for(const auto& coin:block.getOutputCoins()) if(services.checkCoinNotify(coin.getAddress().to0xString())) services.postNotifyEvent("NOTIFYCASCADECOIN",coinEvent(coin,block,false,false,true));
 }
+void TxPoWTreeNode::main(const std::vector<std::string>*) {
+    std::vector<std::string> values{"one","two","three"};std::string list="[";
+    for(size_t i=0;i<values.size();++i){if(i)list+=", ";list+=values[i];}list+="]";
+    json::JSONObject data;data.put("test","this");data.put("transactions",list);
+    std::cout<<data.toString()<<std::endl;
+}
+
 }

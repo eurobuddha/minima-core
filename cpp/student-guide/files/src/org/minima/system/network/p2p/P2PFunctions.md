@@ -52,3 +52,10 @@ Why can a hostname beginning localhost.evil be rejected by this exact source? Ex
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `7dd3030e44b51fb8f2eb497ea58edabfeaf7c2601e960fafd91f04b996087513`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Follow-up: complete source entry point
+
+The source main prints NET:true or NET:false after the real isNetAvailable call. Existing offline URL fixtures exercise opening, connecting, obtaining the stream and closing it. Ordinary failures return false; Java Error equivalents now escape before output. Tests cover IO, AssertionError and OutOfMemoryError at every stage.
+
+See the [entry-point lab](../../../../../../../new-tests/core-main-methods.md) for logic, tests and limits.
+This addition does not establish whole-file parity.

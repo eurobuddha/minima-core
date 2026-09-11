@@ -1,3 +1,4 @@
+#include <iostream>
 #include "send.hpp"
 #include "org/minima/utils/MinimaLogger.hpp"
 #include "../txn/txnutils.hpp"
@@ -264,4 +265,13 @@ json::JSONValue send::runCommand() {
     }
     return result;
 }
+void send::main(const std::vector<std::string>*) {
+    std::vector<Coin> coins;
+    for(const auto& [address,amount]:std::vector<std::pair<std::string,std::string>>{
+        {"0xFF","1"},{"0xEE","2"},{"0xDD","10"},{"0xDD","1"},{"0xEE","0.5"},{"0xEE","0.2"}})
+        coins.emplace_back(MiniData::fromHex(address),MiniNumber(amount),MiniData::ZERO_TXPOWID);
+    auto sorted=orderCoins(coins);
+    for(const auto& coin:sorted)std::cout<<coin.toJSON().toString()<<std::endl;
+}
+
 }

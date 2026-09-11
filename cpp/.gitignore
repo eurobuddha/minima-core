@@ -6,3 +6,6 @@ __pycache__/
 
 # Frozen executable previews and their separate private runtime data.
 /preview-builds/
+
+# Shareable delivery archives are generated from committed source, never staged.
+/deliverables/

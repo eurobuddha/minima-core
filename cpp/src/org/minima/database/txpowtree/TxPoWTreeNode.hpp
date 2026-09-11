@@ -16,6 +16,7 @@ class TxPoWTreeNode : public std::enable_shared_from_this<TxPoWTreeNode> {
     void constructMMR(bool findRelevant);
     static bool checkRelevant(const Coin& coin);
 public:
+    static void main(const std::vector<std::string>* args=nullptr);
     static ChainServices services;
     explicit TxPoWTreeNode(std::shared_ptr<TxBlock> block,bool findRelevant=true);
     explicit TxPoWTreeNode(TxBlock block,bool findRelevant=true):TxPoWTreeNode(std::make_shared<TxBlock>(std::move(block)),findRelevant){}

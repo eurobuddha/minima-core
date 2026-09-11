@@ -54,3 +54,10 @@ Pinned Java SHA-256: `2c14754d284b6ea89438d2e8f819e6c5bc772a77c3a0c34a143179dca1
 ## Block-ID iteration follow-up
 
 checkFullTxns now traverses a checked owned ID range. The new fixture modifies that list from the actual existence-query callback and checks callback order, early false returns, exception classes and cached success after another ID is added. See the [iteration lab](../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.
+
+## Follow-up: complete source entry point
+
+The source main stores the text [one, two, three] in the transactions JSON field. It is deliberately a string, not a JSON array. Tests compare complete output against Java and independently check the field types and values.
+
+See the [entry-point lab](../../../../../../new-tests/core-main-methods.md) for logic, tests and limits.
+This addition does not establish whole-file parity.

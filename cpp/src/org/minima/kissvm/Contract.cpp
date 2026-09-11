@@ -53,7 +53,7 @@ void Contract::setGlobals(const MiniNumber& block,const MiniNumber& time,const T
 }
 void Contract::setGlobalVariable(const std::string& name,ValuePtr value) {if(!value) throw std::invalid_argument("Null global value");mGlobals->put(name,value);traceLog("Global ["+name+"] : "+value->toString());}
 ValuePtr Contract::getGlobal(const std::string& name) {auto value=mGlobals->get(name);if(!value) throw ExecutionException("Global not found - "+name);if(name=="@BLOCK"||name=="@BLOCKMILLI"||name=="@COINAGE") mMonotonic=false;return *value;}
-void Contract::traceLog(const std::string& log) {if(mTraceON) std::clog<<"INST["<<mNumInstructions<<"] STACK["<<mStackDepth<<"] - "<<log<<'\n';mCompleteLog+="INST["+std::to_string(mNumInstructions)+"] - "+log+"\n";}
+void Contract::traceLog(const std::string& log) {if(mTraceON) MinimaLogger::log("INST["+std::to_string(mNumInstructions)+"] STACK["+std::to_string(mStackDepth)+"] - "+log);mCompleteLog+="INST["+std::to_string(mNumInstructions)+"] - "+log+"\n";}
 void Contract::incrementInstructions(int number) {mNumInstructions=addInt(mNumInstructions,number);if(mNumInstructions>MAX_INSTRUCTIONS) throw ExecutionException("MAX instruction number reached! "+std::to_string(mNumInstructions));}
 void Contract::incrementStackDepth() {mStackDepth=addInt(mStackDepth,1);if(mStackDepth>MAX_STACK_DEPTH) throw ExecutionException("Stack depth too deep! (MAX "+std::to_string(MAX_STACK_DEPTH)+") "+std::to_string(mStackDepth));}
 void Contract::decrementStackDepth() {mStackDepth=addInt(mStackDepth,-1);}
@@ -101,5 +101,13 @@ HexValue Contract::getHexParam(int number,MinimaFunction& function) {auto value=
 StringValue Contract::getStringParam(int number,MinimaFunction& function) {auto value=function.getParameter(number)->getValue(*this);if(value->getValueType()!=Value::VALUE_SCRIPT) throw ExecutionException("Incorrect Parameter type - should be ScriptValue @ "+std::to_string(number)+" "+function.getName());return static_cast<StringValue&>(*value);}
 
 BooleanValue Contract::getBoolParam(int number,MinimaFunction& function) {auto value=function.getParameter(number)->getValue(*this);if(value->getValueType()!=Value::VALUE_BOOLEAN) throw ExecutionException("Incorrect Parameter type - should be BooleanValue @ "+std::to_string(number)+" "+function.getName());return static_cast<BooleanValue&>(*value);}
+
+void Contract::main(const std::vector<std::string>*) {
+    std::string script="LET g = 0xFF << -8";
+    MinimaLogger::log("");MinimaLogger::log("Script:"+script);
+    auto clean=cleanScript(script,false);MinimaLogger::log("Clean :"+clean);
+    Contract contract(clean,std::vector<MiniData>{},std::make_shared<Witness>(),std::make_shared<Transaction>(),{},true);
+    contract.run();
+}
 
 }

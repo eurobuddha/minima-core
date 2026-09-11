@@ -1,3 +1,27 @@
+# Delivery candidate — four further source entry points
+
+Deadline: 02:30 London on 12 September 2026 (01:30 UTC). See delivery/DEADLINE.md.
+Goal remains incomplete. No new mapped paths: 456 counterparts, one absent JNI file.
+Added send, Contract, TxPoWTreeNode and P2PFunctions main. Corrected Contract logger
+routing/notifications and P2P Java Error escape. Both node builds and 24 exact
+Java/native comparisons / 87 assertions per build PASS. Four lessons updated.
+
+Normal full build passed and the complete 292-test CTest run is active. Sanitized
+full build passed. Current normal session 96386 writes /tmp/minima-delivery-normal-ctest.log
+and will produce /tmp/minima-delivery-normal-junit.xml. Poll the exact handle, do
+not restart an active run. Sanitized full CTest run has not started yet.
+
+The remaining main-candidate list has 12 entries. Full API/runtime parity remains
+not_verified. JNI bodies remain unavailable. No narrower completion claim.
+
+NEXT: finish broad tests, fix concrete failures, create/verify final project package,
+team/student presentation and documentation, local commit and verified recovery.
+Use existing package_macos_preview.py plus package_project_delivery.py. Verify the
+shipped runtime via verify_macos_preview.py --port 22001 to preserve user's preview.
+Full packaging/runtime verification pending. No user node/data changes, no push.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — three object entry points
 
 Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,

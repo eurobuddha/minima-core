@@ -70,3 +70,10 @@ Pinned Java SHA-256: `129d65b36bd9b914ee30cc9651d73a02d10fb24d1097252e8cf4a232ee
 ## Shared recipient parsing
 
 The [unsigned-file lab](../../../../../../../new-tests/unsigned-transaction-files.md) reuses this command’s selector. Its existing nextRecipientToken and requiredToken helpers were moved unchanged to the shared SendRecipients header so both commands use the same tested implementation. send’s funding and output rules remain in this file; sendnosign has different confirmation, splitting, state and signing rules. The funding regression is rerun for the extraction.
+
+## Follow-up: complete source entry point
+
+The source main builds six fixed coins and runs the existing orderCoins helper. All six complete JSON outputs are compared with Java, including the amount sort followed by address grouping. The demonstration does not send a transaction.
+
+See the [entry-point lab](../../../../../../../new-tests/core-main-methods.md) for logic, tests and limits.
+This addition does not establish whole-file parity.

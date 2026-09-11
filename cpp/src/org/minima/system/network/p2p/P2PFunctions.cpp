@@ -1,3 +1,4 @@
+#include "support/JavaExceptions.hpp"
 #include "P2PFunctions.hpp"
 #include "org/minima/system/network/minima/NIOMessage.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -10,7 +11,7 @@ std::shared_ptr<JavaStringSet> P2PFunctions::getLocalAddresses(){std::lock_guard
 void P2PFunctions::addInvalidPeer(const std::optional<std::string>& host){if(!mInvalidPeers.contains(host)){log("INVALID PEER added to List! "+host.value_or("null"));mInvalidPeers.add(host);}}
 bool P2PFunctions::isIPv6(const std::optional<std::string>& host){const auto& text=host.value();return text.find(':')!=text.rfind(':');}
 bool P2PFunctions::isIPLocal(const std::optional<std::string>& host){const auto& text=host.value();for(const char* prefix:{"127.","localhost","10.","100.","0.","169.","172.","198.","192."})if(text.starts_with(prefix))return true;return false;}
-bool P2PFunctions::isNetAvailable(){try{if(openURL)openURL("https://www.google.com");else openURLAndClose("https://www.google.com");return true;}catch(const std::bad_alloc&){throw;}catch(const std::exception&){return false;}}
+bool P2PFunctions::isNetAvailable(){try{if(openURL)openURL("https://www.google.com");else openURLAndClose("https://www.google.com");return true;}catch(const JavaError&){throw;}catch(const std::bad_alloc&){throw;}catch(const std::exception&){return false;}}
 void P2PFunctions::connect(std::optional<std::string> host,int32_t port){auto message=std::make_shared<Message>(NIOManager::NIO_CONNECT);message->addString("host",host).addInteger("port",port);manager()->PostMessage(message);}
 bool P2PFunctions::checkConnect(std::optional<std::string> host,int32_t port){
     auto message=std::make_shared<Message>(NIOManager::NIO_CONNECT);message->addString("host",host).addInteger("port",port);auto full=host.value_or("null")+":"+std::to_string(port);
@@ -29,4 +30,9 @@ void P2PFunctions::sendP2PMessage(std::optional<std::string> uid,const std::shar
 void P2PFunctions::log_node_runner(const std::optional<std::string>& text){if(P2PParams::LOG_LEVEL==Level::NODE_RUNNER_MSG)log("[P2P] "+text.value_or("null"));}
 void P2PFunctions::log_info(const std::optional<std::string>& text){if(P2PParams::LOG_LEVEL==Level::INFO||P2PParams::LOG_LEVEL==Level::DEBUG)log("[I] "+text.value_or("null"));}
 void P2PFunctions::log_debug(const std::optional<std::string>& text){if(P2PParams::LOG_LEVEL==Level::DEBUG)log("[D] "+text.value_or("null"));}
+void P2PFunctions::main(const std::vector<std::string>*) {
+    // Evaluate the call before writing: a Java Error produces no partial line.
+    auto available=isNetAvailable();std::cout<<"NET:"<<(available?"true":"false")<<std::endl;
+}
+
 }

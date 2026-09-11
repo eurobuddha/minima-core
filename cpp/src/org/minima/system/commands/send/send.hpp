@@ -4,6 +4,7 @@
 namespace minima::commands {
 class send:public Command {
 public:
+    static void main(const std::vector<std::string>* args=nullptr);
     send();
     std::optional<std::string> getFullHelp() const override;
     std::vector<std::string> getValidParams() const override;

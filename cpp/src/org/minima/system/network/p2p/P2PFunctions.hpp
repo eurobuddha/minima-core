@@ -6,6 +6,7 @@ namespace minima::p2p {
 using ClientInfoPtr=std::shared_ptr<NIOClientInfo>;
 using ClientInfoList=std::vector<ClientInfoPtr>;
 struct P2PFunctions {
+    static void main(const std::vector<std::string>* args=nullptr);
     using Level=P2PLogLevel;
     inline static constexpr const char* P2P_INIT="P2P_INIT",*P2P_SHUTDOWN="P2P_SHUTDOWN",*P2P_CONNECTED="P2P_CONNECTED",*P2P_DISCONNECTED="P2P_DISCONNECTED",*P2P_NOCONNECT="P2P_NOCONNECT",*P2P_MESSAGE="P2P_MESSAGE";
     inline static JavaStringSet mInvalidPeers;

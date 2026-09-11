@@ -135,3 +135,10 @@ Pinned Java SHA-256: `45c4b194ae723e4d5ba56e011c0c203ba7ea0f5d166153c9f66e9b53d7
 ## SPHINCS transaction error follow-up
 
 The contract exception formatter now recognizes JavaNullPointerException and retains its Java type/message. This preserves the source e.toString() behavior exposed by a malformed CHECKSIG signature; other unrepresented native exception categories remain open. See the [transaction lab](../../../../../new-tests/sphincs-transactions.md).
+
+## Follow-up: complete source entry point
+
+The source main cleans and executes LET g = 0xFF << -8 with tracing enabled. Trace output now uses MinimaLogger rather than std::clog, preserving notifications and output order. Tests compare the complete trace and notification count under null, empty and ignored arguments.
+
+See the [entry-point lab](../../../../../new-tests/core-main-methods.md) for logic, tests and limits.
+This addition does not establish whole-file parity.
