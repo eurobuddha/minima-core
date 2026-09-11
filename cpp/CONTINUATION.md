@@ -1,3 +1,33 @@
+# Current checkpoint — timer reentrancy and list identity
+
+Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,
+one inactive), one absent jnifunctions.cpp. Full parity remains not_verified.
+
+TimerProcessor now permits source recursive monitor entry. Directly reused
+JSONSequence array iteration detects callback appends as ConcurrentModificationException
+and safely retains the original list across nested run replacement. Printing an
+internal null entry throws JavaNullPointerException. Worker wall time is read after
+monitor acquisition. No shared collection implementation was rewritten.
+
+Both executable builds PASS. New Java/native experiment passes 48 comparisons /
+688 assertions per build. Three focused CTests pass in normal and ASAN/UBSAN
+(9.59 s / 14.47 s): thread interruption 12 comparisons / 194 assertions, JSON
+collections 67 programs / 606 operations, and real message workers/timers.
+Full suite not rerun; source sleep intervals unchanged. New cases use actual
+run/print methods on unstarted/manual timer instances and ordinary interruption.
+
+Evidence: validation/timer-reentrancy-work-in-progress. Student lab:
+student-guide/new-tests/timer-reentrancy.md; TimerProcessor lesson updated.
+
+NEXT: port missing NIOServer.main by reusing the real server and processor. Its
+pinned source creates/stops two port-9002 servers with four 2000-ms waits and exits.
+Inspect lifecycle/exit adapters and validate original timing and interruption paths.
+Further TimerMessage virtual dispatch/receiver ownership and other API gaps remain.
+JNI native bodies still unavailable; independent work can proceed. Preserve frozen
+6c28109 port21001 preview/data and unrelated graphify outputs; local backups, no push.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — executor and timer interruption
 
 Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,

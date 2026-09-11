@@ -1,0 +1,1994 @@
+{
+  "passed": true,
+  "comparisons": 48,
+  "assertions": 688,
+  "observations": [
+    {
+      "case": [
+        "print",
+        "read",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "read",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "read",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "append",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "append",
+        1
+      ],
+      "java": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:2"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          "C"
+        ],
+        "original": [
+          "A",
+          "C"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:2"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          "C"
+        ],
+        "original": [
+          "A",
+          "C"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "append",
+        2
+      ],
+      "java": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:3"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:3"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "throw",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "throw",
+        1
+      ],
+      "java": {
+        "error": "java.lang.IllegalStateException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1"
+        ],
+        "logs": [],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.lang.IllegalStateException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1"
+        ],
+        "logs": [],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "throw",
+        2
+      ],
+      "java": {
+        "error": "java.lang.IllegalStateException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2"
+        ],
+        "logs": [],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.lang.IllegalStateException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2"
+        ],
+        "logs": [],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "print",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "print",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "A",
+          "A"
+        ],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "A",
+          "A"
+        ],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "print",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "A",
+          "B",
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "A",
+          "B",
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "run",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "run",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "nested:0",
+          "after:0"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "nested:0",
+          "after:0"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "print",
+        "run",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "nested:1",
+          "after:1"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "nested:1",
+          "after:1"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "print",
+        "nullpost",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "nullpost",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "NULL TIMER Message attempt:",
+          "A"
+        ],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "NULL TIMER Message attempt:",
+          "A"
+        ],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "nullpost",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "NULL TIMER Message attempt:",
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "NULL TIMER Message attempt:",
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "log_append",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "log_append",
+        1
+      ],
+      "java": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:2"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          "C"
+        ],
+        "original": [
+          "A",
+          "C"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:2"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          "C"
+        ],
+        "original": [
+          "A",
+          "C"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "log_append",
+        2
+      ],
+      "java": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:3"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:3"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "nullentry",
+        0
+      ],
+      "java": {
+        "error": "java.lang.NullPointerException",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [
+          null
+        ],
+        "original": [
+          null
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.lang.NullPointerException",
+        "pending": false,
+        "running": true,
+        "events": [],
+        "logs": [],
+        "remaining": [
+          null
+        ],
+        "original": [
+          null
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "nullentry",
+        1
+      ],
+      "java": {
+        "error": "java.lang.NullPointerException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          null
+        ],
+        "original": [
+          "A",
+          null
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.lang.NullPointerException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "A"
+        ],
+        "remaining": [
+          "A",
+          null
+        ],
+        "original": [
+          "A",
+          null
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "print",
+        "nullentry",
+        2
+      ],
+      "java": {
+        "error": "java.lang.NullPointerException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:3",
+          "after:3"
+        ],
+        "logs": [
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          null
+        ],
+        "original": [
+          "A",
+          "B",
+          null
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.lang.NullPointerException",
+        "pending": false,
+        "running": true,
+        "events": [
+          "size:3",
+          "after:3"
+        ],
+        "logs": [
+          "A",
+          "B"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          null
+        ],
+        "original": [
+          "A",
+          "B",
+          null
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "run",
+        "read",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "read",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "read",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "append",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "append",
+        1
+      ],
+      "java": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:2"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "A",
+          "C"
+        ],
+        "original": [
+          "A",
+          "C"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:2"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "A",
+          "C"
+        ],
+        "original": [
+          "A",
+          "C"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "run",
+        "append",
+        2
+      ],
+      "java": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:3"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:3"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "run",
+        "throw",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "throw",
+        1
+      ],
+      "java": {
+        "error": "java.lang.IllegalStateException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:1"
+        ],
+        "logs": [],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.lang.IllegalStateException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:1"
+        ],
+        "logs": [],
+        "remaining": [
+          "A"
+        ],
+        "original": [
+          "A"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "run",
+        "throw",
+        2
+      ],
+      "java": {
+        "error": "java.lang.IllegalStateException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:2"
+        ],
+        "logs": [],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.lang.IllegalStateException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:2"
+        ],
+        "logs": [],
+        "remaining": [
+          "A",
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "run",
+        "print",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "print",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "A",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "A",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "print",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "A",
+          "B",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "A",
+          "B",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "run",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "run",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "nested:0",
+          "after:0"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "nested:0",
+          "after:0"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "run",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "nested:1",
+          "after:1"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "nested:1",
+          "after:1"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "nullpost",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "nullpost",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "NULL TIMER Message attempt:",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:1",
+          "after:1"
+        ],
+        "logs": [
+          "NULL TIMER Message attempt:",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [],
+        "original": [
+          "A"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "nullpost",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "NULL TIMER Message attempt:",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "NULL TIMER Message attempt:",
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B"
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "log_append",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [],
+        "remaining": [],
+        "original": [],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "log_append",
+        1
+      ],
+      "java": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:2"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "A",
+          "C"
+        ],
+        "original": [
+          "A",
+          "C"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:1",
+          "after:2"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "A",
+          "C"
+        ],
+        "original": [
+          "A",
+          "C"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "run",
+        "log_append",
+        2
+      ],
+      "java": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:3"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sameList": true
+      },
+      "cpp": {
+        "error": "java.util.ConcurrentModificationException",
+        "pending": true,
+        "running": true,
+        "events": [
+          "size:2",
+          "after:3"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A"
+        ],
+        "remaining": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sameList": true
+      }
+    },
+    {
+      "case": [
+        "run",
+        "nullentry",
+        0
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [
+          "Timer Message is NULL.. ?"
+        ],
+        "remaining": [],
+        "original": [
+          null
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [],
+        "logs": [
+          "Timer Message is NULL.. ?"
+        ],
+        "remaining": [],
+        "original": [
+          null
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "nullentry",
+        1
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "Timer Message is NULL.. ?"
+        ],
+        "remaining": [],
+        "original": [
+          "A",
+          null
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:2",
+          "after:2"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "Timer Message is NULL.. ?"
+        ],
+        "remaining": [],
+        "original": [
+          "A",
+          null
+        ],
+        "sameList": false
+      }
+    },
+    {
+      "case": [
+        "run",
+        "nullentry",
+        2
+      ],
+      "java": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:3",
+          "after:3"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "Timer Message is NULL.. ?"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B",
+          null
+        ],
+        "sameList": false
+      },
+      "cpp": {
+        "error": "none",
+        "pending": false,
+        "running": false,
+        "events": [
+          "size:3",
+          "after:3"
+        ],
+        "logs": [
+          "Timer Message NOT run as processor shutdown.. A",
+          "Timer Message is NULL.. ?"
+        ],
+        "remaining": [
+          "B"
+        ],
+        "original": [
+          "A",
+          "B",
+          null
+        ],
+        "sameList": false
+      }
+    }
+  ],
+  "scope": "48 actual pinned/native TimerProcessor print/run programs, reentrant size/append/nested print/nested run/throw/null-post/logger append, internal null entry, empty and one/two-entry queues, retained list identity and ordered logs. Unsafe Java/manual native timer instances avoid unrelated factory thread; real run and original one-second sleep execute with a pending interrupt to bound one iteration. Only stack frame text and nondeterministic logger prefixes are excluded. No full lifecycle, arbitrary subclass API or all concurrent schedules certification."
+}

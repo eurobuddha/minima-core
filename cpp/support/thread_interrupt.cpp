@@ -12,7 +12,7 @@ using namespace minima;using namespace minima::json;using commands::txnlock;
 namespace minima {struct TimerProcessorFixture {
     static bool pending(const TimerProcessor& timer){return timer.mWorkerThread->isInterrupted();}
     static bool running(const TimerProcessor& timer){return timer.mRunning.load();}
-    static void addNull(TimerProcessor& timer){std::lock_guard lock(timer.mMessagesLock);timer.mTimerMessages.push_back(nullptr);}
+    static void addNull(TimerProcessor& timer){std::lock_guard lock(timer.mMessagesLock);timer.mTimerMessages->add(nullptr);}
 };}
 namespace {
 class StoppedTimerTarget:public MessageProcessor {

@@ -49,4 +49,19 @@ action and true afterward. The unchanged one-second sleep consumes the flag, exi
 and leaves an empty timer queue. The null entry is logged and skipped as in Java.
 The expanded thread comparison passes 12 cases / 194 assertions in both normal
 and sanitizer builds; message_workers also passes. These are fresh scoped results.
-Java synchronized-list reentrancy, clock jumps and full timer API parity remain open.
+At that checkpoint Java synchronized-list reentrancy remained open; the follow-up below addresses it. Clock jumps and full timer API parity still require work.
+
+## Reentrant list follow-up
+
+The [timer reentrancy lab](../../../../../../new-tests/timer-reentrancy.md) explains
+why a recursive monitor and a retained, fail-fast iterator are both needed. The
+native timer directly reuses JSONSequence's ArrayList iterator. Appending during
+formatting/logging causes ConcurrentModificationException on the next entry;
+previous effects and the original list remain. A nested run can replace the current
+list while an outer print continues over its original list. Null entries throw on
+print and log/skip on run. Worker wall time is sampled after acquiring the monitor.
+
+All 48 new Java/native programs / 688 assertions pass in normal and sanitizer
+builds, with the existing live worker, interrupt and collection regressions passing.
+This does not certify weak receiver ownership, all subclass accessors or arbitrary
+concurrent schedules. Those remain broader port work.

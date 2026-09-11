@@ -1,0 +1,334 @@
+{
+  "passed": true,
+  "comparisons": 12,
+  "assertions": 194,
+  "cases": [
+    {
+      "mode": "flags",
+      "java": {
+        "mode": "flags",
+        "rows": [
+          {
+            "delay": "-1",
+            "error": "java.lang.IllegalArgumentException",
+            "pending": true,
+            "consume": true,
+            "again": false
+          },
+          {
+            "delay": "-9223372036854775808",
+            "error": "java.lang.IllegalArgumentException",
+            "pending": true,
+            "consume": true,
+            "again": false
+          },
+          {
+            "delay": "0",
+            "error": "java.lang.InterruptedException",
+            "pending": false,
+            "consume": false,
+            "again": false
+          },
+          {
+            "delay": "1",
+            "error": "java.lang.InterruptedException",
+            "pending": false,
+            "consume": false,
+            "again": false
+          },
+          {
+            "delay": "9223372036854775807",
+            "error": "java.lang.InterruptedException",
+            "pending": false,
+            "consume": false,
+            "again": false
+          }
+        ],
+        "zero": "returned",
+        "positive": "returned"
+      },
+      "cpp": {
+        "mode": "flags",
+        "rows": [
+          {
+            "delay": "-1",
+            "error": "java.lang.IllegalArgumentException",
+            "pending": true,
+            "consume": true,
+            "again": false
+          },
+          {
+            "delay": "-9223372036854775808",
+            "error": "java.lang.IllegalArgumentException",
+            "pending": true,
+            "consume": true,
+            "again": false
+          },
+          {
+            "delay": "0",
+            "error": "java.lang.InterruptedException",
+            "pending": false,
+            "consume": false,
+            "again": false
+          },
+          {
+            "delay": "1",
+            "error": "java.lang.InterruptedException",
+            "pending": false,
+            "consume": false,
+            "again": false
+          },
+          {
+            "delay": "9223372036854775807",
+            "error": "java.lang.InterruptedException",
+            "pending": false,
+            "consume": false,
+            "again": false
+          }
+        ],
+        "zero": "returned",
+        "positive": "returned"
+      }
+    },
+    {
+      "mode": "external",
+      "java": {
+        "mode": "external",
+        "blocked": true,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      },
+      "cpp": {
+        "mode": "external",
+        "blocked": true,
+        "error": "java.lang.InterruptedException",
+        "pending": false
+      }
+    },
+    {
+      "mode": "lock_flags",
+      "java": {
+        "mode": "lock_flags",
+        "acquired": true,
+        "pending_after_acquire": true,
+        "locked": false,
+        "pending_after_unlock": true
+      },
+      "cpp": {
+        "mode": "lock_flags",
+        "acquired": true,
+        "pending_after_acquire": true,
+        "locked": false,
+        "pending_after_unlock": true
+      }
+    },
+    {
+      "mode": "hard_sleep",
+      "java": {
+        "mode": "hard_sleep",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "returned": false,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      },
+      "cpp": {
+        "mode": "hard_sleep",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "returned": false,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      }
+    },
+    {
+      "mode": "hard_lock",
+      "java": {
+        "mode": "hard_lock",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "returned": false,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      },
+      "cpp": {
+        "mode": "hard_lock",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "returned": false,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      }
+    },
+    {
+      "mode": "hard_unlock",
+      "java": {
+        "mode": "hard_unlock",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "returned": false,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      },
+      "cpp": {
+        "mode": "hard_unlock",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "returned": false,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      }
+    },
+    {
+      "mode": "soft_sleep",
+      "java": {
+        "mode": "soft_sleep",
+        "error": "none",
+        "pending": false,
+        "returned": true,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      },
+      "cpp": {
+        "mode": "soft_sleep",
+        "error": "none",
+        "pending": false,
+        "returned": true,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      }
+    },
+    {
+      "mode": "interrupted_waiter",
+      "java": {
+        "mode": "interrupted_waiter",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "returned": false,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      },
+      "cpp": {
+        "mode": "interrupted_waiter",
+        "error": "java.lang.InterruptedException",
+        "pending": false,
+        "returned": false,
+        "cleanup": 1,
+        "locked": true,
+        "running": false,
+        "shutdown": true,
+        "waiter_pending": false
+      }
+    },
+    {
+      "mode": "hard_poll",
+      "java": {
+        "mode": "hard_poll",
+        "remaining": 0,
+        "timers": 1,
+        "cleanup": 1,
+        "running": false,
+        "shutdown": true
+      },
+      "cpp": {
+        "mode": "hard_poll",
+        "remaining": 0,
+        "timers": 1,
+        "cleanup": 1,
+        "running": false,
+        "shutdown": true
+      }
+    },
+    {
+      "mode": "timer_stop",
+      "java": {
+        "mode": "timer_stop",
+        "calls": 1,
+        "before": false,
+        "after": true,
+        "pending": false,
+        "running": false,
+        "remaining": 0
+      },
+      "cpp": {
+        "mode": "timer_stop",
+        "calls": 1,
+        "before": false,
+        "after": true,
+        "pending": false,
+        "running": false,
+        "remaining": 0
+      }
+    },
+    {
+      "mode": "timer_self",
+      "java": {
+        "mode": "timer_self",
+        "calls": 1,
+        "before": false,
+        "after": true,
+        "pending": false,
+        "running": false,
+        "remaining": 0
+      },
+      "cpp": {
+        "mode": "timer_self",
+        "calls": 1,
+        "before": false,
+        "after": true,
+        "pending": false,
+        "running": false,
+        "remaining": 0
+      }
+    },
+    {
+      "mode": "timer_null",
+      "java": {
+        "mode": "timer_null",
+        "calls": 1,
+        "before": false,
+        "after": true,
+        "pending": false,
+        "running": false,
+        "remaining": 0
+      },
+      "cpp": {
+        "mode": "timer_null",
+        "calls": 1,
+        "before": false,
+        "after": true,
+        "pending": false,
+        "running": false,
+        "remaining": 0
+      }
+    }
+  ],
+  "scope": "Real interruptible sleep and pinned MessageProcessor/txnlock paths. No forced thread termination, arbitrary I/O interruption or complete scheduler interleaving parity claimed."
+}

@@ -1,0 +1,47 @@
+{
+  "goal": "active_incomplete",
+  "previous_goal_turn": "progress: d67c938 and verified recovery of all 36 changed files",
+  "base_commit": "d67c9381cc1d0365861e146f37dea929b7c44928",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "active_partial": 455,
+  "inactive_source_preserved": 1,
+  "absent": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "full_parity": "not_verified",
+  "corrected": [
+    "TimerProcessor uses recursive list monitor",
+    "Direct reuse of JSONSequence array iterator preserves append-during-callback ConcurrentModificationException without native iterator invalidation",
+    "Original list retained across nested run replacement; successful scan installs new list only after traversal",
+    "Null internal entry throws JavaNullPointerException during printing instead of native null dereference",
+    "Worker reads time after acquiring timer monitor"
+  ],
+  "validation": {
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "actual_executable_builds_pass": true,
+    "new_timer_comparisons_per_build": 48,
+    "new_timer_assertions_per_build": 688,
+    "regression_ctests_per_build": 3,
+    "thread_comparisons_per_build": 12,
+    "thread_assertions_per_build": 194,
+    "json_collection_programs_per_build": 67,
+    "json_collection_operations_per_build": 606,
+    "regression_seconds": {
+      "normal": 9.59,
+      "sanitized": 14.47
+    },
+    "full_suite_rerun": false
+  },
+  "limits": [
+    "New reentrancy experiment uses actual run/print methods on an unstarted Java/manual native timer; existing thread/worker regressions separately exercise actual factories",
+    "No proof of all thread schedules, inherited/subclass APIs, Java GC-equivalent ownership or allocation failures",
+    "Logger time/memory prefix and stack frame text excluded; message text and order fully compared",
+    "TimerMessage receiver remains weak ownership and scalar getters lack Java virtual dispatch; further API work is required",
+    "JNI native bodies absent from inspected sources; no mining implementation invented"
+  ],
+  "next_action": "Port omitted NIOServer.main using actual existing NIOServer and MessageProcessor implementations; inspect lifecycle ownership and exit contract, then verify actual two-start/two-stop source demonstration and interruption paths without altering its four 2000 ms waits.",
+  "preview": "Frozen 6c28109 port21001 preview and user data untouched"
+}

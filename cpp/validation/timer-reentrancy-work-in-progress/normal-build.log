@@ -1,0 +1,24 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/messages/TimerProcessor.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/messages/MessageProcessor.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/Main.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/systemcheck.cpp.o
+[  0%] Linking CXX static library libminima_file_port.a
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/timer_reentrancy.dir/support/timer_reentrancy.cpp.o
+[100%] Linking CXX executable timer_reentrancy
+[100%] Built target timer_reentrancy
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/thread_interrupt.dir/support/thread_interrupt.cpp.o
+[100%] Linking CXX executable thread_interrupt
+[100%] Built target thread_interrupt
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/message_workers.dir/support/message_workers.cpp.o
+[100%] Linking CXX executable message_workers
+[100%] Built target message_workers
+[100%] Built target minima_file_port
+[100%] Linking CXX executable json_collections
+[100%] Built target json_collections
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp

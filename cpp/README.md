@@ -4,7 +4,9 @@ A frozen **runnable macOS preview** is now available on local port **21001**,
 connecting to eurobuddha.com:9001 with separate data. See [PREVIEW.md](PREVIEW.md)
 for the double-click launcher, commands, package and scoped verification results.
 
-Executor waits and timer interruption now preserve the tested Java ordering, including a second interrupt during lock reacquisition. Both builds pass 37 executor comparisons and the expanded 12-case thread comparison, with all six focused regressions passing. See the [executor/timer lab](student-guide/new-tests/executor-interruption.md). Timer reentrancy and other API omissions remain open.
+Timer reentrancy and list replacement now match 48 new Java/native comparisons / 688 assertions per build. Existing worker, interruption and collection regressions also pass in both builds. See the [timer reentrancy lab](student-guide/new-tests/timer-reentrancy.md). Full API and lifecycle parity remain open; NIOServer's standalone entry point is next.
+
+Executor waits and timer interruption now preserve the tested Java ordering, including a second interrupt during lock reacquisition. Both builds pass 37 executor comparisons and the expanded 12-case thread comparison, with all six focused regressions passing. See the [executor/timer lab](student-guide/new-tests/executor-interruption.md). Other API omissions remain open.
 
 Backup/checker interruption is now integrated across seven further files, with 26 runtime comparisons, 106 checker cases and seven focused tests passing per build. See the [backup/checker lab](student-guide/new-tests/backup-checker-interruption.md). Full 457-file parity remains unfinished.
 

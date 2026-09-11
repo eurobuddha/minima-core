@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "programs": 67,
+  "operations": 606,
+  "failures": [],
+  "scope": "Pinned JSONArray/JSONObject: iterator hasNext/next before/between/after structural changes, map value replacement, empty/exhausted iterators, outer copy independence with shared children, original iterator ownership after variable replacement, array string removal and indexed reads. Single-thread deterministic schedules; native concurrent stress is a separate test. Full inherited Java collection API is not certified."
+}

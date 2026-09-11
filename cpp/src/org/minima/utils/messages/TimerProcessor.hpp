@@ -1,7 +1,7 @@
 #pragma once
 #include "TimerMessage.hpp"
 #include <atomic>
-#include <condition_variable>
+#include "support/JSONSequence.hpp"
 #include <thread>
 #include "support/NativeThread.hpp"
 namespace minima {
@@ -10,8 +10,9 @@ class TimerProcessor {
     std::atomic<bool> mRunning{true};
     std::thread mMainThread;
     std::shared_ptr<NativeThread> mWorkerThread;
-    std::vector<std::shared_ptr<TimerMessage>> mTimerMessages;
-    mutable std::mutex mMessagesLock;
+    using TimerList=json::JSONSequence<std::shared_ptr<TimerMessage>,true>;
+    std::shared_ptr<TimerList> mTimerMessages=std::make_shared<TimerList>();
+    mutable std::recursive_mutex mMessagesLock;
     std::mutex mJoinLock;
     TimerProcessor()=default;
 public:
