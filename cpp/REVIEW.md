@@ -1,3 +1,35 @@
+## Live MySQL archive integration review
+
+### Summary
+
+The new driver reuses existing actual-node startup, archive fixture generation,
+wire framing, H2 provider and MySQL connection setup. It checks stored bytes,
+not just success replies, across the 250/256-record boundaries. Opposite-runtime
+imports and reopening test persisted interoperability. Production code is unchanged.
+
+### Findings
+
+**MINOR — seed reply expectation, fixed.** The initial run expected outer quoted
+spaces and lowercase cleaned words. Pinned CommandRunner trims parameter values;
+BIP39 returns uppercase. Only the test expectation changed, and the failed report
+is retained. Both corrected runs pass all 3,202 assertions and 17 processes each.
+
+The registered test is optional and serial because it deliberately wipes the
+provided isolated fixture database. Test data and keys are disposable. Successful
+shutdowns check complete native stderr for sanitizer diagnostics. Synthetic linked
+blocks and cascades prove storage behavior; only a real saved genesis is used for
+successful consensus resync. Long-chain/cascade resync, connection faults, crashes,
+TLS, interruption and full platform fidelity remain outside this test.
+
+### Verdict
+
+Approve this scoped integration checkpoint. Normal and sanitizer validation pass,
+with no reported native sanitizer diagnostics. The owned fixture was removed after
+identity/tmpfs/loopback checks; all other container IDs remained unchanged.
+Full node parity is not certified.
+
+---
+
 ## MySQL command review
 
 ### Summary

@@ -1,3 +1,53 @@
+# Latest checkpoint — live MySQL archive integration
+
+Base HEAD 6026383791c31f69739b5f18e948307452b889fa; branch/project/executable
+MinimaCoreC++. Goal ACTIVE, not complete. No production translation changed.
+409 counterparts = 362 production + 47 original tests; 48 absent = 7 production
++ 41 tests. All present remain implemented_partial, all 457 parity not_verified.
+
+New tools/native_mysql_archive_startup.py reuses native_restore_startup Node,
+ready/key_state/chain, native_archive_startup coins, existing archive oracles,
+ArchiveServerSeed, Runner and independent wire framing. Actual pinned Java and
+native nodes use the existing real native-h2-archive provider and an owned
+loopback/tmpfs MySQL fixture. Explicit connector 8.0.24 jar remains required for
+Java; native uses the existing AOT H2/JDBC provider, not a Minima JVM fallback.
+
+Normal live validation PASS: 17 completed node processes, 3,202 assertions,
+160 command transcripts, 81.039s. Sanitizer PASS with identical counts, 343.945s,
+no reported native sanitizer errors. First normal
+attempt stopped on a test expectation (quoted parameter trim and uppercase BIP39
+cleaning); preserve initial report. Production behavior required no change.
+
+Checks cover 257-block update/repair, exclusive oldest-block skip, ignored endfix,
+exact durable block/cascade bytes, full address histories, 514 indexed coins,
+raw cap quirks, both directions of raw/H2 import/export with and without cascade,
+saved login restart and actual genesis chain/reset/seed resync. Opposite runtime
+reopens persisted data, checks chain/coins/key counters, signs, verifies and rejects
+altered data. Synthetic linked/cascade blocks test storage only. Successful
+consensus resync in this lab is genesis only. Long-chain/cascade resync, crashes,
+reconnect/TLS, Error/interruption/concurrency and platform fidelity remain open.
+
+Optional serial CTest native_mysql_archive_startup added (3600s timeout); it
+compiles its own source oracle. Default suite stays 259; four optional live
+MySQL entries require explicit MINIMA_MYSQL_FIXTURE_FILE. Full suite NOT run.
+Evidence validation/mysql-live-archive-work-in-progress; student lab
+student-guide/new-tests/mysql-live-archive.md. All 457 teaching pages exist;
+teaching != parity. Sanitizers instrument C++, not the third-party AOT provider.
+
+Both live sessions terminal0/CLOSED: normal 67275, sanitizer 5304. Do not poll.
+Owned fixture d0ad4a49770179522a6a7051882e78f9f9f4e0145e4351e0d3b726244ca3ae39
+removed after exact identity/tmpfs/loopback checks; all other IDs unchanged.
+/tmp/minima-mysql-command-fixture.json is now STALE. Both fixture CMake caches
+cleared; default test inventory 259 verified. Commit and recovery bundle details
+are available from Git log and ignored local-backups manifests.
+
+Next: remaining help/Streamable/P2PSwapLink counterparts and original tests;
+JNI sources still missing (retain existing question/search, no invented substitute).
+Do not confuse mapped files, compilation, scoped tests or authored lessons with
+full parity. All heavy SPHINCS jobs are terminal and saved; do not poll them.
+
+---
+
 # Latest checkpoint — mysql command implemented; both command suites pass
 
 Previous HEAD 5bece26 (completed full SPHINCS command sanitizer evidence).

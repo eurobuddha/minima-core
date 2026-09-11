@@ -17,8 +17,11 @@ as partial until their complete API and behavior have been reviewed.
 
 The mysql archive command now implements all source actions and its static entry
 points, and is registered in the native runner. Both recording-SQL suites
-pass 2,800 comparisons and 2,061 independent checks. Live command persistence and successful resync remain
-unverified. See the [command lab](student-guide/new-tests/mysql-command.md).
+pass 2,800 comparisons and 2,061 independent checks. Both live suites also pass 3,202 assertions across 17 node processes each:
+257-block MySQL persistence, cross-runtime raw/H2 imports with cascades,
+and genesis chain/reset/seed resync followed by opposite-runtime reopening
+and signing. See the [live archive lab](student-guide/new-tests/mysql-live-archive.md).
+Long-chain resync and full node parity remain unverified.
 The full SPHINCS command sanitizer run also completed: 131 comparisons and
 34 independent checks pass, including all five full-size signature paths.
 
@@ -33,7 +36,7 @@ The mysqlcoins command now compiles with all five actions. Both builds pass
 771 command/SQL comparisons. The optional native dependency now includes the pinned
 MySQL driver. Both builds pass 52 live driver programs and four actual Java/C++
 node processes across restart. See the [native MySQL lab](student-guide/new-tests/native-mysql-storage.md).
-Nonempty archive updates and complete database/runtime parity remain unverified.
+The live archive lab now covers nonempty updates; complete database/runtime parity remains unverified.
 See the [coin-index lab](student-guide/new-tests/mysql-coins-command.md) and
 [evidence](validation/mysql-coins-work-in-progress/progress.json).
 

@@ -4268,5 +4268,135 @@
         "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
       }
     }
+  },
+  "mysql_live_archive_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "files_sha256": {
+      "cpp/tools/native_mysql_archive_startup.py": "18c664e42fc6bbe4d4ff09085cca7012c5882d0b32696015699419ca3d31ebb5",
+      "cpp/CMakeLists.txt": "b54eb8d93dd140419a458ad1a177dbd615e6b233d8d0e043f595ef4f3ece9ea6"
+    },
+    "sources_sha256": {
+      "upstream-study/src/org/minima/system/commands/backup/mysql.java": "1cf8f858f0329c43d139ebeca7de58876b036010afaa95e696a1077cde930265",
+      "upstream-study/src/org/minima/utils/BIP39.java": "5a548235b951101f176383fb8f6469420a8888230a17954978d682c7deccd0bb",
+      "upstream-study/src/org/minima/system/commands/CommandRunner.java": "9cb399c8ee1de10286d77c012f00c9b1df3ff172d37e0965559737fe0cd3c15f"
+    },
+    "reuse": "Existing native_restore_startup Node/ready/key_state/chain, native_archive_startup coins, native_mysql_startup connection conventions, ArchiveCommandOracle/native archive_command_runtime fixtures, ArchiveServerSeed, Runner and horst wire framing. Existing H2/JDBC AOT provider reused unchanged. Added real archive-command workflows and assertions only.",
+    "sibling_search": "No matching MySQL/archive workflow in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp tests; reused current tested native helpers.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "goal_complete": false,
+      "counterparts": 409,
+      "production_counterparts": 362,
+      "test_counterparts": 47,
+      "absent": 48,
+      "production_absent": 7,
+      "tests_absent": 41,
+      "parity": "not_verified",
+      "default_ctest_entries": 259,
+      "optional_mysql_ctest_entries": 4,
+      "full_ctest_suite_run": false,
+      "production_code_changed": false,
+      "results": {
+        "normal": {
+          "passed": true,
+          "node_processes": 17,
+          "independent_assertions": 3202,
+          "seconds": 81.039,
+          "failures": [],
+          "scope": "Actual pinned Java/native solo noconnect nodes, real H2 and isolated loopback MySQL. Linked 257-block database paging, exclusive update boundary, missing repair/endfix quirk, exact durable block/cascade wires, address histories, nonempty coin index, raw caps and cross-runtime H2/raw imports, saved credentials across restart. Real genesis chain/reset/seed resync with actual Main processors/shutdown, opposite-runtime node reopen and key-use/signature checks. Synthetic 257-block and cascade fixtures are database inputs, not accepted consensus chains. Successful consensus resync here is genesis only; long chains/cascade resync, crash/reconnect/TLS/interruption/concurrency/platform/full-node fidelity remain unverified."
+        },
+        "sanitized": {
+          "passed": true,
+          "node_processes": 17,
+          "independent_assertions": 3202,
+          "seconds": 343.945,
+          "failures": [],
+          "scope": "Actual pinned Java/native solo noconnect nodes, real H2 and isolated loopback MySQL. Linked 257-block database paging, exclusive update boundary, missing repair/endfix quirk, exact durable block/cascade wires, address histories, nonempty coin index, raw caps and cross-runtime H2/raw imports, saved credentials across restart. Real genesis chain/reset/seed resync with actual Main processors/shutdown, opposite-runtime node reopen and key-use/signature checks. Synthetic 257-block and cascade fixtures are database inputs, not accepted consensus chains. Successful consensus resync here is genesis only; long chains/cascade resync, crash/reconnect/TLS/interruption/concurrency/platform/full-node fidelity remain unverified."
+        }
+      },
+      "fixture_cleanup": {
+        "fixture": {
+          "name": "minima-cpp-mysql-command-9b921d199e",
+          "id": "d0ad4a49770179522a6a7051882e78f9f9f4e0145e4351e0d3b726244ca3ae39",
+          "image": "mysql@sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b",
+          "address": "127.0.0.1:62130",
+          "database": "minima_cpp",
+          "user": "student",
+          "password": "fixture-only",
+          "label": "minima-cpp-mysql-command-validation"
+        },
+        "identity_verified": true,
+        "tmpfs_only": true,
+        "loopback_only": true,
+        "removed": true,
+        "other_container_ids_unchanged": true,
+        "other_container_ids": [
+          "b2045472b565af99d8811da489e04352afb38318647877867ad12939320b260c",
+          "80117ca080aefec8491de8f8dc990fb0e2159536d77da0677485ef13ad14ea11",
+          "b050cd107ffbd93b960b53f5354eec199564095736be2ac240affe1e4e12060b",
+          "0ef1c557a1f71129312dde98b3c7e399d8fab6731f551aefa77d03104a2236c3",
+          "b9eacd517a87e739bbc29962fc7eea0b3dd0a2ceba080af47cc528ad072d207b",
+          "e35db63d6b71a6b857dc55d0e0751d47908a4d5f0f8e1260e32b098ee7d088d0",
+          "9996aff5026d0fbba3204c9ce6f741266f3733a4bab3805e9ba29727d6aeb78e",
+          "498abea471623351265dc731d3fecffd3e92fbf21d4be8107c2bbe72e9e93ef6",
+          "90af309620c8d3908ba26732d6cae9bdbaff883a1b77f93d405ff4fe28c7bbff",
+          "ce53bc6fe3189f59058b963135dea2d127fa2b2de510afff1bb74e00f0cc2dd5",
+          "d02dd997a23cc6ac2881c540129259b2015c6c9fff5587f9ae5b80fd674cd478",
+          "e6362c0bf7c1dad57cd4795e9ab2302cd0783df021ff452f813f09cc74078c91"
+        ]
+      },
+      "fixture_cmake_caches_cleared": true,
+      "active_sessions": {},
+      "completed_sessions": {
+        "normal": {
+          "id": 67275,
+          "exit_code": 0
+        },
+        "sanitized": {
+          "id": 5304,
+          "exit_code": 0
+        }
+      },
+      "initial_failure": "normal/initial-seed-expectation-results.json: test expected untrimmed/lowercase phrase; pinned source trims parameter and returns uppercase clean words. Test-only correction.",
+      "open_work": [
+        "Long-chain and cascade consensus resync",
+        "Crash/reconnect/TLS/Error/interruption/concurrency/platform behavior",
+        "Remaining 48 absent mappings and full fidelity review"
+      ],
+      "report_sha256": {
+        "fixture-cleanup.json": "1883de3e5f10531c48bbce38cfa872751b97ab281071f2421779f89b4b91082e",
+        "normal/initial-seed-expectation-results.json": "cb362602775725bb12256d978f8cd5cf1874f786d3aac44d2409719de3522bdc",
+        "normal/native-mysql-archive-startup-results.json": "455390fcc47a3e69c3c88eeb70ac38452d51495446cbb3c3c0bf0de5452ee2fc",
+        "sanitized/native-mysql-archive-startup-results.json": "88867e5de415f2284f4130eaa72c1774ff255031bf6a454e4f8ff83722abb3cd"
+      },
+      "guide_audit": {
+        "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+        "source_files": 457,
+        "unique_guides": 457,
+        "native_counterparts": 409,
+        "native_absent": 48,
+        "mapping_counts_by_source_set": {
+          "src": {
+            "total": 369,
+            "counterparts": 362,
+            "absent": 7
+          },
+          "test": {
+            "total": 88,
+            "counterparts": 47,
+            "absent": 41
+          }
+        },
+        "teaching_counts": {
+          "authored_lesson": 369,
+          "source_test_explanation": 88
+        },
+        "links_checked": 9273,
+        "line_anchors_checked": 2632,
+        "errors": [],
+        "note": "Structural audit only. Authored markers and test explanations do not prove exhaustive teaching review or port parity. Drafts remain unfinished teaching work."
+      }
+    }
   }
 }

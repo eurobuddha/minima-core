@@ -39,7 +39,11 @@ The new [command lab](../../../../../../../../student-guide/new-tests/mysql-comm
 Both builds compile, and both command suites pass 2,800 comparisons, 2,061
 independent checks and 73,670 SQL events. The same transcript hash is recorded in
 the [command evidence](../../../../../../../../validation/mysql-command-work-in-progress/progress.json).
-Successful resync and live persistence for these command actions remain unverified.
+The [live archive lab](../../../../../../../../student-guide/new-tests/mysql-live-archive.md)
+adds actual MySQL/H2 persistence, exact durable bytes, cross-runtime imports and
+genesis resync through Main. Both builds pass 3,202 assertions across
+17 node processes each, including seed replacement, opposite-runtime reopen and signing.
+Long-chain and cascade resync remain unverified.
 
 ## Limits
 

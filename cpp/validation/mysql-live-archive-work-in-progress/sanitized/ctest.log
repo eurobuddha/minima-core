@@ -1,0 +1,7 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 234: native_mysql_archive_startup
+1/1 Test #234: native_mysql_archive_startup .....   Passed  344.12 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) = 344.13 sec
