@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/tests/kissvm/statements/StatementParserTests.java](../../../../../../../../../upstream-study/test/org/minima/tests/kissvm/statements/StatementParserTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -37,7 +37,7 @@ Counts are assertion call sites in the source, not executed cases: a loop can ru
 assertThrows(MinimaParseException.class, () -> { String Script = "LET (a = TRUE"; List<ScriptToken> tokens = ScriptToken.tokenize(Contract.cleanScript(Script)); StatementBlock sb = StatementParser.parseTokens(tokens,0); });
 ```
 
-An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this page does not claim that the Java suite was executed successfully.
+An equality assertion compares an observed result with an expected value. A predicate assertion requires true or false. `assertThrows` succeeds only when the enclosed operation raises the named exception. These are source expectations; this checkpoint records successful execution of unchanged Java tests and native counterparts.
 
 The fixture names these Minima dependencies (links are for tracing the test setup and calls):
 
@@ -50,11 +50,15 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/tests/kissvm/statements/StatementParserTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+[Native counterpart](../../../../../../../../test/org/minima/tests/kissvm/statements/StatementParserTests.cpp) preserves all 15 original assertions.
+All ten methods retain 93 parser calls: 78 accepted constructions and fifteen required parse exceptions. Successful source cases do not inspect or execute the resulting blocks; this coverage limit is explicit. Unchanged Java tests and native counterparts pass in normal and sanitizer
+builds. The production parsers are reused unchanged.
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
-
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+[Parser lab](../../../../../../../new-tests/original-parser-tests.md) explains
+construction versus execution, handcrafted tokens and precedence. Eight supplemental
+Java/native full-record comparisons and sixteen independent outcome checks pass.
+[Checkpoint evidence](../../../../../../../../validation/original-parser-tests-work-in-progress/progress.json).
+Full parser/API/resource-limit and node parity remain unverified.
 
 ## What students should conclude
 

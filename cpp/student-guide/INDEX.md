@@ -799,7 +799,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 |---|---|---|
 | [BooleanExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.md) | test explanation | implemented_partial |
 | [ConstantExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.md) | test explanation | implemented_partial |
-| [ExpressionParserTests.java](files/test/org/minima/tests/kissvm/expressions/ExpressionParserTests.md) | test explanation | unported |
+| [ExpressionParserTests.java](files/test/org/minima/tests/kissvm/expressions/ExpressionParserTests.md) | test explanation | implemented_partial |
 | [FunctionExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.md) | test explanation | implemented_partial |
 | [GlobalExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.md) | test explanation | implemented_partial |
 | [OperatorExpressionTests.java](files/test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.md) | test explanation | implemented_partial |
@@ -896,7 +896,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | File | Teaching state | Native state |
 |---|---|---|
 | [StatementBlockTests.java](files/test/org/minima/tests/kissvm/statements/StatementBlockTests.md) | test explanation | implemented_partial |
-| [StatementParserTests.java](files/test/org/minima/tests/kissvm/statements/StatementParserTests.md) | test explanation | unported |
+| [StatementParserTests.java](files/test/org/minima/tests/kissvm/statements/StatementParserTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/statements/commands
 

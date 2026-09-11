@@ -1,0 +1,536 @@
+{
+  "passed": true,
+  "original_methods": 15,
+  "original_assertions_per_runtime": 1269,
+  "results": [
+    {
+      "name": "ExpressionParserTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-parsers-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalParserTests",
+            "ExpressionParserTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_PARSERS_RESULT {\"class\":\"ExpressionParserTests\",\"tests\":5,\"assertions\":1254,\"passed\":true,\"parse_calls\":654}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/ExpressionParserTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_PARSERS_RESULT {\"class\":\"ExpressionParserTests\",\"tests\":5,\"assertions\":1254,\"parse_calls\":654,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "StatementParserTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-parsers-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalParserTests",
+            "StatementParserTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_PARSERS_RESULT {\"class\":\"StatementParserTests\",\"tests\":10,\"assertions\":15,\"passed\":true,\"parse_calls\":93}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/StatementParserTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_PARSERS_RESULT {\"class\":\"StatementParserTests\",\"tests\":10,\"assertions\":15,\"parse_calls\":93,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "supplemental": {
+    "passed": true,
+    "comparisons": 8,
+    "independent_checks": 16,
+    "cases": [
+      [
+        "expr",
+        "TRUE OR FALSE AND FALSE",
+        [
+          8,
+          "FALSE"
+        ]
+      ],
+      [
+        "expr",
+        "20 % 3 * 2",
+        [
+          2,
+          "2"
+        ]
+      ],
+      [
+        "expr",
+        "1+2*3",
+        [
+          2,
+          "7"
+        ]
+      ],
+      [
+        "expr",
+        "8/2/2",
+        [
+          2,
+          "2"
+        ]
+      ],
+      [
+        "expr",
+        "0x01 << 1*2",
+        [
+          1,
+          "0x04"
+        ]
+      ],
+      [
+        "expr",
+        "NOT TRUE EQ FALSE",
+        [
+          8,
+          "TRUE"
+        ]
+      ],
+      [
+        "run",
+        "LET (1 2)=42 RETURN GET(1 2) EQ 42",
+        true
+      ],
+      [
+        "run",
+        "LET a=0 WHILE a LT 2 DO IF TRUE THEN LET a=a+1 ENDIF ENDWHILE RETURN a EQ 2",
+        true
+      ]
+    ],
+    "observations": [
+      [
+        [
+          "( ( TRUE OR FALSE ) AND FALSE )",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[4] - ( TRUE OR FALSE ) returns:TRUE\nINST[5] - ( ( TRUE OR FALSE ) AND FALSE ) returns:FALSE\n"
+        ],
+        [
+          "( 20 % ( 3 * 2 ) )",
+          [
+            2,
+            "2",
+            "0x000102"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - ( 3 * 2 ) returns:6\nINST[5] - ( 20 % ( 3 * 2 ) ) returns:2\n"
+        ],
+        [
+          "( 1 + ( 2 * 3 ) )",
+          [
+            2,
+            "7",
+            "0x000107"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - ( 2 * 3 ) returns:6\n"
+        ],
+        [
+          "( ( 8 / 2 ) / 2 )",
+          [
+            2,
+            "2",
+            "0x000102"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[4] - ( 8 / 2 ) returns:4\nINST[5] - ( ( 8 / 2 ) / 2 ) returns:2\n"
+        ],
+        [
+          "( 0x01 << ( 1 * 2 ) )",
+          [
+            1,
+            "0x04"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - ( 1 * 2 ) returns:2\nINST[5] - ( 0x01 << ( 1 * 2 ) ) returns:0x04\n"
+        ],
+        [
+          "( NOT ( TRUE ) EQ FALSE )",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[4] - NOT ( TRUE ) returns:FALSE\nINST[5] - ( NOT ( TRUE ) EQ FALSE ) returns:TRUE\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          10,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "( 1 2 )": "42",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET ( 1 2 ) = 42\nINST[4] - { b = 3, a = 7, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, ( 1 2 ) = 42, f = FALSE, }\nINST[5] - RETURN ( function:GET, params:[1, 2] EQ 42 )\nINST[9] - function:GET, params:[1, 2] returns:42\nINST[10] - ( function:GET, params:[1, 2] EQ 42 ) returns:TRUE\nINST[10] - Contract instructions : 10\nINST[10] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          28,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "2",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE ( variable:a LT 2 )\nINST[6] - ( variable:a LT 2 ) returns:TRUE\nINST[7] - IF TRUE\nINST[9] - LET a = ( variable:a + 1 )\nINST[12] - { b = 3, a = 1, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[15] - ( variable:a LT 2 ) returns:TRUE\nINST[16] - IF TRUE\nINST[18] - LET a = ( variable:a + 1 )\nINST[21] - { b = 3, a = 2, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[24] - ( variable:a LT 2 ) returns:FALSE\nINST[25] - RETURN ( variable:a EQ 2 )\nINST[28] - ( variable:a EQ 2 ) returns:TRUE\nINST[28] - Contract instructions : 28\nINST[28] - Contract finished     : true\n"
+        ]
+      ],
+      [
+        [
+          "( ( TRUE OR FALSE ) AND FALSE )",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[4] - ( TRUE OR FALSE ) returns:TRUE\nINST[5] - ( ( TRUE OR FALSE ) AND FALSE ) returns:FALSE\n"
+        ],
+        [
+          "( 20 % ( 3 * 2 ) )",
+          [
+            2,
+            "2",
+            "0x000102"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - ( 3 * 2 ) returns:6\nINST[5] - ( 20 % ( 3 * 2 ) ) returns:2\n"
+        ],
+        [
+          "( 1 + ( 2 * 3 ) )",
+          [
+            2,
+            "7",
+            "0x000107"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - ( 2 * 3 ) returns:6\n"
+        ],
+        [
+          "( ( 8 / 2 ) / 2 )",
+          [
+            2,
+            "2",
+            "0x000102"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[4] - ( 8 / 2 ) returns:4\nINST[5] - ( ( 8 / 2 ) / 2 ) returns:2\n"
+        ],
+        [
+          "( 0x01 << ( 1 * 2 ) )",
+          [
+            1,
+            "0x04"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - ( 1 * 2 ) returns:2\nINST[5] - ( 0x01 << ( 1 * 2 ) ) returns:0x04\n"
+        ],
+        [
+          "( NOT ( TRUE ) EQ FALSE )",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[4] - NOT ( TRUE ) returns:FALSE\nINST[5] - ( NOT ( TRUE ) EQ FALSE ) returns:TRUE\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          10,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "( 1 2 )": "42",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET ( 1 2 ) = 42\nINST[4] - { b = 3, a = 7, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, ( 1 2 ) = 42, f = FALSE, }\nINST[5] - RETURN ( function:GET, params:[1, 2] EQ 42 )\nINST[9] - function:GET, params:[1, 2] returns:42\nINST[10] - ( function:GET, params:[1, 2] EQ 42 ) returns:TRUE\nINST[10] - Contract instructions : 10\nINST[10] - Contract finished     : true\n"
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          "",
+          "",
+          28,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "2",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[0] - Start executing the contract\nINST[1] - LET a = 0\nINST[2] - { b = 3, a = 0, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[3] - WHILE ( variable:a LT 2 )\nINST[6] - ( variable:a LT 2 ) returns:TRUE\nINST[7] - IF TRUE\nINST[9] - LET a = ( variable:a + 1 )\nINST[12] - { b = 3, a = 1, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[15] - ( variable:a LT 2 ) returns:TRUE\nINST[16] - IF TRUE\nINST[18] - LET a = ( variable:a + 1 )\nINST[21] - { b = 3, a = 2, tok = 0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0, t = TRUE, s = hello, h = 0x00FF, f = FALSE, }\nINST[24] - ( variable:a LT 2 ) returns:FALSE\nINST[25] - RETURN ( variable:a EQ 2 )\nINST[28] - ( variable:a EQ 2 ) returns:TRUE\nINST[28] - Contract instructions : 28\nINST[28] - Contract finished     : true\n"
+        ]
+      ]
+    ],
+    "failures": []
+  },
+  "scope": "Both complete active ExpressionParserTests and StatementParserTests: 15 annotated methods, 1269 original assertions and 747 direct parser calls per runtime. Original operator loops, duplicated inputs, cleanScript calls, handcrafted token types, exact expression classes and expected parse exceptions remain. Successful statement parse cases are smoke checks, not execution proof. Supplemental known-outcome full KISS records check precedence, arrays and nested control flow. Full parser/API/runtime parity remains unverified."
+}

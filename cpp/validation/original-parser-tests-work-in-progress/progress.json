@@ -1,0 +1,50 @@
+{
+  "base_head": "7b8065cd6e225cfaee1fcc2635d49b84acde0436",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/expressions/ExpressionParserTests.cpp",
+    "test/org/minima/tests/kissvm/statements/StatementParserTests.cpp"
+  ],
+  "counterparts": 451,
+  "production_counterparts": 364,
+  "test_counterparts": 87,
+  "remaining": 6,
+  "remaining_production": 5,
+  "remaining_tests": 1,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "existing_api_additions": [],
+  "builds": {
+    "normal": "PASS both new targets, minima_kissvm and actual MinimaCoreCpp node",
+    "sanitized": "PASS same targets",
+    "full_suite": "not repeated; 281 registered tests"
+  },
+  "tests": {
+    "original_methods": 15,
+    "original_assertions_per_runtime": 1269,
+    "original_parser_calls_per_runtime": 747,
+    "assertions_by_class": {
+      "expressions/ExpressionParserTests": 1254,
+      "statements/StatementParserTests": 15
+    },
+    "parser_calls_by_class": {
+      "ExpressionParserTests": 654,
+      "StatementParserTests": 93
+    },
+    "supplemental_comparisons_per_build": 8,
+    "independent_checks_per_build": 16,
+    "normal": "PASS 2.88s",
+    "sanitized": "PASS 3.22s"
+  },
+  "scope": "Both complete active ExpressionParserTests and StatementParserTests: 15 annotated methods, 1269 original assertions and 747 direct parser calls per runtime. Original operator loops, duplicated inputs, cleanScript calls, handcrafted token types, exact expression classes and expected parse exceptions remain. Successful statement parse cases are smoke checks, not execution proof. Supplemental known-outcome full KISS records check precedence, arrays and nested control flow. Full parser/API/runtime parity remains unverified.",
+  "blockers": [
+    "Four JNI-dependent production files lack native bodies/ABI or authoritative vectors in inspected candidates; independent work remains.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Do not credit empty assertions as parity."
+  ],
+  "next_action": "Preserve wholly inactive P2PSwapLink source faithfully and port TxPoWProcessorTest delay helpers without claiming processor coverage from its empty tests; then remaining four JNI-dependent files and full production API/runtime audit.",
+  "long_demos": {
+    "normal": "Saved 9ae7039 full Magic replay passed earlier, terminal exit 0.",
+    "sanitized": "41123 TERMINAL exit 1 at preceding checkpoint; saved 9ae7039 binary hit 7200s timeout with empty stderr. Full sanitizer demo validation failed; evidence retained in original-let-tests-work-in-progress/magic-sanitizer-timeout. No live handles; do not repeat long demo while independent work remains."
+  }
+}

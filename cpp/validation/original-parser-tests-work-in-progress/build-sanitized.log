@@ -1,0 +1,11 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/ExpressionParserTests.dir/test/org/minima/tests/kissvm/expressions/ExpressionParserTests.cpp.o
+[100%] Linking CXX executable ExpressionParserTests
+[100%] Built target ExpressionParserTests
+[100%] Built target minima_file_port
+[100%] Built target StatementParserTests
+[100%] Built target minima_file_port
+[100%] Built target minima_kissvm
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Built target MinimaCoreCpp

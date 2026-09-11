@@ -1,3 +1,58 @@
+# Current checkpoint — both original parser tests
+
+Base HEAD: 7b8065cd6e225cfaee1fcc2635d49b84acde0436. Goal ACTIVE and incomplete.
+New: expressions/ExpressionParserTests.cpp and statements/StatementParserTests.cpp
+under test/org/minima/tests/kissvm. **451 counterparts** (364 production, 87 tests),
+**6 absent** (5 production, 1 test). All partial; full parity remains not_verified.
+No production implementation changes or new API in this checkpoint.
+
+Both builds PASS new targets, minima_kissvm and actual MinimaCoreCpp node target.
+Original Java/native tests PASS 15 methods / 1,269 assertions / 747 direct parser
+calls per runtime: expression 1,254 assertions / 654 calls, statement 15 / 93.
+All original loops, duplicate cases, cleanScript calls, handcrafted token types,
+exact expression classes and exception categories retained. Statement successes
+are 78 parse-only smoke cases; no claim of execution coverage from those calls.
+Supplemental 8 full-record comparisons / 16 independent checks PASS per build.
+Normal CTest 2.88s; sanitizer 3.22s. Final native targets warning-free.
+Full suite not repeated; 281 registered tests.
+
+Lab: student-guide/new-tests/original-parser-tests.md. Evidence/remaining inventory:
+validation/original-parser-tests-work-in-progress. Both lessons updated; 457-page
+structural audit retained. NEXT: TxPoWProcessorTest delay helpers and wholly inactive
+P2PSwapLink source, explicitly without crediting empty test bodies as processor
+coverage. Four JNI-dependent files lack external native bodies/ABI in inspected
+candidates. Source bodies now read: jnifunctions declares sayHello, sumIntegers,
+sayHelloToMe, hashHeader, hashHeaderWithDiff and loadNativeLib("native"). Caller
+logic and full production API/runtime audit remain after counterpart completion.
+
+Magic sanitizer 41123 terminal exit 1 earlier (7200s timeout, empty stderr, saved
+9ae7039 binary). Normal full replay passed. Evidence retained under original-let-tests-
+work-in-progress/magic-sanitizer-timeout. No live Magic handles; no long demo restart.
+Preserve graphify outputs/external Java SQL/JAR f7f0e08; cpp-only commits, no push,
+source pin unchanged. Previous verified bundle: MinimaCoreC++-20260911T190553Z.bundle,
+SHA-256 167c1f46670fbba0d44bf980d5784f4d851a5b7a2a28335c5bac7663b4bd6d43;
+52 changed files byte-verified in a fresh recovery clone.
+
+## Code Review
+
+### Summary
+Reviewed complete pinned/native parser tests, pinned production parser bodies,
+native parser/token dependencies, sibling Parser.cpp, direct JUnit runner,
+supplemental precedence/control-flow corpus, CMake, lessons and terminal results.
+Original class identity, typed rejection checks and full loop cardinalities remain.
+
+### Findings
+No unresolved blocking finding in this bounded translation. Successful statement
+parsing is explicitly not counted as execution proof. Added parser-call accounting
+measures native calls; Java counts are reviewed source-path totals. A generator
+replacement-order error was corrected before build, and the final exact-type helper
+removes compiler warnings while retaining exact identity and clean null failure.
+
+### Verdict
+✅ Approve this checkpoint; full working-port goal remains active and incomplete.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — original expressions/tokens and MiniNumber API additions
 
 Base HEAD: 57547d1e2222c50a5c4f7c7f865dc5190347ef90. Goal ACTIVE and incomplete.

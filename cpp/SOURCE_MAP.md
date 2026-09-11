@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 449 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 451 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -404,7 +404,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/tests/kissvm/ContractTests.java` | `test/org/minima/tests/kissvm/ContractTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/expressions/ExpressionParserTests.java` | `test/org/minima/tests/kissvm/expressions/ExpressionParserTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/expressions/ExpressionParserTests.java` | `test/org/minima/tests/kissvm/expressions/ExpressionParserTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.java` | `test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.cpp` | implemented_partial | — |
@@ -451,7 +451,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.java` | `test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/statements/StatementBlockTests.java` | `test/org/minima/tests/kissvm/statements/StatementBlockTests.cpp` | implemented_partial | — |
-| `test/org/minima/tests/kissvm/statements/StatementParserTests.java` | `test/org/minima/tests/kissvm/statements/StatementParserTests.cpp` | unported | — |
+| `test/org/minima/tests/kissvm/statements/StatementParserTests.java` | `test/org/minima/tests/kissvm/statements/StatementParserTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/statements/commands/ASSERTstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/ASSERTstatementTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/statements/commands/EXECstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/EXECstatementTests.cpp` | implemented_partial | — |
 | `test/org/minima/tests/kissvm/statements/commands/IFstatementTests.java` | `test/org/minima/tests/kissvm/statements/commands/IFstatementTests.cpp` | implemented_partial | — |

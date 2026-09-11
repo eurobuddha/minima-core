@@ -1,0 +1,68 @@
+[
+  {
+    "java": "src/org/minima/system/commands/base/benchmark.java",
+    "java_sha256": "ce2e6240626b1dfe1d928357d193e1898754ea06dbd3e98dae1247e5b2d25486",
+    "cpp": "src/org/minima/system/commands/base/benchmark.cpp",
+    "cpp_exists": false,
+    "status": "unported",
+    "parity": "not_verified",
+    "reuse_candidates": [],
+    "candidate_evidence": "name_or_explicit_role_match_only; requires_source_review",
+    "lines": 168
+  },
+  {
+    "java": "src/org/minima/system/commands/base/jniminingtest.java",
+    "java_sha256": "c87bcae3173abad172c140740c56e7aeb7546639e401fd230dfac048e05ec5c4",
+    "cpp": "src/org/minima/system/commands/base/jniminingtest.cpp",
+    "cpp_exists": false,
+    "status": "unported",
+    "parity": "not_verified",
+    "reuse_candidates": [],
+    "candidate_evidence": "name_or_explicit_role_match_only; requires_source_review",
+    "lines": 211
+  },
+  {
+    "java": "src/org/minima/system/commands/base/jnitest.java",
+    "java_sha256": "0597b2ef98837644186606bbce57c0aa8949e4df3275a70b5e57ffa968f36fe1",
+    "cpp": "src/org/minima/system/commands/base/jnitest.cpp",
+    "cpp_exists": false,
+    "status": "unported",
+    "parity": "not_verified",
+    "reuse_candidates": [],
+    "candidate_evidence": "name_or_explicit_role_match_only; requires_source_review",
+    "lines": 145
+  },
+  {
+    "java": "src/org/minima/system/network/p2p/messages/P2PSwapLink.java",
+    "java_sha256": "6568b163f8646bda023657d5c6344f9308160d5fd686d2932175ef544e5eb3b3",
+    "cpp": "src/org/minima/system/network/p2p/messages/P2PSwapLink.cpp",
+    "cpp_exists": false,
+    "status": "unported",
+    "parity": "not_verified",
+    "reuse_candidates": [],
+    "candidate_evidence": "name_or_explicit_role_match_only; requires_source_review",
+    "lines": 41
+  },
+  {
+    "java": "src/org/minima/utils/jni/jnifunctions.java",
+    "java_sha256": "2a20a3d98019533799bda8f58db62f934fe5c80e3bc99ab20f405bfee3d5425c",
+    "cpp": "src/org/minima/utils/jni/jnifunctions.cpp",
+    "cpp_exists": false,
+    "status": "unported",
+    "parity": "not_verified",
+    "reuse_candidates": [],
+    "candidate_evidence": "name_or_explicit_role_match_only; requires_source_review",
+    "lines": 25
+  },
+  {
+    "java": "test/org/minima/system/brains/TxPoWProcessorTest.java",
+    "java_sha256": "3bc39eb0bf971822c75653802d91d399dd128c0a418fee811b7f1672551c0a65",
+    "cpp": "test/org/minima/system/brains/TxPoWProcessorTest.cpp",
+    "cpp_exists": false,
+    "status": "unported",
+    "parity": "not_verified",
+    "reuse_candidates": [],
+    "candidate_evidence": "name_or_explicit_role_match_only; requires_source_review",
+    "lines": 127
+  }
+]

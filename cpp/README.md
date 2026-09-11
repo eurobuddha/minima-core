@@ -11,16 +11,22 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **364 production counterparts and 85 mapped test files exist;
-8 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **364 production counterparts and 87 mapped test files exist;
+6 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
 
-BooleanExpressionTests, OperatorExpressionTests and tokens/TokenTests now have
-working counterparts. Both builds pass eight methods / 993 original assertions,
+ExpressionParserTests and StatementParserTests now have working counterparts.
+Both builds pass fifteen methods / 1,269 assertions / 747 direct parser calls and
+eight supplemental comparisons / sixteen independent checks. Both node targets
+build. Inventory: **451 counterparts, 6 absent**; full parity remains unverified.
+See the [parser lab](student-guide/new-tests/original-parser-tests.md).
+
+At the preceding checkpoint, BooleanExpressionTests, OperatorExpressionTests and
+tokens/TokenTests gained counterparts. Both builds pass eight methods / 993 original assertions,
 12 supplemental comparisons / 24 independent checks, the 1,164-case expanded base
 API suite and 3,802 primitive comparisons. MiniNumber now exposes decimal limit
 constants, MAXIMUM and a decimal-carrier constructor. Both node targets build.
-Inventory: **449 counterparts, 8 absent**; full parity remains unverified. See the
+That checkpoint had **449 counterparts, 8 absent**; full parity remains unverified. See the
 [expression/token lab](student-guide/new-tests/original-expression-token-tests.md).
 
 At the preceding checkpoint, LETstatementTests gained a counterpart. Both builds pass two original

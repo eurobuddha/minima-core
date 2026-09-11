@@ -1603,3 +1603,11 @@ set_target_properties(KissTokenTests PROPERTIES OUTPUT_NAME KissTokenTests)
 target_link_libraries(KissTokenTests PRIVATE minima_file_port)
 add_test(NAME original_token_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_token_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_token_tests PROPERTIES TIMEOUT 120)
+
+add_executable(ExpressionParserTests test/org/minima/tests/kissvm/expressions/ExpressionParserTests.cpp)
+target_link_libraries(ExpressionParserTests PRIVATE minima_file_port)
+
+add_executable(StatementParserTests test/org/minima/tests/kissvm/statements/StatementParserTests.cpp)
+target_link_libraries(StatementParserTests PRIVATE minima_file_port)
+add_test(NAME original_parser_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_parser_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_parser_tests PROPERTIES TIMEOUT 120)
