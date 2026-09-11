@@ -1,0 +1,13 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/VERIFYINTests.dir/test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.cpp.o
+[100%] Linking CXX executable VERIFYINTests
+[100%] Built target VERIFYINTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/VERIFYOUTTests.dir/test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.cpp.o
+[100%] Linking CXX executable VERIFYOUTTests
+[100%] Built target VERIFYOUTTests
+[100%] Built target minima_file_port
+[100%] Built target minima_kissvm
+[100%] Built target minima_file_port
+[100%] Built target minima_native_h2
+[100%] Built target MinimaCoreCpp

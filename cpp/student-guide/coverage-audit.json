@@ -2,8 +2,8 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 439,
-  "native_absent": 18,
+  "native_counterparts": 441,
+  "native_absent": 16,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
@@ -12,15 +12,15 @@
     },
     "test": {
       "total": 88,
-      "counterparts": 75,
-      "absent": 13
+      "counterparts": 77,
+      "absent": 11
     }
   },
   "teaching_counts": {
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9481,
+  "links_checked": 9488,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -4413,9 +4413,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -4453,9 +4453,9 @@
       "java": "test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.java",
       "cpp": "test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.cpp",
       "guide": "files/test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },

@@ -1,0 +1,1770 @@
+{
+  "passed": true,
+  "original_methods": 6,
+  "original_assertions_per_runtime": 56,
+  "results": [
+    {
+      "name": "VERIFYINTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-verify-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalVerifyTests",
+            "VERIFYINTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_VERIFY_RESULT {\"class\":\"VERIFYINTests\",\"tests\":3,\"assertions\":28,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/VERIFYINTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_VERIFY_RESULT {\"class\":\"VERIFYINTests\",\"tests\":3,\"assertions\":28,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "VERIFYOUTTests",
+      "passed": true,
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/original-verify-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalVerifyTests",
+            "VERIFYOUTTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_VERIFY_RESULT {\"class\":\"VERIFYOUTTests\",\"tests\":3,\"assertions\":28,\"passed\":true}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/VERIFYOUTTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_VERIFY_RESULT {\"class\":\"VERIFYOUTTests\",\"tests\":3,\"assertions\":28,\"passed\":true}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "supplemental": {
+    "passed": true,
+    "comparisons": 32,
+    "independent_checks": 64,
+    "expressions": [
+      "VERIFYIN(0 0x20 7 0x00)",
+      "VERIFYIN(0 0x99 7 0x00)",
+      "VERIFYIN(0 0x20 99 0x00)",
+      "VERIFYIN(0 0x20 7 0x99)",
+      "VERIFYIN(1 0x21 25 tok)",
+      "VERIFYIN(1 0x99 25 tok)",
+      "VERIFYIN(1 0x21 99 tok)",
+      "VERIFYIN(1 0x21 25 0x99)",
+      "VERIFYOUT(0 0x20 5 0x00)",
+      "VERIFYOUT(0 0x99 5 0x00)",
+      "VERIFYOUT(0 0x20 99 0x00)",
+      "VERIFYOUT(0 0x20 5 0x99)",
+      "VERIFYOUT(0 0x20 5 0x00 TRUE)",
+      "VERIFYOUT(0 0x99 5 0x00 TRUE)",
+      "VERIFYOUT(0 0x20 99 0x00 TRUE)",
+      "VERIFYOUT(0 0x20 5 0x99 TRUE)",
+      "VERIFYOUT(0 0x20 5 0x00 FALSE)",
+      "VERIFYOUT(0 0x99 5 0x00 FALSE)",
+      "VERIFYOUT(0 0x20 99 0x00 FALSE)",
+      "VERIFYOUT(0 0x20 5 0x99 FALSE)",
+      "VERIFYOUT(1 0x21 12.5 tok)",
+      "VERIFYOUT(1 0x99 12.5 tok)",
+      "VERIFYOUT(1 0x21 99 tok)",
+      "VERIFYOUT(1 0x21 12.5 0x99)",
+      "VERIFYOUT(1 0x21 12.5 tok TRUE)",
+      "VERIFYOUT(1 0x99 12.5 tok TRUE)",
+      "VERIFYOUT(1 0x21 99 tok TRUE)",
+      "VERIFYOUT(1 0x21 12.5 0x99 TRUE)",
+      "VERIFYOUT(1 0x21 12.5 tok FALSE)",
+      "VERIFYOUT(1 0x99 12.5 tok FALSE)",
+      "VERIFYOUT(1 0x21 99 tok FALSE)",
+      "VERIFYOUT(1 0x21 12.5 0x99 FALSE)"
+    ],
+    "observations": [
+      [
+        [
+          "function:VERIFYIN, params:[0, 0x20, 7, 0x00]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[0, 0x20, 7, 0x00] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[0, 0x99, 7, 0x00]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[0, 0x99, 7, 0x00] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[0, 0x20, 99, 0x00]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[0, 0x20, 99, 0x00] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[0, 0x20, 7, 0x99]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[0, 0x20, 7, 0x99] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[1, 0x21, 25, variable:tok]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[1, 0x21, 25, variable:tok] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[1, 0x99, 25, variable:tok]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[1, 0x99, 25, variable:tok] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[1, 0x21, 99, variable:tok]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[1, 0x21, 99, variable:tok] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[1, 0x21, 25, 0x99]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[1, 0x21, 25, 0x99] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x00]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYOUT, params:[0, 0x20, 5, 0x00] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x99, 5, 0x00]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x99 amount:5 tokenid:0x00 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[0, 0x99, 5, 0x00] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 99, 0x00]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:99 tokenid:0x00 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[0, 0x20, 99, 0x00] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x99]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:5 tokenid:0x99 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[0, 0x20, 5, 0x99] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x00, TRUE]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - function:VERIFYOUT, params:[0, 0x20, 5, 0x00, TRUE] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x99, 5, 0x00, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x99 amount:5 tokenid:0x00 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x99, 5, 0x00, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 99, 0x00, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:99 tokenid:0x00 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 99, 0x00, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x99, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:5 tokenid:0x99 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 5, 0x99, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x00, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:5 tokenid:0x00 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 5, 0x00, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x99, 5, 0x00, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x99 amount:5 tokenid:0x00 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x99, 5, 0x00, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 99, 0x00, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:99 tokenid:0x00 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 99, 0x00, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x99, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:5 tokenid:0x99 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 5, 0x99, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x99 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 99, variable:tok]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:99 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[1, 0x21, 99, variable:tok] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:12.5 tokenid:0x99 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x99 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 99, variable:tok, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:99 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 99, variable:tok, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:12.5 tokenid:0x99 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok, FALSE]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok, FALSE] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x99 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 99, variable:tok, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:99 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 99, variable:tok, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:12.5 tokenid:0x99 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99, FALSE] returns:FALSE\n"
+        ]
+      ],
+      [
+        [
+          "function:VERIFYIN, params:[0, 0x20, 7, 0x00]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[0, 0x20, 7, 0x00] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[0, 0x99, 7, 0x00]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[0, 0x99, 7, 0x00] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[0, 0x20, 99, 0x00]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[0, 0x20, 99, 0x00] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[0, 0x20, 7, 0x99]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[0, 0x20, 7, 0x99] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[1, 0x21, 25, variable:tok]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[1, 0x21, 25, variable:tok] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[1, 0x99, 25, variable:tok]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[1, 0x99, 25, variable:tok] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[1, 0x21, 99, variable:tok]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[1, 0x21, 99, variable:tok] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYIN, params:[1, 0x21, 25, 0x99]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYIN, params:[1, 0x21, 25, 0x99] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x00]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYOUT, params:[0, 0x20, 5, 0x00] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x99, 5, 0x00]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x99 amount:5 tokenid:0x00 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[0, 0x99, 5, 0x00] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 99, 0x00]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:99 tokenid:0x00 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[0, 0x20, 99, 0x00] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x99]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:5 tokenid:0x99 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[0, 0x20, 5, 0x99] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x00, TRUE]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - function:VERIFYOUT, params:[0, 0x20, 5, 0x00, TRUE] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x99, 5, 0x00, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x99 amount:5 tokenid:0x00 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x99, 5, 0x00, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 99, 0x00, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:99 tokenid:0x00 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 99, 0x00, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x99, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:5 tokenid:0x99 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 5, 0x99, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x00, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:5 tokenid:0x00 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 5, 0x00, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x99, 5, 0x00, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x99 amount:5 tokenid:0x00 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x99, 5, 0x00, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 99, 0x00, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:99 tokenid:0x00 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 99, 0x00, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[0, 0x20, 5, 0x99, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 0 found (address:0x20 amount:5 tokenid:0x00 keepstate:true ) expected (address:0x20 amount:5 tokenid:0x99 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[0, 0x20, 5, 0x99, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x99 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 99, variable:tok]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:99 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[1, 0x21, 99, variable:tok] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          5,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[5] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:12.5 tokenid:0x99 keepstate:false) CheckKeepState:false\nINST[5] - function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x99 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 99, variable:tok, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:99 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 99, variable:tok, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99, TRUE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:12.5 tokenid:0x99 keepstate:true) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99, TRUE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok, FALSE]",
+          [
+            8,
+            "TRUE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - function:VERIFYOUT, params:[1, 0x21, 12.5, variable:tok, FALSE] returns:TRUE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x99 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x99, 12.5, variable:tok, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 99, variable:tok, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:99 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 99, variable:tok, FALSE] returns:FALSE\n"
+        ],
+        [
+          "function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99, FALSE]",
+          [
+            8,
+            "FALSE"
+          ],
+          true,
+          false,
+          false,
+          false,
+          "",
+          "",
+          6,
+          0,
+          true,
+          {
+            "b": "3",
+            "a": "7",
+            "tok": "0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0",
+            "t": "TRUE",
+            "s": "hello",
+            "h": "0x00FF",
+            "f": "FALSE"
+          },
+          "INST[6] - VERIFYOUT failed @ ouptut 1 found (address:0x21 amount:12.5 tokenid:0x4DC6816427C6AEF941AFBD46FEB90C252B01CBF8BFCD52A4B7D36BE253ACE0C0 keepstate:false ) expected (address:0x21 amount:12.5 tokenid:0x99 keepstate:false) CheckKeepState:true\nINST[6] - function:VERIFYOUT, params:[1, 0x21, 12.5, 0x99, FALSE] returns:FALSE\n"
+        ]
+      ]
+    ],
+    "failures": []
+  },
+  "scope": "Both original VERIFY test files, six annotated methods and newSimpleAddress helpers retain all active fixtures and 56 assertions per runtime. Source valid and invalid token assignments are preserved. Supplemental fixed fixtures exercise field mismatches, scaled token amounts and optional Boolean keep-state; all 13 result/context/trace fields and independent expected values must match. Random source inputs are independent per runtime. Commented historical numeric options stay inactive. Full production API and node parity remain unverified."
+}

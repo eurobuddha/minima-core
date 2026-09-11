@@ -880,7 +880,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [GETINAMTTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.md) | test explanation | implemented_partial |
 | [GETINIDTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.md) | test explanation | implemented_partial |
 | [GETINTOKTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.md) | test explanation | implemented_partial |
-| [VERIFYINTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.md) | test explanation | unported |
+| [VERIFYINTests.java](files/test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/functions/txn/output
 
@@ -889,7 +889,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [GETOUTADDRTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.md) | test explanation | implemented_partial |
 | [GETOUTAMTTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.md) | test explanation | implemented_partial |
 | [GETOUTTOKTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.md) | test explanation | implemented_partial |
-| [VERIFYOUTTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.md) | test explanation | unported |
+| [VERIFYOUTTests.java](files/test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.md) | test explanation | implemented_partial |
 
 ## test/org/minima/tests/kissvm/statements
 

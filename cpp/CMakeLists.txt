@@ -1570,3 +1570,11 @@ foreach(test_name IN ITEMS GETOUTADDRTests GETOUTAMTTests GETOUTTOKTests)
 endforeach()
 add_test(NAME original_getter_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_getter_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_getter_tests PROPERTIES TIMEOUT 120)
+
+add_executable(VERIFYINTests test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.cpp)
+target_link_libraries(VERIFYINTests PRIVATE minima_file_port)
+
+add_executable(VERIFYOUTTests test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.cpp)
+target_link_libraries(VERIFYOUTTests PRIVATE minima_file_port)
+add_test(NAME original_verify_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_verify_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_verify_tests PROPERTIES TIMEOUT 120)

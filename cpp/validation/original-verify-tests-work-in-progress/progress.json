@@ -1,0 +1,45 @@
+{
+  "base_head": "e5cfb27e34c2448c30782a691462a8637553d715",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.cpp",
+    "test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.cpp"
+  ],
+  "counterparts": 441,
+  "production_counterparts": 364,
+  "test_counterparts": 77,
+  "remaining": 16,
+  "remaining_production": 5,
+  "remaining_tests": 11,
+  "parity": "not_verified",
+  "existing_behavior_corrections": [],
+  "builds": {
+    "normal": "PASS new targets, minima_kissvm and real MinimaCoreCpp node",
+    "sanitized": "PASS new targets, minima_kissvm and real MinimaCoreCpp node",
+    "full_suite": "not repeated; 276 registered tests"
+  },
+  "tests": {
+    "original_methods": 6,
+    "original_assertions_per_runtime": 56,
+    "assertions_by_class": {
+      "VERIFYINTests": 28,
+      "VERIFYOUTTests": 28
+    },
+    "supplemental_comparisons_per_build": 32,
+    "independent_checks_per_build": 64,
+    "supplemental_transcript_sha256": "4b4c131d9e776b252c837b830c4473dafa2a61c99e235478b29f19dec85bdfcd",
+    "normal": "PASS 2.78s",
+    "sanitized": "PASS 4.03s"
+  },
+  "scope": "Both original VERIFY test files, six annotated methods and newSimpleAddress helpers retain all active fixtures and 56 assertions per runtime. Source valid and invalid token assignments are preserved. Supplemental fixed fixtures exercise field mismatches, scaled token amounts and optional Boolean keep-state; all 13 result/context/trace fields and independent expected values must match. Random source inputs are independent per runtime. Commented historical numeric options stay inactive. Full production API and node parity remain unverified.",
+  "blockers": [
+    "Four JNI-dependent production files lack native bodies/ABI or authoritative vectors in inspected candidates; independent work remains.",
+    "P2PSwapLink.java wholly commented; TxPoWProcessorTest.java has two empty test bodies and active delay helpers. Preserve source behavior without crediting empty assertions as parity."
+  ],
+  "next_action": "Convert remaining expression, statement and token original tests; then complete production API/runtime parity audit.",
+  "long_demos": {
+    "normal": "55636 terminal exit 0; saved 9ae7039 full Magic replay passed at SHA checkpoint.",
+    "sanitized": "41123 confirmed LIVE this turn; saved 9ae7039 binary. Continue polling without blocking independent files."
+  }
+}

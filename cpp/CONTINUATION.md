@@ -1,3 +1,36 @@
+# Current checkpoint — original VERIFY tests
+
+Base HEAD: e5cfb27e34c2448c30782a691462a8637553d715. Goal ACTIVE and incomplete.
+Two new files: txn/input/VERIFYINTests.cpp and txn/output/VERIFYOUTTests.cpp.
+Inventory: **441 counterparts** (364 production, 77 tests), **16 absent**
+(5 production, 11 tests). Full parity remains not_verified. No production changes.
+
+Normal and sanitizer builds pass both new targets, minima_kissvm and the actual
+MinimaCoreCpp node target. Both suites PASS 6 methods / 56 original assertions
+per runtime, retaining all active fixtures and random sizes. Supplemental fixed
+KISS fixtures PASS 32 comparisons / 64 independent checks per build, including
+optional keep-state, token scaling and mismatches; exact 13-field rows compared.
+Supplemental transcript SHA-256: 4b4c131d9e776b252c837b830c4473dafa2a61c99e235478b29f19dec85bdfcd.
+Normal CTest 2.78s; sanitizer 4.03s. Full suite not repeated; 276 registered tests.
+
+Lab: student-guide/new-tests/original-verify-tests.md. Evidence/remaining inventory:
+validation/original-verify-tests-work-in-progress. Both lessons updated; 457-page
+structural audit retained. NEXT: remaining expressions/statements/tokens. Four
+JNI-dependent files still lack external native bodies/ABI in inspected candidates.
+P2PSwapLink is wholly commented; TxPoWProcessorTest has empty tests and delay
+helpers. Independent conversion work remains. After counterparts, full production
+API/runtime parity audit remains necessary.
+
+Magic sanitizer handle 41123 confirmed LIVE this turn on saved 9ae7039 binary.
+Normal full replay passed earlier. Poll same handle; do not block independent work.
+Preserve unrelated graphify work and external Java SQL/JAR commit f7f0e08.
+Commit only cpp; no push; upstream-study remains pinned.
+Previous verified bundle: local-backups/MinimaCoreC++-20260911T183658Z.bundle,
+SHA-256 58637d57dfa5900d3125b63928bb14d971845beb8ce6b1aaa3cc06ba56a82775;
+36 changed files byte-verified in a fresh recovery clone.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — original transaction getter tests
 
 Base HEAD: 7a3413e585c8070d9021688c811dcefab7752da9. Goal ACTIVE and incomplete.
