@@ -47,3 +47,7 @@ A TxPoW passes basic validation but fails the non-monotonic script check. Trace 
 This lesson explains the inspected source and finite test scope. It does not certify full API parity, live network integration or a working native node. The mapping remains authoritative.
 
 Pinned Java SHA-256: `9fd5c260c825d6aef7fe63593790ac9e22792290da5a67deb54af23f896e96be`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).
+
+## Block-ID iteration follow-up
+
+The transaction-request and pulse loops now retain their block-ID list and each current ID through a checked range. Network/database callbacks can no longer invalidate a raw vector iterator used by those loops. See the [iteration lab](../../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

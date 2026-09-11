@@ -36,12 +36,12 @@ std::vector<Coin> TxPoWSearcher::searchCoins(std::shared_ptr<TxPoWTreeNode> star
 }
 std::shared_ptr<TxPoWTreeNode> TxPoWSearcher::getTreeNodeForCoin(const MiniData& id){for(auto tip=services.getTip();tip;tip=tip->getParent())for(const auto& coin:tip->getAllCoins())if(coin.getCoinID().isEqual(id))return tip;return nullptr;}
 std::shared_ptr<TxPoW> TxPoWSearcher::getTxPoWBlock(const MiniNumber& block){for(auto tip=services.getTip();tip;tip=tip->getParent())if(tip->getBlockNumber().isEqual(block))return txpow(tip);return nullptr;}
-std::shared_ptr<TxPoW> TxPoWSearcher::searchChainForTxPoW(const MiniData& id){for(auto tip=services.getTip();tip;tip=tip->getParent()){auto block=txpow(tip);if(block->getTxPoWIDData().isEqual(id))return block;for(const auto blockIDs=block->getBlockTransactions();const auto txn:TxBody::required(blockIDs))if(TxBody::required(txn).isEqual(id))return block;}return nullptr;}
+std::shared_ptr<TxPoW> TxPoWSearcher::searchChainForTxPoW(const MiniData& id){for(auto tip=services.getTip();tip;tip=tip->getParent()){auto block=txpow(tip);if(block->getTxPoWIDData().isEqual(id))return block;for(const auto blockIDs=block->getBlockTransactions();const auto txn:TxBody::required(blockIDs).range())if(TxBody::required(txn).isEqual(id))return block;}return nullptr;}
 std::shared_ptr<TxPoWTreeNode> TxPoWSearcher::searchChainForTxPoWBlock(const MiniData& id){for(auto tip=services.getTip();tip;tip=tip->getParent())if(tip->getTxPoW().getTxPoWIDData().isEqual(id))return tip;return nullptr;}
 std::vector<std::shared_ptr<TxPoW>> TxPoWSearcher::searchTxPoWviaAddress(const MiniData& address){std::vector<std::shared_ptr<TxPoW>> result;
     for(auto tip=services.getTip();tip;tip=tip->getParent())for(const auto& coin:tip->getAllCoins())if(coin.getAddress().isEqual(address)){
         auto block=txpow(tip);if(checkTxPoWForAddress(*block,address))result.push_back(block);
-        for(const auto blockIDs=block->getBlockTransactions();const auto txn:TxBody::required(blockIDs)){auto value=services.getTxPoW(TxBody::required(txn).to0xString());if(value&&checkTxPoWForAddress(*value,address))result.push_back(value);}
+        for(const auto blockIDs=block->getBlockTransactions();const auto txn:TxBody::required(blockIDs).range()){auto value=services.getTxPoW(TxBody::required(txn).to0xString());if(value&&checkTxPoWForAddress(*value,address))result.push_back(value);}
     }
     return result;
 }

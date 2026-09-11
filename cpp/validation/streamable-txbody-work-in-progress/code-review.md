@@ -57,3 +57,5 @@ the already inspected implementation. Shared global constant identity, remaining
 TxPoW ownership/reader/getter/hash semantics, arbitrary streams and complete node
 parity remain explicitly unfinished. No release, deployment or merge is authorized
 by this report.
+
+Historical scope: this report concerns ownership checkpoint 712558b. The [checked-iteration follow-up](../txbody-id-iteration-work-in-progress/code-review.md) implements and validates the identified fix separately.

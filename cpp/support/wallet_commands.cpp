@@ -350,7 +350,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 body.emplace();auto row=MinimaDB::getDB()->getCustomTxnDB()->getTransactionRow("test");
                 body->mTransaction()=row->getTransaction();body->mWitness()=row->getWitness();
                 if(flag("alias")){body->mBurnTransaction()=body->mTransaction();body->mBurnWitness()=body->mWitness();}
-                body->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));body->mTxPowIDList()->push_back(std::make_shared<MiniData>(MiniData::fromHex("0x99")));
+                body->mPRNG()=std::make_shared<MiniData>(MiniData::fromHex("0x12"));body->mTxPowIDList()->add(std::make_shared<MiniData>(MiniData::fromHex("0x99")));
                 for(const auto& field:array(config->get("nulls")).elements()) {
                     auto key=field.asString();if(key=="transaction")body->mTransaction().reset();else if(key=="witness")body->mWitness().reset();
                     else if(key=="burnTransaction")body->mBurnTransaction().reset();else body->mBurnWitness().reset();
@@ -361,7 +361,7 @@ static JSONObject run(const JSONObject& input,const std::string& root){
                 try {body->readDataStream(bytes,offset);}catch(const std::exception& e){out.put("readError",nativeExceptionText(e));}
                 JSONObject value;value.put("offset",int64_t(offset));value.put("prng",body->mPRNG()->to0xString());value.put("difficulty",body->mTxnDifficulty()->to0xString());
                 value.put("sameTransaction",txn==body->mTransaction());value.put("sameWitness",wit==body->mWitness());value.put("sameBurn",burn==body->mBurnTransaction());value.put("sameBurnWitness",bw==body->mBurnWitness());
-                JSONArray ids;for(const auto blockIDs=body->mTxPowIDList();const auto& id:TxBody::required(blockIDs))ids.add(TxBody::required(id).to0xString());value.put("ids",ids);
+                JSONArray ids;for(const auto blockIDs=body->mTxPowIDList();const auto& id:TxBody::required(blockIDs).range())ids.add(TxBody::required(id).to0xString());value.put("ids",ids);
                 try{value.put("wire",MiniData(body->serialise()).to0xString());}catch(const std::exception& e){value.put("wireError",nativeExceptionText(e));}
                 result=value;
             }else if(op=="utilities") {

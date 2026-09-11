@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 320,
+  "total_programs": 320,
+  "operations": 2027,
+  "failures": [],
+  "scope": "Actual scanchain and detail helper, CommandRunner, tree and TxPoWDB RAM/recording-SQL. Inclusive bounds, wrapped integers, fractional/gapped/large heights, extreme dates, duplicate/missing/empty references, ordinary/burn transaction JSON, invalid parameters/receivers/SQL bytes and injected SQL failures. Exact reply text and effects; existing NPE/CCE diagnostic normalization. No durable SQL, atomic concurrent traversal or full-node parity claim."
+}

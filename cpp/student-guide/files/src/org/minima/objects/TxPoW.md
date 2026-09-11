@@ -66,7 +66,7 @@ from a real serialized/mined transaction.
 For TxPoW cases it compares wire bytes, JSON where supported, IDs, block/transaction
 flags, superlevel, byte size and decimal weight representation. It also creates
 read-back and truncated-input cases. The complete object suite currently passes
-9,244 normal-build comparisons; this number includes other object classes.
+9,464 normal-build comparisons; this number includes other object classes.
 
 `consensus_differential.py` places source-generated TxPoW objects into checker and
 generator scenarios. Its 2,890 passing normal-build comparisons include other
@@ -118,3 +118,7 @@ The mining/posting suite compares full serialized TxPoW objects, retained row ow
 ## Body ownership follow-up
 
 The [TxBody lab](../../../../../../student-guide/new-tests/streamable-txbody.md) changes getTxBody and getBlockTransactions to owned nullable handles. Clearing a body preserves an already retained body; bodyless list getters return independent empty lists. Block-ID entries are owned nullable MiniData references, and addBlockTxPOW can retain an existing reference. The containing TxPoW shared record, remaining value getters and hash failure semantics still require their complete source review.
+
+## Block-ID iteration follow-up
+
+The owned block-ID getter now exposes checked storage. addBlockTxPOW retains its supplied MiniData handle. An iterator owns the original list state after the body replaces or releases that list. See the [iteration lab](../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

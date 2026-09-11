@@ -48,3 +48,7 @@ Insert a synchronization block whose parent is absent. List the database writes 
 Full native Main/H2 binding remains absent. Diagnostic stack traces, Java Error versus Exception boundaries, arbitrary receiver failures and broad concurrent schedules still need review; several native paths use std::exception catches and a stream logger. Passing controlled receiver sequences establishes only their recorded scope. The mapping remains implemented_partial and parity not_verified.
 
 Pinned Java SHA-256: `1ed6d718e8c17b63a06f90962abc5c4234da2cbfdceaafe8d33022da9875a663`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Block-ID iteration follow-up
+
+requestMissingTxns retains the original ID list and current ID across database and send callbacks. Its traversal now uses checked storage; a structural change is observed at the next iterator step according to the source array rules. See the [iteration lab](../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

@@ -66,3 +66,7 @@ The command does not validate transactions or filter token IDs before counting t
 Why does sorting [2, 8, 4, 6] descending and selecting index 2 produce a median of 4?
 
 Pinned Java SHA-256: `2d550e4d98c4c7367ce73871b69c7f0d3e174b031f311e4a30142c6f7cfe3782`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
+
+## Block-ID iteration follow-up
+
+The block transaction loop now uses an owned checked range while looking up each transaction and collecting burn data. This reuses the shared ID storage without changing the burn calculation. See the [iteration lab](../../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

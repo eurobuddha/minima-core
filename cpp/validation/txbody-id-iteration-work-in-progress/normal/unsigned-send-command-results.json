@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 309,
+  "total_programs": 309,
+  "operations": 1248,
+  "sql_calls": 20081,
+  "failures": [],
+  "scope": "Actual sendnosign and create/view/sign/verify/post flow using real native chain, MMR, wallet, generator, file and miner components. Complete file bytes compared except the independently measured 32 PRNG bytes; decoded body PRNG and shape-checked clock filenames alone normalized. Exact replies, metadata, SQL, logs, directories, proofs, outputs and signature verification compared. Recording SQL does not prove durable storage; fixture chain and miner queue do not prove live network acceptance. Full node, arbitrary Java reference APIs and all filesystem/platform behavior remain unverified."
+}

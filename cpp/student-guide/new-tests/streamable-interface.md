@@ -53,3 +53,5 @@ to 20 of 44 explicit implementers. Both expanded suites pass 2,771 comparisons a
 The [Witness follow-up](streamable-witness.md) brings adoption to 21 of 44 explicit implementers. Both suites pass 3,447 comparisons and 31,650 assertions, plus six affected regressions. Earlier results above remain historical checkpoints.
 
 The [Transaction follow-up](streamable-transaction.md) brings adoption to 22 of 44 explicit implementers. Both interface suites pass 3,782 comparisons and 39,522 assertions. Both full builds, all 21 selected CTest suites and saved SPHINCS replays pass. Earlier figures remain historical checkpoints.
+
+The [body ownership](streamable-txbody.md) and [checked ID iteration](txbody-id-iteration.md) follow-ups bring explicit interface adoption to 23 of 44 types. Both current suites pass 7,623 comparisons and 95,664 assertions; the 23 affected normal regressions also pass, with exact sanitizer scope in the linked evidence. Earlier counts are historical checkpoints.

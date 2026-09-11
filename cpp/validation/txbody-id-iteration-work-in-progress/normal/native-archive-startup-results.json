@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "node_processes": 13,
+  "exports": [
+    {
+      "runtime": "java",
+      "format": "gzip",
+      "bytes": 1067,
+      "sha256": "bc9364feab1bda057eb6e465b60f8931310987eeda0a786a7b63a69500937643"
+    },
+    {
+      "runtime": "java",
+      "format": "dat",
+      "bytes": 429,
+      "sha256": "b2a8d981e961deb5543abb728e422917add22f61b83b055f04123a4e2fbe39af"
+    },
+    {
+      "runtime": "cpp",
+      "format": "gzip",
+      "bytes": 1067,
+      "sha256": "bc9364feab1bda057eb6e465b60f8931310987eeda0a786a7b63a69500937643"
+    },
+    {
+      "runtime": "cpp",
+      "format": "dat",
+      "bytes": 429,
+      "sha256": "b2a8d981e961deb5543abb728e422917add22f61b83b055f04123a4e2fbe39af"
+    }
+  ],
+  "checks": [
+    {
+      "importer": "java",
+      "writer_and_reopen": "cpp",
+      "format": "dat",
+      "reset_restore": false,
+      "keys": 8,
+      "uses_after_reopen": 100,
+      "chain_and_coins_preserved": true,
+      "real_resync_processor": true,
+      "graceful_shutdown": true,
+      "signs_and_rejects_modified_data": true,
+      "signing_use_increment": 1
+    },
+    {
+      "importer": "java",
+      "writer_and_reopen": "cpp",
+      "format": "gzip",
+      "reset_restore": false,
+      "keys": 8,
+      "uses_after_reopen": 100,
+      "chain_and_coins_preserved": true,
+      "real_resync_processor": true,
+      "graceful_shutdown": true,
+      "signs_and_rejects_modified_data": true,
+      "signing_use_increment": 1
+    },
+    {
+      "importer": "cpp",
+      "writer_and_reopen": "java",
+      "format": "dat",
+      "reset_restore": false,
+      "keys": 8,
+      "uses_after_reopen": 100,
+      "chain_and_coins_preserved": true,
+      "real_resync_processor": true,
+      "graceful_shutdown": true,
+      "signs_and_rejects_modified_data": true,
+      "signing_use_increment": 1
+    },
+    {
+      "importer": "cpp",
+      "writer_and_reopen": "java",
+      "format": "gzip",
+      "reset_restore": false,
+      "keys": 8,
+      "uses_after_reopen": 100,
+      "chain_and_coins_preserved": true,
+      "real_resync_processor": true,
+      "graceful_shutdown": true,
+      "signs_and_rejects_modified_data": true,
+      "signing_use_increment": 1
+    },
+    {
+      "importer": "java",
+      "writer_and_reopen": "cpp",
+      "format": "dat",
+      "reset_restore": true,
+      "keys": 8,
+      "uses_after_reopen": 263,
+      "chain_and_coins_preserved": true,
+      "real_resync_processor": true,
+      "graceful_shutdown": true,
+      "signs_and_rejects_modified_data": true,
+      "signing_use_increment": 1
+    },
+    {
+      "importer": "cpp",
+      "writer_and_reopen": "java",
+      "format": "gzip",
+      "reset_restore": true,
+      "keys": 8,
+      "uses_after_reopen": 263,
+      "chain_and_coins_preserved": true,
+      "real_resync_processor": true,
+      "graceful_shutdown": true,
+      "signs_and_rejects_modified_data": true,
+      "signing_use_increment": 1
+    }
+  ],
+  "failures": [],
+  "scope": "Actual pinned Java and native solo nodes with real H2. Valid saved genesis exported identically as H2/raw by both runtimes. Both import formats in both runtimes, real nested resync and worker shutdown, reset restore in both runtimes, opposite-runtime chain/coin/key reopen and signing. Genesis only: cascades, multi-batches, seed replacement, network retries and complete node parity remain unverified."
+}

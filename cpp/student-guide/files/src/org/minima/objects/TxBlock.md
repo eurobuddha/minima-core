@@ -48,3 +48,7 @@ Why does reversing the supplied transaction collection not reverse output-coin o
 Source-map status remains partial/not_verified. Matching main TxPoW identity and prefix-failure state does not establish all nested Coin, CoinProof, peak-list or removed-state list aliases. Final MMR construction and consensus acceptance occur in separate components, and a serializable TxBlock is not automatically a valid block.
 
 Pinned Java SHA-256: `5e051899b90f773b5f92f9e8942b1a1b322247f9e018f9073142980e97696284`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## Block-ID iteration follow-up
+
+The constructor retains the block-ID list and each current ID while matching candidate transactions. Its loop now uses the shared checked range, so structural changes cannot leave a vector iterator pointing at freed storage. See the [iteration lab](../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

@@ -1,50 +1,311 @@
 {
   "project": "MinimaCoreC++",
-  "goal_complete": false,
-  "stage": "validation_running",
-  "base_head": "1d7e90dd377d627e0f95653b6cab326551e2c3ac",
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
-  "normal_full_build": "passed",
-  "active_sessions": {
-    "sanitized_regressions": 12173
-  },
-  "initial_interface": {
-    "planned_cases": 7612,
-    "reported_cases": 4294974908,
-    "independent_assertions": 95562,
-    "observation_failures": 0,
-    "passed": false,
-    "failure": "A malformed body count loop overwrote the total comparison counter. The accounting gate rejected the run."
-  },
-  "adopted_types": 23,
-  "explicit_implementers": 44,
+  "base_head": "1d7e90dd377d627e0f95653b6cab326551e2c3ac",
+  "stage": "validated_incremental_checkpoint",
+  "goal_complete": false,
   "counterparts": 411,
+  "production_counterparts": 364,
+  "test_counterparts": 47,
   "absent": 46,
+  "production_absent": 5,
+  "tests_absent": 41,
   "parity": "not_verified",
+  "normal_full_build": "passed",
   "sanitized_full_build": "passed",
-  "normal_interface": {
-    "passed": true,
-    "cases": 7623,
-    "planned_cases": 7623,
-    "independent_assertions": 95664,
-    "seconds": 39.744,
-    "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea"
+  "default_ctest_entries": 261,
+  "full_ctest_suite_run": false,
+  "explicit_implementations": 44,
+  "adopted_types": 23,
+  "remaining_interface_implementations": 21,
+  "results": {
+    "normal": {
+      "passed": true,
+      "cases": 7623,
+      "planned_cases": 7623,
+      "independent_assertions": 95664,
+      "seconds": 39.744,
+      "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea",
+      "adopted_types": 23
+    },
+    "sanitized": {
+      "passed": true,
+      "cases": 7623,
+      "planned_cases": 7623,
+      "independent_assertions": 95664,
+      "seconds": 104.114,
+      "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea",
+      "adopted_types": 23
+    }
   },
-  "sanitized_interface": {
-    "passed": true,
-    "cases": 7623,
-    "planned_cases": 7623,
-    "independent_assertions": 95664,
-    "seconds": 104.114,
-    "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea"
+  "affected_regressions": {
+    "normal": {
+      "suites": 23,
+      "passed": true,
+      "seconds": 723.03,
+      "reports": {
+        "object-differential-results.json": {
+          "cases": 9464,
+          "passed": 9464
+        },
+        "tree-differential-results.json": {
+          "cases": 1027,
+          "passed": 1027
+        },
+        "consensus-differential-results.json": {
+          "cases": 2890,
+          "passed": 2890
+        },
+        "ram-differential-results.json": {
+          "cases": 315,
+          "passed": 315
+        },
+        "hashmap-differential-results.json": {
+          "cases": 135,
+          "passed": 135
+        },
+        "txndb-differential-results.json": {
+          "cases": 2503,
+          "passed": 2503
+        },
+        "archive-cache-differential-results.json": {
+          "cases": 734,
+          "passed": 734
+        },
+        "raw-archive-differential-results.json": {
+          "cases": 613,
+          "passed": 613
+        },
+        "nio-message-results.json": {
+          "passed": true,
+          "programs": 1918
+        },
+        "txpow-processor-results.json": {
+          "passed": true,
+          "programs": 384,
+          "operations": 1434
+        },
+        "transaction-check-command-results.json": {
+          "passed": true,
+          "programs": 396,
+          "operations": 1049
+        },
+        "transaction-mining-commands-results.json": {
+          "passed": true,
+          "programs": 207,
+          "operations": 699
+        },
+        "offline-send-commands-results.json": {
+          "passed": true,
+          "programs": 201,
+          "operations": 558
+        },
+        "unsigned-send-command-results.json": {
+          "passed": true,
+          "programs": 309,
+          "operations": 1248
+        },
+        "transaction-history-command-results.json": {
+          "passed": true,
+          "programs": 484,
+          "operations": 1489
+        },
+        "txpow-search-command-results.json": {
+          "passed": true,
+          "programs": 680,
+          "operations": 2099
+        },
+        "scan-chain-results.json": {
+          "passed": true,
+          "programs": 320,
+          "operations": 2027
+        },
+        "burn-metrics-results.json": {
+          "passed": true,
+          "programs": 364,
+          "operations": 4361
+        },
+        "token-creation-results.json": {
+          "passed": true,
+          "programs": 335,
+          "operations": 1349
+        },
+        "multisig-results.json": {
+          "passed": true,
+          "programs": 340,
+          "operations": 1089
+        },
+        "native-node-startup-results.json": {
+          "passed": true,
+          "node_processes": 12
+        },
+        "minima-entry-results.json": {
+          "passed": true
+        },
+        "native-archive-startup-results.json": {
+          "passed": true,
+          "node_processes": 13
+        }
+      }
+    },
+    "sanitized": {
+      "suites": 23,
+      "passed": true,
+      "seconds": 2464.56,
+      "reports": {
+        "object-differential-results.json": {
+          "cases": 9464,
+          "passed": 9464
+        },
+        "tree-differential-results.json": {
+          "cases": 1027,
+          "passed": 1027
+        },
+        "consensus-differential-results.json": {
+          "cases": 2890,
+          "passed": 2890
+        },
+        "ram-differential-results.json": {
+          "cases": 315,
+          "passed": 315
+        },
+        "hashmap-differential-results.json": {
+          "cases": 135,
+          "passed": 135
+        },
+        "txndb-differential-results.json": {
+          "cases": 2503,
+          "passed": 2503
+        },
+        "archive-cache-differential-results.json": {
+          "cases": 734,
+          "passed": 734
+        },
+        "raw-archive-differential-results.json": {
+          "cases": 613,
+          "passed": 613
+        },
+        "nio-message-results.json": {
+          "passed": true,
+          "programs": 1918
+        },
+        "txpow-processor-results.json": {
+          "passed": true,
+          "programs": 384,
+          "operations": 1434
+        },
+        "transaction-check-command-results.json": {
+          "passed": true,
+          "programs": 396,
+          "operations": 1049
+        },
+        "transaction-mining-commands-results.json": {
+          "passed": true,
+          "programs": 207,
+          "operations": 699
+        },
+        "offline-send-commands-results.json": {
+          "passed": true,
+          "programs": 201,
+          "operations": 558
+        },
+        "unsigned-send-command-results.json": {
+          "passed": true,
+          "programs": 309,
+          "operations": 1248
+        },
+        "transaction-history-command-results.json": {
+          "passed": true,
+          "programs": 484,
+          "operations": 1489
+        },
+        "txpow-search-command-results.json": {
+          "passed": true,
+          "programs": 680,
+          "operations": 2099
+        },
+        "scan-chain-results.json": {
+          "passed": true,
+          "programs": 320,
+          "operations": 2027
+        },
+        "burn-metrics-results.json": {
+          "passed": true,
+          "programs": 364,
+          "operations": 4361
+        },
+        "token-creation-results.json": {
+          "passed": true,
+          "programs": 335,
+          "operations": 1349
+        },
+        "multisig-results.json": {
+          "passed": true,
+          "programs": 340,
+          "operations": 1089
+        },
+        "native-node-startup-results.json": {
+          "passed": true,
+          "node_processes": 12
+        },
+        "minima-entry-results.json": {
+          "passed": true
+        },
+        "native-archive-startup-results.json": {
+          "passed": true,
+          "node_processes": 13
+        }
+      }
+    }
   },
-  "normal_affected_regressions": {
-    "suites": 23,
-    "passed": true,
-    "seconds": 723.03,
-    "session": 21875,
-    "exit_code": 0
+  "active_sessions": {},
+  "completed_sessions": {
+    "first_normal_build": {
+      "id": 72210,
+      "exit_code": 0
+    },
+    "fixture_build": {
+      "id": 34236,
+      "exit_code": 0
+    },
+    "initial_interface": {
+      "id": 37179,
+      "exit_code": 1,
+      "reason": "Case-counter shadowing; source/native observations matched."
+    },
+    "final_normal_build": {
+      "id": 29128,
+      "exit_code": 0
+    },
+    "final_sanitized_build": {
+      "id": 94215,
+      "exit_code": 0
+    },
+    "normal_interface": {
+      "id": 59930,
+      "exit_code": 0
+    },
+    "sanitized_interface": {
+      "id": 60532,
+      "exit_code": 0
+    },
+    "normal_regressions": {
+      "id": 21875,
+      "exit_code": 0
+    },
+    "sanitized_regressions": {
+      "id": 12173,
+      "exit_code": 0
+    }
   },
-  "review": "Request changes: replace vector ID iteration with inspected checked storage before production approval",
-  "next_priority": "next-id-list-notes.md"
+  "scope": "TxBody shared nullable fields and ID entries, retained list/body owners, source-ordered child reads and exact writer prefixes; actual TxPoW owned getters and affected consumers; selected self-replacing reader/JSON side effects.",
+  "open_work": [
+    "Known unsafe structural ID-list mutation during consumer callbacks; next-id-list-notes.md takes priority",
+    "21 remaining explicit Streamable implementing types plus inherited subclasses",
+    "Complete Java collection APIs/fail-fast iteration and structural mutation during iteration",
+    "Shared global Crypto.MAX_HASH/default constant object identity",
+    "Arbitrary custom stream, subclass, allocation and concurrent/reentrant paths beyond the two tested self-replacing reads",
+    "Complete TxPoW shared record, nullable value getters, in-place reads and hash failure semantics",
+    "46 absent counterparts and full native node parity"
+  ]
 }

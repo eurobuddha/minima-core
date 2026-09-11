@@ -64,7 +64,7 @@ public:
     const Witness& getWitness() const {auto owner=getSharedWitness();if(!owner)throw JavaNullPointerException("null TxPoW Witness");return *owner;}
     Witness& getBurnWitness() {auto owner=getSharedBurnWitness();if(!owner)throw JavaNullPointerException("null TxPoW BurnWitness");return *owner;}
     const Witness& getBurnWitness() const {auto owner=getSharedBurnWitness();if(!owner)throw JavaNullPointerException("null TxPoW BurnWitness");return *owner;}
-    void addBlockTxPOW(std::shared_ptr<MiniData> id) {TxBody::required(TxBody::required(mBody).mTxPowIDList()).push_back(std::move(id));}
+    void addBlockTxPOW(std::shared_ptr<MiniData> id) {TxBody::required(TxBody::required(mBody).mTxPowIDList()).add(std::move(id));}
     void addBlockTxPOW(MiniData id) {addBlockTxPOW(std::make_shared<MiniData>(std::move(id)));}
     std::shared_ptr<TxBody::IDs> getBlockTransactions() const {return mBody?mBody->mTxPowIDList():std::make_shared<TxBody::IDs>();}
     const MiniData& getBlockDifficulty() const {return mHeader.mBlockDifficulty;}

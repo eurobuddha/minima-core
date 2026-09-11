@@ -49,7 +49,7 @@ including bytes produced by the original child and the replacement left in the b
 
 ID loops similarly copy each shared_ptr into the loop variable. Replacing a list
 entry must not silently replace the object that the current Java loop variable names.
-The complete Java iterator/fail-fast contract still needs separate implementation.
+The [iteration follow-up](txbody-id-iteration.md) replaces vector traversal with the existing checked storage and tests actual consumer callbacks. The complete inherited collection API remains open.
 
 ## Writers, JSON and randomness
 
@@ -78,14 +78,14 @@ The existing object and transaction-check suites remain relevant. The expanded
 [Java oracle](../../support/StreamableOracle.java) and
 [native harness](../../support/streamable.cpp), plus independent wire predictions.
 [Checkpoint evidence](../../validation/streamable-txbody-work-in-progress/progress.json)
-records current results. The initial run's observations matched but a loop overwrote
+records the ownership checkpoint results. The initial run's observations matched but a loop overwrote
 the driver case counter; its accounting gate rejected that report. The corrected
-counter and added JSON/reentrancy cases require fresh validation.
+counter and added JSON/reentrancy cases pass both final common-interface runs (7,623 comparisons and 95,664 assertions per runtime); broader checkpoint regressions are tracked separately.
 
 ## Remaining work and exercises
 
 This is still an implemented_partial port with parity not_verified. Full Java
-collection APIs/fail-fast iteration, arbitrary custom streams/subclass interactions,
+inherited collection APIs, arbitrary custom streams/subclass interactions,
 allocation failures, concurrency and shared Crypto.MAX_HASH identity remain open.
 TxPoW's complete shared-record and nullable getter/hash behavior remains under review.
 Native H2 is an existing external AOT dependency, outside C++ sanitizer instrumentation.

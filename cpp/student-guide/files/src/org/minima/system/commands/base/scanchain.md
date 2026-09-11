@@ -39,3 +39,7 @@ This body does not lock the chain into one snapshot or fall back to the archive.
 With tip height 20, offset 0 and depth 0, which one block should appear?
 
 Pinned Java SHA-256: `23fd87d24f3cfcf3c54435a679d5128511abdaeeba099db0a279c21ceef5854a`. [Mapping](../../../../../../../../source-map.json) · [Project limitations](../../../../../../../../REVIEW.md).
+
+## Block-ID iteration follow-up
+
+The block transaction loop now uses an owned checked range while looking up transaction details. This preserves list order and current-ID ownership across each lookup. See the [iteration lab](../../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

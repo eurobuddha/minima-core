@@ -1,0 +1,23 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "cases": 1400,
+  "planned_cases": 1400,
+  "independent_assertions": 42,
+  "collection_programs": 545,
+  "consumer_programs": 855,
+  "seconds": 3.013,
+  "transcript_sha256": "ebb07e84b28b16b55c6e61e8644930d17862843e6e8aa03d641f2438a4704d67",
+  "failures": [],
+  "scope": "Actual TxPoW body ID lists: nullable and duplicate entries, get/set/clear/add/remove-by-value, held MiniData mutation, retained iterator after list replacement and body release, iterator hasNext/next before/between/after mutations. Actual TxPoWTreeNode.checkFullTxns with controlled TxPoWDB exists callback: structural and nonstructural changes, early false return, null entry order, retained original list, and cached-success behavior after an extra ID is added. Hand-derived expectations independently check 21 boundary programs in each runtime. Not a complete ArrayList inherited API or multithreaded schedule certification."
+}

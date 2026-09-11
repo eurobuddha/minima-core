@@ -1,0 +1,6 @@
+{
+  "cases": 734,
+  "passed": 734,
+  "failures": [],
+  "scope": "TxBlockDB identity, duplicates, collision bins, child ordering, threshold cleanup/reindex; TxPoWList mutable input list, wire round trips, truncation and negative counts"
+}

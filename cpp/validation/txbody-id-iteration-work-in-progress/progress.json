@@ -1,0 +1,249 @@
+{
+  "project": "MinimaCoreC++",
+  "base_head": "712558b305a37bbf890b594fd2fab9e6ccd83325",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "stage": "validated_incremental_checkpoint",
+  "active_sessions": {},
+  "java_boundary_programs": 21,
+  "java_boundary_passed": true,
+  "native_validation": "pending",
+  "scope": "Reuse existing checked JSONSequence for TxBody IDs and adapt actual consumers. Add set/clear and test source mutation order, retained iterator ownership and checkFullTxns caching.",
+  "normal_full_build": "passed",
+  "normal_ids": {
+    "passed": true,
+    "cases": 1400,
+    "planned_cases": 1400,
+    "independent_assertions": 42,
+    "collection_programs": 545,
+    "consumer_programs": 855,
+    "seconds": 3.013,
+    "transcript_sha256": "ebb07e84b28b16b55c6e61e8644930d17862843e6e8aa03d641f2438a4704d67",
+    "failures": [],
+    "scope": "Actual TxPoW body ID lists: nullable and duplicate entries, get/set/clear/add/remove-by-value, held MiniData mutation, retained iterator after list replacement and body release, iterator hasNext/next before/between/after mutations. Actual TxPoWTreeNode.checkFullTxns with controlled TxPoWDB exists callback: structural and nonstructural changes, early false return, null entry order, retained original list, and cached-success behavior after an extra ID is added. Hand-derived expectations independently check 21 boundary programs in each runtime. Not a complete ArrayList inherited API or multithreaded schedule certification."
+  },
+  "normal_focused_regressions": {
+    "suites": 3,
+    "passed": true,
+    "seconds": 37.93
+  },
+  "normal_streamable": {
+    "cases": 7623,
+    "planned_cases": 7623,
+    "independent_assertions": 95664,
+    "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea",
+    "passed": true
+  },
+  "review": "Approve this incremental iterator fix for the documented scope; full port parity remains unverified.",
+  "completed_sessions": {
+    "normal_full_build": {
+      "id": 14672,
+      "exit_code": 0
+    },
+    "java_boundaries": {
+      "id": 91981,
+      "exit_code": 0
+    },
+    "normal_ids_initial": {
+      "id": 96655,
+      "exit_code": 0
+    },
+    "normal_ids_reviewed": {
+      "id": 68327,
+      "exit_code": 0
+    },
+    "normal_focused": {
+      "id": 52082,
+      "exit_code": 0
+    },
+    "normal_affected_regressions": {
+      "id": 91957,
+      "exit_code": 0
+    },
+    "prior_checkpoint_sanitized_regressions": {
+      "id": 12173,
+      "exit_code": 0
+    },
+    "sanitized_full_build": {
+      "id": 75988,
+      "exit_code": 0
+    },
+    "sanitized_ids": {
+      "id": 99620,
+      "exit_code": 0
+    },
+    "sanitized_focused": {
+      "id": 35967,
+      "exit_code": 0
+    }
+  },
+  "full_ctest_suite_run": false,
+  "normal_default_ctest_entries": 262,
+  "counterparts": 411,
+  "absent": 46,
+  "parity": "not_verified",
+  "normal_affected_regressions": {
+    "suites": 23,
+    "passed": true,
+    "seconds": 693.22,
+    "reports": {
+      "object-differential-results.json": {
+        "cases": 9464,
+        "passed": 9464
+      },
+      "tree-differential-results.json": {
+        "cases": 1027,
+        "passed": 1027
+      },
+      "consensus-differential-results.json": {
+        "cases": 2890,
+        "passed": 2890
+      },
+      "ram-differential-results.json": {
+        "cases": 315,
+        "passed": 315
+      },
+      "hashmap-differential-results.json": {
+        "cases": 135,
+        "passed": 135
+      },
+      "txndb-differential-results.json": {
+        "cases": 2503,
+        "passed": 2503
+      },
+      "archive-cache-differential-results.json": {
+        "cases": 734,
+        "passed": 734
+      },
+      "raw-archive-differential-results.json": {
+        "cases": 613,
+        "passed": 613
+      },
+      "nio-message-results.json": {
+        "programs": 1918,
+        "passed": true
+      },
+      "txpow-processor-results.json": {
+        "programs": 384,
+        "operations": 1434,
+        "passed": true
+      },
+      "transaction-check-command-results.json": {
+        "programs": 396,
+        "operations": 1049,
+        "passed": true
+      },
+      "transaction-mining-commands-results.json": {
+        "programs": 207,
+        "operations": 699,
+        "passed": true
+      },
+      "offline-send-commands-results.json": {
+        "programs": 201,
+        "operations": 558,
+        "passed": true
+      },
+      "unsigned-send-command-results.json": {
+        "programs": 309,
+        "operations": 1248,
+        "passed": true
+      },
+      "transaction-history-command-results.json": {
+        "programs": 484,
+        "operations": 1489,
+        "passed": true
+      },
+      "txpow-search-command-results.json": {
+        "programs": 680,
+        "operations": 2099,
+        "passed": true
+      },
+      "scan-chain-results.json": {
+        "programs": 320,
+        "operations": 2027,
+        "passed": true
+      },
+      "burn-metrics-results.json": {
+        "programs": 364,
+        "operations": 4361,
+        "passed": true
+      },
+      "token-creation-results.json": {
+        "programs": 335,
+        "operations": 1349,
+        "passed": true
+      },
+      "multisig-results.json": {
+        "programs": 340,
+        "operations": 1089,
+        "passed": true
+      },
+      "native-node-startup-results.json": {
+        "passed": true,
+        "node_processes": 12
+      },
+      "minima-entry-results.json": {
+        "passed": true
+      },
+      "native-archive-startup-results.json": {
+        "passed": true,
+        "node_processes": 13
+      }
+    }
+  },
+  "prior_checkpoint_sanitized_regressions": {
+    "passed": true,
+    "suites": 23,
+    "seconds": 2464.56,
+    "tested_source_commit": "712558b305a37bbf890b594fd2fab9e6ccd83325",
+    "note": "Historical ownership baseline; precedes checked ID storage."
+  },
+  "sanitized_full_build": "passed",
+  "launched_sessions": {
+    "sanitized_ids": 99620,
+    "sanitized_focused": 35967
+  },
+  "sanitized_ids": {
+    "passed": true,
+    "cases": 1400,
+    "planned_cases": 1400,
+    "independent_assertions": 42,
+    "collection_programs": 545,
+    "consumer_programs": 855,
+    "seconds": 5.544,
+    "transcript_sha256": "ebb07e84b28b16b55c6e61e8644930d17862843e6e8aa03d641f2438a4704d67",
+    "failures": [],
+    "scope": "Actual TxPoW body ID lists: nullable and duplicate entries, get/set/clear/add/remove-by-value, held MiniData mutation, retained iterator after list replacement and body release, iterator hasNext/next before/between/after mutations. Actual TxPoWTreeNode.checkFullTxns with controlled TxPoWDB exists callback: structural and nonstructural changes, early false return, null entry order, retained original list, and cached-success behavior after an extra ID is added. Hand-derived expectations independently check 21 boundary programs in each runtime. Not a complete ArrayList inherited API or multithreaded schedule certification."
+  },
+  "sanitized_streamable": {
+    "cases": 7623,
+    "planned_cases": 7623,
+    "independent_assertions": 95664,
+    "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea",
+    "passed": true
+  },
+  "sanitized_focused_regressions": {
+    "suites": 3,
+    "passed": true,
+    "seconds": 118.89
+  },
+  "sanitized_default_ctest_entries": 262,
+  "sanitized_23_suite_rerun_after_iterator_change": false,
+  "validation_scope": "Both full builds; 1,400 ID/consumer comparisons and 7,623 Streamable comparisons in each build; existing JSON comparison and shared-JSON native stress in each build; all 23 affected normal regressions. Earlier ownership baseline separately passed all 23 affected sanitizer regressions. No full CTest-suite or node-parity claim.",
+  "open_work": [
+    "Complete inherited Java collection API and subclass/stream/allocation/concurrent behaviors",
+    "Shared Crypto.MAX_HASH and global constant identity",
+    "Magic/TxHeader Streamable, nullable fields, eager checkSame and in-place RLE/read behavior",
+    "Complete TxPoW shared record, nullable getters, in-place reads and hash failure order",
+    "46 absent counterparts and full native-node parity"
+  ],
+  "unrelated_external_commit": "f7f0e08",
+  "unrelated_worktree_paths": [
+    "graphify-out/.graphify_labels.json",
+    "graphify-out/.graphify_learning.json",
+    "graphify-out/GRAPH_REPORT.md",
+    "graphify-out/graph.html",
+    "graphify-out/graph.json",
+    "graphify-out/manifest.json"
+  ]
+}

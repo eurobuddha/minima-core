@@ -1,0 +1,6 @@
+{
+  "cases": 315,
+  "passed": 315,
+  "failures": [],
+  "scope": "Quiescent map ordering, collision trees, resize, lookup, deletion, RAM flags, duplicate insertion, burn cleanup and zero-age cleanup; concurrent enumeration and timing parity unverified"
+}

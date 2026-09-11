@@ -50,3 +50,7 @@ Why can removeRelevantCoin change the entry-number list while getRelevantCoins s
 The basic tree fixture covers node bytes/MMR and selected relevance-list operations, not every notification or persistence path. Java RAM getAllCoins exposes its mutable backing list; native returns a value copy. SQL services, in-place read aliases, full-check invalidation and exact logger/errors remain partial or require more specific fixture review.
 
 Pinned Java SHA-256: `2c14754d284b6ea89438d2e8f819e6c5bc772a77c3a0c34a143179dca1b0eda1`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Block-ID iteration follow-up
+
+checkFullTxns now traverses a checked owned ID range. The new fixture modifies that list from the actual existence-query callback and checks callback order, early false returns, exception classes and cached success after another ID is added. See the [iteration lab](../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

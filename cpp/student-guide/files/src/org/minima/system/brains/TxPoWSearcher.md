@@ -50,3 +50,7 @@ A newer spent coin has amount 2 and an older unspent version has amount 1. Searc
 Depth limits, partial-state effects and lock counts have concrete fixtures, but general concurrent access, arbitrary service exceptions, retained token identity and full runtime integration remain open. Counterpart existence and passing selected queries do not establish complete API parity.
 
 Pinned Java SHA-256: `63ed77f401b2ad4c8246a179f11742e3b931b4d12fe3693ff3016e430e76fbe5`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Block-ID iteration follow-up
+
+The chain/address searches retain their ID list and current MiniData handle across lookups. They now use the checked range; replacing an entry does not replace the already copied current ID, while structural changes affect the next iterator step. See the [iteration lab](../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

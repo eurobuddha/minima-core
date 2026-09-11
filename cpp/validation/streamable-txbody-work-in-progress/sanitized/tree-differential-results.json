@@ -1,0 +1,6 @@
+{
+  "cases": 1027,
+  "passed": 1027,
+  "failures": [],
+  "scope": "Tree GHOST selection and node wire/MMR without runtime wallet/SQL integrations; generic errors normalized"
+}

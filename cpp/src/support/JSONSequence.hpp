@@ -29,6 +29,13 @@ public:
         return state->values.at(index);
     }
     void add(T value){std::lock_guard guard(state->lock);state->values.push_back(std::move(value));++state->modification;}
+    T set(size_t index,T value) requires(Array) {
+        std::lock_guard guard(state->lock);
+        if(index>=state->values.size())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index "+std::to_string(std::bit_cast<int64_t>(uint64_t(index)))+" out of bounds for length "+std::to_string(state->values.size()));
+        T old=state->values[index];state->values[index]=std::move(value);return old;
+    }
+    // ArrayList.clear is structural even when the list is already empty.
+    void clear(){std::lock_guard guard(state->lock);++state->modification;state->values.clear();}
     template<class Predicate> std::optional<T> find(Predicate matches) const {
         std::lock_guard guard(state->lock);for(const auto& value:state->values)if(matches(value))return value;return std::nullopt;
     }

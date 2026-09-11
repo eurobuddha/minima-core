@@ -200,7 +200,7 @@ void TxPoWProcessor::askToSyncTxBlocks(const std::optional<std::string>& uid){
 void TxPoWProcessor::requestMissingTxns(const std::optional<std::string>& uid,const std::shared_ptr<TxBlock>& block){
     if(GeneralParams::TXBLOCK_NODE)return;auto txpow=required(block).getSharedTxPoW();MiniNumber now(mServices.now());auto minimum=now.sub(MiniNumber(10800000));
     if(required(txpow).getTimeMilli().isLess(minimum))return;
-    try{for(const auto blockIDs=txpow->getBlockTransactions();const auto id:TxBody::required(blockIDs))if(!required(required(mServices.getDB()).getTxPoWDB()).exists(TxBody::required(id).to0xString()))mServices.send(uid,NIOMessage::MSG_TXPOWREQ,TxBody::required(id));}
+    try{for(const auto blockIDs=txpow->getBlockTransactions();const auto id:TxBody::required(blockIDs).range())if(!required(required(mServices.getDB()).getTxPoWDB()).exists(TxBody::required(id).to0xString()))mServices.send(uid,NIOMessage::MSG_TXPOWREQ,TxBody::required(id));}
     catch(const wire::IOException& e){mServices.log(errorText(e));}
 }
 }

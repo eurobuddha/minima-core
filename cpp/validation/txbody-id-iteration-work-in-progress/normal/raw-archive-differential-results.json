@@ -1,0 +1,6 @@
+{
+  "cases": 613,
+  "passed": 613,
+  "failures": [],
+  "scope": "RawArchiveInput: streaming gzip, cascade, 256-block boundaries, declared counts, truncated gzip/objects, CRC, concatenation, trailing data, stop/reconnect and before-connect calls"
+}

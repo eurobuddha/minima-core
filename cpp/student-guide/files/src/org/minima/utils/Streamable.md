@@ -57,14 +57,15 @@ showing that the common interface preserves partial output and exceptions.
 
 Successful file write/append/load, MiniData conversion, single/pair hashes and
 network-message construction use the actual generic helpers. Independent byte
-concatenation and SHA3 calculations check their outputs. Both complete builds
-pass. Each expanded interface suite passes 3,782 comparisons and 39,522 assertions with
-matching transcripts and empty native stderr; all 21 selected CTest suites and saved SPHINCS replays pass.
+concatenation and SHA3 calculations check their outputs. Both current builds pass 7,623 comparisons and 95,664 assertions, with
+the ownership checkpoint transcript unchanged and empty native stderr. The 23
+affected normal regressions also pass; see the
+[iteration evidence](../../../../../../validation/txbody-id-iteration-work-in-progress/progress.json).
 
 ## Remaining work
 
 The pinned source declares 44 explicit implementing classes, including the nested
-MMRProofChunk. Twenty-two are integrated; 22 still need native interface adoption and
+MMRProofChunk. Twenty-three are integrated; 21 still need native interface adoption and
 behavior review. Inherited subclasses also require validation when their bases
 join the interface. The commented P2PSwapLink sketch is not an active implementer.
 
@@ -90,3 +91,5 @@ identity timing, nested writer prefixes, state tags and actual token error loggi
 The [Witness follow-up](../../../../../../student-guide/new-tests/streamable-witness.md) adds owned list replacement, preserved old contents, containing-object aliases and nested failure prefixes.
 
 The [Transaction follow-up](../../../../../../student-guide/new-tests/streamable-transaction.md) adds owned lists and shared caches/flags, state removal identity, hash failure assignment and nullable verification order.
+
+The [body ownership lab](../../../../../../student-guide/new-tests/streamable-txbody.md) adds TxBody field/list ownership and partial-reader cases. The [iteration lab](../../../../../../student-guide/new-tests/txbody-id-iteration.md) follows its real block-ID consumers through structural mutations.

@@ -1,10 +1,11 @@
 #pragma once
 #include "Transaction.hpp"
 #include "Witness.hpp"
+#include "support/JSONSequence.hpp"
 namespace minima {
 class TxBody:public Streamable {
 public:
-    using IDs=std::vector<std::shared_ptr<MiniData>>;
+    using IDs=json::JSONSequence<std::shared_ptr<MiniData>,true>;
 private:
     struct Data {
         std::shared_ptr<MiniData> prng=std::make_shared<MiniData>(MiniData::getRandomData(32));

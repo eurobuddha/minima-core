@@ -8,7 +8,7 @@
 namespace minima {
 TxPoW::TxPoW(std::string id,int block,int weight,bool isBlock,std::string parent,bool isTransaction)
 :mBody(nullptr),mTxPOWIDStr(std::move(id)),mBlockWeight(weight),mIsTesting(true),mTestBlockNumber(block),mTestIsBlock(isBlock),mTestIsTxn(isTransaction),mTestParent(MiniData::fromHex(parent)){}
-std::vector<std::string> TxPoW::getTransactions() const {if(mIsTesting) return mTestTransactions;std::vector<std::string> ids;if(mBody) for(const auto blockIDs=mBody->mTxPowIDList();const auto id:TxBody::required(blockIDs)) ids.push_back(TxBody::required(id).to0xString());return ids;}
+std::vector<std::string> TxPoW::getTransactions() const {if(mIsTesting) return mTestTransactions;std::vector<std::string> ids;if(mBody) for(const auto blockIDs=mBody->mTxPowIDList();const auto id:TxBody::required(blockIDs).range()) ids.push_back(TxBody::required(id).to0xString());return ids;}
 void TxPoW::setHeaderBodyHash() {mHeader.mTxBodyHash=Crypto::getInstance().hashObject(TxBody::required(mBody));}
 bool TxPoW::isMonotonic() const {return getTransaction().isCheckedMonotonic()&&(getBurnTransaction().isEmpty()||getBurnTransaction().isCheckedMonotonic());}
 void TxPoW::setTimeMilli() {setTimeMilli(MiniNumber(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count()));}

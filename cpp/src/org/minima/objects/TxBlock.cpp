@@ -15,7 +15,7 @@ TxBlock::TxBlock(std::shared_ptr<MMR> parent,TxPoW txpow,const std::vector<TxPoW
 TxBlock::TxBlock(std::shared_ptr<MMR> parent,std::shared_ptr<TxPoW> txpow,const std::shared_ptr<TxPoWs>& transactions):mTxPoW(std::move(txpow)) {
     if(!parent) throw JavaNullPointerException("null parent MMR");
     mPreviousPeaks=parent->getPeaks();MMR copy(parent);calculateCoins(copy,getTxPoW());
-    for(const auto blockIDs=getTxPoW().getBlockTransactions();const auto id:TxBody::required(blockIDs)) {
+    for(const auto blockIDs=getTxPoW().getBlockTransactions();const auto id:TxBody::required(blockIDs).range()) {
         if(!transactions)throw JavaNullPointerException("null transaction list");
         std::shared_ptr<TxPoW> match;
         for(const auto& candidate:*transactions){

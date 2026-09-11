@@ -1,0 +1,12 @@
+{
+  "initial_report": "initial-interface-results.json",
+  "planned_cases": 7612,
+  "invalid_reported_cases": 4294974908,
+  "observations_matched": true,
+  "problem": "Malformed body count loop overwrote the total case counter. Existing executed/planned gate rejected the run.",
+  "fix": "Distinct body_count loop variable; final runs include 11 added JSON/reentrant cases.",
+  "superseded_by": [
+    "normal/streamable-results.json",
+    "sanitized/streamable-results.json"
+  ]
+}

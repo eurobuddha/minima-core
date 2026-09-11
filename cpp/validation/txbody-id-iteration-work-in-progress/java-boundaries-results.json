@@ -1,0 +1,1077 @@
+{
+  "passed": true,
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "java_boundary_programs": 21,
+  "seconds": 2.289,
+  "failures": [],
+  "results": [
+    {
+      "request": {
+        "kind": "collection",
+        "initial": [],
+        "ops": [
+          {
+            "op": "iter"
+          },
+          {
+            "op": "clear"
+          },
+          {
+            "op": "has"
+          },
+          {
+            "op": "next"
+          }
+        ]
+      },
+      "expected": [
+        "ok",
+        "ok",
+        false,
+        "java.util.ConcurrentModificationException"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        false,
+        "java.util.ConcurrentModificationException"
+      ]
+    },
+    {
+      "request": {
+        "kind": "collection",
+        "initial": [],
+        "ops": [
+          {
+            "op": "iter"
+          },
+          {
+            "op": "has"
+          },
+          {
+            "op": "next"
+          }
+        ]
+      },
+      "expected": [
+        "ok",
+        false,
+        "java.util.NoSuchElementException"
+      ],
+      "actual": [
+        "ok",
+        false,
+        "java.util.NoSuchElementException"
+      ]
+    },
+    {
+      "request": {
+        "kind": "collection",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "ops": [
+          {
+            "op": "iter"
+          },
+          {
+            "op": "set",
+            "index": 1,
+            "value": "0x99"
+          },
+          {
+            "op": "next"
+          },
+          {
+            "op": "next"
+          },
+          {
+            "op": "next"
+          },
+          {
+            "op": "serial"
+          }
+        ]
+      },
+      "expected": [
+        "ok",
+        "0x02",
+        "0x01",
+        "0x99",
+        "java.util.NoSuchElementException",
+        [
+          "0x01",
+          "0x99"
+        ]
+      ],
+      "actual": [
+        "ok",
+        "0x02",
+        "0x01",
+        "0x99",
+        "java.util.NoSuchElementException",
+        [
+          "0x01",
+          "0x99"
+        ]
+      ]
+    },
+    {
+      "request": {
+        "kind": "collection",
+        "initial": [
+          "0x01"
+        ],
+        "ops": [
+          {
+            "op": "iter"
+          },
+          {
+            "op": "release"
+          },
+          {
+            "op": "has"
+          },
+          {
+            "op": "next"
+          },
+          {
+            "op": "has"
+          },
+          {
+            "op": "next"
+          }
+        ]
+      },
+      "expected": [
+        "ok",
+        "ok",
+        true,
+        "0x01",
+        false,
+        "java.util.NoSuchElementException"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        true,
+        "0x01",
+        false,
+        "java.util.NoSuchElementException"
+      ]
+    },
+    {
+      "request": {
+        "kind": "collection",
+        "initial": [
+          "0x01"
+        ],
+        "ops": [
+          {
+            "op": "retain",
+            "index": 0
+          },
+          {
+            "op": "addHeld"
+          },
+          {
+            "op": "iter"
+          },
+          {
+            "op": "next"
+          },
+          {
+            "op": "mutate"
+          },
+          {
+            "op": "next"
+          },
+          {
+            "op": "held"
+          },
+          {
+            "op": "serial"
+          }
+        ]
+      },
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "0x01",
+        "ok",
+        "0x99",
+        "0x99",
+        [
+          "0x99",
+          "0x99"
+        ]
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "0x01",
+        "ok",
+        "0x99",
+        "0x99",
+        [
+          "0x99",
+          "0x99"
+        ]
+      ]
+    },
+    {
+      "request": {
+        "kind": "collection",
+        "initial": [
+          "0x01"
+        ],
+        "ops": [
+          {
+            "op": "retain",
+            "index": 0
+          },
+          {
+            "op": "iter"
+          },
+          {
+            "op": "set",
+            "index": 0,
+            "value": "0xAA"
+          },
+          {
+            "op": "held"
+          },
+          {
+            "op": "next"
+          }
+        ]
+      },
+      "expected": [
+        "ok",
+        "ok",
+        "0x01",
+        "0x01",
+        "0xAA"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "0x01",
+        "0x01",
+        "0xAA"
+      ]
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "add",
+        "trigger": 1,
+        "stop": false
+      },
+      "expected": {
+        "first": "java.util.ConcurrentModificationException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0x99",
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      },
+      "actual": {
+        "first": "java.util.ConcurrentModificationException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0x99",
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "clear",
+        "trigger": 1,
+        "stop": false
+      },
+      "expected": {
+        "first": "java.util.ConcurrentModificationException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [],
+        "bodyList": [],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0xEE"
+        ]
+      },
+      "actual": {
+        "first": "java.util.ConcurrentModificationException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [],
+        "bodyList": [],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0xEE"
+        ]
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "remove",
+        "trigger": 1,
+        "stop": false,
+        "value": "0x02"
+      },
+      "expected": {
+        "first": true,
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01"
+        ],
+        "bodyList": [
+          "0x01"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      },
+      "actual": {
+        "first": true,
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01"
+        ],
+        "bodyList": [
+          "0x01"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "remove",
+        "trigger": 1,
+        "stop": false,
+        "value": "0x01"
+      },
+      "expected": {
+        "first": true,
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x02"
+        ],
+        "bodyList": [
+          "0x02"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x02",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      },
+      "actual": {
+        "first": true,
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x02"
+        ],
+        "bodyList": [
+          "0x02"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x02",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "set",
+        "trigger": 1,
+        "stop": false,
+        "index": 1,
+        "value": null
+      },
+      "expected": {
+        "first": "java.lang.NullPointerException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01",
+          null
+        ],
+        "bodyList": [
+          "0x01",
+          null
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          null,
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      },
+      "actual": {
+        "first": "java.lang.NullPointerException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01",
+          null
+        ],
+        "bodyList": [
+          "0x01",
+          null
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          null,
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "set",
+        "trigger": 1,
+        "stop": false,
+        "index": 1,
+        "value": "0x99"
+      },
+      "expected": {
+        "first": true,
+        "calls": [
+          "0x01",
+          "0x99"
+        ],
+        "heldList": [
+          "0x01",
+          "0x99"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x99"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x99",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      },
+      "actual": {
+        "first": true,
+        "calls": [
+          "0x01",
+          "0x99"
+        ],
+        "heldList": [
+          "0x01",
+          "0x99"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x99"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x99",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "set",
+        "trigger": 1,
+        "stop": false,
+        "index": 9,
+        "value": "0x99"
+      },
+      "expected": {
+        "first": "java.lang.IndexOutOfBoundsException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      },
+      "actual": {
+        "first": "java.lang.IndexOutOfBoundsException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "add",
+        "trigger": 1,
+        "stop": true
+      },
+      "expected": {
+        "first": false,
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0x99",
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      },
+      "actual": {
+        "first": false,
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0x99",
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "replace",
+        "trigger": 1,
+        "stop": false
+      },
+      "expected": {
+        "first": true,
+        "calls": [
+          "0x01",
+          "0x02"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02"
+        ],
+        "bodyList": [
+          "0xAA"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xAA",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      },
+      "actual": {
+        "first": true,
+        "calls": [
+          "0x01",
+          "0x02"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02"
+        ],
+        "bodyList": [
+          "0xAA"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xAA",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [],
+        "action": "none",
+        "trigger": 1,
+        "stop": false
+      },
+      "expected": {
+        "first": true,
+        "calls": [],
+        "heldList": [],
+        "bodyList": [],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      },
+      "actual": {
+        "first": true,
+        "calls": [],
+        "heldList": [],
+        "bodyList": [],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          null
+        ],
+        "action": "none",
+        "trigger": 1,
+        "stop": false
+      },
+      "expected": {
+        "first": "java.lang.NullPointerException",
+        "calls": [],
+        "heldList": [
+          null
+        ],
+        "bodyList": [
+          null
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          null,
+          "0xEE"
+        ],
+        "second": "java.lang.NullPointerException",
+        "again": []
+      },
+      "actual": {
+        "first": "java.lang.NullPointerException",
+        "calls": [],
+        "heldList": [
+          null
+        ],
+        "bodyList": [
+          null
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          null,
+          "0xEE"
+        ],
+        "second": "java.lang.NullPointerException",
+        "again": []
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01"
+        ],
+        "action": "remove",
+        "trigger": 1,
+        "stop": false,
+        "value": "0x01"
+      },
+      "expected": {
+        "first": "java.util.ConcurrentModificationException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [],
+        "bodyList": [],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0xEE"
+        ]
+      },
+      "actual": {
+        "first": "java.util.ConcurrentModificationException",
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [],
+        "bodyList": [],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0xEE"
+        ]
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "add",
+        "trigger": 2,
+        "stop": false
+      },
+      "expected": {
+        "first": "java.util.ConcurrentModificationException",
+        "calls": [
+          "0x01",
+          "0x02"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0x99",
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      },
+      "actual": {
+        "first": "java.util.ConcurrentModificationException",
+        "calls": [
+          "0x01",
+          "0x02"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02",
+          "0x99"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0x99",
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0x01"
+        ]
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "add",
+        "trigger": 3,
+        "stop": false
+      },
+      "expected": {
+        "first": true,
+        "calls": [
+          "0x01",
+          "0x02"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      },
+      "actual": {
+        "first": true,
+        "calls": [
+          "0x01",
+          "0x02"
+        ],
+        "heldList": [
+          "0x01",
+          "0x02"
+        ],
+        "bodyList": [
+          "0x01",
+          "0x02"
+        ],
+        "hasBody": true,
+        "beforeSecond": [
+          "0x01",
+          "0x02",
+          "0xEE"
+        ],
+        "second": true,
+        "again": []
+      }
+    },
+    {
+      "request": {
+        "kind": "consumer",
+        "initial": [
+          "0x01",
+          "0x02"
+        ],
+        "action": "clear",
+        "trigger": 1,
+        "stop": true
+      },
+      "expected": {
+        "first": false,
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [],
+        "bodyList": [],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0xEE"
+        ]
+      },
+      "actual": {
+        "first": false,
+        "calls": [
+          "0x01"
+        ],
+        "heldList": [],
+        "bodyList": [],
+        "hasBody": true,
+        "beforeSecond": [
+          "0xEE"
+        ],
+        "second": false,
+        "again": [
+          "0xEE"
+        ]
+      }
+    }
+  ],
+  "scope": "Source-only execution of actual TxPoW ID lists and TxPoWTreeNode checkFullTxns, compared against hand-derived boundary expectations. C++ comparisons not yet run."
+}

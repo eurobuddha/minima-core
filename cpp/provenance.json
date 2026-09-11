@@ -19419,5 +19419,633 @@
         "46 absent mapped counterparts and full native node parity"
       ]
     }
+  },
+  "txbody_id_iteration_work_in_progress": {
+    "base_head": "712558b305a37bbf890b594fd2fab9e6ccd83325",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "source_sha256": {
+      "upstream-study/src/org/minima/objects/TxBody.java": "30288d222f98694cd3cad1b6ff1a99a1e8b5ae4fe358948307ae22567c7f012e",
+      "upstream-study/src/org/minima/database/txpowtree/TxPoWTreeNode.java": "2c14754d284b6ea89438d2e8f819e6c5bc772a77c3a0c34a143179dca1b0eda1"
+    },
+    "files_sha256": {
+      "cpp/CMakeLists.txt": "cc7467da9d869b76ea12b838a12693f5d078cab13e36c6ae8f1a4d4ce47d079e",
+      "cpp/src/org/minima/database/txpowtree/TxPoWTreeNode.cpp": "0611c1b377865ecdf567cfe2dc9cd6d96d5ae7b5e18c15923a2444f535102156",
+      "cpp/src/org/minima/objects/TxBlock.cpp": "f47b651bd02bd88b9a920620c370a23aa7d856b0306092e8c821c4ecf9228338",
+      "cpp/src/org/minima/objects/TxBody.cpp": "812d590aadf2e9085a238f084f055b21fdc696959ea1468228a9a6ec04c233fe",
+      "cpp/src/org/minima/objects/TxBody.hpp": "7b1b41bd005913f9d9ce5742397842cb7fe1f33fa71d19da37cbe47f0470483f",
+      "cpp/src/org/minima/objects/TxPoW.cpp": "5d331df82e9997274025af94b2435737661bb499aae5c30f9b55bdd9a9b7e6b3",
+      "cpp/src/org/minima/objects/TxPoW.hpp": "9797e068cb3199c0db7cdd2a0bcd550a8bbe3d1bf3d1e34e8c785d2b0e58cc94",
+      "cpp/src/org/minima/system/brains/TxPoWProcessor.cpp": "3992005aa8cdf093fcccd4d7a94d759d3005928a95f128d7728a5b787f4b9aec",
+      "cpp/src/org/minima/system/brains/TxPoWSearcher.cpp": "ceda264006eb2b27d688b842bc01b97b6eb3e0aede3a73057921c0665bf89a53",
+      "cpp/src/org/minima/system/commands/base/burn.cpp": "25eea7ab1fd591a5a014a746ae56381baf0282cac7988140a5c1b35e111f4ad0",
+      "cpp/src/org/minima/system/commands/base/scanchain.cpp": "dbb301e0efa066b7ed5099f39a38c2846ec0b46f1bf03777d18bfcb8d8b9136d",
+      "cpp/src/org/minima/system/network/minima/NIOMessage.cpp": "b388a7aa25cdd4a5721352be609020a4fa283a3ebea982d7f0ede27ab46be4b6",
+      "cpp/src/support/JSONSequence.hpp": "a1c4e8969c541628c1f3a4214f2d5de914431719710427ca6079d0f7c020e14c",
+      "cpp/support/TxBodyIDsOracle.java": "ea70a9dc0f12b00d827c39e43b34c79b1657468d9a5659bc29186b8f0523552a",
+      "cpp/support/objects.cpp": "cb3de1dd8b0e8f0993923bbed42272e630ccee4160c4f10ba1215924ab5f4a59",
+      "cpp/support/streamable.cpp": "dc64d27875788793873a320203ecef13758181b2ab543fa376941235a67d4899",
+      "cpp/support/txbody_ids.cpp": "7aad41cf52e60b37954cbec02dc94733be8784ab2ed3dfa4319c7e573b098ee7",
+      "cpp/support/wallet_commands.cpp": "1e6ff1637dfa24eb3089733adca5418c386cfcdf2e33dad6113cd398030c2611",
+      "cpp/tools/txbody_ids_differential.py": "859397ab4c0758b43345c7f727f6e23cc093f4ef671cb48c9bcf20a8d3aea149"
+    },
+    "reuse": "JSONSequence checked owned iteration, existing exception handling/locked copied access, JSON collection differential runner, and NIOMessageOracle TxPoWDB subclass boundary. JavaList and sibling value-vector TxBody do not protect iterator invalidation.",
+    "minimum_adaptation": "Use JSONSequence<shared_ptr<MiniData>,true> as TxBody IDs, add nonstructural indexed set and structural clear, adapt consumers to existing checked range. No dependency changes.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "base_head": "712558b305a37bbf890b594fd2fab9e6ccd83325",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "goal_complete": false,
+      "stage": "validated_incremental_checkpoint",
+      "active_sessions": {},
+      "java_boundary_programs": 21,
+      "java_boundary_passed": true,
+      "native_validation": "pending",
+      "scope": "Reuse existing checked JSONSequence for TxBody IDs and adapt actual consumers. Add set/clear and test source mutation order, retained iterator ownership and checkFullTxns caching.",
+      "normal_full_build": "passed",
+      "normal_ids": {
+        "passed": true,
+        "cases": 1400,
+        "planned_cases": 1400,
+        "independent_assertions": 42,
+        "collection_programs": 545,
+        "consumer_programs": 855,
+        "seconds": 3.013,
+        "transcript_sha256": "ebb07e84b28b16b55c6e61e8644930d17862843e6e8aa03d641f2438a4704d67",
+        "failures": [],
+        "scope": "Actual TxPoW body ID lists: nullable and duplicate entries, get/set/clear/add/remove-by-value, held MiniData mutation, retained iterator after list replacement and body release, iterator hasNext/next before/between/after mutations. Actual TxPoWTreeNode.checkFullTxns with controlled TxPoWDB exists callback: structural and nonstructural changes, early false return, null entry order, retained original list, and cached-success behavior after an extra ID is added. Hand-derived expectations independently check 21 boundary programs in each runtime. Not a complete ArrayList inherited API or multithreaded schedule certification."
+      },
+      "normal_focused_regressions": {
+        "suites": 3,
+        "passed": true,
+        "seconds": 37.93
+      },
+      "normal_streamable": {
+        "cases": 7623,
+        "planned_cases": 7623,
+        "independent_assertions": 95664,
+        "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea",
+        "passed": true
+      },
+      "review": "Approve this incremental iterator fix for the documented scope; full port parity remains unverified.",
+      "completed_sessions": {
+        "normal_full_build": {
+          "id": 14672,
+          "exit_code": 0
+        },
+        "java_boundaries": {
+          "id": 91981,
+          "exit_code": 0
+        },
+        "normal_ids_initial": {
+          "id": 96655,
+          "exit_code": 0
+        },
+        "normal_ids_reviewed": {
+          "id": 68327,
+          "exit_code": 0
+        },
+        "normal_focused": {
+          "id": 52082,
+          "exit_code": 0
+        },
+        "normal_affected_regressions": {
+          "id": 91957,
+          "exit_code": 0
+        },
+        "prior_checkpoint_sanitized_regressions": {
+          "id": 12173,
+          "exit_code": 0
+        },
+        "sanitized_full_build": {
+          "id": 75988,
+          "exit_code": 0
+        },
+        "sanitized_ids": {
+          "id": 99620,
+          "exit_code": 0
+        },
+        "sanitized_focused": {
+          "id": 35967,
+          "exit_code": 0
+        }
+      },
+      "full_ctest_suite_run": false,
+      "normal_default_ctest_entries": 262,
+      "counterparts": 411,
+      "absent": 46,
+      "parity": "not_verified",
+      "normal_affected_regressions": {
+        "suites": 23,
+        "passed": true,
+        "seconds": 693.22,
+        "reports": {
+          "object-differential-results.json": {
+            "cases": 9464,
+            "passed": 9464
+          },
+          "tree-differential-results.json": {
+            "cases": 1027,
+            "passed": 1027
+          },
+          "consensus-differential-results.json": {
+            "cases": 2890,
+            "passed": 2890
+          },
+          "ram-differential-results.json": {
+            "cases": 315,
+            "passed": 315
+          },
+          "hashmap-differential-results.json": {
+            "cases": 135,
+            "passed": 135
+          },
+          "txndb-differential-results.json": {
+            "cases": 2503,
+            "passed": 2503
+          },
+          "archive-cache-differential-results.json": {
+            "cases": 734,
+            "passed": 734
+          },
+          "raw-archive-differential-results.json": {
+            "cases": 613,
+            "passed": 613
+          },
+          "nio-message-results.json": {
+            "programs": 1918,
+            "passed": true
+          },
+          "txpow-processor-results.json": {
+            "programs": 384,
+            "operations": 1434,
+            "passed": true
+          },
+          "transaction-check-command-results.json": {
+            "programs": 396,
+            "operations": 1049,
+            "passed": true
+          },
+          "transaction-mining-commands-results.json": {
+            "programs": 207,
+            "operations": 699,
+            "passed": true
+          },
+          "offline-send-commands-results.json": {
+            "programs": 201,
+            "operations": 558,
+            "passed": true
+          },
+          "unsigned-send-command-results.json": {
+            "programs": 309,
+            "operations": 1248,
+            "passed": true
+          },
+          "transaction-history-command-results.json": {
+            "programs": 484,
+            "operations": 1489,
+            "passed": true
+          },
+          "txpow-search-command-results.json": {
+            "programs": 680,
+            "operations": 2099,
+            "passed": true
+          },
+          "scan-chain-results.json": {
+            "programs": 320,
+            "operations": 2027,
+            "passed": true
+          },
+          "burn-metrics-results.json": {
+            "programs": 364,
+            "operations": 4361,
+            "passed": true
+          },
+          "token-creation-results.json": {
+            "programs": 335,
+            "operations": 1349,
+            "passed": true
+          },
+          "multisig-results.json": {
+            "programs": 340,
+            "operations": 1089,
+            "passed": true
+          },
+          "native-node-startup-results.json": {
+            "passed": true,
+            "node_processes": 12
+          },
+          "minima-entry-results.json": {
+            "passed": true
+          },
+          "native-archive-startup-results.json": {
+            "passed": true,
+            "node_processes": 13
+          }
+        }
+      },
+      "prior_checkpoint_sanitized_regressions": {
+        "passed": true,
+        "suites": 23,
+        "seconds": 2464.56,
+        "tested_source_commit": "712558b305a37bbf890b594fd2fab9e6ccd83325",
+        "note": "Historical ownership baseline; precedes checked ID storage."
+      },
+      "sanitized_full_build": "passed",
+      "launched_sessions": {
+        "sanitized_ids": 99620,
+        "sanitized_focused": 35967
+      },
+      "sanitized_ids": {
+        "passed": true,
+        "cases": 1400,
+        "planned_cases": 1400,
+        "independent_assertions": 42,
+        "collection_programs": 545,
+        "consumer_programs": 855,
+        "seconds": 5.544,
+        "transcript_sha256": "ebb07e84b28b16b55c6e61e8644930d17862843e6e8aa03d641f2438a4704d67",
+        "failures": [],
+        "scope": "Actual TxPoW body ID lists: nullable and duplicate entries, get/set/clear/add/remove-by-value, held MiniData mutation, retained iterator after list replacement and body release, iterator hasNext/next before/between/after mutations. Actual TxPoWTreeNode.checkFullTxns with controlled TxPoWDB exists callback: structural and nonstructural changes, early false return, null entry order, retained original list, and cached-success behavior after an extra ID is added. Hand-derived expectations independently check 21 boundary programs in each runtime. Not a complete ArrayList inherited API or multithreaded schedule certification."
+      },
+      "sanitized_streamable": {
+        "cases": 7623,
+        "planned_cases": 7623,
+        "independent_assertions": 95664,
+        "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea",
+        "passed": true
+      },
+      "sanitized_focused_regressions": {
+        "suites": 3,
+        "passed": true,
+        "seconds": 118.89
+      },
+      "sanitized_default_ctest_entries": 262,
+      "sanitized_23_suite_rerun_after_iterator_change": false,
+      "validation_scope": "Both full builds; 1,400 ID/consumer comparisons and 7,623 Streamable comparisons in each build; existing JSON comparison and shared-JSON native stress in each build; all 23 affected normal regressions. Earlier ownership baseline separately passed all 23 affected sanitizer regressions. No full CTest-suite or node-parity claim.",
+      "open_work": [
+        "Complete inherited Java collection API and subclass/stream/allocation/concurrent behaviors",
+        "Shared Crypto.MAX_HASH and global constant identity",
+        "Magic/TxHeader Streamable, nullable fields, eager checkSame and in-place RLE/read behavior",
+        "Complete TxPoW shared record, nullable getters, in-place reads and hash failure order",
+        "46 absent counterparts and full native-node parity"
+      ],
+      "unrelated_external_commit": "f7f0e08",
+      "unrelated_worktree_paths": [
+        "graphify-out/.graphify_labels.json",
+        "graphify-out/.graphify_learning.json",
+        "graphify-out/GRAPH_REPORT.md",
+        "graphify-out/graph.html",
+        "graphify-out/graph.json",
+        "graphify-out/manifest.json"
+      ]
+    }
+  },
+  "streamable_txbody_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/objects/TxBody.java": "30288d222f98694cd3cad1b6ff1a99a1e8b5ae4fe358948307ae22567c7f012e",
+      "upstream-study/src/org/minima/objects/TxPoW.java": "46e3867c753cd9dde3814bb01505426e2978c2b97bafbbf3fad7c0a99558c456"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/database/txpowtree/TxPoWTreeNode.cpp": "07e8f56af0e1fba787c38a2a26b0b3fd5decc84443a60df626b828159d6072dd",
+      "cpp/src/org/minima/objects/TxBlock.cpp": "03c3d64b675c0c2f45aa728c88ec8d3c731f551bdf87ce889c65e2fcf2f47df8",
+      "cpp/src/org/minima/objects/TxBody.cpp": "8e7dce6f96c76dea789db448b2ace297dc0da2f732bee313b3b7c45d884dbe7e",
+      "cpp/src/org/minima/objects/TxBody.hpp": "3f4cc91a7793bd8a122fe232e665d59d94849f3fbd01e34e6042ecd65e16b6ec",
+      "cpp/src/org/minima/objects/TxPoW.cpp": "3701742132a0787d9542aadab5ad48186e1b2ef1fd9ee811b72943c638c103c6",
+      "cpp/src/org/minima/objects/TxPoW.hpp": "e19ac15d4de27318a9ec3280ad1313f16648adfcc97a3cccc884b157328ac4d6",
+      "cpp/src/org/minima/system/brains/TxPoWChecker.cpp": "5b8a980e8e14339b062702226f55d42d5174906ad35b26253e921f71f69e38ca",
+      "cpp/src/org/minima/system/brains/TxPoWProcessor.cpp": "8c607d60a40cc83c4890430be375f939c00a54025246fa73c99b378766450b55",
+      "cpp/src/org/minima/system/brains/TxPoWSearcher.cpp": "556cb039e4d846ff57f7c7f0e40988815b7ebfaae899806f14edaec9e11b37d9",
+      "cpp/src/org/minima/system/commands/base/burn.cpp": "7d725dc57c846378a2bc37d895eba44ab12b2ab27da79490a2d27116b959d052",
+      "cpp/src/org/minima/system/commands/base/scanchain.cpp": "ed494a759ddfcab79979f82029fe4e9f0e7cfb0168860c788e2ee5759a25ed7e",
+      "cpp/src/org/minima/system/network/minima/NIOMessage.cpp": "ccc5b8c5b01b5317b876a0b7aff66c677e269940aa3a3fc4a269fd76df5a737d",
+      "cpp/support/ArchiveFixture.hpp": "9560cd31832979279e0f36b13c9ec3e40102475a0dcc9d646442ec957624bf56",
+      "cpp/support/BlockFixture.hpp": "1f807655ad2481c40793f8dd711e73c6a50e15c843220c3138f94584e1083279",
+      "cpp/support/SqlTxPoWFixture.hpp": "e516983b15c3dd52b4e7e757b01c314757d06a51fb7b4439596f935242b1ed6e",
+      "cpp/support/StreamableOracle.java": "228b4cb5916f70aea91377a34aaf27d1c95cb6a57889f6f9bde286726e499707",
+      "cpp/support/WalletMiningFixture.hpp": "150b8aeb7641de8e08a78fb77f26e458c64a1f87f470a938ecf41d897f9fe49d",
+      "cpp/support/cascade.cpp": "fa78fa6372749f76869e49bb2421c4f5a1f93145dab66eee914e63fc90fa352b",
+      "cpp/support/consensus.cpp": "75af6d77d8ca5d4eacc0106c3194c448471d71d93b4a6f0f95011f8f212d6e70",
+      "cpp/support/hashmap.cpp": "08db8f26afbbb7f78efbd12287545bdbc36cf1299d4d768a2b1d64b0a13399cc",
+      "cpp/support/objects.cpp": "b1839ed879d149be25332b890efc901cded61c69721ae8ad35652eb9ccec3374",
+      "cpp/support/ram.cpp": "8935a32830ebe473c0ed84deb372e7573429aebbcbd3291f8cd6308100a31ce3",
+      "cpp/support/streamable.cpp": "7d5c7fd92bcf3c6d8ed4296f4994813ba1658afbbc845474e22c701f5bc2e105",
+      "cpp/support/tree.cpp": "1a083420f50f159a561b358e081fb039bdf1403e1744c7a5429f20b7d60ff6f7",
+      "cpp/support/wallet_commands.cpp": "b6ca6e4631b8b3a765e8a728debf2425165ee507453bd1a2c5433e344c592cde",
+      "cpp/tools/streamable_differential.py": "0bdf2d6a20d5611f6c65e656b9093d145c988582d330453d88a989c6d7a7976a"
+    },
+    "reuse": "Current TxBody codecs and Transaction/Witness readers; existing shared-record/owned-list pattern, null helper and common Streamable harness. OS-backed MiniData random source retained. No dependency changes.",
+    "sibling_search": "Read tools/minima-core-cpp/src/objects/TxBody.hpp/.cpp. Timestamp-seeded generator, pointer readers, offset-ignoring vector overload, different count/hash handling and missing in-place/JSON methods are incompatible.",
+    "validation": {
+      "project": "MinimaCoreC++",
+      "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+      "base_head": "1d7e90dd377d627e0f95653b6cab326551e2c3ac",
+      "stage": "validated_incremental_checkpoint",
+      "goal_complete": false,
+      "counterparts": 411,
+      "production_counterparts": 364,
+      "test_counterparts": 47,
+      "absent": 46,
+      "production_absent": 5,
+      "tests_absent": 41,
+      "parity": "not_verified",
+      "normal_full_build": "passed",
+      "sanitized_full_build": "passed",
+      "default_ctest_entries": 261,
+      "full_ctest_suite_run": false,
+      "explicit_implementations": 44,
+      "adopted_types": 23,
+      "remaining_interface_implementations": 21,
+      "results": {
+        "normal": {
+          "passed": true,
+          "cases": 7623,
+          "planned_cases": 7623,
+          "independent_assertions": 95664,
+          "seconds": 39.744,
+          "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea",
+          "adopted_types": 23
+        },
+        "sanitized": {
+          "passed": true,
+          "cases": 7623,
+          "planned_cases": 7623,
+          "independent_assertions": 95664,
+          "seconds": 104.114,
+          "transcript_sha256": "f935b81f344b4ccce93f6f185ca19c6cc32c38179b5569130434439e4aa52cea",
+          "adopted_types": 23
+        }
+      },
+      "affected_regressions": {
+        "normal": {
+          "suites": 23,
+          "passed": true,
+          "seconds": 723.03,
+          "reports": {
+            "object-differential-results.json": {
+              "cases": 9464,
+              "passed": 9464
+            },
+            "tree-differential-results.json": {
+              "cases": 1027,
+              "passed": 1027
+            },
+            "consensus-differential-results.json": {
+              "cases": 2890,
+              "passed": 2890
+            },
+            "ram-differential-results.json": {
+              "cases": 315,
+              "passed": 315
+            },
+            "hashmap-differential-results.json": {
+              "cases": 135,
+              "passed": 135
+            },
+            "txndb-differential-results.json": {
+              "cases": 2503,
+              "passed": 2503
+            },
+            "archive-cache-differential-results.json": {
+              "cases": 734,
+              "passed": 734
+            },
+            "raw-archive-differential-results.json": {
+              "cases": 613,
+              "passed": 613
+            },
+            "nio-message-results.json": {
+              "passed": true,
+              "programs": 1918
+            },
+            "txpow-processor-results.json": {
+              "passed": true,
+              "programs": 384,
+              "operations": 1434
+            },
+            "transaction-check-command-results.json": {
+              "passed": true,
+              "programs": 396,
+              "operations": 1049
+            },
+            "transaction-mining-commands-results.json": {
+              "passed": true,
+              "programs": 207,
+              "operations": 699
+            },
+            "offline-send-commands-results.json": {
+              "passed": true,
+              "programs": 201,
+              "operations": 558
+            },
+            "unsigned-send-command-results.json": {
+              "passed": true,
+              "programs": 309,
+              "operations": 1248
+            },
+            "transaction-history-command-results.json": {
+              "passed": true,
+              "programs": 484,
+              "operations": 1489
+            },
+            "txpow-search-command-results.json": {
+              "passed": true,
+              "programs": 680,
+              "operations": 2099
+            },
+            "scan-chain-results.json": {
+              "passed": true,
+              "programs": 320,
+              "operations": 2027
+            },
+            "burn-metrics-results.json": {
+              "passed": true,
+              "programs": 364,
+              "operations": 4361
+            },
+            "token-creation-results.json": {
+              "passed": true,
+              "programs": 335,
+              "operations": 1349
+            },
+            "multisig-results.json": {
+              "passed": true,
+              "programs": 340,
+              "operations": 1089
+            },
+            "native-node-startup-results.json": {
+              "passed": true,
+              "node_processes": 12
+            },
+            "minima-entry-results.json": {
+              "passed": true
+            },
+            "native-archive-startup-results.json": {
+              "passed": true,
+              "node_processes": 13
+            }
+          }
+        },
+        "sanitized": {
+          "suites": 23,
+          "passed": true,
+          "seconds": 2464.56,
+          "reports": {
+            "object-differential-results.json": {
+              "cases": 9464,
+              "passed": 9464
+            },
+            "tree-differential-results.json": {
+              "cases": 1027,
+              "passed": 1027
+            },
+            "consensus-differential-results.json": {
+              "cases": 2890,
+              "passed": 2890
+            },
+            "ram-differential-results.json": {
+              "cases": 315,
+              "passed": 315
+            },
+            "hashmap-differential-results.json": {
+              "cases": 135,
+              "passed": 135
+            },
+            "txndb-differential-results.json": {
+              "cases": 2503,
+              "passed": 2503
+            },
+            "archive-cache-differential-results.json": {
+              "cases": 734,
+              "passed": 734
+            },
+            "raw-archive-differential-results.json": {
+              "cases": 613,
+              "passed": 613
+            },
+            "nio-message-results.json": {
+              "passed": true,
+              "programs": 1918
+            },
+            "txpow-processor-results.json": {
+              "passed": true,
+              "programs": 384,
+              "operations": 1434
+            },
+            "transaction-check-command-results.json": {
+              "passed": true,
+              "programs": 396,
+              "operations": 1049
+            },
+            "transaction-mining-commands-results.json": {
+              "passed": true,
+              "programs": 207,
+              "operations": 699
+            },
+            "offline-send-commands-results.json": {
+              "passed": true,
+              "programs": 201,
+              "operations": 558
+            },
+            "unsigned-send-command-results.json": {
+              "passed": true,
+              "programs": 309,
+              "operations": 1248
+            },
+            "transaction-history-command-results.json": {
+              "passed": true,
+              "programs": 484,
+              "operations": 1489
+            },
+            "txpow-search-command-results.json": {
+              "passed": true,
+              "programs": 680,
+              "operations": 2099
+            },
+            "scan-chain-results.json": {
+              "passed": true,
+              "programs": 320,
+              "operations": 2027
+            },
+            "burn-metrics-results.json": {
+              "passed": true,
+              "programs": 364,
+              "operations": 4361
+            },
+            "token-creation-results.json": {
+              "passed": true,
+              "programs": 335,
+              "operations": 1349
+            },
+            "multisig-results.json": {
+              "passed": true,
+              "programs": 340,
+              "operations": 1089
+            },
+            "native-node-startup-results.json": {
+              "passed": true,
+              "node_processes": 12
+            },
+            "minima-entry-results.json": {
+              "passed": true
+            },
+            "native-archive-startup-results.json": {
+              "passed": true,
+              "node_processes": 13
+            }
+          }
+        }
+      },
+      "active_sessions": {},
+      "completed_sessions": {
+        "first_normal_build": {
+          "id": 72210,
+          "exit_code": 0
+        },
+        "fixture_build": {
+          "id": 34236,
+          "exit_code": 0
+        },
+        "initial_interface": {
+          "id": 37179,
+          "exit_code": 1,
+          "reason": "Case-counter shadowing; source/native observations matched."
+        },
+        "final_normal_build": {
+          "id": 29128,
+          "exit_code": 0
+        },
+        "final_sanitized_build": {
+          "id": 94215,
+          "exit_code": 0
+        },
+        "normal_interface": {
+          "id": 59930,
+          "exit_code": 0
+        },
+        "sanitized_interface": {
+          "id": 60532,
+          "exit_code": 0
+        },
+        "normal_regressions": {
+          "id": 21875,
+          "exit_code": 0
+        },
+        "sanitized_regressions": {
+          "id": 12173,
+          "exit_code": 0
+        }
+      },
+      "scope": "TxBody shared nullable fields and ID entries, retained list/body owners, source-ordered child reads and exact writer prefixes; actual TxPoW owned getters and affected consumers; selected self-replacing reader/JSON side effects.",
+      "open_work": [
+        "Known unsafe structural ID-list mutation during consumer callbacks; next-id-list-notes.md takes priority",
+        "21 remaining explicit Streamable implementing types plus inherited subclasses",
+        "Complete Java collection APIs/fail-fast iteration and structural mutation during iteration",
+        "Shared global Crypto.MAX_HASH/default constant object identity",
+        "Arbitrary custom stream, subclass, allocation and concurrent/reentrant paths beyond the two tested self-replacing reads",
+        "Complete TxPoW shared record, nullable value getters, in-place reads and hash failure semantics",
+        "46 absent counterparts and full native node parity"
+      ]
+    }
   }
 }

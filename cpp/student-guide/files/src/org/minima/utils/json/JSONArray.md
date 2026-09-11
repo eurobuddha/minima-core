@@ -51,3 +51,7 @@ uses direct Java and C++ containers, independent of the parser. The initial
 -1, 2 and 2147483647 on a two-element array. These now use the Java
 IndexOutOfBoundsException category. Iterator transitions and copy/child identity
 matched in that initial run; full regression validation is recorded separately.
+
+## Block-ID iteration follow-up
+
+TxBody now also reuses the generic storage behind JSONArray. The storage gained indexed set and clear for that caller; this does not add those methods to JSONArray's public native API. The existing JSON iterator comparison and concurrent shared-JSON tests remain regression checks for the reused implementation. See the [iteration lab](../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

@@ -1,0 +1,51 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+      Start   5: object_differential
+ 1/23 Test   #5: object_differential ........................   Passed   24.57 sec
+      Start  30: tree_differential
+ 2/23 Test  #30: tree_differential ..........................   Passed    7.20 sec
+      Start  41: consensus_differential
+ 3/23 Test  #41: consensus_differential .....................   Passed  145.47 sec
+      Start  43: ram_differential
+ 4/23 Test  #43: ram_differential ...........................   Passed   56.74 sec
+      Start  47: hashmap_differential
+ 5/23 Test  #47: hashmap_differential .......................   Passed   30.75 sec
+      Start  50: txndb_differential
+ 6/23 Test  #50: txndb_differential .........................   Passed    6.22 sec
+      Start  51: archive_cache_differential
+ 7/23 Test  #51: archive_cache_differential .................   Passed    9.17 sec
+      Start  55: raw_archive_differential
+ 8/23 Test  #55: raw_archive_differential ...................   Passed   36.08 sec
+      Start  78: nio_message_differential
+ 9/23 Test  #78: nio_message_differential ...................   Passed   31.41 sec
+      Start 109: txpow_processor_differential
+10/23 Test #109: txpow_processor_differential ...............   Passed   21.03 sec
+      Start 154: transaction_check_command_differential
+11/23 Test #154: transaction_check_command_differential .....   Passed   34.43 sec
+      Start 159: transaction_mining_commands_differential
+12/23 Test #159: transaction_mining_commands_differential ...   Passed   15.51 sec
+      Start 177: offline_send_commands_differential
+13/23 Test #177: offline_send_commands_differential .........   Passed   16.04 sec
+      Start 178: unsigned_send_command_differential
+14/23 Test #178: unsigned_send_command_differential .........   Passed   28.71 sec
+      Start 187: transaction_history_command_differential
+15/23 Test #187: transaction_history_command_differential ...   Passed    5.08 sec
+      Start 188: txpow_search_command_differential
+16/23 Test #188: txpow_search_command_differential ..........   Passed   10.73 sec
+      Start 219: scan_chain_differential
+17/23 Test #219: scan_chain_differential ....................   Passed   23.56 sec
+      Start 223: burn_metrics_differential
+18/23 Test #223: burn_metrics_differential ..................   Passed   21.85 sec
+      Start 224: token_creation_differential
+19/23 Test #224: token_creation_differential ................   Passed   50.25 sec
+      Start 225: multisig_workflow_differential
+20/23 Test #225: multisig_workflow_differential .............   Passed   27.64 sec
+      Start 231: native_node_startup
+21/23 Test #231: native_node_startup ........................   Passed   45.98 sec
+      Start 232: minima_entry_differential
+22/23 Test #232: minima_entry_differential ..................   Passed    5.03 sec
+      Start 239: native_archive_startup
+23/23 Test #239: native_archive_startup .....................   Passed   39.73 sec
+
+100% tests passed, 0 tests failed out of 23
+
+Total Test time (real) = 693.22 sec

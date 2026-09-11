@@ -1,3 +1,55 @@
+# Current checkpoint — checked block-ID iteration
+
+Branch/project/executable MinimaCoreC++. Base HEAD 712558b305a37bbf890b594fd2fab9e6ccd83325.
+Goal ACTIVE and incomplete: 411 counterparts (364 production + 47 original tests),
+46 absent (5 production + 41 original tests); all parity remains not_verified.
+Both configurations have 262 CTest entries; the full suite has NOT been run.
+
+The known TxBody vector-iterator invalidation is fixed by reusing JSONSequence's
+owned checked range. Set returns the prior element without advancing the structural
+counter; clear advances it even on an empty list. All actual block-ID consumers
+retain their original list and current ID across callback-driven mutation.
+
+Both full builds PASS. Both new ID suites PASS 1,400 comparisons (545 collection +
+855 actual TxPoWTreeNode consumer programs) and 42 independent boundary checks,
+with identical transcripts and empty runtime stderr. Both Streamable suites PASS
+7,623 comparisons / 95,664 assertions with the previous transcript unchanged.
+Existing JSON collection comparison and native shared-JSON stress PASS in both
+builds. All 23 affected NORMAL regressions PASS in 693.22s, including native node,
+entry and archive startup. These 23 were not repeated under sanitizer after the
+iterator change: the new sanitizer run directly exercises iterator/consumer and
+shared-storage ownership, while normal tests cover all affected integrations.
+
+The preceding ownership checkpoint's full 23-suite sanitized selection also
+finished PASS in 2464.56s against commit 712558b. Those reports were saved before
+rebuilding, separately in validation/streamable-txbody-work-in-progress, with source
+hashes read from that exact commit and the old normal reports preserved. Do not
+attribute that baseline run to the new checked-storage implementation.
+
+All recorded handles are terminal0; no build/test jobs remain. Current evidence:
+validation/txbody-id-iteration-work-in-progress. The new iteration lesson and affected
+file lessons are updated. Code review approves this incremental scope; full
+ArrayList/TxBody/TxPoW/node parity is still unverified. No MySQL containers are live.
+Native H2 AOT is reused and outside C++ sanitizer instrumentation.
+
+Unrelated Java SQL/JAR changes appeared during validation and were committed
+externally as f7f0e08. Preserve that commit. Six graphify-out files also changed and
+remain outside this C++ checkpoint; an observed copy was saved in an ignored
+local-backups snapshot. An earlier Java/JAR snapshot is retained too. The pinned
+upstream-study source used by the tests is unchanged. Backup helpers
+/tmp/minima-txbody-ids-backup.py and /tmp/minima-txbody-ids-verify-backup.py permit only
+these known unrelated dirty paths and verify every committed C++ checkpoint path.
+
+Next: Magic then TxHeader/TxPoW. Use the source-review notes in
+validation/streamable-txbody-work-in-progress/next-header-magic-notes.md; finish the
+relevant caller/test review before implementation. Preserve the existing weighted
+Magic arithmetic; implement eager checkSame, nullable owned fields, in-place reads
+and the source demo. TxHeader requires shared RLE elements and partial array writes
+before out-of-range errors. Other source requirements and all 46 absent counterparts
+remain in scope. No GitHub push was requested.
+
+---
+
 # Latest checkpoint — Transaction Streamable, shared caches and nullable IDs
 
 Base HEAD 9b2c4e14cf3a04cbdb8a9b44815c42f84fb9b9ec. Branch/project/executable MinimaCoreC++.

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "programs": 1918,
+  "packets": 4677,
+  "groups": {
+    "block-relay": 28,
+    "consensus": 720,
+    "difficulty-ratio": 5,
+    "greeting-repeat": 448,
+    "heavier-chain": 12,
+    "ibd-request": 4,
+    "id-flags": 8,
+    "mining": 4,
+    "mining-recent": 4,
+    "parent-scan": 4,
+    "payloads": 510,
+    "peer-json": 8,
+    "ping-ancestor": 4,
+    "pow-processing": 4,
+    "single-ping": 32,
+    "tree-scan": 16,
+    "truncated": 102,
+    "type-bytes": 5
+  },
+  "scope": "Actual pinned NIOMessage.run and native dispatcher. Real serialized payloads, client queues, traffic, IBD creation and chain helpers. Runtime DB/P2P/processor/miner receivers captured; no full node, database writes, socket or miner startup. Generic caught errors/logs are not compared. Includes script/signature/MMR/mempool decisions, difficulty-ratio rounding, parent/tree scan limits, and heavier-chain/rescue events. Exact live-clock boundaries, successful MegaMMR service binding, full runtime and log/notification parity remain pending."
+}

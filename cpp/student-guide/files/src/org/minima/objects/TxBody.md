@@ -26,7 +26,7 @@ TxBody now implements Streamable and reuses Transaction/Witness's shared record 
 
 ## What the tests tell us
 
-The body fixture fixes PRNG bytes so random initialization does not make comparisons nondeterministic, then compares full JSON and bytes. Body-containing TxPoW and TxBlock fixtures exercise nested composition, and generated read cases test incomplete/trailing payloads. Deterministic fixtures do not establish random-source quality or retained nested-reference parity. See [Java object oracle](../../../../../../support/ObjectOracle.java), [native object harness](../../../../../../support/objects.cpp) and [object driver](../../../../../../tools/object_differential.py). The inspected existing full-object report has 9,244 successful comparisons; this is a corpus total, not a count of this file’s tests. Generic ERROR normalization leaves exact exception types unproven.
+The body fixture fixes PRNG bytes so random initialization does not make comparisons nondeterministic, then compares full JSON and bytes. Body-containing TxPoW and TxBlock fixtures exercise nested composition, and generated read cases test incomplete/trailing payloads. Deterministic fixtures do not establish random-source quality or retained nested-reference parity. See [Java object oracle](../../../../../../support/ObjectOracle.java), [native object harness](../../../../../../support/objects.cpp) and [object driver](../../../../../../tools/object_differential.py). The inspected existing full-object report has 9,464 successful comparisons; this is a corpus total, not a count of this file’s tests. Generic ERROR normalization leaves exact exception types unproven.
 
 The [transaction-check lab](../../../../../../student-guide/new-tests/transaction-check.md) adds in-place body reads with retained field owners, aliases between main/burn fields, null fields, truncated data and repeated reads. It compares identity, consumed bytes, partial state and exception category. These tests are more specific than a fresh-object round trip.
 
@@ -45,3 +45,7 @@ Why must a test replace PRNG before comparing independently constructed Java and
 The file is a data container, not a proof-of-work or transaction verifier. The ownership lab tests nullable fields/entries, retained lists and bodies, partial readers, nested writer prefixes and selected reentrant/JSON behavior. Complete collection, subclass, custom-stream, allocation and concurrency behavior remains unproved. Source-map status is partial and parity not_verified.
 
 Pinned Java SHA-256: `30288d222f98694cd3cad1b6ff1a99a1e8b5ae4fe358948307ae22567c7f012e`. Mapping: [source-map.json](../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../REVIEW.md).
+
+## Block-ID iteration follow-up
+
+The ID list now reuses the existing checked JSONSequence storage. Reads retain their append order, and writes/JSON traverse an owned checked range. Indexed set is nonstructural; clear changes the iterator counter even on an empty list. See the [iteration lab](../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.

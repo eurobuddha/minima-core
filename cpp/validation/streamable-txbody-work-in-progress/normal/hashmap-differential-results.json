@@ -1,0 +1,6 @@
+{
+  "cases": 135,
+  "passed": 135,
+  "failures": [],
+  "scope": "HashMap ordering, collision trees, resize, lookup and deletion"
+}

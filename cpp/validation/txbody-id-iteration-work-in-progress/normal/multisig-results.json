@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "programs": 340,
+  "total_programs": 340,
+  "operations": 1089,
+  "sql_calls": 22269,
+  "failures": [],
+  "scope": "Actual multisig/multisigread and nested transaction commands, real MMR proofs/wallet/signatures, recursive temporary files, exact wire bytes except validated generated MiniString transaction-ID fields and clock filenames. Recording SQL and fixture chain do not prove durable storage or live node acceptance; full API/reference/concurrency parity unverified."
+}
