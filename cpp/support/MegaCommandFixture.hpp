@@ -13,6 +13,20 @@ inline Coin megaCoin(const json::JSONObject& row,int index){
 }
 inline auto megaList(const json::JSONObject& input,const std::string& key){std::shared_ptr<MegaMMRSyncData::DataList> result;if(input.get(key).isNull())return result;result=std::make_shared<MegaMMRSyncData::DataList>();for(const auto& value:megaArray(input,key).elements())result->push_back(value.isNull()?nullptr:std::make_shared<MiniData>(MiniData::fromHex(value.asString())));return result;}
 inline json::JSONObject megaFixture(const json::JSONObject& input,const std::shared_ptr<MinimaDB>& db){
+    if(input.getString("task")=="saved"){
+        json::JSONObject out;
+        MegaMMRBackup backup;MiniFile::loadObjectSlow(input.getString("path"),backup);
+        out.put("backupIBD",MiniData(backup.getIBD()->serialise()).to0xString());
+        auto details=commands::megammrsync::getMyDetails();
+        out.put("request",MiniData(NIOManager::createNIOMessage(NIOMessage::MSG_MEGAMMRSYNC_REQ,details).serialise()).to0xString());
+        auto current=NIOMessage::services.getCurrentMegaMMRIBD(details);
+        out.put("currentIBD",MiniData(current->getIBD()->serialise()).to0xString());
+        json::JSONArray proofs;for(const auto& proof:*current->getAllCoinProofs())proofs.add(MiniData(proof->serialise()).to0xString());out.put("proofs",proofs);
+        current->setPeersList(input.getString("peers"));
+        out.put("wire",MiniData(NIOManager::createNIOMessage(NIOMessage::MSG_MEGAMMRSYNC_RESP,*current).serialise()).to0xString());
+        out.put("weight",commands::megammr::checkMegaMMR(std::filesystem::path(input.getString("path"))).toDecimalString());
+        return out;
+    }
     using namespace json;JSONObject out;auto mega=db->getMegaMMR();mega->clear();int index=0;
     for(const auto& value:megaArray(input,"coins").elements()){auto coin=std::make_shared<Coin>(megaCoin(*std::get<std::shared_ptr<JSONObject>>(value.value),index++));mega->getMMR().addEntry(MMRData::CreateMMRDataLeafNode(*coin,coin->getAmount()));mega->getAllCoins().put(coin->getCoinID().to0xString(),coin);}
     mega->getMMR().setBlockTime(MiniNumber(input.getString("time")));std::shared_ptr<TxPoWTreeNode> first,last;int height=0;

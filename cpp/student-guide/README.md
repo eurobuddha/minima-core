@@ -87,3 +87,7 @@ The [seed derivation lab](new-tests/seed-random-command.md) teaches deterministi
 The [MegaMMR command lab](new-tests/mega-mmr-commands.md) explains mutating integrity
 checks, displayed versus transmitted wallet details, spent-coin suppression,
 peer-file replacement and payload-only network traffic.
+
+The [MegaMMR live-node lab](new-tests/mega-mmr-live-node.md) checks actual exports,
+import and loopback resync, then reopens the result with the other runtime and
+verifies the saved chain, coin proofs and wallet signing.

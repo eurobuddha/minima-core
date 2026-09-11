@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "node_processes": 10,
+  "exports": [
+    {
+      "runtime": "java",
+      "bytes": 903,
+      "sha256": "835441d4f68704d07f95117a6db1904c4ccf042b70c715a1699f93f4a84629a9",
+      "owned_proofs": 1
+    },
+    {
+      "runtime": "cpp",
+      "bytes": 903,
+      "sha256": "835441d4f68704d07f95117a6db1904c4ccf042b70c715a1699f93f4a84629a9",
+      "owned_proofs": 1
+    }
+  ],
+  "encodings": {
+    "java_cpp_identical": true,
+    "actual_owned_proofs": 1,
+    "default_native_callback": true,
+    "file_integrity_checked": true,
+    "mega_reply_bytes": 1069,
+    "ibd_sha256": "451d1f20def677f035fc8f3ef95076859e62fe9b21acae7692e6bbf34658601c"
+  },
+  "checks": [
+    {
+      "runtime": "java",
+      "mode": "import",
+      "writer_and_reopen": "cpp",
+      "keys": 8,
+      "retained_uses": 100,
+      "chain_coins_proofs_preserved": true,
+      "real_worker_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1,
+      "exact_request_frames": false,
+      "peers_saved_after_shutdown": false
+    },
+    {
+      "runtime": "java",
+      "mode": "resync",
+      "writer_and_reopen": "cpp",
+      "keys": 8,
+      "retained_uses": 100,
+      "chain_coins_proofs_preserved": true,
+      "real_worker_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1,
+      "exact_request_frames": true,
+      "peers_saved_after_shutdown": true
+    },
+    {
+      "runtime": "cpp",
+      "mode": "import",
+      "writer_and_reopen": "java",
+      "keys": 8,
+      "retained_uses": 100,
+      "chain_coins_proofs_preserved": true,
+      "real_worker_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1,
+      "exact_request_frames": false,
+      "peers_saved_after_shutdown": false
+    },
+    {
+      "runtime": "cpp",
+      "mode": "resync",
+      "writer_and_reopen": "java",
+      "keys": 8,
+      "retained_uses": 100,
+      "chain_coins_proofs_preserved": true,
+      "real_worker_shutdown": true,
+      "signature_valid": true,
+      "altered_data_rejected": true,
+      "signing_use_increment": 1,
+      "exact_request_frames": true,
+      "peers_saved_after_shutdown": true
+    }
+  ],
+  "failures": [],
+  "scope": "Actual pinned Java/native solo nodes with MegaMMR and real H2. Identical exports, saved-data default proof-serving callback and file integrity helper; import and loopback resync in both runtimes, exact frames and saved peers, opposite-runtime chain/coin/proof/key reopen and signing. Genesis only, existing-wallet branch: no pruned-coin recovery, new-height advancement, cascades, full inbound network serving, phrase/backup resync, delayed timeouts or full parity claim."
+}

@@ -1,3 +1,45 @@
+# Live MegaMMR checkpoint — full port unfinished
+
+## Code Review
+
+### Summary
+
+Reviewed the full new native_mega_startup driver, both saved-data fixture branches,
+CMake registration, reused lifecycle/socket harnesses, source command flows and
+codec/persistence dependencies, provenance, reports and student explanations.
+No production code changed. The fixture serves actual saved-chain coin proofs
+through Main's default callback; actual import/resync nodes run real workers.
+
+### Findings
+
+No blocking finding remains in these changes. Saved input comes from successful
+actual-node exports. The new fixture branch runs before synthetic seeding and
+operates on database copies. Java/native replies and file bytes agree, and the
+integration independently compares persisted proofs and performs signing after
+opposite-runtime reopen. Proof count alone is not treated as proof of import.
+Controlled response peers are checked after command-driven shutdown and before
+reopen. Generated private wallet data is temporary and excluded from saved reports.
+
+Both complete builds pass. Four workflows/ten actual node processes pass per build,
+normal29.52seconds, ASAN/UBSAN117.13seconds. Both affected regression suites pass:
+archive509cases and Mega579command/helper+10loopback, normal119.64seconds,
+sanitized136.17seconds. All457guide links/statuses audited. Allhandles terminal.
+Full234CTest suite not run; H2 AOT outside C++ sanitizer instrumentation.
+
+The chain is genesis only and the owned proof is still available from its tree.
+This does not validate pruned-coin recovery, later heights/cascades, actual inbound
+NIO serving, phrase/backup Mega resync or failures after reset. Successful
+checkMegaMMR(file) is distinct from the integrity command's later cascade report.
+Full existing API and production parity remain unverified.
+
+### Verdict
+
+Approve saving this tested integration checkpoint. Full port remains incomplete:
+385counterparts (341production+44mappedtests),72absent. Evidence:
+validation/mega-runtime-work-in-progress; pre-test lab mega-mmr-live-node.md.
+
+---
+
 # MegaMMR commands checkpoint — full port unfinished
 
 ## Code Review

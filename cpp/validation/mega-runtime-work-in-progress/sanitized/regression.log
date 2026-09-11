@@ -1,0 +1,9 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 227: archive_command_differential
+1/2 Test #227: archive_command_differential .....   Passed   71.99 sec
+    Start 233: mega_commands_differential
+2/2 Test #233: mega_commands_differential .......   Passed   64.18 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) = 136.17 sec

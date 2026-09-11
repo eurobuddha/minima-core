@@ -54,6 +54,20 @@ public class ArchiveCommandOracle {
     }
     static ArrayList<MiniData> megaList(JSONObject input,String key){if(input.get(key)==null)return null;var list=new ArrayList<MiniData>();for(Object value:(JSONArray)input.get(key))list.add(value==null?null:new MiniData((String)value));return list;}
     static JSONObject megaFixture(JSONObject input,MinimaDB db)throws Exception{
+        if(input.getString("task").equals("saved")){
+            var out=new JSONObject();
+            var backup=new org.minima.system.commands.backup.mmrsync.MegaMMRBackup();org.minima.utils.MiniFile.loadObjectSlow(new File(input.getString("path")),backup);
+            out.put("backupIBD",MiniData.getMiniDataVersion(backup.getIBD()).to0xString());
+            var details=org.minima.system.commands.backup.mmrsync.megammrsync.getMyDetails();
+            out.put("request",MiniData.getMiniDataVersion(org.minima.system.network.minima.NIOManager.createNIOMessage(org.minima.system.network.minima.NIOMessage.MSG_MEGAMMRSYNC_REQ,details)).to0xString());
+            var current=org.minima.system.commands.backup.mmrsync.megammrsync.getCurrentMegaMMRIBD(details);
+            out.put("currentIBD",MiniData.getMiniDataVersion(current.getIBD()).to0xString());
+            var proofs=new JSONArray();for(var proof:current.getAllCoinProofs())proofs.add(MiniData.getMiniDataVersion(proof).to0xString());out.put("proofs",proofs);
+            current.setPeersList(input.getString("peers"));
+            out.put("wire",MiniData.getMiniDataVersion(org.minima.system.network.minima.NIOManager.createNIOMessage(org.minima.system.network.minima.NIOMessage.MSG_MEGAMMRSYNC_RESP,current)).to0xString());
+            out.put("weight",org.minima.system.commands.backup.mmrsync.megammr.checkMegaMMR(new File(input.getString("path"))).toString());
+            return out;
+        }
         var out=new JSONObject();var mega=db.getMegaMMR();mega.clear();int index=0;
         for(Object value:(JSONArray)input.get("coins")){var coin=megaCoin((JSONObject)value,index++);mega.getMMR().addEntry(org.minima.objects.mmr.MMRData.CreateMMRDataLeafNode(coin,coin.getAmount()));mega.getAllCoins().put(coin.getCoinID().to0xString(),coin);}
         mega.getMMR().setBlockTime(new MiniNumber(input.getString("time")));

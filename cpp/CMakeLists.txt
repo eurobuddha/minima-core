@@ -1315,4 +1315,6 @@ target_sources(minima_file_port PRIVATE
 if(TARGET minima_native_h2)
     add_test(NAME mega_commands_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/mega_commands_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
     set_tests_properties(mega_commands_differential PROPERTIES TIMEOUT 1800)
+    add_test(NAME native_mega_startup COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/native_mega_startup.py --build ${CMAKE_CURRENT_BINARY_DIR})
+    set_tests_properties(native_mega_startup PROPERTIES TIMEOUT 2400)
 endif()

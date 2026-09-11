@@ -3481,5 +3481,37 @@
       "support/ArchiveCommandOracle.java": "728a5273d6f85ff9aaed33923a506a4d1b6b0dddcb1f0fa9c12a01d9013b0444",
       "tools/mega_commands_differential.py": "9d96b511b8691923be80a7b241f912cd35d73254424304bb430236a08917729a"
     }
+  },
+  "mega_runtime_checkpoint": {
+    "previous_commit": "7c3d09c5b6ed2b65903d4ede85cde8dac41125bf",
+    "pinned_sources": [
+      "upstream-study/src/org/minima/system/commands/backup/mmrsync/megammr.java",
+      "upstream-study/src/org/minima/system/commands/backup/mmrsync/megammrsync.java"
+    ],
+    "reuse": [
+      "tools/native_restore_startup.py: Node, ready, key_state, chain",
+      "tools/native_archive_startup.py: coins",
+      "tools/peers_checker_differential.py: Runner, Responder",
+      "support/ArchiveCommandOracle.java and support/MegaCommandFixture.hpp: saved-state fixture"
+    ],
+    "sibling_inspected": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/mmr/MegaMMR.hpp",
+    "sibling_incompatibility": "Leaf/index snapshot schema does not match pinned MegaMMRBackup; current native implementation already preserves pinned format.",
+    "adaptations": [
+      "Add saved-data fixture branch before synthetic seeding, invoking default callback and file integrity helper",
+      "Run actual node exports/import/resync and cross-runtime reopen/signing using existing lifecycle harness"
+    ],
+    "production_changes": false,
+    "validation": "validation/mega-runtime-work-in-progress/progress.json",
+    "parity": "not_verified",
+    "hashes": {
+      "support/MegaCommandFixture.hpp": "a6dc3b2716989b6a49792dd5ea9a1fcffa1e930242309c8405e1f0d35de009d5",
+      "support/ArchiveCommandOracle.java": "8ec39c49001fedf0e2f9f8e4346ca3d7495e149616fd1d53ea54fb8fbacd8f19",
+      "tools/native_mega_startup.py": "849b79cec771154057a206176234c90541fc58d93fc2f5b8330be68ef03dee74",
+      "tools/native_restore_startup.py": "a74910c7ef6cb6cb63cc8e42c781ca761ee0fbe7d6cc8cc9a5b1ebfaca00b1ae",
+      "tools/native_archive_startup.py": "df7a0abf9e81e8c39a1e0edc03bb512a230e6782c3eec2451b66885a0fe34043",
+      "tools/peers_checker_differential.py": "8abbfed1c04f9cd81ba3cbaf80ebc51de7ba963075b11f199538c429641bab2a",
+      "src/org/minima/system/commands/backup/mmrsync/megammr.cpp": "e8f66eb65947e196ab99f839c1b537624b649e9b1492c824c7868654bd56b5fb",
+      "src/org/minima/system/commands/backup/mmrsync/megammrsync.cpp": "f600e1e79ac1cfa06143b64ed292a200c598c3fcffa0d49e1c0fc40fef5701f9"
+    }
   }
 }

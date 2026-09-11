@@ -12,10 +12,15 @@ as partial until their complete API and behavior have been reviewed.
 The mapped `megammr` and `megammrsync` classes now compile and are registered.
 Main supplies the MegaMMR serving callback by default. Both builds pass 579
 command/helper comparisons and ten loopback cases, covering export files, mutating
-integrity checks, wallet detail selection, coin search and peer updates. Live
-import/resync and complete proof recovery remain unverified. See the
+integrity checks, wallet detail selection, coin search and peer updates. Both
+builds also pass four live import/resync workflows across ten node processes each:
+identical Java/C++ backups, real genesis coin proofs, exact loopback requests,
+saved peers, opposite-runtime reopen and wallet signing. Pruned-coin recovery,
+chain advancement and complete parity remain unverified. See the
 [student lab](student-guide/new-tests/mega-mmr-commands.md) and
-[saved evidence](validation/mega-commands-work-in-progress).
+[command evidence](validation/mega-commands-work-in-progress), plus the
+[live-node lab](student-guide/new-tests/mega-mmr-live-node.md) and
+[live evidence](validation/mega-runtime-work-in-progress).
 
 The mapped `restoresync` class now compiles, including its remote synchronization
 method. It preserves the source's six-section restore, wallet close/reopen order,

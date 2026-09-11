@@ -1,3 +1,66 @@
+# Current work — live MegaMMR recovery validated
+
+MinimaCoreC++ branch/project/executable. Full 457-file goal active/incomplete.
+This checkpoint changes only fixtures, integration driver, CMake and documentation;
+production code did not need a fix. Previous HEAD 7c3d09c; git log and local-backups
+identify the final checkpoint and verified recovery bundle. No GitHub push.
+
+Both full builds pass. New native_mega_startup CTest passes in both configurations:
+29.52 seconds normal, 117.13 seconds ASAN/UBSAN. Four workflows and ten actual node
+processes each. Exact 903-byte Java/C++ MegaMMR exports per run, one actual owned
+genesis coin proof, default native proof-serving callback and file-overload integrity.
+All import/resync workflows preserve chain/coins/proofs and eight wallet keys on
+opposite-runtime reopen: destination uses100 retained, valid signing and changed
+message rejected, only signer reaches101. No new mapped counterpart:385=341prod+44
+tests;72absent=28prod+44tests. All457lessons authored/audited, allparitynot_verified.
+Both affected regressions PASS each: archive509 and Mega579+10loopback, normal
+119.64seconds/sanitized136.17seconds. Allbuild/testhandles terminal.
+234CTest entries; full suite NOT run. H2 AOT outside C++ sanitizer instrumentation.
+
+New tools/native_mega_startup.py reuses Node/ready/key_state/chain, coins, Runner and
+Responder. Both real binaries use -megammr and existing solo/loopback startup args.
+Java generates baseline/eightkeysuses7, exportsbackup+coinproof; C++ reopensbaseline
+and identicalexport/proofs. Two oppositewriter imports and two loopback resyncs;
+each target startsbaselineuses100, exits fromcommand, reopensoppositeruntime/signs.
+Resync sends one archivepreflight-1 then exactwalletSyncData; controlled response
+contains real savedchain/proof plus two loopbackpeers. Peerfile parsed as framed
+MiniString/JSON after shutdown; exact saved peers checked before reopen.
+
+New task=saved in both archive Mega fixtures returns before syntheticcoin/tree
+seeding. Loads actualexport for IBD, calls getMyDetails then defaultnative
+NIOMessage callback (Java statichelper), returns currentIBD/proofwires and framed
+request/reply, replaces only response peertext with fixtureinput. Calls real
+checkMegaMMR(file) and compares totalweight with actualchain. Both source codecs
+agree; servedproof matches actualnode coinexport. The fixtureMain is still not
+an actual inboundNIO dispatcher; live importing/resync nodes have realMainworkers.
+Savedfixture uses copies of baseline DB; generatedwallet private data never saved
+in evidence. Outputs contain hashes/counts/assertionflags; temporarynodes deleted.
+
+Evidence validation/mega-runtime-work-in-progress. Reports distinguish genesis
+from prunedcoin recovery; no new-heightadvancement, cascade, fullinboundnetwork,
+phrase/backup Mega resync, failedpostresetrequests, delayed180s timeouts, indefinite
+poll failures or fullparity claim. Each run's randomwallet/genesis differs, so
+normal/sanitized export hashes differ while runtimepairs match within eachrun.
+
+NEXT: continue the28absentproductioncounterparts, e.g. commands/base/benchmark,
+commands/base/systemcheck and their dependencies, or fullbackup/mysql/mysqlcoins.
+Initial next-source inspection fully read pinned benchmark.java168lines,
+systemcheck.java133lines and jnifunctions.java25lines. benchmark depends on JNI
+methods from a separately loaded native library, so do not invent replacements.
+systemcheck can reuse existing Main/processors/TimerProcessor/MinimaDB diagnostics;
+MessageProcessor has getLastMessage/getName but printAllMessages still needs
+inspection (possibly inherited). Preserve source TxPowProcesssor and
+senpollmanager typos. No next-feature edits made.
+Read complete pinned candidates, existingcallers/tests and siblingprovenparts,
+report reuse before edits, write pre-teststudentlab, preserveexactsourcebehavior.
+Do not let remaining small/runtime tests substitute for finishing absentclasses.
+Future MegaMMR work also includes phrase/backupresync branches and failureeffects,
+nonemptycascade integrityreport and standalone main, prunedcoinproofs, laterheights,
+resourcefailure/partialserialization boundaries and concurrency. Existingpublic
+APIs,44missingoriginaltests,mining/networkfullnodeparity allremainrequired.
+
+---
+
 # Current work — MegaMMR command classes compiled and validated
 
 MinimaCoreC++ branch/project/executable. Full457-file goal active/incomplete.

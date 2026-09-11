@@ -48,13 +48,25 @@ the unrelated total counters remain zero. The current-IBD fixture invokes Main's
 new default callback rather than installing a successful response stub.
 
 Both builds pass all 579 combined command/helper comparisons and ten network cases.
-This does not establish successful live resync or recovery of usable wallet proofs.
+Those command fixtures alone do not establish successful live resync.
 The request helper keeps the real 180-second timeout configuration, but delayed
 read/connect timeout behavior has not been measured by these immediate replies.
 
 ## Limits
 
-Only controlled public fixture data was sent to loopback, and only temporary peer files changed. Successful live import/resync, phrase/file precedence effects, nonempty proof recovery, indefinite processor waits and partial failures still need validation. The returned coins count is received proof count, not verified successful imports. Reset can already have occurred before the substantive synchronization request fails.
+The [live-node lab](../../../../../../../../../student-guide/new-tests/mega-mmr-live-node.md)
+uses actual Java/native programs and a saved genesis wallet. The production helper
+serves its real owned coin proof, with identical Java/C++ bytes. Both resync runtimes
+send the exact archive preflight and wallet-detail frames, receive that proof with
+the real chain, shut down, and save the supplied loopback peers. Opposite-runtime
+reopen preserves chain, coin proof and eight keys at 100 uses; signing works,
+modified data fails, and only the signing key reaches 101.
+
+This covers the existing-wallet branch and a genesis coin still present in the
+tree. Phrase/file precedence, pruned-coin recovery, new heights, indefinite processor
+waits and partial failures still need validation. The returned coins count is
+received proof count, not verified successful imports. Reset can already have
+occurred before the substantive synchronization request fails.
 
 ## Check your understanding
 

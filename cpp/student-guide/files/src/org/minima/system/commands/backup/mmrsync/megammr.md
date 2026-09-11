@@ -52,7 +52,19 @@ other responses, mutation and file contents remain compared.
 
 ## Limits
 
-No backup was imported into a running node in this command fixture. Successful file-overload integrity reports, the demonstration main, empty-MMR failure categories, and exact buffered partial-write boundaries still need validation. A successful file decode does not establish integrity, and a finished import response does not prove every coinimport succeeded. The integrity method checks all coins present in its map; that alone is not proof the map omitted none.
+The separate [live-node lab](../../../../../../../../../student-guide/new-tests/mega-mmr-live-node.md)
+and [driver](../../../../../../../../../tools/native_mega_startup.py) use actual saved
+genesis data. Java and C++ export identical 903-byte backups. The file-overload
+integrity helper succeeds, and both runtimes import the other's backup, shut down,
+and preserve the owned coin proof and all eight wallet keys on opposite-runtime
+reopen. The test sets key uses to 100 before import; signing afterward changes only
+one key to 101 and a modified message fails verification.
+
+The demonstration main, a full integrity report with a nonempty cascade,
+empty-MMR failure categories, and exact buffered partial-write boundaries still
+need validation. The live test covers genesis, not recovery of pruned coins.
+A finished import response does not prove every coinimport succeeded. The integrity
+helper checks all coins present in its map; that alone is not proof the map omitted none.
 
 ## Check your understanding
 

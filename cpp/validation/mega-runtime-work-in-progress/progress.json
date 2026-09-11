@@ -1,0 +1,45 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "7c3d09c5b6ed2b65903d4ede85cde8dac41125bf",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "Actual-node MegaMMR import and existing-wallet loopback resync verified with saved genesis and owned coin proofs in both runtimes",
+  "production_changes": false,
+  "counterparts": 385,
+  "production_counterparts": 341,
+  "mapped_tests": 44,
+  "absent": 72,
+  "ctest_entries": 234,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "workflows_per_build": 4,
+  "actual_node_processes_per_build": 10,
+  "backup_bytes": 903,
+  "owned_coin_proofs": 1,
+  "mega_response_frame_bytes": 1069,
+  "destination_key_uses": 100,
+  "signing_key_uses": 101,
+  "normal_live_ctest_seconds": 29.52,
+  "sanitized_live_ctest_seconds": 117.13,
+  "normal_regression_ctest_seconds": 119.64,
+  "sanitized_regression_ctest_seconds": 136.17,
+  "regressions": [
+    "archive_command_differential: 509 cases",
+    "mega_commands_differential: 579 command/helper and 10 loopback cases"
+  ],
+  "student_guides": 457,
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "28 absent production and 44 absent mapped source tests",
+    "New-height advancement, cascades, pruned coin proofs and actual inbound MegaMMR network serving",
+    "Phrase/backup Mega resync, post-reset failures, indefinite polling, delayed socket timeouts",
+    "Full integrity report with nonempty cascade, standalone main, exact partial serialization and concurrent lock boundaries",
+    "Full existing counterpart API/mining/network parity"
+  ]
+}
