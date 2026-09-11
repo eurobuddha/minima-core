@@ -1,3 +1,47 @@
+# reset checkpoint — full port unfinished
+
+## Code Review
+
+### Summary
+
+Reviewed pinned reset.java, the native command/header, CommandResult helpers and
+runner, Main.restoreReadyForSync and database reopening, the extended Java/native
+restore fixture, differential driver, registry/CMake wiring, mappings and lessons.
+The native body preserves key-gate order, text construction, nested status handling
+and reopening order. No blocking finding remains for this partial-port checkpoint.
+
+### Findings and checks
+
+- Child command text remains source-exact: phrase is quoted, paths/passwords and
+  keys/keyuses are appended as raw strings. Parser-sensitive inputs are tested.
+- The source checks restore status but returns archive failure inside outer success.
+  The test independently asserts this behavior, including after real H2 restoration.
+- CommandResult.first/status supplies the existing first-result and Boolean checks.
+  Malformed statuses exercise the actual runner instead of bypassing its checks.
+- Main.restoreReadyForSync is virtual to preserve Java's override boundary. Its
+  production implementation is unchanged; four cases per build call the real body,
+  create a processor and replace/reopen H2 stores after actual backup restoration.
+- Child probes are scoped to fixtures and the registry is restored after requests.
+  Test-owned workers and old/new SQL connections are closed after observations.
+  The production registry contains no fake archive implementation.
+
+### Validation and limits
+
+Both complete builds pass. Reset passes224cases per build, including4real H2
+restore/reopen cases from both Java/native backups. Six affected regression suites
+pass in normal21.36s and ASAN/UBSAN52.71s: runner, runner-errors, wallet-wrappers,
+main-runtime, launcher and restore. The native H2 AOT dependency is not instrumented
+by C++ sanitizers. Full226CTest run was not performed. Direct NPE/class-cast prose
+is normalized and embedded Error restoring JSON is compared structurally.
+Archive import is recorded in this fixture and remains unported. Complete reset,
+public-network synchronization, concurrent mutation and full API parity are open.
+
+### Verdict
+
+Approve this local incomplete-port checkpoint; full457-file parity is unverified.
+
+---
+
 # restore checkpoint — full port unfinished
 
 ## Code Review

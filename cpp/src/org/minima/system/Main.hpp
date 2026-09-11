@@ -51,7 +51,7 @@ public:
     std::optional<std::string> getStartupErrorMsg() const;
     void restoreReady() override{restoreReady(true);}
     virtual void restoreReady(bool shutdownMDS);
-    void restoreReadyForSync();
+    virtual void restoreReadyForSync();
     void archiveResetReady(bool resetWallet,bool resetCascadeTree=true);
     void shutdownFinalProcs(bool shutdownMDS=true);
     void resetMemFull();

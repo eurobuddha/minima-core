@@ -1,0 +1,17 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 224: restore_differential
+    Start 221: minima_entry_differential
+1/6 Test #221: minima_entry_differential ............   Passed    4.72 sec
+    Start 171: wallet_wrappers_differential
+2/6 Test #171: wallet_wrappers_differential .........   Passed    9.08 sec
+    Start 192: main_runtime_differential
+3/6 Test #192: main_runtime_differential ............   Passed    3.27 sec
+    Start 128: command_runner_errors_differential
+4/6 Test #224: restore_differential .................   Passed   18.98 sec
+    Start  52: command_runner_differential
+5/6 Test #128: command_runner_errors_differential ...   Passed    3.73 sec
+6/6 Test  #52: command_runner_differential ..........   Passed    2.38 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =  21.36 sec

@@ -1,3 +1,57 @@
+# Current work — reset wrapper and real restore/reopen checkpoint
+
+Project/branch/executable MinimaCoreC++. Previous goal turn made verified progress.
+Full457-file port active/incomplete. reset.cpp/hpp compiles and is registered.
+Pinned reset.java fully mapped: key gate, archivefile/action, three branches,
+exact unquoted paths/password and quoted phrase, optional keys/keyuses text,
+first nested result, restore-status check, restoreReadyForSync and nested replies.
+Reuses CommandResult.first/status and actual CommandRunner. No fake production
+archive; archive remains absent. Main.restoreReadyForSync now virtual, body unchanged.
+
+Extended existing restore.cpp/RestoreOracle fixtures with scoped child prototypes
+and optional real restore/readiness. Both builds PASS224resetcases each, including
+four real-H2 restore/reopen cases using Java/native backups and actual new processor
+plus replaced SQL stores. Key uses5→261,100→356;6relevant history rows, preferences,
+files, nested calls/params/caller, readiness and failure effects compared. Direct
+NPE/class-cast prose normalized; embedded Error restoring JSON compared structurally.
+All test-owned workers/old/new connections closed after observation.
+
+Both full builds PASS. Six affected regression suites PASS perbuild: runner,
+runner-errors,wallet-wrappers,main-runtime,launcher,restore.21.36s normal/52.71s
+sanitized. Full226CTest suite NOT run. NativeH2 AOT not C++ sanitizer instrumented.
+All457guides present; map381=337production+44tests;76absent=32production+44tests.
+All parity not_verified. Evidence:validation/reset-work-in-progress. Final audit
+and mapping check pass. All build/test handles terminal. PriorHEADf2be36d; git log
+and local-backups manifests identify final commit/recoverybundle. No GitHub push.
+
+NEXT: archive.java now fully read (all source through sendArchiveReq/end). It is
+needed by reset and restoresync. It contains integrity, resync, export/exportraw,
+importold/import(H2 or .dat)/importraw, inspectraw/inspect/addresscheck, static
+NotifyListener and two sendArchiveReq overloads. Use current full source, existing
+ArchiveManager/RawArchiveInput/IBD/TxPoWProcessor/H2/MiniFile/GzipOutput/network
+adapters. All methods/branches must be mapped. Not merely an import-only command.
+Inspect native candidate dependencies/callers/tests and sibling search before
+implementation; student lab before tests. No archive implementation edits yet.
+
+Important source quirks: static H2_TEMPARCHIVE/STATIC_TEMPARCHIVE/STATIC_RAW persist
+across calls; no outer finally cleanup. Raw selection is case-sensitive .dat suffix.
+import recursively dispatches archive resync and nests failure without checking.
+resync preflights connection, resets wallet/chain, applies cascade, submits IBD,
+waits for exact endblock and resets memory every10 batches. importraw has a different
+20batch wait/reset and no final wait before shutdown. exportraw writes at least one
+available block even with maxexport<=0 and declares source-computed record total.
+inspect deletes archiverestore before testing file existence. addresscheck scans
+archive ascending then current tree descending. sendArchiveReq retries3,10second
+connect/read/retry delay; counts payload bytes, ignores response type before IBD
+parsing; catches ordinary exceptions, retry sleep ignores InterruptedException.
+
+restoresync.java also read through its end: restore6sections then wallet.saveDB,
+restoreReadyForSync, age/host decision, adjustablekeyuses(read but absent validparams),
+performResync uses archive helpers, 128parent start, memorythreshold reset every5
+batches. Keep distinct source behavior. Re-read exact relevant sections as needed.
+
+---
+
 # Current work — restore validated and saved as a local checkpoint
 
 Project/branch/executable MinimaCoreC++. Full 457-file native port remains active.

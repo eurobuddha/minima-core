@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/reset.java) · `src/org/minima/system/commands/backup/reset.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/reset.java) · [C++ counterpart](../../../../../../../../src/org/minima/system/commands/backup/reset.cpp)
 
 ## Purpose
 
@@ -19,22 +19,54 @@ reset sequences archive import and optional wallet restore commands. It returns 
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse restore/archive and CommandRunner. Preserve exact quoting and status handling; this wrapper coordinates existing actions rather than implementing file decoding.
+The native body preserves the source sequence and reuses CommandResult.first/status,
+CommandRunner, vault's key gate and Main.restoreReadyForSync. The helper selects the
+first nested result exactly as the Java code does. Status unboxing preserves null
+and class-cast failures. Source help, valid parameters and fresh factory are mapped.
+Main.restoreReadyForSync is now virtual to match Java's override boundary; its
+processor creation and database reopening body is unchanged.
+
+Paths, passwords and numeric-looking strings are concatenated without new escaping.
+Only the seedsync phrase is quoted. As a result, spaces or semicolons can alter how
+the actual runner parses the nested command. Preserving that behavior is part of
+this port; the wrapper does not validate the archive file itself.
 
 ## Understanding the tests
 
-The runner fixture checks reset’s name/permission category only. Proposed tests record nested text and order, failure before/after restore, first-array-result handling, spaces/quotes in paths and phrases, and outer status when chainsync fails. Assert restoreReadyForSync occurs only after a successful restore result.
+The [pre-test lab](../../../../../../../../student-guide/new-tests/reset.md) explains
+what the fixture observes. The reused
+[Java oracle](../../../../../../../../support/RestoreOracle.java) and
+[native fixture](../../../../../../../../support/restore.cpp) install scoped archive
+and restore probes in the actual runner. They record complete child text, parsed
+parameters, caller ID and readiness order. They restore the original registry after
+each request, so a fake archive command is never part of the production registry.
 
-- [Runner fixture using selected fake commands](../../../../../../../../support/CommandRunnerOracle.java)
-- [Native runner fixture](../../../../../../../../support/command_runner.cpp)
-- [Runner-only dispatch/permission coverage](../../../../../../../../tools/command_runner_differential.py)
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+The [driver](../../../../../../../../tools/reset_differential.py) covers all actions,
+required/optional parameters, key-gate ordering, null and wrong types, Unicode,
+spaces/quotes/semicolons, nested failures, malformed statuses, metadata/factory and
+admin permission. It compares complete replies and file/store observations. Direct
+NPE/class-cast prose is normalized. Embedded Error restoring JSON is parsed and
+compared structurally, retaining all keys and values.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Four integration cases execute the actual restore and Main.restoreReadyForSync,
+using both Java- and C++-generated backups and real H2. They require wallet uses
+5→261 and 100→356, six relevant history rows, source preferences, a newly created
+processor and replaced/reopened wallet/archive/history stores. They include a
+failed archive result after successful restore. Test-owned workers and both old
+and new SQL connections are closed after observations.
+
+The archive probe returns a controlled result. These cases establish reset's
+control flow and restore/reopen integration; archive import is still unported.
+See [validation](../../../../../../../../validation/reset-work-in-progress) for
+final build/test counts and coverage limits. Both normal and ASAN/UBSAN comparisons
+pass 224 cases, including all four real restore/reopen cases.
 
 ## Limits
 
-There is no rollback if archive import fails after the wallet has been restored. No reset, deletion or nested command was executed for the lesson.
+There is no rollback if archive import fails after the wallet has been restored.
+Archive import, complete reset/chain synchronization, concurrent mutation and full
+public API parity remain unverified. All filesystem mutations in these tests occur
+in isolated fixture directories.
 
 ## Check your understanding
 

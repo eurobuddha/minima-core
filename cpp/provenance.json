@@ -3222,5 +3222,34 @@
     ],
     "validation": "validation/restore-work-in-progress/progress.json",
     "parity": "not_verified"
+  },
+  "reset_checkpoint": {
+    "source": "upstream-study/src/org/minima/system/commands/backup/reset.java",
+    "source_sha256": "645ca7ebbb13ac649ad21330d618ac0705536a3c71c54a69ffc97544b5d4f6d5",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "reused_inspected": [
+      "src/support/CommandResult.hpp first/status",
+      "src/org/minima/system/commands/CommandRunner.cpp",
+      "src/org/minima/system/commands/backup/vault.cpp checkAllKeysCreated",
+      "src/org/minima/system/commands/backup/restore.cpp",
+      "src/org/minima/system/Main.cpp restoreReadyForSync/newProcessor",
+      "src/org/minima/database/MinimaDB.cpp loadDBsForRestoreSync",
+      "support/restore.cpp",
+      "support/RestoreOracle.java",
+      "support/MainFixture.hpp",
+      "support/wallet_wrappers.cpp scoped registry",
+      "support/WalletWrappersOracle.java scoped registry",
+      "tools/restore_differential.py snapshot",
+      "tools/peers_checker_differential.py Runner"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp: no reset/archive/restore implementation outside unrelated vendored SQLite APIs",
+    "adaptations": [
+      "Mapped pinned reset body, exact help/valid parameters and fresh factory",
+      "Main.restoreReadyForSync virtual; production implementation unchanged",
+      "Existing real-H2 restore fixture extended with scoped child probes and optional real restore/sync-readiness calls",
+      "Actual parser retains unquoted path/password and quoted phrase behavior; no added rollback or archive status propagation"
+    ],
+    "validation": "validation/reset-work-in-progress/progress.json",
+    "parity": "not_verified"
   }
 }

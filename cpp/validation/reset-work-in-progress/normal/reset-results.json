@@ -1,0 +1,1800 @@
+{
+  "passed": true,
+  "cases": 224,
+  "real_restore_reopen_cases": 4,
+  "observations": [
+    {
+      "case": 0,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 1,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 2,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 3,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 4,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 5,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 6,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 7,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 8,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 9,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 10,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 11,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 12,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 13,
+      "ready_for_sync": false,
+      "children": [
+        "archive",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 14,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 15,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 16,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 17,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 18,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 19,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 20,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 21,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 22,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 23,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 24,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 25,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 26,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 27,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 28,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 29,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 30,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 31,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 32,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 33,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 34,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 35,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 36,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 37,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 38,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 39,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 40,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 41,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 42,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 43,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 44,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 45,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 46,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 47,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 48,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 49,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 50,
+      "ready_for_sync": false,
+      "children": [
+        "archive",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 51,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 52,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 53,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 54,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 55,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 56,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 57,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 58,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 59,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 60,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 61,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 62,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 63,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 64,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 65,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 66,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 67,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 68,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 69,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 70,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 71,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 72,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 73,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 74,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 75,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 76,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 77,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 78,
+      "ready_for_sync": false,
+      "children": [
+        "archive",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 79,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 80,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 81,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 82,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 83,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 84,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 85,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 86,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 87,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 88,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 89,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 90,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 91,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 92,
+      "ready_for_sync": false,
+      "children": [
+        "archive",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 93,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 94,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 95,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 96,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 97,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 98,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 99,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 100,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 101,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 102,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 103,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 104,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 105,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 106,
+      "ready_for_sync": false,
+      "children": [
+        "archive",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 107,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 108,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 109,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 110,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 111,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 112,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 113,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 114,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 115,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 116,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 117,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 118,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 119,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 120,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 121,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 122,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 123,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 124,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 125,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 126,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 127,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 128,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 129,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 130,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 131,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 132,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 133,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 134,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 135,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 136,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 137,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 138,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 139,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 140,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 141,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 142,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 143,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 144,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 145,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 146,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 147,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 148,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 149,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 150,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 151,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 152,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 153,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 154,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 155,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 156,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 157,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 158,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 159,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 160,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 161,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 162,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 163,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 164,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 165,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 166,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 167,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 168,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 169,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 170,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 171,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 172,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 173,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 174,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 175,
+      "ready_for_sync": false,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 176,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 177,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 178,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 179,
+      "ready_for_sync": false,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 180,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 181,
+      "ready_for_sync": false,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 182,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 183,
+      "ready_for_sync": false,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 184,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 185,
+      "ready_for_sync": false,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 186,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 187,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 188,
+      "ready_for_sync": false,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 189,
+      "ready_for_sync": true,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 190,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 191,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": true,
+      "exception": false
+    },
+    {
+      "case": 192,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": true,
+      "exception": false
+    },
+    {
+      "case": 193,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 194,
+      "ready_for_sync": false,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 195,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": true,
+      "exception": false
+    },
+    {
+      "case": 196,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": true,
+      "exception": false
+    },
+    {
+      "case": 197,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 198,
+      "ready_for_sync": false,
+      "children": [
+        "restore"
+      ],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 199,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 200,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 201,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 202,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 203,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 204,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 205,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 206,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 207,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 208,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": true
+    },
+    {
+      "case": 209,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 210,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 211,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 212,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 213,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 214,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 215,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 216,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 217,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 218,
+      "ready_for_sync": true,
+      "children": [
+        "restore",
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 219,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 220,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 221,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 222,
+      "ready_for_sync": false,
+      "children": [
+        "archive"
+      ],
+      "processor_created": false,
+      "exception": false
+    },
+    {
+      "case": 223,
+      "ready_for_sync": false,
+      "children": [],
+      "processor_created": false,
+      "exception": false
+    }
+  ],
+  "failures": [],
+  "scope": "Pinned reset body and actual parser/runner; scoped archive/restore probes for control-flow cases. Four real H2 restores from Java/native backups and actual Main.restoreReadyForSync processor/store reopen. Archive import is recorded, not implemented. Direct NPE/class-cast prose normalized; embedded Error restoring JSON compared structurally. No complete archive/reset or public-network parity claim."
+}

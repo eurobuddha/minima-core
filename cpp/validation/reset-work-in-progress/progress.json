@@ -1,0 +1,33 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "f2be36dc421fa7380edff6eafb28d2e8afc1c8b5",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "reset mapped/compiled/registered and validated through the actual runner plus real H2 restore/reopen; archive import remains unported",
+  "counterparts": 381,
+  "production_counterparts": 337,
+  "mapped_tests": 44,
+  "absent": 76,
+  "ctest_entries": 226,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "reset_cases_per_build": 224,
+  "real_restore_reopen_cases_per_build": 4,
+  "selected_regression_suites_per_build": 6,
+  "normal_ctest_seconds": 21.36,
+  "sanitized_ctest_seconds": 52.71,
+  "student_guides": 457,
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "32 absent production and 44 absent mapped original tests",
+    "Archive import/resync and complete reset workflows",
+    "Full existing counterpart public API, network, mining and runtime parity",
+    "Concurrent registry mutation, malformed live-node reset and exact direct JVM NPE/class-cast prose"
+  ]
+}

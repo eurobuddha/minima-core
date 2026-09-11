@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 380 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 381 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -170,7 +170,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/system/commands/backup/mysql.java` | `src/org/minima/system/commands/backup/mysql.cpp` | unported | — |
 | `src/org/minima/system/commands/backup/mysqlcoins.java` | `src/org/minima/system/commands/backup/mysqlcoins.cpp` | unported | — |
 | `src/org/minima/system/commands/backup/rescue.java` | `src/org/minima/system/commands/backup/rescue.cpp` | implemented_partial | — |
-| `src/org/minima/system/commands/backup/reset.java` | `src/org/minima/system/commands/backup/reset.cpp` | unported | — |
+| `src/org/minima/system/commands/backup/reset.java` | `src/org/minima/system/commands/backup/reset.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/backup/restore.java` | `src/org/minima/system/commands/backup/restore.cpp` | implemented_partial | — |
 | `src/org/minima/system/commands/backup/restoresync.java` | `src/org/minima/system/commands/backup/restoresync.cpp` | unported | — |
 | `src/org/minima/system/commands/backup/vault.java` | `src/org/minima/system/commands/backup/vault.cpp` | implemented_partial | — |
