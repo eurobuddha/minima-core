@@ -718,7 +718,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [SPHINCS.java](files/src/org/minima/utils/sphincs/SPHINCS.md) | authored | implemented_partial |
 | [SPHINCSSignature.java](files/src/org/minima/utils/sphincs/SPHINCSSignature.md) | authored | implemented_partial |
 | [SPHINCSUtils.java](files/src/org/minima/utils/sphincs/SPHINCSUtils.md) | authored | implemented_partial |
-| [TransactionTest.java](files/src/org/minima/utils/sphincs/TransactionTest.md) | authored | unported |
+| [TransactionTest.java](files/src/org/minima/utils/sphincs/TransactionTest.md) | authored | implemented_partial |
 
 ## test/org/minima/database/txpowdb/ram
 

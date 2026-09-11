@@ -46,7 +46,7 @@ Both full builds pass. Object, envelope and KISS VM regressions pass in both bui
 The normal full-size signature was accepted by both VMs in 937 operations. A
 malformed-signature error-reporting difference was fixed; both builds pass all
 268 replay cases and 1,677 independent assertions. The original sanitizer signing
-run remains active; see [saved status](../../../../../../../validation/sphincs-utils-work-in-progress/progress.json).
+run completed with the same signatures and the two already-resolved error-text findings; see [saved status](../../../../../../../validation/sphincs-utils-work-in-progress/progress.json).
 
 ## Limits and a useful next test
 
@@ -61,3 +61,7 @@ shapes need a separate audit; no full Transaction API equivalence is claimed.
 Why is the method named calculateTransactionID not a substitute for Transaction.calculateTransactionID? Count the state entries inserted for 16 trees.
 
 Pinned Java SHA-256: `9a6d8b400151f2c74404b56559e295462115e5d7bb30066fbd957b9f3d2fbffe`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).
+
+## Shared demonstration helpers
+
+The tested formatter and 66-state writer now live in [SPHINCSHelpers.hpp](../../../../../../../src/support/SPHINCSHelpers.hpp). TransactionTest supplies its AMOUNT/TOKENID separators and installs state without the final ID updates; SPHINCSUtils retains its original SPHINCS separators and final updates. Both 268-case transaction replays pass after extraction.

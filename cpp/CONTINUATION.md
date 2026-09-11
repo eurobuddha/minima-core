@@ -1,3 +1,50 @@
+# Latest checkpoint — TransactionTest translated; two sanitizer runs LIVE
+
+PreviousHEAD2087648; gitlogidentifiesnewercommit. Map398=354production+44tests;
+59absent=15production+44tests. FullgoalACTIVE,allparitynot_verified.
+BothcompletebuildsPASS.245CTestentries/fullsuiteNOT run.457guidesaudited9240links.
+
+LIVE, revalidatehandlesbeforeterminal/restartinference:
+31941 original fullsanitizedSPHINCSsigner /tmp/minima-sphincs-sanitized-test.log.
+23405 TransactionTestsanitizedactualmain /tmp/minima-transaction-test-sanitized.log.
+Old11888 originalsanitizedUtils isnowTERMINAL1/closed; donotpollagain. Fullactual
+signaturesmatchnormal,937opVMacceptance,1281.096s,269cases/267matched,1679assertions.
+ONLYthetwo oldCHECKSIGtextdifferences255/264,alreadyfixedby268-casereplays.
+OriginalfullsanUtilsreports/vectorscopiedunderutilsvalidation/sanitized.
+
+NewTERMINAL:85223fixturebuildPASS;21698normalfullbuild/replayPASS;
+6000sanfullbuildPASS;71927sanreplayPASS;82779normalTransactionTestdriverPASS.
+Normaldemo169cases/342assertions,286.371s;exactJava/C++stdoutinclmessage/vars,
+validfalse,221operations. Actualmainsbothzeroexit,nativestderrempty.
+San169publiccases/338assertionsPASS,actualmainstillrunning. SharedUtilsreplay
+268/1677passednormal16.026s/san29.676s,unchanged04c3b45c...transcripthash.
+
+Newutils/sphincs/TransactionTest.cpp/hpp preservesentirepinnedmain,including
+fixed30DE...6822EscriptkeyvsderivedDBCD...050BF,LT1proofloop,AMOUNT/TOKENID
+separators,7input/2outputcoins,paddyToken scale1/amount1,tokenonlyonoutputs,
+all66signaturestates andnoexplicitcoinIDrecompute. Actualsigner/FORSnotreduced.
+SPHINCSHelpers.hpp extractsUtilsformatter(separatorparams)andstateinstaller
+unchanged;Utilsstillperformspost-stateprecomputeCoinID+calculateTransactionID.
+MainusesactualContractwithwitnesscoinproofsandTOTIN/OUT. No shortcutskipsforest.
+
+TransactionTestOracleextendsHORSTOracleandusesObjectOracle.coin; nativefixture
+usesCoinFixture.hpp. Driverindependentlyassemblesformatterstrings/token/message,
+logsnull/empty/Unicode/linebreak/NUL;actualmainchecked_demo(timeout3600each),
+CTest7500. FullSANmainpending.NoJvmbackendinC++.
+Evidence/studentlab/provenanceupdatedundertransaction-test-work-in-progress.
+
+NEXT: poll31941+23405. FinishdemoSANevidence/reviewwhenactualterminal. No redundant
+restart. Thencommands/base/sphincs.java: source311linesfullyreadthisturn,still
+unported. NativeCommandRunnerregistry inCommandRunner.cpp:126; readcurrent
+Command/Runner/MiniFile/TxnDB/CommandResult helpers+tests/siblingbeforewriting.
+Sourceactions generate/sign/verify/transaction/test; transactionnestedcommands
+create/addamount/delete/txnscript/txnmmr/txnpost;MAX8inputs;disableoutputkeepstate.
+Do not silently replace privateoutCoin helper's sourceformat;sharedformatterfits.
+
+Earliernotesbelowarehistoricalwherecontradictedbythislatestsection.
+
+---
+
 # Current work — SPHINCS utilities validated; two full sanitizer runs LIVE
 
 Full457-file goal ACTIVE; do not mark complete. Branch/project/executable MinimaCoreC++.

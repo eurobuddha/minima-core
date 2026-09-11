@@ -1,0 +1,10 @@
+{
+  "cases": 169,
+  "passed": 169,
+  "independent_assertions": 342,
+  "failures": [],
+  "source_mains_matched": true,
+  "seconds": 286.371,
+  "transcript_sha256": "11fb7a34ab5bd8f9e60fb0fa6548a2703dfbe348bda8ae619b1473b6f290d111",
+  "scope": "Actual pinned TransactionTest public formatter/log and full-size demonstration, exact stdout and independent message/token checks. Fixed script key/one-iteration loop and no explicit coin-ID recomputation preserved. Full node parity and arbitrary subclasses/null Coin internals remain unverified."
+}

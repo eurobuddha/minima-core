@@ -2,7 +2,7 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "previous_head": "05d01717add4245a5e536cd595a777e913e4e356",
   "goal_complete": false,
-  "status": "Full normal transaction signature accepted by both VMs in937 operations; two CHECKSIG error mismatches fixed; complete268-case replay and all affected regressions pass both builds; original full sanitizer signing runs active",
+  "status": "Full transaction signing completed in both builds; identical actual signatures and937-op VM acceptance. Both old CHECKSIG error-string mismatches resolved by passing268-case replay. Full SPHINCS signer sanitizer run remains active.",
   "mapped": 457,
   "counterparts": 397,
   "production_counterparts": 353,
@@ -16,8 +16,7 @@
   "normal_regressions": "object9464/KISSVM4471/envelope1449/log3 passed;53.54s total",
   "full_ctest_suite_run": false,
   "active_sessions": {
-    "sanitized_signer": 31941,
-    "sanitized_utils": 11888
+    "sanitized_signer": 31941
   },
   "terminal_sessions": {
     "normal_utils_fixture_initial_compile": 3208,
@@ -33,7 +32,8 @@
     "normal_replay": 72585,
     "sanitized_replay": 57201,
     "one_second_cpu_sample": 94021,
-    "replay_progress_isolation_audit": 26053
+    "replay_progress_isolation_audit": 26053,
+    "sanitized_utils_original_driver": 11888
   },
   "notes": [
     "Revalidate live handles; saved snapshots are not evidence that processes remain live.",
@@ -53,5 +53,8 @@
   "replay_independent_assertions_each_build": 1677,
   "replay_transcript_sha256": "04c3b45c0b9ca9e4430e5a516ca8599d2540af246d9f98437a9e0f43a08c8618",
   "normal_actual_signing_seconds": 311.165,
-  "ctest_entries": 244
+  "ctest_entries": 244,
+  "sanitized_actual_signing_seconds": 1281.096,
+  "full_signing_transcripts_match": true,
+  "full_transaction_signatures_match_across_builds": true
 }

@@ -187,6 +187,7 @@ add_library(minima_file_port STATIC
     src/org/minima/utils/sphincs/HORST/HORST.cpp
     src/org/minima/utils/sphincs/FORS/FORSSignature.cpp
     src/org/minima/utils/sphincs/FORS/FORS.cpp
+    src/org/minima/utils/sphincs/TransactionTest.cpp
     src/org/minima/utils/sphincs/SPHINCSUtils.cpp
     src/org/minima/utils/sphincs/SPHINCS.cpp
     src/org/minima/utils/sphincs/SPHINCSSignature.cpp
@@ -467,6 +468,12 @@ target_link_libraries(minima_aes_util PRIVATE minima_file_port)
 add_test(NAME aes_util_differential COMMAND ${Python3_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR}/tools/aes_util_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(aes_util_differential PROPERTIES TIMEOUT 180)
+
+add_executable(minima_transaction_test support/transaction_test.cpp)
+target_link_libraries(minima_transaction_test PRIVATE minima_file_port)
+add_test(NAME transaction_test_differential COMMAND ${Python3_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/tools/transaction_test_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(transaction_test_differential PROPERTIES TIMEOUT 7500)
 
 add_executable(minima_sphincs_utils support/sphincs_utils.cpp)
 target_link_libraries(minima_sphincs_utils PRIVATE minima_file_port)

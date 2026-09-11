@@ -1,10 +1,10 @@
 # TransactionTest — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the pinned demonstration, native translation, and validation in progress.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/TransactionTest.java) · `src/org/minima/utils/sphincs/TransactionTest.cpp` (absent)
+[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/TransactionTest.java) · [Native implementation](../../../../../../../src/org/minima/utils/sphincs/TransactionTest.cpp)
 
 ## Purpose
 
@@ -18,25 +18,48 @@ TransactionTest is an executable Java experiment demonstrating signature state i
 4. Construct Contract with this transaction/witness, set @TOTIN and @TOTOUT, and run it. The embedded script’s proof loop is counter LT 1, so it validates only the first tree even though all 16 trees are stored.
 5. Print contract success, instruction count, and variables. The final if(!success) block has only a commented trace print, so failure does not throw an assertion or set a test failure exit status.
 
-## Translation work still required
+## Native translation and reuse
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. A faithful mapped demonstration would preserve its hard-coded script and reduced loop; a separate complete verification test is needed rather than silently treating this experiment as the production helper.
+The C++ counterpart reuses the actual SPHINCS signer, Coin/Token/Transaction,
+Witness/CoinProof, and KISS VM. The formatter and 66-state installation were
+extracted from the tested SPHINCSUtils implementation into a shared helper.
+Different separator arguments preserve the two source formats. The demo calls
+only state installation; SPHINCSUtils still performs its additional output-ID and
+transaction-ID updates. Contract construction retains its existing logging and
+serialization side effects.
+
+The script literal is copied exactly, including its fixed 0x30DE...6822E public
+key and one-iteration loop. The pinned signer derives 0xDBCD...050BF from this seed,
+so the script's key check rejects before its proof loop. The port does not change
+the literal or skip the expensive signing work to obtain a different result.
 
 ## Understanding the tests
 
-The test logic currently consists of setup, contract execution, and diagnostic prints. Proposed native/Java assertions should compare message bytes, all states, instruction results and variables, then mutate tree zero versus tree one: the source demonstration’s single-iteration loop explains why those mutations have different coverage. A separate full-script test must exercise all 16 trees.
+The [demonstration lab](../../../../../../../student-guide/new-tests/sphincs-transaction-demo.md)
+was written before execution. Both builds pass **169 public-method comparisons
+and 338 independent assertions**. Cases cover existing coin fixtures, token
+scaling, negative/zero/fractional amounts, fractional scale truncation, keep-state,
+empty and oversized hex fields, a null coin and null/empty/Unicode logging.
+Python independently assembles each expected formatter string.
 
-- [Separate full helper script](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSUtils.java)
-- [Signature construction](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCS.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+Both complete builds pass. The shared extraction also passes the existing
+**268-case/1,677-assertion transaction replay** in both builds, including partial
+state writes and real full-signature verification in both VMs. The actual demo
+mains are running with full-size signing. Their final exact stdout, message,
+variables and instruction counts are not yet claimed; see
+[current evidence](../../../../../../../validation/transaction-test-work-in-progress/progress.json).
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work.
+This demonstration is not an assertion-based source test and cannot establish
+full node or signature security. The source's fixed key currently rejects; its
+one-iteration loop would still cover only the first tree if that key matched.
+The separate SPHINCSUtils tests execute all sixteen proof iterations successfully.
+Arbitrary Coin subclasses and unrepresented null Coin internals remain unverified.
 
 ## Check your understanding
 
-Why can this demonstration report a successful contract after a proof in tree 15 has been corrupted? Which literal loop bound explains that result?
+Why must the port preserve a demonstration's rejection? If its script key matched,
+which literal loop bound would leave tree 15 unchecked?
 
 Pinned Java SHA-256: `6b237bbbc9ed5046bb87a039e7b19c8241c724c0746adbfd15a9962658a5185c`. [Source mapping](../../../../../../../source-map.json). [Project-wide limitations](../../../../../../../REVIEW.md).

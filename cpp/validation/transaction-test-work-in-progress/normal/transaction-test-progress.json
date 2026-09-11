@@ -1,0 +1,7 @@
+{
+  "cases": 169,
+  "passed": 169,
+  "independent_assertions": 338,
+  "failures": [],
+  "phase": "public APIs complete; actual mains next"
+}

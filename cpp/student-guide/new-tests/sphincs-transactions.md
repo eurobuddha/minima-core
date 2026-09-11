@@ -52,3 +52,9 @@ Normal replay took 8.382s, sanitized replay 28.486s. Both complete builds and
 object (9,464), VM (4,471), envelope (1,449) and log (3) regressions pass.
 The original sanitizer full-signing process remains active; its final report is
 not yet claimed. [Current evidence](../../validation/sphincs-utils-work-in-progress/progress.json).
+
+The original full sanitizer transaction run subsequently completed in 1,281.096s.
+Its actual signature is identical to both normal writers; both VMs accepted it in
+937 operations. Its transcript matches the original normal run, including exactly
+the two old CHECKSIG error-string findings already fixed and replayed successfully.
+There are no additional differences in that completed full-signing run.

@@ -1,3 +1,42 @@
+## TransactionTest counterpart and shared-helper review
+
+### Summary
+
+The counterpart preserves the source's seven inputs/two outputs, token attachment
+only on outputs, AMOUNT/TOKENID message format, full-size signing, all66signature
+states, fixed script public key, one-iteration loop and absence of explicit output
+ID recomputation. It reuses the actual signer and VM. The existing Utils formatter
+and state installation were extracted with separator parameters and unchanged
+state-write ordering; only Utils retains its final ID updates.
+
+### Findings and validation
+
+No unresolved finding was identified in the represented new API after reading the
+source, native classes/shared helper, fixtures, driver and teaching notes. The
+source demonstration rejects because its fixed script key differs from the derived
+key. The normal actual mains match exactly, including that rejection in221operations,
+message bytes and variables. Both exitedzero; native stderr was empty. Normal169
+cases/342 assertions passed286.371s. Both builds pass169public cases/338assertions.
+The existing268-case/1677-assertion transaction replay passes in each build after
+extraction (16.026s/29.676s), preserving prior partial-state and full-script checks.
+Both complete builds pass. Full245-entryCTest suite not run.
+
+Sanitized actual demonstration remains live, so its final result is pending.
+Existing null Coin internals/arbitrary subclasses and full node parity remain
+unverified. The demo's rejection is not a successful-payment or security claim.
+
+### Verdict
+
+Approve the shared extraction and public-method translation within tested scope;
+keep demonstration checkpoint work-in-progress until its sanitizer main finishes.
+[Evidence](validation/transaction-test-work-in-progress/progress.json).
+
+The earlier original full sanitizer Utils run also finished: its signatures match
+the normal build and both VMs accept in937operations. It contains exactly the two
+already-fixed oldCHECKSIGerror strings, resolved by both268-case replay results.
+
+---
+
 ## SPHINCS transaction integration review
 
 ### Summary
