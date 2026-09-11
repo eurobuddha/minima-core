@@ -11,6 +11,7 @@ public:
     const MMRProof& getProof() const {return mProof;}
     MiniData getRootPublicKey() const;
     json::JSONObject toJSON() const;
+    void writeDataStream(std::vector<uint8_t>& output) const;
     std::vector<uint8_t> serialise() const;
     static SignatureProof deserialise(std::span<const uint8_t> data,size_t& offset);
 };

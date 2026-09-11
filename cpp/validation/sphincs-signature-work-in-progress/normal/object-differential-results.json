@@ -1,0 +1,7 @@
+{
+  "cases": 9464,
+  "passed": 9464,
+  "failures": [],
+  "coin_alias_cases": 220,
+  "scope": "Object wire/hash/JSON fixtures plus Coin mutation aliases through transaction inputs/outputs, CoinProof and Witness after vector growth/removal/clear; explicit deepCopy, renamed-copy and wire-copy isolation. State-list identity across different Coin objects, MMRProof identity and full node parity remain unverified"
+}

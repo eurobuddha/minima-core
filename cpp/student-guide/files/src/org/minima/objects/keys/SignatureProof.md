@@ -44,3 +44,14 @@ Why can arbitrary signature bytes still produce a well-formed SignatureProof JSO
  The source map still labels this counterpart partial and parity not_verified. The described fixtures establish their particular observations, not full API equivalence or a working full node.
 
 Pinned Java SHA-256: `4c06b05f28612d1327f70a02f86886cead02d7c2b032d605e6cfae2188f8dc6b`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Incremental output for the SPHINCS envelope
+
+The native writeDataStream(vector&) now appends the existing encoding to a supplied
+buffer. Signature writes its count and delegates each SignatureProof; SignatureProof
+writes the public key and signature, then delegates the shared MMR proof writer.
+A bad later proof hash leaves the already-written prefix intact. serialise wraps
+this writer with a fresh vector, preserving successful output bytes.
+The [envelope lab](../../../../../../../student-guide/new-tests/sphincs-signature-envelope.md)
+checks this failure boundary, and the existing object corpus regresses normal wire
+behavior. This does not add representation of Java null proof-list entries.

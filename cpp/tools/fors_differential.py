@@ -1,9 +1,18 @@
 #!/usr/bin/env python3
 """Full 16x65536 legacy FORS, nested wire failures and independent tree proofs."""
-import argparse,hashlib,json,random,struct,subprocess,time
+import argparse,hashlib,json,os,random,struct,subprocess,time
 from pathlib import Path
 from peers_checker_differential import Runner
 from horst_differential import ROOT,JAVA,hx,raw,digest,number,data,independent,proof_root
+
+def checked_demo(command,timeout=1800):
+    result=subprocess.run(command+['--demo'],capture_output=True,text=True,check=True,timeout=timeout,
+                          env={**os.environ,'TZ':'UTC','UBSAN_OPTIONS':'halt_on_error=1'})
+    # JVM diagnostics can vary with installed JDK; native sanitizer diagnostics
+    # must not be discarded even if a recoverable warning leaves exit status 0.
+    if Path(command[0]).name!='java' and result.stderr:
+        raise RuntimeError('Native demo stderr: '+result.stderr)
+    return result
 
 class ForestRunner(Runner):
     def close(self):
@@ -95,10 +104,10 @@ def main():
         # Release the cached million-leaf forests before running the mains.
         for runner in runners:runner.close()
         runners=[]
-        demos=[subprocess.run(command+['--demo'],capture_output=True,text=True,check=True,timeout=1800).stdout for command in commands]
+        demo_results=[checked_demo(command) for command in commands];demos=[result.stdout for result in demo_results]
         checks+=1
         if demos[0]!=demos[1]:failures.append(dict(group='source-main',java=demos[0],cpp=demos[1]))
-        assert demos[0].endswith('Verify : true\n');(build/'fors-demo-output.json').write_text(json.dumps(dict(stdout=demos[1]),indent=2)+'\n')
+        assert demos[0].endswith('Verify : true\n');(build/'fors-demo-output.json').write_text(json.dumps(dict(stdout=demos[1],stderr=demo_results[1].stderr,returncode=demo_results[1].returncode),indent=2)+'\n')
     finally:
         for runner in runners:runner.close()
     report=dict(cases=count,passed=count-len({f['index'] for f in failures if 'index' in f}),independent_assertions=checks,groups=groups,failures=failures,seconds=round(time.monotonic()-start,3),full_forest_leaves=1048576,transcript_sha256=transcript.hexdigest(),scope='Full-size pinned FORS and nested signature APIs, both source mains, independent million-leaf forest and proof reconstruction; NPE/EOF prose and stack frames normalized. Raw MiniData aliases, arbitrary subclasses, concurrent mutation and full SPHINCS/node parity not certified.')

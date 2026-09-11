@@ -1,10 +1,10 @@
 # SPHINCSSignature — teaching guide
 
-**Teaching status:** Authored explanation of the Java source, required translation, and proposed validation. The native counterpart is absent.
+**Teaching status:** Authored explanation of the pinned source, native translation, and concrete validation. Full parity remains unverified.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSSignature.java) · `src/org/minima/utils/sphincs/SPHINCSSignature.cpp` (absent)
+[Pinned Java source](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCSSignature.java) · [Native counterpart](../../../../../../../src/org/minima/utils/sphincs/SPHINCSSignature.cpp)
 
 ## Purpose
 
@@ -18,21 +18,43 @@ SPHINCSSignature is the ordered envelope for three linked proof components: a Mi
 4. readDataStream assigns the first two decoded components sequentially, then allocates and reads a FORSSignature. A failure can therefore leave an object partially updated.
 5. convertMiniDataVersion creates an empty envelope, catches/logs IOException from reading, and returns it even after failure. It does not demand exhaustion of trailing input and does not turn all exception categories into null.
 
-## Translation work still required
+## How the C++ translation works
 
-The mapped native counterpart is absent. These notes explain the pinned Java construction and identify dependencies to reuse; they do not claim a native implementation or a standardized SPHINCS implementation. The repository-specific serialization, MMR sum values, and seed derivation must be preserved exactly. The three existing component encodings define the format; a new tagged envelope would be incompatible. A native optional/shared-reference representation would need to retain the source’s initially null and partially read states.
+The native envelope has shared state containing three nullable shared component
+pointers. The constructor retains them and getters return them. It directly reuses
+Signature, MMRData and FORSSignature; it adds no new framing. Signature and
+SignatureProof now expose incremental writeDataStream(vector&) methods using their
+existing codecs and the shared MMRProof writer. This preserves output already
+written before a later proof or component fails.
+
+The reader assigns a new WOTS Signature only after its complete factory read
+succeeds. It does the same for the root. It then stores a new FORSSignature before
+reading into it. This distinction preserves both old-object aliases and partial
+new FORS state. The converter catches only I/O exceptions, logs and returns its
+partly filled envelope; null input and runtime BigInteger failures still escape.
 
 ## Understanding the tests
 
-The SPHINCS main serializes a complete signature and verifies its reconstructed version, printing the result without an assertion. Proposed tests should compare exact component concatenation, every truncated prefix, trailing bytes, null fields, and reuse of an already initialized object during a failing read.
+The driver checks all null-component combinations, constructor identity, component
+mutation aliases, oversized roots/proofs, and malformed counts. Every prefix of a
+small independent example and samples throughout an actual full-size FORS signature
+exercise consumed offsets and the three assignment boundaries. It compares old/new
+field identity, retained old sizes, partial output hash/length, JSON and typed errors.
+Python independently computes the expected concatenated wire bytes. The actual FORS
+bytes come from a completed pinned Java/native full-forest comparison.
 
-- [Producer, verifier, and printed round trip](../../../../../../../../upstream-study/src/org/minima/utils/sphincs/SPHINCS.java)
-
-This lesson is based on the pinned Java source. Proposed native tests are future work; no native implementation, build, or test pass is claimed.
+See the [envelope lab](../../../../../../../student-guide/new-tests/sphincs-signature-envelope.md)
+and [driver](../../../../../../../tools/sphincs_signature_differential.py). The
+source demonstration alone has no assertions. These structural tests do not claim
+that their synthetic WOTS components authenticate a FORS root; the full SPHINCS
+signing class remains to be ported and integrated.
 
 ## Limits and a useful next test
 
-No native parity test for this absent counterpart is claimed. Printed Java demonstrations are not assertion-based tests, and agreement on a round trip would not by itself establish signature security. The proposed tests remain future work.
+The current key model's null SignatureProof internals/list entries, raw Java
+MiniData byte-array aliases, arbitrary subclasses, concurrent mutation and arbitrary
+failing streams remain outside this validation. NPE/EOF prose and runtime-specific
+stack frames are normalized. Full signature-algorithm and node parity are unverified.
 
 ## Check your understanding
 

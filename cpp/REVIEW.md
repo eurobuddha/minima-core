@@ -1,3 +1,57 @@
+## SPHINCS signature envelope code review
+
+### Summary
+
+SPHINCSSignature preserves the source's three nullable component references,
+concatenated wire/ordered JSON, and distinct read-assignment boundaries. The
+existing key writers were adapted to append into a supplied vector, retaining
+partial prefixes through the existing MMR writer. Existing key/crypto algorithms
+were not replaced. This checkpoint is approved only for the documented container
+scope; full SPHINCS signing and node parity remain unfinished.
+
+### Findings
+
+No unresolved correctness finding was identified in the new represented envelope
+surface after reading the implementation, headers, fixtures, driver, mappings and
+student notes. Constructor/getter identity and externally mutated components are
+compared; failed WOTS/root factory reads retain old fields, while failed FORS
+reads expose the newly assigned partial object. Converter catches only I/O errors.
+
+**Remaining parity scope:** the existing key model does not represent Java null
+SignatureProof members or null proof-list entries. Raw MiniData byte-array aliases,
+arbitrary subclasses/streams and concurrent mutation are not certified. Synthetic
+WOTS inputs in this test are structural values, not proof of full SPHINCS signing.
+
+**FORS review follow-up, still pending:** its old demo harness discarded stderr.
+The new checked_demo helper enables UBSAN halt and rejects native stderr. A separate
+sanitized full-size native demo is running against the saved pinned Java output.
+This does not change any production FORS implementation. Final FORS review remains
+open until its live validation handles finish and their evidence is inspected.
+
+### Validation
+
+Both complete builds pass. Normal and sanitized envelope runs each passed all
+1,449 comparisons and 158 independent assertions; normalized transcript hashes
+match. Driver times were 6.930s and 23.303s. The sanitizer CTest took 28.00s including
+oracle compilation. Object/key regression cases: 9,464 passed in each build,
+24.17s normal and 108.25s sanitized. Sanitized selected two-test total: 136.27s.
+Full 241-entry suite not run; H2 AOT is outside C++ sanitizer instrumentation.
+
+The actual FORS vector is a versioned input from the completed normal Java/native
+million-leaf comparison. Its SHA-256 is recorded by both envelope reports. Every
+prefix of a small independent wire and samples through the full envelope test
+consumption, partial output, field identity, nulls, malformed counts and typed
+errors. All eight null component combinations and oversized WOTS/FORS proof writes
+are included. NPE/EOF prose and runtime-specific stack frames are normalized.
+
+### Verdict
+
+✅ Approve the local envelope checkpoint within its documented scope. Keep the
+full goal active and finish the FORS demo audits and remaining SPHINCS classes.
+[Evidence](validation/sphincs-signature-work-in-progress).
+
+---
+
 ## FORS work-in-progress review — validation pending
 
 The two FORS classes and the extracted MMR proof writer compile in both complete

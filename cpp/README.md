@@ -5,14 +5,24 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **350 production counterparts and 44 mapped test files exist;
-63 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **351 production counterparts and 44 mapped test files exist;
+62 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+SPHINCSSignature now preserves its nullable component references, exact envelope
+encoding, and partial field assignments. Signature/SignatureProof expose shared
+incremental writers so later failures keep their output prefix. Both full builds
+pass 1,449 envelope comparisons and 158 independent assertions, plus the 9,464-case
+object regression. See the [student lab](student-guide/new-tests/sphincs-signature-envelope.md)
+and [evidence](validation/sphincs-signature-work-in-progress). The SPHINCS signing
+algorithm and full node parity remain unfinished.
 
 The two FORS counterparts compile with sixteen complete HORST trees (1,048,576
 inner leaves), nested signatures, and the shared incremental MMR proof writer.
-Both complete builds pass; full FORS comparisons and sanitizer regressions are
-still running. This is a work-in-progress checkpoint. See the
+Both complete builds and shared object/HORST regressions pass. Normal FORS validation
+passed 1,246 cases and both source demos; sanitizer comparisons also passed, with
+its final demos and explicit stderr audit still running. This remains a work-in-progress
+checkpoint. See the
 [student lab](student-guide/new-tests/fors-signatures.md) and
 [current validation status](validation/fors-work-in-progress/progress.json).
 

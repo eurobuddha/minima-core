@@ -11,6 +11,7 @@ public:
     std::vector<SignatureProof>& getAllSignatureProofs() {return mSignatures;}
     MiniData getRootPublicKey() const {if(mSignatures.empty())throw JavaTypedException("java.lang.IndexOutOfBoundsException","Index 0 out of bounds for length 0");return mSignatures[0].getRootPublicKey();}
     json::JSONObject toJSON() const;
+    void writeDataStream(std::vector<uint8_t>& output) const;
     std::vector<uint8_t> serialise() const;
     static Signature deserialise(std::span<const uint8_t> data,size_t& offset);
     static std::optional<Signature> convertMiniDataVersion(const MiniData& data);

@@ -1,0 +1,40 @@
+{
+  "previous_head": "bb3d67c9a633d875eecc7c2116cbdcdcd3099cfd",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "mapped": 457,
+  "counterparts": 395,
+  "production_counterparts": 351,
+  "test_counterparts": 44,
+  "absent": 62,
+  "production_absent": 18,
+  "tests_absent": 44,
+  "parity": "not_verified",
+  "full_normal_build": "passed",
+  "full_sanitized_build": "passed",
+  "ctest_inventory": 241,
+  "full_ctest_suite_run": false,
+  "new_test_cases": 1449,
+  "independent_assertions_per_build": 158,
+  "normal_driver_seconds": 6.93,
+  "sanitized_driver_seconds": 23.303,
+  "normal_object_ctest_seconds": 24.17,
+  "sanitized_object_ctest_seconds": 108.25,
+  "sanitized_envelope_ctest_seconds": 28.0,
+  "sanitized_selected_total_seconds": 136.27,
+  "object_regression_cases": 9464,
+  "teaching_guides": 457,
+  "envelope_handles_terminal": true,
+  "all_process_handles_terminal": false,
+  "still_running": {
+    "fors_original_sanitized_driver": 25692,
+    "fors_explicit_sanitizer_demo_audit": 89215
+  },
+  "limits": [
+    "SPHINCS signing class and runtime integration remain absent.",
+    "Current key model null SignatureProof internals/list entries, raw MiniData aliases, arbitrary subclasses/streams and concurrency are not certified.",
+    "Envelope tests use synthetic WOTS components as structural inputs; no claim they authenticate the saved FORS root.",
+    "FORS final sanitizer demo and explicit stderr audit remain pending; do not restart without revalidating handles.",
+    "Full native node parity and full CTest suite remain open; H2 AOT is outside C++ sanitizer instrumentation."
+  ]
+}

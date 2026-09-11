@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 394 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 395 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -376,7 +376,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/utils/sphincs/HORST/PrivateKey.java` | `src/org/minima/utils/sphincs/HORST/PrivateKey.cpp` | implemented_partial | — |
 | `src/org/minima/utils/sphincs/HORST/PublicKey.java` | `src/org/minima/utils/sphincs/HORST/PublicKey.cpp` | implemented_partial | — |
 | `src/org/minima/utils/sphincs/SPHINCS.java` | `src/org/minima/utils/sphincs/SPHINCS.cpp` | unported | — |
-| `src/org/minima/utils/sphincs/SPHINCSSignature.java` | `src/org/minima/utils/sphincs/SPHINCSSignature.cpp` | unported | — |
+| `src/org/minima/utils/sphincs/SPHINCSSignature.java` | `src/org/minima/utils/sphincs/SPHINCSSignature.cpp` | implemented_partial | — |
 | `src/org/minima/utils/sphincs/SPHINCSUtils.java` | `src/org/minima/utils/sphincs/SPHINCSUtils.cpp` | unported | — |
 | `src/org/minima/utils/sphincs/TransactionTest.java` | `src/org/minima/utils/sphincs/TransactionTest.cpp` | unported | — |
 | `test/org/minima/database/txpowdb/ram/RamDBTest.java` | `test/org/minima/database/txpowdb/ram/RamDBTest.cpp` | implemented_partial | — |

@@ -1,3 +1,75 @@
+# Current work — SPHINCSSignature validated; two FORS demo processes LIVE
+
+Full457-file goalACTIVE. PreviousHEAD bb3d67c; gitlog identifies finalcheckpoint.
+Map395=351production+44originaltests;62absent=18prod+44tests; allparitynot_verified.
+BothcompletebuildsPASS. 241CTestentries/fullsuiteNOT run. All457lessonsauthored.
+NoGitHubpush. MinimaCoreC++ localbranch/project/executable; verifiedlocalbundles.
+
+REVALIDATE LIVE HANDLES (don't infer terminal or restart from this file):
+25692 = original sanitized FORS driver, /tmp/minima-fors-sanitized-test.log.
+  Completed1246 comparisons/zero failures, now running actual source mains.
+89215 = explicit sanitized FORS demo audit, /tmp/minima-fors-demo-audit.log.
+  Script /tmp/minima-fors-demo-audit.py imports new checked_demo, compares output
+  with saved normalJava demo, requires UBSAN_OPTIONS=halt_on_error=1 and empty
+  native stderr. Saves cpp/build-sanitized/fors-demo-sanitizer-audit.json.
+Both verifiedlive by write_stdin. Last resource observation07:15UTC: nativePID38609
+(originaldemo,10minelapsed,97%CPU,551MB), nativePID44936(audit,2m45,97%CPU,490MB).
+No huge-memory/OOM condition observed. Do not kill solely for quiet output.
+Demo timeout1800s; driver CTest3600s. These are real1,048,576leaf forests.
+
+NewTERMINAL handles: normalFORS90381 PASS1246cases/757independentassertions,
+452.181s, bothactualmains. Regs69241 PASSobject9464/HORST1438,total389.36s.
+Normalcontainer80482 PASS1449cases/158assertions,6.930s. Nativefixture61894 PASS.
+Fullnormalbuild44827 andfullsanitized38426 PASS. Normalobject41675 PASS24.17s.
+Sanitizedenvelope/object48821 PASS1449/9464;23.303sdriver,28.00sCTest,envelope+
+object total136.27s (object108.25s). Allthesehandlesclosed; don'tpollagain.
+
+New src/org/minima/utils/sphincs/SPHINCSSignature.cpp/hpp namespace minima::sphincs.
+SharedData holds nullable sharedptrSignature/MMRData/FORSSignature. Constructor
+retainsreferences; getters expose. toJSON WOTSsignature/FORSroot/FORSsignature;
+writer concatenatescomponentsnoheader. read assignsWOTS/rootONLYAFTERcomplete
+factory read, assignsnewFORS BEFOREnestedread. Converter catchesONLYwireIO,logs,
+returnspartial; null/runtimeerrorsescape. Supportsdefaultnullfields and partial
+old/new mixedstates. SourceclassfullyreadalongSignature/SignatureProof+consumers.
+
+ExistingSignature/SignatureProof cpp/hpp nowwriteDataStream(vector&) delegates
+existingcodecs andMMRProof's incrementalwriter. serialise wrapsnewwriter; source
+validbytesunchanged; badlaterproofhashretainskey/signature/directionprefix. No
+keyalgorithmchange. Existingkeymodel nullSignatureProof members/listentries NOT
+representable, plusrawJavaMiniDataaliases/arbitrarysubclasses/concurrency remain
+paritygaps; do not certifyfullclass/node equivalence.
+
+SPHINCSSignatureOracle extendsFORSOracle/HORSTOracle forcodecs/errors/mutation;
+nativefixture adapts sameobserver. Envelope driver uses stored realFORSwire from
+validation/fors-work-in-progress/normal/fors-known-vectors.json (nowversioned)
+plusindependentPython syntheticWOTS/components; structuraltestNOTvalidWOTSsigning.
+1449cases inclall8nullcombos,oldfieldidentity/sizes,partialwritehash/length,JSON/errors,
+everyprefixsmallwire +sampledfullforestenvelope, malformedcounts/hashsizes,
+mutatedconstructoraliases andoversizedproofs. Normal/santranscripthashidentical:
+5076d25ed76ef08867eebd47b24da244b22481bb79d13624ba9826ef7fcf6728.
+FORSwireSHA256 e58c40f85fc86f9471efbbc3d6353a4c64e9c9d187c1a9883a07950e1a27ce55.
+
+FORS normal finalreport andbothmains PASS; root0AE29F1F...F0652C6,sum120,
+sigsize14861. Evidence copied under validation/fors-work-in-progress/normal.
+SanFORScomparisons completedzero failures but finalreportpendingmains.
+Reviewcaught demo subprocess.run captured/discardedstderr anddidn'tsetUBSANhalt.
+New fors_differential.checked_demo nowsetsTZUTC/UBSANhalt andrejectsnativestderr.
+It isusedbyfuturefullruns; currentoriginalrun loadedoldhelper. Separateaudit89215
+exercisesnewhelper onactualsanitizedFORSmain vs savedJavaoutput. No production
+FORS codechanged duringenvelopework; don'trerunmillionleafcorpusunnecessarily.
+
+NEXT: finish/revalidate25692+89215. SavefinalsanFORSevidenceandexplicitdemoaudit;
+updateFORSprogress/lab/README/review/provenance tocompletedboundedvalidation,
+commitlocallyandverifyallchangedpaths innewrecoverybundle. Containercompleted
+evidence under validation/sphincs-signature-work-in-progress. FullSPHINCS.java,
+SPHINCSUtils.java,TransactionTest.java andcommands/base/sphincs remainabsent.
+SPHINCS usesactualTreeKey192/4, fullFORS16trees, keyuse decimal STRING parsedASHEX;
+sourcequirks summarizedin earlierHORSTcheckpointbelow. Finishremaining18prod+
+44originaltests andallremainingparity. Reusegate+pre-testlessons+actualJava/native
+checks, fullbuilds, appropriate regressions, code review andlocalrecoveryrequired.
+
+---
+
 # Current work — FORS compiled; full validation RUNNING
 
 Full goal active. WIP checkpoint, NOT validated completion. PreviousHEAD d6f3e1e.

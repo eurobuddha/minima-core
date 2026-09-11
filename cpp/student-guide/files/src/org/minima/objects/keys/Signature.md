@@ -43,3 +43,14 @@ Why can an empty Signature round-trip successfully but fail when added to Witnes
 The [token-validation lab](../../../../../../../student-guide/new-tests/token-validation.md) now checks converter I/O logging and the escaping NumberFormatException for a zero-length BigInteger. Mutable list identity across reads, inherited APIs and exhaustive logger failure behavior remain open. The empty-list getter’s typed fix does not establish every Signature error path. Source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `5fd453e5f2df679cf33afc68d993cc8c0b10d781418c78a024b5e7fe9e65059c`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Incremental output for the SPHINCS envelope
+
+The native writeDataStream(vector&) now appends the existing encoding to a supplied
+buffer. Signature writes its count and delegates each SignatureProof; SignatureProof
+writes the public key and signature, then delegates the shared MMR proof writer.
+A bad later proof hash leaves the already-written prefix intact. serialise wraps
+this writer with a fresh vector, preserving successful output bytes.
+The [envelope lab](../../../../../../../student-guide/new-tests/sphincs-signature-envelope.md)
+checks this failure boundary, and the existing object corpus regresses normal wire
+behavior. This does not add representation of Java null proof-list entries.

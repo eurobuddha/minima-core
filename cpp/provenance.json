@@ -3710,13 +3710,40 @@
       "cpp/src/org/minima/utils/sphincs/HORST/HORSTSignature.cpp": "4535c281be8a0abf2eac1bd56ecbd14e2fc140f80986eb7f8340c875309ac72e",
       "cpp/support/FORSOracle.java": "6a2502148f8cb426ca14c4c9086b259809c5c07e0b3609b41a85969c8a22ca8b",
       "cpp/support/fors.cpp": "4c5b99687c576ae82ad9bf434c4121f33fcd0354cc98ec05afb4e2645490f712",
-      "cpp/tools/fors_differential.py": "ad739a0bac68d6480d67e29ffd8da6c8303dfc59974b26b0115c493f9dbe6fde",
+      "cpp/tools/fors_differential.py": "d1ddf1509ee96b418a9b57128b6e9153ca835172e8e4952d5723ba9cd5aa66eb",
       "cpp/tools/horst_differential.py": "47bef5a88eb5ce191937d4a43dbd9d1f3594ccaad3ac52cd0982319f662c3d43"
     },
     "reuse": "Actual native HORST, Crypto/MiniData/MiniNumber/MMR. Extract tested partial proof writer from HORSTSignature into MMRProof. Java fixture extends HORSTOracle; driver reuses Runner and independent HORST tree/proof reconstruction. ForestRunner only widens teardown timeout.",
     "sibling_search": "No FORS/HORST/SPHINCS in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; previously inspected sibling TreeKey has incompatible tree/signature format.",
     "evidence": "validation/fors-work-in-progress",
-    "validation": "Both full builds passed; normal object/HORST regressions passed; full FORS and sanitizer regressions pending.",
+    "validation": "Both full builds and object/HORST regressions passed; normal FORS full1246 and mains passed; sanitizer1246 comparisons passed, final demos/stderr audit pending.",
     "full_parity_verified": false
+  },
+  "sphincs_signature_checkpoint": {
+    "source": "upstream-study/src/org/minima/utils/sphincs/SPHINCSSignature.java",
+    "source_sha256": "4cdcdb16ee37c8c18299297a2bcb7e948fd8f048369f35b67419bedee1ed4d49",
+    "files_sha256": {
+      "cpp/src/org/minima/utils/sphincs/SPHINCSSignature.cpp": "1c4b83d4e4827c45f9e132f76603e04fa56578badba672ede5c2f11679717718",
+      "cpp/src/org/minima/utils/sphincs/SPHINCSSignature.hpp": "6c4df74bd893766bff0441465338fc2f8632b865a296f0507f97f208de47f47a",
+      "cpp/src/org/minima/objects/keys/Signature.cpp": "d1959141b4d2e922e39b03ba01f207fc84bb607c05861175de45cf092402c9b4",
+      "cpp/src/org/minima/objects/keys/Signature.hpp": "71caf19ad2ed81eade175cc8c8e6ba9fcfe649c6eafb0aa9bf21eb38e14f9fdc",
+      "cpp/src/org/minima/objects/keys/SignatureProof.cpp": "91486d04a37f1f68717c778a7f4c92a9006c413eaddf8fe09b98f2f5afccd188",
+      "cpp/src/org/minima/objects/keys/SignatureProof.hpp": "57bb527bfb22693d150d32b4e8dd6e80baa5d66f3070b82efa4288826c90ff74",
+      "cpp/support/SPHINCSSignatureOracle.java": "e7daa75e327301732a19b78800dd8f6e8e800ab3b396def1a3c12a3967007da2",
+      "cpp/support/sphincs_signature.cpp": "db64709bba84136f68ea30a3c2309857c0ab728c1c09ad77a1a4aa7c2f4dc037",
+      "cpp/tools/sphincs_signature_differential.py": "4ec5d768311f018d3e3e28005d34b94891f666e061e484e5a9e869cbefc52ba4"
+    },
+    "reuse": "Actual Signature/SignatureProof/MMRData/FORSSignature and NativeThrowable. Add incremental WOTS writers using existing codecs/MMR writer. Fixture inherits FORS/HORST observer; real FORS bytes reused as versioned input.",
+    "sibling_search": "No standalone SPHINCSSignature candidate in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src; incompatible sibling TreeKey representation was previously inspected.",
+    "evidence": "validation/sphincs-signature-work-in-progress",
+    "validation": "Both full builds, 1449 comparisons/158 independent assertions and 9464 object regressions pass in each build.",
+    "full_parity_verified": false,
+    "limits": [
+      "SPHINCS signing class and runtime integration remain absent.",
+      "Current key model null SignatureProof internals/list entries, raw MiniData aliases, arbitrary subclasses/streams and concurrency are not certified.",
+      "Envelope tests use synthetic WOTS components as structural inputs; no claim they authenticate the saved FORS root.",
+      "FORS final sanitizer demo and explicit stderr audit remain pending; do not restart without revalidating handles.",
+      "Full native node parity and full CTest suite remain open; H2 AOT is outside C++ sanitizer instrumentation."
+    ]
   }
 }
