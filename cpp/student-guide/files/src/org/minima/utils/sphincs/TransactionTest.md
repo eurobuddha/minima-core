@@ -44,9 +44,11 @@ Python independently assembles each expected formatter string.
 
 Both complete builds pass. The shared extraction also passes the existing
 **268-case/1,677-assertion transaction replay** in both builds, including partial
-state writes and real full-signature verification in both VMs. The actual demo
-mains are running with full-size signing. Their final exact stdout, message,
-variables and instruction counts are not yet claimed; see
+state writes and real full-signature verification in both VMs. Both actual demo
+runs completed with full-size signing: exact stdout, message, variables and221
+operations match, with the expected contract rejection. Each full run passes169
+cases/342independent assertions (normal286.371s, sanitized1411.275s), native stderr
+empty and both main processes exitingzero. See
 [current evidence](../../../../../../../validation/transaction-test-work-in-progress/progress.json).
 
 ## Limits and a useful next test

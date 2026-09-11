@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "node_processes": 4,
+  "checks": [
+    {
+      "runtime": "java",
+      "phase": "fresh",
+      "keys": 8,
+      "commands": 3,
+      "sql_files": [
+        "1.1/databases/archivesql/archive.mv.db",
+        "1.1/databases/coindb/coins.db.mv.db",
+        "1.1/databases/txpowsql/onchain.mv.db",
+        "1.1/databases/txpowsql/txpow.mv.db",
+        "1.1/databases/walletsql/wallet.mv.db"
+      ],
+      "graceful_shutdown": true,
+      "stderr": ""
+    },
+    {
+      "runtime": "java",
+      "phase": "restart",
+      "keys": 8,
+      "commands": 3,
+      "sql_files": [
+        "1.1/databases/archivesql/archive.mv.db",
+        "1.1/databases/coindb/coins.db.mv.db",
+        "1.1/databases/txpowsql/onchain.mv.db",
+        "1.1/databases/txpowsql/txpow.mv.db",
+        "1.1/databases/walletsql/wallet.mv.db"
+      ],
+      "graceful_shutdown": true,
+      "stderr": ""
+    },
+    {
+      "runtime": "cpp",
+      "phase": "fresh",
+      "keys": 8,
+      "commands": 3,
+      "sql_files": [
+        "1.1/databases/archivesql/archive.mv.db",
+        "1.1/databases/coindb/coins.db.mv.db",
+        "1.1/databases/txpowsql/onchain.mv.db",
+        "1.1/databases/txpowsql/txpow.mv.db",
+        "1.1/databases/walletsql/wallet.mv.db"
+      ],
+      "graceful_shutdown": true,
+      "stderr": "Generating Base Private Seed Key\nAdding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/base-test-node-l8ozcl4d/data/1.1/databases/userprefs.db\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/base-test-node-l8ozcl4d/data/1.1/databases/cascade.db\nLoading TxPowTree size : 0 bytes\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/base-test-node-l8ozcl4d/data/1.1/databases/chaintree.db\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/base-test-node-l8ozcl4d/data/1.1/databases/p2p.db\nLoad Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/base-test-node-l8ozcl4d/data/1.1/databases/p2p2.db\n3 more initial keys created.. Total now : 3 / 8\nGenesis block created : 0x276B2B76C665CB37D6364F0BA0B45FF321E0E7CDF6D81260DAFD95E0B9BEA2B0\nNEW Unspent Coin : {\"coinid\":\"0x9E2D7D19385DBD281D56707C057A016663054531DD43740D1E91A68B3E390C56\",\"amount\":\"1000000000\",\"address\":\"0xBF36A861FC161B36FE7032760D07E6CCE2BD6DE6C12562E2ACD68A2582D8EA44\",\"miniaddress\":\"MxG085V6QK63V0M3CRFSS1WEZ6GFPMCSAUMRPM14YHE5B6MH8WZ5M7A8GFHU3C6\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\n1 more initial keys created.. Total now : 5 / 8\n1 more initial keys created.. Total now : 6 / 8\n1 more initial keys created.. Total now : 7 / 8\n1 more initial keys created.. Total now : 8 / 8\nShutdown Networking..\nSaving State..\nSaving SQL..\nWallet shutdown..\nTxPowDB shutdown..\nArchiveDB shutdown..\nCoinDB shutdown..\nAll SQL DB Shutdown..\nAll saved..\n"
+    },
+    {
+      "runtime": "cpp",
+      "phase": "restart",
+      "keys": 8,
+      "commands": 3,
+      "sql_files": [
+        "1.1/databases/archivesql/archive.mv.db",
+        "1.1/databases/coindb/coins.db.mv.db",
+        "1.1/databases/txpowsql/onchain.mv.db",
+        "1.1/databases/txpowsql/txpow.mv.db",
+        "1.1/databases/walletsql/wallet.mv.db"
+      ],
+      "graceful_shutdown": true,
+      "stderr": "Loading TxPowTree size : 1.2 KB\nShutdown Networking..\nSaving State..\nSaving SQL..\nWallet shutdown..\nTxPowDB shutdown..\nArchiveDB shutdown..\nCoinDB shutdown..\nAll SQL DB Shutdown..\nAll saved..\n"
+    }
+  ],
+  "failures": [],
+  "seconds": 29.629,
+  "scope": "Actual pinned Java and native solo/noconnect nodes, real H2 archive/TxPoW databases, three test commands before and after restart, completion logs, valid status replies, preserved key sets, orderly exit, and no native sanitizer diagnostics including shutdown. No public network, SQL fault injection on durable storage or unused classloader-helper coverage."
+}

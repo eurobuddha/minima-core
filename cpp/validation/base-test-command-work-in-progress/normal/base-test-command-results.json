@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "programs": 274,
+  "planned_programs": 274,
+  "operations": 616,
+  "independent_assertions": 114,
+  "source_demo_iterations_each": 100000,
+  "source_demos_completed": 2,
+  "seconds": 30.943,
+  "transcript_sha256": "572f1a50788e895ea379e51be503fa21136aaac24c3762e55b29004b1e8de156",
+  "failures": [],
+  "scope": "Actual registered test command using existing MinimaDB/ArchiveManager/TxPoWSqlDB and recording SQL; loaded/unloaded state, repeated calls, ignored parameters, caller permissions, 50 SQL failure points for checked/runtime failures, logs, identities, locks and state. Actual source mains each execute100000random-address iterations. JVM-specific diagnostic prose and temporary path normalized. Durable H2 command integration and the unused private classloader resource helper remain unverified."
+}

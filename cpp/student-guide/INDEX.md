@@ -411,7 +411,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | [sphincs.java](files/src/org/minima/system/commands/base/sphincs.md) | authored | implemented_partial |
 | [status.java](files/src/org/minima/system/commands/base/status.md) | authored | implemented_partial |
 | [systemcheck.java](files/src/org/minima/system/commands/base/systemcheck.md) | authored | implemented_partial |
-| [test.java](files/src/org/minima/system/commands/base/test.md) | authored | unported |
+| [test.java](files/src/org/minima/system/commands/base/test.md) | authored | implemented_partial |
 | [timemilli.java](files/src/org/minima/system/commands/base/timemilli.md) | authored | implemented_partial |
 | [tokencreate.java](files/src/org/minima/system/commands/base/tokencreate.md) | authored | implemented_partial |
 | [tokenvalidate.java](files/src/org/minima/system/commands/base/tokenvalidate.md) | authored | implemented_partial |

@@ -2,7 +2,7 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "previous_head": "2087648e2517aad18dcfc34de3cf88e52dd23a47",
   "goal_complete": false,
-  "status": "Both complete builds pass;normal169 cases/342 assertions and exact full-size source mains pass;sanitized169 public-method cases/338 assertions pass,actual sanitized main running;shared268-case replay passes both builds",
+  "status": "Both complete builds and shared268-case replays pass; normal and sanitized full TransactionTest runs each pass169cases/342assertions with exact source-main stdout.",
   "mapped": 457,
   "counterparts": 398,
   "production_counterparts": 354,
@@ -15,8 +15,7 @@
   "full_sanitized_build": "passed",
   "full_ctest_suite_run": false,
   "active_sessions": {
-    "original_sanitized_signer": 31941,
-    "sanitized_transaction_demo": 23405
+    "original_sanitized_signer": 31941
   },
   "terminal_sessions": {
     "fixture_build": 85223,
@@ -24,20 +23,25 @@
     "sanitized_full_build": 6000,
     "sanitized_replay": 71927,
     "original_sanitized_utils": 11888,
-    "normal_transaction_demo": 82779
+    "normal_transaction_demo": 82779,
+    "sanitized_transaction_demo": 23405
   },
   "notes": [
     "Revalidate handles; saved progress files alone do not prove processes remain live.",
     "Demo main preserves fixed script key30DE...6822E vs derivedDBCD...050BF, one-iteration proof loop, and absence of explicit coin-ID recomputation. No shortcut skips full-size signing.",
     "Formatter/shared state installer extracted from tested SPHINCSUtils; exact source method ordering retained.",
-    "Both public-method runs pass169/338; main results pending. Actual main timeout3600s per runtime;CTest7500s.",
     "Original full sanitized SPHINCSUtils269-case run completed1281.096s. Actual signatures match both normal writers and both VMs accept937operations. Exactly the two originalCHECKSIGerror-text differences appear; fixed replay268/1677 already resolves them.",
-    "Base sphincs command source was read; implementation remains next after finishing its reuse gate and current demo validation."
+    "Sanitized actualmains both exit0/native stderr empty/UBSANhalt. Same transcript hash asnormal. Status counts above describe original398-file checkpoint."
   ],
   "normal_seconds": 286.371,
   "normal_independent_assertions": 342,
   "normal_source_mains_matched": true,
   "normal_demo_operations": 221,
   "normal_demo_valid": false,
-  "ctest_entries": 245
+  "ctest_entries": 245,
+  "sanitized_seconds": 1411.275,
+  "sanitized_independent_assertions": 342,
+  "sanitized_source_mains_matched": true,
+  "sanitized_demo_operations": 221,
+  "sanitized_demo_valid": false
 }

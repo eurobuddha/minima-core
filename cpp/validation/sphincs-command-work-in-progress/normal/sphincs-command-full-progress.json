@@ -1,5 +1,5 @@
 {
-  "cases": 126,
+  "cases": 129,
   "groups": {
     "metadata": 1,
     "missing": 1,
@@ -19,8 +19,11 @@
     "registered-runner": 4,
     "funding-failure": 5,
     "input-cap": 1,
-    "empty-input": 1
+    "empty-input": 1,
+    "full-inline-sign": 1,
+    "full-file-sign": 1,
+    "full-test-action": 1
   },
-  "independent_assertions": 24,
+  "independent_assertions": 30,
   "failures": []
 }

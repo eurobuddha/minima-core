@@ -1,3 +1,48 @@
+## Database test command and completed TransactionTest review
+
+### Summary
+
+The new command preserves the source reply and log/refresh/log order, delegates
+to the existing MinimaDB refresh implementation, accepts but does not interpret
+show/action, and is registered in the native runner. Its standalone demonstration
+preserves all100000random-address iterations. The existing recording-SQL fixture
+is reused without new production hooks.
+
+### Findings and validation
+
+**Open fidelity gap — private class-loader helper.** The unused Java resource
+lookup helper has no native resource service and is not represented. The file
+remains implemented_partial; this checkpoint does not claim a complete class port.
+
+**Fixture issue, fixed — ordinary native lifecycle logs use stderr.** The initial
+real-node test incorrectly required empty stderr. It is retained as evidence.
+The corrected test captures all stderr including shutdown, preserves ordinary
+logs, requires successful exit and UBSANhalt, and rejects sanitizer diagnostics.
+It does not suppress or rewrite production logging.
+
+Both complete builds pass. Both differential runs pass274programs/616operations
+and114independent assertions with the same transcript hash. Normal30.943seconds;
+sanitized62.695seconds. Each actual source main executes100000iterations and
+prints only its expected start/finish markers. Both real-H2 integration runs pass
+four node processes and12refresh commands, preserving eight wallet keys before
+and after restart (normal29.629seconds, sanitized149.797seconds).
+
+The earlier full TransactionTest sanitizer run also completed:169cases and342
+independent assertions pass1411.275seconds. Actual Java/native stdout is identical,
+including expected contract rejection in221operations. Both processes exit0 and
+native stderr is empty. Its transcript hash equals the normal run's hash.
+
+### Verdict
+
+Approve this public-command/demonstration checkpoint; retain the private resource
+helper gap. Three full SPHINCS runs remain live.248CTest entries are registered,
+but the entire suite has not run.400counterparts exist;57mapped files are absent.
+All457teaching pages pass the structural audit with9246links.
+[Command evidence](validation/base-test-command-work-in-progress/progress.json).
+[Completed demonstration evidence](validation/transaction-test-work-in-progress/progress.json).
+
+---
+
 Normal expanded preliminary cases now126/126 match, including the NUL-path regression; full signing remains live. Sanitized preliminary progress91cases/0failures at this snapshot.
 
 ## SPHINCS command review

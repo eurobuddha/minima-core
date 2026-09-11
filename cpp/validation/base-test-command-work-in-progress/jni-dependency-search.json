@@ -1,0 +1,33 @@
+{
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "pinned_declarations": "upstream-study/src/org/minima/utils/jni/jnifunctions.java",
+  "load_call": "System.loadLibrary(\"native\")",
+  "local_candidates_searched": [
+    "upstream-study",
+    "cpp/src",
+    "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src",
+    "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/tests"
+  ],
+  "public_query": "gh search code hashHeaderWithDiff --limit30 --json repository,path,url",
+  "indexed_matches": [
+    {
+      "repository": "spartacusrex-minima/minima-core",
+      "path": "src/org/minima/utils/jni/jnifunctions.java"
+    },
+    {
+      "repository": "spartacusrex-minima/minima-core",
+      "path": "src/org/minima/system/commands/base/jnitest.java"
+    },
+    {
+      "repository": "spartacusrex-minima/minima-core",
+      "path": "src/org/minima/system/commands/base/benchmark.java"
+    },
+    {
+      "repository": "spartacusrex-minima/minima-core",
+      "path": "src/org/minima/system/commands/base/jniminingtest.java"
+    }
+  ],
+  "finding": "No native method body found in these results. This does not prove the external library does not exist.",
+  "user_location_question": "pending",
+  "goal_blocked": false
+}

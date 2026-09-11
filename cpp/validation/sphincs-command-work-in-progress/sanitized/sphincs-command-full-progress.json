@@ -1,12 +1,26 @@
 {
-  "cases": 91,
+  "cases": 126,
   "groups": {
     "metadata": 1,
     "missing": 1,
     "action": 9,
     "required-order": 10,
-    "parameter-types": 70
+    "parameter-types": 70,
+    "generate": 6,
+    "short-private": 6,
+    "verify-known": 1,
+    "wrong-message": 1,
+    "wrong-public": 1,
+    "signature-decode": 5,
+    "file-precedence": 1,
+    "missing-file": 1,
+    "malformed-file": 1,
+    "nul-file-path": 1,
+    "registered-runner": 4,
+    "funding-failure": 5,
+    "input-cap": 1,
+    "empty-input": 1
   },
-  "independent_assertions": 2,
+  "independent_assertions": 24,
   "failures": []
 }

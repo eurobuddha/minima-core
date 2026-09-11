@@ -37,5 +37,6 @@ Both main processes exited zero and native stderr was empty; the driver explicit
 checked the contract result instead of treating a zero exit as acceptance.
 
 Both full builds and the existing 268-case/1,677-assertion transaction replays pass
-after extraction. The sanitized actual main is still running; no final sanitizer
-demo pass is claimed. [Saved status](../../validation/transaction-test-work-in-progress/progress.json).
+after extraction. The sanitized full run also passed169cases/342assertions in
+1411.275seconds, with identical source-main stdout and the same transcript hash
+as the normal run. Both processes exitedzero and native stderr was empty. [Saved status](../../validation/transaction-test-work-in-progress/progress.json).

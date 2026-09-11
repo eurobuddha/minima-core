@@ -1,3 +1,72 @@
+# Latest checkpoint — test command validated; TransactionTest sanitizer complete
+
+PreviousHEAD83afe92; gitlog identifies currentcommit. Full457-file goalACTIVE.
+400counterparts=356production+44originaltests;57absent=13production+44tests.
+Allpresentimplemented_partial/allparitynot_verified. BothcompletebuildsPASS.
+248CTestentries/fullsuiteNOT run.457lessons/9246links/noauditerrors.
+
+Newcommands/base/test.cpp/hpp preservespublicconstructor,params,reply,log/refresh/
+log order,getFunction andfull100000-random-address main. Registeredactualrunner.
+UsesactualMinimaDB refresh (archive thenTxPoWSqlDB),Logger,MiniData/Address.
+IMPORTANT: unusedprivateJava getFileFromResourceAsStream isUNREPRESENTED; no native
+classpathresource serviceexists. Explicitfidelitygap,notfullclassparity.
+Normal+SANbase_test_command_differential.py reuseexistingMinimaDBOracle/minima_db
+andSQLfixture/projectnormalization unchanged;274programs/616ops/114checksPASS,
+30.943snormal/62.695ssan,same572f1a50...transcript. Actualbothmains100000iterations
+finishwithonlyStart/Finishmarkers. Sourceenvelope39bytes starts0x01=>305bits=>61
+base32digits+Mx=63. No reductioniniterationcount.
+
+native_base_test_startup.py reusesNode/ready/key_state fromrestorestartuphelper.
+Usescompiledbase-test-command-oracle (runcommanddifferentialfirst;CTestDEPENDS).
+Fresh/restartedactualJava/C++solo/noconnect/H2nodes:fourprocesses,12testcommands,
+8keys retained,SQLfilespresent,statusvalid,gracefulshutdown. NormalPASS29.629s;
+SANPASS149.797s. InitialnormalnodeFAIL onlyover-strict emptystderr fixture; native
+clog containsordinarylifecyclelogs. Originalreportretainednormal/initial-node-
+results.json. FixeddriverdupsstderrdescriptorbeforeNode.finishcloseshandle,
+retainsalllogs+requireszeroexit/UBSANhalt+rejectssanitizerdiagnostics. No logging
+productionchange. Evidenceinvalidation/base-test-command-work-in-progress.
+
+23405oldTransactionTestsanactualmain isTERMINAL0/closed. Final169cases/342checks
+PASS1411.275s,exactJava/native stdout1931chars,expectedfalse221ops,stderrEMPTY,
+bothmains exit0. Same11fb7a34...transcriptasnormal. Finalreport/demooutputcopied
+into transaction-test-work-in-progress/sanitized;progress/provenance/guidesclosed.
+Do NOT poll23405again.
+
+LIVE — revalidate before restart/terminal inference:
+31941 originalsanSPHINCSsigner /tmp/minima-sphincs-sanitized-test.log
+89965 normalfullsphincscommand /tmp/minima-sphincs-command-full.log
+24343 sanitizedfullsphincscommand /tmp/minima-sphincs-command-sanitized-full.log
+Latestobservedcommandnormal129cases0failures:126preliminary+inline/file/testfull
+signatures allmatched;one/eightinputtransactionfullsignaturesremain. SAN126/0
+preliminarycomplete,fullsigningactive. Oldsignerprogress158/0,thirdfullsignnext.
+Oldsignerloadedoldnull-logcapturefixture,expectedonecase299errorresolvedseparately.
+No fullsan signerpassclaim. No sourceforests reduced/restarted merely forquiet.
+
+TERMINALnew:24120normalfixturebuildPASS;22873normalcommandcomparisonPASS;
+84364fullsanbuild+comparisonPASS;75824fullnormalbuildPASStheninitialnodefixture
+FAIL(stderr);27942fixednormalnodePASS;55110sanH2nodePASS;38115publicrepoqueryPASS.
+Do NOT polltheseagain. Prior1733bundlejob83afe92terminal and26pathsbyteverified.
+
+JNIgapinvestigation: readpinnedbase/benchmark.java,jnitest.java,utils/jni/
+jnifunctions.java. Native methodbodies absent; separateSystem.loadLibrary(native).
+No matchincurrent/siblingCpp. PublicGitHubownerrepos+minima-global reposqueried;
+exactghsearchcodehashHeaderWithDiffreturnsONLYfourpinnedJavafiles. No nativebody
+found. Asyncquestionpendingaskinguserforlibnative source/buildlocation; noapproval
+needed,nooverallblockedstatus becauseplentyofotherworkremains. Do notinvent JNI
+algorithm or claimunloadednative-errorstubs fulfillallloadedbehavior.
+
+NEXT: pollthreeliveSPHINCSruns;saveactualterminalreports/resolvefailuresifany.
+Remainingproduction: mysql/mysqlcoins,benchmark/jnitest/jniminingtest,base/tutorial,
+commands/help/tutorial/whitepaper,P2PSwapLink(commentedJava),Streamable,
+jnifunctions,utils/mysql/ArchiveServer. Plus44originaltests andallparitygaps.
+Goodnextindependentscope: help/tutorial/whitepaper source/readactualcandidates/tests
+first, orremainingoriginalobject/VMtests. Do notloseprivateclassloaderhelpergap.
+Keepcommitting/recoverybundles; do notpush unspecifiedGitHubremote.
+
+Earliernotesbelowarehistoricalwherecontradictedbythischeckpoint.
+
+---
+
 Normal expanded preliminary cases now126/126 match, including the NUL-path regression; full signing remains live. Sanitized preliminary progress91cases/0failures at this snapshot.
 
 # Latest checkpoint — sphincs command compiled; full suites LIVE

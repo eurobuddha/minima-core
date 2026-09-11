@@ -1,0 +1,30 @@
+{
+  "status": "Both full builds, both274-program command comparisons, both100000-iteration source demonstrations and actualJava/native H2/restart runs pass. Private unused resource helper remains unrepresented.",
+  "normal_differential": "274programs/616operations/114assertions pass30.943s; both100000-iteration mains complete",
+  "sanitized_differential": "274programs/616operations/114assertions pass62.695s; both100000-iteration mains complete; identical normal/sanitized transcript",
+  "actual_node_restart": {
+    "normal": "passed4processes/12commands/8keys before and after restart;29.629s",
+    "sanitized": "passed4processes/12commands/8keys before and after restart;149.797s"
+  },
+  "counterparts": 400,
+  "production": 356,
+  "original_tests": 44,
+  "absent": 57,
+  "full_parity_verified": false,
+  "unrepresented": "unused private Java classloader resource helper",
+  "JNI_dependency_gap": "Pinned benchmark/jnitest/jniminingtest reference separately supplied libnative; no implementation found in pinned source or relevant sibling search.",
+  "complete_builds": {
+    "normal": "passed",
+    "sanitized": "passed"
+  },
+  "terminal_sessions": {
+    "normal_fixture_build": 24120,
+    "normal_comparison": 22873,
+    "sanitized_build_and_comparison": 84364,
+    "first_node_driver": 75824,
+    "fixed_normal_node_driver": 27942,
+    "sanitized_node_driver": 55110
+  },
+  "full_ctest_run": false,
+  "full_ctest_entries": 248
+}

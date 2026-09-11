@@ -3819,7 +3819,7 @@
     },
     "reuse": "Extract tested SPHINCSUtils output formatter with literal separator parameters and unchanged sequential66-state writer. Reuse actual SPHINCS, transaction/token/witness/MMR/Contract implementations, ObjectOracle/CoinFixture, HORST error observer, Runner and checked_demo. Preserve source fixed wrong script key and one-iteration loop.",
     "sibling_search": "No TransactionTest or matching AMOUNT/TOKENID formatter in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src. Existing nativeUtils compatible after minimal extraction; sibling TreeKey/RSA CHECKSIG incompatible as previously read.",
-    "validation": "Both complete builds passed. Normal169cases/342 assertions and exact full-size source mains passed286.371s;demo rejects in221operations. Sanitized169/338 public APIs passed;actual main stillrunning. Both268/1677 sharedreplays passed16.026s/29.676s.",
+    "validation": "Both complete builds and268/1677sharedreplays pass. Both full TransactionTest runs pass169cases/342assertions and exact source mains with221ops/expectedrejection; normal286.371s/sanitized1411.275s; native stderr empty and all main exits0.",
     "evidence": "validation/transaction-test-work-in-progress",
     "full_parity_verified": false
   },
@@ -3839,6 +3839,25 @@
     "sibling_search": "No SPHINCS/FORS match in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src or tests; current actual pinned signer is reused.",
     "validation": "Both complete builds passed. Initial normal quick125cases/24 independent checks passed113.224s. Added NUL path guard/regression afterward. Expanded full normal/sanitized runs live; evidence records snapshots, not full passes.",
     "evidence": "validation/sphincs-command-work-in-progress",
+    "full_parity_verified": false
+  },
+  "base_test_command_work_in_progress": {
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "sources_sha256": {
+      "upstream-study/src/org/minima/system/commands/base/test.java": "b15b044f3f158eaf4453e5b2364ff4ff55c4616d1a1dd841dc50eadcec9e6820"
+    },
+    "files_sha256": {
+      "cpp/src/org/minima/system/commands/base/test.hpp": "062b2a2ef8232efd8732e88865e2ef77003f7344a0cd81429e9c793bc7961014",
+      "cpp/src/org/minima/system/commands/base/test.cpp": "dd64bfcebcfcca77f27b2b8d513a86a3848521951c36c8c960109a2cb8250592",
+      "cpp/support/base_test_demo.cpp": "d631218e72b3daeb3013dd36589b27c0026e6f03eedfb2839673c17a131d6fda",
+      "cpp/tools/base_test_command_differential.py": "29d57f1917ede8a76afdee3319d0d28bb99dbff4eebe918173bf35846decbeaa",
+      "cpp/tools/native_base_test_startup.py": "7bd12667a19e7979331563726587995e92190f647c18605f178be3b4da5b36cb"
+    },
+    "reuse": "Native MinimaDB refresh, Command reply/runner, MinimaLogger, MiniData and Address; existing MinimaDBOracle/minima_db/SqlRecordingFixture plus project normalization; actual Node/ready helpers reused for H2 restart integration.",
+    "sibling_search": "No matching refreshSQLDB command in /Users/eurobuddha/Projects/minima/tools/minima-core-cpp; existing pinned nativeDB implementation reused.",
+    "validation": "Both full builds and274programs/616operations/114assertions PASS; normal30.943s/sanitized62.695s, identical transcript. All100000-iteration mains pass. Actual H2/restart passes4processes/12commands/8preservedkeys each: normal29.629s/sanitized149.797s. Allprocessesexit0; native lifecycle logs retained, no sanitizer diagnostics. Initialnormalnode failure was over-strict empty-stderr expectation, preserved separately.",
+    "unrepresented": "Unused private Java classloader resource helper; no native classpath resource service yet.",
+    "evidence": "validation/base-test-command-work-in-progress",
     "full_parity_verified": false
   }
 }

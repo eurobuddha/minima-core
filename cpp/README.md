@@ -11,9 +11,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **355 production counterparts and 44 mapped test files exist;
-58 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **356 production counterparts and 44 mapped test files exist;
+57 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The `test` command now delegates to the native database refresh implementation,
+and its separate demonstration executes100000random-address iterations. The
+normal and sanitizer command comparisons each pass274programs; both real-H2
+node restart checks pass four processes and12refresh commands. The unused private resource helper remains unrepresented.
+See the [lab](student-guide/new-tests/database-test-command.md) and
+[evidence](validation/base-test-command-work-in-progress/progress.json).
 
 The `sphincs` command now has all five source actions and is registered in the
 native runner. It reuses the actual full-size signer, transaction helpers and
@@ -24,7 +31,7 @@ file implementation. Its differential tests are underway; see the
 TransactionTest now compiles with its pinned script and full-size signing logic.
 Both builds pass 169 formatter/logging comparisons and 338 independent assertions;
 the normal actual source mains match (221 operations, expected rejection). The
-sanitized actual main remains running. Shared helper extraction also passes
+sanitized actual main also passed (1411.275seconds,342assertions). Shared helper extraction also passes
 the 268-case transaction replay in both builds. See the
 [demonstration lab](student-guide/new-tests/sphincs-transaction-demo.md) and
 [current evidence](validation/transaction-test-work-in-progress/progress.json).
