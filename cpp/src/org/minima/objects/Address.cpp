@@ -2,7 +2,23 @@
 #include "mmr/MMRData.hpp"
 #include "org/minima/utils/BaseConverter.hpp"
 #include "support/JavaExceptions.hpp"
+#include <iostream>
 namespace minima {
+void Address::main(const std::vector<std::string>*) {mainWithData(MiniData::getRandomData(16));}
+void Address::mainWithData(const MiniData& password) {
+    auto b32=BaseConverter::encode32(password.bytes());
+    std::string mm;
+    // Java evaluates each substring from left to right before printing anything.
+    // Base32 omits leading zeroes, so a short encoding must still throw.
+    for(size_t start:{2,7,12,17,22}) {
+        if(start+4>b32.size())throw JavaTypedException("java.lang.StringIndexOutOfBoundsException",
+            "Range ["+std::to_string(start)+", "+std::to_string(start+4)+") out of bounds for length "+std::to_string(b32.size()));
+        if(!mm.empty())mm+='-';mm+=b32.substr(start,4);
+    }
+    std::cout<<"Data     : "<<password.to0xString()<<std::endl;
+    std::cout<<"Complete : "<<b32<<std::endl;
+    std::cout<<"Password : "<<mm<<std::endl;
+}
 const Address Address::TRUE_ADDRESS("RETURN TRUE");
 Address::Address(const std::string& script):mScript(script) {
     // A single-leaf MMR has an empty branch: calculating its proof returns the leaf.

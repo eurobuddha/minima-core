@@ -1,0 +1,18 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "assertions": 85,
+  "exact_comparisons": 31,
+  "random_main_runs": 12,
+  "scope": "Three source main methods. Java fixed runs install a fixture-only SecureRandom provider and verify exactly one draw of the source-requested length; native fixed runs invoke the private production body after the draw. Actual native/Java mains also run with OS randomness and null/empty/ignored arguments; output relationships are independently checked, not equal random values. No RNG-distribution certification, stdout IO-failure certification, or whole-file parity claim."
+}

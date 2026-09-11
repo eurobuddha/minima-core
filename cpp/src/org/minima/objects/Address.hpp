@@ -4,10 +4,13 @@
 #include "org/minima/utils/json/JSONObject.hpp"
 namespace minima {
 class Address:public Streamable {
+    friend class ObjectMainsFixture;
+    static void mainWithData(const MiniData& password);
     MiniString mScript;
     MiniData mAddressData;
     std::string mMinimaAddress;
 public:
+    static void main(const std::vector<std::string>* args=nullptr);
     static const Address TRUE_ADDRESS;
     Address()=default;
     explicit Address(const std::string& script);

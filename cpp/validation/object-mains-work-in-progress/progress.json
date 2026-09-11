@@ -1,0 +1,43 @@
+{
+  "goal": "active_incomplete",
+  "previous_goal_turn": "progress: b3853be and verified 62-file recovery",
+  "base_commit": "b3853bef297c3e971894b62d6b6869edfce839f9",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "active_partial": 455,
+  "inactive_source_preserved": 1,
+  "absent": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "full_parity": "not_verified",
+  "new_main_methods": [
+    "objects/Address.main",
+    "objects/base/MiniData.main",
+    "system/brains/TxPoWGenerator.main"
+  ],
+  "remaining_main_candidates": 16,
+  "corrected": [
+    "MiniData.getRandomData negative length throws JavaNegativeArraySizeException with source numeric message"
+  ],
+  "validation": {
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "actual_executable_builds_pass": true,
+    "exact_comparisons_per_build": 31,
+    "actual_random_main_runs_per_build": 12,
+    "driver_assertions_per_build": 85,
+    "original_regression_ctests_per_build": 2,
+    "original_methods_per_build": 20,
+    "original_assertions_per_runtime": 94,
+    "full_suite_rerun": false
+  },
+  "limits": [
+    "Native fixed-input runs invoke private production post-draw helpers; actual native mains separately use OS randomness",
+    "No RNG-distribution certification or stdout failure coverage",
+    "Broader APIs, ownership and virtual dispatch unverified",
+    "JNI external native bodies unavailable in inspected sources"
+  ],
+  "next_action": "Inspect and port independent send, Contract, TxPoWTreeNode and P2PFunctions entry points using existing ordering/VM/JSON/network fixtures; follow next-dependencies.md for all 16 candidates.",
+  "preview": "Frozen 6c28109 port21001 preview and user data untouched"
+}

@@ -55,3 +55,10 @@ Two candidates fail differently: one collides with an already chosen coin, anoth
 Native logs omit several source messages, and generic ERROR normalization cannot establish exact error/stack behavior. Real-time unclamped generation, arbitrary service failures, the full reference graph and Main startup binding remain open. The counterpart is partial and parity not_verified.
 
 Pinned Java SHA-256: `5a33742e0aac15e21f04d782dc8a179fc262cf8fca004b1b62bd74020da55a2e`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Follow-up: source entry point
+
+The missing main now performs the source reversed MiniNumber comparison on zero, one and two, then prints the actual sorted list. Exact Java/native output is checked with null, empty and ignored arguments. This demonstration does not exercise block generation or establish consensus parity.
+
+See the [random entry-point lab](../../../../../../new-tests/object-main-methods.md) for the calculation, fixture boundaries,
+and coverage limits. Full class parity remains unverified.

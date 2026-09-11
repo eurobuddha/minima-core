@@ -112,3 +112,10 @@ must remain alive; stream replacement expires the view. [JNI caller lab](../../.
 explains twelve mutation cases that distinguish cached comparisons from current
 hexadecimal display. This API addition does not certify general retained-array or
 concurrent mutation parity.
+
+## Follow-up: source entry point
+
+The missing main now generates 10 bytes and shows the existing left-padding operation to 16 bytes. Tests compare fixed-byte output and integer invariance, then check real random output. Negative random sizes now throw the source NegativeArraySizeException with the original length.
+
+See the [random entry-point lab](../../../../../../new-tests/object-main-methods.md) for the calculation, fixture boundaries,
+and coverage limits. Full class parity remains unverified.

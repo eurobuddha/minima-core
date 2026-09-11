@@ -1,0 +1,102 @@
+{
+  "scope": "Candidate audit only: javap verifies live public static void main(String[]) on compiled pinned classes; absence of a main token in mapped native body/header identifies an API omission candidate. Alternative named adapters and complete method behavior still require source review.",
+  "completed_in_batch": [
+    {
+      "java": "upstream-study/src/org/minima/objects/Address.java",
+      "cpp": "cpp/src/org/minima/objects/Address.cpp",
+      "class_name": "org.minima.objects.Address"
+    },
+    {
+      "java": "upstream-study/src/org/minima/system/brains/TxPoWGenerator.java",
+      "cpp": "cpp/src/org/minima/system/brains/TxPoWGenerator.cpp",
+      "class_name": "org.minima.system.brains.TxPoWGenerator"
+    },
+    {
+      "java": "upstream-study/src/org/minima/objects/base/MiniData.java",
+      "cpp": "cpp/src/org/minima/objects/base/MiniData.cpp",
+      "class_name": "org.minima.objects.base.MiniData"
+    }
+  ],
+  "candidates": [
+    {
+      "java": "upstream-study/src/org/minima/kissvm/Contract.java",
+      "cpp": "cpp/src/org/minima/kissvm/Contract.cpp",
+      "class_name": "org.minima.kissvm.Contract"
+    },
+    {
+      "java": "upstream-study/src/org/minima/system/brains/TxPoWMiner.java",
+      "cpp": "cpp/src/org/minima/system/brains/TxPoWMiner.cpp",
+      "class_name": "org.minima.system.brains.TxPoWMiner"
+    },
+    {
+      "java": "upstream-study/src/org/minima/system/commands/send/send.java",
+      "cpp": "cpp/src/org/minima/system/commands/send/send.cpp",
+      "class_name": "org.minima.system.commands.send.send"
+    },
+    {
+      "java": "upstream-study/src/org/minima/system/network/p2p/P2PFunctions.java",
+      "cpp": "cpp/src/org/minima/system/network/p2p/P2PFunctions.cpp",
+      "class_name": "org.minima.system.network.p2p.P2PFunctions"
+    },
+    {
+      "java": "upstream-study/src/org/minima/utils/encrypt/EncryptDecrypt.java",
+      "cpp": "cpp/src/org/minima/utils/encrypt/EncryptDecrypt.cpp",
+      "class_name": "org.minima.utils.encrypt.EncryptDecrypt"
+    },
+    {
+      "java": "upstream-study/src/org/minima/utils/encrypt/CryptoPackage.java",
+      "cpp": "cpp/src/org/minima/utils/encrypt/CryptoPackage.cpp",
+      "class_name": "org.minima.utils.encrypt.CryptoPackage"
+    },
+    {
+      "java": "upstream-study/src/org/minima/utils/encrypt/PasswordCrypto.java",
+      "cpp": "cpp/src/org/minima/utils/encrypt/PasswordCrypto.cpp",
+      "class_name": "org.minima.utils.encrypt.PasswordCrypto"
+    },
+    {
+      "java": "upstream-study/src/org/minima/utils/encrypt/SignVerify.java",
+      "cpp": "cpp/src/org/minima/utils/encrypt/SignVerify.cpp",
+      "class_name": "org.minima.utils.encrypt.SignVerify"
+    },
+    {
+      "java": "upstream-study/src/org/minima/objects/mmr/MMR.java",
+      "cpp": "cpp/src/org/minima/objects/mmr/MMR.cpp",
+      "class_name": "org.minima.objects.mmr.MMR"
+    },
+    {
+      "java": "upstream-study/src/org/minima/objects/mmr/MegaMMR.java",
+      "cpp": "cpp/src/org/minima/objects/mmr/MegaMMR.cpp",
+      "class_name": "org.minima.objects.mmr.MegaMMR"
+    },
+    {
+      "java": "upstream-study/src/org/minima/objects/keys/TreeKey.java",
+      "cpp": "cpp/src/org/minima/objects/keys/TreeKey.cpp",
+      "class_name": "org.minima.objects.keys.TreeKey"
+    },
+    {
+      "java": "upstream-study/src/org/minima/database/archive/ArchiveManager.java",
+      "cpp": "cpp/src/org/minima/database/archive/ArchiveManager.cpp",
+      "class_name": "org.minima.database.archive.ArchiveManager"
+    },
+    {
+      "java": "upstream-study/src/org/minima/database/txpowtree/TxPoWTreeNode.java",
+      "cpp": "cpp/src/org/minima/database/txpowtree/TxPoWTreeNode.cpp",
+      "class_name": "org.minima.database.txpowtree.TxPoWTreeNode"
+    },
+    {
+      "java": "upstream-study/src/org/minima/database/cascade/Cascade.java",
+      "cpp": "cpp/src/org/minima/database/cascade/Cascade.cpp",
+      "class_name": "org.minima.database.cascade.Cascade"
+    },
+    {
+      "java": "upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java",
+      "cpp": "cpp/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.cpp",
+      "class_name": "org.minima.database.txpowdb.onchain.TxPoWOnChainDB"
+    },
+    {
+      "java": "upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java",
+      "cpp": "cpp/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp",
+      "class_name": "org.minima.database.txpowdb.sql.TxPoWSqlDB"
+    }
+  ]
+}

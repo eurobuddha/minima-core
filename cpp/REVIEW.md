@@ -1,3 +1,34 @@
+# Current checkpoint — three object entry points
+
+Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,
+one inactive), one absent jnifunctions.cpp. Full parity remains not_verified.
+
+Added main to Address, MiniData and TxPoWGenerator. Reused native random bytes,
+Base32, padding, integer conversion and stable number sorting. Address retains
+source skipped characters and first-failing substring exception before output.
+MiniData negative random lengths now throw the source NegativeArraySizeException.
+
+Both actual executable builds PASS. Per build: 31 exact Java/native comparisons,
+12 actual random main runs with independent output checks, 85 driver assertions.
+Both original base/object regression CTests PASS: 20 source test methods and 94
+assertions per runtime. Full suite not rerun. Java fixed-input fixtures check one
+random draw of the exact source size; native fixed cases call the private production
+body after the draw. Actual main/randomness is separately exercised.
+
+Evidence: validation/object-mains-work-in-progress, including raw observations.
+Student lab: student-guide/new-tests/object-main-methods.md; three lessons updated.
+Remaining entry-point candidate list reduced 19 -> 16. Complete live main bodies
+reviewed for those 16; next-dependencies.md records real dependencies and test setup.
+
+NEXT: inspect/port send, Contract, TxPoWTreeNode and P2PFunctions entries with the
+existing ordering/VM/JSON/network fixtures. Database demos require fixture-owned
+home paths; do not execute them against real home data. None of these 16 mains
+calls JNI. Missing external JNI bodies remain a separate blocker. Preserve frozen
+6c28109 port21001 preview/data and unrelated graphify files. Local commits and
+verified bundles only; no push. Candidate list is not a full API/parity audit.
+
+## Previous checkpoint (historical)
+
 # Current checkpoint — five utility entry points
 
 Goal ACTIVE, incomplete. No new counterparts: 456 paths (455 active partial,

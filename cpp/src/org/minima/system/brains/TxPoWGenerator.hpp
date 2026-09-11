@@ -7,6 +7,7 @@ class TxPoWGenerator {
     static bool MEMPOOL_FULL;
     static MiniNumber MIN_MEMPOOL_BURN;
 public:
+    static void main(const std::vector<std::string>* args=nullptr);
     static ConsensusServices services;
     static bool isMempoolFull() {return MEMPOOL_FULL;}
     static MiniNumber getMinMempoolBurn() {return MIN_MEMPOOL_BURN;}

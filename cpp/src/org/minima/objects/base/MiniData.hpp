@@ -13,7 +13,10 @@ class BigInt;
 class MMREntryNumber;
 
 class MiniData:public Streamable {
+    friend class ObjectMainsFixture;
+    static void mainWithData(const MiniData& original);
 public:
+    static void main(const std::vector<std::string>* args=nullptr);
     static int MINIMA_MAX_HASH_LENGTH;
     static int MINIMA_MAX_MINIDATA_LENGTH;
 

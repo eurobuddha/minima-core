@@ -11,6 +11,7 @@
 #include <cstring>
 #include <algorithm>
 #include <fstream>
+#include <iostream>
 
 // SHA3-256 and SHA2-256 implementations (no external deps)
 namespace keccak_impl {
@@ -121,7 +122,7 @@ MiniData MiniData::withMinLength(const std::vector<uint8_t>& data, int minLen) {
 }
 
 MiniData MiniData::getRandomData(int len) {
-    if (len < 0) throw std::invalid_argument("MiniData: negative random data length");
+    if (len < 0) throw JavaNegativeArraySizeException(std::to_string(len));
     std::vector<uint8_t> out(len);
     // Match Java SecureRandom's requirement for OS-backed randomness on this
     // POSIX target. Fail rather than falling back to a predictable PRNG.
@@ -129,6 +130,12 @@ MiniData MiniData::getRandomData(int len) {
     if (!random || (len && !random.read(reinterpret_cast<char*>(out.data()), len)))
         throw std::runtime_error("MiniData: OS random source unavailable");
     return MiniData(out);
+}
+void MiniData::main(const std::vector<std::string>*) {mainWithData(getRandomData(10));}
+void MiniData::mainWithData(const MiniData& original) {
+    std::cout<<"ORIG   : "<<original.getLength()<<" "<<original.to0xString()<<" "<<original.getDataValue().toDecimalString()<<std::endl;
+    auto padded=withMinLength(original.bytes(),16);
+    std::cout<<"LENGTH : "<<padded.getLength()<<" "<<padded.to0xString()<<" "<<padded.getDataValue().toDecimalString()<<std::endl;
 }
 
 bool MiniData::isLess(const MiniData& o) const {return getDataValue()<o.getDataValue();}

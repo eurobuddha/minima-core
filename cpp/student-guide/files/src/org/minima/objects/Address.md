@@ -60,3 +60,10 @@ The [hash-writer lab](../../../../../new-tests/hash-writers.md) explains distinc
 length limits, partial output and receiver lifetime during field replacement.
 Both builds pass 1,848 comparisons and 12,752 independent assertions for the
 represented paths. This update does not establish full field identity or class parity.
+
+## Follow-up: source entry point
+
+The missing main now generates 16 random bytes, uses the existing Base32 encoder, and retains the five source substring ranges. Fixed-byte comparisons exercise each first-failing range and complete output; actual random runs check consistency between bytes, Base32 and grouped text.
+
+See the [random entry-point lab](../../../../../new-tests/object-main-methods.md) for the calculation, fixture boundaries,
+and coverage limits. Full class parity remains unverified.

@@ -7,6 +7,13 @@
 #include <iostream>
 #include <bit>
 namespace minima {
+void TxPoWGenerator::main(const std::vector<std::string>*) {
+    std::vector<MiniNumber> numbers{MiniNumber::ZERO,MiniNumber::ONE,MiniNumber::TWO};
+    std::stable_sort(numbers.begin(),numbers.end(),[](const auto& a,const auto& b){return b.compareTo(a)<0;});
+    std::cout<<"[";
+    for(size_t i=0;i<numbers.size();++i){if(i)std::cout<<", ";std::cout<<numbers[i].toString();}
+    std::cout<<"]"<<std::endl;
+}
 bool TxPoWGenerator::MEMPOOL_FULL=false;
 MiniNumber TxPoWGenerator::MIN_MEMPOOL_BURN(0);
 ConsensusServices TxPoWGenerator::services;

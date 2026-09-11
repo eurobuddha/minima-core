@@ -1,0 +1,353 @@
+{
+  "passed": true,
+  "assertions": 85,
+  "exact_comparisons": 31,
+  "random_main_runs": 12,
+  "observations": [
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000000000000000000000000000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [2, 6) out of bounds for length 3\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [2, 6) out of bounds for length 3\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000000000000000000000000001"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [2, 6) out of bounds for length 3\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [2, 6) out of bounds for length 3\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000000000000000000000008000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [7, 11) out of bounds for length 6\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [7, 11) out of bounds for length 6\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000000000000000000000100000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [7, 11) out of bounds for length 7\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [7, 11) out of bounds for length 7\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000000000000000010000000000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [12, 16) out of bounds for length 11\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [12, 16) out of bounds for length 11\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000000000000000200000000000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [12, 16) out of bounds for length 12\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [12, 16) out of bounds for length 12\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000000000020000000000000000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [17, 21) out of bounds for length 16\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [17, 21) out of bounds for length 16\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000000000400000000000000000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [17, 21) out of bounds for length 17\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [17, 21) out of bounds for length 17\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000040000000000000000000000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [22, 26) out of bounds for length 21\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [22, 26) out of bounds for length 21\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00000000800000000000000000000000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [22, 26) out of bounds for length 22\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [22, 26) out of bounds for length 22\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00004000000000000000000000000000"
+      ],
+      "java": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [22, 26) out of bounds for length 25\n",
+      "cpp": "EXCEPTION:java.lang.StringIndexOutOfBoundsException: Range [22, 26) out of bounds for length 25\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x00080000000000000000000000000000"
+      ],
+      "java": "Data     : 0x00080000000000000000000000000000\nComplete : Mx100000000000000000000000\nPassword : 1000-0000-0000-0000-0000\n",
+      "cpp": "Data     : 0x00080000000000000000000000000000\nComplete : Mx100000000000000000000000\nPassword : 1000-0000-0000-0000-0000\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x01000000000000000000000000000000"
+      ],
+      "java": "Data     : 0x01000000000000000000000000000000\nComplete : Mx1000000000000000000000000\nPassword : 1000-0000-0000-0000-0000\n",
+      "cpp": "Data     : 0x01000000000000000000000000000000\nComplete : Mx1000000000000000000000000\nPassword : 1000-0000-0000-0000-0000\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x20000000000000000000000000000000"
+      ],
+      "java": "Data     : 0x20000000000000000000000000000000\nComplete : Mx10000000000000000000000000\nPassword : 1000-0000-0000-0000-0000\n",
+      "cpp": "Data     : 0x20000000000000000000000000000000\nComplete : Mx10000000000000000000000000\nPassword : 1000-0000-0000-0000-0000\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0x80000000000000000000000000000000"
+      ],
+      "java": "Data     : 0x80000000000000000000000000000000\nComplete : Mx40000000000000000000000000\nPassword : 4000-0000-0000-0000-0000\n",
+      "cpp": "Data     : 0x80000000000000000000000000000000\nComplete : Mx40000000000000000000000000\nPassword : 4000-0000-0000-0000-0000\n"
+    },
+    {
+      "args": [
+        "Address",
+        "fixed",
+        "0xffffffffffffffffffffffffffffffff"
+      ],
+      "java": "Data     : 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\nComplete : Mx7VVVVVVVVVVVVVVVVVVVVVVVVV\nPassword : 7VVV-VVVV-VVVV-VVVV-VVVV\n",
+      "cpp": "Data     : 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\nComplete : Mx7VVVVVVVVVVVVVVVVVVVVVVVVV\nPassword : 7VVV-VVVV-VVVV-VVVV-VVVV\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "fixed",
+        "0x00000000000000000000"
+      ],
+      "java": "ORIG   : 10 0x00000000000000000000 0\nLENGTH : 16 0x00000000000000000000000000000000 0\n",
+      "cpp": "ORIG   : 10 0x00000000000000000000 0\nLENGTH : 16 0x00000000000000000000000000000000 0\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "fixed",
+        "0x00000000000000000001"
+      ],
+      "java": "ORIG   : 10 0x00000000000000000001 1\nLENGTH : 16 0x00000000000000000000000000000001 1\n",
+      "cpp": "ORIG   : 10 0x00000000000000000001 1\nLENGTH : 16 0x00000000000000000000000000000001 1\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "fixed",
+        "0x0000000000000000007f"
+      ],
+      "java": "ORIG   : 10 0x0000000000000000007F 127\nLENGTH : 16 0x0000000000000000000000000000007F 127\n",
+      "cpp": "ORIG   : 10 0x0000000000000000007F 127\nLENGTH : 16 0x0000000000000000000000000000007F 127\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "fixed",
+        "0x00000000000000000080"
+      ],
+      "java": "ORIG   : 10 0x00000000000000000080 128\nLENGTH : 16 0x00000000000000000000000000000080 128\n",
+      "cpp": "ORIG   : 10 0x00000000000000000080 128\nLENGTH : 16 0x00000000000000000000000000000080 128\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "fixed",
+        "0x000000000000000000ff"
+      ],
+      "java": "ORIG   : 10 0x000000000000000000FF 255\nLENGTH : 16 0x000000000000000000000000000000FF 255\n",
+      "cpp": "ORIG   : 10 0x000000000000000000FF 255\nLENGTH : 16 0x000000000000000000000000000000FF 255\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "fixed",
+        "0x00000000000000000100"
+      ],
+      "java": "ORIG   : 10 0x00000000000000000100 256\nLENGTH : 16 0x00000000000000000000000000000100 256\n",
+      "cpp": "ORIG   : 10 0x00000000000000000100 256\nLENGTH : 16 0x00000000000000000000000000000100 256\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "fixed",
+        "0x80000000000000000000"
+      ],
+      "java": "ORIG   : 10 0x80000000000000000000 604462909807314587353088\nLENGTH : 16 0x00000000000080000000000000000000 604462909807314587353088\n",
+      "cpp": "ORIG   : 10 0x80000000000000000000 604462909807314587353088\nLENGTH : 16 0x00000000000080000000000000000000 604462909807314587353088\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "fixed",
+        "0xffffffffffffffffffff"
+      ],
+      "java": "ORIG   : 10 0xFFFFFFFFFFFFFFFFFFFF 1208925819614629174706175\nLENGTH : 16 0x000000000000FFFFFFFFFFFFFFFFFFFF 1208925819614629174706175\n",
+      "cpp": "ORIG   : 10 0xFFFFFFFFFFFFFFFFFFFF 1208925819614629174706175\nLENGTH : 16 0x000000000000FFFFFFFFFFFFFFFFFFFF 1208925819614629174706175\n"
+    },
+    {
+      "args": [
+        "TxPoWGenerator",
+        "null"
+      ],
+      "java": "[2, 1, 0]\n",
+      "cpp": "[2, 1, 0]\n"
+    },
+    {
+      "args": [
+        "Address",
+        "null"
+      ],
+      "java": "Data     : 0xFEF0131326B51C6CA4D808327AC0D60F\nComplete : Mx7UU09H69YY3HMA9M0869TC1YGF\nPassword : 7UU0-H69Y-3HMA-M086-TC1Y\n",
+      "cpp": "Data     : 0x5BE7FB5B8649AFFF586407CE6EC98843\nComplete : Mx2RSVTYN1W9YVVYGP07PPNCJ223\nPassword : 2RSV-YN1W-YVVY-P07P-NCJ2\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "null"
+      ],
+      "java": "ORIG   : 10 0x5E09658CBDDE137A346C 444075787518666113430636\nLENGTH : 16 0x0000000000005E09658CBDDE137A346C 444075787518666113430636\n",
+      "cpp": "ORIG   : 10 0x48EEE033F02BA6D3C6B9 344416867376515909928633\nLENGTH : 16 0x00000000000048EEE033F02BA6D3C6B9 344416867376515909928633\n"
+    },
+    {
+      "args": [
+        "TxPoWGenerator",
+        "empty"
+      ],
+      "java": "[2, 1, 0]\n",
+      "cpp": "[2, 1, 0]\n"
+    },
+    {
+      "args": [
+        "Address",
+        "empty"
+      ],
+      "java": "Data     : 0x179E7712C3AC0F3B336A78A1E7ADBF0C\nComplete : MxNJPRH5GTC1STJ6QJZK7JQRFZC\nPassword : NJPR-5GTC-STJ6-JZK7-QRFZ\n",
+      "cpp": "Data     : 0x44D2CD63F3497BBCC0BD194EC54547E1\nComplete : Mx24QB6M7SQ9FEUC1F8P9R2KAHV1\nPassword : 24QB-M7SQ-FEUC-F8P9-2KAH\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "empty"
+      ],
+      "java": "ORIG   : 10 0xED35568FE9CAB3BE0717 1120184771337078261548823\nLENGTH : 16 0x000000000000ED35568FE9CAB3BE0717 1120184771337078261548823\n",
+      "cpp": "ORIG   : 10 0x7FC636E47204C7E92003 603396954062777030877187\nLENGTH : 16 0x0000000000007FC636E47204C7E92003 603396954062777030877187\n"
+    },
+    {
+      "args": [
+        "TxPoWGenerator",
+        "args"
+      ],
+      "java": "[2, 1, 0]\n",
+      "cpp": "[2, 1, 0]\n"
+    },
+    {
+      "args": [
+        "Address",
+        "args"
+      ],
+      "java": "Data     : 0x919A3690C4C17E397FF4A5E08CAF8667\nComplete : Mx4HJ8R91H61FZSNVT55S26AV1J7\nPassword : 4HJ8-91H6-FZSN-T55S-6AV1\n",
+      "cpp": "Data     : 0x71AAB26530FD9E0C51D40CCB8DCEFF37\nComplete : Mx3HYAP6AC7TJZ653Y0CPE6STVPN\nPassword : 3HYA-6AC7-JZ65-Y0CP-6STV\n"
+    },
+    {
+      "args": [
+        "MiniData",
+        "args"
+      ],
+      "java": "ORIG   : 10 0x5E34A9D1D0A420B44674 444873916872645431019124\nLENGTH : 16 0x0000000000005E34A9D1D0A420B44674 444873916872645431019124\n",
+      "cpp": "ORIG   : 10 0x1782A3DD2E3788D8B4BD 111024313480198170916029\nLENGTH : 16 0x0000000000001782A3DD2E3788D8B4BD 111024313480198170916029\n"
+    },
+    {
+      "args": [
+        "randomLength",
+        "-2147483648"
+      ],
+      "java": "EXCEPTION:java.lang.NegativeArraySizeException: -2147483648\n",
+      "cpp": "EXCEPTION:java.lang.NegativeArraySizeException: -2147483648\n"
+    },
+    {
+      "args": [
+        "randomLength",
+        "-100"
+      ],
+      "java": "EXCEPTION:java.lang.NegativeArraySizeException: -100\n",
+      "cpp": "EXCEPTION:java.lang.NegativeArraySizeException: -100\n"
+    },
+    {
+      "args": [
+        "randomLength",
+        "-1"
+      ],
+      "java": "EXCEPTION:java.lang.NegativeArraySizeException: -1\n",
+      "cpp": "EXCEPTION:java.lang.NegativeArraySizeException: -1\n"
+    },
+    {
+      "args": [
+        "randomLength",
+        "0"
+      ],
+      "java": "0:\n",
+      "cpp": "0:\n"
+    },
+    {
+      "args": [
+        "randomLength",
+        "1"
+      ],
+      "java": "1:0xD6\n",
+      "cpp": "1:0x49\n"
+    },
+    {
+      "args": [
+        "randomLength",
+        "10"
+      ],
+      "java": "10:0x3133E8D6DB0FA6D10374\n",
+      "cpp": "10:0x0B5C2055C52E01454BCB\n"
+    },
+    {
+      "args": [
+        "randomLength",
+        "16"
+      ],
+      "java": "16:0x3819ED2CC00EAD7BA384DE23AF5FAE45\n",
+      "cpp": "16:0xD9AC157DD8967F2FFB1EF0C47A728509\n"
+    }
+  ],
+  "scope": "Three source main methods. Java fixed runs install a fixture-only SecureRandom provider and verify exactly one draw of the source-requested length; native fixed runs invoke the private production body after the draw. Actual native/Java mains also run with OS randomness and null/empty/ignored arguments; output relationships are independently checked, not equal random values. No RNG-distribution certification, stdout IO-failure certification, or whole-file parity claim."
+}
