@@ -10,6 +10,7 @@ public:
     static CommandRunner getRunner(){return CommandRunner();}
     json::JSONArray runMultiCommand(const std::string& command);
     json::JSONArray runMultiCommand(const std::string& miniDappID,const std::string& command);
+    json::JSONArray runMultiCommandNullableUser(const std::optional<std::string>& miniDappID,const std::string& command);
     json::JSONObject runSingleCommand(const std::string& command);
     std::shared_ptr<Command> getCommandOnly(const std::string& name);
     std::shared_ptr<Command> getCommand(const std::string& command);

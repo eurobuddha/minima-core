@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "wrapper_cases": 487,
+  "configuration_processes": 5,
+  "hook_process_pairs": 16,
+  "native_limitation_processes": 1,
+  "starter_processes": 3,
+  "failures": [],
+  "scope": "Unmodified pinned Minima direct wrapper overloads and real command registry, nullable caller ordering, exact formatted strings and zero/one/multi-result shapes; controlled singleton identity only. Real help/unknown/missing-config process exits plus three mainStarter null/help/unknown subprocesses. Native hooks compared with JVM Runtime for concurrent hooks, names, return/exit/halt, HUP/INT/TERM, throws and late registration. Only NPE prose normalized in wrappers; starter exception type/name checked, main/worker print order excluded. UTF-16 isolated surrogate command input, successful mainStarter, normal CLI/daemon Main integration, host lifecycle and resource exhaustion remain unverified; missing SQL provider is explicitly asserted, not counted as parity."
+}

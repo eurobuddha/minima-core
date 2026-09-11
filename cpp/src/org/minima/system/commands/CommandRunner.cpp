@@ -119,7 +119,8 @@ static std::string trim(const std::string& s){size_t first=0,last=s.size();while
 
 json::JSONArray CommandRunner::runMultiCommand(const std::string& command){return runMultiCommand("0x00",command);}
 json::JSONObject CommandRunner::runSingleCommand(const std::string& command){auto result=runMultiCommand(command);return result.size()?*std::get<std::shared_ptr<json::JSONObject>>(result.get(0).value):json::JSONObject();}
-json::JSONArray CommandRunner::runMultiCommand(const std::string& miniDappID,const std::string& input){
+json::JSONArray CommandRunner::runMultiCommand(const std::string& miniDappID,const std::string& input){return runMultiCommandNullableUser(miniDappID,input);}
+json::JSONArray CommandRunner::runMultiCommandNullableUser(const std::optional<std::string>& miniDappID,const std::string& input){
     json::JSONArray finalResult;size_t start=0;
     while(start<input.size()){
         if(input[start]==';'){++start;continue;}auto end=input.find(';',start);if(end==std::string::npos)end=input.size();auto text=trim(input.substr(start,end-start));start=end;
@@ -132,7 +133,8 @@ json::JSONArray CommandRunner::runMultiCommand(const std::string& miniDappID,con
         }
         if(!valid)break;
         auto name=command->getName().value();bool allowed=isCommandAllowed(name);
-        if(miniDappID!="0x00"&&!allowed){result.put("command",text);result.put("status",false);result.put("pending",false);result.put("error","You need ADMIN privileges to run this command");finalResult.add(result);break;}
+        if(!miniDappID)throw JavaNullPointerException("null command caller");
+        if(*miniDappID!="0x00"&&!allowed){result.put("command",text);result.put("status",false);result.put("pending",false);result.put("error","You need ADMIN privileges to run this command");finalResult.add(result);break;}
         json::JSONValue reply;
         try{reply=command->runCommand();}
         catch(const CommandException& e){result=command->getJSONReply();result.put("status",false);result.put("error",e.getMessage()?json::JSONValue(*e.getMessage()):json::JSONValue());reply=result;}
@@ -145,7 +147,7 @@ json::JSONArray CommandRunner::runMultiCommand(const std::string& miniDappID,con
 }
 std::shared_ptr<Command> CommandRunner::getCommandOnly(const std::string& name){for(const auto& command:ALL_COMMANDS){if(!command)throw std::invalid_argument("Null command prototype");if(command->getName()==name)return command->getFunction();}return nullptr;}
 std::shared_ptr<Command> CommandRunner::getCommand(const std::string& input){
-    auto split=splitStringJSON(false,input);auto name=javaLowerCase(split.at(0));auto command=getCommandOnly(name);if(!command)return std::make_shared<commands::missingcmd>(name,"Command not found");command->setCompleteCommand(input);
+    auto split=splitStringJSON(false,input);if(split.empty())throw JavaArrayIndexOutOfBoundsException("Index 0 out of bounds for length 0");auto name=javaLowerCase(split[0]);auto command=getCommandOnly(name);if(!command)return std::make_shared<commands::missingcmd>(name,"Command not found");command->setCompleteCommand(input);
     for(size_t i=1;i<split.size();++i){const auto& token=split[i];auto colon=token.find(':');if(colon==std::string::npos)return std::make_shared<commands::missingcmd>(name,"Invalid parameters for "+name+" @ "+token);
         auto key=trim(token.substr(0,colon)),value=trim(token.substr(colon+1));bool isObject=value.starts_with('{')&&value.ends_with('}'),isArray=value.starts_with('[')&&value.ends_with(']');
         if(isObject||(isArray&&name!="txnstate")){

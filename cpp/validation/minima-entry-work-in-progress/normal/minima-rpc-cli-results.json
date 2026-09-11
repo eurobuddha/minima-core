@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "cases": 89,
+  "requests_per_runtime": 70,
+  "process_cases": 10,
+  "failures": [],
+  "scope": "Actual pinned main vs native main, real HTTP/auth/UTF8 form encoding, JSON/exception paths, banner and interactive trim/quit/close. Native process stdin decoding and pre-EOF response verified; EOF spin preserved. Heap/date prefixes, native frame symbols/count and VM-generated diagnostics normalized; frames must be present. Full node and full JVM runtime parity not established."
+}

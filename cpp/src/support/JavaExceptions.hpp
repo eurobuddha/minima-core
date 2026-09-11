@@ -16,6 +16,7 @@ class JavaTypedException:public std::runtime_error,public NativeStackTrace {
     bool mPreserveEmpty;
 public:
     JavaTypedException(std::string name,std::string message,bool preserveEmpty=false):std::runtime_error(message),mClass(std::move(name)),mMessage(std::move(message)),mPreserveEmpty(preserveEmpty){}
+    const std::string& className() const noexcept{return mClass;}
     std::string toString() const{return mClass+(mMessage.empty()&&!mPreserveEmpty?"":": "+mMessage);}
 };
 // Actual native exception types: classification must not depend on text that

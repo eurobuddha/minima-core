@@ -76,3 +76,5 @@ The [seed derivation lab](new-tests/seed-random-command.md) teaches deterministi
 
 - [Wallet token-creation lab](new-tests/token-creation.md): supply, coloring,
   shared-name mutation, creator signatures and real mining queue effects.
+
+- [Launcher boundary lab](new-tests/minima-entry-point.md): wrapper shape, nullable callers, starter failures, actual process hooks and the remaining storage/startup gap.

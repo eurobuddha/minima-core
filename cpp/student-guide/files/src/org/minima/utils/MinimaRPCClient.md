@@ -30,7 +30,7 @@ The dedicated driver compares actual HTTP request traces alongside stdout/stderr
 - [Native main fixture](../../../../../../support/minima_rpc_cli.cpp)
 - [Loopback, stdin, process, and terminal assertions](../../../../../../tools/minima_rpc_cli_differential.py)
 
-The descriptions above come from reading the cited source and test evidence. No build or test run was performed while authoring this page; no fresh pass result is claimed.
+At the Minima launcher checkpoint, the unchanged StandardInput implementation was extracted into support/ConsoleInput.cpp for both executables. The RPC Input name remains an alias to the shared interface. Both full builds and the RPC CLI comparison were rerun successfully in normal and ASAN/UBSAN configurations, including real loopback requests, pipe EOF and terminal resume checks.
 
 ## Limits and a useful next test
 

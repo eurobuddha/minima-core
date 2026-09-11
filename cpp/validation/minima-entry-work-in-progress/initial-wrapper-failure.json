@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "wrapper_cases": 40,
+  "configuration_processes": 0,
+  "hook_process_pairs": 0,
+  "native_limitation_processes": 0,
+  "failures": [
+    {
+      "case": 40,
+      "request": {
+        "text": " ",
+        "arity": 1
+      },
+      "java": {
+        "exception": "java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0"
+      },
+      "cpp": {
+        "exception": "java.lang.RuntimeException: vector"
+      }
+    }
+  ],
+  "scope": "Unmodified pinned Minima direct wrapper overloads and real command registry, nullable caller ordering, exact formatted strings and zero/one/multi-result shapes; controlled singleton identity only. Real help/unknown/missing-config process exits. Native hooks compared with JVM Runtime for concurrent hooks, names, return/exit/halt, HUP/INT/TERM, throws and late registration. Only NPE prose normalized. UTF-16 isolated surrogate command input, mainStarter, normal CLI/daemon Main integration, host lifecycle and resource exhaustion remain unverified; missing SQL provider is explicitly asserted, not counted as parity."
+}

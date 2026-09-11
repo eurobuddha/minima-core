@@ -47,7 +47,7 @@ Successful earlier commands are not rolled back after a later failure. Errors du
 
 The native runner reuses Command, the native JSON parser, Java-style lowercasing and missingcmd. It uses shared command prototypes to construct fresh command receivers, retaining parameter ownership through shared JSON objects. The source's registry is larger than the currently implemented native registry; absent concrete commands have not been represented by fake successful implementations.
 
-The native generic runCommand catch now calls the actual MinimaLogger through NativeThrowable, preserves I/O exception names, and rethrows native JavaError and std::bad_alloc representations before its generic Exception handler. Negative/empty indexes, null strings/prototypes, regex/Unicode corner cases and arbitrary registry mutation retain further parity gaps. The tests below intentionally do not claim to cover those complete boundaries.
+The native generic runCommand catch now calls the actual MinimaLogger through NativeThrowable, preserves I/O exception names, and rethrows native JavaError and std::bad_alloc representations before its generic Exception handler. Null strings/prototypes, regex/Unicode corner cases and arbitrary registry mutation retain further parity gaps. The launcher comparison now covers the empty-token array access and nullable caller ordering. The tests below intentionally do not claim to cover those complete boundaries.
 
 ## What the existing tests actually do
 
@@ -60,6 +60,18 @@ The current normal and sanitizer reports each contain **1,265 comparisons, all p
 ## New error-path experiment
 
 The [command failure lab](../../../../../../new-tests/command-runner-errors.md) compared 1,120 requests at its original checkpoint using the actual runner and logger with controlled command bodies. It checks returned JSON, escaped exception class/message, ordered log bodies, entry events, permission and invalid-parameter gates, and first/second logger failures. The original 896-request baseline had 450 mismatches; the corrected code has zero in normal and ASAN/UBSAN builds. Only timestamp/memory prefixes and generated frame lines are removed. All nine affected selected suites pass, including the real HTTP handler after its sandbox socket restriction was lifted. The fixture send command still performs no transfer.
+
+## Launcher boundary regression
+
+The [Minima entry lab](../../../../../../new-tests/minima-entry-point.md) runs the
+actual command table through all runMinimaCMD overloads. A new named native API,
+runMultiCommandNullableUser, reuses the existing runner body and preserves a null
+caller. It checks that caller only after the invalid-parameter gate, matching
+zMiniDAPPID.equals in Java. Empty batches never dereference the caller. Whitespace
+batches reach split[0] and now throw the source ArrayIndexOutOfBoundsException,
+rather than a generic std::vector error. Both normal and sanitized comparisons
+include these cases. They extend the earlier harness that collapsed such errors
+to ERROR; that older harness alone could not prove the exception category.
 
 ## Check your understanding
 

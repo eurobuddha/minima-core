@@ -1,0 +1,21 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start  52: command_runner_differential
+1/8 Test  #52: command_runner_differential ..........   Passed    2.78 sec
+    Start 109: minima_rpc_cli_differential
+2/8 Test #109: minima_rpc_cli_differential ..........   Passed    5.05 sec
+    Start 110: param_configurer_differential
+3/8 Test #110: param_configurer_differential ........   Passed    4.75 sec
+    Start 112: minima_uncaught_differential
+4/8 Test #112: minima_uncaught_differential .........   Passed    4.72 sec
+    Start 115: executor_uncaught_differential
+5/8 Test #115: executor_uncaught_differential .......   Passed    2.25 sec
+    Start 128: command_runner_errors_differential
+6/8 Test #128: command_runner_errors_differential ...   Passed    3.23 sec
+    Start 192: main_runtime_differential
+7/8 Test #192: main_runtime_differential ............   Passed    2.83 sec
+    Start 193: main_ownership
+8/8 Test #193: main_ownership .......................   Passed    0.54 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =  26.15 sec

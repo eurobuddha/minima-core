@@ -1,3 +1,59 @@
+# Current work — Minima entry boundary saved; successful startup unfinished
+
+Project, branch and binary: MinimaCoreC++. Root README now names the project and
+links native status and lessons while preserving original Java instructions.
+Added mapped Minima.cpp/hpp, ConsoleInput extracted from the RPC client, native
+process hooks, mainStarter/runMinimaCMD and support/minima_entry.cpp executable.
+
+Both full builds and nine selected suites per build pass. New comparisons:
+487 wrapper cases, five configuration-exit process pairs, three starter cases
+(null/help/unknown), and 16 hook pairs (return/exit/halt/signals/concurrent/throw/late).
+A separate native process requires the missing SQL/Main service error and timely
+cleanup; this expected failure is not a parity success. Fixed the generic-vector
+error for empty tokens and nullable caller ordering in CommandRunner. The hook
+fixture needed an unbuffered readiness pipe. Both initial reports are preserved.
+All build/test handles are terminal.
+
+Map: 377 counterparts = 333 production + 44 mapped tests; 80 absent = 36 production
++ 44 tests. There are 218 CTest entries and 457 authored/audited student guides.
+Every parity label remains not_verified. No full current 218-suite run. Evidence:
+validation/minima-entry-work-in-progress. Provenance, Minima/CommandRunner/RPC
+lessons, lab, README and scoped review are updated.
+
+Ready for local checkpoint commit and verified recovery bundle. Prior HEAD:
+47fdd91c8d3e34e60729b701dba0020a45623b03. Prior bundle: 20260911T000424Z, verified.
+Use /tmp/minima-hashtest-backup.py after a clean commit, then verify current Minima,
+ConsoleInput, NativeShutdownHooks, new fixtures, driver, lab and sanitized report
+in the recovery clone. No GitHub push; two existing fork remotes remain unresolved.
+
+NEXT: compare native Minima main CLI/daemon control flow, then integrate actual
+native durable SQL and startup. Default MainServices still lacks a SQL provider
+and fails initialization. Runtime boundaries createMain/openInput/addShutdownHook
+can drive native fixture Main, but pinned Java main always constructs new Main.
+No bytecode/source instrumentation has been written. A prior idea was a test-only
+JVM ASM transformer replacing only Main construction and hook registration; this
+requires source/API/reuse inspection before implementation. Existing
+MainRuntimeOracle.java, main_runtime.cpp, MainFixture.hpp and main_ownership.cpp
+provide actual Main and recording database harnesses. Recording SQL is not durable.
+Alternatively, actual Java Main startup needs explicit isolated JDBC fixtures;
+do not activate public peers as part of this comparison.
+
+Already inspected: pinned Minima.java in full; Main.hpp and relevant Main.cpp
+startup; ParamConfigurer; CommandRunner runner/getCommand source; MiniFormat;
+console/RPC source and tests; NativeThread/NativeThrowable; JavaUnixFile;
+SocketCharacterReader; SqlDB/MinimaDB provider boundaries; sibling src/main.cpp
+and persistence/Database.hpp. The sibling launch/schema/mining differs; its SQLite
+wrapper is not a drop-in H2 engine. The graph query for Minima, mainStarter,
+runMinimaCMD, Main and ParamConfigurer reached 320 nodes, showing 29 and cutting
+291; full pinned source was authoritative. Skills remain reuse-proven-code,
+minima-reference, graphify and code-review. Avoid printing full historical
+CONTINUATION/REVIEW files.
+
+Native joinStarterThreads is a host ownership barrier. JVM non-daemon retention
+is not automatic for arbitrary C++ hosts. Concurrent invocations/shared argument
+writes, isolated surrogate command strings, signal setup failures and resource
+exhaustion remain open. The full 457-file goal remains active. Historical notes:
+
 # Current work — ItemList validated; preserve this checkpoint
 
 Project/branch MinimaCoreC++. Added utils/json/ItemList.cpp/hpp with all declared

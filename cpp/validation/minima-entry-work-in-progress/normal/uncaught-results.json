@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "cases": 121,
+  "processes": [
+    {
+      "kind": "oom",
+      "worker": false,
+      "passed": true
+    },
+    {
+      "kind": "oom",
+      "worker": true,
+      "passed": true
+    },
+    {
+      "kind": "store",
+      "worker": false,
+      "passed": true
+    },
+    {
+      "kind": "store",
+      "worker": true,
+      "passed": true
+    },
+    {
+      "kind": "timeout",
+      "worker": false,
+      "passed": true
+    },
+    {
+      "kind": "timeout",
+      "worker": true,
+      "passed": true
+    }
+  ],
+  "workers": [
+    {
+      "mode": "normal",
+      "passed": true
+    },
+    {
+      "mode": "exception",
+      "passed": true
+    },
+    {
+      "mode": "error",
+      "passed": true
+    },
+    {
+      "mode": "oom",
+      "passed": true
+    },
+    {
+      "mode": "store",
+      "passed": true
+    },
+    {
+      "mode": "timeout",
+      "passed": true
+    },
+    {
+      "mode": "cleanup",
+      "passed": true
+    },
+    {
+      "mode": "catchlog",
+      "passed": true
+    },
+    {
+      "mode": "logandcleanup",
+      "passed": true
+    },
+    {
+      "mode": "startlog",
+      "passed": true
+    },
+    {
+      "mode": "endlog",
+      "passed": true
+    },
+    {
+      "mode": "handlerthrows",
+      "passed": true
+    },
+    {
+      "mode": "timer",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "scope": "Unmodified pinned handler/logger/workers; explicit Throwable values/frames, controlled logger/date/Main and default handlers. Exact call order, duplicate/shared-default/null/logging failures. Native _Exit skips exit handlers for all 3 fatal types directly and on a real thread. Actual worker catch/finally/uncaught ordering, shutdown state and orphan timer; native/JVM frames and elapsed trace times differ. No Main/node/H2 backend started."
+}

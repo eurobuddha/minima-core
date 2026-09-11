@@ -1,5 +1,6 @@
 #pragma once
 #include <functional>
+#include "support/ConsoleInput.hpp"
 #include <memory>
 #include <optional>
 #include <string>
@@ -9,12 +10,7 @@ namespace minima {
 class MinimaRPCClient {
 public:
     using String=std::optional<std::u16string>;
-    struct Input {
-        virtual ~Input()=default;
-        virtual String readLine()=0;
-        virtual void closeBufferedReader()=0;
-        virtual void closeInputStreamReader()=0;
-    };
+    using Input=ConsoleInput;
     struct Runtime {
         std::function<std::shared_ptr<Input>()> openInput;
         std::function<void(const std::string&)> println;

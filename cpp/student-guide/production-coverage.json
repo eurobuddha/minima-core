@@ -3,11 +3,11 @@
     "java": "src/org/minima/Minima.java",
     "cpp": "src/org/minima/Minima.cpp",
     "guide": "files/src/org/minima/Minima.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
-    "teaching_note": "Authored explanation of the complete Java body, missing native integration and proposed validation. No completed native runtime is claimed."
+    "teaching_note": "Authored explanation of the complete Java body, current native boundary tests and remaining runtime integration. No completed native node is claimed."
   },
   {
     "java": "src/org/minima/database/MinimaDB.java",

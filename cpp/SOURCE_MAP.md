@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 376 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 377 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -10,7 +10,7 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 
 | Java file | C++ destination | Status | Existing C++ candidates |
 |---|---|---|---|
-| `src/org/minima/Minima.java` | `src/org/minima/Minima.cpp` | unported | `src/main.cpp` |
+| `src/org/minima/Minima.java` | `src/org/minima/Minima.cpp` | implemented_partial | `src/main.cpp` |
 | `src/org/minima/database/MinimaDB.java` | `src/org/minima/database/MinimaDB.cpp` | implemented_partial | `src/database/MinimaDB.hpp` |
 | `src/org/minima/database/archive/ArchiveManager.java` | `src/org/minima/database/archive/ArchiveManager.cpp` | implemented_partial | — |
 | `src/org/minima/database/archive/RawArchiveInput.java` | `src/org/minima/database/archive/RawArchiveInput.cpp` | implemented_partial | — |

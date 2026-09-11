@@ -10,7 +10,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [Minima.java](files/src/org/minima/Minima.md) | authored | unported |
+| [Minima.java](files/src/org/minima/Minima.md) | authored | implemented_partial |
 
 ## src/org/minima/database
 

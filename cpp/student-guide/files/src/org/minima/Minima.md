@@ -1,16 +1,16 @@
 # Minima — the launcher and command-line lifecycle
 
-**Teaching status:** Authored explanation of the complete Java body, missing native integration and proposed validation. No completed native runtime is claimed.
+**Teaching status:** Authored explanation of the complete Java body, current native boundary tests and remaining runtime integration. No completed native node is claimed.
 
-**Port status:** `unported`; parity `not_verified`. The mapped C++ file is absent. This page does not describe a completed translation.
+**Port status:** `implemented_partial`; parity `not_verified`. The mapped C++ file compiles; successful full-node startup remains unfinished.
 
 | Source | Destination |
 |---|---|
-| [src/org/minima/Minima.java](../../../../../../upstream-study/src/org/minima/Minima.java) | `src/org/minima/Minima.cpp` (planned) |
+| [src/org/minima/Minima.java](../../../../../../upstream-study/src/org/minima/Minima.java) | [src/org/minima/Minima.cpp](../../../../../src/org/minima/Minima.cpp) |
 
 ## What this file does
 
-Minima is the application's outer launcher and embedding interface. [Main](system/Main.md) owns the running node; this class prepares settings, constructs Main, arranges shutdown, and handles terminal input. Its native counterpart is still absent, so the following is a source explanation and a plan for validating the eventual translation.
+Minima is the application's outer launcher and embedding interface. [Main](system/Main.md) owns the running node; this class prepares settings, constructs Main, arranges shutdown, and handles terminal input. Its native counterpart now connects the existing configuration, runner, logger and Main APIs. The missing native SQL provider still prevents a complete node startup.
 
 `mainStarter` starts a separate unnamed Java thread whose body calls static `main` with the supplied argument array. `getMain` forwards to the current Main singleton. The `runMinimaCMD` overloads default to pretty JSON and user ID `0x00`, then call the shared CommandRunner. The method computes a trimmed local string but passes the original input to `runMultiCommand`; a port must not silently substitute that local variable. Pretty mode formats the entire result array. Compact mode unwraps exactly one result into an object string; zero or multiple results remain an array.
 
@@ -34,15 +34,55 @@ The source does not break merely because readLine returns null at EOF. It simply
 
 ## What can be reused, and what is missing
 
-Native implementations already exist for configuration, CommandRunner, JSON formatting, the logger and the uncaught-thread boundary. Their individual tests are explained in their linked lessons. They must be connected to an actual native Main instance and storage provider before this launcher can implement the source lifecycle. The existing native RPC client executable is a client of another node; it is not this missing launcher.
+Native implementations already exist for configuration, CommandRunner, JSON formatting, the logger and the uncaught-thread boundary. Their individual tests are explained in their linked lessons. They must be connected to an actual native Main instance and storage provider before this launcher can implement the source lifecycle. The RPC client and this launcher now share ConsoleInput, extracted from the already-tested RPC stdin reader. The RPC client remains a client of another node.
 
-No completed native Minima test result is claimed. A file bearing this class's name, a command stub, or a process that prints a banner would not fulfill the source's startup and shutdown responsibilities.
+The native executable is named MinimaCoreC++. It exposes a real missing-provider failure rather than supplying a successful recording database. Passing that limitation check does not fulfill the source startup responsibilities.
 
 ## Proposed tests for this file
 
 Use isolated subprocesses and temporary data directories when a future native runtime exists. Compare configuration precedence and derived ports; inspect the precise catch/exit behavior for unknown arguments and other failures; exercise daemon completion; feed terminal commands with zero, one and multiple results; and check single versus batched quit behavior. Drive EOF under a bounded observation window so the test records the source loop instead of hanging indefinitely. Embedding tests should compare compact JSON shape and the original-versus-trimmed input passed to CommandRunner.
 
-Shutdown tests must observe which receiver is used by the hook, whether a repeated request is skipped, the order of reader closure, and whether the process actually terminates. These are proposed validation cases, not executed evidence.
+Shutdown tests must observe which receiver is used by the hook, whether a repeated request is skipped, the order of reader closure, and whether the process actually terminates. Successful CLI/daemon startup, shutdown receiver integration and shared argument mutation remain proposed validation cases. The public API and process-boundary evidence below covers a smaller, explicit scope.
+
+## Executed boundary tests
+
+The [launcher lab](../../../../new-tests/minima-entry-point.md) and
+[driver](../../../../../tools/minima_entry_differential.py) now compare the unchanged
+pinned Minima class with the C++ class. Both normal and ASAN/UBSAN runs pass:
+
+- 487 wrapper cases: all three overloads, null inputs/callers, exact pretty and
+  compact strings, zero/one/multiple results, invalid parameters, permissions,
+  semicolon stopping, whitespace, Unicode and actual hash/automine commands.
+- Five real executable comparisons for help, unknown arguments and missing config.
+- Three mainStarter subprocesses for null arguments, help and unknown arguments.
+  They check worker name, exception category and process status. The source JVM
+  retains ordinary threads; a native host explicitly calls joinStarterThreads.
+  These cases do not validate successful background node startup.
+- Sixteen process pairs compare native shutdown hooks with JVM Runtime hooks:
+  normal return, exit, halt, HUP/INT/TERM, one/four concurrent hooks, hook exceptions
+  and attempted late registration. Hook order is unspecified, so outputs are
+  compared as sorted complete lines; a barrier proves the four hooks can overlap.
+
+The singleton probe checks identity and clearing using a constructor-free Java
+Main object and an unstarted native Main. It proves getMain forwards the current
+owner; it does not prove Main initialization. A separate native process must fail
+with the missing SQL/Main service message and exit after cleaning up its workers.
+That expected failure is a limitation assertion, excluded from parity counts.
+
+The first comparison found that whitespace-only input escaped as a generic native
+vector error. Java accesses split[0], so the shared runner now throws the matching
+ArrayIndexOutOfBoundsException. The nullable caller check occurs after parameter
+validation: a null caller does not prevent an invalid-parameter reply. Empty
+input yields no commands, producing an empty pretty string or compact `[]`.
+Only NPE diagnostic prose is normalized in wrapper comparisons; result strings
+remain exact. Isolated surrogate command input still crosses the existing UTF-8
+runner boundary and is not certified by these tests.
+
+The console reader, source-order CLI/daemon loops and hook registration compile,
+but those loops still require controlled Java comparisons and real database/node
+integration. Native host process retention, arbitrary concurrent starters, signal
+handler ownership under failed installation and resource exhaustion are not
+established. Do not infer these from passing wrapper tests.
 
 ## Check your understanding
 

@@ -5,9 +5,17 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **332 production counterparts and 44 mapped test files exist;
-81 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **333 production counterparts and 44 mapped test files exist;
+80 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The `MinimaCoreC++` launcher now compiles. Both builds pass 487 public-wrapper
+cases, five configuration-exit comparisons, three starter-thread subprocess cases,
+and 16 shutdown-hook process comparisons. Normal startup still reports the missing
+native SQL/Main provider; a compiled launcher is not a working full node.
+Successful CLI/daemon integration remains unverified. See the
+[launcher lab](student-guide/new-tests/minima-entry-point.md) and
+[saved evidence](validation/minima-entry-work-in-progress).
 
 ItemList now compiles with its source constructor and array-cast quirks intact.
 Both builds pass 1,493 programs / 11,690 operations, comparing UTF-16 strings,

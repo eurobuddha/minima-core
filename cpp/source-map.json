@@ -7,8 +7,8 @@
       "java": "src/org/minima/Minima.java",
       "java_sha256": "8aa046e25cc30190f3ff96434608f05d2eb6cf5c928c1807a8ef063b6de81d97",
       "cpp": "src/org/minima/Minima.cpp",
-      "cpp_exists": false,
-      "status": "unported",
+      "cpp_exists": true,
+      "status": "implemented_partial",
       "parity": "not_verified",
       "reuse_candidates": [
         "src/main.cpp"

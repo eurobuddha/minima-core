@@ -1,3 +1,56 @@
+# Minima entry boundary checkpoint — full launcher integration unfinished
+
+## Code Review
+
+### Summary
+
+Minima.cpp/hpp and the MinimaCoreC++ executable compile around the existing Main,
+ParamConfigurer, CommandRunner, formatting, console and uncaught-thread code.
+The source configuration sequence, CLI/daemon bodies and hook registration are
+present. Public wrappers and early process exits have Java comparisons; normal
+node startup still fails because MainServices has no native SQL provider.
+
+### Findings resolved
+
+- The installed libc++ rejects atomic<shared_ptr>. Static reader owners now use
+  the existing Main mutex/snapshot ownership pattern.
+- Whitespace command tokens previously escaped as generic vector errors. Actual
+  Java split[0] raises ArrayIndexOutOfBoundsException; the runner now matches it.
+- A null caller now survives through invalid-parameter validation, matching the
+  source ordering. Existing string overloads delegate to the same body.
+- Hook setup unwinds ordinary failed setup operations, and jthread owners join
+  already-started hooks. The dispatcher/registry live through process exit.
+- The first hook test lost buffered pipe output. Direct fixture output established
+  this was a driver bug; the corrected driver uses unbuffered readiness reads.
+
+### Validation
+
+Both full builds pass. Nine selected suites pass per build: new entry boundary,
+command runner, runner errors, RPC CLI, parameter configurer, Minima uncaught,
+executor uncaught, Main runtime and Main ownership. The new suite passes 487
+wrapper cases, five configuration process pairs, three starter pairs and 16 hook pairs.
+A separate native process asserts the missing-provider error and timely cleanup;
+that expected failure is explicitly excluded from parity counts.
+
+All 457 student guides pass structural audit. Map: 377 counterparts = 333 production +
+44 mapped tests; 80 absent = 36 production + 44 tests; 218 CTest entries. No full current
+218-suite or complete behavioral parity claim. Evidence and first failures are
+in validation/minima-entry-work-in-progress.
+
+### Remaining major integration work
+
+Successful CLI/daemon operation, real Main shutdown receiver behavior, durable
+native SQL, successful background startup and native host lifetime are unverified.
+The command runner's UTF8 boundary does not certify isolated Java surrogate input.
+Arbitrary concurrent starters, shared argument mutation, signal installation under
+concurrent failure and resource exhaustion remain outside tested coverage.
+
+### Verdict
+
+Request changes for production readiness. This is a recoverable partial checkpoint,
+not a release or full-node parity certificate. Continue with launcher control-flow
+comparisons and the real native storage/startup integration. Historical reviews follow.
+
 # Code Review — ItemList source semantics
 
 ## Summary

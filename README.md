@@ -1,4 +1,11 @@
-# minima-core
+# MinimaCoreC++
+
+The local C++ port of minima-core. The full native node is still in progress.
+See the [C++ build and status](cpp/README.md), [457-file mapping](cpp/SOURCE_MAP.md),
+[student lessons](cpp/student-guide/README.md), and [local checkpoint workflow](cpp/GIT_WORKFLOW.md).
+
+## Original Java application
+
 Minima full node application 
 
 This is an implementation of a Minima node running on the Minima network

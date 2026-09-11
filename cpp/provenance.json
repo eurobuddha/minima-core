@@ -3006,5 +3006,49 @@
     "limitations": "All counterparts partial. All declared ItemList constructors/method overloads exercised, but inherited List APIs, constructor/subclass dispatch, arbitrary Object rendering/UTF8 adapters, concurrent mutation and resource-exhaustion parity not certified. Empty exact separator retains source unbounded non-advancing loop with ordinary list. No complete native node, durable SQL or full current217-suite claim.",
     "evidence": "validation/item-list-work-in-progress",
     "test_driver_sha256": "cae302798acd853fbd912aebed343ae88042e212f3a60b28f089ee1b2a2b351b"
+  },
+  "minima_entry_checkpoint": {
+    "source": "upstream-study/src/org/minima/Minima.java",
+    "source_sha256": "8aa046e25cc30190f3ff96434608f05d2eb6cf5c928c1807a8ef063b6de81d97",
+    "reused": [
+      "src/org/minima/system/Main.hpp",
+      "src/org/minima/system/Main.cpp",
+      "src/org/minima/system/params/ParamConfigurer.cpp",
+      "src/org/minima/system/commands/CommandRunner.cpp",
+      "src/org/minima/utils/MiniFormat.cpp",
+      "src/org/minima/utils/MinimaRPCClient.cpp",
+      "src/support/NativeThread.cpp",
+      "src/support/NativeThrowable.hpp",
+      "src/support/JavaUnixFile.hpp",
+      "src/support/SocketCharacterReader.hpp",
+      "support/MainFixture.hpp",
+      "support/MinimaRPCClientOracle.java",
+      "support/minima_rpc_cli.cpp",
+      "tools/minima_rpc_cli_differential.py",
+      "tools/peers_checker_differential.py"
+    ],
+    "sibling_inspected": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp/src/main.cpp and src/persistence/Database.hpp; CLI, chain and database schema incompatibilities prevent replacing pinned Main startup",
+    "adaptation": "Translate source launcher around existing MainServices and explicit platform Runtime; extract StandardInput unchanged to ConsoleInput; use Main mutex/snapshot pattern for static input owners; process-owned starter/hook threads use NativeThread uncaught handling; POSIX self-pipe moves hooks outside signal handler.",
+    "production_fixes": [
+      "runMultiCommandNullableUser preserves null caller after invalid-parameter validation",
+      "getCommand empty token array throws matching ArrayIndexOutOfBoundsException",
+      "Native shutdown hook setup rollback and jthread ownership of hook workers"
+    ],
+    "fixture_corrections": [
+      "Unbuffered Popen pipe avoids readline/communicate swallowing prefetched hook output",
+      "Singleton probe does not initialize Main; native default startup failure is a limitation assertion"
+    ],
+    "graph_query": "Minima mainStarter runMinimaCMD Main ParamConfigurer: 320 reached nodes,29shown,291cut at850tokens; full pinned source used for conclusions",
+    "evidence": "validation/minima-entry-work-in-progress",
+    "limits": [
+      "Successful CLI/daemon Main construction and shutdown integration",
+      "Native durable SQL/H2-compatible provider",
+      "Successful mainStarter and native process lifetime",
+      "Shared starter argument mutation and concurrent invocations",
+      "Isolated surrogate command input across UTF-8 runner boundary",
+      "Signal installation failure/concurrency and resource exhaustion",
+      "36 absent production and44 absent original-test counterparts plus full API/runtime parity audit"
+    ],
+    "driver_sha256": "da18b0ef93b1ef5d352d131afc401c8ee55c957621a5f719e75f875ab99992fd"
   }
 }
