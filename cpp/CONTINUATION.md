@@ -1,3 +1,19 @@
+# Delivery portability checkpoint
+
+source_map check reuses recorded search provenance and validates exported snapshots
+against the package manifest when .git is absent. Ten positive/negative checks PASS;
+full-parity acceptance still fails. Normal final node build and five affected suites
+PASS.297 CTests configured next regeneration. Student evidence links are portable.
+Normal full292 session96386 has291pass+Magic active. Sanitized full293 session77277
+active, all except original HORST cleanup failure passed so far. Corrected HORST
+focused full-size run PASS. Keep old active test executables frozen.
+Next final SAN node/affected regressions after relevant old tests finish; package
+actual runtime+source, verify exported links/source checks and fresh/reopen at22001;
+final reports/presentation/checksums, local Git and recovery by01:30UTC.
+Full457-file parity remains incomplete; no newmappedpath added since456. JNI absent.
+
+## Previous checkpoint (historical)
+
 # Timed delivery — database main checkpoint
 
 Three database mains added using existing SqlDB and native H2 provider. Normal and

@@ -1683,3 +1683,6 @@ if(TARGET minima_native_h2)
     add_test(NAME database_mains_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/database_mains_differential.py --build ${CMAKE_CURRENT_BINARY_DIR})
     set_tests_properties(database_mains_differential PROPERTIES TIMEOUT 600)
 endif()
+
+add_test(NAME source_mapping_snapshot COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/source_map_snapshot_test.py)
+set_tests_properties(source_mapping_snapshot PROPERTIES TIMEOUT 60)

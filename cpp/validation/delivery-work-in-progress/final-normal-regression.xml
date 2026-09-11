@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="5"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="54"
+	timestamp="2026-09-12T00:43:39"
+	>
+	<testcase name="cascade_differential" classname="cascade_differential" time="54.7423" status="run">
+		<properties/>
+		<system-out>/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "cases": 2892,
+  "passed": 2892,
+  "failures": [],
+  "scope": "Cascade wire, arithmetic, pruning, validity and display; generic errors normalized; file persistence pending"
+}
+</system-out>
+	</testcase>
+	<testcase name="utility_differential" classname="utility_differential" time="5.09817" status="run">
+		<properties/>
+		<system-out>/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "cases": 1364,
+  "passed": 1364,
+  "failures": [],
+  "scope": "Crypto interoperability/formatting/gzip and normal isolated file persistence; runtime integration and IO failure parity remain under review"
+}
+</system-out>
+	</testcase>
+	<testcase name="onchain_db_differential" classname="onchain_db_differential" time="8.66023" status="run">
+		<properties/>
+		<system-out>/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "programs": 855,
+  "operations": 3639,
+  "driver_calls": 29167,
+  "failures": [],
+  "scope": "Actual pinned TxPoWOnChainDB schema/prepared SQL, wipe, add, lookup, both block query overloads, first/last/date, count and cleanup through recording JDBC/native drivers. Exact statement ide...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="txpow_sql_db_differential" classname="txpow_sql_db_differential" time="30.1737" status="run">
+		<properties/>
+		<system-out>/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "programs": 2592,
+  "operations": 8729,
+  "driver_calls": 86333,
+  "failures": [],
+  "scope": "Actual pinned TxPoWSqlDB methods through recording JDBC/native drivers: schema and prepared identities, serialized bytes and metadata, queries/pagination, single-pass filtering, cleanup ari...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="archive_manager_differential" classname="archive_manager_differential" time="51.8818" status="run">
+		<properties/>
+		<system-out>/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is in...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

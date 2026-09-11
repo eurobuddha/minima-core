@@ -1,0 +1,15 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 110: archive_manager_differential
+    Start  28: cascade_differential
+    Start 106: txpow_sql_db_differential
+1/5 Test #106: txpow_sql_db_differential ........   Passed   30.17 sec
+    Start 105: onchain_db_differential
+2/5 Test #105: onchain_db_differential ..........   Passed    8.66 sec
+    Start  31: utility_differential
+3/5 Test  #31: utility_differential .............   Passed    5.10 sec
+4/5 Test #110: archive_manager_differential .....   Passed   51.88 sec
+5/5 Test  #28: cascade_differential .............   Passed   54.74 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =  54.76 sec

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "valid exported source and frozen search provenance",
+    "full parity remains incomplete",
+    "missing manifest rejected",
+    "wrong pin rejected",
+    "modified Java rejected",
+    "extra Java rejected",
+    "missing Java rejected",
+    "modified mapping rejected",
+    "missing native counterpart rejected",
+    "snapshot cannot refresh source inventory"
+  ],
+  "scope": "Exported source-map checks and deliberate tampering; no port parity claim"
+}

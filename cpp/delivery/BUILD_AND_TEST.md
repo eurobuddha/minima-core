@@ -97,3 +97,19 @@ and native libraries, adds a manifest, and checks each payload read back from th
 ZIP. It refuses an existing output and excludes untracked runtime data. The source
 archive's lack of `.git` does not prevent compilation, but packaging a new source
 revision requires creating or restoring a Git checkout first.
+
+
+## Source snapshot integrity
+
+Keep the exported `project/` directory beside `delivery-manifest.json`. The source
+mapping check recognizes that layout without requiring Git metadata. It verifies
+the pinned Java inventory and hashes, mapping hashes, every counterpart's presence
+and the recorded partial-parity status. A Git checkout still verifies the actual
+upstream commit and tracked source state. Historical reuse search leads are retained
+as provenance; checking does not depend on the original author's sibling projects.
+
+`check_full_port` deliberately fails while any mapped file lacks verified parity.
+A passing `source_mapping` test establishes inventory consistency only. The snapshot
+checker also has negative tests for altered, added and missing Java, altered maps,
+missing native counterparts, wrong pins and missing manifests. Refreshing the source
+inventory requires a pinned Git checkout and an explicit review of changes.
