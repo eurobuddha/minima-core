@@ -348,7 +348,7 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 | File | Teaching state | Native state |
 |---|---|---|
 | [archive.java](files/src/org/minima/system/commands/backup/archive.md) | authored | unported |
-| [backup.java](files/src/org/minima/system/commands/backup/backup.md) | authored | unported |
+| [backup.java](files/src/org/minima/system/commands/backup/backup.md) | authored | implemented_partial |
 | [decryptbackup.java](files/src/org/minima/system/commands/backup/decryptbackup.md) | authored | implemented_partial |
 | [mysql.java](files/src/org/minima/system/commands/backup/mysql.md) | authored | unported |
 | [mysqlcoins.java](files/src/org/minima/system/commands/backup/mysqlcoins.md) | authored | unported |

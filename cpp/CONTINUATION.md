@@ -1,3 +1,45 @@
+# Current work — backup mapped, validated and ready for local recovery
+
+Project/branch/binary MinimaCoreC++. This goal turn made verified progress.
+backup.cpp/hpp compiles and is registered. Native MinimaDB/H2 exports wallet SQL,
+cascade/tree/user/P2P and relevant TxPoWList. Source key-gate/parameter ordering,
+auto side effects, read-lock handling, nested CommandException, cleanup and
+six-section format are preserved. Numeric nonempty block versus string -1 is
+intentional. Complete is still read but absent from valid parameters and unused.
+MiniUtil supplies the existing date pattern; mutable SimpleDateFormat APIs remain
+uncertified. GzipOutput streams raw zlib with Java's header/512-byte chunks/trailer.
+BufferedFileOutput adds an unbuffered entry point. Salt/IV are separate prefix and
+payload writes. Finish IOException still attempts cipher close before propagating.
+
+Both complete builds and seven selected suites pass: utility, runner, runner-errors,
+native H2, launcher, decryptbackup, backup. Total CTest time54.08normal/55.43sanitized.
+Backup:96commandcases+384streamcases perbuild,66files,132cross-decryptions.
+Fixture uses real H2 and an unstarted Main (Java allocation via existing Unsafe
+helper; C++ existing MainFixture), copied baseline, deterministic relevant history.
+Exact six-section plaintext, saved state hashes, old destination state, cleanup,
+locks, replies/categories checked. Known JVM NPE/class-cast prose is normalized,
+including wrapped diagnostics; numeric/nested-command failures fixed and saved.
+All build/test handles are terminal. Full223-suite run has NOT been performed.
+
+Map379=335production+44originaltests;78absent=34production+44tests. All457guides
+present; audit passes. All parity labels remain not_verified. Evidence/provenance,
+review and backup student lesson/lab updated. No GitHub push. Previouscommit98c1351;
+use git log and local-backups manifests for the new final checkpoint/bundle.
+
+NEXT: restore.java fully read this turn (entire234-line source). Reuse decryptbackup
+CipherInput/GzipInput and this real-H2 backup fixture. It calls restoreReady after
+gzip header, reads wallet into restore/, disables saveState, writes four stores,
+loads user/P2P/cascade/tree, reads history, wipes/repopulates relevant SQL, closes
+streams, re-enables saves, RUNSCRIPT restores wallet, increments every key use256,
+closes history/archive, deletes archive SQL file and temporary restorefolder,
+saves allDB, optionally marks/stops Main/notifies listener. NO catch/finally rollback:
+failures leave source-dependent partial state. Preserve ordering and stream framing.
+readNextBackup/readNextTxPoWList private helpers must be mapped. Build student lab
+before tests; inspect existing Main.restoreReady and real startup fixtures first.
+Follow mandatory reuse report before edits. No production restore edits yet.
+
+---
+
 # Current work — decryptbackup mapped and validated
 
 Project/branch/binary MinimaCoreC++. Previous goal turn made verified progress.

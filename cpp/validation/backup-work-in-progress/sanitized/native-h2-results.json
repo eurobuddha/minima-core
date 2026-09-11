@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "programs": 122,
+  "operations": 1974,
+  "cross_runtime_files": 4,
+  "failures": [],
+  "scope": "Real H2 2.4.240 JDBC and native H2 shared library through the C++ SqlConnection API; actual SqlDB backup/restore/save/reopen, prepared bindings, schema/transaction failures, conversions, CLOBs, metadata and retained result views. JVM and native runtimes cross-open plaintext and AES MVStore files in both directions. No exception normalization. Native handle registry must be empty after every program. Full node, MySQL and arbitrary extension/runtime/reflection/resource-failure parity remain unverified."
+}

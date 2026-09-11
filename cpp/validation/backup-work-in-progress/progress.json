@@ -1,0 +1,34 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "98c135171ecb2e45806735b1975af405ada2605e",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "backup mapped/compiled/registered with real-H2 cross-decryption; full 1:1 port unfinished",
+  "counterparts": 379,
+  "production_counterparts": 335,
+  "mapped_tests": 44,
+  "absent": 78,
+  "ctest_entries": 223,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "selected_suites_per_build": 7,
+  "backup_cases_per_build": 96,
+  "gzip_stream_cases_per_build": 384,
+  "backup_files_per_build": 66,
+  "cross_decryptions_per_build": 132,
+  "normal_ctest_seconds": 54.08,
+  "sanitized_ctest_seconds": 55.43,
+  "student_guides": 457,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "34 absent production and 44 absent mapped original tests",
+    "Restore/resync/archive/MySQL and full-node workflows",
+    "Complete API/runtime/network/mining parity",
+    "Exact helpful-NPE/class-cast prose and mutable SimpleDateFormat APIs",
+    "Resource exhaustion, concurrent mutation and special-device close/write failures"
+  ]
+}

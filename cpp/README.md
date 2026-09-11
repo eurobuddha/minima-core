@@ -5,9 +5,16 @@ Pinned Java source: `../upstream-study`, commit
 
 The requested full 1:1 C++ node is **not finished**. [SOURCE_MAP.md](SOURCE_MAP.md)
 assigns all **457 Java files** (369 production, 88 tests) unique, package-relative
-`.cpp` paths. **334 production counterparts and 44 mapped test files exist;
-79 mapped files remain unported.** These existing files are still classified
+`.cpp` paths. **335 production counterparts and 44 mapped test files exist;
+78 mapped files remain unported.** These existing files are still classified
 as partial until their complete API and behavior have been reviewed.
+
+The mapped `backup` command now exports real H2 wallet SQL and five other node
+sections into Java-compatible encrypted backups. Normal and sanitizer builds each
+pass 96 command cases, 384 gzip stream cases and 132 cross-decryptions of 66 files.
+Both complete builds and all seven selected regressions pass. See the
+[student lab](student-guide/new-tests/backup.md) and
+[saved evidence](validation/backup-work-in-progress). Restore remains unfinished.
 
 The mapped `decryptbackup` command now compiles and is registered. Both normal
 and sanitizer comparisons pass 422 cases with exact output-file snapshots,

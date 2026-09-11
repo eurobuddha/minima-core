@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/backup.java) · `src/org/minima/system/commands/backup/backup.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/backup.java) · [C++ counterpart](../../../../../../../../src/org/minima/system/commands/backup/backup.cpp)
 
 ## Purpose
 
@@ -20,22 +20,52 @@ backup captures wallet and node state into a length-framed, compressed and encry
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse GenerateKey parameters, MiniData framing and each database’s existing export format. Native streaming/compression/encryption must produce data the pinned restore can consume; exact random ciphertext equality requires controlled salt/IV.
+The C++ command reuses MinimaDB stores, MiniData framing, GenerateKey, MiniFile,
+MiniFormat and MiniUtil's date pattern. BufferedFileOutput gains unbuffered writes.
+GzipOutput reuses the existing zlib settings but emits Java's header, 512-byte
+compressed chunks and final CRC/length trailer. Its destructor releases zlib state;
+normal completion explicitly finishes gzip, finalizes AES, and closes the file.
+The command preserves source exception ordering, including wrapping an existing
+CommandException inside another CommandException. Java Error and native allocation
+failures bypass the ordinary catch, as the source requires.
 
 ## Understanding the tests
 
-The runner fixture checks backup’s permission category only. Proposed format tests fix randomness, compare headers/section bytes and restore both Java-produced and native-produced files in isolated databases. Inject each export/write/close failure, assert lock release and partial-file state, and test auto:false before password/file validation.
+Read the [backup lab](../../../../../../../../student-guide/new-tests/backup.md),
+[Java oracle](../../../../../../../../support/BackupOracle.java),
+[native fixture](../../../../../../../../support/backup.cpp), and
+[comparison driver](../../../../../../../../tools/backup_differential.py).
 
-- [Runner fixture using selected fake commands](../../../../../../../../support/CommandRunnerOracle.java)
-- [Native runner fixture](../../../../../../../../support/command_runner.cpp)
-- [Runner-only dispatch/permission coverage](../../../../../../../../tools/command_runner_differential.py)
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+The fixtures run the real command with real H2 stores, using an unstarted Main
+only to control key-readiness and avoid unrelated network workers. A copied Java
+database baseline gives both runs identical wallet SQL and transaction history.
+Ten deterministic transaction records include six relevant records. Both decoders
+read each surviving encrypted file, and Java/native backup plaintext is compared
+byte for byte across all six sections. The test separately checks saved state,
+destination replacement, temporary-folder cleanup, lock counts, reply types,
+password/confirm ordering, auto side effects, history limits and registry dispatch.
+Random salt/IV are checked for framing; default filename timestamps must lie
+inside their measured execution window. These values are not forced equal.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+A second test stream records each gzip downstream write and injects IOExceptions.
+It checks exact compressed bytes and write boundaries, with empty/random/repeated
+payloads, finish called twice, and a write after finish. An independent gzip
+reader must recover the original successful payload.
+
+The first numeric-block mismatch taught us why a JSON string is different from a
+JSON number. A later blank-history case exposed the source's nested
+CommandException, which the port now retains. Both failures are saved in
+[checkpoint evidence](../../../../../../../../validation/backup-work-in-progress).
+JVM helpful-null and class-cast diagnostic prose is explicitly normalized;
+exception categories and nesting remain checked.
 
 ## Limits
 
-No backup or wallet action was performed. The body reads complete component files into memory and provides no atomic destination replacement. complete is read but unused and absent from its valid list.
+Complete file/API parity remains not_verified. Resource exhaustion, special-device
+write/close failures, concurrent mutation, and mutable SimpleDateFormat APIs are
+not certified by this fixture. The code reads all six sections into memory.
+complete remains read but unused and absent from the valid parameter list.
+The test exercises backup and decryption; restoring a running node is separate work.
 
 ## Check your understanding
 

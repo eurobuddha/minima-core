@@ -2,13 +2,13 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 378,
-  "native_absent": 79,
+  "native_counterparts": 379,
+  "native_absent": 78,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
-      "counterparts": 334,
-      "absent": 35
+      "counterparts": 335,
+      "absent": 34
     },
     "test": {
       "total": 88,
@@ -20,7 +20,7 @@
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9143,
+  "links_checked": 9146,
   "line_anchors_checked": 2634,
   "errors": [],
   "ownership_exclusions": [
@@ -1563,9 +1563,9 @@
       "java": "src/org/minima/system/commands/backup/backup.java",
       "cpp": "src/org/minima/system/commands/backup/backup.cpp",
       "guide": "files/src/org/minima/system/commands/backup/backup.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "authored_lesson",
       "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
     },

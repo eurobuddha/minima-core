@@ -1,0 +1,256 @@
+{
+  "passed": false,
+  "cases": 3,
+  "backups": 6,
+  "cross_decryptions": 12,
+  "failures": [
+    {
+      "case": 3,
+      "request": {
+        "params": {
+          "file": "output.bak"
+        },
+        "tip": true
+      },
+      "java": {
+        "reply": {
+          "result": {
+            "command": "backup",
+            "params": {
+              "file": "output.bak"
+            },
+            "status": true,
+            "pending": false,
+            "backup": {
+              "block": 12,
+              "files": {
+                "wallet": "2.1 KB",
+                "cascade": "3 bytes",
+                "chain": "325 bytes",
+                "user": "38 bytes",
+                "p2p": "6 bytes",
+                "txpow": "1.7 KB"
+              },
+              "uncompressed": "4.2 KB",
+              "file": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/backup-compare-xetdazr5/node/output.bak",
+              "size": "1.2 KB",
+              "auto": false
+            }
+          },
+          "auto": false,
+          "lock": "[Write locks = 0, Read locks = 0]"
+        },
+        "decoded": [
+          {
+            "name": "wallet",
+            "size": 2128,
+            "sha256": "c912c2923f811aee81d4a0319cdcd97da4fb39ff0be531355b15a65c9eaafba3"
+          },
+          {
+            "name": "cascade",
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          {
+            "name": "chain",
+            "size": 325,
+            "sha256": "bfa22348fff7c24312a21477f73fec7acf89834450ba7c058f90c0d186f97851"
+          },
+          {
+            "name": "user",
+            "size": 38,
+            "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+          },
+          {
+            "name": "p2p",
+            "size": 6,
+            "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+          },
+          {
+            "name": "txpow",
+            "size": 1762,
+            "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+            "rows": 6
+          }
+        ],
+        "backup_folder": false,
+        "output_exists": true
+      },
+      "cpp": {
+        "reply": {
+          "result": {
+            "command": "backup",
+            "params": {
+              "file": "output.bak"
+            },
+            "status": true,
+            "pending": false,
+            "backup": {
+              "block": "12",
+              "files": {
+                "wallet": "2.1 KB",
+                "cascade": "3 bytes",
+                "chain": "325 bytes",
+                "user": "38 bytes",
+                "p2p": "6 bytes",
+                "txpow": "1.7 KB"
+              },
+              "uncompressed": "4.2 KB",
+              "file": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/backup-compare-xetdazr5/node/output.bak",
+              "size": "1.2 KB",
+              "auto": false
+            }
+          },
+          "auto": false,
+          "lock": "[Write locks = 0, Read locks = 0]"
+        },
+        "decoded": [
+          {
+            "name": "wallet",
+            "size": 2128,
+            "sha256": "c912c2923f811aee81d4a0319cdcd97da4fb39ff0be531355b15a65c9eaafba3"
+          },
+          {
+            "name": "cascade",
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          {
+            "name": "chain",
+            "size": 325,
+            "sha256": "bfa22348fff7c24312a21477f73fec7acf89834450ba7c058f90c0d186f97851"
+          },
+          {
+            "name": "user",
+            "size": 38,
+            "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+          },
+          {
+            "name": "p2p",
+            "size": 6,
+            "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+          },
+          {
+            "name": "txpow",
+            "size": 1762,
+            "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+            "rows": 6
+          }
+        ],
+        "backup_folder": false,
+        "output_exists": true
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "case": 1,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "c912c2923f811aee81d4a0319cdcd97da4fb39ff0be531355b15a65c9eaafba3"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "c912c2923f811aee81d4a0319cdcd97da4fb39ff0be531355b15a65c9eaafba3"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "c912c2923f811aee81d4a0319cdcd97da4fb39ff0be531355b15a65c9eaafba3"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 325,
+          "sha256": "bfa22348fff7c24312a21477f73fec7acf89834450ba7c058f90c0d186f97851"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    }
+  ],
+  "scope": "Real H2, pinned Java/native command metadata, parameters, key gate, auto side effects, history limits, six sections, registry, lock counts and cleanup. Native and Java decrypt every surviving file; source-random encryption compared through exact plaintext. Direct NPE/class-cast prose and validated default timestamp names normalized. Full API, concurrent mutations, resource exhaustion and special-device failures remain uncertified."
+}

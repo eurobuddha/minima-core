@@ -1,0 +1,1199 @@
+{
+  "passed": true,
+  "cases": 96,
+  "stream_cases": 384,
+  "backups": 66,
+  "cross_decryptions": 132,
+  "failures": [],
+  "evidence": [
+    {
+      "case": 1,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 325,
+          "sha256": "bfa22348fff7c24312a21477f73fec7acf89834450ba7c058f90c0d186f97851"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 4,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 56,
+          "sha256": "ae1d737963a787f5827806149d4c6a746de7a0edc8b08b97d7834a4b7822e94c"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 11,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 17,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 35,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 41,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 48,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 50,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 52,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 54,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "rows": 0
+        }
+      ]
+    },
+    {
+      "case": 55,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 297,
+          "sha256": "d295da69d73c44f8ae33dd4c33647419689a9e83628dc624d2970d49e94c84ff",
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "case": 56,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 883,
+          "sha256": "695e324beb1b360f631525faa7ee6229a45a4002eedff5e175d31d02b950a8f6",
+          "rows": 3
+        }
+      ]
+    },
+    {
+      "case": 57,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 58,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "rows": 0
+        }
+      ]
+    },
+    {
+      "case": 59,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 590,
+          "sha256": "7d14c1bd759086fcc3b45f0c021efc145a1efe948158067f2df58b77cc00993f",
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "case": 60,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "rows": 0
+        }
+      ]
+    },
+    {
+      "case": 61,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "rows": 0
+        }
+      ]
+    },
+    {
+      "case": 69,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 56,
+          "sha256": "ae1d737963a787f5827806149d4c6a746de7a0edc8b08b97d7834a4b7822e94c"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 71,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 74,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 81,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 82,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 83,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 84,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 85,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 1081,
+          "sha256": "cc68c39a0dc1eacecf5c1beda7062bfc15eff0870d828fb0e8193b6d8cc0d83c"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 86,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 1083,
+          "sha256": "b918147a6863d5d1470fa66e80fbd3753ea9afecdba2edb363775abf2f6c7628"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 87,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 16443,
+          "sha256": "ea74b1d56f563221c6035ae15b7ed4bc84fede5072631ce0420c7be33bab2ae8"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 88,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 131131,
+          "sha256": "bf89a645759ddae8a36ee878d08144e007286c87be5fc4c6b2e40f5e735ed24d"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 89,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 200059,
+          "sha256": "4dd25c199a0f152228b871f82d86307585c3915c8fca70e6f2c8c513091f7a65"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 90,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "case": 95,
+      "sections": [
+        {
+          "name": "wallet",
+          "size": 2128,
+          "sha256": "2e535187d783e13703a089f422b6a95a71631916d99531f0ad726a7e54a205b9"
+        },
+        {
+          "name": "cascade",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "chain",
+          "size": 3,
+          "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+        },
+        {
+          "name": "user",
+          "size": 38,
+          "sha256": "0843cf2107179e8687455a0fc6438e4f755eb960e452b227c53bb68dc168d8df"
+        },
+        {
+          "name": "p2p",
+          "size": 6,
+          "sha256": "fc1212e550a498c567b71fa295f8b53100dc88996d7e38d9cdf86f4d198c4256"
+        },
+        {
+          "name": "txpow",
+          "size": 1762,
+          "sha256": "d07f53da21d3330da810e267d519b94ae23a27e3dca4358c47db47bda9b30373",
+          "rows": 6
+        }
+      ]
+    }
+  ],
+  "scope": "Real H2, pinned Java/native command metadata, parameters, key gate, auto side effects, history limits, six sections, registry, lock counts and cleanup. Native and Java decrypt every surviving file; source-random encryption compared through exact plaintext. Direct and wrapped NPE/class-cast prose and validated default timestamp names normalized. Full API, concurrent mutations, resource exhaustion and special-device failures remain uncertified."
+}

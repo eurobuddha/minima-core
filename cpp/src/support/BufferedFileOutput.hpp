@@ -32,6 +32,7 @@ public:
         if(data.size()>=8192){flush();direct(data);return;}
         if(data.size()>8192-mPending.size())flush();wire::append(mPending,data);
     }
+    void writeUnbuffered(std::span<const uint8_t> data){flush();direct(data);}
     void flush(){if(!mPending.empty()){direct(mPending);mPending.clear();}}
     void close(){if(mDescriptor<0)return;flush();int descriptor=mDescriptor;mDescriptor=-1;if(::close(descriptor)<0)throw wire::IOException(std::strerror(errno));}
 };

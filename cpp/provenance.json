@@ -3155,5 +3155,40 @@
       "src/support/GzipInput.hpp": "9e680bda4cdd357d8ffc073cbcfdb03400eee2cf7d394fb971a48dd37220ce64",
       "tools/decrypt_backup_differential.py": "8a02779db1612f908806654fb5bd608945a0f7f0b465c9e2567c58600257e910"
     }
+  },
+  "backup_checkpoint": {
+    "source": "upstream-study/src/org/minima/system/commands/backup/backup.java",
+    "source_sha256": "c1eecca6c98a3ed875388934f4b40270962f51e78743170030b92f547e56ffc0",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "reused_inspected": [
+      "src/org/minima/system/commands/backup/decryptbackup.cpp",
+      "src/org/minima/database/MinimaDB.cpp",
+      "src/org/minima/database/txpowdb/sql/TxPoWList.cpp",
+      "src/org/minima/utils/SqlDB.cpp backupToFile",
+      "src/org/minima/utils/encrypt/GenerateKey.cpp",
+      "src/org/minima/utils/MiniFile.cpp",
+      "src/org/minima/utils/MiniFormat.cpp",
+      "src/org/minima/utils/MiniUtil.cpp",
+      "src/support/Gzip.hpp",
+      "src/support/BufferedFileOutput.hpp",
+      "src/support/JavaUnixFile.hpp",
+      "support/MainFixture.hpp",
+      "support/MainRuntimeOracle.java",
+      "support/NIOClientOracle.java Unsafe/reflection helpers",
+      "support/ArchiveFixture.hpp",
+      "support/ArchiveCacheOracle.java txpow",
+      "tools/decrypt_backup_differential.py",
+      "tools/peers_checker_differential.py Runner"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp: no Minima backup/cipher/gzip output implementation; SQLite backup APIs do not provide the pinned H2 format",
+    "platform_source": "Installed OpenJDK26.0.1 src.zip: GZIPOutputStream, DeflaterOutputStream, CipherOutputStream read for stream chunking/close behavior",
+    "adaptations": [
+      "Mapped full backup body/metadata/factory and existing date pattern",
+      "GzipOutput streams existing zlib setup using source framing/512-byte chunks/trailer",
+      "BufferedFileOutput unbuffered writes",
+      "Real H2 copied-baseline backup fixture and dual-runtime decryption"
+    ],
+    "validation": "validation/backup-work-in-progress/progress.json",
+    "parity": "not_verified"
   }
 }

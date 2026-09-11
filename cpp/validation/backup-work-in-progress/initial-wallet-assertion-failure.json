@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "cases": 1,
+  "backups": 0,
+  "cross_decryptions": 2,
+  "failures": [
+    {
+      "case": 1,
+      "error": "AssertionError('Missing actual wallet SQL')"
+    }
+  ],
+  "evidence": [],
+  "scope": "Real H2, pinned Java/native command metadata, parameters, key gate, auto side effects, history limits, six sections, registry, lock counts and cleanup. Native and Java decrypt every surviving file; source-random encryption compared through exact plaintext. Direct NPE/class-cast prose and validated default timestamp names normalized. Full API, concurrent mutations, resource exhaustion and special-device failures remain uncertified."
+}

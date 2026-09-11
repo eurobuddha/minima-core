@@ -1,3 +1,47 @@
+# backup checkpoint — full port unfinished
+
+## Code Review
+
+### Summary
+
+Reviewed pinned backup.java, the mapped command/header, GzipOutput, unbuffered
+file adaptation, registry/CMake wiring, Java/native fixtures, differential driver,
+source-map generation and student documentation. Existing database/crypto/file
+implementations are reused; real H2 is exercised. Both complete builds and seven
+selected suites pass in normal and ASAN/UBSAN configurations. Native H2 itself
+is an AOT dependency and is not instrumented by the C++ sanitizer build.
+
+### Findings resolved
+
+- Numeric block output must use raw MiniNumber JSON while an absent tip remains
+  the source string -1. The initial string output failed the real-tip comparison.
+- A CommandException thrown inside the source try block is wrapped with its
+  original class name. Blank maxhistory exposed an incorrect RuntimeException
+  label; the native catch now preserves nesting and nullable messages.
+- Salt/IV prefix and payload writes retain source boundaries. Gzip finishing
+  preserves Java's 512-byte downstream chunks and final combined/separate trailer.
+  A finish IOException still attempts cipher close, as DeflaterOutputStream does.
+- The test asserts valid output independently and compares exact decoded bytes,
+  including all six section boundaries. Random ciphertext is not an equality
+  oracle. Default timestamps are checked against measured bounds before projection.
+- A wallet-schema assertion initially expected WALLET; reviewed actual Wallet SQL
+  shows KEYS/SCRIPTS/SEED. The observer was corrected and its failure saved.
+
+### Limits
+
+384 stream cases compare exact gzip output/write sizes and injected IOExceptions;
+96 command cases compare real H2 snapshots and 132 cross-decryptions. This is not
+an exhaustive public-API or full-node claim. JVM helpful-NPE/class-cast prose is
+normalized with categories/nesting retained. Mutable date APIs, concurrent state
+changes, resource exhaustion and special-device finalization failures remain
+uncertified. Native RAII releases resources instead of reproducing Java leaks.
+
+### Verdict
+
+Approve this incomplete-port checkpoint. Full457-file parity remains unverified.
+
+---
+
 # decryptbackup checkpoint — full port unfinished
 
 ## Code Review
