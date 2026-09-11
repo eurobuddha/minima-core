@@ -27,7 +27,7 @@ Native methods retain the same keys/defaults and reuse JsonDB, MiniUtil list con
 
 ## What the tests tell us
 
-The [preferences oracle](../../../../../../../support/PrefsOracle.java), [native harness](../../../../../../../support/prefs.cpp) and [driver](../../../../../../../tools/prefs_differential.py) enumerate all declared accessors, apply typed/null samples, inspect resulting JSON/wire data, exercise array aliases and malformed reads, and test names under English, Turkish, Azerbaijani, Lithuanian and Greek locales. The inspected [report](../../../../../../../build/prefs-differential-results.json) has 1,130/1,130 matching cases; that total includes JsonDB and date-formatting cases. Exceptions are flattened to ERROR, so the suite does not establish exact error classes.
+The [preferences oracle](../../../../../../../support/PrefsOracle.java), [native harness](../../../../../../../support/prefs.cpp) and [driver](../../../../../../../tools/prefs_differential.py) enumerate all declared accessors, apply typed/null samples, inspect resulting JSON/wire data, exercise array aliases and malformed reads, and test names under English, Turkish, Azerbaijani, Lithuanian and Greek locales. The inspected [report](../../../../../../../validation/checkpoint-362/normal/prefs-differential-results.json) has 1,130/1,130 matching cases; that total includes JsonDB and date-formatting cases. Exceptions are flattened to ERROR, so the suite does not establish exact error classes.
 
 ## Dependencies and reading map
 

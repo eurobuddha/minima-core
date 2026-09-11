@@ -66,8 +66,8 @@ normal success return value matches.
 
 ## 8. Current limits
 
-456 mapped counterparts exist. One external JNI file is missing. Twelve audited
-source entry points remain absent, and full API/runtime parity remains unverified.
+456 mapped counterparts exist. One external JNI file is missing. The current missing-main
+candidate audit is exhausted; full API/runtime parity remains unverified.
 The executable currently targets macOS 26+ on Apple Silicon.
 
 Speaker note: walk through KNOWN_GAPS.md and the final test report. State failures

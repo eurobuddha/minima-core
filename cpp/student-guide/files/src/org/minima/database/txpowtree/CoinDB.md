@@ -27,7 +27,7 @@ C++ reuses SqlDB and its injected connection/statement interfaces, preserves opt
 
 ## What the tests tell us
 
-The [Java oracle](../../../../../../../support/CoinDBOracle.java), [native harness](../../../../../../../support/coin_db.cpp) and [driver](../../../../../../../tools/coin_db_differential.py) record SQL calls and real temporary-file deletion while using actual Coin codecs. They exercise held old singleton owners, replacement after SQL/runtime failure, null receivers, failing calls at each statement position, partial rows, every truncated prefix of selected coin wires, trailing bytes, invalid hashes, path normalization and seeded operation sequences. The inspected [report](../../../../../../../build/coin-db-results.json) has 1,350 matching programs, 4,318 operations and 28,803 recorded effects. JDBC is a recording fixture; NPE expression details and logger prefixes/stacks are normalized.
+The [Java oracle](../../../../../../../support/CoinDBOracle.java), [native harness](../../../../../../../support/coin_db.cpp) and [driver](../../../../../../../tools/coin_db_differential.py) record SQL calls and real temporary-file deletion while using actual Coin codecs. They exercise held old singleton owners, replacement after SQL/runtime failure, null receivers, failing calls at each statement position, partial rows, every truncated prefix of selected coin wires, trailing bytes, invalid hashes, path normalization and seeded operation sequences. The inspected [report](../../../../../../../validation/student-linked-evidence/build/coin-db-results.json) has 1,350 matching programs, 4,318 operations and 28,803 recorded effects. JDBC is a recording fixture; NPE expression details and logger prefixes/stacks are normalized.
 
 ## Dependencies and reading map
 

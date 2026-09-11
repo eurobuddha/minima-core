@@ -27,7 +27,7 @@ C++ stores both MiniString and decoded UTF-16. Constructing from UTF-16 first en
 
 The value driver tests ordinary, empty and emoji strings and sizes 0, 1, 16383, 16384 and 16385 repeated pandas. Four UTF-8 bytes per panda bring the final two cases to the byte-limit boundary. The execution suite also splits surrogate pairs through SUBSTR and observes reconstruction.
 
-The actual [KissOracle.java](../../../../../../../support/KissOracle.java) and [kiss.cpp](../../../../../../../support/kiss.cpp) execute the operations built by [kiss_differential.py](../../../../../../../tools/kiss_differential.py). Their output contains value type, text and underlying HEX/string bytes or number wire bytes. Generic errors are normalized to ERROR; parser errors retain their message. The existing [normal report](../../../../../../../build/kiss-differential-results.json) records 1,451 cases passed and zero failures; no new run was performed for this lesson.
+The actual [KissOracle.java](../../../../../../../support/KissOracle.java) and [kiss.cpp](../../../../../../../support/kiss.cpp) execute the operations built by [kiss_differential.py](../../../../../../../tools/kiss_differential.py). Their output contains value type, text and underlying HEX/string bytes or number wire bytes. Generic errors are normalized to ERROR; parser errors retain their message. The existing [normal report](../../../../../../../validation/student-linked-evidence/build/kiss-differential-results.json) records 1,451 cases passed and zero failures; no new run was performed for this lesson.
 
 ## Dependencies and reading map
 

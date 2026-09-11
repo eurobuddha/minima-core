@@ -33,7 +33,7 @@ C++ reuses applyBlockMMR and ChainServices callbacks for wallet/SQL/event effect
 
 ## What the tests tell us
 
-The [Java tree oracle](../../../../../../../support/TreeOracle.java), [native harness](../../../../../../../support/tree.cpp) and [driver](../../../../../../../tools/tree_differential.py) compare 450 seeded trees, unusual heights/weights, duplicate IDs, trims and print depths; a 513-node chain checks the 512-entry pulse cap. Another family builds block nodes, changes relevant-entry lists, writes/reads node bytes, appends trailing data and truncates selected positions. The inspected [report](../../../../../../../build/tree-differential-results.json) has 1,027/1,027 matching cases. The harness uses RAM coin mode and normalizes failures to ERROR; it does not certify SQL/wallet bindings or exact exception classes.
+The [Java tree oracle](../../../../../../../support/TreeOracle.java), [native harness](../../../../../../../support/tree.cpp) and [driver](../../../../../../../tools/tree_differential.py) compare 450 seeded trees, unusual heights/weights, duplicate IDs, trims and print depths; a 513-node chain checks the 512-entry pulse cap. Another family builds block nodes, changes relevant-entry lists, writes/reads node bytes, appends trailing data and truncates selected positions. The inspected [report](../../../../../../../validation/checkpoint-360/normal/tree-differential-results.json) has 1,027/1,027 matching cases. The harness uses RAM coin mode and normalizes failures to ERROR; it does not certify SQL/wallet bindings or exact exception classes.
 
 ## Dependencies and reading map
 

@@ -27,7 +27,7 @@ Native storage is uint8_t. The int constructor performs the same narrowing, and 
 
 The driver tests every integer from -512 through 512, comparing unsigned text, signed getter and wire byte. It therefore traverses the byte range repeatedly and exercises wraparound. It does not directly call isTrue/isFalse, so those semantics here come from reading the bodies.
 
-The [primitive differential driver](../../../../../../../tools/differential.py) compiles the pinned Java classes and runs [PrimitiveOracle](../../../../../../../support/PrimitiveOracle.java) against [minima_primitives](../../../../../../../support/primitives.cpp). Both report observable text and wire bytes; both flatten exceptions to `ERROR`. The inspected [existing report](../../../../../../../build/differential-results.json) records 3,802/3,802 comparisons with zero failures for the complete primitive corpus. This does not prove exact error classes, all methods, or full-node parity.
+The [primitive differential driver](../../../../../../../tools/differential.py) compiles the pinned Java classes and runs [PrimitiveOracle](../../../../../../../support/PrimitiveOracle.java) against [minima_primitives](../../../../../../../support/primitives.cpp). Both report observable text and wire bytes; both flatten exceptions to `ERROR`. The inspected [existing report](../../../../../../../validation/checkpoint-362/normal/differential-results.json) records 3,802/3,802 comparisons with zero failures for the complete primitive corpus. This does not prove exact error classes, all methods, or full-node parity.
 
 ## Dependencies and reading map
 

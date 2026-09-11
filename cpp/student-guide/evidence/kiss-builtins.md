@@ -20,7 +20,7 @@ The driver uses boundary products: wrong argument counts, wrong value types, neg
 
 Generic Java/native runtime errors are normalized to `ERROR`. When such an error occurs, the harness omits its trace. Exact generic exception classes, wording and those omitted traces are therefore outside this suite's evidence. KISS exception text and ordinary execution traces remain compared. A finite collection of programs also cannot establish every public overload, concurrent operation, allocator failure or locale-dependent behavior.
 
-The existing normal [report](../../build/kissvm-differential-results.json), read for this backfill, records **4,471 cases, 4,471 passed, zero failures**. This is a report snapshot, not a new test run or an assertion that every function has independently passed 4,471 dedicated cases.
+The existing normal [report](../../validation/hash-writers-work-in-progress/normal/kissvm-differential-results.json), read for this backfill, records **4,471 cases, 4,471 passed, zero failures**. This is a report snapshot, not a new test run or an assertion that every function has independently passed 4,471 dedicated cases.
 
 ## Teaching exercise
 

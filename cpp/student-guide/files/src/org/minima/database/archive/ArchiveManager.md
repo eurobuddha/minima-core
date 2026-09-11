@@ -36,11 +36,22 @@ The fully read Java/native harnesses execute actual ArchiveManager bodies agains
 - [Native recording SQL boundary](../../../../../../../support/SqlRecordingFixture.hpp)
 - [Native fields and services](../../../../../../../src/org/minima/database/archive/ArchiveManager.hpp)
 
-No build or test was run while writing this lesson. The inspected driver defines the evidence scope; it does not certify full parity.
+The original recording-driver explanation is historical. The later real-H2 main validation is described below; neither scope certifies full parity.
 
 ## Limits
 
-The supplied SQL rows are not filtered by a real engine, so matching events do not establish SQL execution, uniqueness enforcement, durable archive persistence or concurrent lifecycle behavior. Enhanced null-pointer expressions and logger formatting are normalized. The Java main method is a separate H2 experiment that deletes its own test directory; it is not the automated corpus and was not run for this lesson.
+The supplied SQL rows are not filtered by a real engine, so matching events do not establish SQL execution, uniqueness enforcement, durable archive persistence or concurrent lifecycle behavior. Enhanced null-pointer expressions and logger formatting are normalized. The separate main corpus now runs that H2 experiment inside fixture-owned home directories; it does not replace the recording fault corpus.
+
+## Source main and durable-file validation
+
+The source main is now translated using the existing SQL services and explicit
+home path. It preserves directory deletion, repeated close/reopen calls, strict
+range boundaries, and the ID calculation before the parent mutation. The real-H2
+main corpus checks saved rows with both readers and verifies both the old lookup
+ID and the recalculated decoded ID. A fixture-owned sentinel outside testfolder
+must survive. Source helpers are unchanged.
+
+See the [database demonstration lab](../../../../../../new-tests/database-main-methods.md) for the assertions, initial test-assumption corrections and limits.
 
 ## Check your understanding
 

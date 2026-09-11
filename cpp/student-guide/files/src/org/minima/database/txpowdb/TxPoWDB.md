@@ -28,7 +28,7 @@ C++ composes the same mapped stores, requires Main-message and wallet-resolution
 
 ## What the tests tell us
 
-The [Java owning-store oracle](../../../../../../../support/TxPoWDBOracle.java), [native harness](../../../../../../../support/txpow_db.cpp) and [driver](../../../../../../../tools/txpow_db_differential.py) execute actual RAM/SQL/searcher code with recorded JDBC and owner receivers. They compare duplicate objects, held map identities, mutable IDs, wallet short-circuit order, null/failing services, SQL faults, two-store lifecycle, cleanup and seeded sequences. Clocks are validated against operation windows before normalization. The inspected [report](../../../../../../../build/txpow-db-results.json) has 1,355 programs, 7,407 operations and 80,960 matching recorded effects with no failures.
+The [Java owning-store oracle](../../../../../../../support/TxPoWDBOracle.java), [native harness](../../../../../../../support/txpow_db.cpp) and [driver](../../../../../../../tools/txpow_db_differential.py) execute actual RAM/SQL/searcher code with recorded JDBC and owner receivers. They compare duplicate objects, held map identities, mutable IDs, wallet short-circuit order, null/failing services, SQL faults, two-store lifecycle, cleanup and seeded sequences. Clocks are validated against operation windows before normalization. The inspected [report](../../../../../../../validation/checkpoint-362/normal/txpow-db-results.json) has 1,355 programs, 7,407 operations and 80,960 matching recorded effects with no failures.
 
 ## Dependencies and reading map
 

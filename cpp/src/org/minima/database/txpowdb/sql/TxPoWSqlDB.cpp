@@ -1,3 +1,5 @@
+#include "support/JavaUnixFile.hpp"
+#include <iostream>
 #include "TxPoWSqlDB.hpp"
 #include "support/JavaIOExceptionText.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
@@ -126,4 +128,18 @@ int32_t TxPoWSqlDB::cleanDB(bool hard){
     }catch(const SqlException& error){log(sqlExceptionText(error));}return 0;
 }
 void TxPoWSqlDB::closeAndReopen(){std::lock_guard lock(mSQLLock);try{saveDB(false);mSQLConnection.reset();checkOpen(false);}catch(const SqlException& error){log(sqlExceptionText(error));}}
+void TxPoWSqlDB::main(const std::vector<std::string>*,SqlDBServices services,const File& userHome) {
+    const auto file=userHome?javaUnixChildFile(*userHome,"testsql"):std::filesystem::path("testsql");
+    TxPoWSqlDB db(std::move(services));
+    db.loadDB(file);
+    TxPoW txpow;
+    txpow.setTimeMilli();
+    txpow.setSuperParent(0,MiniData::fromHex("0xFFEEFF"));
+    txpow.calculateTXPOWID();
+    std::cout<<"IN :"<<txpow.toJSON().toString()<<std::endl;
+    [[maybe_unused]] const auto id=txpow.getTxPoWID();
+    db.addTxPoW(txpow,true);
+    db.saveDB(false);
+}
+
 }

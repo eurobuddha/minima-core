@@ -28,7 +28,7 @@ Native code reuses the real TxPoW codec, SqlDB service boundary and Java lowerca
 
 ## What the tests tell us
 
-The [Java oracle](../../../../../../../../support/TxPoWSqlDBOracle.java), [native harness](../../../../../../../../support/txpow_sql_db.cpp) and [driver](../../../../../../../../tools/txpow_sql_db_differential.py) compare schema and prepared-statement identities, pagination, filtering edge cases, null receivers, faults during calls, cleanup/reopen and every truncated prefix of four real TxPoW fixtures. Logging/serialization failure timing and a nonempty transaction are included. The inspected [report](../../../../../../../../build/txpow-sql-db-results.json) records 2,592 programs, 8,729 operations and 86,333 driver calls with zero failures. JDBC is recorded rather than executed by a native H2 engine. Clock arithmetic is validated before normalization; NPE expression text and logger prefixes/stacks are excluded.
+The [Java oracle](../../../../../../../../support/TxPoWSqlDBOracle.java), [native harness](../../../../../../../../support/txpow_sql_db.cpp) and [driver](../../../../../../../../tools/txpow_sql_db_differential.py) compare schema and prepared-statement identities, pagination, filtering edge cases, null receivers, faults during calls, cleanup/reopen and every truncated prefix of four real TxPoW fixtures. Logging/serialization failure timing and a nonempty transaction are included. The inspected [report](../../../../../../../../validation/checkpoint-361/normal/txpow-sql-db-results.json) records 2,592 programs, 8,729 operations and 86,333 driver calls with zero failures. JDBC is recorded rather than executed by a native H2 engine. Clock arithmetic is validated before normalization; NPE expression text and logger prefixes/stacks are excluded.
 
 ## Dependencies and reading map
 
@@ -36,12 +36,23 @@ Direct Minima imports: [TxPoW](../../../../../../../../../upstream-study/src/org
 
 Method navigation (declarations with bodies found in this file): [TxPoWSqlDB](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L59), [createSQL](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L67), [wipeDB](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L114), [customSizeQuery](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L144), [addTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L181), [getTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L234), [getChildBlocks](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L271), [getRelevantSize](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L304), [getAllRelevant](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L326), [getAllRelevant](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L330), [getLatestTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L371), [getLatestTxPoWSize](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L412), [getSize](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L438), [exists](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L460), [cleanDB](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L486), [cleanDB](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L490), [closeAndReopen](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L531), [main](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java#L549).
 
+## Source main and durable-file validation
+
+The source main is now translated using the existing SQL provider and an explicit
+home path. It sets time and parent before calculating the ID, prints the TxPoW,
+inserts it with relevant=true and saves without compaction. The real-H2 main corpus
+opens every saved file with Java and C++, compares exact wire roundtrips and JSON,
+and checks that printed ID/parent/flags/relevance match the stored row. Fresh PRNG
+and time values are independently checked before cross-writer projection.
+
+See the [database demonstration lab](../../../../../../../new-tests/database-main-methods.md) for the assertions, initial test-assumption corrections and limits.
+
 ## Check your understanding
 
 Why does hard cleanup differ from wipe for a relevant transaction? Trace the exact DELETE predicate, then design one fixture that distinguishes the two operations.
 
 ## Limits and traceability
 
-Recorded SQL text is not durable storage. Native H2 execution, every real driver failure, concurrency and full runtime ownership remain incomplete; count/default results can hide caught errors. The counterpart remains partial and parity not_verified.
+Recorded SQL text is not durable storage. The later main corpus adds real H2 execution and persistence for the demonstration. Every real driver failure, concurrency and full runtime ownership remain unverified; count/default results can hide caught errors. The counterpart remains partial and parity not_verified.
 
 Pinned Java SHA-256: `19401817f8fd1a32c1bffd565eabe3677dc673f357516e6b45bde8b425221c69`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).

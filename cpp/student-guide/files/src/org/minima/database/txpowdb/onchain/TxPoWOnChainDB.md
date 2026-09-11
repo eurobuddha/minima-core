@@ -27,7 +27,7 @@ C++ retains SQL text/call order through SqlDB services, uses atomic retention st
 
 ## What the tests tell us
 
-The [Java oracle](../../../../../../../../support/OnChainDBOracle.java), [native harness](../../../../../../../../support/onchain_db.cpp) and [driver](../../../../../../../../tools/onchain_db_differential.py) exercise all query overloads, null/partial rows, count narrowing, checked versus runtime failures at early JDBC calls, wipe/recreate, retention extremes, two clock calls in hard cleanup and seeded sequences. The inspected [report](../../../../../../../../build/onchain-db-results.json) records 855 programs, 3,639 operations and 29,167 driver calls with zero failures. JDBC is recorded rather than executed by a native H2 engine. Clock arithmetic is validated before normalization; NPE expression text and logger prefixes/stacks are excluded.
+The [Java oracle](../../../../../../../../support/OnChainDBOracle.java), [native harness](../../../../../../../../support/onchain_db.cpp) and [driver](../../../../../../../../tools/onchain_db_differential.py) exercise all query overloads, null/partial rows, count narrowing, checked versus runtime failures at early JDBC calls, wipe/recreate, retention extremes, two clock calls in hard cleanup and seeded sequences. The inspected [report](../../../../../../../../validation/student-linked-evidence/build/onchain-db-results.json) records 855 programs, 3,639 operations and 29,167 driver calls with zero failures. JDBC is recorded rather than executed by a native H2 engine. Clock arithmetic is validated before normalization; NPE expression text and logger prefixes/stacks are excluded.
 
 ## Dependencies and reading map
 
@@ -35,12 +35,24 @@ Direct Minima imports: [MiniNumber](../../../../../../../../../upstream-study/sr
 
 Method navigation (declarations with bodies found in this file): [TxPoWOnChainDB](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L39), [createSQL](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L47), [wipeDB](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L82), [addOnChainTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L109), [getOnChainTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L136), [getInBlockTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L174), [getInBlockTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L213), [getFirstTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L252), [getLastTxPoW](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L290), [getSize](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L330), [cleanDB](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L356), [cleanDB](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L360), [main](../../../../../../../../../upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java#L391).
 
+## Source main and durable-file validation
+
+The source main is now translated using the existing native H2 provider and an
+explicit home path. It calls createSQL again after load, appends the three exact
+source pairs, and prints the first two lookups. Repeated runs contain three, six
+and nine rows. Both readers compare every actual identity and timestamp; increasing
+identity values are not assumed consecutive. C++ RAII releases local handles where
+Java has no explicit close. Identity allocation and shutdown-failure equivalence
+remain outside the focused main result.
+
+See the [database demonstration lab](../../../../../../../new-tests/database-main-methods.md) for the assertions, initial test-assumption corrections and limits.
+
 ## Check your understanding
 
 A row is found, but getLong(block) fails after found and blockid were written. What JSON survives? Why must the test compare the entire object rather than only found?
 
 ## Limits and traceability
 
-Actual H2 execution, duplicate-row behavior under a real engine, durable files and full runtime integration remain absent. UTC fixture date comparisons do not establish every process timezone. Partial counterpart; parity not_verified.
+The original recording corpus does not establish durable behavior. The later main corpus adds actual H2 repeated inserts and cross-reader persistence, while full runtime integration remains unverified. UTC fixture date comparisons do not establish every process timezone. Partial counterpart; parity not_verified.
 
 Pinned Java SHA-256: `8d767abbf13c56896a3eeabdc53384be0894c3392eed45ce6c32c7ed0e152255`. Mapping: [source-map.json](../../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../../REVIEW.md).

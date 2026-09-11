@@ -8,6 +8,9 @@
 namespace minima {
 class TxPoWOnChainDB : public SqlDB {
 public:
+    // Java main uses ambient user.home and DriverManager; native callers supply
+    // the existing SQL provider and home value explicitly.
+    static void main(const std::vector<std::string>* args,SqlDBServices services,const File& userHome);
     // Pinned Java evaluates the product as int before widening to long.
     inline static std::atomic<int64_t> MAX_ONCHAINSQL_MILLI{500654080};
     explicit TxPoWOnChainDB(SqlDBServices services,

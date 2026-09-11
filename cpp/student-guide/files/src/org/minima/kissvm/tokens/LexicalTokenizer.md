@@ -26,7 +26,7 @@ C++ intentionally ignores the constructor depth parameter and stores tokens in a
 
 The lexical driver supplies initial depth 17, reads the observed depth, increments once and decrements twice, then walks positions and tokens. It checks all-used and one-token pushback/re-read. It does not claim all arbitrary list mutations or repeated invalid pushbacks are covered.
 
-The actual [KissOracle.java](../../../../../../../support/KissOracle.java) and [kiss.cpp](../../../../../../../support/kiss.cpp) execute the operations built by [kiss_differential.py](../../../../../../../tools/kiss_differential.py). Their output contains value type, text and underlying HEX/string bytes or number wire bytes. Generic errors are normalized to ERROR; parser errors retain their message. The existing [normal report](../../../../../../../build/kiss-differential-results.json) records 1,451 cases passed and zero failures; no new run was performed for this lesson.
+The actual [KissOracle.java](../../../../../../../support/KissOracle.java) and [kiss.cpp](../../../../../../../support/kiss.cpp) execute the operations built by [kiss_differential.py](../../../../../../../tools/kiss_differential.py). Their output contains value type, text and underlying HEX/string bytes or number wire bytes. Generic errors are normalized to ERROR; parser errors retain their message. The existing [normal report](../../../../../../../validation/student-linked-evidence/build/kiss-differential-results.json) records 1,451 cases passed and zero failures; no new run was performed for this lesson.
 
 ## Dependencies and reading map
 

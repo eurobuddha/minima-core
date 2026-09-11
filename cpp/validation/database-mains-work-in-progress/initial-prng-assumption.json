@@ -1,0 +1,376 @@
+{
+  "passed": false,
+  "actual_main_runs": 2,
+  "cross_reads": 4,
+  "main_comparisons": 0,
+  "assertions": 37,
+  "observations": [
+    {
+      "name": "ArchiveManager",
+      "mode": "null",
+      "writer": "java",
+      "clock_window": [
+        1789169808345,
+        1789169808876
+      ],
+      "main": {
+        "stdout": "SqlDB requires re-open : sqlsync\nSqlDB requires re-open : sqlsync\nDB Size : 1\nSqlDB requires re-open : sqlsync\nSync Loaded : {\"txpowid\":\"0x79DC8AC7BF06B9D8EECF084DF27ABCE5B7F7080545A621DA3C1FCAF3305F9832\",\"isblock\":true,\"istransaction\":false,\"superblock\":1,\"size\":304,\"burn\":0,\"header\":{\"chainid\":\"0x00\",\"block\":\"1\",\"blkdiff\":\"0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\",\"cascadelevels\":32,\"superparents\":[{\"difficulty\":0,\"count\":1,\"parent\":\"0xFFEEFF\"},{\"difficulty\":31,\"count\":31,\"parent\":\"\"}],\"magic\":{\"currentmaxtxpowsize\":\"65536\",\"currentmaxkissvmops\":\"1024\",\"currentmaxtxn\":\"256\",\"currentmintxpowwork\":\"0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43\",\"desiredmaxtxpowsize\":\"65536\",\"desiredmaxkissvmops\":\"1024\",\"desiredmaxtxn\":\"256\",\"desiredmintxpowwork\":\"0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43\"},\"mmr\":\"0x00\",\"total\":\"0\",\"customhash\":\"0x00\",\"txbodyhash\":\"0x00\",\"nonce\":\"0\",\"timemilli\":\"1789169808531\",\"date\":\"Fri Sep 11 23:36:48 UTC 2026\"},\"hasbody\":true,\"body\":{\"prng\":\"0x92C4AB0B6016B135FE16456A3C723DFA37F4C2377BB3976DD1976F8960D76F74\",\"txndiff\":\"0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\",\"txn\":{\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"},\"witness\":{\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]},\"burntxn\":{\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"},\"burnwitness\":{\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]},\"txnlist\":[]}}\nSqlDB requires re-open : sqlsync\nSync Range : 0\n",
+        "error": "none"
+      },
+      "readers": [
+        [
+          {
+            "id": 1,
+            "txpowid": "0x58F582F791F04D6386117C2F109330812729F5E584831B1589D731C8285B19F1",
+            "timemilli": 1789169808579,
+            "block": 1,
+            "wire": "0x0001000000000100000601A092D4B49300010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000003FFEEFF1F000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000000100010000002092C4AB0B6016B135FE16456A3C723DFA37F4C2377BB3976DD1976F8960D76F7400000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100",
+            "wireagain": "0x0001000000000100000601A092D4B49300010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000003FFEEFF1F000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000000100010000002092C4AB0B6016B135FE16456A3C723DFA37F4C2377BB3976DD1976F8960D76F7400000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100",
+            "txpow": {
+              "txpowid": "0x79DC8AC7BF06B9D8EECF084DF27ABCE5B7F7080545A621DA3C1FCAF3305F9832",
+              "isblock": true,
+              "istransaction": false,
+              "superblock": 1,
+              "size": 304,
+              "burn": 0,
+              "header": {
+                "chainid": "0x00",
+                "block": "1",
+                "blkdiff": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                "cascadelevels": 32,
+                "superparents": [
+                  {
+                    "difficulty": 0,
+                    "count": 1,
+                    "parent": "0xFFEEFF"
+                  },
+                  {
+                    "difficulty": 31,
+                    "count": 31,
+                    "parent": ""
+                  }
+                ],
+                "magic": {
+                  "currentmaxtxpowsize": "65536",
+                  "currentmaxkissvmops": "1024",
+                  "currentmaxtxn": "256",
+                  "currentmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+                  "desiredmaxtxpowsize": "65536",
+                  "desiredmaxkissvmops": "1024",
+                  "desiredmaxtxn": "256",
+                  "desiredmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43"
+                },
+                "mmr": "0x00",
+                "total": "0",
+                "customhash": "0x00",
+                "txbodyhash": "0x00",
+                "nonce": "0",
+                "timemilli": "1789169808531",
+                "date": "Fri Sep 11 23:36:48 UTC 2026"
+              },
+              "hasbody": true,
+              "body": {
+                "prng": "0x92C4AB0B6016B135FE16456A3C723DFA37F4C2377BB3976DD1976F8960D76F74",
+                "txndiff": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                "txn": {
+                  "inputs": [],
+                  "outputs": [],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+                },
+                "witness": {
+                  "signatures": [],
+                  "mmrproofs": [],
+                  "scripts": []
+                },
+                "burntxn": {
+                  "inputs": [],
+                  "outputs": [],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+                },
+                "burnwitness": {
+                  "signatures": [],
+                  "mmrproofs": [],
+                  "scripts": []
+                },
+                "txnlist": []
+              }
+            },
+            "before_parent_id": "0x58F582F791F04D6386117C2F109330812729F5E584831B1589D731C8285B19F1"
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "txpowid": "0x58F582F791F04D6386117C2F109330812729F5E584831B1589D731C8285B19F1",
+            "timemilli": 1789169808579,
+            "block": 1,
+            "wire": "0x0001000000000100000601A092D4B49300010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000003FFEEFF1F000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000000100010000002092C4AB0B6016B135FE16456A3C723DFA37F4C2377BB3976DD1976F8960D76F7400000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100",
+            "wireagain": "0x0001000000000100000601A092D4B49300010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000003FFEEFF1F000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000000100010000002092C4AB0B6016B135FE16456A3C723DFA37F4C2377BB3976DD1976F8960D76F7400000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100",
+            "txpow": {
+              "txpowid": "0x79DC8AC7BF06B9D8EECF084DF27ABCE5B7F7080545A621DA3C1FCAF3305F9832",
+              "isblock": true,
+              "istransaction": false,
+              "superblock": 1,
+              "size": 304,
+              "burn": 0,
+              "header": {
+                "chainid": "0x00",
+                "block": "1",
+                "blkdiff": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                "cascadelevels": 32,
+                "superparents": [
+                  {
+                    "difficulty": 0,
+                    "count": 1,
+                    "parent": "0xFFEEFF"
+                  },
+                  {
+                    "difficulty": 31,
+                    "count": 31,
+                    "parent": ""
+                  }
+                ],
+                "magic": {
+                  "currentmaxtxpowsize": "65536",
+                  "currentmaxkissvmops": "1024",
+                  "currentmaxtxn": "256",
+                  "currentmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+                  "desiredmaxtxpowsize": "65536",
+                  "desiredmaxkissvmops": "1024",
+                  "desiredmaxtxn": "256",
+                  "desiredmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43"
+                },
+                "mmr": "0x00",
+                "total": "0",
+                "customhash": "0x00",
+                "txbodyhash": "0x00",
+                "nonce": "0",
+                "timemilli": "1789169808531",
+                "date": "Fri Sep 11 23:36:48 UTC 2026"
+              },
+              "hasbody": true,
+              "body": {
+                "prng": "0x92C4AB0B6016B135FE16456A3C723DFA37F4C2377BB3976DD1976F8960D76F74",
+                "txndiff": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                "txn": {
+                  "inputs": [],
+                  "outputs": [],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+                },
+                "witness": {
+                  "signatures": [],
+                  "mmrproofs": [],
+                  "scripts": []
+                },
+                "burntxn": {
+                  "inputs": [],
+                  "outputs": [],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+                },
+                "burnwitness": {
+                  "signatures": [],
+                  "mmrproofs": [],
+                  "scripts": []
+                },
+                "txnlist": []
+              }
+            },
+            "before_parent_id": "0x58F582F791F04D6386117C2F109330812729F5E584831B1589D731C8285B19F1"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "ArchiveManager",
+      "mode": "null",
+      "writer": "cpp",
+      "clock_window": [
+        1789169809606,
+        1789169809870
+      ],
+      "main": {
+        "stdout": "SqlDB requires re-open : sqlsync\nSqlDB requires re-open : sqlsync\nDB Size : 1\nSqlDB requires re-open : sqlsync\nSync Loaded : {\"txpowid\":\"0xAC519457616CB4B7F56B1E962B1429CC25B2CC95A61B7B8F2EA1FF3DA670384D\",\"isblock\":true,\"istransaction\":false,\"superblock\":0,\"size\":304,\"burn\":0,\"header\":{\"chainid\":\"0x00\",\"block\":\"1\",\"blkdiff\":\"0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\",\"cascadelevels\":32,\"superparents\":[{\"difficulty\":0,\"count\":1,\"parent\":\"0xFFEEFF\"},{\"difficulty\":31,\"count\":31,\"parent\":\"\"}],\"magic\":{\"currentmaxtxpowsize\":\"65536\",\"currentmaxkissvmops\":\"1024\",\"currentmaxtxn\":\"256\",\"currentmintxpowwork\":\"0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43\",\"desiredmaxtxpowsize\":\"65536\",\"desiredmaxkissvmops\":\"1024\",\"desiredmaxtxn\":\"256\",\"desiredmintxpowwork\":\"0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43\"},\"mmr\":\"0x00\",\"total\":\"0\",\"customhash\":\"0x00\",\"txbodyhash\":\"0x00\",\"nonce\":\"0\",\"timemilli\":\"1789169809648\",\"date\":\"Fri Sep 11 23:36:49 UTC 2026\"},\"hasbody\":true,\"body\":{\"prng\":\"0x05DF754D0C0FAB37149613993A36622BBCC4B3B952D67BE86E4CE41FC42D1590\",\"txndiff\":\"0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\",\"txn\":{\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"},\"witness\":{\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]},\"burntxn\":{\"inputs\":[],\"outputs\":[],\"state\":[],\"linkhash\":\"0x00\",\"transactionid\":\"0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1\"},\"burnwitness\":{\"signatures\":[],\"mmrproofs\":[],\"scripts\":[]},\"txnlist\":[]}}\nSqlDB requires re-open : sqlsync\nSync Range : 0\n",
+        "error": "none"
+      },
+      "readers": [
+        [
+          {
+            "id": 1,
+            "txpowid": "0x3F67E9AF938A16406727E06B012A7668B815FABE82B7503506B58366AAE5FFBB",
+            "timemilli": 1789169809657,
+            "block": 1,
+            "wire": "0x0001000000000100000601A092D4B8F000010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000003FFEEFF1F000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000000100010000002005DF754D0C0FAB37149613993A36622BBCC4B3B952D67BE86E4CE41FC42D159000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100",
+            "wireagain": "0x0001000000000100000601A092D4B8F000010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000003FFEEFF1F000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000000100010000002005DF754D0C0FAB37149613993A36622BBCC4B3B952D67BE86E4CE41FC42D159000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100",
+            "txpow": {
+              "txpowid": "0xAC519457616CB4B7F56B1E962B1429CC25B2CC95A61B7B8F2EA1FF3DA670384D",
+              "isblock": true,
+              "istransaction": false,
+              "superblock": 0,
+              "size": 304,
+              "burn": 0,
+              "header": {
+                "chainid": "0x00",
+                "block": "1",
+                "blkdiff": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                "cascadelevels": 32,
+                "superparents": [
+                  {
+                    "difficulty": 0,
+                    "count": 1,
+                    "parent": "0xFFEEFF"
+                  },
+                  {
+                    "difficulty": 31,
+                    "count": 31,
+                    "parent": ""
+                  }
+                ],
+                "magic": {
+                  "currentmaxtxpowsize": "65536",
+                  "currentmaxkissvmops": "1024",
+                  "currentmaxtxn": "256",
+                  "currentmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+                  "desiredmaxtxpowsize": "65536",
+                  "desiredmaxkissvmops": "1024",
+                  "desiredmaxtxn": "256",
+                  "desiredmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43"
+                },
+                "mmr": "0x00",
+                "total": "0",
+                "customhash": "0x00",
+                "txbodyhash": "0x00",
+                "nonce": "0",
+                "timemilli": "1789169809648",
+                "date": "Fri Sep 11 23:36:49 UTC 2026"
+              },
+              "hasbody": true,
+              "body": {
+                "prng": "0x05DF754D0C0FAB37149613993A36622BBCC4B3B952D67BE86E4CE41FC42D1590",
+                "txndiff": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                "txn": {
+                  "inputs": [],
+                  "outputs": [],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+                },
+                "witness": {
+                  "signatures": [],
+                  "mmrproofs": [],
+                  "scripts": []
+                },
+                "burntxn": {
+                  "inputs": [],
+                  "outputs": [],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+                },
+                "burnwitness": {
+                  "signatures": [],
+                  "mmrproofs": [],
+                  "scripts": []
+                },
+                "txnlist": []
+              }
+            },
+            "before_parent_id": "0x3F67E9AF938A16406727E06B012A7668B815FABE82B7503506B58366AAE5FFBB"
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "txpowid": "0x3F67E9AF938A16406727E06B012A7668B815FABE82B7503506B58366AAE5FFBB",
+            "timemilli": 1789169809657,
+            "block": 1,
+            "wire": "0x0001000000000100000601A092D4B8F000010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000003FFEEFF1F000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000000100010000002005DF754D0C0FAB37149613993A36622BBCC4B3B952D67BE86E4CE41FC42D159000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100",
+            "wireagain": "0x0001000000000100000601A092D4B8F000010100000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000003FFEEFF1F000000000000000100000100000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43000301000000020400000201000000001F068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA4300000001000000000100010000002005DF754D0C0FAB37149613993A36622BBCC4B3B952D67BE86E4CE41FC42D159000000020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00010000010000010000000001000001000001000001000001000001000001000000000100000100000100000100000100000100000100000100",
+            "txpow": {
+              "txpowid": "0xAC519457616CB4B7F56B1E962B1429CC25B2CC95A61B7B8F2EA1FF3DA670384D",
+              "isblock": true,
+              "istransaction": false,
+              "superblock": 0,
+              "size": 304,
+              "burn": 0,
+              "header": {
+                "chainid": "0x00",
+                "block": "1",
+                "blkdiff": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                "cascadelevels": 32,
+                "superparents": [
+                  {
+                    "difficulty": 0,
+                    "count": 1,
+                    "parent": "0xFFEEFF"
+                  },
+                  {
+                    "difficulty": 31,
+                    "count": 31,
+                    "parent": ""
+                  }
+                ],
+                "magic": {
+                  "currentmaxtxpowsize": "65536",
+                  "currentmaxkissvmops": "1024",
+                  "currentmaxtxn": "256",
+                  "currentmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43",
+                  "desiredmaxtxpowsize": "65536",
+                  "desiredmaxkissvmops": "1024",
+                  "desiredmaxtxn": "256",
+                  "desiredmintxpowwork": "0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43"
+                },
+                "mmr": "0x00",
+                "total": "0",
+                "customhash": "0x00",
+                "txbodyhash": "0x00",
+                "nonce": "0",
+                "timemilli": "1789169809648",
+                "date": "Fri Sep 11 23:36:49 UTC 2026"
+              },
+              "hasbody": true,
+              "body": {
+                "prng": "0x05DF754D0C0FAB37149613993A36622BBCC4B3B952D67BE86E4CE41FC42D1590",
+                "txndiff": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                "txn": {
+                  "inputs": [],
+                  "outputs": [],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+                },
+                "witness": {
+                  "signatures": [],
+                  "mmrproofs": [],
+                  "scripts": []
+                },
+                "burntxn": {
+                  "inputs": [],
+                  "outputs": [],
+                  "state": [],
+                  "linkhash": "0x00",
+                  "transactionid": "0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1"
+                },
+                "burnwitness": {
+                  "signatures": [],
+                  "mmrproofs": [],
+                  "scripts": []
+                },
+                "txnlist": []
+              }
+            },
+            "before_parent_id": "0x3F67E9AF938A16406727E06B012A7668B815FABE82B7503506B58366AAE5FFBB"
+          }
+        ]
+      ]
+    }
+  ],
+  "error": "AssertionError(('ArchiveManager', 'null', 'main output difference', [['SqlDB requires re-open : sqlsync', 'SqlDB requires re-open : sqlsync', 'DB Size : 1', 'SqlDB requires re-open : sqlsync', {'isblock': True, 'istransaction': False, 'size': 304, 'burn': 0, 'header': {'chainid': '0x00', 'block': '1', 'blkdiff': '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', 'cascadelevels': 32, 'superparents': [{'difficulty': 0, 'count': 1, 'parent': '0xFFEEFF'}, {'difficulty': 31, 'count': 31, 'parent': ''}], 'magic': {'currentmaxtxpowsize': '65536', 'currentmaxkissvmops': '1024', 'currentmaxtxn': '256', 'currentmintxpowwork': '0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43', 'desiredmaxtxpowsize': '65536', 'desiredmaxkissvmops': '1024', 'desiredmaxtxn': '256', 'desiredmintxpowwork': '0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43'}, 'mmr': '0x00', 'total': '0', 'customhash': '0x00', 'txbodyhash': '0x00', 'nonce': '0'}, 'hasbody': True, 'body': {'prng': '0x92C4AB0B6016B135FE16456A3C723DFA37F4C2377BB3976DD1976F8960D76F74', 'txndiff': '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', 'txn': {'inputs': [], 'outputs': [], 'state': [], 'linkhash': '0x00', 'transactionid': '0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1'}, 'witness': {'signatures': [], 'mmrproofs': [], 'scripts': []}, 'burntxn': {'inputs': [], 'outputs': [], 'state': [], 'linkhash': '0x00', 'transactionid': '0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1'}, 'burnwitness': {'signatures': [], 'mmrproofs': [], 'scripts': []}, 'txnlist': []}}, 'SqlDB requires re-open : sqlsync', 'Sync Range : 0'], ['SqlDB requires re-open : sqlsync', 'SqlDB requires re-open : sqlsync', 'DB Size : 1', 'SqlDB requires re-open : sqlsync', {'isblock': True, 'istransaction': False, 'size': 304, 'burn': 0, 'header': {'chainid': '0x00', 'block': '1', 'blkdiff': '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', 'cascadelevels': 32, 'superparents': [{'difficulty': 0, 'count': 1, 'parent': '0xFFEEFF'}, {'difficulty': 31, 'count': 31, 'parent': ''}], 'magic': {'currentmaxtxpowsize': '65536', 'currentmaxkissvmops': '1024', 'currentmaxtxn': '256', 'currentmintxpowwork': '0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43', 'desiredmaxtxpowsize': '65536', 'desiredmaxkissvmops': '1024', 'desiredmaxtxn': '256', 'desiredmintxpowwork': '0x068DB8BAC710CB295E9E1B089A027525460AA64C2F837B4A2339C0EBEDFA43'}, 'mmr': '0x00', 'total': '0', 'customhash': '0x00', 'txbodyhash': '0x00', 'nonce': '0'}, 'hasbody': True, 'body': {'prng': '0x05DF754D0C0FAB37149613993A36622BBCC4B3B952D67BE86E4CE41FC42D1590', 'txndiff': '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', 'txn': {'inputs': [], 'outputs': [], 'state': [], 'linkhash': '0x00', 'transactionid': '0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1'}, 'witness': {'signatures': [], 'mmrproofs': [], 'scripts': []}, 'burntxn': {'inputs': [], 'outputs': [], 'state': [], 'linkhash': '0x00', 'transactionid': '0xDECA244460B704393E8ACB5F6CCFCDDBFF6AA0172D56AA835340FBBD78F3FFC1'}, 'burnwitness': {'signatures': [], 'mmrproofs': [], 'scripts': []}, 'txnlist': []}}, 'SqlDB requires re-open : sqlsync', 'Sync Range : 0']]))"
+}

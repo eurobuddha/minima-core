@@ -1,0 +1,19 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": true,
+  "actual_main_runs": 18,
+  "cross_reads": 36,
+  "main_comparisons": 9,
+  "assertions": 465,
+  "scope": "18 real main invocations; null/empty/unused arguments; same-home repeat behavior; 36 full saved-file reads across Java/native H2. Exact cross-reader rows, wire roundtrips, JSON, source pre-parent ID ordering, SQL metadata, bounded timestamps and adjacent file preservation. Main projections omit only independently checked time/date/hash/superblock and 32-byte PRNG fields. No injected database faults, provider shutdown-error/identity-allocation equivalence, arbitrary home values, random distributions, concurrency or full class parity claim."
+}

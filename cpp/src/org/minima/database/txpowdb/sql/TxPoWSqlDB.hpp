@@ -6,6 +6,9 @@
 namespace minima {
 class TxPoWSqlDB:public SqlDB {
 public:
+    // Java main uses ambient user.home and DriverManager; native callers supply
+    // the existing SQL provider and home value explicitly.
+    static void main(const std::vector<std::string>* args,SqlDBServices services,const File& userHome);
     // Function-local storage preserves Java class initialization at first use.
     static std::atomic<int64_t>& maxSQLMilli();
     inline static MiniNumber MAX_RELEVANT_TXPOW{100};

@@ -7,6 +7,9 @@
 namespace minima {
 class ArchiveManager:public SqlDB {
 public:
+    // Java main uses ambient user.home and DriverManager; native callers supply
+    // the existing SQL provider and home value explicitly. Archive main deletes testfolder.
+    static void main(const std::vector<std::string>* args,SqlDBServices services,const File& userHome);
     using Blocks=std::vector<std::shared_ptr<TxBlock>>;
     std::atomic<int64_t> MAX_KEEP_BLOCKS;
     ArchiveManager(SqlDBServices services,std::function<bool()> shuttingDown,

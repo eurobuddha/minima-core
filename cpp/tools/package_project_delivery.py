@@ -50,6 +50,11 @@ def main():
     top=run('git','ls-tree','--name-only',head).splitlines()
     excluded=export_tree(ROOT,head,'project/',output,[p for p in top if p not in ['graphify-out','upstream-study']])
     excluded+=export_tree(ROOT/'upstream-study',pin,'project/upstream-study/',output)
+    # Audit the exported project itself: local build directories cannot satisfy links.
+    audit=subprocess.run([sys.executable,str(output/'project/cpp/student-guide/tools/audit_guides.py')],capture_output=True,text=True)
+    if audit.returncode:raise RuntimeError('Exported student guide audit failed: '+audit.stdout+audit.stderr)
+    student_audit=json.loads((output/'project/cpp/student-guide/coverage-audit.json').read_text())
+    if student_audit['unique_guides']!=457 or student_audit['errors']:raise RuntimeError('Incomplete exported student lessons')
     # Source/docs stay in their repository layout, preserving every relative student link.
     handover=output/'project/cpp/delivery'
     if not (handover/'START_HERE.md').is_file():raise RuntimeError('Delivery overview missing from checkpoint')
@@ -74,6 +79,7 @@ Full behavioral parity remains unverified. Read the known gaps before relying on
     manifest=dict(source_head=head,upstream_pin=pin,utc=datetime.now(timezone.utc).isoformat(),full_parity=False,
         source_scope='All committed root entries except unrelated graphify-out and Finder metadata, plus pinned upstream; no untracked files, wallet databases or .git configuration',
         excluded_finder_metadata=excluded,
+        student_guides_verified=student_audit['unique_guides'],student_links_verified=student_audit['links_checked'],
         runtime_archive=runtime_archive.name,runtime_archive_sha256=sha(runtime_archive),
         file_sha256={str(p.relative_to(output)):sha(p) for p in sorted(output.rglob('*')) if p.is_file()})
     (output/'delivery-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

@@ -1,3 +1,24 @@
+# Timed delivery — database main checkpoint
+
+Three database mains added using existing SqlDB and native H2 provider. Normal and
+ASAN/UBSAN each PASS18 actual main calls,36 cross-reads,9 comparisons,465 assertions.
+Source order, durable wire/JSON, repeat rows and deletion boundaries tested. Initial
+PRNG-equality/dense-ID fixture assumptions corrected; failure reports retained.
+Lifecycle/identity allocation, arbitrary homes and full API parity remain unverified.
+No new mapped paths:456/457; JNI absent. Missing-main candidate list now empty.
+Three lessons and database lab updated.108 student links repaired to committed
+byte-identical evidence/snapshots; exporter now audits all457 lessons after export.
+
+Full normal292 session96386:291 pass,Magic still active. Full sanitized293 session77277
+active on earlier binaries; original HORST cleanup failure corrected and targeted
+all1438 comparisons PASS. Do not restart whole suites or overwrite active probes.
+Implementation is finished for this delivery candidate. Next final actual-node
+builds, affected regressions, complete source/runtime package, relocation lifecycle,
+docs/presentation final evidence, local commit and verified recovery by01:30UTC.
+User preview21001/data remain untouched. Final runtime fixture uses22001.
+
+## Previous checkpoint (historical)
+
 # Timed delivery — runtime main checkpoint
 
 TxPoWMiner, TreeKey and Cascade mains: normal and ASAN/UBSAN PASS 18 comparisons,

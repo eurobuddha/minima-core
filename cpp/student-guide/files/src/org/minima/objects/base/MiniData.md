@@ -30,7 +30,7 @@ C++ owns a vector and exposes const byte access, so it does not reproduce Javaâ€
 
 The primitive fixture compares empty, zero, padded, odd-length and invalid hex inputs, plus numeric less-than cases such as 0x01 versus 0x0001. It establishes selected parsing, formatting and normal-wire behavior. It does not directly test Java mutable-array aliasing, all shift distances, random quality, the convenience converter, or the 512 MiB allocation boundary.
 
-The [primitive differential driver](../../../../../../../tools/differential.py) compiles the pinned Java classes and runs [PrimitiveOracle](../../../../../../../support/PrimitiveOracle.java) against [minima_primitives](../../../../../../../support/primitives.cpp). Both report observable text and wire bytes; both flatten exceptions to `ERROR`. The inspected [existing report](../../../../../../../build/differential-results.json) records 3,802/3,802 comparisons with zero failures for the complete primitive corpus. This does not prove exact error classes, all methods, or full-node parity.
+The [primitive differential driver](../../../../../../../tools/differential.py) compiles the pinned Java classes and runs [PrimitiveOracle](../../../../../../../support/PrimitiveOracle.java) against [minima_primitives](../../../../../../../support/primitives.cpp). Both report observable text and wire bytes; both flatten exceptions to `ERROR`. The inspected [existing report](../../../../../../../validation/checkpoint-362/normal/differential-results.json) records 3,802/3,802 comparisons with zero failures for the complete primitive corpus. This does not prove exact error classes, all methods, or full-node parity.
 
 ## Dependencies and reading map
 

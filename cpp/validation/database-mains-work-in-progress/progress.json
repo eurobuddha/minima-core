@@ -1,0 +1,33 @@
+{
+  "goal": "active_incomplete",
+  "deadline_utc": "2026-09-12T01:30:00Z",
+  "base_commit": "4bac1113ce920d354d15631ab39c243431f9af0b",
+  "new_mapped_files": [],
+  "mapped_paths": 456,
+  "missing": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "full_parity": "not_verified",
+  "new_main_methods": [
+    "ArchiveManager",
+    "TxPoWOnChainDB",
+    "TxPoWSqlDB"
+  ],
+  "remaining_main_candidates": 0,
+  "behavior_corrected_in_existing_helpers": [],
+  "validation": {
+    "normal_pass": true,
+    "sanitized_pass": true,
+    "actual_main_runs_per_build": 18,
+    "cross_reads_per_build": 36,
+    "assertions_per_build": 465,
+    "registered_ctests": 296
+  },
+  "limits": [
+    "C++ RAII versus Java no-explicit-close lifecycle; identity allocation not equated",
+    "Random fields cross-read exactly per writer; random distributions unverified",
+    "Native H2 is AOT Java; library itself not sanitizer instrumented",
+    "No fault injection/arbitrary homes/concurrency/full API claim"
+  ],
+  "next_action": "Final builds, appropriate regression, portable package and final runtime verification, deadline unchanged."
+}

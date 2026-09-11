@@ -1,0 +1,21 @@
+{
+  "scope": "Candidate audit only: javap verifies live public static void main(String[]) on compiled pinned classes; absence of a main token in mapped native body/header identifies an API omission candidate. Alternative named adapters and complete method behavior still require source review.",
+  "completed_in_batch": [
+    {
+      "java": "upstream-study/src/org/minima/database/archive/ArchiveManager.java",
+      "cpp": "cpp/src/org/minima/database/archive/ArchiveManager.cpp",
+      "class_name": "org.minima.database.archive.ArchiveManager"
+    },
+    {
+      "java": "upstream-study/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.java",
+      "cpp": "cpp/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.cpp",
+      "class_name": "org.minima.database.txpowdb.onchain.TxPoWOnChainDB"
+    },
+    {
+      "java": "upstream-study/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java",
+      "cpp": "cpp/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp",
+      "class_name": "org.minima.database.txpowdb.sql.TxPoWSqlDB"
+    }
+  ],
+  "candidates": []
+}

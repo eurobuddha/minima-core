@@ -20,10 +20,11 @@ state/ownership tests, concurrency/error tests, and native node workflows. Each
 suite states its limits. Passing a finite corpus does not certify all Java virtual
 dispatch, object aliasing, exceptional paths, runtime/provider behavior or races.
 
-The current entry-point audit leaves three candidates: ArchiveManager,
-TxPoWOnChainDB and TxPoWSqlDB. These classes already have native bodies, but their
-source database demonstration entry points remain missing. See
-[remaining candidates](../validation/runtime-mains-work-in-progress/remaining-main-candidates.json).
+The current missing-main candidate list is empty after adding the three database
+demonstrations. That finite token/compiled-method audit does not establish complete
+class/API parity. Database demonstration tests preserve exact saved-file contents
+across both readers; C++ RAII versus Java no-explicit-close lifetime and identity
+allocation remain explicit limits. See the [database evidence](../validation/database-mains-work-in-progress/README.md).
 
 ## Platform and delivery
 

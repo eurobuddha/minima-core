@@ -1,3 +1,7 @@
+#include "org/minima/utils/MiniFile.hpp"
+#include "org/minima/system/Main.hpp"
+#include "support/JavaUnixFile.hpp"
+#include <iostream>
 #include "ArchiveManager.hpp"
 #include "org/minima/system/params/GeneralParams.hpp"
 #include "support/JavaIOExceptionText.hpp"
@@ -163,4 +167,31 @@ int32_t ArchiveManager::cleanDB(){
 }
 void ArchiveManager::hackShut(){sqlRequired(mSQLConnection).close();}
 void ArchiveManager::closeAndReopen(){std::lock_guard lock(mSQLLock);try{saveDB(false);mSQLConnection.reset();checkOpen(false);}catch(const SqlException& error){log(sqlExceptionText(error));}}
+void ArchiveManager::main(const std::vector<std::string>*,SqlDBServices services,const File& userHome) {
+    const auto folder=userHome?javaUnixChildFile(*userHome,"testfolder"):std::filesystem::path("testfolder");
+    const auto file=javaUnixChildFile(folder,"sqlsync");
+    MiniFile::deleteFileOrFolder(javaUnixAbsoluteFile(folder),folder);
+    ArchiveManager archive(std::move(services),[]{return sqlRequired(Main::getInstance()).isShuttingDown();});
+    archive.loadDB(file);
+    auto txpow=std::make_shared<TxPoW>();
+    txpow->setBlockNumber(MiniNumber(1));
+    txpow->setTimeMilli();
+    txpow->calculateTXPOWID();
+    txpow->setSuperParent(0,MiniData::fromHex("0xFFEEFF"));
+    archive.hackShut();
+    TxBlock block(txpow);
+    archive.saveBlock(block);
+    archive.hackShut();
+    const auto rows=archive.getSize();
+    std::cout<<"DB Size : "<<rows<<std::endl;
+    archive.hackShut();
+    const auto id=block.getTxPoW().getTxPoWID();
+    const auto loaded=archive.loadBlock(id);
+    archive.hackShut();
+    std::cout<<"Sync Loaded : "<<sqlRequired(loaded).getTxPoW().toString()<<std::endl;
+    const auto blocks=archive.loadBlockRange(MiniNumber(0),MiniNumber(1));
+    std::cout<<"Sync Range : "<<blocks.size()<<std::endl;
+    archive.saveDB(false);
+}
+
 }

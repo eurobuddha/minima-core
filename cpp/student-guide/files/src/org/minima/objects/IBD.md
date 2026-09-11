@@ -29,7 +29,7 @@ Native IBD retains shared cascade/list/block ownership and reuses Cascade, TxBlo
 
 ## What the tests tell us
 
-The [Java IBD oracle](../../../../../../support/IBDOracle.java), [native harness](../../../../../../support/ibd.cpp) and [driver](../../../../../../tools/ibd_differential.py) compare complete/greeting/sync/archive paths, preloaded state, empty/bad cascades, shortening/crossover order, archive sampling positions, query parameters, shutdown/fault paths and lock depth. Derived wire cases inspect consumed offsets, cascade presence and partial block counts. The inspected [report](../../../../../../build/ibd-differential-results.json) has 1,057 matching cases. Java Main construction is bypassed; controlled archive and lock receivers make these offline behavioral tests.
+The [Java IBD oracle](../../../../../../support/IBDOracle.java), [native harness](../../../../../../support/ibd.cpp) and [driver](../../../../../../tools/ibd_differential.py) compare complete/greeting/sync/archive paths, preloaded state, empty/bad cascades, shortening/crossover order, archive sampling positions, query parameters, shutdown/fault paths and lock depth. Derived wire cases inspect consumed offsets, cascade presence and partial block counts. The inspected [report](../../../../../../validation/mega-commands-work-in-progress/normal/ibd-differential-results.json) has 1,057 matching cases. Java Main construction is bypassed; controlled archive and lock receivers make these offline behavioral tests.
 
 ## Dependencies and reading map
 

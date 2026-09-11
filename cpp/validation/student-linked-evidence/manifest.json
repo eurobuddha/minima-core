@@ -1,0 +1,115 @@
+{
+  "utc": "2026-09-11T23:37:40.867432+00:00",
+  "links_repaired": 108,
+  "records": [
+    {
+      "previous_link": "build/kissvm-differential-results.json",
+      "evidence": "validation/hash-writers-work-in-progress/normal/kissvm-differential-results.json",
+      "sha256": "b86f75378b422df829965b75c921becee62429147aa0a310fc7992a69ed2e159",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/transaction-input-commands-results.json",
+      "evidence": "validation/automatic-transaction-work-in-progress/normal/transaction-input-commands-results.json",
+      "sha256": "3f9e120ff00de0f7d128964d2d4bf1d8edadab18da58ad0406f8b61e7c15bb38",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build-sanitized/transaction-input-commands-results.json",
+      "evidence": "validation/automatic-transaction-work-in-progress/sanitized/transaction-input-commands-results.json",
+      "sha256": "3f9e120ff00de0f7d128964d2d4bf1d8edadab18da58ad0406f8b61e7c15bb38",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/transaction-input-commands-syntax-baseline-results.json",
+      "evidence": "validation/student-linked-evidence/build/transaction-input-commands-syntax-baseline-results.json",
+      "sha256": "c659ef1c9af6708d9cad6ca670123f4d1d6112d379e375ac1f99c9cdea4dc351",
+      "disposition": "snapshot of existing build report; not a new test run"
+    },
+    {
+      "previous_link": "build/ibd-differential-results.json",
+      "evidence": "validation/mega-commands-work-in-progress/normal/ibd-differential-results.json",
+      "sha256": "b8d0b6d298e24de420c20e2c9351fa52f7052dc0edea0fc24a65f6b698f3f464",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/txpow-miner-results.json",
+      "evidence": "validation/checkpoint-361/normal/txpow-miner-results.json",
+      "sha256": "669794d3ea0607340d14e06bcac8688f6b7388e0dc4e1f3dcbef4a4ce87969f9",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/param-configurer-results.json",
+      "evidence": "validation/checkpoint-361/normal/param-configurer-results.json",
+      "sha256": "55a73c99032801dfc82b9d1a7194d66ed273efdde509fc3253aa2e0077b1869e",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/command-differential-results.json",
+      "evidence": "validation/checkpoint-360/normal/command-differential-results.json",
+      "sha256": "0a0e273250515b414c3f23e7f6043c171676b34a65d58f5a3a3f72f1874413cd",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/transaction-commands-differential-results.json",
+      "evidence": "validation/multisig-work-in-progress/normal/transaction-commands-differential-results.json",
+      "sha256": "5197269b72fc188aed4eff5fdf29436affde89de47d76c0959b466415ae8b484",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/differential-results.json",
+      "evidence": "validation/checkpoint-362/normal/differential-results.json",
+      "sha256": "f42a57ca745a5fa43ced53d68dde96e823b4d9dc632f18fadf79d07d0bef350b",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/kiss-differential-results.json",
+      "evidence": "validation/student-linked-evidence/build/kiss-differential-results.json",
+      "sha256": "74ddfd1c8ba4958c87c9287c3489e7a5eef47c9220b5f10bf8c5786d0aba9b1a",
+      "disposition": "snapshot of existing build report; not a new test run"
+    },
+    {
+      "previous_link": "build/prefs-differential-results.json",
+      "evidence": "validation/checkpoint-362/normal/prefs-differential-results.json",
+      "sha256": "b61df15943bdc3b17b90f0053eeed572c8ab614474c325928a74a3ddb56bbebb",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/tree-differential-results.json",
+      "evidence": "validation/checkpoint-360/normal/tree-differential-results.json",
+      "sha256": "2b4801990ed016b4b6e8dd6c493e4c32723bdb28e9d4b1d24491c70f0789964a",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/coin-db-results.json",
+      "evidence": "validation/student-linked-evidence/build/coin-db-results.json",
+      "sha256": "51cec34100ff18b590425be717f699bdd0c805b2188b475915f685be3e883d4d",
+      "disposition": "snapshot of existing build report; not a new test run"
+    },
+    {
+      "previous_link": "build/txpow-db-results.json",
+      "evidence": "validation/checkpoint-362/normal/txpow-db-results.json",
+      "sha256": "319db106a08cef8411931d249ba30550e0718f80426f865a6b2d51a4a5bab0b7",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/onchain-db-results.json",
+      "evidence": "validation/student-linked-evidence/build/onchain-db-results.json",
+      "sha256": "ee0e97f806c9c954a7592975d0f7eb98f080c8823f438b16f3976fe0973e066c",
+      "disposition": "snapshot of existing build report; not a new test run"
+    },
+    {
+      "previous_link": "build/txpow-sql-db-results.json",
+      "evidence": "validation/checkpoint-361/normal/txpow-sql-db-results.json",
+      "sha256": "f51443215ef642e893f79b0f10ce73030b6bbffc012c018a5e29e8bd2d963dfa",
+      "disposition": "existing committed evidence with identical bytes"
+    },
+    {
+      "previous_link": "build/txndb-differential-results.json",
+      "evidence": "validation/streamable-txbody-work-in-progress/normal/txndb-differential-results.json",
+      "sha256": "940458065bfdcd1e699697a3d3c40adb6855aa45684f7e32332eb8bac3bbb0de",
+      "disposition": "existing committed evidence with identical bytes"
+    }
+  ],
+  "scope": "Portable links to byte-identical existing reports. Historical evidence, including the failed syntax baseline, is preserved. These files do not certify final-candidate parity or a fresh complete-suite pass."
+}

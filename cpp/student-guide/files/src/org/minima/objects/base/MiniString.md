@@ -28,7 +28,7 @@ C++ stores UTF-8 in std::string and normalizes with the shared UTF8Spans decoder
 
 The fixture includes empty text, ASCII, euro and panda characters; every individual byte; 2,000 seeded random byte sequences; and explicit malformed surrogate, overlong, out-of-range and truncated UTF-8 sequences. It compares the reserialized normalized bytes. These are byte-input tests, not exhaustive tests of every possible Java String constructor input.
 
-The [primitive differential driver](../../../../../../../tools/differential.py) compiles the pinned Java classes and runs [PrimitiveOracle](../../../../../../../support/PrimitiveOracle.java) against [minima_primitives](../../../../../../../support/primitives.cpp). Both report observable text and wire bytes; both flatten exceptions to `ERROR`. The inspected [existing report](../../../../../../../build/differential-results.json) records 3,802/3,802 comparisons with zero failures for the complete primitive corpus. This does not prove exact error classes, all methods, or full-node parity.
+The [primitive differential driver](../../../../../../../tools/differential.py) compiles the pinned Java classes and runs [PrimitiveOracle](../../../../../../../support/PrimitiveOracle.java) against [minima_primitives](../../../../../../../support/primitives.cpp). Both report observable text and wire bytes; both flatten exceptions to `ERROR`. The inspected [existing report](../../../../../../../validation/checkpoint-362/normal/differential-results.json) records 3,802/3,802 comparisons with zero failures for the complete primitive corpus. This does not prove exact error classes, all methods, or full-node parity.
 
 ## Dependencies and reading map
 

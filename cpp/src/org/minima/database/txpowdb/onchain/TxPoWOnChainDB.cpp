@@ -1,3 +1,5 @@
+#include "support/JavaUnixFile.hpp"
+#include <iostream>
 #include "TxPoWOnChainDB.hpp"
 #include "support/JavaDateString.hpp"
 #include <bit>
@@ -152,4 +154,16 @@ int32_t TxPoWOnChainDB::cleanDB(bool hard) {
     } catch (const SqlException& error) { log(sqlExceptionText(error)); }
     return 0;
 }
+void TxPoWOnChainDB::main(const std::vector<std::string>*,SqlDBServices services,const File& userHome) {
+    const auto file=userHome?javaUnixChildFile(*userHome,"testsql"):std::filesystem::path("testsql");
+    TxPoWOnChainDB db(std::move(services));
+    db.loadDB(file);
+    db.createSQL();
+    db.addOnChainTxPoW("0xFF",MiniNumber(1),"txPowID-01");
+    db.addOnChainTxPoW("0xEE",MiniNumber(2),"txPowID-02");
+    db.addOnChainTxPoW("0xDD",MiniNumber(3),"txPowID-03");
+    std::cout<<db.getOnChainTxPoW("txPowID-01").toString()<<std::endl;
+    std::cout<<db.getOnChainTxPoW("txPowID-02").toString()<<std::endl;
+}
+
 }
