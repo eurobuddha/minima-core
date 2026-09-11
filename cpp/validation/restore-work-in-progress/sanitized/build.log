@@ -1,0 +1,763 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/params/ParamConfigurer.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWProcessor.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PManager.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWMiner.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PPeersChecker.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/webhooks/NotifyManager.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/WalkLinksFuncs.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PFunctions.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/SwapLinksFunctions.cpp.o
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/UtilFuncs.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOManager.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOMessage.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOServer.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOClient.cpp.o
+[  1%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/NIOClientInfo.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PDB.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2DB.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2Functions.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p2/P2P2Manager.cpp.o
+[  2%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/rpc/CMDHandler.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/NetworkManager.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/P2PState.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PGreeting.cpp.o
+[  3%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PDoSwap.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/p2p/messages/P2PWalkLinks.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/IBD.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/archive/TxBlockDB.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/archive/RawArchiveInput.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/wallet/ScriptRow.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/sql/TxPoWList.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/onchain/TxPoWOnChainDB.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/sql/TxPoWSqlDB.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/TxPoWDB.cpp.o
+[  4%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowtree/CoinDB.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/wallet/Wallet.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/archive/ArchiveManager.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/MinimaDB.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/userprefs/txndb/TxnRow.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/userprefs/txndb/TxnDB.cpp.o
+[  5%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/Maths.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/TimedRequest.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/userprefs/UserDB.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/JsonDB.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/mysql/MySQLConnect.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/SqlDB.cpp.o
+[  6%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/BIP39.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/Command.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/debugflag.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnlock.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/CommandRunner.cpp.o
+[  7%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/block.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/printmmr.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/printtree.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/automine.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/hash.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/newaddress.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/getaddress.cpp.o
+[  8%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coinnotify.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/slavenode.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/maths.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/mmrcreate.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/mmrproof.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/runscript.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/scripts.cpp.o
+[  9%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/newscript.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/scripts/removescript.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/signatures/sign.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/signatures/verify.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txncreate.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txndelete.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnlist.cpp.o
+[ 10%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnclear.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnstate.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnexport.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnimport.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnview.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnoutput.cpp.o
+[ 11%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnutils.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnbasics.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txninput.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendview.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendpost.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendsign.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/rawfrom.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/sendfrom.cpp.o
+[ 12%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/consolidatefrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/createtokenfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/rawtxnfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/createfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/constructfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/postfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/wallet/signfrom.cpp.o
+[ 13%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendpoll.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/sendnosign.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/send.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnaddamount.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txncoinlock.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/keys.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/vault.cpp.o
+[ 14%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnsign.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnpost.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnmine.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnminepost.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txncheck.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnmmr.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnscript.cpp.o
+[ 15%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/tokens.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/connect.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/webhooks.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coincheck.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coinexport.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/consolidate.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/balance.cpp.o
+[ 16%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/coins.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/seedrandom.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/mempool.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/cointrack.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/magic.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/txpow.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/search/history.cpp.o
+[ 17%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/convert.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/random.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/checkaddress.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/missingcmd.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/rpc/Authorizer.cpp.o
+[ 18%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/ram/RamDB.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowdb/ram/RamData.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TimedChecker.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWSearcher.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWChecker.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/brains/TxPoWGenerator.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/network/minima/RelayPolicy.cpp.o
+[ 19%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/MiniFile.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/MiniFormat.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/GenerateKey.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/EncryptDecrypt.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/SignVerify.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/CryptoPackage.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/PasswordCrypto.cpp.o
+[ 20%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowtree/TxPowTree.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/txpowtree/TxPoWTreeNode.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/cascade/Cascade.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/database/cascade/CascadeNode.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/GETINADDR.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/GETINAMT.cpp.o
+[ 21%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/GETINID.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/GETINTOK.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/SUMINPUTS.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/input/VERIFYIN.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/GETOUTADDR.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/GETOUTAMT.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/GETOUTKEEPSTATE.cpp.o
+[ 22%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/GETOUTTOK.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/SUMOUTPUTS.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/txn/output/VERIFYOUT.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/ASCII.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/BOOL.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/HEX.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/NUMBER.cpp.o
+[ 23%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/STRING.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/cast/UTF8.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/general/ADDRESS.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/general/EXISTS.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/general/FUNCTION.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/general/GET.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/BITCOUNT.cpp.o
+[ 24%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/BITGET.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/BITSET.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/CONCAT.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/LEN.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/REV.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/OVERWRITE.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/SETLEN.cpp.o
+[ 25%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/hex/SUBSET.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sha/PROOF.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sha/SHA2.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sha/SHA3.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sigs/CHECKSIG.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sigs/MULTISIG.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/sigs/SIGNEDBY.cpp.o
+[ 26%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/state/PREVSTATE.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/state/SAMESTATE.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/state/STATE.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/string/REPLACE.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/string/REPLACEFIRST.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/string/SUBSTR.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/Contract.cpp.o
+[ 27%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/BooleanExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/ConstantExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/ExpressionParser.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/FunctionExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/GlobalExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/OperatorExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/expressions/VariableExpression.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/ABS.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/CEIL.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/FLOOR.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/DEC.cpp.o
+[ 28%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/INC.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/MAX.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/MIN.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/POW.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/SIGDIG.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/functions/number/SQRT.cpp.o
+[ 29%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/StatementBlock.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/StatementParser.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/ASSERTstatement.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/EXECstatement.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/IFstatement.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/LETstatement.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/MASTstatement.cpp.o
+[ 30%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/RETURNstatement.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/statements/commands/WHILEstatement.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/values/HexValue.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/kissvm/values/Value.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/base/MiniData.cpp.o
+[ 31%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/base/MiniString.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/BaseConverter.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/Crypto.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMRData.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMRProof.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Address.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/StateVariable.cpp.o
+[ 32%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Token.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMREntryNumber.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMREntry.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Coin.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/ScriptProof.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/CoinProof.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Transaction.cpp.o
+[ 33%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/Winternitz.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/SignatureProof.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/Signature.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Witness.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MMR.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/TreeKeyNode.cpp.o
+[ 34%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/keys/TreeKey.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Magic.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/TxBody.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/TxHeader.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/genesis/GenesisCoin.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/genesis/GenesisMMR.cpp.o
+[ 35%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/genesis/GenesisTxPoW.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Greeting.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/Pulse.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/TxBlock.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/mmr/MegaMMR.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.cpp.o
+[ 36%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/sendpoll/SendPollMessage.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/sendpoll/SendPollManager.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/objects/TxPoW.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/Main.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/quit.cpp.o
+[ 37%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/rescue.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/disconnect.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/message.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/p2pstate.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/ping.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/network.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/trace.cpp.o
+[ 38%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/timemilli.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/healthcheck.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/logs.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/status.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/rpc.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/hashtest.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/coinimport.cpp.o
+[ 39%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/scanchain.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/tokenvalidate.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/peers.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/txn/txnauto.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/burn.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/tokencreate.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/multisig.cpp.o
+[ 40%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/send/multisigread.cpp.o
+[ 41%] Building CXX object CMakeFiles/minima_file_port.dir/src/support/MultisigCommands.cpp.o
+[ 41%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/network/nodecount.cpp.o
+[ 41%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/base/incentivecash.cpp.o
+[ 41%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/Minima.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/decryptbackup.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/backup.cpp.o
+[ 42%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/system/commands/backup/restore.cpp.o
+[ 42%] Linking CXX static library libminima_file_port.a
+[ 50%] Built target minima_file_port
+[ 50%] Building CXX object CMakeFiles/TransactionTests.dir/test/org/minima/objects/TransactionTests.cpp.o
+[ 50%] Building CXX object CMakeFiles/TxHeaderTests.dir/test/org/minima/objects/TxHeaderTests.cpp.o
+[ 50%] Linking CXX executable MiniByteTests
+[ 50%] Building CXX object CMakeFiles/minima_primitives.dir/support/primitives.cpp.o
+[ 50%] Building CXX object CMakeFiles/malformed_streams.dir/tests/malformed_streams.cpp.o
+[ 50%] Building CXX object CMakeFiles/minima_objects.dir/support/objects.cpp.o
+[ 51%] Built target MiniByteTests
+[ 51%] Building CXX object CMakeFiles/minima_json.dir/support/json.cpp.o
+[ 51%] Linking CXX executable malformed_streams
+[ 52%] Linking CXX executable TxHeaderTests
+[ 52%] Linking CXX executable TransactionTests
+[ 52%] Linking CXX executable minima_primitives
+[ 52%] Built target malformed_streams
+[ 52%] Built target TxHeaderTests
+[ 52%] Building CXX object CMakeFiles/minima_kiss_values.dir/support/kiss.cpp.o
+[ 52%] Linking CXX executable ValueTests
+[ 52%] Built target TransactionTests
+[ 52%] Built target minima_primitives
+[ 53%] Linking CXX executable BooleanValueTests
+[ 54%] Linking CXX executable ScriptValueTests
+[ 54%] Built target ValueTests
+[ 55%] Building CXX object CMakeFiles/HexValueTests.dir/test/org/minima/tests/kissvm/values/HexValueTests.cpp.o
+[ 55%] Built target BooleanValueTests
+[ 55%] Built target ScriptValueTests
+[ 56%] Linking CXX executable minima_json
+[ 56%] Linking CXX executable NumberValueTests
+[ 56%] Linking CXX executable LexicalTokenizerTests
+[ 56%] Built target minima_json
+[ 56%] Built target NumberValueTests
+[ 56%] Building CXX object CMakeFiles/minima_kissvm.dir/support/kissvm.cpp.o
+[ 56%] Built target LexicalTokenizerTests
+[ 56%] Building CXX object CMakeFiles/ConstantExpressionTests.dir/test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.cpp.o
+[ 56%] Building CXX object CMakeFiles/VariableExpressionTests.dir/test/org/minima/tests/kissvm/expressions/VariableExpressionTests.cpp.o
+[ 56%] Linking CXX executable HexValueTests
+[ 56%] Linking CXX executable minima_kiss_values
+[ 56%] Linking CXX executable minima_objects
+[ 56%] Built target HexValueTests
+[ 56%] Building CXX object CMakeFiles/GlobalExpressionTests.dir/test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.cpp.o
+[ 56%] Built target minima_kiss_values
+[ 56%] Building CXX object CMakeFiles/FunctionExpressionTests.dir/test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.cpp.o
+[ 56%] Built target minima_objects
+[ 56%] Building CXX object CMakeFiles/ContractTests.dir/test/org/minima/tests/kissvm/ContractTests.cpp.o
+[ 56%] Linking CXX executable ConstantExpressionTests
+[ 56%] Linking CXX executable VariableExpressionTests
+[ 56%] Built target ConstantExpressionTests
+[ 56%] Building CXX object CMakeFiles/StatementBlockTests.dir/test/org/minima/tests/kissvm/statements/StatementBlockTests.cpp.o
+[ 56%] Built target VariableExpressionTests
+[ 56%] Linking CXX executable minima_kissvm
+[ 56%] Building CXX object CMakeFiles/minima_peer_messages.dir/support/peer_messages.cpp.o
+[ 56%] Linking CXX executable GlobalExpressionTests
+[ 57%] Linking CXX executable FunctionExpressionTests
+[ 57%] Built target minima_kissvm
+[ 57%] Built target GlobalExpressionTests
+[ 57%] Building CXX object CMakeFiles/txn_lock_workers.dir/support/txn_lock_workers.cpp.o
+[ 57%] Linking CXX executable ContractTests
+[ 57%] Building CXX object CMakeFiles/minima_small_utilities.dir/support/small_utilities.cpp.o
+[ 57%] Built target FunctionExpressionTests
+[ 57%] Building CXX object CMakeFiles/ASSERTstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/ASSERTstatementTests.cpp.o
+[ 57%] Built target ContractTests
+[ 57%] Building CXX object CMakeFiles/EXECstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/EXECstatementTests.cpp.o
+[ 57%] Linking CXX executable StatementBlockTests
+[ 57%] Linking CXX executable minima_peer_messages
+[ 57%] Built target StatementBlockTests
+[ 57%] Building CXX object CMakeFiles/minima_cascade.dir/support/cascade.cpp.o
+[ 57%] Linking CXX executable txn_lock_workers
+[ 57%] Built target minima_peer_messages
+[ 57%] Linking CXX executable ASSERTstatementTests
+[ 57%] Building CXX object CMakeFiles/TxPowTreeTest.dir/test/org/minima/database/txpowtree/TxPowTreeTest.cpp.o
+[ 57%] Linking CXX executable EXECstatementTests
+[ 57%] Built target txn_lock_workers
+[ 57%] Building CXX object CMakeFiles/minima_tree.dir/support/tree.cpp.o
+[ 57%] Linking CXX executable minima_small_utilities
+[ 57%] Built target ASSERTstatementTests
+[ 57%] Building CXX object CMakeFiles/minima_utility.dir/support/utility.cpp.o
+[ 57%] Built target EXECstatementTests
+[ 57%] Building CXX object CMakeFiles/minima_consensus.dir/support/consensus.cpp.o
+[ 57%] Built target minima_small_utilities
+[ 58%] Building CXX object CMakeFiles/RamDBTest.dir/test/org/minima/database/txpowdb/ram/RamDBTest.cpp.o
+[ 59%] Linking CXX executable minima_cascade
+[ 59%] Built target minima_cascade
+[ 59%] Linking CXX executable TxPowTreeTest
+[ 60%] Building CXX object CMakeFiles/minima_ram.dir/support/ram.cpp.o
+[ 60%] Linking CXX executable RamDBTest
+[ 60%] Built target TxPowTreeTest
+[ 60%] Building CXX object CMakeFiles/timed_checker_checks.dir/support/timed.cpp.o
+[ 60%] Linking CXX executable minima_utility
+[ 60%] Linking CXX executable minima_tree
+[ 60%] Built target RamDBTest
+[ 60%] Built target minima_utility
+[ 60%] Building CXX object CMakeFiles/minima_prefs.dir/support/prefs.cpp.o
+[ 60%] Building CXX object CMakeFiles/minima_hashmap.dir/support/hashmap.cpp.o
+[ 60%] Built target minima_tree
+[ 60%] Linking CXX executable minima_messages
+[ 60%] Built target minima_messages
+[ 60%] Linking CXX executable minima_consensus
+[ 60%] Linking CXX executable message_workers
+[ 60%] Linking CXX executable minima_ram
+[ 60%] Built target message_workers
+[ 60%] Built target minima_consensus
+[ 60%] Building CXX object CMakeFiles/minima_txndb.dir/support/txndb.cpp.o
+[ 61%] Building CXX object CMakeFiles/minima_archive_cache.dir/support/archive_cache.cpp.o
+[ 61%] Built target minima_ram
+[ 61%] Building CXX object CMakeFiles/minima_ibd.dir/support/ibd.cpp.o
+[ 62%] Linking CXX executable timed_checker_checks
+[ 62%] Linking CXX executable minima_prefs
+[ 62%] Linking CXX executable minima_hashmap
+[ 62%] Built target timed_checker_checks
+[ 62%] Built target minima_prefs
+[ 63%] Building CXX object CMakeFiles/minima_mmrsync.dir/support/mmrsync.cpp.o
+[ 63%] Building CXX object CMakeFiles/minima_sendpoll.dir/support/sendpoll.cpp.o
+[ 63%] Built target minima_hashmap
+[ 63%] Building CXX object CMakeFiles/minima_raw_archive.dir/support/raw_archive.cpp.o
+[ 63%] Linking CXX executable minima_archive_cache
+[ 63%] Linking CXX executable minima_txndb
+[ 63%] Built target minima_archive_cache
+[ 64%] Linking CXX executable minima_wallet_rows
+[ 64%] Built target minima_txndb
+[ 64%] Building CXX object CMakeFiles/minima_bip39.dir/support/bip39.cpp.o
+[ 64%] Built target minima_wallet_rows
+[ 65%] Building CXX object CMakeFiles/minima_fast_bytes.dir/support/fast_bytes.cpp.o
+[ 65%] Linking CXX executable minima_raw_archive
+[ 65%] Linking CXX executable minima_sendpoll
+[ 65%] Linking CXX executable minima_ibd
+[ 65%] Linking CXX executable minima_mmrsync
+[ 65%] Built target minima_sendpoll
+[ 65%] Built target minima_raw_archive
+[ 65%] Building CXX object CMakeFiles/minima_network_utilities.dir/support/network_utilities.cpp.o
+[ 65%] Built target minima_ibd
+[ 65%] Building CXX object CMakeFiles/minima_command.dir/support/command.cpp.o
+[ 66%] Building CXX object CMakeFiles/minima_command_runner.dir/support/command_runner.cpp.o
+[ 66%] Built target minima_mmrsync
+[ 66%] Building CXX object CMakeFiles/minima_commands.dir/support/commands_cli.cpp.o
+[ 66%] Linking CXX executable minima_bip39
+[ 66%] Linking CXX executable minima_fast_bytes
+[ 66%] Built target minima_bip39
+[ 66%] Built target minima_fast_bytes
+[ 66%] Building CXX object CMakeFiles/minima_searcher.dir/support/searcher.cpp.o
+[ 66%] Building CXX object CMakeFiles/minima_transaction_commands.dir/support/transaction_commands.cpp.o
+[ 66%] Linking CXX executable minima_network_utilities
+[ 66%] Linking CXX executable minima_command_runner
+[ 66%] Linking CXX executable minima_commands
+[ 66%] Built target minima_network_utilities
+[ 66%] Linking CXX executable minima_command
+[ 66%] Linking CXX executable InetSocketAddressIOTest
+[ 66%] Built target minima_command_runner
+[ 66%] Linking CXX executable GreetingTest
+[ 66%] Built target minima_commands
+[ 66%] Building CXX object CMakeFiles/minima_peer_state.dir/support/peer_state.cpp.o
+[ 66%] Built target minima_command
+[ 66%] Built target InetSocketAddressIOTest
+[ 66%] Building CXX object CMakeFiles/P2PDBTest.dir/test/org/minima/system/network/p2p/P2PDBTest.cpp.o
+[ 66%] Building CXX object CMakeFiles/minima_nio_client.dir/support/nio_client.cpp.o
+[ 66%] Built target GreetingTest
+[ 66%] Building CXX object CMakeFiles/nio_loopback.dir/support/nio_loopback.cpp.o
+[ 67%] Linking CXX executable minima_transaction_commands
+[ 68%] Linking CXX executable P2PDBTest
+[ 68%] Linking CXX executable minima_searcher
+[ 68%] Built target minima_transaction_commands
+[ 69%] Building CXX object CMakeFiles/minima_nio_server.dir/support/nio_server.cpp.o
+[ 69%] Built target P2PDBTest
+[ 69%] Building CXX object CMakeFiles/minima_p2p2_db.dir/support/p2p2_db.cpp.o
+[ 69%] Linking CXX executable nio_loopback
+[ 69%] Built target minima_searcher
+[ 69%] Building CXX object CMakeFiles/minima_network_startup.dir/support/network_startup.cpp.o
+[ 69%] Built target nio_loopback
+[ 69%] Building CXX object CMakeFiles/minima_nio_manager_transport.dir/support/nio_manager_transport.cpp.o
+[ 70%] Linking CXX executable minima_peer_state
+[ 70%] Built target minima_peer_state
+[ 70%] Linking CXX executable fixed_task_executor
+[ 70%] Built target fixed_task_executor
+[ 70%] Building CXX object CMakeFiles/nio_manager_loopback.dir/support/nio_manager_loopback.cpp.o
+[ 71%] Linking CXX executable minima_nio_client
+[ 71%] Linking CXX executable minima_nio_server
+[ 71%] Linking CXX executable minima_p2p2_db
+[ 71%] Built target minima_nio_client
+[ 71%] Built target minima_nio_server
+[ 71%] Built target minima_p2p2_db
+[ 72%] Linking CXX executable nio_connections
+[ 72%] Building CXX object CMakeFiles/minima_nio_manager_state.dir/support/nio_manager_state.cpp.o
+[ 72%] Building CXX object CMakeFiles/minima_nio_message.dir/support/nio_message.cpp.o
+[ 72%] Built target nio_connections
+[ 72%] Building CXX object CMakeFiles/minima_p2p_functions.dir/support/p2p_functions.cpp.o
+[ 72%] Linking CXX executable minima_network_startup
+[ 72%] Linking CXX executable minima_nio_manager_transport
+[ 72%] Built target minima_nio_manager_transport
+[ 72%] Building CXX object CMakeFiles/peers_checker_native.dir/support/peers_checker_native.cpp.o
+[ 72%] Built target minima_network_startup
+[ 72%] Building CXX object CMakeFiles/minima_peers_checker.dir/support/peers_checker.cpp.o
+[ 72%] Linking CXX executable nio_manager_loopback
+[ 72%] Built target nio_manager_loopback
+[ 72%] Building CXX object CMakeFiles/p2p_manager_native.dir/support/p2p_manager_native.cpp.o
+[ 72%] Linking CXX executable peers_checker_native
+[ 72%] Linking CXX executable minima_nio_manager_state
+[ 72%] Linking CXX executable minima_nio_message
+[ 72%] Linking CXX executable minima_p2p_functions
+[ 72%] Built target peers_checker_native
+[ 72%] Built target minima_nio_manager_state
+[ 73%] Building CXX object CMakeFiles/peer_state_concurrent.dir/support/peer_state_concurrent.cpp.o
+[ 74%] Building CXX object CMakeFiles/minima_p2p_manager.dir/support/p2p_manager.cpp.o
+[ 74%] Linking CXX executable minima_peers_checker
+[ 74%] Built target minima_nio_message
+[ 74%] Built target minima_p2p_functions
+[ 74%] Building CXX object CMakeFiles/minima_p2p2_runtime.dir/support/p2p2_runtime.cpp.o
+[ 74%] Building CXX object CMakeFiles/p2p2_worker.dir/support/p2p2_worker.cpp.o
+[ 74%] Built target minima_peers_checker
+[ 74%] Building CXX object CMakeFiles/minima_http_server.dir/support/http_server.cpp.o
+[ 74%] Linking CXX executable p2p_manager_native
+[ 74%] Linking CXX executable p2p2_worker
+[ 74%] Built target p2p_manager_native
+[ 74%] Building CXX object CMakeFiles/network_manager_native.dir/support/network_manager_native.cpp.o
+[ 74%] Built target p2p2_worker
+[ 74%] Building CXX object CMakeFiles/minima_network_manager.dir/support/network_manager.cpp.o
+[ 74%] Linking CXX executable minima_http_server
+[ 74%] Linking CXX executable peer_state_concurrent
+[ 74%] Linking CXX executable minima_p2p2_runtime
+[ 74%] Linking CXX executable minima_p2p_manager
+[ 74%] Built target minima_http_server
+[ 74%] Built target peer_state_concurrent
+[ 74%] Building CXX object CMakeFiles/minima_sql_db.dir/support/sql_db.cpp.o
+[ 74%] Building CXX object CMakeFiles/sql_db_concurrent.dir/support/sql_db_concurrent.cpp.o
+[ 74%] Built target minima_p2p2_runtime
+[ 74%] Building CXX object CMakeFiles/minima_onchain_db.dir/support/onchain_db.cpp.o
+[ 74%] Built target minima_p2p_manager
+[ 74%] Building CXX object CMakeFiles/minima_txpow_sql_db.dir/support/txpow_sql_db.cpp.o
+[ 74%] Linking CXX executable sql_db_concurrent
+[ 74%] Built target sql_db_concurrent
+[ 74%] Building CXX object CMakeFiles/minima_txpow_db.dir/support/txpow_db.cpp.o
+[ 75%] Linking CXX executable minima_network_manager
+[ 75%] Linking CXX executable network_manager_native
+[ 75%] Linking CXX executable minima_sql_db
+[ 75%] Built target minima_sql_db
+[ 76%] Linking CXX executable minima_onchain_db
+[ 76%] Building CXX object CMakeFiles/minima_coin_db.dir/support/coin_db.cpp.o
+[ 76%] Built target network_manager_native
+[ 76%] Built target minima_network_manager
+[ 76%] Building CXX object CMakeFiles/minima_wallet.dir/support/wallet.cpp.o
+[ 76%] Building CXX object CMakeFiles/minima_archive_manager.dir/support/archive_manager.cpp.o
+[ 76%] Linking CXX executable minima_txpow_sql_db
+[ 76%] Built target minima_onchain_db
+[ 76%] Building CXX object CMakeFiles/minima_db.dir/support/minima_db.cpp.o
+[ 76%] Built target minima_txpow_sql_db
+[ 76%] Linking CXX executable minima_db_lock
+[ 76%] Built target minima_db_lock
+[ 76%] Building CXX object CMakeFiles/minima_db_ownership.dir/support/minima_db_ownership.cpp.o
+[ 76%] Linking CXX executable minima_wallet
+[ 76%] Linking CXX executable minima_coin_db
+[ 76%] Linking CXX executable minima_txpow_db
+[ 76%] Built target minima_wallet
+[ 77%] Building CXX object CMakeFiles/minima_txpow_miner.dir/support/txpow_miner.cpp.o
+[ 77%] Built target minima_coin_db
+[ 77%] Building CXX object CMakeFiles/txpow_miner_worker.dir/support/txpow_miner_worker.cpp.o
+[ 77%] Linking CXX executable minima_archive_manager
+[ 77%] Built target minima_txpow_db
+[ 78%] Building CXX object CMakeFiles/txblock_ownership.dir/support/txblock_ownership.cpp.o
+[ 78%] Built target minima_archive_manager
+[ 78%] Building CXX object CMakeFiles/minima_txpow_processor.dir/support/txpow_processor.cpp.o
+[ 78%] Linking CXX executable minima_db_ownership
+[ 78%] Built target minima_db_ownership
+[ 79%] Linking CXX executable minima_db
+[ 79%] Building CXX object CMakeFiles/txpow_processor_worker.dir/support/txpow_processor_worker.cpp.o
+[ 79%] Built target minima_db
+[ 79%] Building CXX object CMakeFiles/minima_notify_manager.dir/support/notify_manager.cpp.o
+[ 79%] Linking CXX executable txpow_miner_worker
+[ 79%] Linking CXX executable minima_txpow_miner
+[ 79%] Built target txpow_miner_worker
+[ 79%] Building CXX object CMakeFiles/notify_manager_worker.dir/support/notify_manager_worker.cpp.o
+[ 79%] Built target minima_txpow_miner
+[ 80%] Linking CXX executable minima_rpc_client
+[ 80%] Linking CXX executable txblock_ownership
+[ 80%] Built target minima_rpc_client
+[ 80%] Built target txblock_ownership
+[ 80%] Building CXX object CMakeFiles/notify_http_worker.dir/support/notify_http_worker.cpp.o
+[ 80%] Building CXX object CMakeFiles/rpc_configuration_native.dir/support/rpc_configuration_native.cpp.o
+[ 80%] Linking CXX executable minima_notify_manager
+[ 80%] Linking CXX executable minima_txpow_processor
+[ 81%] Linking CXX executable notify_manager_worker
+[ 81%] Built target minima_txpow_processor
+[ 81%] Linking CXX executable rpc_configuration_native
+[ 81%] Built target notify_manager_worker
+[ 81%] Linking CXX executable minima_logger
+[ 82%] Linking CXX executable txpow_processor_worker
+[ 82%] Built target minima_notify_manager
+[ 83%] Building CXX object CMakeFiles/minima_logger_worker.dir/support/minima_logger_worker.cpp.o
+[ 83%] Linking CXX executable minima-rpc
+[ 83%] Built target minima_logger
+[ 83%] Built target minima-rpc
+[ 83%] Linking CXX executable notify_http_worker
+[ 83%] Built target rpc_configuration_native
+[ 83%] Building CXX object CMakeFiles/minima_rpc_cli.dir/support/minima_rpc_cli.cpp.o
+[ 83%] Linking CXX executable native_stack_trace
+[ 83%] Built target txpow_processor_worker
+[ 83%] Linking CXX executable minima_param_configurer
+[ 83%] Linking CXX executable param_configurer_process
+[ 83%] Built target param_configurer_process
+[ 83%] Built target minima_param_configurer
+[ 84%] Built target native_stack_trace
+[ 84%] Built target notify_http_worker
+[ 85%] Linking CXX executable minima_uncaught
+[ 85%] Linking CXX executable native_thread_checks
+[ 85%] Linking CXX executable ParamConfigurerTest
+[ 85%] Linking CXX executable uncaught_workers
+[ 85%] Built target native_thread_checks
+[ 85%] Built target ParamConfigurerTest
+[ 85%] Built target uncaught_workers
+[ 85%] Built target minima_uncaught
+[ 85%] Linking CXX executable http_server_errors
+[ 85%] Linking CXX executable executor_uncaught
+[ 85%] Building CXX object CMakeFiles/nio_manager_errors.dir/support/nio_manager_errors.cpp.o
+[ 86%] Building CXX object CMakeFiles/nio_server_errors.dir/support/nio_server_errors.cpp.o
+[ 86%] Built target executor_uncaught
+[ 86%] Built target http_server_errors
+[ 86%] Building CXX object CMakeFiles/timed_checker_errors.dir/support/timed_checker_errors.cpp.o
+[ 87%] Building CXX object CMakeFiles/checker_logs.dir/support/checker_logs.cpp.o
+[ 87%] Linking CXX executable minima_rpc_cli
+[ 87%] Linking CXX executable minima_logger_worker
+[ 87%] Built target minima_rpc_cli
+[ 87%] Linking CXX executable MinimaFunctionTests
+[ 87%] Built target minima_logger_worker
+[ 87%] Building CXX object CMakeFiles/ABSTests.dir/test/org/minima/tests/kissvm/functions/maths/ABSTests.cpp.o
+[ 88%] Built target MinimaFunctionTests
+[ 88%] Building CXX object CMakeFiles/command_runner_errors.dir/support/command_runner_errors.cpp.o
+[ 88%] Linking CXX executable checker_logs
+[ 88%] Linking CXX executable nio_server_errors
+[ 88%] Linking CXX executable nio_manager_errors
+[ 88%] Built target nio_server_errors
+[ 88%] Linking CXX executable ABSTests
+[ 88%] Building CXX object CMakeFiles/FLOORTests.dir/test/org/minima/tests/kissvm/functions/maths/FLOORTests.cpp.o
+[ 88%] Built target checker_logs
+[ 88%] Building CXX object CMakeFiles/CEILTests.dir/test/org/minima/tests/kissvm/functions/maths/CEILTests.cpp.o
+[ 88%] Built target nio_manager_errors
+[ 88%] Linking CXX executable timed_checker_errors
+[ 88%] Building CXX object CMakeFiles/wallet_commands.dir/support/wallet_commands.cpp.o
+[ 88%] Built target ABSTests
+[ 88%] Building CXX object CMakeFiles/MINTests.dir/test/org/minima/tests/kissvm/functions/maths/MINTests.cpp.o
+[ 88%] Built target timed_checker_errors
+[ 88%] Linking CXX executable command_runner_errors
+[ 88%] Building CXX object CMakeFiles/MAXTests.dir/test/org/minima/tests/kissvm/functions/maths/MAXTests.cpp.o
+[ 88%] Linking CXX executable FLOORTests
+[ 88%] Built target command_runner_errors
+[ 88%] Linking CXX executable CEILTests
+[ 88%] Building CXX object CMakeFiles/minima_coin_streams.dir/support/coin_streams.cpp.o
+[ 88%] Linking CXX executable MINTests
+[ 88%] Built target FLOORTests
+[ 88%] Linking CXX executable MiniStringTests
+[ 88%] Built target CEILTests
+[ 88%] Building CXX object CMakeFiles/INCTests.dir/test/org/minima/tests/kissvm/functions/maths/INCTests.cpp.o
+[ 88%] Linking CXX executable MAXTests
+[ 88%] Built target MINTests
+[ 88%] Built target MiniStringTests
+[ 88%] Building CXX object CMakeFiles/POWTests.dir/test/org/minima/tests/kissvm/functions/maths/POWTests.cpp.o
+[ 89%] Building CXX object CMakeFiles/DECTests.dir/test/org/minima/tests/kissvm/functions/maths/DECTests.cpp.o
+[ 89%] Built target MAXTests
+[ 89%] Building CXX object CMakeFiles/SIGDIGTests.dir/test/org/minima/tests/kissvm/functions/maths/SIGDIGTests.cpp.o
+[ 89%] Linking CXX executable INCTests
+[ 89%] Linking CXX executable POWTests
+[ 89%] Linking CXX executable DECTests
+[ 89%] Linking CXX executable minima_coin_streams
+[ 89%] Built target INCTests
+[ 89%] Building CXX object CMakeFiles/BITCOUNTTests.dir/test/org/minima/tests/kissvm/functions/maths/BITCOUNTTests.cpp.o
+[ 89%] Built target POWTests
+[ 90%] Building CXX object CMakeFiles/BITGETTests.dir/test/org/minima/tests/kissvm/functions/maths/BITGETTests.cpp.o
+[ 90%] Linking CXX executable SIGDIGTests
+[ 90%] Built target DECTests
+[ 90%] Building CXX object CMakeFiles/BITSETTests.dir/test/org/minima/tests/kissvm/functions/maths/BITSETTests.cpp.o
+[ 90%] Built target minima_coin_streams
+[ 90%] Building CXX object CMakeFiles/REVTests.dir/test/org/minima/tests/kissvm/functions/base/REVTests.cpp.o
+[ 90%] Built target SIGDIGTests
+[ 90%] Building CXX object CMakeFiles/LENTests.dir/test/org/minima/tests/kissvm/functions/base/LENTests.cpp.o
+[ 90%] Linking CXX executable BITGETTests
+[ 90%] Linking CXX executable BITCOUNTTests
+[ 90%] Linking CXX executable BITSETTests
+[ 90%] Linking CXX executable REVTests
+[ 90%] Built target BITGETTests
+[ 90%] Building CXX object CMakeFiles/minima_sendpoll_command.dir/support/sendpoll_command.cpp.o
+[ 90%] Built target BITCOUNTTests
+[ 91%] Linking CXX executable LENTests
+[ 91%] Building CXX object CMakeFiles/wallet_wrappers.dir/support/wallet_wrappers.cpp.o
+[ 91%] Built target BITSETTests
+[ 91%] Built target REVTests
+[ 91%] Building CXX object CMakeFiles/BOOLTests.dir/test/org/minima/tests/kissvm/functions/cast/BOOLTests.cpp.o
+[ 91%] Building CXX object CMakeFiles/HEXTests.dir/test/org/minima/tests/kissvm/functions/cast/HEXTests.cpp.o
+[ 91%] Linking CXX executable wallet_commands
+[ 91%] Built target LENTests
+[ 91%] Building CXX object CMakeFiles/NUMBERTests.dir/test/org/minima/tests/kissvm/functions/cast/NUMBERTests.cpp.o
+[ 91%] Built target wallet_commands
+[ 91%] Building CXX object CMakeFiles/SCRIPTTests.dir/test/org/minima/tests/kissvm/functions/cast/SCRIPTTests.cpp.o
+[ 91%] Linking CXX executable HEXTests
+[ 91%] Linking CXX executable BOOLTests
+[ 91%] Built target HEXTests
+[ 91%] Built target BOOLTests
+[ 91%] Linking CXX executable NUMBERTests
+[ 91%] Building CXX object CMakeFiles/minima_mysql_connect.dir/support/mysql_connect.cpp.o
+[ 91%] Linking CXX executable minima_sendpoll_command
+[ 91%] Building CXX object CMakeFiles/minima_main_runtime.dir/support/main_runtime.cpp.o
+[ 91%] Linking CXX executable SCRIPTTests
+[ 91%] Built target NUMBERTests
+[ 91%] Building CXX object CMakeFiles/main_ownership.dir/support/main_ownership.cpp.o
+[ 91%] Built target SCRIPTTests
+[ 91%] Built target minima_sendpoll_command
+[ 91%] Building CXX object CMakeFiles/minima_main_runtime.dir/support/MainNetworkFixture.cpp.o
+[ 91%] Linking CXX executable json_collections
+[ 91%] Built target json_collections
+[ 91%] Building CXX object CMakeFiles/shared_json_native.dir/support/shared_json_native.cpp.o
+[ 92%] Linking CXX executable wallet_wrappers
+[ 92%] Built target wallet_wrappers
+[ 92%] Building CXX object CMakeFiles/rpc_live.dir/support/rpc_live.cpp.o
+[ 92%] Linking CXX executable minima_mysql_connect
+[ 92%] Linking CXX executable shared_json_native
+[ 93%] Linking CXX executable main_ownership
+[ 93%] Built target minima_mysql_connect
+[ 93%] Building CXX object CMakeFiles/minima_hashtest_runtime.dir/support/main_runtime.cpp.o
+[ 93%] Built target shared_json_native
+[ 93%] Building CXX object CMakeFiles/coin_import_runtime.dir/support/wallet_commands.cpp.o
+[ 93%] Built target main_ownership
+[ 94%] Building CXX object CMakeFiles/scan_chain_runtime.dir/support/wallet_commands.cpp.o
+[ 94%] Building CXX object CMakeFiles/rpc_live.dir/support/MainNetworkFixture.cpp.o
+[ 94%] Linking CXX executable minima_main_runtime
+[ 94%] Built target minima_main_runtime
+[ 94%] Building CXX object CMakeFiles/token_validation_runtime.dir/support/wallet_commands.cpp.o
+[ 95%] Building CXX object CMakeFiles/minima_hashtest_runtime.dir/support/MainNetworkFixture.cpp.o
+[ 95%] Building CXX object CMakeFiles/peers_command_runtime.dir/support/main_runtime.cpp.o
+[ 95%] Linking CXX executable rpc_live
+[ 95%] Built target rpc_live
+[ 95%] Building CXX object CMakeFiles/peers_command_runtime.dir/support/MainNetworkFixture.cpp.o
+[ 95%] Linking CXX executable minima_hashtest_runtime
+[ 95%] Linking CXX executable coin_import_runtime
+[ 95%] Built target minima_hashtest_runtime
+[ 95%] Linking CXX executable scan_chain_runtime
+[ 96%] Building CXX object CMakeFiles/automatic_transaction_runtime.dir/support/wallet_commands.cpp.o
+[ 96%] Built target coin_import_runtime
+[ 96%] Building CXX object CMakeFiles/burn_metrics_runtime.dir/support/wallet_commands.cpp.o
+[ 96%] Built target scan_chain_runtime
+[ 96%] Building CXX object CMakeFiles/token_creation_runtime.dir/support/wallet_commands.cpp.o
+[ 96%] Linking CXX executable token_validation_runtime
+[ 96%] Built target token_validation_runtime
+[ 96%] Building CXX object CMakeFiles/multisig_runtime.dir/support/wallet_commands.cpp.o
+[ 96%] Linking CXX executable peers_command_runtime
+[ 96%] Building CXX object CMakeFiles/node_count_runtime.dir/support/node_count.cpp.o
+[ 96%] Built target peers_command_runtime
+[ 97%] Building CXX object CMakeFiles/incentive_cash_runtime.dir/support/wallet_commands.cpp.o
+[ 97%] Linking CXX executable node_count_runtime
+[ 97%] Built target node_count_runtime
+[ 97%] Linking CXX executable item_list_runtime
+[ 97%] Linking CXX executable automatic_transaction_runtime
+[ 97%] Built target item_list_runtime
+[ 97%] Built target minima_native_h2
+[ 97%] Building CXX object CMakeFiles/minima_entry_boundary.dir/support/minima_entry_boundary.cpp.o
+[ 97%] Linking CXX executable burn_metrics_runtime
+[ 97%] Built target automatic_transaction_runtime
+[ 97%] Linking CXX executable minima_shutdown_hooks
+[ 97%] Linking CXX executable token_creation_runtime
+[ 98%] Built target minima_shutdown_hooks
+[ 98%] Building CXX object CMakeFiles/native_h2_runtime.dir/support/native_h2.cpp.o
+[ 98%] Built target burn_metrics_runtime
+[ 98%] Linking CXX executable native_h2_concurrent
+[ 98%] Built target token_creation_runtime
+[ 98%] Building CXX object CMakeFiles/decrypt_backup_runtime.dir/support/decrypt_backup.cpp.o
+[ 98%] Linking CXX executable multisig_runtime
+[ 98%] Built target native_h2_concurrent
+[ 98%] Building CXX object CMakeFiles/backup_runtime.dir/support/backup.cpp.o
+[ 98%] Linking CXX executable incentive_cash_runtime
+[ 98%] Built target multisig_runtime
+[ 99%] Building CXX object CMakeFiles/restore_runtime.dir/support/restore.cpp.o
+[ 99%] Built target incentive_cash_runtime
+[ 99%] Building CXX object CMakeFiles/MinimaCoreCpp.dir/support/minima_entry.cpp.o
+[ 99%] Linking CXX executable minima_entry_boundary
+[100%] Linking CXX executable decrypt_backup_runtime
+[100%] Linking CXX executable native_h2_runtime
+[100%] Built target native_h2_runtime
+[100%] Built target minima_entry_boundary
+[100%] Built target decrypt_backup_runtime
+[100%] Linking CXX executable backup_runtime
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Linking CXX executable restore_runtime
+[100%] Built target backup_runtime
+[100%] Built target MinimaCoreCpp
+[100%] Built target restore_runtime

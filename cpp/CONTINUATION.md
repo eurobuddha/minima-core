@@ -1,3 +1,47 @@
+# Current work — restore validated and saved as a local checkpoint
+
+Project/branch/executable MinimaCoreC++. Full 457-file native port remains active.
+Restore now compiles and is registered, following pinned restore.java (234 lines).
+Reuses real MinimaDB/H2 stores, CipherInput/GzipInput and MiniFile. MiniData has an
+exact-frame callback reader sharing existing length validation. Main.restoreReady
+is virtual; its real body is unchanged. GenerateKey/CipherInput retain Java cipher
+failure causes. Source save-state timing, history wipe/import, wallet RUNSCRIPT,
+key-use increment256, cleanup and optional Main shutdown are preserved. No rollback.
+
+Both complete builds PASS. Ten selected regression suites per build PASS:
+utility, raw archive, runner, runner-errors, main runtime, native H2, launcher,
+decryptbackup, backup, restore. CTest117.45s normal/178.17s sanitized. Separate
+primitive suite PASS3802cases:1.46s/2.40s. Restore PASS128cases each,16success,
+49failures leave saving disabled. Direct EOF/NPE/class-cast prose normalized.
+
+Actual-node restore test PASS both builds: six processes per build, both Java→C++
+and C++→Java restore directions followed by original-runtime reopen. Eight actual
+solo keys use7→263 (destination previously100), chain preserved, real worker
+shutdown. Restored-key sign/verify succeeds, altered data rejected, signing key
+use264. Initial observer wrongly expected64keys; pinned TEST_PARAMS uses8. Only
+that isolated test process was gracefully stopped; production unchanged. Initial
+fixture/cipher/observer failures saved with final passing evidence.
+
+Map380=336production+44originaltests;77absent=33production+44tests. All457guides
+present; final structural audit and mapping check pass. All parity remains
+not_verified. Current225CTest entries; full225-suite run NOT performed. H2 AOT
+library not C++ sanitizer instrumented. Encrypted SQL wallet restore, damaged
+running-node restore, complete cipher APIs, public-network and full API parity open.
+All build/test handles terminal. Evidence:validation/restore-work-in-progress.
+PreviousHEAD01f51f29c93fd4ed231e2717b5acc409fc095f78; use git log and local-backups
+manifests for the final checkpoint/recovery bundle. No GitHub push.
+
+NEXT: restoresync or reset are remaining production commands. restoresync.java has
+only lines1–220 read; a later 220–515 output was truncated, so re-read the remainder.
+Follow the reuse gate before any next implementation, search sibling candidates,
+inspect dependencies/callers/tests and write the student lab before new tests.
+Remaining33production includes archive/MySQL/sync, help/tutorial/whitepaper,
+benchmark/JNI/SPHINCS utilities, P2PSwapLink, Streamable, ZipExtractor and AesUtil.
+Do not confuse source-file presence with full parity. Keep the goal active and
+make coherent local commits with verified recovery bundles.
+
+---
+
 # Current work — backup mapped, validated and ready for local recovery
 
 Project/branch/binary MinimaCoreC++. This goal turn made verified progress.

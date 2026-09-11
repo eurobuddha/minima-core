@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <stdexcept>
 #include <span>
+#include <functional>
 
 namespace minima {
 class BigInt;
@@ -68,6 +69,7 @@ public:
 
     // Normal serialisation: [int32 BE length][bytes]
     std::vector<uint8_t> serialise() const;
+    static MiniData readFromStream(const std::function<size_t(std::span<uint8_t>)>& reader,int expectedSize=-1);
     static MiniData deserialise(std::span<const uint8_t> data, size_t& offset);
     static MiniData deserialise(std::span<const uint8_t> data, size_t& offset, int expectedSize);
     static MiniData deserialise(const std::vector<uint8_t>& data, size_t& offset) {

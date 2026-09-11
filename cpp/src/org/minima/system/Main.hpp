@@ -50,7 +50,7 @@ public:
     bool isStartupError() const{return STARTUP_ERROR;}
     std::optional<std::string> getStartupErrorMsg() const;
     void restoreReady() override{restoreReady(true);}
-    void restoreReady(bool shutdownMDS);
+    virtual void restoreReady(bool shutdownMDS);
     void restoreReadyForSync();
     void archiveResetReady(bool resetWallet,bool resetCascadeTree=true);
     void shutdownFinalProcs(bool shutdownMDS=true);

@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "cases": 1680,
+  "failures": [],
+  "scope": "Actual CommandRunner and MinimaLogger. Controlled command effects, exact JSON/errors/log bodies, permission and invalid-param gates, stop-after-failure, logger failure on first/second non-frame print. Only logger timestamp/memory prefixes, native/Java frame lines, and escaped NPE/CCE diagnostic prose excluded. Null replies and missing/null/wrong/false status exercise the status read outside the command catch block. Full registry/Main integration not covered."
+}

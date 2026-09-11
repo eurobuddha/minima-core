@@ -1,0 +1,1034 @@
+{
+  "passed": true,
+  "cases": 128,
+  "successful_restores": 16,
+  "save_disabled_cases": 49,
+  "observations": [
+    {
+      "case": 0,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 1,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 2,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 3,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 4,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 5,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 6,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 7,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 8,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 9,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 10,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 11,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 12,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 13,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 14,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 15,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 16,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 17,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 18,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 19,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 20,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 21,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 22,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 23,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 24,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 25,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 26,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 27,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 28,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 29,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 30,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 31,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 32,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 33,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 34,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 35,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 36,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 37,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 38,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 39,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 40,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 41,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 42,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 43,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 44,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 45,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 46,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 47,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 48,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 49,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 50,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 51,
+      "label": "outer-frame",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 52,
+      "label": "outer-frame",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 53,
+      "label": "outer-frame",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 54,
+      "label": "outer-frame",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 55,
+      "label": "destination-directory",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 56,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 57,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 58,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 59,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 60,
+      "label": "destination-directory",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 61,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 62,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 63,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 64,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 65,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 66,
+      "label": "truncated-section-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 67,
+      "label": "invalid-length-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 68,
+      "label": "invalid-length-0",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 69,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 70,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 71,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 72,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 73,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 74,
+      "label": "truncated-section-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 75,
+      "label": "invalid-length-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 76,
+      "label": "invalid-length-1",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 77,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 78,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 79,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 80,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 81,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 82,
+      "label": "truncated-section-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 83,
+      "label": "invalid-length-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 84,
+      "label": "invalid-length-2",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 85,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 86,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 87,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 88,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 89,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 90,
+      "label": "truncated-section-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 91,
+      "label": "invalid-length-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 92,
+      "label": "invalid-length-3",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 93,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 94,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 95,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 96,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 97,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 98,
+      "label": "truncated-section-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 99,
+      "label": "invalid-length-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 100,
+      "label": "invalid-length-4",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 101,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 102,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 103,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 104,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 105,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 106,
+      "label": "truncated-section-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 107,
+      "label": "invalid-length-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 108,
+      "label": "invalid-length-5",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 109,
+      "label": "wallet-sql-failure",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 110,
+      "label": "wallet-sql-failure",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 111,
+      "label": "wallet-sql-failure",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 112,
+      "label": "wallet-sql-failure",
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 113,
+      "label": "history-payload",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 114,
+      "label": "history-payload",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 115,
+      "label": "history-payload",
+      "success": false,
+      "allow_save": false,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 116,
+      "label": "history-payload",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 117,
+      "label": "history-payload",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 118,
+      "label": "gzip-tail",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 119,
+      "label": "gzip-tail",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 120,
+      "label": "gzip-tail",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 121,
+      "label": "gzip-tail",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 122,
+      "label": "gzip-tail",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 123,
+      "label": "ignored-extra-plaintext",
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 124,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 125,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 126,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 127,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    }
+  ],
+  "failures": [],
+  "scope": "Real H2 source/target stores with controlled Main.restoreReady and real shutdown notification; Java- and C++-generated backups; exact restored SQL rows/key uses, source state, files, caches, closure flags and partial-failure effects. Direct EOF/NPE/class-cast diagnostic prose normalized. SQL observations can reopen after recording cache/closure state. Real running-node shutdown is a separate process test; full parity remains unverified."
+}

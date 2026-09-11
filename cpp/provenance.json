@@ -3190,5 +3190,37 @@
     ],
     "validation": "validation/backup-work-in-progress/progress.json",
     "parity": "not_verified"
+  },
+  "restore_checkpoint": {
+    "source": "upstream-study/src/org/minima/system/commands/backup/restore.java",
+    "source_sha256": "a5ef120d4e88782a353c1f7663d2af471cab9c98e114a399cab21b3e99618043",
+    "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+    "reused_inspected": [
+      "src/org/minima/system/commands/backup/backup.cpp",
+      "src/org/minima/system/commands/backup/decryptbackup.cpp",
+      "src/org/minima/objects/base/MiniData.cpp",
+      "src/support/CipherInput.hpp",
+      "src/support/GzipInput.hpp",
+      "src/org/minima/system/Main.cpp restoreReady",
+      "src/org/minima/database/MinimaDB.cpp",
+      "src/org/minima/database/wallet/Wallet.cpp",
+      "src/org/minima/utils/SqlDB.cpp restoreFromFile",
+      "support/MainFixture.hpp",
+      "support/ArchiveFixture.hpp",
+      "support/NIOClientOracle.java",
+      "tools/native_node_startup.py",
+      "tools/backup_differential.py"
+    ],
+    "sibling_search": "/Users/eurobuddha/Projects/minima/tools/minima-core-cpp: no compatible Minima restore implementation; existing SQLite backup APIs do not restore pinned H2 scripts",
+    "platform_source": "Installed OpenJDK26.0.1 DataInputStream and CipherCore inspected for exact framing and cipher failure diagnostics",
+    "adaptations": [
+      "Mapped source restore body, metadata, factory and both private helpers",
+      "MiniData callback reader shares existing length validation without next-frame overread",
+      "Main.restoreReady made virtual; production implementation unchanged",
+      "Cipher final failure retains Java bad-padding/block-size cause in IOException",
+      "Copied real-H2 baseline differential fixture plus actual two-direction restore/reopen/signing test"
+    ],
+    "validation": "validation/restore-work-in-progress/progress.json",
+    "parity": "not_verified"
   }
 }

@@ -60,7 +60,14 @@ std::vector<uint8_t> Cipher::doFinal(std::span<const uint8_t> input) const {
     if(!mMode) throw std::logic_error("Cipher not initialized");
     if(mSymmetric) {
         auto out=update(input);out.insert(out.end(),mPendingOutput.begin(),mPendingOutput.end());auto length=out.size();out.resize(length+16);int final=0;
-        checked(EVP_CipherFinal_ex(mContext.get(),out.data()+length,&final),"AES padding");out.resize(length+final);
+        if(EVP_CipherFinal_ex(mContext.get(),out.data()+length,&final)!=1){
+            if(mMode==DECRYPT_MODE){
+                if(mInputBytes%16)throw JavaTypedException("javax.crypto.IllegalBlockSizeException","Input length must be multiple of 16 when decrypting with padded cipher");
+                throw JavaTypedException("javax.crypto.BadPaddingException","Given final block not properly padded. Such issues can arise if a bad key is used during decryption.");
+            }
+            throw std::runtime_error("AES padding");
+        }
+        out.resize(length+final);
         checked(EVP_CipherInit_ex(mContext.get(),nullptr,nullptr,mSecret.data(),mIV.data(),mMode==ENCRYPT_MODE),"AES reset");mInputBytes=0;mOutputBytes=0;mPendingOutput.clear();return out;
     }
     auto key=mRSA.value().native();KeyContext ctx(EVP_PKEY_CTX_new(key,nullptr),EVP_PKEY_CTX_free);if(!ctx) throw std::bad_alloc();

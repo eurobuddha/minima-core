@@ -51,3 +51,14 @@ InvalidAlgorithmParameterException type/message, so those two native validations
 now retain their Java meanings. It exercises update/final buffering through
 truncated and damaged encrypted gzip files. This adds selected failure timing
 coverage; it does not certify every Cipher provider operation or reset state.
+
+
+## Restore error-cause update
+
+The [restore lab](../../../../../../../student-guide/new-tests/restore.md) exposes
+cipher errors after earlier sections have already been written. AES finalization
+now distinguishes an input whose length is not a multiple of 16 from an aligned
+input with invalid padding. It retains the inspected SunJCE IllegalBlockSizeException
+or BadPaddingException text. CipherInput wraps the full cause in IOException.
+Previously a generic AES padding message hid this observable distinction.
+Successful encryption/decryption and padding calculations are reused unchanged.

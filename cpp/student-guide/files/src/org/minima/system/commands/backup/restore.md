@@ -2,9 +2,9 @@
 
 **Teaching status:** Authored source explanation, translation status, and test reasoning. This is not a parity certification.
 
-**Port status:** `unported`; parity `not_verified`.
+**Port status:** `implemented_partial`; parity `not_verified`.
 
-[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/restore.java) · `src/org/minima/system/commands/backup/restore.cpp` (absent)
+[Pinned Java source](../../../../../../../../../upstream-study/src/org/minima/system/commands/backup/restore.java) · [C++ counterpart](../../../../../../../../src/org/minima/system/commands/backup/restore.cpp)
 
 ## Purpose
 
@@ -20,22 +20,64 @@ restore replaces wallet and node databases from the six-section encrypted backup
 
 ## Translation and dependencies
 
-The mapped native counterpart is absent. Reuse the existing Command parameter/reply helpers and the named service behavior when porting; this lesson does not claim that registering a command name supplies its implementation.  Reuse the exact inverse of backup framing, database load/restore helpers and key-use updates. C++ resource management must not be confused with all-or-nothing database restoration, which the Java body does not provide.
+The native command reuses the backup/decryption cipher and gzip layers, native
+MinimaDB stores, H2 RUNSCRIPT and the wallet key-use update. MiniData now has a
+reader callback that shares length validation with its existing span decoder.
+It reads exactly four header bytes and then exactly that section's payload,
+preserving the point at which each database write becomes possible. A bulk
+decompression would reject later damage before earlier writes had occurred.
+
+Main.restoreReady(bool) remains its actual implementation and is now virtual,
+matching the Java override boundary. The command invokes the real Main singleton.
+Native resources use RAII, while database save flags and file effects follow the
+source body; RAII does not introduce database rollback.
 
 ## Understanding the tests
 
-The runner fixture checks restore classification only. Proposed isolated tests restore Java fixture sections, check exact write/load order and key-use increment, and inject corruption at every section. Inspect save-state flag, temporary files, already-overwritten databases and shutdown callbacks after failures, including truncated final TxPoWList.
+The [restore lab](../../../../../../../../student-guide/new-tests/restore.md)
+explains the fixtures before their tests. The
+[Java oracle](../../../../../../../../support/RestoreOracle.java) and
+[native fixture](../../../../../../../../support/restore.cpp) restore identical
+backups into copies of a real H2 destination. Source and destination have distinct
+preferences, histories, seeds and key uses. Synthetic fixture key rows isolate
+the SQL update from key-generation cost. Both Java- and C++-generated backup files
+are consumed. The [driver](../../../../../../../../tools/restore_differential.py)
+checks exact saved files, in-memory stores, SQL rows, cached seed hash, close flags,
+Main events and save-state permission after every case.
 
-- [Runner fixture using selected fake commands](../../../../../../../../support/CommandRunnerOracle.java)
-- [Native runner fixture](../../../../../../../../support/command_runner.cpp)
-- [Runner-only dispatch/permission coverage](../../../../../../../../tools/command_runner_differential.py)
-- [Shared parameter parsing and reply envelope](../../../../../../../../../upstream-study/src/org/minima/system/commands/Command.java)
+Normal and ASAN/UBSAN comparisons each pass 128 cases: 16 successful restores and 49
+failures with saving disabled. Valid cases must independently replace target key
+0x03/use999 with source keys 0x01/use261 and 0x02/use356, restore six relevant
+transactions, clear uninstalled MiniDapp preferences and remove temporary files.
+A source key with five previous uses becomes 261: restoration adds 256.
 
-No build or test run was performed while authoring this lesson. Proposed tests are future work, not pass results.
+Tests truncate each frame, reject negative/oversized lengths, obstruct output
+paths, damage cipher/gzip tails, and supply broken SQL/history sections. Some
+bad trailers and extra plaintext are ignored because the command stops reading
+after its sixth frame. This is source behavior, not an integrity guarantee.
+Only direct EOF/NPE/class-cast diagnostic prose is normalized. Cipher errors
+retain the Java cause class and message inside IOException.
+
+The separate [actual-node test](../../../../../../../../tools/native_restore_startup.py)
+creates all default keys through the real command, backs up one runtime, restores
+using the other, and reopens the node. It exercises real worker shutdown rather
+than the many-case fixture's controlled restoreReady override. Final evidence and
+coverage limitations are recorded in
+[validation](../../../../../../../../validation/restore-work-in-progress).
+
+Both builds also pass six actual-node processes each, covering both restore
+directions. All eight restored keys have 263 uses. A restored key signs successfully,
+altered data fails verification, and only the signing key advances to 264 uses.
 
 ## Limits
 
-No live state was restored. A valid GZIP header does not validate the remainder before mutation begins. shutdown:false still performs the destructive restoration and archive reset; it only changes shutdown coordination.
+Full file/API parity remains not_verified. The command has no rollback catch or
+finally. shutdown:false still stops normal workers and restores state; it changes
+final shutdown coordination. Memory allocation failure, arbitrary SQL extensions,
+concurrent mutation and full public-network behavior remain uncertified. Fixture
+SQL observations may reopen a connection only after closure/cache state has been
+recorded. Persisted SQL seed and the pre-existing cached SeedRow are distinct
+observations; the inherited RUNSCRIPT method does not explicitly refresh that cache.
 
 ## Check your understanding
 

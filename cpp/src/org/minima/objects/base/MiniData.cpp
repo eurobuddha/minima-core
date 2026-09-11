@@ -160,12 +160,25 @@ std::vector<uint8_t> MiniData::serialise() const {
     return out;
 }
 MiniData MiniData::deserialise(std::span<const uint8_t> data, size_t& offset) {return deserialise(data,offset,-1);}
-MiniData MiniData::deserialise(std::span<const uint8_t> data, size_t& offset, int expectedSize) {
+namespace {
+int32_t checkedDataLength(std::span<const uint8_t> data,size_t& offset,int expectedSize){
     auto len=std::bit_cast<int32_t>(wire::integer(data,offset));
-    if(len>int64_t(MINIMA_MAX_MINIDATA_LENGTH))throw wire::IOException("Read Error : MiniData Length larger than maximum allowed (256 MB) "+MiniFormat::formatSize(len));
+    if(len>int64_t(MiniData::MINIMA_MAX_MINIDATA_LENGTH))throw wire::IOException("Read Error : MiniData Length larger than maximum allowed (256 MB) "+MiniFormat::formatSize(len));
     if(expectedSize!=-1&&len!=expectedSize)throw wire::IOException("Read Error : MiniData length not correct as specified "+std::to_string(expectedSize));
-    if(len<0)throw JavaNegativeArraySizeException(std::to_string(len));
+    if(len<0)throw JavaNegativeArraySizeException(std::to_string(len));return len;
+}
+}
+MiniData MiniData::deserialise(std::span<const uint8_t> data, size_t& offset, int expectedSize) {
+    auto len=checkedDataLength(data,offset,expectedSize);
     auto bytes=wire::readFully(data,offset,size_t(len));return MiniData(std::vector<uint8_t>(bytes.begin(),bytes.end()));
+}
+MiniData MiniData::readFromStream(const std::function<size_t(std::span<uint8_t>)>& reader,int expectedSize){
+    auto fully=[&](std::span<uint8_t> bytes){while(!bytes.empty()){
+        auto count=reader(bytes);if(!count)throw wire::EOFException("Truncated MiniData");
+        if(count>bytes.size())throw wire::IOException("Invalid MiniData reader byte count");bytes=bytes.subspan(count);
+    }};
+    std::array<uint8_t,4> prefix;fully(prefix);size_t offset=0;auto len=checkedDataLength(prefix,offset,expectedSize);
+    std::vector<uint8_t> bytes(static_cast<size_t>(len));fully(bytes);return MiniData(std::move(bytes));
 }
 std::vector<uint8_t> MiniData::serialiseHash() const {
     if((int)m_bytes.size()>MINIMA_MAX_HASH_LENGTH)

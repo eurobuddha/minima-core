@@ -1,0 +1,39 @@
+{
+  "project": "MinimaCoreC++",
+  "previous_commit": "01f51f29c93fd4ed231e2717b5acc409fc095f78",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "state": "restore mapped/compiled/registered with real H2 and actual cross-runtime node restore/reopen/signing; full 1:1 port unfinished",
+  "counterparts": 380,
+  "production_counterparts": 336,
+  "mapped_tests": 44,
+  "absent": 77,
+  "ctest_entries": 225,
+  "full_builds": [
+    "normal",
+    "ASAN/UBSAN"
+  ],
+  "selected_regression_suites_per_build": 10,
+  "additional_primitive_suite_per_build": true,
+  "actual_node_test_per_build": true,
+  "restore_cases_per_build": 128,
+  "successful_restores_per_build": 16,
+  "save_disabled_failure_cases_per_build": 49,
+  "actual_node_processes_per_build": 6,
+  "normal_ctest_seconds": 117.45,
+  "sanitized_ctest_seconds": 178.17,
+  "normal_primitive_seconds": 1.46,
+  "sanitized_primitive_seconds": 2.4,
+  "student_guides": 457,
+  "full_current_suite_run": false,
+  "complete_native_node": false,
+  "github_pushed": false,
+  "all_build_test_handles_terminal": true,
+  "remaining": [
+    "33 absent production and 44 absent mapped original tests",
+    "Complete public API, runtime, network, mining and synchronization parity",
+    "Encrypted SQL wallet restore, damaged actual-node restore and concurrent mutation",
+    "Exact direct EOF/helpful-NPE/class-cast prose, resource exhaustion and complete cipher API parity"
+  ],
+  "mapping_check_passed": true,
+  "student_guide_audit_passed": true
+}

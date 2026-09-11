@@ -53,3 +53,16 @@ Can two MiniData objects compare neither less nor greater yet fail isEqual? Give
 Several Java convenience APIs, including getDataValueDecimal, compare, shortened to0xString and the Streamable converter, are not represented as matching methods in the inspected native header. Equality against an arbitrary Java Object also has cast/null behavior absent from the typed C++ interface. The source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `0ee71d3e8e111cf11bf978ef0036915590ba85505100adfe0725546018079987`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+
+## Streaming restore update
+
+The [restore lab](../../../../../../../student-guide/new-tests/restore.md) adds
+readFromStream with a reader callback. Both the existing span decoder and this
+reader call the same checkedDataLength helper, preserving maximum/expected-size/
+negative-length precedence. The callback path loops until each requested byte is
+read, treating early EOF as an EOFException. It never reads ahead into the next
+section. That property lets restore expose the same partial state as Java.
+Negative and oversized frame lengths and truncations at every restore section
+exercise this path. Mutable Java byte-array aliases and convenience APIs listed
+above remain separate parity gaps.

@@ -1,0 +1,257 @@
+{
+  "passed": false,
+  "cases": 1,
+  "successful_restores": 0,
+  "save_disabled_cases": 0,
+  "observations": [
+    {
+      "case": 0,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    }
+  ],
+  "failures": [
+    {
+      "case": 1,
+      "label": null,
+      "params": {
+        "file": "input.bak"
+      },
+      "java": {
+        "reply": {
+          "result": {
+            "command": "restore",
+            "params": {
+              "file": "input.bak"
+            },
+            "status": true,
+            "pending": false,
+            "restore": {
+              "file": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build/restore-compare-4wjnqylq/node/input.bak"
+            },
+            "message": "Restart Minima for restore to take effect!"
+          },
+          "events": [
+            [
+              "ready",
+              true
+            ],
+            "shutdown",
+            "stop",
+            "NOTIFY_POST"
+          ],
+          "restoring": true,
+          "shutdown": true,
+          "published": false,
+          "running": false,
+          "allowSave": true,
+          "user": {
+            "fixture_marker": "source",
+            "minidapps_uninstalled": [],
+            "custom_transactions": "0x000100"
+          },
+          "p2p": {
+            "fixture_marker": "source"
+          },
+          "cascade": "0x000100",
+          "tree": "0x000100",
+          "cachedSeedHash": "0x28A246678C5C56BD582F5FBFD574CC8449B0B176DA725B7B11D00FCAB2ADE97B",
+          "walletOpen": false,
+          "historyOpen": false,
+          "archiveOpen": false,
+          "archiveFile": false,
+          "keys": {
+            "sql": "SELECT publickey,uses FROM keys ORDER BY publickey",
+            "status": true,
+            "results": true,
+            "count": 2,
+            "rows": [
+              {
+                "PUBLICKEY": "0x01",
+                "USES": "261"
+              },
+              {
+                "PUBLICKEY": "0x02",
+                "USES": "356"
+              }
+            ]
+          },
+          "seed": {
+            "sql": "SELECT RAWTOHEX(HASH('SHA-256',seed)) AS seedhash FROM seed",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "SEEDHASH": "e5e7a46cdf4b5f64824010914904d7f5805a26fc2b7ebe51151c9c8a14dd68ff"
+              }
+            ]
+          },
+          "history": {
+            "sql": "SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid",
+            "status": true,
+            "results": true,
+            "count": 6,
+            "rows": [
+              {
+                "TXPOWID": "0x62FF5A63EC6362369B3BD7557468CD5BCC842FA1332097E0B0B6C3152E62FA3F",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0x9C6E0E8D655096AC2E6C314AD35C05283B71052607DE6206C29844760E15B6F0",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xA9C6FAE1DA79D4CB0E6BE5FFE75C62073DA4E5E19D368A254E27BF26D1702E7A",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xE8B0994ABF90ADD7799BAD6682D59530C7926267D246F5AB1892781A9BDFE11A",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xF265515B8A99C187456124AC823181C1A1DD441D9A51488A421399974F67953C",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xFA776378801B3586AB8B20C5EC5F68AC5ED8B42A914BCAD3F11C20DD33AB6383",
+                "ISRELEVANT": "1"
+              }
+            ]
+          }
+        },
+        "files": {
+          "databases": "directory",
+          "databases/archivesql": "directory",
+          "databases/cascade.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/chaintree.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/coindb": "directory",
+          "databases/p2p.db": {
+            "size": 31,
+            "sha256": "a0337f2d1d39cadafce1b2154eb9099d65bc910e9f4a3df5f3e0477eaaf768fa"
+          },
+          "databases/p2p2.db": {
+            "size": 26,
+            "sha256": "7bc3ae3eb0c246aa4ca4a8f39c1a1772fcf42d2a8460372156cfede8ff9bc522"
+          },
+          "databases/txpowsql": "directory",
+          "databases/userprefs.db": {
+            "size": 91,
+            "sha256": "6504b823fb2f96f2a84d4c332c707831a8c893ddaa9cec4a03d554420e11d025"
+          },
+          "databases/walletsql": "directory"
+        }
+      },
+      "cpp": {
+        "reply": {
+          "exception": "java.lang.RuntimeException: bad_variant_access",
+          "events": [
+            [
+              "ready",
+              true
+            ]
+          ],
+          "restoring": false,
+          "shutdown": false,
+          "published": true,
+          "running": true,
+          "allowSave": true,
+          "user": {
+            "fixture_marker": "target",
+            "minidapps_uninstalled": [
+              "fixture-dapp"
+            ],
+            "custom_transactions": "0x000100"
+          },
+          "p2p": {
+            "fixture_marker": "target"
+          },
+          "cascade": "0x000100",
+          "tree": "0x000100",
+          "cachedSeedHash": "0x28A246678C5C56BD582F5FBFD574CC8449B0B176DA725B7B11D00FCAB2ADE97B",
+          "walletOpen": true,
+          "historyOpen": true,
+          "archiveOpen": true,
+          "archiveFile": true,
+          "keys": {
+            "sql": "SELECT publickey,uses FROM keys ORDER BY publickey",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "PUBLICKEY": "0x03",
+                "USES": "999"
+              }
+            ]
+          },
+          "seed": {
+            "sql": "SELECT RAWTOHEX(HASH('SHA-256',seed)) AS seedhash FROM seed",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "SEEDHASH": "c36f2236ce89a177284c8e8c2206d329a45d09cd5e9820f6c4dd31669a476114"
+              }
+            ]
+          },
+          "history": {
+            "sql": "SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid",
+            "status": true,
+            "results": true,
+            "count": 2,
+            "rows": [
+              {
+                "TXPOWID": "0xB1E91F3732B133C943A0266CBDA5095C191BD5A168C11694B7A1A64D295EBAC9",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xB7F9632AAF7AE034223E5F2C6BA1F24F062229C16714ABD220DC64BA0EFB6BF4",
+                "ISRELEVANT": "1"
+              }
+            ]
+          }
+        },
+        "files": {
+          "databases": "directory",
+          "databases/archivesql": "directory",
+          "databases/cascade.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/chaintree.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/coindb": "directory",
+          "databases/p2p.db": {
+            "size": 31,
+            "sha256": "8470d4d5461262a93e6559a81c90a4d8f0758e763328a90fe95523a3de02fa62"
+          },
+          "databases/p2p2.db": {
+            "size": 26,
+            "sha256": "7bc3ae3eb0c246aa4ca4a8f39c1a1772fcf42d2a8460372156cfede8ff9bc522"
+          },
+          "databases/txpowsql": "directory",
+          "databases/userprefs.db": {
+            "size": 105,
+            "sha256": "c83c3f91a57e641e1afeabbfbada850dd7b3d5eb30483941265b8cee2808ad45"
+          },
+          "databases/walletsql": "directory",
+          "restore": "directory"
+        }
+      }
+    }
+  ],
+  "scope": "Real H2 source/target stores with controlled Main.restoreReady and real shutdown notification; Java- and C++-generated backups; exact restored SQL rows/key uses, source state, files, caches, closure flags and partial-failure effects. Direct EOF/NPE/class-cast diagnostic prose normalized. SQL observations can reopen after recording cache/closure state. Real running-node shutdown is a separate process test; full parity remains unverified."
+}

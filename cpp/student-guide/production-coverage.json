@@ -1613,9 +1613,9 @@
     "java": "src/org/minima/system/commands/backup/restore.java",
     "cpp": "src/org/minima/system/commands/backup/restore.cpp",
     "guide": "files/src/org/minima/system/commands/backup/restore.md",
-    "port_status": "unported",
+    "port_status": "implemented_partial",
     "parity": "not_verified",
-    "native_exists": false,
+    "native_exists": true,
     "teaching_status": "authored_lesson",
     "teaching_note": "Authored source explanation, translation status, and test reasoning. This is not a parity certification."
   },

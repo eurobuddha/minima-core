@@ -1,0 +1,54 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+Actual node key creation: 5 keys
+Actual node key creation: 8 keys
+Actual node key creation: 8 keys
+Verified restore direction: {"writer": "java", "restorer": "cpp", "reopen": "java", "keys": 8, "backup_uses": 7, "destination_uses_before": 100, "restored_uses": 263, "chain_preserved": true, "real_worker_shutdown": true, "restored_key_signs": true, "altered_data_rejected": true, "signing_use_count": 264}
+Actual node key creation: 8 keys
+Actual node key creation: 8 keys
+Verified restore direction: {"writer": "cpp", "restorer": "java", "reopen": "cpp", "keys": 8, "backup_uses": 7, "destination_uses_before": 100, "restored_uses": 263, "chain_preserved": true, "real_worker_shutdown": true, "restored_key_signs": true, "altered_data_rejected": true, "signing_use_count": 264}
+{
+  "passed": true,
+  "node_processes": 6,
+  "checks": [
+    {
+      "writer": "java",
+      "restorer": "cpp",
+      "reopen": "java",
+      "keys": 8,
+      "backup_uses": 7,
+      "destination_uses_before": 100,
+      "restored_uses": 263,
+      "chain_preserved": true,
+      "real_worker_shutdown": true,
+      "restored_key_signs": true,
+      "altered_data_rejected": true,
+      "signing_use_count": 264
+    },
+    {
+      "writer": "cpp",
+      "restorer": "java",
+      "reopen": "cpp",
+      "keys": 8,
+      "backup_uses": 7,
+      "destination_uses_before": 100,
+      "restored_uses": 263,
+      "chain_preserved": true,
+      "real_worker_shutdown": true,
+      "restored_key_signs": true,
+      "altered_data_rejected": true,
+      "signing_use_count": 264
+    }
+  ],
+  "failures": [],
+  "scope": "Actual unmodified pinned Java Minima and native MinimaCoreC++ with real H2, all eight solo-mode default keys, both backup/restore directions, real Main worker shutdown, persisted key-use increments and original chain on opposite-runtime reopen. Plaintext SQL storage and password-encrypted backups; public network, encrypted wallet database, damaged running-node restores and full parity remain unverified."
+}

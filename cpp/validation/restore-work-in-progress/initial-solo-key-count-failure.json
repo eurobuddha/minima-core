@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "node_processes": 0,
+  "checks": [],
+  "failures": [
+    {
+      "error": "BrokenPipeError(32, 'Broken pipe')"
+    }
+  ],
+  "scope": "Actual unmodified pinned Java Minima and native MinimaCoreC++ with real H2, full default key creation, both backup/restore directions, real Main worker shutdown, persisted key-use increments and original chain on opposite-runtime reopen. Plaintext SQL storage and password-encrypted backups; public network, encrypted wallet database, damaged running-node restores and full parity remain unverified."
+}

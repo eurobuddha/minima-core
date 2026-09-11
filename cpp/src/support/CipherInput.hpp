@@ -1,6 +1,7 @@
 #pragma once
 #include "org/minima/utils/encrypt/GenerateKey.hpp"
 #include "ByteIO.hpp"
+#include "JavaExceptions.hpp"
 #include <algorithm>
 namespace minima {
 // CipherInputStream buffering around the existing SunJCE-compatible Cipher.
@@ -21,7 +22,8 @@ public:
             }else{
                 mDone=true;
                 try{mOutput=mCipher.doFinal({});}
-                catch(const std::bad_alloc&){throw;}
+                catch(const JavaError&){throw;}catch(const std::bad_alloc&){throw;}
+                catch(const JavaTypedException& error){throw wire::IOException(error.toString());}
                 catch(const std::exception& error){throw wire::IOException(error.what());}
             }
         }

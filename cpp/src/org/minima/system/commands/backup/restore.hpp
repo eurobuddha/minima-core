@@ -1,0 +1,18 @@
+#pragma once
+#include "../Command.hpp"
+#include "org/minima/database/txpowdb/sql/TxPoWList.hpp"
+#include <filesystem>
+namespace minima {class GzipInput;}
+namespace minima::commands {
+class restore:public Command {
+public:
+    restore();
+    std::optional<std::string> getFullHelp() const override;
+    std::vector<std::string> getValidParams() const override{return {"file","password","shutdown"};}
+    json::JSONValue runCommand() override;
+    std::shared_ptr<Command> getFunction() const override{return std::make_shared<restore>();}
+private:
+    int64_t readNextBackup(const std::filesystem::path& output,GzipInput& input);
+    std::shared_ptr<TxPoWList> readNextTxPoWList(GzipInput& input);
+};
+}

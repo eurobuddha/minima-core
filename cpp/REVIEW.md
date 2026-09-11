@@ -1,3 +1,52 @@
+# restore checkpoint — full port unfinished
+
+## Code Review
+
+### Summary
+
+Reviewed the pinned restore body and native command/header, MiniData framing,
+Main override boundary, cipher error handling, registry/CMake wiring, Java/native
+fixtures, both test drivers, mapping and teaching material. The port reuses the
+existing stores and stream layers. Both complete builds pass, as do ten selected
+regression suites, the primitive suite and actual-node restore/reopen/signing tests
+in normal and ASAN/UBSAN configurations. The AOT H2 library is not C++ sanitizer
+instrumented. No blocking finding remains for this partial-port checkpoint.
+
+### Findings resolved
+
+- A controlled Main fixture read an absent optional flag without checking presence.
+  This was a fixture failure; the corrected fixture preserves source behavior.
+- Truncated CBC ciphertext must retain the Java IllegalBlockSizeException or
+  BadPaddingException cause inside IOException. GenerateKey and CipherInput now
+  preserve those diagnostics; decryptbackup, backup and utility regressions pass.
+- MiniData reads exactly one frame using shared length validation. Read-ahead into
+  another section would move a failure before source-visible database writes.
+- A real-node observer expected 64 keys although the pinned solo-mode Wallet uses
+  eight. The isolated process was stopped gracefully and the observer corrected.
+  Actual key generation and the backup readiness gate are used unchanged.
+- SQL row checks alone do not prove restored private-key usability. Both runtime
+  directions now reopen and sign with a restored key, reject changed signed data,
+  and check the resulting use count. Initial failing reports remain in evidence.
+
+### Limits
+
+128 controlled comparisons per build include 16 successful restores and 49 failures
+that preserve source-disabled saving. Six actual processes per build exercise real
+Main worker shutdown and both restore directions. Tests use plaintext SQL storage
+and password-encrypted backups. Encrypted SQL wallet restore, damaged actual-node
+restores, concurrent mutation and public-network behavior remain unverified.
+Direct EOF/NPE/class-cast prose is normalized; cipher cause text is compared exactly.
+RAII releases resources without reproducing Java resource leaks. Full cipher API
+parity (including empty ciphertext and post-error reuse) remains uncertified.
+The source has no rollback catch/finally; matching partial database mutation on
+failure is intentional. Existing mapped files remain partial/not_verified.
+
+### Verdict
+
+Approve this local incomplete-port checkpoint. Full 457-file parity is not certified.
+
+---
+
 # backup checkpoint — full port unfinished
 
 ## Code Review

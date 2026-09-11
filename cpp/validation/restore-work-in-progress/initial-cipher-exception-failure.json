@@ -1,0 +1,614 @@
+{
+  "passed": false,
+  "cases": 49,
+  "successful_restores": 7,
+  "save_disabled_cases": 0,
+  "observations": [
+    {
+      "case": 0,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 1,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 2,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 3,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 4,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 5,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 6,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 7,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 8,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 9,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 10,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 11,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 12,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 13,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 14,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 15,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 16,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 17,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 18,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 19,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 20,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 21,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 22,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 23,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 24,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 25,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 26,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 27,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 28,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": false
+    },
+    {
+      "case": 29,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 30,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": true
+    },
+    {
+      "case": 31,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 32,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 33,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 34,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 35,
+      "label": null,
+      "success": true,
+      "allow_save": true,
+      "restoring": true,
+      "temporary_folder": false
+    },
+    {
+      "case": 36,
+      "label": null,
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 37,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 38,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 39,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 40,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 41,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 42,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 43,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 44,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 45,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 46,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 47,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    },
+    {
+      "case": 48,
+      "label": "cipher-prefix",
+      "success": false,
+      "allow_save": true,
+      "restoring": false,
+      "temporary_folder": true
+    }
+  ],
+  "failures": [
+    {
+      "case": 49,
+      "label": "cipher-prefix",
+      "params": {
+        "file": "input.bak"
+      },
+      "java": {
+        "reply": {
+          "exception": "java.io.IOException: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 16 when decrypting with padded cipher",
+          "events": [
+            [
+              "ready",
+              true
+            ]
+          ],
+          "restoring": true,
+          "shutdown": false,
+          "published": true,
+          "running": true,
+          "allowSave": false,
+          "user": {
+            "fixture_marker": "source",
+            "minidapps_uninstalled": [],
+            "custom_transactions": "0x000100"
+          },
+          "p2p": {
+            "fixture_marker": "source"
+          },
+          "cascade": "0x000100",
+          "tree": "0x000100",
+          "cachedSeedHash": "0xF9A3D21C4FFD52B15E08D2B48B74D7E96DA25C7F17323A38370B8093FE4FEF07",
+          "walletOpen": true,
+          "historyOpen": true,
+          "archiveOpen": true,
+          "archiveFile": true,
+          "keys": {
+            "sql": "SELECT publickey,uses FROM keys ORDER BY publickey",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "PUBLICKEY": "0x03",
+                "USES": "999"
+              }
+            ]
+          },
+          "seed": {
+            "sql": "SELECT RAWTOHEX(HASH('SHA-256',seed)) AS seedhash FROM seed",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "SEEDHASH": "c8ccfbd9a15916412161c1c1c80e0a5d4fbeed97248186a751e825066925b364"
+              }
+            ]
+          },
+          "history": {
+            "sql": "SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid",
+            "status": true,
+            "results": true,
+            "count": 2,
+            "rows": [
+              {
+                "TXPOWID": "0xB1E91F3732B133C943A0266CBDA5095C191BD5A168C11694B7A1A64D295EBAC9",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xB7F9632AAF7AE034223E5F2C6BA1F24F062229C16714ABD220DC64BA0EFB6BF4",
+                "ISRELEVANT": "1"
+              }
+            ]
+          }
+        },
+        "files": {
+          "databases": "directory",
+          "databases/archivesql": "directory",
+          "databases/cascade.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/chaintree.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/coindb": "directory",
+          "databases/p2p.db": {
+            "size": 31,
+            "sha256": "a0337f2d1d39cadafce1b2154eb9099d65bc910e9f4a3df5f3e0477eaaf768fa"
+          },
+          "databases/p2p2.db": {
+            "size": 26,
+            "sha256": "7bc3ae3eb0c246aa4ca4a8f39c1a1772fcf42d2a8460372156cfede8ff9bc522"
+          },
+          "databases/txpowsql": "directory",
+          "databases/userprefs.db": {
+            "size": 105,
+            "sha256": "3156677f92051b3f81383c918b3a2982b8eddf6ca33290a4cd3a71bd49a3a078"
+          },
+          "databases/walletsql": "directory",
+          "restore": "directory",
+          "restore/wallet.sql": {
+            "size": 2288,
+            "sha256": "eeaa94152145912da087fadff30fdd5aa5a70121ec527ba052965729cbc725b1"
+          }
+        }
+      },
+      "cpp": {
+        "reply": {
+          "exception": "java.io.IOException: AES padding",
+          "events": [
+            [
+              "ready",
+              true
+            ]
+          ],
+          "restoring": true,
+          "shutdown": false,
+          "published": true,
+          "running": true,
+          "allowSave": false,
+          "user": {
+            "fixture_marker": "source",
+            "minidapps_uninstalled": [],
+            "custom_transactions": "0x000100"
+          },
+          "p2p": {
+            "fixture_marker": "source"
+          },
+          "cascade": "0x000100",
+          "tree": "0x000100",
+          "cachedSeedHash": "0xF9A3D21C4FFD52B15E08D2B48B74D7E96DA25C7F17323A38370B8093FE4FEF07",
+          "walletOpen": true,
+          "historyOpen": true,
+          "archiveOpen": true,
+          "archiveFile": true,
+          "keys": {
+            "sql": "SELECT publickey,uses FROM keys ORDER BY publickey",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "PUBLICKEY": "0x03",
+                "USES": "999"
+              }
+            ]
+          },
+          "seed": {
+            "sql": "SELECT RAWTOHEX(HASH('SHA-256',seed)) AS seedhash FROM seed",
+            "status": true,
+            "results": true,
+            "count": 1,
+            "rows": [
+              {
+                "SEEDHASH": "c8ccfbd9a15916412161c1c1c80e0a5d4fbeed97248186a751e825066925b364"
+              }
+            ]
+          },
+          "history": {
+            "sql": "SELECT txpowid,isrelevant FROM txpow ORDER BY txpowid",
+            "status": true,
+            "results": true,
+            "count": 2,
+            "rows": [
+              {
+                "TXPOWID": "0xB1E91F3732B133C943A0266CBDA5095C191BD5A168C11694B7A1A64D295EBAC9",
+                "ISRELEVANT": "1"
+              },
+              {
+                "TXPOWID": "0xB7F9632AAF7AE034223E5F2C6BA1F24F062229C16714ABD220DC64BA0EFB6BF4",
+                "ISRELEVANT": "1"
+              }
+            ]
+          }
+        },
+        "files": {
+          "databases": "directory",
+          "databases/archivesql": "directory",
+          "databases/cascade.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/chaintree.db": {
+            "size": 3,
+            "sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+          },
+          "databases/coindb": "directory",
+          "databases/p2p.db": {
+            "size": 31,
+            "sha256": "a0337f2d1d39cadafce1b2154eb9099d65bc910e9f4a3df5f3e0477eaaf768fa"
+          },
+          "databases/p2p2.db": {
+            "size": 26,
+            "sha256": "7bc3ae3eb0c246aa4ca4a8f39c1a1772fcf42d2a8460372156cfede8ff9bc522"
+          },
+          "databases/txpowsql": "directory",
+          "databases/userprefs.db": {
+            "size": 105,
+            "sha256": "3156677f92051b3f81383c918b3a2982b8eddf6ca33290a4cd3a71bd49a3a078"
+          },
+          "databases/walletsql": "directory",
+          "restore": "directory",
+          "restore/wallet.sql": {
+            "size": 2288,
+            "sha256": "eeaa94152145912da087fadff30fdd5aa5a70121ec527ba052965729cbc725b1"
+          }
+        }
+      }
+    }
+  ],
+  "scope": "Real H2 source/target stores with controlled Main.restoreReady and real shutdown notification; Java- and C++-generated backups; exact restored SQL rows/key uses, source state, files, caches, closure flags and partial-failure effects. Direct EOF/NPE/class-cast diagnostic prose normalized. SQL observations can reopen after recording cache/closure state. Real running-node shutdown is a separate process test; full parity remains unverified."
+}

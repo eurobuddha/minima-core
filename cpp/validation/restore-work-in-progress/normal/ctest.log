@@ -1,0 +1,25 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+      Start  31: utility_differential
+ 1/10 Test  #31: utility_differential .................   Passed    3.83 sec
+      Start  46: raw_archive_differential
+ 2/10 Test  #46: raw_archive_differential .............   Passed   40.72 sec
+      Start  52: command_runner_differential
+ 3/10 Test  #52: command_runner_differential ..........   Passed    5.07 sec
+      Start 128: command_runner_errors_differential
+ 4/10 Test #128: command_runner_errors_differential ...   Passed    5.80 sec
+      Start 192: main_runtime_differential
+ 5/10 Test #192: main_runtime_differential ............   Passed    4.67 sec
+      Start 218: native_h2_differential
+ 6/10 Test #218: native_h2_differential ...............   Passed    7.51 sec
+      Start 221: minima_entry_differential
+ 7/10 Test #221: minima_entry_differential ............   Passed    6.65 sec
+      Start 222: decrypt_backup_differential
+ 8/10 Test #222: decrypt_backup_differential ..........   Passed    7.88 sec
+      Start 223: backup_differential
+ 9/10 Test #223: backup_differential ..................   Passed   15.31 sec
+      Start 224: restore_differential
+10/10 Test #224: restore_differential .................   Passed   19.98 sec
+
+100% tests passed, 0 tests failed out of 10
+
+Total Test time (real) = 117.45 sec
