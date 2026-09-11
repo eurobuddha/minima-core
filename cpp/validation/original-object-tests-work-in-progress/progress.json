@@ -1,0 +1,39 @@
+{
+  "base_head": "4eebb838d9752d54e0f7dd814673702de8ac3a3c",
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "goal_complete": false,
+  "new_counterparts": [
+    "test/org/minima/objects/AddressTests.cpp",
+    "test/org/minima/objects/CoinTests.cpp",
+    "test/org/minima/objects/TokenTests.cpp"
+  ],
+  "counterparts": 421,
+  "production_counterparts": 364,
+  "test_counterparts": 57,
+  "remaining": 36,
+  "remaining_production": 5,
+  "remaining_tests": 31,
+  "parity": "not_verified",
+  "existing_production_changes": [],
+  "builds": {
+    "normal": "three targets and dependencies PASS",
+    "sanitized": "three targets and dependencies PASS",
+    "full_suite": "not repeated"
+  },
+  "tests": {
+    "normal": "PASS",
+    "sanitized": "PASS",
+    "original_methods": 8,
+    "original_assertions_per_runtime": 20,
+    "supplemental_wire_and_decoded_comparisons_per_build": 6,
+    "original_printed_observations": "all compared in execution order, JSON key order normalized"
+  },
+  "initial_failure": "JUnitCore could not load absent Hamcrest. Reused existing MiniStringOriginalTests direct-runner pattern: exact annotation membership/options/lifecycle guard, fresh instance per method, real unchanged JUnit assertions.",
+  "blockers": [
+    "JNI bodies/ABI absent from inspected source candidates for four production files.",
+    "P2PSwapLink is entirely commented: no active class.",
+    "TxPoWProcessorTest has two empty @Test bodies; only delay overloads are active. Do not revive commented algorithms or count empty assertions as behavioral coverage."
+  ],
+  "next_action": "Port independent MiniNumberTests/MiniDataTests and remaining KISS original tests. MiniDataTests uses convenience APIs absent by name in native header (compare, decimal view, bounded hex view, inclusive comparisons); inspect exact semantics and reuse existing numeric/byte primitives for minimal adapters. MiniNumberTests requires scale-sensitive BigDecimal equality observation; reuse getUnscaled/getScale, not numeric equality alone.",
+  "scope": "Actual original test inputs, calls, active assertions and observable printed results. Supplemental three original samples compare exact wire and decoded JSON. Complete production APIs and node behavior remain incomplete."
+}

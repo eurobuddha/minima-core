@@ -736,9 +736,9 @@ Current documentation: 369 authored production lessons, 0 production reading dra
 
 | File | Teaching state | Native state |
 |---|---|---|
-| [AddressTests.java](files/test/org/minima/objects/AddressTests.md) | test explanation | unported |
-| [CoinTests.java](files/test/org/minima/objects/CoinTests.md) | test explanation | unported |
-| [TokenTests.java](files/test/org/minima/objects/TokenTests.md) | test explanation | unported |
+| [AddressTests.java](files/test/org/minima/objects/AddressTests.md) | test explanation | implemented_partial |
+| [CoinTests.java](files/test/org/minima/objects/CoinTests.md) | test explanation | implemented_partial |
+| [TokenTests.java](files/test/org/minima/objects/TokenTests.md) | test explanation | implemented_partial |
 | [TransactionTests.java](files/test/org/minima/objects/TransactionTests.md) | test explanation | implemented_partial |
 | [TxHeaderTests.java](files/test/org/minima/objects/TxHeaderTests.md) | test explanation | implemented_partial |
 

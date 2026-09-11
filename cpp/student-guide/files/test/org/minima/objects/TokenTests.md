@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/objects/TokenTests.java](../../../../../../../upstream-study/test/org/minima/objects/TokenTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -45,11 +45,13 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/objects/TokenTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [TokenTests.cpp](../../../../../../test/org/minima/objects/TokenTests.cpp).
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
+The native file preserves both annotated methods and five successful-path assertions. A token with scale twelve, amount twelve, name `token-name` and script `FFFF` is constructed; the source checks non-nullness, amount, name and scale. The stream test invokes the static reader and discards its result, then checks the original token. All active printed observations, including token ID and JSON, are also compared across runtimes.
 
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+The supplemental wire/decoded-JSON comparison checks the same original token independently of the non-null assertion. The source's script equality assertions are commented out, so they are not included in the assertion count. Production Token code is reused unchanged.
+
+Both normal and sanitizer builds pass the batch: eight original methods, twenty source assertions per runtime and six supplementary wire/decoded-content comparisons per build. The [object test lab](../../../../../new-tests/original-object-tests.md) explains the direct Java runner, retained source assertions and validation limits. Full parity remains not_verified.
 
 ## What students should conclude
 

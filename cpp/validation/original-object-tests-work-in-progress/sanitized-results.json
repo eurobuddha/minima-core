@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "original_methods": 8,
+  "assertions_per_runtime": 20,
+  "supplemental_wire_and_decoded_comparisons": 6,
+  "results": [
+    {
+      "name": "AddressTests",
+      "passed": true,
+      "expected": {
+        "passed": true,
+        "tests": 3,
+        "assertions": 10,
+        "class": "AddressTests"
+      },
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-object-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalObjectTests",
+            "AddressTests"
+          ],
+          "returncode": 0,
+          "stdout": "should be equal to - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\nORIGINAL_OBJECT_RESULT {\"class\":\"AddressTests\",\"tests\":3,\"assertions\":10,\"passed\":true,\"wire\":\"0x00000003FFF0F000000000\",\"decoded\":{\"script\":\"\",\"hexaddress\":\"0xFFF0F0\",\"miniaddress\":\"Mx4007VVGU2U5WP4Y\"}}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/AddressTests"
+          ],
+          "returncode": 0,
+          "stdout": "should be equal to - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\nORIGINAL_OBJECT_RESULT {\"class\":\"AddressTests\",\"tests\":3,\"assertions\":10,\"passed\":true,\"wire\":\"0x00000003FFF0F000000000\",\"decoded\":{\"script\":\"\",\"hexaddress\":\"0xFFF0F0\",\"miniaddress\":\"Mx4007VVGU2U5WP4Y\"}}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "CoinTests",
+      "passed": true,
+      "expected": {
+        "passed": true,
+        "tests": 3,
+        "assertions": 5,
+        "class": "CoinTests"
+      },
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-object-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalObjectTests",
+            "CoinTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_OBJECT_RESULT {\"class\":\"CoinTests\",\"tests\":3,\"assertions\":5,\"passed\":true,\"wire\":\"0x000000020FFF00000004FFFFFFFF00010C0000000201230100010000000001000000010000010000\",\"decoded\":{\"coinid\":\"0x0FFF\",\"amount\":\"12\",\"address\":\"0xFFFFFFFF\",\"miniaddress\":\"Mx1002FVVVVVU844067\",\"tokenid\":\"0x0123\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/CoinTests"
+          ],
+          "returncode": 0,
+          "stdout": "ORIGINAL_OBJECT_RESULT {\"class\":\"CoinTests\",\"tests\":3,\"assertions\":5,\"passed\":true,\"wire\":\"0x000000020FFF00000004FFFFFFFF00010C0000000201230100010000000001000000010000010000\",\"decoded\":{\"coinid\":\"0x0FFF\",\"amount\":\"12\",\"address\":\"0xFFFFFFFF\",\"miniaddress\":\"Mx1002FVVVVVU844067\",\"tokenid\":\"0x0123\",\"token\":null,\"storestate\":true,\"state\":[],\"spent\":false,\"mmrentry\":\"0\",\"created\":\"0\"}}\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "TokenTests",
+      "passed": true,
+      "expected": {
+        "passed": true,
+        "tests": 2,
+        "assertions": 5,
+        "class": "TokenTests"
+      },
+      "outputs": [
+        {
+          "command": [
+            "java",
+            "-cp",
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/original-object-oracle:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/jar/minima.jar:/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/lib/junit-4.13.jar",
+            "OriginalObjectTests",
+            "TokenTests"
+          ],
+          "returncode": 0,
+          "stdout": "amount  value 12\nname  value token-name\nscript value FFFF FFFF\ntokenscript  value FFFF\ncoin id  value 0xFFFF\ntoken id  value 0x0DBA79CECF8DB570F1065F0C0631106101B727E7E0B04BB606DBA0F8675B5153\nscale value 12\nJson  value {\"name\":\"token-name\",\"coinid\":\"0xFFFF\",\"total\":\"12000000000000\",\"decimals\":32,\"script\":\"FFFF\",\"totalamount\":\"12\",\"scale\":\"12\",\"created\":\"0\",\"tokenid\":\"0x0DBA79CECF8DB570F1065F0C0631106101B727E7E0B04BB606DBA0F8675B5153\"}\nProof json values in read and write stream - {\"name\":\"token-name\",\"coinid\":\"0xFFFF\",\"total\":\"12000000000000\",\"decimals\":32,\"script\":\"FFFF\",\"totalamount\":\"12\",\"scale\":\"12\",\"created\":\"0\",\"tokenid\":\"0x0DBA79CECF8DB570F1065F0C0631106101B727E7E0B04BB606DBA0F8675B5153\"}\nORIGINAL_OBJECT_RESULT {\"class\":\"TokenTests\",\"tests\":2,\"assertions\":5,\"passed\":true,\"wire\":\"0x00000002FFFF000000044646464600010C00010C0000000A746F6B656E2D6E616D65000100\",\"decoded\":{\"name\":\"token-name\",\"coinid\":\"0xFFFF\",\"total\":\"12000000000000\",\"decimals\":32,\"script\":\"FFFF\",\"totalamount\":\"12\",\"scale\":\"12\",\"created\":\"0\",\"tokenid\":\"0x0DBA79CECF8DB570F1065F0C0631106101B727E7E0B04BB606DBA0F8675B5153\"}}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/TokenTests"
+          ],
+          "returncode": 0,
+          "stdout": "amount  value 12\nname  value token-name\nscript value FFFF FFFF\ntokenscript  value FFFF\ncoin id  value 0xFFFF\ntoken id  value 0x0DBA79CECF8DB570F1065F0C0631106101B727E7E0B04BB606DBA0F8675B5153\nscale value 12\nJson  value {\"name\":\"token-name\",\"coinid\":\"0xFFFF\",\"total\":\"12000000000000\",\"decimals\":32,\"script\":\"FFFF\",\"totalamount\":\"12\",\"scale\":\"12\",\"created\":\"0\",\"tokenid\":\"0x0DBA79CECF8DB570F1065F0C0631106101B727E7E0B04BB606DBA0F8675B5153\"}\nProof json values in read and write stream - {\"name\":\"token-name\",\"coinid\":\"0xFFFF\",\"total\":\"12000000000000\",\"decimals\":32,\"script\":\"FFFF\",\"totalamount\":\"12\",\"scale\":\"12\",\"created\":\"0\",\"tokenid\":\"0x0DBA79CECF8DB570F1065F0C0631106101B727E7E0B04BB606DBA0F8675B5153\"}\nORIGINAL_OBJECT_RESULT {\"class\":\"TokenTests\",\"tests\":2,\"assertions\":5,\"passed\":true,\"wire\":\"0x00000002FFFF000000044646464600010C00010C0000000A746F6B656E2D6E616D65000100\",\"decoded\":{\"name\":\"token-name\",\"coinid\":\"0xFFFF\",\"total\":\"12000000000000\",\"decimals\":32,\"script\":\"FFFF\",\"totalamount\":\"12\",\"scale\":\"12\",\"created\":\"0\",\"tokenid\":\"0x0DBA79CECF8DB570F1065F0C0631106101B727E7E0B04BB606DBA0F8675B5153\"}}\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "All eight active methods and twenty successful-path assertions in pinned AddressTests, CoinTests and TokenTests. Java counts source assertions; native counts executed assertions. The exact annotated method set and default test options are checked before direct invocation on fresh instances using real JUnit assertions. All original printed observations are compared in execution order; JSON key order is normalized. Supplemental exact wire and decoded JSON comparisons for one original sample per class are separate from source assertions. Full production API and node parity remain unverified."
+}

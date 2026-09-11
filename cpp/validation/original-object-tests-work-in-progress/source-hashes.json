@@ -1,0 +1,8 @@
+{
+  "CMakeLists.txt": "9ce5a4e1dbc03e4ba5fdb372a3fb16e9803bdeca525096520b092e324d58b8cc",
+  "support/OriginalObjectTests.java": "738b5d1c6d35fdf314894bbb79e5647f4724e96edf6786e7e65dc0cf6f5fe8cd",
+  "tools/original_object_tests.py": "8ae3bee46586798418e2e3df56229160be3aadf3ce0f131a747da6fa27c43d5c",
+  "test/org/minima/objects/AddressTests.cpp": "9d39f41e79a43a6bb862750d5c67c78041fa13491c367b994785e5e2c2154ac7",
+  "test/org/minima/objects/CoinTests.cpp": "b5040a72ce636f3fe7519af171cb52ef29bbf8a7beb7fe68a384500c3e9fbf9b",
+  "test/org/minima/objects/TokenTests.cpp": "53afa2ff95c8a879f262f65219c3c22030e1fc50d71b3874c2b06dec4660a82b"
+}

@@ -2,7 +2,7 @@
 
 Pinned upstream: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-457 Java files → 457 unique planned C++ paths. 418 C++ files currently exist. Full behavioral parity is not verified.
+457 Java files → 457 unique planned C++ paths. 421 C++ files currently exist. Full behavioral parity is not verified.
 
 An unported row is a destination assignment, not a generated or compiled implementation.
 
@@ -381,9 +381,9 @@ Candidate matches are search leads; they do not certify compatibility or reuse.
 | `src/org/minima/utils/sphincs/TransactionTest.java` | `src/org/minima/utils/sphincs/TransactionTest.cpp` | implemented_partial | — |
 | `test/org/minima/database/txpowdb/ram/RamDBTest.java` | `test/org/minima/database/txpowdb/ram/RamDBTest.cpp` | implemented_partial | — |
 | `test/org/minima/database/txpowtree/TxPowTreeTest.java` | `test/org/minima/database/txpowtree/TxPowTreeTest.cpp` | implemented_partial | — |
-| `test/org/minima/objects/AddressTests.java` | `test/org/minima/objects/AddressTests.cpp` | unported | — |
-| `test/org/minima/objects/CoinTests.java` | `test/org/minima/objects/CoinTests.cpp` | unported | — |
-| `test/org/minima/objects/TokenTests.java` | `test/org/minima/objects/TokenTests.cpp` | unported | — |
+| `test/org/minima/objects/AddressTests.java` | `test/org/minima/objects/AddressTests.cpp` | implemented_partial | — |
+| `test/org/minima/objects/CoinTests.java` | `test/org/minima/objects/CoinTests.cpp` | implemented_partial | — |
+| `test/org/minima/objects/TokenTests.java` | `test/org/minima/objects/TokenTests.cpp` | implemented_partial | — |
 | `test/org/minima/objects/TransactionTests.java` | `test/org/minima/objects/TransactionTests.cpp` | implemented_partial | — |
 | `test/org/minima/objects/TxHeaderTests.java` | `test/org/minima/objects/TxHeaderTests.cpp` | implemented_partial | — |
 | `test/org/minima/objects/base/MiniByteTests.java` | `test/org/minima/objects/base/MiniByteTests.cpp` | implemented_partial | — |

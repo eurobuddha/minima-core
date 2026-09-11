@@ -1519,3 +1519,10 @@ foreach(test_name IN ITEMS UtilFuncsTest WalkLinksFuncsTest SwapLinksFunctionsTe
 endforeach()
 add_test(NAME original_p2p_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_p2p_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
 set_tests_properties(original_p2p_tests PROPERTIES TIMEOUT 120)
+
+foreach(test_name IN ITEMS AddressTests CoinTests TokenTests)
+    add_executable(${test_name} test/org/minima/objects/${test_name}.cpp)
+    target_link_libraries(${test_name} PRIVATE minima_file_port)
+endforeach()
+add_test(NAME original_object_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/original_object_tests.py --build ${CMAKE_CURRENT_BINARY_DIR})
+set_tests_properties(original_object_tests PROPERTIES TIMEOUT 120)

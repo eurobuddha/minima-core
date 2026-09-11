@@ -1,0 +1,12 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/AddressTests.dir/test/org/minima/objects/AddressTests.cpp.o
+[100%] Linking CXX executable AddressTests
+[100%] Built target AddressTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/CoinTests.dir/test/org/minima/objects/CoinTests.cpp.o
+[100%] Linking CXX executable CoinTests
+[100%] Built target CoinTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/TokenTests.dir/test/org/minima/objects/TokenTests.cpp.o
+[100%] Linking CXX executable TokenTests
+[100%] Built target TokenTests

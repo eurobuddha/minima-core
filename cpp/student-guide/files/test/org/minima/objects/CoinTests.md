@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/objects/CoinTests.java](../../../../../../../upstream-study/test/org/minima/objects/CoinTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -49,11 +49,13 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/objects/CoinTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [CoinTests.cpp](../../../../../../test/org/minima/objects/CoinTests.cpp).
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
+The native file preserves all three annotated methods and five successful-path assertions. Constructor checks compare token ID, amount and address. The instance stream test reads into the original coin. The static stream test discards the decoded return value and checks the original coin, exactly as the source does; that assertion alone does not verify decoded content.
 
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+A separate comparison checks serialized bytes and the decoded JSON of the original twelve-unit sample against Java. The test reuses the existing native Coin handle, constructor and readers. The commented resetCoinID assertions remain inactive; their presence in comments is not test coverage.
+
+Both normal and sanitizer builds pass the batch: eight original methods, twenty source assertions per runtime and six supplementary wire/decoded-content comparisons per build. The [object test lab](../../../../../new-tests/original-object-tests.md) explains the direct Java runner, retained source assertions and validation limits. Full parity remains not_verified.
 
 ## What students should conclude
 

@@ -1,4 +1,55 @@
-# Current checkpoint — five P2P original files converted
+# Current checkpoint — three original object tests converted
+
+MinimaCoreC++ branch/project/executable. Base HEAD 4eebb838d9752d54e0f7dd814673702de8ac3a3c.
+Goal active, incomplete. NEW files: test/org/minima/objects/AddressTests.cpp,
+CoinTests.cpp and TokenTests.cpp. Each contains all active source methods and
+assertions; none is a compilation-only placeholder.
+
+Inventory: 421 counterparts (364 production + 57 original tests), 36 absent
+(5 production + 31 original tests). All full parity labels remain not_verified.
+No production behavior changed in this batch.
+
+Both target builds PASS. Both Java/native suites PASS 8 methods/20 source
+assertions per runtime, all original printed observations, and six supplementary
+exact-wire/decoded-JSON comparisons per build. CTest registration also checked.
+The initial Java JUnitCore attempt lacked Hamcrest. Reused the existing
+MiniStringOriginalTests annotation-checked direct runner on fresh instances;
+unchanged source methods still execute real JUnit assertions. Initial failure
+reports are retained. No full suite repeat; 269 CTest entries registered.
+Evidence: validation/original-object-tests-work-in-progress. Lab:
+student-guide/new-tests/original-object-tests.md. Three file lessons updated.
+
+NEXT: MiniNumberTests, MiniDataTests, then remaining independent KISS tests.
+Both base test sources have been read completely. Before editing finish relevant
+native API/dependency inspection. MiniDataTests names compare, decimal view,
+bounded hex view and inclusive comparisons absent by name in native MiniData;
+reuse existing BigInt/MiniNumber/bytes for minimal adapters as needed. Preserve
+all source loops and assertions, including ten million appended bytes. Java's
+scale-sensitive BigDecimal equality needs unscaled value AND scale, not just
+MiniNumber numeric equality. New source tests may expose stale source expectations;
+run unchanged Java to distinguish those from native defects.
+
+Current remaining list: validation/original-object-tests-work-in-progress/remaining-files.json.
+Four production files need JNI bodies/ABI or authoritative vectors missing from
+inspected sources; caller control logic can proceed independently. P2PSwapLink.java
+is entirely commented. TxPoWProcessorTest.java is now read completely: two @Test
+methods have entirely commented bodies; only delay()/delay(long) are active.
+Do not revive commented algorithms or credit empty tests as processor coverage.
+
+Long Magic demos are independent saved-9ae7039 binaries, sessions 55636/41123;
+last observed live during the preceding P2P batch. Poll exact handles; buffered
+output is not proof of completion. No new result claimed here.
+
+Preserve unrelated graphify-out work and externally committed f7f0e08 Java SQL/JAR
+changes. Pinned upstream-study unchanged; no push. Commit only cpp. Prior verified
+bundle: local-backups/MinimaCoreC++-20260911T173717Z.bundle, HEAD 4eebb838,
+SHA 45afbf0504dba2fa0e9105ffb01f6f479b4bdc849c7e9e3c0e4fb817ba341517;
+49 checkpoint files byte-verified. After this commit create/verify a new bundle,
+recovery clone, fsck, and byte-check all changed checkpoint files.
+
+---
+
+# Historical checkpoint — five P2P original files converted
 
 MinimaCoreC++ branch/project/executable. Base HEAD 78e4166bb694ecd1ca5438194faf5969fa1d3746.
 Goal active and incomplete. Newly mapped files:

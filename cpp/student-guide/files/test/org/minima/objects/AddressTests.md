@@ -2,7 +2,7 @@
 
 Java source: [test/org/minima/objects/AddressTests.java](../../../../../../../upstream-study/test/org/minima/objects/AddressTests.java). Pinned revision: `5564b9d78978efcaf23679190d05253961fc6e69`.
 
-Mapping status: **unported**; behavioral parity: **not_verified**. [Source-map record](../../../../../../source-map.json).
+Mapping status: **implemented_partial**; behavioral parity: **not_verified**. [Source-map record](../../../../../../source-map.json).
 
 ## Purpose and logic
 
@@ -44,11 +44,13 @@ The fixture names these Minima dependencies (links are for tracing the test setu
 
 ## C++ translation and validation
 
-**The mapped counterpart `test/org/minima/objects/AddressTests.cpp` is absent.** This page is a teaching guide to the Java file, not a claim that its conversion is finished.
+Native counterpart: [AddressTests.cpp](../../../../../../test/org/minima/objects/AddressTests.cpp).
 
-To port this file, preserve its active fixture inputs, operation order, expected values, and exception checks. Reuse the corresponding native Minima objects; adapt JUnit assertions to the existing native test convention. Keep commented examples inactive unless they are deliberately introduced and validated as new tests.
+The native file now preserves all three annotated methods and ten successful-path assertions. Construction checks non-nullness and equality of script-derived addresses; the stream test reads back into the same object and checks its hex string; five original address samples round-trip through the Mx encoder and decoder. Odd-length hex inputs are retained exactly as written in the source.
 
-The eventual native case must be registered and run after a successful build. Independent differential suites may test related production behavior, but that does not create this missing 1:1 test counterpart. No new execution result is claimed here.
+The supplementary observation serializes the source stream sample `0xFFF0F0` and compares exact bytes plus decoded JSON with Java. This is separate from the original assertions. It catches a wire or content mismatch that a non-null check would miss. No change to Address production logic was needed.
+
+Both normal and sanitizer builds pass the batch: eight original methods, twenty source assertions per runtime and six supplementary wire/decoded-content comparisons per build. The [object test lab](../../../../../new-tests/original-object-tests.md) explains the direct Java runner, retained source assertions and validation limits. Full parity remains not_verified.
 
 ## What students should conclude
 

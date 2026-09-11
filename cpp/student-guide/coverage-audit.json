@@ -2,8 +2,8 @@
   "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
   "source_files": 457,
   "unique_guides": 457,
-  "native_counterparts": 418,
-  "native_absent": 39,
+  "native_counterparts": 421,
+  "native_absent": 36,
   "mapping_counts_by_source_set": {
     "src": {
       "total": 369,
@@ -12,15 +12,15 @@
     },
     "test": {
       "total": 88,
-      "counterparts": 54,
-      "absent": 34
+      "counterparts": 57,
+      "absent": 31
     }
   },
   "teaching_counts": {
     "authored_lesson": 369,
     "source_test_explanation": 88
   },
-  "links_checked": 9414,
+  "links_checked": 9421,
   "line_anchors_checked": 2632,
   "errors": [],
   "ownership_exclusions": [
@@ -3773,9 +3773,9 @@
       "java": "test/org/minima/objects/AddressTests.java",
       "cpp": "test/org/minima/objects/AddressTests.cpp",
       "guide": "files/test/org/minima/objects/AddressTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -3783,9 +3783,9 @@
       "java": "test/org/minima/objects/CoinTests.java",
       "cpp": "test/org/minima/objects/CoinTests.cpp",
       "guide": "files/test/org/minima/objects/CoinTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
@@ -3793,9 +3793,9 @@
       "java": "test/org/minima/objects/TokenTests.java",
       "cpp": "test/org/minima/objects/TokenTests.cpp",
       "guide": "files/test/org/minima/objects/TokenTests.md",
-      "port_status": "unported",
+      "port_status": "implemented_partial",
       "parity": "not_verified",
-      "native_exists": false,
+      "native_exists": true,
       "teaching_status": "source_test_explanation",
       "teaching_note": "Source-derived purpose, logic and assertion explanation; not an exhaustive behavior audit or fresh test run."
     },
