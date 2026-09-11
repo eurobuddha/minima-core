@@ -1,3 +1,36 @@
+## Code Review — scalar Streamable integration
+
+### Summary
+
+The scalar types reuse existing encodings and decoders while exposing their source
+in-place mutation timing. MiniData's numeric cache is retained across reads and
+used by comparisons/shifts. The lifetime of self-backed input is preserved through
+replacement. Differential tests exposed and now cover signed integer normalization.
+
+### Findings
+
+The redundant-sign-byte defect in both BigInt byte factories was fixed by reusing
+normalise. Its repeated prefix erasures were changed to one scan and one erase,
+avoiding quadratic work on large incoming entry-number coefficients. Independent signed encodings and Java comparisons cover MiniNumber and
+MMREntryNumber. The new input-lifetime risk was fixed by retaining the prior vector
+allocation during copying; self-input truncation cases pass under sanitizers.
+
+**MAJOR — complete API/interface parity remains unfinished.** Thirty explicit
+Streamable implementations remain. Java mutable arrays/aliases, mutable charset
+and length limits, nullable APIs, arbitrary streams, allocation-failure timing and
+concurrent mutation still need work. The native cache uses atomic shared-pointer
+access for read-only observations; the tests do not certify general concurrency.
+
+### Verdict
+
+Approve this staged checkpoint. Both complete builds and all ten targeted suites
+pass. Each expanded interface suite passes 2,095 comparisons and 12,220 assertions,
+with matching transcripts and empty native stderr. The full 261-entry suite and
+full node parity are unverified. See [saved evidence](validation/streamable-scalars-work-in-progress/progress.json).
+Historical reviews follow below.
+
+---
+
 ## Code Review — MMR and signature Streamable follow-up
 
 ### Summary

@@ -45,3 +45,15 @@ Predict the length prefix for the panda emoji. Why can serializing malformed inp
 Java exposes MINIMA_CHARSET as a mutable static Charset; the native wrapper is fixed to UTF-8. Charset mutation and byte-subset extension behavior are outside the reported primitive fixture. The source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `af116863598a633df10863b96e3c24c1d717e7d698ed347a3b4a2326c7228eac`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Scalar Streamable integration
+
+The native class now implements Streamable. Its writer delegates to MiniData,
+matching the source's framing directly. The reader waits for a complete MiniData
+payload and UTF-8 normalization before replacing the stored string. An incomplete
+payload leaves the previous string intact, even though the nested temporary data
+reader would have partial bytes. The suite includes malformed surrogate, overlong
+and truncated UTF-8 encodings. Mutable MINIMA_CHARSET and complete null/reference
+APIs remain unfinished.
+
+See the [scalar interface lab](../../../../../../new-tests/streamable-scalars.md) for the test logic. Both expanded interface suites pass 2,095 comparisons and 12,220 assertions across 14 types with matching transcripts and empty native stderr. All nine affected regressions pass in both builds. Full class parity remains unverified.

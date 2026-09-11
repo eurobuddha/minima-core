@@ -1,4 +1,6 @@
 #pragma once
+#include "org/minima/utils/Streamable.hpp"
+#include <memory>
 #include <vector>
 #include <string>
 #include <cstdint>
@@ -9,7 +11,7 @@
 namespace minima {
 class BigInt;
 
-class MiniData {
+class MiniData:public Streamable {
 public:
     static constexpr int MINIMA_MAX_HASH_LENGTH     = 64;
     static constexpr int MINIMA_MAX_MINIDATA_LENGTH  = 512 * 1024 * 1024;
@@ -18,6 +20,10 @@ public:
     static const MiniData ONE_TXPOWID;
 
     MiniData() = default;
+    MiniData(const MiniData& other);
+    MiniData(MiniData&& other) noexcept;
+    MiniData& operator=(const MiniData& other);
+    MiniData& operator=(MiniData&& other) noexcept;
     explicit MiniData(const BigInt& value);
     BigInt getDataValue() const;
     explicit MiniData(const std::vector<uint8_t>& b) : m_bytes(b) {}
@@ -68,7 +74,11 @@ public:
     MiniData sha2() const;  // SHA-256
 
     // Normal serialisation: [int32 BE length][bytes]
+    void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
+    void readDataStream(std::span<const uint8_t> data,size_t& offset,int expectedSize);
+    void readHashFromStream(std::span<const uint8_t> data,size_t& offset);
     static MiniData readFromStream(const std::function<size_t(std::span<uint8_t>)>& reader,int expectedSize=-1);
     static MiniData deserialise(std::span<const uint8_t> data, size_t& offset);
     static MiniData deserialise(std::span<const uint8_t> data, size_t& offset, int expectedSize);
@@ -85,6 +95,9 @@ public:
 
 private:
     std::vector<uint8_t> m_bytes;
+    // Java deliberately retains its lazy numeric cache when stream reads replace bytes.
+    mutable std::shared_ptr<const BigInt> mDataValue;
+    void readPayload(std::span<const uint8_t> data,size_t& offset,size_t length);
 };
 
 using MiniHash = MiniData;

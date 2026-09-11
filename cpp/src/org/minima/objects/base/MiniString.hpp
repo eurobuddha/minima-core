@@ -1,4 +1,5 @@
 #pragma once
+#include "org/minima/utils/Streamable.hpp"
 /**
  * MiniString — UTF-8 string type used in KISS VM scripts and state variables.
  *
@@ -12,7 +13,7 @@
 
 namespace minima {
 
-class MiniString {
+class MiniString:public Streamable {
 public:
     MiniString() = default;
     explicit MiniString(const std::string& s);
@@ -34,6 +35,8 @@ public:
     MiniString concat(const MiniString& rhs) const;
     MiniString subset(size_t start, size_t len) const;
 
+    void writeDataStream(std::vector<uint8_t>& output) const override;
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     std::vector<uint8_t> serialise() const;
     static MiniString    deserialise(std::span<const uint8_t> data, size_t& offset);
 

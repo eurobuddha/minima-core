@@ -51,3 +51,12 @@ Pinned Java SHA-256: `2b9839210ee877ae25e13d98556fd1a845c572ef2dfb5b372a374d3d7f
 The in-place reader constructs the whole decimal before replacing the stored number. A truncated unscaled value therefore leaves the old decimal intact. A zero-length BigInteger now throws the source NumberFormatException; the suite compares its exception class explicitly.
 
 The [MMR/signature interface lab](../../../../../../new-tests/streamable-mmr-signatures.md) explains every-prefix reads, partial writes, offsets and actual generic callers. Both complete builds and six affected regressions pass. The expanded interface corpus passes 1,299 comparisons and 6,290 assertions per build across 11 types; these are suite totals, not per-file counts. Full class parity remains unverified.
+
+The [scalar interface follow-up](../../../../../../new-tests/streamable-scalars.md)
+also checks redundant positive/negative sign bytes in the unscaled coefficient.
+The reused BigInt byte factory now normalizes them like Java BigInteger, retaining
+required sign bytes while removing redundant ones.
+
+Normalization scans the redundant sign prefix once and performs one vector erase,
+avoiding quadratic copying for large coefficients. The scalar suite adds four
+64 KiB sign-padding examples without imposing a timing-based assertion.

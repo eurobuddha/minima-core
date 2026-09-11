@@ -24,7 +24,7 @@ A byte sequence that also supports unsigned numeric interpretation. Its byte ide
 
 ## How the translation is approached
 
-C++ owns a vector and exposes const byte access, so it does not reproduce Java’s externally mutable array alias/cache behavior. Numeric comparison skips leading zero bytes rather than constructing BigInteger. OS randomness comes from /dev/urandom on the current POSIX target. Native SHA-256 and SHA3-256 helpers are extra implementation support; they are not methods of this Java class.
+C++ owns a vector and exposes const byte access, so it does not reproduce Java’s externally mutable array alias API. It now retains the lazy BigInteger cache across in-place reads; comparison and shifts use that numeric view. OS randomness comes from /dev/urandom on the current POSIX target. Native SHA-256 and SHA3-256 helpers are extra implementation support; they are not methods of this Java class.
 
 ## What the tests tell us
 
@@ -66,3 +66,17 @@ section. That property lets restore expose the same partial state as Java.
 Negative and oversized frame lengths and truncations at every restore section
 exercise this path. Mutable Java byte-array aliases and convenience APIs listed
 above remain separate parity gaps.
+
+## Scalar Streamable integration
+
+The native class now implements Streamable. It validates the source length checks,
+allocates zero-filled replacement storage, copies available bytes, and throws EOF
+if the declared payload remains incomplete. Reads keep the old allocation alive
+until they finish, so input may safely refer to the object's own prior bytes.
+The source's lazy numeric cache survives byte replacement. Native comparisons and
+shifts now use that cache; atomic cache access and explicit copy/move operations
+preserve safe read-only sharing. The byte vector still does not expose Java's full
+mutable-array reference API. Static decoders retain their existing bounded path;
+allocation-failure timing and arbitrary stream backends remain open.
+
+See the [scalar interface lab](../../../../../../new-tests/streamable-scalars.md) for the test logic. Both expanded interface suites pass 2,095 comparisons and 12,220 assertions across 14 types with matching transcripts and empty native stderr. All nine affected regressions pass in both builds. Full class parity remains unverified.

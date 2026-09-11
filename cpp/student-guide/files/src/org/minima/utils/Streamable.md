@@ -58,13 +58,13 @@ showing that the common interface preserves partial output and exceptions.
 Successful file write/append/load, MiniData conversion, single/pair hashes and
 network-message construction use the actual generic helpers. Independent byte
 concatenation and SHA3 calculations check their outputs. Both complete builds
-pass. Each expanded interface suite passes 1,299 comparisons and 6,290 assertions with
-matching transcripts and empty native stderr; all six affected regressions pass.
+pass. Each expanded interface suite passes 2,095 comparisons and 12,220 assertions with
+matching transcripts and empty native stderr; all nine affected regressions pass.
 
 ## Remaining work
 
 The pinned source declares 44 explicit implementing classes, including the nested
-MMRProofChunk. Eleven are integrated; 33 still need native interface adoption and
+MMRProofChunk. Fourteen are integrated; 30 still need native interface adoption and
 behavior review. Inherited subclasses also require validation when their bases
 join the interface. The commented P2PSwapLink sketch is not an active implementer.
 
@@ -78,3 +78,7 @@ reveal that difference after a truncated input?
 
 Pinned Java SHA-256: `c88b27270aec6207289dab7fabb149904ce0e2d286e1cf3356a066e046c4a933`.
 [Mapping](../../../../../../source-map.json) · [Limitations](../../../../../../REVIEW.md).
+
+The [scalar follow-up](../../../../../../student-guide/new-tests/streamable-scalars.md)
+adds MiniData, MiniNumber and MiniString, including zero-filled partial payloads,
+retained numeric cache, UTF-8 replacement and signed coefficient normalization.

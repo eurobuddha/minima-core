@@ -127,13 +127,7 @@ MiniData MiniData::getRandomData(int len) {
     return MiniData(out);
 }
 
-bool MiniData::isLess(const MiniData& o) const {
-    auto first = std::find_if(m_bytes.begin(), m_bytes.end(), [](uint8_t b) { return b != 0; });
-    auto other = std::find_if(o.m_bytes.begin(), o.m_bytes.end(), [](uint8_t b) { return b != 0; });
-    auto length = m_bytes.end() - first, otherLength = o.m_bytes.end() - other;
-    if (length != otherLength) return length < otherLength;
-    return std::lexicographical_compare(first, m_bytes.end(), other, o.m_bytes.end());
-}
+bool MiniData::isLess(const MiniData& o) const {return getDataValue()<o.getDataValue();}
 
 std::string MiniData::to0xString() const { return toHexString(true); }
 std::string MiniData::toHexString(bool prefix) const {
@@ -151,14 +145,13 @@ MiniData MiniData::sha2() const {
     return MiniData(keccak_impl::sha2_256(m_bytes.data(),m_bytes.size()));
 }
 
-std::vector<uint8_t> MiniData::serialise() const {
+void MiniData::writeDataStream(std::vector<uint8_t>& out) const {
     uint32_t len=(uint32_t)m_bytes.size();
-    std::vector<uint8_t> out;
     out.push_back((len>>24)&0xFF); out.push_back((len>>16)&0xFF);
     out.push_back((len>> 8)&0xFF); out.push_back( len     &0xFF);
     out.insert(out.end(),m_bytes.begin(),m_bytes.end());
-    return out;
 }
+std::vector<uint8_t> MiniData::serialise() const {return Streamable::serialise();}
 MiniData MiniData::deserialise(std::span<const uint8_t> data, size_t& offset) {return deserialise(data,offset,-1);}
 namespace {
 int32_t checkedDataLength(std::span<const uint8_t> data,size_t& offset,int expectedSize){
@@ -167,6 +160,26 @@ int32_t checkedDataLength(std::span<const uint8_t> data,size_t& offset,int expec
     if(expectedSize!=-1&&len!=expectedSize)throw wire::IOException("Read Error : MiniData length not correct as specified "+std::to_string(expectedSize));
     if(len<0)throw JavaNegativeArraySizeException(std::to_string(len));return len;
 }
+}
+void MiniData::readPayload(std::span<const uint8_t> data,size_t& offset,size_t length) {
+    auto replacement=std::vector<uint8_t>(length,0);
+    // The input may refer to our previous byte array; keep that allocation alive.
+    auto previous=std::move(m_bytes);
+    m_bytes=std::move(replacement);
+    if(offset>data.size())throw wire::EOFException("Invalid stream position");
+    const auto available=std::min(length,data.size()-offset);
+    std::copy_n(data.begin()+offset,available,m_bytes.begin());offset+=available;
+    if(available<length)throw wire::EOFException("Truncated payload");
+}
+void MiniData::readDataStream(std::span<const uint8_t> data,size_t& offset){readDataStream(data,offset,-1);}
+void MiniData::readDataStream(std::span<const uint8_t> data,size_t& offset,int expectedSize){
+    auto len=checkedDataLength(data,offset,expectedSize);readPayload(data,offset,size_t(len));
+}
+void MiniData::readHashFromStream(std::span<const uint8_t> data,size_t& offset){
+    auto len=std::bit_cast<int32_t>(wire::integer(data,offset));
+    if(len>MINIMA_MAX_HASH_LENGTH)throw wire::IOException("Read Error : HASH Length greater than "+std::to_string(MINIMA_MAX_HASH_LENGTH)+"! "+std::to_string(len));
+    if(len<0)throw wire::IOException("Read Error : HASH Length less than 0! "+std::to_string(len));
+    readPayload(data,offset,size_t(len));
 }
 MiniData MiniData::deserialise(std::span<const uint8_t> data, size_t& offset, int expectedSize) {
     auto len=checkedDataLength(data,offset,expectedSize);
@@ -199,7 +212,15 @@ MiniData::MiniData(const BigInt& value) {
     if(value.isNegative()) throw std::invalid_argument("MiniData value must be a postitive BigInteger");
     m_bytes=value.toJavaBytes();if(m_bytes.size()>1 && m_bytes.front()==0) m_bytes.erase(m_bytes.begin());
 }
-BigInt MiniData::getDataValue() const {return BigInt::fromMagnitudeBytes(m_bytes);}
+MiniData::MiniData(const MiniData& other):m_bytes(other.m_bytes),mDataValue(std::atomic_load(&other.mDataValue)){}
+MiniData::MiniData(MiniData&& other) noexcept:m_bytes(std::move(other.m_bytes)),mDataValue(std::atomic_load(&other.mDataValue)){}
+MiniData& MiniData::operator=(const MiniData& other){if(this!=&other){m_bytes=other.m_bytes;std::atomic_store(&mDataValue,std::atomic_load(&other.mDataValue));}return *this;}
+MiniData& MiniData::operator=(MiniData&& other) noexcept{if(this!=&other){m_bytes=std::move(other.m_bytes);std::atomic_store(&mDataValue,std::atomic_load(&other.mDataValue));}return *this;}
+BigInt MiniData::getDataValue() const {
+    auto value=std::atomic_load(&mDataValue);
+    if(!value){value=std::make_shared<const BigInt>(BigInt::fromMagnitudeBytes(m_bytes));std::atomic_store(&mDataValue,value);}
+    return *value;
+}
 namespace {
 MiniData shiftMagnitude(const std::vector<uint8_t>& bytes,int64_t bits) {
     auto first=std::find_if(bytes.begin(),bytes.end(),[](uint8_t b){return b!=0;});
@@ -218,6 +239,6 @@ MiniData shiftMagnitude(const std::vector<uint8_t>& bytes,int64_t bits) {
     if(nonzero==out.end()) return MiniData(std::vector<uint8_t>{0});out.erase(out.begin(),nonzero);return MiniData(std::move(out));
 }
 }
-MiniData MiniData::shiftl(int bits) const {return shiftMagnitude(m_bytes,int64_t(bits));}
-MiniData MiniData::shiftr(int bits) const {return shiftMagnitude(m_bytes,-int64_t(bits));}
+MiniData MiniData::shiftl(int bits) const {return shiftMagnitude(MiniData(getDataValue()).bytes(),int64_t(bits));}
+MiniData MiniData::shiftr(int bits) const {return shiftMagnitude(MiniData(getDataValue()).bytes(),-int64_t(bits));}
 }

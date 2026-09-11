@@ -53,11 +53,13 @@ BigInt::BigInt(int64_t v) {
 BigInt BigInt::fromJavaBytes(const std::vector<uint8_t>& b) {
     BigInt r; r.bytes = b;
     if (r.bytes.empty()) r.bytes = {0x00};
+    r.normalise();
     return r;
 }
 BigInt BigInt::fromJavaBytes(const uint8_t* b, int len) {
     BigInt r; r.bytes.assign(b, b + len);
     if (r.bytes.empty()) r.bytes = {0x00};
+    r.normalise();
     return r;
 }
 BigInt BigInt::fromMagnitudeBytes(const std::vector<uint8_t>& bytes) {
@@ -97,14 +99,14 @@ bool BigInt::isZero() const {
 }
 
 void BigInt::normalise() {
-    while (bytes.size() > 1) {
-        bool topZero = (bytes[0] == 0x00);
-        bool topFF   = (bytes[0] == 0xFF);
-        bool nextNeg = (bytes[1] & 0x80) != 0;
-        if      (topZero && !nextNeg) bytes.erase(bytes.begin());
-        else if (topFF   &&  nextNeg) bytes.erase(bytes.begin());
+    size_t first=0;
+    while(first+1<bytes.size()) {
+        const bool nextNegative=(bytes[first+1]&0x80)!=0;
+        if((bytes[first]==0x00&&!nextNegative)||(bytes[first]==0xFF&&nextNegative))++first;
         else break;
     }
+    // One erase keeps normalization linear even for large wire coefficients.
+    if(first)bytes.erase(bytes.begin(),bytes.begin()+first);
 }
 
 std::vector<uint8_t> BigInt::magnitude() const {
@@ -635,15 +637,15 @@ std::string MiniNumber::toString() const {
     return (neg ? "-" : "") + digits.substr(0, intPart) + "." + digits.substr(intPart);
 }
 
-std::vector<uint8_t> MiniNumber::serialise() const {
+void MiniNumber::writeDataStream(std::vector<uint8_t>& out) const {
     const auto& ub = m_unscaled.toJavaBytes();
     if (ub.size() > 32) throw std::runtime_error("MiniNumber: unscaled too large");
-    std::vector<uint8_t> out;
-    out.push_back((uint8_t)(int8_t)m_scale);
+    out.push_back((uint8_t)m_scale);
     out.push_back((uint8_t)ub.size());
     out.insert(out.end(), ub.begin(), ub.end());
-    return out;
 }
+std::vector<uint8_t> MiniNumber::serialise() const {return Streamable::serialise();}
+void MiniNumber::readDataStream(std::span<const uint8_t> data,size_t& offset){auto value=deserialise(data,offset);m_unscaled=std::move(value.m_unscaled);m_scale=value.m_scale;}
 
 MiniNumber MiniNumber::deserialise(std::span<const uint8_t> data, size_t& offset) {
     auto scale=std::bit_cast<int8_t>(wire::byte(data,offset));

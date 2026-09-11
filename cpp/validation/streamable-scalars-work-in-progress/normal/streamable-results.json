@@ -1,0 +1,233 @@
+{
+  "passed": true,
+  "cases": 2095,
+  "planned_cases": 2095,
+  "independent_assertions": 12220,
+  "seconds": 2.718,
+  "transcript_sha256": "4343ef558254443b55292ca15effa29ebb2a4ac322dfda99bd684a212953e63e",
+  "failures": [],
+  "explicit_source_implementations": [
+    {
+      "java": "src/org/minima/database/cascade/Cascade.java",
+      "type": "Cascade",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/cascade/CascadeNode.java",
+      "type": "CascadeNode",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/txpowdb/sql/TxPoWList.java",
+      "type": "TxPoWList",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/txpowtree/TxPoWTreeNode.java",
+      "type": "TxPoWTreeNode",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/txpowtree/TxPowTree.java",
+      "type": "TxPowTree",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/userprefs/txndb/TxnDB.java",
+      "type": "TxnDB",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/database/userprefs/txndb/TxnRow.java",
+      "type": "TxnRow",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Address.java",
+      "type": "Address",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Coin.java",
+      "type": "Coin",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/CoinProof.java",
+      "type": "CoinProof",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Greeting.java",
+      "type": "Greeting",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/IBD.java",
+      "type": "IBD",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Magic.java",
+      "type": "Magic",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Pulse.java",
+      "type": "Pulse",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/ScriptProof.java",
+      "type": "ScriptProof",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/StateVariable.java",
+      "type": "StateVariable",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Token.java",
+      "type": "Token",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Transaction.java",
+      "type": "Transaction",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/TxBlock.java",
+      "type": "TxBlock",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/TxBody.java",
+      "type": "TxBody",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/TxHeader.java",
+      "type": "TxHeader",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/TxPoW.java",
+      "type": "TxPoW",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/Witness.java",
+      "type": "Witness",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniByte.java",
+      "type": "MiniByte",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniData.java",
+      "type": "MiniData",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniNumber.java",
+      "type": "MiniNumber",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniString.java",
+      "type": "MiniString",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/keys/Signature.java",
+      "type": "Signature",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/keys/SignatureProof.java",
+      "type": "SignatureProof",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMR.java",
+      "type": "MMR",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMRData.java",
+      "type": "MMRData",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMREntry.java",
+      "type": "MMREntry",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMREntryNumber.java",
+      "type": "MMREntryNumber",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMRProof.java",
+      "type": "MMRProof",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMRProof.java",
+      "type": "MMRProofChunk",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MegaMMR.java",
+      "type": "MegaMMR",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/system/commands/backup/mmrsync/MegaMMRBackup.java",
+      "type": "MegaMMRBackup",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/system/commands/backup/mmrsync/MegaMMRIBD.java",
+      "type": "MegaMMRIBD",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/system/commands/backup/mmrsync/MegaMMRSyncData.java",
+      "type": "MegaMMRSyncData",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/utils/JsonDB.java",
+      "type": "JsonDB",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/utils/encrypt/CryptoPackage.java",
+      "type": "CryptoPackage",
+      "native_interface_adopted": false
+    },
+    {
+      "java": "src/org/minima/utils/sphincs/FORS/FORSSignature.java",
+      "type": "FORSSignature",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/utils/sphincs/HORST/HORSTSignature.java",
+      "type": "HORSTSignature",
+      "native_interface_adopted": true
+    },
+    {
+      "java": "src/org/minima/utils/sphincs/SPHINCSSignature.java",
+      "type": "SPHINCSSignature",
+      "native_interface_adopted": true
+    }
+  ],
+  "adopted_types": 14,
+  "scope": "Actual Java/C++ common Streamable references: MiniByte, MMRProof, HORSTSignature, FORSSignature, SPHINCSSignature, MMRData, MMREntryNumber, MMREntry, MMRProofChunk, SignatureProof, Signature, MiniData, MiniNumber and MiniString. Prefix writes, every small-vector read truncation, offset/trailing bytes and partial reserialization, synthetic failing implementation, actual MiniFile in-place load/write/append, MiniData conversion, Crypto single/pair hashing and NIO message construction. Exception classes compared; diagnostic prose excluded. Native complete stderr empty. Includes per-field MMR/signature readers, explicit flags, retained lists, scalar in-place assignment timing, MiniData zero-filled partial payloads and retained numeric cache with comparisons/shifts. Prior eleven-type coverage retained. Remaining source implementers, arbitrary Java stream backends, allocation failures, concurrency and complete node/API parity remain unfinished."
+}

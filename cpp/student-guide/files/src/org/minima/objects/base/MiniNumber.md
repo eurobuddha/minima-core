@@ -69,3 +69,19 @@ also avoids expanding a huge negative scale into an exponent-sized allocation.
 The String constructor retains its distinct representation. Twenty-four direct
 probes compare the two routes, signs, fractional trailing zeros and precision
 boundaries. The original balance failure is preserved as a baseline report.
+
+## Scalar Streamable integration
+
+The native class now implements Streamable. Its append writer uses the existing
+coefficient/scale encoding; its in-place reader calls the existing complete decoder
+before replacing the stored pair. An invalid or truncated encoding therefore
+leaves the previous number intact. Source wire reads apply the 64-digit math
+context without constructor range checks. The new fixtures include extreme signed
+scales, 32-byte coefficients and empty/invalid lengths through base references.
+
+See the [scalar interface lab](../../../../../../new-tests/streamable-scalars.md) for the test logic. Both expanded interface suites pass 2,095 comparisons and 12,220 assertions across 14 types with matching transcripts and empty native stderr. All nine affected regressions pass in both builds. Full class parity remains unverified.
+
+The scalar suite exposed redundant sign bytes in BigInt byte construction. Both
+byte factories now call the existing normalise method, so number serialization
+uses the same minimal signed coefficient as Java. The same fix applies to
+MMREntryNumber; explicit sign-padding tests cover both callers.

@@ -1,0 +1,25 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+      Start   1: MiniByteTests
+ 1/10 Test   #1: MiniByteTests ....................   Passed    0.42 sec
+      Start   2: malformed_streams
+ 2/10 Test   #2: malformed_streams ................   Passed    0.32 sec
+      Start   4: java_differential
+ 3/10 Test   #4: java_differential ................   Passed    2.15 sec
+      Start   5: object_differential
+ 4/10 Test   #5: object_differential ..............   Passed   27.59 sec
+      Start  16: kissvm_differential
+ 5/10 Test  #16: kissvm_differential ..............   Passed    4.65 sec
+      Start  31: utility_differential
+ 6/10 Test  #31: utility_differential .............   Passed    2.79 sec
+      Start 149: coin_streams_differential
+ 7/10 Test #149: coin_streams_differential ........   Passed   22.92 sec
+      Start 150: MiniStringTests
+ 8/10 Test #150: MiniStringTests ..................   Passed    0.26 sec
+      Start 151: ministring_original_tests
+ 9/10 Test #151: ministring_original_tests ........   Passed    1.61 sec
+      Start 261: streamable_differential
+10/10 Test #261: streamable_differential ..........   Passed    2.78 sec
+
+100% tests passed, 0 tests failed out of 10
+
+Total Test time (real) =  65.49 sec

@@ -1,4 +1,5 @@
 #pragma once
+#include "org/minima/utils/Streamable.hpp"
 /**
  * MiniNumber — Java-compatible BigDecimal.
  *
@@ -78,7 +79,7 @@ private:
 // ===========================================================================
 // MiniNumber
 // ===========================================================================
-class MiniNumber {
+class MiniNumber:public Streamable {
 public:
     static constexpr int MAX_DIGITS         = 64;
     static constexpr int MAX_DECIMAL_PLACES = MAX_DIGITS - 20; // 44
@@ -166,6 +167,8 @@ public:
     std::vector<uint8_t> toBytes() const;  // big-endian bytes of unscaled value
     std::string toString()    const;
 
+    void writeDataStream(std::vector<uint8_t>& output) const override;
+    void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     std::vector<uint8_t> serialise() const;
     static MiniNumber deserialise(std::span<const uint8_t> data, size_t& offset);
     static MiniNumber deserialise(const std::vector<uint8_t>& data, size_t& offset) {

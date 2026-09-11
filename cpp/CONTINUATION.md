@@ -1,3 +1,66 @@
+# Latest checkpoint — scalar Streamable integration and signed normalization
+
+Base HEAD 0f9221cbd63673fea09d9bafe7d626aa4720c25e. Branch/project/executable
+MinimaCoreC++. Goal ACTIVE, not complete. 411 counterparts = 364 production +
+47 original tests; 46 absent = 5 production + 41 tests. All present remain
+implemented_partial; all 457 parity not_verified. 261 default CTest entries;
+full suite NOT run. Historical checkpoint notes follow below.
+
+MiniData, MiniNumber and MiniString now implement Streamable: 14 of 44 explicit
+source implementers adopted, 30 remain. Existing codecs/UTF8Spans/ByteIO reused.
+MiniData validates length, replaces its array with zeroed bytes, copies available
+payload, and preserves partial bytes on EOF. Expected-size and hash read variants
+follow source rejection ordering. The old allocation stays alive while reading,
+including when the supplied span refers to the object's own old bytes.
+Its lazy numeric cache survives reads like Java. isLess/isMore/shifts use the cache.
+Atomic shared-pointer load/store and explicit copy/move keep read-only cache access
+safe; this does not certify concurrent mutation or Java mutable-array aliases.
+MiniNumber and MiniString replace their value only after complete decoding.
+MiniString writer delegates to MiniData. Numeric wire reads retain existing
+64-digit rounding without constructor limits. No new library or H2 provider change.
+
+New tests exposed redundant signed BigInteger bytes being retained by native
+factories. Both BigInt::fromJavaBytes overloads now reuse existing normalise().
+MiniNumber and MMREntryNumber regressions cover redundant/required positive and
+negative sign bytes. Original failed comparison saved in normalization-discovery.json.
+Pre-fix sanitizer run also reproduced the discrepancy; its log is preserved.
+
+Both complete builds PASS. Both final interface suites PASS 2,095 comparisons /
+12,220 assertions, identical transcript 4343ef558254443b55292ca15effa29ebb2a4ac322dfda99bd684a212953e63e.
+Fourteen-type base references, every small-payload truncation, offsets/trailing
+bytes, partial state/output, data cache/shifts/comparisons, expected-size/hash
+rejection order, self-backed input, malformed UTF-8 and extreme signed numbers.
+Exception classes compared; diagnostic prose excluded. Native complete stderr empty.
+All nine affected regressions PASS both builds: MiniByteTests, malformed_streams,
+java_differential, object_differential, kissvm_differential, utility_differential,
+coin_streams_differential, MiniStringTests, ministring_original_tests.
+Ten-suite totals normal 65.49s, sanitizer 176.9s. Heavy SPHINCS signing not rerun.
+All handles terminal: 23100/32203 builds0; 13919/45559 pre-fix tests8 (superseded);
+78808/76270 normalization builds/tests0; 74083/36442 final linear-normalization builds/tests0. No active jobs or MySQL containers. Old fixtures stale.
+
+Evidence: validation/streamable-scalars-work-in-progress. New student lab:
+student-guide/new-tests/streamable-scalars.md. Scalar/MMREntryNumber/interface
+lessons updated. Sibling types/MiniString.hpp/.cpp and MiniData.hpp, data/number
+codec sections inspected: unchecked pointer reads/malformed behavior differ.
+Current source-pinned codecs were reused; existing normalise fixes both callers.
+
+Next REQUIRED: remaining 30 Streamable implementations, then inherited subclasses.
+While tests ran, pinned and current StateVariable were inspected in full, along
+with current Address.hpp. StateVariable source writer emits only port/type for an
+unknown type; current native writer throws. Preserve that behavior after partial
+invalid reads when adding its in-place reader. No StateVariable edits yet; complete
+its reuse/caller/test review before editing. Full scalar API gaps include mutable
+MINIMA_CHARSET/limits, nullable arguments, Java array aliases and allocation timing.
+Five absent production counterparts still include inactive P2PSwapLink and JNI
+wrappers/benchmark; JNI implementation source remains missing, do not invent it.
+Another 41 original test counterparts remain absent. Continue full port after local
+commit and verified recovery bundle; do not equate adopted/mapped counts with parity.
+
+Review changed normalise to one prefix scan/erase, avoiding quadratic copying.
+Four 64 KiB signed coefficients pass in both interface suites.
+
+---
+
 # Latest checkpoint — MMR and signature Streamable integration
 
 Base HEAD 1c3d2d6824c1682e8f0465a44c7ffa1bcdc98b9e. Branch/project/executable

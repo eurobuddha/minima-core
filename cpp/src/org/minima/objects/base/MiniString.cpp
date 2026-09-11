@@ -28,20 +28,9 @@ MiniString MiniString::subset(size_t start, size_t len) const {
     return MiniString(m_value.substr(start, len));
 }
 
-std::vector<uint8_t> MiniString::serialise() const {
-    // Java: MiniData(getData()).writeDataStream(out)
-    // MiniData.writeDataStream: [4-byte BE int: length][raw bytes]
-    if (m_value.size() > INT32_MAX)
-        throw std::runtime_error("MiniString too long");
-    uint32_t len = static_cast<uint32_t>(m_value.size());
-    std::vector<uint8_t> out;
-    out.push_back((len >> 24) & 0xFF);
-    out.push_back((len >> 16) & 0xFF);
-    out.push_back((len >>  8) & 0xFF);
-    out.push_back( len        & 0xFF);
-    for (char c : m_value) out.push_back(static_cast<uint8_t>(c));
-    return out;
-}
+void MiniString::writeDataStream(std::vector<uint8_t>& output) const {MiniData(getData()).writeDataStream(output);}
+std::vector<uint8_t> MiniString::serialise() const {return Streamable::serialise();}
+void MiniString::readDataStream(std::span<const uint8_t> data,size_t& offset){auto value=deserialise(data,offset);m_value=std::move(value.m_value);}
 
 MiniString MiniString::deserialise(std::span<const uint8_t> data, size_t& offset) {return MiniString(MiniData::deserialise(data,offset).bytes());}
 

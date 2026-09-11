@@ -41,3 +41,7 @@ The [MMR/signature follow-up](streamable-mmr-signatures.md) extends this same su
 to 11 types, passing 1,299 comparisons and 6,290 assertions per build. The five-type
 results above describe the initial checkpoint. Another 33 explicit source
 implementers still need integration.
+
+The [scalar follow-up](streamable-scalars.md) brings adoption to 14 of 44 explicit
+implementers. Both expanded suites pass 2,095 comparisons and 12,220 assertions;
+the earlier results above are historical checkpoints. Thirty implementers remain.

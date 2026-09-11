@@ -1,0 +1,30 @@
+{
+  "initial_cases": 1935,
+  "failures": [
+    {
+      "case": 1826,
+      "request": {
+        "kind": "number",
+        "op": "read",
+        "initial": "0x000107",
+        "wire": "0x0020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+        "offset": 0,
+        "scalarExtra": true
+      },
+      "java": {
+        "offset": 34,
+        "state": {
+          "appended": "0xAA550001FF"
+        }
+      },
+      "cpp": {
+        "offset": 34,
+        "state": {
+          "appended": "0xAA550020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+        }
+      }
+    }
+  ],
+  "cause": "BigInt::fromJavaBytes did not call the existing normalise method; redundant sign bytes leaked into MiniNumber wire output.",
+  "fix": "Both BigInt byte-construction overloads now reuse normalise, covering MiniNumber and MMREntryNumber callers."
+}
