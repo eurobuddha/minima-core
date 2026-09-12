@@ -1,0 +1,706 @@
+[  0%] Built target minima_inactive_source
+[ 43%] Built target minima_file_port
+[ 43%] Building CXX object CMakeFiles/malformed_streams.dir/tests/malformed_streams.cpp.o
+[ 43%] Linking CXX executable MiniByteTests
+[ 43%] Building CXX object CMakeFiles/minima_primitives.dir/support/primitives.cpp.o
+[ 43%] Building CXX object CMakeFiles/minima_objects.dir/support/objects.cpp.o
+[ 43%] Built target MiniByteTests
+[ 43%] Building CXX object CMakeFiles/TransactionTests.dir/test/org/minima/objects/TransactionTests.cpp.o
+[ 43%] Linking CXX executable malformed_streams
+[ 43%] Linking CXX executable minima_primitives
+[ 43%] Built target malformed_streams
+[ 44%] Building CXX object CMakeFiles/TxHeaderTests.dir/test/org/minima/objects/TxHeaderTests.cpp.o
+[ 44%] Built target minima_primitives
+[ 44%] Building CXX object CMakeFiles/minima_json.dir/support/json.cpp.o
+[ 44%] Linking CXX executable TransactionTests
+[ 44%] Built target TransactionTests
+[ 44%] Building CXX object CMakeFiles/minima_kiss_values.dir/support/kiss.cpp.o
+[ 44%] Linking CXX executable TxHeaderTests
+[ 44%] Linking CXX executable minima_objects
+[ 44%] Built target TxHeaderTests
+[ 44%] Linking CXX executable ValueTests
+[ 44%] Built target minima_objects
+[ 44%] Linking CXX executable minima_json
+[ 44%] Built target ValueTests
+[ 45%] Linking CXX executable BooleanValueTests
+[ 45%] Linking CXX executable ScriptValueTests
+[ 45%] Built target minima_json
+[ 45%] Built target BooleanValueTests
+[ 45%] Built target ScriptValueTests
+[ 45%] Building CXX object CMakeFiles/HexValueTests.dir/test/org/minima/tests/kissvm/values/HexValueTests.cpp.o
+[ 45%] Linking CXX executable NumberValueTests
+[ 46%] Linking CXX executable LexicalTokenizerTests
+[ 46%] Linking CXX executable minima_kiss_values
+[ 46%] Built target LexicalTokenizerTests
+[ 46%] Built target NumberValueTests
+[ 46%] Building CXX object CMakeFiles/minima_kissvm.dir/support/kissvm.cpp.o
+[ 46%] Building CXX object CMakeFiles/ConstantExpressionTests.dir/test/org/minima/tests/kissvm/expressions/ConstantExpressionTests.cpp.o
+[ 46%] Built target minima_kiss_values
+[ 46%] Building CXX object CMakeFiles/VariableExpressionTests.dir/test/org/minima/tests/kissvm/expressions/VariableExpressionTests.cpp.o
+[ 46%] Linking CXX executable HexValueTests
+[ 46%] Built target HexValueTests
+[ 46%] Building CXX object CMakeFiles/GlobalExpressionTests.dir/test/org/minima/tests/kissvm/expressions/GlobalExpressionTests.cpp.o
+[ 46%] Linking CXX executable ConstantExpressionTests
+[ 46%] Linking CXX executable VariableExpressionTests
+[ 46%] Built target ConstantExpressionTests
+[ 46%] Linking CXX executable minima_kissvm
+[ 46%] Building CXX object CMakeFiles/FunctionExpressionTests.dir/test/org/minima/tests/kissvm/expressions/FunctionExpressionTests.cpp.o
+[ 46%] Built target VariableExpressionTests
+[ 46%] Building CXX object CMakeFiles/ContractTests.dir/test/org/minima/tests/kissvm/ContractTests.cpp.o
+[ 46%] Built target minima_kissvm
+[ 46%] Linking CXX executable GlobalExpressionTests
+[ 46%] Building CXX object CMakeFiles/StatementBlockTests.dir/test/org/minima/tests/kissvm/statements/StatementBlockTests.cpp.o
+[ 46%] Built target GlobalExpressionTests
+[ 46%] Building CXX object CMakeFiles/minima_peer_messages.dir/support/peer_messages.cpp.o
+[ 46%] Linking CXX executable FunctionExpressionTests
+[ 46%] Linking CXX executable ContractTests
+[ 46%] Built target FunctionExpressionTests
+[ 46%] Built target ContractTests
+[ 46%] Building CXX object CMakeFiles/txn_lock_workers.dir/support/txn_lock_workers.cpp.o
+[ 46%] Building CXX object CMakeFiles/minima_small_utilities.dir/support/small_utilities.cpp.o
+[ 47%] Linking CXX executable StatementBlockTests
+[ 47%] Built target StatementBlockTests
+[ 47%] Building CXX object CMakeFiles/ASSERTstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/ASSERTstatementTests.cpp.o
+[ 48%] Linking CXX executable minima_peer_messages
+[ 48%] Built target minima_peer_messages
+[ 48%] Building CXX object CMakeFiles/EXECstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/EXECstatementTests.cpp.o
+[ 48%] Linking CXX executable txn_lock_workers
+[ 48%] Built target txn_lock_workers
+[ 48%] Linking CXX executable minima_small_utilities
+[ 48%] Building CXX object CMakeFiles/minima_cascade.dir/support/cascade.cpp.o
+[ 48%] Built target minima_small_utilities
+[ 48%] Building CXX object CMakeFiles/TxPowTreeTest.dir/test/org/minima/database/txpowtree/TxPowTreeTest.cpp.o
+[ 48%] Linking CXX executable ASSERTstatementTests
+[ 48%] Built target ASSERTstatementTests
+[ 48%] Building CXX object CMakeFiles/minima_tree.dir/support/tree.cpp.o
+[ 49%] Linking CXX executable EXECstatementTests
+[ 49%] Built target EXECstatementTests
+[ 49%] Building CXX object CMakeFiles/minima_utility.dir/support/utility.cpp.o
+[ 49%] Linking CXX executable minima_cascade
+[ 49%] Built target minima_cascade
+[ 49%] Linking CXX executable TxPowTreeTest
+[ 49%] Building CXX object CMakeFiles/minima_aes_util.dir/support/aes_util.cpp.o
+[ 49%] Built target TxPowTreeTest
+[ 49%] Building CXX object CMakeFiles/minima_transaction_test.dir/support/transaction_test.cpp.o
+[ 49%] Linking CXX executable minima_tree
+[ 49%] Built target minima_tree
+[ 49%] Building CXX object CMakeFiles/minima_sphincs_utils.dir/support/sphincs_utils.cpp.o
+[ 49%] Linking CXX executable minima_utility
+[ 49%] Built target minima_utility
+[ 50%] Linking CXX executable minima_aes_util
+[ 51%] Building CXX object CMakeFiles/minima_sphincs.dir/support/sphincs.cpp.o
+[ 52%] Linking CXX executable minima_transaction_test
+[ 52%] Built target minima_aes_util
+[ 52%] Building CXX object CMakeFiles/minima_sphincs_signature.dir/support/sphincs_signature.cpp.o
+[ 52%] Built target minima_transaction_test
+[ 52%] Building CXX object CMakeFiles/minima_fors.dir/support/fors.cpp.o
+[ 52%] Linking CXX executable minima_sphincs
+[ 52%] Linking CXX executable minima_sphincs_utils
+[ 52%] Built target minima_sphincs_utils
+[ 52%] Built target minima_sphincs
+[ 52%] Building CXX object CMakeFiles/minima_horst.dir/support/horst.cpp.o
+[ 52%] Building CXX object CMakeFiles/minima_zip_extractor.dir/support/zip_extractor.cpp.o
+[ 52%] Linking CXX executable minima_sphincs_signature
+[ 52%] Built target minima_sphincs_signature
+[ 52%] Linking CXX executable minima_fors
+[ 52%] Building CXX object CMakeFiles/minima_consensus.dir/support/consensus.cpp.o
+[ 52%] Built target minima_fors
+[ 52%] Building CXX object CMakeFiles/RamDBTest.dir/test/org/minima/database/txpowdb/ram/RamDBTest.cpp.o
+[ 52%] Linking CXX executable minima_zip_extractor
+[ 52%] Linking CXX executable minima_horst
+[ 52%] Built target minima_zip_extractor
+[ 52%] Built target minima_horst
+[ 53%] Building CXX object CMakeFiles/minima_ram.dir/support/ram.cpp.o
+[ 53%] Linking CXX executable RamDBTest
+[ 53%] Building CXX object CMakeFiles/timed_checker_checks.dir/support/timed.cpp.o
+[ 53%] Built target RamDBTest
+[ 53%] Building CXX object CMakeFiles/minima_prefs.dir/support/prefs.cpp.o
+[ 53%] Linking CXX executable minima_consensus
+[ 53%] Built target minima_consensus
+[ 53%] Building CXX object CMakeFiles/minima_hashmap.dir/support/hashmap.cpp.o
+[ 53%] Linking CXX executable minima_ram
+[ 53%] Linking CXX executable minima_prefs
+[ 53%] Built target minima_ram
+[ 53%] Linking CXX executable timed_checker_checks
+[ 54%] Linking CXX executable minima_messages
+[ 54%] Built target minima_prefs
+[ 54%] Built target timed_checker_checks
+[ 54%] Linking CXX executable message_workers
+[ 54%] Built target minima_messages
+[ 54%] Linking CXX executable timer_reentrancy
+[ 54%] Building CXX object CMakeFiles/minima_txndb.dir/support/txndb.cpp.o
+[ 54%] Built target message_workers
+[ 54%] Building CXX object CMakeFiles/minima_archive_cache.dir/support/archive_cache.cpp.o
+[ 54%] Linking CXX executable minima_hashmap
+[ 54%] Built target timer_reentrancy
+[ 54%] Building CXX object CMakeFiles/minima_ibd.dir/support/ibd.cpp.o
+[ 54%] Built target minima_hashmap
+[ 54%] Building CXX object CMakeFiles/minima_mmrsync.dir/support/mmrsync.cpp.o
+[ 54%] Linking CXX executable minima_txndb
+[ 54%] Linking CXX executable minima_archive_cache
+[ 54%] Built target minima_archive_cache
+[ 54%] Built target minima_txndb
+[ 54%] Building CXX object CMakeFiles/minima_raw_archive.dir/support/raw_archive.cpp.o
+[ 54%] Building CXX object CMakeFiles/minima_sendpoll.dir/support/sendpoll.cpp.o
+[ 54%] Linking CXX executable minima_mmrsync
+[ 54%] Linking CXX executable minima_ibd
+[ 54%] Built target minima_mmrsync
+[ 54%] Linking CXX executable minima_wallet_rows
+[ 54%] Built target minima_ibd
+[ 55%] Building CXX object CMakeFiles/minima_bip39.dir/support/bip39.cpp.o
+[ 55%] Built target minima_wallet_rows
+[ 55%] Building CXX object CMakeFiles/minima_fast_bytes.dir/support/fast_bytes.cpp.o
+[ 55%] Linking CXX executable minima_raw_archive
+[ 55%] Linking CXX executable minima_sendpoll
+[ 55%] Built target minima_raw_archive
+[ 55%] Building CXX object CMakeFiles/minima_network_utilities.dir/support/network_utilities.cpp.o
+[ 55%] Built target minima_sendpoll
+[ 55%] Building CXX object CMakeFiles/minima_command.dir/support/command.cpp.o
+[ 55%] Linking CXX executable minima_bip39
+[ 56%] Linking CXX executable minima_fast_bytes
+[ 56%] Built target minima_bip39
+[ 56%] Built target minima_fast_bytes
+[ 56%] Building CXX object CMakeFiles/minima_command_runner.dir/support/command_runner.cpp.o
+[ 56%] Building CXX object CMakeFiles/minima_commands.dir/support/commands_cli.cpp.o
+[ 56%] Linking CXX executable minima_network_utilities
+[ 56%] Built target minima_network_utilities
+[ 57%] Linking CXX executable minima_command
+[ 57%] Building CXX object CMakeFiles/minima_transaction_commands.dir/support/transaction_commands.cpp.o
+[ 57%] Linking CXX executable minima_command_runner
+[ 57%] Built target minima_command
+[ 57%] Building CXX object CMakeFiles/minima_searcher.dir/support/searcher.cpp.o
+[ 57%] Built target minima_command_runner
+[ 57%] Linking CXX executable minima_commands
+[ 57%] Linking CXX executable InetSocketAddressIOTest
+[ 58%] Built target InetSocketAddressIOTest
+[ 59%] Linking CXX executable GreetingTest
+[ 59%] Built target minima_commands
+[ 59%] Building CXX object CMakeFiles/minima_peer_state.dir/support/peer_state.cpp.o
+[ 59%] Built target GreetingTest
+[ 59%] Building CXX object CMakeFiles/P2PDBTest.dir/test/org/minima/system/network/p2p/P2PDBTest.cpp.o
+[ 59%] Linking CXX executable minima_transaction_commands
+[ 59%] Built target minima_transaction_commands
+[ 59%] Building CXX object CMakeFiles/minima_nio_client.dir/support/nio_client.cpp.o
+[ 60%] Linking CXX executable minima_searcher
+[ 60%] Linking CXX executable P2PDBTest
+[ 60%] Built target minima_searcher
+[ 60%] Linking CXX executable minima_peer_state
+[ 60%] Building CXX object CMakeFiles/nio_loopback.dir/support/nio_loopback.cpp.o
+[ 60%] Built target P2PDBTest
+[ 60%] Building CXX object CMakeFiles/minima_nio_server.dir/support/nio_server.cpp.o
+[ 60%] Built target minima_peer_state
+[ 60%] Building CXX object CMakeFiles/nio_server_main.dir/support/nio_server_main.cpp.o
+[ 60%] Linking CXX executable nio_loopback
+[ 60%] Linking CXX executable nio_server_main
+[ 60%] Linking CXX executable minima_nio_server
+[ 60%] Built target nio_loopback
+[ 60%] Building CXX object CMakeFiles/utility_mains.dir/support/utility_mains.cpp.o
+[ 60%] Built target minima_nio_server
+[ 60%] Built target nio_server_main
+[ 61%] Linking CXX executable minima_nio_client
+[ 62%] Building CXX object CMakeFiles/object_mains.dir/support/object_mains.cpp.o
+[ 62%] Built target core_mains
+[ 62%] Building CXX object CMakeFiles/minima_p2p2_db.dir/support/p2p2_db.cpp.o
+[ 62%] Built target minima_nio_client
+[ 62%] Building CXX object CMakeFiles/minima_network_startup.dir/support/network_startup.cpp.o
+[ 62%] Linking CXX executable utility_mains
+[ 62%] Linking CXX executable object_mains
+[ 62%] Built target utility_mains
+[ 62%] Building CXX object CMakeFiles/minima_nio_manager_transport.dir/support/nio_manager_transport.cpp.o
+[ 62%] Built target object_mains
+[ 62%] Linking CXX executable minima_p2p2_db
+[ 62%] Linking CXX executable fixed_task_executor
+[ 62%] Built target minima_p2p2_db
+[ 62%] Built target fixed_task_executor
+[ 62%] Building CXX object CMakeFiles/executor_interrupt.dir/support/executor_interrupt.cpp.o
+[ 62%] Building CXX object CMakeFiles/nio_manager_loopback.dir/support/nio_manager_loopback.cpp.o
+[ 62%] Linking CXX executable minima_network_startup
+[ 62%] Built target minima_network_startup
+[ 62%] Linking CXX executable nio_connections
+[ 63%] Built target nio_connections
+[ 63%] Building CXX object CMakeFiles/minima_nio_manager_state.dir/support/nio_manager_state.cpp.o
+[ 63%] Linking CXX executable minima_nio_manager_transport
+[ 63%] Built target minima_nio_manager_transport
+[ 63%] Building CXX object CMakeFiles/minima_nio_message.dir/support/nio_message.cpp.o
+[ 63%] Linking CXX executable executor_interrupt
+[ 63%] Linking CXX executable nio_manager_loopback
+[ 63%] Built target executor_interrupt
+[ 63%] Building CXX object CMakeFiles/minima_p2p_functions.dir/support/p2p_functions.cpp.o
+[ 63%] Built target nio_manager_loopback
+[ 63%] Building CXX object CMakeFiles/peers_checker_native.dir/support/peers_checker_native.cpp.o
+[ 63%] Linking CXX executable minima_nio_manager_state
+[ 63%] Built target minima_nio_manager_state
+[ 63%] Building CXX object CMakeFiles/minima_peers_checker.dir/support/peers_checker.cpp.o
+[ 63%] Linking CXX executable peers_checker_native
+[ 63%] Linking CXX executable minima_nio_message
+[ 63%] Built target peers_checker_native
+[ 63%] Building CXX object CMakeFiles/p2p_manager_native.dir/support/p2p_manager_native.cpp.o
+[ 63%] Linking CXX executable minima_p2p_functions
+[ 63%] Built target minima_nio_message
+[ 63%] Building CXX object CMakeFiles/peer_state_concurrent.dir/support/peer_state_concurrent.cpp.o
+[ 63%] Built target minima_p2p_functions
+[ 63%] Building CXX object CMakeFiles/minima_p2p_manager.dir/support/p2p_manager.cpp.o
+[ 63%] Linking CXX executable minima_peers_checker
+[ 63%] Built target minima_peers_checker
+[ 64%] Building CXX object CMakeFiles/minima_p2p2_runtime.dir/support/p2p2_runtime.cpp.o
+[ 64%] Linking CXX executable p2p_manager_native
+[ 65%] Linking CXX executable peer_state_concurrent
+[ 65%] Built target p2p_manager_native
+[ 65%] Building CXX object CMakeFiles/p2p2_worker.dir/support/p2p2_worker.cpp.o
+[ 65%] Built target peer_state_concurrent
+[ 65%] Building CXX object CMakeFiles/minima_http_server.dir/support/http_server.cpp.o
+[ 65%] Linking CXX executable minima_p2p_manager
+[ 65%] Built target minima_p2p_manager
+[ 65%] Building CXX object CMakeFiles/network_manager_native.dir/support/network_manager_native.cpp.o
+[ 65%] Linking CXX executable minima_p2p2_runtime
+[ 65%] Linking CXX executable p2p2_worker
+[ 65%] Linking CXX executable minima_http_server
+[ 65%] Built target minima_p2p2_runtime
+[ 65%] Building CXX object CMakeFiles/minima_network_manager.dir/support/network_manager.cpp.o
+[ 65%] Built target p2p2_worker
+[ 66%] Building CXX object CMakeFiles/minima_sql_db.dir/support/sql_db.cpp.o
+[ 66%] Built target minima_http_server
+[ 66%] Building CXX object CMakeFiles/sql_db_concurrent.dir/support/sql_db_concurrent.cpp.o
+[ 66%] Linking CXX executable network_manager_native
+[ 66%] Built target network_manager_native
+[ 66%] Building CXX object CMakeFiles/minima_onchain_db.dir/support/onchain_db.cpp.o
+[ 66%] Linking CXX executable sql_db_concurrent
+[ 66%] Linking CXX executable minima_sql_db
+[ 66%] Built target sql_db_concurrent
+[ 66%] Building CXX object CMakeFiles/minima_txpow_sql_db.dir/support/txpow_sql_db.cpp.o
+[ 66%] Built target minima_sql_db
+[ 66%] Building CXX object CMakeFiles/minima_txpow_db.dir/support/txpow_db.cpp.o
+[ 66%] Linking CXX executable minima_network_manager
+[ 66%] Built target minima_network_manager
+[ 66%] Building CXX object CMakeFiles/minima_coin_db.dir/support/coin_db.cpp.o
+[ 66%] Linking CXX executable minima_onchain_db
+[ 66%] Built target minima_onchain_db
+[ 66%] Building CXX object CMakeFiles/minima_wallet.dir/support/wallet.cpp.o
+[ 66%] Linking CXX executable minima_txpow_sql_db
+[ 66%] Built target minima_txpow_sql_db
+[ 66%] Building CXX object CMakeFiles/minima_archive_manager.dir/support/archive_manager.cpp.o
+[ 66%] Linking CXX executable minima_txpow_db
+[ 66%] Built target minima_txpow_db
+[ 66%] Linking CXX executable minima_coin_db
+[ 67%] Building CXX object CMakeFiles/minima_db.dir/support/minima_db.cpp.o
+[ 67%] Built target minima_coin_db
+[ 67%] Linking CXX executable minima_db_lock
+[ 67%] Built target minima_db_lock
+[ 68%] Linking CXX executable minima_wallet
+[ 68%] Building CXX object CMakeFiles/minima_db_ownership.dir/support/minima_db_ownership.cpp.o
+[ 68%] Built target minima_wallet
+[ 68%] Building CXX object CMakeFiles/minima_txpow_miner.dir/support/txpow_miner.cpp.o
+[ 68%] Linking CXX executable minima_archive_manager
+[ 68%] Built target minima_archive_manager
+[ 68%] Building CXX object CMakeFiles/txpow_miner_worker.dir/support/txpow_miner_worker.cpp.o
+[ 68%] Linking CXX executable minima_db_ownership
+[ 68%] Built target minima_db_ownership
+[ 68%] Building CXX object CMakeFiles/txblock_ownership.dir/support/txblock_ownership.cpp.o
+[ 68%] Linking CXX executable minima_db
+[ 68%] Linking CXX executable minima_txpow_miner
+[ 68%] Built target minima_db
+[ 69%] Building CXX object CMakeFiles/minima_txpow_processor.dir/support/txpow_processor.cpp.o
+[ 69%] Built target minima_txpow_miner
+[ 69%] Building CXX object CMakeFiles/txpow_processor_worker.dir/support/txpow_processor_worker.cpp.o
+[ 69%] Linking CXX executable txpow_miner_worker
+[ 69%] Built target txpow_miner_worker
+[ 70%] Building CXX object CMakeFiles/minima_notify_manager.dir/support/notify_manager.cpp.o
+[ 70%] Linking CXX executable txblock_ownership
+[ 70%] Built target txblock_ownership
+[ 70%] Building CXX object CMakeFiles/notify_manager_worker.dir/support/notify_manager_worker.cpp.o
+[ 70%] Linking CXX executable minima_notify_manager
+[ 70%] Linking CXX executable minima_txpow_processor
+[ 71%] Linking CXX executable txpow_processor_worker
+[ 71%] Built target minima_notify_manager
+[ 71%] Built target minima_txpow_processor
+[ 71%] Linking CXX executable minima_rpc_client
+[ 71%] Built target txpow_processor_worker
+[ 71%] Building CXX object CMakeFiles/notify_http_worker.dir/support/notify_http_worker.cpp.o
+[ 72%] Building CXX object CMakeFiles/rpc_configuration_native.dir/support/rpc_configuration_native.cpp.o
+[ 72%] Built target minima_rpc_client
+[ 72%] Building CXX object CMakeFiles/minima_logger.dir/support/minima_logger.cpp.o
+[ 72%] Linking CXX executable notify_manager_worker
+[ 72%] Built target notify_manager_worker
+[ 72%] Building CXX object CMakeFiles/minima_logger_worker.dir/support/minima_logger_worker.cpp.o
+[ 72%] Linking CXX executable rpc_configuration_native
+[ 73%] Linking CXX executable minima_logger
+[ 73%] Linking CXX executable notify_http_worker
+[ 73%] Built target rpc_configuration_native
+[ 73%] Linking CXX executable minima-rpc
+[ 73%] Built target minima_logger
+[ 73%] Building CXX object CMakeFiles/minima_rpc_cli.dir/support/minima_rpc_cli.cpp.o
+[ 73%] Built target notify_http_worker
+[ 73%] Built target minima-rpc
+[ 73%] Linking CXX executable native_stack_trace
+[ 73%] Linking CXX executable minima_param_configurer
+[ 73%] Built target native_stack_trace
+[ 73%] Built target minima_param_configurer
+[ 73%] Linking CXX executable param_configurer_process
+[ 74%] Linking CXX executable ParamConfigurerTest
+[ 74%] Built target param_configurer_process
+[ 74%] Built target ParamConfigurerTest
+[ 74%] Building CXX object CMakeFiles/minima_uncaught.dir/support/minima_uncaught.cpp.o
+[ 74%] Building CXX object CMakeFiles/uncaught_workers.dir/support/uncaught_workers.cpp.o
+[ 74%] Linking CXX executable minima_logger_worker
+[ 74%] Built target minima_logger_worker
+[ 74%] Building CXX object CMakeFiles/native_thread_checks.dir/support/native_thread_checks.cpp.o
+[ 74%] Linking CXX executable minima_rpc_cli
+[ 74%] Built target minima_rpc_cli
+[ 74%] Building CXX object CMakeFiles/thread_interrupt.dir/support/thread_interrupt.cpp.o
+[ 74%] Linking CXX executable uncaught_workers
+[ 74%] Linking CXX executable minima_uncaught
+[ 74%] Built target minima_uncaught
+[ 74%] Built target uncaught_workers
+[ 74%] Linking CXX executable native_thread_checks
+[ 74%] Building CXX object CMakeFiles/runtime_sleep.dir/support/runtime_sleep.cpp.o
+[ 75%] Building CXX object CMakeFiles/http_server_errors.dir/support/http_server_errors.cpp.o
+[ 75%] Built target native_thread_checks
+[ 75%] Linking CXX executable executor_uncaught
+[ 75%] Built target executor_uncaught
+[ 75%] Building CXX object CMakeFiles/nio_server_errors.dir/support/nio_server_errors.cpp.o
+[ 75%] Linking CXX executable thread_interrupt
+[ 75%] Built target thread_interrupt
+[ 75%] Building CXX object CMakeFiles/nio_manager_errors.dir/support/nio_manager_errors.cpp.o
+[ 75%] Linking CXX executable http_server_errors
+[ 75%] Built target http_server_errors
+[ 75%] Building CXX object CMakeFiles/timed_checker_errors.dir/support/timed_checker_errors.cpp.o
+[ 76%] Linking CXX executable nio_server_errors
+[ 76%] Built target nio_server_errors
+[ 77%] Building CXX object CMakeFiles/checker_logs.dir/support/checker_logs.cpp.o
+[ 77%] Linking CXX executable runtime_sleep
+[ 77%] Linking CXX executable nio_manager_errors
+[ 77%] Built target runtime_sleep
+[ 78%] Linking CXX executable timed_checker_errors
+[ 78%] Linking CXX executable MinimaFunctionTests
+[ 78%] Built target nio_manager_errors
+[ 78%] Building CXX object CMakeFiles/ABSTests.dir/test/org/minima/tests/kissvm/functions/maths/ABSTests.cpp.o
+[ 78%] Built target timed_checker_errors
+[ 78%] Built target MinimaFunctionTests
+[ 78%] Building CXX object CMakeFiles/command_runner_errors.dir/support/command_runner_errors.cpp.o
+[ 78%] Building CXX object CMakeFiles/FLOORTests.dir/test/org/minima/tests/kissvm/functions/maths/FLOORTests.cpp.o
+[ 78%] Linking CXX executable checker_logs
+[ 78%] Built target checker_logs
+[ 78%] Building CXX object CMakeFiles/CEILTests.dir/test/org/minima/tests/kissvm/functions/maths/CEILTests.cpp.o
+[ 78%] Linking CXX executable ABSTests
+[ 78%] Linking CXX executable FLOORTests
+[ 78%] Linking CXX executable command_runner_errors
+[ 78%] Built target ABSTests
+[ 78%] Building CXX object CMakeFiles/wallet_commands.dir/support/wallet_commands.cpp.o
+[ 78%] Built target FLOORTests
+[ 78%] Building CXX object CMakeFiles/MINTests.dir/test/org/minima/tests/kissvm/functions/maths/MINTests.cpp.o
+[ 78%] Built target command_runner_errors
+[ 78%] Building CXX object CMakeFiles/MAXTests.dir/test/org/minima/tests/kissvm/functions/maths/MAXTests.cpp.o
+[ 78%] Linking CXX executable CEILTests
+[ 78%] Built target CEILTests
+[ 78%] Building CXX object CMakeFiles/minima_coin_streams.dir/support/coin_streams.cpp.o
+[ 78%] Linking CXX executable MINTests
+[ 78%] Linking CXX executable MAXTests
+[ 78%] Built target MINTests
+[ 78%] Built target MAXTests
+[ 78%] Linking CXX executable MiniStringTests
+[ 78%] Building CXX object CMakeFiles/INCTests.dir/test/org/minima/tests/kissvm/functions/maths/INCTests.cpp.o
+[ 78%] Built target MiniStringTests
+[ 78%] Building CXX object CMakeFiles/DECTests.dir/test/org/minima/tests/kissvm/functions/maths/DECTests.cpp.o
+[ 78%] Linking CXX executable minima_coin_streams
+[ 78%] Linking CXX executable INCTests
+[ 78%] Built target minima_coin_streams
+[ 78%] Building CXX object CMakeFiles/POWTests.dir/test/org/minima/tests/kissvm/functions/maths/POWTests.cpp.o
+[ 78%] Built target INCTests
+[ 78%] Linking CXX executable DECTests
+[ 78%] Building CXX object CMakeFiles/SIGDIGTests.dir/test/org/minima/tests/kissvm/functions/maths/SIGDIGTests.cpp.o
+[ 78%] Built target DECTests
+[ 78%] Building CXX object CMakeFiles/BITCOUNTTests.dir/test/org/minima/tests/kissvm/functions/maths/BITCOUNTTests.cpp.o
+[ 78%] Linking CXX executable wallet_commands
+[ 78%] Built target wallet_commands
+[ 78%] Linking CXX executable POWTests
+[ 79%] Building CXX object CMakeFiles/BITGETTests.dir/test/org/minima/tests/kissvm/functions/maths/BITGETTests.cpp.o
+[ 79%] Linking CXX executable SIGDIGTests
+[ 79%] Built target POWTests
+[ 79%] Building CXX object CMakeFiles/BITSETTests.dir/test/org/minima/tests/kissvm/functions/maths/BITSETTests.cpp.o
+[ 79%] Built target SIGDIGTests
+[ 79%] Building CXX object CMakeFiles/REVTests.dir/test/org/minima/tests/kissvm/functions/base/REVTests.cpp.o
+[ 79%] Linking CXX executable BITCOUNTTests
+[ 79%] Built target BITCOUNTTests
+[ 79%] Building CXX object CMakeFiles/LENTests.dir/test/org/minima/tests/kissvm/functions/base/LENTests.cpp.o
+[ 79%] Linking CXX executable BITGETTests
+[ 79%] Linking CXX executable BITSETTests
+[ 79%] Built target BITGETTests
+[ 79%] Building CXX object CMakeFiles/minima_sendpoll_command.dir/support/sendpoll_command.cpp.o
+[ 79%] Linking CXX executable REVTests
+[ 79%] Built target BITSETTests
+[ 79%] Building CXX object CMakeFiles/wallet_wrappers.dir/support/wallet_wrappers.cpp.o
+[ 79%] Built target REVTests
+[ 79%] Building CXX object CMakeFiles/BOOLTests.dir/test/org/minima/tests/kissvm/functions/cast/BOOLTests.cpp.o
+[ 79%] Linking CXX executable LENTests
+[ 79%] Built target LENTests
+[ 79%] Building CXX object CMakeFiles/HEXTests.dir/test/org/minima/tests/kissvm/functions/cast/HEXTests.cpp.o
+[ 79%] Linking CXX executable minima_sendpoll_command
+[ 79%] Linking CXX executable BOOLTests
+[ 79%] Built target minima_sendpoll_command
+[ 79%] Building CXX object CMakeFiles/NUMBERTests.dir/test/org/minima/tests/kissvm/functions/cast/NUMBERTests.cpp.o
+[ 79%] Built target BOOLTests
+[ 80%] Building CXX object CMakeFiles/SCRIPTTests.dir/test/org/minima/tests/kissvm/functions/cast/SCRIPTTests.cpp.o
+[ 80%] Linking CXX executable HEXTests
+[ 80%] Built target HEXTests
+[ 80%] Building CXX object CMakeFiles/minima_mysql_connect.dir/support/mysql_connect.cpp.o
+[ 81%] Linking CXX executable wallet_wrappers
+[ 81%] Linking CXX executable NUMBERTests
+[ 81%] Linking CXX executable SCRIPTTests
+[ 81%] Built target wallet_wrappers
+[ 81%] Building CXX object CMakeFiles/archive_server_runtime.dir/support/archive_server.cpp.o
+[ 81%] Built target NUMBERTests
+[ 81%] Building CXX object CMakeFiles/minima_main_runtime.dir/support/main_runtime.cpp.o
+[ 81%] Built target SCRIPTTests
+[ 81%] Building CXX object CMakeFiles/main_ownership.dir/support/main_ownership.cpp.o
+[ 81%] Linking CXX executable minima_mysql_connect
+[ 81%] Built target minima_mysql_connect
+[ 81%] Building CXX object CMakeFiles/minima_main_runtime.dir/support/MainNetworkFixture.cpp.o
+[ 81%] Linking CXX executable archive_server_runtime
+[ 82%] Linking CXX executable main_ownership
+[ 82%] Built target archive_server_runtime
+[ 82%] Linking CXX executable json_collections
+[ 82%] Built target main_ownership
+[ 82%] Built target json_collections
+[ 83%] Building CXX object CMakeFiles/shared_json_native.dir/support/shared_json_native.cpp.o
+[ 83%] Building CXX object CMakeFiles/rpc_live.dir/support/rpc_live.cpp.o
+[ 83%] Building CXX object CMakeFiles/minima_hashtest_runtime.dir/support/main_runtime.cpp.o
+[ 83%] Linking CXX executable shared_json_native
+[ 83%] Linking CXX executable minima_main_runtime
+[ 83%] Built target shared_json_native
+[ 83%] Building CXX object CMakeFiles/coin_import_runtime.dir/support/wallet_commands.cpp.o
+[ 83%] Built target minima_main_runtime
+[ 83%] Building CXX object CMakeFiles/scan_chain_runtime.dir/support/wallet_commands.cpp.o
+[ 83%] Building CXX object CMakeFiles/rpc_live.dir/support/MainNetworkFixture.cpp.o
+[ 83%] Building CXX object CMakeFiles/minima_hashtest_runtime.dir/support/MainNetworkFixture.cpp.o
+[ 83%] Linking CXX executable scan_chain_runtime
+[ 83%] Linking CXX executable coin_import_runtime
+[ 83%] Linking CXX executable rpc_live
+[ 83%] Built target scan_chain_runtime
+[ 83%] Built target coin_import_runtime
+[ 83%] Building CXX object CMakeFiles/token_validation_runtime.dir/support/wallet_commands.cpp.o
+[ 83%] Building CXX object CMakeFiles/peers_command_runtime.dir/support/main_runtime.cpp.o
+[ 83%] Built target rpc_live
+[ 84%] Building CXX object CMakeFiles/automatic_transaction_runtime.dir/support/wallet_commands.cpp.o
+[ 84%] Linking CXX executable minima_hashtest_runtime
+[ 84%] Built target minima_hashtest_runtime
+[ 84%] Building CXX object CMakeFiles/burn_metrics_runtime.dir/support/wallet_commands.cpp.o
+[ 84%] Building CXX object CMakeFiles/peers_command_runtime.dir/support/MainNetworkFixture.cpp.o
+[ 84%] Linking CXX executable token_validation_runtime
+[ 84%] Linking CXX executable automatic_transaction_runtime
+[ 84%] Built target token_validation_runtime
+[ 84%] Building CXX object CMakeFiles/token_creation_runtime.dir/support/wallet_commands.cpp.o
+[ 84%] Built target automatic_transaction_runtime
+[ 84%] Building CXX object CMakeFiles/multisig_runtime.dir/support/wallet_commands.cpp.o
+[ 84%] Linking CXX executable burn_metrics_runtime
+[ 84%] Built target burn_metrics_runtime
+[ 84%] Building CXX object CMakeFiles/node_count_runtime.dir/support/node_count.cpp.o
+[ 84%] Linking CXX executable peers_command_runtime
+[ 84%] Built target peers_command_runtime
+[ 84%] Building CXX object CMakeFiles/incentive_cash_runtime.dir/support/wallet_commands.cpp.o
+[ 84%] Linking CXX executable node_count_runtime
+[ 84%] Linking CXX executable token_creation_runtime
+[ 84%] Linking CXX executable multisig_runtime
+[ 84%] Built target node_count_runtime
+[ 84%] Built target token_creation_runtime
+[ 84%] Linking CXX executable item_list_runtime
+[ 85%] Built target minima_native_h2
+[ 85%] Building CXX object CMakeFiles/minima_entry_boundary.dir/support/minima_entry_boundary.cpp.o
+[ 85%] Built target multisig_runtime
+[ 85%] Built target item_list_runtime
+[ 85%] Building CXX object CMakeFiles/minima_shutdown_hooks.dir/support/minima_shutdown_hooks.cpp.o
+[ 86%] Building CXX object CMakeFiles/native_h2_runtime.dir/support/native_h2.cpp.o
+[ 86%] Linking CXX executable minima_shutdown_hooks
+[ 86%] Built target minima_shutdown_hooks
+[ 86%] Linking CXX executable native_h2_concurrent
+[ 86%] Linking CXX executable native_h2_runtime
+[ 86%] Built target native_h2_concurrent
+[ 86%] Building CXX object CMakeFiles/decrypt_backup_runtime.dir/support/decrypt_backup.cpp.o
+[ 86%] Built target native_h2_runtime
+[ 86%] Linking CXX executable incentive_cash_runtime
+[ 86%] Building CXX object CMakeFiles/backup_runtime.dir/support/backup.cpp.o
+[ 86%] Built target incentive_cash_runtime
+[ 86%] Building CXX object CMakeFiles/restore_runtime.dir/support/restore.cpp.o
+[ 86%] Linking CXX executable minima_entry_boundary
+[ 86%] Built target minima_entry_boundary
+[ 86%] Building CXX object CMakeFiles/archive_command_runtime.dir/support/archive_command.cpp.o
+[ 87%] Linking CXX executable decrypt_backup_runtime
+[ 87%] Built target decrypt_backup_runtime
+[ 87%] Building CXX object CMakeFiles/minima_sphincs_command.dir/support/sphincs_command.cpp.o
+[ 87%] Linking CXX executable backup_runtime
+[ 87%] Built target backup_runtime
+[ 87%] Building CXX object CMakeFiles/archive_command_runtime.dir/support/MainNetworkFixture.cpp.o
+[ 87%] Linking CXX executable restore_runtime
+[ 87%] Built target restore_runtime
+[ 87%] Building CXX object CMakeFiles/minima_base_test_demo.dir/support/base_test_demo.cpp.o
+[ 87%] Linking CXX executable minima_sphincs_command
+[ 87%] Built target minima_sphincs_command
+[ 87%] Building CXX object CMakeFiles/minima_text_commands.dir/support/text_commands.cpp.o
+[ 87%] Building CXX object CMakeFiles/CONCATTests.dir/test/org/minima/tests/kissvm/functions/base/CONCATTests.cpp.o
+[ 87%] Linking CXX executable minima_base_test_demo
+[ 87%] Built target minima_base_test_demo
+[ 87%] Building CXX object CMakeFiles/GETTests.dir/test/org/minima/tests/kissvm/functions/base/GETTests.cpp.o
+[ 87%] Linking CXX executable minima_text_commands
+[ 87%] Linking CXX executable CONCATTests
+[ 87%] Built target minima_text_commands
+[ 87%] Building CXX object CMakeFiles/SUBSETTests.dir/test/org/minima/tests/kissvm/functions/base/SUBSETTests.cpp.o
+[ 87%] Built target CONCATTests
+[ 87%] Building CXX object CMakeFiles/minima_mysql_coins.dir/support/mysql_coins.cpp.o
+[ 87%] Linking CXX executable archive_command_runtime
+[ 87%] Linking CXX executable GETTests
+[ 87%] Built target archive_command_runtime
+[ 87%] Building CXX object CMakeFiles/minima_mysql_command.dir/support/mysql_command.cpp.o
+[ 87%] Built target GETTests
+[ 87%] Building CXX object CMakeFiles/minima_help_command.dir/support/help_command.cpp.o
+[ 87%] Linking CXX executable SUBSETTests
+[ 87%] Built target SUBSETTests
+[ 87%] Building CXX object CMakeFiles/minima_streamable.dir/support/streamable.cpp.o
+[ 88%] Linking CXX executable minima_help_command
+[ 88%] Built target minima_help_command
+[ 89%] Building CXX object CMakeFiles/txbody_ids.dir/support/txbody_ids.cpp.o
+[ 89%] Linking CXX executable minima_mysql_coins
+[ 89%] Built target minima_mysql_coins
+[ 89%] Building CXX object CMakeFiles/minima_magic.dir/support/magic.cpp.o
+[ 89%] Linking CXX executable minima_mysql_command
+[ 89%] Built target minima_mysql_command
+[ 89%] Building CXX object CMakeFiles/hash_writers.dir/support/hash_writers.cpp.o
+[ 89%] Linking CXX executable txbody_ids
+[ 89%] Built target txbody_ids
+[ 89%] Linking CXX executable minima_streamable
+[ 89%] Building CXX object CMakeFiles/txheader.dir/support/txheader.cpp.o
+[ 89%] Linking CXX executable minima_magic
+[ 89%] Built target minima_streamable
+[ 89%] Building CXX object CMakeFiles/original_helpers.dir/support/original_helpers.cpp.o
+[ 89%] Built target minima_magic
+[ 89%] Building CXX object CMakeFiles/original_p2p_helpers.dir/test/org/minima/system/network/p2p/testingutils/QuickInetLists.cpp.o
+[ 89%] Linking CXX executable hash_writers
+[ 90%] Building CXX object CMakeFiles/original_p2p_helpers.dir/test/org/minima/system/network/p2p/testingutils/QuickState.cpp.o
+[ 90%] Built target hash_writers
+[ 90%] Linking CXX executable txheader
+[ 90%] Linking CXX executable AddressTests
+[ 90%] Built target txheader
+[ 90%] Building CXX object CMakeFiles/original_helpers.dir/test/org/minima/utils/TestUtils.cpp.o
+[ 90%] Building CXX object CMakeFiles/original_helpers.dir/test/org/minima/system/network/p2p/testingutils/QuickClients.cpp.o
+[ 90%] Built target AddressTests
+[ 90%] Linking CXX executable CoinTests
+[ 91%] Built target CoinTests
+[ 91%] Linking CXX executable TokenTests
+[ 91%] Built target TokenTests
+[ 91%] Linking CXX static library liboriginal_p2p_helpers.a
+[ 91%] Linking CXX executable MiniNumberTests
+[ 91%] Built target original_p2p_helpers
+[ 91%] Linking CXX executable MiniDataTests
+[ 91%] Building CXX object CMakeFiles/base_value_api.dir/support/base_value_api.cpp.o
+[ 91%] Built target MiniNumberTests
+[ 91%] Building CXX object CMakeFiles/SHA2Tests.dir/test/org/minima/tests/kissvm/functions/sha/SHA2Tests.cpp.o
+[ 91%] Built target MiniDataTests
+[ 91%] Linking CXX executable original_helpers
+[ 91%] Building CXX object CMakeFiles/SHA3Tests.dir/test/org/minima/tests/kissvm/functions/sha/SHA3Tests.cpp.o
+[ 91%] Built target original_helpers
+[ 91%] Building CXX object CMakeFiles/CHAINSHATests.dir/test/org/minima/tests/kissvm/functions/sha/CHAINSHATests.cpp.o
+[ 91%] Linking CXX executable base_value_api
+[ 91%] Built target base_value_api
+[ 91%] Linking CXX executable SHA2Tests
+[ 91%] Building CXX object CMakeFiles/PREVSTATETests.dir/test/org/minima/tests/kissvm/functions/state/PREVSTATETests.cpp.o
+[ 91%] Built target SHA2Tests
+[ 91%] Linking CXX executable SHA3Tests
+[ 91%] Building CXX object CMakeFiles/STATETests.dir/test/org/minima/tests/kissvm/functions/state/STATETests.cpp.o
+[ 91%] Built target SHA3Tests
+[ 91%] Building CXX object CMakeFiles/SAMESTATETests.dir/test/org/minima/tests/kissvm/functions/state/SAMESTATETests.cpp.o
+[ 91%] Linking CXX executable CHAINSHATests
+[ 91%] Built target CHAINSHATests
+[ 92%] Building CXX object CMakeFiles/SIGNEDBYTests.dir/test/org/minima/tests/kissvm/functions/sigs/SIGNEDBYTests.cpp.o
+[ 92%] Linking CXX executable PREVSTATETests
+[ 92%] Built target PREVSTATETests
+[ 92%] Linking CXX executable STATETests
+[ 92%] Building CXX object CMakeFiles/MULTISIGTests.dir/test/org/minima/tests/kissvm/functions/sigs/MULTISIGTests.cpp.o
+[ 92%] Built target STATETests
+[ 92%] Building CXX object CMakeFiles/CHECKSIGTests.dir/test/org/minima/tests/kissvm/functions/sigs/CHECKSIGTests.cpp.o
+[ 92%] Linking CXX executable SAMESTATETests
+[ 92%] Built target SAMESTATETests
+[ 92%] Linking CXX executable SIGNEDBYTests
+[ 92%] Building CXX object CMakeFiles/GETINADDRTests.dir/test/org/minima/tests/kissvm/functions/txn/input/GETINADDRTests.cpp.o
+[ 92%] Built target SIGNEDBYTests
+[ 92%] Building CXX object CMakeFiles/GETINAMTTests.dir/test/org/minima/tests/kissvm/functions/txn/input/GETINAMTTests.cpp.o
+[ 93%] Linking CXX executable MULTISIGTests
+[ 93%] Built target MULTISIGTests
+[ 93%] Building CXX object CMakeFiles/GETINIDTests.dir/test/org/minima/tests/kissvm/functions/txn/input/GETINIDTests.cpp.o
+[ 93%] Linking CXX executable CHECKSIGTests
+[ 93%] Built target CHECKSIGTests
+[ 94%] Linking CXX executable GETINADDRTests
+[ 94%] Building CXX object CMakeFiles/GETINTOKTests.dir/test/org/minima/tests/kissvm/functions/txn/input/GETINTOKTests.cpp.o
+[ 94%] Linking CXX executable GETINAMTTests
+[ 94%] Built target GETINADDRTests
+[ 94%] Building CXX object CMakeFiles/GETOUTADDRTests.dir/test/org/minima/tests/kissvm/functions/txn/output/GETOUTADDRTests.cpp.o
+[ 94%] Built target GETINAMTTests
+[ 95%] Building CXX object CMakeFiles/GETOUTAMTTests.dir/test/org/minima/tests/kissvm/functions/txn/output/GETOUTAMTTests.cpp.o
+[ 95%] Linking CXX executable GETINIDTests
+[ 95%] Built target GETINIDTests
+[ 95%] Linking CXX executable GETINTOKTests
+[ 95%] Building CXX object CMakeFiles/GETOUTTOKTests.dir/test/org/minima/tests/kissvm/functions/txn/output/GETOUTTOKTests.cpp.o
+[ 95%] Linking CXX executable GETOUTADDRTests
+[ 95%] Built target GETINTOKTests
+[ 96%] Building CXX object CMakeFiles/VERIFYINTests.dir/test/org/minima/tests/kissvm/functions/txn/input/VERIFYINTests.cpp.o
+[ 96%] Linking CXX executable GETOUTAMTTests
+[ 96%] Built target GETOUTADDRTests
+[ 96%] Building CXX object CMakeFiles/VERIFYOUTTests.dir/test/org/minima/tests/kissvm/functions/txn/output/VERIFYOUTTests.cpp.o
+[ 96%] Built target GETOUTAMTTests
+[ 96%] Building CXX object CMakeFiles/RETURNstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/RETURNstatementTests.cpp.o
+[ 96%] Linking CXX executable GETOUTTOKTests
+[ 96%] Built target GETOUTTOKTests
+[ 96%] Linking CXX executable VERIFYINTests
+[ 96%] Building CXX object CMakeFiles/WHILEstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/WHILEstatementTests.cpp.o
+[ 96%] Built target VERIFYINTests
+[ 96%] Linking CXX executable VERIFYOUTTests
+[ 96%] Building CXX object CMakeFiles/IFstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/IFstatementTests.cpp.o
+[ 96%] Linking CXX executable RETURNstatementTests
+[ 96%] Built target VERIFYOUTTests
+[ 96%] Building CXX object CMakeFiles/MASTstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/MASTstatementTests.cpp.o
+[ 96%] Built target RETURNstatementTests
+[ 96%] Building CXX object CMakeFiles/LETstatementTests.dir/test/org/minima/tests/kissvm/statements/commands/LETstatementTests.cpp.o
+[ 97%] Linking CXX executable WHILEstatementTests
+[ 97%] Built target WHILEstatementTests
+[ 97%] Linking CXX executable IFstatementTests
+[ 97%] Building CXX object CMakeFiles/BooleanExpressionTests.dir/test/org/minima/tests/kissvm/expressions/BooleanExpressionTests.cpp.o
+[ 97%] Built target IFstatementTests
+[ 97%] Linking CXX executable MASTstatementTests
+[ 98%] Building CXX object CMakeFiles/OperatorExpressionTests.dir/test/org/minima/tests/kissvm/expressions/OperatorExpressionTests.cpp.o
+[ 98%] Built target MASTstatementTests
+[ 98%] Building CXX object CMakeFiles/KissTokenTests.dir/test/org/minima/tests/kissvm/tokens/TokenTests.cpp.o
+[ 98%] Linking CXX executable LETstatementTests
+[ 98%] Built target LETstatementTests
+[ 98%] Building CXX object CMakeFiles/ExpressionParserTests.dir/test/org/minima/tests/kissvm/expressions/ExpressionParserTests.cpp.o
+[ 98%] Linking CXX executable BooleanExpressionTests
+[ 98%] Built target BooleanExpressionTests
+[ 98%] Linking CXX executable OperatorExpressionTests
+[ 98%] Building CXX object CMakeFiles/StatementParserTests.dir/test/org/minima/tests/kissvm/statements/StatementParserTests.cpp.o
+[ 98%] Linking CXX executable KissTokenTests
+[ 98%] Built target OperatorExpressionTests
+[ 98%] Linking CXX executable TxPoWProcessorTest
+[ 98%] Built target KissTokenTests
+[ 98%] Building CXX object CMakeFiles/minima_jni_commands.dir/support/jni_command_probe.cpp.o
+[ 98%] Linking CXX executable ExpressionParserTests
+[ 98%] Built target TxPoWProcessorTest
+[ 98%] Building CXX object CMakeFiles/minima_command_registry.dir/support/command_registry.cpp.o
+[ 98%] Built target ExpressionParserTests
+[ 99%] Built target MinimaCoreCpp
+[ 99%] Building CXX object CMakeFiles/minima_archive_server.dir/support/archive_server_entry.cpp.o
+[ 99%] Linking CXX executable StatementParserTests
+[ 99%] Built target StatementParserTests
+[ 99%] Building CXX object CMakeFiles/original_p2p_helper_probe.dir/support/original_p2p_helpers.cpp.o
+[ 99%] Linking CXX executable minima_command_registry
+[100%] Linking CXX executable minima_jni_commands
+[100%] Built target minima_jni_commands
+[100%] Built target minima_command_registry
+[100%] Building CXX object CMakeFiles/UtilFuncsTest.dir/test/org/minima/system/network/p2p/UtilFuncsTest.cpp.o
+[100%] Building CXX object CMakeFiles/WalkLinksFuncsTest.dir/test/org/minima/system/network/p2p/WalkLinksFuncsTest.cpp.o
+[100%] Linking CXX executable minima_archive_server
+[100%] Built target minima_archive_server
+[100%] Building CXX object CMakeFiles/SwapLinksFunctionsTest.dir/test/org/minima/system/network/p2p/SwapLinksFunctionsTest.cpp.o
+[100%] Linking CXX executable original_p2p_helper_probe
+[100%] Built target original_p2p_helper_probe
+[100%] Linking CXX executable UtilFuncsTest
+[100%] Linking CXX executable WalkLinksFuncsTest
+[100%] Built target UtilFuncsTest
+[100%] Built target WalkLinksFuncsTest
+[100%] Linking CXX executable SwapLinksFunctionsTest
+[100%] Built target SwapLinksFunctionsTest

@@ -44,3 +44,20 @@ waiting? How would you show that a missing transaction actually delayed a partic
 block? Why are equal heights insufficient if hashes differ? Why does a later success
 not establish a reliable150-second startup guarantee? Design a comparable Java/C++
 experiment before changing a consensus-processing rule.
+
+## A test can also contain a startup bug
+
+The optimized package initially passed fresh startup at height 2309904. On reopen,
+the saved tip already matched a valid independent peer response, but the persistent
+connection was still starting (`connected = 0`). The verifier asserted that a
+connection existed immediately. It should have kept waiting for all readiness
+conditions within the same 150-second deadline. The corrected condition retains
+both the height/hash comparison and the connection requirement. It also records a
+traceback so future failures identify the assertion that failed.
+
+The [captured state](../../validation/delivery-work-in-progress/optimized-readiness-failure-explanation.json)
+demonstrates the test bug. The [repeat workflow](../../validation/delivery-work-in-progress/optimized-runtime-corrected.json)
+did not connect or receive a chain during its fresh stage and therefore timed out.
+It exited cleanly. This repeat does not establish a successful corrected reopen,
+and the earlier Debug catch-up failure remains a separate observation. Distinguish
+fixing a premature assertion from proving that the application is ready.

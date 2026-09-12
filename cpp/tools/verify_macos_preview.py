@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Exercise the shipped launcher after ZIP extraction to a path containing spaces."""
-import argparse, hashlib, json, os, subprocess, tempfile, time, zipfile
+import argparse, hashlib, json, os, subprocess, tempfile, time, traceback, zipfile
 from pathlib import Path
 from native_node_startup import replies
 
@@ -40,7 +40,7 @@ def main():
     # Pinned ParamConfigurer.java deliberately exits 1 after printing help.
     assert help_result.returncode==1 and 'Minima Help' in help_result.stdout and not help_result.stderr,(help_result.returncode,help_result.stdout,help_result.stderr)
     checks.append('Relocated launcher runs -help with system-only PATH')
-    observed=[];failure=None
+    observed=[];failure=None;failure_traceback=None
     try:
         for step in (['resumed-reopen'] if args.resume_folder else ['fresh','reopen']):
             stdout=scratch/(step+'-stdout.log');stderr=scratch/(step+'-stderr.log')
@@ -63,7 +63,9 @@ def main():
                         for ping in pings[-1:]:
                             for status in statuses[-1:]:
                                 chain=status['chain']
-                                if chain['block']==int(ping['topblock']) and chain['hash']==ping['tophash']:
+                                # A saved tip can match before the delayed connection starts.
+                                # Wait for every readiness condition within the same deadline.
+                                if chain['block']==int(ping['topblock']) and chain['hash']==ping['tophash'] and status['network']['connected']>=1:
                                     assert chain['block']>=2309561
                                     assert status['version']=='1.1.2.8'
                                     assert status['network']['port']==port and not status['network']['rpc']['enabled']
@@ -93,8 +95,8 @@ def main():
                             process.terminate();process.wait(timeout=15)
             checks.append(step+': exact SHA3 command, matching live peer height/hash, isolated data/port, saved databases and clean exit')
     except Exception as error:
-        failure=repr(error)
-    report=dict(passed=failure is None,resumed_existing_data=bool(args.resume_folder),verification_port=port,launcher_port_override=args.port is not None,source_head=manifest['source_head'],archive_sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),checks=checks,observations=observed,failure=failure,relocated_folder=str(folder),scope='Actual shipped ZIP and launcher (port override recorded), no modified Minima source, system-only PATH; mainnet lifecycle steps explicitly listed in observations; resumed verification does not claim a new fresh start. Tests packaging and this workflow, not full node parity. Test wallet data remains only in the temporary extracted directory.')
+        failure=repr(error);failure_traceback=traceback.format_exc()
+    report=dict(passed=failure is None,resumed_existing_data=bool(args.resume_folder),verification_port=port,launcher_port_override=args.port is not None,source_head=manifest['source_head'],archive_sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),checks=checks,observations=observed,failure=failure,failure_traceback=failure_traceback,relocated_folder=str(folder),scope='Actual shipped ZIP and launcher (port override recorded), no modified Minima source, system-only PATH; mainnet lifecycle steps explicitly listed in observations; resumed verification does not claim a new fresh start. Tests packaging and this workflow, not full node parity. Test wallet data remains only in the temporary extracted directory.')
     args.report.parent.mkdir(parents=True,exist_ok=True);args.report.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2));return bool(failure)
 

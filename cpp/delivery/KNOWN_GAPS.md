@@ -26,7 +26,7 @@ class/API parity. Database demonstration tests preserve exact saved-file content
 across both readers; C++ RAII versus Java no-explicit-close lifetime and identity
 allocation remain explicit limits. See the [database evidence](../validation/database-mains-work-in-progress/README.md).
 
-## Live reopen timing
+## Live startup and reopen timing
 
 The packaged fresh node matched the peer at2309856. Its immediate reopen failed
 the150-second tip target. A later diagnostic restart of the same saved node caught
@@ -34,6 +34,11 @@ up and followed new blocks through2309869. The original failure remains unresolv
 that later success does not establish reliable startup latency. A Java live control
 did not reach the chain and was inconclusive. See the [recorded failure, diagnostic
 and next action](../validation/delivery-work-in-progress/live-reopen-limit.md).
+
+The optimized package passed one fresh startup at2309904. A later fresh repeat
+failed to establish a connection within150seconds. A separate premature readiness
+assertion was corrected in the verifier; its successful reopen path remains unproven
+by that repeat. These results do not establish reliable mainnet synchronization.
 
 ## Platform and delivery
 

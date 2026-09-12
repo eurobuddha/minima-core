@@ -1,3 +1,25 @@
+# Delivery final hour — broad normal tests complete
+
+Deadline remains 2026-09-12 01:30 UTC / 02:30 Europe/London. Do not extend.
+Full normal292 CTests PASS,6528.51seconds. Evidence normal-full-292.log/xml.
+Optimized fullbuild PASS; full297 session88122 active with sandbox socket failures.
+Wait for terminal run, preserve full log/XML, rerun failed tests with socket access.
+SAN293 session77277 active, original HORST cleanup failure plus targeted corrected
+full-size1438comparison pass. Preserve explicit incomplete disposition at cutoff.
+
+Optimized preview e540881 initially freshPASS2309904; reopen hit verifier premature
+connectedassert. Condition now waits forconnected>=1 within same150sdeadline.
+Corrected repeat freshFAILED150s:height0,connected0;cleanexit. No reopenstage ran.
+Both failures retained; live startup/reopen reliability remains unverified. All our
+previewtestnodes exited. Existing userport21001preview/data untouched.
+
+Next: final test disposition, documentation/presentation regeneration, commit and
+verified bundle, complete project package with build-optimized, actual ZIP payload
+and runtime identity verification, recovery working checkout. Source code unchanged
+since e82. Full parity incomplete:456counterparts,missingJNI,no placeholders.
+
+## Previous checkpoint (historical)
+
 # Final delivery checks — e82e91f candidate exercised
 
 Full source ZIP assembled and all5705 payload files byte-verified. Exported457

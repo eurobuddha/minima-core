@@ -26,12 +26,15 @@ unavailable. No placeholder has been counted as a counterpart. Obtain the origin
 implementation/ABI and validate it against a usable reference; do not infer greeting,
 mining-loop or buffer semantics from method names.
 
-### MAJOR — Bounded reopen catch-up is not reliable in the observed workflow
+### MAJOR — Reliable live startup and reopen remain unverified
 
 Evidence: [live reopen limit](../validation/delivery-work-in-progress/live-reopen-limit.md).
 Fresh startup passed, immediate reopen missed the150-second target, and a subsequent
 unchanged-package restart caught up and followed new blocks. The attempted Java
-control was inconclusive. Investigate queue/transaction timing and obtain a comparable
+control was inconclusive. An optimized fresh startup passed at2309904, but a later
+fresh repeat remained disconnected. A premature verifier readiness assertion was
+corrected without extending the deadline or relaxing connection/hash checks; the
+repeat did not reach reopen. Investigate connection and queue/transaction timing and obtain a comparable
 Java run before changing production processing rules. Keep the failed observation.
 
 ### MINOR — Presentation visual review remains unavailable

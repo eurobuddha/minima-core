@@ -1,0 +1,9 @@
+{
+  "block": 2309904,
+  "hash": "0x000000630BA0417D20C0B48059203C4465F23D8FDD7D0C51899DD01CFE8165F6",
+  "peer_block": "2309904",
+  "peer_hash": "0x000000630BA0417D20C0B48059203C4465F23D8FDD7D0C51899DD01CFE8165F6",
+  "connected": 0,
+  "all_other_tip_branch_invariants_checked": true,
+  "scope": "Actual last reopen observations: valid saved tip and independent peer ping, persistent node connection not yet established. The verifier must continue waiting, not fail the transient state."
+}

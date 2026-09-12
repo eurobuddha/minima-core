@@ -28,3 +28,21 @@ Next action: capture connection/processor queue timing and missing transaction I
 on an uninterrupted fresh/reopen pair, obtain a successful comparable Java control,
 and distinguish source deferral, provider lifecycle and native scheduling costs.
 All fixture nodes exited; the user's existing preview and data remain untouched.
+
+## Optimized package observations
+
+The `-O2 -g` package at e540881 initially passed fresh startup at height 2309904.
+Immediate reopen reached a matching saved height/hash before the persistent socket
+had connected. The verifier incorrectly asserted connection readiness at that point;
+its condition now waits for connection within the unchanged 150-second limit.
+The original failure and exact state are retained in
+[initial readiness failure](optimized-initial-readiness-failure.json) and
+[its explanation](optimized-readiness-failure-explanation.json).
+
+The corrected [fresh/reopen repeat](optimized-runtime-corrected.json) failed during
+fresh startup: 30 status observations remained at height 0 with no connections,
+then shutdown completed cleanly. No reopen stage ran. The repeat neither validates
+the corrected reopen branch nor establishes reliable mainnet synchronization.
+The observed network variability also affected the pinned Java control. Its cause
+has not been established. Keep socket-fixture sandbox failures in the broad test
+run separate from these escalated live workflow observations.
