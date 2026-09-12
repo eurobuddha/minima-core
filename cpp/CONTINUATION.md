@@ -20,6 +20,19 @@ validation/rsa-cipher-directions and its student lab. The installed preview was 
 replaced by this source change. Long-running sanitizer targets retain their
 recorded pre-RSA-change binary hashes; do not relabel those runs as a new full suite.
 
+The next base API checkpoint exposes thirteen source-named helpers/getters across
+five existing classes and fixes MiniByte.FALSE mutability/isFalse comparison.
+All 1,853 API cases pass in normal, optimized and sanitized builds; corresponding
+regression evidence is in validation/base-stream-helpers. No new mapped file.
+Next audit leads include MiniString.MINIMA_CHARSET (hardcoded native UTF-8), base
+class virtual override behavior, and remaining Cipher update/wrap/unwrap methods.
+
+A signed installed-app ZIP (36940c6 app / 10ed9e6 node) is prepared and byte-verified.
+Apple notarization was auto-review rejected: explicit approval is required to
+send this specific payload to Apple. No upload occurred. The artifact manifest is
+validation/app-notarization-approval-20260912/prepared-app-artifact.json. Do not
+bypass or silently retry that rejection; continue independent parity work.
+
 Next: preserve terminal test evidence; continue independent API/runtime auditing;
 resolve original JNI source/contracts; finalize the signed app's reproducible
 packaging, notarization and replacement release. Keep the full goal active and

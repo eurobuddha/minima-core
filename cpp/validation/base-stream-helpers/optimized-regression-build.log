@@ -1,0 +1,27 @@
+[ 97%] Built target minima_file_port
+[ 97%] Building CXX object CMakeFiles/minima_native_h2.dir/src/support/NativeH2Connection.cpp.o
+[ 97%] Linking CXX static library libminima_native_h2.a
+[ 97%] Built target minima_native_h2
+[ 97%] Building CXX object CMakeFiles/MinimaCoreCpp.dir/support/minima_entry.cpp.o
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp
+[ 97%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/MiniByteTests.dir/test/org/minima/objects/base/MiniByteTests.cpp.o
+[100%] Linking CXX executable MiniByteTests
+[100%] Built target MiniByteTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/MiniStringTests.dir/test/org/minima/objects/base/MiniStringTests.cpp.o
+[100%] Linking CXX executable MiniStringTests
+[100%] Built target MiniStringTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/MiniNumberTests.dir/test/org/minima/objects/base/MiniNumberTests.cpp.o
+[100%] Linking CXX executable MiniNumberTests
+[100%] Built target MiniNumberTests
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/MiniDataTests.dir/test/org/minima/objects/base/MiniDataTests.cpp.o
+[100%] Linking CXX executable MiniDataTests
+[100%] Built target MiniDataTests
+[ 97%] Built target minima_file_port
+[ 97%] Building CXX object CMakeFiles/minima_streamable.dir/support/streamable.cpp.o
+[100%] Linking CXX executable minima_streamable
+[100%] Built target minima_streamable

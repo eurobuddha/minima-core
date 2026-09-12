@@ -35,6 +35,8 @@ public:
     MiniString concat(const MiniString& rhs) const;
     MiniString subset(size_t start, size_t len) const;
 
+    static void WriteToStream(std::vector<uint8_t>& output,const std::string& value) {MiniString(value).writeDataStream(output);}
+    static MiniString ReadFromStream(std::span<const uint8_t> data,size_t& offset) {return deserialise(data,offset);}
     void writeDataStream(std::vector<uint8_t>& output) const override;
     void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     std::vector<uint8_t> serialise() const;

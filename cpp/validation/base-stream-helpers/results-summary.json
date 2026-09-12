@@ -1,0 +1,22 @@
+{
+  "new_counterparts": [],
+  "counterparts": 456,
+  "remaining": [
+    "src/org/minima/utils/jni/jnifunctions.cpp"
+  ],
+  "full_parity": "not_verified",
+  "new_java_entry_points": 13,
+  "base_api_cases_per_build": 1853,
+  "base_api_independent_assertions_per_build": 22184,
+  "streamable_cases_per_build": 7705,
+  "streamable_independent_assertions_per_build": 96172,
+  "configurations": [
+    "normal",
+    "optimized",
+    "ASan/UBSan"
+  ],
+  "all_targeted_checks_passed": true,
+  "actual_node_builds_passed": true,
+  "installed_preview_replaced": false,
+  "long_sanitizer_probes_unchanged": true
+}

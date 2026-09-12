@@ -119,3 +119,15 @@ The missing main now generates 10 bytes and shows the existing left-padding oper
 
 See the [random entry-point lab](../../../../../../new-tests/object-main-methods.md) for the calculation, fixture boundaries,
 and coverage limits. Full class parity remains unverified.
+
+## Source-named stream helper audit
+
+The [public-helper lab](../../../../../../new-tests/base-stream-helpers.md) explains
+the newly exposed source API methods and their Java/native tests. The existing
+base-value corpus is retained and extended to 1,853 cases, including prefix bytes,
+truncated reads, nullable polymorphic serialization and retained decimal values.
+This is additional scoped evidence, not a full file-parity claim.
+
+getMiniDataVersion delegates through Streamable to the existing IO-only
+catch/log/null implementation. Runtime failures and null arguments propagate.
+The added static readers preserve the existing expected-length and hash checks.

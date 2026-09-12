@@ -1,0 +1,11 @@
+{
+  "prior_cases": 1164,
+  "new_cases": 689,
+  "new_case_groups": {
+    "helperWrite": 36,
+    "helperRead": 610,
+    "helperVersion": 15,
+    "helperByteConstants": 16,
+    "helperMMRDecimal": 12
+  }
+}

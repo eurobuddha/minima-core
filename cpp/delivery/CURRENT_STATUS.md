@@ -38,6 +38,14 @@ optimized and ASan/UBSan builds; [evidence and limits](../validation/rsa-cipher-
 are retained. This source correction has not replaced the installed app. It adds
 behavior in an existing counterpart and does not change the 456/457 inventory.
 
+The base API audit additionally exposed thirteen source-named public methods and
+corrected MiniByte's mutable FALSE semantics. The full API corpus passes 1,853
+cases / 22,184 independent assertions in each of the three configurations. The
+7,705-case Streamable regression, original base tests, native scalar tests and
+actual node builds also passed in each configuration. See
+[helper evidence](../validation/base-stream-helpers/README.md). These changes also
+remain separate from the installed preview and do not change the counterpart count.
+
 ## Publication and recovery
 
 The source branch `MinimaCoreC++` is pushed through `36940c6` to the private
@@ -45,8 +53,14 @@ The source branch `MinimaCoreC++` is pushed through `36940c6` to the private
 [the checked release list](../validation/parity-resumption-20260912/github-releases.json)
 is `dev-2026-09-12`. Its binaries precede the cascade cleanup fix.
 `dev-2026-09-12-cascade-fix` is a proposed release name, not a published release.
-A distributable ZIP containing the latest app, notarization, refreshed full-project
-package, uploaded-asset verification and publication remain to be completed.
+A local ZIP of the installed app source `36940c6` is prepared: all 375 regular
+payload files were byte-verified against the signed app. Its
+[manifest and checksum](../validation/app-notarization-approval-20260912/prepared-app-artifact.json)
+identify exactly what is ready for review. Automatic approval review rejected
+uploading this app to Apple's notarization service without explicit approval for
+that payload. No submission occurred. Notarization, refreshed full-project package,
+uploaded-asset verification and replacement publication remain pending. Do not
+retry or bypass the rejected upload until explicit approval arrives.
 
 Local commits have verified Git recovery bundles. The old preview/wallet and the
 previous app have separate rollback copies. Wallet data is not in source or release

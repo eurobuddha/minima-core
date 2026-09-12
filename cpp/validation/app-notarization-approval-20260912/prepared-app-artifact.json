@@ -1,0 +1,10 @@
+{
+  "artifact": "cpp/deliverables/MinimaCoreCpp-Preview-36940c6-macos-arm64.zip",
+  "sha256": "888441b18cb6909d9462ca53b57798754e7571c02bbff2778baa16750a834d78",
+  "bytes": 137220633,
+  "files_byte_verified": 375,
+  "app_source_head": "36940c609f42ce8de179283b8bffa5d346b45702",
+  "node_source_head": "10ed9e6df9ec6e5eb86f0e87ddd1792b9ca91e07",
+  "notarization": "not submitted: automatic approval review requires explicit user approval for this app upload to Apple",
+  "published": false
+}

@@ -175,6 +175,8 @@ public:
     std::vector<uint8_t> toBytes() const;  // big-endian bytes of unscaled value
     std::string toString()    const;
 
+    static void WriteToStream(std::vector<uint8_t>& output,int32_t value) {MiniNumber(value).writeDataStream(output);}
+    static MiniNumber ReadFromStream(std::span<const uint8_t> data,size_t& offset) {return deserialise(data,offset);}
     void writeDataStream(std::vector<uint8_t>& output) const override;
     void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     std::vector<uint8_t> serialise() const;

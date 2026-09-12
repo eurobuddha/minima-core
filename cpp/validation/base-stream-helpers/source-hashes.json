@@ -1,0 +1,12 @@
+{
+  "cpp/src/org/minima/objects/base/MiniNumber.hpp": "b42dc283fa5e676106740ae13ac6e812fa115d089070564da884a57e97af4034",
+  "cpp/src/org/minima/objects/base/MiniByte.hpp": "465dbdc82213aaae2614ec553064a3a42661473538a286228e0bb36652b68576",
+  "cpp/src/org/minima/objects/base/MiniString.hpp": "29e77147dc8fa929a1920f100e43baec69d5cc9514959232d0ce758a609d3c27",
+  "cpp/src/org/minima/objects/base/MiniData.hpp": "e67044307103920e1afe2cbf7b61d89387b34ea5594ee7b7365839b584a2391d",
+  "cpp/src/org/minima/objects/base/MiniByte.cpp": "c350e0ad7a6f35704125a58b316f3b7b15d05be85f921236d1e6d10dee4c1ca8",
+  "cpp/src/org/minima/objects/base/MiniData.cpp": "5259e385d1dd6825dc180ccfd622f055795bcb4c61d5e5ec0ba000684720cdea",
+  "cpp/src/org/minima/objects/mmr/MMREntryNumber.hpp": "1de0025115e13f842811f670adbd654d93d41430799ea8561a7c25dd0a4a789c",
+  "cpp/support/base_value_api.cpp": "0fe928ca9ce04a2bd76a79f8fc91b5572bb9b89e5526f2044c67b54ba2ad24a7",
+  "cpp/support/BaseValueAPIOracle.java": "bf4bcfc05081691020b036d90332e74dd8bc5276b5843afa913ac74b5630261d",
+  "cpp/tools/base_value_api_differential.py": "5ec08f60b2e98c40b2d59c43e3c9f6e748c9adad05065862833745aa35abe08a"
+}

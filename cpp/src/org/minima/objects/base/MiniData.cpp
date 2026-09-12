@@ -4,6 +4,7 @@
 #include "org/minima/utils/MiniFormat.hpp"
 #include "support/ByteIO.hpp"
 #include "support/JavaExceptions.hpp"
+#include "support/MiniDataVersion.hpp"
 #include "support/JavaUpperCase.hpp"
 #include <bit>
 #include <stdexcept>
@@ -264,4 +265,11 @@ MiniData shiftMagnitude(const std::vector<uint8_t>& bytes,int64_t bits) {
 }
 MiniData MiniData::shiftl(int bits) const {return shiftMagnitude(MiniData(getDataValue()).bytes(),int64_t(bits));}
 MiniData MiniData::shiftr(int bits) const {return shiftMagnitude(MiniData(getDataValue()).bytes(),-int64_t(bits));}
+}
+
+namespace minima {
+std::optional<MiniData> MiniData::getMiniDataVersion(const Streamable* object) {
+    if(!object)throw JavaNullPointerException("null Streamable");
+    return miniDataVersion(*object);
+}
 }

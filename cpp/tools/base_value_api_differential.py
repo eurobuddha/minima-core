@@ -53,10 +53,53 @@ def cases():
   result.append((q,expected))
  return result
 
+def helper_cases():
+ import struct
+ from decimal import Decimal
+ result=[]
+ def blob(raw):return '0x'+raw.hex().upper() if raw else ''
+ def payload(raw):return len(raw).to_bytes(4,'big')+raw
+ def signed(n):
+  size=max(1,(n.bit_length()+8)//8);raw=n.to_bytes(size,'big',signed=True)
+  while len(raw)>1 and ((raw[0]==0 and raw[1]<128) or (raw[0]==255 and raw[1]>=128)):raw=raw[1:]
+  return raw
+ writes=[('byte',False,b'\0'),('byte',True,b'\1')]
+ for n in [-2147483648,-129,-1,0,1,127,128,2147483647]:writes.append(('number',n,bytes.fromhex(wire(n,0)[2:])))
+ for s in ['', 'ASCII', 'é 🐼', 'a\0b'] :writes.append(('string',s,payload(s.encode())))
+ for raw in [b'',b'\0',b'\xFF'*64,bytes(range(128))]:writes.append(('data',blob(raw),payload(raw)))
+ for kind,value,raw in writes:
+  for prefix in [b'',b'\xAA\x55']:
+   result.append((dict(op='helperWrite',kind=kind,value=value,prefix=blob(prefix)),dict(wire=blob(prefix+raw))))
+   expected=str(int(value)) if kind=='byte' else str(value) if kind=='number' else value
+   result.append((dict(op='helperRead',kind=kind,wire=blob(prefix+raw+b'\xFE'),offset=len(prefix)),dict(value=expected,offset=len(prefix)+len(raw))))
+   if kind=='data':result.append((dict(op='helperRead',kind=kind,wire=blob(prefix+raw),offset=len(prefix),expected=len(raw)-4),dict(value=value,offset=len(prefix)+len(raw))))
+   for cut in range(len(raw)):
+    result.append((dict(op='helperRead',kind=kind,wire=blob(prefix+raw[:cut]),offset=len(prefix)),dict(__error_class__='java.io.EOFException',offset=len(prefix)+cut)))
+ for length in [-1,0,1,32,64,65]:
+  raw=struct.pack('>i',length)+(b'\xAB'*max(0,length))
+  if length<0:expected=dict(__error_class__='java.io.IOException',offset=4)
+  elif length>64:expected=dict(__error_class__='java.io.IOException',offset=4)
+  else:expected=dict(value=blob(raw[4:]),offset=len(raw))
+  result.append((dict(op='helperRead',kind='hash',wire=blob(raw+b'\xFE'),offset=0),expected))
+ for fault,raw in itertools.product(['normal','reference','io','runtime','null'],[b'',b'\0\xFF',bytes(range(64))]):
+  expected=dict(calls=0 if fault=='null' else 1,logged=fault=='io')
+  if fault in ['normal','reference']:expected['value']=blob(b'\xAA\x55'+raw)
+  elif fault=='io':expected['value']=None
+  else:expected['errorClass']='java.lang.NullPointerException' if fault=='null' else 'java.lang.IllegalStateException'
+  result.append((dict(op='helperVersion',fault=fault,bytes=blob(raw)),expected))
+ for value,falseValue in itertools.product([0,1,128,255],[0,1,2,255]):
+  result.append((dict(op='helperByteConstants',value=value,falseValue=falseValue),dict(false=value==falseValue,true=value!=falseValue,falseValue=falseValue)))
+ for coefficient,scale in itertools.product([0,1,-12300,10**90],[-5,0,20]):
+  encoded=bytes.fromhex(wire(4,0)[2:])+payload(signed(-56700))
+  before=decimal_record(str(coefficient)+'E'+str(-scale));after=decimal_record('-56700E-4')
+  result.append((dict(op='helperMMRDecimal',coefficient=str(coefficient),scale=scale,wire=blob(encoded)),dict(before=before,after=after)))
+  result.append((dict(op='helperRead',kind='mmr',wire=blob(encoded+b'\xFE'),offset=0),dict(value='-5.67',offset=len(encoded))))
+ return result
+
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');build=ap.parse_args().build.resolve();started=time.monotonic();oracle=build/'base-value-api-oracle';oracle.mkdir(exist_ok=True)
  sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/BaseValueAPIOracle.java'];listing=oracle/'sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
- corpus=cases();runners=[];failures=[];count=checks=0;transcript=hashlib.sha256()
+ corpus=cases()+helper_cases();runners=[];failures=[];count=checks=0;transcript=hashlib.sha256()
  try:
   runners.append(Runner(['java','-cp',f'{oracle}:{JAVA}/jar/minima.jar','BaseValueAPIOracle']));runners.append(Runner([str(build/'base_value_api')]))
   for index,(q,expected) in enumerate(corpus):
@@ -80,6 +123,6 @@ def main():
     errors.seek(0);stderr=errors.read()
     if stderr:failures.append(dict(phase='stderr',runtime=runtime,stderr=stderr))
  if count!=len(corpus):failures.append(dict(phase='accounting',executed=count,planned=len(corpus)))
- report=dict(passed=not failures,cases=count,planned_cases=len(corpus),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,scope='New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt and decimal-carrier constructors, exact min/max constants, MAXIMUM and raw decimal view. Decimal constructor cases retain coefficient/scale, plain-string conversion, 64-digit rounding, 44-place truncation, numeric range checks and immutable snapshots. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim.')
+ report=dict(passed=not failures,cases=count,planned_cases=len(corpus),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,scope='Source-named base stream helpers, polymorphic MiniData version conversion with IO-only catch/log/null and runtime/null propagation, mutable MiniByte FALSE comparisons, and immutable MMR decimal snapshots. New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt and decimal-carrier constructors, exact min/max constants, MAXIMUM and raw decimal view. Decimal constructor cases retain coefficient/scale, plain-string conversion, 64-digit rounding, 44-place truncation, numeric range checks and immutable snapshots. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim.')
  (build/'base-value-api-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({**report,'failures':failures[:5]},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

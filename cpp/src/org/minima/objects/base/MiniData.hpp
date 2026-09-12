@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <span>
 #include <functional>
+#include <optional>
 
 namespace minima {
 class BigInt;
@@ -88,6 +89,12 @@ public:
     MiniData sha2() const;  // SHA-256
 
     // Normal serialisation: [int32 BE length][bytes]
+    static void WriteToStream(std::vector<uint8_t>& output,const std::vector<uint8_t>& value) {MiniData(value).writeDataStream(output);}
+    static MiniData ReadFromStream(std::span<const uint8_t> data,size_t& offset) {return deserialise(data,offset);}
+    static MiniData ReadFromStream(std::span<const uint8_t> data,size_t& offset,int expectedSize) {return deserialise(data,offset,expectedSize);}
+    static MiniData ReadHashFromStream(std::span<const uint8_t> data,size_t& offset) {return deserialiseHash(data,offset);}
+    static std::optional<MiniData> getMiniDataVersion(const Streamable* object);
+    static std::optional<MiniData> getMiniDataVersion(const Streamable& object) {return getMiniDataVersion(&object);}
     void writeDataStream(std::vector<uint8_t>& output) const override;
     std::vector<uint8_t> serialise() const;
     void readDataStream(std::span<const uint8_t> data,size_t& offset) override;

@@ -9,8 +9,8 @@
 namespace minima {
 class MiniByte:public Streamable {
 public:
-    static const MiniByte FALSE;
-    static const MiniByte TRUE;
+    static MiniByte FALSE;
+    static MiniByte TRUE;
     MiniByte();
     explicit MiniByte(int value);
     explicit MiniByte(bool value);
@@ -20,6 +20,8 @@ public:
     bool isFalse() const;
     bool isTrue() const;
     std::string toString() const;
+    static void WriteToStream(std::vector<uint8_t>& output,bool value) {MiniByte(value).writeDataStream(output);}
+    static MiniByte ReadFromStream(std::span<const uint8_t> data,size_t& offset) {return deserialise(data,offset);}
     void writeDataStream(std::vector<uint8_t>& output) const override;
     void readDataStream(std::span<const uint8_t> data,size_t& offset) override;
     std::vector<std::uint8_t> serialise() const;

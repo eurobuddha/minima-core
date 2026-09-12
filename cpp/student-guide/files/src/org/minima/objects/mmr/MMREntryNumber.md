@@ -68,3 +68,15 @@ The existing unbounded coefficient/scale representation is now also reused by Mi
 The shared BigInt comparison correction also makes this type's compareTo return Java's exact -1/0/1 values. Both builds verify positive, negative and zero decimal comparisons in the supplemental base API corpus. Reusing this carrier is not a claim to implement every BigDecimal method or Java object identity.
 
 See the [base-test lab](../../../../../../new-tests/original-base-tests.md) for the retained initial failure and complete scope.
+
+## Source-named stream helper audit
+
+The [public-helper lab](../../../../../../new-tests/base-stream-helpers.md) explains
+the newly exposed source API methods and their Java/native tests. The existing
+base-value corpus is retained and extended to 1,853 cases, including prefix bytes,
+truncated reads, nullable polymorphic serialization and retained decimal values.
+This is additional scoped evidence, not a full file-parity claim.
+
+getBigDecimal returns the existing unbounded decimal carrier as a retained value;
+a later stream read cannot alter that earlier snapshot. The test checks raw
+coefficient, scale and text on both sides of the replacement.

@@ -13,6 +13,10 @@ public:
     explicit MMREntryNumber(int number):mUnscaled(number){}
     explicit MMREntryNumber(BigInt number):mUnscaled(std::move(number)){}
     MMREntryNumber(BigInt unscaled,int32_t scale):mUnscaled(std::move(unscaled)),mScale(scale){}
+    // Reuse the native unbounded decimal carrier; copying retains an immutable
+    // snapshot when a later Streamable read replaces the receiver's number.
+    MMREntryNumber getBigDecimal() const {return *this;}
+    static MMREntryNumber ReadFromStream(std::span<const uint8_t> data,size_t& offset) {return deserialise(data,offset);}
     const BigInt& getUnscaled() const {return mUnscaled;}
     int32_t getScale() const {return mScale;}
     MMREntryNumber modulo(const MMREntryNumber& other) const;

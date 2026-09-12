@@ -106,3 +106,11 @@ See the [base-test lab](../../../../../../new-tests/original-base-tests.md) for 
 The original OperatorExpression tests now exercise both signed Minima limit constants and their decimal-carrier construction. MAXIMUM and the immutable MAX_MININUMBER/MIN_MININUMBER decimal values expose ±(2^64−1). The new constructor delegates to the existing coefficient/scale path, so rounding and range checks remain shared. Fifty-six new cases supplement the complete earlier base corpus: both builds pass 1,164 comparisons / 19,160 independent checks, all original base assertions and 3,802 primitive comparisons. Full class parity remains unverified.
 
 See the [expression/token lab](../../../../../../new-tests/original-expression-token-tests.md) and [checkpoint evidence](../../../../../../../validation/original-expression-token-tests-work-in-progress/progress.json).
+
+## Source-named stream helper audit
+
+The [public-helper lab](../../../../../../new-tests/base-stream-helpers.md) explains
+the newly exposed source API methods and their Java/native tests. The existing
+base-value corpus is retained and extended to 1,853 cases, including prefix bytes,
+truncated reads, nullable polymorphic serialization and retained decimal values.
+This is additional scoped evidence, not a full file-parity claim.

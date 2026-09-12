@@ -1,0 +1,77 @@
+{
+  "scope": "Lexical method-name leads from the pinned source-map inventory and globally absent native call names. Not an AST/signature, field, dispatch or per-class completeness check. Adjacent source review also found class-specific ReadFromStream aliases and mutable MiniByte FALSE behavior.",
+  "leads": [
+    {
+      "java": "src/org/minima/objects/base/MiniByte.java",
+      "cpp": "src/org/minima/objects/base/MiniByte.cpp",
+      "name": "WriteToStream",
+      "disposition": "source-named public entry point now exposed through existing implementation"
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniData.java",
+      "cpp": "src/org/minima/objects/base/MiniData.cpp",
+      "name": "ReadHashFromStream",
+      "disposition": "source-named public entry point now exposed through existing implementation"
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniData.java",
+      "cpp": "src/org/minima/objects/base/MiniData.cpp",
+      "name": "WriteToStream",
+      "disposition": "source-named public entry point now exposed through existing implementation"
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniData.java",
+      "cpp": "src/org/minima/objects/base/MiniData.cpp",
+      "name": "getMiniDataVersion",
+      "disposition": "source-named public entry point now exposed through existing implementation"
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniNumber.java",
+      "cpp": "src/org/minima/objects/base/MiniNumber.cpp",
+      "name": "WriteToStream",
+      "disposition": "source-named public entry point now exposed through existing implementation"
+    },
+    {
+      "java": "src/org/minima/objects/base/MiniString.java",
+      "cpp": "src/org/minima/objects/base/MiniString.cpp",
+      "name": "WriteToStream",
+      "disposition": "source-named public entry point now exposed through existing implementation"
+    },
+    {
+      "java": "src/org/minima/objects/mmr/MMREntryNumber.java",
+      "cpp": "src/org/minima/objects/mmr/MMREntryNumber.cpp",
+      "name": "getBigDecimal",
+      "disposition": "source-named public entry point now exposed through existing implementation"
+    },
+    {
+      "java": "src/org/minima/system/commands/search/keys.java",
+      "cpp": "src/org/minima/system/commands/search/keys.cpp",
+      "name": "262144",
+      "disposition": "lexical false positive from string contents"
+    },
+    {
+      "java": "src/org/minima/utils/jni/jnifunctions.java",
+      "cpp": "src/org/minima/utils/jni/jnifunctions.cpp",
+      "name": "loadNativeLib",
+      "disposition": "external native implementation still unavailable"
+    },
+    {
+      "java": "src/org/minima/utils/jni/jnifunctions.java",
+      "cpp": "src/org/minima/utils/jni/jnifunctions.cpp",
+      "name": "sumIntegers",
+      "disposition": "external native implementation still unavailable"
+    },
+    {
+      "java": "src/org/minima/utils/jni/jnifunctions.java",
+      "cpp": "src/org/minima/utils/jni/jnifunctions.cpp",
+      "name": "sayHelloToMe",
+      "disposition": "external native implementation still unavailable"
+    },
+    {
+      "java": "src/org/minima/utils/jni/jnifunctions.java",
+      "cpp": "src/org/minima/utils/jni/jnifunctions.cpp",
+      "name": "hashHeader",
+      "disposition": "external native implementation still unavailable"
+    }
+  ]
+}

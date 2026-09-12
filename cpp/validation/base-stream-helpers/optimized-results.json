@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": 1853,
+  "planned_cases": 1853,
+  "independent_assertions": 22184,
+  "seconds": 3.589,
+  "transcript_sha256": "1ae5fe068c8bb14e0acac4fb892b16e599ac4b3da8af290b7af2bd6ca3526585",
+  "failures": [],
+  "scope": "Source-named base stream helpers, polymorphic MiniData version conversion with IO-only catch/log/null and runtime/null propagation, mutable MiniByte FALSE comparisons, and immutable MMR decimal snapshots. New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt and decimal-carrier constructors, exact min/max constants, MAXIMUM and raw decimal view. Decimal constructor cases retain coefficient/scale, plain-string conversion, 64-digit rounding, 44-place truncation, numeric range checks and immutable snapshots. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim."
+}

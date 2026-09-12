@@ -53,3 +53,15 @@ this does not establish full interface adoption or complete class parity.
 Boolean truth is not restricted to the canonical serialized values 0 and 1. Callers that need canonical validation must perform it separately. The source-map status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `5b94c4e0c9678079998358e10a18fa1ebfafdce0e91acedc3c4e3b9f1920d5b2`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Source-named stream helper audit
+
+The [public-helper lab](../../../../../../new-tests/base-stream-helpers.md) explains
+the newly exposed source API methods and their Java/native tests. The existing
+base-value corpus is retained and extended to 1,853 cases, including prefix bytes,
+truncated reads, nullable polymorphic serialization and retained decimal values.
+This is additional scoped evidence, not a full file-parity claim.
+
+FALSE and TRUE now retain mutable native objects. isFalse compares against current
+FALSE, matching Java even after a stream read changes that object. The fixture
+varies FALSE independently of the queried byte and restores it after each case.
