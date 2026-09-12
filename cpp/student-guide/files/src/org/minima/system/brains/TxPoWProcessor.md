@@ -52,3 +52,12 @@ Pinned Java SHA-256: `1ed6d718e8c17b63a06f90962abc5c4234da2cbfdceaafe8d33022da98
 ## Block-ID iteration follow-up
 
 requestMissingTxns retains the original ID list and current ID across database and send callbacks. Its traversal now uses checked storage; a structural change is observed at the next iterator step according to the source array rules. See the [iteration lab](../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.
+
+
+## Later live delivery observation
+
+The packaged native node passed a fresh peer-tip check, missed an immediate
+150-second reopen target, then caught up and followed new blocks on a later restart.
+This does not alter the original method-level evidence or certify full runtime
+parity. The [live reopen lab](../../../../../../new-tests/live-reopen-validation.md) explains the observed
+limits, relevant source guards, inconclusive Java control and next experiment.

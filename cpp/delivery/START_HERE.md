@@ -33,7 +33,11 @@ a fresh peer response when demonstrating synchronization.
 - **Reviewers:** [known gaps](KNOWN_GAPS.md), the validation directory, and the delivery test report when the final run completes.
 
 Each source file lesson links the pinned Java file, native counterpart, logic and
-relevant tests. Both implementations are included in the same source layout so
+relevant tests. The comparison reference is `project/upstream-study`, at the recorded pin. Root
+`project/src` and `project/jar` preserve the surrounding repository checkout and
+can contain later work; use the pinned tree linked by each lesson.
+
+Both implementations are included in the same source layout so
 those relative links keep working after extraction.
 
 ## What the native build contains

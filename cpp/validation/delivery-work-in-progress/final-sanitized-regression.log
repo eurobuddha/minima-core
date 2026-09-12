@@ -1,0 +1,19 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized
+    Start 110: archive_manager_differential
+    Start  28: cascade_differential
+    Start 106: txpow_sql_db_differential
+1/7 Test #106: txpow_sql_db_differential ........   Passed   55.79 sec
+    Start 105: onchain_db_differential
+2/7 Test #105: onchain_db_differential ..........   Passed   10.32 sec
+    Start  31: utility_differential
+3/7 Test  #31: utility_differential .............   Passed    5.64 sec
+    Start   3: source_mapping
+4/7 Test   #3: source_mapping ...................   Passed    0.50 sec
+    Start 297: source_mapping_snapshot
+5/7 Test #297: source_mapping_snapshot ..........   Passed    1.98 sec
+6/7 Test #110: archive_manager_differential .....   Passed  137.38 sec
+7/7 Test  #28: cascade_differential .............   Passed  168.06 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) = 168.07 sec

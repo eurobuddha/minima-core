@@ -1,0 +1,10 @@
+{
+  "folder": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/deliverables/MinimaCoreCpp-team-candidate-e82e91f",
+  "archive": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/deliverables/MinimaCoreCpp-team-candidate-e82e91f.zip",
+  "sha256": "01d231aefdba25f5bd62996d9be96f39de97eaaa7f962788e75c37cfd4c8e46e",
+  "source_head": "e82e91f2942c23c71925b03c166cf73855788354",
+  "upstream_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "runtime_archive": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/deliverables/MinimaCoreCpp-team-candidate-e82e91f-runtime.zip",
+  "payload_files": 5705,
+  "all_archive_files_verified": true
+}

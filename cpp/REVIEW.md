@@ -1,3 +1,13 @@
+# Current delivery review
+
+Use [the scoped delivery review](delivery/REVIEW.md), [validation status](delivery/VALIDATION_STATUS.md)
+and [known gaps](delivery/KNOWN_GAPS.md) for the current candidate.
+
+The chronological reviews below retain their original checkpoint context and
+pending-test notes; they are not current whole-project acceptance statements.
+
+## Historical reviews
+
 # Delivery candidate — four further source entry points
 
 Deadline: 02:30 London on 12 September 2026 (01:30 UTC). See delivery/DEADLINE.md.

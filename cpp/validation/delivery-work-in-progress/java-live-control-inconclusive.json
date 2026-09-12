@@ -1,0 +1,256 @@
+{
+  "passed": false,
+  "source_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "port": 23001,
+  "folder": "/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/minima-pinned-java-reopen-aku8bwv_",
+  "stages": [
+    {
+      "stage": "fresh",
+      "matched_within_150_seconds": false,
+      "samples": [
+        {
+          "seconds": 5.01,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 10.02,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 15.03,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 20.04,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 25.05,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 30.05,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 35.07,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 40.07,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 45.1,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 50.11,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 55.12,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 60.12,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 65.13,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 70.15,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 75.17,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 80.17,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 85.18,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 90.19,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 95.2,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 100.21,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 105.23,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 110.24,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 115.25,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 120.26,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 125.27,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 130.29,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 135.3,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 140.3,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 145.31,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        },
+        {
+          "seconds": 150.31,
+          "block": 0,
+          "hash": "0x00",
+          "connected": 0,
+          "peer_block": null,
+          "peer_hash": null
+        }
+      ],
+      "exit": 0
+    }
+  ],
+  "scope": "Unmodified pinned Java Main, same designated peer and 150-second fresh/reopen target, separate temporary data. This is a timing observation, not proof of identical scheduling or cause."
+}

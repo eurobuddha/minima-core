@@ -1,0 +1,25 @@
+[ 97%] Built target minima_file_port
+[ 97%] Built target minima_native_h2
+[ 97%] Building CXX object CMakeFiles/MinimaCoreCpp.dir/support/minima_entry.cpp.o
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_utility.dir/support/utility.cpp.o
+[100%] Linking CXX executable minima_utility
+[100%] Built target minima_utility
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_cascade.dir/support/cascade.cpp.o
+[100%] Linking CXX executable minima_cascade
+[100%] Built target minima_cascade
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_archive_manager.dir/support/archive_manager.cpp.o
+[100%] Linking CXX executable minima_archive_manager
+[100%] Built target minima_archive_manager
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_onchain_db.dir/support/onchain_db.cpp.o
+[100%] Linking CXX executable minima_onchain_db
+[100%] Built target minima_onchain_db
+[ 97%] Built target minima_file_port
+[ 97%] Building CXX object CMakeFiles/minima_txpow_sql_db.dir/support/txpow_sql_db.cpp.o
+[100%] Linking CXX executable minima_txpow_sql_db
+[100%] Built target minima_txpow_sql_db

@@ -1,3 +1,29 @@
+# Final delivery checks — e82e91f candidate exercised
+
+Full source ZIP assembled and all5705 payload files byte-verified. Exported457
+lessons/9640links/2628anchors passed. Extracted source independently built actual
+MinimaCoreCpp and primitives; all three source/primitive tests PASS. Final normal
+node+five affected suites PASS; final SANnode+seven affected/source suites PASS.
+Offline recovery restored working checkout+pin without network and audited457guides.
+
+Actual packaged runtime fresh stage PASS2309856. Immediate reopen150s FAILED.
+Same-data diagnostic restart loaded2309860, caughtup2309864, followed2309869, cleanexit.
+Do not erase firstfailure orclaimreopen reliability. PinnedJava livecontrol never
+completed freshstage (0connected,0height), so cause remains inconclusive. All fixture
+nodes have exited; userpreview21001 unchanged. Evidence underdelivery-work-in-progress.
+
+Current dirty work is final docs/evidence/READMEhistory. Needcommit+recovery. Source
+production code is unchanged frome82e91f; finalhandoverZIPmustbe regenerated after
+terminal dispositionofearlierfullsuites. Normal292session96386:291PASS+Magicactive.
+SAN293session77277:272terminated includingoneoriginalHORSTcleanupfailure; long
+TransactionTest/SPHINCSUtils/SPHINCS/FORS active, remaining tests queued. Corrected
+HORST full1438 targetedcomparisonPASS, failure preserved. No complete-suite passyet.
+SourceMap currentregistration297; newmains/finalfocusedtestsseparatelypassed.
+Deadline01:30UTC/02:30London remainsbinding. Finalhourstarts00:30UTC. Do notextend.
+Full457-fileparity stillincomplete,456mapped,externalJNIabsent,maincandidateaudit0.
+
+## Previous checkpoint (historical)
+
 # Delivery portability checkpoint
 
 source_map check reuses recorded search provenance and validates exported snapshots

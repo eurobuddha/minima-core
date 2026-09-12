@@ -3,7 +3,7 @@
 The final handover must replace active statuses with terminal results or explicit
 uncompleted tests. The source and binary revisions of separate runs are retained.
 
-- Latest normal native node build passed after the database main additions.
+- Both final normal and sanitizer native node builds passed after the database main additions.
 - Normal affected regressions passed all five suites: utility, Cascade, archive,
   on-chain DB and TxPoW SQL DB. Evidence is under delivery-work-in-progress.
 - Runtime mains:18 comparisons/121 assertions per normal and sanitizer build.
@@ -19,7 +19,19 @@ uncompleted tests. The source and binary revisions of separate runs are retained
   and the required failure of full-parity acceptance. Source mapping remains456/457.
 - Student guides:457 lessons;108 build-directory links repaired to portable saved
   evidence. Exported guide audit is now a packaging gate. Actual package check pending.
-- Final source archive and final relocated fresh/reopen runtime check:pending.
+- Candidate e82e91f full ZIP:5,705 payload hashes verified;457 exported lessons,
+  9,640 links and2,628 line anchors pass. Its relocated source builds the actual node
+  and passes source mapping, snapshot-integrity and Java/native primitive tests.
+- Sanitizer final affected regression:all seven selected suites pass (five affected
+  class suites plus both source-map checks),168.07seconds.
+- Candidate e82e91f relocated runtime:fresh start/hash command/peer agreement at
+  2309856/save/clean exit pass; immediate reopen fails its150-second tip target.
+  Subsequent same-package diagnostic restart follows new blocks through2309869.
+  Cause remains unconfirmed; the initial failure is not replaced by a pass.
+- Offline bundle recovery:working checkout and pinned Java worktree restored,
+  source map and all457 lessons verified without a network connection.
+- Final handover archive will be regenerated after terminal broad-test disposition;
+  candidate checks above retain their exact source identity.
 
 HTML presentation:ten slides and ten presenter-note sections generated from the
 editable outline. Browser security policy rejected opening the local file; no

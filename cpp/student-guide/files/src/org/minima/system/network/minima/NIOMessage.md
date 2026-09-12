@@ -51,3 +51,12 @@ Pinned Java SHA-256: `9fd5c260c825d6aef7fe63593790ac9e22792290da5a67deb54af23f89
 ## Block-ID iteration follow-up
 
 The transaction-request and pulse loops now retain their block-ID list and each current ID through a checked range. Network/database callbacks can no longer invalidate a raw vector iterator used by those loops. See the [iteration lab](../../../../../../../new-tests/txbody-id-iteration.md) for the source rules, actual consumer test, current validation and remaining limits.
+
+
+## Later live delivery observation
+
+The packaged native node passed a fresh peer-tip check, missed an immediate
+150-second reopen target, then caught up and followed new blocks on a later restart.
+This does not alter the original method-level evidence or certify full runtime
+parity. The [live reopen lab](../../../../../../../new-tests/live-reopen-validation.md) explains the observed
+limits, relevant source guards, inconclusive Java control and next experiment.

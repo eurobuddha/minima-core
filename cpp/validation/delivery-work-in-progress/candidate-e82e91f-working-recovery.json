@@ -1,0 +1,18 @@
+{
+  "head": "e82e91f2942c23c71925b03c166cf73855788354",
+  "bundle": "/Users/eurobuddha/Projects/minima/core/minima-core/local-backups/MinimaCoreC++-20260911T234846Z.bundle",
+  "bytes": 35836339,
+  "sha256": "a9d9285ab2aaec20b91fdced1e37e87b3deec035bb6170f1e42d67446dafefb3",
+  "recovery_clone": "/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/minimacorecpp-recovery-qct8zxmi/MinimaCoreC++",
+  "bundle_verified": true,
+  "recovery_head_verified": true,
+  "connectivity_verified": true,
+  "source_pin_present": true,
+  "all_checkpoint_paths_byte_verified": true,
+  "checkpoint_path_count": 519,
+  "working_tree_restore_verified": true,
+  "pinned_upstream_worktree_restored_without_network": true,
+  "restored_source_map_verified": true,
+  "restored_457_student_guides_verified": true,
+  "off_machine": false
+}

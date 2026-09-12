@@ -1,0 +1,113 @@
+{
+  "source_head": "e82e91f2942c23c71925b03c166cf73855788354",
+  "original_150_second_reopen_pass": false,
+  "diagnostic_duration_seconds": 180,
+  "clean_exit": true,
+  "observations": [
+    {
+      "block": 2309860,
+      "hash": "0x0000001BF6B320249C7E1A3F2EAA22F612079E339B5A344A0DA71504B1C6205A",
+      "connected": 0,
+      "peer_block": null,
+      "peer_hash": null,
+      "matches_latest_peer": false
+    },
+    {
+      "block": 2309860,
+      "hash": "0x0000001BF6B320249C7E1A3F2EAA22F612079E339B5A344A0DA71504B1C6205A",
+      "connected": 0,
+      "peer_block": 2309863,
+      "peer_hash": "0x0000004834111832940D02BAE4521880B4CFED96C64DBA12381741D03E53EA09",
+      "matches_latest_peer": false
+    },
+    {
+      "block": 2309860,
+      "hash": "0x0000001BF6B320249C7E1A3F2EAA22F612079E339B5A344A0DA71504B1C6205A",
+      "connected": 1,
+      "peer_block": 2309863,
+      "peer_hash": "0x0000004834111832940D02BAE4521880B4CFED96C64DBA12381741D03E53EA09",
+      "matches_latest_peer": false
+    },
+    {
+      "block": 2309864,
+      "hash": "0x0000003DB607833951FAD7E06D5FD5C1C9FBA160ECF5A3BF7A113DC1CF61B67C",
+      "connected": 1,
+      "peer_block": 2309863,
+      "peer_hash": "0x0000004834111832940D02BAE4521880B4CFED96C64DBA12381741D03E53EA09",
+      "matches_latest_peer": false
+    },
+    {
+      "block": 2309864,
+      "hash": "0x0000003DB607833951FAD7E06D5FD5C1C9FBA160ECF5A3BF7A113DC1CF61B67C",
+      "connected": 1,
+      "peer_block": 2309864,
+      "peer_hash": "0x0000003DB607833951FAD7E06D5FD5C1C9FBA160ECF5A3BF7A113DC1CF61B67C",
+      "matches_latest_peer": true
+    },
+    {
+      "block": 2309865,
+      "hash": "0x0000001A81F618613D268C2F221B5DDDB4916224A672039D2A2FF98D504E8F05",
+      "connected": 1,
+      "peer_block": 2309864,
+      "peer_hash": "0x0000003DB607833951FAD7E06D5FD5C1C9FBA160ECF5A3BF7A113DC1CF61B67C",
+      "matches_latest_peer": false
+    },
+    {
+      "block": 2309865,
+      "hash": "0x0000001A81F618613D268C2F221B5DDDB4916224A672039D2A2FF98D504E8F05",
+      "connected": 1,
+      "peer_block": 2309865,
+      "peer_hash": "0x0000001A81F618613D268C2F221B5DDDB4916224A672039D2A2FF98D504E8F05",
+      "matches_latest_peer": true
+    },
+    {
+      "block": 2309866,
+      "hash": "0x0000001C064696A00D7B163CBD77B2074EB4A7F3C1AA1335976C2230D93AFA9A",
+      "connected": 1,
+      "peer_block": 2309865,
+      "peer_hash": "0x0000001A81F618613D268C2F221B5DDDB4916224A672039D2A2FF98D504E8F05",
+      "matches_latest_peer": false
+    },
+    {
+      "block": 2309867,
+      "hash": "0x00000071BA42727BD75817AE2B7F19B8C0C8D4BE9DB42F9B79009CB3C6FA3243",
+      "connected": 1,
+      "peer_block": 2309865,
+      "peer_hash": "0x0000001A81F618613D268C2F221B5DDDB4916224A672039D2A2FF98D504E8F05",
+      "matches_latest_peer": false
+    },
+    {
+      "block": 2309867,
+      "hash": "0x00000071BA42727BD75817AE2B7F19B8C0C8D4BE9DB42F9B79009CB3C6FA3243",
+      "connected": 1,
+      "peer_block": 2309867,
+      "peer_hash": "0x00000071BA42727BD75817AE2B7F19B8C0C8D4BE9DB42F9B79009CB3C6FA3243",
+      "matches_latest_peer": true
+    },
+    {
+      "block": 2309868,
+      "hash": "0x00000037B5CF8A57108A7A6EC48A1F3873997D6EBDCF73BD9B8AD5693C61C627",
+      "connected": 1,
+      "peer_block": 2309868,
+      "peer_hash": "0x00000037B5CF8A57108A7A6EC48A1F3873997D6EBDCF73BD9B8AD5693C61C627",
+      "matches_latest_peer": true
+    },
+    {
+      "block": 2309869,
+      "hash": "0x00000066E2F06529D8DA091E9FBC43D6C957567EA48DDF478B112812C12E722D",
+      "connected": 1,
+      "peer_block": 2309868,
+      "peer_hash": "0x00000037B5CF8A57108A7A6EC48A1F3873997D6EBDCF73BD9B8AD5693C61C627",
+      "matches_latest_peer": false
+    },
+    {
+      "block": 2309869,
+      "hash": "0x00000066E2F06529D8DA091E9FBC43D6C957567EA48DDF478B112812C12E722D",
+      "connected": 1,
+      "peer_block": 2309869,
+      "peer_hash": "0x00000066E2F06529D8DA091E9FBC43D6C957567EA48DDF478B112812C12E722D",
+      "matches_latest_peer": true
+    }
+  ],
+  "scope": "Same unmodified package and saved test node, subsequent diagnostic restart. Public status/ping transitions only. Does not change the initial failed reopen result or establish its cause."
+}
