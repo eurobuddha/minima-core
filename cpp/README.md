@@ -39,4 +39,5 @@ was rewritten in C++.
 Source mapping checks verify inventory and hashes. `check_full_port` deliberately
 fails while complete parity is unverified. Historical reports remain traceable and
 are not silently relabelled as final-candidate passes. Local commits and verified
-recovery bundles are retained; nothing has been pushed or sent to the team.
+recovery bundles are retained. The [GitHub publication guide](delivery/GITHUB.md)
+identifies the source repository and development release.

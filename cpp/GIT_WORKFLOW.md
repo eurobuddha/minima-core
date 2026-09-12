@@ -27,8 +27,11 @@ both full builds passing. The 356 phase passed 35 selected tests per build; the
 357 phase passed ten selected tests per build. Finite coverage and full-node
 limitations are recorded in REVIEW.md and validation/checkpoint-357.
 
-GitHub backup destination is awaiting the user's choice between their two
-existing fork remotes. Local commits do not imply that a GitHub push occurred.
+The authorized GitHub destination is `https://github.com/eurobuddha/MinimaCoreCpp`.
+Use the separate `minimacorecpp` remote for this project; retain the existing Java
+origin and fork remotes. Push the named working branch without force or mirroring
+unrelated refs. Publish versioned development artifacts as release assets after
+verifying their recorded checksums. See [GitHub publication](delivery/GITHUB.md).
 
 Checkpoint 359 adds validated trace/timemilli coverage, both full builds and eleven
 selected regressions per build. Compact evidence is in validation/checkpoint-359.

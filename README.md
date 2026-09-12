@@ -1,8 +1,40 @@
 # MinimaCoreC++
 
-The local C++ port of minima-core. The full native node is still in progress.
-See the [C++ build and status](cpp/README.md), [457-file mapping](cpp/SOURCE_MAP.md),
-[student lessons](cpp/student-guide/README.md), and [local checkpoint workflow](cpp/GIT_WORKFLOW.md).
+A native C++ MinimaCore development project with source, Java/C++ comparison tests,
+one student lesson for each of the 457 mapped Java files, and a runnable Apple
+Silicon macOS package.
+
+**Development status:** 456 of 457 counterparts exist. Full behavioral parity is
+unverified; the external JNI implementation is missing, and reliable mainnet startup
+and reopen remain open issues. Read the [validation report](cpp/delivery/VALIDATION_STATUS.md)
+and [known gaps](cpp/delivery/KNOWN_GAPS.md) before using the node.
+
+## Downloads and documentation
+
+- [Development release and downloads](https://github.com/eurobuddha/MinimaCoreCpp/releases/tag/dev-2026-09-12): complete project ZIP, standalone macOS executable, checksums and verification record.
+- [Team handover](cpp/delivery/START_HERE.md), [build instructions](cpp/delivery/BUILD_AND_TEST.md), and [delivery changes](cpp/delivery/CHANGES.md).
+- [All 457 student lessons](cpp/student-guide/INDEX.md) and [study route](cpp/student-guide/how-to-study-this-port.md).
+- [Presentation outline and speaker notes](cpp/delivery/PRESENTATION.md), [offline HTML presentation](cpp/delivery/presentation.html), and [demo script](cpp/delivery/DEMO.md).
+- [Java/C++ file mapping](cpp/SOURCE_MAP.md), [source status](cpp/README.md), and [checkpoint workflow](cpp/GIT_WORKFLOW.md).
+
+The runtime targets Apple Silicon macOS 26+, uses port 21001 by default, and creates
+its own data directory. H2/MySQL is compiled ahead of time from Java; the node does
+not launch a JVM. The release is a development preview, not a complete parity release.
+Download the full project ZIP for a self-contained source snapshot, including the
+pinned Java reference and all teaching files.
+
+## Clone the source
+
+```sh
+git clone --recurse-submodules https://github.com/eurobuddha/MinimaCoreCpp.git
+cd MinimaCoreCpp
+```
+
+If already cloned without submodules, run `git submodule update --init upstream-study`.
+The reference is pinned to `5564b9d78978efcaf23679190d05253961fc6e69`. Follow the build
+instructions for the native database provider and developer dependencies. The Git
+repository preserves the original Java and port history. Executable packages are
+release assets; runtime wallets, local databases and uncommitted files are excluded.
 
 ## Original Java application
 
