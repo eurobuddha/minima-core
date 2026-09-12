@@ -111,8 +111,24 @@ exec "$preview_dir/bin/MinimaCoreC++" \\
     with zipfile.ZipFile(ROOT/'upstream-study/lib/mysql-connector-java-8.0.24.jar') as jar:
         (output/'licenses/MYSQL_CONNECTOR_LICENSE').write_bytes(jar.read('META-INF/LICENSE'))
     shutil.copytree(CPP/'native/h2/licenses',output/'licenses/native-database')
-    provider_source = args.build.resolve()/'native-h2-archive/manifest.json'
-    provider = json.loads(provider_source.read_text()) if provider_source.exists() else None
+    # The configured provider may be shared by Debug, sanitizer and optimized
+    # build directories. Resolve metadata beside the library actually bundled.
+    h2_source = next(source for source, destination in copied.items()
+                     if destination.name == 'libminima_h2.dylib')
+    provider_source = h2_source.parent/'manifest.json'
+    if not provider_source.is_file():
+        raise RuntimeError('Native database build manifest is missing: '+str(provider_source))
+    provider = json.loads(provider_source.read_text())
+    if provider.get('library_sha256') != source_hashes[str(h2_source)]:
+        raise RuntimeError('Native database manifest does not identify the bundled source library')
+    cache = {}
+    for line in (args.build.resolve()/'CMakeCache.txt').read_text().splitlines():
+        if '=' in line and not line.startswith(('#','//')):
+            key, value = line.split('=', 1);cache[key.split(':', 1)[0]] = value
+    build_type = cache.get('CMAKE_BUILD_TYPE', '')
+    source_build = dict(type=build_type, cxx_flags=cache.get('CMAKE_CXX_FLAGS', ''),
+                        configuration_flags=cache.get('CMAKE_CXX_FLAGS_'+build_type.upper(), ''),
+                        native_database_manifest_sha256=sha(provider_source))
     if provider:
         # Record the dependency/toolchain versions without retaining machine build paths.
         (output/'native-database.json').write_text(json.dumps({k:v for k,v in provider.items() if k not in ['command','library']}, indent=2)+'\n')
@@ -163,7 +179,7 @@ To report a problem, include the command, actual/expected response and the sourc
 checkpoint above. Keep seed phrases, private keys and wallet databases private.
 ''')
     manifest = dict(source_head=head, utc=datetime.now(timezone.utc).isoformat(),
-                    platform='macOS 26+ arm64', source_binary_sha256=original_binary_hash,
+                    platform='macOS 26+ arm64', source_binary_sha256=original_binary_hash, source_build=source_build,
                     source_dependencies_sha256=source_hashes, native_database=bool(provider),
                     package_kind='local development preview', full_parity=False, node_port=args.port,
                     file_sha256={str(p.relative_to(output)):sha(p) for p in sorted(output.rglob('*')) if p.is_file()})

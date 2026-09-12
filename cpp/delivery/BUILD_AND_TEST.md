@@ -82,6 +82,27 @@ sequentially if they share external fixtures. Test reports under each build
 include scoped differential observations. The delivery evidence preserves terminal
 results rather than inferring test success from a successful build.
 
+## Optimized candidate with assertions retained
+
+The earlier normal build uses Debug (`-g`, no optimization). To evaluate the same
+source with optimization while retaining C++ assertions, use a separate directory:
+
+```sh
+cmake -S cpp -B cpp/build-optimized -DCMAKE_BUILD_TYPE=Release \
+  '-DCMAKE_CXX_FLAGS_RELEASE=-O2 -g' \
+  -DICU_ROOT=/opt/homebrew/opt/icu4c@78 \
+  -DMINIMA_NATIVE_H2_DIR="$PWD/cpp/build/native-h2"
+cmake --build cpp/build-optimized -j4
+ctest --test-dir cpp/build-optimized --output-on-failure -j4
+```
+
+The explicit configuration flags replace CMake's usual Release `-DNDEBUG`; source
+assertions stay enabled. There is no fast-math flag. This build requires its own
+behavioral validation. Do not relabel earlier Debug/sanitizer outcomes as a full
+optimized-suite pass. The runtime manifest records the actual build configuration
+and verifies the AOT database manifest against the library being bundled.
+
+
 ## Packaging
 
 The packaging tools require a Git checkout with committed C++ changes, since they
