@@ -3,7 +3,8 @@
 The shareable project ZIP is a source snapshot, not a Git repository. Local recovery
 bundles are retained separately under `local-backups/`. Each bundle has a JSON
 verification record containing its source commit, SHA-256 and recovered file hashes.
-These are local copies; no off-machine backup or GitHub push has been performed.
+These bundles are local copies. The committed source is also published in the
+[GitHub repository](GITHUB.md); runtime wallet data is not part of that publication.
 
 Use the exact bundle and expected checksum from its verification record. The
 following procedure was exercised against a dedicated recovery directory. Never

@@ -1,3 +1,26 @@
+# GitHub publication completed
+
+New user instruction authorized creating a GitHub repository, committing, pushing
+and publishing the project, docs and student files after the bounded local handover.
+Repository: https://github.com/eurobuddha/MinimaCoreCpp (initially PRIVATE).
+Remote: minimacorecpp; default/working branch: MinimaCoreC++.
+Release: dev-2026-09-12, published development prerelease with five verified assets.
+Tag identifies packaged source aea5d892a623271155dd7f2a2af1d06bdecab9b1.
+
+Full source/history pushed; original upstream/fork remotes preserved. Fresh GitHub
+clone and pinned Java source verified;457lessons/9650links/2628anchorsPASS. All five
+assets downloaded and byte-verified before publishing. Publication evidence is in
+validation/github-publication; guidance is in delivery/GITHUB.md. Receipt/docs-only
+follow-up commit is pushed with a verified local recovery bundle.
+
+Production code remains unchanged. Full parity remains456/457 with externalJNI
+missing and live startup/reopen reliability unresolved. No full SAN-suite pass.
+The user can choose public visibility later; no collaborator invitations or team
+messages were sent. Existing node/preview/wallet data and uncommitted graphify
+changes remain untouched.
+
+## Previous checkpoint (historical)
+
 # Bounded handover delivered — original parity goal remains incomplete
 
 The final project/runtime packages are verified. Read delivery/DELIVERY_RECEIPT.md

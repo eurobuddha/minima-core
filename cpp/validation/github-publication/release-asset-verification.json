@@ -1,0 +1,39 @@
+{
+  "repository": "eurobuddha/MinimaCoreCpp",
+  "tag": "dev-2026-09-12",
+  "download_directory": "/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/minimacorecpp-release-download-5x0igfi4",
+  "assets": [
+    {
+      "name": "MinimaCoreCpp-team-20260912.zip",
+      "bytes": 92928720,
+      "sha256": "cba1450324a72191fec2d9e740392693e320718a95b5e672ce92c9d0637bf8f4",
+      "download_matches_local": true
+    },
+    {
+      "name": "MinimaCoreCpp-team-20260912.zip.sha256",
+      "bytes": 98,
+      "sha256": "1894c3242242deaf14c26727e2adfd7ad22d50519479c31671e40db9d9dcfeb5",
+      "download_matches_local": true
+    },
+    {
+      "name": "MinimaCoreCpp-team-20260912-runtime.zip",
+      "bytes": 39383781,
+      "sha256": "909ce54ab10ba60b2a11ea25ce90d1ed15f29599c2f23573dd635c821540c69d",
+      "download_matches_local": true
+    },
+    {
+      "name": "MinimaCoreCpp-team-20260912-runtime.zip.sha256",
+      "bytes": 106,
+      "sha256": "d11549db701b6becd46dbb1db91518d711ef8588c19dc03caa8a6b54e96d6f7d",
+      "download_matches_local": true
+    },
+    {
+      "name": "archive-verification.json",
+      "bytes": 1667,
+      "sha256": "5b7598ce45d3e6436e5cc5ed7e7419408f0b87f6bdeaf4bc9bea32b2b6cdd2d5",
+      "download_matches_local": true
+    }
+  ],
+  "all5_assets_downloaded_and_byte_verified": true,
+  "release_draft_at_verification": true
+}

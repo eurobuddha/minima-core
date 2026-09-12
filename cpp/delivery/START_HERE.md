@@ -62,7 +62,8 @@ PATH, checks the command console and exercises startup/shutdown/reopen.
 [Local recovery instructions](RECOVERY.md) explain how to restore a verified bundle.
 Local Git checkpoints and independently verified recovery bundles protect the
 working project. They are retained locally and are not a substitute for an off-machine
-backup. No push or message to the team is performed as part of this delivery.
+backup. The source and development release are now available through the
+[GitHub repository](GITHUB.md). No separate message or invitation to the team was sent.
 
 ## Reporting a defect
 

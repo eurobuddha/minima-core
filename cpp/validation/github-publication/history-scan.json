@@ -1,0 +1,9 @@
+{
+  "head": "262c8d68467cfa120f9834165fe18b75a0ab299d",
+  "blobs_scanned": 5956,
+  "bytes_scanned": 398785092,
+  "high_confidence_pattern_findings": [],
+  "credential_or_runtime_database_paths": [],
+  "blobs_over100MiB": [],
+  "scope": "All blobs reachable from publication HEAD. Targeted credential/private-key patterns and private runtime filenames; not an exhaustive secrets certification. Values are never printed."
+}

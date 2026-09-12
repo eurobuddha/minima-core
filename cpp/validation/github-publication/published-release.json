@@ -1,0 +1,89 @@
+{
+  "repository": {
+    "defaultBranchRef": {
+      "name": "MinimaCoreC++"
+    },
+    "nameWithOwner": "eurobuddha/MinimaCoreCpp",
+    "url": "https://github.com/eurobuddha/MinimaCoreCpp",
+    "visibility": "PRIVATE"
+  },
+  "release": {
+    "assets": [
+      {
+        "apiUrl": "https://api.github.com/repos/eurobuddha/MinimaCoreCpp/releases/assets/558946769",
+        "contentType": "application/json",
+        "createdAt": "2026-09-12T08:54:42Z",
+        "digest": "sha256:5b7598ce45d3e6436e5cc5ed7e7419408f0b87f6bdeaf4bc9bea32b2b6cdd2d5",
+        "downloadCount": 0,
+        "id": "RA_kwDOUXyk7M4hUNnR",
+        "label": "",
+        "name": "archive-verification.json",
+        "size": 1667,
+        "state": "uploaded",
+        "updatedAt": "2026-09-12T08:54:42Z",
+        "url": "https://github.com/eurobuddha/MinimaCoreCpp/releases/download/dev-2026-09-12/archive-verification.json"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/eurobuddha/MinimaCoreCpp/releases/assets/558946767",
+        "contentType": "application/zip",
+        "createdAt": "2026-09-12T08:54:42Z",
+        "digest": "sha256:909ce54ab10ba60b2a11ea25ce90d1ed15f29599c2f23573dd635c821540c69d",
+        "downloadCount": 0,
+        "id": "RA_kwDOUXyk7M4hUNnP",
+        "label": "",
+        "name": "MinimaCoreCpp-team-20260912-runtime.zip",
+        "size": 39383781,
+        "state": "uploaded",
+        "updatedAt": "2026-09-12T08:55:21Z",
+        "url": "https://github.com/eurobuddha/MinimaCoreCpp/releases/download/dev-2026-09-12/MinimaCoreCpp-team-20260912-runtime.zip"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/eurobuddha/MinimaCoreCpp/releases/assets/558946768",
+        "contentType": "application/octet-stream",
+        "createdAt": "2026-09-12T08:54:42Z",
+        "digest": "sha256:d11549db701b6becd46dbb1db91518d711ef8588c19dc03caa8a6b54e96d6f7d",
+        "downloadCount": 0,
+        "id": "RA_kwDOUXyk7M4hUNnQ",
+        "label": "",
+        "name": "MinimaCoreCpp-team-20260912-runtime.zip.sha256",
+        "size": 106,
+        "state": "uploaded",
+        "updatedAt": "2026-09-12T08:54:42Z",
+        "url": "https://github.com/eurobuddha/MinimaCoreCpp/releases/download/dev-2026-09-12/MinimaCoreCpp-team-20260912-runtime.zip.sha256"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/eurobuddha/MinimaCoreCpp/releases/assets/558946774",
+        "contentType": "application/zip",
+        "createdAt": "2026-09-12T08:54:42Z",
+        "digest": "sha256:cba1450324a72191fec2d9e740392693e320718a95b5e672ce92c9d0637bf8f4",
+        "downloadCount": 0,
+        "id": "RA_kwDOUXyk7M4hUNnW",
+        "label": "",
+        "name": "MinimaCoreCpp-team-20260912.zip",
+        "size": 92928720,
+        "state": "uploaded",
+        "updatedAt": "2026-09-12T08:55:49Z",
+        "url": "https://github.com/eurobuddha/MinimaCoreCpp/releases/download/dev-2026-09-12/MinimaCoreCpp-team-20260912.zip"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/eurobuddha/MinimaCoreCpp/releases/assets/558946771",
+        "contentType": "application/octet-stream",
+        "createdAt": "2026-09-12T08:54:42Z",
+        "digest": "sha256:1894c3242242deaf14c26727e2adfd7ad22d50519479c31671e40db9d9dcfeb5",
+        "downloadCount": 0,
+        "id": "RA_kwDOUXyk7M4hUNnT",
+        "label": "",
+        "name": "MinimaCoreCpp-team-20260912.zip.sha256",
+        "size": 98,
+        "state": "uploaded",
+        "updatedAt": "2026-09-12T08:54:42Z",
+        "url": "https://github.com/eurobuddha/MinimaCoreCpp/releases/download/dev-2026-09-12/MinimaCoreCpp-team-20260912.zip.sha256"
+      }
+    ],
+    "isDraft": false,
+    "isPrerelease": true,
+    "publishedAt": "2026-09-12T08:58:03Z",
+    "tagName": "dev-2026-09-12",
+    "url": "https://github.com/eurobuddha/MinimaCoreCpp/releases/tag/dev-2026-09-12"
+  }
+}

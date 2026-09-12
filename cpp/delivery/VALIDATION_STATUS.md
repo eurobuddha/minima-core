@@ -57,7 +57,8 @@ ZIP has a checksum and a verification record beside it.
 Local recovery bundles have been verified by restoring the expected commit and
 pinned Java source without network access, checking Git connectivity and comparing
 checkpoint file bytes. See [recovery instructions](RECOVERY.md). These are local
-backups, not an off-machine copy or a GitHub push.
+backups. The source was subsequently published to the [GitHub repository](GITHUB.md);
+that publication does not change the recorded test results or include private wallets.
 
 ## Live runtime observations
 
