@@ -1,5 +1,14 @@
 # Running the local executable preview
 
+The [cascade cleanup replacement](delivery/CASCADE_CRASH_FIX.md) supersedes the
+original `6c28109` executable described below. At the owner's request, the familiar
+preview location now opens the optimized replacement with fresh data. A verified
+local recovery copy preserves the original preview and its wallet. Consult the
+new runtime manifest for its actual source identity; the legacy path name is not
+a version guarantee.
+
+## Original preview (historical)
+
 The frozen Apple Silicon preview is in
 `preview-builds/MinimaCoreC++-6c28109-port21001-macos-arm64/`.
 Double-click **Start MinimaCoreC++.command** in that folder to open Terminal.

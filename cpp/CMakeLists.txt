@@ -449,6 +449,11 @@ foreach(test ASSERTstatementTests EXECstatementTests)
     add_test(NAME ${test} COMMAND ${test})
 endforeach()
 
+add_executable(cascade_release support/cascade_release.cpp)
+target_link_libraries(cascade_release PRIVATE minima_file_port)
+add_test(NAME cascade_release COMMAND cascade_release)
+set_tests_properties(cascade_release PROPERTIES TIMEOUT 1200)
+
 add_executable(minima_cascade support/cascade.cpp)
 target_link_libraries(minima_cascade PRIVATE minima_file_port)
 add_test(NAME cascade_differential COMMAND ${Python3_EXECUTABLE}

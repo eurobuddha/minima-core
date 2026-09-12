@@ -8,6 +8,13 @@ The repository is initially private unless the owner explicitly selects public
 visibility. A published private release is available only to people with repository
 access. The owner can manage visibility and collaborators in GitHub settings.
 
+## Cascade crash replacement
+
+The replacement development release is
+[dev-2026-09-12-cascade-fix](https://github.com/eurobuddha/MinimaCoreCpp/releases/tag/dev-2026-09-12-cascade-fix).
+Read [its change and validation scope](CASCADE_CRASH_FIX.md). The earlier release
+below is preserved for traceability and still contains the recursive cleanup defect.
+
 ## What is published
 
 The working branch contains the committed project and its history, C++ sources,

@@ -57,3 +57,7 @@ cases use identical Java-produced bytes for both languages; the input must stay
 unchanged. The default cascade checker now routes its diagnostics through MinimaLogger.
 
 See the [runtime main lab](../../../../../../new-tests/runtime-main-methods.md) for the actual test evidence and limits.
+
+## Cascade cleanup crash correction
+
+Dropping or replacing a cascade tip now benefits from iterative CascadeNode destruction. Cascade still owns its tip strongly and its pruning, deep-copy and wire algorithms are unchanged. See the [cascade cleanup lab](../../../../../../new-tests/cascade-release.md) for the crash evidence, ownership reasoning, regression cases and validation limits.

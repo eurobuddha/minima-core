@@ -43,3 +43,7 @@ Why is multiplying a double weight by pow(2,level) insufficient for a 1:1 port? 
 Parent identity, exact negative-level errors and every date/locale are outside these observations. Deep-copy failure behavior follows TxPoW and still needs full parity review. Port status remains partial and parity not_verified.
 
 Pinned Java SHA-256: `db3af7a3eed8ac5406db56c6beccbdad5517d1f84bc686b757c377e55c7f6332`. Mapping: [source-map.json](../../../../../../../source-map.json). Project limitations: [REVIEW.md](../../../../../../../REVIEW.md).
+
+## Cascade cleanup crash correction
+
+The native destructor now releases parent owners iteratively. It only moves links from nodes already being destroyed, so shared tails and weak-pointer promotions retain their ancestry. Explicit default copy/move operations preserve the previous value interface. See the [cascade cleanup lab](../../../../../../new-tests/cascade-release.md) for the crash evidence, ownership reasoning, regression cases and validation limits.

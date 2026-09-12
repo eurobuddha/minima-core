@@ -1,0 +1,53 @@
+{
+  "configuration": "optimized",
+  "passed": true,
+  "stages": [
+    {
+      "stage": "configure",
+      "command": [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized"
+      ],
+      "returncode": 0,
+      "seconds": 1.336
+    },
+    {
+      "stage": "build",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized",
+        "--target",
+        "cascade_release",
+        "minima_cascade",
+        "minima_ibd",
+        "minima_nio_message",
+        "runtime_mains",
+        "fixed_task_executor",
+        "MinimaCoreCpp",
+        "-j3"
+      ],
+      "returncode": 0,
+      "seconds": 186.599
+    },
+    {
+      "stage": "tests",
+      "command": [
+        "ctest",
+        "--test-dir",
+        "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized",
+        "--output-on-failure",
+        "--output-junit",
+        "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/validation/cascade-release/optimized/ctest.xml",
+        "-j2",
+        "-R",
+        "^(cascade_release|cascade_differential|ibd_differential|nio_message_differential|runtime_mains_differential|fixed_task_executor|source_mapping|source_mapping_snapshot|native_node_startup)$"
+      ],
+      "returncode": 0,
+      "seconds": 76.663
+    }
+  ]
+}

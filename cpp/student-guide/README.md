@@ -100,3 +100,5 @@ The [system-check lab](new-tests/system-check.md) follows queue reports, active
 checker posts, delayed delivery and reentrant diagnostic logging.
 
 - [Thread interruption lab](new-tests/thread-interruption.md): interrupt flags, real sleeping workers, transaction lock retention and retry scheduling after timeout shutdown.
+
+- [Cascade cleanup lab](new-tests/cascade-release.md): worker-stack overflow, iterative destruction, shared tails, weak owners and temporary IBD lifetime.

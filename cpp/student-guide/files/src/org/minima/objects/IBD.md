@@ -60,3 +60,7 @@ serializing the IBD. The native serializer previously exposed IllegalArgumentExc
 that specific write path now preserves the source category. Both 81-case server
 comparisons and both 1,057-case IBD regressions pass. See the
 [archive-server lab](../../../../../../student-guide/new-tests/archive-server.md).
+
+## Cascade cleanup crash correction
+
+A temporary complete IBD owns a deep-copied cascade. Its scope exit previously triggered recursive shared_ptr destruction. The native regression now reconstructs and destroys 30,000-node complete IBDs on small worker stacks while checking that an independently retained original survives. See the [cascade cleanup lab](../../../../../new-tests/cascade-release.md) for the crash evidence, ownership reasoning, regression cases and validation limits.

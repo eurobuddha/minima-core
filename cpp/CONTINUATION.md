@@ -1,3 +1,29 @@
+# Cascade cleanup crash fix — validation and replacement in progress
+
+The September 11 SIGBUS is reproduced from the unchanged CascadeNode ownership
+code. The implementation now drains parent owners iteratively without detaching
+live shared nodes, and explicitly preserves copy/move operations. Debug and
+optimized selected suites each pass 9/9, including 20 long-chain worker runs.
+ASan/UBSan selected tests are still running; do not claim their final result yet.
+Evidence and review: validation/cascade-release. Student lessons and a new cleanup
+lab are updated; 457 guides, 9663 links and 2628 anchors pass structural audit.
+
+The owner subsequently requested overwriting the existing preview and starting
+fresh on the optimized version. All 29 original preview files, including its
+wallet, have a byte-verified local recovery copy. Do not use that wallet for new
+validation. Once sanitizer checks pass, package the optimized build with the
+existing project packagers, verify relocation/startup/reopen, replace the preview
+at its familiar location with fresh data, and publish the separately named
+`dev-2026-09-12-cascade-fix` development release. Matching optimized dSYM UUID:
+54ADF25C-F029-37BA-B111-1425F410DF96. Existing release assets remain immutable.
+
+No newly converted counterpart: full parity remains 456/457, external JNI missing.
+The crash correction does not establish reliable mainnet sync or overnight
+stability. The earlier handover timebox below belongs to its historical request
+and does not cancel the current explicit crash-fix task.
+
+## Previous checkpoint (historical)
+
 # GitHub publication completed
 
 New user instruction authorized creating a GitHub repository, committing, pushing

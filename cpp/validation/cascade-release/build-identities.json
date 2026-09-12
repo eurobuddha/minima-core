@@ -1,0 +1,41 @@
+[
+  {
+    "configuration": "normal",
+    "build_type": "Debug",
+    "cxx_flags": "",
+    "configuration_flags": "-g",
+    "binary_sha256": "88b3438060fd1705ff4070482a633a04482bcdf553a94a4993078216f5aee7e4",
+    "binary_uuid": "D6ABDFBF-12EB-354F-B2EC-8BB8C926A00B",
+    "sources_sha256": {
+      "cpp/src/org/minima/database/cascade/CascadeNode.cpp": "50b8d00717668a49c1c976343b70091201dc51a0f019252a4d078c384202bf87",
+      "cpp/src/org/minima/database/cascade/CascadeNode.hpp": "0171f49668c8183c365364a2624542e137afafffa142e1fc13b4828d63f9efb8",
+      "cpp/support/cascade_release.cpp": "257d83422f2157b6d692b52487a0db52f6114c5de9102e22aa0e38611de82f76"
+    }
+  },
+  {
+    "configuration": "optimized",
+    "build_type": "Release",
+    "cxx_flags": "",
+    "configuration_flags": "-O2 -g",
+    "binary_sha256": "04d2e6943d33aec08291e99e4a117e3058eab6325492bee4f6c190e3c1a28c64",
+    "binary_uuid": "54ADF25C-F029-37BA-B111-1425F410DF96",
+    "sources_sha256": {
+      "cpp/src/org/minima/database/cascade/CascadeNode.cpp": "50b8d00717668a49c1c976343b70091201dc51a0f019252a4d078c384202bf87",
+      "cpp/src/org/minima/database/cascade/CascadeNode.hpp": "0171f49668c8183c365364a2624542e137afafffa142e1fc13b4828d63f9efb8",
+      "cpp/support/cascade_release.cpp": "257d83422f2157b6d692b52487a0db52f6114c5de9102e22aa0e38611de82f76"
+    }
+  },
+  {
+    "configuration": "sanitized",
+    "build_type": "Debug",
+    "cxx_flags": "-fsanitize=address,undefined",
+    "configuration_flags": "-g",
+    "binary_sha256": "e885efd8ce5c333832f72f2047ecaf21d13f56bfa2c82b2121da8e71680c8adf",
+    "binary_uuid": "191E60C2-544E-3E9F-9B8A-A85F72A1F385",
+    "sources_sha256": {
+      "cpp/src/org/minima/database/cascade/CascadeNode.cpp": "50b8d00717668a49c1c976343b70091201dc51a0f019252a4d078c384202bf87",
+      "cpp/src/org/minima/database/cascade/CascadeNode.hpp": "0171f49668c8183c365364a2624542e137afafffa142e1fc13b4828d63f9efb8",
+      "cpp/support/cascade_release.cpp": "257d83422f2157b6d692b52487a0db52f6114c5de9102e22aa0e38611de82f76"
+    }
+  }
+]

@@ -9,6 +9,11 @@ class CascadeNode {
     CascadeNode()=default;
 public:
     explicit CascadeNode(const TxPoW& txpow);
+    ~CascadeNode();
+    CascadeNode(const CascadeNode&)=default;
+    CascadeNode(CascadeNode&&)=default;
+    CascadeNode& operator=(const CascadeNode&)=default;
+    CascadeNode& operator=(CascadeNode&&)=default;
     TxPoW& getTxPoW() {return mTxPoW;}
     const TxPoW& getTxPoW() const {return mTxPoW;}
     int32_t getLevel() const {return mCurrentLevel;}

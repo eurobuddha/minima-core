@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "cases": 10,
+  "worker_runs": 20,
+  "chain_depth": 30000,
+  "small_stack_bytes": 524288
+}

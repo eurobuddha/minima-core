@@ -1,0 +1,64 @@
+{
+  "report_sha256": "ed17d2e3eeace82e3486ea71cdcd4a5d7590197a91bf872e676bbdff7c6a93c7",
+  "capture_time": "2026-09-11 23:39:21.8860 +0100",
+  "exception": {
+    "codes": "0x0000000000000002, 0x0000000171fa3ff0",
+    "message": "Could not determine thread index for stack guard region",
+    "rawCodes": [
+      2,
+      6207193072
+    ],
+    "type": "EXC_BAD_ACCESS",
+    "signal": "SIGBUS",
+    "subtype": "KERN_PROTECTION_FAILURE at 0x0000000171fa3ff0"
+  },
+  "original_stack_frames": 14309,
+  "retained_stack_frames": 89,
+  "binary_uuid": "c5f6f088-8e18-3bfc-bb28-ba778fe644be",
+  "matched_preview_source": "6c28109",
+  "stack_guard_access": true,
+  "relevant_symbols": [
+    "std::__1::__shared_ptr_emplace<minima::CascadeNode, std::__1::allocator<minima::CascadeNode>>::__get_alloc[abi:nqe210106]()",
+    "void std::__1::__shared_ptr_emplace<minima::CascadeNode, std::__1::allocator<minima::CascadeNode>>::__on_zero_shared_impl[abi:nqe210106]<std::__1::allocator<minima::CascadeNode>, 0>()",
+    "std::__1::__shared_ptr_emplace<minima::CascadeNode, std::__1::allocator<minima::CascadeNode>>::__on_zero_shared()",
+    "std::__1::shared_ptr<minima::CascadeNode>::~shared_ptr[abi:nqe210106]()",
+    "minima::CascadeNode::~CascadeNode()",
+    "void std::__1::__destroy_at[abi:nqe210106]<minima::CascadeNode, 0>(minima::CascadeNode*)",
+    "void std::__1::allocator_traits<std::__1::allocator<minima::CascadeNode>>::destroy[abi:nqe210106]<minima::CascadeNode, 0>(std::__1::allocator<minima::CascadeNode>&, minima::CascadeNode*)",
+    "minima::Cascade::~Cascade()",
+    "minima::IBD::~IBD()",
+    "minima::NIOMessage::receiveGreeting(std::__1::span<unsigned char const, 18446744073709551615ul>, unsigned long&)",
+    "minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'()::operator()() const",
+    "std::__1::__invoke_result_impl<void, minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'()&>::type std::__1::__invoke[abi:nqe210106]<minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'()&>(minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'()&)",
+    "void std::__1::__invoke_void_return_wrapper<void, true>::__call[abi:nqe210106]<minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'()&>(minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'()&)",
+    "void std::__1::__invoke_r[abi:nqe210106]<void, minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'()&>(minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'()&)",
+    "std::__1::__function::__func<minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()::'lambda'(), void ()>::operator()()",
+    "minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()::operator()()",
+    "std::__1::__invoke_result_impl<void, minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()>::type std::__1::__invoke[abi:nqe210106]<minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()>(minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()&&)",
+    "void std::__1::__thread_execute[abi:nqe210106]<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct>>, minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()>(std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct>>, minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()>&, std::__1::__tuple_indices<>)",
+    "void* std::__1::__thread_proxy[abi:nqe210106]<std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct>>, minima::FixedTaskExecutor::spawn(std::__1::shared_ptr<minima::FixedTaskExecutor::State> const&, std::__1::function<void ()>)::'lambda'()>>(void*)"
+  ],
+  "unfixed_local_reproduction": {
+    "returncode": -10,
+    "stdout": "START unique-chain\n",
+    "stderr": "",
+    "command": [
+      "cpp/build/cascade_release",
+      "unique-chain"
+    ],
+    "chain_depth": 30000,
+    "worker_stack_bytes": 524288,
+    "source_checkpoint": "25b04d1f849a732cfcc50aeccf7fd19e850783e9"
+  },
+  "privacy": "Technical extract only; original OS report and user runtime data are not included.",
+  "unchanged_cleanup_sources": {
+    "cpp/src/org/minima/database/cascade/CascadeNode.hpp": {
+      "old_and_previous_optimized_equal": true,
+      "sha256": "fd23fa05addafcced70b016b0bfd837f4f78f9fd1a999033bffbddc3b0dc8ac7"
+    },
+    "cpp/src/org/minima/database/cascade/CascadeNode.cpp": {
+      "old_and_previous_optimized_equal": true,
+      "sha256": "44633c5779273dbf112345b994ac731be32a69984f727abb332ca955efe43e58"
+    }
+  }
+}

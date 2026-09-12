@@ -1,0 +1,23 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build
+    Start 243: native_node_startup
+    Start  54: ibd_differential
+1/9 Test  #54: ibd_differential .................   Passed   35.15 sec
+    Start  29: cascade_differential
+2/9 Test #243: native_node_startup ..............   Passed   53.39 sec
+    Start  88: nio_message_differential
+3/9 Test  #29: cascade_differential .............   Passed   50.87 sec
+    Start 298: source_mapping_snapshot
+4/9 Test #298: source_mapping_snapshot ..........   Passed    1.09 sec
+    Start  83: fixed_task_executor
+5/9 Test  #83: fixed_task_executor ..............   Passed    0.30 sec
+    Start   3: source_mapping
+6/9 Test   #3: source_mapping ...................   Passed    0.10 sec
+    Start  28: cascade_release
+7/9 Test  #88: nio_message_differential .........   Passed   38.46 sec
+    Start  74: runtime_mains_differential
+8/9 Test  #74: runtime_mains_differential .......   Passed   58.40 sec
+9/9 Test  #28: cascade_release ..................   Passed  126.98 sec
+
+100% tests passed, 0 tests failed out of 9
+
+Total Test time (real) = 214.49 sec

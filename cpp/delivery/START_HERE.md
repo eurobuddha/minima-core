@@ -4,6 +4,9 @@ This delivery contains a runnable native MinimaCore console, its source, the pin
 Java reference, behavioral test evidence, and one lesson for each of the 457 mapped
 Java files. It is a development delivery. Full behavioral parity remains unverified.
 
+The [cascade cleanup replacement](CASCADE_CRASH_FIX.md) addresses the September 11
+preview crash. Read it before selecting an executable from the earlier delivery.
+
 ## First session
 
 Open the runtime folder and double-click `Start MinimaCoreC++.command`. Keep its

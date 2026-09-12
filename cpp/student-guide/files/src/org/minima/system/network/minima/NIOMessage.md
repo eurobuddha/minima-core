@@ -60,3 +60,7 @@ The packaged native node passed a fresh peer-tip check, missed an immediate
 This does not alter the original method-level evidence or certify full runtime
 parity. The [live reopen lab](../../../../../../../new-tests/live-reopen-validation.md) explains the observed
 limits, relevant source guards, inconclusive Java control and next experiment.
+
+## Cascade cleanup crash correction
+
+The September 11 crash occurred when receiveGreeting finished using its temporary IBD. The fix changes CascadeNode cleanup, so the existing greeting selection and send order remain unchanged. The native long-IBD lifetime regression complements the existing Java/C++ greeting comparisons. See the [cascade cleanup lab](../../../../../../../new-tests/cascade-release.md) for the crash evidence, ownership reasoning, regression cases and validation limits.

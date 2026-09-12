@@ -1,0 +1,6 @@
+{
+  "cases": 1057,
+  "passed": 1057,
+  "failures": [],
+  "scope": "IBD wire/partial reads, cascade validity, exact weights, shortening/crossover precedence, complete/greeting/sync/archive construction, archive request parameters and lock release; database and network integration not asserted"
+}
