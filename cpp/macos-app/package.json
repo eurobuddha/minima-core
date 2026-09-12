@@ -1,0 +1,12 @@
+{
+  "name": "minimacore-cpp-preview",
+  "productName": "MinimaCoreC++ Preview",
+  "version": "0.1.0",
+  "description": "Configurable development console for the native MinimaCore C++ port",
+  "license": "MIT",
+  "main": "main/main.js",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs"
+  },
+  "author": "eurobuddha"
+}

@@ -1,0 +1,3 @@
+{"step":"fresh","passed":true,"cleanShutdown":true,"hashCommand":true,"soloBlock":1}
+{"step":"reopen","passed":true,"cleanShutdown":true,"hashCommand":true,"soloBlock":1}
+{"passed":true,"appAdapter":true,"freshAndReopen":true,"temporaryData":true}

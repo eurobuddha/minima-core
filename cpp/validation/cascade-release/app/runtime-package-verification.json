@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "source_head": "10ed9e6df9ec6e5eb86f0e87ddd1792b9ca91e07",
+  "binary_uuid": "54ADF25C-F029-37BA-B111-1425F410DF96",
+  "archive_sha256": "c147fc9a7f07406d49263be60217c20a9d30c07c790fd54db197e4b2cf1c6e88",
+  "manifest_files_verified": 272,
+  "system_only_path": true,
+  "help_passed": true,
+  "observations": [
+    {
+      "step": "fresh",
+      "passed": true,
+      "chain_height": 1,
+      "clean_shutdown": true,
+      "isolated_wallet": true
+    },
+    {
+      "step": "reopen",
+      "passed": true,
+      "chain_height": 1,
+      "clean_shutdown": true,
+      "isolated_wallet": true
+    }
+  ],
+  "scope": "Actual shipped ZIP and launcher relocated to a path containing spaces; empty connect override and solo fixture keep this verification offline; hash/status/quit, durable databases and exact stable chain fields after reopen. No mainnet-tip or overnight-stability claim. Reuses verify_macos_preview.py checks and native_node_startup.py reply parser and assertions.",
+  "relocated_folder": "/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima cascade replacement relocation p_k7vg23/MinimaCoreC++-macos-arm64"
+}

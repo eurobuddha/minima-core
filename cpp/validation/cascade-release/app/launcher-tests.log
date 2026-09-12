@@ -1,0 +1,12 @@
+✔ quoted values remain argv data, including shell metacharacters (1.488584ms)
+✔ managed params cannot redirect data or detach the controlled console (0.218375ms)
+✔ an occupied port is rejected without terminating its owner (48.962166ms)
+✔ native process lifecycle: argv, split UTF-8, redaction, graceful stop and restart (457.750875ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 551.294375

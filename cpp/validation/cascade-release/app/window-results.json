@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "step": "fresh",
+      "terminalTyping": true,
+      "staleStatusIgnored": true,
+      "commandResult": true,
+      "cleanStop": true
+    },
+    {
+      "step": "reopen",
+      "terminalTyping": true,
+      "staleStatusIgnored": true,
+      "commandResult": true,
+      "cleanStop": true
+    }
+  ]
+}

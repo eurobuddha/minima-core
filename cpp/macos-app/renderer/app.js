@@ -1,0 +1,12 @@
+const el=id=>document.getElementById(id);let state='stopped';let revision=-1;
+function error(e){el('message').textContent=String(e.message||e).replace(/^Error invoking remote method '[^']+': Error: /,'');}
+function update(value){if(value.revision<revision)return;revision=value.revision;state=value.state;el('state').textContent=state.toUpperCase();const busy=['starting','running','stopping'].includes(state);el('fields').disabled=busy;el('start').disabled=busy;el('stop').disabled=!busy||state==='stopping';const ready=!!value.pid&&['starting','running'].includes(state);el('command').disabled=!ready;el('send').disabled=!ready;document.querySelectorAll('[data-command]').forEach(b=>b.disabled=!ready);el('process').textContent=value.pid?'PROCESS '+value.pid+' · '+state.toUpperCase():'No active process';if(value.lastError)error(value.lastError);}
+function logs(lines){const out=el('output');const bottom=out.scrollHeight-out.scrollTop-out.clientHeight<50;out.textContent=lines.join('\n');out.hidden=!lines.length;el('empty').hidden=!!lines.length;if(bottom)out.scrollTop=out.scrollHeight;}
+window.preview.onStatus(update);window.preview.onLogs(logs);
+el('settings').addEventListener('submit',async e=>{e.preventDefault();el('message').textContent='';const settings={};for(const id of ['mode','role','port','peer','host','dataFolder','extraArgs'])settings[id]=el(id).value;el('start').disabled=true;try{await window.preview.start(settings);update(await window.preview.status());}catch(e){error(e);update(await window.preview.status());}});
+el('stop').onclick=async()=>{el('message').textContent='';try{await window.preview.stop();}catch(e){error(e);}};
+el('browse').onclick=async()=>{try{const p=await window.preview.folder();if(p)el('dataFolder').value=p;}catch(e){error(e);}};
+el('mode').onchange=()=>{el('peer').disabled=el('mode').value==='solo';};
+el('commandForm').addEventListener('submit',async e=>{e.preventDefault();try{await window.preview.command(el('command').value);el('command').value='';}catch(e){error(e);}});
+for(const button of document.querySelectorAll('[data-command]'))button.onclick=async()=>{try{await window.preview.command(button.dataset.command);}catch(e){error(e);}};
+(async()=>{try{const {settings,identity}=await window.preview.settings();for(const [key,value] of Object.entries(settings))if(el(key))el(key).value=value;el('identity').textContent='OPTIMIZED / '+identity.source_head.slice(0,7);el('mode').onchange();update(await window.preview.status());logs(await window.preview.logs());}catch(e){error(e);}})();
