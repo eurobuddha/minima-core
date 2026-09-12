@@ -37,7 +37,22 @@ explains each case and the difference between native lifetime and Java parity te
 
 ## Result interpretation
 
-Results are finalized in the per-configuration records after each run terminates.
+All three configurations passed all nine selected suites (27 suite runs total).
+The new regression passed ten cases / twenty worker runs in each configuration
+(60 worker runs total), at the unchanged 30,000-node depth and 512 KiB small-stack
+setting. No ASan/UBSan diagnostic was reported.
+
+| Configuration | Selected suites | Long-cascade regression | Test time |
+|---|---:|---:|---:|
+| [Debug](normal/results.json) | 9/9 | 20/20 worker runs | 214.49 s |
+| [Optimized](optimized/results.json) | 9/9 | 20/20 worker runs | 76.60 s |
+| [ASan/UBSan](sanitized/results.json) | 9/9 | 20/20 worker runs | 691.66 s |
+
+Each configuration also passed 2,892 cascade comparisons, 1,057 IBD cases,
+1,918 NIO programs / 4,677 packets, 18 runtime-main comparisons / 121 assertions,
+and 12 real Java/native node lifecycle processes. The [build identities](build-identities.json)
+record source hashes and binary UUIDs. All 457 student lessons pass structural
+audit (9,663 links, 2,628 line anchors).
 Passing these selected checks is not a claim that the entire historical suite was
 rerun, that every concurrency schedule was tested, or that overnight mainnet
 stability is established. ASan/UBSan are not ThreadSanitizer. Shared ownership

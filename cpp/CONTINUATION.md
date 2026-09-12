@@ -1,26 +1,23 @@
-# Cascade cleanup crash fix — validation and replacement in progress
+# Cascade cleanup crash fix — all validation passed; packaging replacement
 
-The September 11 SIGBUS is reproduced from the unchanged CascadeNode ownership
-code. The implementation now drains parent owners iteratively without detaching
-live shared nodes, and explicitly preserves copy/move operations. Debug and
-optimized selected suites each pass 9/9, including 20 long-chain worker runs.
-ASan/UBSan selected tests are still running; do not claim their final result yet.
-Evidence and review: validation/cascade-release. Student lessons and a new cleanup
-lab are updated; 457 guides, 9663 links and 2628 anchors pass structural audit.
+Source fix checkpoint: 0386c6d72dc6f07183d933a6449b41d5ccb5b1d5, pushed to GitHub
+and verified in a local recovery bundle. The unchanged implementation reproduced
+SIGBUS on a 30,000-node cascade / 512 KiB worker. CascadeNode now drains parent
+reference releases iteratively without detaching live shared nodes; copies and
+moves are preserved explicitly.
 
-The owner subsequently requested overwriting the existing preview and starting
-fresh on the optimized version. All 29 original preview files, including its
-wallet, have a byte-verified local recovery copy. Do not use that wallet for new
-validation. Once sanitizer checks pass, package the optimized build with the
-existing project packagers, verify relocation/startup/reopen, replace the preview
-at its familiar location with fresh data, and publish the separately named
-`dev-2026-09-12-cascade-fix` development release. Matching optimized dSYM UUID:
-54ADF25C-F029-37BA-B111-1425F410DF96. Existing release assets remain immutable.
+Debug, optimized (-O2 -g) and ASan/UBSan each PASS 9/9 selected suites, including
+20 long-chain worker runs each. All current evidence is in validation/cascade-release.
+The optimized binary/dSYM UUID is 54ADF25C-F029-37BA-B111-1425F410DF96. Student
+lessons: 457 guides, 9663 links, 2628 anchors PASS. No newly converted counterpart;
+full parity remains 456/457 with external JNI missing. No overnight stability claim.
 
-No newly converted counterpart: full parity remains 456/457, external JNI missing.
-The crash correction does not establish reliable mainnet sync or overnight
-stability. The earlier handover timebox below belongs to its historical request
-and does not cancel the current explicit crash-fix task.
+The owner requests overwriting the existing preview and starting fresh. The old
+preview and wallet have a byte-verified local recovery copy (29 files). Next use
+the existing project packager with build-optimized, verify the actual runtime ZIP
+with validation/cascade-release/verify-package.py, install at the familiar preview
+path with fresh data, and publish dev-2026-09-12-cascade-fix as a separate prerelease.
+Keep previous release assets and the wallet recovery copy unchanged.
 
 ## Previous checkpoint (historical)
 
