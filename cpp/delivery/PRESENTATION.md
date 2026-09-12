@@ -68,6 +68,7 @@ normal success return value matches.
 
 456 mapped counterparts exist. One external JNI file is missing. The current missing-main
 candidate audit is exhausted; full API/runtime parity remains unverified.
+Live startup and reopen remain unreliable in bounded observations.
 The executable currently targets macOS 26+ on Apple Silicon.
 
 Speaker note: walk through KNOWN_GAPS.md and the final test report. State failures

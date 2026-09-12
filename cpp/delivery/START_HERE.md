@@ -27,10 +27,13 @@ a fresh peer response when demonstrating synchronization.
 
 ## Reading routes
 
+[Changes in this delivery](CHANGES.md) separate file counts, behavior corrections,
+validation and remaining blockers.
+
 - **Team demonstration:** [offline presentation](presentation.html), [editable outline and speaker notes](PRESENTATION.md), and [demo script](DEMO.md).
 - **Students:** [guide index](../student-guide/README.md), then [study route](../student-guide/how-to-study-this-port.md).
 - **Developers:** [build and test instructions](BUILD_AND_TEST.md), [native database dependency](../native/h2/README.md), and [current continuation](../CONTINUATION.md).
-- **Reviewers:** [known gaps](KNOWN_GAPS.md), the validation directory, and the delivery test report when the final run completes.
+- **Reviewers:** [known gaps](KNOWN_GAPS.md), the [validation report](VALIDATION_STATUS.md) and its linked evidence.
 
 Each source file lesson links the pinned Java file, native counterpart, logic and
 relevant tests. The comparison reference is `project/upstream-study`, at the recorded pin. Root
@@ -56,6 +59,7 @@ check reads every payload back from the ZIP. Runtime verification additionally
 extracts the standalone runtime ZIP into a different path, runs with a system-only
 PATH, checks the command console and exercises startup/shutdown/reopen.
 
+[Local recovery instructions](RECOVERY.md) explain how to restore a verified bundle.
 Local Git checkpoints and independently verified recovery bundles protect the
 working project. They are retained locally and are not a substitute for an off-machine
 backup. No push or message to the team is performed as part of this delivery.

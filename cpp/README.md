@@ -17,10 +17,11 @@ exist:455 active partial implementations and one inactive-source preservation.
 is unavailable. Full class/API parity remains unverified. The finite missing-main
 candidate audit is now exhausted; that is not a full API certificate.
 
-The native node starts, connects to the designated peer and saves its chain. The
-latest packaged fresh start matched the peer; the bounded reopen check missed its
-150-second target, while a later diagnostic restart caught up and followed new
-blocks. Read the [actual validation results](delivery/VALIDATION_STATUS.md) and
+Live package checks include successful fresh synchronization and saved-state
+shutdown. Immediate reopen missed its 150-second target; a later restart caught up
+and followed new blocks. The optimized package also had one successful fresh start
+and a later disconnected fresh attempt. Reliable mainnet startup and reopen remain
+unverified. Read the [actual validation results](delivery/VALIDATION_STATUS.md) and
 [known gaps](delivery/KNOWN_GAPS.md) before drawing a broader conclusion.
 
 The node uses native OpenSSL/ICU and the proven H2/MySQL dependency compiled ahead
