@@ -1,7 +1,11 @@
 # MinimaCoreC++ Preview app
 
 A configurable macOS app around the validated optimized C++ node. Settings cover
-network, role, port, initial peer, host and data folder. The built-in console sends
+network, role, port, an optional manual initial peer, host and data folder.
+The manual peer is blank by default, applies only to the explicitly requested
+launch, and clears after Start. It is neither saved nor restored from older
+settings. Ordinary mainnet starts omit `-connect`, keeping automatic P2P enabled.
+A manual `-connect` session disables P2P by the native/Java parameter semantics. The built-in console sends
 commands directly to the native process, with no shell or JVM. Core settings
 persist in `~/Library/Application Support/MinimaCoreCppPreview/startup.json`;
 additional arguments are session-only. Wallet data is outside the application.

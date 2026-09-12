@@ -1,5 +1,7 @@
 # Learning the Minima Java-to-C++ port
 
+The [initial-peer settings lab](new-tests/app-initial-peer.md) explains why a one-launch connection must not silently become a permanent network setting.
+
 The [backup/checker lab](new-tests/backup-checker-interruption.md) explains cooperative worker signals, retry catches and the source ordering of database setup.
 The [runtime sleep lab](new-tests/runtime-sleep-interruption.md) follows actual interruptions through Main restart, RPC, archive retry and P2P discovery, with scoped Java/C++ results.
 

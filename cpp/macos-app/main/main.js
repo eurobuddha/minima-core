@@ -11,9 +11,9 @@ const runtime=app.isPackaged?path.join(process.resourcesPath,'runtime'):process.
 if(!runtime)throw new Error('Set MINIMA_CPP_APP_RUNTIME to a verified native runtime folder for development.');
 const node=new NodeManager(path.join(runtime,'bin/MinimaCoreC++'));
 const configPath=path.join(userData,'startup.json');
-const defaults={dataFolder:path.join(userData,'node-data'),port:21001,peer:'eurobuddha.com:9001',host:'127.0.0.1',mode:'mainnet',role:'desktop',extraArgs:''};
-function load(){try{return {...defaults,...JSON.parse(fs.readFileSync(configPath,'utf8')),extraArgs:''};}catch{return {...defaults};}}
-function save(input){const {value}=validate(input);const {extraArgs,...safe}=value;fs.mkdirSync(userData,{recursive:true,mode:0o700});const temp=configPath+'.tmp';fs.writeFileSync(temp,JSON.stringify(safe,null,2)+'\n',{mode:0o600});fs.renameSync(temp,configPath);}
+const defaults={dataFolder:path.join(userData,'node-data'),port:21001,peer:'',host:'127.0.0.1',mode:'mainnet',role:'desktop',extraArgs:''};
+function load(){try{return {...defaults,...JSON.parse(fs.readFileSync(configPath,'utf8')),peer:'',extraArgs:''};}catch{return {...defaults};}}
+function save(input){const {value}=validate(input);const {peer,extraArgs,...safe}=value;fs.mkdirSync(userData,{recursive:true,mode:0o700});const temp=configPath+'.tmp';fs.writeFileSync(temp,JSON.stringify(safe,null,2)+'\n',{mode:0o600});fs.renameSync(temp,configPath);}
 let win;let quitting=false;
 if(!app.requestSingleInstanceLock()){app.quit();}else{
 app.on('second-instance',()=>{if(win){if(win.isMinimized())win.restore();win.show();win.focus();}});

@@ -1,0 +1,13 @@
+✔ quoted values remain argv data, including shell metacharacters (1.732917ms)
+✔ managed params cannot redirect data or detach the controlled console (0.241ms)
+✔ automatic mainnet startup omits connect; a manual initial peer is explicit (0.066916ms)
+✔ an occupied port is rejected without terminating its owner (70.996084ms)
+✔ native process lifecycle: argv, split UTF-8, redaction, graceful stop and restart (295.169916ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 417.949834
