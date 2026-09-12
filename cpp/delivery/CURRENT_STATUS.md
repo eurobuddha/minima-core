@@ -46,9 +46,20 @@ actual node builds also passed in each configuration. See
 [helper evidence](../validation/base-stream-helpers/README.md). These changes also
 remain separate from the installed preview and do not change the counterpart count.
 
+The next base-class audit corrects MiniByte and MiniString virtual dispatch,
+including getter evaluation order and the MiniString source copy constructor.
+Its regression retains earlier cases and adds 2,328 subclass cases. All 4,181 API
+cases / 40,534 independent assertions pass in normal, optimized and sanitizer
+builds, along with the affected primitive/Streamable/original-string regressions
+and actual node builds. See
+[dispatch evidence](../validation/base-virtual-dispatch/README.md) for final results
+and [concrete remaining API gaps](../validation/base-virtual-dispatch/next-api-audit.md).
+The counterpart inventory remains 456/457; these source changes are not installed
+in the preview.
+
 ## Publication and recovery
 
-The source branch `MinimaCoreC++` is pushed through `36940c6` to the private
+The source branch `MinimaCoreC++` is pushed through `9fa16e1` to the private
 `eurobuddha/MinimaCoreCpp` repository. The only published development release in
 [the checked release list](../validation/parity-resumption-20260912/github-releases.json)
 is `dev-2026-09-12`. Its binaries precede the cascade cleanup fix.

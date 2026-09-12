@@ -3,6 +3,7 @@
 import argparse,hashlib,itertools,json,os,subprocess,time
 from pathlib import Path
 from peers_checker_differential import Runner
+from base_dispatch_cases import dispatch_cases
 ROOT=Path(__file__).resolve().parents[1];JAVA=ROOT.parent/'upstream-study'
 def canonical(text):
  text=text.removeprefix('0x');text=('0'+text) if len(text)%2 else text
@@ -98,8 +99,8 @@ def helper_cases():
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--build',type=Path,default=ROOT/'build');build=ap.parse_args().build.resolve();started=time.monotonic();oracle=build/'base-value-api-oracle';oracle.mkdir(exist_ok=True)
- sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/BaseValueAPIOracle.java'];listing=oracle/'sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
- corpus=cases()+helper_cases();runners=[];failures=[];count=checks=0;transcript=hashlib.sha256()
+ sources=sorted((JAVA/'src').rglob('*.java'))+[ROOT/'support/BaseValueAPIOracle.java',ROOT/'support/BaseDispatchOracle.java'];listing=oracle/'sources.txt';listing.write_text('\n'.join('"'+str(p)+'"' for p in sources)+'\n');subprocess.run(['javac','-cp',str(JAVA/'jar/minima.jar'),'-d',str(oracle),'@'+str(listing)],check=True)
+ corpus=cases()+helper_cases()+dispatch_cases();runners=[];failures=[];count=checks=0;transcript=hashlib.sha256()
  try:
   runners.append(Runner(['java','-cp',f'{oracle}:{JAVA}/jar/minima.jar','BaseValueAPIOracle']));runners.append(Runner([str(build/'base_value_api')]))
   for index,(q,expected) in enumerate(corpus):
@@ -123,6 +124,6 @@ def main():
     errors.seek(0);stderr=errors.read()
     if stderr:failures.append(dict(phase='stderr',runtime=runtime,stderr=stderr))
  if count!=len(corpus):failures.append(dict(phase='accounting',executed=count,planned=len(corpus)))
- report=dict(passed=not failures,cases=count,planned_cases=len(corpus),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,scope='Source-named base stream helpers, polymorphic MiniData version conversion with IO-only catch/log/null and runtime/null propagation, mutable MiniByte FALSE comparisons, and immutable MMR decimal snapshots. New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt and decimal-carrier constructors, exact min/max constants, MAXIMUM and raw decimal view. Decimal constructor cases retain coefficient/scale, plain-string conversion, 64-digit rounding, 44-place truncation, numeric range checks and immutable snapshots. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim.')
+ report=dict(passed=not failures,cases=count,planned_cases=len(corpus),independent_assertions=checks,seconds=round(time.monotonic()-started,3),transcript_sha256=transcript.hexdigest(),failures=failures,scope='MiniByte/MiniString subclass dispatch through base references, inherited call order, getter failures, raw-byte serialization and virtual string-copy behavior. Source-named base stream helpers, polymorphic MiniData version conversion with IO-only catch/log/null and runtime/null propagation, mutable MiniByte FALSE comparisons, and immutable MMR decimal snapshots. New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt and decimal-carrier constructors, exact min/max constants, MAXIMUM and raw decimal view. Decimal constructor cases retain coefficient/scale, plain-string conversion, 64-digit rounding, 44-place truncation, numeric range checks and immutable snapshots. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim.')
  (build/'base-value-api-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({**report,'failures':failures[:5]},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

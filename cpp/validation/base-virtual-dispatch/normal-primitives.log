@@ -1,0 +1,7 @@
+Mapped 457 Java files; 456 counterparts exist; 1 unported.
+{
+  "cases": 3802,
+  "passed": 3802,
+  "failures": [],
+  "scope": "Selected primitive operations and wire bytes, not full node parity"
+}

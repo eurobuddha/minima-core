@@ -108,3 +108,5 @@ checker posts, delayed delivery and reentrant diagnostic logging.
 - [Thread interruption lab](new-tests/thread-interruption.md): interrupt flags, real sleeping workers, transaction lock retention and retry scheduling after timeout shutdown.
 
 - [Cascade cleanup lab](new-tests/cascade-release.md): worker-stack overflow, iterative destruction, shared tails, weak owners and temporary IBD lifetime.
+
+- [Virtual calls and source copy constructors](new-tests/base-virtual-dispatch.md): distinguish stored values, overridden results and exception order.

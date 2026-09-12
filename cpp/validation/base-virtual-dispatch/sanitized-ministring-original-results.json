@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "original_methods": 2,
+  "assertions_per_runtime": 5,
+  "java_stdout": "MiniString(\"MinimaTest\") i is now equal to MinimaTest\nMiniString(i) j is now equal to MinimaTest\ni value is MinimaTest\nj value is MinimaTest\ni.toString() value is MinimaTest\ni.getData() value is [B@452b3a41\n i is now equal to test\nOriginal MiniStringTests passed: 2 annotated methods (5 successful-path assertions)\n",
+  "native_stdout": "",
+  "scope": "Two unchanged pinned @Test-annotated methods (direct calls after checking annotation membership) and their native counterpart: five successful-path non-null assertions. Separately execute the one unannotated helper and its one successful-path assertion. Static read result is discarded in the source. No decoded-content, error-branch or full production parity claim.",
+  "supplemental_unannotated_methods": 1,
+  "supplemental_assertions_per_runtime": 1,
+  "helper_java_stdout": " i is now equal to t\nUnannotated helper passed: 1 method (1 successful-path assertion)\n",
+  "helper_native_stdout": ""
+}

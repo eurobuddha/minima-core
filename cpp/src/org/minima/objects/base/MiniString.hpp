@@ -16,14 +16,16 @@ namespace minima {
 class MiniString:public Streamable {
 public:
     MiniString() = default;
+    MiniString(const MiniString& other);
+    MiniString& operator=(const MiniString&) = default;
     explicit MiniString(const std::string& s);
     explicit MiniString(std::span<const uint8_t> bytes);
     static std::string normalizeUTF8(std::span<const uint8_t> bytes);
 
     const std::string& str() const { return m_value; }
-    const std::string& toString() const { return m_value; }
-    std::vector<uint8_t> getData() const { return {m_value.begin(), m_value.end()}; }
-    bool isEqual(const std::string& value) const { return m_value == value; }
+    virtual const std::string& toString() const { return m_value; }
+    virtual std::vector<uint8_t> getData() const { return {m_value.begin(), m_value.end()}; }
+    virtual bool isEqual(const std::string& value) const { return toString() == value; }
     size_t length() const { return m_value.size(); }
     bool   isEmpty() const { return m_value.empty(); }
     bool   empty()   const { return m_value.empty(); }

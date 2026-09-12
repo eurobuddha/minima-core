@@ -1,0 +1,14 @@
+{
+  "upstream-study/src/org/minima/objects/base/MiniByte.java": "5b94c4e0c9678079998358e10a18fa1ebfafdce0e91acedc3c4e3b9f1920d5b2",
+  "upstream-study/src/org/minima/objects/base/MiniString.java": "af116863598a633df10863b96e3c24c1d717e7d698ed347a3b4a2326c7228eac",
+  "cpp/src/org/minima/objects/base/MiniByte.hpp": "ad8f975acb4f5bbaf0700d105d7056a44136644853626359c795901b451186a2",
+  "cpp/src/org/minima/objects/base/MiniByte.cpp": "3ce9083928157a801b3a3c909cd50ed5910c59fc9680bfafafbc304652112454",
+  "cpp/src/org/minima/objects/base/MiniString.hpp": "05b0d9942aa6d2f58120aaacdabc8690b014024f7b983a91e6316120e9828269",
+  "cpp/src/org/minima/objects/base/MiniString.cpp": "b2be9559c4820d907de8ed40a2a30bd3075383dc360f9d48d723ea16d2d9d902",
+  "cpp/support/BaseDispatchFixture.hpp": "80b669263f161a0398e2b3329db2984a20cc9b1bf150ef049adb935c602939c6",
+  "cpp/support/BaseDispatchOracle.java": "730f9c2ad40f53051cc25e2fa046ca2072963c2bdfb36fde36745485c990f4c1",
+  "cpp/support/BaseValueAPIOracle.java": "cabfa8ba581b5f5c5ebe9a6b953698abf0ea756b9b4c40b04002cc75bafd6ede",
+  "cpp/support/base_value_api.cpp": "f5367efa391cb39e43921597db97b19d093f9c3123d00dcfa3c2310e83e6d7d5",
+  "cpp/tools/base_dispatch_cases.py": "62f9869156dc3a310ae2292fb43f41f2948e73c7a95cb7465648d97936ba0989",
+  "cpp/tools/base_value_api_differential.py": "f94d4881cb5589960091f10a7fb002e15d33e1ac71d40ba5044b8129824a5da5"
+}

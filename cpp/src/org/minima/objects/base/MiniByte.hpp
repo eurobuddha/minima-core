@@ -14,12 +14,12 @@ public:
     MiniByte();
     explicit MiniByte(int value);
     explicit MiniByte(bool value);
-    int getValue() const;
-    std::int8_t getByteValue() const;
-    bool isEqual(const MiniByte& other) const;
-    bool isFalse() const;
-    bool isTrue() const;
-    std::string toString() const;
+    virtual int getValue() const;
+    virtual std::int8_t getByteValue() const;
+    virtual bool isEqual(const MiniByte& other) const;
+    virtual bool isFalse() const;
+    virtual bool isTrue() const;
+    virtual std::string toString() const;
     static void WriteToStream(std::vector<uint8_t>& output,bool value) {MiniByte(value).writeDataStream(output);}
     static MiniByte ReadFromStream(std::span<const uint8_t> data,size_t& offset) {return deserialise(data,offset);}
     void writeDataStream(std::vector<uint8_t>& output) const override;

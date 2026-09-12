@@ -5,6 +5,7 @@
 
 namespace minima {
 
+MiniString::MiniString(const MiniString& other) : m_value(other.toString()) {}
 MiniString::MiniString(const std::string& s)
     : m_value(normalizeUTF8({reinterpret_cast<const uint8_t*>(s.data()), s.size()})) {}
 MiniString::MiniString(std::span<const uint8_t> bytes) : m_value(normalizeUTF8(bytes)) {}

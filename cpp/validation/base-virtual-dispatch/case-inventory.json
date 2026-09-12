@@ -1,0 +1,32 @@
+{
+  "prior_cases": 1853,
+  "added_cases": 2328,
+  "total_cases": 4181,
+  "groups": {
+    "dispatchByte": 1560,
+    "dispatchString": 768
+  },
+  "actions": {
+    "dispatchByte": {
+      "getValue": 156,
+      "getByteValue": 156,
+      "isEqual": 156,
+      "isFalse": 156,
+      "isTrue": 156,
+      "toString": 156,
+      "baseEqual": 156,
+      "baseFalse": 156,
+      "baseTrue": 156,
+      "baseString": 156
+    },
+    "dispatchString": {
+      "toString": 128,
+      "getData": 128,
+      "isEqual": 128,
+      "baseEqual": 128,
+      "copy": 128,
+      "write": 128
+    }
+  },
+  "generator_sha256": "62f9869156dc3a310ae2292fb43f41f2948e73c7a95cb7465648d97936ba0989"
+}

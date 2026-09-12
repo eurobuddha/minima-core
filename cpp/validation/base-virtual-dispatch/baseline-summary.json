@@ -1,0 +1,10 @@
+{
+  "production_source": "9fa16e14a2cc137ce21e2f6f65f34c6800f24ce7",
+  "cases": 4181,
+  "failed_cases": 1610,
+  "java_independent_failures": 0,
+  "native_independent_failures": 2913,
+  "differential_failures": 1610,
+  "raw_report_sha256": "ada5ea960d3273f0e136380cfe2880ff916323780da8de25e140eaf98a03e9fb",
+  "scope": "Baseline fixture used the same method bodies without native override specifiers so it compiled against the old nonvirtual declarations. Current fixture enforces override signatures."
+}

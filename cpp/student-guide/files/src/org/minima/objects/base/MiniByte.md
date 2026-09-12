@@ -16,7 +16,7 @@ A single stored byte with two different numeric views: unsigned for protocol fie
 
 1. The integer constructor casts to Java byte, retaining only the low eight bits. The boolean constructor produces exactly 0 or 1.
 2. getValue masks with 0xFF and therefore returns 0 through 255. getByteValue returns the signed byte, -128 through 127. The same stored bits can consequently print as 255 or -1 depending on the getter.
-3. Equality compares the unsigned values. isFalse means exactly zero; every other byte, including 2 and 255, is true.
+3. Equality calls both unsigned getters. With the ordinary unmodified FALSE object, isFalse means zero; mutable FALSE and subclass overrides can change that result.
 4. Serialization writes exactly one byte. Reading consumes one byte with no separate length prefix; toString uses the unsigned value.
 
 ## How the translation is approached
@@ -65,3 +65,11 @@ This is additional scoped evidence, not a full file-parity claim.
 FALSE and TRUE now retain mutable native objects. isFalse compares against current
 FALSE, matching Java even after a stream read changes that object. The fixture
 varies FALSE independently of the queried byte and restores it after each case.
+
+## Virtual dispatch correction
+
+The [inheritance lab](../../../../../../new-tests/base-virtual-dispatch.md) explains
+why base-reference calls, calls between methods and source copy constructors must
+preserve Java overrides. The regression records ordered calls and exceptions,
+with different stored values and overridden results. It retains the prior base
+API corpus and adds 2,328 subclass cases. Full class parity remains unverified.

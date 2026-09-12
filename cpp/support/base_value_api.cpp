@@ -3,6 +3,8 @@
 #include "org/minima/utils/json/JSONObject.hpp"
 #include "support/NativeThrowable.hpp"
 #include <iostream>
+#include <bit>
+#include "BaseDispatchFixture.hpp"
 #include "org/minima/objects/base/MiniByte.hpp"
 #include "org/minima/objects/base/MiniString.hpp"
 using namespace minima;using namespace minima::json;
@@ -44,6 +46,7 @@ static JSONObject helpers(const JSONObject& q){
     }return r;
 }
 static JSONObject run(const JSONObject& q){JSONObject r;try{
+    if(q.getString("op").starts_with("dispatch"))return base_dispatch_fixture::run(q);
     if(q.getString("op").starts_with("helper"))return helpers(q);
     if(q.getString("op")=="limits"){
         r.put("maximum",decimal(MiniNumber::MAX_MININUMBER));r.put("minimum",decimal(MiniNumber::MIN_MININUMBER));r.put("maximumNumber",decimal(MiniNumber::MAXIMUM.getAsBigDecimal()));

@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "new_counterparts": 0,
+  "counterparts": 456,
+  "absent": 1,
+  "parity": "not_verified",
+  "configurations": {
+    "normal": {
+      "api": {
+        "passed": true,
+        "cases": 4181,
+        "independent_assertions": 40534,
+        "seconds": 6.627,
+        "transcript_sha256": "d4f725776a526ab33407b7d6bf11471bc3d4f0b5936e4948e3c1854c65e519bf"
+      },
+      "streamable": {
+        "passed": true,
+        "cases": 7705,
+        "independent_assertions": 96172,
+        "seconds": 34.621
+      },
+      "primitives": {
+        "passed": true,
+        "cases": 3802
+      },
+      "original_string": {
+        "passed": true,
+        "annotated_methods": 2,
+        "assertions_per_runtime": 5,
+        "unannotated_helpers": 1
+      },
+      "native_byte_test_exit": 0,
+      "node_build_passed": true,
+      "node_sha256": "0b00fdf65359d2e65ebd284a4e2622d5eec5912c8c17e88664e6f9727ca65ad5"
+    },
+    "optimized": {
+      "api": {
+        "passed": true,
+        "cases": 4181,
+        "independent_assertions": 40534,
+        "seconds": 3.752,
+        "transcript_sha256": "d4f725776a526ab33407b7d6bf11471bc3d4f0b5936e4948e3c1854c65e519bf"
+      },
+      "streamable": {
+        "passed": true,
+        "cases": 7705,
+        "independent_assertions": 96172,
+        "seconds": 13.474
+      },
+      "primitives": {
+        "passed": true,
+        "cases": 3802
+      },
+      "original_string": {
+        "passed": true,
+        "annotated_methods": 2,
+        "assertions_per_runtime": 5,
+        "unannotated_helpers": 1
+      },
+      "native_byte_test_exit": 0,
+      "node_build_passed": true,
+      "node_sha256": "6089ac5c1e465454f3322d7caa931949594827fc028c590f78445f10beae0615"
+    },
+    "sanitized": {
+      "api": {
+        "passed": true,
+        "cases": 4181,
+        "independent_assertions": 40534,
+        "seconds": 7.123,
+        "transcript_sha256": "d4f725776a526ab33407b7d6bf11471bc3d4f0b5936e4948e3c1854c65e519bf"
+      },
+      "streamable": {
+        "passed": true,
+        "cases": 7705,
+        "independent_assertions": 96172,
+        "seconds": 124.561
+      },
+      "primitives": {
+        "passed": true,
+        "cases": 3802
+      },
+      "original_string": {
+        "passed": true,
+        "annotated_methods": 2,
+        "assertions_per_runtime": 5,
+        "unannotated_helpers": 1
+      },
+      "native_byte_test_exit": 0,
+      "node_build_passed": true,
+      "node_sha256": "49cb4acdc66e0fc782aea045c2594b0436a5a02804d51ed64f32d86c19fb2ee1"
+    }
+  },
+  "build_sessions": {
+    "normal": 13969,
+    "optimized": 37357,
+    "sanitized": 47568
+  },
+  "regression_sessions": {
+    "normal": 51730,
+    "optimized": 36950,
+    "sanitized": 22885
+  },
+  "all_listed_sessions_terminal_exit": 0,
+  "scope": "Actual node and affected probe builds plus the complete retained/expanded base API, primitives, Streamable and original MiniString tests. Not a full current CTest-suite pass or installed-preview replacement."
+}

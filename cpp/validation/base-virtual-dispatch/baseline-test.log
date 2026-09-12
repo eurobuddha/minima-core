@@ -1,0 +1,124 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "cases": 4181,
+  "planned_cases": 4181,
+  "independent_assertions": 40534,
+  "seconds": 5.324,
+  "transcript_sha256": "cc48042bb72f258ccc620d61a85aefead8906479c7b02a4cbae9eba3b6f4f454",
+  "failures": [
+    {
+      "case": 1857,
+      "request": {
+        "op": "dispatchByte",
+        "action": "isEqual",
+        "leftMask": 0,
+        "rightMask": 1,
+        "leftRaw": 0,
+        "rightRaw": 1,
+        "leftValue": 1024,
+        "rightValue": 1024,
+        "answer": false,
+        "text": "derived \ud83d\udc3c",
+        "fault": ""
+      },
+      "java": {
+        "value": false,
+        "wire": "0x00",
+        "calls": [
+          "right.getValue"
+        ]
+      },
+      "cpp": {
+        "value": false,
+        "wire": "0x00",
+        "calls": []
+      }
+    },
+    {
+      "case": 1857,
+      "runtime": 1,
+      "key": "calls",
+      "expected": [
+        "right.getValue"
+      ],
+      "actual": []
+    },
+    {
+      "case": 1858,
+      "request": {
+        "op": "dispatchByte",
+        "action": "isEqual",
+        "leftMask": 0,
+        "rightMask": 1,
+        "leftRaw": 128,
+        "rightRaw": 1,
+        "leftValue": -17,
+        "rightValue": -17,
+        "answer": true,
+        "text": "derived \ud83d\udc3c",
+        "fault": ""
+      },
+      "java": {
+        "value": false,
+        "wire": "0x80",
+        "calls": [
+          "right.getValue"
+        ]
+      },
+      "cpp": {
+        "value": false,
+        "wire": "0x80",
+        "calls": []
+      }
+    },
+    {
+      "case": 1858,
+      "runtime": 1,
+      "key": "calls",
+      "expected": [
+        "right.getValue"
+      ],
+      "actual": []
+    },
+    {
+      "case": 1865,
+      "request": {
+        "op": "dispatchByte",
+        "action": "baseEqual",
+        "leftMask": 0,
+        "rightMask": 1,
+        "leftRaw": 0,
+        "rightRaw": 1,
+        "leftValue": 1024,
+        "rightValue": 1024,
+        "answer": false,
+        "text": "derived \ud83d\udc3c",
+        "fault": ""
+      },
+      "java": {
+        "value": false,
+        "wire": "0x00",
+        "calls": [
+          "right.getValue"
+        ]
+      },
+      "cpp": {
+        "value": false,
+        "wire": "0x00",
+        "calls": []
+      }
+    }
+  ],
+  "scope": "Source-named base stream helpers, polymorphic MiniData version conversion with IO-only catch/log/null and runtime/null propagation, mutable MiniByte FALSE comparisons, and immutable MMR decimal snapshots. New MiniData compare/inclusive comparison, unbounded decimal view and bounded hex methods; MiniNumber BigInt and decimal-carrier constructors, exact min/max constants, MAXIMUM and raw decimal view. Decimal constructor cases retain coefficient/scale, plain-string conversion, 64-digit rounding, 44-place truncation, numeric range checks and immutable snapshots. Cached numeric values across byte replacement, retained immutable decimal snapshots, zero padding, values beyond monetary limits, exact negative substring errors, decimal coefficient/scale/text and wire-read values outside constructor limits. All cases have independent expected fields plus direct Java/C++ comparison. No full base/JDK API or node parity claim."
+}

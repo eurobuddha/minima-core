@@ -43,6 +43,7 @@ public class BaseValueAPIOracle {
         return r;
     }
     static JSONObject run(JSONObject q){var r=new JSONObject();try{
+        if(q.getString("op").startsWith("dispatch"))return BaseDispatchOracle.run(q);
         if(q.getString("op").startsWith("helper"))return helpers(q);
         if(q.getString("op").equals("limits")){
             r.put("maximum",decimal(MiniNumber.MAX_MININUMBER));r.put("minimum",decimal(MiniNumber.MIN_MININUMBER));r.put("maximumNumber",decimal(MiniNumber.MAXIMUM.getAsBigDecimal()));

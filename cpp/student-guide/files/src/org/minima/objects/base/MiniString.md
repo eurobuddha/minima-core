@@ -16,7 +16,7 @@ The UTF-8 text wrapper used by Minima serialization. It deliberately decodes and
 
 1. The Java String constructor first encodes UTF-8, then delegates to the byte constructor, which decodes UTF-8. Invalid surrogate/text input can therefore be replaced during construction.
 2. The byte constructor decodes with Java UTF-8 replacement behavior. getData encodes the normalized stored string again; it does not retain the original malformed bytes.
-3. isEqual compares text. The copy constructor copies the other wrapper’s string.
+3. isEqual calls toString before comparing text. The copy constructor calls the other wrapper’s toString, including a subclass override.
 4. Serialization wraps getData in MiniData, giving a four-byte big-endian byte count followed by UTF-8 bytes. Reading decodes a MiniData payload back to text.
 5. The count is bytes rather than Java UTF-16 code units or visible characters. A panda emoji occupies four UTF-8 bytes although it is one Unicode code point.
 
@@ -65,3 +65,11 @@ the newly exposed source API methods and their Java/native tests. The existing
 base-value corpus is retained and extended to 1,853 cases, including prefix bytes,
 truncated reads, nullable polymorphic serialization and retained decimal values.
 This is additional scoped evidence, not a full file-parity claim.
+
+## Virtual dispatch correction
+
+The [inheritance lab](../../../../../../new-tests/base-virtual-dispatch.md) explains
+why base-reference calls, calls between methods and source copy constructors must
+preserve Java overrides. The regression records ordered calls and exceptions,
+with different stored values and overridden results. It retains the prior base
+API corpus and adds 2,328 subclass cases. Full class parity remains unverified.

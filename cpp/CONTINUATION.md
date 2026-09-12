@@ -24,8 +24,20 @@ The next base API checkpoint exposes thirteen source-named helpers/getters acros
 five existing classes and fixes MiniByte.FALSE mutability/isFalse comparison.
 All 1,853 API cases pass in normal, optimized and sanitized builds; corresponding
 regression evidence is in validation/base-stream-helpers. No new mapped file.
-Next audit leads include MiniString.MINIMA_CHARSET (hardcoded native UTF-8), base
-class virtual override behavior, and remaining Cipher update/wrap/unwrap methods.
+The next correction restores MiniByte/MiniString virtual dispatch and the source
+MiniString copy constructor. The existing base API runner adds 2,328 cases; see
+validation/base-virtual-dispatch for terminal results: all three actual node
+builds, 4,181 API cases, 3,802 primitive cases, 7,705 Streamable cases and original
+string/native byte tests passed. Sessions 13969/37357/47568 (build+API) and
+51730/36950/22885 (regressions) all exited zero; do not poll them again. That directory also records
+owning-class audit gaps missed by whole-tree method-name searching: MiniNumber
+getNumber/copy validation/dispatch/order, MiniData toString/getter dispatch/array
+aliasing, and mutable numeric constants. Next reproduce numeric copy and MMR TWO
+behavior, then adapt the existing decimal operations. Charset and Cipher methods
+also remain open. Do not interpret this finite corpus as full class parity.
+
+Checkpoint 9fa16e1 was pushed and its recovery bundle verified against all 746
+changed C++ paths: local-backups/MinimaCoreC++-20260912T113442Z.bundle.
 
 A signed installed-app ZIP (36940c6 app / 10ed9e6 node) is prepared and byte-verified.
 Apple notarization was auto-review rejected: explicit approval is required to
