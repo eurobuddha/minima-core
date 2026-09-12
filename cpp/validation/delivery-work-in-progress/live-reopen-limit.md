@@ -41,7 +41,8 @@ The original failure and exact state are retained in
 
 The corrected [fresh/reopen repeat](optimized-runtime-corrected.json) failed during
 fresh startup: 30 status observations remained at height 0 with no connections,
-then shutdown completed cleanly. No reopen stage ran. The repeat neither validates
+then shutdown completed cleanly. The log did report a successful connection
+attempt, but status never reported an established peer or a chain. No reopen stage ran. The repeat neither validates
 the corrected reopen branch nor establishes reliable mainnet synchronization.
 The observed network variability also affected the pinned Java control. Its cause
 has not been established. Keep socket-fixture sandbox failures in the broad test

@@ -1,3 +1,16 @@
+# Delivery validation evidence
+
+Start with the [final validation status](../../delivery/VALIDATION_STATUS.md) and
+[machine-readable test disposition](test-disposition.json). They distinguish the
+292-test Debug pass, optimized initial failures and successful 33-test retry,
+unfinished sanitizer replay, corrected focused checks and live-network limits.
+The delivery remains a development checkpoint with full parity unverified.
+
+The records below and earlier files preserve intermediate observations. They are
+historical evidence, not a replacement for the final disposition.
+
+## Earlier observation
+
 # Delivery validation in progress
 
 The initial packaged runtime at `41a9c5f` passed relocation, hash-command and fresh

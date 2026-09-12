@@ -1,0 +1,95 @@
+{
+  "reason": "Stop the unfinished sanitizer replay for the bounded delivery handover. Do not count interrupted tests as passed. Debug full292 passed; optimized all297 have passing results across initial run plus socket-access retry; final affected sanitizer checks passed separately.",
+  "finished_before_stop": 290,
+  "unfinished_before_stop": {
+    "35": "sphincs_differential",
+    "257": "sphincs_command_differential",
+    "272": "magic_differential"
+  },
+  "owned_processes": [
+    {
+      "pid": 13232,
+      "ppid": 1857,
+      "command": "ctest"
+    },
+    {
+      "pid": 33741,
+      "ppid": 13232,
+      "command": "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+    },
+    {
+      "pid": 33750,
+      "ppid": 33741,
+      "command": "java"
+    },
+    {
+      "pid": 33751,
+      "ppid": 33741,
+      "command": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/minima_sphincs"
+    },
+    {
+      "pid": 45324,
+      "ppid": 13232,
+      "command": "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+    },
+    {
+      "pid": 45374,
+      "ppid": 45324,
+      "command": "java"
+    },
+    {
+      "pid": 45375,
+      "ppid": 45324,
+      "command": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/minima_sphincs_command"
+    },
+    {
+      "pid": 52266,
+      "ppid": 13232,
+      "command": "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+    },
+    {
+      "pid": 52484,
+      "ppid": 52266,
+      "command": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-sanitized/minima_magic"
+    }
+  ],
+  "signals": [
+    {
+      "pid": 13232,
+      "signal": "SIGINT"
+    },
+    {
+      "pid": 33741,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 33750,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 33751,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 45324,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 45374,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 45375,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 52266,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 52484,
+      "signal": "SIGTERM"
+    }
+  ],
+  "remaining_owned_pids": []
+}

@@ -1,3 +1,25 @@
+# Time-bounded delivery — final assembly
+
+Deadline remains 2026-09-12 01:30 UTC / 02:30 Europe/London. Do not extend.
+All test jobs are terminal. Earlier Debug292 PASS. Optimized full297 initial run:
+264pass/33fail under socket restrictions; identical-command socket-access retry
+33/33PASS. Every optimized test now has a passing result, including full Magic.
+Full SAN replay stopped:289pass,1originalHORSTcleanupfailure,3unfinished tests
+(SPHINCS,SPHINCScommand,Magic). Corrected targeted HORST full1438comparisonsPASS;
+final affected SAN7suitesPASS. No full SAN pass. All owned test processes exited.
+
+Production C++ tree remains537d0e90aee0762bcea73210ac446e737b6bf3a6 (same as e82).
+Optimized sourcebinary SHA256cb49c87d164f3d020d613d59af1a4cd1f3ed9b5a9d07071e61116d1216407361.
+Runtime fresh passed2309904 once; repeat fresh and prior Debug immediate reopen
+failed150s. Reliable live startup/reopen unverified. Existing user21001preview/data
+untouched. Inventory456/457,externalJNIabsent,fullparitynot_verified.
+
+Next complete final commit/recovery bundle, wholeproject package using build-optimized,
+verify actual ZIP hashes/source/lessons/runtime identity, final delivery record.
+Do not restart broad suites or create another live sync demonstration to mask failures.
+
+## Previous checkpoint (historical)
+
 # Delivery final hour — broad normal tests complete
 
 Deadline remains 2026-09-12 01:30 UTC / 02:30 Europe/London. Do not extend.

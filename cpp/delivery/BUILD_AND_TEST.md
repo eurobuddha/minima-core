@@ -59,6 +59,12 @@ ctest --test-dir cpp/build --output-on-failure -j4 \
   --output-junit "$PWD/cpp/build/delivery-junit.xml"
 ```
 
+Network fixtures require local socket access, including several solo node tests
+that bind a port even with peer connections disabled. A sandbox denial is an
+execution-environment failure; preserve the failed record and rerun with the
+required access rather than weakening its assertions. Public-peer workflows are
+separate from these controlled fixtures.
+
 The delivery candidate has 297 registered tests. Several tests perform real
 120-second waits or substantial cryptographic work. Do not shorten those source
 operations and report the reduced run as equivalent coverage. Optional MySQL tests

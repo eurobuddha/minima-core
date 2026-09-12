@@ -1,0 +1,4670 @@
+{
+  "upstream_pin": "5564b9d78978efcaf23679190d05253961fc6e69",
+  "cpp_source_tree": "537d0e90aee0762bcea73210ac446e737b6bf3a6",
+  "same_cpp_source_as_e82e91f": true,
+  "optimized_source_binary_sha256": "cb49c87d164f3d020d613d59af1a4cd1f3ed9b5a9d07071e61116d1216407361",
+  "optimized_build": {
+    "type": "Release",
+    "cxx_flags": "",
+    "configuration_flags": "-O2 -g",
+    "native_database_manifest_sha256": "3fbe2545f2f8c8c918ffa38d125fcf828be71f84495d1bb782cb658785fff1d9"
+  },
+  "normal_full": {
+    "attributes": {
+      "name": "(empty)",
+      "tests": "292",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "",
+      "time": "6528",
+      "timestamp": "2026-09-11T23:38:30"
+    },
+    "tests": [
+      {
+        "name": "MiniByteTests",
+        "passed": true,
+        "seconds": 0.765125
+      },
+      {
+        "name": "malformed_streams",
+        "passed": true,
+        "seconds": 0.532003
+      },
+      {
+        "name": "source_mapping",
+        "passed": true,
+        "seconds": 0.096895
+      },
+      {
+        "name": "java_differential",
+        "passed": true,
+        "seconds": 1.5059
+      },
+      {
+        "name": "object_differential",
+        "passed": true,
+        "seconds": 27.6839
+      },
+      {
+        "name": "TransactionTests",
+        "passed": true,
+        "seconds": 0.692063
+      },
+      {
+        "name": "TxHeaderTests",
+        "passed": true,
+        "seconds": 1.13341
+      },
+      {
+        "name": "json_differential",
+        "passed": true,
+        "seconds": 1.70809
+      },
+      {
+        "name": "kiss_differential",
+        "passed": true,
+        "seconds": 0.926063
+      },
+      {
+        "name": "ValueTests",
+        "passed": true,
+        "seconds": 1.38793
+      },
+      {
+        "name": "BooleanValueTests",
+        "passed": true,
+        "seconds": 0.415011
+      },
+      {
+        "name": "ScriptValueTests",
+        "passed": true,
+        "seconds": 0.0107595
+      },
+      {
+        "name": "HexValueTests",
+        "passed": true,
+        "seconds": 0.00887683
+      },
+      {
+        "name": "NumberValueTests",
+        "passed": true,
+        "seconds": 0.01
+      },
+      {
+        "name": "LexicalTokenizerTests",
+        "passed": true,
+        "seconds": 0.514182
+      },
+      {
+        "name": "kissvm_differential",
+        "passed": true,
+        "seconds": 5.28769
+      },
+      {
+        "name": "ConstantExpressionTests",
+        "passed": true,
+        "seconds": 1.16571
+      },
+      {
+        "name": "VariableExpressionTests",
+        "passed": true,
+        "seconds": 1.44663
+      },
+      {
+        "name": "GlobalExpressionTests",
+        "passed": true,
+        "seconds": 1.13351
+      },
+      {
+        "name": "FunctionExpressionTests",
+        "passed": true,
+        "seconds": 0.497644
+      },
+      {
+        "name": "ContractTests",
+        "passed": true,
+        "seconds": 1.26141
+      },
+      {
+        "name": "StatementBlockTests",
+        "passed": true,
+        "seconds": 0.682196
+      },
+      {
+        "name": "peer_messages_differential",
+        "passed": true,
+        "seconds": 6.79709
+      },
+      {
+        "name": "txn_lock_workers",
+        "passed": true,
+        "seconds": 0.624417
+      },
+      {
+        "name": "small_utilities_differential",
+        "passed": true,
+        "seconds": 6.26436
+      },
+      {
+        "name": "ASSERTstatementTests",
+        "passed": true,
+        "seconds": 0.535994
+      },
+      {
+        "name": "EXECstatementTests",
+        "passed": true,
+        "seconds": 1.47647
+      },
+      {
+        "name": "cascade_differential",
+        "passed": true,
+        "seconds": 39.5105
+      },
+      {
+        "name": "TxPowTreeTest",
+        "passed": true,
+        "seconds": 0.317522
+      },
+      {
+        "name": "tree_differential",
+        "passed": true,
+        "seconds": 6.66858
+      },
+      {
+        "name": "utility_differential",
+        "passed": true,
+        "seconds": 4.14902
+      },
+      {
+        "name": "aes_util_differential",
+        "passed": true,
+        "seconds": 17.3715
+      },
+      {
+        "name": "transaction_test_differential",
+        "passed": true,
+        "seconds": 260.626
+      },
+      {
+        "name": "sphincs_utils_differential",
+        "passed": true,
+        "seconds": 273.218
+      },
+      {
+        "name": "sphincs_differential",
+        "passed": true,
+        "seconds": 1214.28
+      },
+      {
+        "name": "sphincs_log_audit",
+        "passed": true,
+        "seconds": 3.2313
+      },
+      {
+        "name": "sphincs_signature_differential",
+        "passed": true,
+        "seconds": 9.25838
+      },
+      {
+        "name": "fors_differential",
+        "passed": true,
+        "seconds": 491.393
+      },
+      {
+        "name": "horst_differential",
+        "passed": true,
+        "seconds": 112.679
+      },
+      {
+        "name": "zip_extractor_differential",
+        "passed": true,
+        "seconds": 3.87665
+      },
+      {
+        "name": "consensus_differential",
+        "passed": true,
+        "seconds": 143.265
+      },
+      {
+        "name": "RamDBTest",
+        "passed": true,
+        "seconds": 0.412786
+      },
+      {
+        "name": "ram_differential",
+        "passed": true,
+        "seconds": 84.2217
+      },
+      {
+        "name": "timed_checker_checks",
+        "passed": true,
+        "seconds": 0.264265
+      },
+      {
+        "name": "timed_checker_deadline",
+        "passed": true,
+        "seconds": 121.126
+      },
+      {
+        "name": "prefs_differential",
+        "passed": true,
+        "seconds": 5.86525
+      },
+      {
+        "name": "hashmap_differential",
+        "passed": true,
+        "seconds": 58.5439
+      },
+      {
+        "name": "message_differential",
+        "passed": true,
+        "seconds": 5.42488
+      },
+      {
+        "name": "message_workers",
+        "passed": true,
+        "seconds": 1.58722
+      },
+      {
+        "name": "timer_reentrancy_differential",
+        "passed": true,
+        "seconds": 5.34531
+      },
+      {
+        "name": "txndb_differential",
+        "passed": true,
+        "seconds": 7.32314
+      },
+      {
+        "name": "archive_cache_differential",
+        "passed": true,
+        "seconds": 9.23321
+      },
+      {
+        "name": "ibd_differential",
+        "passed": true,
+        "seconds": 32.7365
+      },
+      {
+        "name": "mmrsync_differential",
+        "passed": true,
+        "seconds": 22.8499
+      },
+      {
+        "name": "sendpoll_workers",
+        "passed": true,
+        "seconds": 1.75173
+      },
+      {
+        "name": "raw_archive_differential",
+        "passed": true,
+        "seconds": 38.1313
+      },
+      {
+        "name": "wallet_rows_differential",
+        "passed": true,
+        "seconds": 4.48358
+      },
+      {
+        "name": "bip39_differential",
+        "passed": true,
+        "seconds": 4.73661
+      },
+      {
+        "name": "fast_bytes_differential",
+        "passed": true,
+        "seconds": 7.43874
+      },
+      {
+        "name": "network_utilities_differential",
+        "passed": true,
+        "seconds": 6.08351
+      },
+      {
+        "name": "command_differential",
+        "passed": true,
+        "seconds": 11.0019
+      },
+      {
+        "name": "command_runner_differential",
+        "passed": true,
+        "seconds": 2.62558
+      },
+      {
+        "name": "transaction_commands_differential",
+        "passed": true,
+        "seconds": 9.04205
+      },
+      {
+        "name": "searcher_differential",
+        "passed": true,
+        "seconds": 11.6645
+      },
+      {
+        "name": "InetSocketAddressIOTest",
+        "passed": true,
+        "seconds": 0.542778
+      },
+      {
+        "name": "GreetingTest",
+        "passed": true,
+        "seconds": 0.493813
+      },
+      {
+        "name": "peer_state_differential",
+        "passed": true,
+        "seconds": 38.9247
+      },
+      {
+        "name": "P2PDBTest",
+        "passed": true,
+        "seconds": 0.572942
+      },
+      {
+        "name": "nio_client_differential",
+        "passed": true,
+        "seconds": 47.3684
+      },
+      {
+        "name": "nio_loopback",
+        "passed": true,
+        "seconds": 1.10848
+      },
+      {
+        "name": "nio_server_differential",
+        "passed": true,
+        "seconds": 4.29254
+      },
+      {
+        "name": "nio_server_main_differential",
+        "passed": true,
+        "seconds": 44.0511
+      },
+      {
+        "name": "core_mains_differential",
+        "passed": true,
+        "seconds": 2.671
+      },
+      {
+        "name": "object_mains_differential",
+        "passed": true,
+        "seconds": 4.88452
+      },
+      {
+        "name": "utility_mains_differential",
+        "passed": true,
+        "seconds": 6.21803
+      },
+      {
+        "name": "p2p2_db_differential",
+        "passed": true,
+        "seconds": 5.49325
+      },
+      {
+        "name": "network_startup_differential",
+        "passed": true,
+        "seconds": 18.1974
+      },
+      {
+        "name": "nio_manager_transport_differential",
+        "passed": true,
+        "seconds": 25.45
+      },
+      {
+        "name": "fixed_task_executor",
+        "passed": true,
+        "seconds": 0.601307
+      },
+      {
+        "name": "executor_interrupt_differential",
+        "passed": true,
+        "seconds": 3.71042
+      },
+      {
+        "name": "nio_manager_loopback",
+        "passed": true,
+        "seconds": 1.18689
+      },
+      {
+        "name": "nio_connections",
+        "passed": true,
+        "seconds": 1.40959
+      },
+      {
+        "name": "nio_manager_state_differential",
+        "passed": true,
+        "seconds": 11.5689
+      },
+      {
+        "name": "nio_message_differential",
+        "passed": true,
+        "seconds": 29.7168
+      },
+      {
+        "name": "p2p_functions_differential",
+        "passed": true,
+        "seconds": 55.7093
+      },
+      {
+        "name": "swap_links_differential",
+        "passed": true,
+        "seconds": 7.85924
+      },
+      {
+        "name": "walk_links_differential",
+        "passed": true,
+        "seconds": 7.2269
+      },
+      {
+        "name": "peers_checker_native",
+        "passed": true,
+        "seconds": 1.08712
+      },
+      {
+        "name": "peers_checker_differential",
+        "passed": true,
+        "seconds": 8.77704
+      },
+      {
+        "name": "p2p_manager_native",
+        "passed": true,
+        "seconds": 1.57784
+      },
+      {
+        "name": "peer_state_concurrent",
+        "passed": true,
+        "seconds": 1.09331
+      },
+      {
+        "name": "p2p_manager_differential",
+        "passed": true,
+        "seconds": 6.89747
+      },
+      {
+        "name": "p2p_discovery_differential",
+        "passed": true,
+        "seconds": 43.2309
+      },
+      {
+        "name": "p2p2_runtime_differential",
+        "passed": true,
+        "seconds": 5.00411
+      },
+      {
+        "name": "p2p2_worker",
+        "passed": true,
+        "seconds": 1.89616
+      },
+      {
+        "name": "http_server_differential",
+        "passed": true,
+        "seconds": 3.66265
+      },
+      {
+        "name": "cmd_handler_differential",
+        "passed": true,
+        "seconds": 6.67655
+      },
+      {
+        "name": "network_manager_native",
+        "passed": true,
+        "seconds": 1.22434
+      },
+      {
+        "name": "network_manager_differential",
+        "passed": true,
+        "seconds": 5.53866
+      },
+      {
+        "name": "sql_db_differential",
+        "passed": true,
+        "seconds": 3.21081
+      },
+      {
+        "name": "sql_db_concurrent",
+        "passed": true,
+        "seconds": 0.259808
+      },
+      {
+        "name": "onchain_db_differential",
+        "passed": true,
+        "seconds": 7.80083
+      },
+      {
+        "name": "txpow_sql_db_differential",
+        "passed": true,
+        "seconds": 17.0649
+      },
+      {
+        "name": "txpow_db_differential",
+        "passed": true,
+        "seconds": 23.058
+      },
+      {
+        "name": "coin_db_differential",
+        "passed": true,
+        "seconds": 9.3883
+      },
+      {
+        "name": "wallet_differential",
+        "passed": true,
+        "seconds": 31.8171
+      },
+      {
+        "name": "archive_manager_differential",
+        "passed": true,
+        "seconds": 35.0699
+      },
+      {
+        "name": "minima_db_differential",
+        "passed": true,
+        "seconds": 44.7361
+      },
+      {
+        "name": "minima_db_lock",
+        "passed": true,
+        "seconds": 0.347545
+      },
+      {
+        "name": "minima_db_ownership",
+        "passed": true,
+        "seconds": 0.509391
+      },
+      {
+        "name": "txpow_miner_differential",
+        "passed": true,
+        "seconds": 11.9968
+      },
+      {
+        "name": "txpow_miner_worker",
+        "passed": true,
+        "seconds": 1.98642
+      },
+      {
+        "name": "txblock_ownership_differential",
+        "passed": true,
+        "seconds": 52.5582
+      },
+      {
+        "name": "timed_checker_shared_deadline",
+        "passed": true,
+        "seconds": 120.665
+      },
+      {
+        "name": "txpow_processor_differential",
+        "passed": true,
+        "seconds": 29.5499
+      },
+      {
+        "name": "txpow_processor_worker",
+        "passed": true,
+        "seconds": 0.857577
+      },
+      {
+        "name": "notify_manager_differential",
+        "passed": true,
+        "seconds": 5.30938
+      },
+      {
+        "name": "notify_manager_worker",
+        "passed": true,
+        "seconds": 1.31264
+      },
+      {
+        "name": "rpc_client_differential",
+        "passed": true,
+        "seconds": 6.23375
+      },
+      {
+        "name": "rpc_configuration_native",
+        "passed": true,
+        "seconds": 0.724196
+      },
+      {
+        "name": "minima_logger_differential",
+        "passed": true,
+        "seconds": 4.47435
+      },
+      {
+        "name": "minima_logger_worker",
+        "passed": true,
+        "seconds": 1.60876
+      },
+      {
+        "name": "native_stack_trace",
+        "passed": true,
+        "seconds": 1.23888
+      },
+      {
+        "name": "minima_rpc_cli_differential",
+        "passed": true,
+        "seconds": 6.20448
+      },
+      {
+        "name": "param_configurer_differential",
+        "passed": true,
+        "seconds": 5.15268
+      },
+      {
+        "name": "ParamConfigurerTest",
+        "passed": true,
+        "seconds": 0.331662
+      },
+      {
+        "name": "minima_uncaught_differential",
+        "passed": true,
+        "seconds": 5.12068
+      },
+      {
+        "name": "native_thread_checks",
+        "passed": true,
+        "seconds": 0.291016
+      },
+      {
+        "name": "thread_interrupt_differential",
+        "passed": true,
+        "seconds": 10.6085
+      },
+      {
+        "name": "runtime_sleep_differential",
+        "passed": true,
+        "seconds": 8.36681
+      },
+      {
+        "name": "http_server_errors_differential",
+        "passed": true,
+        "seconds": 6.34089
+      },
+      {
+        "name": "executor_uncaught_differential",
+        "passed": true,
+        "seconds": 3.13176
+      },
+      {
+        "name": "nio_server_errors_differential",
+        "passed": true,
+        "seconds": 10.0402
+      },
+      {
+        "name": "nio_manager_errors_differential",
+        "passed": true,
+        "seconds": 5.36961
+      },
+      {
+        "name": "timed_checker_errors_differential",
+        "passed": true,
+        "seconds": 20.4533
+      },
+      {
+        "name": "timed_checker_error_deadline",
+        "passed": true,
+        "seconds": 123.264
+      },
+      {
+        "name": "checker_logs_differential",
+        "passed": true,
+        "seconds": 13.7656
+      },
+      {
+        "name": "script_value_original_tests",
+        "passed": true,
+        "seconds": 3.04203
+      },
+      {
+        "name": "hex_value_original_tests",
+        "passed": true,
+        "seconds": 3.31233
+      },
+      {
+        "name": "number_value_original_tests",
+        "passed": true,
+        "seconds": 2.27563
+      },
+      {
+        "name": "MinimaFunctionTests",
+        "passed": true,
+        "seconds": 0.0158854
+      },
+      {
+        "name": "ABSTests",
+        "passed": true,
+        "seconds": 0.0193084
+      },
+      {
+        "name": "minima_function_original_tests",
+        "passed": true,
+        "seconds": 2.17788
+      },
+      {
+        "name": "abs_original_tests",
+        "passed": true,
+        "seconds": 3.20476
+      },
+      {
+        "name": "command_runner_errors_differential",
+        "passed": true,
+        "seconds": 4.66692
+      },
+      {
+        "name": "FLOORTests",
+        "passed": true,
+        "seconds": 0.0165868
+      },
+      {
+        "name": "floor_original_tests",
+        "passed": true,
+        "seconds": 2.52694
+      },
+      {
+        "name": "CEILTests",
+        "passed": true,
+        "seconds": 0.0169379
+      },
+      {
+        "name": "ceil_original_tests",
+        "passed": true,
+        "seconds": 3.54899
+      },
+      {
+        "name": "wallet_commands_differential",
+        "passed": true,
+        "seconds": 13.4992
+      },
+      {
+        "name": "wallet_address_commands_differential",
+        "passed": true,
+        "seconds": 24.4392
+      },
+      {
+        "name": "MINTests",
+        "passed": true,
+        "seconds": 7.67515
+      },
+      {
+        "name": "min_original_tests",
+        "passed": true,
+        "seconds": 9.69797
+      },
+      {
+        "name": "MAXTests",
+        "passed": true,
+        "seconds": 7.35077
+      },
+      {
+        "name": "max_original_tests",
+        "passed": true,
+        "seconds": 11.0798
+      },
+      {
+        "name": "wallet_witness_commands_differential",
+        "passed": true,
+        "seconds": 7.32974
+      },
+      {
+        "name": "coin_streams_differential",
+        "passed": true,
+        "seconds": 33.6167
+      },
+      {
+        "name": "MiniStringTests",
+        "passed": true,
+        "seconds": 0.010997
+      },
+      {
+        "name": "ministring_original_tests",
+        "passed": true,
+        "seconds": 3.8123
+      },
+      {
+        "name": "chain_commands_differential",
+        "passed": true,
+        "seconds": 9.44262
+      },
+      {
+        "name": "transaction_input_commands_differential",
+        "passed": true,
+        "seconds": 37.6354
+      },
+      {
+        "name": "transaction_check_command_differential",
+        "passed": true,
+        "seconds": 31.8989
+      },
+      {
+        "name": "INCTests",
+        "passed": true,
+        "seconds": 0.0156808
+      },
+      {
+        "name": "inc_original_tests",
+        "passed": true,
+        "seconds": 2.36089
+      },
+      {
+        "name": "DECTests",
+        "passed": true,
+        "seconds": 0.0137161
+      },
+      {
+        "name": "dec_original_tests",
+        "passed": true,
+        "seconds": 2.58016
+      },
+      {
+        "name": "transaction_mining_commands_differential",
+        "passed": true,
+        "seconds": 16.9704
+      },
+      {
+        "name": "POWTests",
+        "passed": true,
+        "seconds": 0.0237306
+      },
+      {
+        "name": "pow_original_tests",
+        "passed": true,
+        "seconds": 2.28852
+      },
+      {
+        "name": "SIGDIGTests",
+        "passed": true,
+        "seconds": 0.0244967
+      },
+      {
+        "name": "sigdig_original_tests",
+        "passed": true,
+        "seconds": 3.83532
+      },
+      {
+        "name": "BITCOUNTTests",
+        "passed": true,
+        "seconds": 0.0186286
+      },
+      {
+        "name": "bitcount_original_tests",
+        "passed": true,
+        "seconds": 4.17812
+      },
+      {
+        "name": "vault_signing_commands_differential",
+        "passed": true,
+        "seconds": 72.9224
+      },
+      {
+        "name": "BITGETTests",
+        "passed": true,
+        "seconds": 0.0173685
+      },
+      {
+        "name": "bitget_original_tests",
+        "passed": true,
+        "seconds": 3.48006
+      },
+      {
+        "name": "BITSETTests",
+        "passed": true,
+        "seconds": 0.0236258
+      },
+      {
+        "name": "bitset_original_tests",
+        "passed": true,
+        "seconds": 3.36746
+      },
+      {
+        "name": "wallet_key_commands_differential",
+        "passed": true,
+        "seconds": 38.9629
+      },
+      {
+        "name": "coin_funding_commands_differential",
+        "passed": true,
+        "seconds": 59.3247
+      },
+      {
+        "name": "REVTests",
+        "passed": true,
+        "seconds": 0.0145335
+      },
+      {
+        "name": "rev_original_tests",
+        "passed": true,
+        "seconds": 2.03835
+      },
+      {
+        "name": "LENTests",
+        "passed": true,
+        "seconds": 0.0180222
+      },
+      {
+        "name": "len_original_tests",
+        "passed": true,
+        "seconds": 2.31309
+      },
+      {
+        "name": "offline_send_commands_differential",
+        "passed": true,
+        "seconds": 17.7314
+      },
+      {
+        "name": "unsigned_send_command_differential",
+        "passed": true,
+        "seconds": 37.086
+      },
+      {
+        "name": "sendpoll_command_differential",
+        "passed": true,
+        "seconds": 8.26054
+      },
+      {
+        "name": "wallet_wrappers_differential",
+        "passed": true,
+        "seconds": 12.1238
+      },
+      {
+        "name": "raw_transaction_commands_differential",
+        "passed": true,
+        "seconds": 4.81672
+      },
+      {
+        "name": "custom_address_send_commands_differential",
+        "passed": true,
+        "seconds": 9.71321
+      },
+      {
+        "name": "consolidate_address_commands_differential",
+        "passed": true,
+        "seconds": 5.80585
+      },
+      {
+        "name": "wallet_consolidation_command_differential",
+        "passed": true,
+        "seconds": 14.3528
+      },
+      {
+        "name": "wallet_balance_command_differential",
+        "passed": true,
+        "seconds": 13.3738
+      },
+      {
+        "name": "coin_search_command_differential",
+        "passed": true,
+        "seconds": 14.1012
+      },
+      {
+        "name": "transaction_history_command_differential",
+        "passed": true,
+        "seconds": 5.9913
+      },
+      {
+        "name": "txpow_search_command_differential",
+        "passed": true,
+        "seconds": 13.2419
+      },
+      {
+        "name": "node_state_commands_differential",
+        "passed": true,
+        "seconds": 12.3645
+      },
+      {
+        "name": "seed_random_command_differential",
+        "passed": true,
+        "seconds": 3.90188
+      },
+      {
+        "name": "BOOLTests",
+        "passed": true,
+        "seconds": 0.0129313
+      },
+      {
+        "name": "bool_cast_original_tests",
+        "passed": true,
+        "seconds": 3.43422
+      },
+      {
+        "name": "HEXTests",
+        "passed": true,
+        "seconds": 0.0132439
+      },
+      {
+        "name": "hex_cast_original_tests",
+        "passed": true,
+        "seconds": 3.70101
+      },
+      {
+        "name": "NUMBERTests",
+        "passed": true,
+        "seconds": 0.0153624
+      },
+      {
+        "name": "number_cast_original_tests",
+        "passed": true,
+        "seconds": 3.79126
+      },
+      {
+        "name": "SCRIPTTests",
+        "passed": true,
+        "seconds": 0.0133647
+      },
+      {
+        "name": "script_cast_original_tests",
+        "passed": true,
+        "seconds": 2.58455
+      },
+      {
+        "name": "archive_server_differential",
+        "passed": true,
+        "seconds": 99.3119
+      },
+      {
+        "name": "archive_server_clean_audit",
+        "passed": true,
+        "seconds": 3.34815
+      },
+      {
+        "name": "mysql_connect_differential",
+        "passed": true,
+        "seconds": 37.327
+      },
+      {
+        "name": "pulse_runtime_differential",
+        "passed": true,
+        "seconds": 13.5124
+      },
+      {
+        "name": "main_runtime_differential",
+        "passed": true,
+        "seconds": 2.67893
+      },
+      {
+        "name": "main_ownership",
+        "passed": true,
+        "seconds": 0.917462
+      },
+      {
+        "name": "main_lifecycle_commands_differential",
+        "passed": true,
+        "seconds": 3.29267
+      },
+      {
+        "name": "network_peer_commands_differential",
+        "passed": true,
+        "seconds": 4.85414
+      },
+      {
+        "name": "ping_command_differential",
+        "passed": true,
+        "seconds": 4.3086
+      },
+      {
+        "name": "network_status_command_differential",
+        "passed": true,
+        "seconds": 3.96511
+      },
+      {
+        "name": "trace_clock_command_differential",
+        "passed": true,
+        "seconds": 3.46852
+      },
+      {
+        "name": "healthcheck_command_differential",
+        "passed": true,
+        "seconds": 7.07545
+      },
+      {
+        "name": "logs_command_differential",
+        "passed": true,
+        "seconds": 4.86809
+      },
+      {
+        "name": "node_status_command_differential",
+        "passed": true,
+        "seconds": 10.9809
+      },
+      {
+        "name": "rpc_command_differential",
+        "passed": true,
+        "seconds": 13.0825
+      },
+      {
+        "name": "json_collections_differential",
+        "passed": true,
+        "seconds": 0.983437
+      },
+      {
+        "name": "shared_json_native",
+        "passed": true,
+        "seconds": 7.93157
+      },
+      {
+        "name": "rpc_live_differential",
+        "passed": true,
+        "seconds": 34.9645
+      },
+      {
+        "name": "hashtest_command_differential",
+        "passed": true,
+        "seconds": 15.8186
+      },
+      {
+        "name": "coin_import_differential",
+        "passed": true,
+        "seconds": 10.0034
+      },
+      {
+        "name": "scan_chain_differential",
+        "passed": true,
+        "seconds": 24.5907
+      },
+      {
+        "name": "token_validation_differential",
+        "passed": true,
+        "seconds": 5.01876
+      },
+      {
+        "name": "peers_command_differential",
+        "passed": true,
+        "seconds": 3.54531
+      },
+      {
+        "name": "automatic_transaction_differential",
+        "passed": true,
+        "seconds": 34.6224
+      },
+      {
+        "name": "burn_metrics_differential",
+        "passed": true,
+        "seconds": 24.0019
+      },
+      {
+        "name": "token_creation_differential",
+        "passed": true,
+        "seconds": 51.0536
+      },
+      {
+        "name": "multisig_workflow_differential",
+        "passed": true,
+        "seconds": 29.1204
+      },
+      {
+        "name": "node_count_differential",
+        "passed": true,
+        "seconds": 7.43672
+      },
+      {
+        "name": "incentive_cash_differential",
+        "passed": true,
+        "seconds": 3.72187
+      },
+      {
+        "name": "item_list_differential",
+        "passed": true,
+        "seconds": 2.75016
+      },
+      {
+        "name": "native_h2_differential",
+        "passed": true,
+        "seconds": 6.23476
+      },
+      {
+        "name": "native_h2_concurrent",
+        "passed": true,
+        "seconds": 1.32865
+      },
+      {
+        "name": "native_node_startup",
+        "passed": true,
+        "seconds": 45.7918
+      },
+      {
+        "name": "minima_entry_differential",
+        "passed": true,
+        "seconds": 5.0267
+      },
+      {
+        "name": "decrypt_backup_differential",
+        "passed": true,
+        "seconds": 9.04604
+      },
+      {
+        "name": "backup_differential",
+        "passed": true,
+        "seconds": 16.4464
+      },
+      {
+        "name": "restore_differential",
+        "passed": true,
+        "seconds": 20.092
+      },
+      {
+        "name": "native_restore_startup",
+        "passed": true,
+        "seconds": 15.7172
+      },
+      {
+        "name": "reset_differential",
+        "passed": true,
+        "seconds": 42.2005
+      },
+      {
+        "name": "archive_command_differential",
+        "passed": true,
+        "seconds": 60.4745
+      },
+      {
+        "name": "native_archive_startup",
+        "passed": true,
+        "seconds": 41.822
+      },
+      {
+        "name": "archive_network_differential",
+        "passed": true,
+        "seconds": 110.005
+      },
+      {
+        "name": "restoresync_differential",
+        "passed": true,
+        "seconds": 102.033
+      },
+      {
+        "name": "native_restoresync_startup",
+        "passed": true,
+        "seconds": 17.4655
+      },
+      {
+        "name": "native_restoresync_remote",
+        "passed": true,
+        "seconds": 137.035
+      },
+      {
+        "name": "mega_commands_differential",
+        "passed": true,
+        "seconds": 89.9587
+      },
+      {
+        "name": "native_mega_startup",
+        "passed": true,
+        "seconds": 28.8377
+      },
+      {
+        "name": "systemcheck_commands_differential",
+        "passed": true,
+        "seconds": 3.21853
+      },
+      {
+        "name": "native_systemcheck_startup",
+        "passed": true,
+        "seconds": 30.1125
+      },
+      {
+        "name": "sphincs_command_differential",
+        "passed": true,
+        "seconds": 1679.85
+      },
+      {
+        "name": "base_test_command_differential",
+        "passed": true,
+        "seconds": 45.1659
+      },
+      {
+        "name": "native_base_test_startup",
+        "passed": true,
+        "seconds": 26.274
+      },
+      {
+        "name": "text_commands_differential",
+        "passed": true,
+        "seconds": 2.72215
+      },
+      {
+        "name": "CONCATTests",
+        "passed": true,
+        "seconds": 0.0408018
+      },
+      {
+        "name": "concat_original_tests",
+        "passed": true,
+        "seconds": 2.51283
+      },
+      {
+        "name": "GETTests",
+        "passed": true,
+        "seconds": 0.0273842
+      },
+      {
+        "name": "get_original_tests",
+        "passed": true,
+        "seconds": 3.53478
+      },
+      {
+        "name": "SUBSETTests",
+        "passed": true,
+        "seconds": 0.0292765
+      },
+      {
+        "name": "subset_original_tests",
+        "passed": true,
+        "seconds": 2.26115
+      },
+      {
+        "name": "mysql_coins_differential",
+        "passed": true,
+        "seconds": 10.0243
+      },
+      {
+        "name": "mysql_command_differential",
+        "passed": true,
+        "seconds": 40.996
+      },
+      {
+        "name": "help_command_differential",
+        "passed": true,
+        "seconds": 3.64434
+      },
+      {
+        "name": "streamable_differential",
+        "passed": true,
+        "seconds": 31.6403
+      },
+      {
+        "name": "txbody_ids_differential",
+        "passed": true,
+        "seconds": 4.93552
+      },
+      {
+        "name": "magic_differential",
+        "passed": true,
+        "seconds": 5126.91
+      },
+      {
+        "name": "hash_writers_differential",
+        "passed": true,
+        "seconds": 3.2349
+      },
+      {
+        "name": "txheader_differential",
+        "passed": true,
+        "seconds": 5.01307
+      },
+      {
+        "name": "original_helpers_differential",
+        "passed": true,
+        "seconds": 4.19799
+      },
+      {
+        "name": "original_p2p_helpers_differential",
+        "passed": true,
+        "seconds": 5.5453
+      },
+      {
+        "name": "original_p2p_tests",
+        "passed": true,
+        "seconds": 6.96418
+      },
+      {
+        "name": "original_object_tests",
+        "passed": true,
+        "seconds": 3.34277
+      },
+      {
+        "name": "original_base_tests",
+        "passed": true,
+        "seconds": 3.23086
+      },
+      {
+        "name": "base_value_api_differential",
+        "passed": true,
+        "seconds": 4.99281
+      },
+      {
+        "name": "original_sha_tests",
+        "passed": true,
+        "seconds": 7.67732
+      },
+      {
+        "name": "original_state_tests",
+        "passed": true,
+        "seconds": 3.01796
+      },
+      {
+        "name": "original_signature_tests",
+        "passed": true,
+        "seconds": 8.71484
+      },
+      {
+        "name": "original_getter_tests",
+        "passed": true,
+        "seconds": 5.24848
+      },
+      {
+        "name": "original_verify_tests",
+        "passed": true,
+        "seconds": 3.99497
+      },
+      {
+        "name": "original_statement_commands_tests",
+        "passed": true,
+        "seconds": 3.5475
+      },
+      {
+        "name": "original_let_tests",
+        "passed": true,
+        "seconds": 3.04964
+      },
+      {
+        "name": "original_expressions_tests",
+        "passed": true,
+        "seconds": 3.16176
+      },
+      {
+        "name": "original_token_tests",
+        "passed": true,
+        "seconds": 2.84556
+      },
+      {
+        "name": "original_parser_tests",
+        "passed": true,
+        "seconds": 3.46172
+      },
+      {
+        "name": "original_processor_test",
+        "passed": true,
+        "seconds": 1.07209
+      },
+      {
+        "name": "jni_command_callers",
+        "passed": true,
+        "seconds": 19.8091
+      },
+      {
+        "name": "command_registry_differential",
+        "passed": true,
+        "seconds": 2.80641
+      }
+    ]
+  },
+  "optimized_initial": {
+    "attributes": {
+      "name": "(empty)",
+      "tests": "297",
+      "failures": "33",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "",
+      "time": "1471",
+      "timestamp": "2026-09-12T01:17:57"
+    },
+    "tests": [
+      {
+        "name": "MiniByteTests",
+        "passed": true,
+        "seconds": 0.421095
+      },
+      {
+        "name": "malformed_streams",
+        "passed": true,
+        "seconds": 0.245366
+      },
+      {
+        "name": "source_mapping",
+        "passed": true,
+        "seconds": 0.351021
+      },
+      {
+        "name": "java_differential",
+        "passed": true,
+        "seconds": 2.15565
+      },
+      {
+        "name": "object_differential",
+        "passed": true,
+        "seconds": 8.48711
+      },
+      {
+        "name": "TransactionTests",
+        "passed": true,
+        "seconds": 0.237932
+      },
+      {
+        "name": "TxHeaderTests",
+        "passed": true,
+        "seconds": 0.218373
+      },
+      {
+        "name": "json_differential",
+        "passed": true,
+        "seconds": 1.06324
+      },
+      {
+        "name": "kiss_differential",
+        "passed": true,
+        "seconds": 1.07832
+      },
+      {
+        "name": "ValueTests",
+        "passed": true,
+        "seconds": 0.291573
+      },
+      {
+        "name": "BooleanValueTests",
+        "passed": true,
+        "seconds": 0.231613
+      },
+      {
+        "name": "ScriptValueTests",
+        "passed": true,
+        "seconds": 0.224352
+      },
+      {
+        "name": "HexValueTests",
+        "passed": true,
+        "seconds": 0.221063
+      },
+      {
+        "name": "NumberValueTests",
+        "passed": true,
+        "seconds": 0.231937
+      },
+      {
+        "name": "LexicalTokenizerTests",
+        "passed": true,
+        "seconds": 0.215905
+      },
+      {
+        "name": "kissvm_differential",
+        "passed": true,
+        "seconds": 2.83838
+      },
+      {
+        "name": "ConstantExpressionTests",
+        "passed": true,
+        "seconds": 0.281725
+      },
+      {
+        "name": "VariableExpressionTests",
+        "passed": true,
+        "seconds": 0.253532
+      },
+      {
+        "name": "GlobalExpressionTests",
+        "passed": true,
+        "seconds": 0.296913
+      },
+      {
+        "name": "FunctionExpressionTests",
+        "passed": true,
+        "seconds": 0.309166
+      },
+      {
+        "name": "ContractTests",
+        "passed": true,
+        "seconds": 0.505763
+      },
+      {
+        "name": "StatementBlockTests",
+        "passed": true,
+        "seconds": 0.473617
+      },
+      {
+        "name": "peer_messages_differential",
+        "passed": true,
+        "seconds": 4.00042
+      },
+      {
+        "name": "txn_lock_workers",
+        "passed": true,
+        "seconds": 0.826478
+      },
+      {
+        "name": "small_utilities_differential",
+        "passed": true,
+        "seconds": 4.49614
+      },
+      {
+        "name": "ASSERTstatementTests",
+        "passed": true,
+        "seconds": 0.267819
+      },
+      {
+        "name": "EXECstatementTests",
+        "passed": true,
+        "seconds": 0.258436
+      },
+      {
+        "name": "cascade_differential",
+        "passed": true,
+        "seconds": 16.1653
+      },
+      {
+        "name": "TxPowTreeTest",
+        "passed": true,
+        "seconds": 0.270806
+      },
+      {
+        "name": "tree_differential",
+        "passed": true,
+        "seconds": 8.51851
+      },
+      {
+        "name": "utility_differential",
+        "passed": true,
+        "seconds": 4.07452
+      },
+      {
+        "name": "aes_util_differential",
+        "passed": true,
+        "seconds": 11.1858
+      },
+      {
+        "name": "transaction_test_differential",
+        "passed": true,
+        "seconds": 49.376
+      },
+      {
+        "name": "sphincs_utils_differential",
+        "passed": true,
+        "seconds": 60.756
+      },
+      {
+        "name": "sphincs_differential",
+        "passed": true,
+        "seconds": 272.555
+      },
+      {
+        "name": "sphincs_log_audit",
+        "passed": true,
+        "seconds": 3.10962
+      },
+      {
+        "name": "sphincs_signature_differential",
+        "passed": true,
+        "seconds": 6.29532
+      },
+      {
+        "name": "fors_differential",
+        "passed": true,
+        "seconds": 94.6414
+      },
+      {
+        "name": "horst_differential",
+        "passed": true,
+        "seconds": 46.3728
+      },
+      {
+        "name": "zip_extractor_differential",
+        "passed": true,
+        "seconds": 5.22935
+      },
+      {
+        "name": "consensus_differential",
+        "passed": true,
+        "seconds": 38.598
+      },
+      {
+        "name": "RamDBTest",
+        "passed": true,
+        "seconds": 0.347768
+      },
+      {
+        "name": "ram_differential",
+        "passed": true,
+        "seconds": 391.772
+      },
+      {
+        "name": "timed_checker_checks",
+        "passed": true,
+        "seconds": 1.04744
+      },
+      {
+        "name": "timed_checker_deadline",
+        "passed": true,
+        "seconds": 120.56
+      },
+      {
+        "name": "prefs_differential",
+        "passed": true,
+        "seconds": 7.67009
+      },
+      {
+        "name": "hashmap_differential",
+        "passed": true,
+        "seconds": 360.219
+      },
+      {
+        "name": "message_differential",
+        "passed": true,
+        "seconds": 4.73296
+      },
+      {
+        "name": "message_workers",
+        "passed": true,
+        "seconds": 1.58751
+      },
+      {
+        "name": "timer_reentrancy_differential",
+        "passed": true,
+        "seconds": 8.40277
+      },
+      {
+        "name": "txndb_differential",
+        "passed": true,
+        "seconds": 4.47909
+      },
+      {
+        "name": "archive_cache_differential",
+        "passed": true,
+        "seconds": 4.5948
+      },
+      {
+        "name": "ibd_differential",
+        "passed": true,
+        "seconds": 10.0543
+      },
+      {
+        "name": "mmrsync_differential",
+        "passed": true,
+        "seconds": 8.85404
+      },
+      {
+        "name": "sendpoll_workers",
+        "passed": true,
+        "seconds": 1.69926
+      },
+      {
+        "name": "raw_archive_differential",
+        "passed": true,
+        "seconds": 16.6031
+      },
+      {
+        "name": "wallet_rows_differential",
+        "passed": true,
+        "seconds": 3.22136
+      },
+      {
+        "name": "bip39_differential",
+        "passed": true,
+        "seconds": 8.95056
+      },
+      {
+        "name": "fast_bytes_differential",
+        "passed": true,
+        "seconds": 6.2233
+      },
+      {
+        "name": "network_utilities_differential",
+        "passed": true,
+        "seconds": 4.66206
+      },
+      {
+        "name": "command_differential",
+        "passed": true,
+        "seconds": 7.80625
+      },
+      {
+        "name": "command_runner_differential",
+        "passed": true,
+        "seconds": 4.15002
+      },
+      {
+        "name": "transaction_commands_differential",
+        "passed": true,
+        "seconds": 6.39065
+      },
+      {
+        "name": "searcher_differential",
+        "passed": true,
+        "seconds": 7.01578
+      },
+      {
+        "name": "InetSocketAddressIOTest",
+        "passed": true,
+        "seconds": 0.270088
+      },
+      {
+        "name": "GreetingTest",
+        "passed": true,
+        "seconds": 1.08928
+      },
+      {
+        "name": "peer_state_differential",
+        "passed": true,
+        "seconds": 14.5999
+      },
+      {
+        "name": "P2PDBTest",
+        "passed": true,
+        "seconds": 0.304516
+      },
+      {
+        "name": "nio_client_differential",
+        "passed": true,
+        "seconds": 14.1765
+      },
+      {
+        "name": "nio_loopback",
+        "passed": false,
+        "seconds": 0.386357
+      },
+      {
+        "name": "nio_server_differential",
+        "passed": false,
+        "seconds": 4.74406
+      },
+      {
+        "name": "nio_server_main_differential",
+        "passed": false,
+        "seconds": 3.0909
+      },
+      {
+        "name": "runtime_mains_differential",
+        "passed": true,
+        "seconds": 19.9507
+      },
+      {
+        "name": "mmr_mains_differential",
+        "passed": true,
+        "seconds": 5.68092
+      },
+      {
+        "name": "crypto_mains_differential",
+        "passed": true,
+        "seconds": 8.02339
+      },
+      {
+        "name": "core_mains_differential",
+        "passed": true,
+        "seconds": 10.0806
+      },
+      {
+        "name": "object_mains_differential",
+        "passed": true,
+        "seconds": 8.35038
+      },
+      {
+        "name": "utility_mains_differential",
+        "passed": true,
+        "seconds": 8.24255
+      },
+      {
+        "name": "p2p2_db_differential",
+        "passed": true,
+        "seconds": 6.09816
+      },
+      {
+        "name": "network_startup_differential",
+        "passed": true,
+        "seconds": 8.88046
+      },
+      {
+        "name": "nio_manager_transport_differential",
+        "passed": false,
+        "seconds": 3.83146
+      },
+      {
+        "name": "fixed_task_executor",
+        "passed": true,
+        "seconds": 0.312684
+      },
+      {
+        "name": "executor_interrupt_differential",
+        "passed": true,
+        "seconds": 6.12618
+      },
+      {
+        "name": "nio_manager_loopback",
+        "passed": true,
+        "seconds": 1.14115
+      },
+      {
+        "name": "nio_connections",
+        "passed": true,
+        "seconds": 1.33073
+      },
+      {
+        "name": "nio_manager_state_differential",
+        "passed": true,
+        "seconds": 7.27364
+      },
+      {
+        "name": "nio_message_differential",
+        "passed": true,
+        "seconds": 18.9068
+      },
+      {
+        "name": "p2p_functions_differential",
+        "passed": false,
+        "seconds": 5.13063
+      },
+      {
+        "name": "swap_links_differential",
+        "passed": true,
+        "seconds": 4.60829
+      },
+      {
+        "name": "walk_links_differential",
+        "passed": true,
+        "seconds": 4.81163
+      },
+      {
+        "name": "peers_checker_native",
+        "passed": true,
+        "seconds": 0.582249
+      },
+      {
+        "name": "peers_checker_differential",
+        "passed": false,
+        "seconds": 3.31205
+      },
+      {
+        "name": "p2p_manager_native",
+        "passed": true,
+        "seconds": 1.58059
+      },
+      {
+        "name": "peer_state_concurrent",
+        "passed": true,
+        "seconds": 0.602767
+      },
+      {
+        "name": "p2p_manager_differential",
+        "passed": true,
+        "seconds": 6.1381
+      },
+      {
+        "name": "p2p_discovery_differential",
+        "passed": false,
+        "seconds": 4.24415
+      },
+      {
+        "name": "p2p2_runtime_differential",
+        "passed": true,
+        "seconds": 4.63124
+      },
+      {
+        "name": "p2p2_worker",
+        "passed": true,
+        "seconds": 1.46853
+      },
+      {
+        "name": "http_server_differential",
+        "passed": false,
+        "seconds": 3.7923
+      },
+      {
+        "name": "cmd_handler_differential",
+        "passed": false,
+        "seconds": 4.50867
+      },
+      {
+        "name": "network_manager_native",
+        "passed": true,
+        "seconds": 0.569671
+      },
+      {
+        "name": "network_manager_differential",
+        "passed": true,
+        "seconds": 5.7957
+      },
+      {
+        "name": "sql_db_differential",
+        "passed": true,
+        "seconds": 4.85609
+      },
+      {
+        "name": "sql_db_concurrent",
+        "passed": true,
+        "seconds": 0.365373
+      },
+      {
+        "name": "onchain_db_differential",
+        "passed": true,
+        "seconds": 8.31726
+      },
+      {
+        "name": "txpow_sql_db_differential",
+        "passed": true,
+        "seconds": 19.3888
+      },
+      {
+        "name": "txpow_db_differential",
+        "passed": true,
+        "seconds": 19.859
+      },
+      {
+        "name": "coin_db_differential",
+        "passed": true,
+        "seconds": 10.4407
+      },
+      {
+        "name": "wallet_differential",
+        "passed": true,
+        "seconds": 11.3391
+      },
+      {
+        "name": "archive_manager_differential",
+        "passed": true,
+        "seconds": 16.6244
+      },
+      {
+        "name": "minima_db_differential",
+        "passed": true,
+        "seconds": 53.6362
+      },
+      {
+        "name": "minima_db_lock",
+        "passed": true,
+        "seconds": 0.336128
+      },
+      {
+        "name": "minima_db_ownership",
+        "passed": true,
+        "seconds": 1.37593
+      },
+      {
+        "name": "txpow_miner_differential",
+        "passed": true,
+        "seconds": 6.01405
+      },
+      {
+        "name": "txpow_miner_worker",
+        "passed": true,
+        "seconds": 0.742813
+      },
+      {
+        "name": "txblock_ownership_differential",
+        "passed": true,
+        "seconds": 18.405
+      },
+      {
+        "name": "timed_checker_shared_deadline",
+        "passed": true,
+        "seconds": 120.546
+      },
+      {
+        "name": "txpow_processor_differential",
+        "passed": true,
+        "seconds": 16.2717
+      },
+      {
+        "name": "txpow_processor_worker",
+        "passed": true,
+        "seconds": 0.531911
+      },
+      {
+        "name": "notify_manager_differential",
+        "passed": true,
+        "seconds": 5.50343
+      },
+      {
+        "name": "notify_manager_worker",
+        "passed": true,
+        "seconds": 0.458383
+      },
+      {
+        "name": "rpc_client_differential",
+        "passed": false,
+        "seconds": 4.18164
+      },
+      {
+        "name": "rpc_configuration_native",
+        "passed": true,
+        "seconds": 0.617052
+      },
+      {
+        "name": "minima_logger_differential",
+        "passed": true,
+        "seconds": 5.17062
+      },
+      {
+        "name": "minima_logger_worker",
+        "passed": true,
+        "seconds": 0.806895
+      },
+      {
+        "name": "native_stack_trace",
+        "passed": true,
+        "seconds": 0.286943
+      },
+      {
+        "name": "minima_rpc_cli_differential",
+        "passed": false,
+        "seconds": 3.68708
+      },
+      {
+        "name": "param_configurer_differential",
+        "passed": false,
+        "seconds": 6.60499
+      },
+      {
+        "name": "ParamConfigurerTest",
+        "passed": true,
+        "seconds": 0.319524
+      },
+      {
+        "name": "minima_uncaught_differential",
+        "passed": true,
+        "seconds": 12.7009
+      },
+      {
+        "name": "native_thread_checks",
+        "passed": true,
+        "seconds": 1.66516
+      },
+      {
+        "name": "thread_interrupt_differential",
+        "passed": true,
+        "seconds": 10.7817
+      },
+      {
+        "name": "runtime_sleep_differential",
+        "passed": false,
+        "seconds": 5.45646
+      },
+      {
+        "name": "http_server_errors_differential",
+        "passed": false,
+        "seconds": 3.02052
+      },
+      {
+        "name": "executor_uncaught_differential",
+        "passed": true,
+        "seconds": 4.31239
+      },
+      {
+        "name": "nio_server_errors_differential",
+        "passed": false,
+        "seconds": 2.88428
+      },
+      {
+        "name": "nio_manager_errors_differential",
+        "passed": false,
+        "seconds": 3.96236
+      },
+      {
+        "name": "timed_checker_errors_differential",
+        "passed": true,
+        "seconds": 24.4089
+      },
+      {
+        "name": "timed_checker_error_deadline",
+        "passed": true,
+        "seconds": 124.687
+      },
+      {
+        "name": "checker_logs_differential",
+        "passed": true,
+        "seconds": 6.74646
+      },
+      {
+        "name": "script_value_original_tests",
+        "passed": true,
+        "seconds": 2.18343
+      },
+      {
+        "name": "hex_value_original_tests",
+        "passed": true,
+        "seconds": 2.36673
+      },
+      {
+        "name": "number_value_original_tests",
+        "passed": true,
+        "seconds": 2.2802
+      },
+      {
+        "name": "MinimaFunctionTests",
+        "passed": true,
+        "seconds": 0.307772
+      },
+      {
+        "name": "ABSTests",
+        "passed": true,
+        "seconds": 0.257139
+      },
+      {
+        "name": "minima_function_original_tests",
+        "passed": true,
+        "seconds": 2.09514
+      },
+      {
+        "name": "abs_original_tests",
+        "passed": true,
+        "seconds": 2.3559
+      },
+      {
+        "name": "command_runner_errors_differential",
+        "passed": true,
+        "seconds": 3.13212
+      },
+      {
+        "name": "FLOORTests",
+        "passed": true,
+        "seconds": 0.505692
+      },
+      {
+        "name": "floor_original_tests",
+        "passed": true,
+        "seconds": 2.58184
+      },
+      {
+        "name": "CEILTests",
+        "passed": true,
+        "seconds": 0.2638
+      },
+      {
+        "name": "ceil_original_tests",
+        "passed": true,
+        "seconds": 2.55746
+      },
+      {
+        "name": "wallet_commands_differential",
+        "passed": true,
+        "seconds": 8.99478
+      },
+      {
+        "name": "wallet_address_commands_differential",
+        "passed": true,
+        "seconds": 14.0448
+      },
+      {
+        "name": "MINTests",
+        "passed": true,
+        "seconds": 1.13108
+      },
+      {
+        "name": "min_original_tests",
+        "passed": true,
+        "seconds": 5.36199
+      },
+      {
+        "name": "MAXTests",
+        "passed": true,
+        "seconds": 1.15328
+      },
+      {
+        "name": "max_original_tests",
+        "passed": true,
+        "seconds": 5.04463
+      },
+      {
+        "name": "wallet_witness_commands_differential",
+        "passed": true,
+        "seconds": 6.68953
+      },
+      {
+        "name": "coin_streams_differential",
+        "passed": true,
+        "seconds": 10.8598
+      },
+      {
+        "name": "MiniStringTests",
+        "passed": true,
+        "seconds": 0.339786
+      },
+      {
+        "name": "ministring_original_tests",
+        "passed": true,
+        "seconds": 2.6495
+      },
+      {
+        "name": "chain_commands_differential",
+        "passed": true,
+        "seconds": 6.38685
+      },
+      {
+        "name": "transaction_input_commands_differential",
+        "passed": true,
+        "seconds": 16.4766
+      },
+      {
+        "name": "transaction_check_command_differential",
+        "passed": true,
+        "seconds": 9.46836
+      },
+      {
+        "name": "INCTests",
+        "passed": true,
+        "seconds": 0.295074
+      },
+      {
+        "name": "inc_original_tests",
+        "passed": true,
+        "seconds": 2.48013
+      },
+      {
+        "name": "DECTests",
+        "passed": true,
+        "seconds": 0.259603
+      },
+      {
+        "name": "dec_original_tests",
+        "passed": true,
+        "seconds": 2.23702
+      },
+      {
+        "name": "transaction_mining_commands_differential",
+        "passed": true,
+        "seconds": 7.56099
+      },
+      {
+        "name": "POWTests",
+        "passed": true,
+        "seconds": 0.345909
+      },
+      {
+        "name": "pow_original_tests",
+        "passed": true,
+        "seconds": 3.00902
+      },
+      {
+        "name": "SIGDIGTests",
+        "passed": true,
+        "seconds": 0.310124
+      },
+      {
+        "name": "sigdig_original_tests",
+        "passed": true,
+        "seconds": 3.1075
+      },
+      {
+        "name": "BITCOUNTTests",
+        "passed": true,
+        "seconds": 0.28782
+      },
+      {
+        "name": "bitcount_original_tests",
+        "passed": true,
+        "seconds": 3.54842
+      },
+      {
+        "name": "vault_signing_commands_differential",
+        "passed": true,
+        "seconds": 37.4945
+      },
+      {
+        "name": "BITGETTests",
+        "passed": true,
+        "seconds": 0.278325
+      },
+      {
+        "name": "bitget_original_tests",
+        "passed": true,
+        "seconds": 3.67279
+      },
+      {
+        "name": "BITSETTests",
+        "passed": true,
+        "seconds": 0.30886
+      },
+      {
+        "name": "bitset_original_tests",
+        "passed": true,
+        "seconds": 3.3689
+      },
+      {
+        "name": "wallet_key_commands_differential",
+        "passed": true,
+        "seconds": 14.0103
+      },
+      {
+        "name": "coin_funding_commands_differential",
+        "passed": true,
+        "seconds": 18.3377
+      },
+      {
+        "name": "REVTests",
+        "passed": true,
+        "seconds": 0.301738
+      },
+      {
+        "name": "rev_original_tests",
+        "passed": true,
+        "seconds": 4.49521
+      },
+      {
+        "name": "LENTests",
+        "passed": true,
+        "seconds": 0.311379
+      },
+      {
+        "name": "len_original_tests",
+        "passed": true,
+        "seconds": 3.82944
+      },
+      {
+        "name": "offline_send_commands_differential",
+        "passed": true,
+        "seconds": 11.3894
+      },
+      {
+        "name": "unsigned_send_command_differential",
+        "passed": true,
+        "seconds": 11.2776
+      },
+      {
+        "name": "sendpoll_command_differential",
+        "passed": true,
+        "seconds": 7.39085
+      },
+      {
+        "name": "wallet_wrappers_differential",
+        "passed": true,
+        "seconds": 5.87495
+      },
+      {
+        "name": "raw_transaction_commands_differential",
+        "passed": true,
+        "seconds": 2.80803
+      },
+      {
+        "name": "custom_address_send_commands_differential",
+        "passed": true,
+        "seconds": 6.25085
+      },
+      {
+        "name": "consolidate_address_commands_differential",
+        "passed": true,
+        "seconds": 6.29444
+      },
+      {
+        "name": "wallet_consolidation_command_differential",
+        "passed": true,
+        "seconds": 11.5205
+      },
+      {
+        "name": "wallet_balance_command_differential",
+        "passed": true,
+        "seconds": 11.2071
+      },
+      {
+        "name": "coin_search_command_differential",
+        "passed": true,
+        "seconds": 11.4781
+      },
+      {
+        "name": "transaction_history_command_differential",
+        "passed": true,
+        "seconds": 7.21766
+      },
+      {
+        "name": "txpow_search_command_differential",
+        "passed": true,
+        "seconds": 11.6505
+      },
+      {
+        "name": "node_state_commands_differential",
+        "passed": true,
+        "seconds": 11.7688
+      },
+      {
+        "name": "seed_random_command_differential",
+        "passed": true,
+        "seconds": 6.2226
+      },
+      {
+        "name": "BOOLTests",
+        "passed": true,
+        "seconds": 0.303092
+      },
+      {
+        "name": "bool_cast_original_tests",
+        "passed": true,
+        "seconds": 4.59855
+      },
+      {
+        "name": "HEXTests",
+        "passed": true,
+        "seconds": 0.315461
+      },
+      {
+        "name": "hex_cast_original_tests",
+        "passed": true,
+        "seconds": 3.94706
+      },
+      {
+        "name": "NUMBERTests",
+        "passed": true,
+        "seconds": 0.284509
+      },
+      {
+        "name": "number_cast_original_tests",
+        "passed": true,
+        "seconds": 3.72393
+      },
+      {
+        "name": "SCRIPTTests",
+        "passed": true,
+        "seconds": 0.260234
+      },
+      {
+        "name": "script_cast_original_tests",
+        "passed": true,
+        "seconds": 5.11993
+      },
+      {
+        "name": "archive_server_differential",
+        "passed": false,
+        "seconds": 17.136
+      },
+      {
+        "name": "archive_server_clean_audit",
+        "passed": true,
+        "seconds": 5.50269
+      },
+      {
+        "name": "mysql_connect_differential",
+        "passed": true,
+        "seconds": 24.946
+      },
+      {
+        "name": "pulse_runtime_differential",
+        "passed": true,
+        "seconds": 9.83042
+      },
+      {
+        "name": "main_runtime_differential",
+        "passed": true,
+        "seconds": 6.85015
+      },
+      {
+        "name": "main_ownership",
+        "passed": true,
+        "seconds": 0.40873
+      },
+      {
+        "name": "main_lifecycle_commands_differential",
+        "passed": true,
+        "seconds": 5.90616
+      },
+      {
+        "name": "network_peer_commands_differential",
+        "passed": true,
+        "seconds": 6.72991
+      },
+      {
+        "name": "ping_command_differential",
+        "passed": false,
+        "seconds": 6.26949
+      },
+      {
+        "name": "network_status_command_differential",
+        "passed": true,
+        "seconds": 6.33646
+      },
+      {
+        "name": "trace_clock_command_differential",
+        "passed": true,
+        "seconds": 5.98248
+      },
+      {
+        "name": "healthcheck_command_differential",
+        "passed": true,
+        "seconds": 6.34798
+      },
+      {
+        "name": "logs_command_differential",
+        "passed": true,
+        "seconds": 5.9225
+      },
+      {
+        "name": "node_status_command_differential",
+        "passed": true,
+        "seconds": 7.07438
+      },
+      {
+        "name": "rpc_command_differential",
+        "passed": true,
+        "seconds": 14.867
+      },
+      {
+        "name": "json_collections_differential",
+        "passed": true,
+        "seconds": 1.60298
+      },
+      {
+        "name": "shared_json_native",
+        "passed": true,
+        "seconds": 1.14738
+      },
+      {
+        "name": "rpc_live_differential",
+        "passed": false,
+        "seconds": 10.3924
+      },
+      {
+        "name": "hashtest_command_differential",
+        "passed": true,
+        "seconds": 9.73702
+      },
+      {
+        "name": "coin_import_differential",
+        "passed": true,
+        "seconds": 5.74942
+      },
+      {
+        "name": "scan_chain_differential",
+        "passed": true,
+        "seconds": 15.8174
+      },
+      {
+        "name": "token_validation_differential",
+        "passed": false,
+        "seconds": 4.75519
+      },
+      {
+        "name": "peers_command_differential",
+        "passed": false,
+        "seconds": 4.71263
+      },
+      {
+        "name": "automatic_transaction_differential",
+        "passed": true,
+        "seconds": 24.6894
+      },
+      {
+        "name": "burn_metrics_differential",
+        "passed": true,
+        "seconds": 13.4794
+      },
+      {
+        "name": "token_creation_differential",
+        "passed": true,
+        "seconds": 29.5199
+      },
+      {
+        "name": "multisig_workflow_differential",
+        "passed": true,
+        "seconds": 19.8617
+      },
+      {
+        "name": "node_count_differential",
+        "passed": false,
+        "seconds": 5.48966
+      },
+      {
+        "name": "incentive_cash_differential",
+        "passed": false,
+        "seconds": 4.23697
+      },
+      {
+        "name": "item_list_differential",
+        "passed": true,
+        "seconds": 3.89912
+      },
+      {
+        "name": "native_h2_differential",
+        "passed": true,
+        "seconds": 11.1252
+      },
+      {
+        "name": "native_h2_concurrent",
+        "passed": true,
+        "seconds": 0.516833
+      },
+      {
+        "name": "native_node_startup",
+        "passed": false,
+        "seconds": 7.28707
+      },
+      {
+        "name": "minima_entry_differential",
+        "passed": true,
+        "seconds": 12.848
+      },
+      {
+        "name": "decrypt_backup_differential",
+        "passed": true,
+        "seconds": 22.2376
+      },
+      {
+        "name": "backup_differential",
+        "passed": true,
+        "seconds": 54.2703
+      },
+      {
+        "name": "restore_differential",
+        "passed": true,
+        "seconds": 72.9529
+      },
+      {
+        "name": "native_restore_startup",
+        "passed": false,
+        "seconds": 6.52533
+      },
+      {
+        "name": "reset_differential",
+        "passed": true,
+        "seconds": 106.42
+      },
+      {
+        "name": "archive_command_differential",
+        "passed": true,
+        "seconds": 243.181
+      },
+      {
+        "name": "native_archive_startup",
+        "passed": false,
+        "seconds": 9.74377
+      },
+      {
+        "name": "archive_network_differential",
+        "passed": false,
+        "seconds": 6.12194
+      },
+      {
+        "name": "restoresync_differential",
+        "passed": true,
+        "seconds": 179.966
+      },
+      {
+        "name": "native_restoresync_startup",
+        "passed": false,
+        "seconds": 6.29758
+      },
+      {
+        "name": "native_restoresync_remote",
+        "passed": false,
+        "seconds": 7.98651
+      },
+      {
+        "name": "mega_commands_differential",
+        "passed": false,
+        "seconds": 198.747
+      },
+      {
+        "name": "native_mega_startup",
+        "passed": false,
+        "seconds": 8.11659
+      },
+      {
+        "name": "systemcheck_commands_differential",
+        "passed": true,
+        "seconds": 10.99
+      },
+      {
+        "name": "native_systemcheck_startup",
+        "passed": false,
+        "seconds": 9.28389
+      },
+      {
+        "name": "sphincs_command_differential",
+        "passed": true,
+        "seconds": 277.815
+      },
+      {
+        "name": "base_test_command_differential",
+        "passed": true,
+        "seconds": 33.1162
+      },
+      {
+        "name": "native_base_test_startup",
+        "passed": false,
+        "seconds": 1.89312
+      },
+      {
+        "name": "text_commands_differential",
+        "passed": true,
+        "seconds": 4.74624
+      },
+      {
+        "name": "CONCATTests",
+        "passed": true,
+        "seconds": 0.293924
+      },
+      {
+        "name": "concat_original_tests",
+        "passed": true,
+        "seconds": 3.5667
+      },
+      {
+        "name": "GETTests",
+        "passed": true,
+        "seconds": 0.29548
+      },
+      {
+        "name": "get_original_tests",
+        "passed": true,
+        "seconds": 3.25744
+      },
+      {
+        "name": "SUBSETTests",
+        "passed": true,
+        "seconds": 0.309995
+      },
+      {
+        "name": "subset_original_tests",
+        "passed": true,
+        "seconds": 3.64098
+      },
+      {
+        "name": "mysql_coins_differential",
+        "passed": true,
+        "seconds": 7.54143
+      },
+      {
+        "name": "mysql_command_differential",
+        "passed": true,
+        "seconds": 22.3673
+      },
+      {
+        "name": "help_command_differential",
+        "passed": true,
+        "seconds": 3.62782
+      },
+      {
+        "name": "streamable_differential",
+        "passed": true,
+        "seconds": 18.9786
+      },
+      {
+        "name": "txbody_ids_differential",
+        "passed": true,
+        "seconds": 6.77949
+      },
+      {
+        "name": "magic_differential",
+        "passed": true,
+        "seconds": 411.76
+      },
+      {
+        "name": "hash_writers_differential",
+        "passed": true,
+        "seconds": 6.22711
+      },
+      {
+        "name": "txheader_differential",
+        "passed": true,
+        "seconds": 8.86118
+      },
+      {
+        "name": "original_helpers_differential",
+        "passed": true,
+        "seconds": 4.20208
+      },
+      {
+        "name": "original_p2p_helpers_differential",
+        "passed": true,
+        "seconds": 4.40814
+      },
+      {
+        "name": "original_p2p_tests",
+        "passed": true,
+        "seconds": 5.28469
+      },
+      {
+        "name": "original_object_tests",
+        "passed": true,
+        "seconds": 4.5474
+      },
+      {
+        "name": "original_base_tests",
+        "passed": true,
+        "seconds": 4.64006
+      },
+      {
+        "name": "base_value_api_differential",
+        "passed": true,
+        "seconds": 3.56743
+      },
+      {
+        "name": "original_sha_tests",
+        "passed": true,
+        "seconds": 9.12014
+      },
+      {
+        "name": "original_state_tests",
+        "passed": true,
+        "seconds": 4.78082
+      },
+      {
+        "name": "original_signature_tests",
+        "passed": true,
+        "seconds": 7.85794
+      },
+      {
+        "name": "original_getter_tests",
+        "passed": true,
+        "seconds": 6.46207
+      },
+      {
+        "name": "original_verify_tests",
+        "passed": true,
+        "seconds": 4.46134
+      },
+      {
+        "name": "original_statement_commands_tests",
+        "passed": true,
+        "seconds": 5.38455
+      },
+      {
+        "name": "original_let_tests",
+        "passed": true,
+        "seconds": 3.96792
+      },
+      {
+        "name": "original_expressions_tests",
+        "passed": true,
+        "seconds": 4.72859
+      },
+      {
+        "name": "original_token_tests",
+        "passed": true,
+        "seconds": 3.39401
+      },
+      {
+        "name": "original_parser_tests",
+        "passed": true,
+        "seconds": 3.41304
+      },
+      {
+        "name": "original_processor_test",
+        "passed": true,
+        "seconds": 1.07903
+      },
+      {
+        "name": "jni_command_callers",
+        "passed": true,
+        "seconds": 16.3156
+      },
+      {
+        "name": "command_registry_differential",
+        "passed": true,
+        "seconds": 3.41093
+      },
+      {
+        "name": "database_mains_differential",
+        "passed": true,
+        "seconds": 16.431
+      },
+      {
+        "name": "source_mapping_snapshot",
+        "passed": true,
+        "seconds": 2.93654
+      }
+    ]
+  },
+  "optimized_socket_retry": {
+    "attributes": {
+      "name": "(empty)",
+      "tests": "33",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "",
+      "time": "245",
+      "timestamp": "2026-09-12T01:40:16"
+    },
+    "tests": [
+      {
+        "name": "nio_loopback",
+        "passed": true,
+        "seconds": 0.0282325
+      },
+      {
+        "name": "nio_server_differential",
+        "passed": true,
+        "seconds": 5.89746
+      },
+      {
+        "name": "nio_server_main_differential",
+        "passed": true,
+        "seconds": 47.2765
+      },
+      {
+        "name": "nio_manager_transport_differential",
+        "passed": true,
+        "seconds": 27.8007
+      },
+      {
+        "name": "p2p_functions_differential",
+        "passed": true,
+        "seconds": 58.1278
+      },
+      {
+        "name": "peers_checker_differential",
+        "passed": true,
+        "seconds": 3.50953
+      },
+      {
+        "name": "p2p_discovery_differential",
+        "passed": true,
+        "seconds": 43.4419
+      },
+      {
+        "name": "http_server_differential",
+        "passed": true,
+        "seconds": 2.82925
+      },
+      {
+        "name": "cmd_handler_differential",
+        "passed": true,
+        "seconds": 6.11485
+      },
+      {
+        "name": "rpc_client_differential",
+        "passed": true,
+        "seconds": 4.90266
+      },
+      {
+        "name": "minima_rpc_cli_differential",
+        "passed": true,
+        "seconds": 5.73293
+      },
+      {
+        "name": "param_configurer_differential",
+        "passed": true,
+        "seconds": 4.55317
+      },
+      {
+        "name": "runtime_sleep_differential",
+        "passed": true,
+        "seconds": 6.61451
+      },
+      {
+        "name": "http_server_errors_differential",
+        "passed": true,
+        "seconds": 6.22063
+      },
+      {
+        "name": "nio_server_errors_differential",
+        "passed": true,
+        "seconds": 13.3627
+      },
+      {
+        "name": "nio_manager_errors_differential",
+        "passed": true,
+        "seconds": 6.0469
+      },
+      {
+        "name": "archive_server_differential",
+        "passed": true,
+        "seconds": 95.8819
+      },
+      {
+        "name": "ping_command_differential",
+        "passed": true,
+        "seconds": 5.74448
+      },
+      {
+        "name": "rpc_live_differential",
+        "passed": true,
+        "seconds": 37.409
+      },
+      {
+        "name": "token_validation_differential",
+        "passed": true,
+        "seconds": 5.12294
+      },
+      {
+        "name": "peers_command_differential",
+        "passed": true,
+        "seconds": 5.67107
+      },
+      {
+        "name": "node_count_differential",
+        "passed": true,
+        "seconds": 8.84761
+      },
+      {
+        "name": "incentive_cash_differential",
+        "passed": true,
+        "seconds": 4.19018
+      },
+      {
+        "name": "native_node_startup",
+        "passed": true,
+        "seconds": 27.7904
+      },
+      {
+        "name": "native_restore_startup",
+        "passed": true,
+        "seconds": 14.5662
+      },
+      {
+        "name": "native_archive_startup",
+        "passed": true,
+        "seconds": 36.3487
+      },
+      {
+        "name": "archive_network_differential",
+        "passed": true,
+        "seconds": 114.525
+      },
+      {
+        "name": "native_restoresync_startup",
+        "passed": true,
+        "seconds": 16.2342
+      },
+      {
+        "name": "native_restoresync_remote",
+        "passed": true,
+        "seconds": 125.223
+      },
+      {
+        "name": "mega_commands_differential",
+        "passed": true,
+        "seconds": 85.5847
+      },
+      {
+        "name": "native_mega_startup",
+        "passed": true,
+        "seconds": 23.5682
+      },
+      {
+        "name": "native_systemcheck_startup",
+        "passed": true,
+        "seconds": 12.7852
+      },
+      {
+        "name": "native_base_test_startup",
+        "passed": true,
+        "seconds": 11.9291
+      }
+    ]
+  },
+  "optimized_latest_results": [
+    {
+      "name": "MiniByteTests",
+      "passed": true,
+      "seconds": 0.421095
+    },
+    {
+      "name": "malformed_streams",
+      "passed": true,
+      "seconds": 0.245366
+    },
+    {
+      "name": "source_mapping",
+      "passed": true,
+      "seconds": 0.351021
+    },
+    {
+      "name": "java_differential",
+      "passed": true,
+      "seconds": 2.15565
+    },
+    {
+      "name": "object_differential",
+      "passed": true,
+      "seconds": 8.48711
+    },
+    {
+      "name": "TransactionTests",
+      "passed": true,
+      "seconds": 0.237932
+    },
+    {
+      "name": "TxHeaderTests",
+      "passed": true,
+      "seconds": 0.218373
+    },
+    {
+      "name": "json_differential",
+      "passed": true,
+      "seconds": 1.06324
+    },
+    {
+      "name": "kiss_differential",
+      "passed": true,
+      "seconds": 1.07832
+    },
+    {
+      "name": "ValueTests",
+      "passed": true,
+      "seconds": 0.291573
+    },
+    {
+      "name": "BooleanValueTests",
+      "passed": true,
+      "seconds": 0.231613
+    },
+    {
+      "name": "ScriptValueTests",
+      "passed": true,
+      "seconds": 0.224352
+    },
+    {
+      "name": "HexValueTests",
+      "passed": true,
+      "seconds": 0.221063
+    },
+    {
+      "name": "NumberValueTests",
+      "passed": true,
+      "seconds": 0.231937
+    },
+    {
+      "name": "LexicalTokenizerTests",
+      "passed": true,
+      "seconds": 0.215905
+    },
+    {
+      "name": "kissvm_differential",
+      "passed": true,
+      "seconds": 2.83838
+    },
+    {
+      "name": "ConstantExpressionTests",
+      "passed": true,
+      "seconds": 0.281725
+    },
+    {
+      "name": "VariableExpressionTests",
+      "passed": true,
+      "seconds": 0.253532
+    },
+    {
+      "name": "GlobalExpressionTests",
+      "passed": true,
+      "seconds": 0.296913
+    },
+    {
+      "name": "FunctionExpressionTests",
+      "passed": true,
+      "seconds": 0.309166
+    },
+    {
+      "name": "ContractTests",
+      "passed": true,
+      "seconds": 0.505763
+    },
+    {
+      "name": "StatementBlockTests",
+      "passed": true,
+      "seconds": 0.473617
+    },
+    {
+      "name": "peer_messages_differential",
+      "passed": true,
+      "seconds": 4.00042
+    },
+    {
+      "name": "txn_lock_workers",
+      "passed": true,
+      "seconds": 0.826478
+    },
+    {
+      "name": "small_utilities_differential",
+      "passed": true,
+      "seconds": 4.49614
+    },
+    {
+      "name": "ASSERTstatementTests",
+      "passed": true,
+      "seconds": 0.267819
+    },
+    {
+      "name": "EXECstatementTests",
+      "passed": true,
+      "seconds": 0.258436
+    },
+    {
+      "name": "cascade_differential",
+      "passed": true,
+      "seconds": 16.1653
+    },
+    {
+      "name": "TxPowTreeTest",
+      "passed": true,
+      "seconds": 0.270806
+    },
+    {
+      "name": "tree_differential",
+      "passed": true,
+      "seconds": 8.51851
+    },
+    {
+      "name": "utility_differential",
+      "passed": true,
+      "seconds": 4.07452
+    },
+    {
+      "name": "aes_util_differential",
+      "passed": true,
+      "seconds": 11.1858
+    },
+    {
+      "name": "transaction_test_differential",
+      "passed": true,
+      "seconds": 49.376
+    },
+    {
+      "name": "sphincs_utils_differential",
+      "passed": true,
+      "seconds": 60.756
+    },
+    {
+      "name": "sphincs_differential",
+      "passed": true,
+      "seconds": 272.555
+    },
+    {
+      "name": "sphincs_log_audit",
+      "passed": true,
+      "seconds": 3.10962
+    },
+    {
+      "name": "sphincs_signature_differential",
+      "passed": true,
+      "seconds": 6.29532
+    },
+    {
+      "name": "fors_differential",
+      "passed": true,
+      "seconds": 94.6414
+    },
+    {
+      "name": "horst_differential",
+      "passed": true,
+      "seconds": 46.3728
+    },
+    {
+      "name": "zip_extractor_differential",
+      "passed": true,
+      "seconds": 5.22935
+    },
+    {
+      "name": "consensus_differential",
+      "passed": true,
+      "seconds": 38.598
+    },
+    {
+      "name": "RamDBTest",
+      "passed": true,
+      "seconds": 0.347768
+    },
+    {
+      "name": "ram_differential",
+      "passed": true,
+      "seconds": 391.772
+    },
+    {
+      "name": "timed_checker_checks",
+      "passed": true,
+      "seconds": 1.04744
+    },
+    {
+      "name": "timed_checker_deadline",
+      "passed": true,
+      "seconds": 120.56
+    },
+    {
+      "name": "prefs_differential",
+      "passed": true,
+      "seconds": 7.67009
+    },
+    {
+      "name": "hashmap_differential",
+      "passed": true,
+      "seconds": 360.219
+    },
+    {
+      "name": "message_differential",
+      "passed": true,
+      "seconds": 4.73296
+    },
+    {
+      "name": "message_workers",
+      "passed": true,
+      "seconds": 1.58751
+    },
+    {
+      "name": "timer_reentrancy_differential",
+      "passed": true,
+      "seconds": 8.40277
+    },
+    {
+      "name": "txndb_differential",
+      "passed": true,
+      "seconds": 4.47909
+    },
+    {
+      "name": "archive_cache_differential",
+      "passed": true,
+      "seconds": 4.5948
+    },
+    {
+      "name": "ibd_differential",
+      "passed": true,
+      "seconds": 10.0543
+    },
+    {
+      "name": "mmrsync_differential",
+      "passed": true,
+      "seconds": 8.85404
+    },
+    {
+      "name": "sendpoll_workers",
+      "passed": true,
+      "seconds": 1.69926
+    },
+    {
+      "name": "raw_archive_differential",
+      "passed": true,
+      "seconds": 16.6031
+    },
+    {
+      "name": "wallet_rows_differential",
+      "passed": true,
+      "seconds": 3.22136
+    },
+    {
+      "name": "bip39_differential",
+      "passed": true,
+      "seconds": 8.95056
+    },
+    {
+      "name": "fast_bytes_differential",
+      "passed": true,
+      "seconds": 6.2233
+    },
+    {
+      "name": "network_utilities_differential",
+      "passed": true,
+      "seconds": 4.66206
+    },
+    {
+      "name": "command_differential",
+      "passed": true,
+      "seconds": 7.80625
+    },
+    {
+      "name": "command_runner_differential",
+      "passed": true,
+      "seconds": 4.15002
+    },
+    {
+      "name": "transaction_commands_differential",
+      "passed": true,
+      "seconds": 6.39065
+    },
+    {
+      "name": "searcher_differential",
+      "passed": true,
+      "seconds": 7.01578
+    },
+    {
+      "name": "InetSocketAddressIOTest",
+      "passed": true,
+      "seconds": 0.270088
+    },
+    {
+      "name": "GreetingTest",
+      "passed": true,
+      "seconds": 1.08928
+    },
+    {
+      "name": "peer_state_differential",
+      "passed": true,
+      "seconds": 14.5999
+    },
+    {
+      "name": "P2PDBTest",
+      "passed": true,
+      "seconds": 0.304516
+    },
+    {
+      "name": "nio_client_differential",
+      "passed": true,
+      "seconds": 14.1765
+    },
+    {
+      "name": "nio_loopback",
+      "passed": true,
+      "seconds": 0.0282325
+    },
+    {
+      "name": "nio_server_differential",
+      "passed": true,
+      "seconds": 5.89746
+    },
+    {
+      "name": "nio_server_main_differential",
+      "passed": true,
+      "seconds": 47.2765
+    },
+    {
+      "name": "runtime_mains_differential",
+      "passed": true,
+      "seconds": 19.9507
+    },
+    {
+      "name": "mmr_mains_differential",
+      "passed": true,
+      "seconds": 5.68092
+    },
+    {
+      "name": "crypto_mains_differential",
+      "passed": true,
+      "seconds": 8.02339
+    },
+    {
+      "name": "core_mains_differential",
+      "passed": true,
+      "seconds": 10.0806
+    },
+    {
+      "name": "object_mains_differential",
+      "passed": true,
+      "seconds": 8.35038
+    },
+    {
+      "name": "utility_mains_differential",
+      "passed": true,
+      "seconds": 8.24255
+    },
+    {
+      "name": "p2p2_db_differential",
+      "passed": true,
+      "seconds": 6.09816
+    },
+    {
+      "name": "network_startup_differential",
+      "passed": true,
+      "seconds": 8.88046
+    },
+    {
+      "name": "nio_manager_transport_differential",
+      "passed": true,
+      "seconds": 27.8007
+    },
+    {
+      "name": "fixed_task_executor",
+      "passed": true,
+      "seconds": 0.312684
+    },
+    {
+      "name": "executor_interrupt_differential",
+      "passed": true,
+      "seconds": 6.12618
+    },
+    {
+      "name": "nio_manager_loopback",
+      "passed": true,
+      "seconds": 1.14115
+    },
+    {
+      "name": "nio_connections",
+      "passed": true,
+      "seconds": 1.33073
+    },
+    {
+      "name": "nio_manager_state_differential",
+      "passed": true,
+      "seconds": 7.27364
+    },
+    {
+      "name": "nio_message_differential",
+      "passed": true,
+      "seconds": 18.9068
+    },
+    {
+      "name": "p2p_functions_differential",
+      "passed": true,
+      "seconds": 58.1278
+    },
+    {
+      "name": "swap_links_differential",
+      "passed": true,
+      "seconds": 4.60829
+    },
+    {
+      "name": "walk_links_differential",
+      "passed": true,
+      "seconds": 4.81163
+    },
+    {
+      "name": "peers_checker_native",
+      "passed": true,
+      "seconds": 0.582249
+    },
+    {
+      "name": "peers_checker_differential",
+      "passed": true,
+      "seconds": 3.50953
+    },
+    {
+      "name": "p2p_manager_native",
+      "passed": true,
+      "seconds": 1.58059
+    },
+    {
+      "name": "peer_state_concurrent",
+      "passed": true,
+      "seconds": 0.602767
+    },
+    {
+      "name": "p2p_manager_differential",
+      "passed": true,
+      "seconds": 6.1381
+    },
+    {
+      "name": "p2p_discovery_differential",
+      "passed": true,
+      "seconds": 43.4419
+    },
+    {
+      "name": "p2p2_runtime_differential",
+      "passed": true,
+      "seconds": 4.63124
+    },
+    {
+      "name": "p2p2_worker",
+      "passed": true,
+      "seconds": 1.46853
+    },
+    {
+      "name": "http_server_differential",
+      "passed": true,
+      "seconds": 2.82925
+    },
+    {
+      "name": "cmd_handler_differential",
+      "passed": true,
+      "seconds": 6.11485
+    },
+    {
+      "name": "network_manager_native",
+      "passed": true,
+      "seconds": 0.569671
+    },
+    {
+      "name": "network_manager_differential",
+      "passed": true,
+      "seconds": 5.7957
+    },
+    {
+      "name": "sql_db_differential",
+      "passed": true,
+      "seconds": 4.85609
+    },
+    {
+      "name": "sql_db_concurrent",
+      "passed": true,
+      "seconds": 0.365373
+    },
+    {
+      "name": "onchain_db_differential",
+      "passed": true,
+      "seconds": 8.31726
+    },
+    {
+      "name": "txpow_sql_db_differential",
+      "passed": true,
+      "seconds": 19.3888
+    },
+    {
+      "name": "txpow_db_differential",
+      "passed": true,
+      "seconds": 19.859
+    },
+    {
+      "name": "coin_db_differential",
+      "passed": true,
+      "seconds": 10.4407
+    },
+    {
+      "name": "wallet_differential",
+      "passed": true,
+      "seconds": 11.3391
+    },
+    {
+      "name": "archive_manager_differential",
+      "passed": true,
+      "seconds": 16.6244
+    },
+    {
+      "name": "minima_db_differential",
+      "passed": true,
+      "seconds": 53.6362
+    },
+    {
+      "name": "minima_db_lock",
+      "passed": true,
+      "seconds": 0.336128
+    },
+    {
+      "name": "minima_db_ownership",
+      "passed": true,
+      "seconds": 1.37593
+    },
+    {
+      "name": "txpow_miner_differential",
+      "passed": true,
+      "seconds": 6.01405
+    },
+    {
+      "name": "txpow_miner_worker",
+      "passed": true,
+      "seconds": 0.742813
+    },
+    {
+      "name": "txblock_ownership_differential",
+      "passed": true,
+      "seconds": 18.405
+    },
+    {
+      "name": "timed_checker_shared_deadline",
+      "passed": true,
+      "seconds": 120.546
+    },
+    {
+      "name": "txpow_processor_differential",
+      "passed": true,
+      "seconds": 16.2717
+    },
+    {
+      "name": "txpow_processor_worker",
+      "passed": true,
+      "seconds": 0.531911
+    },
+    {
+      "name": "notify_manager_differential",
+      "passed": true,
+      "seconds": 5.50343
+    },
+    {
+      "name": "notify_manager_worker",
+      "passed": true,
+      "seconds": 0.458383
+    },
+    {
+      "name": "rpc_client_differential",
+      "passed": true,
+      "seconds": 4.90266
+    },
+    {
+      "name": "rpc_configuration_native",
+      "passed": true,
+      "seconds": 0.617052
+    },
+    {
+      "name": "minima_logger_differential",
+      "passed": true,
+      "seconds": 5.17062
+    },
+    {
+      "name": "minima_logger_worker",
+      "passed": true,
+      "seconds": 0.806895
+    },
+    {
+      "name": "native_stack_trace",
+      "passed": true,
+      "seconds": 0.286943
+    },
+    {
+      "name": "minima_rpc_cli_differential",
+      "passed": true,
+      "seconds": 5.73293
+    },
+    {
+      "name": "param_configurer_differential",
+      "passed": true,
+      "seconds": 4.55317
+    },
+    {
+      "name": "ParamConfigurerTest",
+      "passed": true,
+      "seconds": 0.319524
+    },
+    {
+      "name": "minima_uncaught_differential",
+      "passed": true,
+      "seconds": 12.7009
+    },
+    {
+      "name": "native_thread_checks",
+      "passed": true,
+      "seconds": 1.66516
+    },
+    {
+      "name": "thread_interrupt_differential",
+      "passed": true,
+      "seconds": 10.7817
+    },
+    {
+      "name": "runtime_sleep_differential",
+      "passed": true,
+      "seconds": 6.61451
+    },
+    {
+      "name": "http_server_errors_differential",
+      "passed": true,
+      "seconds": 6.22063
+    },
+    {
+      "name": "executor_uncaught_differential",
+      "passed": true,
+      "seconds": 4.31239
+    },
+    {
+      "name": "nio_server_errors_differential",
+      "passed": true,
+      "seconds": 13.3627
+    },
+    {
+      "name": "nio_manager_errors_differential",
+      "passed": true,
+      "seconds": 6.0469
+    },
+    {
+      "name": "timed_checker_errors_differential",
+      "passed": true,
+      "seconds": 24.4089
+    },
+    {
+      "name": "timed_checker_error_deadline",
+      "passed": true,
+      "seconds": 124.687
+    },
+    {
+      "name": "checker_logs_differential",
+      "passed": true,
+      "seconds": 6.74646
+    },
+    {
+      "name": "script_value_original_tests",
+      "passed": true,
+      "seconds": 2.18343
+    },
+    {
+      "name": "hex_value_original_tests",
+      "passed": true,
+      "seconds": 2.36673
+    },
+    {
+      "name": "number_value_original_tests",
+      "passed": true,
+      "seconds": 2.2802
+    },
+    {
+      "name": "MinimaFunctionTests",
+      "passed": true,
+      "seconds": 0.307772
+    },
+    {
+      "name": "ABSTests",
+      "passed": true,
+      "seconds": 0.257139
+    },
+    {
+      "name": "minima_function_original_tests",
+      "passed": true,
+      "seconds": 2.09514
+    },
+    {
+      "name": "abs_original_tests",
+      "passed": true,
+      "seconds": 2.3559
+    },
+    {
+      "name": "command_runner_errors_differential",
+      "passed": true,
+      "seconds": 3.13212
+    },
+    {
+      "name": "FLOORTests",
+      "passed": true,
+      "seconds": 0.505692
+    },
+    {
+      "name": "floor_original_tests",
+      "passed": true,
+      "seconds": 2.58184
+    },
+    {
+      "name": "CEILTests",
+      "passed": true,
+      "seconds": 0.2638
+    },
+    {
+      "name": "ceil_original_tests",
+      "passed": true,
+      "seconds": 2.55746
+    },
+    {
+      "name": "wallet_commands_differential",
+      "passed": true,
+      "seconds": 8.99478
+    },
+    {
+      "name": "wallet_address_commands_differential",
+      "passed": true,
+      "seconds": 14.0448
+    },
+    {
+      "name": "MINTests",
+      "passed": true,
+      "seconds": 1.13108
+    },
+    {
+      "name": "min_original_tests",
+      "passed": true,
+      "seconds": 5.36199
+    },
+    {
+      "name": "MAXTests",
+      "passed": true,
+      "seconds": 1.15328
+    },
+    {
+      "name": "max_original_tests",
+      "passed": true,
+      "seconds": 5.04463
+    },
+    {
+      "name": "wallet_witness_commands_differential",
+      "passed": true,
+      "seconds": 6.68953
+    },
+    {
+      "name": "coin_streams_differential",
+      "passed": true,
+      "seconds": 10.8598
+    },
+    {
+      "name": "MiniStringTests",
+      "passed": true,
+      "seconds": 0.339786
+    },
+    {
+      "name": "ministring_original_tests",
+      "passed": true,
+      "seconds": 2.6495
+    },
+    {
+      "name": "chain_commands_differential",
+      "passed": true,
+      "seconds": 6.38685
+    },
+    {
+      "name": "transaction_input_commands_differential",
+      "passed": true,
+      "seconds": 16.4766
+    },
+    {
+      "name": "transaction_check_command_differential",
+      "passed": true,
+      "seconds": 9.46836
+    },
+    {
+      "name": "INCTests",
+      "passed": true,
+      "seconds": 0.295074
+    },
+    {
+      "name": "inc_original_tests",
+      "passed": true,
+      "seconds": 2.48013
+    },
+    {
+      "name": "DECTests",
+      "passed": true,
+      "seconds": 0.259603
+    },
+    {
+      "name": "dec_original_tests",
+      "passed": true,
+      "seconds": 2.23702
+    },
+    {
+      "name": "transaction_mining_commands_differential",
+      "passed": true,
+      "seconds": 7.56099
+    },
+    {
+      "name": "POWTests",
+      "passed": true,
+      "seconds": 0.345909
+    },
+    {
+      "name": "pow_original_tests",
+      "passed": true,
+      "seconds": 3.00902
+    },
+    {
+      "name": "SIGDIGTests",
+      "passed": true,
+      "seconds": 0.310124
+    },
+    {
+      "name": "sigdig_original_tests",
+      "passed": true,
+      "seconds": 3.1075
+    },
+    {
+      "name": "BITCOUNTTests",
+      "passed": true,
+      "seconds": 0.28782
+    },
+    {
+      "name": "bitcount_original_tests",
+      "passed": true,
+      "seconds": 3.54842
+    },
+    {
+      "name": "vault_signing_commands_differential",
+      "passed": true,
+      "seconds": 37.4945
+    },
+    {
+      "name": "BITGETTests",
+      "passed": true,
+      "seconds": 0.278325
+    },
+    {
+      "name": "bitget_original_tests",
+      "passed": true,
+      "seconds": 3.67279
+    },
+    {
+      "name": "BITSETTests",
+      "passed": true,
+      "seconds": 0.30886
+    },
+    {
+      "name": "bitset_original_tests",
+      "passed": true,
+      "seconds": 3.3689
+    },
+    {
+      "name": "wallet_key_commands_differential",
+      "passed": true,
+      "seconds": 14.0103
+    },
+    {
+      "name": "coin_funding_commands_differential",
+      "passed": true,
+      "seconds": 18.3377
+    },
+    {
+      "name": "REVTests",
+      "passed": true,
+      "seconds": 0.301738
+    },
+    {
+      "name": "rev_original_tests",
+      "passed": true,
+      "seconds": 4.49521
+    },
+    {
+      "name": "LENTests",
+      "passed": true,
+      "seconds": 0.311379
+    },
+    {
+      "name": "len_original_tests",
+      "passed": true,
+      "seconds": 3.82944
+    },
+    {
+      "name": "offline_send_commands_differential",
+      "passed": true,
+      "seconds": 11.3894
+    },
+    {
+      "name": "unsigned_send_command_differential",
+      "passed": true,
+      "seconds": 11.2776
+    },
+    {
+      "name": "sendpoll_command_differential",
+      "passed": true,
+      "seconds": 7.39085
+    },
+    {
+      "name": "wallet_wrappers_differential",
+      "passed": true,
+      "seconds": 5.87495
+    },
+    {
+      "name": "raw_transaction_commands_differential",
+      "passed": true,
+      "seconds": 2.80803
+    },
+    {
+      "name": "custom_address_send_commands_differential",
+      "passed": true,
+      "seconds": 6.25085
+    },
+    {
+      "name": "consolidate_address_commands_differential",
+      "passed": true,
+      "seconds": 6.29444
+    },
+    {
+      "name": "wallet_consolidation_command_differential",
+      "passed": true,
+      "seconds": 11.5205
+    },
+    {
+      "name": "wallet_balance_command_differential",
+      "passed": true,
+      "seconds": 11.2071
+    },
+    {
+      "name": "coin_search_command_differential",
+      "passed": true,
+      "seconds": 11.4781
+    },
+    {
+      "name": "transaction_history_command_differential",
+      "passed": true,
+      "seconds": 7.21766
+    },
+    {
+      "name": "txpow_search_command_differential",
+      "passed": true,
+      "seconds": 11.6505
+    },
+    {
+      "name": "node_state_commands_differential",
+      "passed": true,
+      "seconds": 11.7688
+    },
+    {
+      "name": "seed_random_command_differential",
+      "passed": true,
+      "seconds": 6.2226
+    },
+    {
+      "name": "BOOLTests",
+      "passed": true,
+      "seconds": 0.303092
+    },
+    {
+      "name": "bool_cast_original_tests",
+      "passed": true,
+      "seconds": 4.59855
+    },
+    {
+      "name": "HEXTests",
+      "passed": true,
+      "seconds": 0.315461
+    },
+    {
+      "name": "hex_cast_original_tests",
+      "passed": true,
+      "seconds": 3.94706
+    },
+    {
+      "name": "NUMBERTests",
+      "passed": true,
+      "seconds": 0.284509
+    },
+    {
+      "name": "number_cast_original_tests",
+      "passed": true,
+      "seconds": 3.72393
+    },
+    {
+      "name": "SCRIPTTests",
+      "passed": true,
+      "seconds": 0.260234
+    },
+    {
+      "name": "script_cast_original_tests",
+      "passed": true,
+      "seconds": 5.11993
+    },
+    {
+      "name": "archive_server_differential",
+      "passed": true,
+      "seconds": 95.8819
+    },
+    {
+      "name": "archive_server_clean_audit",
+      "passed": true,
+      "seconds": 5.50269
+    },
+    {
+      "name": "mysql_connect_differential",
+      "passed": true,
+      "seconds": 24.946
+    },
+    {
+      "name": "pulse_runtime_differential",
+      "passed": true,
+      "seconds": 9.83042
+    },
+    {
+      "name": "main_runtime_differential",
+      "passed": true,
+      "seconds": 6.85015
+    },
+    {
+      "name": "main_ownership",
+      "passed": true,
+      "seconds": 0.40873
+    },
+    {
+      "name": "main_lifecycle_commands_differential",
+      "passed": true,
+      "seconds": 5.90616
+    },
+    {
+      "name": "network_peer_commands_differential",
+      "passed": true,
+      "seconds": 6.72991
+    },
+    {
+      "name": "ping_command_differential",
+      "passed": true,
+      "seconds": 5.74448
+    },
+    {
+      "name": "network_status_command_differential",
+      "passed": true,
+      "seconds": 6.33646
+    },
+    {
+      "name": "trace_clock_command_differential",
+      "passed": true,
+      "seconds": 5.98248
+    },
+    {
+      "name": "healthcheck_command_differential",
+      "passed": true,
+      "seconds": 6.34798
+    },
+    {
+      "name": "logs_command_differential",
+      "passed": true,
+      "seconds": 5.9225
+    },
+    {
+      "name": "node_status_command_differential",
+      "passed": true,
+      "seconds": 7.07438
+    },
+    {
+      "name": "rpc_command_differential",
+      "passed": true,
+      "seconds": 14.867
+    },
+    {
+      "name": "json_collections_differential",
+      "passed": true,
+      "seconds": 1.60298
+    },
+    {
+      "name": "shared_json_native",
+      "passed": true,
+      "seconds": 1.14738
+    },
+    {
+      "name": "rpc_live_differential",
+      "passed": true,
+      "seconds": 37.409
+    },
+    {
+      "name": "hashtest_command_differential",
+      "passed": true,
+      "seconds": 9.73702
+    },
+    {
+      "name": "coin_import_differential",
+      "passed": true,
+      "seconds": 5.74942
+    },
+    {
+      "name": "scan_chain_differential",
+      "passed": true,
+      "seconds": 15.8174
+    },
+    {
+      "name": "token_validation_differential",
+      "passed": true,
+      "seconds": 5.12294
+    },
+    {
+      "name": "peers_command_differential",
+      "passed": true,
+      "seconds": 5.67107
+    },
+    {
+      "name": "automatic_transaction_differential",
+      "passed": true,
+      "seconds": 24.6894
+    },
+    {
+      "name": "burn_metrics_differential",
+      "passed": true,
+      "seconds": 13.4794
+    },
+    {
+      "name": "token_creation_differential",
+      "passed": true,
+      "seconds": 29.5199
+    },
+    {
+      "name": "multisig_workflow_differential",
+      "passed": true,
+      "seconds": 19.8617
+    },
+    {
+      "name": "node_count_differential",
+      "passed": true,
+      "seconds": 8.84761
+    },
+    {
+      "name": "incentive_cash_differential",
+      "passed": true,
+      "seconds": 4.19018
+    },
+    {
+      "name": "item_list_differential",
+      "passed": true,
+      "seconds": 3.89912
+    },
+    {
+      "name": "native_h2_differential",
+      "passed": true,
+      "seconds": 11.1252
+    },
+    {
+      "name": "native_h2_concurrent",
+      "passed": true,
+      "seconds": 0.516833
+    },
+    {
+      "name": "native_node_startup",
+      "passed": true,
+      "seconds": 27.7904
+    },
+    {
+      "name": "minima_entry_differential",
+      "passed": true,
+      "seconds": 12.848
+    },
+    {
+      "name": "decrypt_backup_differential",
+      "passed": true,
+      "seconds": 22.2376
+    },
+    {
+      "name": "backup_differential",
+      "passed": true,
+      "seconds": 54.2703
+    },
+    {
+      "name": "restore_differential",
+      "passed": true,
+      "seconds": 72.9529
+    },
+    {
+      "name": "native_restore_startup",
+      "passed": true,
+      "seconds": 14.5662
+    },
+    {
+      "name": "reset_differential",
+      "passed": true,
+      "seconds": 106.42
+    },
+    {
+      "name": "archive_command_differential",
+      "passed": true,
+      "seconds": 243.181
+    },
+    {
+      "name": "native_archive_startup",
+      "passed": true,
+      "seconds": 36.3487
+    },
+    {
+      "name": "archive_network_differential",
+      "passed": true,
+      "seconds": 114.525
+    },
+    {
+      "name": "restoresync_differential",
+      "passed": true,
+      "seconds": 179.966
+    },
+    {
+      "name": "native_restoresync_startup",
+      "passed": true,
+      "seconds": 16.2342
+    },
+    {
+      "name": "native_restoresync_remote",
+      "passed": true,
+      "seconds": 125.223
+    },
+    {
+      "name": "mega_commands_differential",
+      "passed": true,
+      "seconds": 85.5847
+    },
+    {
+      "name": "native_mega_startup",
+      "passed": true,
+      "seconds": 23.5682
+    },
+    {
+      "name": "systemcheck_commands_differential",
+      "passed": true,
+      "seconds": 10.99
+    },
+    {
+      "name": "native_systemcheck_startup",
+      "passed": true,
+      "seconds": 12.7852
+    },
+    {
+      "name": "sphincs_command_differential",
+      "passed": true,
+      "seconds": 277.815
+    },
+    {
+      "name": "base_test_command_differential",
+      "passed": true,
+      "seconds": 33.1162
+    },
+    {
+      "name": "native_base_test_startup",
+      "passed": true,
+      "seconds": 11.9291
+    },
+    {
+      "name": "text_commands_differential",
+      "passed": true,
+      "seconds": 4.74624
+    },
+    {
+      "name": "CONCATTests",
+      "passed": true,
+      "seconds": 0.293924
+    },
+    {
+      "name": "concat_original_tests",
+      "passed": true,
+      "seconds": 3.5667
+    },
+    {
+      "name": "GETTests",
+      "passed": true,
+      "seconds": 0.29548
+    },
+    {
+      "name": "get_original_tests",
+      "passed": true,
+      "seconds": 3.25744
+    },
+    {
+      "name": "SUBSETTests",
+      "passed": true,
+      "seconds": 0.309995
+    },
+    {
+      "name": "subset_original_tests",
+      "passed": true,
+      "seconds": 3.64098
+    },
+    {
+      "name": "mysql_coins_differential",
+      "passed": true,
+      "seconds": 7.54143
+    },
+    {
+      "name": "mysql_command_differential",
+      "passed": true,
+      "seconds": 22.3673
+    },
+    {
+      "name": "help_command_differential",
+      "passed": true,
+      "seconds": 3.62782
+    },
+    {
+      "name": "streamable_differential",
+      "passed": true,
+      "seconds": 18.9786
+    },
+    {
+      "name": "txbody_ids_differential",
+      "passed": true,
+      "seconds": 6.77949
+    },
+    {
+      "name": "magic_differential",
+      "passed": true,
+      "seconds": 411.76
+    },
+    {
+      "name": "hash_writers_differential",
+      "passed": true,
+      "seconds": 6.22711
+    },
+    {
+      "name": "txheader_differential",
+      "passed": true,
+      "seconds": 8.86118
+    },
+    {
+      "name": "original_helpers_differential",
+      "passed": true,
+      "seconds": 4.20208
+    },
+    {
+      "name": "original_p2p_helpers_differential",
+      "passed": true,
+      "seconds": 4.40814
+    },
+    {
+      "name": "original_p2p_tests",
+      "passed": true,
+      "seconds": 5.28469
+    },
+    {
+      "name": "original_object_tests",
+      "passed": true,
+      "seconds": 4.5474
+    },
+    {
+      "name": "original_base_tests",
+      "passed": true,
+      "seconds": 4.64006
+    },
+    {
+      "name": "base_value_api_differential",
+      "passed": true,
+      "seconds": 3.56743
+    },
+    {
+      "name": "original_sha_tests",
+      "passed": true,
+      "seconds": 9.12014
+    },
+    {
+      "name": "original_state_tests",
+      "passed": true,
+      "seconds": 4.78082
+    },
+    {
+      "name": "original_signature_tests",
+      "passed": true,
+      "seconds": 7.85794
+    },
+    {
+      "name": "original_getter_tests",
+      "passed": true,
+      "seconds": 6.46207
+    },
+    {
+      "name": "original_verify_tests",
+      "passed": true,
+      "seconds": 4.46134
+    },
+    {
+      "name": "original_statement_commands_tests",
+      "passed": true,
+      "seconds": 5.38455
+    },
+    {
+      "name": "original_let_tests",
+      "passed": true,
+      "seconds": 3.96792
+    },
+    {
+      "name": "original_expressions_tests",
+      "passed": true,
+      "seconds": 4.72859
+    },
+    {
+      "name": "original_token_tests",
+      "passed": true,
+      "seconds": 3.39401
+    },
+    {
+      "name": "original_parser_tests",
+      "passed": true,
+      "seconds": 3.41304
+    },
+    {
+      "name": "original_processor_test",
+      "passed": true,
+      "seconds": 1.07903
+    },
+    {
+      "name": "jni_command_callers",
+      "passed": true,
+      "seconds": 16.3156
+    },
+    {
+      "name": "command_registry_differential",
+      "passed": true,
+      "seconds": 3.41093
+    },
+    {
+      "name": "database_mains_differential",
+      "passed": true,
+      "seconds": 16.431
+    },
+    {
+      "name": "source_mapping_snapshot",
+      "passed": true,
+      "seconds": 2.93654
+    }
+  ],
+  "all297_optimized_tests_have_passing_result": true,
+  "initial_optimized_run_passed": false,
+  "original_failures_retained": true,
+  "full_parity": false,
+  "scope": "297 unique optimized tests have passing results across the original run and exact-command socket-access retry. Original full run was264pass/33fail, not a clean pass. The earlier Debug292 set and final affected regressions are separate revisions. No full API or consensus parity certificate.",
+  "sanitized_full": {
+    "passed_before_stop": 289,
+    "failed_before_stop": 1,
+    "unfinished": [
+      "sphincs_differential",
+      "sphincs_command_differential",
+      "magic_differential"
+    ],
+    "full_run_complete": false,
+    "full_run_passed": false,
+    "original_horst_cleanup_failure_retained": true,
+    "corrected_targeted_horst_passed": true,
+    "owned_process_tree_exited": true
+  }
+}

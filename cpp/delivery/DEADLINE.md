@@ -19,12 +19,13 @@ team presentation materials, known gaps with reproduction/next steps, licenses,
 checksums, and local recovery information. No wallet/chain databases or credentials
 in the shareable package. Existing port21001 preview/user data remain untouched.
 
-Current implementation checkpoint: 8e83642713a4467c8b1957263e88b22a532d15cd.
-Current inventory: 456 counterparts, one missing JNI file, full parity unverified.
-Previous turn was progress: 3 entry points + exception correction + tested commit.
-Next implementation batch: send, Contract, TxPoWTreeNode, P2PFunctions, then broad tests.
+Final assembly began after optimized test disposition: all 297 registered tests
+have passing results across the initial run and exact-command socket-access retry.
+The earlier Debug run passed all 292 tests. The full sanitizer replay was stopped
+with three unfinished tests; no full sanitizer pass is claimed. Final affected
+sanitizer checks passed separately. The inventory is still 456 counterparts, one
+missing JNI file and unverified full parity. The handover records these limits.
 
-Reuse package_macos_preview.py and verify_macos_preview.py. Extend their port
-configuration for fixture validation to avoid touching any user node. Source
-packaging should use tracked Git objects and the explicit upstream submodule,
-not a recursive workspace copy (which would include test wallets/build caches).
+The delivery uses the existing project/runtime packagers and exports committed
+Git objects plus the pinned upstream. No wallet/chain database, untracked build
+cache or unrelated graphify output is included in the shareable source archive.

@@ -1,0 +1,1756 @@
+Test project /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized
+        Start 118: txpow_processor_differential
+        Start 210: archive_server_differential
+        Start 260: base_test_command_differential
+        Start   1: MiniByteTests
+  1/297 Test   #1: MiniByteTests ...............................   Passed    0.42 sec
+        Start   2: malformed_streams
+  2/297 Test   #2: malformed_streams ...........................   Passed    0.25 sec
+        Start   3: source_mapping
+  3/297 Test   #3: source_mapping ..............................   Passed    0.35 sec
+        Start   4: java_differential
+  4/297 Test   #4: java_differential ...........................   Passed    2.16 sec
+        Start   5: object_differential
+  5/297 Test   #5: object_differential .........................   Passed    8.49 sec
+        Start   6: TransactionTests
+  6/297 Test   #6: TransactionTests ............................   Passed    0.24 sec
+        Start   7: TxHeaderTests
+  7/297 Test   #7: TxHeaderTests ...............................   Passed    0.22 sec
+        Start   8: json_differential
+  8/297 Test   #8: json_differential ...........................   Passed    1.06 sec
+        Start   9: kiss_differential
+  9/297 Test   #9: kiss_differential ...........................   Passed    1.08 sec
+        Start  10: ValueTests
+ 10/297 Test  #10: ValueTests ..................................   Passed    0.29 sec
+        Start  11: BooleanValueTests
+ 11/297 Test  #11: BooleanValueTests ...........................   Passed    0.23 sec
+        Start  12: ScriptValueTests
+ 12/297 Test  #12: ScriptValueTests ............................   Passed    0.22 sec
+        Start  13: HexValueTests
+ 13/297 Test  #13: HexValueTests ...............................   Passed    0.22 sec
+        Start  14: NumberValueTests
+ 14/297 Test  #14: NumberValueTests ............................   Passed    0.23 sec
+        Start  15: LexicalTokenizerTests
+ 15/297 Test  #15: LexicalTokenizerTests .......................   Passed    0.22 sec
+        Start  16: kissvm_differential
+ 16/297 Test #118: txpow_processor_differential ................   Passed   16.27 sec
+        Start  17: ConstantExpressionTests
+ 17/297 Test  #17: ConstantExpressionTests .....................   Passed    0.28 sec
+        Start  18: VariableExpressionTests
+ 18/297 Test  #18: VariableExpressionTests .....................   Passed    0.25 sec
+        Start  19: GlobalExpressionTests
+ 19/297 Test  #19: GlobalExpressionTests .......................   Passed    0.30 sec
+        Start  20: FunctionExpressionTests
+ 20/297 Test #210: archive_server_differential .................***Failed   17.14 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "cases": 4,
+  "independent_assertions": 6,
+  "failures": [
+    {
+      "cases": 4,
+      "error": "AssertionError({'case': 3, 'request': {'op': 'constructor', 'rows': [], 'columns': []}, 'java': {'port': 0, 'listening': False, 'cascade': None, 'logs': ['No Cascade found..', 'RPCServer : Socket Shutdown.. java.net.SocketException: Operation not permitted'], 'events': [['connect', 'jdbc:mysql://fixture:3306/fixture?autoReconnect=true', 'student', 'synthetic'], ['connection.createStatement', 1], ['statement.execute', 'CREATE TABLE IF NOT EXISTS `syncblock` (  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,  `txpowid` varchar(80) NOT NULL UNIQUE,  `block` bigint NOT NULL UNIQUE,  `timemilli` bigint NOT NULL,  `syncdata` mediumblob NOT NULL)'], ['statement.execute', 'CREATE TABLE IF NOT EXISTS `cascadedata` (\\t\\t`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,\\t\\t`cascadetip` BIGINT NOT NULL,\\t\\t`fulldata` mediumblob NOT NULL)'], ['statement.execute', 'CREATE TABLE IF NOT EXISTS `coins` (\\t `id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,  `coinid` varchar(128) NOT NULL,  `address` varchar(128) NOT NULL,  `amount` varchar(128) NOT NULL,  `amountdouble` double NOT NULL,  `tokenid` varchar(128) NOT NULL,  `storestate` int NOT NULL,  `state` text,  `mmrentrynumber` bigint NOT NULL,  `spent` int NOT NULL,  `blockcreated` bigint NOT NULL,  `blockspent` bigint NOT NULL,  `date` varchar(128) NOT NULL,  `token` text,  `tokenamount` double NOT NULL)'], ['statement.execute', 'CREATE TABLE IF NOT EXISTS `txpow` (  `id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,  `txpowid` varchar(80) NOT NULL UNIQUE,  `txpowdata` mediumblob NOT NULL)'], ['statement.close'], ['connection.prepareStatement', 1, 'INSERT IGNORE INTO syncblock ( txpowid, block, timemilli, syncdata ) VALUES ( ?, ? ,? ,? )'], ['connection.prepareStatement', 1, 'SELECT syncdata FROM syncblock WHERE txpowid=?'], ['connection.prepareStatement', 1, 'SELECT syncdata FROM syncblock WHERE block=?'], ['connection.prepareStatement', 1, 'SELECT syncdata FROM syncblock WHERE block>=? ORDER BY block ASC LIMIT 250'], ['connection.prepareStatement', 1, 'SELECT block FROM syncblock ORDER BY block ASC LIMIT 1'], ['connection.prepareStatement', 1, 'SELECT block FROM syncblock ORDER BY block DESC LIMIT 1'], ['connection.prepareStatement', 1, 'SELECT Count(*) as tot FROM syncblock'], ['connection.prepareStatement', 1, 'INSERT INTO cascadedata ( cascadetip, fulldata ) VALUES ( ?, ? )'], ['connection.prepareStatement', 1, 'SELECT fulldata FROM cascadedata ORDER BY cascadetip ASC LIMIT 1'], ['connection.prepareStatement', 1, 'INSERT INTO coins(coinid,address,amount,amountdouble,tokenid,storestate,state,mmrentrynumber,spent,blockcreated,blockspent,date,token,tokenamount) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'], ['connection.prepareStatement', 1, 'SELECT MAX(blockcreated) as maxblock from coins'], ['connection.prepareStatement', 1, 'SELECT COUNT(*) as tot from coins'], ['connection.prepareStatement', 1, 'INSERT IGNORE INTO txpow ( txpowid, txpowdata ) VALUES ( ?, ? )'], ['connection.prepareStatement', 1, 'SELECT * FROM txpow WHERE txpowid=?'], ['prepared.clearParameters', 9], ['prepared.executeQuery', 9], ['rows.next']]}, 'cpp': {'port': 0, 'listening': False, 'cascade': None, 'logs': ['No Cascade found..', 'RPCServer : Socket Shutdown.. java.net.SocketException: Server bind: Operation not permitted'], 'events': [['connect', 'jdbc:mysql://fixture:3306/fixture?autoReconnect=true', 'student', 'synthetic'], ['connection.createStatement', 1], ['statement.execute', 'CREATE TABLE IF NOT EXISTS `syncblock` (  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,  `txpowid` varchar(80) NOT NULL UNIQUE,  `block` bigint NOT NULL UNIQUE,  `timemilli` bigint NOT NULL,  `syncdata` mediumblob NOT NULL)'], ['statement.execute', 'CREATE TABLE IF NOT EXISTS `cascadedata` (\\t\\t`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,\\t\\t`cascadetip` BIGINT NOT NULL,\\t\\t`fulldata` mediumblob NOT NULL)'], ['statement.execute', 'CREATE TABLE IF NOT EXISTS `coins` (\\t `id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,  `coinid` varchar(128) NOT NULL,  `address` varchar(128) NOT NULL,  `amount` varchar(128) NOT NULL,  `amountdouble` double NOT NULL,  `tokenid` varchar(128) NOT NULL,  `storestate` int NOT NULL,  `state` text,  `mmrentrynumber` bigint NOT NULL,  `spent` int NOT NULL,  `blockcreated` bigint NOT NULL,  `blockspent` bigint NOT NULL,  `date` varchar(128) NOT NULL,  `token` text,  `tokenamount` double NOT NULL)'], ['statement.execute', 'CREATE TABLE IF NOT EXISTS `txpow` (  `id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,  `txpowid` varchar(80) NOT NULL UNIQUE,  `txpowdata` mediumblob NOT NULL)'], ['statement.close'], ['connection.prepareStatement', 1, 'INSERT IGNORE INTO syncblock ( txpowid, block, timemilli, syncdata ) VALUES ( ?, ? ,? ,? )'], ['connection.prepareStatement', 1, 'SELECT syncdata FROM syncblock WHERE txpowid=?'], ['connection.prepareStatement', 1, 'SELECT syncdata FROM syncblock WHERE block=?'], ['connection.prepareStatement', 1, 'SELECT syncdata FROM syncblock WHERE block>=? ORDER BY block ASC LIMIT 250'], ['connection.prepareStatement', 1, 'SELECT block FROM syncblock ORDER BY block ASC LIMIT 1'], ['connection.prepareStatement', 1, 'SELECT block FROM syncblock ORDER BY block DESC LIMIT 1'], ['connection.prepareStatement', 1, 'SELECT Count(*) as tot FROM syncblock'], ['connection.prepareStatement', 1, 'INSERT INTO cascadedata ( cascadetip, fulldata ) VALUES ( ?, ? )'], ['connection.prepareStatement', 1, 'SELECT fulldata FROM cascadedata ORDER BY cascadetip ASC LIMIT 1'], ['connection.prepareStatement', 1, 'INSERT INTO coins(coinid,address,amount,amountdouble,tokenid,storestate,state,mmrentrynumber,spent,blockcreated,blockspent,date,token,tokenamount) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'], ['connection.prepareStatement', 1, 'SELECT MAX(blockcreated) as maxblock from coins'], ['connection.prepareStatement', 1, 'SELECT COUNT(*) as tot from coins'], ['connection.prepareStatement', 1, 'INSERT IGNORE INTO txpow ( txpowid, txpowdata ) VALUES ( ?, ? )'], ['connection.prepareStatement', 1, 'SELECT * FROM txpow WHERE txpowid=?'], ['prepared.clearParameters', 9], ['prepared.executeQuery', 9], ['rows.next']]}})"
+    }
+  ],
+  "seconds": 16.96,
+  "transcript_sha256": "fc0788a5e43fd66aa632796e93b7ab7952cd25365db29c5f0db33e6985436213",
+  "scope": "Actual pinned ArchiveServer constructor/handler/retry/clean and native class. Reuses recording SQL and actual codecs; exact events/logs/framed bytes, actual socket I/O, ignored type/trailing bytes, cascade/probe/ranges, malformed input/explicit close, real ten-second waits and one-second retry. Java TCP socket pairs and native local socket pairs; constructor listeners actual TCP. NPE/ClassCast/EOF prose normalized and stack frames excluded. No real MySQL standalone main, complete GC/subclass/concurrency/resource/platform parity claim."
+}
+
+        Start  21: ContractTests
+ 21/297 Test  #20: FunctionExpressionTests .....................   Passed    0.31 sec
+        Start  22: StatementBlockTests
+ 22/297 Test  #21: ContractTests ...............................   Passed    0.51 sec
+        Start  23: peer_messages_differential
+ 23/297 Test  #22: StatementBlockTests .........................   Passed    0.47 sec
+        Start  24: txn_lock_workers
+ 24/297 Test  #16: kissvm_differential .........................   Passed    2.84 sec
+        Start  25: small_utilities_differential
+ 25/297 Test  #24: txn_lock_workers ............................   Passed    0.83 sec
+        Start  26: ASSERTstatementTests
+ 26/297 Test  #26: ASSERTstatementTests ........................   Passed    0.27 sec
+        Start  27: EXECstatementTests
+ 27/297 Test  #27: EXECstatementTests ..........................   Passed    0.26 sec
+        Start  28: cascade_differential
+ 28/297 Test  #23: peer_messages_differential ..................   Passed    4.00 sec
+        Start  29: TxPowTreeTest
+ 29/297 Test  #29: TxPowTreeTest ...............................   Passed    0.27 sec
+        Start  30: tree_differential
+ 30/297 Test  #25: small_utilities_differential ................   Passed    4.50 sec
+        Start  31: utility_differential
+ 31/297 Test  #31: utility_differential ........................   Passed    4.07 sec
+        Start  32: aes_util_differential
+ 32/297 Test  #30: tree_differential ...........................   Passed    8.52 sec
+        Start  33: transaction_test_differential
+ 33/297 Test #260: base_test_command_differential ..............   Passed   33.12 sec
+        Start  34: sphincs_utils_differential
+ 34/297 Test  #28: cascade_differential ........................   Passed   16.17 sec
+        Start  35: sphincs_differential
+ 35/297 Test  #32: aes_util_differential .......................   Passed   11.19 sec
+        Start  36: sphincs_log_audit
+ 36/297 Test  #36: sphincs_log_audit ...........................   Passed    3.11 sec
+        Start  37: sphincs_signature_differential
+ 37/297 Test  #37: sphincs_signature_differential ..............   Passed    6.30 sec
+        Start  38: fors_differential
+ 38/297 Test  #33: transaction_test_differential ...............   Passed   49.38 sec
+        Start  39: horst_differential
+ 39/297 Test  #34: sphincs_utils_differential ..................   Passed   60.76 sec
+        Start  40: zip_extractor_differential
+ 40/297 Test  #40: zip_extractor_differential ..................   Passed    5.23 sec
+        Start  41: consensus_differential
+ 41/297 Test  #39: horst_differential ..........................   Passed   46.37 sec
+        Start  42: RamDBTest
+ 42/297 Test  #42: RamDBTest ...................................   Passed    0.35 sec
+        Start  43: ram_differential
+ 43/297 Test  #41: consensus_differential ......................   Passed   38.60 sec
+        Start  44: timed_checker_checks
+ 44/297 Test  #44: timed_checker_checks ........................   Passed    1.05 sec
+        Start  45: timed_checker_deadline
+ 45/297 Test  #38: fors_differential ...........................   Passed   94.64 sec
+        Start  46: prefs_differential
+ 46/297 Test  #46: prefs_differential ..........................   Passed    7.67 sec
+        Start  47: hashmap_differential
+ 47/297 Test  #45: timed_checker_deadline ......................   Passed  120.56 sec
+        Start  48: message_differential
+ 48/297 Test  #48: message_differential ........................   Passed    4.73 sec
+        Start  49: message_workers
+ 49/297 Test  #49: message_workers .............................   Passed    1.59 sec
+        Start  50: timer_reentrancy_differential
+ 50/297 Test  #50: timer_reentrancy_differential ...............   Passed    8.40 sec
+        Start  51: txndb_differential
+ 51/297 Test  #51: txndb_differential ..........................   Passed    4.48 sec
+        Start  52: archive_cache_differential
+ 52/297 Test  #52: archive_cache_differential ..................   Passed    4.59 sec
+        Start  53: ibd_differential
+ 53/297 Test  #53: ibd_differential ............................   Passed   10.05 sec
+        Start  54: mmrsync_differential
+ 54/297 Test  #54: mmrsync_differential ........................   Passed    8.85 sec
+        Start  55: sendpoll_workers
+ 55/297 Test  #55: sendpoll_workers ............................   Passed    1.70 sec
+        Start  56: raw_archive_differential
+ 56/297 Test  #35: sphincs_differential ........................   Passed  272.55 sec
+        Start  57: wallet_rows_differential
+ 57/297 Test  #57: wallet_rows_differential ....................   Passed    3.22 sec
+        Start  58: bip39_differential
+ 58/297 Test  #58: bip39_differential ..........................   Passed    8.95 sec
+        Start  59: fast_bytes_differential
+ 59/297 Test  #56: raw_archive_differential ....................   Passed   16.60 sec
+        Start  60: network_utilities_differential
+ 60/297 Test  #60: network_utilities_differential ..............   Passed    4.66 sec
+        Start  61: command_differential
+ 61/297 Test  #59: fast_bytes_differential .....................   Passed    6.22 sec
+        Start  62: command_runner_differential
+ 62/297 Test  #62: command_runner_differential .................   Passed    4.15 sec
+        Start  63: transaction_commands_differential
+ 63/297 Test  #61: command_differential ........................   Passed    7.81 sec
+        Start  64: searcher_differential
+ 64/297 Test  #63: transaction_commands_differential ...........   Passed    6.39 sec
+        Start  65: InetSocketAddressIOTest
+ 65/297 Test  #65: InetSocketAddressIOTest .....................   Passed    0.27 sec
+        Start  66: GreetingTest
+ 66/297 Test  #66: GreetingTest ................................   Passed    1.09 sec
+        Start  67: peer_state_differential
+ 67/297 Test  #64: searcher_differential .......................   Passed    7.02 sec
+        Start  68: P2PDBTest
+ 68/297 Test  #68: P2PDBTest ...................................   Passed    0.30 sec
+        Start  69: nio_client_differential
+ 69/297 Test  #67: peer_state_differential .....................   Passed   14.60 sec
+        Start  70: nio_loopback
+ 70/297 Test  #70: nio_loopback ................................***Failed    0.39 sec
+loopback bind failed (errno=1)
+
+        Start  71: nio_server_differential
+ 71/297 Test  #69: nio_client_differential .....................   Passed   14.18 sec
+        Start  72: nio_server_main_differential
+ 72/297 Test  #72: nio_server_main_differential ................***Failed    3.09 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "comparisons": 0,
+  "assertions": 0,
+  "failure": "PermissionError(1, 'Operation not permitted')",
+  "scope": "Actual original NIOServer.main on port 9002 with four unchanged 2000-ms waits, two real server starts/stops, default missing-DB hello worker failures, successful System.exit shutdown hook, each sleep interrupted from actual logger boundary, surviving/closed listener observed without connecting, and occupied-port Runtime.halt bypassing hook. Null unused arguments supplied. Fixtures halt after interrupted caller evidence to clean up only their own child. No user database or existing node touched; all broader server/thread API parity unverified."
+}
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_server_main_differential.py", line 79, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_server_main_differential.py", line 68, in main
+    probe.setsockopt(socket.IPPROTO_IPV6,socket.IPV6_V6ONLY,0);probe.bind(('::',9002))
+                                                               ~~~~~~~~~~^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start  73: runtime_mains_differential
+ 73/297 Test  #71: nio_server_differential .....................***Failed    4.74 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_server_differential.py", line 36, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_server_differential.py", line 19, in main
+    if expected!=checkpoints:raise RuntimeError(f'Incomplete Java lifecycle: {expected}')
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Incomplete Java lifecycle: []
+
+        Start  74: mmr_mains_differential
+ 74/297 Test  #74: mmr_mains_differential ......................   Passed    5.68 sec
+        Start  75: crypto_mains_differential
+ 75/297 Test  #75: crypto_mains_differential ...................   Passed    8.02 sec
+        Start  76: core_mains_differential
+ 76/297 Test  #73: runtime_mains_differential ..................   Passed   19.95 sec
+        Start  77: object_mains_differential
+ 77/297 Test  #76: core_mains_differential .....................   Passed   10.08 sec
+        Start  78: utility_mains_differential
+ 78/297 Test  #77: object_mains_differential ...................   Passed    8.35 sec
+        Start  79: p2p2_db_differential
+ 79/297 Test  #78: utility_mains_differential ..................   Passed    8.24 sec
+        Start  80: network_startup_differential
+ 80/297 Test  #79: p2p2_db_differential ........................   Passed    6.10 sec
+        Start  81: nio_manager_transport_differential
+ 81/297 Test  #81: nio_manager_transport_differential ..........***Failed    3.83 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_manager_transport_differential.py", line 95, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_manager_transport_differential.py", line 89, in main
+    left=ping(java,reply,fragment,delay);right=ping(native,reply,fragment,delay)
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_manager_transport_differential.py", line 26, in ping
+    listener.bind(('127.0.0.1',0));listener.listen(1);listener.settimeout(15)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start  82: fixed_task_executor
+ 82/297 Test  #82: fixed_task_executor .........................   Passed    0.31 sec
+        Start  83: executor_interrupt_differential
+ 83/297 Test  #80: network_startup_differential ................   Passed    8.88 sec
+        Start  84: nio_manager_loopback
+ 84/297 Test  #84: nio_manager_loopback ........................   Passed    1.14 sec
+        Start  85: nio_connections
+ 85/297 Test  #85: nio_connections .............................   Passed    1.33 sec
+        Start  86: nio_manager_state_differential
+ 86/297 Test  #83: executor_interrupt_differential .............   Passed    6.13 sec
+        Start  87: nio_message_differential
+ 87/297 Test  #86: nio_manager_state_differential ..............   Passed    7.27 sec
+        Start  88: p2p_functions_differential
+ 88/297 Test  #88: p2p_functions_differential ..................***Failed    5.13 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/p2p_functions_differential.py", line 95, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/p2p_functions_differential.py", line 92, in main
+    count=transport(java,native)
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/p2p_functions_differential.py", line 66, in transport
+    server=ThreadingHTTPServer(('127.0.0.1',0),Handler);server.daemon_threads=True;server.paths=[];worker=threading.Thread(target=server.serve_forever,daemon=True);worker.start()
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start  89: swap_links_differential
+ 89/297 Test  #89: swap_links_differential .....................   Passed    4.61 sec
+        Start  90: walk_links_differential
+ 90/297 Test  #87: nio_message_differential ....................   Passed   18.91 sec
+        Start  91: peers_checker_native
+ 91/297 Test  #91: peers_checker_native ........................   Passed    0.58 sec
+        Start  92: peers_checker_differential
+ 92/297 Test  #90: walk_links_differential .....................   Passed    4.81 sec
+        Start  93: p2p_manager_native
+ 93/297 Test  #93: p2p_manager_native ..........................   Passed    1.58 sec
+        Start  94: peer_state_concurrent
+ 94/297 Test  #92: peers_checker_differential ..................***Failed    3.31 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 127, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 99, in main
+    java=Runner(['java','-cp',f'{oracle}:{JAVA}/jar/minima.jar','PeersCheckerOracle']);native=Runner([str(build/'minima_peers_checker')]);server=Responder()
+                                                                                                                                                 ~~~~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 31, in __init__
+    self.socket=socket.socket();self.socket.bind(('127.0.0.1',0));self.socket.listen();self.socket.settimeout(.1);self.port=self.socket.getsockname()[1];self.stop=False;self.lock=threading.Lock();self.replies=[];self.requests=[];self.thread=threading.Thread(target=self.run,daemon=True);self.thread.start()
+                                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start  95: p2p_manager_differential
+ 95/297 Test  #94: peer_state_concurrent .......................   Passed    0.60 sec
+        Start  96: p2p_discovery_differential
+ 96/297 Test  #96: p2p_discovery_differential ..................***Failed    4.24 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/p2p_discovery_differential.py", line 44, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/p2p_discovery_differential.py", line 12, in main
+    java=Runner(['java','-cp',f'{oracle}:{JAVA}/jar/minima.jar','P2PManagerOracle']);native=Runner([str(build/'minima_p2p_manager')]);server=Responder()
+                                                                                                                                             ~~~~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 31, in __init__
+    self.socket=socket.socket();self.socket.bind(('127.0.0.1',0));self.socket.listen();self.socket.settimeout(.1);self.port=self.socket.getsockname()[1];self.stop=False;self.lock=threading.Lock();self.replies=[];self.requests=[];self.thread=threading.Thread(target=self.run,daemon=True);self.thread.start()
+                                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start  97: p2p2_runtime_differential
+ 97/297 Test  #95: p2p_manager_differential ....................   Passed    6.14 sec
+        Start  98: p2p2_worker
+ 98/297 Test  #98: p2p2_worker .................................   Passed    1.47 sec
+        Start  99: http_server_differential
+ 99/297 Test  #97: p2p2_runtime_differential ...................   Passed    4.63 sec
+        Start 100: cmd_handler_differential
+100/297 Test  #99: http_server_differential ....................***Failed    3.79 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/http_server_differential.py", line 49, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/http_server_differential.py", line 41, in main
+    occupied.bind(('::',0));occupied.listen();port=occupied.getsockname()[1]
+    ~~~~~~~~~~~~~^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 101: network_manager_native
+101/297 Test #101: network_manager_native ......................   Passed    0.57 sec
+        Start 102: network_manager_differential
+102/297 Test #100: cmd_handler_differential ....................***Failed    4.51 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/cmd_handler_differential.py", line 118, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/cmd_handler_differential.py", line 89, in main
+    ready=[r.ask(dict(op='create',port=0,auto=True,rpc=True,**configuration)) for r in runners];assert all(isinstance(row,dict) and row['bound'] for row in ready),ready
+                                                                                                       ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [{'port': 0, 'bound': 0, 'logs': ['RPCServer : Socket Shutdown.. java.net.SocketException: Operation not permitted'], 'factories': 0, 'completed': 0, 'concurrent': False, 'finished': True}, {'port': 0, 'bound': 0, 'logs': ['RPCServer : Socket Shutdown.. java.net.SocketException: Server bind: Operation not permitted'], 'factories': 0, 'completed': 0, 'concurrent': False, 'finished': True}]
+
+        Start 103: sql_db_differential
+103/297 Test #102: network_manager_differential ................   Passed    5.80 sec
+        Start 104: sql_db_concurrent
+104/297 Test #104: sql_db_concurrent ...........................   Passed    0.37 sec
+        Start 105: onchain_db_differential
+105/297 Test #103: sql_db_differential .........................   Passed    4.86 sec
+        Start 106: txpow_sql_db_differential
+106/297 Test #105: onchain_db_differential .....................   Passed    8.32 sec
+        Start 107: txpow_db_differential
+107/297 Test #106: txpow_sql_db_differential ...................   Passed   19.39 sec
+        Start 108: coin_db_differential
+108/297 Test #107: txpow_db_differential .......................   Passed   19.86 sec
+        Start 109: wallet_differential
+109/297 Test #108: coin_db_differential ........................   Passed   10.44 sec
+        Start 110: archive_manager_differential
+110/297 Test #109: wallet_differential .........................   Passed   11.34 sec
+        Start 111: minima_db_differential
+111/297 Test #110: archive_manager_differential ................   Passed   16.62 sec
+        Start 112: minima_db_lock
+112/297 Test #112: minima_db_lock ..............................   Passed    0.34 sec
+        Start 113: minima_db_ownership
+113/297 Test #113: minima_db_ownership .........................   Passed    1.38 sec
+        Start 114: txpow_miner_differential
+114/297 Test #114: txpow_miner_differential ....................   Passed    6.01 sec
+        Start 115: txpow_miner_worker
+115/297 Test #115: txpow_miner_worker ..........................   Passed    0.74 sec
+        Start 116: txblock_ownership_differential
+116/297 Test  #47: hashmap_differential ........................   Passed  360.22 sec
+        Start 117: timed_checker_shared_deadline
+117/297 Test #116: txblock_ownership_differential ..............   Passed   18.41 sec
+        Start 119: txpow_processor_worker
+118/297 Test #119: txpow_processor_worker ......................   Passed    0.53 sec
+        Start 120: notify_manager_differential
+119/297 Test  #43: ram_differential ............................   Passed  391.77 sec
+        Start 121: notify_manager_worker
+120/297 Test #121: notify_manager_worker .......................   Passed    0.46 sec
+        Start 122: rpc_client_differential
+121/297 Test #122: rpc_client_differential .....................***Failed    4.18 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 123, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 109, in main
+    context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);context.load_cert_chain(cert,key);servers=[Server(),Server(),Server(context)];servers[0].server.proxy_url=servers[1].url;runners=[Runner(['java','-cp',f'{oracle}:{JAVA}/jar/minima.jar','RPCClientOracle']),Runner([str(build/'minima_rpc_client')])];corpus=cases(*servers,cert);failures=[];requests=0;notification=None
+                                                                                               ~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 44, in __init__
+    self.server=ThreadingHTTPServer(('127.0.0.1',0),handler);self.server.daemon_threads=True;self.server.lock=threading.Lock();self.server.requests=[]
+                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 123: rpc_configuration_native
+122/297 Test #120: notify_manager_differential .................   Passed    5.50 sec
+        Start 124: minima_logger_differential
+123/297 Test #123: rpc_configuration_native ....................   Passed    0.62 sec
+        Start 125: minima_logger_worker
+124/297 Test #125: minima_logger_worker ........................   Passed    0.81 sec
+        Start 126: native_stack_trace
+125/297 Test #126: native_stack_trace ..........................   Passed    0.29 sec
+        Start 127: minima_rpc_cli_differential
+126/297 Test #124: minima_logger_differential ..................   Passed    5.17 sec
+        Start 128: param_configurer_differential
+127/297 Test #127: minima_rpc_cli_differential .................***Failed    3.69 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/minima_rpc_cli_differential.py", line 139, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/minima_rpc_cli_differential.py", line 123, in main
+    classpath=f'{oracle}:{JAVA}/jar/minima.jar';server=Server(handler=ReplyHandler)
+                                                       ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 44, in __init__
+    self.server=ThreadingHTTPServer(('127.0.0.1',0),handler);self.server.daemon_threads=True;self.server.lock=threading.Lock();self.server.requests=[]
+                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 129: ParamConfigurerTest
+128/297 Test #129: ParamConfigurerTest .........................   Passed    0.32 sec
+        Start 130: minima_uncaught_differential
+129/297 Test #128: param_configurer_differential ...............***Failed    6.60 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+Original ParamConfigurerTest methods passed: 5
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/param_configurer_differential.py", line 110, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/param_configurer_differential.py", line 79, in main
+    classpath=f'{oracle}:{JAVA}/jar/minima.jar:{JAVA}/lib/junit-4.13.jar';subprocess.run(['java','-cp',classpath,'ParamConfigurerOriginalTests'],check=True);java=Runner(['java','-cp',classpath,'ParamConfigurerOracle']);cpp=Runner([str(build/'minima_param_configurer')]);server=Server();failures=[];requests=0;process_cases=0
+                                                                                                                                                                                                                                                                                     ~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 44, in __init__
+    self.server=ThreadingHTTPServer(('127.0.0.1',0),handler);self.server.daemon_threads=True;self.server.lock=threading.Lock();self.server.requests=[]
+                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 131: native_thread_checks
+130/297 Test #111: minima_db_differential ......................   Passed   53.64 sec
+        Start 132: thread_interrupt_differential
+131/297 Test #131: native_thread_checks ........................   Passed    1.67 sec
+        Start 133: runtime_sleep_differential
+132/297 Test #130: minima_uncaught_differential ................   Passed   12.70 sec
+        Start 134: http_server_errors_differential
+133/297 Test #133: runtime_sleep_differential ..................***Failed    5.46 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "comparisons": 1,
+  "assertions": 18,
+  "failure": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')",
+  "scope": "Actual Main shutdown/restart with controlled old-network completion, real replacement network on ephemeral port with outbound peers disabled; RPC/vault/MySQL state ordering and archive request retry; actual archive server retry with recording SQL; actual P2P discovery/TCP responder. Real interrupt flags/sleeps, no injected InterruptedException. No wallet or mainnet node touched. Broader runtime/I/O/thread parity remains open."
+}
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/runtime_sleep_differential.py", line 71, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/runtime_sleep_differential.py", line 27, in main
+    check(p.returncode==0,(command,mode,p.returncode,p.stdout,p.stderr));rows.append(json.loads(p.stdout))
+                                                                                     ~~~~~~~~~~^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+        Start 135: executor_uncaught_differential
+134/297 Test #134: http_server_errors_differential .............***Failed    3.02 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/http_server_errors_differential.py", line 32, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/http_server_errors_differential.py", line 17, in main
+    occupied.setsockopt(socket.IPPROTO_IPV6,socket.IPV6_V6ONLY,0);occupied.bind(('::',0));occupied.listen();port=occupied.getsockname()[1]
+                                                                  ~~~~~~~~~~~~~^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 136: nio_server_errors_differential
+135/297 Test #135: executor_uncaught_differential ..............   Passed    4.31 sec
+        Start 137: nio_manager_errors_differential
+136/297 Test #132: thread_interrupt_differential ...............   Passed   10.78 sec
+        Start 138: timed_checker_errors_differential
+137/297 Test #136: nio_server_errors_differential ..............***Failed    2.88 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_server_errors_differential.py", line 31, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_server_errors_differential.py", line 27, in main
+    rows.append(normalize(json.loads(p.stdout)))
+                          ~~~~~~~~~~^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+        Start 139: timed_checker_error_deadline
+138/297 Test #137: nio_manager_errors_differential .............***Failed    3.96 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_manager_errors_differential.py", line 29, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_manager_errors_differential.py", line 22, in main
+    rows=[run(command,case) for command in commands]
+          ~~~^^^^^^^^^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_manager_errors_differential.py", line 20, in run
+    return normalize(json.loads(p.stdout))
+                     ~~~~~~~~~~^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+        Start 140: checker_logs_differential
+139/297 Test #140: checker_logs_differential ...................   Passed    6.75 sec
+        Start 141: script_value_original_tests
+140/297 Test #141: script_value_original_tests .................   Passed    2.18 sec
+        Start 142: hex_value_original_tests
+141/297 Test #142: hex_value_original_tests ....................   Passed    2.37 sec
+        Start 143: number_value_original_tests
+142/297 Test #143: number_value_original_tests .................   Passed    2.28 sec
+        Start 144: MinimaFunctionTests
+143/297 Test #144: MinimaFunctionTests .........................   Passed    0.31 sec
+        Start 145: ABSTests
+144/297 Test #145: ABSTests ....................................   Passed    0.26 sec
+        Start 146: minima_function_original_tests
+145/297 Test #146: minima_function_original_tests ..............   Passed    2.10 sec
+        Start 147: abs_original_tests
+146/297 Test #147: abs_original_tests ..........................   Passed    2.36 sec
+        Start 148: command_runner_errors_differential
+147/297 Test #138: timed_checker_errors_differential ...........   Passed   24.41 sec
+        Start 149: FLOORTests
+148/297 Test #149: FLOORTests ..................................   Passed    0.51 sec
+        Start 150: floor_original_tests
+149/297 Test #148: command_runner_errors_differential ..........   Passed    3.13 sec
+        Start 151: CEILTests
+150/297 Test #151: CEILTests ...................................   Passed    0.26 sec
+        Start 152: ceil_original_tests
+151/297 Test #150: floor_original_tests ........................   Passed    2.58 sec
+        Start 153: wallet_commands_differential
+152/297 Test #152: ceil_original_tests .........................   Passed    2.56 sec
+        Start 154: wallet_address_commands_differential
+153/297 Test #153: wallet_commands_differential ................   Passed    8.99 sec
+        Start 155: MINTests
+154/297 Test #155: MINTests ....................................   Passed    1.13 sec
+        Start 156: min_original_tests
+155/297 Test #154: wallet_address_commands_differential ........   Passed   14.04 sec
+        Start 157: MAXTests
+156/297 Test #156: min_original_tests ..........................   Passed    5.36 sec
+        Start 158: max_original_tests
+157/297 Test #157: MAXTests ....................................   Passed    1.15 sec
+        Start 159: wallet_witness_commands_differential
+158/297 Test #158: max_original_tests ..........................   Passed    5.04 sec
+        Start 160: coin_streams_differential
+159/297 Test #159: wallet_witness_commands_differential ........   Passed    6.69 sec
+        Start 161: MiniStringTests
+160/297 Test #161: MiniStringTests .............................   Passed    0.34 sec
+        Start 162: ministring_original_tests
+161/297 Test #162: ministring_original_tests ...................   Passed    2.65 sec
+        Start 163: chain_commands_differential
+162/297 Test #160: coin_streams_differential ...................   Passed   10.86 sec
+        Start 164: transaction_input_commands_differential
+163/297 Test #163: chain_commands_differential .................   Passed    6.39 sec
+        Start 165: transaction_check_command_differential
+164/297 Test #165: transaction_check_command_differential ......   Passed    9.47 sec
+        Start 166: INCTests
+165/297 Test #166: INCTests ....................................   Passed    0.30 sec
+        Start 167: inc_original_tests
+166/297 Test #167: inc_original_tests ..........................   Passed    2.48 sec
+        Start 168: DECTests
+167/297 Test #168: DECTests ....................................   Passed    0.26 sec
+        Start 169: dec_original_tests
+168/297 Test #169: dec_original_tests ..........................   Passed    2.24 sec
+        Start 170: transaction_mining_commands_differential
+169/297 Test #164: transaction_input_commands_differential .....   Passed   16.48 sec
+        Start 171: POWTests
+170/297 Test #171: POWTests ....................................   Passed    0.35 sec
+        Start 172: pow_original_tests
+171/297 Test #172: pow_original_tests ..........................   Passed    3.01 sec
+        Start 173: SIGDIGTests
+172/297 Test #173: SIGDIGTests .................................   Passed    0.31 sec
+        Start 174: sigdig_original_tests
+173/297 Test #170: transaction_mining_commands_differential ....   Passed    7.56 sec
+        Start 175: BITCOUNTTests
+174/297 Test #175: BITCOUNTTests ...............................   Passed    0.29 sec
+        Start 176: bitcount_original_tests
+175/297 Test #174: sigdig_original_tests .......................   Passed    3.11 sec
+        Start 177: vault_signing_commands_differential
+176/297 Test #117: timed_checker_shared_deadline ...............   Passed  120.55 sec
+        Start 178: BITGETTests
+177/297 Test #178: BITGETTests .................................   Passed    0.28 sec
+        Start 179: bitget_original_tests
+178/297 Test #176: bitcount_original_tests .....................   Passed    3.55 sec
+        Start 180: BITSETTests
+179/297 Test #180: BITSETTests .................................   Passed    0.31 sec
+        Start 181: bitset_original_tests
+180/297 Test #179: bitget_original_tests .......................   Passed    3.67 sec
+        Start 182: wallet_key_commands_differential
+181/297 Test #181: bitset_original_tests .......................   Passed    3.37 sec
+        Start 183: coin_funding_commands_differential
+182/297 Test #182: wallet_key_commands_differential ............   Passed   14.01 sec
+        Start 184: REVTests
+183/297 Test #184: REVTests ....................................   Passed    0.30 sec
+        Start 185: rev_original_tests
+184/297 Test #185: rev_original_tests ..........................   Passed    4.50 sec
+        Start 186: LENTests
+185/297 Test #186: LENTests ....................................   Passed    0.31 sec
+        Start 187: len_original_tests
+186/297 Test #183: coin_funding_commands_differential ..........   Passed   18.34 sec
+        Start 188: offline_send_commands_differential
+187/297 Test #187: len_original_tests ..........................   Passed    3.83 sec
+        Start 189: unsigned_send_command_differential
+188/297 Test #188: offline_send_commands_differential ..........   Passed   11.39 sec
+        Start 190: sendpoll_command_differential
+189/297 Test #177: vault_signing_commands_differential .........   Passed   37.49 sec
+        Start 191: wallet_wrappers_differential
+190/297 Test #189: unsigned_send_command_differential ..........   Passed   11.28 sec
+        Start 192: raw_transaction_commands_differential
+191/297 Test #192: raw_transaction_commands_differential .......   Passed    2.81 sec
+        Start 193: custom_address_send_commands_differential
+192/297 Test #139: timed_checker_error_deadline ................   Passed  124.69 sec
+        Start 194: consolidate_address_commands_differential
+193/297 Test #191: wallet_wrappers_differential ................   Passed    5.87 sec
+        Start 195: wallet_consolidation_command_differential
+194/297 Test #190: sendpoll_command_differential ...............   Passed    7.39 sec
+        Start 196: wallet_balance_command_differential
+195/297 Test #193: custom_address_send_commands_differential ...   Passed    6.25 sec
+        Start 197: coin_search_command_differential
+196/297 Test #194: consolidate_address_commands_differential ...   Passed    6.29 sec
+        Start 198: transaction_history_command_differential
+197/297 Test #195: wallet_consolidation_command_differential ...   Passed   11.52 sec
+        Start 199: txpow_search_command_differential
+198/297 Test #196: wallet_balance_command_differential .........   Passed   11.21 sec
+        Start 200: node_state_commands_differential
+199/297 Test #198: transaction_history_command_differential ....   Passed    7.22 sec
+        Start 201: seed_random_command_differential
+200/297 Test #197: coin_search_command_differential ............   Passed   11.48 sec
+        Start 202: BOOLTests
+201/297 Test #202: BOOLTests ...................................   Passed    0.30 sec
+        Start 203: bool_cast_original_tests
+202/297 Test #201: seed_random_command_differential ............   Passed    6.22 sec
+        Start 204: HEXTests
+203/297 Test #204: HEXTests ....................................   Passed    0.32 sec
+        Start 205: hex_cast_original_tests
+204/297 Test #203: bool_cast_original_tests ....................   Passed    4.60 sec
+        Start 206: NUMBERTests
+205/297 Test #206: NUMBERTests .................................   Passed    0.28 sec
+        Start 207: number_cast_original_tests
+206/297 Test #199: txpow_search_command_differential ...........   Passed   11.65 sec
+        Start 208: SCRIPTTests
+207/297 Test #205: hex_cast_original_tests .....................   Passed    3.95 sec
+        Start 209: script_cast_original_tests
+208/297 Test #208: SCRIPTTests .................................   Passed    0.26 sec
+        Start 211: archive_server_clean_audit
+209/297 Test #200: node_state_commands_differential ............   Passed   11.77 sec
+        Start 212: mysql_connect_differential
+210/297 Test #207: number_cast_original_tests ..................   Passed    3.72 sec
+        Start 213: pulse_runtime_differential
+211/297 Test #209: script_cast_original_tests ..................   Passed    5.12 sec
+        Start 214: main_runtime_differential
+212/297 Test #211: archive_server_clean_audit ..................   Passed    5.50 sec
+        Start 215: main_ownership
+213/297 Test #215: main_ownership ..............................   Passed    0.41 sec
+        Start 216: main_lifecycle_commands_differential
+214/297 Test #216: main_lifecycle_commands_differential ........   Passed    5.91 sec
+        Start 217: network_peer_commands_differential
+215/297 Test #214: main_runtime_differential ...................   Passed    6.85 sec
+        Start 218: ping_command_differential
+216/297 Test #213: pulse_runtime_differential ..................   Passed    9.83 sec
+        Start 219: network_status_command_differential
+217/297 Test #218: ping_command_differential ...................***Failed    6.27 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/ping_command_differential.py", line 75, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/ping_command_differential.py", line 63, in main
+    raw=ping(command,reply,fragment=fragment,request=make_request)
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/nio_manager_transport_differential.py", line 26, in ping
+    listener.bind(('127.0.0.1',0));listener.listen(1);listener.settimeout(15)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 220: trace_clock_command_differential
+218/297 Test #219: network_status_command_differential .........   Passed    6.34 sec
+        Start 221: healthcheck_command_differential
+219/297 Test #217: network_peer_commands_differential ..........   Passed    6.73 sec
+        Start 222: logs_command_differential
+220/297 Test #220: trace_clock_command_differential ............   Passed    5.98 sec
+        Start 223: node_status_command_differential
+221/297 Test #222: logs_command_differential ...................   Passed    5.92 sec
+        Start 224: rpc_command_differential
+222/297 Test #221: healthcheck_command_differential ............   Passed    6.35 sec
+        Start 225: json_collections_differential
+223/297 Test #212: mysql_connect_differential ..................   Passed   24.95 sec
+        Start 226: shared_json_native
+224/297 Test #226: shared_json_native ..........................   Passed    1.15 sec
+        Start 227: rpc_live_differential
+225/297 Test #225: json_collections_differential ...............   Passed    1.60 sec
+        Start 228: hashtest_command_differential
+226/297 Test #223: node_status_command_differential ............   Passed    7.07 sec
+        Start 229: coin_import_differential
+227/297 Test #228: hashtest_command_differential ...............   Passed    9.74 sec
+        Start 230: scan_chain_differential
+228/297 Test #227: rpc_live_differential .......................***Failed   10.39 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_live_differential.py", line 82, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_live_differential.py", line 77, in main
+    finally:runner.close()
+            ~~~~~~~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 27, in close
+    if code:raise RuntimeError(self.errors())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: WARNING: Final field state in class org.minima.system.network.p2p.P2PManager has been mutated reflectively by class NIOClientOracle in unnamed module @5305068a (file:/Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/rpc-live-oracle/)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+Exception in thread "main" java.lang.IllegalStateException: RPC listener did not bind
+	at RPCLiveOracle.main(RPCLiveOracle.java:35)
+
+
+        Start 231: token_validation_differential
+229/297 Test #229: coin_import_differential ....................   Passed    5.75 sec
+        Start 232: peers_command_differential
+230/297 Test #224: rpc_command_differential ....................   Passed   14.87 sec
+        Start 233: automatic_transaction_differential
+231/297 Test #231: token_validation_differential ...............***Failed    4.76 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                                                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/token_validation_differential.py", line 134, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/token_validation_differential.py", line 106, in main
+    failures=[];completed=operations=requests=0;cases=[];server=Server()
+                                                                ~~~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 44, in __init__
+    self.server=ThreadingHTTPServer(('127.0.0.1',0),handler);self.server.daemon_threads=True;self.server.lock=threading.Lock();self.server.requests=[]
+                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 234: burn_metrics_differential
+232/297 Test #232: peers_command_differential ..................***Failed    4.71 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_command_differential.py", line 107, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_command_differential.py", line 78, in main
+    server=Server();failures=[];completed=operations=requests=0;cases=[]
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 44, in __init__
+    self.server=ThreadingHTTPServer(('127.0.0.1',0),handler);self.server.daemon_threads=True;self.server.lock=threading.Lock();self.server.requests=[]
+                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 235: token_creation_differential
+233/297 Test #230: scan_chain_differential .....................   Passed   15.82 sec
+        Start 236: multisig_workflow_differential
+234/297 Test #234: burn_metrics_differential ...................   Passed   13.48 sec
+        Start 237: node_count_differential
+235/297 Test #237: node_count_differential .....................***Failed    5.49 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "programs": 91,
+  "total_programs": 171,
+  "ping_requests_per_runtime": 0,
+  "scope": "Actual nodecount and NIO ping over isolated loopback graphs, exact ping request bytes/order, traffic, replies, logs and CSV files. Installed JDK collection order, float calculations and Double parser cases. Unstarted manager owner; no public network enumeration, full-node startup or exhaustive inherited/reference/concurrency/API parity claim. Native CSV descriptor closed by RAII; source writer lifetime not reproduced."
+}
+
+        Start 238: incentive_cash_differential
+236/297 Test #233: automatic_transaction_differential ..........   Passed   24.69 sec
+        Start 239: item_list_differential
+237/297 Test #238: incentive_cash_differential .................***Failed    4.24 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                   ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/WalletCommandsOracle.java:11: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static sun.misc.Unsafe unsafe()throws Exception {var f=sun.misc.Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);return (sun.misc.Unsafe)f.get(null);}
+                                                                                                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/incentive_cash_differential.py", line 123, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/incentive_cash_differential.py", line 103, in main
+    failures=[];completed=operations=requests=0;server=Server(handler=IncentiveHandler);cases=corpus(server)
+                                                       ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/rpc_client_differential.py", line 44, in __init__
+    self.server=ThreadingHTTPServer(('127.0.0.1',0),handler);self.server.daemon_threads=True;self.server.lock=threading.Lock();self.server.requests=[]
+                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 240: native_h2_differential
+238/297 Test #239: item_list_differential ......................   Passed    3.90 sec
+        Start 241: native_h2_concurrent
+239/297 Test #241: native_h2_concurrent ........................   Passed    0.52 sec
+        Start 242: native_node_startup
+240/297 Test #235: token_creation_differential .................   Passed   29.52 sec
+        Start 243: minima_entry_differential
+241/297 Test #236: multisig_workflow_differential ..............   Passed   19.86 sec
+        Start 244: decrypt_backup_differential
+242/297 Test #240: native_h2_differential ......................   Passed   11.13 sec
+        Start 245: backup_differential
+243/297 Test #242: native_node_startup .........................***Failed    7.29 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "node_processes": 0,
+  "checks": [],
+  "failures": [
+    {
+      "error": "AssertionError('Minima @ 12/09/2026 00:30:46 [5.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:30:46 [2.4 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 12/09/2026 00:30:46 [2.4 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 12/09/2026 00:30:46 [2.4 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 12/09/2026 00:30:46 [2.4 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 12/09/2026 00:30:46 [2.4 MB] : *                                            *\\nMinima @ 12/09/2026 00:30:46 [2.4 MB] : **********************************************\\nMinima @ 12/09/2026 00:30:46 [2.4 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 12/09/2026 00:30:46 [3.2 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 12/09/2026 00:30:46 [3.2 MB] : Wiping previous config files..\\nMinima @ 12/09/2026 00:30:46 [8.2 MB] : Generating Base Private Seed Key\\nMinima @ 12/09/2026 00:30:46 [8.7 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 12/09/2026 00:30:46 [13.9 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/native-node-z8x9gyv4/data/1.1/databases/userprefs.db\\nMinima @ 12/09/2026 00:30:46 [15.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/native-node-z8x9gyv4/data/1.1/databases/cascade.db\\nMinima @ 12/09/2026 00:30:46 [15.5 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 12/09/2026 00:30:46 [15.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/native-node-z8x9gyv4/data/1.1/databases/chaintree.db\\nMinima @ 12/09/2026 00:30:46 [15.6 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/native-node-z8x9gyv4/data/1.1/databases/p2p.db\\nMinima @ 12/09/2026 00:30:46 [15.6 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/native-node-z8x9gyv4/data/1.1/databases/p2p2.db\\nMinima @ 12/09/2026 00:30:46 [35.5 MB] : Calculate device hash rate (1000 hashes) : 0.02941 MHs\\nMinima @ 12/09/2026 00:30:48 [131.7 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 12/09/2026 00:30:48 [301.6 MB] : Genesis block created : 0x6BBCDBEA2C7DE252F8C475FE83EC63B226887ADB6C1F177E246DDF0B60558D6F\\nMinima @ 12/09/2026 00:30:48 [15.9 MB] : NEW Unspent Coin : {\"coinid\":\"0xFA76D29B04805E51A658642E605881D5734A5145831D0EC5A5B084AD11C98FD7\",\"amount\":\"1000000000\",\"address\":\"0x8A81FED0DDCBB406B59546902C32688299E86E50F2A3FE0507E5A4413B030ADA\",\"miniaddress\":\"MxG084AG7VD1NEBMG3BB5A6W0M34Q42J7K6SK7WKFV0A1V5KH0JM0ZARA3JEDYA\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 12/09/2026 00:30:49 [15.1 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')"
+    }
+  ],
+  "scope": "Real pinned Main and native MinimaCoreC++ with H2: solo genesis startup, hash/status/quit, graceful database save, then other runtime and original runtime reopen the same complete node directory; plaintext and encrypted wallets, compact shutdown. Exact selected stable status/chain fields and SHA3 value; timestamps, random genesis across fresh directories, memory/disk size, uptime, log destinations/order and stack text are not compared. No public-peer connection, long-running mining/sync, RPC/daemon or full-node parity certification."
+}
+
+        Start 246: restore_differential
+244/297 Test #243: minima_entry_differential ...................   Passed   12.85 sec
+        Start 247: native_restore_startup
+245/297 Test #247: native_restore_startup ......................***Failed    6.53 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "restore_command": "restore",
+  "recent_invalid_host_ignored": false,
+  "node_processes": 0,
+  "checks": [],
+  "failures": [
+    {
+      "error": "RuntimeError('Node exited: Minima @ 12/09/2026 00:31:02 [5.3 MB] : **********************************************\\nMinima @ 12/09/2026 00:31:02 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 12/09/2026 00:31:02 [2.5 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 12/09/2026 00:31:02 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 12/09/2026 00:31:02 [2.5 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 12/09/2026 00:31:02 [2.5 MB] : *                                            *\\nMinima @ 12/09/2026 00:31:02 [2.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:31:02 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 12/09/2026 00:31:02 [3.1 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 12/09/2026 00:31:02 [3.2 MB] : Wiping previous config files..\\nMinima @ 12/09/2026 00:31:02 [13.7 MB] : Generating Base Private Seed Key\\nMinima @ 12/09/2026 00:31:02 [14.3 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 12/09/2026 00:31:02 [11.2 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-5wrg464q/baseline/1.1/databases/userprefs.db\\nMinima @ 12/09/2026 00:31:02 [12.8 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-5wrg464q/baseline/1.1/databases/cascade.db\\nMinima @ 12/09/2026 00:31:02 [12.8 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 12/09/2026 00:31:02 [12.8 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-5wrg464q/baseline/1.1/databases/chaintree.db\\nMinima @ 12/09/2026 00:31:02 [12.8 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-5wrg464q/baseline/1.1/databases/p2p.db\\nMinima @ 12/09/2026 00:31:02 [12.8 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-5wrg464q/baseline/1.1/databases/p2p2.db\\nMinima @ 12/09/2026 00:31:02 [20.5 MB] : Calculate device hash rate (1000 hashes) : 0.0909 MHs\\nMinima @ 12/09/2026 00:31:03 [73.7 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 12/09/2026 00:31:03 [69.8 MB] : Genesis block created : 0x2935331C0FDB844DA5844A8DD8C3B02F103B124E1B8C481D974AA044F43E5925\\nMinima @ 12/09/2026 00:31:03 [72.5 MB] : NEW Unspent Coin : {\"coinid\":\"0xD79404F3A13A913CFC939043549747B822F1F9FDCE9734BFD94DA9146C6E5C95\",\"amount\":\"1000000000\",\"address\":\"0x1A9CC4E645217C5EF1C4CD9D48D393595B95D37489EB611FE440C4D81A6D0520\",\"miniaddress\":\"MxG080QJJ2ECH91FHFF3H6DJY4D74QPBEAT6T49TDGHVP20ZJC1KR85407TMCU7\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 12/09/2026 00:31:03 [16.9 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')"
+    }
+  ],
+  "scope": "Actual unmodified pinned Java Minima and native MinimaCoreC++ with real H2, all eight solo-mode default keys, both backup/restore directions, real Main worker shutdown, persisted key-use increments and original chain on opposite-runtime reopen. For restoresync the recent-backup path is tested with absent and invalid host; remote sync remains unverified here. Plaintext SQL storage and password-encrypted backups; public network, encrypted wallet database, damaged running-node restores and full parity remain unverified."
+}
+
+        Start 248: reset_differential
+246/297 Test #244: decrypt_backup_differential .................   Passed   22.24 sec
+        Start 249: archive_command_differential
+247/297 Test #245: backup_differential .........................   Passed   54.27 sec
+        Start 250: native_archive_startup
+248/297 Test #250: native_archive_startup ......................***Failed    9.74 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "node_processes": 0,
+  "exports": [],
+  "checks": [],
+  "failures": [
+    {
+      "stage": "baseline",
+      "error": "RuntimeError('Node exited: Minima @ 12/09/2026 00:31:51 [5.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : *                                            *\\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : **********************************************\\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 12/09/2026 00:31:51 [3.3 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 12/09/2026 00:31:51 [3.3 MB] : Wiping previous config files..\\nMinima @ 12/09/2026 00:31:51 [7.7 MB] : Generating Base Private Seed Key\\nMinima @ 12/09/2026 00:31:51 [8.3 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 12/09/2026 00:31:51 [10.9 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/userprefs.db\\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/cascade.db\\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/chaintree.db\\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/p2p.db\\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/p2p2.db\\nMinima @ 12/09/2026 00:31:51 [16.7 MB] : Calculate device hash rate (1000 hashes) : 0.08333 MHs\\nMinima @ 12/09/2026 00:31:52 [203.8 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 12/09/2026 00:31:52 [31.8 MB] : Genesis block created : 0x955C3766B7A2B67A9368C88304B8222833D57FC284908D9F553DEF175FA3D954\\nMinima @ 12/09/2026 00:31:52 [35.8 MB] : NEW Unspent Coin : {\"coinid\":\"0xE55038CE8E39BA5A1C4030DA9947516439791FE07CE0E4675BF340944AD0D0A5\",\"amount\":\"1000000000\",\"address\":\"0x2AEC11D2B70C4CEE55EA52693A32BE02D1C790123F10F27D4E62181E4DCA75CD\",\"miniaddress\":\"MxG081ATG8T5DZC9JN5BQWWD4T35FG2Q73P04HV23P7QJJ230F4RWJYPK7BHYE9\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\n{\\n  \"command\":\"keys\",\\n  \"params\":{\\n    \"action\":\"createallkeys\",\\n    \"keyuses\":\"7\"\\n  },\\n  \"status\":true,\\n  \"pending\":false,\\n  \"response\":{\\n    \"message\":\"Keys being created..\"\\n  }\\n}\\nMinima @ 12/09/2026 00:31:52 [24.3 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')",
+      "nodes": [
+        {
+          "stdout": "Minima @ 12/09/2026 00:31:51 [5.5 MB] : **********************************************\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : *  __  __  ____  _  _  ____  __  __    __    *\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : * (  \\/  )(_  _)( \\( )(_  _)(  \\/  )  /__\\   *\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\  *\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : * (_/\\/\\_)(____)(_)\\_)(____)(_/\\/\\_)(__)(__) *\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : *                                            *\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : **********************************************\nMinima @ 12/09/2026 00:31:51 [2.6 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\nMinima @ 12/09/2026 00:31:51 [3.3 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\nMinima @ 12/09/2026 00:31:51 [3.3 MB] : Wiping previous config files..\nMinima @ 12/09/2026 00:31:51 [7.7 MB] : Generating Base Private Seed Key\nMinima @ 12/09/2026 00:31:51 [8.3 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\nMinima @ 12/09/2026 00:31:51 [10.9 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/userprefs.db\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/cascade.db\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Loading TxPowTree size : 0 bytes\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/chaintree.db\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/p2p.db\nMinima @ 12/09/2026 00:31:51 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/archive-node-xmtblf4l/baseline/1.1/databases/p2p2.db\nMinima @ 12/09/2026 00:31:51 [16.7 MB] : Calculate device hash rate (1000 hashes) : 0.08333 MHs\nMinima @ 12/09/2026 00:31:52 [203.8 MB] : 3 more initial keys created.. Total now : 3 / 8\nMinima @ 12/09/2026 00:31:52 [31.8 MB] : Genesis block created : 0x955C3766B7A2B67A9368C88304B8222833D57FC284908D9F553DEF175FA3D954\nMinima @ 12/09/2026 00:31:52 [35.8 MB] : NEW Unspent Coin : {\"coinid\":\"0xE55038CE8E39BA5A1C4030DA9947516439791FE07CE0E4675BF340944AD0D0A5\",\"amount\":\"1000000000\",\"address\":\"0x2AEC11D2B70C4CEE55EA52693A32BE02D1C790123F10F27D4E62181E4DCA75CD\",\"miniaddress\":\"MxG081ATG8T5DZC9JN5BQWWD4T35FG2Q73P04HV23P7QJJ230F4RWJYPK7BHYE9\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\n{\n  \"command\":\"keys\",\n  \"params\":{\n    \"action\":\"createallkeys\",\n    \"keyuses\":\"7\"\n  },\n  \"status\":true,\n  \"pending\":false,\n  \"response\":{\n    \"message\":\"Keys being created..\"\n  }\n}\nMinima @ 12/09/2026 00:31:52 [24.3 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "Actual pinned Java and native solo nodes with real H2. Valid saved genesis exported identically as H2/raw by both runtimes. Both import formats in both runtimes, real nested resync and worker shutdown, reset restore in both runtimes, opposite-runtime chain/coin/key reopen and signing. Genesis only: cascades, multi-batches, seed replacement, network retries and complete node parity remain unverified."
+}
+
+        Start 251: archive_network_differential
+249/297 Test #251: archive_network_differential ................***Failed    6.12 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+Traceback (most recent call last):
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/archive_network_differential.py", line 76, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/archive_network_differential.py", line 17, in main
+    server=Responder();checks=[];failures=[];stage='encodings'
+  File "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/tools/peers_checker_differential.py", line 31, in __init__
+    self.socket=socket.socket();self.socket.bind(('127.0.0.1',0));self.socket.listen();self.socket.settimeout(.1);self.port=self.socket.getsockname()[1];self.stop=False;self.lock=threading.Lock();self.replies=[];self.requests=[];self.thread=threading.Thread(target=self.run,daemon=True);self.thread.start()
+                                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+        Start 252: restoresync_differential
+250/297 Test #246: restore_differential ........................   Passed   72.95 sec
+        Start 253: native_restoresync_startup
+251/297 Test #253: native_restoresync_startup ..................***Failed    6.30 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "restore_command": "restoresync",
+  "recent_invalid_host_ignored": false,
+  "node_processes": 0,
+  "checks": [],
+  "failures": [
+    {
+      "error": "RuntimeError('Node exited: Minima @ 12/09/2026 00:32:06 [5.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:32:06 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 12/09/2026 00:32:06 [2.5 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 12/09/2026 00:32:06 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 12/09/2026 00:32:06 [2.5 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 12/09/2026 00:32:06 [2.5 MB] : *                                            *\\nMinima @ 12/09/2026 00:32:06 [2.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:32:06 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 12/09/2026 00:32:06 [3.2 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 12/09/2026 00:32:06 [3.3 MB] : Wiping previous config files..\\nMinima @ 12/09/2026 00:32:07 [13.9 MB] : Generating Base Private Seed Key\\nMinima @ 12/09/2026 00:32:07 [14.4 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 12/09/2026 00:32:07 [19.6 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-e1dsl5o3/baseline/1.1/databases/userprefs.db\\nMinima @ 12/09/2026 00:32:07 [21.2 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-e1dsl5o3/baseline/1.1/databases/cascade.db\\nMinima @ 12/09/2026 00:32:07 [21.3 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 12/09/2026 00:32:07 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-e1dsl5o3/baseline/1.1/databases/chaintree.db\\nMinima @ 12/09/2026 00:32:07 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-e1dsl5o3/baseline/1.1/databases/p2p.db\\nMinima @ 12/09/2026 00:32:07 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restore-node-e1dsl5o3/baseline/1.1/databases/p2p2.db\\nMinima @ 12/09/2026 00:32:07 [16.8 MB] : Calculate device hash rate (1000 hashes) : 0.1 MHs\\nMinima @ 12/09/2026 00:32:08 [43.8 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 12/09/2026 00:32:08 [255.7 MB] : Genesis block created : 0xE13B07B8BF842F7618D5F3A20483A574E13F8E9A7D3D3B0EC8E7DB1C2A1DAD54\\nMinima @ 12/09/2026 00:32:08 [259.5 MB] : NEW Unspent Coin : {\"coinid\":\"0xB6105B5F3E73198FD09991FA97813CEE0BD0F3405014C50EFEC9A63200308032\",\"amount\":\"1000000000\",\"address\":\"0x24A4A592B033577659DD0C1DCC3359D50B873C80F13A9254311B59C2A30794BB\",\"miniaddress\":\"MxG0814KWWP5C1JATR5JN8C3N636MEY1E3JP07H7A958C8RB71A61SKND5ZDPY0\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 12/09/2026 00:32:08 [16.8 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')"
+    }
+  ],
+  "scope": "Actual unmodified pinned Java Minima and native MinimaCoreC++ with real H2, all eight solo-mode default keys, both backup/restore directions, real Main worker shutdown, persisted key-use increments and original chain on opposite-runtime reopen. For restoresync the recent-backup path is tested with absent and invalid host; remote sync remains unverified here. Plaintext SQL storage and password-encrypted backups; public network, encrypted wallet database, damaged running-node restores and full parity remain unverified."
+}
+
+        Start 254: native_restoresync_remote
+252/297 Test #254: native_restoresync_remote ...................***Failed    7.99 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "node_processes": 0,
+  "encodings": {},
+  "checks": [],
+  "failures": [
+    {
+      "stage": "baseline",
+      "error": "RuntimeError('Node exited: Minima @ 12/09/2026 00:32:15 [5.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : *                                            *\\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : **********************************************\\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 12/09/2026 00:32:15 [3.1 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 12/09/2026 00:32:15 [3.2 MB] : Wiping previous config files..\\nMinima @ 12/09/2026 00:32:15 [13.8 MB] : Generating Base Private Seed Key\\nMinima @ 12/09/2026 00:32:15 [14.4 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 12/09/2026 00:32:15 [19.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/userprefs.db\\nMinima @ 12/09/2026 00:32:15 [21.2 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/cascade.db\\nMinima @ 12/09/2026 00:32:15 [21.3 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 12/09/2026 00:32:15 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/chaintree.db\\nMinima @ 12/09/2026 00:32:15 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/p2p.db\\nMinima @ 12/09/2026 00:32:15 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/p2p2.db\\nMinima @ 12/09/2026 00:32:15 [16.7 MB] : Calculate device hash rate (1000 hashes) : 0.025 MHs\\nMinima @ 12/09/2026 00:32:16 [215.7 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 12/09/2026 00:32:16 [177.9 MB] : Genesis block created : 0x1C721950AABE7FF547EEB865180D473BC4FEFB1E5501CD664621692A7FA23D9A\\nMinima @ 12/09/2026 00:32:16 [180.4 MB] : NEW Unspent Coin : {\"coinid\":\"0x6AF947FBF9F1115ABFC1712C5C055ACDA5FC1373F32EB0370C33640A53D0A1E3\",\"amount\":\"1000000000\",\"address\":\"0xC020CB331C3B82FEC53C86435B9017C3C870B70AB12890176783887691F74D69\",\"miniaddress\":\"MxG0860435J671RGBVCAF468DDP05U3P1ZBE2YH5281EPS3H1R93TQDD42E7T2S\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 12/09/2026 00:32:16 [14.7 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')",
+      "nodes": [
+        {
+          "stdout": "Minima @ 12/09/2026 00:32:15 [5.5 MB] : **********************************************\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : *  __  __  ____  _  _  ____  __  __    __    *\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : * (  \\/  )(_  _)( \\( )(_  _)(  \\/  )  /__\\   *\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\  *\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : * (_/\\/\\_)(____)(_)\\_)(____)(_/\\/\\_)(__)(__) *\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : *                                            *\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : **********************************************\nMinima @ 12/09/2026 00:32:15 [2.4 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\nMinima @ 12/09/2026 00:32:15 [3.1 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\nMinima @ 12/09/2026 00:32:15 [3.2 MB] : Wiping previous config files..\nMinima @ 12/09/2026 00:32:15 [13.8 MB] : Generating Base Private Seed Key\nMinima @ 12/09/2026 00:32:15 [14.4 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\nMinima @ 12/09/2026 00:32:15 [19.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/userprefs.db\nMinima @ 12/09/2026 00:32:15 [21.2 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/cascade.db\nMinima @ 12/09/2026 00:32:15 [21.3 MB] : Loading TxPowTree size : 0 bytes\nMinima @ 12/09/2026 00:32:15 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/chaintree.db\nMinima @ 12/09/2026 00:32:15 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/p2p.db\nMinima @ 12/09/2026 00:32:15 [21.3 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/restoresync-remote-fm_sqv3i/baseline/1.1/databases/p2p2.db\nMinima @ 12/09/2026 00:32:15 [16.7 MB] : Calculate device hash rate (1000 hashes) : 0.025 MHs\nMinima @ 12/09/2026 00:32:16 [215.7 MB] : 3 more initial keys created.. Total now : 3 / 8\nMinima @ 12/09/2026 00:32:16 [177.9 MB] : Genesis block created : 0x1C721950AABE7FF547EEB865180D473BC4FEFB1E5501CD664621692A7FA23D9A\nMinima @ 12/09/2026 00:32:16 [180.4 MB] : NEW Unspent Coin : {\"coinid\":\"0x6AF947FBF9F1115ABFC1712C5C055ACDA5FC1373F32EB0370C33640A53D0A1E3\",\"amount\":\"1000000000\",\"address\":\"0xC020CB331C3B82FEC53C86435B9017C3C870B70AB12890176783887691F74D69\",\"miniaddress\":\"MxG0860435J671RGBVCAF468DDP05U3P1ZBE2YH5281EPS3H1R93TQDD42E7T2S\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\nMinima @ 12/09/2026 00:32:16 [14.7 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "Actual pinned Java/native nodes and H2; deliberately retimed valid solo genesis, unchanged body/MMR, identical codecs. Opposite-runtime backups and reopen; real loopback preflight, nonempty retained genesis IBD, empty archive, failed preflight/later batch with real ten-second retries, exact request frames, key-use effects and signing. No new-height advancement, cascades, multiple nonempty batches, memory resets, delayed read/connect timeouts or full parity claim."
+}
+
+        Start 255: mega_commands_differential
+253/297 Test #248: reset_differential ..........................   Passed  106.42 sec
+        Start 256: native_mega_startup
+254/297 Test #256: native_mega_startup .........................***Failed    8.12 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "node_processes": 0,
+  "exports": [],
+  "encodings": {},
+  "checks": [],
+  "failures": [
+    {
+      "stage": "export writer 0",
+      "error": "RuntimeError('Node exited: Minima @ 12/09/2026 00:32:56 [5.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : *                                            *\\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 12/09/2026 00:32:57 [3.2 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 12/09/2026 00:32:57 [3.2 MB] : Wiping previous config files..\\nMinima @ 12/09/2026 00:32:57 [13.8 MB] : Generating Base Private Seed Key\\nMinima @ 12/09/2026 00:32:57 [14.4 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 12/09/2026 00:32:57 [19.6 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/userprefs.db\\nMinima @ 12/09/2026 00:32:57 [21.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/cascade.db\\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/chaintree.db\\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/p2p.db\\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/p2p2.db\\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Loading MegaMMR size : 0 bytes\\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/megammr.mmr\\nMinima @ 12/09/2026 00:32:57 [16.8 MB] : Calculate device hash rate (1000 hashes) : 0.1666 MHs\\nMinima @ 12/09/2026 00:32:58 [129.7 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 12/09/2026 00:32:58 [18.0 MB] : Genesis block created : 0xBBED92E3D460930BEB564249DD833916454E91C77E8A77877DE5EC2860A65901\\nMinima @ 12/09/2026 00:32:58 [21.2 MB] : NEW Unspent Coin : {\"coinid\":\"0xB79E963DE41222719AA24F0435816F03BB7AB560A6252FEB24D2B125540478D7\",\"amount\":\"1000000000\",\"address\":\"0xF7C4235924108934331FA0B2F92AE22331596568429C441084F393FC472393F8\",\"miniaddress\":\"MxG087NZGHYW90GH4Q367T0MBSWYZH365CMAQ22JH21117JWFU4E8SJV0Q37DFS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 12/09/2026 00:32:58 [17.0 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')",
+      "nodes": [
+        {
+          "stdout": "Minima @ 12/09/2026 00:32:56 [5.5 MB] : **********************************************\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : * (  \\/  )(_  _)( \\( )(_  _)(  \\/  )  /__\\   *\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\  *\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : * (_/\\/\\_)(____)(_)\\_)(____)(_/\\/\\_)(__)(__) *\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : *                                            *\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : **********************************************\nMinima @ 12/09/2026 00:32:57 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\nMinima @ 12/09/2026 00:32:57 [3.2 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\nMinima @ 12/09/2026 00:32:57 [3.2 MB] : Wiping previous config files..\nMinima @ 12/09/2026 00:32:57 [13.8 MB] : Generating Base Private Seed Key\nMinima @ 12/09/2026 00:32:57 [14.4 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\nMinima @ 12/09/2026 00:32:57 [19.6 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/userprefs.db\nMinima @ 12/09/2026 00:32:57 [21.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/cascade.db\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Loading TxPowTree size : 0 bytes\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/chaintree.db\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/p2p.db\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/p2p2.db\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Loading MegaMMR size : 0 bytes\nMinima @ 12/09/2026 00:32:57 [21.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/mega-node-acr6kq9w/baseline/1.1/databases/megammr.mmr\nMinima @ 12/09/2026 00:32:57 [16.8 MB] : Calculate device hash rate (1000 hashes) : 0.1666 MHs\nMinima @ 12/09/2026 00:32:58 [129.7 MB] : 3 more initial keys created.. Total now : 3 / 8\nMinima @ 12/09/2026 00:32:58 [18.0 MB] : Genesis block created : 0xBBED92E3D460930BEB564249DD833916454E91C77E8A77877DE5EC2860A65901\nMinima @ 12/09/2026 00:32:58 [21.2 MB] : NEW Unspent Coin : {\"coinid\":\"0xB79E963DE41222719AA24F0435816F03BB7AB560A6252FEB24D2B125540478D7\",\"amount\":\"1000000000\",\"address\":\"0xF7C4235924108934331FA0B2F92AE22331596568429C441084F393FC472393F8\",\"miniaddress\":\"MxG087NZGHYW90GH4Q367T0MBSWYZH365CMAQ22JH21117JWFU4E8SJV0Q37DFS\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\nMinima @ 12/09/2026 00:32:58 [17.0 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "Actual pinned Java/native solo nodes with MegaMMR and real H2. Identical exports, saved-data default proof-serving callback and file integrity helper; import and loopback resync in both runtimes, exact frames and saved peers, opposite-runtime chain/coin/proof/key reopen and signing. Genesis only, existing-wallet branch: no pruned-coin recovery, new-height advancement, cascades, full inbound network serving, phrase/backup resync, delayed timeouts or full parity claim."
+}
+
+        Start 257: systemcheck_commands_differential
+255/297 Test #257: systemcheck_commands_differential ...........   Passed   10.99 sec
+        Start 258: native_systemcheck_startup
+256/297 Test #258: native_systemcheck_startup ..................***Failed    9.28 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "passed": false,
+  "node_processes": 0,
+  "checks": [],
+  "failures": [
+    {
+      "stage": "java",
+      "error": "RuntimeError('Node exited: Minima @ 12/09/2026 00:33:17 [5.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : *                                            *\\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 12/09/2026 00:33:17 [3.3 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 12/09/2026 00:33:17 [3.3 MB] : Wiping previous config files..\\nMinima @ 12/09/2026 00:33:17 [10.7 MB] : Generating Base Private Seed Key\\nMinima @ 12/09/2026 00:33:17 [11.2 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 12/09/2026 00:33:17 [16.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/userprefs.db\\nMinima @ 12/09/2026 00:33:17 [18.0 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/cascade.db\\nMinima @ 12/09/2026 00:33:17 [18.1 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 12/09/2026 00:33:17 [18.1 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/chaintree.db\\nMinima @ 12/09/2026 00:33:17 [18.1 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/p2p.db\\nMinima @ 12/09/2026 00:33:17 [18.1 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/p2p2.db\\nMinima @ 12/09/2026 00:33:17 [32.6 MB] : Calculate device hash rate (1000 hashes) : 0.07142 MHs\\nMinima @ 12/09/2026 00:33:18 [49.8 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 12/09/2026 00:33:18 [257.7 MB] : Genesis block created : 0xF39BB0AE269032BD5DCCEEAE728A3C309542F8432BAFC7D31B3718CD00D91CE9\\nMinima @ 12/09/2026 00:33:18 [260.5 MB] : NEW Unspent Coin : {\"coinid\":\"0x316D342C8E9E9C4D6D60268FD077B8337EAD1C6B1F1415CDFAD232D4933D699D\",\"amount\":\"1000000000\",\"address\":\"0xEA64FB03B1E86A15883BA7AF417F6D6DD692D8EA4424EBF38583FF865B1AC0C4\",\"miniaddress\":\"MxG087ACJTG7CF8D8AZGET7YT0NURBDQQ9DHQW44JYV71C3VU35M6M0ZG2QEQN8\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 12/09/2026 00:33:18 [14.8 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')",
+      "nodes": [
+        {
+          "stdout": "Minima @ 12/09/2026 00:33:17 [5.5 MB] : **********************************************\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : *  __  __  ____  _  _  ____  __  __    __    *\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : * (  \\/  )(_  _)( \\( )(_  _)(  \\/  )  /__\\   *\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\  *\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : * (_/\\/\\_)(____)(_)\\_)(____)(_/\\/\\_)(__)(__) *\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : *                                            *\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : **********************************************\nMinima @ 12/09/2026 00:33:17 [2.5 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\nMinima @ 12/09/2026 00:33:17 [3.3 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\nMinima @ 12/09/2026 00:33:17 [3.3 MB] : Wiping previous config files..\nMinima @ 12/09/2026 00:33:17 [10.7 MB] : Generating Base Private Seed Key\nMinima @ 12/09/2026 00:33:17 [11.2 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\nMinima @ 12/09/2026 00:33:17 [16.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/userprefs.db\nMinima @ 12/09/2026 00:33:17 [18.0 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/cascade.db\nMinima @ 12/09/2026 00:33:17 [18.1 MB] : Loading TxPowTree size : 0 bytes\nMinima @ 12/09/2026 00:33:17 [18.1 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/chaintree.db\nMinima @ 12/09/2026 00:33:17 [18.1 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/p2p.db\nMinima @ 12/09/2026 00:33:17 [18.1 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/systemcheck-node-s2um01vt/data/1.1/databases/p2p2.db\nMinima @ 12/09/2026 00:33:17 [32.6 MB] : Calculate device hash rate (1000 hashes) : 0.07142 MHs\nMinima @ 12/09/2026 00:33:18 [49.8 MB] : 3 more initial keys created.. Total now : 3 / 8\nMinima @ 12/09/2026 00:33:18 [257.7 MB] : Genesis block created : 0xF39BB0AE269032BD5DCCEEAE728A3C309542F8432BAFC7D31B3718CD00D91CE9\nMinima @ 12/09/2026 00:33:18 [260.5 MB] : NEW Unspent Coin : {\"coinid\":\"0x316D342C8E9E9C4D6D60268FD077B8337EAD1C6B1F1415CDFAD232D4933D699D\",\"amount\":\"1000000000\",\"address\":\"0xEA64FB03B1E86A15883BA7AF417F6D6DD692D8EA4424EBF38583FF865B1AC0C4\",\"miniaddress\":\"MxG087ACJTG7CF8D8AZGET7YT0NURBDQQ9DHQW44JYV71C3VU35M6M0ZG2QEQN8\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\nMinima @ 12/09/2026 00:33:18 [14.8 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "scope": "Actual pinned Java/native solo nodes and real H2, seven processor report shapes, all details selectors, real TxPoWProcessor/Main/immediate and delayed timer checker delivery, graceful shutdown. Live queue counts and scheduling are not compared for equality; no atomic report or exhaustive concurrency claim."
+}
+
+        Start 259: sphincs_command_differential
+257/297 Test #252: restoresync_differential ....................   Passed  179.97 sec
+        Start 261: native_base_test_startup
+258/297 Test #261: native_base_test_startup ....................***Failed    1.89 sec
+{
+  "passed": false,
+  "node_processes": 0,
+  "checks": [],
+  "failures": [
+    {
+      "runtime": "java",
+      "error": "RuntimeError('Node exited: Minima @ 12/09/2026 00:34:59 [5.5 MB] : **********************************************\\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : *  __  __  ____  _  _  ____  __  __    __    *\\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : * (  \\\\/  )(_  _)( \\\\( )(_  _)(  \\\\/  )  /__\\\\   *\\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\\\  *\\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : * (_/\\\\/\\\\_)(____)(_)\\\\_)(____)(_/\\\\/\\\\_)(__)(__) *\\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : *                                            *\\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : **********************************************\\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\\nMinima @ 12/09/2026 00:34:59 [3.2 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\\nMinima @ 12/09/2026 00:34:59 [3.2 MB] : Wiping previous config files..\\nMinima @ 12/09/2026 00:34:59 [7.7 MB] : Generating Base Private Seed Key\\nMinima @ 12/09/2026 00:34:59 [8.3 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\\nMinima @ 12/09/2026 00:35:00 [10.8 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/userprefs.db\\nMinima @ 12/09/2026 00:35:00 [12.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/cascade.db\\nMinima @ 12/09/2026 00:35:00 [12.5 MB] : Loading TxPowTree size : 0 bytes\\nMinima @ 12/09/2026 00:35:00 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/chaintree.db\\nMinima @ 12/09/2026 00:35:00 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/p2p.db\\nMinima @ 12/09/2026 00:35:00 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/p2p2.db\\nMinima @ 12/09/2026 00:35:00 [32.8 MB] : Calculate device hash rate (1000 hashes) : 0.04 MHs\\nMinima @ 12/09/2026 00:35:00 [177.7 MB] : 3 more initial keys created.. Total now : 3 / 8\\nMinima @ 12/09/2026 00:35:01 [115.7 MB] : Genesis block created : 0xC2FDB92412BE07C07D1E82CB17EABE4BAE4CDB16115171D410A8870DB2B68F42\\nMinima @ 12/09/2026 00:35:01 [119.4 MB] : NEW Unspent Coin : {\"coinid\":\"0xAA9D7E9543F13FFA5A22C8AD2777044E6CB2D9CB149C4BD94E98638C42482F50\",\"amount\":\"1000000000\",\"address\":\"0xCBA60154493B56E60BCD31F933D61496266F08916F0062306CAF342281C1BBC2\",\"miniaddress\":\"MxG086BKZ0Y8W9RARJ0NJ9HV4PTC54M4PNGH4BF01H30R5F6GH83GDRZ9VC3E7Y\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\\nMinima @ 12/09/2026 00:35:01 [14.8 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\\n')",
+      "nodes": [
+        {
+          "stdout": "Minima @ 12/09/2026 00:34:59 [5.5 MB] : **********************************************\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : *  __  __  ____  _  _  ____  __  __    __    *\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : * (  \\/  )(_  _)( \\( )(_  _)(  \\/  )  /__\\   *\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : *  )    (  _)(_  )  (  _)(_  )    (  /(__)\\  *\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : * (_/\\/\\_)(____)(_)\\_)(____)(_/\\/\\_)(__)(__) *\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : *                                            *\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : **********************************************\nMinima @ 12/09/2026 00:34:59 [2.4 MB] : Welcome to Pure Minima 1.1.2-TEST.8 - for assistance type help. Then press enter.\nMinima @ 12/09/2026 00:34:59 [3.2 MB] : SOLO NETWORK : userdb not found : FIRST RUN.. creating genesis coins..\nMinima @ 12/09/2026 00:34:59 [3.2 MB] : Wiping previous config files..\nMinima @ 12/09/2026 00:34:59 [7.7 MB] : Generating Base Private Seed Key\nMinima @ 12/09/2026 00:34:59 [8.3 MB] : Adding base MULTISIG address 0x56FCB91ECCF1E0B31B5ADF7D3374411F4BA1C569685CC945634FB2A23D4554E9\nMinima @ 12/09/2026 00:35:00 [10.8 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/userprefs.db\nMinima @ 12/09/2026 00:35:00 [12.4 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/cascade.db\nMinima @ 12/09/2026 00:35:00 [12.5 MB] : Loading TxPowTree size : 0 bytes\nMinima @ 12/09/2026 00:35:00 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/chaintree.db\nMinima @ 12/09/2026 00:35:00 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/p2p.db\nMinima @ 12/09/2026 00:35:00 [12.5 MB] : Load Object file does not exist : /Users/eurobuddha/Projects/minima/core/minima-core/cpp/build-optimized/base-test-node-mu8lbcs_/data/1.1/databases/p2p2.db\nMinima @ 12/09/2026 00:35:00 [32.8 MB] : Calculate device hash rate (1000 hashes) : 0.04 MHs\nMinima @ 12/09/2026 00:35:00 [177.7 MB] : 3 more initial keys created.. Total now : 3 / 8\nMinima @ 12/09/2026 00:35:01 [115.7 MB] : Genesis block created : 0xC2FDB92412BE07C07D1E82CB17EABE4BAE4CDB16115171D410A8870DB2B68F42\nMinima @ 12/09/2026 00:35:01 [119.4 MB] : NEW Unspent Coin : {\"coinid\":\"0xAA9D7E9543F13FFA5A22C8AD2777044E6CB2D9CB149C4BD94E98638C42482F50\",\"amount\":\"1000000000\",\"address\":\"0xCBA60154493B56E60BCD31F933D61496266F08916F0062306CAF342281C1BBC2\",\"miniaddress\":\"MxG086BKZ0Y8W9RARJ0NJ9HV4PTC54M4PNGH4BF01H30R5F6GH83GDRZ9VC3E7Y\",\"tokenid\":\"0x00\",\"token\":null,\"storestate\":true,\"state\":{},\"spent\":false,\"mmrentry\":\"1\",\"created\":\"1\"}\nMinima @ 12/09/2026 00:35:01 [14.8 MB] : [!] NIO ERROR - MAIN PORT 0 ALREADY IN USE. SHUTTING DOWN\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "seconds": 1.739,
+  "scope": "Actual pinned Java and native solo/noconnect nodes, real H2 archive/TxPoW databases, three test commands before and after restart, completion logs, valid status replies, preserved key sets, orderly exit, and no native sanitizer diagnostics including shutdown. No public network, SQL fault injection on durable storage or unused classloader-helper coverage."
+}
+
+        Start 262: text_commands_differential
+259/297 Test #262: text_commands_differential ..................   Passed    4.75 sec
+        Start 263: CONCATTests
+260/297 Test #263: CONCATTests .................................   Passed    0.29 sec
+        Start 264: concat_original_tests
+261/297 Test #264: concat_original_tests .......................   Passed    3.57 sec
+        Start 265: GETTests
+262/297 Test #265: GETTests ....................................   Passed    0.30 sec
+        Start 266: get_original_tests
+263/297 Test #249: archive_command_differential ................   Passed  243.18 sec
+        Start 267: SUBSETTests
+264/297 Test #267: SUBSETTests .................................   Passed    0.31 sec
+        Start 268: subset_original_tests
+265/297 Test #266: get_original_tests ..........................   Passed    3.26 sec
+        Start 269: mysql_coins_differential
+266/297 Test #268: subset_original_tests .......................   Passed    3.64 sec
+        Start 270: mysql_command_differential
+267/297 Test #269: mysql_coins_differential ....................   Passed    7.54 sec
+        Start 271: help_command_differential
+268/297 Test #271: help_command_differential ...................   Passed    3.63 sec
+        Start 272: streamable_differential
+269/297 Test #255: mega_commands_differential ..................***Failed  198.75 sec
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:9: warning: Unsafe is internal proprietary API and may be removed in a future release
+import sun.misc.Unsafe;
+               ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:19: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static final Unsafe U;
+                 ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                        ^
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/support/NIOClientOracle.java:20: warning: Unsafe is internal proprietary API and may be removed in a future release
+    static {try{Field f=Unsafe.class.getDeclaredField("theUnsafe");f.setAccessible(true);U=(Unsafe)f.get(null);}catch(Exception e){throw new RuntimeException(e);}}
+                                                                                            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+{
+  "passed": false,
+  "cases": 579,
+  "network_cases": 0,
+  "failures": [
+    {
+      "stage": "network",
+      "error": "PermissionError(1, 'Operation not permitted')"
+    }
+  ],
+  "scope": "Real H2 command metadata/gates/exports, file effects, mutable MegaMMR integrity and synthetic tree coin selection, peer files, default Main MegaMMR callback and loopback request decoding. Synthetic blocks are not live consensus evidence. Live import/resync, nonempty wallet/proof recovery, delayed timeouts and full parity remain unverified."
+}
+
+        Start 273: txbody_ids_differential
+270/297 Test #270: mysql_command_differential ..................   Passed   22.37 sec
+        Start 274: magic_differential
+271/297 Test #273: txbody_ids_differential .....................   Passed    6.78 sec
+        Start 275: hash_writers_differential
+272/297 Test #272: streamable_differential .....................   Passed   18.98 sec
+        Start 276: txheader_differential
+273/297 Test #275: hash_writers_differential ...................   Passed    6.23 sec
+        Start 277: original_helpers_differential
+274/297 Test #276: txheader_differential .......................   Passed    8.86 sec
+        Start 278: original_p2p_helpers_differential
+275/297 Test #277: original_helpers_differential ...............   Passed    4.20 sec
+        Start 279: original_p2p_tests
+276/297 Test #278: original_p2p_helpers_differential ...........   Passed    4.41 sec
+        Start 280: original_object_tests
+277/297 Test #279: original_p2p_tests ..........................   Passed    5.28 sec
+        Start 281: original_base_tests
+278/297 Test #280: original_object_tests .......................   Passed    4.55 sec
+        Start 282: base_value_api_differential
+279/297 Test #281: original_base_tests .........................   Passed    4.64 sec
+        Start 283: original_sha_tests
+280/297 Test #282: base_value_api_differential .................   Passed    3.57 sec
+        Start 284: original_state_tests
+281/297 Test #284: original_state_tests ........................   Passed    4.78 sec
+        Start 285: original_signature_tests
+282/297 Test #283: original_sha_tests ..........................   Passed    9.12 sec
+        Start 286: original_getter_tests
+283/297 Test #285: original_signature_tests ....................   Passed    7.86 sec
+        Start 287: original_verify_tests
+284/297 Test #286: original_getter_tests .......................   Passed    6.46 sec
+        Start 288: original_statement_commands_tests
+285/297 Test #287: original_verify_tests .......................   Passed    4.46 sec
+        Start 289: original_let_tests
+286/297 Test #288: original_statement_commands_tests ...........   Passed    5.38 sec
+        Start 290: original_expressions_tests
+287/297 Test #289: original_let_tests ..........................   Passed    3.97 sec
+        Start 291: original_token_tests
+288/297 Test #290: original_expressions_tests ..................   Passed    4.73 sec
+        Start 292: original_parser_tests
+289/297 Test #291: original_token_tests ........................   Passed    3.39 sec
+        Start 293: original_processor_test
+290/297 Test #293: original_processor_test .....................   Passed    1.08 sec
+        Start 294: jni_command_callers
+291/297 Test #292: original_parser_tests .......................   Passed    3.41 sec
+        Start 295: command_registry_differential
+292/297 Test #295: command_registry_differential ...............   Passed    3.41 sec
+        Start 296: database_mains_differential
+293/297 Test #294: jni_command_callers .........................   Passed   16.32 sec
+        Start 297: source_mapping_snapshot
+294/297 Test #297: source_mapping_snapshot .....................   Passed    2.94 sec
+295/297 Test #296: database_mains_differential .................   Passed   16.43 sec
+296/297 Test #259: sphincs_command_differential ................   Passed  277.81 sec
+297/297 Test #274: magic_differential ..........................   Passed  411.76 sec
+
+89% tests passed, 33 tests failed out of 297
+
+Total Test time (real) = 1471.55 sec
+
+The following tests FAILED:
+	 70 - nio_loopback (Failed)
+	 71 - nio_server_differential (Failed)
+	 72 - nio_server_main_differential (Failed)
+	 81 - nio_manager_transport_differential (Failed)
+	 88 - p2p_functions_differential (Failed)
+	 92 - peers_checker_differential (Failed)
+	 96 - p2p_discovery_differential (Failed)
+	 99 - http_server_differential (Failed)
+	100 - cmd_handler_differential (Failed)
+	122 - rpc_client_differential (Failed)
+	127 - minima_rpc_cli_differential (Failed)
+	128 - param_configurer_differential (Failed)
+	133 - runtime_sleep_differential (Failed)
+	134 - http_server_errors_differential (Failed)
+	136 - nio_server_errors_differential (Failed)
+	137 - nio_manager_errors_differential (Failed)
+	210 - archive_server_differential (Failed)
+	218 - ping_command_differential (Failed)
+	227 - rpc_live_differential (Failed)
+	231 - token_validation_differential (Failed)
+	232 - peers_command_differential (Failed)
+	237 - node_count_differential (Failed)
+	238 - incentive_cash_differential (Failed)
+	242 - native_node_startup (Failed)
+	247 - native_restore_startup (Failed)
+	250 - native_archive_startup (Failed)
+	251 - archive_network_differential (Failed)
+	253 - native_restoresync_startup (Failed)
+	254 - native_restoresync_remote (Failed)
+	255 - mega_commands_differential (Failed)
+	256 - native_mega_startup (Failed)
+	258 - native_systemcheck_startup (Failed)
+	261 - native_base_test_startup (Failed)
+Errors while running CTest

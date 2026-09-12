@@ -1,0 +1,71 @@
+Test project /var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/minima-optimized-socket-retry-ll9m6ff_
+      Start  70: nio_loopback
+      Start  71: nio_server_differential
+      Start  72: nio_server_main_differential
+      Start  81: nio_manager_transport_differential
+ 1/33 Test  #70: nio_loopback .........................   Passed    0.03 sec
+      Start  88: p2p_functions_differential
+ 2/33 Test  #71: nio_server_differential ..............   Passed    5.90 sec
+      Start  92: peers_checker_differential
+ 3/33 Test  #92: peers_checker_differential ...........   Passed    3.51 sec
+      Start  96: p2p_discovery_differential
+ 4/33 Test  #81: nio_manager_transport_differential ...   Passed   27.80 sec
+      Start  99: http_server_differential
+ 5/33 Test  #99: http_server_differential .............   Passed    2.83 sec
+      Start 100: cmd_handler_differential
+ 6/33 Test #100: cmd_handler_differential .............   Passed    6.11 sec
+      Start 122: rpc_client_differential
+ 7/33 Test #122: rpc_client_differential ..............   Passed    4.90 sec
+      Start 127: minima_rpc_cli_differential
+ 8/33 Test  #72: nio_server_main_differential .........   Passed   47.28 sec
+      Start 128: param_configurer_differential
+ 9/33 Test #127: minima_rpc_cli_differential ..........   Passed    5.73 sec
+      Start 133: runtime_sleep_differential
+10/33 Test #128: param_configurer_differential ........   Passed    4.55 sec
+      Start 134: http_server_errors_differential
+11/33 Test  #96: p2p_discovery_differential ...........   Passed   43.44 sec
+      Start 136: nio_server_errors_differential
+12/33 Test #133: runtime_sleep_differential ...........   Passed    6.61 sec
+      Start 137: nio_manager_errors_differential
+13/33 Test #134: http_server_errors_differential ......   Passed    6.22 sec
+      Start 210: archive_server_differential
+14/33 Test  #88: p2p_functions_differential ...........   Passed   58.13 sec
+      Start 218: ping_command_differential
+15/33 Test #137: nio_manager_errors_differential ......   Passed    6.05 sec
+      Start 227: rpc_live_differential
+16/33 Test #218: ping_command_differential ............   Passed    5.74 sec
+      Start 231: token_validation_differential
+17/33 Test #136: nio_server_errors_differential .......   Passed   13.36 sec
+      Start 232: peers_command_differential
+18/33 Test #231: token_validation_differential ........   Passed    5.12 sec
+      Start 237: node_count_differential
+19/33 Test #232: peers_command_differential ...........   Passed    5.67 sec
+      Start 238: incentive_cash_differential
+20/33 Test #238: incentive_cash_differential ..........   Passed    4.19 sec
+      Start 242: native_node_startup
+21/33 Test #237: node_count_differential ..............   Passed    8.85 sec
+      Start 247: native_restore_startup
+22/33 Test #247: native_restore_startup ...............   Passed   14.57 sec
+      Start 250: native_archive_startup
+23/33 Test #227: rpc_live_differential ................   Passed   37.41 sec
+      Start 251: archive_network_differential
+24/33 Test #242: native_node_startup ..................   Passed   27.79 sec
+      Start 253: native_restoresync_startup
+25/33 Test #253: native_restoresync_startup ...........   Passed   16.23 sec
+      Start 254: native_restoresync_remote
+26/33 Test #250: native_archive_startup ...............   Passed   36.35 sec
+      Start 255: mega_commands_differential
+27/33 Test #210: archive_server_differential ..........   Passed   95.88 sec
+      Start 256: native_mega_startup
+28/33 Test #256: native_mega_startup ..................   Passed   23.57 sec
+      Start 258: native_systemcheck_startup
+29/33 Test #258: native_systemcheck_startup ...........   Passed   12.79 sec
+      Start 261: native_base_test_startup
+30/33 Test #261: native_base_test_startup .............   Passed   11.93 sec
+31/33 Test #251: archive_network_differential .........   Passed  114.52 sec
+32/33 Test #255: mega_commands_differential ...........   Passed   85.58 sec
+33/33 Test #254: native_restoresync_remote ............   Passed  125.22 sec
+
+100% tests passed, 0 tests failed out of 33
+
+Total Test time (real) = 245.37 sec
