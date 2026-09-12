@@ -23,7 +23,7 @@ Two sibling documents cover our Android-app fork (`minima-core-android`), which 
 
 ---
 
-## Scope: six files
+## Scope: seven files
 
 ```
 src/org/minima/database/wallet/Wallet.java              security + removeScript cache fix (Part 3)
@@ -32,6 +32,7 @@ src/org/minima/objects/mmr/MMR.java                     heap
 src/org/minima/objects/mmr/MegaMMR.java                 heap
 src/org/minima/system/commands/backup/mmrsync/megammr.java   heap
 src/org/minima/utils/MiniFile.java                      heap
+src/org/minima/database/txpowdb/sql/TxPoWSqlDB.java     txpow table indexes (Part 4)
 ```
 
 A raw `git diff origin/main` also shows `docker/`, `rescue.java`, `Main.java`, `CommandRunner.java`,
@@ -286,6 +287,82 @@ truncated file → clean `EOFException`; 200 MB file on `-Xmx256m` → clean "to
 node alive; multi-batch verified with a `BATCH_SIZE=1` test build (6 blocks / 6 batches, cascade attach
 and tip continuation, no "NO PARENT"), imported chain intact after restart. On-device measurements are
 quoted per-commit above.
+
+# Part 4 — The `txpow` table has no index on the columns it is queried by
+
+**Commit `f7f0e08` · branch `MinimaCoreC++` · shipped in minimaCore Android 1.6.17-ui-h2**
+
+## The defect
+
+`TxPoWSqlDB.createSQL()` creates one index, `fastsearch ( txpowid, parentid )`. Five hot
+statements sort or filter on `timemilli` and `isrelevant`, and neither is indexed:
+
+```sql
+SELECT * FROM txpow ORDER BY timemilli DESC LIMIT ? OFFSET ?          -- getLatestTxPoW
+SELECT * FROM txpow WHERE isrelevant=1 ORDER BY timemilli DESC ...    -- getAllRelevant
+SELECT Count(*) AS tot FROM txpow WHERE isrelevant=1
+SELECT Count(*) AS tot FROM txpow WHERE timemilli > ?
+DELETE FROM txpow WHERE timemilli < ? AND isrelevant=0                -- the 12-hourly clean
+```
+
+Each is a full table scan plus sort, and `SELECT *` drags every row's `txpowdata` BLOB through
+that sort. Every `TxPoWSqlDB` method is `synchronized` on the instance, so one slow call stalls
+every other reader of the DB.
+
+## Evidence
+
+Measured live on a Galaxy S10+ running a 500 MB+ txpow store, 2026-09-11. All **1,626**
+`Long monitor contention` mentions in a two-hour window named `TxPoWSqlDB`; by method name
+(these jars carry no `LineNumberTable`, so the log's own method names are the only reliable
+attribution) `getLatestTxPoW` held the monitor **506** times, blocking `exists` (299) and
+`getTxPoW` (210) — the calls the chain processor needs every block. Longest hold **47.171 s**.
+
+`getLatestTxPoW` has exactly one caller: the `history` command. On Android the thread holding
+the lock was the app's IPC command executor, which is single-threaded, so one `history` call
+from any companion app stalls the node and every other companion at once.
+
+## The change
+
+Two indexes, created by the existing `CREATE INDEX IF NOT EXISTS` in `createSQL()`, so existing
+databases index themselves on the next open — no migration, no schema version, one slow first
+start on a large store:
+
+```sql
+CREATE INDEX IF NOT EXISTS txpowtime     ON txpow ( timemilli )
+CREATE INDEX IF NOT EXISTS txpowrelevant ON txpow ( isrelevant, timemilli )
+```
+
+Plus a deliberate `WHERE timemilli > 0` on `SQL_SELECT_TOPTXPOW`. **The indexes alone change
+nothing**: H2 will not use an index for a bare `ORDER BY … LIMIT` with no `WHERE`, so without
+that predicate the query stays a full table scan even with `txpowtime` present. The first cut of
+this patch was indexes only; it verified cleanly through jar and dex and would have shipped a fix
+that did nothing for the hot path.
+
+## Verification
+
+`EXPLAIN ANALYZE` against **H2 2.1.214** — the version the Android APK links — on a scratch
+database of 60,000 rows with 2 KB BLOBs, `ANALYZE`d:
+
+| | plan | page reads |
+|---|---|---|
+| index only, query unchanged | `tableScan` | 25,535 |
+| index + `WHERE timemilli > 0` | index | **3,755** |
+
+`getAllRelevant`, `getRelevantSize` and the cleanup `DELETE` all move off `tableScan` as well.
+The gap widens with the table: the scan is O(rows), the index path O(log n + limit).
+
+Wall-clock timing on a warm SSD showed 85 ms vs 88 ms — no signal, and it points the wrong way.
+Measure work done, not elapsed time.
+
+## Honest caveat
+
+This makes a bloated table survivable; it does not un-bloat it, and it has **not** been shown to
+fix a live fault. Both affected devices were fixed by `megammrsync action:resync`, one of them on
+an unpatched build. The underlying cause is Part 3 plus the fact that
+`DELETE FROM txpow WHERE timemilli < ? AND isrelevant=0` never removes rows marked relevant, so
+a polluted relevant set is permanent. That second half is still unfixed.
+
+---
 
 ## Branches
 
