@@ -1,0 +1,28 @@
+{
+  "source_head": "aea5d892a623271155dd7f2a2af1d06bdecab9b1",
+  "archive": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/deliverables/MinimaCoreCpp-team-20260912.zip",
+  "archive_sha256": "cba1450324a72191fec2d9e740392693e320718a95b5e672ce92c9d0637bf8f4",
+  "runtime_archive": "/Users/eurobuddha/Projects/minima/core/minima-core/cpp/deliverables/MinimaCoreCpp-team-20260912-runtime.zip",
+  "runtime_archive_sha256": "909ce54ab10ba60b2a11ea25ce90d1ed15f29599c2f23573dd635c821540c69d",
+  "payload_files_verified": 5742,
+  "extracted_folder": "/private/var/folders/7h/f9d528452rxf_sc863pzj1380000gn/T/Minima final delivery tbyr47ns/MinimaCoreCpp-team-20260912",
+  "all_extracted_hashes_verified": true,
+  "exported_source_map_passed": true,
+  "exported_lesson_count": 457,
+  "exported_lesson_links": 9650,
+  "exported_lesson_anchors": 2628,
+  "system_only_path_launcher_help_passed": true,
+  "help_created_no_data": true,
+  "tested_optimized_runtime_byte_identity_paths": [
+    "Start MinimaCoreC++.command",
+    "bin/MinimaCoreC++",
+    "lib/libcrypto.3.dylib",
+    "lib/libicudata.78.3.dylib",
+    "lib/libicui18n.78.3.dylib",
+    "lib/libicuuc.78.3.dylib",
+    "lib/libminima_h2.dylib"
+  ],
+  "tested_runtime_source_head": "e540881312b96a50aa4579a69f8755a943b12d86",
+  "native_source_unchanged_since_clean_e82_source_build": true,
+  "scope": "Actual final full ZIP extraction and file hashes, exported source/lesson checks and relocated launcher help. Node, five libraries and launcher byte-match the previously exercised optimized runtime; its recorded fresh/reopen successes and failures remain applicable. No new live sync pass or full parity claim."
+}

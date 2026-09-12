@@ -1,3 +1,25 @@
+# Bounded handover delivered — original parity goal remains incomplete
+
+The final project/runtime packages are verified. Read delivery/DELIVERY_RECEIPT.md
+for source identity, artifact paths and checksums; validation/delivery-final contains
+actual ZIP/source/lesson/runtime-identity checks and offline working recovery.
+The exported source is aea5d892a623271155dd7f2a2af1d06bdecab9b1. Later local commits
+only record delivery receipts; they do not change the shipped code.
+
+Earlier Debug292 PASS. Optimized297 have passing results across initial264pass/
+33fail and identical-command socket-access retry33PASS. Full SAN replay was stopped
+with289pass,1originalHORSTcleanupfailure,3unfinished; corrected targetedHORST and
+finalaffectedSANchecksPASS. All owned test processes exited. No fullSANparity claim.
+Full port remains456/457,missingoriginalJNI,fullAPIparitynot_verified. Mainnet startup
+and reopen reliability remain unverified. No new production sync algorithm was
+introduced to hide failures. Existing userpreview21001/wallet untouched.
+
+The user's bounded delivery request is finished before its01:30UTC/02:30London
+cutoff. Do not restart broad implementation or testing under that timebox. Any later
+work should start from the delivered known gaps and the user's next direction.
+
+## Previous checkpoint (historical)
+
 # Time-bounded delivery — final assembly
 
 Deadline remains 2026-09-12 01:30 UTC / 02:30 Europe/London. Do not extend.
