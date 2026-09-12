@@ -1,0 +1,23 @@
+{
+  "performed_full_signing": true,
+  "replayed_vector_sha256": null,
+  "cases": 269,
+  "passed": 269,
+  "independent_assertions": 1679,
+  "groups": {
+    "script": 5,
+    "message": 50,
+    "null-transaction": 1,
+    "setup-complete": 24,
+    "setup-partial": 168,
+    "null-setup-transaction": 1,
+    "null-both": 1,
+    "full-sign-setup-script": 1,
+    "cross-writer-script": 18
+  },
+  "failures": [],
+  "seconds": 1555.98,
+  "transcript_sha256": "790f2f31a07731f31e93bc1437e58549968b94e4804f5c0a6667a139b840fe98",
+  "input_vector_sha256": "271fd03c67ca873e57fe5e3bc42705a7eb5ed86c339cae9d86e574077b5b137b",
+  "scope": "Pinned SPHINCSUtils script, message and partial transaction state, actual full-size signatures and KISS VM acceptance/mutations. Exact stored state, cached transaction IDs, coin IDs, source exception types/log counts. NPE/EOF prose normalized. Raw aliases, null Coin members/list entries, arbitrary subclasses/concurrency and full node parity remain unverified."
+}

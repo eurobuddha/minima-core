@@ -1,0 +1,16 @@
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:43: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(Reader in){
+	                     ^
+/Users/eurobuddha/Projects/minima/core/minima-core/upstream-study/src/org/minima/utils/json/JSONValue.java:73: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static Object parse(String s){
+	                     ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 warnings
+{
+  "cases": 1492,
+  "passed": 1492,
+  "failures": [],
+  "reverse_rsa_recoveries": 20,
+  "scope": "Direct RSA private-encrypt/public-recover plus crypto interoperability/formatting/gzip and normal isolated file persistence; runtime integration and IO failure parity remain under review"
+}

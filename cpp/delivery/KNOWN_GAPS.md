@@ -42,8 +42,9 @@ by that repeat. These results do not establish reliable mainnet synchronization.
 
 ## Platform and delivery
 
-The executable targets Apple Silicon macOS 26+. It is locally ad-hoc signed, not
-notarized for public distribution. Other operating systems/architectures require
+The executable targets Apple Silicon macOS 26+. The installed app is Developer ID
+signed; older folder packages are ad-hoc signed. The replacement app is not yet
+notarized or published. See [current status](CURRENT_STATUS.md). Other operating systems/architectures require
 build and runtime validation. MDS/MiniDapp web UI is outside this minima-core console.
 
 The database dependency is an ahead-of-time native build of Java H2/MySQL, not a

@@ -1,0 +1,18 @@
+[  0%] Building CXX object CMakeFiles/minima_file_port.dir/src/org/minima/utils/encrypt/GenerateKey.cpp.o
+/Users/eurobuddha/Projects/minima/core/minima-core/cpp/src/org/minima/utils/encrypt/GenerateKey.cpp:94:23: warning: 'RSA_padding_check_PKCS1_type_1' is deprecated [-Wdeprecated-declarations]
+   94 |         int recovered=RSA_padding_check_PKCS1_type_1(plain.data(),sizeInt(plain.size()),out.data(),sizeInt(out.size()),EVP_PKEY_get_size(key));
+      |                       ^
+/opt/homebrew/include/openssl/rsa.h:388:1: note: 'RSA_padding_check_PKCS1_type_1' has been explicitly marked deprecated here
+  388 | OSSL_DEPRECATEDIN_3_0
+      | ^
+/opt/homebrew/include/openssl/macros.h:229:31: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  229 | #define OSSL_DEPRECATEDIN_3_0 OSSL_DEPRECATED(3.0)
+      |                               ^
+/opt/homebrew/include/openssl/macros.h:61:47: note: expanded from macro 'OSSL_DEPRECATED'
+   61 | #define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                               ^
+1 warning generated.
+[  0%] Linking CXX static library libminima_file_port.a
+[100%] Built target minima_file_port
+[100%] Linking CXX executable minima_utility
+[100%] Built target minima_utility

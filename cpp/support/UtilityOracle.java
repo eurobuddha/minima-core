@@ -21,6 +21,7 @@ public class UtilityOracle {
             switch(op){
             case "gen":{var key=GenerateKey.generateKeyPair();out=hx(key.getPublic().getEncoded())+"|"+hx(key.getPrivate().getEncoded());break;}
             case "key":out=hx((p[1].equals("public")?GenerateKey.convertBytesToPublic(bytes(p[2])):GenerateKey.convertBytesToPrivate(bytes(p[2]))).getEncoded());break;
+            case "rsacipher":{var cipher=GenerateKey.getAsymetricCipher();cipher.init(Integer.parseInt(p[2]),p[1].equals("public")?GenerateKey.convertBytesToPublic(bytes(p[3])):GenerateKey.convertBytesToPrivate(bytes(p[3])));out=hx(cipher.doFinal(bytes(p[4])));break;}
             case "derive":out=hx(GenerateKey.secretKey(str(p[1]),bytes(p[2])).getEncoded());break;
             case "aesenc":out=hx(EncryptDecrypt.encryptSYM(bytes(p[1]),bytes(p[2]),bytes(p[3])));break;
             case "aesdec":out=hx(EncryptDecrypt.decryptSYM(bytes(p[1]),bytes(p[2]),bytes(p[3])));break;

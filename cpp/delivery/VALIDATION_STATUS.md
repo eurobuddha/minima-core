@@ -1,4 +1,8 @@
-# Delivery validation status
+# Historical delivery validation status
+
+Current application and cascade-fix evidence is summarized in
+[CURRENT_STATUS.md](CURRENT_STATUS.md). The broad suite results below belong to the
+earlier delivery; they are not a full replay of the currently installed code.
 
 This is a tested development handover, not a complete Java/C++ parity certificate.
 The shipped candidate uses the optimized C++ build with `-O2 -g`, assertions enabled,

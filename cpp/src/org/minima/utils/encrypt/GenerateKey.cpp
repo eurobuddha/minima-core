@@ -75,10 +75,26 @@ std::vector<uint8_t> Cipher::doFinal(std::span<const uint8_t> input) const {
     }
     auto key=mRSA.value().native();KeyContext ctx(EVP_PKEY_CTX_new(key,nullptr),EVP_PKEY_CTX_free);if(!ctx) throw std::bad_alloc();
     bool encrypt=mMode==ENCRYPT_MODE;
-    if(encrypt==mRSA->isPrivate()) throw std::invalid_argument("Unsupported RSA key direction");
-    checked(encrypt?EVP_PKEY_encrypt_init(ctx.get()):EVP_PKEY_decrypt_init(ctx.get()),"RSA init");checked(EVP_PKEY_CTX_set_rsa_padding(ctx.get(),RSA_PKCS1_PADDING),"RSA padding mode");
-    if(!encrypt) {unsigned int reject=0;OSSL_PARAM params[]={OSSL_PARAM_construct_uint(OSSL_ASYM_CIPHER_PARAM_IMPLICIT_REJECTION,&reject),OSSL_PARAM_construct_end()};checked(EVP_PKEY_CTX_set_params(ctx.get(),params),"RSA explicit padding errors");}
-    size_t length=0;checked(encrypt?EVP_PKEY_encrypt(ctx.get(),nullptr,&length,input.data(),input.size()):EVP_PKEY_decrypt(ctx.get(),nullptr,&length,input.data(),input.size()),"RSA output size");std::vector<uint8_t> out(length);
-    checked(encrypt?EVP_PKEY_encrypt(ctx.get(),out.data(),&length,input.data(),input.size()):EVP_PKEY_decrypt(ctx.get(),out.data(),&length,input.data(),input.size()),"RSA operation");out.resize(length);return out;
+    // SunJCE's RSA Cipher also supports the type-1 private/public direction.
+    // Raw EVP sign/recover applies that padding without adding a message digest.
+    bool reverse=encrypt==mRSA->isPrivate();
+    checked(reverse?(encrypt?EVP_PKEY_sign_init(ctx.get()):EVP_PKEY_verify_recover_init(ctx.get()))
+                   :(encrypt?EVP_PKEY_encrypt_init(ctx.get()):EVP_PKEY_decrypt_init(ctx.get())),"RSA init");
+    // EVP padded recovery rejects a valid zero-length type-1 payload.
+    // Recover the encoded block and reuse OpenSSL's padding checker, whose zero
+    // return means successful empty plaintext rather than an error.
+    checked(EVP_PKEY_CTX_set_rsa_padding(ctx.get(),reverse&&!encrypt?RSA_NO_PADDING:RSA_PKCS1_PADDING),"RSA padding mode");
+    auto operation=reverse?(encrypt?EVP_PKEY_sign:EVP_PKEY_verify_recover)
+                          :(encrypt?EVP_PKEY_encrypt:EVP_PKEY_decrypt);
+    if(!encrypt && !reverse) {unsigned int reject=0;OSSL_PARAM params[]={OSSL_PARAM_construct_uint(OSSL_ASYM_CIPHER_PARAM_IMPLICIT_REJECTION,&reject),OSSL_PARAM_construct_end()};checked(EVP_PKEY_CTX_set_params(ctx.get(),params),"RSA explicit padding errors");}
+    size_t length=0;checked(operation(ctx.get(),nullptr,&length,input.data(),input.size()),"RSA output size");std::vector<uint8_t> out(length);
+    checked(operation(ctx.get(),out.data(),&length,input.data(),input.size()),"RSA operation");out.resize(length);
+    if(reverse && !encrypt){
+        std::vector<uint8_t> plain(out.size());
+        int recovered=RSA_padding_check_PKCS1_type_1(plain.data(),sizeInt(plain.size()),out.data(),sizeInt(out.size()),EVP_PKEY_get_size(key));
+        if(recovered<0)throw std::runtime_error("RSA padding");
+        plain.resize(size_t(recovered));return plain;
+    }
+    return out;
 }
 }

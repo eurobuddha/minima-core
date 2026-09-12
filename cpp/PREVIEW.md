@@ -1,5 +1,9 @@
 # Running the local executable preview
 
+The current interface is `/Applications/MinimaCoreC++ Preview.app`. See
+[current status](delivery/CURRENT_STATUS.md) for its identity, saved-data location,
+one-launch manual peer behavior, validation and publication limits.
+
 The [cascade cleanup replacement](delivery/CASCADE_CRASH_FIX.md) supersedes the
 original `6c28109` executable described below. At the owner's request, the familiar
 preview location now opens the optimized replacement with fresh data. A verified

@@ -6,8 +6,9 @@ A runnable native MinimaCore console for Apple Silicon macOS, developed against
 
 Start with the [team and student handover](delivery/START_HERE.md). It links the
 executable instructions, build/test instructions, presentation, lessons and current
-validation. The [existing port21001 preview](PREVIEW.md) remains a separate frozen
-snapshot with its own data.
+validation. The [current status](delivery/CURRENT_STATUS.md) identifies the installed
+configurable app, its source revisions and outstanding publication work. The
+[preview history](PREVIEW.md) records the replaced folder build and wallet recovery.
 
 ## Current scope
 

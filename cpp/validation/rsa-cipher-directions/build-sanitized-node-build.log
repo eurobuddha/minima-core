@@ -1,0 +1,4 @@
+[ 97%] Built target minima_file_port
+[ 97%] Built target minima_native_h2
+[100%] Linking CXX executable MinimaCoreC++
+[100%] Built target MinimaCoreCpp

@@ -1,0 +1,13 @@
+{
+  "queries": [
+    "hashHeaderWithDiff web search",
+    "gh search code Java_org_minima_utils_jni",
+    "gh search repos minima jni",
+    "upstream Android repository native/JNI filename trees"
+  ],
+  "native_symbol_matches": [],
+  "android_main_native_matches": [],
+  "android_terminal_master_native_matches": [],
+  "initial_android_terminal_main_query": "404; default branch verified as master, retried successfully",
+  "finding": "No matching implementation found in these searches. This does not prove none exists. JNI remains a specific dependency gap, not a whole-goal impasse."
+}

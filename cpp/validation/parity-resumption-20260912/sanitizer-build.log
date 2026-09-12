@@ -1,0 +1,12 @@
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_sphincs.dir/support/sphincs.cpp.o
+[100%] Linking CXX executable minima_sphincs
+[100%] Built target minima_sphincs
+[ 97%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_sphincs_command.dir/support/sphincs_command.cpp.o
+[100%] Linking CXX executable minima_sphincs_command
+[100%] Built target minima_sphincs_command
+[100%] Built target minima_file_port
+[100%] Building CXX object CMakeFiles/minima_magic.dir/support/magic.cpp.o
+[100%] Linking CXX executable minima_magic
+[100%] Built target minima_magic

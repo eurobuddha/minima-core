@@ -1,0 +1,18 @@
+{
+  "source_head": "36940c609f42ce8de179283b8bffa5d346b45702",
+  "goal_complete": false,
+  "prior_processes_confirmed_stopped": true,
+  "tests": [
+    "sphincs_differential",
+    "sphincs_command_differential",
+    "magic_differential"
+  ],
+  "mode": "full default workloads, no shortened crypto or demo loops",
+  "state": "running",
+  "exec_session_id": 46321,
+  "target_sha256": {
+    "minima_sphincs": "9d890386cc629653300b50b501a008f439e7f292f7b18e235dd9f7d3c5d2adb9",
+    "minima_sphincs_command": "0f27bc824b72241f989e80588f10d9a34714a1de36a3b8ccf0c7132f189624e3",
+    "minima_magic": "b09bfd8413dcc4a6a580066d908ac90c8005efd169ae05fd56d10380ac9828bf"
+  }
+}

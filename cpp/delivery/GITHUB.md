@@ -10,10 +10,10 @@ access. The owner can manage visibility and collaborators in GitHub settings.
 
 ## Cascade crash replacement
 
-The replacement development release is
-[dev-2026-09-12-cascade-fix](https://github.com/eurobuddha/MinimaCoreCpp/releases/tag/dev-2026-09-12-cascade-fix).
-Read [its change and validation scope](CASCADE_CRASH_FIX.md). The earlier release
-below is preserved for traceability and still contains the recursive cleanup defect.
+The replacement app is installed locally and its source fixes are pushed, but
+`dev-2026-09-12-cascade-fix` has not been published. The checked release list still
+contains only `dev-2026-09-12`, whose binaries have the recursive cleanup defect.
+See [current delivery status](CURRENT_STATUS.md) and [the fix](CASCADE_CRASH_FIX.md).
 
 ## What is published
 
@@ -25,8 +25,8 @@ provides the already verified full source/runtime ZIP and standalone macOS runti
 each with its checksum. The full project ZIP includes the pinned Java files directly.
 
 Release tag `dev-2026-09-12` identifies the exact packaged source commit
-`aea5d892a623271155dd7f2a2af1d06bdecab9b1`. Later receipt/publication commits add
-administrative documentation; they do not change the packaged code. The release
+`aea5d892a623271155dd7f2a2af1d06bdecab9b1`. Later branch commits include the cascade fix and app changes. They do not
+retroactively change the artifacts attached to this older release. The release
 notes retain all incomplete-parity, sanitizer and live-startup limits.
 
 ## Reproducing the publication workflow

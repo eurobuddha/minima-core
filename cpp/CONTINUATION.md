@@ -1,3 +1,33 @@
+# Active goal: full 1:1 port, behavioral parity and current handover
+
+Read [delivery/CURRENT_STATUS.md](delivery/CURRENT_STATUS.md) first. Source checkpoint
+36940c6 includes the installed app fixes; JNI remains absent and all mapped API
+parity remains unverified. This resumption corrects stale publication/app claims.
+
+The three unfinished full sanitizer suites were confirmed stopped, their prior
+build-directory records preserved, and their targets rebuilt. Sequential full
+replay is running under exec session 46321, with logs in
+cpp/build-sanitized/parity-resumption-20260912/sanitizer-tests.log (live); snapshots
+are in validation/parity-resumption-20260912. The final XML is written to that
+validation directory at completion. Poll that handle or authoritative process
+state before launching anything else against those test outputs. Do not infer
+completion from a progress file or restart merely because a poll times out.
+
+An independent GenerateKey correction now supports private-key encryption/public
+recovery, including empty messages, using existing OpenSSL operations. All 1,492
+utility cases pass in normal, optimized and sanitized builds. See
+validation/rsa-cipher-directions and its student lab. The installed preview was not
+replaced by this source change. Long-running sanitizer targets retain their
+recorded pre-RSA-change binary hashes; do not relabel those runs as a new full suite.
+
+Next: preserve terminal test evidence; continue independent API/runtime auditing;
+resolve original JNI source/contracts; finalize the signed app's reproducible
+packaging, notarization and replacement release. Keep the full goal active and
+continue updating per-file lessons, local commits and verified recovery bundles.
+The older bounded handover sections below are historical, not a new stop request.
+
+## Previous checkpoint (historical)
+
 # Cascade cleanup crash fix — all validation passed; packaging replacement
 
 Source fix checkpoint: 0386c6d72dc6f07183d933a6449b41d5ccb5b1d5, pushed to GitHub

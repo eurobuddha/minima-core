@@ -1,0 +1,16 @@
+{
+  "app_source_head": "36940c609f42ce8de179283b8bffa5d346b45702",
+  "node_source_head": "10ed9e6df9ec6e5eb86f0e87ddd1792b9ca91e07",
+  "node_uuid": "54ADF25C-F029-37BA-B111-1425F410DF96",
+  "app_files_sha256": {
+    "main/main.js": "f05ca2dea6fce3cf303da55ad8dca89d4acf6c063689438e64bebc567b154fb0",
+    "main/node-manager.js": "38f0f6dd87467664c92e0fb0f8785d1cce1a5346537e5db1b6361134ac1dc91a",
+    "main/preload.js": "0c0927fb2a2b95dea4775c4577d8adc491784037accb5218030e026c9bb07923",
+    "renderer/app.js": "a8f6e50df72e48f2441db26ed75630d457502e8594bf4179f7301e6aa02802c9",
+    "renderer/index.html": "f99893adb9e7a26619d9f8a32189f2edf311a2012d30d8023a8d62613527ad62",
+    "renderer/minima-mark.svg": "4927ed13c186e0f03f411160e813c41ee10ea6bce909136a07a931ca119f272b",
+    "renderer/style.css": "f223d66c5beeeaede1b54e3a6d022057e191749c401f85c386fb1a5f3d232a83"
+  },
+  "terminal_state_fix": true,
+  "manual_peer_one_launch": true
+}

@@ -14,6 +14,7 @@ static auto hx(const std::string& s){return hx(std::span(reinterpret_cast<const 
 int main(int argc,char** argv){std::filesystem::path root=argc>1?argv[1]:".";std::string line;while(std::getline(std::cin,line)){try{std::istringstream in(line);std::vector<std::string> p;std::string part;while(in>>part)p.push_back(part);auto op=p.at(0);std::string out;
     if(op=="gen"){auto key=GenerateKey::generateKeyPair();out=hx(key.getPublic().getEncoded())+"|"+hx(key.getPrivate().getEncoded());}
     else if(op=="key")out=hx((p[1]=="public"?GenerateKey::convertBytesToPublic(bytes(p[2])):GenerateKey::convertBytesToPrivate(bytes(p[2]))).getEncoded());
+    else if(op=="rsacipher"){auto cipher=GenerateKey::getAsymetricCipher();cipher.init(std::stoi(p[2]),p[1]=="public"?GenerateKey::convertBytesToPublic(bytes(p[3])):GenerateKey::convertBytesToPrivate(bytes(p[3])));out=hx(cipher.doFinal(bytes(p[4])));}
     else if(op=="derive")out=hx(GenerateKey::secretKey(str(p[1]),bytes(p[2])).getEncoded());
     else if(op=="aesenc")out=hx(EncryptDecrypt::encryptSYM(bytes(p[1]),bytes(p[2]),bytes(p[3])));
     else if(op=="aesdec")out=hx(EncryptDecrypt::decryptSYM(bytes(p[1]),bytes(p[2]),bytes(p[3])));

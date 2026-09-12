@@ -72,3 +72,13 @@ empty-input guard. The existing utility corpus adds a direct empty-decryption
 case for each valid AES key size. The new AesUtil corpus also checks public empty
 text results, private helper bytes, and subsequent cipher reuse. See the
 [AES text lab](../../../../../../new-tests/aes-text-interoperability.md).
+
+## RSA factory direction correction
+
+The factory also permits private-key encryption and public-key recovery. The
+native adapter previously rejected both despite the Java factory accepting them.
+The [direction lab](../../../../../../../student-guide/new-tests/rsa-cipher-directions.md)
+explains the reused EVP dispatch, empty-message padding distinction, 80 initial
+mismatches and 1,492-case passes in three builds. Twenty independent recovery
+checks per build require original plaintext bytes. The padding checker is an
+OpenSSL 3 deprecated API; full Java Cipher provider/overload parity remains open.

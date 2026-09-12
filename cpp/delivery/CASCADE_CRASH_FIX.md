@@ -8,11 +8,12 @@ The earlier optimized delivery used the same faulty cleanup code as `6c28109`.
 
 ## Identify the replacement
 
-The replacement is published as `dev-2026-09-12-cascade-fix`, a separate development
-release. Its runtime manifest records the exact source commit, original binary
+The replacement is installed locally. `dev-2026-09-12-cascade-fix` is the planned
+separate development release; it is not yet published. Its runtime manifest records the exact source commit, original binary
 hash and packaged file hashes. The old release assets remain available for
 traceability; upgrading to that earlier optimized release alone does not fix this
-crash. Use the cascade-fix release and its matching checksum.
+crash. Use the installed corrected app; verify its identity against
+[current delivery status](CURRENT_STATUS.md).
 
 [Validation evidence](../validation/cascade-release/README.md) and the
 [student explanation](../student-guide/new-tests/cascade-release.md) cover the
@@ -29,7 +30,8 @@ libraries and wallet; every original file was byte-verified before replacement.
 The new launcher uses its fresh data directory, default port 21001 and initial
 peer eurobuddha.com:9001. It does not migrate or open the saved old wallet.
 
-Use `quit` and wait for the shutdown-completed message before closing a running
-preview. Keep the entire bin/lib/launcher folder together. This is a macOS 26+
-arm64 development build, ad-hoc signed and not notarized. The native H2 dependency
-is compiled from its existing Java implementation; the node runs without a JVM.
+The current configurable app supersedes the folder launcher for interactive use.
+Its data stays outside the application and ordinary mainnet starts omit `-connect`.
+Use Stop node cleanly and wait for node exit before replacing it. The app is
+Developer ID signed, not yet notarized. The earlier folder package uses ad-hoc
+signing. Both contain the native H2 dependency compiled from Java; no JVM is launched.

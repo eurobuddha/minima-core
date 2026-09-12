@@ -48,6 +48,9 @@ def main():
             keypairs.append(value.split('|'))
     for pub,priv in keypairs:
         cases += [f'key public {pub}',f'key private {priv}',f'key public {pub}FF',f'key private {priv}FF',f'key public {priv}',f'key private {pub}',f'key public {pub[:-2]}',f'key private {priv[:-2]}']
+        # Private-key encryption uses deterministic PKCS#1 type-1 padding.
+        # These are direct calls to the source cipher factory, beyond the wrappers.
+        for n in [0,1,32,116,117,118,128]:cases.append(f'rsacipher private 1 {priv} {hx(rng.randbytes(n))}')
         for n in [0,1,32,117,118,128,2048]:cases.append(f'sign {priv} {hx(rng.randbytes(n))}')
     expected=run(java,cases);actual=run(cpp,cases);derived=[]
     for case,value in zip(cases,expected):
@@ -56,6 +59,9 @@ def main():
         if op=='aesenc':
             prefix=f'aesdec {p[1]} {p[2]}'
             derived.extend([f'{prefix} {value}',f'{prefix} {value}00',f'{prefix} {value[:-2]}',f'{prefix} {value[:-2]}00'])
+        elif op=='rsacipher':
+            pub=next(pub for pub,priv in keypairs if priv==p[3]);prefix=f'rsacipher public 2 {pub}'
+            derived.extend([f'{prefix} {value}',f'{prefix} {value[:-2]}',f'{prefix} {value}00',f'{prefix} {hx(bytes(128))}'])
         elif op=='gzip':derived.extend([f'ungzip {value}',f'ungzip {value}00',f'ungzip {value[:-2]}',f'ungzip {value}{value[2:]}'])
         elif op=='sign':
             pub=next(pub for pub,priv in keypairs if priv==p[1]);prefix=f'verify {pub} {p[2]}'
@@ -77,11 +83,17 @@ def main():
             cross.append((f'{prefix} {value}',plaintext));derived += [f'{prefix} {value[:-2]}',f'{prefix} {value}00']
     derived += [c for c,_ in cross]
     cases+=derived;expected+=run(java,derived);actual+=run(cpp,derived)
+    # Independent recovery checks require the original bytes, not just agreement.
+    reverse=[(f'rsacipher public 2 {next(pub for pub,priv in keypairs if priv==c.split()[3])} {v}', c.split()[4].upper().replace('0X','0x') if c.split()[4]!='0x' else '') for c,v in zip(cases,expected) if c.startswith('rsacipher private 1 ') and v!='ERROR']
+    reverse_cases=[c for c,_ in reverse]
+    cases+=reverse_cases;expected+=run(java,reverse_cases);actual+=run(cpp,reverse_cases)
     failures=[{'case':c,'java':j,'cpp':n} for c,j,n in zip(cases,expected,actual) if j!=n]
+    for (c,plain),j,n in zip(reverse,expected[-len(reverse):],actual[-len(reverse):]):
+        if j!=plain or n!=plain:failures.append({'case':c,'expected_plaintext':plain,'java':j,'cpp':n})
     # Independently require all successful cross decryptions to recover their original data.
-    for (c,p),j,n in zip(cross,expected[-len(cross):],actual[-len(cross):]):
+    for (c,p),j,n in zip(cross,expected[-len(cross)-len(reverse):-len(reverse)],actual[-len(cross)-len(reverse):-len(reverse)]):
         if j!=p or n!=p:failures.append({'case':c,'expected_plaintext':p,'java':j,'cpp':n})
-    report={'cases':len(cases),'passed':len(cases)-len(failures),'failures':failures,'scope':'Crypto interoperability/formatting/gzip and normal isolated file persistence; runtime integration and IO failure parity remain under review'}
+    report={'cases':len(cases),'passed':len(cases)-len(failures),'failures':failures,'reverse_rsa_recoveries':len(reverse),'scope':'Direct RSA private-encrypt/public-recover plus crypto interoperability/formatting/gzip and normal isolated file persistence; runtime integration and IO failure parity remain under review'}
     (build/'utility-differential-results.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({**report,'failures':[{**f,'case':f['case'][:200]} for f in failures[:8]]},indent=2));return bool(failures)
 if __name__=='__main__':raise SystemExit(main())

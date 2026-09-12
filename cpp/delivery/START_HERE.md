@@ -9,21 +9,23 @@ preview crash. Read it before selecting an executable from the earlier delivery.
 
 ## First session
 
-Open the runtime folder and double-click `Start MinimaCoreC++.command`. Keep its
-`bin` and `lib` folders beside the launcher. It runs on Apple Silicon, macOS 26 or
-later, without a separate Java or Homebrew installation. The default node port is
-21001 and the initial peer is eurobuddha.com:9001. RPC is disabled. The launcher
-creates a separate `data` directory. An existing node using port 21001 must either
-finish cleanly first or the new launcher must receive a different `-port` argument.
+For the current installed preview, open `/Applications/MinimaCoreC++ Preview.app`.
+Read [current build and publication status](CURRENT_STATUS.md) before selecting a
+GitHub download: the existing published release predates the crash fix.
 
-In Terminal, a separate instance can use:
+The app lets you choose the node port, data folder, network and role, then start
+and stop the node and enter commands directly. Its default port is 21001. Data is
+outside the app, so replacing the app preserves it. Leave the manual initial peer
+blank for automatic P2P; an explicitly entered peer applies to one launch only.
+The node requires no separate Java or Homebrew installation. On a fresh mainnet
+node, allow wallet setup and synchronization to complete before judging readiness.
 
-```sh
-./Start\ MinimaCoreC++.command -port 22001
-```
+The older folder-based distributions use `Start MinimaCoreC++.command` with their
+adjacent `bin` and `lib` folders. Those archived builds have separate identities;
+do not infer their contents from the current branch or installed app.
 
 Useful first commands are `help`, `status`, `network`, `hash data:hello`, and `quit`.
-Wait for `Shut down completed OK..` before closing Terminal. Initial wallet key
+Wait for `Shut down completed OK..` before closing a console session. Initial wallet key
 generation and chain synchronization take time. The terminal may show a height
 behind a peer while sync is still running. Compare both height and block hash to
 a fresh peer response when demonstrating synchronization.

@@ -1,0 +1,7 @@
+{
+  "cases": 1492,
+  "passed": 1492,
+  "failures": [],
+  "reverse_rsa_recoveries": 20,
+  "scope": "Direct RSA private-encrypt/public-recover plus crypto interoperability/formatting/gzip and normal isolated file persistence; runtime integration and IO failure parity remain under review"
+}

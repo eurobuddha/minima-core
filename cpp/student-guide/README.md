@@ -1,5 +1,7 @@
 # Learning the Minima Java-to-C++ port
 
+The [RSA cipher-direction lab](new-tests/rsa-cipher-directions.md) shows why testing factory behavior requires more than testing its usual callers.
+
 The [initial-peer settings lab](new-tests/app-initial-peer.md) explains why a one-launch connection must not silently become a permanent network setting.
 
 The [backup/checker lab](new-tests/backup-checker-interruption.md) explains cooperative worker signals, retry catches and the source ordering of database setup.
