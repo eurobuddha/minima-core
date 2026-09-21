@@ -846,11 +846,8 @@ public class Wallet extends SqlDB {
 			//Now we have the Key..
 			Signature signature = tk.sign(zData);
 			
-			//Update the DB..
-			uses = tk.getUses();
-			
-			//Update the DB..
-			updateUses(uses, key.getPublicKey());
+			//Update the DB.. with the incremented key uses
+			updateUses(tk.getUses(), key.getPublicKey());
 			
 			//And finally return the sig..
 			return signature;

@@ -25,13 +25,15 @@ public class TreeKey {
 	/**
 	 * Are we USING LEGACY keys or the NEW Block as Keys Uses ?
 	 */
+	private static final int DEFAULT_BLKASKEYUSES_KEYSPERLEVEL 	= 192;
+	private static final int DEFAULT_BLKASKEYUSES_LEVELS 		= 4;
 	
 	public static TreeKey createDefault(MiniData zPrivateSeed) {
 		
 		//ARE WE USING THE LARGER BLOCK AS KEY USES.. ?
 		if(GeneralParams.USE_BLOCK_AS_KEYUSES) {
 			//Generate A LOT more keys 1.3 billion 
-			return new TreeKey(zPrivateSeed, 192, 4);
+			return new TreeKey(zPrivateSeed, DEFAULT_BLKASKEYUSES_KEYSPERLEVEL, DEFAULT_BLKASKEYUSES_LEVELS);
 		}
 		
 		//Return the NORMAL LEGACY TREE KEY
