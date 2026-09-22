@@ -191,6 +191,19 @@ public class GeneralParams {
 	public static long NUMBER_DAYS_SQLTXPOWDB = 3;
 	
 	/**
+	 * How many days do you keep a RELEVANT TxPoW in the SQL DB.
+	 * 
+	 * Separate from NUMBER_DAYS_SQLTXPOWDB because these rows are the user's own transaction
+	 * history - they back getAllRelevant, which feeds `history`, `txpow` and `backup` - so they
+	 * must outlive the 3 day window that irrelevant traffic gets. Until this existed the DELETE
+	 * carried `AND isrelevant=0` and NOTHING could ever remove a relevant row: not the routine
+	 * clean, not cleanDB(true) ("wipe clean"), not a restart. A table meant to be a rolling
+	 * window grew without bound - measured 583 MB on a phone 2026-09-22, against a 512 MB
+	 * Dalvik ceiling for the whole node process.
+	 */
+	public static long NUMBER_DAYS_RELEVANT_SQLTXPOWDB = 30;
+	
+	/**
 	 * How Many Hours do you keep the TxPOW in the RAM mempool
 	 */
 	public static long NUMBER_HOURS_RAMTXPOWDB = 1;
@@ -448,6 +461,7 @@ public class GeneralParams {
 		MAX_RELAY_OUTPUTCOINS = 15;
 		MAX_SPLIT_COINS = new MiniNumber(10);
 		NUMBER_DAYS_SQLTXPOWDB = 3;
+		NUMBER_DAYS_RELEVANT_SQLTXPOWDB = 30;
 		NUMBER_HOURS_RAMTXPOWDB = 1;
 		NUMBER_DAYS_ARCHIVE = 50;
 		USER_PULSE_FREQ   = 1000 * 60 * 10;

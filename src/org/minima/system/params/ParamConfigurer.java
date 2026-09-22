@@ -487,6 +487,16 @@ public class ParamConfigurer {
         		MinimaLogger.log("Invalid txpowdbstore.. MUST be >= 3.. setting to 3");
         	}
         }),
+        txpowdbrelevantstore("txpowdbrelevantstore", "How many days to store RELEVANT TxPoW in the internal H2 Database (default 30)", (args, configurer) -> {
+        	GeneralParams.NUMBER_DAYS_RELEVANT_SQLTXPOWDB = Long.parseLong(args.trim());
+        	//Never below the plain window - a relevant row is the user's own history and must
+        	//outlive ordinary traffic, not be retired before it.
+        	if(GeneralParams.NUMBER_DAYS_RELEVANT_SQLTXPOWDB < GeneralParams.NUMBER_DAYS_SQLTXPOWDB) {
+        		GeneralParams.NUMBER_DAYS_RELEVANT_SQLTXPOWDB = GeneralParams.NUMBER_DAYS_SQLTXPOWDB;
+        		MinimaLogger.log("Invalid txpowdbrelevantstore.. MUST be >= txpowdbstore.. setting to "
+        				+GeneralParams.NUMBER_DAYS_SQLTXPOWDB);
+        	}
+        }),
         publicmds("publicmds", "Enable the Public MDS system from the CLI", (arg, configurer) -> {
         	GeneralParams.PUBLICMDS_ENABLE = true;	
         }),

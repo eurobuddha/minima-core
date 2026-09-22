@@ -15,6 +15,7 @@ import org.minima.objects.TxPoW;
 import org.minima.objects.base.MiniData;
 import org.minima.objects.base.MiniNumber;
 import org.minima.system.params.GeneralParams;
+import org.minima.utils.MinimaLogger;
 
 public class TxPoWSearcher {
 
@@ -119,8 +120,76 @@ public class TxPoWSearcher {
 												boolean zCheckState, String zState, boolean zWildCardState,
 												boolean zSimpleOnly, int zDepth,boolean zMEGAMMR) {
 		
+		//Unbounded - every existing caller keeps its current behaviour
+		return searchCoins(zStartNode, zRelevant, zCheckCoinID, zCoinID, zCheckAmount, zAmount,
+				zCheckAddress, zAddress, zCheckTokenID, zTokenID, zCheckState, zState,
+				zWildCardState, zSimpleOnly, zDepth, zMEGAMMR, 0);
+	}
+	
+	/**
+	 * The simple-address filter, shared by the normal exit and the capped early exit.
+	 */
+	private static ArrayList<Coin> finalise(ArrayList<Coin> zCoins, boolean zSimpleOnly) {
+
+		//Are we only showing simple Coins..
+		ArrayList<Coin> finalcoins = zCoins;
+		if(zSimpleOnly) {
+			finalcoins = new ArrayList<>();
+			Wallet wallet = MinimaDB.getDB().getWallet();
+			for(Coin cc : zCoins) {
+				if(wallet.isAddressSimple(cc.getAddress().to0xString())) {
+					finalcoins.add(cc);
+				}
+			}
+		}
+
+		//If we are not using the SQLDBCoins..
+		if(!GeneralParams.USE_SQL_COINDB) {
+			return finalcoins;
+		}
+
+		//Normal search needs to convert the coins..
+		return CoinDB.getTxPoWTreeCoinDB().convertNoStateCoinsCopy(finalcoins);
+	}
+	
+	/**
+	 * Is the heap close enough to full that continuing risks taking the node down?
+	 * 
+	 * Same watermark as the MegaMMR import path (MMR.java / MegaMMR.java / megammr.java):
+	 * max(32MB, maxMemory/20). On a phone maxMemory is 512MB, so this trips with ~32MB left.
+	 */
+	private static boolean lowMemory() {
+		Runtime rt 		= Runtime.getRuntime();
+		long watermark 	= Math.max(32 * 1024 * 1024, rt.maxMemory() / 20);
+		long free 		= rt.maxMemory() - (rt.totalMemory() - rt.freeMemory());
+		return free < watermark;
+	}
+	
+	/**
+	 * As above, with a hard cap on how many coins are collected.
+	 * 
+	 * zMax <= 0 means uncapped. The cap stops the WALK, it does not trim a finished list: every
+	 * collected coin costs a Coin.deepCopy() (a serialise-to-byte-array-and-re-read round trip)
+	 * and is then copied again by the coinage filter, the mempool filter and the JSONArray, so
+	 * trimming afterwards would already have paid the whole bill. Measured 2026-09-22 on a phone
+	 * serving ten companion apps: peak transient allocation in the node process reached 411 MB
+	 * against a 512 MB Dalvik ceiling while the post-GC floor stayed flat at 55-76 MB - the node
+	 * was not leaking, it was allocating faster than it could collect.
+	 */
+	public static ArrayList<Coin> searchCoins(	TxPoWTreeNode zStartNode, boolean zRelevant, 
+												boolean zCheckCoinID, MiniData zCoinID,
+												boolean zCheckAmount, MiniNumber zAmount,
+												boolean zCheckAddress, MiniData zAddress,
+												boolean zCheckTokenID, MiniData zTokenID,
+												boolean zCheckState, String zState, boolean zWildCardState,
+												boolean zSimpleOnly, int zDepth,boolean zMEGAMMR,
+												int zMax) {
+		
 		//The list of Coins
 		ArrayList<Coin> coinentry = new ArrayList<>();
+		
+		//Check the heap every so often rather than per coin - the read is cheap but not free
+		int heapcheck = 0;
 		
 		//Start node position
 		TxPoWTreeNode tip = zStartNode;
@@ -206,6 +275,27 @@ public class TxPoWSearcher {
 						
 						//And no more from now..
 						spentcoins.add(coinid);
+						
+						//Hit the caller's cap - stop walking
+						if(zMax>0 && coinentry.size()>=zMax) {
+							//During the MEGAMMR pass the DB read lock is held - release it
+							if(MEGACHECK) {
+								MinimaDB.getDB().readLock(false);
+							}
+							return finalise(coinentry, zSimpleOnly);
+						}
+
+						//Running out of heap? Abort rather than take the node down. Same
+						//watermark idiom as MMR/MegaMMR import (max(32MB, maxMemory/20)).
+						if((++heapcheck & 0xFF) == 0 && lowMemory()) {
+							MinimaLogger.log("[!] searchCoins aborted - low memory at "
+											+coinentry.size()+" coins");
+							if(MEGACHECK) {
+								MinimaDB.getDB().readLock(false);
+							}
+							throw new IllegalStateException("Node low on memory - narrow the search "
+									+"(use max:, depth: or a tighter address/tokenid filter)");
+						}
 					}
 				}
 			}
@@ -227,37 +317,7 @@ public class TxPoWSearcher {
 			}
 		}
 		
-		//Are we only showing simple Coins..
-		ArrayList<Coin> finalcoins = coinentry;
-		if(zSimpleOnly) {
-			//Fresh List
-			finalcoins = new ArrayList<>();
-			
-			//Get the wallet..
-			Wallet wallet = MinimaDB.getDB().getWallet();
-			
-			//Now cycle through the coins
-			for(Coin cc : coinentry) {
-				
-				//Is it a simple address
-				if(wallet.isAddressSimple(cc.getAddress().to0xString())) {
-					finalcoins.add(cc);
-				}
-			}
-		}
-		
-		//If we are not using the SQLDBCoins..
-		if(!GeneralParams.USE_SQL_COINDB) {
-			return finalcoins;
-		}
-		
-//		//Relevant coins have ALL the data
-//		if(zRelevant) {
-//			return finalcoins;
-//		}
-		
-		//Normal search needs to convert the coins..
-		return CoinDB.getTxPoWTreeCoinDB().convertNoStateCoinsCopy(finalcoins);
+		return finalise(coinentry, zSimpleOnly);
 	}	
 	
 	public static TxPoWTreeNode getTreeNodeForCoin(MiniData zCoinID) {

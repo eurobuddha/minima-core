@@ -70,6 +70,11 @@ public class coins extends Command {
 				+ "megammr: (optional)\n"
 				+ "    Search the MegaMMR for coins too.\n"
 				+ "\n"
+				+ "max: (optional)\n"
+				+ "    Maximum number of coins to return. Stops the search early. Unset or 0 is\n"
+				+ "    unlimited. `depth` limits how far back to look, NOT how much comes back -\n"
+				+ "    on a large or fragmented wallet use this as well.\n"
+				+ "\n"
 				+ "Examples:\n"
 				+ "\n"
 				+ "coins\n"
@@ -84,14 +89,16 @@ public class coins extends Command {
 				+ "\n"
 				+ "coins relevant:true address:0xCEF6.. tokenid:0x00\n"
 				+ "\n"
-				+ "coins relevant:true address:MxABC9..\n";
+				+ "coins relevant:true address:MxABC9..\n"
+				+ "\n"
+				+ "coins relevant:true tokenid:0x00 max:200\n";
 	}
 	
 	@Override
 	public ArrayList<String> getValidParams(){
 		return new ArrayList<>(Arrays.asList(new String[]{"relevant","sendable","coinid","amount",
 				"address","tokenid","checkmempool","order","coinage","simplestate",
-				"totalamount","depth","state","megammr"}));
+				"totalamount","depth","state","megammr","max"}));
 	}
 	
 	@Override
@@ -152,6 +159,14 @@ public class coins extends Command {
 		//Max Depth
 		int maxdepth = getNumberParam("depth", MiniNumber.BILLION).getAsInt();
 		
+		//Max coins returned. `depth` bounds how far back the TREE WALK goes, which is not a
+		//bound on the result - a single deep node can hold the whole wallet, and for
+		//relevant:true TxPoWTreeNode.copyParentRelevantCoins() piles every still-unspent
+		//relevant coin into one node on cascade. This is the row count, and it stops the walk
+		//rather than trimming afterwards, because the cost is per collected coin (deepCopy,
+		//then the coinage/mempool/JSON copies) and not in the returning.
+		int maxcoins = getNumberParam("max", MiniNumber.ZERO).getAsInt();
+		
 		//Get the tree tip..
 		TxPoWTreeNode tip = MinimaDB.getDB().getTxPoWTree().getTip();
 
@@ -174,7 +189,8 @@ public class coins extends Command {
 															saddress, address, 
 															stokenid, tokenid, 
 															sstate, statesearch, true,
-															simple, maxdepth,checkmegammr);
+															simple, maxdepth,checkmegammr,
+															maxcoins);
 		
 		//Make sure coins old enough..
 		ArrayList<Coin> agecoins = new ArrayList<>();

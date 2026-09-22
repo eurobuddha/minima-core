@@ -31,6 +31,7 @@ public class TxPoWSqlDB extends SqlDB {
 	/**
 	 * Prepared SQL statements
 	 */
+	PreparedStatement SQL_DELETE_RELEVANT_TXPOW = null;
 	PreparedStatement SQL_INSERT_TXPOW 		= null;
 	PreparedStatement SQL_SELECT_TXPOW 		= null;
 	PreparedStatement SQL_SELECT_CHILDREN 	= null;
@@ -116,6 +117,15 @@ public class TxPoWSqlDB extends SqlDB {
 			SQL_SELECT_CHILDREN	= mSQLConnection.prepareStatement("SELECT txpowid FROM txpow WHERE isblock=1 AND parentid=?");
 			SQL_TOTAL_TXPOW		= mSQLConnection.prepareStatement("SELECT COUNT(*) AS tot FROM txpow");
 			SQL_DELETE_TXPOW	= mSQLConnection.prepareStatement("DELETE FROM txpow WHERE timemilli < ? AND isrelevant=0");
+			
+			//A relevant row is the user's own history, so it gets its OWN (longer) window rather
+			//than the 3 days ordinary traffic gets - but it does now get one. Before this, the
+			//statement above was the only DELETE on this table and its `AND isrelevant=0` meant a
+			//relevant row was immortal: the routine clean skipped it, cleanDB(true) ("wipe clean")
+			//skipped it, and a restart does not touch disk. A rolling window grew without bound -
+			//583 MB measured on a phone 2026-09-22 whose whole node process has a 512 MB ceiling.
+			//Served by the existing txpowrelevant ( isrelevant, timemilli ) index, so no migration.
+			SQL_DELETE_RELEVANT_TXPOW = mSQLConnection.prepareStatement("DELETE FROM txpow WHERE timemilli < ? AND isrelevant=1");
 			SQL_EXISTS			= mSQLConnection.prepareStatement("SELECT txpowid FROM txpow WHERE txpowid=?");
 		
 			SQL_SELECT_RELEVANT 	= mSQLConnection.prepareStatement("SELECT * FROM txpow WHERE isrelevant=1 ORDER BY timemilli DESC LIMIT ? OFFSET ?");
@@ -501,6 +511,43 @@ public class TxPoWSqlDB extends SqlDB {
 	}
 	
 	/**
+	 * Age out RELEVANT rows - the user's own transaction history - on their own window.
+	 * 
+	 * Until this existed the only DELETE on this table carried `AND isrelevant=0`, so a row once
+	 * marked relevant could never be removed by anything: not the routine clean, not
+	 * cleanDB(true), not a restart (the rows are on disk, a restart only resets the heap). A
+	 * table whose whole design is a rolling window therefore grew without bound. Measured on a
+	 * phone 2026-09-22: 583 MB, in a node process capped at 512 MB of Dalvik heap, with the
+	 * oversized relevant set also inflating TxPoWTreeNode.mComputedRelevantCoins and every
+	 * cascade's copyParentRelevantCoins() deep-copy.
+	 * 
+	 * The window is read from GeneralParams at CALL time, not cached in a static like
+	 * MAX_SQL_MILLI - that field is initialised at class load, which can be before
+	 * ParamConfigurer has parsed -txpowdbstore, so a configured value can be silently ignored.
+	 * Do not "tidy" this into a static.
+	 * 
+	 * @return how many rows were deleted
+	 */
+	private synchronized int cleanRelevant() throws SQLException {
+		
+		//Never retire relevant rows sooner than ordinary traffic, whatever the params say
+		long days = Math.max(GeneralParams.NUMBER_DAYS_RELEVANT_SQLTXPOWDB,
+							 GeneralParams.NUMBER_DAYS_SQLTXPOWDB);
+		
+		long maxtime = System.currentTimeMillis() - (1000L * 60 * 60 * 24 * days);
+		
+		SQL_DELETE_RELEVANT_TXPOW.clearParameters();
+		SQL_DELETE_RELEVANT_TXPOW.setLong(1, maxtime);
+		
+		int num = SQL_DELETE_RELEVANT_TXPOW.executeUpdate();
+		if(LOG_ADD_BLOCKS && num>0) {
+			MinimaLogger.log("[+] TxPoWDB relevant clean up deleted : "+num+" (older than "+days+" days)");
+		}
+		
+		return num;
+	}
+	
+	/**
 	 * Returns how many rows were deleted
 	 */
 	public synchronized int cleanDB() {
@@ -535,6 +582,15 @@ public class TxPoWSqlDB extends SqlDB {
 			if(LOG_ADD_BLOCKS) {
 				MinimaLogger.log("[+] TxPoWDB clean up deleted : "+num);
 			}
+			
+			//And now the RELEVANT rows, on their own longer window.
+			//
+			//Deliberately NOT driven by zHard. A hard clean is a memory-pressure sweep
+			//(MinimaDB.fullDBRestartMemFree) and it drops ALL irrelevant traffic regardless of
+			//age - correct, that is recoverable from the chain. The user's own history is not,
+			//so it is retired on elapsed time only, never wholesale. wipeDB() remains the way
+			//to actually empty this table.
+			num += cleanRelevant();
 			
 			return num;
 			
