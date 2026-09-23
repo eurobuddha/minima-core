@@ -25,7 +25,7 @@ public class TreeKey {
 	/**
 	 * Are we USING LEGACY keys or the NEW Block as Keys Uses ?
 	 */
-	private static final int DEFAULT_BLKASKEYUSES_KEYSPERLEVEL 	= 192;
+	private static final int DEFAULT_BLKASKEYUSES_KEYSPERLEVEL 	= 128;
 	private static final int DEFAULT_BLKASKEYUSES_LEVELS 		= 4;
 	
 	public static TreeKey createDefault(MiniData zPrivateSeed) {
