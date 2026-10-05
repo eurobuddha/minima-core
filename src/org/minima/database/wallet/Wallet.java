@@ -85,10 +85,11 @@ public class Wallet extends SqlDB {
 	public Wallet() {
 		super();
 		
-		//ONLY 32 keys - each can be used 1 a billion times..
-		if(GeneralParams.USE_BLOCK_AS_KEYUSES) {
-			NUMBER_GETADDRESS_KEYS = 32;
-		}
+		//ONLY 32 keys - each can be used ~268 million times..
+		//Unconditional assignment: this is a STATIC and resetDefaults() never touches it,
+		//so a flag-on boot would otherwise leak 32 into a later flag-off boot of the same
+		//process (Android keeps statics across service restarts).
+		NUMBER_GETADDRESS_KEYS = GeneralParams.USE_BLOCK_AS_KEYUSES ? 32 : 64;
 		
 		//Are we testing..
 		if(GeneralParams.TEST_PARAMS) {
@@ -868,7 +869,18 @@ public class Wallet extends SqlDB {
 				//Set this..
 				tk.setUses(uses);
 			}
-			
+
+			//Refuse to sign past the key's capacity. TreeKey.sign would log
+			//"SERIOUS ERROR : MAX TREEKEYS USED" and wrap back to leaf 0 - a Winternitz
+			//one-time-key REUSE that leaks that leaf's private key. Hits in practice when
+			//a legacy 64x3 key (262,144 uses) signs under -blockaskeyuses once the chain
+			//tip is past block 262,144.
+			if(tk.getUses() >= tk.getMaxUses()) {
+				throw new IllegalArgumentException("Key "+zPublicKey+" exhausted : uses "
+						+tk.getUses()+" >= capacity "+tk.getMaxUses()
+						+" - refusing to sign (would reuse a one-time leaf key)");
+			}
+
 			//Now we have the Key..
 			Signature signature = tk.sign(zData);
 			

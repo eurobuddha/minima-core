@@ -181,7 +181,15 @@ public class txnsign extends Command {
 				//Set uses..
 				treekey.setUses(uses.getAsInt());
 			}
-			
+
+			//Refuse to sign past the key's capacity - TreeKey.sign would wrap back to
+			//leaf 0 and REUSE a one-time Winternitz leaf key (see Wallet.signData)
+			if(treekey.getUses() >= treekey.getMaxUses()) {
+				throw new CommandException("Key exhausted : uses "+treekey.getUses()
+						+" >= capacity "+treekey.getMaxUses()
+						+" - refusing to sign (would reuse a one-time leaf key)");
+			}
+
 			//Now we have the Key.. sign the Txn ID
 			Signature signature = treekey.sign(txn.getTransactionID());
 			
