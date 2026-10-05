@@ -247,10 +247,24 @@ public class TxPoWSearcher {
 					continue;
 				}
 				
-				//ONLY available in FULL RAM mode..
-				if(!GeneralParams.USE_SQL_COINDB) {
-					if(zCheckState && !coin.checkForStateVariable(zState,zWildCardState)) {
-						continue;
+				if(zCheckState) {
+					if(!GeneralParams.USE_SQL_COINDB) {
+						//FULL RAM mode - the coin carries its state inline
+						if(!coin.checkForStateVariable(zState,zWildCardState)) {
+							continue;
+						}
+					}else{
+						//SQL CoinDB strips state from tree coins, so fetch the full row for
+						//the check. Upstream 1.1.2.31 skipped the check entirely here, so
+						//`coins state:` on a -lowram node silently returned UNFILTERED
+						//results (proven live 2026-10-05: a non-matching state value
+						//returned every coin). MEGAMMR coins are not in the tree CoinDB
+						//(getCoin returns null) but carry their state inline - check as-is.
+						Coin fullcoin = CoinDB.getTxPoWTreeCoinDB().getCoin(coin.getCoinID());
+						Coin statecoin = fullcoin != null ? fullcoin : coin;
+						if(!statecoin.checkForStateVariable(zState,zWildCardState)) {
+							continue;
+						}
 					}
 				}
 				

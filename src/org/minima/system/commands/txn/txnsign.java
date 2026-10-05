@@ -172,7 +172,8 @@ public class txnsign extends Command {
 			if(GeneralParams.USE_BLOCK_AS_KEYUSES) {
 				
 				//Get the NEXT viable key uses based on block and previous uses..
-				MiniNumber currentkeyuses = block.getCurrentBlockAsKeyUses(uses.getAsInt());
+				//Capacity passed so refusal happens before the counter is persisted.
+				MiniNumber currentkeyuses = block.getCurrentBlockAsKeyUses(uses.getAsInt(), treekey.getMaxUses());
 				
 				//Set this..
 				treekey.setUses(currentkeyuses.getAsInt());

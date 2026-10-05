@@ -860,7 +860,9 @@ public class Wallet extends SqlDB {
 			if(GeneralParams.USE_BLOCK_AS_KEYUSES) {
 				
 				//Get the NEXT viable key uses based on block and previous uses..
-				MiniNumber currentkeyuses = block.getCurrentBlockAsKeyUses(uses);
+				//Capacity passed so an over-capacity key is refused BEFORE the
+				//counter is advanced and saved.
+				MiniNumber currentkeyuses = block.getCurrentBlockAsKeyUses(uses, tk.getMaxUses());
 				
 				//Set this..
 				tk.setUses(currentkeyuses.getAsInt());

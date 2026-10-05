@@ -56,7 +56,17 @@ public class block extends Command {
 	/**
 	 * IF you are using BLOCK as KEY USES.. 
 	 */
+	/** As below, with no capacity refusal - for callers that guard capacity themselves. */
 	public synchronized static MiniNumber getCurrentBlockAsKeyUses(int zTreeKeyUses) {
+		return getCurrentBlockAsKeyUses(zTreeKeyUses, 0);
+	}
+	
+	/**
+	 * zMaxUses > 0 refuses BEFORE the counter is advanced and saved - a retry loop against an
+	 * over-capacity key would otherwise burn a counter increment and a UserDB disk write per
+	 * refused attempt.
+	 */
+	public synchronized static MiniNumber getCurrentBlockAsKeyUses(int zTreeKeyUses, int zMaxUses) {
 		
 		//Get the UserDB
 		UserDB udb 			= MinimaDB.getDB().getUserDB();
@@ -90,6 +100,14 @@ public class block extends Command {
 			
 			//Increment just in case
 			higher = treekey.increment();
+		}
+		
+		//Past the key's capacity? Refuse NOW, before anything is persisted - signing at
+		//this value would wrap TreeKey back to leaf 0 and REUSE a one-time key.
+		if(zMaxUses > 0 && !higher.isLess(new MiniNumber(zMaxUses))) {
+			throw new IllegalArgumentException("Key exhausted : uses "+higher
+					+" >= capacity "+zMaxUses
+					+" - refusing to sign (would reuse a one-time leaf key)");
 		}
 		
 		//SET THIS so NEVER used again.. 
