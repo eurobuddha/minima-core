@@ -264,7 +264,8 @@ public class MegaMMR implements Streamable {
 
 	@Override
 	public void readDataStream(DataInputStream zIn) throws IOException {
-		int version = MiniNumber.ReadFromStream(zIn).getAsInt();
+		MiniNumber version = MiniNumber.ReadFromStream(zIn);
+		if(!version.isEqual(MiniNumber.ONE)) throw new IOException("Unsupported MegaMMR version: "+version);
 		
 		//Read in the MMR..
 		mMMR = new MMR();
@@ -272,8 +273,12 @@ public class MegaMMR implements Streamable {
 		mMMR.setFinalized(false);
 		
 		//And now all the coins - pre-size the table (avoids rehash storms on big imports)
-		int size = MiniNumber.ReadFromStream(zIn).getAsInt();
-		mAllUnspentCoins = new Hashtable<>(Math.max(16, (size*4)/3));
+		int size;
+		try { size = MiniNumber.ReadFromStream(zIn).getAsBigDecimal().intValueExact(); }
+		catch(ArithmeticException exc) { throw new IOException("Invalid MegaMMR coin count", exc); }
+		if(size < 0) throw new IOException("Negative MegaMMR coin count");
+		//Do not allocate an attacker/file-controlled table before the heap watermark.
+		mAllUnspentCoins = new Hashtable<>(Math.max(16, Math.min(size, 65536)));
 		for(int i=0;i<size;i++) {
 
 			//IN-FLIGHT HEAP WATERMARK (fork change).. total heap exhaustion is

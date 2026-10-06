@@ -230,6 +230,7 @@ public class megammr extends Command {
 
 				//Backup format version (currently 1)
 				MiniNumber version = MiniNumber.ReadFromStream(dis);
+				if(!version.isEqual(MiniNumber.ONE)) throw new CommandException("Unsupported MegaMMR backup version: "+version);
 
 				//Read the FULL MegaMMR - this part must fit in RAM (a running -megammr
 				//node holds the same structure live, so if the node can run megammr at
@@ -238,6 +239,17 @@ public class megammr extends Command {
 				MegaMMR loadedmega = new MegaMMR();
 				loadedmega.readDataStream(dis);
 				MinimaLogger.log("MegaMMR loaded.. coins:"+loadedmega.getAllCoins().size());
+
+				//IBD header: cascade flag [+ cascade], then the total block count
+				Cascade cascade = null;
+				if(MiniByte.ReadFromStream(dis).isTrue()) {
+					cascade = new Cascade();
+					cascade.readDataStream(dis);
+				}
+				int totalblocks = MiniNumber.ReadFromStream(dis).getAsBigDecimal().intValueExact();
+				if(totalblocks <= 0) throw new CommandException("MegaMMR backup contains no valid block count");
+				MinimaLogger.log("Streaming IBD.. blocks:"+totalblocks
+						+(cascade!=null ? " (with cascade)" : " (no cascade)"));
 
 				//Reset chain state ONCE, before any IBD batch - wipes archive/txpow DBs,
 				//cascade and tree so batch #1's cascade installs and its first block
@@ -251,16 +263,6 @@ public class megammr extends Command {
 
 				//Defuse the "chain tip up to date" gate (see comment block above)
 				Main.getInstance().getTxPoWProcessor().resetFirstIBDTimer();
-
-				//IBD header: cascade flag [+ cascade], then the total block count
-				Cascade cascade = null;
-				if(MiniByte.ReadFromStream(dis).isTrue()) {
-					cascade = new Cascade();
-					cascade.readDataStream(dis);
-				}
-				int totalblocks = MiniNumber.ReadFromStream(dis).getAsInt();
-				MinimaLogger.log("Streaming IBD.. blocks:"+totalblocks
-						+(cascade!=null ? " (with cascade)" : " (no cascade)"));
 
 				//256 matches the processor's own internal recalculateTree cadence
 				int BATCH_SIZE  = 256;
@@ -295,9 +297,19 @@ public class megammr extends Command {
 					//per-block processSyncBlock is private and not thread-safe) and
 					//wait for it to finish before reading the next batch, so at most
 					//one batch is in memory at a time
+					if(!batch.checkValidData()) throw new CommandException("Invalid MegaMMR IBD batch");
+					Main.getInstance().getTxPoWProcessor().resetFirstIBDTimer();
 					Main.getInstance().getTxPoWProcessor().postProcessIBD(batch, "0x00", true);
+					long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.MINUTES.toNanos(10);
 					while(!Main.getInstance().getTxPoWProcessor().isIBDProcessFinished()) {
+						if(System.nanoTime() - deadline >= 0) throw new CommandException("Timed out processing MegaMMR IBD batch");
 						Thread.sleep(100);
+					}
+					//Completion also signals a rejected/failed batch. Require the actual tip.
+					org.minima.database.txpowtree.TxPoWTreeNode importedTip = MinimaDB.getDB().getTxPoWTree().getTip();
+					TxPoW expectedTip = batch.getTxBlocks().get(n-1).getTxPoW();
+					if(importedTip == null || !importedTip.getTxPoWID().equals(expectedTip.getTxPoWID())) {
+						throw new CommandException("MegaMMR IBD batch was not fully accepted");
 					}
 
 					first = false;

@@ -185,6 +185,20 @@ public class TxPoWSearcher {
 												boolean zSimpleOnly, int zDepth,boolean zMEGAMMR,
 												int zMax) {
 		
+		return searchCoins(zStartNode, zRelevant, zCheckCoinID, zCoinID, zCheckAmount, zAmount,
+			zCheckAddress, zAddress, zCheckTokenID, zTokenID, zCheckState, zState, zWildCardState,
+			zSimpleOnly, zDepth, zMEGAMMR, zMax, coin -> true);
+	}
+
+	public static ArrayList<Coin> searchCoins(	TxPoWTreeNode zStartNode, boolean zRelevant,
+												boolean zCheckCoinID, MiniData zCoinID,
+												boolean zCheckAmount, MiniNumber zAmount,
+												boolean zCheckAddress, MiniData zAddress,
+												boolean zCheckTokenID, MiniData zTokenID,
+												boolean zCheckState, String zState, boolean zWildCardState,
+												boolean zSimpleOnly, int zDepth,boolean zMEGAMMR,
+												int zMax, java.util.function.Predicate<Coin> zFilter) {
+
 		//The list of Coins
 		ArrayList<Coin> coinentry = new ArrayList<>();
 		
@@ -211,6 +225,8 @@ public class TxPoWSearcher {
 				break;
 			}
 			
+			boolean locked = false;
+			try {
 			ArrayList<Coin> coins = null;
 			if(!MEGACHECK) {
 				//Get the Relevant coins..
@@ -222,6 +238,7 @@ public class TxPoWSearcher {
 			}else {
 				//Need to LOCK DB
 				MinimaDB.getDB().readLock(true);
+				locked = true;
 				
 				//Get the MEGAMMR COINS..
 				coins = new ArrayList<Coin>(MinimaDB.getDB().getMegaMMR().getAllCoins().values());
@@ -280,7 +297,15 @@ public class TxPoWSearcher {
 				}else {
 					//Check if this has been spent in a previous block..
 					if(!spentcoins.contains(coinid)) {
+						//Count only matching simple coins toward max:, not contracts discarded
+						//later by finalise(). Otherwise max:1 can report an empty wallet.
+						if(zSimpleOnly && !MinimaDB.getDB().getWallet().isAddressSimple(coin.getAddress().to0xString())) {
+							continue;
+						}
+
 						
+						if(!zFilter.test(coin)) continue;
+
 						//Make a copy..
 						Coin copycoin = coin.deepCopy();
 						
@@ -292,10 +317,6 @@ public class TxPoWSearcher {
 						
 						//Hit the caller's cap - stop walking
 						if(zMax>0 && coinentry.size()>=zMax) {
-							//During the MEGAMMR pass the DB read lock is held - release it
-							if(MEGACHECK) {
-								MinimaDB.getDB().readLock(false);
-							}
 							return finalise(coinentry, zSimpleOnly);
 						}
 
@@ -304,9 +325,6 @@ public class TxPoWSearcher {
 						if((++heapcheck & 0xFF) == 0 && lowMemory()) {
 							MinimaLogger.log("[!] searchCoins aborted - low memory at "
 											+coinentry.size()+" coins");
-							if(MEGACHECK) {
-								MinimaDB.getDB().readLock(false);
-							}
 							throw new IllegalStateException("Node low on memory - narrow the search "
 									+"(use max:, depth: or a tighter address/tokenid filter)");
 						}
@@ -323,11 +341,11 @@ public class TxPoWSearcher {
 					MEGACHECK = true;
 				}
 			}else {
-				//Need to LOCK DB
-				MinimaDB.getDB().readLock(false);
-				
 				//we just did a MEGAMMR check.. that's it..
 				break;
+			}
+			} finally {
+				if(locked) MinimaDB.getDB().readLock(false);
 			}
 		}
 		
@@ -707,6 +725,8 @@ public class TxPoWSearcher {
 		while(tip!=null || MEGACHECK) {
 		
 
+			boolean locked = false;
+			try {
 			//Get ALL the coins..
 			ArrayList<Coin> coins = null;
 			if(!MEGACHECK) {
@@ -714,6 +734,7 @@ public class TxPoWSearcher {
 			}else {
 				//Need to LOCK DB
 				MinimaDB.getDB().readLock(true);
+				locked = true;
 				
 				//Get the MEGAMMR COINS..
 				coins = new ArrayList<Coin>(MinimaDB.getDB().getMegaMMR().getAllCoins().values());
@@ -744,10 +765,13 @@ public class TxPoWSearcher {
 			}else {
 				
 				//Need to LOCK DB
-				MinimaDB.getDB().readLock(false);
+
 				
 				//we just did a MEGAMMR check.. that's it..
 				break;
+			}
+			} finally {
+				if(locked) MinimaDB.getDB().readLock(false);
 			}
 		}
 		

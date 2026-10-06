@@ -54,7 +54,7 @@ public class TxPoWProcessor extends MessageProcessor {
 	/**
 	 * When processing IBD for MegaMMR check if finished..
 	 */
-	private boolean mIBDSyncFinished = false;
+	private volatile boolean mIBDSyncFinished = false;
 	
 	public TxPoWProcessor() {
 		super("TXPOWPROCESSOR");
@@ -709,6 +709,7 @@ public class TxPoWProcessor extends MessageProcessor {
 			
 			//Does it seem Valid..
 			if(!ibd.checkValidData()) {
+				if(notifyfinish) mIBDSyncFinished = true;
 				return;
 			}
 			
@@ -886,6 +887,7 @@ public class TxPoWProcessor extends MessageProcessor {
 			}finally {
 				//we are NOT syncing anymore..
 				Main.getInstance().setSyncIBD(false);
+				if(notifyfinish) mIBDSyncFinished = true;
 			}
 			
 		}else if(zMessage.isMessageType(TXPOWPROCESSOR_PROCESS_SYNCIBD)) {

@@ -117,6 +117,7 @@ public class txnsign extends Command {
 			passwordlock = true;
 		}
 		
+		try {
 		//Are we auto signing.. if all the coin inputs are simple
 		if(pubk.equals("auto")) {
 			
@@ -167,20 +168,33 @@ public class txnsign extends Command {
 			
 			//Make the TreeKey
 			TreeKey treekey = TreeKey.createDefault(privkey);
+			//Validate BEFORE narrowing: intValue silently wraps 2^32 to leaf zero and
+			//truncates fractional uses, defeating the capacity check below.
+			int requestedUses = -1;
+			if(existsParam("keyuses") || !GeneralParams.USE_BLOCK_AS_KEYUSES) {
+				try { requestedUses = uses.getAsBigDecimal().intValueExact(); }
+				catch(ArithmeticException invalid) {
+					throw new CommandException("keyuses must be a whole number within this key's capacity");
+				}
+				if(requestedUses < 0 || requestedUses >= treekey.getMaxUses()) {
+					throw new CommandException("keyuses outside key capacity: " + uses);
+				}
+			}
+
 			
 			//Are we using BLOCK as key uses..
 			if(GeneralParams.USE_BLOCK_AS_KEYUSES) {
 				
 				//Get the NEXT viable key uses based on block and previous uses..
 				//Capacity passed so refusal happens before the counter is persisted.
-				MiniNumber currentkeyuses = block.getCurrentBlockAsKeyUses(uses.getAsInt(), treekey.getMaxUses());
+				MiniNumber currentkeyuses = block.getCurrentBlockAsKeyUses(requestedUses, treekey.getMaxUses());
 				
 				//Set this..
 				treekey.setUses(currentkeyuses.getAsInt());
 				
 			}else {
 				//Set uses..
-				treekey.setUses(uses.getAsInt());
+				treekey.setUses(requestedUses);
 			}
 
 			//Refuse to sign past the key's capacity - TreeKey.sign would wrap back to
@@ -202,12 +216,6 @@ public class txnsign extends Command {
 			KeyRow pubrow = walletdb.getKeyFromPublic(pubk);
 			if(pubrow == null) {
 				
-				//Are we locking the DB
-				if(passwordlock) {
-					//Lock the Wallet DB
-					vault.passwordLockDB(getParam("password"));
-				}
-				
 				throw new CommandException("Public Key not found : "+pubk);
 			}
 			
@@ -221,12 +229,10 @@ public class txnsign extends Command {
 			wit.addSignature(signature);
 		}
 		
-		//Are we locking the DB
-		if(passwordlock) {
-			//Lock the Wallet DB
-			vault.passwordLockDB(getParam("password"));
+		} finally {
+			if(passwordlock) vault.passwordLockDB(getParam("password"));
 		}
-		
+
 		//The keys that were found and used
 		resp.put("keys", foundkeys);
 	

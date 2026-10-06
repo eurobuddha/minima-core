@@ -66,6 +66,12 @@ public class CoinDB extends SqlDB {
 		
 		//Run it..
 		stmt.execute(create);
+
+		//Same idempotent index setup as TxPoWSqlDB. State hydration looks up every
+		//candidate by coinid; an unindexed lookup makes a low-RAM search quadratic.
+		stmt.execute("CREATE INDEX IF NOT EXISTS coinlookup ON coins (coinid)");
+		stmt.execute("CREATE INDEX IF NOT EXISTS cointree ON coins (txpowtreeid)");
+		stmt.execute("CREATE INDEX IF NOT EXISTS coinheight ON coins (blockheight)");
 		
 		//All done..
 		stmt.close();

@@ -444,15 +444,12 @@ public class multisig extends Command {
 				passwordlock = true;
 			}
 			
-			//Run it..
-			result = CommandRunner.getRunner().runMultiCommand(txnsigner);
-			
-			//Are we locking the DB
-			if(passwordlock) {
-				//Lock the Wallet DB
-				vault.passwordLockDB(getParam("password"));
+			try {
+				result = CommandRunner.getRunner().runMultiCommand(txnsigner);
+			} finally {
+				if(passwordlock) vault.passwordLockDB(getParam("password"));
 			}
-			
+
 			ret.put("response", result);
 		
 		}else if(action.equals("post")) {

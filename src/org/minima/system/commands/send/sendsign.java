@@ -92,6 +92,7 @@ public class sendsign extends Command {
 			passwordlock = true;
 		}
 		
+		try {
 		//Get the sigs required.. for the main transaction
 		Transaction trans 	= txp.getTransaction();
 		Witness witness 	= txp.getWitness();
@@ -161,12 +162,10 @@ public class sendsign extends Command {
 			}
 		}
 
-		//Are we locking the DB
-		if(passwordlock) {
-			//Lock the Wallet DB
-			vault.passwordLockDB(getParam("password"));
+		} finally {
+			if(passwordlock) vault.passwordLockDB(getParam("password"));
 		}
-		
+
 		//Calculate the TxPOWID
 		txp.calculateTXPOWID();
 		

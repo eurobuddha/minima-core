@@ -182,6 +182,11 @@ public class coins extends Command {
 			checkmegammr = GeneralParams.IS_MEGAMMR;
 		}
 		
+		MiniNumber mincoinblock = tip.getBlockNumber().sub(coinage);
+		boolean checkmempool = getBooleanParam("checkmempool", false);
+		TxPoWDB txpdb = MinimaDB.getDB().getTxPoWDB();
+		TxPoWMiner txminer = checkmempool ? Main.getInstance().getTxPoWMiner() : null;
+
 		//Run the query
 		ArrayList<Coin> coins = TxPoWSearcher.searchCoins(	tip, relevant, 
 															scoinid, coinid,
@@ -190,51 +195,12 @@ public class coins extends Command {
 															stokenid, tokenid, 
 															sstate, statesearch, true,
 															simple, maxdepth,checkmegammr,
-															maxcoins);
+															maxcoins, coin -> coin.getBlockCreated().isLessEqual(mincoinblock)
+				&& (!checkmempool || (!txminer.checkForMiningCoin(coin.getCoinID().to0xString())
+				&& !txpdb.checkMempoolCoins(coin.getCoinID()))));
 		
-		//Make sure coins old enough..
-		ArrayList<Coin> agecoins = new ArrayList<>();
-		
-		//Now make sure they are old enough
-		MiniNumber mincoinblock = tip.getBlockNumber().sub(coinage);
-		for(Coin relc : coins) {
-			if(relc.getBlockCreated().isLessEqual(mincoinblock)) {
-				agecoins.add(relc);
-			}
-		}
-		
-		//Re-assign
-		coins = agecoins;
-		
-		//Are we checking if they are in the mempool
-		boolean checkmempool = getBooleanParam("checkmempool", false);
-		ArrayList<Coin> finalcoins = null;
-		if(checkmempool) {
-			
-			//Get the TxPoWDB
-			TxPoWDB txpdb 		= MinimaDB.getDB().getTxPoWDB();
-			TxPoWMiner txminer 	= Main.getInstance().getTxPoWMiner();
-			
-			finalcoins = new ArrayList<>();
-			for(Coin coin : coins) {
-				
-				//Check if we are already using thewm in another Transaction that is being mined
-				if(txminer.checkForMiningCoin(coin.getCoinID().to0xString())) {
-					continue;
-				}
-				
-				//Check if in mempool..
-				if(txpdb.checkMempoolCoins(coin.getCoinID())) {
-					continue;
-				}
-				
-				finalcoins.add(coin);
-			}
-			
-		}else {
-			finalcoins = coins;
-		}
-		
+		ArrayList<Coin> finalcoins = coins;
+
 		//Sort the coins..
 		String order = getParam("order", "desc");
 		if(order.equals("asc")) {
