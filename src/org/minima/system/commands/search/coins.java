@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import org.minima.database.MinimaDB;
+import org.minima.database.wallet.Wallet;
 import org.minima.database.txpowdb.TxPoWDB;
 import org.minima.database.txpowtree.TxPoWTreeNode;
 import org.minima.objects.Coin;
@@ -37,6 +38,10 @@ public class coins extends Command {
 				+ "    true or false, true will only return coins you are tracking.\n"
 				+ "    false will search all coins in the unpruned chain.\n"
 				+ "    Default is false unless no other parameters are provided.\n"
+				+ "\n"
+				+ "own: (optional)\n"
+				+ "    true returns only this wallet's simple addresses; tracked scripts remain in relevant:true.\n"
+				+ "    Defaults to false. Applied before max: limits matching coins.\n"
 				+ "\n"
 				+ "sendable: (optional)\n"
 				+ "    true only, filter out coins that are not sendable, they might be locked in a contract.\n"
@@ -98,7 +103,7 @@ public class coins extends Command {
 	public ArrayList<String> getValidParams(){
 		return new ArrayList<>(Arrays.asList(new String[]{"relevant","sendable","coinid","amount",
 				"address","tokenid","checkmempool","order","coinage","simplestate",
-				"totalamount","depth","state","megammr","max"}));
+				"totalamount","depth","state","megammr","max","own"}));
 	}
 	
 	@Override
@@ -187,6 +192,10 @@ public class coins extends Command {
 		TxPoWDB txpdb = MinimaDB.getDB().getTxPoWDB();
 		TxPoWMiner txminer = checkmempool ? Main.getInstance().getTxPoWMiner() : null;
 
+		boolean own = getBooleanParam("own", false);
+		Wallet walletdb = MinimaDB.getDB().getWallet();
+
+		// Ownership must be checked before max: counts a coin.
 		//Run the query
 		ArrayList<Coin> coins = TxPoWSearcher.searchCoins(	tip, relevant, 
 															scoinid, coinid,
@@ -195,7 +204,8 @@ public class coins extends Command {
 															stokenid, tokenid, 
 															sstate, statesearch, true,
 															simple, maxdepth,checkmegammr,
-															maxcoins, coin -> coin.getBlockCreated().isLessEqual(mincoinblock)
+															maxcoins, coin -> (!own || walletdb.isAddressSimple(coin.getAddress().to0xString()))
+				&& coin.getBlockCreated().isLessEqual(mincoinblock)
 				&& (!checkmempool || (!txminer.checkForMiningCoin(coin.getCoinID().to0xString())
 				&& !txpdb.checkMempoolCoins(coin.getCoinID()))));
 		

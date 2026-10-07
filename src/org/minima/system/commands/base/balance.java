@@ -160,8 +160,16 @@ public class balance extends Command {
 				if(!coin.getAddress().to0xString().equals(address)) {
 					continue;
 				}
+			}else {
+				//OWN WALLET ONLY: the default balance is THIS node's wallet. Coins at addresses
+				//that are merely TRACKED (newscript watch scripts for companion apps) stay visible
+				//to `coins relevant:true` but must not inflate the wallet's balance, token rows or
+				//coin counts. An explicit address: search above still inspects any address.
+				if(!walletdb.isAddressSimple(coin.getAddress().to0xString())) {
+					continue;
+				}
 			}
-			
+
 			if(!onlytokenid.equals("")) {
 				if(!coin.getTokenID().to0xString().equals(onlytokenid)) {
 					continue;
