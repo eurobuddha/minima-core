@@ -27,6 +27,14 @@ public class KeetsManager {
 		return mToken.isEqual(zToken);
 	}
 
+	/**
+	 * The per-boot token as 0x hex - for hosts that run the sidecar themselves
+	 * instead of via this manager ( Android starts it as a bare-kit worklet )
+	 */
+	public static String getTokenHex() {
+		return mToken.to0xString();
+	}
+
 	Process mProcess 	= null;
 	Thread 	mRunner 	= null;
 	boolean mShutdown 	= false;
