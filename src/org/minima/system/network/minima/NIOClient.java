@@ -89,8 +89,14 @@ public class NIOClient {
 	
 	String mMaximaIdent = "";
 	String mMaximaMLS 	= "";
-	
+
 	boolean mHasMaximaDisconnected = false;
+
+	/**
+	 * Is this a Keets (Hyperswarm) bridged connection - and the remote Noise public key
+	 */
+	boolean mKeets 		= false;
+	String 	mKeetsPubKey = "";
 	
 	/**
 	 * Specify extra info
@@ -150,7 +156,11 @@ public class NIOClient {
 		ret.put("sentgreeting", mSentGreeting);
 		ret.put("maxima", mMaximaIdent);
 		ret.put("maximamls", mMaximaMLS);
-		
+		ret.put("keets", mKeets);
+		if(mKeets) {
+			ret.put("keetspubkey", mKeetsPubKey);
+		}
+
 		return ret;
 	}
 	
@@ -206,6 +216,19 @@ public class NIOClient {
 		mHasMaximaDisconnected = true;
 	}
 	
+	public void setKeets(String zPubKey) {
+		mKeets 		 = true;
+		mKeetsPubKey = zPubKey;
+	}
+
+	public boolean isKeets() {
+		return mKeets;
+	}
+
+	public String getKeetsPubKey() {
+		return mKeetsPubKey;
+	}
+
 	public void overrideHost(String zHost) {
 		mHost = zHost;
 	}

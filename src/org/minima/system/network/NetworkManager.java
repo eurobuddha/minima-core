@@ -10,6 +10,7 @@ import java.util.Enumeration;
 
 import org.minima.database.MinimaDB;
 import org.minima.database.userprefs.UserDB;
+import org.minima.system.network.keets.KeetsManager;
 import org.minima.system.network.minima.NIOManager;
 import org.minima.system.network.minima.NIOTraffic;
 import org.minima.system.network.p2p.P2PFunctions;
@@ -51,6 +52,11 @@ public class NetworkManager {
 	 * The RPC server
 	 */
 	Server mRPCServer = null;
+
+	/**
+	 * The Keets (Hyperswarm) sidecar - started once the NIO server is listening
+	 */
+	KeetsManager mKeetsManager = null;
 	
 	public NetworkManager() {
 		
@@ -160,6 +166,8 @@ public class NetworkManager {
 		stats.put("connecting", mNIOManager.getNumberOfConnnectingClients());
 		stats.put("connected", mNIOManager.getNumberOfConnectedClients());
 		
+		stats.put("keets", GeneralParams.KEETS_ENABLED);
+
 		//RPC Stats
 		JSONObject rpcjson = new JSONObject();
 		rpcjson.put("enabled", GeneralParams.RPC_ENABLED);
@@ -234,10 +242,23 @@ public class NetworkManager {
 		}
 	}
 	
+	public void startKeets() {
+		if(mKeetsManager == null) {
+			mKeetsManager = new KeetsManager();
+			mKeetsManager.start();
+		}
+	}
+
 	public void shutdownNetwork() {
 		//We are trying toi shutdown
 		mShuttingDown = true;
-		
+
+		//Stop the keets sidecar
+		if(mKeetsManager != null) {
+			mKeetsManager.shutdown();
+			mKeetsManager = null;
+		}
+
 		//And the RPC
 		stopRPC();
 		
