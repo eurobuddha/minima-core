@@ -343,6 +343,11 @@ public class NIOManager extends MessageProcessor {
 				}
 			}
 			
+			//Start the keets sidecar now the server is listening - it dials us over loopback
+			if(GeneralParams.KEETS_ENABLED) {
+				mNetworkManager.startKeets();
+			}
+
 			//Check how long since last connect for each client..
 			PostTimerMessage(new TimerMessage(LASTREAD_CHECKER, NIO_CHECKLASTMSG));
 			
@@ -611,14 +616,16 @@ public class NIOManager extends MessageProcessor {
 				PostTimerMessage(tmsg);
 			}
 			
-			//Tell the P2P..
-			Message newconn = new Message(P2PFunctions.P2P_DISCONNECTED);
-			newconn.addObject("nioclient", nioc);
-			newconn.addString("uid", nioc.getUID());
-			newconn.addBoolean("incoming", nioc.isIncoming());
-			newconn.addBoolean("reconnect", reconnect);
-			mNetworkManager.getP2PManager().PostMessage(newconn);
-			
+			//Tell the P2P.. NOT for keets clients - P2P never knew about them
+			if(!nioc.isKeets()) {
+				Message newconn = new Message(P2PFunctions.P2P_DISCONNECTED);
+				newconn.addObject("nioclient", nioc);
+				newconn.addString("uid", nioc.getUID());
+				newconn.addBoolean("incoming", nioc.isIncoming());
+				newconn.addBoolean("reconnect", reconnect);
+				mNetworkManager.getP2PManager().PostMessage(newconn);
+			}
+
 		}else if(zMessage.getMessageType().equals(NIO_NEWCONNECTION)) {
 			//New connection.. 
 			NIOClient nioc = (NIOClient)zMessage.getObject("client");
