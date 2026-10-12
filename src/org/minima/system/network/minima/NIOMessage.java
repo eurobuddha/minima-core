@@ -29,6 +29,7 @@ import org.minima.system.brains.TxPoWSearcher;
 import org.minima.system.commands.backup.mmrsync.MegaMMRIBD;
 import org.minima.system.commands.backup.mmrsync.MegaMMRSyncData;
 import org.minima.system.commands.backup.mmrsync.megammrsync;
+import org.minima.system.network.keets.KeetsManager;
 import org.minima.system.network.p2p.P2PFunctions;
 import org.minima.system.network.p2p.P2PManager;
 import org.minima.system.network.p2p.messages.InetSocketAddressIO;
@@ -92,12 +93,19 @@ public class NIOMessage implements Runnable {
 	
 	public static final MiniByte MSG_MEGAMMRSYNC_REQ 	= new MiniByte(22);
 	public static final MiniByte MSG_MEGAMMRSYNC_RESP 	= new MiniByte(23);
-	
+
 	/**
-	 * Helper function that converts to String 
+	 * Identity preamble sent by the LOCAL keets sidecar on each bridged Hyperswarm connection
+	 */
+	public static final MiniByte MSG_KEETS 				= new MiniByte(24);
+
+	/**
+	 * Helper function that converts to String
 	 */
 	public static String convertMessageType(MiniByte zType) {
-		if(zType.isEqual(MSG_GREETING)) {
+		if(zType.isEqual(MSG_KEETS)) {
+			return "KEETS";
+		}else if(zType.isEqual(MSG_GREETING)) {
 			return "GREETING";
 		}else if(zType.isEqual(MSG_IBD)) {
 			return "IBD";
@@ -272,7 +280,58 @@ public class NIOMessage implements Runnable {
 			
 			
 			//Now find the right message
-			if(type.isEqual(MSG_GREETING)) {
+			if(type.isEqual(MSG_KEETS)) {
+
+				//Identity preamble from the LOCAL keets sidecar for a bridged Hyperswarm connection
+				NIOClient nioclient = Main.getInstance().getNIOManager().getNIOServer().getClient(mClientUID);
+				if(nioclient == null) {
+					return;
+				}
+
+				//Read the payload
+				MiniData token 		= MiniData.ReadFromStream(dis);
+				MiniData pubkey 	= MiniData.ReadFromStream(dis);
+				MiniByte initiator 	= MiniByte.ReadFromStream(dis);
+
+				//ONLY valid from the local sidecar : loopback + correct per-boot token + before any greeting + once.
+				//A remote peer CAN pipe a type 24 frame through the bridge and it arrives from 127.0.0.1 -
+				//the token (which never crosses the DHT) is the defense.
+				boolean valid = nioclient.getHost().equals("127.0.0.1")
+								&& KeetsManager.checkToken(token)
+								&& !nioclient.isKeets()
+								&& !nioclient.isValidGreeting()
+								&& pubkey.getLength() == 32;
+				if(!valid) {
+					MinimaLogger.log("Invalid MSG_KEETS preamble from "+nioclient.getFullAddress()+" uid:"+mClientUID+" ..disconnecting");
+					Main.getInstance().getNIOManager().disconnect(mClientUID);
+					return;
+				}
+
+				//Flag as keets and give it a synthetic per-pubkey identity.
+				//127.113.x.y - the 127. prefix keeps it out of P2P peer sharing and self-IP discovery.
+				byte[] pk = pubkey.getBytes();
+				nioclient.setKeets(pubkey.to0xString());
+				nioclient.overrideHost("127.113."+(pk[1] & 0xFF)+"."+(pk[2] & 0xFF));
+				nioclient.setMinimaPort(9001 + (pk[3] & 0xFF));
+
+				MinimaLogger.log("[KEETS] peer bridged pubkey:"+pubkey.to0xString()+" synthetic:"+nioclient.getFullAddress()+" initiator:"+initiator.isTrue());
+
+				//Banned..? ( synthetic address is pubkey-derived so this bans by pubkey )
+				if(P2PFunctions.isInvalidPeer(nioclient.getFullAddress())) {
+					MinimaLogger.log("[KEETS] invalid peer "+nioclient.getFullAddress()+" ..disconnecting");
+					Main.getInstance().getNIOManager().disconnect(mClientUID);
+					return;
+				}
+
+				//Both ends see the bridged socket as incoming - the hyperswarm initiator side starts the handshake
+				if(initiator.isTrue() && !nioclient.haveSentGreeting()) {
+					nioclient.setSentGreeting(true);
+
+					Greeting greetout = new Greeting().createGreeting();
+					NIOManager.sendNetworkMessage(mClientUID, NIOMessage.MSG_GREETING, greetout);
+				}
+
+			}else if(type.isEqual(MSG_GREETING)) {
 				//Get the client.. unless an internal message
 				NIOClient nioclient = Main.getInstance().getNIOManager().getNIOServer().getClient(mClientUID);
 				if(nioclient == null) {
@@ -299,11 +358,13 @@ public class NIOMessage implements Runnable {
 					//Add to our Invalid Peers list
 					P2PFunctions.addInvalidPeer(nioclient.getFullAddress());
 					
-					//Tell the P2P..
-					Message newconn = new Message(P2PFunctions.P2P_NOCONNECT);
-					newconn.addObject("client", nioclient);
-					newconn.addString("uid", nioclient.getUID());
-					Main.getInstance().getNetworkManager().getP2PManager().PostMessage(newconn);
+					//Tell the P2P.. NOT for keets clients - P2P never knows about them
+					if(!nioclient.isKeets()) {
+						Message newconn = new Message(P2PFunctions.P2P_NOCONNECT);
+						newconn.addObject("client", nioclient);
+						newconn.addString("uid", nioclient.getUID());
+						Main.getInstance().getNetworkManager().getP2PManager().PostMessage(newconn);
+					}
 					
 					//Are we incoming..
 					if(nioclient.isIncoming() && !nioclient.haveSentGreeting()) {
@@ -336,12 +397,14 @@ public class NIOMessage implements Runnable {
 					}
 				}
 				
-				//Get the Host / Port..
-				if(greet.getExtraData().containsKey("host")) {
-					nioclient.overrideHost(greet.getExtraDataValue("host"));
-				}
-				if(greet.getExtraData().containsKey("port")) {
-					nioclient.setMinimaPort(Integer.parseInt(greet.getExtraDataValue("port")));
+				//Get the Host / Port.. NOT for keets clients - their synthetic pubkey identity must not be clobbered
+				if(!nioclient.isKeets()) {
+					if(greet.getExtraData().containsKey("host")) {
+						nioclient.overrideHost(greet.getExtraDataValue("host"));
+					}
+					if(greet.getExtraData().containsKey("port")) {
+						nioclient.setMinimaPort(Integer.parseInt(greet.getExtraDataValue("port")));
+					}
 				}
 				
 //				//Is there a maxima mls..
@@ -355,12 +418,14 @@ public class NIOMessage implements Runnable {
 				nioclient.setWelcomeMessage("Minima v"+greet.getVersion());
 				nioclient.setValidGreeting(true);
 				
-				//Tell the P2P..
-				Message newconn = new Message(P2PFunctions.P2P_CONNECTED);
-				newconn.addString("uid", nioclient.getUID());
-				newconn.addBoolean("incoming", nioclient.isIncoming());
-				newconn.addObject("client", nioclient);
-				Main.getInstance().getNetworkManager().getP2PManager().PostMessage(newconn);
+				//Tell the P2P.. NOT for keets clients - hyperswarm does its own peer management
+				if(!nioclient.isKeets()) {
+					Message newconn = new Message(P2PFunctions.P2P_CONNECTED);
+					newconn.addString("uid", nioclient.getUID());
+					newconn.addBoolean("incoming", nioclient.isIncoming());
+					newconn.addObject("client", nioclient);
+					Main.getInstance().getNetworkManager().getP2PManager().PostMessage(newconn);
+				}
 				
 				//Is this an incoming connection.. send a greeting!
 				if(nioclient.isIncoming()) {
@@ -829,6 +894,12 @@ public class NIOMessage implements Runnable {
 					MinimaLogger.log(mClientUID+" Error null client on P2P NIOMessage..");
 					return;
 				}
+
+				//Keets peers are invisible to the P2P system
+				if(nioclient.isKeets()) {
+					return;
+				}
+
 				NIOClientInfo clientInfo = new NIOClientInfo(nioclient, true);
 				
 				//Convert to JSON

@@ -365,6 +365,23 @@ public class ParamConfigurer {
             GeneralParams.P2P_ENABLED = false;
             GeneralParams.CONNECT_LIST = args;
         }),
+        keets("keets", "Enable the Keets (Hyperswarm) transport sidecar", (args, configurer) -> {
+            if ("true".equals(args)) {
+                GeneralParams.KEETS_ENABLED = true;
+            }
+        }),
+        keetssidecar("keetssidecar", "Path to the keets sidecar index.js", (args, configurer) -> {
+            GeneralParams.KEETS_SIDECAR = args;
+        }),
+        keetsbootstrap("keetsbootstrap", "Comma separated list of HyperDHT bootstrap nodes host:port", (args, configurer) -> {
+            GeneralParams.KEETS_BOOTSTRAP = args;
+        }),
+        keetsconnect("keetsconnect", "Comma separated list of keets public keys to connect to directly", (args, configurer) -> {
+            GeneralParams.KEETS_CONNECT = args;
+        }),
+        keetsmaxconns("keetsmaxconns", "Max concurrent keets connections (default 6)", (args, configurer) -> {
+            GeneralParams.KEETS_MAX_CONNS = Integer.parseInt(args);
+        }),
         clean("clean", "Wipe data folder at startup", (args, configurer) -> {
             if ("true".equals(args)) {
                 GeneralParams.CLEAN = true;
