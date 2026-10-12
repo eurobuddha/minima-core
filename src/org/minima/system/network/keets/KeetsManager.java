@@ -51,7 +51,7 @@ public class KeetsManager {
 
 			try {
 				ArrayList<String> cmd = new ArrayList<>();
-				cmd.add("node");
+				cmd.add(GeneralParams.KEETS_NODE);
 				cmd.add(GeneralParams.KEETS_SIDECAR);
 				cmd.add("--port");
 				cmd.add(""+GeneralParams.MINIMA_PORT);
@@ -72,6 +72,8 @@ public class KeetsManager {
 
 				ProcessBuilder pb = new ProcessBuilder(cmd);
 				pb.environment().put("KEETS_TOKEN", mToken.to0xString());
+				//Lets an Electron binary act as the node runtime ( no effect on a real node binary )
+				pb.environment().put("ELECTRON_RUN_AS_NODE", "1");
 				pb.redirectErrorStream(true);
 
 				MinimaLogger.log("[KEETS] starting sidecar : "+String.join(" ", cmd));

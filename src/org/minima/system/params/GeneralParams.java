@@ -171,6 +171,11 @@ public class GeneralParams {
 	public static String KEETS_SIDECAR = "";
 
 	/**
+	 * The node runtime that runs the sidecar ( Electron binary works via ELECTRON_RUN_AS_NODE )
+	 */
+	public static String KEETS_NODE = "node";
+
+	/**
 	 * Comma separated list of HyperDHT bootstrap nodes host:port
 	 * Default is the owner-run bootstrap fleet ( override with -keetsbootstrap, empty = hyperswarm defaults )
 	 */
@@ -452,6 +457,7 @@ public class GeneralParams {
 		CONNECT_LIST = "";
 		KEETS_ENABLED = false;
 		KEETS_SIDECAR = "";
+		KEETS_NODE = "node";
 		KEETS_BOOTSTRAP = "31.125.188.214:49737,95.179.179.181:49737,65.109.31.226:49737,45.77.246.226:49737,78.141.237.9:49737,45.77.57.24:49737,192.248.151.55:49737";
 		KEETS_CONNECT = "";
 		KEETS_MAX_CONNS = 6;
