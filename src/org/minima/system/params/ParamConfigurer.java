@@ -373,6 +373,9 @@ public class ParamConfigurer {
         keetssidecar("keetssidecar", "Path to the keets sidecar index.js", (args, configurer) -> {
             GeneralParams.KEETS_SIDECAR = args;
         }),
+        keetsnode("keetsnode", "Node runtime binary that runs the keets sidecar (default node)", (args, configurer) -> {
+            GeneralParams.KEETS_NODE = args;
+        }),
         keetsbootstrap("keetsbootstrap", "Comma separated list of HyperDHT bootstrap nodes host:port", (args, configurer) -> {
             GeneralParams.KEETS_BOOTSTRAP = args;
         }),
