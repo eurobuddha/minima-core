@@ -3,10 +3,15 @@ package org.minima.system.network.keets;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Base64;
 
 import org.minima.objects.base.MiniData;
+import org.minima.system.Main;
 import org.minima.system.params.GeneralParams;
 import org.minima.utils.MinimaLogger;
+import org.minima.utils.json.JSONArray;
+import org.minima.utils.json.JSONObject;
+import org.minima.utils.json.parser.JSONParser;
 
 /**
  * Runs the keets sidecar : a node.js process speaking Hyperswarm / HyperDHT
@@ -37,18 +42,69 @@ public class KeetsManager {
 
 	Process mProcess 	= null;
 	Thread 	mRunner 	= null;
+	Thread 	mPoller 	= null;
 	boolean mShutdown 	= false;
 
 	public void start() {
 
+		//The inbox poller runs whenever keets is enabled - the sidecar API is at
+		//MINIMA_PORT+5 whether WE spawn the sidecar ( desktop ) or the host app
+		//runs it as a worklet ( Android )
+		mPoller = new Thread(this::pollLoop, "KEETS_INBOX");
+		mPoller.setDaemon(true);
+		mPoller.start();
+
 		if(GeneralParams.KEETS_SIDECAR.equals("")) {
-			MinimaLogger.log("[KEETS] no -keetssidecar path set.. keets disabled");
+			MinimaLogger.log("[KEETS] no -keetssidecar path set.. sidecar not spawned by this node");
 			return;
 		}
 
 		mRunner = new Thread(this::runLoop, "KEETS_SIDECAR");
 		mRunner.setDaemon(true);
 		mRunner.start();
+	}
+
+	/**
+	 * Drain the sidecar message inbox and re-emit each message as an MDS event :
+	 *
+	 *   { "event":"KEETS", "data":{ id, from, ts, payload (base64), via,
+	 *                               received, message (utf8 decode) } }
+	 *
+	 * Messages are acked ( deleted from the sidecar inbox ) once the event is
+	 * posted - a MiniDapp that wants history must persist them ( service.js + SQL,
+	 * see the reference chat dapp ). Messages arriving while this node is OFF wait
+	 * at the keets mailboxes, so nothing is lost across restarts.
+	 */
+	private void pollLoop() {
+
+		while(!mShutdown) {
+
+			try {Thread.sleep(5000);} catch (InterruptedException e) {break;}
+
+			try {
+				String inbox = KeetsAPI.getStr("/messages");
+				JSONArray msgs = (JSONArray) new JSONParser().parse(inbox);
+				for(Object mo : msgs) {
+					JSONObject msg = (JSONObject) mo;
+
+					//Convenience utf8 decode for text payloads
+					try {
+						byte[] raw = Base64.getDecoder().decode((String)msg.get("payload"));
+						msg.put("message", new String(raw, "UTF-8"));
+					}catch(Exception exc) {
+						msg.put("message", "");
+					}
+
+					MinimaLogger.log("[KEETS] message from:"+msg.get("from")+" via:"+msg.get("via"));
+					Main.getInstance().PostNotifyEvent("KEETS", msg);
+
+					//Acked - the event is the hand-off
+					KeetsAPI.deleteStr("/message/"+msg.get("id"));
+				}
+			}catch(Exception exc) {
+				//Sidecar down / restarting - quiet, try again next poll
+			}
+		}
 	}
 
 	private void runLoop() {
@@ -122,6 +178,9 @@ public class KeetsManager {
 		}
 		if(mRunner != null) {
 			mRunner.interrupt();
+		}
+		if(mPoller != null) {
+			mPoller.interrupt();
 		}
 	}
 }

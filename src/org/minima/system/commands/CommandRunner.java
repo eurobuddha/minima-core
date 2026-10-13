@@ -76,6 +76,7 @@ import org.minima.system.commands.network.message;
 import org.minima.system.commands.network.network;
 import org.minima.system.commands.network.p2pstate;
 import org.minima.system.commands.network.peers;
+import org.minima.system.commands.network.keets;
 import org.minima.system.commands.network.ping;
 import org.minima.system.commands.network.rpc;
 import org.minima.system.commands.network.webhooks;
@@ -161,7 +162,7 @@ public class CommandRunner {
 			
 			new sphincs(),
 			
-			new ping(), new random(), new seedrandom(), new mysql(), new mysqlcoins(), new slavenode(), 
+			new ping(), new keets(), new random(), new seedrandom(), new mysql(), new mysqlcoins(), new slavenode(), 
 			//new file(),
 			
 			new jnitest(), new benchmark(), new jniminingtest(),
