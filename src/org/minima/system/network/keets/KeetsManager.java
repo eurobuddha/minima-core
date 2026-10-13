@@ -47,12 +47,16 @@ public class KeetsManager {
 
 	public void start() {
 
-		//The inbox poller runs whenever keets is enabled - the sidecar API is at
-		//MINIMA_PORT+5 whether WE spawn the sidecar ( desktop ) or the host app
-		//runs it as a worklet ( Android )
-		mPoller = new Thread(this::pollLoop, "KEETS_INBOX");
-		mPoller.setDaemon(true);
-		mPoller.start();
+		//The inbox poller drains messages into MDS events - ONLY when MDS is
+		//actually on, or the messages would be consumed with no listener. Without
+		//MDS, apps poll 'keets action:inbox' and ack themselves. The sidecar API
+		//is at MINIMA_PORT+5 whether WE spawn the sidecar ( desktop ) or the host
+		//app runs it as a worklet ( Android )
+		if(GeneralParams.MDS_ENABLED) {
+			mPoller = new Thread(this::pollLoop, "KEETS_INBOX");
+			mPoller.setDaemon(true);
+			mPoller.start();
+		}
 
 		if(GeneralParams.KEETS_SIDECAR.equals("")) {
 			MinimaLogger.log("[KEETS] no -keetssidecar path set.. sidecar not spawned by this node");
