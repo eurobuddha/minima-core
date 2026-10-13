@@ -121,6 +121,11 @@ public class GeneralParams {
 	public static boolean MDS_ENABLED = false;
 	
 	/**
+	 * Interface the MDS servers bind: "" = every interface (stock Minima), "127.0.0.1" = loopback only
+	 */
+	public static String MDS_BIND_HOST = "";
+	
+	/**
 	 * Test Params or Main Params
 	 */
 	public static boolean TEST_PARAMS = false;
@@ -448,6 +453,7 @@ public class GeneralParams {
 		MDS_INITFOLDER = "";
 		MDS_WRITE = "";
 		MDS_ENABLED = false;
+		MDS_BIND_HOST = "";
 		TEST_PARAMS = false;
 		P2P_ENABLED = true;
 		P2P_ROOTNODE = "";

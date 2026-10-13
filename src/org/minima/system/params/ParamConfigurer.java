@@ -253,6 +253,9 @@ public class ParamConfigurer {
             	GeneralParams.ARCHIVE = false;
             }
         }),
+        mdsbind("mdsbind", "Bind the MDS servers to one interface only, e.g. 127.0.0.1 (default: all)", (args, configurer) -> {
+            GeneralParams.MDS_BIND_HOST = args.trim();
+        }),
         mdsenable("mdsenable", "Enable MDS", (args, configurer) -> {
             if ("true".equals(args)) {
             	GeneralParams.MDS_ENABLED = true;

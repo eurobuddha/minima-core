@@ -229,6 +229,26 @@ public class NIOMessage implements Runnable {
 		try {
 			//What Type..
 			MiniByte type = MiniByte.ReadFromStream(dis);
+
+			//A Maxima frame as the FIRST thing on an incoming connection that never greeted: a fresh
+			//"send" socket (MaximaSender) or a relay forwarding to us carries no greeting at all. This
+			//node has no Maxima of its own, so hand the connection to the embedding relay (NIOHandoff),
+			//frame included, instead of dropping the frame on the floor.
+			if(NIOHandoff.HANDLER != null && (type.isEqual(MSG_MAXIMA_TXPOW) || type.isEqual(MSG_MAXIMA_CTRL))) {
+				NIOClient firstclient = Main.getInstance().getNIOManager().getNIOServer().getClient(mClientUID);
+				if(firstclient != null && firstclient.isIncoming() && !firstclient.isValidGreeting()) {
+					Object[] handed = Main.getInstance().getNIOManager().getNIOServer().detachForHandoff(mClientUID);
+					if(handed != null) {
+						try {
+							NIOHandoff.HANDLER.take((java.nio.channels.SocketChannel) handed[0], data, (byte[]) handed[1], firstclient.getHost());
+						} catch (Throwable t) {
+							MinimaLogger.log("NIOHandoff (first frame) failed : " + t);
+							try { ((java.nio.channels.SocketChannel) handed[0]).close(); } catch (Exception ignored) {}
+						}
+					}
+					return;
+				}
+			}
 			
 			//Are we syncing an IBD
 			if(Main.getInstance().isSyncIBD()) {
@@ -341,6 +361,21 @@ public class NIOMessage implements Runnable {
 				
 				//We have received a greeting message
 				Greeting greet = Greeting.ReadFromStream(dis);
+
+				//A Parlons/Maxima relay client on OUR port (see NIOHandoff): hand the whole
+				//connection to the embedding relay, greeting and all, before any chain handling.
+				if(nioclient.isIncoming() && NIOHandoff.wants(greet)) {
+					Object[] handed = Main.getInstance().getNIOManager().getNIOServer().detachForHandoff(mClientUID);
+					if(handed != null) {
+						try {
+							NIOHandoff.HANDLER.take((java.nio.channels.SocketChannel) handed[0], mData.getBytes(), (byte[]) handed[1], nioclient.getHost());
+						} catch (Throwable t) {
+							MinimaLogger.log("NIOHandoff failed : " + t);
+							try { ((java.nio.channels.SocketChannel) handed[0]).close(); } catch (Exception ignored) {}
+						}
+					}
+					return;
+				}
 				
 				//What version..
 				boolean testcheck = true;
