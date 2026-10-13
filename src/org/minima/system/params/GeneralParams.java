@@ -179,7 +179,7 @@ public class GeneralParams {
 	 * Comma separated list of HyperDHT bootstrap nodes host:port
 	 * Default is the owner-run bootstrap fleet ( override with -keetsbootstrap, empty = hyperswarm defaults )
 	 */
-	public static String KEETS_BOOTSTRAP = "31.125.188.214:49737,95.179.179.181:49737,65.109.31.226:49737,45.77.246.226:49737,78.141.237.9:49737,45.77.57.24:49737,192.248.151.55:49737";
+	public static String KEETS_BOOTSTRAP = "31.125.188.214:49737,95.179.179.181:49737,65.109.31.226:49737,45.77.246.226:49737,78.141.237.9:49737,45.77.57.24:49737,192.248.151.55:49737,node1.hyperdht.org:49737,node2.hyperdht.org:49737,node3.hyperdht.org:49737";
 
 	/**
 	 * Comma separated list of keets public keys to connect to directly
@@ -458,7 +458,7 @@ public class GeneralParams {
 		KEETS_ENABLED = false;
 		KEETS_SIDECAR = "";
 		KEETS_NODE = "node";
-		KEETS_BOOTSTRAP = "31.125.188.214:49737,95.179.179.181:49737,65.109.31.226:49737,45.77.246.226:49737,78.141.237.9:49737,45.77.57.24:49737,192.248.151.55:49737";
+		KEETS_BOOTSTRAP = "31.125.188.214:49737,95.179.179.181:49737,65.109.31.226:49737,45.77.246.226:49737,78.141.237.9:49737,45.77.57.24:49737,192.248.151.55:49737,node1.hyperdht.org:49737,node2.hyperdht.org:49737,node3.hyperdht.org:49737";
 		KEETS_CONNECT = "";
 		KEETS_MAX_CONNS = 6;
 		SHOW_PARAMS = false;
