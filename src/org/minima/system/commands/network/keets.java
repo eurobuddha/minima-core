@@ -74,7 +74,7 @@ public class keets extends Command {
 	@Override
 	public ArrayList<String> getValidParams(){
 		return new ArrayList<>(Arrays.asList(new String[]{
-				"action","to","message","datahex","path","url","drive","id"}));
+				"action","to","message","datahex","path","url","drive","id","file"}));
 	}
 
 	@Override
@@ -125,7 +125,13 @@ public class keets extends Command {
 			if(!path.startsWith("/")) {
 				path = "/"+path;
 			}
-			byte[] data = new MiniData(getParam("datahex")).getBytes();
+			//file: avoids megabyte command strings (the tokenizer drops oversized params)
+			byte[] data;
+			if(existsParam("file")) {
+				data = org.minima.utils.MiniFile.readCompleteFile(new java.io.File(getParam("file")));
+			}else {
+				data = new MiniData(getParam("datahex")).getBytes();
+			}
 			ret.put("response", parse(KeetsAPI.postStr("/media"+path, data)));
 
 		}else if(action.equals("fetch")) {
@@ -134,7 +140,14 @@ public class keets extends Command {
 			JSONObject resp = new JSONObject();
 			resp.put("url", url);
 			resp.put("size", data.length);
-			resp.put("datahex", new MiniData(data).to0xString());
+			if(existsParam("file")) {
+				//write to disk instead of returning megabytes of hex through the parser
+				java.io.File out = new java.io.File(getParam("file"));
+				org.minima.utils.MiniFile.writeDataToFile(out, data);
+				resp.put("file", out.getAbsolutePath());
+			}else {
+				resp.put("datahex", new MiniData(data).to0xString());
+			}
 			ret.put("response", resp);
 
 		}else if(action.equals("pin")) {
