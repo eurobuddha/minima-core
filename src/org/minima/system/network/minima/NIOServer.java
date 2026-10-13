@@ -86,6 +86,75 @@ public class NIOServer implements Runnable {
 		mSelector.wakeup();
 	}
 	
+	/** Hand-off requests (see {@link NIOHandoff}), served ON THE SELECTOR THREAD - the only thread
+	 *  that reads these channels, so no read can race the detach. */
+	private final ArrayList<HandoffRequest> mHandoffRequests = new ArrayList<>();
+
+	private static final class HandoffRequest {
+		final String uid;
+		final java.util.concurrent.CompletableFuture<Object[]> result = new java.util.concurrent.CompletableFuture<>();
+		HandoffRequest(String zUID) { uid = zUID; }
+	}
+
+	/**
+	 * Hand an INCOMING connection to an embedding host (see {@link NIOHandoff}): its key leaves the
+	 * selector, it leaves the client list, the channel goes blocking, and whatever the reader had
+	 * buffered beyond the first frame (held frames, a partial frame, unparsed bytes) is returned so
+	 * nothing is lost. The work runs on the selector thread; this call (from a NIOMessage worker)
+	 * waits for it. Null if the client is unknown or the detach failed (socket closed then).
+	 * A handed-off client posts no NIO_DISCONNECTED: nothing tracks an incoming client before its
+	 * greeting (P2P_CONNECTED fires on a valid greeting only) - keep it that way.
+	 */
+	public Object[] detachForHandoff(String zUID) {
+		if(!mClients.containsKey(zUID)) {
+			return null;
+		}
+		HandoffRequest req = new HandoffRequest(zUID);
+		synchronized (mHandoffRequests) {
+			mHandoffRequests.add(req);
+		}
+		mSelector.wakeup();
+		try {
+			return req.result.get(10, java.util.concurrent.TimeUnit.SECONDS);
+		} catch (Exception e) {
+			MinimaLogger.log("NIOHandoff detach of "+zUID+" did not complete : "+e);
+			return null;
+		}
+	}
+
+	/** Selector thread only. */
+	private void serveHandoffRequests() {
+		ArrayList<HandoffRequest> reqs;
+		synchronized (mHandoffRequests) {
+			if(mHandoffRequests.isEmpty()) {
+				return;
+			}
+			reqs = new ArrayList<>(mHandoffRequests);
+			mHandoffRequests.clear();
+		}
+		for(HandoffRequest req : reqs) {
+			NIOClient client = mClients.remove(req.uid);
+			if(client == null) {
+				req.result.complete(null);
+				continue;
+			}
+			try {
+				client.mHandedOff = true;
+				client.mKey.cancel();
+				mSelector.selectNow();   //deregisters the cancelled key so the channel may go blocking
+				byte[] leftover = client.drainBufferedInput();
+				client.mSocket.configureBlocking(true);
+				NIOMessage.mlastSyncReq.remove(req.uid);
+				NIOMessage.mLastChainSync.remove(req.uid);
+				req.result.complete(new Object[]{client.mSocket, leftover});
+			} catch (Exception e) {
+				MinimaLogger.log("NIOHandoff detach failed : "+e);
+				try { client.mSocket.close(); } catch (Exception ignored) {}
+				req.result.complete(null);
+			}
+		}
+	}
+
 	public NIOClient getClient(String zUID) {
 		return mClients.get(zUID);
 	}
@@ -216,6 +285,9 @@ public class NIOServer implements Runnable {
         			}
 	        	}
 	        	
+	        	//Any connections to hand to an embedding relay (NIOHandoff)..
+	        	serveHandoffRequests();
+	        	
 	        	//Loop through the current keys
 	            Iterator<SelectionKey> iterator = mSelector.selectedKeys().iterator();
 	            while (iterator.hasNext()) {
@@ -252,7 +324,9 @@ public class NIOServer implements Runnable {
 	                } catch (Exception e) {
 	                	
 	                    // Disconnect the user
-	                    if(client != null) {
+	                    if(client != null && client.mHandedOff) {
+	                    	//the relay owns it (NIOHandoff) - nothing to do here
+	                    }else if(client != null) {
 	                    	
 	                    	//Disconnect..
 		                	client.disconnect();
