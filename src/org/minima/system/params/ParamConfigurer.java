@@ -388,6 +388,12 @@ public class ParamConfigurer {
         keetsmaxconns("keetsmaxconns", "Max concurrent keets connections (default 6)", (args, configurer) -> {
             GeneralParams.KEETS_MAX_CONNS = Integer.parseInt(args);
         }),
+        keetsmailboxurl("keetsmailboxurl", "URL of the signed keets mailbox list (empty = sidecar defaults)", (args, configurer) -> {
+            GeneralParams.KEETS_MAILBOX_URL = args;
+        }),
+        keetssidecarargs("keetssidecarargs", "Extra space separated arguments for the keets sidecar (e.g. \"--serve --dht-port 49737\")", (args, configurer) -> {
+            GeneralParams.KEETS_SIDECAR_EXTRA = args;
+        }),
         clean("clean", "Wipe data folder at startup", (args, configurer) -> {
             if ("true".equals(args)) {
                 GeneralParams.CLEAN = true;
