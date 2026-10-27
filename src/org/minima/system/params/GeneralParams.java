@@ -192,6 +192,21 @@ public class GeneralParams {
 	public static int KEETS_MAX_CONNS = 6;
 
 	/**
+	 * Where the signed list of keets mailboxes is published ( empty = sidecar defaults only ) - see KeetsMailboxList
+	 */
+	public static String KEETS_MAILBOX_URL = "https://eurobuddha.com/keets/mailboxes.json";
+
+	/**
+	 * Ed25519 public key ( 64 hex ) that must have signed the mailbox list
+	 */
+	public static String KEETS_MAILBOX_SIGNKEY = "2b176758f4c9eedcd514cb2accb73d4aa5332821339e41db2aa51da4707a1883";
+
+	/**
+	 * Extra arguments appended to the sidecar command line, space separated ( a fleet box passes --serve ... )
+	 */
+	public static String KEETS_SIDECAR_EXTRA = "";
+
+	/**
 	 * Show the startup parameters
 	 */
 	public static boolean SHOW_PARAMS = false;
@@ -493,6 +508,9 @@ public class GeneralParams {
 		KEETS_BOOTSTRAP = "31.125.188.214:49737,95.179.179.181:49737,65.109.31.226:49737,45.77.246.226:49737,78.141.237.9:49737,45.77.57.24:49737,192.248.151.55:49737,node1.hyperdht.org:49737,node2.hyperdht.org:49737,node3.hyperdht.org:49737";
 		KEETS_CONNECT = "";
 		KEETS_MAX_CONNS = 6;
+		KEETS_MAILBOX_URL = "https://eurobuddha.com/keets/mailboxes.json";
+		KEETS_MAILBOX_SIGNKEY = "2b176758f4c9eedcd514cb2accb73d4aa5332821339e41db2aa51da4707a1883";
+		KEETS_SIDECAR_EXTRA = "";
 		SHOW_PARAMS = false;
 		NO_SYNC_IBD = false;
 		MAX_RELAY_OUTPUTCOINS = 15;
