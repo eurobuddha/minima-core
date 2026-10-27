@@ -1,6 +1,7 @@
 package org.minima.system.network.keets;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -136,6 +137,18 @@ public class KeetsManager {
 				if(!GeneralParams.KEETS_CONNECT.equals("")) {
 					cmd.add("--connect");
 					cmd.add(GeneralParams.KEETS_CONNECT);
+				}
+				//The signed mailbox list ( fetched / cached ) - "" lets the sidecar use its baked defaults
+				String mailboxes = KeetsMailboxList.load(new File(GeneralParams.DATA_FOLDER));
+				if(!mailboxes.equals("")) {
+					cmd.add("--mailboxes");
+					cmd.add(mailboxes);
+				}
+				//Host specific extras ( a fleet box : --serve --dht-port 49737 --mailbox-dir ... )
+				if(!GeneralParams.KEETS_SIDECAR_EXTRA.trim().equals("")) {
+					for(String extra : GeneralParams.KEETS_SIDECAR_EXTRA.trim().split("\\s+")) {
+						cmd.add(extra);
+					}
 				}
 
 				ProcessBuilder pb = new ProcessBuilder(cmd);
