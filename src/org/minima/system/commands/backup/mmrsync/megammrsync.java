@@ -105,7 +105,7 @@ public class megammrsync extends Command {
 	
 	@Override
 	public ArrayList<String> getValidParams(){
-		return new ArrayList<>(Arrays.asList(new String[]{"action","host","phrase","anyphrase","keys","keyuses","file","password"}));
+		return new ArrayList<>(Arrays.asList(new String[]{"action","host","phrase","anyphrase","keys","keyuses","file","password","address"}));
 	}
 	
 	@Override
@@ -114,7 +114,24 @@ public class megammrsync extends Command {
 		
 		String action = getParam("action");
 
-		if(action.equals("mydetails")) {
+		if(action.equals("proofs")) {
+            // Read-only archive request: never install the supplied chain, peers or wallet state.
+            // Host is pinned by MegaArchiveProofs; a MiniDapp cannot turn this into arbitrary TCP access.
+            org.minima.utils.json.JSONArray proofs = new org.minima.utils.json.JSONArray();
+            int bytes = 0;
+            for (CoinProof proof : MegaArchiveProofs.fetch(getParam("address"))) {
+                JSONObject item = new JSONObject();
+                item.put("coin", proof.getCoin().toJSON());
+                item.put("data", MiniData.getMiniDataVersion(proof).to0xString());
+                bytes += item.toString().length();
+                if (bytes > 240000) throw new CommandException("ARCHIVE_REPLY_LIMIT: too many reserve proofs for one MDS reply.");
+                proofs.add(item);
+            }
+            JSONObject result = new JSONObject();
+            result.put("archive", "eurobuddha.com:9001");
+            result.put("proofs", proofs);
+            ret.put("response", result);
+        }else if(action.equals("mydetails")) {
 			
 			//Get all your public keys and addresses
 			Wallet wal = MinimaDB.getDB().getWallet();
