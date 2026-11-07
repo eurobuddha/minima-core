@@ -256,6 +256,16 @@ public class CommandRunner {
 			
 			//Check this MiniDAPP can make this call..
 			boolean allowed = isCommandAllowed(comname);
+
+			//SECURITY (Dexicon review 2026-11-07): a non-ADMIN txnimport may only create a NEW row under an explicit id -
+			//never overwrite another app's draft (TxnDB.addCompleteTransaction replaces an existing id silently).
+			if(allowed && !zMiniDAPPID.equals("0x00") && comname.equals("txnimport")) {
+				Object idp = cmd.getParams().get("id");
+				String tid = idp == null ? "" : idp.toString().trim();
+				if(tid.isEmpty() || org.minima.database.MinimaDB.getDB().getCustomTxnDB().getTransactionRow(tid) != null) {
+					allowed = false;
+				}
+			}
 			
 			//Is this an ADMIN User
 			if(!zMiniDAPPID.equals("0x00")) {
@@ -633,10 +643,12 @@ public class CommandRunner {
 		 // SECURITY (Dexicon review 2026-11-07): the in-progress transaction table is ONE shared table with no owner.
 		 // A non-ADMIN companion (userid 0xFF) could txnlist another app's draft and rewrite it (txnimport over its id,
 		 // txninput/txnoutput) between that app's import and its txnsign, then read the signed copy back - stealing
-		 // whatever the victim's key unlocks. Every command that creates, edits, exports or posts a table row now needs
-		 // ADMIN. txnview / txncheck / txnutils stay readable (decode only).
-		 "txnaddamount","txnbasics","txnclear","txncoinlock","txncreate","txndelete","txnexport","txnimport",
-		 "txninput","txnlist","txnlock","txnmine","txnminepost","txnmmr","txnoutput","txnpost","txnscript","txnstate"};
+		 // whatever the victim's key unlocks. Listing, exporting and editing rows now needs ADMIN. Left open for
+		 // non-admin companions (apks/wallet signs locally and posts via txnimport -> txnbasics -> txnpost): txnimport
+		 // (a NEW id only - see runMultiCommand), txnbasics and txnpost on a row, which cannot redirect funds;
+		 // txnview / txncheck / txnutils stay readable (decode only).
+		 "txnaddamount","txnclear","txncoinlock","txncreate","txndelete","txnexport",
+		 "txninput","txnlist","txnlock","txnmine","txnminepost","txnmmr","txnoutput","txnscript","txnstate"};
 	
 	private final ArrayList<String> ALL_WRITE_COMMANDS_ARRAY = new ArrayList<String>(Arrays.asList(ALL_WRITE_COMMANDS));
 	
