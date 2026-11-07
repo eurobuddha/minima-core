@@ -630,7 +630,14 @@ public class CommandRunner {
 		 "cointrack","sign","txnauto","txnsign","mds","backup","removescript",
 		 "restore","restoresync","vault","archive","mysql","mysqlcoins",
 		 "rpc","magic","quit","seedrandom","megammrsync","megammr","decryptbackup",
-		 "reset"};
+		 "reset",
+		 // SECURITY (Dexicon review 2026-11-07): the in-progress transaction table is ONE shared table with no owner.
+		 // A non-ADMIN companion (userid 0xFF) could txnlist another app's draft and rewrite it (txnimport over its id,
+		 // txninput/txnoutput) between that app's import and its txnsign, then read the signed copy back - stealing
+		 // whatever the victim's key unlocks. Every command that creates, edits, exports or posts a table row now needs
+		 // ADMIN. txnview / txncheck / txnutils stay readable (decode only).
+		 "txnaddamount","txnbasics","txnclear","txncoinlock","txncreate","txndelete","txnexport","txnimport",
+		 "txninput","txnlist","txnlock","txnmine","txnminepost","txnmmr","txnoutput","txnpost","txnscript","txnstate"};
 	
 	private final ArrayList<String> ALL_WRITE_COMMANDS_ARRAY = new ArrayList<String>(Arrays.asList(ALL_WRITE_COMMANDS));
 	
