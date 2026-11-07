@@ -10,6 +10,7 @@ import org.minima.system.network.minima.NIOClient;
 import org.minima.system.network.minima.NIOClientInfo;
 import org.minima.system.network.p2p.messages.P2PGreeting;
 import org.minima.system.network.p2p.messages.P2PWalkLinks;
+import org.minima.system.params.GeneralParams;
 import org.minima.utils.json.JSONObject;
 import org.minima.utils.messages.Message;
 
@@ -52,7 +53,10 @@ public class SwapLinksFunctions {
             P2PGreeting greeting = new P2PGreeting(state);
             msgs.add(new Message(P2PManager.P2P_SEND_MSG).addString("uid", uid).addObject("json", greeting.toJson()));
 
-            if (!state.isHostSet()) {
+            // Ask every peer we greet what address they see us from unless the operator pinned
+            // -host: a home node's public address changes (dynamic IP, a VPN coming or going) and a
+            // one-time answer at boot left the node advertising a dead address until restart.
+            if (!state.isHostSet() || !GeneralParams.IS_HOST_SET) {
                 JSONObject requestIp = new JSONObject();
                 MiniData secret = MiniData.getRandomData(12);
                 state.setIpReqSecret(secret);
@@ -165,6 +169,15 @@ public class SwapLinksFunctions {
         MiniData secret = new MiniData((String) swapLinksMsg.get("secret"));
         if (state.getIpReqSecret().isEqual(secret)) {
             String hostIP = (String) swapLinksMsg.get("res_ip");
+            String current = state.getMyMinimaAddress() == null ? "" : state.getMyMinimaAddress().getHostString();
+            if (state.isHostSet()) {
+                // A later answer only REPLACES a learned address when it is a different public one:
+                // a peer on our own LAN answers with our private address and must not demote us.
+                if (hostIP == null || hostIP.equals(current) || !isPublicIp(hostIP)) {
+                    return;
+                }
+                P2PFunctions.log_info("[+] My IP changed: " + current + " -> " + hostIP);
+            }
             state.setMyMinimaAddress(hostIP);
             state.setHostSet(true);
             state.getKnownPeers().remove(state.getMyMinimaAddress());
@@ -172,6 +185,20 @@ public class SwapLinksFunctions {
 
         }
 
+    }
+
+    /** A literal IP that is routable from the internet (not loopback, link-local, RFC 1918, CGNAT). */
+    static boolean isPublicIp(String zHost) {
+        try {
+            java.net.InetAddress a = java.net.InetAddress.getByName(zHost);   // literal: no lookup
+            if (a.isLoopbackAddress() || a.isLinkLocalAddress() || a.isSiteLocalAddress() || a.isAnyLocalAddress()) {
+                return false;
+            }
+            byte[] b = a.getAddress();
+            return !(b.length == 4 && (b[0] & 0xFF) == 100 && (b[1] & 0xC0) == 64);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public static List<Message> joinScaleOutLinks(P2PState state, int targetNumLinks, ArrayList<NIOClientInfo> clients) {
