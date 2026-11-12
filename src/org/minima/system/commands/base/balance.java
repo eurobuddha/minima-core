@@ -259,9 +259,10 @@ public class balance extends Command {
 				}
 			}else {
 				
-				//Check tokenscript..
-				String script = coin.getToken().getTokenScript().toString();
-				if(script.equals("RETURN TRUE")) {
+				//Check tokenscript.. from the details found above: the coin's own may be missing (see above).
+				//Without details the script is unknown, so the coin is not counted as sendable.
+				Token stok = tokens.get(tokenid);
+				if(stok != null && stok.getTokenScript().toString().equals("RETURN TRUE")) {
 					if(isconfirmed && walletdb.isAddressSimple(coin.getAddress().to0xString())) {
 						total = sendable.get(tokenid); 
 						if(total == null) {

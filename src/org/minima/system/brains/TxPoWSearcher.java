@@ -697,6 +697,11 @@ public class TxPoWSearcher {
 	
 	
 	public static void importToken(Token zToken) {
+		//A coin restored without its token details (a MegaMMR resync can do this) has nothing to import. A null in
+		//this list made every later getToken throw until the node restarted.
+		if(zToken == null) {
+			return;
+		}
 		synchronized (mImportedTokens) {
 			mImportedTokens.add(zToken);
 		}
@@ -743,8 +748,8 @@ public class TxPoWSearcher {
 			//Get the details..
 			for(Coin coin : coins) {
 				
-				//Is this the one..
-				if(coin.getTokenID().isEqual(zTokenID)) {
+				//Is this the one.. (a coin without its token details cannot answer: keep looking)
+				if(coin.getTokenID().isEqual(zTokenID) && coin.getToken() != null) {
 					
 					//Found IT! - add to the Imported.. for fast look up next time
 					importToken(coin.getToken());
