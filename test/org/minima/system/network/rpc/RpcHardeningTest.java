@@ -174,4 +174,46 @@ public class RpcHardeningTest {
 		post("minima", "secret", "txncreate id:writertxn");
 		assertTrue(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("writertxn") != null);
 	}
+	
+	/** Raw request through a real CMDHandler: the given head, the body, then the client stops sending */
+	static String raw(String zHead, String zBody) throws Exception {
+		try(ServerSocket ss = new ServerSocket(0, 5, InetAddress.getLoopbackAddress());
+			Socket client = new Socket(InetAddress.getLoopbackAddress(), ss.getLocalPort())) {
+			Thread handler = new Thread(new CMDHandler(ss.accept()));
+			handler.start();
+			OutputStream out = client.getOutputStream();
+			out.write((zHead+"\r\n\r\n"+zBody).getBytes(StandardCharsets.UTF_8));
+			out.flush();
+			client.shutdownOutput();
+			client.setSoTimeout(20000);
+			InputStream in = client.getInputStream();
+			ByteArrayOutputStream reply = new ByteArrayOutputStream();
+			byte[] buf = new byte[4096];
+			int len;
+			try {
+				while((len = in.read(buf)) != -1) {
+					reply.write(buf, 0, len);
+				}
+			}catch(java.net.SocketException closed) {
+				//the handler died and the socket was reset
+			}
+			handler.join(20000);
+			return new String(reply.toByteArray(), StandardCharsets.UTF_8);
+		}
+	}
+	
+	@Test
+	public void hugeContentLengthIsRefusedNotAllocated() throws Exception {
+		//2 GB: the old handler did new char[2000000000] - an OutOfMemoryError nothing caught
+		String reply = raw("POST / HTTP/1.1\r\nContent-Length: 2000000000", "");
+		assertTrue("no refusal for a 2 GB Content-Length: '"+reply+"'", reply.startsWith("HTTP/1.1 413"));
+	}
+	
+	@Test
+	public void negativeAndShortContentLengthAsBefore() throws Exception {
+		//negative: the handler fails and closes without a reply, as it always did
+		assertEquals("", raw("POST / HTTP/1.1\r\nContent-Length: -5", ""));
+		//longer than the body that arrives: what arrived runs
+		assertTrue(raw("POST / HTTP/1.1\r\nContent-Length: 50", "random").contains("\"command\":\"random\""));
+	}
 }
