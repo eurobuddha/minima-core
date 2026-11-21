@@ -84,7 +84,33 @@ public class RpcHardeningTest {
 		return (JSONObject) res.get(0);
 	}
 
+	@Test
+	public void enableWithoutPasswordKeepsThePassword() {
+		//As if started with -rpcenable -rpcpassword secret
+		GeneralParams.RPC_ENABLED 		= true;
+		GeneralParams.RPC_AUTHENTICATE 	= true;
+		GeneralParams.RPC_PASSWORD 		= "secret";
 
+		run("rpc enable:false");
+		assertTrue("rpc enable:false switched authentication off", GeneralParams.RPC_AUTHENTICATE);
+
+		JSONObject res = run("rpc enable:true");
+		assertTrue((boolean) res.get("status"));
+		assertTrue("rpc enable:true switched authentication off", GeneralParams.RPC_AUTHENTICATE);
+		assertEquals("secret", GeneralParams.RPC_PASSWORD);
+	}
+
+	@Test
+	public void firstEnableNeedsAPassword() {
+		JSONObject res = run("rpc enable:true");
+		assertFalse("RPC was enabled with no password", (boolean) res.get("status"));
+		assertFalse(GeneralParams.RPC_ENABLED);
+
+		res = run("rpc enable:true password:first");
+		assertTrue((boolean) res.get("status"));
+		assertTrue(GeneralParams.RPC_AUTHENTICATE);
+		assertEquals("first", GeneralParams.RPC_PASSWORD);
+	}
 	
 	
 	/** One POST through a real CMDHandler on a loopback socket pair; returns the whole HTTP reply */
@@ -155,5 +181,31 @@ public class RpcHardeningTest {
 		assertEquals("", raw("POST / HTTP/1.1\r\nContent-Length: -5", ""));
 		//longer than the body that arrives: what arrived runs
 		assertTrue(raw("POST / HTTP/1.1\r\nContent-Length: 50", "random").contains("\"command\":\"random\""));
+	}
+	
+	
+	
+	@Test
+	public void blankPasswordChangesNothing() throws Exception {
+		GeneralParams.RPC_ENABLED 		= true;
+		GeneralParams.RPC_AUTHENTICATE 	= true;
+		GeneralParams.RPC_PASSWORD 		= "secret";
+		network.startRPC();
+		
+		JSONObject res = run("rpc enable:true password:\"\"");
+		assertFalse("a blank password was accepted", (boolean) res.get("status"));
+		assertEquals("secret", GeneralParams.RPC_PASSWORD);
+		Field f = NetworkManager.class.getDeclaredField("mRPCServer");
+		f.setAccessible(true);
+		assertTrue("the refused command stopped the running RPC", f.get(network) != null);
+	}
+	
+	@Test
+	public void openRpcIsNamedInTheRefusal() {
+		//started with -rpcenable and no -rpcpassword
+		GeneralParams.RPC_ENABLED = true;
+		JSONObject res = run("rpc enable:true");
+		assertFalse((boolean) res.get("status"));
+		assertTrue(String.valueOf(res.get("error")), String.valueOf(res.get("error")).contains("WITHOUT a password"));
 	}
 }

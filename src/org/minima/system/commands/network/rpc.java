@@ -36,6 +36,7 @@ public class rpc extends Command {
 				+ "\n"
 				+ "password:\n"
 				+ "    the Basic Auth password used in headers - ONLY secure if used with SSL.\n"
+				+ "    Needed the first time RPC is enabled. Without it the current password stays - authentication is never switched off.\n"
 				+ "\n"
 				+ "username:\n"
 				+ "    the Username of an RPC user.\n"
@@ -49,8 +50,6 @@ public class rpc extends Command {
 				+ "    listusers - list RPC users.\n"
 				+ "\n"
 				+ "Examples:\n"
-				+ "\n"
-				+ "rpc enable:true\n"
 				+ "\n"
 				+ "rpc enable:true ssl:true password:minimarpcpassword\n"
 				+ "\n"
@@ -82,6 +81,19 @@ public class rpc extends Command {
 			//Enable or Disable
 			boolean enable = getBooleanParam("enable");
 			
+			//A password, if given, must be a real one - checked BEFORE anything is stopped (a blank one is refused)
+			String password = existsParam("password") ? getParam("password") : null;
+			
+			//SECURITY: enabling without a password used to switch authentication OFF - an open
+			//admin RPC. Without password: the current password stays; with none ever set, refuse.
+			if(enable && password == null && !GeneralParams.RPC_AUTHENTICATE) {
+				if(GeneralParams.RPC_ENABLED) {
+					throw new CommandException("RPC is running WITHOUT a password (started with -rpcenable and no -rpcpassword) "
+							+ "and stays as it is - set one : rpc enable:true password:..");
+				}
+				throw new CommandException("Set a password to enable RPC : rpc enable:true password:..");
+			}
+			
 			//Stop the Old
 			Main.getInstance().getNetworkManager().stopRPC();
 			Thread.sleep(1000);
@@ -90,11 +102,9 @@ public class rpc extends Command {
 			GeneralParams.RPC_ENABLED = enable;
 			
 			//Is there a password
-			if(existsParam("password")) {
-				GeneralParams.RPC_PASSWORD = getParam("password");
+			if(password != null) {
+				GeneralParams.RPC_PASSWORD = password;
 				GeneralParams.RPC_AUTHENTICATE = true;
-			}else {
-				GeneralParams.RPC_AUTHENTICATE = false;
 			}
 			
 			//Now start or stop..
