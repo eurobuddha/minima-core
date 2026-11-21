@@ -67,23 +67,22 @@ public class sendfrom extends Command {
 		}
 		
 		//Now construct the transaction..
-		JSONObject result 	= runCommand("txncreate id:"+randomid);
+		JSONObject result 	= runCommand("txncreate", "id",randomid);
 		
 		//Add the mounts..
-		String command 		= "txnaddamount id:"+randomid+" split:"+split+" burn:"+burn
-				+" fromaddress: "+fromaddress+" address:"+toaddress+" amount:"+amount+" tokenid:"+tokenid;
-		result = runCommand(command);
+		result = runCommand("txnaddamount", "id",randomid, "split",split, "burn",burn,
+				"fromaddress",fromaddress, "address",toaddress, "amount",amount, "tokenid",tokenid);
 		if(!(boolean)result.get("status")) {
 			
 			//Delete transaction
-			runCommand("txndelete id:"+randomid);
+			runCommand("txndelete", "id",randomid);
 			
 			//Not enough funds!
 			throw new CommandException(result.getString("error"));
 		}
 		
 		//Add the scripts..
-		runCommand("txnscript id:"+randomid+" scripts:{\""+script+"\":\"\"}");
+		runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
 		
 		//Add the state is exists
 		if(state != null) {
@@ -104,21 +103,21 @@ public class sendfrom extends Command {
 				StateVariable sv = new StateVariable(port, var);
 				
 				//Add to the transaction..
-				runCommand("txnstate id:"+randomid+" port:"+sv.getPort()+" value:\""+sv.getData()+"\"");
+				runCommand("txnstate", "id",randomid, "port",sv.getPort(), "value",sv.getData().toString());
 			}
 		}
 		
 		//Sort the MMR
-		runCommand("txnmmr id:"+randomid);
+		runCommand("txnmmr", "id",randomid);
 		
 		//Now SIGN
-		runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+privatekey+" keyuses:"+keyuses);
+		runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
 		
 		//And POST!
-		result = runCommand("txnpost id:"+randomid+" mine:"+mine);
+		result = runCommand("txnpost", "id",randomid, "mine",mine);
 		
 		//And delete..
-		runCommand("txndelete id:"+randomid);
+		runCommand("txndelete", "id",randomid);
 		
 		//Check succeeded..
 		if(!(boolean)result.get("status")) {
@@ -132,10 +131,8 @@ public class sendfrom extends Command {
 		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

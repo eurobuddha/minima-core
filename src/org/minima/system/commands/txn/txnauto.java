@@ -69,8 +69,7 @@ public class txnauto extends Command {
 		db.createTransaction(id);
 		
 		//Add the mounts..
-		String command = "txnaddamount id:"+id+" burn:"+burn+" address:"+address+" amount:"+amount+" tokenid:"+tokenid;
-		JSONObject result = CommandRunner.getRunner().runSingleCommand(command); 
+		JSONObject result = CommandRunner.getRunner().runCommand("txnaddamount", "id",id, "burn",burn, "address",address, "amount",amount, "tokenid",tokenid);
 		if(!(boolean)result.get("status")) {
 			
 			//Delete the txn..
@@ -94,8 +93,7 @@ public class txnauto extends Command {
 		
 		//Do we sign..
 		if(sign) {
-			command = "txnsign id:"+id+" publickey:auto";
-			result = CommandRunner.getRunner().runSingleCommand(command); 
+			result = CommandRunner.getRunner().runCommand("txnsign", "id",id, "publickey","auto");
 			if(!(boolean)result.get("status")) {
 				
 				//Delete the txn..
