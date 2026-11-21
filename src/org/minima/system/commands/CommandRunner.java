@@ -729,6 +729,8 @@ public class CommandRunner {
 		 "restore","restoresync","vault","archive","mysql","mysqlcoins",
 		 "rpc","magic","quit","seedrandom","megammrsync","megammr","decryptbackup",
 		 "reset",
+		 // SECURITY (2026-11-21): rescue starts a MegaMMR resync from any host: and the node halts afterwards
+		 "rescue",
 		 // SECURITY (Dexicon review 2026-11-07): the in-progress transaction table is ONE shared table with no owner.
 		 // A non-ADMIN companion (userid 0xFF) could txnlist another app's draft and rewrite it (txnimport over its id,
 		 // txninput/txnoutput) between that app's import and its txnsign, then read the signed copy back - stealing
