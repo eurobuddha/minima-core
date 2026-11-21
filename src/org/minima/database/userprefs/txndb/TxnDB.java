@@ -32,11 +32,11 @@ public class TxnDB implements Streamable {
 		MinimaDB.getDB().getUserDB().saveCustomTransactions(MiniData.getMiniDataVersion(this));
 	}
 	
-	public void createTransaction(String zKey) throws Exception {
+	public synchronized void createTransaction(String zKey) throws Exception {
 		mTransactions.add(new TxnRow(zKey, new Transaction(), new Witness()));
 	}
 	
-	public void addCompleteTransaction(TxnRow zRow) {
+	public synchronized void addCompleteTransaction(TxnRow zRow) {
 		//Remove the old
 		deleteTransaction(zRow.getID());
 		
@@ -44,7 +44,18 @@ public class TxnDB implements Streamable {
 		mTransactions.add(zRow);
 	}
 	
-	public TxnRow getTransactionRow(String zKey) {
+	/**
+	 * Add the row only if no row has its id - checked and added in one step. False if one exists.
+	 */
+	public synchronized boolean addNewTransaction(TxnRow zRow) {
+		if(getTransactionRow(zRow.getID()) != null) {
+			return false;
+		}
+		mTransactions.add(zRow);
+		return true;
+	}
+	
+	public synchronized TxnRow getTransactionRow(String zKey) {
 		for(TxnRow txn : mTransactions) {
 			if(txn.getID().equals(zKey)) {
 				return txn;
@@ -53,7 +64,7 @@ public class TxnDB implements Streamable {
 		return null;
 	}
 	
-	public boolean deleteTransaction(String zKey) {
+	public synchronized boolean deleteTransaction(String zKey) {
 		boolean found = false;
 		ArrayList<TxnRow> transactions = new ArrayList<>();
 		for(TxnRow txn : mTransactions) {
@@ -72,7 +83,7 @@ public class TxnDB implements Streamable {
 		return mTransactions;
 	}
 	
-	public void clearTxns() {
+	public synchronized void clearTxns() {
 		mTransactions.clear();
 	}
 

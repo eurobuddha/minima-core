@@ -59,13 +59,15 @@ public class signfrom extends Command {
 		String randomid = tx.getID();
 		
 		//SECURITY (review 2026-11-21): addCompleteTransaction REPLACES a row with the same id - a non-admin caller
-		//may only add a NEW row (as txnimport), never overwrite another app's draft
-		if(!isAdminCaller() && db.getTransactionRow(tx.getID()) != null) {
-			throw new CommandException("A transaction with this id already exists : "+tx.getID());
+		//may only add a NEW row (as txnimport), never overwrite another app's draft. Checked and added in one step.
+		if(!isAdminCaller()) {
+			if(!db.addNewTransaction(tx)) {
+				throw new CommandException("A transaction with this id already exists : "+tx.getID());
+			}
+		}else {
+			//Add to the DB
+			db.addCompleteTransaction(tx);
 		}
-		
-		//Add to the DB
-		db.addCompleteTransaction(tx);
 		try {
 		
 			//The private key we need to sign with
