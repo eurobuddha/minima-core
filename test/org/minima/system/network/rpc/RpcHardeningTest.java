@@ -166,9 +166,10 @@ public class RpcHardeningTest {
 		users.add(reader);
 		MinimaDB.getDB().getUserDB().setRPCUsers(users);
 		
-		String reply = post("reader", "readpw", "txncreate id:readertxn");
-		assertFalse("a read RPC user ran a WRITE command: "+reply,
-				MinimaDB.getDB().getCustomTxnDB().getTransactionRow("readertxn") != null);
+		//This line has no txn write gate (txncreate is not a WRITE command here), so use sendpoll: WRITE on
+		//every line. Nothing is sent - the reply only shows whether the gate refused it.
+		String reply = post("reader", "readpw", "sendpoll action:list");
+		assertTrue("a read RPC user ran a WRITE command: "+reply, reply.contains("You need ADMIN privileges"));
 		
 		//A read command still works for the read user, and the minima user still writes
 		assertTrue(post("reader", "readpw", "random").contains("\"status\":true"));
