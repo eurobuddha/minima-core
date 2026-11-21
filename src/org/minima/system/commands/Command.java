@@ -207,7 +207,9 @@ public abstract class Command {
 	
 	/** A plain transaction file name a non-admin caller may use */
 	public static boolean isPlainTxnName(String zName) {
-		return zName.length() <= 128 && zName.matches("[A-Za-z0-9][A-Za-z0-9._-]*\\.txn") && !zName.contains("..");
+		return zName.length() <= 128 && zName.matches("[A-Za-z0-9][A-Za-z0-9._-]*\\.txn") && !zName.contains("..")
+				//Windows device names (CON.txn, com1.txn..) open the device, not a file
+				&& !zName.matches("(?i)(CON|PRN|AUX|NUL|COM[0-9]|LPT[0-9])(\\..*)?");
 	}
 	
 	private File confinedFile(String zName) throws CommandException {

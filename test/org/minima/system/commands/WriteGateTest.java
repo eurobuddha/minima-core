@@ -257,4 +257,13 @@ public class WriteGateTest {
 		}
 		assertTrue(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("latecomer").getTransaction().getStateValue(1) != null);
 	}
+	
+	@Test
+	public void windowsDeviceNamesAreNotFiles() {
+		for(String name : new String[] {"CON.txn", "con.txn", "NUL.txn", "aux.txn", "PRN.txn", "COM1.txn", "lpt9.txn", "com3.backup.txn"}) {
+			assertFalse(name, Command.isPlainTxnName(name));
+		}
+		assertTrue(Command.isPlainTxnName("console.txn"));
+		assertTrue(Command.isPlainTxnName("ms_pay_0123.txn"));
+	}
 }
