@@ -154,6 +154,28 @@ public class RpcHardeningTest {
 		}
 	}
 	
+	@Test
+	public void readUserCannotRunWriteCommands() throws Exception {
+		GeneralParams.RPC_AUTHENTICATE 	= true;
+		GeneralParams.RPC_PASSWORD 		= "secret";
+		JSONArray users = new JSONArray();
+		JSONObject reader = new JSONObject();
+		reader.put("username", "reader");
+		reader.put("password", "readpw");
+		reader.put("mode", "read");
+		users.add(reader);
+		MinimaDB.getDB().getUserDB().setRPCUsers(users);
+		
+		//This line has no txn write gate (txncreate is not a WRITE command here), so use sendpoll: WRITE on
+		//every line. Nothing is sent - the reply only shows whether the gate refused it.
+		String reply = post("reader", "readpw", "sendpoll action:list");
+		assertTrue("a read RPC user ran a WRITE command: "+reply, reply.contains("You need ADMIN privileges"));
+		
+		//A read command still works for the read user, and the minima user still writes
+		assertTrue(post("reader", "readpw", "random").contains("\"status\":true"));
+		post("minima", "secret", "txncreate id:writertxn");
+		assertTrue(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("writertxn") != null);
+	}
 	
 	/** Raw request through a real CMDHandler: the given head, the body, then the client stops sending */
 	static String raw(String zHead, String zBody) throws Exception {
@@ -197,6 +219,45 @@ public class RpcHardeningTest {
 		assertTrue(raw("POST / HTTP/1.1\r\nContent-Length: 50", "random").contains("\"command\":\"random\""));
 	}
 	
+	@Test
+	public void readUserCannotQuitTheNode() throws Exception {
+		//The old handler set its halt flag for "quit" before the read-mode gate: the JVM (this test) would die
+		GeneralParams.RPC_AUTHENTICATE 	= true;
+		GeneralParams.RPC_PASSWORD 		= "secret";
+		JSONArray users = new JSONArray();
+		JSONObject reader = new JSONObject();
+		reader.put("username", "reader");
+		reader.put("password", "readpw");
+		reader.put("mode", "read");
+		users.add(reader);
+		MinimaDB.getDB().getUserDB().setRPCUsers(users);
+		
+		//Catch the halt instead of dying (JDK 11 still honours a SecurityManager for Runtime.halt)
+		final java.util.concurrent.atomic.AtomicBoolean halted = new java.util.concurrent.atomic.AtomicBoolean();
+		SecurityManager old = System.getSecurityManager();
+		SecurityManager catcher = new SecurityManager() {
+			@Override public void checkPermission(java.security.Permission p) { }
+			@Override public void checkPermission(java.security.Permission p, Object c) { }
+			@Override public void checkExit(int status) {
+				halted.set(true);
+				throw new SecurityException("halt blocked by the test");
+			}
+		};
+		try {
+			System.setSecurityManager(catcher);
+		}catch(UnsupportedOperationException noSecurityManager) {
+			//JDK 18+ without -Djava.security.manager=allow: the halt cannot be caught - skip, never die
+			org.junit.Assume.assumeTrue("needs a SecurityManager to catch the halt (JDK < 18)", false);
+		}
+		try {
+			String reply = post("reader", "readpw", "quit");
+			assertTrue(reply, reply.contains("You need ADMIN privileges"));
+			Thread.sleep(500);
+			assertFalse("a read user's refused quit halted the node", halted.get());
+		}finally {
+			System.setSecurityManager(old);
+		}
+	}
 	
 	@Test
 	public void rpcThatCannotListenIsReported() {

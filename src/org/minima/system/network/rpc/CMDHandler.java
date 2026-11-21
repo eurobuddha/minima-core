@@ -155,24 +155,25 @@ public class CMDHandler implements Runnable {
 			statfalse.put("status", false);
 			String result = statfalse.toJSONString();
 			try {
-				if(fileRequested.equals("quit")) {
-					quit=true;
-				}
-				
+
 				//MinimaLogger.log("RPC:"+fileRequested+" User:"+authuser.toString());
 				
-				//Now run this command
-				JSONArray res = CommandRunner.getRunner().runMultiCommand(fileRequested);;
-				
-				/*//MDS STUFF
+				//Now run this command - SECURITY: the read / write mode check was commented out, so a
+				//'read' RPC user ran every command as ADMIN. A read user now runs as the non-admin id (0xFF, like
+				//an untrusted MiniDapp), so the WRITE gate in CommandRunner applies. minima / write: unchanged.
 				JSONArray res = null;
-				if(authuser.getString("mode").equals("read")) {
-					res = CommandRunner.getRunner().runMultiCommand(Main.getInstance().getMDSManager().getUntrustedMiniDAPPID(), fileRequested);
-				}else if(authuser.getString("mode").equals("write")) {
+				String mode = authuser.getString("mode");
+				if(mode.equals("read")) {
+					res = CommandRunner.getRunner().runMultiCommand("0xFF", fileRequested);
+				}else if(mode.equals("write")) {
+					//Only a command that really runs as ADMIN may stop the JVM (a read user's quit is refused above)
+					if(fileRequested.equals("quit")) {
+						quit=true;
+					}
 					res = CommandRunner.getRunner().runMultiCommand(fileRequested);
 				}else {
-					throw new IllegalArgumentException("Invalid mode for RPC user : "+authuser.getString("mode"));
-				}*/
+					throw new IllegalArgumentException("Invalid mode for RPC user : "+mode);
+				}
 				
 				//Get the result.. is it a multi command or single.. 
 				if(res.size() == 1) {
