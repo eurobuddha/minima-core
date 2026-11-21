@@ -104,4 +104,17 @@ public class RpcHardeningTest {
 		assertTrue(GeneralParams.RPC_AUTHENTICATE);
 		assertEquals("first", GeneralParams.RPC_PASSWORD);
 	}
+	
+	@Test
+	public void rpcServerBindsLoopbackByDefault() throws Exception {
+		network.startRPC();
+		Field f = NetworkManager.class.getDeclaredField("mRPCServer");
+		f.setAccessible(true);
+		HTTPServer server = (HTTPServer) f.get(network);
+		for(int i=0;i<50 && server.mServerSocket == null;i++) {
+			Thread.sleep(100);
+		}
+		assertTrue("the RPC listens on "+server.mServerSocket.getInetAddress()+", not loopback",
+				server.mServerSocket.getInetAddress().isLoopbackAddress());
+	}
 }
