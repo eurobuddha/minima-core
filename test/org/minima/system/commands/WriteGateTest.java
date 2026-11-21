@@ -1,5 +1,6 @@
 package org.minima.system.commands;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -105,7 +106,10 @@ public class WriteGateTest {
 		assertTrue(confined(run("0xFF", "multisigread action:post file:/etc/hosts")));
 		
 		//inside it, and for ADMIN anywhere, as before
-		java.io.File inbase = new java.io.File("gate-test-"+System.nanoTime()+".txn");
+		java.io.File basedir = java.nio.file.Files.createTempDirectory("gate-base").toFile();
+		String oldbase = org.minima.system.params.GeneralParams.BASE_FILE_FOLDER;
+		org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = basedir.getAbsolutePath();
+		java.io.File inbase = new java.io.File(basedir, "gate-test-"+System.nanoTime()+".txn");
 		try {
 			CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:gatefile");
 			assertTrue((boolean) run("0x00", "txnexport id:gatefile file:"+inbase.getName()).get("status"));
@@ -115,6 +119,8 @@ public class WriteGateTest {
 			assertTrue(res.toString(), (boolean) res.get("status"));
 		}finally {
 			inbase.delete();
+			basedir.delete();
+			org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = oldbase;
 		}
 	}
 	
@@ -133,6 +139,77 @@ public class WriteGateTest {
 					"keep".equals(new String(java.nio.file.Files.readAllBytes(outside.toPath()))));
 		}finally {
 			outside.delete();
+		}
+	}
+	
+	/** The reviewer's probes (third review): base folder = the node's data folder, as in every shipped product */
+	@Test
+	public void dataFolderFilesAreUnreachable() throws Exception {
+		java.io.File base = java.nio.file.Files.createTempDirectory("gate-data").toFile();
+		java.io.File dbdir = new java.io.File(base, "1.1/databases");
+		dbdir.mkdirs();
+		java.io.File wallet = new java.io.File(dbdir, "wallet.mv.db");
+		java.nio.file.Files.write(wallet.toPath(), "WALLET".getBytes());
+		java.io.File token = new java.io.File(base, "gateway-token.txt");
+		java.nio.file.Files.write(token.toPath(), "TOKEN".getBytes());
+		String oldbase = org.minima.system.params.GeneralParams.BASE_FILE_FOLDER;
+		org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = base.getAbsolutePath();
+		try {
+			for(String cmd : new String[] {"peers action:publish file:", "sendview file:", "txnview file:", "hash file:"}) {
+				assertTrue(cmd+" wallet db", confined(run("0xFF", cmd+wallet.getAbsolutePath())));
+				assertTrue(cmd+" relative", confined(run("0xFF", cmd+"1.1/databases/wallet.mv.db")));
+				assertTrue(cmd+" token", confined(run("0xFF", cmd+"gateway-token.txt")));
+				assertTrue(cmd+" dotdot", confined(run("0xFF", cmd+"..txn")));
+			}
+			assertEquals("WALLET", new String(java.nio.file.Files.readAllBytes(wallet.toPath())));
+			assertEquals("TOKEN", new String(java.nio.file.Files.readAllBytes(token.toPath())));
+			
+			//a .txn that is a folder
+			new java.io.File(base, "dir.txn").mkdirs();
+			assertTrue(confined(run("0xFF", "sendview file:dir.txn")));
+			
+			//base folder at the filesystem root
+			org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = "/";
+			assertTrue(confined(run("0xFF", "sendview file:x.txn")));
+			//no base folder
+			org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = "";
+			assertTrue(confined(run("0xFF", "sendview file:x.txn")));
+		}finally {
+			org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = oldbase;
+		}
+	}
+	
+	/**
+	 * The shipped file flows (merchshop PaymentFlow, merchinbox PlainDeliveryFlow, NFTwallet PreparedSend):
+	 * sendnosign file:handle.txn -> sendview file:handle.txn -> sendsign file:handle.txn ->
+	 * sendview / sendpost file:signedtransaction-N.txn, and a retry re-writes handle.txn. The same plain name
+	 * resolves to the same file for a 0xFF caller and an ADMIN caller, so a flow that mixes them still meets.
+	 */
+	@Test
+	public void shippedFlowNamesResolveTheSameForBoth() throws Exception {
+		java.io.File base = java.nio.file.Files.createTempDirectory("gate-flow").toFile();
+		String oldbase = org.minima.system.params.GeneralParams.BASE_FILE_FOLDER;
+		org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = base.getAbsolutePath();
+		try {
+			for(String name : new String[] {"pay-0123abcd.txn", "signedtransaction-1763700000000.txn", "multispend_1763700000000.txn"}) {
+				Command nonadmin = CommandRunner.getRunner().getCommand("sendview file:"+name);
+				nonadmin.setMiniDAPPID("0xFF");
+				Command admin = CommandRunner.getRunner().getCommand("sendview file:"+name);
+				admin.setMiniDAPPID("0x00");
+				assertEquals(admin.getFileParam("file").getCanonicalPath(), nonadmin.getFileParam("file").getCanonicalPath());
+				assertEquals(new java.io.File(base, name).getCanonicalPath(), nonadmin.getFileParam("file").getCanonicalPath());
+			}
+			
+			//write, read back, re-write (retry) as 0xFF: a txn exported by ADMIN under a plain name, imported twice
+			CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:flowtxn");
+			assertTrue((boolean) run("0x00", "txnexport id:flowtxn file:pay-0123abcd.txn").get("status"));
+			assertTrue((boolean) run("0xFF", "txnview file:pay-0123abcd.txn").get("status"));
+			assertTrue((boolean) run("0x00", "txnexport id:flowtxn file:pay-0123abcd.txn").get("status"));
+			assertTrue((boolean) run("0xFF", "txnview file:pay-0123abcd.txn").get("status"));
+		}finally {
+			for(java.io.File f : base.listFiles()) f.delete();
+			base.delete();
+			org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = oldbase;
 		}
 	}
 }
