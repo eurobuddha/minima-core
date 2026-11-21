@@ -70,6 +70,12 @@ public class txnpost extends Command {
 		MiniNumber burn = getNumberParam("burn", MiniNumber.ZERO);
 		boolean auto 	= getBooleanParam("auto", false);
 		
+		//SECURITY (review 2026-11-21): a burn is paid from the NODE's own coins and signed with its wallet -
+		//only for an ADMIN caller (a non-admin caller adds its burn inside its own transaction)
+		if(burn.isMore(MiniNumber.ZERO) && !isAdminCaller()) {
+			throw new CommandException("burn: needs ADMIN - it is paid from the node's own coins");
+		}
+		
 		//Are we Mining synchronously
 		boolean minesync = getBooleanParam("mine", false);
 		
