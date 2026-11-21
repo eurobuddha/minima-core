@@ -111,6 +111,11 @@ public class GeneralParams {
 	public static String RPC_ALLOWED_HOSTS = "";
 	
 	/**
+	 * Browser origins (comma separated, exact, e.g. http://127.0.0.1:8080) that may drive an RPC with NO password
+	 */
+	public static String RPC_ALLOWED_ORIGINS = "";
+	
+	/**
 	 * The MDS Password - blank will set automagically
 	 */
 	public static String MDS_PASSWORD = "";
@@ -479,6 +484,7 @@ public class GeneralParams {
 		RPC_PASSWORD 		  = "none";
 		RPC_BIND_HOST 		  = "127.0.0.1";
 		RPC_ALLOWED_HOSTS 	  = "";
+		RPC_ALLOWED_ORIGINS   = "";
 		SEED_PHRASE 		  = "";
 		ANYSEED_PHRASE 		  = false;
 		PEERSCHECKER_lOG 	  = false;

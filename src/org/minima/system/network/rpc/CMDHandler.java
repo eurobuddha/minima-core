@@ -101,10 +101,16 @@ public class CMDHandler implements Runnable {
 			//Get the Headers..
 			int contentlength = 0;
 			String hostheader = null;
+			String originheader = null;
+			String fetchsiteheader = null;
 			while(input != null && !input.trim().equals("")) {
 				
 				if(input.toLowerCase().startsWith("host:")) {
 					hostheader = input.substring(5).trim();
+				}else if(input.toLowerCase().startsWith("origin:")) {
+					originheader = input.substring(7).trim();
+				}else if(input.toLowerCase().startsWith("sec-fetch-site:")) {
+					fetchsiteheader = input.substring(15).trim().toLowerCase();
 				}
 				//MinimaLogger.log("RPC HEADER : "+input);
 				
@@ -133,6 +139,47 @@ public class CMDHandler implements Runnable {
 				out.println();
 				out.println("{\"status\":false,\"error\":\"Host "+hostheader.replace("\"","")
 						+" is not this node - name it with -rpcallowhost\"}");
+				out.flush();
+				return;
+			}
+			
+			//SECURITY: on a node with NO password every request is served - and every reply
+			//carries Access-Control-Allow-Origin: *, so any web page could run a command AND read the answer
+			//(vault..). Then a browser request is served only from the RPC's own origin or an origin named with
+			//-rpcalloworigin (Origin / Sec-Fetch-Site). Non-browser clients send
+			//neither header. With a password set nothing changes: a page cannot authenticate.
+			boolean authrequired = GeneralParams.RPC_AUTHENTICATE || MinimaDB.getDB().getUserDB().getRPCUsers().size()>0;
+			boolean browserok	 = authrequired || browserAllowed(originheader, fetchsiteheader, hostheader);
+			
+			//A preflight never runs a command: refused like the request it announces, else answered
+			if(method.equals("OPTIONS")) {
+				out.println(browserok ? "HTTP/1.1 204 No Content" : "HTTP/1.1 403 Forbidden");
+				out.println("Server: HTTP RPC Server from Minima 1.3");
+				if(browserok) {
+					out.println("Access-Control-Allow-Origin: *");
+					out.println("Access-Control-Allow-Methods: GET, POST");
+					out.println("Access-Control-Allow-Headers: Authorization, Content-Type");
+				}
+				out.println();
+				out.flush();
+				return;
+			}
+			
+			if(!method.equals("GET") && !method.equals("POST")) {
+				out.println("HTTP/1.1 405 Method Not Allowed");
+				out.println("Server: HTTP RPC Server from Minima 1.3");
+				out.println();
+				out.println("{\"status\":false,\"error\":\"GET or POST only\"}");
+				out.flush();
+				return;
+			}
+			
+			if(!browserok) {
+				out.println("HTTP/1.1 403 Forbidden");
+				out.println("Server: HTTP RPC Server from Minima 1.3");
+				out.println();
+				out.println("{\"status\":false,\"error\":\"Browser request refused - this RPC has no password; "
+						+ "allow a page's origin with -rpcalloworigin\"}");
 				out.flush();
 				return;
 			}
@@ -255,6 +302,30 @@ public class CMDHandler implements Runnable {
 		if(quit) {
 			Runtime.getRuntime().halt(0);
 		}
+	}
+	
+	/**
+	 * May this browser request run on an RPC with no password? Origin must be the RPC's own origin or one named
+	 * with -rpcalloworigin; a Sec-Fetch-Site other than none / same-origin needs a named Origin. No Origin and no
+	 * Sec-Fetch-Site (curl, scripts, the desktops' Node client): served.
+	 */
+	static boolean browserAllowed(String zOrigin, String zFetchSite, String zHost) {
+		boolean named = false;
+		if(zOrigin != null) {
+			for(String allowed : GeneralParams.RPC_ALLOWED_ORIGINS.split(",")) {
+				if(!allowed.trim().isEmpty() && zOrigin.equals(allowed.trim())) {
+					named = true;
+				}
+			}
+			boolean own = zHost != null && zOrigin.equalsIgnoreCase("http://"+zHost);
+			if(!named && !own) {
+				return false;
+			}
+		}
+		if(zFetchSite != null && !zFetchSite.equals("none") && !zFetchSite.equals("same-origin") && !named) {
+			return false;
+		}
+		return true;
 	}
 	
 	/**
