@@ -1,0 +1,46 @@
+package org.minima.system.commands;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.lang.reflect.Field;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.minima.database.MinimaDB;
+import org.minima.database.userprefs.txndb.TxnDB;
+import org.minima.utils.json.JSONObject;
+
+/**
+ * The non-admin gate (2026-11-21): commands a non-admin caller (0xFF - a non-admin companion, a read-mode RPC
+ * user) must not run, because they act with the node's own keys or files.
+ */
+public class WriteGateTest {
+
+	@BeforeClass
+	public static void setup() throws Exception {
+		MinimaDB.createDB();
+		Field txndb = MinimaDB.class.getDeclaredField("mTxnDB");
+		txndb.setAccessible(true);
+		txndb.set(MinimaDB.getDB(), new TxnDB());
+	}
+	
+	static JSONObject run(String zUser, String zCommand) {
+		return (JSONObject) CommandRunner.getRunner().runMultiCommand(zUser, zCommand).get(0);
+	}
+	
+	static boolean adminRefusal(JSONObject zRes) {
+		return String.valueOf(zRes.get("error")).contains("ADMIN");
+	}
+	
+	@Test
+	public void txnautoNeedsAdmin() {
+		//sign:true signs with the node wallet - with txnpost (open) that spends the node's coins
+		JSONObject res = run("0xFF", "txnauto id:gatetxn amount:1 address:0x00 sign:true");
+		assertTrue("a non-admin caller ran txnauto: "+res, adminRefusal(res));
+		assertFalse(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("gatetxn") != null);
+		
+		//ADMIN still runs it (it fails later here: no wallet in the test)
+		assertFalse(adminRefusal(run("0x00", "txnauto id:gatetxn2 amount:1 address:0x00")));
+	}
+}
