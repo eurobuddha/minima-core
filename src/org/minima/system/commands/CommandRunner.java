@@ -717,7 +717,9 @@ public class CommandRunner {
 		 "cointrack","sign","txnauto","txnsign","mds","backup","removescript",
 		 "restore","restoresync","vault","archive","mysql","mysqlcoins",
 		 "rpc","magic","quit","seedrandom","megammrsync","megammr","decryptbackup",
-		 "reset"};
+		 "reset",
+		 // SECURITY (2026-11-21): rescue starts a MegaMMR resync from any host: and the node halts afterwards
+		 "rescue"};
 	
 	private final ArrayList<String> ALL_WRITE_COMMANDS_ARRAY = new ArrayList<String>(Arrays.asList(ALL_WRITE_COMMANDS));
 	
