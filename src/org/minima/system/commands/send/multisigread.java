@@ -243,6 +243,7 @@ public class multisigread extends Command {
 			//The txnname..
 			String txnname_default 	= "multispend_"+System.currentTimeMillis()+".txn";
 			String txnname 			= getParam("file",txnname_default);
+			getFileParam("file",txnname_default);		//a non-admin caller: only in the base folder
 			
 			//Create a txn..
 			ArrayList<Object[]> txnsender = multisig.spendCommands(randomid, coinid, amount, address, tokenid,
@@ -256,6 +257,7 @@ public class multisigread extends Command {
 			
 			//Which file..
 			String file 		= getParam("file");
+			getFileParam("file");		//a non-admin caller: only in the base folder
 			
 			//Run it..
 			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
@@ -267,6 +269,7 @@ public class multisigread extends Command {
 		}else if(action.equals("view")) {
 			
 			String file 		= getParam("file");
+			getFileParam("file");		//a non-admin caller: only in the base folder
 			
 			//Run it..
 			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 

@@ -549,7 +549,7 @@ public class sendnosign extends Command {
 		//Did they specify a file..
 		File txnfile = null;
 		if(existsParam("file")) {
-			txnfile = MiniFile.createBaseFile(getParam("file"));
+			txnfile = getFileParam("file");
 		}else {
 			txnfile = MiniFile.createBaseFile("unsignedtransaction-"+System.currentTimeMillis()+".txn");
 		}
