@@ -41,4 +41,16 @@ public class TxnDBTest {
 			assertEquals(1, db.listTxns().size());
 		}
 	}
+	
+	@Test
+	public void listTxnsIsACopy() throws Exception {
+		//txnlist iterates the list while other threads add / delete rows: it must not be the live list
+		TxnDB db = new TxnDB();
+		db.createTransaction("one");
+		java.util.ArrayList<TxnRow> list = db.listTxns();
+		db.createTransaction("two");
+		db.deleteTransaction("one");
+		assertEquals(1, list.size());
+		assertEquals("one", list.get(0).getID());
+	}
 }
