@@ -9,6 +9,7 @@ import org.minima.database.userprefs.txndb.TxnRow;
 import org.minima.objects.base.MiniData;
 import org.minima.objects.base.MiniNumber;
 import org.minima.system.commands.Command;
+import org.minima.system.commands.CommandException;
 import org.minima.system.commands.CommandRunner;
 import org.minima.utils.MinimaLogger;
 import org.minima.utils.json.JSONArray;
@@ -41,6 +42,12 @@ public class signfrom extends Command {
 		}
 		
 		String randomid = tx.getID();
+		
+		//SECURITY (review 2026-11-21): addCompleteTransaction REPLACES a row with the same id - a non-admin caller
+		//may only add a NEW row (as txnimport), never overwrite another app's draft
+		if(!isAdminCaller() && db.getTransactionRow(tx.getID()) != null) {
+			throw new CommandException("A transaction with this id already exists : "+tx.getID());
+		}
 		
 		//Add to the DB
 		db.addCompleteTransaction(tx);
