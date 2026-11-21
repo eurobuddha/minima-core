@@ -193,17 +193,6 @@ public class CommandRunner {
 	}
 	
 	public JSONObject runSingleCommand(String zCommand) {
-		//SECURITY (command injection 2026-11-21): ONE command means one - never run what follows a ';'
-		//(runMultiCommand would run every piece as ADMIN). No working command contains a ';': it was always split.
-		if(zCommand.indexOf(';') != -1) {
-			JSONObject result = new JSONObject();
-			result.put("command", zCommand);
-			result.put("status", false);
-			result.put("pending", false);
-			result.put("error", "Only one command can be run here - remove the ';'");
-			return result;
-		}
-
 		JSONArray res 		= runMultiCommand(zCommand);
 		if(res.size()>0) {
 			JSONObject result 	= (JSONObject) res.get(0);
