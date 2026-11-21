@@ -56,4 +56,38 @@ public class WriteGateTest {
 		assertFalse(String.valueOf(run("0xFF", "txnpost id:burntxn").get("error")).contains("needs ADMIN"));
 		assertFalse(String.valueOf(run("0x00", "txnpost id:burntxn burn:1").get("error")).contains("needs ADMIN"));
 	}
+	
+	/** A TxnRow as the Trading Account (VirtualWallet.hex) serialises it for postfrom data: */
+	static String blob(String zID) throws Exception {
+		org.minima.database.userprefs.txndb.TxnRow row = new org.minima.database.userprefs.txndb.TxnRow(
+				zID, new org.minima.objects.Transaction(), new org.minima.objects.Witness());
+		java.io.ByteArrayOutputStream bo = new java.io.ByteArrayOutputStream();
+		java.io.DataOutputStream d = new java.io.DataOutputStream(bo);
+		row.writeDataStream(d);
+		d.flush();
+		return new org.minima.objects.base.MiniData(bo.toByteArray()).to0xString();
+	}
+	
+	@Test
+	public void postfromCannotOverwriteAnotherDraft() throws Exception {
+		CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:victimdraft");
+		CommandRunner.getRunner().runMultiCommand("0x00", "txnstate id:victimdraft port:1 value:42");
+		
+		for(String cmd : new String[] {"postfrom", "signfrom"}) {
+			String extra = cmd.equals("signfrom") ? " privatekey:0x01 keyuses:1" : " mine:false";
+			JSONObject res = run("0xFF", cmd+" data:"+blob("victimdraft")+extra);
+			assertTrue(cmd+" overwrote another draft: "+res, String.valueOf(res.get("error")).contains("already exists"));
+			org.minima.database.userprefs.txndb.TxnRow row = MinimaDB.getDB().getCustomTxnDB().getTransactionRow("victimdraft");
+			assertTrue(cmd+" removed the victim's draft", row != null);
+			assertTrue(cmd+" replaced the victim's draft", row.getTransaction().getStateValue(1) != null);
+		}
+	}
+	
+	@Test
+	public void tradingAccountPostfromStillPasses() throws Exception {
+		//VirtualWallet.post: postfrom data:<fresh id> mine:false, as a non-admin companion
+		JSONObject res = run("0xFF", "postfrom data:"+blob("dx0011223344556677")+" mine:false");
+		assertFalse(String.valueOf(res.get("error")).contains("already exists"));
+		assertFalse(adminRefusal(res));
+	}
 }
