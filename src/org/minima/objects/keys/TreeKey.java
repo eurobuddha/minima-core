@@ -117,6 +117,17 @@ public class TreeKey {
 		return mLevels;
 	}
 	
+	/**
+	 * Sign with a key whose use count came from a caller (txnsign publickey:custom): at or past the capacity THROW,
+	 * where sign() restarts at leaf 0 - a second signature with a used Winternitz leaf leaks the private key.
+	 */
+	public Signature signNoWrap(MiniData zData) {
+		if(mUses < 0 || mUses >= mMaxUses) {
+			throw new IllegalStateException("Key uses "+mUses+" outside 0.."+(mMaxUses-1)+" - refusing to re-sign with a used leaf");
+		}
+		return sign(zData);
+	}
+	
 	public Signature sign(MiniData zData) {
 		
 		//Check range
