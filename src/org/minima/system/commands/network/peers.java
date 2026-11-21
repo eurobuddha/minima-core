@@ -57,6 +57,20 @@ public class peers extends Command {
 	}
 	
 	@Override
+	public String getWriteUse() {
+		//publish writes peerslist.txt unless told otherwise - not a plain .txn name
+		if("publish".equals(mParamsAction()) && !existsParam("file")) {
+			return "a non-admin caller can only use files in the node's base folder, by a plain name ending in .txn";
+		}
+		return super.getWriteUse();
+	}
+	
+	private String mParamsAction() {
+		Object action = getParams().get("action");
+		return action == null ? "" : action.toString();
+	}
+	
+	@Override
 	public JSONObject runCommand() throws Exception{
 		JSONObject ret = getJSONReply();
 
