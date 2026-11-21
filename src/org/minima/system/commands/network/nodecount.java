@@ -39,7 +39,7 @@ public class nodecount extends Command {
 		if(file.equals("")) {
 			saveCSV = false;
 		} else {
-			File csvFile = getFileParam("file");
+			File csvFile = getNewFileParam("file");		//a non-admin caller: a new file only
 			writer = new PrintWriter(csvFile);
 		}
 

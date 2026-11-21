@@ -96,6 +96,13 @@ public class multisigread extends Command {
 	}
 	
 	@Override
+	public String getWriteUse() {
+		//spend writes its file (an ADMIN txnexport at the end of the chain): overwriting one needs WRITE rights
+		String overwrite = "spend".equals(String.valueOf(getParams().get("action"))) ? overwriteWriteUse(getFileName()) : null;
+		return overwrite != null ? overwrite : super.getWriteUse();
+	}
+	
+	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 	
@@ -243,7 +250,9 @@ public class multisigread extends Command {
 			//The txnname..
 			String txnname_default 	= "multispend_"+System.currentTimeMillis()+".txn";
 			String txnname 			= getParam("file",txnname_default);
-			getFileParam("file",txnname_default);		//a non-admin caller: only in the base folder
+			//SECURITY (round-5 review 2026-11-21): the chain below ends with an ADMIN txnexport to this name, so a
+			//non-admin caller CLAIMS it here (a new file only) - never an admin flow's existing unsigned .txn
+			getNewFileParam("file",txnname_default);
 			
 			//Create a txn..
 			ArrayList<Object[]> txnsender = multisig.spendCommands(randomid, coinid, amount, address, tokenid,
@@ -251,6 +260,9 @@ public class multisigread extends Command {
 			
 			//Run it..
 			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, txnsender.toArray(new Object[0][]));
+			if(!(boolean) ((JSONObject) result.get(result.size()-1)).get("status")) {
+				releaseClaims();		//a failed spend frees its claimed name for a retry
+			}
 			ret.put("response", result);
 		
 		}else if(action.equals("post")) {
