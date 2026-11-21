@@ -79,8 +79,9 @@ public class TxnDB implements Streamable {
 		return found;
 	}
 	
-	public ArrayList<TxnRow> listTxns(){
-		return mTransactions;
+	/** A copy of the rows (the only caller, txnlist, iterates it): never the live list another thread changes */
+	public synchronized ArrayList<TxnRow> listTxns(){
+		return new ArrayList<>(mTransactions);
 	}
 	
 	public synchronized void clearTxns() {
@@ -111,7 +112,7 @@ public class TxnDB implements Streamable {
 	}
 	
 	@Override
-	public void writeDataStream(DataOutputStream zOut) throws IOException {
+	public synchronized void writeDataStream(DataOutputStream zOut) throws IOException {
 		//How many
 		MiniNumber.WriteToStream(zOut, mTransactions.size());
 		for(TxnRow txnrow : mTransactions) {
