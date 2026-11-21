@@ -27,6 +27,9 @@ public abstract class Command {
 	/** Set by CommandRunner: this caller passed the WRITE gate (ADMIN, or an MDS MiniDapp with WRITE permission) */
 	boolean mWriteAllowed = false;
 	
+	/** Files a non-admin caller claimed (getNewFileParam) - removed again if the command fails (releaseClaims) */
+	ArrayList<File> mClaimed = new ArrayList<>();
+	
 	public Command(String zName, String zHelp) {
 		mName = zName;
 		mHelp = zHelp;
@@ -183,11 +186,20 @@ public abstract class Command {
 				if(!zFile.createNewFile()) {
 					throw new CommandException("A non-admin caller only creates new files - "+zFile.getName()+" exists");
 				}
+				mClaimed.add(zFile);
 			}catch(IOException exc) {
 				throw new CommandException("Cannot create "+zFile.getName()+" : "+exc.getMessage());
 			}
 		}
 		return zFile;
+	}
+	
+	/** A failed command: remove the files this non-admin caller claimed, so a retry under the same name is not refused */
+	public void releaseClaims() {
+		for(File claimed : mClaimed) {
+			claimed.delete();
+		}
+		mClaimed.clear();
 	}
 	
 	/** The file: param as given, or null */
