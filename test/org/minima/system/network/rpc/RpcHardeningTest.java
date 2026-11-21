@@ -65,6 +65,7 @@ public class RpcHardeningTest {
 		mainInstance.set(null, main);
 
 		GeneralParams.RPC_PORT 			= freePort();
+		GeneralParams.RPC_BIND_HOST 	= "127.0.0.1";
 		GeneralParams.RPC_ENABLED 		= false;
 		GeneralParams.RPC_AUTHENTICATE 	= false;
 		GeneralParams.RPC_PASSWORD 		= "none";
@@ -77,6 +78,7 @@ public class RpcHardeningTest {
 		GeneralParams.RPC_ENABLED 		= false;
 		GeneralParams.RPC_AUTHENTICATE 	= false;
 		GeneralParams.RPC_PASSWORD 		= "none";
+		GeneralParams.RPC_BIND_HOST 	= "127.0.0.1";
 	}
 
 	static JSONObject run(String zCommand) {
@@ -235,5 +237,15 @@ public class RpcHardeningTest {
 		Thread.sleep(500);
 		//still alive
 		assertTrue(post("reader", "readpw", "random").contains("\"status\":true"));
+	}
+	
+	@Test
+	public void rpcThatCannotListenIsReported() {
+		//192.0.2.1 (TEST-NET) is no address of this machine: the bind fails and the RPC stays down
+		GeneralParams.RPC_BIND_HOST = "192.0.2.1";
+		JSONObject res = run("rpc enable:true password:firstpw");
+		JSONObject rpc = (JSONObject) res.get("response");
+		assertEquals("the reply did not say the RPC is down: "+rpc, false, rpc.get("listening"));
+		assertTrue(String.valueOf(rpc.get("error")).contains("Cannot listen"));
 	}
 }
