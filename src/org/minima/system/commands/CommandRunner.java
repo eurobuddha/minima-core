@@ -299,6 +299,20 @@ public class CommandRunner {
 		return results;
 	}
 
+	/**
+	 * runCommands for a chain that works on the in-progress transaction zTxnID: when the chain stops on a
+	 * failure, the row is deleted (house rule: every txn error path runs txndelete - the old ';' chains
+	 * left it behind).
+	 */
+	public JSONArray runTxnCommands(String zTxnID, Object[]... zCommands) {
+		JSONArray results = runCommands(zCommands);
+		JSONObject last   = (JSONObject) results.get(results.size()-1);
+		if(!(boolean) last.get("status")) {
+			runCommand("txndelete", "id", zTxnID);
+		}
+		return results;
+	}
+	
 	public JSONArray runMultiCommand(String zMiniDAPPID, String zCommand) {
 		
 		JSONArray finalresult = new JSONArray();

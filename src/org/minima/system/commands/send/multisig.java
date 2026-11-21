@@ -382,7 +382,7 @@ public class multisig extends Command {
 			txnsender.add(new Object[] {"txndelete", "id",randomid});
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runCommands(txnsender.toArray(new Object[0][]));
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, txnsender.toArray(new Object[0][]));
 			ret.put("response", result);
 		
 		}else if(action.equals("sign")) {
@@ -396,62 +396,68 @@ public class multisig extends Command {
 			
 			//The signer function
 			JSONObject importres 	= CommandRunner.getRunner().runCommand("txnimport", "id",randomid, "file",file);
-			if(!(boolean) importres.get("status")) {
-				throw new CommandException(importres.get("error").toString());
-			}
-			
-			//Rest now
-			ArrayList<Object[]> txnsigner = new ArrayList<>();
-			
-			//Get the wallet
-			Wallet wallet = MinimaDB.getDB().getWallet();
-			
-			//now find the public key
-			TxnDB db 						  = MinimaDB.getDB().getCustomTxnDB();
-			TxnRow txnrow 					  = db.getTransactionRow(randomid);
-			Transaction trans 				  = txnrow.getTransaction();
-			Coin multicoin 					  = trans.getAllInputs().get(0);
-			ArrayList<StateVariable> allstate = multicoin.getState();
-			for(StateVariable statevar : allstate) {
-				//Get the vaklue..
-				String possiblepubkey = statevar.getData().toString();
-				KeyRow key = wallet.getKeyFromPublic(possiblepubkey);
-				if(key != null) {
-					txnsigner.add(new Object[] {"txnsign", "id",randomid, "publickey",possiblepubkey});
-				}
-			}
-			
-			//Finish up
-			txnsigner.add(new Object[] {"txnexport", "id",randomid, "file",signedtxn.getAbsolutePath()});
-			txnsigner.add(new Object[] {"txndelete", "id",randomid});
-			
-			//Unlock DB at the start - rather than every time you run txnsign
-			boolean passwordlock = false;
-			if(existsParam("password") && !MinimaDB.getDB().getWallet().isBaseSeedAvailable()) {
-				
-				//Lets unlock the DB
-				vault.passowrdUnlockDB(getParam("password"));
-				 
-				//Lock at the end..
-				passwordlock = true;
-			}
-			
-			JSONArray result = null;
 			try {
-				result = CommandRunner.getRunner().runCommands(txnsigner.toArray(new Object[0][]));
-			} finally {
-				if(passwordlock) vault.passwordLockDB(getParam("password"));
-			}
+				if(!(boolean) importres.get("status")) {
+					throw new CommandException(importres.get("error").toString());
+				}
+			
+				//Rest now
+				ArrayList<Object[]> txnsigner = new ArrayList<>();
+			
+				//Get the wallet
+				Wallet wallet = MinimaDB.getDB().getWallet();
+			
+				//now find the public key
+				TxnDB db 						  = MinimaDB.getDB().getCustomTxnDB();
+				TxnRow txnrow 					  = db.getTransactionRow(randomid);
+				Transaction trans 				  = txnrow.getTransaction();
+				Coin multicoin 					  = trans.getAllInputs().get(0);
+				ArrayList<StateVariable> allstate = multicoin.getState();
+				for(StateVariable statevar : allstate) {
+					//Get the vaklue..
+					String possiblepubkey = statevar.getData().toString();
+					KeyRow key = wallet.getKeyFromPublic(possiblepubkey);
+					if(key != null) {
+						txnsigner.add(new Object[] {"txnsign", "id",randomid, "publickey",possiblepubkey});
+					}
+				}
+			
+				//Finish up
+				txnsigner.add(new Object[] {"txnexport", "id",randomid, "file",signedtxn.getAbsolutePath()});
+				txnsigner.add(new Object[] {"txndelete", "id",randomid});
+			
+				//Unlock DB at the start - rather than every time you run txnsign
+				boolean passwordlock = false;
+				if(existsParam("password") && !MinimaDB.getDB().getWallet().isBaseSeedAvailable()) {
+				
+					//Lets unlock the DB
+					vault.passowrdUnlockDB(getParam("password"));
+				 
+					//Lock at the end..
+					passwordlock = true;
+				}
+			
+				JSONArray result = null;
+				try {
+					result = CommandRunner.getRunner().runTxnCommands(randomid, txnsigner.toArray(new Object[0][]));
+				} finally {
+					if(passwordlock) vault.passwordLockDB(getParam("password"));
+				}
 
-			ret.put("response", result);
+				ret.put("response", result);
 		
+			}catch(Exception exc) {
+				//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+				CommandRunner.getRunner().runCommand("txndelete", "id",randomid);
+				throw exc;
+			}
 		}else if(action.equals("post")) {
 			
 			//Which file..
 			String file 		= getParam("file");
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runCommands(
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
 					new Object[] {"txnimport", "id",randomid, "file",file},
 					new Object[] {"txnpost", "id",randomid, "mine","true", "auto","true"},
 					new Object[] {"txndelete", "id",randomid});
@@ -462,7 +468,7 @@ public class multisig extends Command {
 			String file 		= getParam("file");
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runCommands(
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
 					new Object[] {"txnimport", "id",randomid, "file",file},
 					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
