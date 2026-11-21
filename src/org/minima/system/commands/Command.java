@@ -280,8 +280,8 @@ public abstract class Command {
 	 */
 	/**
 	 * OWNER MAY DROP (round-5 review 2026-11-21): the node wallet's keys are default TreeKeys - 64 x 64 x 64 one-time
-	 * leaves. A wallet-wide keyuses: (vault resetkeys, archive / megammrsync / mysql resync, keys createallkeys,
-	 * restoresync) at or past this would put every key at or past its last leaf.
+	 * leaves. A wallet-wide keyuses: (vault resetkeys, archive / megammrsync / mysql resync, keys createallkeys)
+	 * at or past this would put every key at or past its last leaf (restore and restoresync ADD, capped per key).
 	 */
 	public static final long WALLET_KEY_CAPACITY = (long) Math.pow(org.minima.objects.keys.TreeKey.DEFAULT_KEYSPERLEVEL,
 			org.minima.objects.keys.TreeKey.DEFAULT_LEVELS);

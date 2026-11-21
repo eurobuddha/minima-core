@@ -76,9 +76,6 @@ public class restoresync extends Command {
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 		
-		//How many keyuses to ADD (checked before anything is done)
-		int keyuses = getKeyUsesParam("keyuses", new MiniNumber(256), WALLET_KEY_CAPACITY);	//OWNER MAY DROP: below the wallet keys' capacity
-		
 		//Can only do this if all keys created..
 		vault.checkAllKeysCreated();
 				
@@ -213,6 +210,8 @@ public class restoresync extends Command {
 		long timediff   = System.currentTimeMillis() - timemilli;
 		long maxtime 	= 1000 * 60 * 60 * 24 * 2;
 		
+		//How many keyuses
+		int keyuses = getKeyUsesParam("keyuses", new MiniNumber(256), (long) Integer.MAX_VALUE + 1);	//whole, 0.., never wrapped
 				
 		//Do we even need to do a sync..
 		if(timediff < maxtime || !existsParam("host")) {
@@ -221,8 +220,7 @@ public class restoresync extends Command {
 				MinimaLogger.log("No Sync required as new backup");
 			}
 			
-			//Update key uses (OWNER MAY DROP: never to or past a key's capacity)
-			checkIncrement(MinimaDB.getDB().getWallet(), keyuses);
+			//Update key uses
 			MinimaDB.getDB().getWallet().updateIncrementAllKeyUses(keyuses);
 			
 			//Don't do the usual shutdown hook
@@ -295,16 +293,6 @@ public class restoresync extends Command {
 		return ret;
 	}
 	
-	/** OWNER MAY DROP: the add of key uses after the restore - refused, and said so, if a key would reach capacity */
-	private static void checkIncrement(Wallet zWallet, int zKeyUses) throws Exception {
-		try {
-			zWallet.checkIncrementAllKeyUses(zKeyUses);
-		}catch(IllegalArgumentException exc) {
-			throw new CommandException("The backup IS restored, but its key uses were NOT raised - "+exc.getMessage()
-					+". Do not sign with this wallet's keys; restart Minima.");
-		}
-	}
-	
 	private long readNextBackup(File zOutput, DataInputStream zDis) throws IOException {
 		MiniData data = MiniData.ReadFromStream(zDis);
 		MiniFile.writeDataToFile(zOutput, data.getBytes());
@@ -373,7 +361,6 @@ public class restoresync extends Command {
 		
 		//Now Update the USES - since they may have been used before - we don;t know..
 		if(zIncrementKeys) {
-			checkIncrement(wallet, zKeyUses);		//OWNER MAY DROP: never to or past a key's capacity
 			wallet.updateIncrementAllKeyUses(zKeyUses);
 		}else {
 			wallet.updateAllKeyUses(zKeyUses);
