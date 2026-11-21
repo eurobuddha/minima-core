@@ -53,4 +53,32 @@ public class TxnDBTest {
 		assertEquals(1, list.size());
 		assertEquals("one", list.get(0).getID());
 	}
+	
+	@Test
+	public void latchStartedRaceHasExactlyOneWinner() throws Exception {
+		//All threads released at once by one latch, many rounds: exactly one addNewTransaction wins each round
+		int threads = 16;
+		for(int round=0;round<500;round++) {
+			TxnDB db = new TxnDB();
+			java.util.concurrent.CountDownLatch ready = new java.util.concurrent.CountDownLatch(threads);
+			java.util.concurrent.CountDownLatch go    = new java.util.concurrent.CountDownLatch(1);
+			AtomicInteger wins = new AtomicInteger();
+			Thread[] all = new Thread[threads];
+			for(int i=0;i<threads;i++) {
+				all[i] = new Thread(() -> {
+					ready.countDown();
+					try { go.await(); } catch(InterruptedException e) { return; }
+					if(db.addNewTransaction(new TxnRow("race"+"", new Transaction(), new Witness()))) {
+						wins.incrementAndGet();
+					}
+				});
+				all[i].start();
+			}
+			ready.await();
+			go.countDown();
+			for(Thread t : all) t.join();
+			assertEquals("round "+round, 1, wins.get());
+			assertEquals(1, db.listTxns().size());
+		}
+	}
 }
