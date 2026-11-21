@@ -168,4 +168,37 @@ public class CommandInjectionTest {
 		assertTrue((boolean) res.get("status"));
 		assertFalse("the second piece did not run", txnExists("chainone"));
 	}
+	
+	static int txnRows() {
+		return MinimaDB.getDB().getCustomTxnDB().listTxns().size();
+	}
+	
+	@Test
+	public void failedBuildLeavesNoTxnRow() {
+		//A state that is not a valid state variable throws inside rawtxnfrom after its txncreate
+		int before = txnRows();
+		JSONObject res = run("rawtxnfrom inputs:[] outputs:[] scripts:[] state:{\"1\":\"[a]\\u0022 x\"}");
+		assertFalse((boolean) res.get("status"));
+		assertEquals("rawtxnfrom left its txn row behind", before, txnRows());
+	}
+	
+	@Test
+	public void failedMultisigChainLeavesNoTxnRow() throws Exception {
+		//A transaction file multisig post can import, whose txnpost then fails (no node in the test)
+		java.io.File file = java.io.File.createTempFile("multisig-post", ".txn");
+		try {
+			run("txncreate id:postfile");
+			assertTrue((boolean) run("txnexport id:postfile file:"+file.getAbsolutePath()).get("status"));
+			run("txndelete id:postfile");
+			
+			int before = txnRows();
+			JSONObject res = run("multisig action:post file:"+file.getAbsolutePath());
+			JSONArray chain = (JSONArray) res.get("response");
+			assertEquals("txnimport", ((JSONObject) chain.get(0)).get("command"));
+			assertFalse((boolean) ((JSONObject) chain.get(chain.size()-1)).get("status"));
+			assertEquals("the failed multisig chain left its txn row behind", before, txnRows());
+		}finally {
+			file.delete();
+		}
+	}
 }

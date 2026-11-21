@@ -68,67 +68,73 @@ public class sendfrom extends Command {
 		
 		//Now construct the transaction..
 		JSONObject result 	= runCommand("txncreate", "id",randomid);
+		try {
 		
-		//Add the mounts..
-		result = runCommand("txnaddamount", "id",randomid, "split",split, "burn",burn,
-				"fromaddress",fromaddress, "address",toaddress, "amount",amount, "tokenid",tokenid);
-		if(!(boolean)result.get("status")) {
+			//Add the mounts..
+			result = runCommand("txnaddamount", "id",randomid, "split",split, "burn",burn,
+					"fromaddress",fromaddress, "address",toaddress, "amount",amount, "tokenid",tokenid);
+			if(!(boolean)result.get("status")) {
 			
-			//Delete transaction
-			runCommand("txndelete", "id",randomid);
+				//Delete transaction
+				runCommand("txndelete", "id",randomid);
 			
-			//Not enough funds!
-			throw new CommandException(result.getString("error"));
-		}
-		
-		//Add the scripts..
-		runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
-		
-		//Add the state is exists
-		if(state != null) {
-			
-			//Cycle..
-			for(Object key : state.keySet()) {
-				
-				//The Key is a String
-				String portstr = (String)key; 
-				
-				//The port
-				int port = Integer.parseInt(portstr);
-				
-				//Get the state var..
-				String var = state.get(key)+"";
-
-				//Create a state variable..
-				StateVariable sv = new StateVariable(port, var);
-				
-				//Add to the transaction..
-				runCommand("txnstate", "id",randomid, "port",sv.getPort(), "value",sv.getData().toString());
+				//Not enough funds!
+				throw new CommandException(result.getString("error"));
 			}
+		
+			//Add the scripts..
+			runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
+		
+			//Add the state is exists
+			if(state != null) {
+			
+				//Cycle..
+				for(Object key : state.keySet()) {
+				
+					//The Key is a String
+					String portstr = (String)key; 
+				
+					//The port
+					int port = Integer.parseInt(portstr);
+				
+					//Get the state var..
+					String var = state.get(key)+"";
+
+					//Create a state variable..
+					StateVariable sv = new StateVariable(port, var);
+				
+					//Add to the transaction..
+					runCommand("txnstate", "id",randomid, "port",sv.getPort(), "value",sv.getData().toString());
+				}
+			}
+		
+			//Sort the MMR
+			runCommand("txnmmr", "id",randomid);
+		
+			//Now SIGN
+			runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
+		
+			//And POST!
+			result = runCommand("txnpost", "id",randomid, "mine",mine);
+		
+			//And delete..
+			runCommand("txndelete", "id",randomid);
+		
+			//Check succeeded..
+			if(!(boolean)result.get("status")) {
+				//Didn't work..
+				throw new CommandException((String)result.get("error"));
+			}
+		
+			//And return..
+			ret.put("response", result.get("response"));
+		
+			return ret;
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			runCommand("txndelete", "id",randomid);
+			throw exc;
 		}
-		
-		//Sort the MMR
-		runCommand("txnmmr", "id",randomid);
-		
-		//Now SIGN
-		runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
-		
-		//And POST!
-		result = runCommand("txnpost", "id",randomid, "mine",mine);
-		
-		//And delete..
-		runCommand("txndelete", "id",randomid);
-		
-		//Check succeeded..
-		if(!(boolean)result.get("status")) {
-			//Didn't work..
-			throw new CommandException((String)result.get("error"));
-		}
-		
-		//And return..
-		ret.put("response", result.get("response"));
-		
-		return ret;
 	}
 	
 	public JSONObject runCommand(String zName, Object... zNameValues) {

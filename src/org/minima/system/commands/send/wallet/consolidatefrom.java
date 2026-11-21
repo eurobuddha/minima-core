@@ -60,122 +60,128 @@ public class consolidatefrom extends Command {
 		
 		//Now construct the transaction..
 		JSONObject result 	= runCommand("txncreate", "id",randomid);
+		try {
 				
-		//Are we mining
-		boolean mine 		= getBooleanParam("mine", true);
+			//Are we mining
+			boolean mine 		= getBooleanParam("mine", true);
 		
-		TxPoWTreeNode tip 		= MinimaDB.getDB().getTxPoWTree().getTip();
-		MiniNumber currentblock = tip.getBlockNumber(); 
+			TxPoWTreeNode tip 		= MinimaDB.getDB().getTxPoWTree().getTip();
+			MiniNumber currentblock = tip.getBlockNumber(); 
 		
-		//Get all the coins for this addres / token
-		ArrayList<Coin> coins = TxPoWSearcher.searchCoins(	tip, false, 
-								false, MiniData.ZERO_TXPOWID,
-								false, MiniNumber.ZERO,
-								true, new MiniData(fromaddress), 
-								true, new MiniData(tokenid), 
-								false, "", true,
-								false, Integer.MAX_VALUE,GeneralParams.IS_MEGAMMR);
+			//Get all the coins for this addres / token
+			ArrayList<Coin> coins = TxPoWSearcher.searchCoins(	tip, false, 
+									false, MiniData.ZERO_TXPOWID,
+									false, MiniNumber.ZERO,
+									true, new MiniData(fromaddress), 
+									true, new MiniData(tokenid), 
+									false, "", true,
+									false, Integer.MAX_VALUE,GeneralParams.IS_MEGAMMR);
 		
-		//Now order the coins..
-		Collections.sort(coins, new Comparator<Coin>() {
-			@Override
-			public int compare(Coin zCoin1, Coin zCoin2) {
-				MiniNumber amt1 = zCoin1.getAmount();
-				MiniNumber amt2 = zCoin2.getAmount();
-				return amt2.compareTo(amt1);
-			}
-		});
+			//Now order the coins..
+			Collections.sort(coins, new Comparator<Coin>() {
+				@Override
+				public int compare(Coin zCoin1, Coin zCoin2) {
+					MiniNumber amt1 = zCoin1.getAmount();
+					MiniNumber amt2 = zCoin2.getAmount();
+					return amt2.compareTo(amt1);
+				}
+			});
 		
-		//Now make sure they are old enough and not in mempool..
-		TxPoWDB txpdb 		= MinimaDB.getDB().getTxPoWDB();
-		MiniNumber minage 	= new MiniNumber(3);
-		ArrayList<Coin> validcoins = new ArrayList<>();
-		for(Coin cc : coins){
+			//Now make sure they are old enough and not in mempool..
+			TxPoWDB txpdb 		= MinimaDB.getDB().getTxPoWDB();
+			MiniNumber minage 	= new MiniNumber(3);
+			ArrayList<Coin> validcoins = new ArrayList<>();
+			for(Coin cc : coins){
 			
-			boolean stillgood = true;
+				boolean stillgood = true;
 			
-			//Check age..
-			if(currentblock.sub(cc.getBlockCreated()).isLess(minage)) {
-				stillgood = false;
-			}
-			
-			//Check mempool
-			if(stillgood) {
-				if(txpdb.checkMempoolCoins(cc.getCoinID())) {
+				//Check age..
+				if(currentblock.sub(cc.getBlockCreated()).isLess(minage)) {
 					stillgood = false;
 				}
-			}
 			
-			//Are we still good!
-			if(stillgood) {
-				validcoins.add(cc);
-			}
-		}
-		
-		//Are there any valid coins
-		if(validcoins.size() == 0) {
-			throw new CommandException("No valid coins found to consolidate. Coins must be "+minage.toString()+" blocks old and not already in mempool.");
-		}
-		
-		//Now add the top 20 coins
-		int coincount	 = 1;
-		MiniNumber total = MiniNumber.ZERO;
-		
-		//Cycle through the top coins
-		for(Coin cc : validcoins){
-			total = total.add(cc.getTokenAmount()); 
-			coincount++;
+				//Check mempool
+				if(stillgood) {
+					if(txpdb.checkMempoolCoins(cc.getCoinID())) {
+						stillgood = false;
+					}
+				}
 			
-			//Add this coin to the transaction
-			result 			= runCommand("txninput", "id",randomid, "coinid",cc.getCoinID().to0xString());
-			
-			//How many coins have been added
-			if(coincount>maxcoins) {
-				break;
+				//Are we still good!
+				if(stillgood) {
+					validcoins.add(cc);
+				}
 			}
-		}
 		
-		//Now do the burn..
-		if(tokenid.equals("0x00") && burn.isMore(MiniNumber.ZERO)) {
-			if(burn.isLess(total)) {
-				total = total.sub(burn);
-			}else {
+			//Are there any valid coins
+			if(validcoins.size() == 0) {
+				throw new CommandException("No valid coins found to consolidate. Coins must be "+minage.toString()+" blocks old and not already in mempool.");
+			}
+		
+			//Now add the top 20 coins
+			int coincount	 = 1;
+			MiniNumber total = MiniNumber.ZERO;
+		
+			//Cycle through the top coins
+			for(Coin cc : validcoins){
+				total = total.add(cc.getTokenAmount()); 
+				coincount++;
+			
+				//Add this coin to the transaction
+				result 			= runCommand("txninput", "id",randomid, "coinid",cc.getCoinID().to0xString());
+			
+				//How many coins have been added
+				if(coincount>maxcoins) {
+					break;
+				}
+			}
+		
+			//Now do the burn..
+			if(tokenid.equals("0x00") && burn.isMore(MiniNumber.ZERO)) {
+				if(burn.isLess(total)) {
+					total = total.sub(burn);
+				}else {
 				
-				//Remove the txn..
-				runCommand("txndelete", "id",randomid);
+					//Remove the txn..
+					runCommand("txndelete", "id",randomid);
 				
-				throw new CommandException("Burn greater than total amount added "+burn+" / "+total);
+					throw new CommandException("Burn greater than total amount added "+burn+" / "+total);
+				}
 			}
+		
+			//And now add the output - 10 outputs
+			MiniNumber smallout = total.div(new MiniNumber(10));
+			for(int i=0;i<10;i++) {
+				result 			= runCommand("txnoutput", "id",randomid, "amount",smallout, "address",fromaddress, "tokenid",tokenid);
+			}
+		
+			//String command 	= "txnoutput id:"+randomid+" amount:"+total+" address:"+fromaddress+" tokenid:"+tokenid;
+			//result 			= runCommand(command);
+		
+			//Add the scripts..
+			runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
+		
+			//Sort the MMR
+			runCommand("txnmmr", "id",randomid);
+		
+			//Now SIGN
+			runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
+		
+			//And POST!
+			result = runCommand("txnpost", "id",randomid, "mine",mine);
+		
+			//And delete..
+			runCommand("txndelete", "id",randomid);
+		
+			//And return..
+			ret.put("response", result.get("response"));
+		
+			return ret;
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			runCommand("txndelete", "id",randomid);
+			throw exc;
 		}
-		
-		//And now add the output - 10 outputs
-		MiniNumber smallout = total.div(new MiniNumber(10));
-		for(int i=0;i<10;i++) {
-			result 			= runCommand("txnoutput", "id",randomid, "amount",smallout, "address",fromaddress, "tokenid",tokenid);
-		}
-		
-		//String command 	= "txnoutput id:"+randomid+" amount:"+total+" address:"+fromaddress+" tokenid:"+tokenid;
-		//result 			= runCommand(command);
-		
-		//Add the scripts..
-		runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
-		
-		//Sort the MMR
-		runCommand("txnmmr", "id",randomid);
-		
-		//Now SIGN
-		runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
-		
-		//And POST!
-		result = runCommand("txnpost", "id",randomid, "mine",mine);
-		
-		//And delete..
-		runCommand("txndelete", "id",randomid);
-		
-		//And return..
-		ret.put("response", result.get("response"));
-		
-		return ret;
 	}
 	
 	public JSONObject createConsolidate(ArrayList<Coin> zAllCoins, MiniNumber zBurn, 
@@ -187,52 +193,58 @@ public class consolidatefrom extends Command {
 				
 		//Now construct the transaction..
 		JSONObject result 	= runCommand("txncreate", "id",randomid);
+		try {
 		
-		//Now add ALL these coins
-		int coincount	 = 1;
-		MiniNumber total = MiniNumber.ZERO;
+			//Now add ALL these coins
+			int coincount	 = 1;
+			MiniNumber total = MiniNumber.ZERO;
 		
-		//Cycle through the top coins
-		for(Coin cc : zAllCoins){
-			total = total.add(cc.getTokenAmount()); 
+			//Cycle through the top coins
+			for(Coin cc : zAllCoins){
+				total = total.add(cc.getTokenAmount()); 
 			
-			//Add this coin to the transaction
-			runCommand("txninput", "id",randomid, "coinid",cc.getCoinID().to0xString());
-		}
-		
-		//Now do the burn..
-		if(zBurn.isMore(MiniNumber.ZERO)) {
-			if(zBurn.isLess(total)) {
-				total = total.sub(zBurn);
-			}else {
-				
-				//Remove the txn..
-				runCommand("txndelete", "id",randomid);
-				
-				throw new CommandException("Burn greater than total amount added "+zBurn.toString()+" / "+total);
+				//Add this coin to the transaction
+				runCommand("txninput", "id",randomid, "coinid",cc.getCoinID().to0xString());
 			}
+		
+			//Now do the burn..
+			if(zBurn.isMore(MiniNumber.ZERO)) {
+				if(zBurn.isLess(total)) {
+					total = total.sub(zBurn);
+				}else {
+				
+					//Remove the txn..
+					runCommand("txndelete", "id",randomid);
+				
+					throw new CommandException("Burn greater than total amount added "+zBurn.toString()+" / "+total);
+				}
+			}
+		
+			//And now add the output
+			result 			= runCommand("txnoutput", "id",randomid, "amount",total, "address",zFromAddress, "tokenid",zTokenid);
+		
+			//Add the scripts..
+			runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(zScript));
+		
+			//Sort the MMR
+			runCommand("txnmmr", "id",randomid);
+		
+			//Now SIGN
+			runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",zPrivateKey, "keyuses",zKeyUses);
+		
+			//And POST!
+			result = runCommand("txnpost", "id",randomid, "mine","true");
+		
+			//And delete..
+			runCommand("txndelete", "id",randomid);
+		
+			//Return the POST response
+			return (JSONObject)result.get("response");
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			runCommand("txndelete", "id",randomid);
+			throw exc;
 		}
-		
-		//And now add the output
-		result 			= runCommand("txnoutput", "id",randomid, "amount",total, "address",zFromAddress, "tokenid",zTokenid);
-		
-		//Add the scripts..
-		runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(zScript));
-		
-		//Sort the MMR
-		runCommand("txnmmr", "id",randomid);
-		
-		//Now SIGN
-		runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",zPrivateKey, "keyuses",zKeyUses);
-		
-		//And POST!
-		result = runCommand("txnpost", "id",randomid, "mine","true");
-		
-		//And delete..
-		runCommand("txndelete", "id",randomid);
-		
-		//Return the POST response
-		return (JSONObject)result.get("response");
 	}
 	
 	public JSONObject runCommand(String zName, Object... zNameValues) {
