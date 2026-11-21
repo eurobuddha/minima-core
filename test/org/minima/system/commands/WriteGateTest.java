@@ -64,4 +64,16 @@ public class WriteGateTest {
 		//ADMIN passes the gate (it fails later here: no keets sidecar in the test)
 		assertFalse(String.valueOf(run("0x00", "keets action:publish path:/x file:/etc/hosts").get("error")).contains("file: needs ADMIN"));
 	}
+	
+	@Test
+	public void txnpostBurnNeedsAdmin() {
+		CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:burntxn");
+		JSONObject res = run("0xFF", "txnpost id:burntxn burn:1");
+		assertTrue("a non-admin caller asked the node to burn its own coins: "+res,
+				String.valueOf(res.get("error")).contains("burn: needs ADMIN"));
+		
+		//without burn, and for ADMIN, the gate does not stand in the way (txnpost fails later here: no chain)
+		assertFalse(String.valueOf(run("0xFF", "txnpost id:burntxn").get("error")).contains("needs ADMIN"));
+		assertFalse(String.valueOf(run("0x00", "txnpost id:burntxn burn:1").get("error")).contains("needs ADMIN"));
+	}
 }
