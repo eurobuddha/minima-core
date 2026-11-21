@@ -158,14 +158,14 @@ public class CommandInjectionTest {
 	}
 
 	@Test
-	public void singleCommandRunsOnlyOne() {
-		JSONObject res = CommandRunner.getRunner().runSingleCommand("txncreate id:singleone;txncreate id:singletwo");
-
-		assertFalse("runSingleCommand ran the second command", txnExists("singletwo"));
-		assertFalse((boolean) res.get("status"));
-
-		//One command still runs as before
-		assertTrue((boolean) CommandRunner.getRunner().runSingleCommand("txncreate id:singlethree").get("status"));
-		assertTrue(txnExists("singlethree"));
+	public void singleCommandStillRunsChainsAsBefore() {
+		//Callers send chains through runSingleCommand on purpose (the casino engine's
+		//"txnbasics id:X;txnpost id:X" via the Parlons AdminRpc, the Android terminal): every piece runs,
+		//the first piece's reply comes back - exactly as on the unfixed code.
+		JSONObject res = CommandRunner.getRunner().runSingleCommand("txncreate id:chainone;txndelete id:chainone");
+		
+		assertEquals("txncreate", res.get("command"));
+		assertTrue((boolean) res.get("status"));
+		assertFalse("the second piece did not run", txnExists("chainone"));
 	}
 }
