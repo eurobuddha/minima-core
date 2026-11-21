@@ -180,6 +180,11 @@ public class keets extends Command {
 		return (JSONObject) new JSONParser().parse(zJson);
 	}
 
+	@Override
+	public String getWriteUse() {
+		return existsParam("file") ? "file: needs ADMIN - use datahex" : null;
+	}
+	
 	/**
 	 * SECURITY (review 2026-11-21): file: reads / writes ANY path the node can - only for ADMIN callers
 	 * (the node's own apps and the desktop); a non-admin caller uses datahex
