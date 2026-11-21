@@ -57,8 +57,7 @@ public class txnimport extends Command {
 		TxnDB db = MinimaDB.getDB().getCustomTxnDB();
 		
 		if(existsParam("file")) {
-			String file = getParam("file");
-			File ff = MiniFile.createBaseFile(file);
+			File ff = getFileParam("file");
 			if(!ff.exists()) {
 				throw new CommandException("File does not exist : "+ff.getAbsolutePath());
 			}

@@ -1,10 +1,14 @@
 package org.minima.system.commands;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.minima.objects.Address;
 import org.minima.objects.base.MiniData;
 import org.minima.objects.base.MiniNumber;
+import org.minima.system.params.GeneralParams;
+import org.minima.utils.MiniFile;
 import org.minima.utils.json.JSONArray;
 import org.minima.utils.json.JSONObject;
 
@@ -113,6 +117,35 @@ public abstract class Command {
 		}
 		
 		return zDefault;
+	}
+	
+	/**
+	 * A file: param as the File MiniFile.createBaseFile makes of it. SECURITY (review 2026-11-21): a non-admin
+	 * caller may only name a file inside the node's base folder (-basefolder, else the working folder) - no
+	 * absolute path elsewhere, no '..' out of it. An ADMIN caller: any path, as before.
+	 */
+	public File getFileParam(String zParamName) throws CommandException {
+		return confinedFile(getParam(zParamName));
+	}
+	
+	public File getFileParam(String zParamName, String zDefault) throws CommandException {
+		return confinedFile(getParam(zParamName, zDefault));
+	}
+	
+	private File confinedFile(String zName) throws CommandException {
+		File file = MiniFile.createBaseFile(zName);
+		if(!isAdminCaller()) {
+			try {
+				File base 		= GeneralParams.BASE_FILE_FOLDER.equals("") ? new File("") : new File(GeneralParams.BASE_FILE_FOLDER);
+				String basepath = base.getCanonicalPath();
+				if(!file.getCanonicalPath().startsWith(basepath + File.separator)) {
+					throw new CommandException("A non-admin caller can only use files in the node's base folder : "+zName);
+				}
+			}catch(IOException exc) {
+				throw new CommandException("Invalid file : "+zName);
+			}
+		}
+		return file;
 	}
 	
 	public boolean getBooleanParam(String zParamName) throws CommandException {
