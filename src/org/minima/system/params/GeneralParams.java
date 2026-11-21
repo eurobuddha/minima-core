@@ -106,6 +106,11 @@ public class GeneralParams {
 	public static String RPC_BIND_HOST = "127.0.0.1";
 	
 	/**
+	 * Host names (comma separated) the RPC also answers to, besides localhost / IP literals / the bind address
+	 */
+	public static String RPC_ALLOWED_HOSTS = "";
+	
+	/**
 	 * The MDS Password - blank will set automagically
 	 */
 	public static String MDS_PASSWORD = "";
@@ -548,6 +553,7 @@ public class GeneralParams {
 		RPC_AUTHSTYLE 		  = "basic";
 		RPC_PASSWORD 		  = "none";
 		RPC_BIND_HOST 		  = "127.0.0.1";
+		RPC_ALLOWED_HOSTS 	  = "";
 		SEED_PHRASE 		  = "";
 		ANYSEED_PHRASE 		  = false;
 		PEERSCHECKER_lOG 	  = false;
