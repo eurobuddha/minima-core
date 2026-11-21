@@ -149,17 +149,14 @@ public class txnsign extends Command {
 			//Get the private key
 			MiniData privkey = getDataParam("privatekey");
 			
-			//Get uses..
-			MiniNumber uses = getNumberParam("keyuses");
-			
 			//Make the TreeKey
 			TreeKey treekey = TreeKey.createDefault(privkey);
 			
-			//Set uses..
-			treekey.setUses(uses.getAsInt());
+			//Set uses - the next unused leaf, 0 .. capacity-1, refused otherwise (never truncated or wrapped)
+			treekey.setUses(getKeyUsesParam("keyuses", null, treekey.getMaxUses()));
 			
-			//Now we have the Key.. sign the Txn ID
-			Signature signature = treekey.sign(txn.getTransactionID());
+			//Now we have the Key.. sign the Txn ID (never restarting at leaf 0)
+			Signature signature = treekey.signNoWrap(txn.getTransactionID());
 			
 			//Add it..
 			wit.addSignature(signature);
