@@ -18,6 +18,9 @@ public abstract class HTTPServer extends Server implements Runnable{
 	
 	boolean mRunning = true;
 	
+	/** Why the server could not start (bind failed, unknown host..), or null */
+	volatile String mStartError = null;
+	
 	public HTTPServer(int zPort) {
 		this(zPort, true);
 	}
@@ -86,8 +89,9 @@ public abstract class HTTPServer extends Server implements Runnable{
 			}
 			
 		} catch (BindException e) {
-			//Socket shut down..
-			MinimaLogger.log("Server @ Port "+mPort+" already in use!.. restart required..");
+			//Could not bind - port in use, or an address this machine does not have
+			mStartError = "Cannot listen on "+(mBindHost == null || mBindHost.isEmpty() ? "*" : mBindHost)+":"+mPort+" - "+e.getMessage();
+			MinimaLogger.log("Server @ Port "+mPort+" not started: "+mStartError);
 			
 		} catch (SocketException e) {
 			if(mRunning) {
@@ -95,7 +99,20 @@ public abstract class HTTPServer extends Server implements Runnable{
 				MinimaLogger.log("RPCServer : Socket Shutdown.. "+e);
 			}
 		} catch (IOException e) {
+			if(mServerSocket == null) {
+				mStartError = "Cannot listen on "+mBindHost+":"+mPort+" - "+e;
+			}
 			MinimaLogger.log(e);
 		}
+	}
+	
+	/** Is the server socket open and accepting? */
+	public boolean isListening() {
+		return mServerSocket != null && !mServerSocket.isClosed();
+	}
+	
+	/** Why the server did not start, or null */
+	public String getStartError() {
+		return mStartError;
 	}
 }
