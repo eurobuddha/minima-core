@@ -670,6 +670,8 @@ public class send extends Command {
 			MinimaLogger.log("DRYRUN so NOT Unlocking password DB");
 		}
 		
+		TxPoW txpow = null;
+		try {
 		for(String pubkey : reqsigs) {
 			if(debug) {
 				MinimaLogger.log("Signing transction with : "+pubkey);
@@ -691,9 +693,6 @@ public class send extends Command {
 				MinimaLogger.log("DRY RUN - not signing");
 			}
 		}
-		
-		//The final TxPoW
-		TxPoW txpow = null;
 		
 		//Is there a BURN..
 		if(!tokenid.equals("0x00") && burn.isMore(MiniNumber.ZERO)) {
@@ -720,26 +719,16 @@ public class send extends Command {
 		}
 		
 		if(size > max) {
-			
-			//Are we locking the DB
-			if(!dryrun && passwordlock) {
-				
-				//Lock the Wallet DB
-				vault.passwordLockDB(getParam("password"));
-			}
-			
 			throw new CommandException("TxPoW size too large.. "+size+"/"+max);
+		}
+		} finally {
+			//SECURITY (round-6 review 2026-11-21): relock on EVERY exit - a refused signature (an exhausted key)
+			//used to skip this, leaving the seed unlocked in memory
+			if(passwordlock) vault.passwordLockDB(getParam("password"));
 		}
 		
 		if(!dryrun) {
 		
-			//Are we locking the DB
-			if(passwordlock) {
-				
-				//Lock the Wallet DB
-				vault.passwordLockDB(getParam("password"));
-			}
-			
 			//Sync or Async mining..
 			if(minesync) {
 				boolean success = Main.getInstance().getTxPoWMiner().MineMaxTxPoW(false, txpow, 120000);

@@ -92,6 +92,7 @@ public class sendsign extends Command {
 			passwordlock = true;
 		}
 		
+		try {
 		//Get the sigs required.. for the main transaction
 		Transaction trans 	= txp.getTransaction();
 		Witness witness 	= txp.getWitness();
@@ -160,11 +161,11 @@ public class sendsign extends Command {
 				witness.addSignature(signature);
 			}
 		}
-
-		//Are we locking the DB
-		if(passwordlock) {
-			//Lock the Wallet DB
-			vault.passwordLockDB(getParam("password"));
+		
+		} finally {
+			//SECURITY (round-6 review 2026-11-21): relock on EVERY exit - a refused signature (an exhausted key)
+			//used to skip this, leaving the seed unlocked in memory
+			if(passwordlock) vault.passwordLockDB(getParam("password"));
 		}
 		
 		//Calculate the TxPOWID

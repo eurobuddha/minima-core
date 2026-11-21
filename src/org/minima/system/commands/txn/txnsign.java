@@ -115,6 +115,7 @@ public class txnsign extends Command {
 			passwordlock = true;
 		}
 		
+		try {
 		//Are we auto signing.. if all the coin inputs are simple
 		if(pubk.equals("auto")) {
 			
@@ -165,13 +166,6 @@ public class txnsign extends Command {
 			//Check we have it
 			KeyRow pubrow = walletdb.getKeyFromPublic(pubk);
 			if(pubrow == null) {
-				
-				//Are we locking the DB
-				if(passwordlock) {
-					//Lock the Wallet DB
-					vault.passwordLockDB(getParam("password"));
-				}
-				
 				throw new CommandException("Public Key not found : "+pubk);
 			}
 			
@@ -185,10 +179,10 @@ public class txnsign extends Command {
 			wit.addSignature(signature);
 		}
 		
-		//Are we locking the DB
-		if(passwordlock) {
-			//Lock the Wallet DB
-			vault.passwordLockDB(getParam("password"));
+		} finally {
+			//SECURITY (round-6 review 2026-11-21): relock on EVERY exit - a refused signature (an exhausted key)
+			//used to skip this, leaving the seed unlocked in memory
+			if(passwordlock) vault.passwordLockDB(getParam("password"));
 		}
 		
 		//The keys that were found and used
