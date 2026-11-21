@@ -216,4 +216,24 @@ public class RpcHardeningTest {
 		//longer than the body that arrives: what arrived runs
 		assertTrue(raw("POST / HTTP/1.1\r\nContent-Length: 50", "random").contains("\"command\":\"random\""));
 	}
+	
+	@Test
+	public void readUserCannotQuitTheNode() throws Exception {
+		//The old handler set its halt flag for "quit" before the read-mode gate: the JVM (this test) would die
+		GeneralParams.RPC_AUTHENTICATE 	= true;
+		GeneralParams.RPC_PASSWORD 		= "secret";
+		JSONArray users = new JSONArray();
+		JSONObject reader = new JSONObject();
+		reader.put("username", "reader");
+		reader.put("password", "readpw");
+		reader.put("mode", "read");
+		users.add(reader);
+		MinimaDB.getDB().getUserDB().setRPCUsers(users);
+		
+		String reply = post("reader", "readpw", "quit");
+		assertTrue(reply, reply.contains("You need ADMIN privileges"));
+		Thread.sleep(500);
+		//still alive
+		assertTrue(post("reader", "readpw", "random").contains("\"status\":true"));
+	}
 }

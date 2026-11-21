@@ -155,10 +155,7 @@ public class CMDHandler implements Runnable {
 			statfalse.put("status", false);
 			String result = statfalse.toJSONString();
 			try {
-				if(fileRequested.equals("quit")) {
-					quit=true;
-				}
-				
+
 				//MinimaLogger.log("RPC:"+fileRequested+" User:"+authuser.toString());
 				
 				//Now run this command - SECURITY (2026-11-21): the read / write mode check was commented out, so a
@@ -169,6 +166,10 @@ public class CMDHandler implements Runnable {
 				if(mode.equals("read")) {
 					res = CommandRunner.getRunner().runMultiCommand("0xFF", fileRequested);
 				}else if(mode.equals("write")) {
+					//Only a command that really runs as ADMIN may stop the JVM (a read user's quit is refused above)
+					if(fileRequested.equals("quit")) {
+						quit=true;
+					}
 					res = CommandRunner.getRunner().runMultiCommand(fileRequested);
 				}else {
 					throw new IllegalArgumentException("Invalid mode for RPC user : "+mode);
