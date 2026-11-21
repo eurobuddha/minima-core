@@ -301,4 +301,39 @@ public class RpcHardeningTest {
 		assertTrue(raw("POST / HTTP/1.1\r\nHost: [::1]:9005\r\nContent-Length: 6", "random").contains("\"status\":true"));
 		assertTrue(raw("POST / HTTP/1.1\r\nContent-Length: 6", "random").contains("\"status\":true"));
 	}
+	
+	@Test
+	public void noPasswordRpcRefusesForeignPages() throws Exception {
+		//No password (as after -rpcenable alone): a page on another origin must not run - or read - anything
+		String reply = raw("POST / HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nOrigin: https://evil.example\r\nContent-Length: 21", "txncreate id:originx");
+		assertTrue("a foreign page ran a command: "+reply, reply.startsWith("HTTP/1.1 403"));
+		assertFalse(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("originx") != null);
+		reply = raw("GET /txncreate%20id:fetchsitex HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nSec-Fetch-Site: cross-site", "");
+		assertTrue(reply, reply.startsWith("HTTP/1.1 403"));
+		assertFalse(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("fetchsitex") != null);
+		
+		//A preflight never runs the command in its path
+		reply = raw("OPTIONS /txncreate%20id:optionsx HTTP/1.1\r\nHost: 127.0.0.1:9005", "");
+		assertFalse("OPTIONS ran a command", MinimaDB.getDB().getCustomTxnDB().getTransactionRow("optionsx") != null);
+		//Other methods: refused
+		reply = raw("PUT /txncreate%20id:putx HTTP/1.1\r\nHost: 127.0.0.1:9005", "");
+		assertFalse("PUT ran a command", MinimaDB.getDB().getCustomTxnDB().getTransactionRow("putx") != null);
+		
+		//No Origin (curl, scripts, the desktops), the RPC's own origin, a same-origin fetch: served
+		assertTrue(raw("POST / HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nContent-Length: 6", "random").contains("\"status\":true"));
+		assertTrue(raw("POST / HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nOrigin: http://127.0.0.1:9005\r\nSec-Fetch-Site: same-origin\r\nContent-Length: 6", "random").contains("\"status\":true"));
+	}
+	
+	@Test
+	public void passwordRpcUnchangedForBrowsers() throws Exception {
+		GeneralParams.RPC_AUTHENTICATE 	= true;
+		GeneralParams.RPC_PASSWORD 		= "secret";
+		String auth = Base64.getEncoder().encodeToString("minima:secret".getBytes(StandardCharsets.UTF_8));
+		//an authenticated request from a page still works, as before
+		assertTrue(raw("POST / HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nOrigin: https://tool.example\r\nAuthorization: Basic "+auth+"\r\nContent-Length: 6", "random").contains("\"status\":true"));
+		//its preflight is answered (no credentials in a preflight) and runs nothing
+		String reply = raw("OPTIONS /txncreate%20id:preflightx HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nOrigin: https://tool.example", "");
+		assertTrue(reply, reply.startsWith("HTTP/1.1 204") && reply.contains("Access-Control-Allow-Headers: Authorization"));
+		assertFalse(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("preflightx") != null);
+	}
 }
