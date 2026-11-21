@@ -141,9 +141,6 @@ public class megammrsync extends Command {
 		
 		}else if(action.equals("resync")) {
 		
-			//Set the key uses to this.. (checked before anything is done)
-			int keyuses = getKeyUsesParam("keyuses", new MiniNumber(1000), WALLET_KEY_CAPACITY);	//OWNER MAY DROP: below the wallet keys' capacity
-			
 			//Stop any new keys..
 			vault.stopAllKeysCreated();
 			
@@ -174,6 +171,8 @@ public class megammrsync extends Command {
 			//How many Keys do we need to generate
 			int keys = getNumberParam("keys", new MiniNumber(Wallet.NUMBER_GETADDRESS_KEYS)).getAsInt();
 			
+			//Set the key uses to this..
+			int keyuses = getKeyUsesParam("keyuses", new MiniNumber(1000), (long) Integer.MAX_VALUE + 1);	//whole, 0.., never wrapped
 			
 			//Is there a Seed phrase..
 			String file 	= getParam("file","");

@@ -160,9 +160,6 @@ public class mysql extends Command {
 		//What action are we doing..
 		String action = getParam("action","info");
 		
-		//A resync's key uses - checked before anything is done (OWNER MAY DROP: below the wallet keys' capacity)
-		int resynckeyuses = action.equals("resync") ? getKeyUsesParam("keyuses", new MiniNumber(1000), WALLET_KEY_CAPACITY) : 0;
-		
 		//Get the details
 		UserDB udb 			= MinimaDB.getDB().getUserDB();
 		
@@ -464,9 +461,6 @@ public class mysql extends Command {
 			
 		}else if(action.equals("resync")) {
 			
-			//Set the key uses to this.. (checked at the start)
-			int keyuses = resynckeyuses;
-			
 			//Can only do this if all keys created..
 			vault.checkAllKeysCreated();
 			
@@ -476,6 +470,8 @@ public class mysql extends Command {
 			//How many Keys do we need to generate
 			int keys = getNumberParam("keys", new MiniNumber(Wallet.NUMBER_GETADDRESS_KEYS)).getAsInt();
 			
+			//Set the key uses to this..
+			int keyuses = getKeyUsesParam("keyuses", new MiniNumber(1000), (long) Integer.MAX_VALUE + 1);	//whole, 0.., never wrapped
 			
 			//Are we resetting the wallet too ?
 			MiniData seed 		= null;

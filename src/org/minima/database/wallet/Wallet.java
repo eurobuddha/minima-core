@@ -909,28 +909,6 @@ public class Wallet extends SqlDB {
 	}
 	
 	/**
-	 * OWNER MAY DROP (round-5 review 2026-11-21): would adding zIncrementUses to every key put one at or past its
-	 * capacity (its last leaf), or past int range? Then refuse - the increment is SQL (uses=uses+? on a bigint), so
-	 * nothing else stops it, and such a key could only restart at leaf 0 or fail to load.
-	 */
-	public void checkIncrementAllKeyUses(int zIncrementUses) throws SQLException {
-		PreparedStatement check = mSQLConnection.prepareStatement(
-				"SELECT COUNT(*), MAX(uses) FROM keys WHERE uses + ? >= maxuses OR uses + ? > "+Integer.MAX_VALUE);
-		try {
-			check.setLong(1, zIncrementUses);
-			check.setLong(2, zIncrementUses);
-			ResultSet rs = check.executeQuery();
-			rs.next();
-			if(rs.getLong(1) > 0) {
-				throw new IllegalArgumentException("Cannot add "+zIncrementUses+" key uses : "+rs.getLong(1)
-						+" key(s) would reach their capacity (highest uses now "+rs.getLong(2)+")");
-			}
-		}finally {
-			check.close();
-		}
-	}
-	
-	/**
 	 * After a Restore
 	 */
 	public void updateIncrementAllKeyUses(int zIncrementUses) throws SQLException {		
