@@ -359,7 +359,7 @@ public class megammr extends Command {
 				MiniData cpdata = MiniData.getMiniDataVersion(cp);
 				
 				//Coin Import..
-				JSONObject coinproofresp = CommandRunner.getRunner().runSingleCommand("coinimport track:true data:"+cpdata.to0xString());
+				JSONObject coinproofresp = CommandRunner.getRunner().runCommand("coinimport", "track","true", "data",cpdata.to0xString());
 				
 //				if(!(boolean)coinproofresp.get("status")) {
 //					MinimaLogger.log("Fail Import : "+coinproofresp.getString("error")+" @ "+cp.toJSON());

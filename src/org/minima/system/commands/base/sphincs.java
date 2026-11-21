@@ -176,17 +176,15 @@ public class sphincs extends Command {
 			String randomid 	= MiniData.getRandomData(32).to0xString();
 			
 			//Now construct the transaction..
-			JSONObject result = runCommand("txncreate id:"+randomid);
+			JSONObject result = runCommand("txncreate", "id",randomid);
 			
-			String command 	= "txnaddamount id:"+randomid+" fromaddress:"+sphincsaddress.getMinimaAddress()
-					+" address:"+address+" amount:"+amount+" tokenid:"+tokenid;
-			
-			result = runCommand(command);
+			result = runCommand("txnaddamount", "id",randomid, "fromaddress",sphincsaddress.getMinimaAddress(),
+					"address",address, "amount",amount, "tokenid",tokenid);
 			
 			if(!(boolean)result.get("status")) {
 				
 				//Delete transaction
-				runCommand("txndelete id:"+randomid);
+				runCommand("txndelete", "id",randomid);
 				
 				//Not enough funds!
 				throw new CommandException(result.getString("error"));
@@ -203,7 +201,7 @@ public class sphincs extends Command {
 			if(transaction.getAllInputs().size()>8) {
 				
 				//Delete transaction
-				runCommand("txndelete id:"+randomid);
+				runCommand("txndelete", "id",randomid);
 				
 				throw new CommandException("Input Coin number too great.. MAX 8. Pls Send a smaller amount.");
 			}
@@ -224,16 +222,16 @@ public class sphincs extends Command {
 			SPHINCSUtils.setupTransaction(transaction, sig);
 			
 			//Finally - Add the scripts..
-			runCommand("txnscript id:"+randomid+" scripts:{\""+sphincsscript+"\":\"\"}");
+			runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(sphincsscript));
 			
 			//Sort the MMR
-			runCommand("txnmmr id:"+randomid);
+			runCommand("txnmmr", "id",randomid);
 			
 			//And POST!
-			result = runCommand("txnpost id:"+randomid+" mine:"+mine);
+			result = runCommand("txnpost", "id",randomid, "mine",mine);
 			
 			//And delete..
-			runCommand("txndelete id:"+randomid);
+			runCommand("txndelete", "id",randomid);
 			
 			//Check succeeded..
 			if(!(boolean)result.get("status")) {
@@ -297,10 +295,8 @@ public class sphincs extends Command {
 		return zCoin.getAddress().to0xString()+"SPHINCS"+zCoin.getTokenAmount().toString()+"SPHINCS"+zCoin.getTokenID().to0xString()+keepstate;
 	}
 	
-	private JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	private JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 	
 	@Override

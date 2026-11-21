@@ -147,7 +147,7 @@ public class multisig extends Command {
 			//Is there a root key
 			String root = getParam("root", "0x21");
 			if(!root.equals("0x21")) {
-				if(!root.startsWith("0x") || root.length()!=66) {
+				if(!isPublicKey(root)) {
 					throw  new CommandException("Invalid root key : "+root);
 				}
 			}
@@ -166,7 +166,7 @@ public class multisig extends Command {
 			for(Object obj : pubkeys) {
 				String pubkey = (String)obj;
 				
-				if(!pubkey.startsWith("0x") || pubkey.length()!=66) {
+				if(!isPublicKey(pubkey)) {
 					throw  new CommandException("Invalid public key : "+pubkey);
 				}
 				
@@ -178,36 +178,31 @@ public class multisig extends Command {
 				throw new CommandException("Cannot have LESS keys than required!");
 			}
 			
-			//Now construct the state params
-			String stateparams = null;
-			if(id.equals("")) {
-				stateparams = "{\"1\":\""+root+"\",\"2\":\""+required+"\",\"3\":\""+totalkeys+"\"";
-			}else {
-				stateparams = "{\"0\":\""+id+"\",\"1\":\""+root+"\",\"2\":\""+required+"\",\"3\":\""+totalkeys+"\"";
+			//Now construct the state params - SECURITY (command injection 2026-11-21): as a JSONObject, not JSON text
+			JSONObject stateparams = new JSONObject();
+			if(!id.equals("")) {
+				stateparams.put("0", id);
 			}
+			stateparams.put("1", root);
+			stateparams.put("2", required.toString());
+			stateparams.put("3", ""+totalkeys);
 			
 			//Now add all the public keys
 			int counter=4;
 			for(String pubk : allkeys) {
-				stateparams += ",\""+counter+"\":\""+pubk+"\"";
+				stateparams.put(""+counter, pubk);
 				counter++;
 			}
 			
-			//Close the JSON
-			stateparams +="}";
-			
-			//Now construct the complete send function
-			String sendfunction ="";
+			//Now run the send - from separated parameters
+			JSONObject sendresult = null;
 			if(existsParam("password")) {
 				String password=getParam("password");
-				sendfunction = "send password:"+password+" tokenid:"+tokenid+" amount:"+amount.toString()+" address:"+msaddress+" state:"+stateparams;
+				sendresult = CommandRunner.getRunner().runCommand("send", "password",password, "tokenid",tokenid, "amount",amount, "address",msaddress, "state",stateparams);
 			}else {
-				sendfunction = "send tokenid:"+tokenid+" amount:"+amount.toString()+" address:"+msaddress+" state:"+stateparams;
+				sendresult = CommandRunner.getRunner().runCommand("send", "tokenid",tokenid, "amount",amount, "address",msaddress, "state",stateparams);
 			}
 			
-			//Now run this!..
-			JSONArray result 		= CommandRunner.getRunner().runMultiCommand(sendfunction);
-			JSONObject sendresult 	= (JSONObject) result.get(0); 
 			if((boolean) sendresult.get("status")) {
 				
 				JSONObject sender = new JSONObject();
@@ -362,11 +357,12 @@ public class multisig extends Command {
 			String txnname_default 	= "multispend_"+System.currentTimeMillis()+".txn";
 			String txnname 			= getParam("file",txnname_default);
 			
-			//Create a txn..
-			String txnsender = 
-						  "txncreate id:"+randomid+";"
-						+ "txninput  id:"+randomid+" coinid:"+coinid+";"
-						+ "txnoutput id:"+randomid+" storestate:false amount:"+amount+" address:"+address+" tokenid:"+tokenid+";";
+			//Create a txn.. SECURITY (command injection 2026-11-21): from separated parameters - the coin's state
+			//is on-chain data anyone can choose when paying this address, it is copied as a value, never run
+			ArrayList<Object[]> txnsender = new ArrayList<>();
+			txnsender.add(new Object[] {"txncreate", "id",randomid});
+			txnsender.add(new Object[] {"txninput", "id",randomid, "coinid",coinid});
+			txnsender.add(new Object[] {"txnoutput", "id",randomid, "storestate","false", "amount",amount, "address",address, "tokenid",tokenid});
 
 			//Is there change
 			if(change.isMore(MiniNumber.ZERO)) {
@@ -374,19 +370,19 @@ public class multisig extends Command {
 				//Copy the complete coin state
 				ArrayList<StateVariable> allstate = cc.getState();
 				for(StateVariable statevar : allstate) {
-					txnsender +=  "txnstate id:"+randomid+" port:"+statevar.getPort()+" value:"+statevar.getData().toString()+";";	
+					txnsender.add(new Object[] {"txnstate", "id",randomid, "port",statevar.getPort(), "value",statevar.getData().toString()});
 				}
 	
 				//And the change
-				txnsender +=  "txnoutput id:"+randomid+" storestate:true amount:"+change+" address:"+coinaddress+" tokenid:"+tokenid+";";
+				txnsender.add(new Object[] {"txnoutput", "id",randomid, "storestate","true", "amount",change, "address",coinaddress, "tokenid",tokenid});
 			}
 						
 			//And finish off..
-			txnsender +=  "txnexport id:"+randomid+" file:"+txnname+";"
-						+ "txndelete id:"+randomid;
+			txnsender.add(new Object[] {"txnexport", "id",randomid, "file",txnname});
+			txnsender.add(new Object[] {"txndelete", "id",randomid});
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnsender);
+			JSONArray result = CommandRunner.getRunner().runCommands(txnsender.toArray(new Object[0][]));
 			ret.put("response", result);
 		
 		}else if(action.equals("sign")) {
@@ -399,17 +395,13 @@ public class multisig extends Command {
 			File signedtxn   	= new File(actualfile.getParentFile(), "signed_"+actualfile.getName());
 			
 			//The signer function
-			String txnsigner = "txnimport id:"+randomid+" file:"+file+";";
-			
-			//Run that
-			JSONArray result 		= CommandRunner.getRunner().runMultiCommand(txnsigner);
-			JSONObject importres 	= (JSONObject) result.get(0); 
+			JSONObject importres 	= CommandRunner.getRunner().runCommand("txnimport", "id",randomid, "file",file);
 			if(!(boolean) importres.get("status")) {
 				throw new CommandException(importres.get("error").toString());
 			}
 			
 			//Rest now
-			txnsigner = "";
+			ArrayList<Object[]> txnsigner = new ArrayList<>();
 			
 			//Get the wallet
 			Wallet wallet = MinimaDB.getDB().getWallet();
@@ -425,13 +417,13 @@ public class multisig extends Command {
 				String possiblepubkey = statevar.getData().toString();
 				KeyRow key = wallet.getKeyFromPublic(possiblepubkey);
 				if(key != null) {
-					txnsigner	+= "txnsign id:"+randomid+" publickey:"+possiblepubkey+";";
+					txnsigner.add(new Object[] {"txnsign", "id",randomid, "publickey",possiblepubkey});
 				}
 			}
 			
 			//Finish up
-			txnsigner	+= "txnexport id:"+randomid+" file:"+signedtxn.getAbsolutePath()+";"
-						+  "txndelete id:"+randomid;
+			txnsigner.add(new Object[] {"txnexport", "id",randomid, "file",signedtxn.getAbsolutePath()});
+			txnsigner.add(new Object[] {"txndelete", "id",randomid});
 			
 			//Unlock DB at the start - rather than every time you run txnsign
 			boolean passwordlock = false;
@@ -445,7 +437,7 @@ public class multisig extends Command {
 			}
 			
 			//Run it..
-			result = CommandRunner.getRunner().runMultiCommand(txnsigner);
+			JSONArray result = CommandRunner.getRunner().runCommands(txnsigner.toArray(new Object[0][]));
 			
 			//Are we locking the DB
 			if(passwordlock) {
@@ -459,24 +451,22 @@ public class multisig extends Command {
 			
 			//Which file..
 			String file 		= getParam("file");
-			String txnsigner 	= 
-					  "txnimport id:"+randomid+" file:"+file+";"
-					+ "txnpost   id:"+randomid+" mine:true auto:true;"
-					+ "txndelete id:"+randomid;
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnsigner);
+			JSONArray result = CommandRunner.getRunner().runCommands(
+					new Object[] {"txnimport", "id",randomid, "file",file},
+					new Object[] {"txnpost", "id",randomid, "mine","true", "auto","true"},
+					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
 		
 		}else if(action.equals("view")) {
 			
 			String file 		= getParam("file");
-			String txnview 		= 
-					  "txnimport id:"+randomid+" file:"+file+";"
-					+ "txndelete id:"+randomid;
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnview);
+			JSONArray result = CommandRunner.getRunner().runCommands(
+					new Object[] {"txnimport", "id",randomid, "file",file},
+					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
 			
 		}else {
@@ -484,6 +474,13 @@ public class multisig extends Command {
 		}
 		
 		return ret;
+	}
+	
+	/**
+	 * A compressed public key / root key: 0x and 64 hex characters - nothing else may go into the multisig state
+	 */
+	public static boolean isPublicKey(String zKey) {
+		return zKey.matches("0x[0-9a-fA-F]{64}");
 	}
 	
 	private File getRequiredFile() throws CommandException {

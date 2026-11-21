@@ -50,14 +50,14 @@ public class postfrom extends Command {
 		
 		//Do we sort the MMR
 		if(sortmmr) {
-			runCommand("txnmmr id:"+randomid);
+			runCommand("txnmmr", "id",randomid);
 		}
 		
 		//And POST!
-		JSONObject result = runCommand("txnpost id:"+randomid+" mine:"+mine);
+		JSONObject result = runCommand("txnpost", "id",randomid, "mine",mine);
 			
 		//And delete..
-		runCommand("txndelete id:"+randomid);
+		runCommand("txndelete", "id",randomid);
 		
 		//And return..
 		ret.put("response", result.get("response"));
@@ -65,10 +65,8 @@ public class postfrom extends Command {
 		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override
