@@ -248,4 +248,28 @@ public class RpcHardeningTest {
 		assertEquals("the reply did not say the RPC is down: "+rpc, false, rpc.get("listening"));
 		assertTrue(String.valueOf(rpc.get("error")).contains("Cannot listen"));
 	}
+	
+	@Test
+	public void blankPasswordChangesNothing() throws Exception {
+		GeneralParams.RPC_ENABLED 		= true;
+		GeneralParams.RPC_AUTHENTICATE 	= true;
+		GeneralParams.RPC_PASSWORD 		= "secret";
+		network.startRPC();
+		
+		JSONObject res = run("rpc enable:true password:\"\"");
+		assertFalse("a blank password was accepted", (boolean) res.get("status"));
+		assertEquals("secret", GeneralParams.RPC_PASSWORD);
+		Field f = NetworkManager.class.getDeclaredField("mRPCServer");
+		f.setAccessible(true);
+		assertTrue("the refused command stopped the running RPC", f.get(network) != null);
+	}
+	
+	@Test
+	public void openRpcIsNamedInTheRefusal() {
+		//started with -rpcenable and no -rpcpassword
+		GeneralParams.RPC_ENABLED = true;
+		JSONObject res = run("rpc enable:true");
+		assertFalse((boolean) res.get("status"));
+		assertTrue(String.valueOf(res.get("error")), String.valueOf(res.get("error")).contains("WITHOUT a password"));
+	}
 }
