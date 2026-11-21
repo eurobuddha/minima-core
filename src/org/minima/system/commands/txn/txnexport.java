@@ -47,6 +47,12 @@ public class txnexport extends Command {
 	}
 	
 	@Override
+	public String getWriteUse() {
+		String overwrite = overwriteWriteUse(getFileName());
+		return overwrite != null ? overwrite : super.getWriteUse();
+	}
+	
+	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 
@@ -65,7 +71,7 @@ public class txnexport extends Command {
 		if(existsParam("file")) {
 			//The File.. 
 			//Create the file (a non-admin caller - possible where txnexport is not a WRITE command - is confined)
-			File output = getFileParam("file");
+			File output = getNewFileParam("file");
 			if(output.exists()) {
 				output.delete();
 			}

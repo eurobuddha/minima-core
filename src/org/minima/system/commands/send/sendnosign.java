@@ -128,6 +128,12 @@ public class sendnosign extends Command {
 	}
 	
 	@Override
+	public String getWriteUse() {
+		String overwrite = overwriteWriteUse(getFileName());
+		return overwrite != null ? overwrite : super.getWriteUse();
+	}
+	
+	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 		
@@ -549,7 +555,7 @@ public class sendnosign extends Command {
 		//Did they specify a file..
 		File txnfile = null;
 		if(existsParam("file")) {
-			txnfile = getFileParam("file");
+			txnfile = getNewFileParam("file");
 		}else {
 			txnfile = MiniFile.createBaseFile("unsignedtransaction-"+System.currentTimeMillis()+".txn");
 		}
