@@ -341,4 +341,16 @@ public class RpcHardeningTest {
 		assertTrue(reply, reply.startsWith("HTTP/1.1 204") && reply.contains("Access-Control-Allow-Headers: Authorization"));
 		assertFalse(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("preflightx") != null);
 	}
+	
+	@Test
+	public void noPasswordRpcPreflightAndSameSite() throws Exception {
+		//a foreign page's preflight to a password-less RPC: refused, and nothing runs
+		String reply = raw("OPTIONS /txncreate%20id:preflightforeign HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nOrigin: https://evil.example", "");
+		assertTrue(reply, reply.startsWith("HTTP/1.1 403"));
+		assertFalse(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("preflightforeign") != null);
+		//Sec-Fetch-Site: same-site (another port / subdomain of the same site) is still another origin: refused
+		reply = raw("POST / HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nSec-Fetch-Site: same-site\r\nContent-Length: 22", "txncreate id:samesitex");
+		assertTrue(reply, reply.startsWith("HTTP/1.1 403"));
+		assertFalse(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("samesitex") != null);
+	}
 }
