@@ -122,9 +122,7 @@ public class txpow extends Command {
 					if(autologindetail) {
 					
 						//Run a search of the MySQL
-						String command 		= "mysql action:findtxpow txpowid:"+txpowid;
-						JSONArray res 		= CommandRunner.getRunner().runMultiCommand(command);
-						JSONObject result 	= (JSONObject) res.get(0);
+						JSONObject result 	= CommandRunner.getRunner().runCommand("mysql", "action","findtxpow", "txpowid",txpowid);
 						
 						//FOR NOW..
 						//MinimaLogger.log("MYSQL TXPOW SEARCH : "+result.toJSONString());

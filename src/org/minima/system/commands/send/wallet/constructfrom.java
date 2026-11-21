@@ -47,7 +47,7 @@ public class constructfrom extends Command {
 		JSONObject result 	= null;
 		
 		//Now construct the transaction..
-		result 	= runCommand("txncreate id:"+randomid);
+		result 	= runCommand("txncreate", "id",randomid);
 		
 		//Add all the input coins
 		StringTokenizer strtok = new StringTokenizer(coinlist,",");
@@ -55,12 +55,11 @@ public class constructfrom extends Command {
 			String cc = strtok.nextToken().trim();
 			
 			//Add the mounts..
-			String command 		= "txninput id:"+randomid+" coinid:"+cc;
-			result = runCommand(command);
+			result = runCommand("txninput", "id",randomid, "coinid",cc);
 			if(!(boolean)result.get("status")) {
 				
 				//Delete transaction
-				runCommand("txndelete id:"+randomid);
+				runCommand("txndelete", "id",randomid);
 				
 				//Not enough funds!
 				throw new CommandException(result.getString("error"));
@@ -68,24 +67,24 @@ public class constructfrom extends Command {
 		}
 		
 		//Add the output coin..
-		result 	= runCommand("txnoutput id:"+randomid+" address:"+toaddress+" amount:"+toamount+" tokenid:"+tokenid);
+		result 	= runCommand("txnoutput", "id",randomid, "address",toaddress, "amount",toamount, "tokenid",tokenid);
 		
 		//Add the change
 		if(changeamount.isMore(MiniNumber.ZERO)) {
-			result 	= runCommand("txnoutput id:"+randomid+" address:"+changeaddress+" amount:"+changeamount+" tokenid:"+tokenid);
+			result 	= runCommand("txnoutput", "id",randomid, "address",changeaddress, "amount",changeamount, "tokenid",tokenid);
 		}
 		
 		//Add the scripts..
-		runCommand("txnscript id:"+randomid+" scripts:{\""+script+"\":\"\"}");
+		runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
 		
 		//Sort the MMR
-		runCommand("txnmmr id:"+randomid);
+		runCommand("txnmmr", "id",randomid);
 		
 		//Now export the txn..
-		result = runCommand("txnexport id:"+randomid+" showtxn:true");
+		result = runCommand("txnexport", "id",randomid, "showtxn","true");
 		
 		//And delete..
-		runCommand("txndelete id:"+randomid);
+		runCommand("txndelete", "id",randomid);
 		
 		//And return..
 		ret.put("response", result.get("response"));
@@ -93,10 +92,8 @@ public class constructfrom extends Command {
 		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override
