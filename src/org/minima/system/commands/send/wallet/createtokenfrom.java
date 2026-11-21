@@ -103,15 +103,14 @@ public class createtokenfrom extends Command {
 		String randomid 	= MiniData.getRandomData(32).to0xString();
 		
 		//Now construct the transaction..
-		JSONObject result 	= runCommand("txncreate id:"+randomid);
+		JSONObject result 	= runCommand("txncreate", "id",randomid);
 		
 		//Add the mounts..
-		String command 		= "txnaddamount id:"+randomid+" fromaddress: "+fromaddress+" address:"+fromaddress+" amount:"+minimamount;
-		result = runCommand(command);
+		result = runCommand("txnaddamount", "id",randomid, "fromaddress",fromaddress, "address",fromaddress, "amount",minimamount);
 		if(!(boolean)result.get("status")) {
 			
 			//Delete transaction
-			runCommand("txndelete id:"+randomid);
+			runCommand("txndelete", "id",randomid);
 			
 			//Not enough funds!
 			throw new CommandException(result.getString("error"));
@@ -139,20 +138,20 @@ public class createtokenfrom extends Command {
 		outputs.set(0, tokenoutput);
 		
 		//Add the scripts..
-		runCommand("txnscript id:"+randomid+" scripts:{\""+script+"\":\"\"}");
+		runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
 			
 		//Sort the MMR
-		runCommand("txnmmr id:"+randomid);
+		runCommand("txnmmr", "id",randomid);
 		
 		//Now SIGN
-		runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+privatekey+" keyuses:"+keyuses);
+		runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
 		
 		//And POST!
 		//result = runCommand("txnlist transactiononly:true id:"+randomid);
-		result = runCommand("txnpost id:"+randomid+" mine:"+mine);
+		result = runCommand("txnpost", "id",randomid, "mine",mine);
 		
 		//And delete..
-		runCommand("txndelete id:"+randomid);
+		runCommand("txndelete", "id",randomid);
 		
 		//Check succeeded..
 		if(!(boolean)result.get("status")) {
@@ -166,10 +165,8 @@ public class createtokenfrom extends Command {
 		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

@@ -78,9 +78,7 @@ public class reset extends Command {
 		if(action.equals("chainsync")) {
 			
 			//Refactor the command
-			String command 		= "archive action:import file:"+archivefile;
-			JSONArray res 		= CommandRunner.getRunner().runMultiCommand(command);
-			JSONObject result 	= (JSONObject) res.get(0);
+			JSONObject result 	= CommandRunner.getRunner().runCommand("archive", "action","import", "file",archivefile);
 			ret.put("response", result);
 			
 		}else if(action.equals("seedsync")) {
@@ -88,20 +86,21 @@ public class reset extends Command {
 			//Get the phrase
 			String phrase = getParam("phrase");
 			
-			//Refactor the command
-			String command 	= "archive action:import file:"+archivefile+" phrase:\""+phrase+"\"";
+			//Refactor the command - SECURITY (command injection 2026-11-21): from separated parameters
+			ArrayList<Object> command = new ArrayList<>(Arrays.asList(new Object[] {"action","import", "file",archivefile, "phrase",phrase}));
 
 			//Add extra params
 			if(existsParam("keys")) {
-				command = command+" keys:"+getParam("keys");
+				command.add("keys");
+				command.add(getParam("keys"));
 			}
 			
 			if(existsParam("keyuses")) {
-				command = command+" keyuses:"+getParam("keyuses");
+				command.add("keyuses");
+				command.add(getParam("keyuses"));
 			}
 			
-			JSONArray res 		= CommandRunner.getRunner().runMultiCommand(command);
-			JSONObject result 	= (JSONObject) res.get(0);
+			JSONObject result 	= CommandRunner.getRunner().runCommand("archive", command.toArray());
 			ret.put("response", result);
 			
 		
@@ -111,15 +110,15 @@ public class reset extends Command {
 			String backupfile = getParam("file");
 			
 			//Now do a restore..
-			String command 	= "restore shutdown:false file:"+backupfile;
+			ArrayList<Object> command = new ArrayList<>(Arrays.asList(new Object[] {"shutdown","false", "file",backupfile}));
 			
 			//Password ?
 			if(existsParam("password")) {
-				command = command+" password:"+getParam("password");
+				command.add("password");
+				command.add(getParam("password"));
 			}
 			
-			JSONArray res 		= CommandRunner.getRunner().runMultiCommand(command);
-			JSONObject result 	= (JSONObject) res.get(0);
+			JSONObject result 	= CommandRunner.getRunner().runCommand("restore", command.toArray());
 			
 			//Check worked..
 			if(!(boolean)result.get("status")) {
@@ -133,9 +132,7 @@ public class reset extends Command {
 			Main.getInstance().restoreReadyForSync();
 			
 			//And NOW do a chain resync..
-			command  = "archive action:import file:"+archivefile;
-			res 	 = CommandRunner.getRunner().runMultiCommand(command);
-			result 	 = (JSONObject) res.get(0);
+			result 	 = CommandRunner.getRunner().runCommand("archive", "action","import", "file",archivefile);
 			allres.put("chainsync", result);
 			
 			//The final results..

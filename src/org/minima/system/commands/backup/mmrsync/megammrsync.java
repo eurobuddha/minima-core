@@ -219,14 +219,15 @@ public class megammrsync extends Command {
 			}else if(!file.equals("")) {
 			
 				//First restore data from a file..
-				String command 	= "restore shutdown:false file:"+file;
+				ArrayList<Object> command = new ArrayList<>(Arrays.asList(new Object[] {"shutdown","false", "file",file}));
 				
 				//Password ?
 				if(existsParam("password")) {
-					command = command+" password:"+getParam("password");
+					command.add("password");
+					command.add(getParam("password"));
 				}
 				
-				JSONObject result 	= CommandRunner.getRunner().runSingleCommand(command);
+				JSONObject result 	= CommandRunner.getRunner().runCommand("restore", command.toArray());
 				
 				//Check worked..
 				if(!(boolean)result.get("status")) {
@@ -283,7 +284,7 @@ public class megammrsync extends Command {
 				MiniData cpdata = MiniData.getMiniDataVersion(cp);
 				
 				//Coin Import..
-				JSONObject coinproofresp = CommandRunner.getRunner().runSingleCommand("coinimport track:true data:"+cpdata.to0xString());
+				JSONObject coinproofresp = CommandRunner.getRunner().runCommand("coinimport", "track","true", "data",cpdata.to0xString());
 			}
 			
 			//And now add some peers..
@@ -404,7 +405,7 @@ public class megammrsync extends Command {
 		for(Coin cc : allcoins) {
 			
 			//Now get all the coin proofs for these coins..
-			JSONObject coinproofresp = CommandRunner.getRunner().runSingleCommand("coinexport coinid:"+cc.getCoinID().to0xString());
+			JSONObject coinproofresp = CommandRunner.getRunner().runCommand("coinexport", "coinid",cc.getCoinID().to0xString());
 			
 			//Get the proof data..
 			JSONObject resp = (JSONObject) coinproofresp.get("response");

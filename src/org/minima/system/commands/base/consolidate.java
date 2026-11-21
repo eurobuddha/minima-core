@@ -185,34 +185,30 @@ public class consolidate extends Command {
 		ScriptRow newwalletaddress 	= MinimaDB.getDB().getWallet().getDefaultAddress();
 		MiniData myaddress 			= new MiniData(newwalletaddress.getAddress());
 		
-		//Construct the command
-		String command = "send coinage:"+coinage.toString()
-				+" split:2 dryrun:"+dryrun
-				+" debug:"+debug
-				+" burn:"+burn.toString()
-				+" amount:"+totalamount.toString()
-				+" address:"+myaddress.to0xString()
-				+" tokenid:"+tokenid;
+		//Construct the command - SECURITY (command injection 2026-11-21): from separated parameters
+		ArrayList<Object> command = new ArrayList<>(Arrays.asList(new Object[] {"coinage",coinage,
+				"split","2", "dryrun",dryrun, "debug",debug, "burn",burn, "amount",totalamount,
+				"address",myaddress.to0xString(), "tokenid",tokenid}));
 		
 		//Is there a password..
 		if(existsParam("password")) {
 			
 			//Hide the password
 			if(debug) {
-				MinimaLogger.log("Consolidate command : "+command+" password:####");
+				MinimaLogger.log("Consolidate command : send "+command+" password:####");
 			}
 			
 			//Add the password
-			command +=" password:\""+getParam("password")+"\"";
+			command.add("password");
+			command.add(getParam("password"));
 			
 		}else {
 			if(debug) {
-				MinimaLogger.log("Consolidate command : "+command);
+				MinimaLogger.log("Consolidate command : send "+command);
 			}
 		}
 		
-		JSONArray result 		= CommandRunner.getRunner().runMultiCommand(command);
-		JSONObject sendresult 	= (JSONObject) result.get(0); 
+		JSONObject sendresult 	= CommandRunner.getRunner().runCommand("send", command.toArray());
 		if((boolean) sendresult.get("status")) {
 			ret.put("response", sendresult.get("response"));
 		}else {

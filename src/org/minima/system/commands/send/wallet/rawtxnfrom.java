@@ -68,14 +68,14 @@ public class rawtxnfrom extends Command {
 		String randomid 	= MiniData.getRandomData(32).to0xString();
 				
 		//Now construct the transaction..
-		JSONObject result 	= runCommand("txncreate id:"+randomid);
+		JSONObject result 	= runCommand("txncreate", "id",randomid);
 		
 		//Add the Inputs - list of coinid
 		for(Object input : inputs) {
 			String coinid = (String)input;
 			
 			//Now add this coin..
-			runCommand("txninput id:"+randomid+" coinid:"+coinid);
+			runCommand("txninput", "id",randomid, "coinid",coinid);
 		}
 		
 		//Add the outputs
@@ -98,7 +98,7 @@ public class rawtxnfrom extends Command {
 			}
 			
 			//Now add this coin..
-			runCommand("txnoutput id:"+randomid+" address:"+address+" amount:"+amount+" tokenid:"+tokenid+" storestate:"+storestate);
+			runCommand("txnoutput", "id",randomid, "address",address, "amount",amount, "tokenid",tokenid, "storestate",storestate);
 		}
 		
 		//Add the Scripts
@@ -106,7 +106,7 @@ public class rawtxnfrom extends Command {
 			String scr = (String)script;
 			
 			//And add the script
-			runCommand("txnscript id:"+randomid+" scripts:{\""+scr+"\":\"\"}");
+			runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(scr));
 		}
 		
 		//Add the state is exists
@@ -128,15 +128,15 @@ public class rawtxnfrom extends Command {
 				StateVariable sv = new StateVariable(port, var);
 				
 				//Add to the transaction..
-				runCommand("txnstate id:"+randomid+" port:"+sv.getPort()+" value:\""+sv.getData()+"\"");
+				runCommand("txnstate", "id",randomid, "port",sv.getPort(), "value",sv.getData().toString());
 			}
 		}
 		
 		//Now export the txn..
-		result = runCommand("txnexport id:"+randomid+" showtxn:true");
+		result = runCommand("txnexport", "id",randomid, "showtxn","true");
 				
 		//And delete..
-		runCommand("txndelete id:"+randomid);
+		runCommand("txndelete", "id",randomid);
 		
 		//And return..
 		ret.put("response", result.get("response"));
@@ -144,10 +144,8 @@ public class rawtxnfrom extends Command {
 		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override
