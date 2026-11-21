@@ -108,10 +108,8 @@ public class sphincs extends Command {
 			SPHINCSSignature sig = sphincs.signMessage(message);
 			
 			if(existsParam("file")) {
-				String file = getParam("file");
-				
-				//Create the file
-				File backupfile = MiniFile.createBaseFile(file);
+				//Create the file (a non-admin caller: confined - see Command.getFileParam)
+				File backupfile = getFileParam("file");
 				if(backupfile.exists()) {
 					backupfile.delete();
 				}
@@ -133,8 +131,7 @@ public class sphincs extends Command {
 			
 			SPHINCSSignature sig = null;
 			if(existsParam("file")) {
-				String file = getParam("file");
-				File ff = MiniFile.createBaseFile(file);
+				File ff = getFileParam("file");
 				if(!ff.exists()) {
 					throw new CommandException("File does not exist : "+ff.getAbsolutePath());
 				}
