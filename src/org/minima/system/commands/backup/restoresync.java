@@ -211,7 +211,7 @@ public class restoresync extends Command {
 		long maxtime 	= 1000 * 60 * 60 * 24 * 2;
 		
 		//How many keyuses
-		int keyuses = getNumberParam("keyuses", new MiniNumber(256)).getAsInt();
+		int keyuses = getKeyUsesParam("keyuses", new MiniNumber(256), (long) Integer.MAX_VALUE + 1);	//whole, 0.., never wrapped
 				
 		//Do we even need to do a sync..
 		if(timediff < maxtime || !existsParam("host")) {

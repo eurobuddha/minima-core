@@ -346,7 +346,7 @@ public class archive extends Command {
 			int keys = getNumberParam("keys", new MiniNumber(Wallet.NUMBER_GETADDRESS_KEYS)).getAsInt();
 			
 			//Set the key uses to this..
-			int keyuses = getNumberParam("keyuses", new MiniNumber(1000)).getAsInt();
+			int keyuses = getKeyUsesParam("keyuses", new MiniNumber(1000), (long) Integer.MAX_VALUE + 1);	//whole, 0.., never wrapped
 			
 			//Before we start deleting - check connection..
 			if(!usinglocal) {
