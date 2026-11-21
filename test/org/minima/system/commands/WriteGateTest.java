@@ -281,9 +281,22 @@ public class WriteGateTest {
 			assertTrue("multisigread spend may overwrite an existing file: "+res, String.valueOf(res.get("error")).contains("only creates new files"));
 			assertEquals("ADMIN", new String(java.nio.file.Files.readAllBytes(handle.toPath())));
 			
-			//a new name passes the gate (and fails later here: no such coin, no chain)
-			res = run("0xFF", "multisigread action:spend coinid:0x01 amount:1 address:0x02 file:ms_new_0123.txn");
-			assertFalse(res.toString(), adminRefusal(res));
+			//a new name passes the gate and reaches the claim (a test tree tip holding the coin): a chain that fails
+			//after the claim (txnoutput: a bad address) releases the file; a good one writes it; then it is taken
+			withTestCoin("0x01", () -> {
+				JSONObject r = run("0xFF", "multisigread action:spend coinid:0x01 amount:1 address:0xZZ file:ms_new_0123.txn");
+				assertTrue(r.toString(), (boolean) r.get("status"));
+				org.minima.utils.json.JSONArray chain = (org.minima.utils.json.JSONArray) r.get("response");
+				assertFalse("the chain did not fail: "+r, (boolean) ((JSONObject) chain.get(chain.size()-1)).get("status"));
+				assertFalse("the failed spend left its claimed file", new java.io.File(base, "ms_new_0123.txn").exists());
+				
+				r = run("0xFF", "multisigread action:spend coinid:0x01 amount:1 address:0x02 file:ms_new_0123.txn");
+				chain = (org.minima.utils.json.JSONArray) r.get("response");
+				assertTrue(r.toString(), (boolean) ((JSONObject) chain.get(chain.size()-1)).get("status"));
+				assertTrue(new java.io.File(base, "ms_new_0123.txn").length() > 0);
+				r = run("0xFF", "multisigread action:spend coinid:0x01 amount:1 address:0x02 file:ms_new_0123.txn");
+				assertTrue(r.toString(), String.valueOf(r.get("error")).contains("only creates new files"));
+			});
 			
 			//nodecount (not registered as a command, run directly): a non-admin caller never truncates a file
 			Command nc = new org.minima.system.commands.network.nodecount();
@@ -409,6 +422,48 @@ public class WriteGateTest {
 			org.junit.Assert.fail("two non-admin callers claimed one name: "+zCommand);
 		}catch(CommandException expected) {
 			assertTrue(expected.getMessage().contains("only creates new files"));
+		}
+	}
+	
+	interface Check { void run() throws Exception; }
+	
+	/** Runs zCheck with a test tree tip holding one unspent coin of id zCoinID (address 0x03, 10 Minima) */
+	static void withTestCoin(String zCoinID, Check zCheck) throws Exception {
+		boolean oldsql = org.minima.system.params.GeneralParams.USE_SQL_COINDB;		//the test tree node clears it
+		org.minima.database.txpowtree.TxPowTree tree = MinimaDB.getDB().getTxPoWTree();
+		Field tip = org.minima.database.txpowtree.TxPowTree.class.getDeclaredField("mTip");
+		tip.setAccessible(true);
+		Object oldtip = tip.get(tree);
+		try {
+			org.minima.database.txpowtree.TxPoWTreeNode node =
+					new org.minima.database.txpowtree.TxPoWTreeNode(new org.minima.objects.TxPoW());
+			node.addCoinToNode(new org.minima.objects.Coin(new org.minima.objects.base.MiniData(zCoinID),
+					new org.minima.objects.base.MiniData("0x03"), new org.minima.objects.base.MiniNumber(10),
+					org.minima.objects.base.MiniData.ZERO_TXPOWID));
+			tip.set(tree, node);
+			zCheck.run();
+		}finally {
+			tip.set(tree, oldtip);
+			org.minima.system.params.GeneralParams.USE_SQL_COINDB = oldsql;
+		}
+	}
+	
+	/** Round-6 review: a rewrite fills the existing file in place (same file key) - never delete + re-create */
+	@Test
+	public void aRewriteKeepsTheSameFile() throws Exception {
+		String oldbase = org.minima.system.params.GeneralParams.BASE_FILE_FOLDER;
+		java.io.File base = tempBase("gate-inplace");
+		try {
+			java.nio.file.Path handle = new java.io.File(base, "inplace_0123.txn").toPath();
+			java.nio.file.Files.write(handle, "BEFORE".getBytes());
+			Object key = java.nio.file.Files.readAttributes(handle, java.nio.file.attribute.BasicFileAttributes.class).fileKey();
+			CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:inplacetxn");
+			assertTrue((boolean) run("0x00", "txnexport id:inplacetxn file:inplace_0123.txn").get("status"));
+			assertFalse("BEFORE".equals(new String(java.nio.file.Files.readAllBytes(handle))));
+			assertEquals("txnexport replaced the file instead of writing it in place", key,
+					java.nio.file.Files.readAttributes(handle, java.nio.file.attribute.BasicFileAttributes.class).fileKey());
+		}finally {
+			dropBase(base, oldbase);
 		}
 	}
 	
