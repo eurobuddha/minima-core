@@ -72,9 +72,6 @@ public class txnexport extends Command {
 			//The File.. 
 			//Create the file (a non-admin caller - possible where txnexport is not a WRITE command - is confined)
 			File output = getNewFileParam("file");
-			if(output.exists()) {
-				output.delete();
-			}
 			
 			//Now export this to a file..
 			MiniFile.writeObjectToFile(output, txnrow);

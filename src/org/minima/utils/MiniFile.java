@@ -68,17 +68,8 @@ public class MiniFile {
 			parent.mkdirs();
 		}
 		
-		//Delete the old..
-		if(zFile.exists()) {
-			if(!zAppend) {
-				zFile.delete();
-				zFile.createNewFile();
-			}
-		}else {
-			zFile.createNewFile();
-		}
-		
-		//Write it out..
+		//Write it out - FileOutputStream creates the file, or truncates it (no delete + re-create: SECURITY round-5
+		//review 2026-11-21 - a non-admin caller's claimed file must be written in place, never freed for a racer)
 		FileOutputStream fos = new FileOutputStream(zFile, zAppend);
 		DataOutputStream fdos = new DataOutputStream(fos);
 		
