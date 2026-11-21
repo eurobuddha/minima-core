@@ -471,6 +471,8 @@ public class CommandRunner {
 			
 			//Stop at a false..
 			if((boolean)result.get("status") == false) {
+				//A failed non-admin write frees the file it claimed - a retry under the same name is not refused
+				cmd.releaseClaims();
 				break;
 			}
 		}

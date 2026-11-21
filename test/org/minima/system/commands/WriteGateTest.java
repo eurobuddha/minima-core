@@ -304,6 +304,56 @@ public class WriteGateTest {
 		}
 	}
 	
+	/** Test stand-in in place of an open command: claims its file:, then fails (a write that broke half way) */
+	static class ClaimThenFail extends Command {
+		ClaimThenFail() {
+			super("hash", "test stand-in");
+		}
+		@Override
+		public java.util.ArrayList<String> getValidParams() {
+			return new java.util.ArrayList<>(java.util.Arrays.asList("file", "data"));
+		}
+		@Override
+		public JSONObject runCommand() throws Exception {
+			getNewFileParam("file");
+			throw new CommandException("the write failed");
+		}
+		@Override
+		public Command getFunction() {
+			return new ClaimThenFail();
+		}
+	}
+	
+	static java.io.File tempBase(String zName) throws Exception {
+		java.io.File base = java.nio.file.Files.createTempDirectory(zName).toFile();
+		org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = base.getAbsolutePath();
+		return base;
+	}
+	
+	static void dropBase(java.io.File zBase, String zOld) {
+		for(java.io.File f : zBase.listFiles()) f.delete();
+		zBase.delete();
+		org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = zOld;
+	}
+	
+	/** Round-5 review: a failed non-admin write removes the empty file it claimed, so the retry is not refused */
+	@Test
+	public void aFailedNonAdminWriteReleasesItsClaim() throws Exception {
+		String oldbase = org.minima.system.params.GeneralParams.BASE_FILE_FOLDER;
+		java.io.File base = tempBase("gate-release");
+		Command real = CommandInjectionTest.swap("hash", new ClaimThenFail());
+		try {
+			for(int attempt=0; attempt<2; attempt++) {
+				JSONObject res = run("0xFF", "hash file:retry_0123.txn data:0x01");
+				assertEquals("attempt "+attempt+": "+res, "the write failed", res.get("error"));
+				assertFalse("the failed write left its claimed file", new java.io.File(base, "retry_0123.txn").exists());
+			}
+		}finally {
+			CommandInjectionTest.swap("hash", real);
+			dropBase(base, oldbase);
+		}
+	}
+	
 	@Test
 	public void nonAdminTxnimportNeverReplacesARowCreatedAfterTheGate() throws Exception {
 		//The runner's "new id only" check passed, then another caller created the row: the add must not replace it

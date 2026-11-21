@@ -116,9 +116,6 @@ public class sphincs extends Command {
 			if(existsParam("file")) {
 				//Create the file (a non-admin caller: confined - see Command.getFileParam)
 				File backupfile = getNewFileParam("file");
-				if(backupfile.exists()) {
-					backupfile.delete();
-				}
 				
 				MiniFile.writeObjectToFile(backupfile, sig);
 				
