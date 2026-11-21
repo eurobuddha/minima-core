@@ -72,4 +72,82 @@ public class KeyUsesTest {
 			assertEquals("keyuses:"+uses, MiniData.getMiniDataVersion(expected).to0xString(), MiniData.getMiniDataVersion(got).to0xString());
 		}
 	}
+	static String sig(String zID) {
+		return MiniData.getMiniDataVersion(MinimaDB.getDB().getCustomTxnDB().getTransactionRow(zID)
+				.getWitness().getAllSignatures().get(0)).to0xString();
+	}
+	
+	static String expected(String zID, int zUses) {
+		TreeKey key = new TreeKey(new MiniData(PRIV), 128, 4);
+		key.setUses(zUses);
+		return MiniData.getMiniDataVersion(key.sign(MinimaDB.getDB().getCustomTxnDB().getTransactionRow(zID)
+				.getTransaction().getTransactionID())).to0xString();
+	}
+	
+	/**
+	 * Round-5 review: with -blockaskeyuses this line's createDefault is a 128x128x128x128 key (268435456 leaves), the
+	 * leaf is max(chain tip, last used + 1, keyuses + 1), and this line's own validation applies. Pinned here.
+	 */
+	@Test
+	public void blockModeUsesTheBlockKeyShape() throws Exception {
+		boolean oldmode = org.minima.system.params.GeneralParams.USE_BLOCK_AS_KEYUSES;
+		boolean oldsql  = org.minima.system.params.GeneralParams.USE_SQL_COINDB;		//the test tree node clears it
+		org.minima.database.txpowtree.TxPowTree tree = MinimaDB.getDB().getTxPoWTree();
+		Field tip = org.minima.database.txpowtree.TxPowTree.class.getDeclaredField("mTip");
+		tip.setAccessible(true);
+		Object oldtip = tip.get(tree);
+		org.minima.objects.base.MiniNumber oldlast = MinimaDB.getDB().getUserDB().getLastBlockAsKeyUses();
+		MinimaDB.getDB().setAllowSaveState(false);
+		try {
+			org.minima.system.params.GeneralParams.USE_BLOCK_AS_KEYUSES = true;
+			assertEquals(268435456, TreeKey.createDefault(new MiniData(PRIV)).getMaxUses());
+			MinimaDB.getDB().getUserDB().setLastBlockAsKeyUses(org.minima.objects.base.MiniNumber.ZERO);
+			org.minima.objects.TxPoW txpow = new org.minima.objects.TxPoW();
+			txpow.setBlockNumber(new org.minima.objects.base.MiniNumber(2417237));
+			tip.set(tree, new org.minima.database.txpowtree.TxPoWTreeNode(txpow));
+			
+			//no keyuses: the chain tip; again: the next leaf, never the same one
+			CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:blk1");
+			JSONObject res = (JSONObject) CommandRunner.getRunner().runMultiCommand("0x00",
+					"txnsign id:blk1 publickey:custom privatekey:"+PRIV).get(0);
+			assertTrue(res.toString(), (boolean) res.get("status"));
+			assertEquals(expected("blk1", 2417237), sig("blk1"));
+			CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:blk2");
+			res = (JSONObject) CommandRunner.getRunner().runMultiCommand("0x00",
+					"txnsign id:blk2 publickey:custom privatekey:"+PRIV).get(0);
+			assertTrue(res.toString(), (boolean) res.get("status"));
+			assertEquals(expected("blk2", 2417238), sig("blk2"));
+			
+			//262144 is in range for this key shape (it is past a legacy key's end); the higher of it + 1 and the tip
+			res = sign("blk3", "262144");
+			assertTrue(res.toString(), (boolean) res.get("status"));
+			assertEquals(expected("blk3", 2417239), sig("blk3"));
+			res = sign("blk4", "3000000");
+			assertTrue(res.toString(), (boolean) res.get("status"));
+			assertEquals(expected("blk4", 3000001), sig("blk4"));
+			
+			//this line's own validation, against the 128x4 capacity
+			for(String uses : new String[] {"268435456", "4294967299", "-1", "1.5"}) {
+				res = sign("blkbad"+uses.replace("-","m").replace(".","p"), uses);
+				assertFalse("keyuses:"+uses+" signed: "+res, (boolean) res.get("status"));
+				String error = String.valueOf(res.get("error"));
+				assertTrue(res.toString(), error.contains("keyuses must be a whole number") || error.contains("keyuses outside key capacity"));
+			}
+			
+			//a chain tip at the capacity: refused, never leaf 0
+			txpow.setBlockNumber(new org.minima.objects.base.MiniNumber(268435456));
+			tip.set(tree, new org.minima.database.txpowtree.TxPoWTreeNode(txpow));
+			CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:blkcap");
+			res = (JSONObject) CommandRunner.getRunner().runMultiCommand("0x00",
+					"txnsign id:blkcap publickey:custom privatekey:"+PRIV).get(0);
+			assertFalse(res.toString(), (boolean) res.get("status"));
+			assertTrue(res.toString(), String.valueOf(res.get("error")).contains("exhausted"));
+		}finally {
+			org.minima.system.params.GeneralParams.USE_BLOCK_AS_KEYUSES = oldmode;
+			org.minima.system.params.GeneralParams.USE_SQL_COINDB = oldsql;
+			tip.set(tree, oldtip);
+			MinimaDB.getDB().getUserDB().setLastBlockAsKeyUses(oldlast);
+			MinimaDB.getDB().setAllowSaveState(true);
+		}
+	}
 }
