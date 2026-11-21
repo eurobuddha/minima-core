@@ -2,6 +2,7 @@ package org.minima.system.network.rpc;
 
 import java.io.IOException;
 import java.net.BindException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
@@ -12,14 +13,26 @@ public abstract class HTTPServer extends Server implements Runnable{
 
 	ServerSocket mServerSocket;
 	
+	/** "" = every interface; else the one address to bind (MDS uses GeneralParams.MDS_BIND_HOST) */
+	String mBindHost = "";
+	
 	boolean mRunning = true;
 	
 	public HTTPServer(int zPort) {
 		this(zPort, true);
 	}
 	
+	public HTTPServer(int zPort, String zBindHost) {
+		this(zPort, zBindHost, true);
+	}
+	
 	public HTTPServer(int zPort, boolean zAutoStart) {
+		this(zPort, "", zAutoStart);
+	}
+	
+	public HTTPServer(int zPort, String zBindHost, boolean zAutoStart) {
 		super(zPort);
+		mBindHost = zBindHost == null ? "" : zBindHost;
 		
 		if(zAutoStart) {
 			start();
@@ -50,9 +63,13 @@ public abstract class HTTPServer extends Server implements Runnable{
 	public void run() {
 		try {
 			//Start a server Socket..
-			mServerSocket = new ServerSocket(mPort);
+			if(mBindHost == null || mBindHost.isEmpty()) {
+				mServerSocket = new ServerSocket(mPort);
+			}else {
+				mServerSocket = new ServerSocket(mPort, 50, InetAddress.getByName(mBindHost));
+			}
 			
-			MinimaLogger.log("Server started on port : "+mPort);
+			MinimaLogger.log("Server started on "+(mBindHost == null || mBindHost.isEmpty() ? "*" : mBindHost)+":"+mPort);
 			
 			//Keep listening..
 			while(mRunning) {
