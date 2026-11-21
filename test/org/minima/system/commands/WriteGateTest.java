@@ -43,4 +43,25 @@ public class WriteGateTest {
 		//ADMIN still runs it (it fails later here: no wallet in the test)
 		assertFalse(adminRefusal(run("0x00", "txnauto id:gatetxn2 amount:1 address:0x00")));
 	}
+	
+	@Test
+	public void keetsFileNeedsAdmin() {
+		boolean keets = org.minima.system.params.GeneralParams.KEETS_ENABLED;
+		org.minima.system.params.GeneralParams.KEETS_ENABLED = true;
+		try {
+			keetsFileGate();
+		}finally {
+			org.minima.system.params.GeneralParams.KEETS_ENABLED = keets;
+		}
+	}
+	
+	void keetsFileGate() {
+		JSONObject res = run("0xFF", "keets action:publish path:/x file:/etc/hosts");
+		assertTrue("a non-admin caller used keets file: "+res, String.valueOf(res.get("error")).contains("file: needs ADMIN"));
+		res = run("0xFF", "keets action:fetch url:x file:/tmp/keets-gate-test");
+		assertTrue(String.valueOf(res.get("error")).contains("file: needs ADMIN"));
+		
+		//ADMIN passes the gate (it fails later here: no keets sidecar in the test)
+		assertFalse(String.valueOf(run("0x00", "keets action:publish path:/x file:/etc/hosts").get("error")).contains("file: needs ADMIN"));
+	}
 }

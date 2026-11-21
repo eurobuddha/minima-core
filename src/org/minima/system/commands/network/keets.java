@@ -132,6 +132,7 @@ public class keets extends Command {
 			//file: avoids megabyte command strings (the tokenizer drops oversized params)
 			byte[] data;
 			if(existsParam("file")) {
+				requireAdminForFile();
 				data = org.minima.utils.MiniFile.readCompleteFile(new java.io.File(getParam("file")));
 			}else {
 				data = new MiniData(getParam("datahex")).getBytes();
@@ -139,6 +140,9 @@ public class keets extends Command {
 			ret.put("response", parse(KeetsAPI.postStr("/media"+path, data)));
 
 		}else if(action.equals("fetch")) {
+			if(existsParam("file")) {
+				requireAdminForFile();
+			}
 			String url = getParam("url");
 			byte[] data = KeetsAPI.call("GET", "/media?url="+java.net.URLEncoder.encode(url, "UTF-8"), null);
 			JSONObject resp = new JSONObject();
@@ -176,6 +180,16 @@ public class keets extends Command {
 		return (JSONObject) new JSONParser().parse(zJson);
 	}
 
+	/**
+	 * SECURITY (review 2026-11-21): file: reads / writes ANY path the node can - only for ADMIN callers
+	 * (the node's own apps and the desktop); a non-admin caller uses datahex
+	 */
+	private void requireAdminForFile() throws CommandException {
+		if(!isAdminCaller()) {
+			throw new CommandException("file: needs ADMIN - use datahex");
+		}
+	}
+	
 	@Override
 	public Command getFunction() {
 		return new keets();
