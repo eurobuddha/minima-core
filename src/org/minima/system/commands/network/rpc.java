@@ -81,9 +81,16 @@ public class rpc extends Command {
 			//Enable or Disable
 			boolean enable = getBooleanParam("enable");
 			
+			//A password, if given, must be a real one - checked BEFORE anything is stopped (a blank one is refused)
+			String password = existsParam("password") ? getParam("password") : null;
+			
 			//SECURITY (2026-11-21): enabling without a password used to switch authentication OFF - an open
 			//admin RPC. Without password: the current password stays; with none ever set, refuse.
-			if(enable && !existsParam("password") && !GeneralParams.RPC_AUTHENTICATE) {
+			if(enable && password == null && !GeneralParams.RPC_AUTHENTICATE) {
+				if(GeneralParams.RPC_ENABLED) {
+					throw new CommandException("RPC is running WITHOUT a password (started with -rpcenable and no -rpcpassword) "
+							+ "and stays as it is - set one : rpc enable:true password:..");
+				}
 				throw new CommandException("Set a password to enable RPC : rpc enable:true password:..");
 			}
 			
@@ -95,8 +102,8 @@ public class rpc extends Command {
 			GeneralParams.RPC_ENABLED = enable;
 			
 			//Is there a password
-			if(existsParam("password")) {
-				GeneralParams.RPC_PASSWORD = getParam("password");
+			if(password != null) {
+				GeneralParams.RPC_PASSWORD = password;
 				GeneralParams.RPC_AUTHENTICATE = true;
 			}
 			
