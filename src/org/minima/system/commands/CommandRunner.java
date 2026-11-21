@@ -436,9 +436,14 @@ public class CommandRunner {
 				}
 			}
 			
-			//Past the gate: may it use the node's keys and files (ADMIN, or a WRITE MiniDapp that got here
-			//with a WRITE command / use - every other caller left above)
-			cmd.setWriteAllowed(zMiniDAPPID.equals("0x00") || !allowed);
+			//Past the gate: may it use the node's keys and files? ADMIN, or a WRITE MiniDapp - also on a command
+			//that needs no WRITE rights, so its file: means the same thing on every command (final review 3)
+			boolean writeallowed = zMiniDAPPID.equals("0x00") || !allowed;
+			if(!writeallowed && mds != null && !zMiniDAPPID.equals(mds.getPublicMiniDAPPID())) {
+				MiniDAPP caller = mds.getMiniDAPP(zMiniDAPPID);
+				writeallowed = caller != null && caller.getPermission().equalsIgnoreCase("write");
+			}
+			cmd.setWriteAllowed(writeallowed);
 			
 			try {
 				result = cmd.runCommand();
