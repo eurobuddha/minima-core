@@ -234,14 +234,20 @@ public class RpcHardeningTest {
 		//Catch the halt instead of dying (JDK 11 still honours a SecurityManager for Runtime.halt)
 		final java.util.concurrent.atomic.AtomicBoolean halted = new java.util.concurrent.atomic.AtomicBoolean();
 		SecurityManager old = System.getSecurityManager();
-		System.setSecurityManager(new SecurityManager() {
+		SecurityManager catcher = new SecurityManager() {
 			@Override public void checkPermission(java.security.Permission p) { }
 			@Override public void checkPermission(java.security.Permission p, Object c) { }
 			@Override public void checkExit(int status) {
 				halted.set(true);
 				throw new SecurityException("halt blocked by the test");
 			}
-		});
+		};
+		try {
+			System.setSecurityManager(catcher);
+		}catch(UnsupportedOperationException noSecurityManager) {
+			//JDK 18+ without -Djava.security.manager=allow: the halt cannot be caught - skip, never die
+			org.junit.Assume.assumeTrue("needs a SecurityManager to catch the halt (JDK < 18)", false);
+		}
 		try {
 			String reply = post("reader", "readpw", "quit");
 			assertTrue(reply, reply.contains("You need ADMIN privileges"));
