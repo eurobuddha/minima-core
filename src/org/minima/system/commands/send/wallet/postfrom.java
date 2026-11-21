@@ -25,6 +25,21 @@ public class postfrom extends Command {
 	}
 	
 	@Override
+	public String getWriteUse() {
+		//the row it adds REPLACES one with the same id: overwriting another app's draft needs WRITE rights
+		try {
+			TxnRow tx = TxnRow.convertMiniDataVersion(getDataParam("data"));
+			String id = existsParam("id") ? getParam("id") : tx.getID();
+			if(MinimaDB.getDB().getCustomTxnDB().getTransactionRow(id) != null) {
+				return "a transaction with this id already exists : "+id;
+			}
+		}catch(Exception exc) {
+			//invalid data fails in the command itself
+		}
+		return null;
+	}
+	
+	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 	
