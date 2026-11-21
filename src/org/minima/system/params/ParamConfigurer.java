@@ -219,6 +219,9 @@ public class ParamConfigurer {
                 GeneralParams.RPC_BIND_HOST = (host.equals("all") || host.equals("*")) ? "" : host;
             }
         }),
+        rpcallowhost("rpcallowhost", "Host names (comma separated) the RPC answers to besides localhost and IP addresses - e.g. the name a proxy forwards", (args, configurer) -> {
+            GeneralParams.RPC_ALLOWED_HOSTS = args.trim();
+        }),
         rpcpassword("rpcpassword", "Set Basic Auth password for RPC calls ( Use with SSL / stununel )", (args, configurer) -> {
         	GeneralParams.RPC_PASSWORD 		= args;
         	GeneralParams.RPC_AUTHENTICATE 	= true;
