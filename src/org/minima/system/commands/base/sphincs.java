@@ -70,6 +70,12 @@ public class sphincs extends Command {
 	}
 	
 	@Override
+	public String getWriteUse() {
+		String overwrite = "sign".equals(String.valueOf(getParams().get("action"))) ? overwriteWriteUse(getFileName()) : null;
+		return overwrite != null ? overwrite : super.getWriteUse();
+	}
+	
+	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 		JSONObject resp = new JSONObject();
@@ -109,7 +115,7 @@ public class sphincs extends Command {
 			
 			if(existsParam("file")) {
 				//Create the file (a non-admin caller: confined - see Command.getFileParam)
-				File backupfile = getFileParam("file");
+				File backupfile = getNewFileParam("file");
 				if(backupfile.exists()) {
 					backupfile.delete();
 				}

@@ -164,6 +164,47 @@ public abstract class Command {
 		return confinedFile(getParam(zParamName, zDefault));
 	}
 	
+	/**
+	 * A file: the command WRITES. SECURITY (final review 2026-11-21): a non-admin caller only CREATES a new file
+	 * (claimed atomically) - it can never overwrite one, e.g. an admin flow's unsigned handle.txn between its
+	 * check and its sign. ADMIN: as before (getFileParam, overwrite allowed).
+	 */
+	public File getNewFileParam(String zParamName) throws CommandException {
+		return claimNew(getFileParam(zParamName));
+	}
+	
+	public File getNewFileParam(String zParamName, String zDefault) throws CommandException {
+		return claimNew(getFileParam(zParamName, zDefault));
+	}
+	
+	private File claimNew(File zFile) throws CommandException {
+		if(!isAdminCaller()) {
+			try {
+				if(!zFile.createNewFile()) {
+					throw new CommandException("A non-admin caller only creates new files - "+zFile.getName()+" exists");
+				}
+			}catch(IOException exc) {
+				throw new CommandException("Cannot create "+zFile.getName()+" : "+exc.getMessage());
+			}
+		}
+		return zFile;
+	}
+	
+	/** The file: param as given, or null */
+	protected String getFileName() {
+		Object file = mParams.get("file");
+		return file instanceof String ? ((String) file).trim() : null;
+	}
+	
+	/** For getWriteUse of a writing command: overwriting an existing plain .txn needs WRITE rights */
+	protected String overwriteWriteUse(String zName) {
+		if(zName != null && isPlainTxnName(zName) && !GeneralParams.BASE_FILE_FOLDER.equals("")
+				&& new File(GeneralParams.BASE_FILE_FOLDER, zName).exists()) {
+			return "a non-admin caller only creates new files - "+zName+" exists";
+		}
+		return null;
+	}
+	
 	/** A plain transaction file name a non-admin caller may use */
 	public static boolean isPlainTxnName(String zName) {
 		return zName.length() <= 128 && zName.matches("[A-Za-z0-9][A-Za-z0-9._-]*\\.txn") && !zName.contains("..");
