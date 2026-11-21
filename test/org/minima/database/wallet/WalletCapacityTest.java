@@ -71,25 +71,34 @@ public class WalletCapacityTest {
 			assertEquals(uses+1, sWallet.getKeyFromPublic(sKey.getPublicKey()).getUses());
 		}
 	}
-	/** restoresync's ADD (uses=uses+? in SQL, on a bigint): never to or past a key's capacity, never past int range */
+	/**
+	 * restore / restoresync add 256 uses to every key (uses=uses+? in SQL, on a bigint): capped per key at its
+	 * capacity, never refused - a refusal left EVERY key un-raised, re-signing leaves used since the backup.
+	 */
 	@Test
-	public void incrementNeverReachesCapacity() throws Exception {
-		sWallet.updateAllKeyUses(262000);
-		sWallet.checkIncrementAllKeyUses(143);
-		for(int add : new int[] {144, 1000, Integer.MAX_VALUE}) {
-			try {
-				sWallet.checkIncrementAllKeyUses(add);
-				fail("an increment of "+add+" from 262000 was allowed");
-			}catch(IllegalArgumentException expected) {
-				assertTrue(expected.getMessage().contains("would reach their capacity"));
-			}
-		}
-		sWallet.updateAllKeyUses(0);
-		sWallet.checkIncrementAllKeyUses(262143);
+	public void restoreAddIsCappedPerKey() throws Exception {
+		KeyRow k2 = sWallet.createNewKey();
+		java.lang.reflect.Field f = org.minima.utils.SqlDB.class.getDeclaredField("mSQLConnection");
+		f.setAccessible(true);
+		java.sql.Connection c = (java.sql.Connection) f.get(sWallet);
+		c.createStatement().execute("UPDATE keys SET uses=261950 WHERE publickey='"+sKey.getPublicKey()+"'");
+		c.createStatement().execute("UPDATE keys SET uses=10 WHERE publickey='"+k2.getPublicKey()+"'");
+		
+		sWallet.updateIncrementAllKeyUses(256);
+		assertEquals(262144, sWallet.getKeyFromPublic(sKey.getPublicKey()).getUses());
+		assertEquals(266, sWallet.getKeyFromPublic(k2.getPublicKey()).getUses());
 		try {
-			sWallet.checkIncrementAllKeyUses(262144);
-			fail("an increment to the capacity was allowed");
+			sWallet.signData(sKey.getPublicKey(), DATA);
+			fail("a key raised to its capacity signed");
 		}catch(IllegalArgumentException expected) {
+			assertTrue(expected.getMessage().contains("exhausted"));
 		}
+		sWallet.signData(k2.getPublicKey(), DATA);
+		
+		//a key already past its capacity comes back to it; the add never passes int range
+		c.createStatement().execute("UPDATE keys SET uses=300000 WHERE publickey='"+k2.getPublicKey()+"'");
+		sWallet.updateIncrementAllKeyUses(Integer.MAX_VALUE);
+		assertEquals(262144, sWallet.getKeyFromPublic(sKey.getPublicKey()).getUses());
+		assertEquals(262144, sWallet.getKeyFromPublic(k2.getPublicKey()).getUses());
 	}
 }

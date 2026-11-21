@@ -26,8 +26,8 @@ public class WalletKeyUsesParamTest {
 		"mysql action:resync keyuses:",
 		"megammrsync action:resync host:x keyuses:",
 		"keys action:createallkeys keyuses:"
-		//restoresync: keyuses is not one of its valid params (always the default 256) - its ADD is checked in
-		//Wallet.checkIncrementAllKeyUses (WalletCapacityTest)
+		//restoresync: keyuses is not one of its valid params (always the default 256) - its ADD (and restore's) is
+		//capped per key in Wallet.updateIncrementAllKeyUses (WalletCapacityTest)
 	};
 	
 	@BeforeClass

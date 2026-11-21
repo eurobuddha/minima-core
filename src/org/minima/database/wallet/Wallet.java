@@ -151,7 +151,7 @@ public class Wallet extends SqlDB {
 		SQL_GET_KEY						= mSQLConnection.prepareStatement("SELECT * FROM keys WHERE publickey=?");
 		SQL_UPDATE_KEY_USES				= mSQLConnection.prepareStatement("UPDATE keys SET uses=? WHERE publickey=?");
 		SQL_UPDATE_ALL_KEY_USES			= mSQLConnection.prepareStatement("UPDATE keys SET uses=?");
-		SQL_UPDATE_INC_ALL_KEY_USES		= mSQLConnection.prepareStatement("UPDATE keys SET uses=uses+?");
+		SQL_UPDATE_INC_ALL_KEY_USES		= mSQLConnection.prepareStatement("UPDATE keys SET uses=LEAST(uses+?, maxuses)");
 		
 		//Base Seed functions
 		SQL_WIPE_PRIVATE_KEYS			= mSQLConnection.prepareStatement("UPDATE keys SET privatekey='0x00' WHERE privatekey!='0x00'");
@@ -881,29 +881,10 @@ public class Wallet extends SqlDB {
 	}
 	
 	/**
-	 * OWNER MAY DROP (round-5 review 2026-11-21): would adding zIncrementUses to every key put one at or past its
-	 * capacity (its last leaf), or past int range? Then refuse - the increment is SQL (uses=uses+? on a bigint), so
-	 * nothing else stops it, and such a key could only restart at leaf 0 or fail to load.
-	 */
-	public void checkIncrementAllKeyUses(int zIncrementUses) throws SQLException {
-		PreparedStatement check = mSQLConnection.prepareStatement(
-				"SELECT COUNT(*), MAX(uses) FROM keys WHERE uses + ? >= maxuses OR uses + ? > "+Integer.MAX_VALUE);
-		try {
-			check.setLong(1, zIncrementUses);
-			check.setLong(2, zIncrementUses);
-			ResultSet rs = check.executeQuery();
-			rs.next();
-			if(rs.getLong(1) > 0) {
-				throw new IllegalArgumentException("Cannot add "+zIncrementUses+" key uses : "+rs.getLong(1)
-						+" key(s) would reach their capacity (highest uses now "+rs.getLong(2)+")");
-			}
-		}finally {
-			check.close();
-		}
-	}
-	
-	/**
-	 * After a Restore
+	 * After a Restore (restore, restoresync): every key's uses go up - OWNER MAY DROP (round-6 review 2026-11-21):
+	 * CAPPED per key at its capacity (maxuses). An uncapped add could put a key past its last leaf (TreeKey.sign
+	 * then restarts at leaf 0); capped, every other key still gets its whole add, and a key at capacity refuses to
+	 * sign (signData's capacity guard - this depends on it).
 	 */
 	public void updateIncrementAllKeyUses(int zIncrementUses) throws SQLException {		
 
