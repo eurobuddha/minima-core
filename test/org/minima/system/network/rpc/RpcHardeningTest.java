@@ -4,8 +4,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.net.InetAddress;
 import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 import org.junit.After;
 import org.junit.Before;
@@ -116,5 +123,54 @@ public class RpcHardeningTest {
 		}
 		assertTrue("the RPC listens on "+server.mServerSocket.getInetAddress()+", not loopback",
 				server.mServerSocket.getInetAddress().isLoopbackAddress());
+	}
+	
+	/** One POST through a real CMDHandler on a loopback socket pair; returns the whole HTTP reply */
+	static String post(String zUser, String zPassword, String zCommand) throws Exception {
+		try(ServerSocket ss = new ServerSocket(0, 5, InetAddress.getLoopbackAddress());
+			Socket client = new Socket(InetAddress.getLoopbackAddress(), ss.getLocalPort())) {
+			Thread handler = new Thread(new CMDHandler(ss.accept()));
+			handler.start();
+			
+			byte[] body = zCommand.getBytes(StandardCharsets.UTF_8);
+			String auth = Base64.getEncoder().encodeToString((zUser+":"+zPassword).getBytes(StandardCharsets.UTF_8));
+			OutputStream out = client.getOutputStream();
+			out.write(("POST / HTTP/1.1\r\nAuthorization: Basic "+auth+"\r\nContent-Length: "+body.length+"\r\n\r\n")
+					.getBytes(StandardCharsets.US_ASCII));
+			out.write(body);
+			out.flush();
+			
+			InputStream in = client.getInputStream();
+			ByteArrayOutputStream reply = new ByteArrayOutputStream();
+			byte[] buf = new byte[4096];
+			int len;
+			while((len = in.read(buf)) != -1) {
+				reply.write(buf, 0, len);
+			}
+			handler.join(10000);
+			return new String(reply.toByteArray(), StandardCharsets.UTF_8);
+		}
+	}
+	
+	@Test
+	public void readUserCannotRunWriteCommands() throws Exception {
+		GeneralParams.RPC_AUTHENTICATE 	= true;
+		GeneralParams.RPC_PASSWORD 		= "secret";
+		JSONArray users = new JSONArray();
+		JSONObject reader = new JSONObject();
+		reader.put("username", "reader");
+		reader.put("password", "readpw");
+		reader.put("mode", "read");
+		users.add(reader);
+		MinimaDB.getDB().getUserDB().setRPCUsers(users);
+		
+		String reply = post("reader", "readpw", "txncreate id:readertxn");
+		assertFalse("a read RPC user ran a WRITE command: "+reply,
+				MinimaDB.getDB().getCustomTxnDB().getTransactionRow("readertxn") != null);
+		
+		//A read command still works for the read user, and the minima user still writes
+		assertTrue(post("reader", "readpw", "random").contains("\"status\":true"));
+		post("minima", "secret", "txncreate id:writertxn");
+		assertTrue(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("writertxn") != null);
 	}
 }
