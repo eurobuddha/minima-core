@@ -436,15 +436,13 @@ public class multisig extends Command {
 				passwordlock = true;
 			}
 			
-			//Run it..
-			JSONArray result = CommandRunner.getRunner().runCommands(txnsigner.toArray(new Object[0][]));
-			
-			//Are we locking the DB
-			if(passwordlock) {
-				//Lock the Wallet DB
-				vault.passwordLockDB(getParam("password"));
+			JSONArray result = null;
+			try {
+				result = CommandRunner.getRunner().runCommands(txnsigner.toArray(new Object[0][]));
+			} finally {
+				if(passwordlock) vault.passwordLockDB(getParam("password"));
 			}
-			
+
 			ret.put("response", result);
 		
 		}else if(action.equals("post")) {
