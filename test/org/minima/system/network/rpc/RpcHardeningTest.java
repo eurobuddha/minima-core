@@ -271,4 +271,19 @@ public class RpcHardeningTest {
 		assertFalse((boolean) res.get("status"));
 		assertTrue(String.valueOf(res.get("error")), String.valueOf(res.get("error")).contains("WITHOUT a password"));
 	}
+	
+	@Test
+	public void foreignHostIsRefused() throws Exception {
+		//DNS rebinding: a page on evil.example rebinds its name to 127.0.0.1 - the browser sends Host: evil.example
+		String reply = raw("POST / HTTP/1.1\r\nHost: evil.example:9005\r\nContent-Length: 20", "txncreate id:rebindx");
+		assertTrue("a request for Host evil.example ran: "+reply, reply.startsWith("HTTP/1.1 403"));
+		assertFalse(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("rebindx") != null);
+		
+		//this machine's names and IP literals, and no Host at all, are served as before
+		assertTrue(raw("POST / HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nContent-Length: 6", "random").contains("\"status\":true"));
+		assertTrue(raw("POST / HTTP/1.1\r\nHost: localhost:9005\r\nContent-Length: 6", "random").contains("\"status\":true"));
+		assertTrue(raw("POST / HTTP/1.1\r\nHost: 192.168.1.20:9005\r\nContent-Length: 6", "random").contains("\"status\":true"));
+		assertTrue(raw("POST / HTTP/1.1\r\nHost: [::1]:9005\r\nContent-Length: 6", "random").contains("\"status\":true"));
+		assertTrue(raw("POST / HTTP/1.1\r\nContent-Length: 6", "random").contains("\"status\":true"));
+	}
 }
