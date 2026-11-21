@@ -120,9 +120,16 @@ public abstract class Command {
 	}
 	
 	/**
-	 * A file: param as the File MiniFile.createBaseFile makes of it. SECURITY (review 2026-11-21): a non-admin
-	 * caller may only name a file inside the node's base folder (-basefolder, else the working folder) - no
-	 * absolute path elsewhere, no '..' out of it. An ADMIN caller: any path, as before.
+	 * A file: param as a File. An ADMIN caller: MiniFile.createBaseFile, any path, as before.
+	 * 
+	 * SECURITY (reviews 2026-11-21): a non-admin caller may only name a transaction file - a PLAIN name ending in
+	 * .txn (letters, digits, '.', '_', '-'; no path separator of either kind, no '..', no drive letter) - and it
+	 * is always the file of that name in the base folder. In every shipped product the base folder IS the node's
+	 * data folder (wallet database under 1.1/, Parlons keys and tokens beside it), and none of the node's own files
+	 * is a .txn, so a non-admin name can never reach one. No base folder set, or a base folder at the filesystem
+	 * root: refused. A .txn that exists as a folder: refused. Rewriting the caller's own .txn stays possible (the
+	 * shipped send / view / sign / post flows re-write handle.txn on a retry), and ADMIN steps of the same flow
+	 * resolve the same plain name to the same file.
 	 */
 	public File getFileParam(String zParamName) throws CommandException {
 		return confinedFile(getParam(zParamName));
@@ -132,20 +139,37 @@ public abstract class Command {
 		return confinedFile(getParam(zParamName, zDefault));
 	}
 	
+	/** A plain transaction file name a non-admin caller may use */
+	public static boolean isPlainTxnName(String zName) {
+		return zName.length() <= 128 && zName.matches("[A-Za-z0-9][A-Za-z0-9._-]*\\.txn") && !zName.contains("..");
+	}
+	
 	private File confinedFile(String zName) throws CommandException {
-		File file = MiniFile.createBaseFile(zName);
-		if(!isAdminCaller()) {
-			try {
-				File base 		= GeneralParams.BASE_FILE_FOLDER.equals("") ? new File("") : new File(GeneralParams.BASE_FILE_FOLDER);
-				String basepath = base.getCanonicalPath();
-				if(!file.getCanonicalPath().startsWith(basepath + File.separator)) {
-					throw new CommandException("A non-admin caller can only use files in the node's base folder : "+zName);
-				}
-			}catch(IOException exc) {
-				throw new CommandException("Invalid file : "+zName);
-			}
+		if(isAdminCaller()) {
+			return MiniFile.createBaseFile(zName);
 		}
-		return file;
+		
+		if(!isPlainTxnName(zName)) {
+			throw new CommandException("A non-admin caller can only use files in the node's base folder, "
+					+ "by a plain name ending in .txn : "+zName);
+		}
+		
+		try {
+			if(GeneralParams.BASE_FILE_FOLDER.equals("")) {
+				throw new CommandException("A non-admin caller can only use files in the node's base folder - none is set");
+			}
+			File base = new File(GeneralParams.BASE_FILE_FOLDER).getCanonicalFile();
+			if(base.getParentFile() == null) {
+				throw new CommandException("A non-admin caller can only use files in the node's base folder - not the filesystem root");
+			}
+			File file = new File(base, zName);
+			if(file.isDirectory()) {
+				throw new CommandException("A non-admin caller can only use files in the node's base folder - "+zName+" is a folder");
+			}
+			return file;
+		}catch(IOException exc) {
+			throw new CommandException("Invalid file : "+zName);
+		}
 	}
 	
 	public boolean getBooleanParam(String zParamName) throws CommandException {
