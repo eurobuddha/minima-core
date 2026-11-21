@@ -262,6 +262,48 @@ public class WriteGateTest {
 		}
 	}
 	
+	/**
+	 * Round-5 review: multisigread action:spend ends with an ADMIN txnexport to the caller's file name, so a 0xFF
+	 * caller could replace an admin flow's unsigned .txn with a spend paying itself. nodecount truncated one.
+	 */
+	@Test
+	public void multisigreadSpendAndNodecountOnlyCreateNewFiles() throws Exception {
+		java.io.File base = java.nio.file.Files.createTempDirectory("gate-ms").toFile();
+		String oldbase = org.minima.system.params.GeneralParams.BASE_FILE_FOLDER;
+		java.util.List<java.net.InetSocketAddress> oldnodes = org.minima.system.network.p2p.params.P2PParams.DEFAULT_NODE_LIST;
+		org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = base.getAbsolutePath();
+		org.minima.system.network.p2p.params.P2PParams.DEFAULT_NODE_LIST = new java.util.ArrayList<>();
+		try {
+			java.io.File handle = new java.io.File(base, "ms_pay_0123.txn");
+			java.nio.file.Files.write(handle.toPath(), "ADMIN".getBytes());
+			
+			JSONObject res = run("0xFF", "multisigread action:spend coinid:0x01 amount:1 address:0x02 file:ms_pay_0123.txn");
+			assertTrue("multisigread spend may overwrite an existing file: "+res, String.valueOf(res.get("error")).contains("only creates new files"));
+			assertEquals("ADMIN", new String(java.nio.file.Files.readAllBytes(handle.toPath())));
+			
+			//a new name passes the gate (and fails later here: no such coin, no chain)
+			res = run("0xFF", "multisigread action:spend coinid:0x01 amount:1 address:0x02 file:ms_new_0123.txn");
+			assertFalse(res.toString(), adminRefusal(res));
+			
+			//nodecount (not registered as a command, run directly): a non-admin caller never truncates a file
+			Command nc = new org.minima.system.commands.network.nodecount();
+			nc.getParams().put("file", "ms_pay_0123.txn");
+			nc.setMiniDAPPID("0xFF");
+			try {
+				nc.runCommand();
+				org.junit.Assert.fail("nodecount opened an existing file for a non-admin caller");
+			}catch(CommandException expected) {
+				assertTrue(expected.getMessage().contains("only creates new files"));
+			}
+			assertEquals("ADMIN", new String(java.nio.file.Files.readAllBytes(handle.toPath())));
+		}finally {
+			for(java.io.File f : base.listFiles()) f.delete();
+			base.delete();
+			org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = oldbase;
+			org.minima.system.network.p2p.params.P2PParams.DEFAULT_NODE_LIST = oldnodes;
+		}
+	}
+	
 	@Test
 	public void nonAdminTxnimportNeverReplacesARowCreatedAfterTheGate() throws Exception {
 		//The runner's "new id only" check passed, then another caller created the row: the add must not replace it
