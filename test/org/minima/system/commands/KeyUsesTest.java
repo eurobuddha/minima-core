@@ -53,18 +53,21 @@ public class KeyUsesTest {
 		}
 	}
 	
+	/** In range, the signature is byte-identical to the base code's, across the 64x64x64 tree's level boundaries */
 	@Test
-	public void smallCountSignsExactlyAsBefore() throws Exception {
-		JSONObject res = sign("small", "5");
-		assertTrue(res.toString(), (boolean) res.get("status"));
-		
-		//What the base code did: createDefault, setUses(5), sign the transaction id
-		org.minima.database.userprefs.txndb.TxnRow row = MinimaDB.getDB().getCustomTxnDB().getTransactionRow("small");
-		MiniData txid = row.getTransaction().getTransactionID();
-		TreeKey key = TreeKey.createDefault(new MiniData(PRIV));
-		key.setUses(5);
-		Signature expected = key.sign(txid);
-		Signature got = row.getWitness().getAllSignatures().get(0);
-		assertEquals(MiniData.getMiniDataVersion(expected).to0xString(), MiniData.getMiniDataVersion(got).to0xString());
+	public void inRangeCountsSignExactlyAsBefore() throws Exception {
+		for(int uses : new int[] {0, 1, 5, 63, 64, 4095, 4096, 262143}) {
+			JSONObject res = sign("inrange"+uses, Integer.toString(uses));
+			assertTrue(res.toString(), (boolean) res.get("status"));
+			
+			//What the base code did: createDefault, setUses(n), sign the transaction id
+			org.minima.database.userprefs.txndb.TxnRow row = MinimaDB.getDB().getCustomTxnDB().getTransactionRow("inrange"+uses);
+			MiniData txid = row.getTransaction().getTransactionID();
+			TreeKey key = TreeKey.createDefault(new MiniData(PRIV));
+			key.setUses(uses);
+			Signature expected = key.sign(txid);
+			Signature got = row.getWitness().getAllSignatures().get(0);
+			assertEquals("keyuses:"+uses, MiniData.getMiniDataVersion(expected).to0xString(), MiniData.getMiniDataVersion(got).to0xString());
+		}
 	}
 }
