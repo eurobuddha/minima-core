@@ -46,8 +46,7 @@ public class txnview extends Command {
 		JSONObject ret = getJSONReply();
 
 		if(existsParam("file")) {
-			String file = getParam("file");
-			File ff = MiniFile.createBaseFile(file);
+			File ff = getFileParam("file");
 			if(!ff.exists()) {
 				throw new CommandException("File does not exist : "+ff.getAbsolutePath());
 			}

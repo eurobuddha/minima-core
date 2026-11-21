@@ -117,4 +117,22 @@ public class WriteGateTest {
 			inbase.delete();
 		}
 	}
+	
+	@Test
+	public void everyNonAdminFileParamIsConfined() throws Exception {
+		//A file outside the base folder that must survive (the reviewer's probe: peers publish truncated it)
+		java.io.File outside = java.io.File.createTempFile("gate-outside", ".txt");
+		java.nio.file.Files.write(outside.toPath(), "keep".getBytes());
+		try {
+			String path = outside.getAbsolutePath();
+			for(String cmd : new String[] {"peers action:publish", "txnview", "hash"}) {
+				JSONObject res = run("0xFF", cmd+" file:"+path);
+				assertTrue(cmd+": "+res, confined(res));
+			}
+			assertTrue("the file outside the base folder was changed",
+					"keep".equals(new String(java.nio.file.Files.readAllBytes(outside.toPath()))));
+		}finally {
+			outside.delete();
+		}
+	}
 }
