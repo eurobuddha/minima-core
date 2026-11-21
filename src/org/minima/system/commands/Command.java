@@ -24,6 +24,9 @@ public abstract class Command {
 	
 	String mMiniDAPPID = "";
 	
+	/** Set by CommandRunner: this caller passed the WRITE gate (ADMIN, or an MDS MiniDapp with WRITE permission) */
+	boolean mWriteAllowed = false;
+	
 	public Command(String zName, String zHelp) {
 		mName = zName;
 		mHelp = zHelp;
@@ -37,9 +40,31 @@ public abstract class Command {
 		return mMiniDAPPID;
 	}
 	
-	/** Is the caller ADMIN (0x00: terminal, RPC minima / write users, admin companions, accepted MDS pending)? */
+	public void setWriteAllowed(boolean zWriteAllowed) {
+		mWriteAllowed = zWriteAllowed;
+	}
+	
+	/**
+	 * May this caller use the node's own keys and files - ADMIN (0x00: terminal, RPC minima / write users, admin
+	 * companions, an accepted MDS pending command), or a caller CommandRunner let through its WRITE gate (an MDS
+	 * MiniDapp with WRITE permission)?
+	 */
 	public boolean isAdminCaller() {
-		return mMiniDAPPID.equals("0x00");
+		return mWriteAllowed || mMiniDAPPID.equals("0x00");
+	}
+	
+	/**
+	 * Does THIS use of the command need WRITE rights although the command itself does not? Returns why, or null.
+	 * CommandRunner then treats it as a WRITE command: refused for a non-admin caller, pending for an MDS
+	 * MiniDapp with READ permission, run for ADMIN / a WRITE MiniDapp. The command's own checks must match.
+	 * Default: a file: that is not a plain .txn name (see getFileParam).
+	 */
+	public String getWriteUse() {
+		Object file = mParams.get("file");
+		if(file instanceof String && !isPlainTxnName(((String) file).trim())) {
+			return "a non-admin caller can only use files in the node's base folder, by a plain name ending in .txn";
+		}
+		return null;
 	}
 	
 	public void setCompleteCommand(String zCommand) {

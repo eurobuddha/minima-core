@@ -233,6 +233,7 @@ public class CommandRunner {
 			}
 		}
 		cmd.setMiniDAPPID("0x00");
+		cmd.setWriteAllowed(true);
 
 		//Same parameter check as a typed command
 		ArrayList<String> validparams = cmd.getValidParams();
@@ -360,6 +361,13 @@ public class CommandRunner {
 			//Check this MiniDAPP can make this call..
 			boolean allowed = isCommandAllowed(comname);
 			
+			//SECURITY (review 2026-11-21): some uses of an open command need WRITE rights (a file outside the
+			//base folder, txnpost burn:, a postfrom over an existing row..) - gate them like WRITE commands
+			String writeuse = cmd.getWriteUse();
+			if(writeuse != null) {
+				allowed = false;
+			}
+			
 			//Is this an ADMIN User
 			if(!zMiniDAPPID.equals("0x00")) {
 				
@@ -369,7 +377,7 @@ public class CommandRunner {
 					result.put("command", command);
 					result.put("status", false);
 					result.put("pending", false);
-					result.put("error", "You need ADMIN privileges to run this command");
+					result.put("error", "You need ADMIN privileges to run this command"+(writeuse == null ? "" : " ("+writeuse+")"));
 					
 					//Add to the List..
 					finalresult.add(result);
@@ -378,6 +386,9 @@ public class CommandRunner {
 					break;
 				}
 			}
+			
+			//Past the gate: may it use the node's keys and files
+			cmd.setWriteAllowed(zMiniDAPPID.equals("0x00"));
 
 			//Is this a MiniDAPP..
 			/*if(zMiniDAPPID.equals(Main.getInstance().getMDSManager().getPublicMiniDAPPID())) {
