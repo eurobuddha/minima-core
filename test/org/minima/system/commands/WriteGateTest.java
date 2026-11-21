@@ -241,4 +241,20 @@ public class WriteGateTest {
 			org.minima.system.params.GeneralParams.BASE_FILE_FOLDER = oldbase;
 		}
 	}
+	
+	@Test
+	public void nonAdminTxnimportNeverReplacesARowCreatedAfterTheGate() throws Exception {
+		//The runner's "new id only" check passed, then another caller created the row: the add must not replace it
+		Command cmd = CommandRunner.getRunner().getCommand("txnimport id:latecomer data:"+blob("whatever"));
+		cmd.setMiniDAPPID("0xFF");
+		CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:latecomer");
+		CommandRunner.getRunner().runMultiCommand("0x00", "txnstate id:latecomer port:1 value:7");
+		try {
+			cmd.runCommand();
+			org.junit.Assert.fail("the non-admin txnimport replaced the row");
+		}catch(CommandException expected) {
+			assertTrue(expected.getMessage().contains("already exists"));
+		}
+		assertTrue(MinimaDB.getDB().getCustomTxnDB().getTransactionRow("latecomer").getTransaction().getStateValue(1) != null);
+	}
 }
