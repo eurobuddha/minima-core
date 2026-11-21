@@ -47,4 +47,18 @@ public class CMDHandlerBodyTest {
 		InputStream in = new ByteArrayInputStream("status".getBytes(StandardCharsets.UTF_8));
 		assertEquals("status", CMDHandler.readBody(in, 10));
 	}
+	
+	@Test
+	public void namedHostsAreServedOnlyWhenListed() {
+		org.minima.system.params.GeneralParams.RPC_ALLOWED_HOSTS = "";
+		assertEquals(false, CMDHandler.hostAllowed("eurobuddha.com:9005"));
+		org.minima.system.params.GeneralParams.RPC_ALLOWED_HOSTS = "node.example, eurobuddha.com";
+		try {
+			assertEquals(true, CMDHandler.hostAllowed("EUROBUDDHA.COM:9005"));
+			assertEquals(true, CMDHandler.hostAllowed("node.example"));
+			assertEquals(false, CMDHandler.hostAllowed("evil.example:9005"));
+		}finally {
+			org.minima.system.params.GeneralParams.RPC_ALLOWED_HOSTS = "";
+		}
+	}
 }
