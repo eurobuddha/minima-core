@@ -851,6 +851,14 @@ public class Wallet extends SqlDB {
 			//Set this..
 			tk.setUses(uses);
 			
+			//Refuse to sign past the key's capacity (as the Android line has since 477db548347392692c443bbfa9a4db193c195aab):
+			//TreeKey.sign would restart at leaf 0 and REUSE a one-time Winternitz leaf, which leaks that leaf's key
+			if(tk.getUses() >= tk.getMaxUses()) {
+				throw new IllegalArgumentException("Key "+zPublicKey+" exhausted : uses "
+						+tk.getUses()+" >= capacity "+tk.getMaxUses()
+						+" - refusing to sign (would reuse a one-time leaf key)");
+			}
+			
 			//Now we have the Key..
 			Signature signature = tk.sign(zData);
 			
