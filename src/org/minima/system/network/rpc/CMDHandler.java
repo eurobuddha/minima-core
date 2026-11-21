@@ -33,6 +33,11 @@ public class CMDHandler implements Runnable {
 	Socket mSocket;
 	
 	/**
+	 * The largest POST body accepted (bytes)
+	 */
+	static final int MAX_CONTENT_LENGTH = 32 * 1024 * 1024;
+	
+	/**
 	 * Main Constructor
 	 * @param zSocket
 	 */
@@ -130,6 +135,18 @@ public class CMDHandler implements Runnable {
 			
 			//Is it a POST request
 			if(method.equals("POST")) {
+				
+				//SECURITY (review 2026-11-21): Content-Length is the client's number - new byte[n] for a huge
+				//one is an OutOfMemoryError, which catch(Exception) does not catch
+				if(contentlength > MAX_CONTENT_LENGTH) {
+					out.println("HTTP/1.1 413 Payload Too Large");
+					out.println("Server: HTTP RPC Server from Minima 1.3");
+					out.println();
+					out.println("{\"status\":false,\"error\":\"Request body too large (max "+MAX_CONTENT_LENGTH+" bytes)\"}");
+					out.flush();
+					return;
+				}
+				
 				//Get the POST data..
 				fileRequested = readBody(in, contentlength);
 			}
