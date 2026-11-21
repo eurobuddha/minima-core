@@ -1,0 +1,159 @@
+package org.minima.system.network.rpc;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.minima.database.MinimaDB;
+import org.minima.database.userprefs.txndb.TxnDB;
+import org.minima.system.Main;
+import org.minima.system.commands.CommandRunner;
+import org.minima.system.network.NetworkManager;
+import org.minima.system.params.GeneralParams;
+import org.minima.utils.json.JSONArray;
+import org.minima.utils.json.JSONObject;
+
+/**
+ * RPC hardening. No node is started: Main and NetworkManager are allocated without their
+ * constructors, so the rpc command can stop / start only the RPC server, on a free loopback port.
+ * Uses only APIs the unfixed code also has, so these tests prove the defects there.
+ */
+public class RpcHardeningTest {
+
+	static sun.misc.Unsafe unsafe() throws Exception {
+		Field f = sun.misc.Unsafe.class.getDeclaredField("theUnsafe");
+		f.setAccessible(true);
+		return (sun.misc.Unsafe) f.get(null);
+	}
+
+	static int freePort() throws Exception {
+		try(ServerSocket ss = new ServerSocket(0)) {
+			return ss.getLocalPort();
+		}
+	}
+
+	NetworkManager network;
+	Field mainInstance;
+
+	@Before
+	public void setup() throws Exception {
+		MinimaDB.createDB();
+		Field txndb = MinimaDB.class.getDeclaredField("mTxnDB");
+		txndb.setAccessible(true);
+		txndb.set(MinimaDB.getDB(), new TxnDB());
+
+		Main main = (Main) unsafe().allocateInstance(Main.class);
+		network   = (NetworkManager) unsafe().allocateInstance(NetworkManager.class);
+		Field net = Main.class.getDeclaredField("mNetwork");
+		net.setAccessible(true);
+		net.set(main, network);
+		mainInstance = Main.class.getDeclaredField("mMainInstance");
+		mainInstance.setAccessible(true);
+		mainInstance.set(null, main);
+
+		GeneralParams.RPC_PORT 			= freePort();
+		GeneralParams.RPC_ENABLED 		= false;
+		GeneralParams.RPC_AUTHENTICATE 	= false;
+		GeneralParams.RPC_PASSWORD 		= "none";
+	}
+
+	@After
+	public void teardown() throws Exception {
+		network.stopRPC();
+		mainInstance.set(null, null);
+		GeneralParams.RPC_ENABLED 		= false;
+		GeneralParams.RPC_AUTHENTICATE 	= false;
+		GeneralParams.RPC_PASSWORD 		= "none";
+	}
+
+	static JSONObject run(String zCommand) {
+		JSONArray res = CommandRunner.getRunner().runMultiCommand(zCommand);
+		return (JSONObject) res.get(0);
+	}
+
+
+	
+	
+	/** One POST through a real CMDHandler on a loopback socket pair; returns the whole HTTP reply */
+	static String post(String zUser, String zPassword, String zCommand) throws Exception {
+		try(ServerSocket ss = new ServerSocket(0, 5, InetAddress.getLoopbackAddress());
+			Socket client = new Socket(InetAddress.getLoopbackAddress(), ss.getLocalPort())) {
+			Thread handler = new Thread(new CMDHandler(ss.accept()));
+			handler.start();
+			
+			byte[] body = zCommand.getBytes(StandardCharsets.UTF_8);
+			String auth = Base64.getEncoder().encodeToString((zUser+":"+zPassword).getBytes(StandardCharsets.UTF_8));
+			OutputStream out = client.getOutputStream();
+			out.write(("POST / HTTP/1.1\r\nAuthorization: Basic "+auth+"\r\nContent-Length: "+body.length+"\r\n\r\n")
+					.getBytes(StandardCharsets.US_ASCII));
+			out.write(body);
+			out.flush();
+			
+			InputStream in = client.getInputStream();
+			ByteArrayOutputStream reply = new ByteArrayOutputStream();
+			byte[] buf = new byte[4096];
+			int len;
+			while((len = in.read(buf)) != -1) {
+				reply.write(buf, 0, len);
+			}
+			handler.join(10000);
+			return new String(reply.toByteArray(), StandardCharsets.UTF_8);
+		}
+	}
+	
+	
+	/** Raw request through a real CMDHandler: the given head, the body, then the client stops sending */
+	static String raw(String zHead, String zBody) throws Exception {
+		try(ServerSocket ss = new ServerSocket(0, 5, InetAddress.getLoopbackAddress());
+			Socket client = new Socket(InetAddress.getLoopbackAddress(), ss.getLocalPort())) {
+			Thread handler = new Thread(new CMDHandler(ss.accept()));
+			handler.start();
+			OutputStream out = client.getOutputStream();
+			out.write((zHead+"\r\n\r\n"+zBody).getBytes(StandardCharsets.UTF_8));
+			out.flush();
+			client.shutdownOutput();
+			client.setSoTimeout(20000);
+			InputStream in = client.getInputStream();
+			ByteArrayOutputStream reply = new ByteArrayOutputStream();
+			byte[] buf = new byte[4096];
+			int len;
+			try {
+				while((len = in.read(buf)) != -1) {
+					reply.write(buf, 0, len);
+				}
+			}catch(java.net.SocketException closed) {
+				//the handler died and the socket was reset
+			}
+			handler.join(20000);
+			return new String(reply.toByteArray(), StandardCharsets.UTF_8);
+		}
+	}
+	
+	@Test
+	public void hugeContentLengthIsRefusedNotAllocated() throws Exception {
+		//2 GB: the old handler did new char[2000000000] - an OutOfMemoryError nothing caught
+		String reply = raw("POST / HTTP/1.1\r\nContent-Length: 2000000000", "");
+		assertTrue("no refusal for a 2 GB Content-Length: '"+reply+"'", reply.startsWith("HTTP/1.1 413"));
+	}
+	
+	@Test
+	public void negativeAndShortContentLengthAsBefore() throws Exception {
+		//negative: the handler fails and closes without a reply, as it always did
+		assertEquals("", raw("POST / HTTP/1.1\r\nContent-Length: -5", ""));
+		//longer than the body that arrives: what arrived runs
+		assertTrue(raw("POST / HTTP/1.1\r\nContent-Length: 50", "random").contains("\"command\":\"random\""));
+	}
+}

@@ -1,7 +1,9 @@
 package org.minima.system.network.rpc;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -31,6 +33,11 @@ public class CMDHandler implements Runnable {
 	Socket mSocket;
 	
 	/**
+	 * The largest POST body accepted (bytes)
+	 */
+	static final int MAX_CONTENT_LENGTH = 32 * 1024 * 1024;
+	
+	/**
 	 * Main Constructor
 	 * @param zSocket
 	 */
@@ -42,20 +49,20 @@ public class CMDHandler implements Runnable {
 	@Override
 	public void run() {
 		// we manage our particular client connection
-		BufferedReader in 	 		 	= null; 
+		InputStream in 	 		 		= null; 
 		PrintWriter out 	 			= null; 
 		String firstline 				= "no first line..";
 		boolean quit 					= false;
 		
 		try {
 			// Input Stream
-			in = new BufferedReader(new InputStreamReader(mSocket.getInputStream(), MiniString.MINIMA_CHARSET));
+			in = new BufferedInputStream(mSocket.getInputStream());
 			
 			// Output Stream
 			out = new PrintWriter(new OutputStreamWriter(mSocket.getOutputStream(), MiniString.MINIMA_CHARSET));
 			
 			// get first line of the request from the client
-			String input = in.readLine();
+			String input = readLine(in);
 			if (input == null){
 				input = "";
 			}
@@ -110,7 +117,7 @@ public class CMDHandler implements Runnable {
 					int start     = input.indexOf(":");
 					contentlength = Integer.parseInt(input.substring(start+1).trim());
 				}	
-				input = in.readLine();
+				input = readLine(in);
 			}
 			
 			//Are we Authorised
@@ -128,24 +135,20 @@ public class CMDHandler implements Runnable {
 			
 			//Is it a POST request
 			if(method.equals("POST")) {
+				
+				//SECURITY: Content-Length is the client's number - new byte[n] for a huge
+				//one is an OutOfMemoryError, which catch(Exception) does not catch
+				if(contentlength > MAX_CONTENT_LENGTH) {
+					out.println("HTTP/1.1 413 Payload Too Large");
+					out.println("Server: HTTP RPC Server from Minima 1.3");
+					out.println();
+					out.println("{\"status\":false,\"error\":\"Request body too large (max "+MAX_CONTENT_LENGTH+" bytes)\"}");
+					out.flush();
+					return;
+				}
+				
 				//Get the POST data..
-				char[] cbuf = new char[contentlength];
-				
-				//Read it ALL in
-				int len,total=0;
-				while( (len = in.read(cbuf,total,contentlength-total)) != -1) {
-					total += len;
-					if(total == contentlength) {
-						break;
-					}
-				}
-				
-				if(total != contentlength) {
-					MinimaLogger.log("CMDHANDLER : Read wrong amount "+len+"/"+contentlength);	
-				}
-				
-				//Set this..
-				fileRequested = new String(cbuf);
+				fileRequested = readBody(in, contentlength);
 			}
 			
 			JSONObject statfalse = new JSONObject();
@@ -234,5 +237,44 @@ public class CMDHandler implements Runnable {
 		if(quit) {
 			Runtime.getRuntime().halt(0);
 		}
+	}
+	
+	/**
+	 * One request line - up to LF, a trailing CR dropped - or null at the end of the stream.
+	 * Read as BYTES so the body that follows is still unread.
+	 */
+	static String readLine(InputStream zIn) throws IOException {
+		ByteArrayOutputStream line = new ByteArrayOutputStream();
+		int b;
+		while((b = zIn.read()) != -1 && b != '\n') {
+			line.write(b);
+		}
+		if(b == -1 && line.size() == 0) {
+			return null;
+		}
+		String str = new String(line.toByteArray(), MiniString.MINIMA_CHARSET);
+		return str.endsWith("\r") ? str.substring(0, str.length()-1) : str;
+	}
+	
+	/**
+	 * The POST body. Content-Length counts BYTES: reading that many CHARACTERS waited forever for a body with
+	 * any non-ASCII text in it (fewer characters than bytes ever arrive). Read the bytes, then decode UTF-8.
+	 */
+	static String readBody(InputStream zIn, int zContentLength) throws IOException {
+		byte[] body = new byte[zContentLength];
+		int total = 0;
+		while(total < zContentLength) {
+			int len = zIn.read(body, total, zContentLength-total);
+			if(len == -1) {
+				break;
+			}
+			total += len;
+		}
+		
+		if(total != zContentLength) {
+			MinimaLogger.log("CMDHANDLER : Read wrong amount "+total+"/"+zContentLength);	
+		}
+		
+		return new String(body, 0, total, MiniString.MINIMA_CHARSET);
 	}
 }
