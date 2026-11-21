@@ -217,6 +217,9 @@ public class ParamConfigurer {
         rpcallowhost("rpcallowhost", "Host names (comma separated) the RPC answers to besides localhost and IP addresses - e.g. the name a proxy forwards", (args, configurer) -> {
             GeneralParams.RPC_ALLOWED_HOSTS = args.trim();
         }),
+        rpcalloworigin("rpcalloworigin", "Browser origins (comma separated, exact) that may drive an RPC that has NO password - e.g. a page served on http://127.0.0.1:8080", (args, configurer) -> {
+            GeneralParams.RPC_ALLOWED_ORIGINS = args.trim();
+        }),
         rpcpassword("rpcpassword", "Set Basic Auth password for RPC calls ( Use with SSL / stununel )", (args, configurer) -> {
         	GeneralParams.RPC_PASSWORD 		= args;
         	GeneralParams.RPC_AUTHENTICATE 	= true;
