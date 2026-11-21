@@ -244,29 +244,9 @@ public class multisigread extends Command {
 			String txnname_default 	= "multispend_"+System.currentTimeMillis()+".txn";
 			String txnname 			= getParam("file",txnname_default);
 			
-			//Create a txn.. SECURITY (command injection 2026-11-21): from separated parameters - the coin's state
-			//is on-chain data anyone can choose when paying this address, it is copied as a value, never run
-			ArrayList<Object[]> txnsender = new ArrayList<>();
-			txnsender.add(new Object[] {"txncreate", "id",randomid});
-			txnsender.add(new Object[] {"txninput", "id",randomid, "coinid",coinid});
-			txnsender.add(new Object[] {"txnoutput", "id",randomid, "storestate","false", "amount",amount, "address",address, "tokenid",tokenid});
-
-			//Is there change
-			if(change.isMore(MiniNumber.ZERO)) {
-				
-				//Copy the complete coin state
-				ArrayList<StateVariable> allstate = cc.getState();
-				for(StateVariable statevar : allstate) {
-					txnsender.add(new Object[] {"txnstate", "id",randomid, "port",statevar.getPort(), "value",statevar.getData().toString()});
-				}
-	
-				//And the change
-				txnsender.add(new Object[] {"txnoutput", "id",randomid, "storestate","true", "amount",change, "address",coinaddress, "tokenid",tokenid});
-			}
-						
-			//And finish off..
-			txnsender.add(new Object[] {"txnexport", "id",randomid, "file",txnname});
-			txnsender.add(new Object[] {"txndelete", "id",randomid});
+			//Create a txn..
+			ArrayList<Object[]> txnsender = multisig.spendCommands(randomid, coinid, amount, address, tokenid,
+					change, cc.getState(), coinaddress, txnname);
 			
 			//Run it..
 			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, txnsender.toArray(new Object[0][]));

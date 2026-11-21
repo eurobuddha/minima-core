@@ -357,29 +357,9 @@ public class multisig extends Command {
 			String txnname_default 	= "multispend_"+System.currentTimeMillis()+".txn";
 			String txnname 			= getParam("file",txnname_default);
 			
-			//Create a txn.. SECURITY (command injection 2026-11-21): from separated parameters - the coin's state
-			//is on-chain data anyone can choose when paying this address, it is copied as a value, never run
-			ArrayList<Object[]> txnsender = new ArrayList<>();
-			txnsender.add(new Object[] {"txncreate", "id",randomid});
-			txnsender.add(new Object[] {"txninput", "id",randomid, "coinid",coinid});
-			txnsender.add(new Object[] {"txnoutput", "id",randomid, "storestate","false", "amount",amount, "address",address, "tokenid",tokenid});
-
-			//Is there change
-			if(change.isMore(MiniNumber.ZERO)) {
-				
-				//Copy the complete coin state
-				ArrayList<StateVariable> allstate = cc.getState();
-				for(StateVariable statevar : allstate) {
-					txnsender.add(new Object[] {"txnstate", "id",randomid, "port",statevar.getPort(), "value",statevar.getData().toString()});
-				}
-	
-				//And the change
-				txnsender.add(new Object[] {"txnoutput", "id",randomid, "storestate","true", "amount",change, "address",coinaddress, "tokenid",tokenid});
-			}
-						
-			//And finish off..
-			txnsender.add(new Object[] {"txnexport", "id",randomid, "file",txnname});
-			txnsender.add(new Object[] {"txndelete", "id",randomid});
+			//Create a txn..
+			ArrayList<Object[]> txnsender = multisig.spendCommands(randomid, coinid, amount, address, tokenid,
+					change, cc.getState(), coinaddress, txnname);
 			
 			//Run it..
 			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, txnsender.toArray(new Object[0][]));
@@ -478,6 +458,36 @@ public class multisig extends Command {
 		}
 		
 		return ret;
+	}
+	
+	/**
+	 * The commands of a multisig spend - shared by multisig and multisigread. SECURITY (command injection
+	 * 2026-11-21): separated parameters only. The coin's state is on-chain data anyone paying the address
+	 * chooses: it is copied into the change output as plain values, never run.
+	 */
+	public static ArrayList<Object[]> spendCommands(String zTxnID, String zCoinID, MiniNumber zAmount, String zAddress,
+			String zTokenID, MiniNumber zChange, ArrayList<StateVariable> zCoinState, String zCoinAddress, String zFile) {
+		ArrayList<Object[]> txnsender = new ArrayList<>();
+		txnsender.add(new Object[] {"txncreate", "id",zTxnID});
+		txnsender.add(new Object[] {"txninput", "id",zTxnID, "coinid",zCoinID});
+		txnsender.add(new Object[] {"txnoutput", "id",zTxnID, "storestate","false", "amount",zAmount, "address",zAddress, "tokenid",zTokenID});
+		
+		//Is there change
+		if(zChange.isMore(MiniNumber.ZERO)) {
+			
+			//Copy the complete coin state
+			for(StateVariable statevar : zCoinState) {
+				txnsender.add(new Object[] {"txnstate", "id",zTxnID, "port",statevar.getPort(), "value",statevar.getData().toString()});
+			}
+			
+			//And the change
+			txnsender.add(new Object[] {"txnoutput", "id",zTxnID, "storestate","true", "amount",zChange, "address",zCoinAddress, "tokenid",zTokenID});
+		}
+		
+		//And finish off..
+		txnsender.add(new Object[] {"txnexport", "id",zTxnID, "file",zFile});
+		txnsender.add(new Object[] {"txndelete", "id",zTxnID});
+		return txnsender;
 	}
 	
 	/**
