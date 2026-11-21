@@ -103,6 +103,15 @@ public class rpc extends Command {
 			//Now start or stop..
 			if(enable) {
 				Main.getInstance().getNetworkManager().startRPC();
+				
+				//Wait for it to listen - or fail - so the reply below says what really happened
+				for(int i=0;i<30;i++) {
+					if(Main.getInstance().getNetworkManager().isRPCListening()
+							|| Main.getInstance().getNetworkManager().getRPCStartError() != null) {
+						break;
+					}
+					Thread.sleep(100);
+				}
 			}else {
 				Main.getInstance().getNetworkManager().stopRPC();
 			}
@@ -163,6 +172,13 @@ public class rpc extends Command {
 		
 		JSONObject rpcdets = new JSONObject();
 		rpcdets.put("enabled", GeneralParams.RPC_ENABLED);
+		//enabled is the setting; listening is the truth (a bad -rpcbind or a taken port leaves it down)
+		rpcdets.put("listening", Main.getInstance().getNetworkManager().isRPCListening());
+		rpcdets.put("bind", GeneralParams.RPC_BIND_HOST.equals("") ? "*" : GeneralParams.RPC_BIND_HOST);
+		String rpcerror = Main.getInstance().getNetworkManager().getRPCStartError();
+		if(rpcerror != null) {
+			rpcdets.put("error", rpcerror);
+		}
 		rpcdets.put("port", GeneralParams.RPC_PORT);
 		rpcdets.put("authenticate", GeneralParams.RPC_AUTHENTICATE);
 		rpcdets.put("username", "minima");
