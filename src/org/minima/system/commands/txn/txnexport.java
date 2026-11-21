@@ -64,10 +64,8 @@ public class txnexport extends Command {
 		
 		if(existsParam("file")) {
 			//The File.. 
-			String file = getParam("file");
-			
-			//Create the file
-			File output = MiniFile.createBaseFile(file);
+			//Create the file (a non-admin caller - possible where txnexport is not a WRITE command - is confined)
+			File output = getFileParam("file");
 			if(output.exists()) {
 				output.delete();
 			}
