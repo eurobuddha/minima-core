@@ -62,7 +62,8 @@ public class peers extends Command {
 		if("publish".equals(mParamsAction()) && !existsParam("file")) {
 			return "a non-admin caller can only use files in the node's base folder, by a plain name ending in .txn";
 		}
-		return super.getWriteUse();
+		String overwrite = "publish".equals(mParamsAction()) ? overwriteWriteUse(getFileName()) : null;
+		return overwrite != null ? overwrite : super.getWriteUse();
 	}
 	
 	private String mParamsAction() {
@@ -176,7 +177,7 @@ public class peers extends Command {
 		}else if(action.equals("publish")) {
 			
 			//The file (a non-admin caller: confined - see Command.getFileParam)
-			File ff = getFileParam("file","peerslist.txt");
+			File ff = getNewFileParam("file","peerslist.txt");
 			
 			String peerslist = getPeersList(20);
 		
