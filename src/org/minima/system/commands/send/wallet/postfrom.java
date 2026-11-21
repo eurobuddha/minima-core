@@ -8,6 +8,7 @@ import org.minima.database.userprefs.txndb.TxnDB;
 import org.minima.database.userprefs.txndb.TxnRow;
 import org.minima.objects.base.MiniData;
 import org.minima.system.commands.Command;
+import org.minima.system.commands.CommandException;
 import org.minima.system.commands.CommandRunner;
 import org.minima.utils.json.JSONArray;
 import org.minima.utils.json.JSONObject;
@@ -42,8 +43,16 @@ public class postfrom extends Command {
 		
 		String randomid = tx.getID();
 		
-		//Add to the DB
-		db.addCompleteTransaction(tx);
+		//SECURITY: addCompleteTransaction REPLACES a row with the same id - a non-admin caller
+		//may only add a NEW row (as txnimport), never overwrite another app's draft. Checked and added in one step.
+		if(!isAdminCaller()) {
+			if(!db.addNewTransaction(tx)) {
+				throw new CommandException("A transaction with this id already exists : "+tx.getID());
+			}
+		}else {
+			//Add to the DB
+			db.addCompleteTransaction(tx);
+		}
 		try {
 		
 			//Are we mining

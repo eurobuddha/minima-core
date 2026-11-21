@@ -33,6 +33,11 @@ public abstract class Command {
 		return mMiniDAPPID;
 	}
 	
+	/** Is the caller ADMIN (0x00: terminal, RPC minima / write users, an accepted MDS pending command)? */
+	public boolean isAdminCaller() {
+		return mMiniDAPPID.equals("0x00");
+	}
+	
 	public void setCompleteCommand(String zCommand) {
 		mCompleteCommand = zCommand;
 	}
