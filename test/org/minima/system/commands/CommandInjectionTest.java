@@ -111,23 +111,40 @@ public class CommandInjectionTest {
 	}
 
 	@Test
-	public void multisigKeyWithSemicolonRefused() {
+	public void multisigKeyWithSemicolonRefused() throws Exception {
 		String key = key66("00\"};txncreate id:pwnedkey;{\"", "00\\u0022\\u007d\\u003btxncreate id:pwnedkey\\u003b\\u007b\\u0022");
-		JSONObject res = run("multisig action:create amount:1 required:1 publickeys:[\""+key+"\"]");
-
-		assertFalse((boolean) res.get("status"));
-		assertFalse(txnExists("pwnedkey"));
-		assertTrue("not refused as a key: "+res, String.valueOf(res.get("error")).contains("Invalid public key"));
+		Command real = swap("send", new Recorder(CommandRunner.getRunner().getCommandOnly("send")));
+		try {
+			JSONObject res = run("multisig action:create amount:1 required:1 publickeys:[\""+key+"\"]");
+			
+			//The old code ran the send (here a stand-in that succeeds), then the txncreate after the ';'
+			assertFalse("the ';' in a public key ran 'txncreate id:pwnedkey'", txnExists("pwnedkey"));
+			assertFalse((boolean) res.get("status"));
+			assertTrue("not refused as a key: "+res, String.valueOf(res.get("error")).contains("Invalid public key"));
+			assertNull("the send ran", Recorder.LAST.get("send"));
+		}finally {
+			swap("send", real);
+		}
 	}
 
 	@Test
-	public void multisigKeyWithQuoteRefused() {
+	public void multisigKeyWithQuoteRefused() throws Exception {
 		//"4":"0x00","2":"0","9":"000.." - a repeated "2" makes the coin spendable with 0 signatures
 		String key = key66("00\",\"2\":\"0\",\"9\":\"", "00\\u0022,\\u00222\\u0022:\\u00220\\u0022,\\u00229\\u0022:\\u0022");
-		JSONObject res = run("multisig action:create amount:1 required:1 publickeys:[\""+key+"\"]");
-
-		assertFalse((boolean) res.get("status"));
-		assertTrue("not refused as a key: "+res, String.valueOf(res.get("error")).contains("Invalid public key"));
+		Command real = swap("send", new Recorder(CommandRunner.getRunner().getCommandOnly("send")));
+		try {
+			JSONObject res = run("multisig action:create amount:1 required:1 publickeys:[\""+key+"\"]");
+			
+			JSONObject sent = Recorder.LAST.get("send");
+			if(sent != null) {
+				JSONObject state = (JSONObject) sent.get("state");
+				assertFalse("a quote in a public key set required to "+state.get("2"), "0".equals(String.valueOf(state.get("2"))));
+			}
+			assertFalse((boolean) res.get("status"));
+			assertTrue("not refused as a key: "+res, String.valueOf(res.get("error")).contains("Invalid public key"));
+		}finally {
+			swap("send", real);
+		}
 	}
 
 	@Test
@@ -199,6 +216,145 @@ public class CommandInjectionTest {
 			assertEquals("the failed multisig chain left its txn row behind", before, txnRows());
 		}finally {
 			file.delete();
+		}
+	}
+	
+	/** A stand-in for a real command: records the parameters it was given and answers status:true */
+	static class Recorder extends Command {
+		static final java.util.Map<String, JSONObject> LAST = new java.util.HashMap<>();
+		final Command mReal;
+		Recorder(Command zReal) {
+			super(zReal.getName(), "");
+			mReal = zReal;
+		}
+		@Override
+		public java.util.ArrayList<String> getValidParams() {
+			return mReal.getValidParams();
+		}
+		@Override
+		public JSONObject runCommand() {
+			LAST.put(getName(), getParams());
+			JSONObject ret = getJSONReply();
+			ret.put("response", new JSONObject());
+			return ret;
+		}
+		@Override
+		public Command getFunction() {
+			return new Recorder(mReal);
+		}
+	}
+	
+	/** archive, with its resync recorded instead of run */
+	static class RecordingArchive extends org.minima.system.commands.backup.archive {
+		@Override
+		public JSONObject runCommand() throws Exception {
+			if("resync".equals(getParams().get("action"))) {
+				Recorder.LAST.put("archive", getParams());
+				return getJSONReply();
+			}
+			return super.runCommand();
+		}
+		@Override
+		public Command getFunction() {
+			return new RecordingArchive();
+		}
+	}
+	
+	/** Put zWith in the command table in place of the command of that name; returns the one replaced */
+	static Command swap(String zName, Command zWith) {
+		Recorder.LAST.clear();
+		for(int i=0;i<CommandRunner.ALL_COMMANDS.length;i++) {
+			if(CommandRunner.ALL_COMMANDS[i].getName().equals(zName)) {
+				Command old = CommandRunner.ALL_COMMANDS[i];
+				CommandRunner.ALL_COMMANDS[i] = zWith;
+				return old;
+			}
+		}
+		throw new IllegalArgumentException(zName);
+	}
+	
+	static final String KEY = "0x2868AE4C92C22C5CDAF223574203F2906E8AA92A17050CD99D851EC5DBB61B66";
+	
+	@Test
+	public void multisigPasswordCannotAddParameters() throws Exception {
+		Command real = swap("send", new Recorder(CommandRunner.getRunner().getCommandOnly("send")));
+		try {
+			run("multisig action:create amount:1 required:1 publickeys:[\""+KEY+"\"] password:\"pw burn:500\"");
+			JSONObject sent = Recorder.LAST.get("send");
+			assertFalse("the password added burn:500 to the send", sent.containsKey("burn"));
+			assertEquals("pw burn:500", sent.get("password"));
+		}finally {
+			swap("send", real);
+		}
+	}
+	
+	@Test
+	public void multisigCreateStateAsBefore() throws Exception {
+		Command real = swap("send", new Recorder(CommandRunner.getRunner().getCommandOnly("send")));
+		try {
+			run("multisig action:create id:ordinary amount:7 required:1 publickeys:[\""+KEY+"\"]");
+			JSONObject sent = Recorder.LAST.get("send");
+			String id = org.minima.utils.Crypto.getInstance().hashObject(new org.minima.objects.base.MiniString("ordinary")).to0xString();
+			//the JSON text the old code built and re-parsed
+			JSONObject old = (JSONObject) new org.minima.utils.json.parser.JSONParser().parse(
+					"{\"0\":\""+id+"\",\"1\":\"0x21\",\"2\":\"1\",\"3\":\"1\",\"4\":\""+KEY+"\"}");
+			assertEquals(old, sent.get("state"));
+			assertEquals("7", sent.get("amount"));
+			assertEquals("0x00", sent.get("tokenid"));
+		}finally {
+			swap("send", real);
+		}
+	}
+	
+	@Test
+	public void archiveResyncCannotBeGivenAnotherPhrase() throws Exception {
+		//An empty RAW archive file: no cascade, 0 blocks
+		java.io.File dat = java.io.File.createTempFile("archive-empty", ".dat");
+		try(java.io.DataOutputStream out = new java.io.DataOutputStream(
+				new java.util.zip.GZIPOutputStream(new java.io.FileOutputStream(dat)))) {
+			org.minima.objects.base.MiniByte.FALSE.writeDataStream(out);
+			org.minima.objects.base.MiniNumber.ZERO.writeDataStream(out);
+		}
+		Command real = swap("archive", new RecordingArchive());
+		try {
+			run("archive action:import file:"+dat.getAbsolutePath()+" phrase:\"real words\" keys:\"5 phrase:evil anyphrase:true\"");
+			JSONObject resync = Recorder.LAST.get("archive");
+			assertEquals("the resync phrase was replaced", "real words", resync.get("phrase"));
+			assertFalse("anyphrase was added", resync.containsKey("anyphrase"));
+		}finally {
+			swap("archive", real);
+			dat.delete();
+		}
+	}
+	
+	@Test
+	public void autoBackupLoginStaysSeparate() throws Exception {
+		Field unsafeField = sun.misc.Unsafe.class.getDeclaredField("theUnsafe");
+		unsafeField.setAccessible(true);
+		Main main = (Main) ((sun.misc.Unsafe) unsafeField.get(null)).allocateInstance(Main.class);
+		org.minima.database.userprefs.UserDB udb = MinimaDB.getDB().getUserDB();
+		udb.setAutoBackupMySQL(true);
+		udb.setAutoBackupMySQLCoins(false);
+		udb.setAutoMySQLHost("db.example");
+		udb.setAutoMySQLDB("minima");
+		udb.setAutoMySQLUser("u host:evil.example");
+		udb.setAutoMySQLPassword("pw");
+		Command real = swap("mysql", new Recorder(CommandRunner.getRunner().getCommandOnly("mysql")));
+		try {
+			java.lang.reflect.Method pm = Main.class.getDeclaredMethod("processMessage", org.minima.utils.messages.Message.class);
+			pm.setAccessible(true);
+			try {
+				pm.invoke(main, new org.minima.utils.messages.Message(Main.MAIN_AUTOBACKUP_MYSQL));
+			}catch(java.lang.reflect.InvocationTargetException noTimer) {
+				//re-posting the timer needs a running Main - the backup command already ran
+			}
+			JSONObject backup = Recorder.LAST.get("mysql");
+			assertEquals("the stored user replaced the host", "db.example", backup.get("host"));
+			assertEquals("u host:evil.example", backup.get("user"));
+			assertEquals("update", backup.get("action"));
+		}finally {
+			swap("mysql", real);
+			udb.setAutoBackupMySQL(false);
 		}
 	}
 }
