@@ -62,6 +62,18 @@ public class txnpost extends Command {
 	}
 	
 	@Override
+	public String getWriteUse() {
+		try {
+			if(getNumberParam("burn", MiniNumber.ZERO).isMore(MiniNumber.ZERO)) {
+				return "burn: needs ADMIN - it is paid from the node's own coins";
+			}
+		}catch(Exception exc) {
+			//an invalid burn fails in the command itself
+		}
+		return null;
+	}
+	
+	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 
