@@ -260,6 +260,21 @@ public abstract class Command {
 		return zDefault;
 	}
 	
+	/**
+	 * A key-use count: the index of the NEXT one-time (Winternitz) leaf a key signs with, so valid values are the
+	 * whole numbers 0 .. zMaxUses-1. SECURITY (2026-11-21): compared as a MiniNumber BEFORE any int conversion -
+	 * getAsInt keeps the low 32 bits (4294967299 became 3) and TreeKey.sign restarts at leaf 0 at or past the
+	 * capacity, both of which re-sign with a used leaf and leak the key. Anything else is refused.
+	 */
+	public int getKeyUsesParam(String zParamName, MiniNumber zDefault, long zMaxUses) throws CommandException {
+		MiniNumber uses = zDefault == null ? getNumberParam(zParamName) : getNumberParam(zParamName, zDefault);
+		if(!uses.floor().isEqual(uses) || uses.isLess(MiniNumber.ZERO) || uses.isMoreEqual(new MiniNumber(zMaxUses))) {
+			throw new CommandException(zParamName+" must be a whole number from 0 to "+(zMaxUses-1)
+					+" (the next unused leaf of the key) : "+uses);
+		}
+		return uses.getAsInt();
+	}
+	
 	public MiniNumber getNumberParam(String zParamName) throws CommandException {
 		String num = getParam(zParamName);
 		return new MiniNumber(num);

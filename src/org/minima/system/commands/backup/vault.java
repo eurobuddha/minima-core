@@ -228,7 +228,7 @@ public class vault extends Command {
 			String phrase = getParam("phrase");
 			
 			//Set the key uses to this..
-			int keyuses = getNumberParam("keyuses", new MiniNumber(100)).getAsInt();
+			int keyuses = getKeyUsesParam("keyuses", new MiniNumber(100), (long) Integer.MAX_VALUE + 1);	//whole, 0.., never wrapped
 			
 			//Clean it up..
 			String cleanphrase = BIP39.cleanSeedPhrase(phrase);
