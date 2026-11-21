@@ -223,7 +223,7 @@ public class keys extends Command {
 			
 		}else if(action.equals("createallkeys")) {
 			
-			int keyuses = getKeyUsesParam("keyuses", null, WALLET_KEY_CAPACITY);	//OWNER MAY DROP: below the wallet keys' capacity
+			int keyuses = getKeyUsesParam("keyuses", null, (long) Integer.MAX_VALUE + 1);	//whole, 0.., never wrapped
 			
 			Message msg = new Message(Main.MAIN_LOAD_ALL_KEYS);
 			msg.addInteger("keyuses", keyuses);

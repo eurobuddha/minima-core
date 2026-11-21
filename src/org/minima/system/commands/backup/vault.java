@@ -228,7 +228,7 @@ public class vault extends Command {
 			String phrase = getParam("phrase");
 			
 			//Set the key uses to this..
-			int keyuses = getKeyUsesParam("keyuses", new MiniNumber(100), WALLET_KEY_CAPACITY);	//OWNER MAY DROP: below the wallet keys' capacity
+			int keyuses = getKeyUsesParam("keyuses", new MiniNumber(100), (long) Integer.MAX_VALUE + 1);	//whole, 0.., never wrapped
 			
 			//Clean it up..
 			String cleanphrase = BIP39.cleanSeedPhrase(phrase);

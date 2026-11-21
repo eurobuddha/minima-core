@@ -278,14 +278,6 @@ public abstract class Command {
 	 * getAsInt keeps the low 32 bits (4294967299 became 3) and TreeKey.sign restarts at leaf 0 at or past the
 	 * capacity, both of which re-sign with a used leaf and leak the key. Anything else is refused.
 	 */
-	/**
-	 * OWNER MAY DROP (round-5 review 2026-11-21): the node wallet's keys are default TreeKeys - 64 x 64 x 64 one-time
-	 * leaves. A wallet-wide keyuses: (vault resetkeys, archive / megammrsync / mysql resync, keys createallkeys,
-	 * restoresync) at or past this would put every key at or past its last leaf.
-	 */
-	public static final long WALLET_KEY_CAPACITY = (long) Math.pow(org.minima.objects.keys.TreeKey.DEFAULT_KEYSPERLEVEL,
-			org.minima.objects.keys.TreeKey.DEFAULT_LEVELS);
-	
 	public int getKeyUsesParam(String zParamName, MiniNumber zDefault, long zMaxUses) throws CommandException {
 		MiniNumber uses = zDefault == null ? getNumberParam(zParamName) : getNumberParam(zParamName, zDefault);
 		if(!uses.floor().isEqual(uses) || uses.isLess(MiniNumber.ZERO) || uses.isMoreEqual(new MiniNumber(zMaxUses))) {

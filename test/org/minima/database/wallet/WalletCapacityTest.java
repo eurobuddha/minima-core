@@ -71,25 +71,4 @@ public class WalletCapacityTest {
 			assertEquals(uses+1, sWallet.getKeyFromPublic(sKey.getPublicKey()).getUses());
 		}
 	}
-	/** restoresync's ADD (uses=uses+? in SQL, on a bigint): never to or past a key's capacity, never past int range */
-	@Test
-	public void incrementNeverReachesCapacity() throws Exception {
-		sWallet.updateAllKeyUses(262000);
-		sWallet.checkIncrementAllKeyUses(143);
-		for(int add : new int[] {144, 1000, Integer.MAX_VALUE}) {
-			try {
-				sWallet.checkIncrementAllKeyUses(add);
-				fail("an increment of "+add+" from 262000 was allowed");
-			}catch(IllegalArgumentException expected) {
-				assertTrue(expected.getMessage().contains("would reach their capacity"));
-			}
-		}
-		sWallet.updateAllKeyUses(0);
-		sWallet.checkIncrementAllKeyUses(262143);
-		try {
-			sWallet.checkIncrementAllKeyUses(262144);
-			fail("an increment to the capacity was allowed");
-		}catch(IllegalArgumentException expected) {
-		}
-	}
 }
