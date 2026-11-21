@@ -147,7 +147,7 @@ public class multisig extends Command {
 			//Is there a root key
 			String root = getParam("root", "0x21");
 			if(!root.equals("0x21")) {
-				if(!root.startsWith("0x") || root.length()!=66) {
+				if(!isPublicKey(root)) {
 					throw  new CommandException("Invalid root key : "+root);
 				}
 			}
@@ -166,7 +166,7 @@ public class multisig extends Command {
 			for(Object obj : pubkeys) {
 				String pubkey = (String)obj;
 				
-				if(!pubkey.startsWith("0x") || pubkey.length()!=66) {
+				if(!isPublicKey(pubkey)) {
 					throw  new CommandException("Invalid public key : "+pubkey);
 				}
 				
@@ -487,6 +487,13 @@ public class multisig extends Command {
 		txnsender.add(new Object[] {"txnexport", "id",zTxnID, "file",zFile});
 		txnsender.add(new Object[] {"txndelete", "id",zTxnID});
 		return txnsender;
+	}
+	
+	/**
+	 * A compressed public key / root key: 0x and 64 hex characters - nothing else may go into the multisig state
+	 */
+	public static boolean isPublicKey(String zKey) {
+		return zKey.matches("0x[0-9a-fA-F]{64}");
 	}
 	
 	private File getRequiredFile() throws CommandException {

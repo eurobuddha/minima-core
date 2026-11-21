@@ -110,7 +110,42 @@ public class CommandInjectionTest {
 		return "0x"+zEncoded+pad;
 	}
 
+	@Test
+	public void multisigKeyWithSemicolonRefused() throws Exception {
+		String key = key66("00\"};txncreate id:pwnedkey;{\"", "00\\u0022\\u007d\\u003btxncreate id:pwnedkey\\u003b\\u007b\\u0022");
+		Command real = swap("send", new Recorder(CommandRunner.getRunner().getCommandOnly("send")));
+		try {
+			JSONObject res = run("multisig action:create amount:1 required:1 publickeys:[\""+key+"\"]");
+			
+			//The old code ran the send (here a stand-in that succeeds), then the txncreate after the ';'
+			assertFalse("the ';' in a public key ran 'txncreate id:pwnedkey'", txnExists("pwnedkey"));
+			assertFalse((boolean) res.get("status"));
+			assertTrue("not refused as a key: "+res, String.valueOf(res.get("error")).contains("Invalid public key"));
+			assertNull("the send ran", Recorder.LAST.get("send"));
+		}finally {
+			swap("send", real);
+		}
+	}
 
+	@Test
+	public void multisigKeyWithQuoteRefused() throws Exception {
+		//"4":"0x00","2":"0","9":"000.." - a repeated "2" makes the coin spendable with 0 signatures
+		String key = key66("00\",\"2\":\"0\",\"9\":\"", "00\\u0022,\\u00222\\u0022:\\u00220\\u0022,\\u00229\\u0022:\\u0022");
+		Command real = swap("send", new Recorder(CommandRunner.getRunner().getCommandOnly("send")));
+		try {
+			JSONObject res = run("multisig action:create amount:1 required:1 publickeys:[\""+key+"\"]");
+			
+			JSONObject sent = Recorder.LAST.get("send");
+			if(sent != null) {
+				JSONObject state = (JSONObject) sent.get("state");
+				assertFalse("a quote in a public key set required to "+state.get("2"), "0".equals(String.valueOf(state.get("2"))));
+			}
+			assertFalse((boolean) res.get("status"));
+			assertTrue("not refused as a key: "+res, String.valueOf(res.get("error")).contains("Invalid public key"));
+		}finally {
+			swap("send", real);
+		}
+	}
 
 	@Test
 	public void resetQuotedValueCannotReplaceThePhrase() throws Exception {
