@@ -334,6 +334,64 @@ public class WriteGateTest {
 		}
 	}
 	
+	/** Round-5 review: the non-admin claims of txnexport, sphincs sign and sendnosign */
+	@Test
+	public void nonAdminTxnexportSphincsAndSendnosignClaim() throws Exception {
+		String oldbase = org.minima.system.params.GeneralParams.BASE_FILE_FOLDER;
+		java.io.File base = tempBase("gate-claims");
+		try {
+			java.io.File handle = new java.io.File(base, "ms_pay_0123.txn");
+			java.nio.file.Files.write(handle.toPath(), "ADMIN".getBytes());
+			
+			//txnexport run as a non-admin caller (a WRITE command on this line - the command's own check)
+			CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:claimtxn");
+			for(String name : new String[] {"ms_pay_0123.txn", "tx_new_0123.txn", "tx_new_0123.txn"}) {
+				Command exp = CommandRunner.getRunner().getCommand("txnexport id:claimtxn file:"+name);
+				exp.setMiniDAPPID("0xFF");
+				java.io.File f = new java.io.File(base, name);
+				boolean existed = f.exists();
+				try {
+					exp.runCommand();
+					assertFalse("txnexport overwrote "+name, existed);
+					assertTrue(f.length() > 0);
+				}catch(CommandException refused) {
+					assertTrue(name+": "+refused.getMessage(), existed && refused.getMessage().contains("only creates new files"));
+				}
+			}
+			assertEquals("ADMIN", new String(java.nio.file.Files.readAllBytes(handle.toPath())));
+			
+			//sphincs sign (open): an existing name needs WRITE rights; its file param is claimed (SPHINCS signing
+			//itself does not fit the test JVM's heap, so the claim is checked on the command's own param)
+			JSONObject res = run("0xFF", "sphincs action:sign privatekey:0x01 data:0x01 file:ms_pay_0123.txn");
+			assertTrue(res.toString(), String.valueOf(res.get("error")).contains("only creates new files"));
+			oneClaimPerName("sphincs action:sign privatekey:0x01 data:0x01 file:sig_new_0123.txn");
+			assertEquals("ADMIN", new String(java.nio.file.Files.readAllBytes(handle.toPath())));
+			
+			//sendnosign: an existing name needs WRITE rights; its file param is claimed (one caller wins a name)
+			res = run("0xFF", "sendnosign address:0x01 amount:1 file:ms_pay_0123.txn");
+			assertTrue(res.toString(), String.valueOf(res.get("error")).contains("only creates new files"));
+			oneClaimPerName("sendnosign address:0x01 amount:1 file:sn_new_0123.txn");
+			assertEquals("ADMIN", new String(java.nio.file.Files.readAllBytes(handle.toPath())));
+		}finally {
+			dropBase(base, oldbase);
+		}
+	}
+	
+	/** Two non-admin calls of zCommand: the first claims its file:, the second is refused it */
+	static void oneClaimPerName(String zCommand) throws Exception {
+		Command first = CommandRunner.getRunner().getCommand(zCommand);
+		first.setMiniDAPPID("0xFF");
+		Command second = CommandRunner.getRunner().getCommand(zCommand);
+		second.setMiniDAPPID("0xFF");
+		assertTrue(first.getNewFileParam("file").exists());
+		try {
+			second.getNewFileParam("file");
+			org.junit.Assert.fail("two non-admin callers claimed one name: "+zCommand);
+		}catch(CommandException expected) {
+			assertTrue(expected.getMessage().contains("only creates new files"));
+		}
+	}
+	
 	@Test
 	public void nonAdminTxnimportNeverReplacesARowCreatedAfterTheGate() throws Exception {
 		//The runner's "new id only" check passed, then another caller created the row: the add must not replace it
