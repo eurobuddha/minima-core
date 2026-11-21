@@ -161,12 +161,12 @@ public class peers extends Command {
 			
 		}else if(action.equals("publish")) {
 			
-			String file=getParam("file","peerslist.txt");
+			//The file (a non-admin caller: confined - see Command.getFileParam)
+			File ff = getFileParam("file","peerslist.txt");
 			
 			String peerslist = getPeersList(20);
 		
 			//And now publish to the file..
-			File ff = MiniFile.createBaseFile(file);
 			
 			MiniFile.writeDataToFile(ff, peerslist.getBytes());
 		
