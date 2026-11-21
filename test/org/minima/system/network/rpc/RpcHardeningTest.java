@@ -231,11 +231,25 @@ public class RpcHardeningTest {
 		users.add(reader);
 		MinimaDB.getDB().getUserDB().setRPCUsers(users);
 		
-		String reply = post("reader", "readpw", "quit");
-		assertTrue(reply, reply.contains("You need ADMIN privileges"));
-		Thread.sleep(500);
-		//still alive
-		assertTrue(post("reader", "readpw", "random").contains("\"status\":true"));
+		//Catch the halt instead of dying (JDK 11 still honours a SecurityManager for Runtime.halt)
+		final java.util.concurrent.atomic.AtomicBoolean halted = new java.util.concurrent.atomic.AtomicBoolean();
+		SecurityManager old = System.getSecurityManager();
+		System.setSecurityManager(new SecurityManager() {
+			@Override public void checkPermission(java.security.Permission p) { }
+			@Override public void checkPermission(java.security.Permission p, Object c) { }
+			@Override public void checkExit(int status) {
+				halted.set(true);
+				throw new SecurityException("halt blocked by the test");
+			}
+		});
+		try {
+			String reply = post("reader", "readpw", "quit");
+			assertTrue(reply, reply.contains("You need ADMIN privileges"));
+			Thread.sleep(500);
+			assertFalse("a read user's refused quit halted the node", halted.get());
+		}finally {
+			System.setSecurityManager(old);
+		}
 	}
 	
 	@Test
