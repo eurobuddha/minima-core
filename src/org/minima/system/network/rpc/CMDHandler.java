@@ -100,7 +100,12 @@ public class CMDHandler implements Runnable {
 			
 			//Get the Headers..
 			int contentlength = 0;
+			String hostheader = null;
 			while(input != null && !input.trim().equals("")) {
+				
+				if(input.toLowerCase().startsWith("host:")) {
+					hostheader = input.substring(5).trim();
+				}
 				//MinimaLogger.log("RPC HEADER : "+input);
 				
 				//Check if Authorised
@@ -118,6 +123,18 @@ public class CMDHandler implements Runnable {
 					contentlength = Integer.parseInt(input.substring(start+1).trim());
 				}	
 				input = readLine(in);
+			}
+			
+			//SECURITY (review 2026-11-21): DNS rebinding guard - a browser page that rebinds its own name to
+			//127.0.0.1 sends ITS name as Host. Only this machine's names / IP literals / named hosts are served.
+			if(!hostAllowed(hostheader)) {
+				out.println("HTTP/1.1 403 Forbidden");
+				out.println("Server: HTTP RPC Server from Minima 1.3");
+				out.println();
+				out.println("{\"status\":false,\"error\":\"Host "+hostheader.replace("\"","")
+						+" is not this node - name it with -rpcallowhost\"}");
+				out.flush();
+				return;
 			}
 			
 			//Are we Authorised
@@ -238,6 +255,35 @@ public class CMDHandler implements Runnable {
 		if(quit) {
 			Runtime.getRuntime().halt(0);
 		}
+	}
+	
+	/**
+	 * May a request with this Host header be served? No Host (a non-browser client), localhost, an IP literal
+	 * (a rebinding page always sends a NAME), the -rpcbind address, or a host named with -rpcallowhost.
+	 */
+	static boolean hostAllowed(String zHost) {
+		if(zHost == null || zHost.isEmpty()) {
+			return true;
+		}
+		String host = zHost.trim().toLowerCase();
+		if(host.startsWith("[")) {
+			//[v6]:port - an IPv6 literal
+			return host.indexOf(']') > 0;
+		}
+		int colon = host.lastIndexOf(':');
+		if(colon != -1) {
+			host = host.substring(0, colon);
+		}
+		if(host.equals("localhost") || host.matches("[0-9]{1,3}(\\.[0-9]{1,3}){3}")
+				|| host.equalsIgnoreCase(GeneralParams.RPC_BIND_HOST)) {
+			return true;
+		}
+		for(String allowed : GeneralParams.RPC_ALLOWED_HOSTS.split(",")) {
+			if(!allowed.trim().isEmpty() && host.equals(allowed.trim().toLowerCase())) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
