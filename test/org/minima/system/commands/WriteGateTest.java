@@ -90,4 +90,31 @@ public class WriteGateTest {
 		assertFalse(String.valueOf(res.get("error")).contains("already exists"));
 		assertFalse(adminRefusal(res));
 	}
+	
+	static boolean confined(JSONObject zRes) {
+		return String.valueOf(zRes.get("error")).contains("only use files in the node's base folder");
+	}
+	
+	@Test
+	public void nonAdminFilesStayInTheBaseFolder() throws Exception {
+		//outside the base folder (no -basefolder in the test: the working folder)
+		assertTrue(confined(run("0xFF", "sendview file:/etc/hosts")));
+		assertTrue(confined(run("0xFF", "sendpost file:/etc/hosts")));
+		assertTrue(confined(run("0xFF", "txnimport id:gateimport file:/etc/hosts")));
+		assertTrue(confined(run("0xFF", "multisigread action:view file:../../../../../../etc/hosts")));
+		assertTrue(confined(run("0xFF", "multisigread action:post file:/etc/hosts")));
+		
+		//inside it, and for ADMIN anywhere, as before
+		java.io.File inbase = new java.io.File("gate-test-"+System.nanoTime()+".txn");
+		try {
+			CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:gatefile");
+			assertTrue((boolean) run("0x00", "txnexport id:gatefile file:"+inbase.getName()).get("status"));
+			JSONObject res = run("0xFF", "txnimport id:gateimport1 file:"+inbase.getName());
+			assertTrue(res.toString(), (boolean) res.get("status"));
+			res = run("0x00", "txnimport id:gateimport2 file:"+inbase.getAbsolutePath());
+			assertTrue(res.toString(), (boolean) res.get("status"));
+		}finally {
+			inbase.delete();
+		}
+	}
 }

@@ -44,10 +44,8 @@ public class sendview extends Command {
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 	
-		String txnfile = getParam("file");
-		
-		//Load the txn
-		byte[] data = MiniFile.readCompleteFile(MiniFile.createBaseFile(txnfile));
+		//Load the txn (a non-admin caller: only from the base folder)
+		byte[] data = MiniFile.readCompleteFile(getFileParam("file"));
 		
 		//Create the MininData
 		MiniData txndata = new MiniData(data);
