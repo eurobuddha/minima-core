@@ -151,39 +151,32 @@ public class txnsign extends Command {
 			//Get the private key
 			MiniData privkey = getDataParam("privatekey");
 			
-			//Are we using BLOCK as key uses..
-			MiniNumber uses = MiniNumber.MINUSONE;
-			if(!GeneralParams.USE_BLOCK_AS_KEYUSES) {
-				
-				//Get USER SPECIFIED uses..
-				uses = getNumberParam("keyuses");
-			}else {
-				
-				//They MAY still specify one.. - the HIGHER value will still be used..
-				if(existsParam("keyuses")) {
-					uses = getNumberParam("keyuses");
-				}
-			}
-			
 			//Make the TreeKey
 			TreeKey treekey = TreeKey.createDefault(privkey);
+			
+			//The USER SPECIFIED uses (with BLOCK as key uses they MAY still specify one - the HIGHER value is used):
+			//the next unused leaf, 0 .. capacity-1, refused otherwise (never truncated or wrapped)
+			int uses = -1;
+			if(!GeneralParams.USE_BLOCK_AS_KEYUSES || existsParam("keyuses")) {
+				uses = getKeyUsesParam("keyuses", null, treekey.getMaxUses());
+			}
 			
 			//Are we using BLOCK as key uses..
 			if(GeneralParams.USE_BLOCK_AS_KEYUSES) {
 				
 				//Get the NEXT viable key uses based on block and previous uses..
-				MiniNumber currentkeyuses = block.getCurrentBlockAsKeyUses(uses.getAsInt());
+				MiniNumber currentkeyuses = block.getCurrentBlockAsKeyUses(uses);
 				
 				//Set this..
 				treekey.setUses(currentkeyuses.getAsInt());
 				
 			}else {
 				//Set uses..
-				treekey.setUses(uses.getAsInt());
+				treekey.setUses(uses);
 			}
 			
-			//Now we have the Key.. sign the Txn ID
-			Signature signature = treekey.sign(txn.getTransactionID());
+			//Now we have the Key.. sign the Txn ID (never restarting at leaf 0)
+			Signature signature = treekey.signNoWrap(txn.getTransactionID());
 			
 			//Add it..
 			wit.addSignature(signature);
