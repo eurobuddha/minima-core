@@ -2,6 +2,7 @@ package org.minima.system.network.rpc;
 
 import java.io.IOException;
 import java.net.BindException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
@@ -12,14 +13,29 @@ public abstract class HTTPServer extends Server implements Runnable{
 
 	ServerSocket mServerSocket;
 	
+	/** "" = every interface; else the one address to bind (MDS uses GeneralParams.MDS_BIND_HOST) */
+	String mBindHost = "";
+	
 	boolean mRunning = true;
+	
+	/** Why the server could not start (bind failed, unknown host..), or null */
+	volatile String mStartError = null;
 	
 	public HTTPServer(int zPort) {
 		this(zPort, true);
 	}
 	
+	public HTTPServer(int zPort, String zBindHost) {
+		this(zPort, zBindHost, true);
+	}
+	
 	public HTTPServer(int zPort, boolean zAutoStart) {
+		this(zPort, "", zAutoStart);
+	}
+	
+	public HTTPServer(int zPort, String zBindHost, boolean zAutoStart) {
 		super(zPort);
+		mBindHost = zBindHost == null ? "" : zBindHost;
 		
 		if(zAutoStart) {
 			start();
@@ -50,9 +66,13 @@ public abstract class HTTPServer extends Server implements Runnable{
 	public void run() {
 		try {
 			//Start a server Socket..
-			mServerSocket = new ServerSocket(mPort);
+			if(mBindHost == null || mBindHost.isEmpty()) {
+				mServerSocket = new ServerSocket(mPort);
+			}else {
+				mServerSocket = new ServerSocket(mPort, 50, InetAddress.getByName(mBindHost));
+			}
 			
-			MinimaLogger.log("Server started on port : "+mPort);
+			MinimaLogger.log("Server started on "+(mBindHost == null || mBindHost.isEmpty() ? "*" : mBindHost)+":"+mPort);
 			
 			//Keep listening..
 			while(mRunning) {
@@ -69,8 +89,9 @@ public abstract class HTTPServer extends Server implements Runnable{
 			}
 			
 		} catch (BindException e) {
-			//Socket shut down..
-			MinimaLogger.log("Server @ Port "+mPort+" already in use!.. restart required..");
+			//Could not bind - port in use, or an address this machine does not have
+			mStartError = "Cannot listen on "+(mBindHost == null || mBindHost.isEmpty() ? "*" : mBindHost)+":"+mPort+" - "+e.getMessage();
+			MinimaLogger.log("Server @ Port "+mPort+" not started: "+mStartError);
 			
 		} catch (SocketException e) {
 			if(mRunning) {
@@ -78,7 +99,20 @@ public abstract class HTTPServer extends Server implements Runnable{
 				MinimaLogger.log("RPCServer : Socket Shutdown.. "+e);
 			}
 		} catch (IOException e) {
+			if(mServerSocket == null) {
+				mStartError = "Cannot listen on "+mBindHost+":"+mPort+" - "+e;
+			}
 			MinimaLogger.log(e);
 		}
+	}
+	
+	/** Is the server socket open and accepting? */
+	public boolean isListening() {
+		return mServerSocket != null && !mServerSocket.isClosed();
+	}
+	
+	/** Why the server did not start, or null */
+	public String getStartError() {
+		return mStartError;
 	}
 }

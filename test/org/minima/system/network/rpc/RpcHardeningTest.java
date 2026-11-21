@@ -65,6 +65,7 @@ public class RpcHardeningTest {
 		mainInstance.set(null, main);
 
 		GeneralParams.RPC_PORT 			= freePort();
+		GeneralParams.RPC_BIND_HOST 	= "127.0.0.1";
 		GeneralParams.RPC_ENABLED 		= false;
 		GeneralParams.RPC_AUTHENTICATE 	= false;
 		GeneralParams.RPC_PASSWORD 		= "none";
@@ -77,6 +78,7 @@ public class RpcHardeningTest {
 		GeneralParams.RPC_ENABLED 		= false;
 		GeneralParams.RPC_AUTHENTICATE 	= false;
 		GeneralParams.RPC_PASSWORD 		= "none";
+		GeneralParams.RPC_BIND_HOST 	= "127.0.0.1";
 	}
 
 	static JSONObject run(String zCommand) {
@@ -112,6 +114,18 @@ public class RpcHardeningTest {
 		assertEquals("first", GeneralParams.RPC_PASSWORD);
 	}
 	
+	@Test
+	public void rpcServerBindsLoopbackByDefault() throws Exception {
+		network.startRPC();
+		Field f = NetworkManager.class.getDeclaredField("mRPCServer");
+		f.setAccessible(true);
+		HTTPServer server = (HTTPServer) f.get(network);
+		for(int i=0;i<50 && server.mServerSocket == null;i++) {
+			Thread.sleep(100);
+		}
+		assertTrue("the RPC listens on "+server.mServerSocket.getInetAddress()+", not loopback",
+				server.mServerSocket.getInetAddress().isLoopbackAddress());
+	}
 	
 	/** One POST through a real CMDHandler on a loopback socket pair; returns the whole HTTP reply */
 	static String post(String zUser, String zPassword, String zCommand) throws Exception {
@@ -184,6 +198,15 @@ public class RpcHardeningTest {
 	}
 	
 	
+	@Test
+	public void rpcThatCannotListenIsReported() {
+		//192.0.2.1 (TEST-NET) is no address of this machine: the bind fails and the RPC stays down
+		GeneralParams.RPC_BIND_HOST = "192.0.2.1";
+		JSONObject res = run("rpc enable:true password:firstpw");
+		JSONObject rpc = (JSONObject) res.get("response");
+		assertEquals("the reply did not say the RPC is down: "+rpc, false, rpc.get("listening"));
+		assertTrue(String.valueOf(rpc.get("error")).contains("Cannot listen"));
+	}
 	
 	@Test
 	public void blankPasswordChangesNothing() throws Exception {
@@ -208,4 +231,8 @@ public class RpcHardeningTest {
 		assertFalse((boolean) res.get("status"));
 		assertTrue(String.valueOf(res.get("error")), String.valueOf(res.get("error")).contains("WITHOUT a password"));
 	}
+	
+	
+	
+	
 }
