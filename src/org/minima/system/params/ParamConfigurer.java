@@ -212,7 +212,12 @@ public class ParamConfigurer {
         }),
         rpcbind("rpcbind", "The address the RPC binds: default 127.0.0.1 (this machine only); 'all' = every interface, as before", (args, configurer) -> {
             String host = args.trim();
-            GeneralParams.RPC_BIND_HOST = (host.equals("all") || host.equals("*")) ? "" : host;
+            if(host.isEmpty()) {
+                //an empty value (-rpcbind "", MINIMA_RPCBIND=, rpcbind=) is the default - never every interface
+                GeneralParams.RPC_BIND_HOST = "127.0.0.1";
+            }else {
+                GeneralParams.RPC_BIND_HOST = (host.equals("all") || host.equals("*")) ? "" : host;
+            }
         }),
         rpcpassword("rpcpassword", "Set Basic Auth password for RPC calls ( Use with SSL / stununel )", (args, configurer) -> {
         	GeneralParams.RPC_PASSWORD 		= args;
