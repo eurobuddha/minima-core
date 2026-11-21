@@ -935,15 +935,11 @@ public class Main extends MessageProcessor {
 				//Are we enabled to back up MySQL..
 				if(udb.getAutoBackupMySQL()) {
 					
-					String backupcommand = "mysql host:"+udb.getAutoMySQLHost()
-									+" database:"+udb.getAutoMySQLDB()
-									+" user:"+udb.getAutoMySQLUser()
-									+" password:"+udb.getAutoMySQLPassword()
-									+" action:update";
-					
-					//Run a mysql Backup of the archive data..
-					JSONArray res 	= CommandRunner.getRunner().runMultiCommand(backupcommand);
-					JSONObject json = (JSONObject) res.get(0); 
+					//Run a mysql Backup of the archive data.. SECURITY (command injection 2026-11-21): the stored
+					//login goes in as separated parameters, never pasted into command text
+					JSONObject json = CommandRunner.getRunner().runCommand("mysql", "host",udb.getAutoMySQLHost(),
+									"database",udb.getAutoMySQLDB(), "user",udb.getAutoMySQLUser(),
+									"password",udb.getAutoMySQLPassword(), "action","update");
 					boolean status  = (boolean) json.get("status");
 					
 					//Output
@@ -958,15 +954,10 @@ public class Main extends MessageProcessor {
 				//Are we enabled to back up MySQL Coins..
 				if(udb.getAutoBackupMySQLCoins()) {
 					
-					String backupcommand = "mysqlcoins host:"+udb.getAutoMySQLHost()
-									+" database:"+udb.getAutoMySQLDB()
-									+" user:"+udb.getAutoMySQLUser()
-									+" password:"+udb.getAutoMySQLPassword()
-									+" action:update";
-					
 					//Run a mysql Backup of the archive data..
-					JSONArray res 	= CommandRunner.getRunner().runMultiCommand(backupcommand);
-					JSONObject json = (JSONObject) res.get(0); 
+					JSONObject json = CommandRunner.getRunner().runCommand("mysqlcoins", "host",udb.getAutoMySQLHost(),
+									"database",udb.getAutoMySQLDB(), "user",udb.getAutoMySQLUser(),
+									"password",udb.getAutoMySQLPassword(), "action","update");
 					boolean status  = (boolean) json.get("status");
 					
 					//Output
@@ -1055,10 +1046,7 @@ public class Main extends MessageProcessor {
 				mInitKeysCreated = true;
 				
 				//Run a rescue command..
-				String command = "megammrsync action:resync host:"+megammrhost;
-				
-				//And run it..
-				JSONObject res = CommandRunner.getRunner().runSingleCommand(command);
+				JSONObject res = CommandRunner.getRunner().runCommand("megammrsync", "action","resync", "host",megammrhost);
 				
 				//Output the result
 				MinimaLogger.log(res.toString());

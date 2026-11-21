@@ -55,16 +55,16 @@ public class signfrom extends Command {
 		//Now SIGN
 		JSONObject signres = null; 
 		if(!post) {
-			signres = runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+privatekey+" keyuses:"+keyuses);
+			signres = runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
 		}else {
-			signres = runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+privatekey+" keyuses:"+keyuses+" txnpostauto:true txnpostmine:true");
+			signres = runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses, "txnpostauto","true", "txnpostmine","true");
 		}
 		
 		//Now export the txn..
-		JSONObject result = runCommand("txnexport id:"+randomid);
+		JSONObject result = runCommand("txnexport", "id",randomid);
 				
 		//And delete..
-		runCommand("txndelete id:"+randomid);
+		runCommand("txndelete", "id",randomid);
 		
 		//Get the result
 		JSONObject resresp = (JSONObject) result.get("response");
@@ -84,10 +84,8 @@ public class signfrom extends Command {
 		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

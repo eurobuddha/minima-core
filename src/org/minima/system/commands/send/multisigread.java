@@ -244,11 +244,12 @@ public class multisigread extends Command {
 			String txnname_default 	= "multispend_"+System.currentTimeMillis()+".txn";
 			String txnname 			= getParam("file",txnname_default);
 			
-			//Create a txn..
-			String txnsender = 
-						  "txncreate id:"+randomid+";"
-						+ "txninput  id:"+randomid+" coinid:"+coinid+";"
-						+ "txnoutput id:"+randomid+" storestate:false amount:"+amount+" address:"+address+" tokenid:"+tokenid+";";
+			//Create a txn.. SECURITY (command injection 2026-11-21): from separated parameters - the coin's state
+			//is on-chain data anyone can choose when paying this address, it is copied as a value, never run
+			ArrayList<Object[]> txnsender = new ArrayList<>();
+			txnsender.add(new Object[] {"txncreate", "id",randomid});
+			txnsender.add(new Object[] {"txninput", "id",randomid, "coinid",coinid});
+			txnsender.add(new Object[] {"txnoutput", "id",randomid, "storestate","false", "amount",amount, "address",address, "tokenid",tokenid});
 
 			//Is there change
 			if(change.isMore(MiniNumber.ZERO)) {
@@ -256,43 +257,41 @@ public class multisigread extends Command {
 				//Copy the complete coin state
 				ArrayList<StateVariable> allstate = cc.getState();
 				for(StateVariable statevar : allstate) {
-					txnsender +=  "txnstate id:"+randomid+" port:"+statevar.getPort()+" value:"+statevar.getData().toString()+";";	
+					txnsender.add(new Object[] {"txnstate", "id",randomid, "port",statevar.getPort(), "value",statevar.getData().toString()});
 				}
 	
 				//And the change
-				txnsender +=  "txnoutput id:"+randomid+" storestate:true amount:"+change+" address:"+coinaddress+" tokenid:"+tokenid+";";
+				txnsender.add(new Object[] {"txnoutput", "id",randomid, "storestate","true", "amount",change, "address",coinaddress, "tokenid",tokenid});
 			}
 						
 			//And finish off..
-			txnsender +=  "txnexport id:"+randomid+" file:"+txnname+";"
-						+ "txndelete id:"+randomid;
+			txnsender.add(new Object[] {"txnexport", "id",randomid, "file",txnname});
+			txnsender.add(new Object[] {"txndelete", "id",randomid});
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnsender);
+			JSONArray result = CommandRunner.getRunner().runCommands(txnsender.toArray(new Object[0][]));
 			ret.put("response", result);
 		
 		}else if(action.equals("post")) {
 			
 			//Which file..
 			String file 		= getParam("file");
-			String txnsigner 	= 
-					  "txnimport id:"+randomid+" file:"+file+";"
-					+ "txnpost   id:"+randomid+" mine:true auto:true;"
-					+ "txndelete id:"+randomid;
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnsigner);
+			JSONArray result = CommandRunner.getRunner().runCommands(
+					new Object[] {"txnimport", "id",randomid, "file",file},
+					new Object[] {"txnpost", "id",randomid, "mine","true", "auto","true"},
+					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
 		
 		}else if(action.equals("view")) {
 			
 			String file 		= getParam("file");
-			String txnview 		= 
-					  "txnimport id:"+randomid+" file:"+file+";"
-					+ "txndelete id:"+randomid;
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnview);
+			JSONArray result = CommandRunner.getRunner().runCommands(
+					new Object[] {"txnimport", "id",randomid, "file",file},
+					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
 			
 		}else {

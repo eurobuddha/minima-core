@@ -59,7 +59,7 @@ public class consolidatefrom extends Command {
 		String randomid 	= MiniData.getRandomData(32).to0xString();
 		
 		//Now construct the transaction..
-		JSONObject result 	= runCommand("txncreate id:"+randomid);
+		JSONObject result 	= runCommand("txncreate", "id",randomid);
 				
 		//Are we mining
 		boolean mine 		= getBooleanParam("mine", true);
@@ -127,8 +127,7 @@ public class consolidatefrom extends Command {
 			coincount++;
 			
 			//Add this coin to the transaction
-			String command 	= "txninput id:"+randomid+" coinid:"+cc.getCoinID().to0xString();
-			result 			= runCommand(command);
+			result 			= runCommand("txninput", "id",randomid, "coinid",cc.getCoinID().to0xString());
 			
 			//How many coins have been added
 			if(coincount>maxcoins) {
@@ -143,7 +142,7 @@ public class consolidatefrom extends Command {
 			}else {
 				
 				//Remove the txn..
-				runCommand("txndelete id:"+randomid);
+				runCommand("txndelete", "id",randomid);
 				
 				throw new CommandException("Burn greater than total amount added "+burn+" / "+total);
 			}
@@ -152,27 +151,26 @@ public class consolidatefrom extends Command {
 		//And now add the output - 10 outputs
 		MiniNumber smallout = total.div(new MiniNumber(10));
 		for(int i=0;i<10;i++) {
-			String command 	= "txnoutput id:"+randomid+" amount:"+smallout+" address:"+fromaddress+" tokenid:"+tokenid;
-			result 			= runCommand(command);
+			result 			= runCommand("txnoutput", "id",randomid, "amount",smallout, "address",fromaddress, "tokenid",tokenid);
 		}
 		
 		//String command 	= "txnoutput id:"+randomid+" amount:"+total+" address:"+fromaddress+" tokenid:"+tokenid;
 		//result 			= runCommand(command);
 		
 		//Add the scripts..
-		runCommand("txnscript id:"+randomid+" scripts:{\""+script+"\":\"\"}");
+		runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
 		
 		//Sort the MMR
-		runCommand("txnmmr id:"+randomid);
+		runCommand("txnmmr", "id",randomid);
 		
 		//Now SIGN
-		runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+privatekey+" keyuses:"+keyuses);
+		runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
 		
 		//And POST!
-		result = runCommand("txnpost id:"+randomid+" mine:"+mine);
+		result = runCommand("txnpost", "id",randomid, "mine",mine);
 		
 		//And delete..
-		runCommand("txndelete id:"+randomid);
+		runCommand("txndelete", "id",randomid);
 		
 		//And return..
 		ret.put("response", result.get("response"));
@@ -188,7 +186,7 @@ public class consolidatefrom extends Command {
 		String randomid 	= MiniData.getRandomData(32).to0xString();
 				
 		//Now construct the transaction..
-		JSONObject result 	= runCommand("txncreate id:"+randomid);
+		JSONObject result 	= runCommand("txncreate", "id",randomid);
 		
 		//Now add ALL these coins
 		int coincount	 = 1;
@@ -199,7 +197,7 @@ public class consolidatefrom extends Command {
 			total = total.add(cc.getTokenAmount()); 
 			
 			//Add this coin to the transaction
-			runCommand("txninput id:"+randomid+" coinid:"+cc.getCoinID().to0xString());
+			runCommand("txninput", "id",randomid, "coinid",cc.getCoinID().to0xString());
 		}
 		
 		//Now do the burn..
@@ -209,39 +207,36 @@ public class consolidatefrom extends Command {
 			}else {
 				
 				//Remove the txn..
-				runCommand("txndelete id:"+randomid);
+				runCommand("txndelete", "id",randomid);
 				
 				throw new CommandException("Burn greater than total amount added "+zBurn.toString()+" / "+total);
 			}
 		}
 		
 		//And now add the output
-		String command 	= "txnoutput id:"+randomid+" amount:"+total+" address:"+zFromAddress+" tokenid:"+zTokenid;
-		result 			= runCommand(command);
+		result 			= runCommand("txnoutput", "id",randomid, "amount",total, "address",zFromAddress, "tokenid",zTokenid);
 		
 		//Add the scripts..
-		runCommand("txnscript id:"+randomid+" scripts:{\""+zScript+"\":\"\"}");
+		runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(zScript));
 		
 		//Sort the MMR
-		runCommand("txnmmr id:"+randomid);
+		runCommand("txnmmr", "id",randomid);
 		
 		//Now SIGN
-		runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+zPrivateKey+" keyuses:"+zKeyUses.toString());
+		runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",zPrivateKey, "keyuses",zKeyUses);
 		
 		//And POST!
-		result = runCommand("txnpost id:"+randomid+" mine:true");
+		result = runCommand("txnpost", "id",randomid, "mine","true");
 		
 		//And delete..
-		runCommand("txndelete id:"+randomid);
+		runCommand("txndelete", "id",randomid);
 		
 		//Return the POST response
 		return (JSONObject)result.get("response");
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

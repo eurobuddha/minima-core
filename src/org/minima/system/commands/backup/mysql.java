@@ -1107,7 +1107,7 @@ public class mysql extends Command {
 			String infile = getParam("file"); 
 			
 			//First import the file..
-			JSONObject resimport = CommandRunner.getRunner().runSingleCommand("mysql action:rawimport file:"+infile);
+			JSONObject resimport = CommandRunner.getRunner().runCommand("mysql", "action","rawimport", "file",infile);
 			if(!(boolean)resimport.get("status")) {
 				throw new CommandException("Error importing data.. "+resimport.get("error"));
 			}
