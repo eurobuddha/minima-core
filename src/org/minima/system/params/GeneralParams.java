@@ -101,6 +101,11 @@ public class GeneralParams {
 	public static int RPC_PORT = MINIMA_PORT+4;
 	
 	/**
+	 * The one address the RPC server binds - loopback unless -rpcbind says otherwise ("" = every interface)
+	 */
+	public static String RPC_BIND_HOST = "127.0.0.1";
+	
+	/**
 	 * The MDS Password - blank will set automagically
 	 */
 	public static String MDS_PASSWORD = "";
@@ -508,6 +513,7 @@ public class GeneralParams {
 		//RPC_SSL				  = false;
 		RPC_AUTHSTYLE 		  = "basic";
 		RPC_PASSWORD 		  = "none";
+		RPC_BIND_HOST 		  = "127.0.0.1";
 		SEED_PHRASE 		  = "";
 		ANYSEED_PHRASE 		  = false;
 		PEERSCHECKER_lOG 	  = false;
