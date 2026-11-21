@@ -269,7 +269,7 @@ public class multisigread extends Command {
 			txnsender.add(new Object[] {"txndelete", "id",randomid});
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runCommands(txnsender.toArray(new Object[0][]));
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, txnsender.toArray(new Object[0][]));
 			ret.put("response", result);
 		
 		}else if(action.equals("post")) {
@@ -278,7 +278,7 @@ public class multisigread extends Command {
 			String file 		= getParam("file");
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runCommands(
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
 					new Object[] {"txnimport", "id",randomid, "file",file},
 					new Object[] {"txnpost", "id",randomid, "mine","true", "auto","true"},
 					new Object[] {"txndelete", "id",randomid});
@@ -289,7 +289,7 @@ public class multisigread extends Command {
 			String file 		= getParam("file");
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runCommands(
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
 					new Object[] {"txnimport", "id",randomid, "file",file},
 					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
