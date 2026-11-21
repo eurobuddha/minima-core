@@ -61,4 +61,20 @@ public class CMDHandlerBodyTest {
 			org.minima.system.params.GeneralParams.RPC_ALLOWED_HOSTS = "";
 		}
 	}
+	
+	@Test
+	public void namedOriginsMayDriveAPasswordlessRpc() {
+		org.minima.system.params.GeneralParams.RPC_ALLOWED_ORIGINS = "";
+		assertEquals(false, CMDHandler.browserAllowed("http://127.0.0.1:8080", "cross-site", "127.0.0.1:9005"));
+		assertEquals(true, CMDHandler.browserAllowed(null, null, "127.0.0.1:9005"));
+		assertEquals(true, CMDHandler.browserAllowed("http://127.0.0.1:9005", "same-origin", "127.0.0.1:9005"));
+		org.minima.system.params.GeneralParams.RPC_ALLOWED_ORIGINS = "http://127.0.0.1:8080, null";
+		try {
+			assertEquals(true, CMDHandler.browserAllowed("http://127.0.0.1:8080", "cross-site", "127.0.0.1:9005"));
+			assertEquals(true, CMDHandler.browserAllowed("null", "cross-site", "127.0.0.1:9005"));
+			assertEquals(false, CMDHandler.browserAllowed("https://evil.example", "cross-site", "127.0.0.1:9005"));
+		}finally {
+			org.minima.system.params.GeneralParams.RPC_ALLOWED_ORIGINS = "";
+		}
+	}
 }
