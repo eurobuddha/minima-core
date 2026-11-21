@@ -245,54 +245,33 @@ public class multisigread extends Command {
 			String txnname 			= getParam("file",txnname_default);
 			
 			//Create a txn..
-			String txnsender = 
-						  "txncreate id:"+randomid+";"
-						+ "txninput  id:"+randomid+" coinid:"+coinid+";"
-						+ "txnoutput id:"+randomid+" storestate:false amount:"+amount+" address:"+address+" tokenid:"+tokenid+";";
-
-			//Is there change
-			if(change.isMore(MiniNumber.ZERO)) {
-				
-				//Copy the complete coin state
-				ArrayList<StateVariable> allstate = cc.getState();
-				for(StateVariable statevar : allstate) {
-					txnsender +=  "txnstate id:"+randomid+" port:"+statevar.getPort()+" value:"+statevar.getData().toString()+";";	
-				}
-	
-				//And the change
-				txnsender +=  "txnoutput id:"+randomid+" storestate:true amount:"+change+" address:"+coinaddress+" tokenid:"+tokenid+";";
-			}
-						
-			//And finish off..
-			txnsender +=  "txnexport id:"+randomid+" file:"+txnname+";"
-						+ "txndelete id:"+randomid;
+			ArrayList<Object[]> txnsender = multisig.spendCommands(randomid, coinid, amount, address, tokenid,
+					change, cc.getState(), coinaddress, txnname);
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnsender);
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, txnsender.toArray(new Object[0][]));
 			ret.put("response", result);
 		
 		}else if(action.equals("post")) {
 			
 			//Which file..
 			String file 		= getParam("file");
-			String txnsigner 	= 
-					  "txnimport id:"+randomid+" file:"+file+";"
-					+ "txnpost   id:"+randomid+" mine:true auto:true;"
-					+ "txndelete id:"+randomid;
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnsigner);
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
+					new Object[] {"txnimport", "id",randomid, "file",file},
+					new Object[] {"txnpost", "id",randomid, "mine","true", "auto","true"},
+					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
 		
 		}else if(action.equals("view")) {
 			
 			String file 		= getParam("file");
-			String txnview 		= 
-					  "txnimport id:"+randomid+" file:"+file+";"
-					+ "txndelete id:"+randomid;
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnview);
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
+					new Object[] {"txnimport", "id",randomid, "file",file},
+					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
 			
 		}else {

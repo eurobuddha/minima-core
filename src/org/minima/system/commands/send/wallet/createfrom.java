@@ -46,42 +46,46 @@ public class createfrom extends Command {
 		String randomid 	= MiniData.getRandomData(32).to0xString();
 		
 		//Now construct the transaction..
-		JSONObject result 	= runCommand("txncreate id:"+randomid);
+		JSONObject result 	= runCommand("txncreate", "id",randomid);
+		try {
 		
-		//Add the mounts..
-		String command 		= "txnaddamount id:"+randomid+" burn:"+burn+" fromaddress: "+fromaddress+" address:"+toaddress+" amount:"+amount+" tokenid:"+tokenid;
-		result = runCommand(command);
-		if(!(boolean)result.get("status")) {
+			//Add the mounts..
+			result = runCommand("txnaddamount", "id",randomid, "burn",burn, "fromaddress",fromaddress,
+					"address",toaddress, "amount",amount, "tokenid",tokenid);
+			if(!(boolean)result.get("status")) {
 			
-			//Delete transaction
-			runCommand("txndelete id:"+randomid);
+				//Delete transaction
+				runCommand("txndelete", "id",randomid);
 			
-			//Not enough funds!
-			throw new CommandException(result.getString("error"));
+				//Not enough funds!
+				throw new CommandException(result.getString("error"));
+			}
+		
+			//Add the scripts..
+			runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
+		
+			//Sort the MMR
+			runCommand("txnmmr", "id",randomid);
+		
+			//Now export the txn..
+			result = runCommand("txnexport", "id",randomid, "showtxn","true");
+		
+			//And delete..
+			runCommand("txndelete", "id",randomid);
+		
+			//And return..
+			ret.put("response", result.get("response"));
+		
+			return ret;
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			runCommand("txndelete", "id",randomid);
+			throw exc;
 		}
-		
-		//Add the scripts..
-		runCommand("txnscript id:"+randomid+" scripts:{\""+script+"\":\"\"}");
-		
-		//Sort the MMR
-		runCommand("txnmmr id:"+randomid);
-		
-		//Now export the txn..
-		result = runCommand("txnexport id:"+randomid+" showtxn:true");
-		
-		//And delete..
-		runCommand("txndelete id:"+randomid);
-		
-		//And return..
-		ret.put("response", result.get("response"));
-		
-		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

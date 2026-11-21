@@ -47,56 +47,59 @@ public class constructfrom extends Command {
 		JSONObject result 	= null;
 		
 		//Now construct the transaction..
-		result 	= runCommand("txncreate id:"+randomid);
+		result 	= runCommand("txncreate", "id",randomid);
+		try {
 		
-		//Add all the input coins
-		StringTokenizer strtok = new StringTokenizer(coinlist,",");
-		while(strtok.hasMoreTokens()) {
-			String cc = strtok.nextToken().trim();
+			//Add all the input coins
+			StringTokenizer strtok = new StringTokenizer(coinlist,",");
+			while(strtok.hasMoreTokens()) {
+				String cc = strtok.nextToken().trim();
 			
-			//Add the mounts..
-			String command 		= "txninput id:"+randomid+" coinid:"+cc;
-			result = runCommand(command);
-			if(!(boolean)result.get("status")) {
+				//Add the mounts..
+				result = runCommand("txninput", "id",randomid, "coinid",cc);
+				if(!(boolean)result.get("status")) {
 				
-				//Delete transaction
-				runCommand("txndelete id:"+randomid);
+					//Delete transaction
+					runCommand("txndelete", "id",randomid);
 				
-				//Not enough funds!
-				throw new CommandException(result.getString("error"));
+					//Not enough funds!
+					throw new CommandException(result.getString("error"));
+				}
 			}
+		
+			//Add the output coin..
+			result 	= runCommand("txnoutput", "id",randomid, "address",toaddress, "amount",toamount, "tokenid",tokenid);
+		
+			//Add the change
+			if(changeamount.isMore(MiniNumber.ZERO)) {
+				result 	= runCommand("txnoutput", "id",randomid, "address",changeaddress, "amount",changeamount, "tokenid",tokenid);
+			}
+		
+			//Add the scripts..
+			runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
+		
+			//Sort the MMR
+			runCommand("txnmmr", "id",randomid);
+		
+			//Now export the txn..
+			result = runCommand("txnexport", "id",randomid, "showtxn","true");
+		
+			//And delete..
+			runCommand("txndelete", "id",randomid);
+		
+			//And return..
+			ret.put("response", result.get("response"));
+		
+			return ret;
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			runCommand("txndelete", "id",randomid);
+			throw exc;
 		}
-		
-		//Add the output coin..
-		result 	= runCommand("txnoutput id:"+randomid+" address:"+toaddress+" amount:"+toamount+" tokenid:"+tokenid);
-		
-		//Add the change
-		if(changeamount.isMore(MiniNumber.ZERO)) {
-			result 	= runCommand("txnoutput id:"+randomid+" address:"+changeaddress+" amount:"+changeamount+" tokenid:"+tokenid);
-		}
-		
-		//Add the scripts..
-		runCommand("txnscript id:"+randomid+" scripts:{\""+script+"\":\"\"}");
-		
-		//Sort the MMR
-		runCommand("txnmmr id:"+randomid);
-		
-		//Now export the txn..
-		result = runCommand("txnexport id:"+randomid+" showtxn:true");
-		
-		//And delete..
-		runCommand("txndelete id:"+randomid);
-		
-		//And return..
-		ret.put("response", result.get("response"));
-		
-		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

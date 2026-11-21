@@ -176,76 +176,80 @@ public class sphincs extends Command {
 			String randomid 	= MiniData.getRandomData(32).to0xString();
 			
 			//Now construct the transaction..
-			JSONObject result = runCommand("txncreate id:"+randomid);
+			JSONObject result = runCommand("txncreate", "id",randomid);
+			try {
 			
-			String command 	= "txnaddamount id:"+randomid+" fromaddress:"+sphincsaddress.getMinimaAddress()
-					+" address:"+address+" amount:"+amount+" tokenid:"+tokenid;
+				result = runCommand("txnaddamount", "id",randomid, "fromaddress",sphincsaddress.getMinimaAddress(),
+						"address",address, "amount",amount, "tokenid",tokenid);
 			
-			result = runCommand(command);
-			
-			if(!(boolean)result.get("status")) {
+				if(!(boolean)result.get("status")) {
 				
-				//Delete transaction
-				runCommand("txndelete id:"+randomid);
+					//Delete transaction
+					runCommand("txndelete", "id",randomid);
 				
-				//Not enough funds!
-				throw new CommandException(result.getString("error"));
-			}
+					//Not enough funds!
+					throw new CommandException(result.getString("error"));
+				}
 			
-			//Get the transaction details
-			TxnDB db 				= MinimaDB.getDB().getCustomTxnDB();
-			TxnRow txnrow 			= db.getTransactionRow(randomid);
-			Transaction transaction = txnrow.getTransaction();
+				//Get the transaction details
+				TxnDB db 				= MinimaDB.getDB().getCustomTxnDB();
+				TxnRow txnrow 			= db.getTransactionRow(randomid);
+				Transaction transaction = txnrow.getTransaction();
 			
-			/**
-			 * MAX 8 Input coins - or script runs out of operations as 1024 max
-			 */
-			if(transaction.getAllInputs().size()>8) {
+				/**
+				 * MAX 8 Input coins - or script runs out of operations as 1024 max
+				 */
+				if(transaction.getAllInputs().size()>8) {
 				
-				//Delete transaction
-				runCommand("txndelete id:"+randomid);
+					//Delete transaction
+					runCommand("txndelete", "id",randomid);
 				
-				throw new CommandException("Input Coin number too great.. MAX 8. Pls Send a smaller amount.");
+					throw new CommandException("Input Coin number too great.. MAX 8. Pls Send a smaller amount.");
+				}
+			
+				//Set all the outputs to NOT keep the state - is useless 20k
+				ArrayList<Coin> outputcoins = transaction.getAllOutputs();
+				for(int i=0;i<outputcoins.size();i++) {
+					outputcoins.get(i).setStoreState(false);
+				}
+			
+				//Get the TransactionID - to sign
+				MiniData message	= SPHINCSUtils.calculateTransactionID(transaction);
+			
+				//Now SIGN the message
+				SPHINCSSignature sig = sphincs.signMessage(message);
+			
+				//Add the state variables
+				SPHINCSUtils.setupTransaction(transaction, sig);
+			
+				//Finally - Add the scripts..
+				runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(sphincsscript));
+			
+				//Sort the MMR
+				runCommand("txnmmr", "id",randomid);
+			
+				//And POST!
+				result = runCommand("txnpost", "id",randomid, "mine",mine);
+			
+				//And delete..
+				runCommand("txndelete", "id",randomid);
+			
+				//Check succeeded..
+				if(!(boolean)result.get("status")) {
+					//Didn't work..
+					throw new CommandException((String)result.get("error"));
+				}
+			
+				//And return..
+				ret.put("response", result.get("response"));
+			
+				return ret;
+			
+			}catch(Exception exc) {
+				//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+				runCommand("txndelete", "id",randomid);
+				throw exc;
 			}
-			
-			//Set all the outputs to NOT keep the state - is useless 20k
-			ArrayList<Coin> outputcoins = transaction.getAllOutputs();
-			for(int i=0;i<outputcoins.size();i++) {
-				outputcoins.get(i).setStoreState(false);
-			}
-			
-			//Get the TransactionID - to sign
-			MiniData message	= SPHINCSUtils.calculateTransactionID(transaction);
-			
-			//Now SIGN the message
-			SPHINCSSignature sig = sphincs.signMessage(message);
-			
-			//Add the state variables
-			SPHINCSUtils.setupTransaction(transaction, sig);
-			
-			//Finally - Add the scripts..
-			runCommand("txnscript id:"+randomid+" scripts:{\""+sphincsscript+"\":\"\"}");
-			
-			//Sort the MMR
-			runCommand("txnmmr id:"+randomid);
-			
-			//And POST!
-			result = runCommand("txnpost id:"+randomid+" mine:"+mine);
-			
-			//And delete..
-			runCommand("txndelete id:"+randomid);
-			
-			//Check succeeded..
-			if(!(boolean)result.get("status")) {
-				//Didn't work..
-				throw new CommandException((String)result.get("error"));
-			}
-			
-			//And return..
-			ret.put("response", result.get("response"));
-			
-			return ret;
-			
 		}else if(action.equals("test")) {
 			
 			//Get the string seed
@@ -297,10 +301,8 @@ public class sphincs extends Command {
 		return zCoin.getAddress().to0xString()+"SPHINCS"+zCoin.getTokenAmount().toString()+"SPHINCS"+zCoin.getTokenID().to0xString()+keepstate;
 	}
 	
-	private JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	private JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 	
 	@Override

@@ -178,36 +178,31 @@ public class multisig extends Command {
 				throw new CommandException("Cannot have LESS keys than required!");
 			}
 			
-			//Now construct the state params
-			String stateparams = null;
-			if(id.equals("")) {
-				stateparams = "{\"1\":\""+root+"\",\"2\":\""+required+"\",\"3\":\""+totalkeys+"\"";
-			}else {
-				stateparams = "{\"0\":\""+id+"\",\"1\":\""+root+"\",\"2\":\""+required+"\",\"3\":\""+totalkeys+"\"";
+			//Now construct the state params - SECURITY (command injection): as a JSONObject, not JSON text
+			JSONObject stateparams = new JSONObject();
+			if(!id.equals("")) {
+				stateparams.put("0", id);
 			}
+			stateparams.put("1", root);
+			stateparams.put("2", required.toString());
+			stateparams.put("3", ""+totalkeys);
 			
 			//Now add all the public keys
 			int counter=4;
 			for(String pubk : allkeys) {
-				stateparams += ",\""+counter+"\":\""+pubk+"\"";
+				stateparams.put(""+counter, pubk);
 				counter++;
 			}
 			
-			//Close the JSON
-			stateparams +="}";
-			
-			//Now construct the complete send function
-			String sendfunction ="";
+			//Now run the send - from separated parameters
+			JSONObject sendresult = null;
 			if(existsParam("password")) {
 				String password=getParam("password");
-				sendfunction = "send password:"+password+" tokenid:"+tokenid+" amount:"+amount.toString()+" address:"+msaddress+" state:"+stateparams;
+				sendresult = CommandRunner.getRunner().runCommand("send", "password",password, "tokenid",tokenid, "amount",amount, "address",msaddress, "state",stateparams);
 			}else {
-				sendfunction = "send tokenid:"+tokenid+" amount:"+amount.toString()+" address:"+msaddress+" state:"+stateparams;
+				sendresult = CommandRunner.getRunner().runCommand("send", "tokenid",tokenid, "amount",amount, "address",msaddress, "state",stateparams);
 			}
 			
-			//Now run this!..
-			JSONArray result 		= CommandRunner.getRunner().runMultiCommand(sendfunction);
-			JSONObject sendresult 	= (JSONObject) result.get(0); 
 			if((boolean) sendresult.get("status")) {
 				
 				JSONObject sender = new JSONObject();
@@ -363,30 +358,11 @@ public class multisig extends Command {
 			String txnname 			= getParam("file",txnname_default);
 			
 			//Create a txn..
-			String txnsender = 
-						  "txncreate id:"+randomid+";"
-						+ "txninput  id:"+randomid+" coinid:"+coinid+";"
-						+ "txnoutput id:"+randomid+" storestate:false amount:"+amount+" address:"+address+" tokenid:"+tokenid+";";
-
-			//Is there change
-			if(change.isMore(MiniNumber.ZERO)) {
-				
-				//Copy the complete coin state
-				ArrayList<StateVariable> allstate = cc.getState();
-				for(StateVariable statevar : allstate) {
-					txnsender +=  "txnstate id:"+randomid+" port:"+statevar.getPort()+" value:"+statevar.getData().toString()+";";	
-				}
-	
-				//And the change
-				txnsender +=  "txnoutput id:"+randomid+" storestate:true amount:"+change+" address:"+coinaddress+" tokenid:"+tokenid+";";
-			}
-						
-			//And finish off..
-			txnsender +=  "txnexport id:"+randomid+" file:"+txnname+";"
-						+ "txndelete id:"+randomid;
+			ArrayList<Object[]> txnsender = multisig.spendCommands(randomid, coinid, amount, address, tokenid,
+					change, cc.getState(), coinaddress, txnname);
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnsender);
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, txnsender.toArray(new Object[0][]));
 			ret.put("response", result);
 		
 		}else if(action.equals("sign")) {
@@ -399,84 +375,82 @@ public class multisig extends Command {
 			File signedtxn   	= new File(actualfile.getParentFile(), "signed_"+actualfile.getName());
 			
 			//The signer function
-			String txnsigner = "txnimport id:"+randomid+" file:"+file+";";
-			
-			//Run that
-			JSONArray result 		= CommandRunner.getRunner().runMultiCommand(txnsigner);
-			JSONObject importres 	= (JSONObject) result.get(0); 
-			if(!(boolean) importres.get("status")) {
-				throw new CommandException(importres.get("error").toString());
-			}
-			
-			//Rest now
-			txnsigner = "";
-			
-			//Get the wallet
-			Wallet wallet = MinimaDB.getDB().getWallet();
-			
-			//now find the public key
-			TxnDB db 						  = MinimaDB.getDB().getCustomTxnDB();
-			TxnRow txnrow 					  = db.getTransactionRow(randomid);
-			Transaction trans 				  = txnrow.getTransaction();
-			Coin multicoin 					  = trans.getAllInputs().get(0);
-			ArrayList<StateVariable> allstate = multicoin.getState();
-			for(StateVariable statevar : allstate) {
-				//Get the vaklue..
-				String possiblepubkey = statevar.getData().toString();
-				KeyRow key = wallet.getKeyFromPublic(possiblepubkey);
-				if(key != null) {
-					txnsigner	+= "txnsign id:"+randomid+" publickey:"+possiblepubkey+";";
+			JSONObject importres 	= CommandRunner.getRunner().runCommand("txnimport", "id",randomid, "file",file);
+			try {
+				if(!(boolean) importres.get("status")) {
+					throw new CommandException(importres.get("error").toString());
 				}
-			}
 			
-			//Finish up
-			txnsigner	+= "txnexport id:"+randomid+" file:"+signedtxn.getAbsolutePath()+";"
-						+  "txndelete id:"+randomid;
+				//Rest now
+				ArrayList<Object[]> txnsigner = new ArrayList<>();
 			
-			//Unlock DB at the start - rather than every time you run txnsign
-			boolean passwordlock = false;
-			if(existsParam("password") && !MinimaDB.getDB().getWallet().isBaseSeedAvailable()) {
+				//Get the wallet
+				Wallet wallet = MinimaDB.getDB().getWallet();
+			
+				//now find the public key
+				TxnDB db 						  = MinimaDB.getDB().getCustomTxnDB();
+				TxnRow txnrow 					  = db.getTransactionRow(randomid);
+				Transaction trans 				  = txnrow.getTransaction();
+				Coin multicoin 					  = trans.getAllInputs().get(0);
+				ArrayList<StateVariable> allstate = multicoin.getState();
+				for(StateVariable statevar : allstate) {
+					//Get the vaklue..
+					String possiblepubkey = statevar.getData().toString();
+					KeyRow key = wallet.getKeyFromPublic(possiblepubkey);
+					if(key != null) {
+						txnsigner.add(new Object[] {"txnsign", "id",randomid, "publickey",possiblepubkey});
+					}
+				}
+			
+				//Finish up
+				txnsigner.add(new Object[] {"txnexport", "id",randomid, "file",signedtxn.getAbsolutePath()});
+				txnsigner.add(new Object[] {"txndelete", "id",randomid});
+			
+				//Unlock DB at the start - rather than every time you run txnsign
+				boolean passwordlock = false;
+				if(existsParam("password") && !MinimaDB.getDB().getWallet().isBaseSeedAvailable()) {
 				
-				//Lets unlock the DB
-				vault.passowrdUnlockDB(getParam("password"));
+					//Lets unlock the DB
+					vault.passowrdUnlockDB(getParam("password"));
 				 
-				//Lock at the end..
-				passwordlock = true;
-			}
+					//Lock at the end..
+					passwordlock = true;
+				}
 			
-			//Run it..
-			result = CommandRunner.getRunner().runMultiCommand(txnsigner);
-			
-			//Are we locking the DB
-			if(passwordlock) {
-				//Lock the Wallet DB
-				vault.passwordLockDB(getParam("password"));
-			}
-			
-			ret.put("response", result);
+				JSONArray result = null;
+				try {
+					result = CommandRunner.getRunner().runTxnCommands(randomid, txnsigner.toArray(new Object[0][]));
+				} finally {
+					if(passwordlock) vault.passwordLockDB(getParam("password"));
+				}
+
+				ret.put("response", result);
 		
+			}catch(Exception exc) {
+				//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+				CommandRunner.getRunner().runCommand("txndelete", "id",randomid);
+				throw exc;
+			}
 		}else if(action.equals("post")) {
 			
 			//Which file..
 			String file 		= getParam("file");
-			String txnsigner 	= 
-					  "txnimport id:"+randomid+" file:"+file+";"
-					+ "txnpost   id:"+randomid+" mine:true auto:true;"
-					+ "txndelete id:"+randomid;
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnsigner);
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
+					new Object[] {"txnimport", "id",randomid, "file",file},
+					new Object[] {"txnpost", "id",randomid, "mine","true", "auto","true"},
+					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
 		
 		}else if(action.equals("view")) {
 			
 			String file 		= getParam("file");
-			String txnview 		= 
-					  "txnimport id:"+randomid+" file:"+file+";"
-					+ "txndelete id:"+randomid;
 			
 			//Run it..
-			JSONArray result = CommandRunner.getRunner().runMultiCommand(txnview);
+			JSONArray result = CommandRunner.getRunner().runTxnCommands(randomid, 
+					new Object[] {"txnimport", "id",randomid, "file",file},
+					new Object[] {"txndelete", "id",randomid});
 			ret.put("response", result);
 			
 		}else {
@@ -484,6 +458,35 @@ public class multisig extends Command {
 		}
 		
 		return ret;
+	}
+	
+	/**
+	 * The commands of a multisig spend - shared by multisig and multisigread. SECURITY (command injection): separated parameters only. The coin's state is on-chain data anyone paying the address
+	 * chooses: it is copied into the change output as plain values, never run.
+	 */
+	public static ArrayList<Object[]> spendCommands(String zTxnID, String zCoinID, MiniNumber zAmount, String zAddress,
+			String zTokenID, MiniNumber zChange, ArrayList<StateVariable> zCoinState, String zCoinAddress, String zFile) {
+		ArrayList<Object[]> txnsender = new ArrayList<>();
+		txnsender.add(new Object[] {"txncreate", "id",zTxnID});
+		txnsender.add(new Object[] {"txninput", "id",zTxnID, "coinid",zCoinID});
+		txnsender.add(new Object[] {"txnoutput", "id",zTxnID, "storestate","false", "amount",zAmount, "address",zAddress, "tokenid",zTokenID});
+		
+		//Is there change
+		if(zChange.isMore(MiniNumber.ZERO)) {
+			
+			//Copy the complete coin state
+			for(StateVariable statevar : zCoinState) {
+				txnsender.add(new Object[] {"txnstate", "id",zTxnID, "port",statevar.getPort(), "value",statevar.getData().toString()});
+			}
+			
+			//And the change
+			txnsender.add(new Object[] {"txnoutput", "id",zTxnID, "storestate","true", "amount",zChange, "address",zCoinAddress, "tokenid",zTokenID});
+		}
+		
+		//And finish off..
+		txnsender.add(new Object[] {"txnexport", "id",zTxnID, "file",zFile});
+		txnsender.add(new Object[] {"txndelete", "id",zTxnID});
+		return txnsender;
 	}
 	
 	private File getRequiredFile() throws CommandException {

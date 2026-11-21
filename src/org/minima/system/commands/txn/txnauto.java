@@ -67,49 +67,53 @@ public class txnauto extends Command {
 		}
 		
 		db.createTransaction(id);
+		try {
 		
-		//Add the mounts..
-		String command = "txnaddamount id:"+id+" burn:"+burn+" address:"+address+" amount:"+amount+" tokenid:"+tokenid;
-		JSONObject result = CommandRunner.getRunner().runSingleCommand(command); 
-		if(!(boolean)result.get("status")) {
-			
-			//Delete the txn..
-			db.deleteTransaction(id);
-			
-			//Not enough funds!
-			throw new CommandException(result.getString("error"));
-		}
-		
-		//Now sort the scripts and MMR
-		TxnRow txnrow = db.getTransactionRow(id); 
-		
-		//Get the Transaction
-		Transaction trans = txnrow.getTransaction();
-		Witness wit		  = txnrow.getWitness();
-		
-		//Set the MMR data and Scripts
-		if(mmrscript) {
-			txnutils.setMMRandScripts(trans, wit);
-		}
-		
-		//Do we sign..
-		if(sign) {
-			command = "txnsign id:"+id+" publickey:auto";
-			result = CommandRunner.getRunner().runSingleCommand(command); 
+			//Add the mounts..
+			JSONObject result = CommandRunner.getRunner().runCommand("txnaddamount", "id",id, "burn",burn, "address",address, "amount",amount, "tokenid",tokenid);
 			if(!(boolean)result.get("status")) {
-				
+			
 				//Delete the txn..
 				db.deleteTransaction(id);
-				
+			
 				//Not enough funds!
 				throw new CommandException(result.getString("error"));
 			}
+		
+			//Now sort the scripts and MMR
+			TxnRow txnrow = db.getTransactionRow(id); 
+		
+			//Get the Transaction
+			Transaction trans = txnrow.getTransaction();
+			Witness wit		  = txnrow.getWitness();
+		
+			//Set the MMR data and Scripts
+			if(mmrscript) {
+				txnutils.setMMRandScripts(trans, wit);
+			}
+		
+			//Do we sign..
+			if(sign) {
+				result = CommandRunner.getRunner().runCommand("txnsign", "id",id, "publickey","auto");
+				if(!(boolean)result.get("status")) {
+				
+					//Delete the txn..
+					db.deleteTransaction(id);
+				
+					//Not enough funds!
+					throw new CommandException(result.getString("error"));
+				}
+			}
+		
+			//Output the current trans..
+			ret.put("response", db.getTransactionRow(id).toJSON());
+		
+			return ret;
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			db.deleteTransaction(id);
+			throw exc;
 		}
-		
-		//Output the current trans..
-		ret.put("response", db.getTransactionRow(id).toJSON());
-		
-		return ret;
 	}
 
 	@Override

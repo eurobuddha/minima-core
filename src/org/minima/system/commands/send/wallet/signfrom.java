@@ -44,50 +44,54 @@ public class signfrom extends Command {
 		
 		//Add to the DB
 		db.addCompleteTransaction(tx);
+		try {
 		
-		//The private key we need to sign with
-		String privatekey	= getAddressParam("privatekey");
-		MiniNumber keyuses  = getNumberParam("keyuses");
+			//The private key we need to sign with
+			String privatekey	= getAddressParam("privatekey");
+			MiniNumber keyuses  = getNumberParam("keyuses");
 		
-		//Are we posting..
-		boolean post = getBooleanParam("post", false);
+			//Are we posting..
+			boolean post = getBooleanParam("post", false);
 		
-		//Now SIGN
-		JSONObject signres = null; 
-		if(!post) {
-			signres = runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+privatekey+" keyuses:"+keyuses);
-		}else {
-			signres = runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+privatekey+" keyuses:"+keyuses+" txnpostauto:true txnpostmine:true");
-		}
-		
-		//Now export the txn..
-		JSONObject result = runCommand("txnexport id:"+randomid);
-				
-		//And delete..
-		runCommand("txndelete id:"+randomid);
-		
-		//Get the result
-		JSONObject resresp = (JSONObject) result.get("response");
-		resresp.put("post", post);
-		if(post) {
-			try {
-				JSONObject ss = (JSONObject) signres.get("response");
-				resresp.put("txpow", ss.get("txpow"));
-			}catch(Exception exc) {
-				MinimaLogger.log(exc);
+			//Now SIGN
+			JSONObject signres = null; 
+			if(!post) {
+				signres = runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
+			}else {
+				signres = runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses, "txnpostauto","true", "txnpostmine","true");
 			}
-		}
 		
-		//And return..
-		ret.put("response", resresp);
+			//Now export the txn..
+			JSONObject result = runCommand("txnexport", "id",randomid);
+				
+			//And delete..
+			runCommand("txndelete", "id",randomid);
+		
+			//Get the result
+			JSONObject resresp = (JSONObject) result.get("response");
+			resresp.put("post", post);
+			if(post) {
+				try {
+					JSONObject ss = (JSONObject) signres.get("response");
+					resresp.put("txpow", ss.get("txpow"));
+				}catch(Exception exc) {
+					MinimaLogger.log(exc);
+				}
+			}
+		
+			//And return..
+			ret.put("response", resresp);
 			
-		return ret;
+			return ret;
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			runCommand("txndelete", "id",randomid);
+			throw exc;
+		}
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

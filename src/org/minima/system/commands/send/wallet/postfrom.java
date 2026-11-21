@@ -44,31 +44,35 @@ public class postfrom extends Command {
 		
 		//Add to the DB
 		db.addCompleteTransaction(tx);
+		try {
 		
-		//Are we mining
-		boolean mine = getBooleanParam("mine", false);
+			//Are we mining
+			boolean mine = getBooleanParam("mine", false);
 		
-		//Do we sort the MMR
-		if(sortmmr) {
-			runCommand("txnmmr id:"+randomid);
-		}
+			//Do we sort the MMR
+			if(sortmmr) {
+				runCommand("txnmmr", "id",randomid);
+			}
 		
-		//And POST!
-		JSONObject result = runCommand("txnpost id:"+randomid+" mine:"+mine);
+			//And POST!
+			JSONObject result = runCommand("txnpost", "id",randomid, "mine",mine);
 			
-		//And delete..
-		runCommand("txndelete id:"+randomid);
+			//And delete..
+			runCommand("txndelete", "id",randomid);
 		
-		//And return..
-		ret.put("response", result.get("response"));
+			//And return..
+			ret.put("response", result.get("response"));
 		
-		return ret;
+			return ret;
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			runCommand("txndelete", "id",randomid);
+			throw exc;
+		}
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

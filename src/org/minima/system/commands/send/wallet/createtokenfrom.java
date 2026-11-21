@@ -102,73 +102,76 @@ public class createtokenfrom extends Command {
 		String randomid 	= MiniData.getRandomData(32).to0xString();
 		
 		//Now construct the transaction..
-		JSONObject result 	= runCommand("txncreate id:"+randomid);
+		JSONObject result 	= runCommand("txncreate", "id",randomid);
+		try {
 		
-		//Add the mounts..
-		String command 		= "txnaddamount id:"+randomid+" fromaddress: "+fromaddress+" address:"+fromaddress+" amount:"+minimamount;
-		result = runCommand(command);
-		if(!(boolean)result.get("status")) {
+			//Add the mounts..
+			result = runCommand("txnaddamount", "id",randomid, "fromaddress",fromaddress, "address",fromaddress, "amount",minimamount);
+			if(!(boolean)result.get("status")) {
 			
-			//Delete transaction
-			runCommand("txndelete id:"+randomid);
+				//Delete transaction
+				runCommand("txndelete", "id",randomid);
 			
-			//Not enough funds!
-			throw new CommandException(result.getString("error"));
+				//Not enough funds!
+				throw new CommandException(result.getString("error"));
+			}
+		
+			//Now replace the first Coin with the creation coin
+			Coin tokenoutput = new Coin(Coin.COINID_OUTPUT, new MiniData(fromaddress), minimamount, Token.TOKENID_CREATE, true);
+		
+			//Let's create the token..
+			Token createtoken = new Token(Coin.COINID_OUTPUT, 
+											new MiniNumber(scale), 
+											minimamount,
+											new MiniString(jsonname.toString()),
+											new MiniString("RETURN TRUE"));
+		
+			//Set the Create Token Details..
+			tokenoutput.setToken(createtoken);
+		
+			//Get the TXN DB - and replace the first coin
+			TxnDB db 			= MinimaDB.getDB().getCustomTxnDB();
+			TxnRow txnrow 		= db.getTransactionRow(randomid);
+			Transaction trans 	= txnrow.getTransaction();
+		
+			ArrayList<Coin> outputs = trans.getAllOutputs();
+			outputs.set(0, tokenoutput);
+		
+			//Add the scripts..
+			runCommand("txnscript", "id",randomid, "scripts",CommandRunner.scripts(script));
+			
+			//Sort the MMR
+			runCommand("txnmmr", "id",randomid);
+		
+			//Now SIGN
+			runCommand("txnsign", "id",randomid, "publickey","custom", "privatekey",privatekey, "keyuses",keyuses);
+		
+			//And POST!
+			//result = runCommand("txnlist transactiononly:true id:"+randomid);
+			result = runCommand("txnpost", "id",randomid, "mine",mine);
+		
+			//And delete..
+			runCommand("txndelete", "id",randomid);
+		
+			//Check succeeded..
+			if(!(boolean)result.get("status")) {
+				//Didn't work..
+				throw new CommandException((String)result.get("error"));
+			}
+		
+			//And return..
+			ret.put("response", result.get("response"));
+		
+			return ret;
+		}catch(Exception exc) {
+			//A failed build never leaves its txn row behind (house rule: every txn error path runs txndelete)
+			runCommand("txndelete", "id",randomid);
+			throw exc;
 		}
-		
-		//Now replace the first Coin with the creation coin
-		Coin tokenoutput = new Coin(Coin.COINID_OUTPUT, new MiniData(fromaddress), minimamount, Token.TOKENID_CREATE, true);
-		
-		//Let's create the token..
-		Token createtoken = new Token(Coin.COINID_OUTPUT, 
-										new MiniNumber(scale), 
-										minimamount,
-										new MiniString(jsonname.toString()),
-										new MiniString("RETURN TRUE"));
-		
-		//Set the Create Token Details..
-		tokenoutput.setToken(createtoken);
-		
-		//Get the TXN DB - and replace the first coin
-		TxnDB db 			= MinimaDB.getDB().getCustomTxnDB();
-		TxnRow txnrow 		= db.getTransactionRow(randomid);
-		Transaction trans 	= txnrow.getTransaction();
-		
-		ArrayList<Coin> outputs = trans.getAllOutputs();
-		outputs.set(0, tokenoutput);
-		
-		//Add the scripts..
-		runCommand("txnscript id:"+randomid+" scripts:{\""+script+"\":\"\"}");
-			
-		//Sort the MMR
-		runCommand("txnmmr id:"+randomid);
-		
-		//Now SIGN
-		runCommand("txnsign id:"+randomid+" publickey:custom privatekey:"+privatekey+" keyuses:"+keyuses);
-		
-		//And POST!
-		//result = runCommand("txnlist transactiononly:true id:"+randomid);
-		result = runCommand("txnpost id:"+randomid+" mine:"+mine);
-		
-		//And delete..
-		runCommand("txndelete id:"+randomid);
-		
-		//Check succeeded..
-		if(!(boolean)result.get("status")) {
-			//Didn't work..
-			throw new CommandException((String)result.get("error"));
-		}
-		
-		//And return..
-		ret.put("response", result.get("response"));
-		
-		return ret;
 	}
 	
-	public JSONObject runCommand(String zCommand) {
-		JSONArray res 		= CommandRunner.getRunner().runMultiCommand(zCommand);
-		JSONObject result 	= (JSONObject) res.get(0);
-		return result;
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+		return CommandRunner.getRunner().runCommand(zName, zNameValues);
 	}
 
 	@Override

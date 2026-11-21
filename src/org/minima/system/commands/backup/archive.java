@@ -815,25 +815,7 @@ public class archive extends Command {
 			STATIC_TEMPARCHIVE = archtemp;
 			
 			//Now run a chain sync.. with correct params
-			String command = "archive action:resync host:"+LOCAL_ARCHIVE;
-			if(existsParam("phrase")) {
-				command = command+" phrase:\""+getParam("phrase")+"\"";
-			}
-			
-			if(existsParam("keys")) {
-				command = command+" keys:"+getParam("keys");
-			}
-			
-			if(existsParam("keyuses")) {
-				command = command+" keyuses:"+getParam("keyuses");
-			}
-			
-			if(existsParam("anyphrase")) {
-				command = command+" anyphrase:"+getParam("anyphrase");
-			}
-			
-			JSONArray res 		= CommandRunner.getRunner().runMultiCommand(command);
-			JSONObject result 	= (JSONObject) res.get(0);
+			JSONObject result 	= runResync();
 			
 			//Shutdwon TEMP DB
 			archtemp.saveDB(false);
@@ -904,25 +886,7 @@ public class archive extends Command {
 				STATIC_TEMPARCHIVE = archtemp;
 			
 				//Now run a chain sync.. with correct params
-				String command = "archive action:resync host:"+LOCAL_ARCHIVE;
-				if(existsParam("phrase")) {
-					command = command+" phrase:\""+getParam("phrase")+"\"";
-				}
-				
-				if(existsParam("keys")) {
-					command = command+" keys:"+getParam("keys");
-				}
-				
-				if(existsParam("keyuses")) {
-					command = command+" keyuses:"+getParam("keyuses");
-				}
-				
-				if(existsParam("anyphrase")) {
-					command = command+" anyphrase:"+getParam("anyphrase");
-				}
-				
-				JSONArray res 		= CommandRunner.getRunner().runMultiCommand(command);
-				JSONObject result 	= (JSONObject) res.get(0);
+				JSONObject result 	= runResync();
 				
 				//Shutdown TEMP DB
 				archtemp.saveDB(false);
@@ -948,25 +912,7 @@ public class archive extends Command {
 				STATIC_RAW.connect();
 				
 				//Now run a chain sync.. with correct params
-				String command = "archive action:resync host:"+LOCAL_ARCHIVE;
-				if(existsParam("phrase")) {
-					command = command+" phrase:\""+getParam("phrase")+"\"";
-				}
-				
-				if(existsParam("keys")) {
-					command = command+" keys:"+getParam("keys");
-				}
-				
-				if(existsParam("keyuses")) {
-					command = command+" keyuses:"+getParam("keyuses");
-				}
-				
-				if(existsParam("anyphrase")) {
-					command = command+" anyphrase:"+getParam("anyphrase");
-				}
-				
-				JSONArray res 		= CommandRunner.getRunner().runMultiCommand(command);
-				JSONObject result 	= (JSONObject) res.get(0);
+				JSONObject result 	= runResync();
 				
 				//Shutdown TEMP DB
 				STATIC_RAW.stop();
@@ -1431,7 +1377,23 @@ public class archive extends Command {
 			zListener.processMessage(msg);
 		}
 	}
-	
+
+	/**
+	 * The chain resync an import runs, with this command's phrase / keys / keyuses / anyphrase.
+	 * SECURITY (command injection): from separated parameters - a quoted keys:"5 phrase:.." can no
+	 * longer add or replace a parameter (it could swap the seed being restored).
+	 */
+	private JSONObject runResync() throws CommandException {
+		ArrayList<Object> command = new ArrayList<>(Arrays.asList(new Object[] {"action","resync", "host",LOCAL_ARCHIVE}));
+		for(String param : new String[] {"phrase","keys","keyuses","anyphrase"}) {
+			if(existsParam(param)) {
+				command.add(param);
+				command.add(getParam(param));
+			}
+		}
+		return CommandRunner.getRunner().runCommand("archive", command.toArray());
+	}
+
 	@Override
 	public Command getFunction() {
 		return new archive();

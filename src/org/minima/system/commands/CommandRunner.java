@@ -200,6 +200,109 @@ public class CommandRunner {
 		}
 		return new JSONObject();
 	}
+
+	/**
+	 * SECURITY (command injection): run ONE command the node builds itself, from parts that are
+	 * already separated - the command name, then name, value, name, value.. A value is NEVER parsed as command
+	 * text, so a ';', quote, space or 'name:' inside it (a JSON-decoded param, a coin's on-chain state, a stored
+	 * login..) cannot start another command or add / replace a parameter. A String value is typed exactly as a
+	 * typed value is ({..} JSON object, [..] JSON array except for txnstate, surrounding quotes dropped); a
+	 * JSONObject / JSONArray is used as it is; anything else as its toString(). Runs as ADMIN (0x00), as the
+	 * text these commands used to build always did.
+	 */
+	public JSONObject runCommand(String zName, Object... zNameValues) {
+
+		Command cmd = getCommandOnly(zName);
+		if(cmd == null || zNameValues.length % 2 != 0) {
+			cmd = new missingcmd(zName, "Invalid built command : "+zName);
+		}else {
+			for(int i=0;i<zNameValues.length;i+=2) {
+				String name  = (String)zNameValues[i];
+				Object value = zNameValues[i+1];
+				if(value instanceof String) {
+					try {
+						value = getParamValue(zName, (String)value);
+					} catch (ParseException e) {
+						cmd = new missingcmd(zName,"Invalid JSON parameter for "+zName+" @ "+name+" "+e.toString());
+						break;
+					}
+				}else if(!(value instanceof JSONObject) && !(value instanceof JSONArray)) {
+					value = String.valueOf(value);
+				}
+				cmd.getParams().put(name, value);
+			}
+		}
+		cmd.setMiniDAPPID("0x00");
+
+		//Same parameter check as a typed command
+		ArrayList<String> validparams = cmd.getValidParams();
+		for(Object key : cmd.getParams().keySet()) {
+			if(!validparams.contains(key)) {
+				JSONObject result = new JSONObject();
+				result.put("command", zName);
+				result.put("params", cmd.getParams());
+				result.put("status", false);
+				result.put("pending", false);
+				result.put("error", "Invalid parameter : "+key);
+				return result;
+			}
+		}
+
+		JSONObject result = null;
+		try {
+			result = cmd.runCommand();
+		}catch(CommandException cexc) {
+			result = cmd.getJSONReply();
+			result.put("status", false);
+			result.put("error", cexc.getMessage());
+		}catch(Exception exc) {
+			MinimaLogger.log(exc);
+			result = cmd.getJSONReply();
+			result.put("status", false);
+			result.put("error", exc.toString());
+		}
+
+		return result;
+	}
+
+	/**
+	 * The txnscript 'scripts' parameter for one script with no proof - what scripts:{"SCRIPT":""} parsed to
+	 */
+	public static JSONObject scripts(String zScript) {
+		JSONObject scripts = new JSONObject();
+		scripts.put(zScript, "");
+		return scripts;
+	}
+
+	/**
+	 * Several built commands in order - each { name, name, value, .. } as for runCommand - stopping after the
+	 * first that fails, as runMultiCommand did for the ';' chains these replace.
+	 */
+	public JSONArray runCommands(Object[]... zCommands) {
+		JSONArray results = new JSONArray();
+		for(Object[] command : zCommands) {
+			JSONObject result = runCommand((String)command[0], Arrays.copyOfRange(command, 1, command.length));
+			results.add(result);
+			if(!(boolean)result.get("status")) {
+				break;
+			}
+		}
+		return results;
+	}
+
+	/**
+	 * runCommands for a chain that works on the in-progress transaction zTxnID: when the chain stops on a
+	 * failure, the row is deleted (house rule: every txn error path runs txndelete - the old ';' chains
+	 * left it behind).
+	 */
+	public JSONArray runTxnCommands(String zTxnID, Object[]... zCommands) {
+		JSONArray results = runCommands(zCommands);
+		JSONObject last   = (JSONObject) results.get(results.size()-1);
+		if(!(boolean) last.get("status")) {
+			runCommand("txndelete", "id", zTxnID);
+		}
+		return results;
+	}
 	
 	public JSONArray runMultiCommand(String zMiniDAPPID, String zCommand) {
 		
@@ -405,62 +508,50 @@ public class CommandRunner {
 			
 			String name  = token.substring(0, index).trim();
 			String value = token.substring(index+1).trim();
-			
-			//Is the value a JSON..or JSONArray..
-			if(value.startsWith("{") && value.endsWith("}")) {
-				
-				//It's a JSON..!
-				JSONObject json = null;
-				try {
-					json = (JSONObject) new JSONParser().parse(value);
-				} catch (ParseException e) {
-					return new missingcmd(command,"Invalid JSON parameter for "+command+" @ "+token+" "+e.toString());
-				}
-				
-				//Store this parameter..
-				comms.getParams().put(name, json);
-			
-			}else if(value.startsWith("[") && value.endsWith("]")) {
-				
-				//Is this a state variable
-				if(command.equals("txnstate")) {
 
-					//Could be a String variable.. add normal String parameter to..
-					comms.getParams().put(name, value);
-
-					continue;
-				}
-				
-				//It's a JSONArray..!
-				JSONArray json = null;
-				try {
-					json = (JSONArray) new JSONParser().parse(value);
-				} catch (ParseException e) {
-					
-					//Otherwise is just a broken JSONArray
-					return new missingcmd(command,"Invalid JSONArray parameter for "+command+" @ "+token+" "+e.toString());
-				}
-				
-				//Store this parameter..
-				comms.getParams().put(name, json);
-				
-			}else {
-				
-				//Should not have any "..
-				if(value.startsWith("\"")) {
-					value = value.substring(1);
-				}
-				
-				if(value.endsWith("\"")) {
-					value = value.substring(0,value.length()-1);
-				}
-				
-				//Add normal String parameter to..
-				comms.getParams().put(name, value);
+			try {
+				comms.getParams().put(name, getParamValue(command, value));
+			} catch (ParseException e) {
+				String type = value.startsWith("{") ? "JSON" : "JSONArray";
+				return new missingcmd(command,"Invalid "+type+" parameter for "+command+" @ "+token+" "+e.toString());
 			}
 		}
-		
+
 		return comms;
+	}
+
+	/**
+	 * How a parameter value is typed - shared by typed commands and runCommand()
+	 */
+	private static Object getParamValue(String zCommand, String zValue) throws ParseException {
+		String value = zValue.trim();
+
+		//Is the value a JSON..or JSONArray..
+		if(value.startsWith("{") && value.endsWith("}")) {
+			//It's a JSON..!
+			return (JSONObject) new JSONParser().parse(value);
+
+		}else if(value.startsWith("[") && value.endsWith("]")) {
+
+			//Is this a state variable - could be a String variable..
+			if(zCommand.equals("txnstate")) {
+				return value;
+			}
+
+			//It's a JSONArray..!
+			return (JSONArray) new JSONParser().parse(value);
+		}
+
+		//Should not have any "..
+		if(value.startsWith("\"")) {
+			value = value.substring(1);
+		}
+
+		if(value.endsWith("\"")) {
+			value = value.substring(0,value.length()-1);
+		}
+
+		return value;
 	}
 	
 	private String[] splitStringJSON(boolean zForceNormal, String zInput) {
