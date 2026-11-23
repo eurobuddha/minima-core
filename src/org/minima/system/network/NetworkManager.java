@@ -170,6 +170,7 @@ public class NetworkManager {
 		stats.put("keetspeers", mNIOManager.getNumberOfConnectedClients() - classic);
 		
 		stats.put("keets", GeneralParams.KEETS_ENABLED);
+		stats.put("keetschatonly", GeneralParams.KEETS_ENABLED && GeneralParams.KEETS_CHAT_ONLY);
 
 		//RPC Stats
 		JSONObject rpcjson = new JSONObject();
