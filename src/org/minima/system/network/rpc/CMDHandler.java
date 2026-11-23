@@ -261,8 +261,8 @@ public class CMDHandler implements Runnable {
 					for(Object obj : res) {
 						JSONObject reply = (JSONObject) obj;
 						if(String.valueOf(reply.get("error")).contains("ADMIN")) {
-							reply.put("error", reply.get("error")+" - this RPC has no password: send the command as a POST"
-									+ " with the header X-Minima-Rpc: 1 (or set -rpcpassword)");
+							reply.put("error", reply.get("error")+" - this RPC has no password: send the command with the"
+									+ " header X-Minima-Rpc: 1 (or set -rpcpassword)");
 						}
 					}
 				}
@@ -357,17 +357,17 @@ public class CMDHandler implements Runnable {
 	}
 	
 	/**
-	 * On an RPC with no password, may this request run as ADMIN? Only a POST that a web page cannot send without a
-	 * CORS preflight (which browserAllowed refuses for a foreign page): one with X-Minima-Rpc or Authorization, or a
-	 * Content-Type other than the three a form / simple fetch can send. A GET, or a POST with no Content-Type or
-	 * text/plain, application/x-www-form-urlencoded or multipart/form-data, runs read-only.
+	 * On an RPC with no password, may this request run as ADMIN? Only one a web page cannot send without a CORS
+	 * preflight (which browserAllowed refuses for a foreign page): one with X-Minima-Rpc or Authorization (GET or
+	 * POST), or a POST with a Content-Type other than the three a form / simple fetch can send. A plain GET, or a POST
+	 * with no Content-Type or text/plain, application/x-www-form-urlencoded or multipart/form-data, runs read-only.
 	 */
 	static boolean adminRequest(String zMethod, String zContentType, boolean zPreflightHeader) {
-		if(!zMethod.equals("POST")) {
-			return false;
-		}
 		if(zPreflightHeader) {
 			return true;
+		}
+		if(!zMethod.equals("POST")) {
+			return false;
 		}
 		if(zContentType == null) {
 			return false;
