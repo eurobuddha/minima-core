@@ -3,7 +3,6 @@ package org.minima.system.commands;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
-import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -306,14 +305,78 @@ public class CommandRunner {
 		return results;
 	}
 	
+	/**
+	 * SECURITY (2026-11-23): the commands in a command line - split at each ';' that is NOT inside a value. A
+	 * "quoted" value runs to its closing quote (a backslash escapes the next character, so \" does not close
+	 * it); a {..} or [..] JSON value runs to its closing bracket, and its own "strings" may hold anything.
+	 * The old StringTokenizer split at EVERY ';', so a ';' inside a runscript / newscript script:"..", a
+	 * txnstate value:".." or a JSON parameter - text apps often take from chain data - started a new command
+	 * that ran with the caller's rights. Pieces are trimmed and empty ones skipped, as before.
+	 *
+	 * Returns null when a quote or bracket is never closed: where that value ends, and so where the next
+	 * command starts, is unknown - the caller must run nothing.
+	 */
+	public static ArrayList<String> splitCommands(String zCommand) {
+		ArrayList<String> commands = new ArrayList<>();
+		int start 		= 0;
+		int depth 		= 0;
+		boolean quoted 	= false;
+		int len = zCommand.length();
+		for(int i=0;i<len;i++) {
+			char cc = zCommand.charAt(i);
+			if(quoted) {
+				if(cc == '\\') {
+					i++;
+				}else if(cc == '"') {
+					quoted = false;
+				}
+			}else if(cc == '"') {
+				quoted = true;
+			}else if(cc == '{' || cc == '[') {
+				depth++;
+			}else if(cc == '}' || cc == ']') {
+				//A stray closing bracket outside any JSON value is just text
+				if(depth > 0) {
+					depth--;
+				}
+			}else if(cc == ';' && depth == 0) {
+				addCommand(commands, zCommand.substring(start, i));
+				start = i+1;
+			}
+		}
+		
+		if(quoted || depth != 0) {
+			return null;
+		}
+		
+		addCommand(commands, zCommand.substring(start));
+		return commands;
+	}
+	
+	private static void addCommand(ArrayList<String> zCommands, String zCommand) {
+		String command = zCommand.trim();
+		if(!command.isEmpty()) {
+			zCommands.add(command);
+		}
+	}
+	
 	public JSONArray runMultiCommand(String zMiniDAPPID, String zCommand) {
 		
 		JSONArray finalresult = new JSONArray();
 		
-		//First break it up..
-		StringTokenizer strtok = new StringTokenizer(zCommand, ";");
-		while(strtok.hasMoreTokens()) {
-			String command = strtok.nextToken().trim();
+		//First break it up.. at the ';' between commands, never at one inside a value
+		ArrayList<String> commands = splitCommands(zCommand);
+		if(commands == null) {
+			JSONObject result = new JSONObject();
+			result.put("command", zCommand);
+			result.put("status", false);
+			result.put("pending", false);
+			result.put("error", "A quote or bracket is never closed - nothing was run");
+			finalresult.add(result);
+			return finalresult;
+		}
+		
+		for(String command : commands) {
 			
 			//Get this command..
 			Command cmd = getCommand(command);
