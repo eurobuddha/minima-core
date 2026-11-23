@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -23,6 +24,7 @@ import org.minima.system.network.p2p.params.P2PParams;
 import org.minima.system.network.p2p.params.P2PTestParams;
 import org.minima.system.params.GeneralParams;
 import org.minima.utils.MinimaLogger;
+import org.minima.utils.RPCClient;
 import org.minima.utils.json.JSONArray;
 import org.minima.utils.json.JSONObject;
 import org.minima.utils.messages.Message;
@@ -161,7 +163,10 @@ public class P2PManager extends MessageProcessor {
         			.addBoolean("force", true);
         	mPeersChecker.PostMessage(addpeer);
         }
-        
+
+        //And the published classic peers lists
+        seedPeers();
+
         state.setAcceptingInLinks(GeneralParams.IS_ACCEPTING_IN_LINKS);
         state.setMyMinimaAddress(GeneralParams.MINIMA_HOST);
 
@@ -220,6 +225,53 @@ public class P2PManager extends MessageProcessor {
     }
 
 
+    private long mLastSeedPeers = 0;
+    /**
+     * Seed the classic P2P from the published peers lists. Runs in its own thread ( network ), and every
+     * peer goes through the peers checker ( reachable, right version, right chain ) before it is used.
+     */
+    private void seedPeers() {
+    	//Not on a test / private network, and not more than once every few minutes
+    	long timenow = System.currentTimeMillis();
+    	if(GeneralParams.TEST_PARAMS || GeneralParams.NOCONNECT || timenow - mLastSeedPeers < NOTIFY_NOPEERS_TIMER) {
+    		return;
+    	}
+    	mLastSeedPeers = timenow;
+
+    	Thread seeder = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				HashSet<String> nodes = new HashSet<>();
+				for(String url : P2PParams.SEED_PEER_URLS) {
+					try {
+						StringTokenizer strtok = new StringTokenizer(RPCClient.sendGET(url),",");
+						while(strtok.hasMoreTokens()) {
+							nodes.add(strtok.nextToken().trim());
+						}
+					}catch(Exception exc) {
+						MinimaLogger.log("P2P seed peers : could not fetch "+url+" "+exc);
+					}
+				}
+
+				int added = 0;
+				for(String node : nodes) {
+					Message checker = connect.createConnectMessage(node);
+					if(checker != null) {
+						InetSocketAddress addr = new InetSocketAddress(checker.getString("host"), checker.getInteger("port"));
+						mPeersChecker.PostMessage(new Message(P2PPeersChecker.PEERS_CHECKPEERS)
+															.addObject("address", addr)
+															.addBoolean("force", true));
+						added++;
+					}
+				}
+
+				MinimaLogger.log("P2P seed peers : checking "+added+" published peers");
+			}
+		}, "P2PSeedPeers");
+    	seeder.setDaemon(true);
+    	seeder.start();
+    }
+
     private long mLastNotifyNoPeers 	= 0;
     private long NOTIFY_NOPEERS_TIMER 	= 1000 * 60 * 3;
     private void doDiscoveryPing(){
@@ -232,6 +284,9 @@ public class P2PManager extends MessageProcessor {
     		if(timenow - mLastNotifyNoPeers > NOTIFY_NOPEERS_TIMER) {
     			MinimaLogger.log("No default Peers found - please use command 'peers' to add a valid peer..");
     			mLastNotifyNoPeers = timenow;
+
+    			//No peers left.. try the published lists again
+    			seedPeers();
     		}
     		
     		return;
