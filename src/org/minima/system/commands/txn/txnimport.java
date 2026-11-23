@@ -75,7 +75,7 @@ public class txnimport extends Command {
 				txnrow.setID(getParam("id"));
 			}
 			
-			db.addCompleteTransaction(txnrow);
+			addRow(db, txnrow);
 			
 			JSONObject resp = new JSONObject();
 			ret.put("response", txnrow.toJSON());
@@ -92,7 +92,7 @@ public class txnimport extends Command {
 			}
 			
 			//Add to the DB
-			db.addCompleteTransaction(tx);
+			addRow(db, tx);
 			
 			JSONObject resp = new JSONObject();
 			ret.put("response", tx.toJSON());
@@ -104,6 +104,18 @@ public class txnimport extends Command {
 		return ret;
 	}
 
+	/**
+	 * CommandRunner lets a non-admin txnimport through only for a NEW id; the add must not then replace a row
+	 * created in between - checked and added in one step. ADMIN: as before.
+	 */
+	private void addRow(TxnDB zDB, TxnRow zRow) throws CommandException {
+		if(isAdminCaller()) {
+			zDB.addCompleteTransaction(zRow);
+		}else if(!zDB.addNewTransaction(zRow)) {
+			throw new CommandException("A transaction with this id already exists : "+zRow.getID());
+		}
+	}
+	
 	@Override
 	public Command getFunction() {
 		return new txnimport();
