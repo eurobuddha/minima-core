@@ -15,8 +15,8 @@ import org.minima.system.params.GeneralParams;
 /**
  * An RPC with NO password (2026-11-23): a request with neither Origin nor Sec-Fetch-Site - an <img>, a form, a page in a
  * browser that sends no Fetch-Metadata, but also curl - is served read-only when a page could have sent it without a
- * CORS preflight (a GET, or a POST with no / a simple Content-Type). A POST with X-Minima-Rpc, Authorization or a
- * non-simple Content-Type runs as ADMIN, as before. With a password nothing changes.
+ * CORS preflight (a GET, or a POST with no / a simple Content-Type). A request with X-Minima-Rpc or Authorization,
+ * or a POST with a non-simple Content-Type, runs as ADMIN, as before. With a password nothing changes.
  */
 public class RpcSimpleRequestTest {
 
@@ -65,6 +65,9 @@ public class RpcSimpleRequestTest {
 		assertTrue(row("customheader"));
 		post("Content-Type: application/json\r\n", "txncreate id:jsontype");
 		assertTrue(row("jsontype"));
+		//a header a page cannot send without a preflight makes a GET ADMIN too (curl -H 'X-Minima-Rpc: 1' ..)
+		RpcHardeningTest.raw("GET /txncreate%20id:headerget HTTP/1.1\r\nHost: 127.0.0.1:9005\r\nX-Minima-Rpc: 1", "");
+		assertTrue(row("headerget"));
 	}
 
 	@Test
