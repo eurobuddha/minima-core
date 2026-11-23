@@ -103,6 +103,8 @@ public class CMDHandler implements Runnable {
 			String hostheader = null;
 			String originheader = null;
 			String fetchsiteheader = null;
+			String contenttypeheader = null;
+			boolean preflighted = false;
 			while(input != null && !input.trim().equals("")) {
 				
 				if(input.toLowerCase().startsWith("host:")) {
@@ -111,6 +113,12 @@ public class CMDHandler implements Runnable {
 					originheader = input.substring(7).trim();
 				}else if(input.toLowerCase().startsWith("sec-fetch-site:")) {
 					fetchsiteheader = input.substring(15).trim().toLowerCase();
+				}else if(input.toLowerCase().startsWith("content-type:")) {
+					contenttypeheader = input.substring(13).trim();
+				}
+				if(input.toLowerCase().startsWith("x-minima-rpc:") || input.toLowerCase().startsWith("authorization:")) {
+					//headers a web page can only send after a CORS preflight
+					preflighted = true;
 				}
 				//MinimaLogger.log("RPC HEADER : "+input);
 				
@@ -158,7 +166,7 @@ public class CMDHandler implements Runnable {
 				if(browserok) {
 					out.println("Access-Control-Allow-Origin: *");
 					out.println("Access-Control-Allow-Methods: GET, POST");
-					out.println("Access-Control-Allow-Headers: Authorization, Content-Type");
+					out.println("Access-Control-Allow-Headers: Authorization, Content-Type, X-Minima-Rpc");
 				}
 				out.println();
 				out.flush();
@@ -195,6 +203,15 @@ public class CMDHandler implements Runnable {
 				out.flush(); // flush character output stream bufferout.flush(); // flush character output stream buffer
 				
 				throw new IllegalArgumentException("Invalid Authentication at RPC");
+			}
+			
+			//SECURITY (2026-11-23): browserAllowed cannot see a request with neither Origin nor Sec-Fetch-Site - an <img>,
+			//a form, any page in a browser that sends no Fetch-Metadata. On an RPC with NO password such a GET or simple
+			//POST now runs as a read-mode user (reads only, WRITE commands refused); ADMIN needs a request no page can
+			//send without a preflight - see adminRequest. With a password nothing changes.
+			boolean readonly = !authrequired && !adminRequest(method, contenttypeheader, preflighted);
+			if(readonly) {
+				authuser.put("mode", "read");
 			}
 			
 			//Is it a POST request
@@ -237,6 +254,20 @@ public class CMDHandler implements Runnable {
 					res = CommandRunner.getRunner().runMultiCommand(fileRequested);
 				}else {
 					throw new IllegalArgumentException("Invalid mode for RPC user : "+mode);
+				}
+				
+				//Say how to run it as ADMIN
+				if(readonly) {
+					for(Object obj : res) {
+						JSONObject reply = (JSONObject) obj;
+						//refused for want of ADMIN - or, with a MiniDapp System, left pending as a READ MiniDapp's is
+						if(String.valueOf(reply.get("error")).contains("ADMIN") || Boolean.TRUE.equals(reply.get("pending"))) {
+							reply.put("error", reply.get("error")+" - this RPC has no password, so a request without the"
+									+ " header ran read-only. Add the request header  X-Minima-Rpc: 1  (curl: -H 'X-Minima-Rpc: 1';"
+									+ " wget: --header='X-Minima-Rpc: 1'; fetch / requests / http.request: headers {\"X-Minima-Rpc\": \"1\"})"
+									+ " - or start the node with -rpcpassword and send it as Basic auth");
+						}
+					}
 				}
 				
 				//Get the result.. is it a multi command or single.. 
@@ -326,6 +357,27 @@ public class CMDHandler implements Runnable {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * On an RPC with no password, may this request run as ADMIN? Only one a web page cannot send without a CORS
+	 * preflight (which browserAllowed refuses for a foreign page): one with X-Minima-Rpc or Authorization (GET or
+	 * POST), or a POST with a Content-Type other than the three a form / simple fetch can send. A plain GET, or a POST
+	 * with no Content-Type or text/plain, application/x-www-form-urlencoded or multipart/form-data, runs read-only.
+	 */
+	static boolean adminRequest(String zMethod, String zContentType, boolean zPreflightHeader) {
+		if(zPreflightHeader) {
+			return true;
+		}
+		if(!zMethod.equals("POST")) {
+			return false;
+		}
+		if(zContentType == null) {
+			return false;
+		}
+		String type = zContentType.split(";")[0].trim().toLowerCase();
+		return !type.isEmpty() && !type.equals("text/plain") && !type.equals("application/x-www-form-urlencoded")
+				&& !type.equals("multipart/form-data");
 	}
 	
 	/**
