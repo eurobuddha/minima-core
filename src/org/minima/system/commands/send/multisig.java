@@ -391,6 +391,20 @@ public class multisig extends Command {
 				TxnDB db 						  = MinimaDB.getDB().getCustomTxnDB();
 				TxnRow txnrow 					  = db.getTransactionRow(randomid);
 				Transaction trans 				  = txnrow.getTransaction();
+				
+				//SECURITY (2026-11-23): it signs the WHOLE transaction with every wallet key named in input 0's state - so
+				//every input must be a coin of the multisig contract, or a crafted file also spends coins that key owns
+				MiniData msaddr = new Address(multisig.MULTISIG_CONTRACT).getAddressData();
+				if(trans.getAllInputs().isEmpty()) {
+					throw new CommandException("Not a multisig transaction - it has no inputs");
+				}
+				for(Coin input : trans.getAllInputs()) {
+					if(!input.getAddress().isEqual(msaddr)) {
+						throw new CommandException("Not a multisig transaction - input "+input.getCoinID().to0xString()
+								+" is not at the multisig address");
+					}
+				}
+				
 				Coin multicoin 					  = trans.getAllInputs().get(0);
 				ArrayList<StateVariable> allstate = multicoin.getState();
 				for(StateVariable statevar : allstate) {
