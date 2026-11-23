@@ -443,6 +443,16 @@ public class CommandRunner {
 			
 			//Is this a MiniDAPP..
 			MDSManager mds = Main.getInstance() == null ? null : Main.getInstance().getMDSManager();
+			
+			//SECURITY (2026-11-23): the in-progress transaction table is ONE shared table with no owner. A caller that
+			//is neither ADMIN nor an installed MiniDapp (a read-mode RPC user, a companion app, a gateway) may not
+			//list, export or edit its rows - it could rewrite another caller's draft between that caller's import and
+			//its txnsign, or read the signed copy back. Installed MiniDapps use the table as before: rows are not
+			//owned per MiniDapp, and making every txn command pending would break them.
+			if(allowed && TXN_TABLE_COMMANDS_ARRAY.contains(comname) && !zMiniDAPPID.equals("0x00")
+					&& (mds == null || mds.getMiniDAPP(zMiniDAPPID) == null)) {
+				allowed = false;
+			}
 			if(mds != null && zMiniDAPPID.equals(mds.getPublicMiniDAPPID())) {
 				
 				//Public MiniDAPPs cannot add to pending..
@@ -806,6 +816,15 @@ public class CommandRunner {
 		 "reset"};
 	
 	private final ArrayList<String> ALL_WRITE_COMMANDS_ARRAY = new ArrayList<String>(Arrays.asList(ALL_WRITE_COMMANDS));
+	
+	/**
+	 * The transaction-table commands a caller that is neither ADMIN nor an installed MiniDapp may not run - the txn
+	 * gate of the lines without MDS. Left open: txnimport (a new row only - see txnimport.getWriteUse), txnbasics
+	 * and txnpost on a row, which cannot redirect funds (the companion relay); txnview / txncheck decode only.
+	 */
+	private static final ArrayList<String> TXN_TABLE_COMMANDS_ARRAY = new ArrayList<String>(Arrays.asList(
+		"txnaddamount","txnclear","txncoinlock","txncreate","txndelete","txnexport",
+		"txninput","txnlist","txnlock","txnmine","txnminepost","txnmmr","txnoutput","txnscript","txnstate"));
 	
 	public boolean isCommandAllowed(String zCommand) {
 		

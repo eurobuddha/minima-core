@@ -57,4 +57,28 @@ public class TxnTableGateTest {
 		assertTrue((boolean) run("0x00", "txnimport id:importvictim data:"+WriteGateTest.blob("x")).get("status"));
 		assertFalse(stateKept("importvictim"));
 	}
+
+	@Test
+	public void nonAdminCannotListOrEditTheTable() throws Exception {
+		CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:tabledraft;txnstate id:tabledraft port:1 value:42");
+
+		for(String cmd : new String[] {"txnlist", "txnlist id:tabledraft", "txnexport id:tabledraft",
+				"txninput id:tabledraft coinid:0x01", "txnoutput id:tabledraft amount:1 address:0x01",
+				"txnstate id:tabledraft port:1 value:1", "txnclear id:tabledraft", "txndelete id:tabledraft",
+				"txncreate id:tablenew"}) {
+			JSONObject res = run("0xFF", cmd);
+			assertTrue(cmd+" ran for a non-admin caller: "+res, WriteGateTest.adminRefusal(res));
+		}
+		assertTrue(row("tabledraft") && stateKept("tabledraft"));
+		assertFalse(row("tablenew"));
+
+		//the companion relay stays open (txnbasics / txnpost fail later here: no chain)
+		assertTrue((boolean) run("0xFF", "txnimport id:tablerelay data:"+WriteGateTest.blob("x")).get("status"));
+		assertFalse(WriteGateTest.adminRefusal(run("0xFF", "txnbasics id:tablerelay")));
+		assertFalse(WriteGateTest.adminRefusal(run("0xFF", "txnpost id:tablerelay")));
+
+		//ADMIN as before
+		assertTrue((boolean) run("0x00", "txnlist id:tabledraft").get("status"));
+		assertTrue((boolean) run("0x00", "txndelete id:tabledraft").get("status"));
+	}
 }
