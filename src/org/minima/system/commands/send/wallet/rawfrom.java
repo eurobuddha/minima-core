@@ -6,6 +6,7 @@ import java.util.Arrays;
 import org.minima.objects.StateVariable;
 import org.minima.objects.base.MiniData;
 import org.minima.system.commands.Command;
+import org.minima.system.commands.CommandException;
 import org.minima.system.commands.CommandRunner;
 import org.minima.utils.json.JSONArray;
 import org.minima.utils.json.JSONObject;
@@ -142,8 +143,17 @@ public class rawfrom extends Command {
 		}
 	}
 	
-	public JSONObject runCommand(String zName, Object... zNameValues) {
-		return CommandRunner.getRunner().runCommand(zName, zNameValues);
+	/**
+	 * One step of the built transaction. SECURITY (2026-11-23): a failed step ends the build - it throws, and the
+	 * catch around the build deletes the row. Before, a failed txninput / txnoutput / txnscript / txnstate / txnmmr /
+	 * txnsign was ignored and the build went on to export or post what was left.
+	 */
+	public JSONObject runCommand(String zName, Object... zNameValues) throws CommandException {
+		JSONObject result = CommandRunner.getRunner().runCommand(zName, zNameValues);
+		if(!zName.equals("txndelete") && !Boolean.TRUE.equals(result.get("status"))) {
+			throw new CommandException(String.valueOf(result.get("error")));
+		}
+		return result;
 	}
 
 	@Override

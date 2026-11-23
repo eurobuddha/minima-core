@@ -200,6 +200,15 @@ public class CommandInjectionTest {
 	}
 	
 	@Test
+	public void failedBuildStepStopsTheBuild() {
+		//rawtxnfrom with a coin the node does not know: the old code ignored the failed txninput and exported the rest
+		int before = txnRows();
+		JSONObject res = run("rawtxnfrom inputs:[\"0x01\"] outputs:[] scripts:[] state:{}");
+		assertFalse("the build went on past a failed txninput: "+res, (boolean) res.get("status"));
+		assertEquals("the stopped build left its txn row behind", before, txnRows());
+	}
+	
+	@Test
 	public void failedMultisigChainLeavesNoTxnRow() throws Exception {
 		//A transaction file multisig post can import, whose txnpost then fails (no node in the test)
 		java.io.File file = java.io.File.createTempFile("multisig-post", ".txn");
