@@ -213,6 +213,13 @@ public class NetworkManager {
 	
 	public void startRPC() {
 		if(mRPCServer == null) {
+			
+			//Say once where it listens: since 2026-11-21 loopback by default, which a container / another machine
+			//cannot reach and an IPv6-first client's 'localhost' (::1) does not connect to
+			if(GeneralParams.RPC_BIND_HOST.equals("127.0.0.1")) {
+				MinimaLogger.log("RPC listens on 127.0.0.1:"+GeneralParams.RPC_PORT+" only - connect to 127.0.0.1 (a 'localhost' "
+						+ "that resolves to ::1 will not connect); for another machine or a container use -rpcbind all with -rpcpassword");
+			}
 		
 			//Start The RPC server
 			//SECURITY (2026-11-21): loopback unless -rpcbind - it was every interface, an admin RPC on the LAN
