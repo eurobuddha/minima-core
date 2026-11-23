@@ -165,6 +165,9 @@ public class NetworkManager {
 		
 		stats.put("connecting", mNIOManager.getNumberOfConnnectingClients());
 		stats.put("connected", mNIOManager.getNumberOfConnectedClients());
+		int classic = mNIOManager.getNumberOfClassicConnectedClients();
+		stats.put("classic", classic);
+		stats.put("keetspeers", mNIOManager.getNumberOfConnectedClients() - classic);
 		
 		stats.put("keets", GeneralParams.KEETS_ENABLED);
 
