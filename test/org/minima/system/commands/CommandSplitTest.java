@@ -160,4 +160,27 @@ public class CommandSplitTest {
 			CommandInjectionTest.swap("send", real);
 		}
 	}
+
+	@Test
+	public void unquotedStringStateStillSplitsButRunOneCommandRefuses() {
+		//LIMIT: a STRING state is [..], so a coin state "[1];txncreate id:unqpwn;[2]" pasted UNQUOTED after value: is
+		//the closed value [1], a ';', and a command. The splitter cannot tell - apps must quote (and validate) data.
+		CommandRunner.getRunner().runMultiCommand("txncreate id:unqrow");
+		String line = "txnstate id:unqrow port:9 value:[1];txncreate id:unqpwn;[2]";
+		CommandRunner.getRunner().runMultiCommand(line);
+		assertTrue("documented limit: an unquoted chain still splits", txnExists("unqpwn"));
+		CommandRunner.getRunner().runMultiCommand("txndelete id:unqpwn");
+
+		//runOneCommand: a caller that means ONE command - the line runs nothing
+		JSONObject one = CommandRunner.getRunner().runOneCommand("0x00", line);
+		assertFalse((boolean) one.get("status"));
+		assertTrue(one.toString(), String.valueOf(one.get("error")).contains("Exactly one command expected"));
+		assertFalse("runOneCommand ran the second command", txnExists("unqpwn"));
+
+		//one command - also with a ';' inside a quoted value - runs as before
+		one = CommandRunner.getRunner().runOneCommand("0x00", "txnstate id:unqrow port:9 value:\"[1];x;[2]\"");
+		assertTrue(one.toString(), (boolean) one.get("status"));
+		assertFalse((boolean) CommandRunner.getRunner().runOneCommand("0x00", "txnstate id:unqrow port:9 value:\"[1]").get("status"));
+		CommandRunner.getRunner().runMultiCommand("txndelete id:unqrow");
+	}
 }

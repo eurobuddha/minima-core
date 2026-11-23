@@ -472,6 +472,14 @@ public class Main extends MessageProcessor {
 		return STARTUP_COMPLETE;
 	}
 	
+	/**
+	 * Exactly ONE command as ADMIN - a line holding a chain runs nothing (CommandRunner.runOneCommand). For a caller
+	 * that builds a command from data; runSingleMinimaCMD runs every command of a chain and returns the first reply.
+	 */
+	public JSONObject runOneMinimaCMD(String zInput){
+		return CommandRunner.getRunner().runOneCommand("0x00", zInput.trim());
+	}
+	
 	public JSONObject runSingleMinimaCMD(String zInput){
 		//trim it..
 		String input = zInput.trim();
