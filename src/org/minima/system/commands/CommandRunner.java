@@ -808,6 +808,9 @@ public class CommandRunner {
 		 "restore","restoresync","vault","archive","mysql","mysqlcoins",
 		 "rpc","magic","quit","seedrandom","megammrsync","megammr","decryptbackup",
 		 "reset",
+		 // SECURITY (2026-11-23): a non-admin caller (a read-mode RPC user, a companion) may not add a webhook - every
+		 // block, txpow and MiniDapp event posted to its own URL - nor connect the node to its peer or drop a peer
+		 "webhooks","connect","disconnect",
 		 // SECURITY (2026-11-21): rescue starts a MegaMMR resync from any host: and the node halts afterwards
 		 "rescue",
 		 // SECURITY (Dexicon review 2026-11-07): the in-progress transaction table is ONE shared table with no owner.
