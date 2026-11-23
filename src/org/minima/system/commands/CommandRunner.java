@@ -904,7 +904,13 @@ public class CommandRunner {
 		 "reset",
 		 // SECURITY (2026-11-23): a non-admin caller (a read-mode RPC user, a companion) may not add a webhook - every
 		 // block, txpow and MiniDapp event posted to its own URL - nor connect the node to its peer or drop a peer
-		 "webhooks","connect","disconnect"};
+		 "webhooks","connect","disconnect",
+		 // the in-progress transaction table is ONE shared table with no owner: a non-ADMIN caller may not list,
+		 // export or edit its rows (it could rewrite another caller's draft between its import and its txnsign).
+		 // Left open: txnimport of a new row, txnbasics and txnpost (a companion that signs locally and relays),
+		 // txnview / txncheck (decode only)
+		 "txnaddamount","txnclear","txncoinlock","txncreate","txndelete","txnexport",
+		 "txninput","txnlist","txnlock","txnmine","txnminepost","txnmmr","txnoutput","txnscript","txnstate"};
 	
 	private final ArrayList<String> ALL_WRITE_COMMANDS_ARRAY = new ArrayList<String>(Arrays.asList(ALL_WRITE_COMMANDS));
 	

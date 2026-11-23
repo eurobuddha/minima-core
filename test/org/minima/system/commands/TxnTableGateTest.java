@@ -12,10 +12,11 @@ import org.minima.database.userprefs.txndb.TxnDB;
 import org.minima.utils.json.JSONObject;
 
 /**
- * A non-admin caller's txnimport never replaces an existing row (by its id: or the id inside the data): the
- * in-progress transaction table is one shared table. A new id still works.
+ * The in-progress transaction table is one shared table with no owner. A non-admin caller (0xFF here) may not
+ * list, export or edit its rows, and its txnimport never replaces an existing row. The companion relay (txnimport
+ * of a new id, txnbasics, txnpost) stays open.
  */
-public class TxnImportNewRowTest {
+public class TxnTableGateTest {
 
 	@BeforeClass
 	public static void setup() throws Exception {
@@ -53,5 +54,29 @@ public class TxnImportNewRowTest {
 		assertTrue((boolean) run("0xFF", "txnimport id:importnew data:"+PostfromSignfromTest.blob("x")).get("status"));
 		assertTrue((boolean) run("0x00", "txnimport id:importvictim data:"+PostfromSignfromTest.blob("x")).get("status"));
 		assertFalse(stateKept("importvictim"));
+	}
+
+	@Test
+	public void nonAdminCannotListOrEditTheTable() throws Exception {
+		CommandRunner.getRunner().runMultiCommand("0x00", "txncreate id:tabledraft;txnstate id:tabledraft port:1 value:42");
+
+		for(String cmd : new String[] {"txnlist", "txnlist id:tabledraft", "txnexport id:tabledraft",
+				"txninput id:tabledraft coinid:0x01", "txnoutput id:tabledraft amount:1 address:0x01",
+				"txnstate id:tabledraft port:1 value:1", "txnclear id:tabledraft", "txndelete id:tabledraft",
+				"txncreate id:tablenew"}) {
+			JSONObject res = run("0xFF", cmd);
+			assertTrue(cmd+" ran for a non-admin caller: "+res, PostfromSignfromTest.adminRefusal(res));
+		}
+		assertTrue(row("tabledraft") && stateKept("tabledraft"));
+		assertFalse(row("tablenew"));
+
+		//the companion relay stays open (txnbasics / txnpost fail later here: no chain)
+		assertTrue((boolean) run("0xFF", "txnimport id:tablerelay data:"+PostfromSignfromTest.blob("x")).get("status"));
+		assertFalse(PostfromSignfromTest.adminRefusal(run("0xFF", "txnbasics id:tablerelay")));
+		assertFalse(PostfromSignfromTest.adminRefusal(run("0xFF", "txnpost id:tablerelay")));
+
+		//ADMIN as before
+		assertTrue((boolean) run("0x00", "txnlist id:tabledraft").get("status"));
+		assertTrue((boolean) run("0x00", "txndelete id:tabledraft").get("status"));
 	}
 }
