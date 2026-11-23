@@ -210,7 +210,7 @@ public class ParamConfigurer {
             	GeneralParams.RPC_ENABLED = false;
             }
         }),
-        rpcbind("rpcbind", "The address the RPC binds: default 127.0.0.1 (this machine only); 'all' = every interface, as before", (args, configurer) -> {
+        rpcbind("rpcbind", "The address the RPC binds: default 127.0.0.1 (this machine only, IPv4 - connect to 127.0.0.1, not a localhost that resolves to ::1); 'all' = every interface, as before (set -rpcpassword)", (args, configurer) -> {
             String host = args.trim();
             if(host.isEmpty()) {
                 //an empty value (-rpcbind "", MINIMA_RPCBIND=, rpcbind=) is the default - never every interface
