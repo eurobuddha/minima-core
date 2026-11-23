@@ -352,6 +352,28 @@ public class CommandRunner {
 		return commands;
 	}
 	
+	/**
+	 * SECURITY (2026-11-23): run zCommand as exactly ONE command, for a caller that never means a chain. The ';'
+	 * splitter keeps a ';' inside a "quoted" or [..] / {..} value, but it cannot know that an UNQUOTED value was
+	 * meant to be one: a STRING state is [..], so a coin state "[1];send ..;[2]" pasted unquoted after value: is
+	 * [1] - a closed value - then a ';' and a send. Here a line that holds more than one command (or an unclosed
+	 * quote / bracket) runs NOTHING and returns one error. runSingleCommand, by contrast, runs every command of a
+	 * chain and returns only the first reply - callers send chains through it on purpose.
+	 */
+	public JSONObject runOneCommand(String zMiniDAPPID, String zCommand) {
+		ArrayList<String> commands = splitCommands(zCommand);
+		if(commands == null || commands.size() != 1) {
+			JSONObject result = new JSONObject();
+			result.put("command", zCommand);
+			result.put("status", false);
+			result.put("pending", false);
+			result.put("error", commands == null ? "A quote or bracket is never closed - nothing was run"
+					: "Exactly one command expected - a ';' outside a quoted or [..] value starts another - nothing was run");
+			return result;
+		}
+		return (JSONObject) runMultiCommand(zMiniDAPPID, commands.get(0)).get(0);
+	}
+	
 	private static void addCommand(ArrayList<String> zCommands, String zCommand) {
 		String command = zCommand.trim();
 		if(!command.isEmpty()) {
