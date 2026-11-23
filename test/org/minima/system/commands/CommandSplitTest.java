@@ -212,6 +212,9 @@ public class CommandSplitTest {
 	public void emptyAndControlCharacterPieces() {
 		//a piece of nothing but whitespace or control characters (trim() drops them) is skipped
 		assertSplit("a;\u0001;b; \t ;", "a", "b");
+		JSONObject none = CommandRunner.getRunner().runOneCommand("0x00", " ; ");
+		assertFalse((boolean) none.get("status"));
+		assertEquals("No command given - nothing was run", none.get("error"));
 		assertEquals(0, CommandRunner.getRunner().runMultiCommand(" ;; ").size());
 	}
 
@@ -315,5 +318,30 @@ public class CommandSplitTest {
 		}finally {
 			CommandInjectionTest.swap("send", real);
 		}
+	}
+
+	@Test
+	public void unquotedStringStateStillSplitsButRunOneCommandRefuses() {
+		//LIMIT: a STRING state is [..], so a coin state "[1];txncreate id:unqpwn;[2]" pasted UNQUOTED after value: is
+		//the closed value [1], a ';', and a command. The splitter cannot tell - apps must quote (and validate) data.
+		CommandRunner.getRunner().runMultiCommand("txncreate id:unqrow");
+		String line = "txnstate id:unqrow port:9 value:[1];txncreate id:unqpwn;[2]";
+		CommandRunner.getRunner().runMultiCommand(line);
+		assertTrue("documented limit: an unquoted chain still splits", txnExists("unqpwn"));
+		CommandRunner.getRunner().runMultiCommand("txndelete id:unqpwn");
+
+		//runOneCommand: a caller that means ONE command - the line runs nothing
+		JSONObject one = CommandRunner.getRunner().runOneCommand("0x00", line);
+		assertFalse((boolean) one.get("status"));
+		assertTrue(one.toString(), String.valueOf(one.get("error")).contains("Exactly one command expected"));
+		assertFalse("runOneCommand ran the second command", txnExists("unqpwn"));
+
+		//one command - also with a ';' inside a quoted value - runs as before
+		one = CommandRunner.getRunner().runOneCommand("0x00", "txnstate id:unqrow port:9 value:\"[1];x;[2]\"");
+		assertTrue(one.toString(), (boolean) one.get("status"));
+		//an unclosed quote is a character, as it always was to the parser: one command, it runs
+		one = CommandRunner.getRunner().runOneCommand("0x00", "txnstate id:unqrow port:9 value:\"[1]");
+		assertTrue(one.toString(), (boolean) one.get("status"));
+		CommandRunner.getRunner().runMultiCommand("txndelete id:unqrow");
 	}
 }
