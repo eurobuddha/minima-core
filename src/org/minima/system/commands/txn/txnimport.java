@@ -51,58 +51,80 @@ public class txnimport extends Command {
 	}
 	
 	@Override
+	public String getWriteUse() {
+		String use = super.getWriteUse();
+		if(use != null || isAdminCaller()) {
+			return use;
+		}
+		
+		//SECURITY (2026-11-23): the row it adds REPLACES one with the same id - overwriting another caller's draft
+		//(between its import and its txnsign) needs WRITE rights, as for postfrom / signfrom
+		try {
+			String id = readRow().getID();
+			if(MinimaDB.getDB().getCustomTxnDB().getTransactionRow(id) != null) {
+				return "a transaction with this id already exists : "+id;
+			}
+		}catch(Exception exc) {
+			//no file, invalid data.. fails in the command itself
+		}
+		return null;
+	}
+	
+	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
 
 		TxnDB db = MinimaDB.getDB().getCustomTxnDB();
 		
+		TxnRow txnrow = readRow();
+		
+		//Add to the DB
+		addRow(db, txnrow);
+		
+		ret.put("response", txnrow.toJSON());
+		
+		return ret;
+	}
+	
+	/** The row to import - from file: or data:, under id: if given */
+	private TxnRow readRow() throws Exception {
+		TxnRow txnrow;
 		if(existsParam("file")) {
 			File ff = getFileParam("file");
 			if(!ff.exists()) {
 				throw new CommandException("File does not exist : "+ff.getAbsolutePath());
 			}
 			
-			//Load it in..
-			byte[] txndata = MiniFile.readCompleteFile(ff);
-			
-			//Convert to MiniData
-			MiniData minitxn = new MiniData(txndata);
-			
-			//Convert this..
-			TxnRow txnrow = TxnRow.convertMiniDataVersion(minitxn);
-			if(existsParam("id")) {
-				txnrow.setID(getParam("id"));
-			}
-			
-			db.addCompleteTransaction(txnrow);
-			
-			JSONObject resp = new JSONObject();
-			ret.put("response", txnrow.toJSON());
+			//Load it in.. and convert
+			txnrow = TxnRow.convertMiniDataVersion(new MiniData(MiniFile.readCompleteFile(ff)));
 			
 		}else if(existsParam("data")){
 			
-			//Get the HEX data
-			MiniData dv = getDataParam("data");
-			
-			//Convert to a TxnRow
-			TxnRow tx 	= TxnRow.convertMiniDataVersion(dv);
-			if(existsParam("id")) {
-				tx.setID(getParam("id"));
-			}
-			
-			//Add to the DB
-			db.addCompleteTransaction(tx);
-			
-			JSONObject resp = new JSONObject();
-			ret.put("response", tx.toJSON());
+			//Convert the HEX data to a TxnRow
+			txnrow = TxnRow.convertMiniDataVersion(getDataParam("data"));
 			
 		}else {
 			throw new CommandException("Must specify file or data");
 		}
 		
-		return ret;
+		if(existsParam("id")) {
+			txnrow.setID(getParam("id"));
+		}
+		return txnrow;
 	}
 
+	/**
+	 * SECURITY (final review 2026-11-21): CommandRunner lets a non-admin txnimport through only for a NEW id; the
+	 * add must not then replace a row created in between - checked and added in one step. ADMIN: as before.
+	 */
+	private void addRow(TxnDB zDB, TxnRow zRow) throws CommandException {
+		if(isAdminCaller()) {
+			zDB.addCompleteTransaction(zRow);
+		}else if(!zDB.addNewTransaction(zRow)) {
+			throw new CommandException("A transaction with this id already exists : "+zRow.getID());
+		}
+	}
+	
 	@Override
 	public Command getFunction() {
 		return new txnimport();
