@@ -61,6 +61,14 @@ public class Minima {
 		return runMinimaCMD(zInput, true);
 	}
 	
+	/**
+	 * Exactly ONE command for this caller (0x00 = ADMIN) - a line holding a chain runs nothing
+	 * (CommandRunner.runOneCommand). For companion / IPC callers that build a command from data.
+	 */
+	public String runOneMinimaCMD(String zInput, String zUserID){
+		return CommandRunner.getRunner().runOneCommand(zUserID, zInput.trim()).toString();
+	}
+	
 	public String runMinimaCMD(String zInput, boolean zPrettyJSON){
 		return runMinimaCMD(zInput, zPrettyJSON, "0x00");
 	}
