@@ -813,7 +813,10 @@ public class CommandRunner {
 		 "cointrack","sign","txnauto","txnsign","mds","backup","removescript",
 		 "restore","restoresync","vault","archive","mysql","mysqlcoins",
 		 "rpc","magic","quit","seedrandom","megammrsync","megammr","decryptbackup",
-		 "reset"};
+		 "reset",
+		 // SECURITY (2026-11-23): a non-admin caller (a read-mode RPC user, a companion) may not add a webhook - every
+		 // block, txpow and MiniDapp event posted to its own URL - nor connect the node to its peer or drop a peer
+		 "webhooks","connect","disconnect"};
 	
 	private final ArrayList<String> ALL_WRITE_COMMANDS_ARRAY = new ArrayList<String>(Arrays.asList(ALL_WRITE_COMMANDS));
 	
