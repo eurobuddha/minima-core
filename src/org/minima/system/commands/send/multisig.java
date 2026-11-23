@@ -122,6 +122,19 @@ public class multisig extends Command {
 				"file","publickeys","amount", "tokenid","coinid","address","password","mine"}));
 	}
 	
+	/**
+	 * The terms of a multisig coin - root key, required, total and every key: its state without port 0 (the id)
+	 */
+	private static String multisigTerms(Coin zCoin) {
+		java.util.TreeMap<Integer, String> terms = new java.util.TreeMap<>();
+		for(StateVariable statevar : zCoin.getState()) {
+			if(statevar.getPort() != 0) {
+				terms.put(statevar.getPort(), statevar.getData().toString());
+			}
+		}
+		return terms.toString();
+	}
+
 	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
@@ -178,7 +191,7 @@ public class multisig extends Command {
 				throw new CommandException("Cannot have LESS keys than required!");
 			}
 			
-			//Now construct the state params - SECURITY (command injection): as a JSONObject, not JSON text
+			//Now construct the state params - SECURITY (command injection 2026-11-21): as a JSONObject, not JSON text
 			JSONObject stateparams = new JSONObject();
 			if(!id.equals("")) {
 				stateparams.put("0", id);
@@ -391,8 +404,34 @@ public class multisig extends Command {
 				TxnDB db 						  = MinimaDB.getDB().getCustomTxnDB();
 				TxnRow txnrow 					  = db.getTransactionRow(randomid);
 				Transaction trans 				  = txnrow.getTransaction();
+				
+				//SECURITY (2026-11-23): it signs the WHOLE transaction with every wallet key named in input 0's state - so
+				//every input must be a coin of the multisig contract, or a crafted file also spends coins that key owns
+				MiniData msaddr = new Address(multisig.MULTISIG_CONTRACT).getAddressData();
+				if(trans.getAllInputs().isEmpty()) {
+					throw new CommandException("Not a multisig transaction - it has no inputs");
+				}
+				for(Coin input : trans.getAllInputs()) {
+					if(!input.getAddress().isEqual(msaddr)) {
+						throw new CommandException("Not a multisig transaction - input "+input.getCoinID().to0xString()
+								+" is not at the multisig address");
+					}
+				}
+				
 				Coin multicoin 					  = trans.getAllInputs().get(0);
 				ArrayList<StateVariable> allstate = multicoin.getState();
+
+				//SECURITY (2026-11-24): every multisig coin is at that ONE address - so every input must also be the SAME
+				//multisig as input 0 (root, required, total and keys: state 1 and up), or a crafted file adds a coin of
+				//another multisig this wallet's key can spend alone (its root key, or 1 of n)
+				String terms = multisigTerms(multicoin);
+				for(Coin input : trans.getAllInputs()) {
+					if(!multisigTerms(input).equals(terms)) {
+						throw new CommandException("Not one multisig - input "+input.getCoinID().to0xString()
+								+" has another root key, required number or key list than the first input");
+					}
+				}
+
 				for(StateVariable statevar : allstate) {
 					//Get the vaklue..
 					String possiblepubkey = statevar.getData().toString();
@@ -461,7 +500,8 @@ public class multisig extends Command {
 	}
 	
 	/**
-	 * The commands of a multisig spend - shared by multisig and multisigread. SECURITY (command injection): separated parameters only. The coin's state is on-chain data anyone paying the address
+	 * The commands of a multisig spend - shared by multisig and multisigread. SECURITY (command injection
+	 * 2026-11-21): separated parameters only. The coin's state is on-chain data anyone paying the address
 	 * chooses: it is copied into the change output as plain values, never run.
 	 */
 	public static ArrayList<Object[]> spendCommands(String zTxnID, String zCoinID, MiniNumber zAmount, String zAddress,
