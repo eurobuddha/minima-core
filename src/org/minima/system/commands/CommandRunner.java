@@ -3,7 +3,6 @@ package org.minima.system.commands;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
-import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -304,14 +303,154 @@ public class CommandRunner {
 		return results;
 	}
 	
+	/**
+	 * One command of a command line: where it is in the line, and its tokens - the command name, then name:value
+	 * with a quoted value's quotes dropped.
+	 */
+	static final class LineCommand {
+		int mStart;
+		int mEnd;
+		final ArrayList<String> mTokens = new ArrayList<>();
+	}
+
+	/**
+	 * SECURITY (2026-11-23): THE tokeniser of a command line. The ';' splitter (splitCommands) and the parameter
+	 * parser of every command that holds a ';' (getCommand) both read the line through it, so the two can never
+	 * disagree on where a value ends. (A command with no ';' in it is parsed exactly as before - it is a piece the
+	 * old splitter, which cut at EVERY ';', produced too.)
+	 *
+	 * The rule:
+	 * - whitespace (space, tab, CR, LF, FF, VT) ends a token; a ';' ends the token AND the command - except inside
+	 *   a value that is quoted or bracketed, as below;
+	 * - a token's value starts right after its FIRST ':'. A value that STARTS with
+	 *     '"'       runs to the NEXT '"' anywhere after it - there are no escapes, a backslash is a character (so
+	 *               file:"C:\dir\" is closed). The two quotes are dropped. If no '"' follows, the '"' is an ordinary
+	 *               character and the value is plain.
+	 *     '{' / '[' runs to the bracket that brings the count of '{' '[' minus '}' ']' back to 0 - every bracket
+	 *               counts, inside JSON strings too, as the parser's own JSON tokenising has always counted them. If
+	 *               the count never gets back to 0, the bracket is an ordinary character and the value is plain.
+	 *   Whitespace and ';' inside such a value are data.
+	 * - everything else - the command name, a parameter name, a value that starts with any other character, the
+	 *   rest of a token after its closing quote / bracket - is plain text: a '"', '[', '{' or '\' in it is an
+	 *   ordinary character and a ';' in it ends the command, as every ';' always did.
+	 */
+	static ArrayList<LineCommand> tokenise(String zLine) {
+		ArrayList<LineCommand> commands = new ArrayList<>();
+		LineCommand current = new LineCommand();
+		int len = zLine.length();
+		int i = 0;
+		while(i < len) {
+			char cc = zLine.charAt(i);
+			if(cc == ';') {
+				current.mEnd = i;
+				if(!current.mTokens.isEmpty()) {
+					commands.add(current);
+				}
+				current = new LineCommand();
+				current.mStart = ++i;
+				continue;
+			}
+			if(isSpace(cc)) {
+				i++;
+				continue;
+			}
+
+			//One token
+			StringBuilder token = new StringBuilder();
+			boolean named = false;
+			while(i < len) {
+				cc = zLine.charAt(i);
+				if(cc == ';' || isSpace(cc)) {
+					break;
+				}
+				token.append(cc);
+				i++;
+				if(cc == ':' && !named) {
+					named = true;
+					int end = valueEnd(zLine, i);
+					if(end != -1) {
+						if(zLine.charAt(i) == '"') {
+							token.append(zLine, i+1, end);
+						}else {
+							token.append(zLine, i, end+1);
+						}
+						i = end+1;
+					}
+				}
+			}
+			current.mTokens.add(token.toString());
+		}
+
+		current.mEnd = len;
+		if(!current.mTokens.isEmpty()) {
+			commands.add(current);
+		}
+		return commands;
+	}
+
+	/**
+	 * Where a quoted or bracketed value that starts at zStart ends (the index of its closing quote / bracket), or
+	 * -1 if it is not one - see tokenise()
+	 */
+	private static int valueEnd(String zLine, int zStart) {
+		if(zStart >= zLine.length()) {
+			return -1;
+		}
+		char first = zLine.charAt(zStart);
+		if(first == '"') {
+			return zLine.indexOf('"', zStart+1);
+		}
+		if(first == '{' || first == '[') {
+			int depth = 0;
+			int len = zLine.length();
+			for(int i=zStart;i<len;i++) {
+				char cc = zLine.charAt(i);
+				if(cc == '{' || cc == '[') {
+					depth++;
+				}else if(cc == '}' || cc == ']') {
+					depth--;
+					if(depth == 0) {
+						return i;
+					}
+				}
+			}
+		}
+		return -1;
+	}
+
+	private static boolean isSpace(char zChar) {
+		return zChar == ' ' || zChar == '\t' || zChar == '\n' || zChar == '\r' || zChar == '\f' || zChar == '\u000B';
+	}
+
+	/**
+	 * SECURITY (2026-11-23): the commands in a command line - split at each ';' that is NOT inside a quoted or
+	 * bracketed value, exactly as tokenise() defines one. The old StringTokenizer split at EVERY ';', so a ';'
+	 * inside a runscript / newscript script:"..", a txnstate value:".." or a JSON parameter - text apps often take
+	 * from chain data - started a new command that ran with the caller's rights. Every other ';' still splits, so
+	 * a line with no quoted or bracketed value holding a ';' splits exactly as before. Pieces are trimmed and empty
+	 * ones skipped. Nothing is ever refused here: an unclosed quote or bracket is an ordinary character, as it
+	 * always was to the parameter parser.
+	 */
+	public static ArrayList<String> splitCommands(String zCommand) {
+		ArrayList<String> commands = new ArrayList<>();
+		for(LineCommand command : tokenise(zCommand)) {
+			//trim() also drops control characters the tokeniser reads as text - a piece of nothing else is skipped
+			String piece = zCommand.substring(command.mStart, command.mEnd).trim();
+			if(!piece.isEmpty()) {
+				commands.add(piece);
+			}
+		}
+		return commands;
+	}
+
 	public JSONArray runMultiCommand(String zMiniDAPPID, String zCommand) {
-		
+
 		JSONArray finalresult = new JSONArray();
-		
-		//First break it up..
-		StringTokenizer strtok = new StringTokenizer(zCommand, ";");
-		while(strtok.hasMoreTokens()) {
-			String command = strtok.nextToken().trim();
+
+		//First break it up.. at the ';' between commands, never at one inside a quoted or bracketed value
+		ArrayList<String> commands = splitCommands(zCommand);
+
+		for(String command : commands) {
 			
 			//Get this command..
 			Command cmd = getCommand(command);
@@ -473,9 +612,19 @@ public class CommandRunner {
 	public Command getCommand(String zCommand) {
 		int commandlen = ALL_COMMANDS.length;
 		
-		//Get the first word..
-		String[] split = splitStringJSON(false,zCommand);
-		
+		//Get the first word.. A command that holds a ';' (one inside a quoted or bracketed value - the splitter cut at
+		//every other) is read by the splitter's own tokeniser, so its values end exactly where the splitter's did
+		String[] split;
+		if(zCommand.indexOf(';') != -1) {
+			ArrayList<LineCommand> commands = tokenise(zCommand);
+			if(commands.size() != 1) {
+				return new missingcmd(zCommand.trim(), "Exactly one command expected - a ';' outside a quoted or [..] value starts another");
+			}
+			split = commands.get(0).mTokens.toArray(new String[0]);
+		}else {
+			split = splitStringJSON(false,zCommand);
+		}
+
 		//The first is the command..
 		String command = split[0].toLowerCase();
 		
