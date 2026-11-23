@@ -73,5 +73,14 @@ public class P2PParams {
  
     //NO DEFAULT PEERS!.. WOO HOO!
     public static List<InetSocketAddress> DEFAULT_NODE_LIST = Arrays.asList();
+
+    /**
+     * Published lists of classic peers ( comma separated host:port ) fetched at startup, and whenever
+     * the node has no peers left, to seed the P2P. Every peer is still checked before it is used.
+     */
+    public static String[] SEED_PEER_URLS = {
+    		"https://spartacusrex.com/minimapeers.txt",
+    		"https://eurobuddha.com/minimapeers.txt"
+    };
  
 }
