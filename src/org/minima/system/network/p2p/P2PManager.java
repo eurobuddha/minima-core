@@ -231,6 +231,10 @@ public class P2PManager extends MessageProcessor {
     public static final int SEED_PEERS_MAX 		= 50;
     /** The most a published list may be, in bytes : anything longer is not read further */
     public static final int SEED_LIST_MAX_BYTES 	= 65536;
+    /** The longest one published list may take to arrive, in all */
+    public static final long SEED_FETCH_MAX_MS 	= 30000;
+    /** A seeding is running : no second one is started beside it ( a node without peers asks every few minutes ) */
+    private final java.util.concurrent.atomic.AtomicBoolean mSeeding = new java.util.concurrent.atomic.AtomicBoolean(false);
     /** host:port as a published list may hold it : a host name or IPv4 address, and a port of 1 to 5 digits */
     private static final java.util.regex.Pattern SEED_ENTRY = java.util.regex.Pattern.compile("[A-Za-z0-9]([A-Za-z0-9.-]{0,251}[A-Za-z0-9])?:[0-9]{1,5}");
 
@@ -259,6 +263,34 @@ public class P2PManager extends MessageProcessor {
     }
 
     /**
+     * A list longer than SEED_LIST_MAX_BYTES is cut there, and what follows its last comma goes too : the cut may
+     * have fallen inside an entry, and "1.2.3.4:90" from "1.2.3.4:9001" would be used as another port.
+     */
+    public static String cutSeedList(String zList) {
+    	if(zList.length() <= SEED_LIST_MAX_BYTES) {
+    		return zList;
+    	}
+    	String cut = zList.substring(0, SEED_LIST_MAX_BYTES);
+    	int comma = cut.lastIndexOf(",");
+    	return comma == -1 ? "" : cut.substring(0, comma);
+    }
+
+    /**
+     * May a published entry be checked at all : not this machine, not a private or link-local network, and a host
+     * name that resolved ( unless every IP is allowed, as on a private test network ).
+     */
+    public static boolean seedAddressAllowed(InetSocketAddress zAddress) {
+    	if(GeneralParams.ALLOW_ALL_IP) {
+    		return true;
+    	}
+    	if(zAddress == null || zAddress.isUnresolved() || zAddress.getAddress() == null) {
+    		return false;
+    	}
+    	java.net.InetAddress ip = zAddress.getAddress();
+    	return !(ip.isLoopbackAddress() || ip.isAnyLocalAddress() || ip.isSiteLocalAddress() || ip.isLinkLocalAddress() || ip.isMulticastAddress());
+    }
+
+    /**
      * One published list, read with a connect AND a read timeout and never more than SEED_LIST_MAX_BYTES of it.
      */
     private static String fetchSeedList(String zUrl) throws IOException {
@@ -274,16 +306,22 @@ public class P2PManager extends MessageProcessor {
     		}
     		java.io.ByteArrayOutputStream bout = new java.io.ByteArrayOutputStream();
     		java.io.InputStream is = con.getInputStream();
+    		long started = System.currentTimeMillis();
     		try {
     			byte[] buffer = new byte[4096];
     			int read;
-    			while(bout.size() < SEED_LIST_MAX_BYTES && (read = is.read(buffer, 0, Math.min(buffer.length, SEED_LIST_MAX_BYTES - bout.size()))) != -1) {
+    			//One byte more than the bound is asked for : that is how a list that is too long is told from one that just fits
+    			while(bout.size() <= SEED_LIST_MAX_BYTES && (read = is.read(buffer, 0, Math.min(buffer.length, SEED_LIST_MAX_BYTES + 1 - bout.size()))) != -1) {
     				bout.write(buffer, 0, read);
+    				//The read timeout is per read : a server that trickles is given SEED_FETCH_MAX_MS in all
+    				if(System.currentTimeMillis() - started > SEED_FETCH_MAX_MS) {
+    					throw new IOException("took longer than "+SEED_FETCH_MAX_MS+" ms");
+    				}
     			}
     		}finally {
     			is.close();
     		}
-    		return new String(bout.toByteArray(), java.nio.charset.StandardCharsets.UTF_8);
+    		return cutSeedList(new String(bout.toByteArray(), java.nio.charset.StandardCharsets.UTF_8));
     	}finally {
     		con.disconnect();
     	}
@@ -296,6 +334,10 @@ public class P2PManager extends MessageProcessor {
     	//Not on a test / private network, and not more than once every few minutes
     	long timenow = System.currentTimeMillis();
     	if(GeneralParams.TEST_PARAMS || GeneralParams.NOCONNECT || timenow - mLastSeedPeers < NOTIFY_NOPEERS_TIMER) {
+    		return;
+    	}
+    	//Not while the last seeding still runs, nor while the peers checker still has that many checks waiting
+    	if(mPeersChecker.getSize() > SEED_PEERS_MAX || !mSeeding.compareAndSet(false, true)) {
     		return;
     	}
     	mLastSeedPeers = timenow;
@@ -315,14 +357,21 @@ public class P2PManager extends MessageProcessor {
 						}
 					}
 
+					//In a different order every time : with more entries than are checked, it must not always be the same ones
+					ArrayList<String> shuffled = new ArrayList<>(nodes);
+					Collections.shuffle(shuffled);
+
 					int added = 0;
-					for(String node : nodes) {
+					for(String node : shuffled) {
 						if(added >= SEED_PEERS_MAX) {
 							break;
 						}
 						try {
 							int index = node.lastIndexOf(":");
 							InetSocketAddress addr = new InetSocketAddress(node.substring(0,index), Integer.parseInt(node.substring(index+1)));
+							if(!seedAddressAllowed(addr)) {
+								continue;
+							}
 							mPeersChecker.PostMessage(new Message(P2PPeersChecker.PEERS_CHECKPEERS)
 																.addObject("address", addr)
 																.addBoolean("force", true));
@@ -335,11 +384,19 @@ public class P2PManager extends MessageProcessor {
 					MinimaLogger.log("P2P seed peers : checking "+added+" published peers");
 				}catch(Throwable exc) {
 					MinimaLogger.log("P2P seed peers : stopped "+exc);
+				}finally {
+					mSeeding.set(false);
 				}
 			}
 		}, "P2PSeedPeers");
     	seeder.setDaemon(true);
-    	seeder.start();
+    	try {
+    		seeder.start();
+    	}catch(Throwable exc) {
+    		//Never started : the next call may try again
+    		mSeeding.set(false);
+    		MinimaLogger.log("P2P seed peers : could not start "+exc);
+    	}
     }
 
     private long mLastNotifyNoPeers 	= 0;

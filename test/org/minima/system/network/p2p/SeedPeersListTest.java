@@ -36,6 +36,30 @@ public class SeedPeersListTest {
 	}
 
 	@Test
+	public void aListCutAtTheBoundLosesItsLastPartialEntry() {
+		StringBuilder list = new StringBuilder();
+		while(list.length() < P2PManager.SEED_LIST_MAX_BYTES - 6) {
+			list.append("x,");
+		}
+		list.append("1.2.3.4:9001,5.6.7.8:9001");   // the bound falls inside the first of these two
+		String cut = P2PManager.cutSeedList(list.toString());
+		assertTrue(cut.length() <= P2PManager.SEED_LIST_MAX_BYTES);
+		assertTrue("nothing of a cut entry is left", P2PManager.parseSeedPeers(cut).isEmpty());
+		assertEquals("a list within the bound is untouched", "1.2.3.4:9001,5.6.7.8:9001", P2PManager.cutSeedList("1.2.3.4:9001,5.6.7.8:9001"));
+		assertEquals("", P2PManager.cutSeedList(new String(new char[P2PManager.SEED_LIST_MAX_BYTES + 5]).replace((char)0, 'a')));
+	}
+
+	@Test
+	public void thisMachineAndPrivateNetworksAreNotChecked() throws Exception {
+		for(String local : new String[] {"127.0.0.1","10.0.0.1","192.168.1.1","172.16.0.1","169.254.1.1","0.0.0.0"}) {
+			assertTrue(local, !P2PManager.seedAddressAllowed(new InetSocketAddress(java.net.InetAddress.getByName(local), 9001)));
+		}
+		assertTrue(!P2PManager.seedAddressAllowed(InetSocketAddress.createUnresolved("no-such-host.invalid", 9001)));
+		assertTrue(!P2PManager.seedAddressAllowed(null));
+		assertTrue(P2PManager.seedAddressAllowed(new InetSocketAddress(java.net.InetAddress.getByName("8.8.8.8"), 9001)));
+	}
+
+	@Test
 	public void aHugeListIsCutAtTheCap() {
 		StringBuilder list = new StringBuilder();
 		for(int i=0;i<5000;i++) {
