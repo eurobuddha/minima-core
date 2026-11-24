@@ -219,6 +219,10 @@ public class CommandSplitDifferentialTest {
 					}
 					typed = value;
 				}
+				//a parameter is given once (2026-11-24): a repeated name is refused, the last one no longer wins
+				if(params.containsKey(tok.substring(0, colon).trim())) {
+					return "REFUSED";
+				}
 				params.put(tok.substring(0, colon).trim(), typed);
 			}
 			return name+" "+params.toString();
