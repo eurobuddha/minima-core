@@ -1,5 +1,6 @@
 package org.minima.system.commands;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -9,6 +10,7 @@ import java.nio.file.Files;
 import org.junit.Test;
 import org.minima.database.MinimaDB;
 import org.minima.database.wallet.Wallet;
+import org.minima.objects.keys.TreeKey;
 import org.minima.utils.json.JSONObject;
 
 /**
@@ -27,6 +29,8 @@ public class ResetKeysBoundTest {
 		wallet.loadDB(new File(dir, "wallet"));
 		try {
 			String key = wallet.createNewKey().getPublicKey();
+			//the bound is computed, not read off a key built for the purpose - and equals a built key's
+			assertEquals(wallet.getKeyFromPublic(key).getMaxUses(), TreeKey.defaultMaxUses());
 			for(String uses : new String[] {"262144", "2147483647"}) {
 				JSONObject res = (JSONObject) CommandRunner.getRunner().runMultiCommand("0x00",
 						"vault action:resetkeys keyuses:"+uses+" phrase:\"word word word\"").get(0);
