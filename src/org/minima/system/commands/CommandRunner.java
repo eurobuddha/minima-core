@@ -459,7 +459,8 @@ public class CommandRunner {
 			result.put("command", zCommand);
 			result.put("status", false);
 			result.put("pending", false);
-			result.put("error", "Exactly one command expected - a ';' outside a quoted or [..] value starts another - nothing was run");
+			result.put("error", commands.isEmpty() ? "No command given - nothing was run"
+					: "Exactly one command expected - a ';' outside a quoted or [..] value starts another - nothing was run");
 			return result;
 		}
 		return (JSONObject) runMultiCommand(zMiniDAPPID, commands.get(0)).get(0);
