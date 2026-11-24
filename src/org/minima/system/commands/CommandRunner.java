@@ -690,6 +690,12 @@ public class CommandRunner {
 			String name  = token.substring(0, index).trim();
 			String value = token.substring(index+1).trim();
 
+			//A parameter is given ONCE. The last one used to win: text an app pasted into a value could
+			//close that value and repeat a name ("address:", "amount:", "port:", "script:"), replacing what the app sent
+			if(comms.getParams().containsKey(name)) {
+				return new missingcmd(command,"Parameter given twice for "+command+" : "+name);
+			}
+
 			try {
 				comms.getParams().put(name, getParamValue(command, value));
 			} catch (ParseException e) {

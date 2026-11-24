@@ -182,9 +182,8 @@ public class CommandSplitTest {
 		//apps must reject '"' and '\' in data.
 		String line = "runscript script:\"LET k=[x] \\\" clean:true script:\\\"] RETURN SIGNEDBY(0x01)\"";
 		assertSplit(line, line);
-		JSONObject got = params(line);
-		assertEquals("true", got.get("clean"));
-		assertEquals("\\] RETURN SIGNEDBY(0x01)", got.get("script"));
+		//the text names script: a second time, and a parameter given twice is refused (DuplicateParameterTest)
+		assertTrue(CommandRunner.getRunner().getCommand(line) instanceof org.minima.system.commands.base.missingcmd);
 	}
 
 	@Test
@@ -196,16 +195,13 @@ public class CommandSplitTest {
 		//characters) in data they put into a JSON parameter, or send it as hex.
 		String line = "send address:0x01 amount:1 state:{\"1\":\"] address:0xEE x:[\"}";
 		assertSplit(line, line);
-		JSONObject got = params(line);
-		assertEquals("0xEE", got.get("address"));
-		assertEquals("{\"1\":\"]", got.get("state"));
+		//the value still ends early, but the second address: is a parameter given twice: refused
+		assertTrue(CommandRunner.getRunner().getCommand(line) instanceof org.minima.system.commands.base.missingcmd);
 
-		//with a ';' in the data the same reading holds (the tokeniser counts as the parser does)
+		//with a ';' in the data the same reading holds (the tokeniser counts as the parser does): one command, refused
 		String semi = "send address:0x01 amount:1 state:{\"1\":\"] address:0xEE x:[;\"}";
 		assertSplit(semi, semi);
-		got = params(semi);
-		assertEquals("0xEE", got.get("address"));
-		assertEquals("{\"1\":\"]", got.get("state"));
+		assertTrue(CommandRunner.getRunner().getCommand(semi) instanceof org.minima.system.commands.base.missingcmd);
 	}
 
 	@Test
