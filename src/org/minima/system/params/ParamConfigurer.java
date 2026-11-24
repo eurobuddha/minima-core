@@ -408,6 +408,11 @@ public class ParamConfigurer {
         keetsmaxconns("keetsmaxconns", "Max concurrent keets connections (default 6)", (args, configurer) -> {
             GeneralParams.KEETS_MAX_CONNS = Integer.parseInt(args);
         }),
+        keetschatonly("keetschatonly", "Keets for chat only - blocks and transactions use classic P2P only", (args, configurer) -> {
+            if ("true".equals(args)) {
+                GeneralParams.KEETS_CHAT_ONLY = true;
+            }
+        }),
         keetsmailboxurl("keetsmailboxurl", "URL of the signed keets mailbox list (empty = sidecar defaults)", (args, configurer) -> {
             GeneralParams.KEETS_MAILBOX_URL = args;
         }),

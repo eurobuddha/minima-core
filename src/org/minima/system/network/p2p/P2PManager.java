@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -23,6 +24,7 @@ import org.minima.system.network.p2p.params.P2PParams;
 import org.minima.system.network.p2p.params.P2PTestParams;
 import org.minima.system.params.GeneralParams;
 import org.minima.utils.MinimaLogger;
+import org.minima.utils.RPCClient;
 import org.minima.utils.json.JSONArray;
 import org.minima.utils.json.JSONObject;
 import org.minima.utils.messages.Message;
@@ -161,7 +163,10 @@ public class P2PManager extends MessageProcessor {
         			.addBoolean("force", true);
         	mPeersChecker.PostMessage(addpeer);
         }
-        
+
+        //And the published classic peers lists
+        seedPeers();
+
         state.setAcceptingInLinks(GeneralParams.IS_ACCEPTING_IN_LINKS);
         state.setMyMinimaAddress(GeneralParams.MINIMA_HOST);
 
@@ -220,6 +225,197 @@ public class P2PManager extends MessageProcessor {
     }
 
 
+    private volatile long mLastSeedPeers = 0;
+
+    /** The most entries of the published lists that are checked in one go ( both lists together ) */
+    public static final int SEED_PEERS_MAX 		= 50;
+    /** The most a published list may be, in bytes : anything longer is not read further */
+    public static final int SEED_LIST_MAX_BYTES 	= 65536;
+    /** The longest one published list may take to arrive, in all */
+    public static final long SEED_FETCH_MAX_MS 	= 30000;
+    /** The least time between two seedings that fetched something : SEED_PEERS_MAX checks of 10 s each ( a check that
+     *  connects and then gets no answer takes 20 ), and a little more. Asked for with the no-peers notice, so in
+     *  practice every 12 to 13 minutes. A seeding that fetched NOTHING is asked for again with the next notice. */
+    public static final long SEED_PEERS_INTERVAL 	= 1000 * 60 * 10;
+    /** A seeding is running : no second one is started beside it ( a node without peers asks every few minutes ) */
+    private final java.util.concurrent.atomic.AtomicBoolean mSeeding = new java.util.concurrent.atomic.AtomicBoolean(false);
+    /** host:port as a published list may hold it : a host name or IPv4 address, and a port of 1 to 5 digits */
+    private static final java.util.regex.Pattern SEED_ENTRY = java.util.regex.Pattern.compile("[A-Za-z0-9]([A-Za-z0-9.-]{0,251}[A-Za-z0-9])?:[0-9]{1,5}");
+
+    /**
+     * The usable entries of a published peers list ( comma separated host:port ), in the order given, each once.
+     * An entry that is not exactly host:port with a port of 1 to 65535 is left out. No more than SEED_PEERS_MAX of
+     * them are CHECKED ( seedChoice ) : which ones is drawn afresh every time, from all of them.
+     */
+    public static ArrayList<String> parseSeedPeers(String zList) {
+    	ArrayList<String> ret = new ArrayList<>();
+    	if(zList == null) {
+    		return ret;
+    	}
+    	StringTokenizer strtok = new StringTokenizer(zList,",");
+    	while(strtok.hasMoreTokens()) {
+    		String entry = strtok.nextToken().trim();
+    		if(!SEED_ENTRY.matcher(entry).matches()) {
+    			continue;
+    		}
+    		int port = Integer.parseInt(entry.substring(entry.lastIndexOf(":")+1));
+    		if(port < 1 || port > 65535 || ret.contains(entry)) {
+    			continue;
+    		}
+    		ret.add(entry);
+    	}
+    	return ret;
+    }
+
+    /**
+     * SEED_PEERS_MAX of the entries at most, in a different order every time : with more entries than are checked,
+     * it must not always be the same ones, nor only those at the start of a list.
+     */
+    public static ArrayList<String> seedChoice(java.util.Collection<String> zEntries) {
+    	ArrayList<String> shuffled = new ArrayList<>(zEntries);
+    	Collections.shuffle(shuffled);
+    	return new ArrayList<>(shuffled.subList(0, Math.min(SEED_PEERS_MAX, shuffled.size())));
+    }
+
+    /**
+     * A list longer than SEED_LIST_MAX_BYTES is cut there, and what follows its last comma goes too : the cut may
+     * have fallen inside an entry, and "1.2.3.4:90" from "1.2.3.4:9001" would be used as another port.
+     */
+    public static String cutSeedList(byte[] zList) {
+    	String all = new String(zList, 0, Math.min(zList.length, SEED_LIST_MAX_BYTES), java.nio.charset.StandardCharsets.UTF_8);
+    	if(zList.length <= SEED_LIST_MAX_BYTES) {
+    		return all;
+    	}
+    	//Too long ( counted in BYTES, as it was read ) : the cut may have fallen inside an entry
+    	int comma = all.lastIndexOf(",");
+    	return comma == -1 ? "" : all.substring(0, comma);
+    }
+
+    /**
+     * May a published entry be checked at all : not this machine, not a private or link-local network, and a host
+     * name that resolved ( unless every IP is allowed, as on a private test network ).
+     */
+    public static boolean seedAddressAllowed(InetSocketAddress zAddress) {
+    	if(GeneralParams.ALLOW_ALL_IP) {
+    		return true;
+    	}
+    	if(zAddress == null || zAddress.isUnresolved() || zAddress.getAddress() == null) {
+    		return false;
+    	}
+    	java.net.InetAddress ip = zAddress.getAddress();
+    	return !(ip.isLoopbackAddress() || ip.isAnyLocalAddress() || ip.isSiteLocalAddress() || ip.isLinkLocalAddress() || ip.isMulticastAddress());
+    }
+
+    /**
+     * One published list, read with a connect AND a read timeout and never more than SEED_LIST_MAX_BYTES of it.
+     */
+    private static String fetchSeedList(String zUrl) throws IOException {
+    	java.net.HttpURLConnection con = (java.net.HttpURLConnection) new java.net.URL(zUrl).openConnection();
+    	con.setConnectTimeout(10000);
+    	con.setReadTimeout(10000);
+    	con.setRequestMethod("GET");
+    	con.setRequestProperty("User-Agent", RPCClient.USER_AGENT);
+    	con.setRequestProperty("Connection", "close");
+    	try {
+    		if(con.getResponseCode() != java.net.HttpURLConnection.HTTP_OK) {
+    			throw new IOException("not HTTP_OK : "+con.getResponseCode());
+    		}
+    		java.io.ByteArrayOutputStream bout = new java.io.ByteArrayOutputStream();
+    		java.io.InputStream is = con.getInputStream();
+    		long started = System.currentTimeMillis();
+    		try {
+    			byte[] buffer = new byte[4096];
+    			int read;
+    			//One byte more than the bound is asked for : that is how a list that is too long is told from one that just fits
+    			while(bout.size() <= SEED_LIST_MAX_BYTES && (read = is.read(buffer, 0, Math.min(buffer.length, SEED_LIST_MAX_BYTES + 1 - bout.size()))) != -1) {
+    				bout.write(buffer, 0, read);
+    				//The read timeout is per read : a server that trickles is given SEED_FETCH_MAX_MS in all
+    				if(System.currentTimeMillis() - started > SEED_FETCH_MAX_MS) {
+    					throw new IOException("took longer than "+SEED_FETCH_MAX_MS+" ms");
+    				}
+    			}
+    		}finally {
+    			is.close();
+    		}
+    		return cutSeedList(bout.toByteArray());
+    	}finally {
+    		con.disconnect();
+    	}
+    }
+    /**
+     * Seed the classic P2P from the published peers lists. Runs in its own thread ( network ), and every
+     * peer goes through the peers checker ( reachable, right version, right chain ) before it is used.
+     */
+    private void seedPeers() {
+    	//Not on a test / private network, and not more than once every few minutes
+    	long timenow = System.currentTimeMillis();
+    	if(GeneralParams.TEST_PARAMS || GeneralParams.NOCONNECT || timenow - mLastSeedPeers < SEED_PEERS_INTERVAL) {
+    		return;
+    	}
+    	//Not while the last seeding still runs. ( The peers checker's queue is NOT looked at : right here it holds the
+    	//node's own saved peers, so a node with many saved peers and none alive was never seeded. The pile-up is bounded
+    	//by SEED_PEERS_INTERVAL instead : SEED_PEERS_MAX checks of 10 s each have drained by then. )
+    	if(!mSeeding.compareAndSet(false, true)) {
+    		return;
+    	}
+    	mLastSeedPeers = timenow;
+
+    	Thread seeder = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				//Nothing a published list holds, and no failure to read one, may ever end this thread with an
+				//exception: an uncaught one stops the whole node ( a port of 70000 in a list did that )
+				try {
+					HashSet<String> nodes = new HashSet<>();
+					for(String url : P2PParams.SEED_PEER_URLS) {
+						try {
+							nodes.addAll(parseSeedPeers(fetchSeedList(url)));
+						}catch(Exception exc) {
+							MinimaLogger.log("P2P seed peers : could not fetch "+url+" "+exc);
+						}
+					}
+
+					int added = 0;
+					//Nothing could be fetched ( offline at the first start, both hosts failing ) : nothing was queued, so
+					//the next ask is not made to wait SEED_PEERS_INTERVAL. It comes with the no-peers notice, minutes later.
+					if(nodes.isEmpty()) {
+						mLastSeedPeers = 0;
+					}
+					for(String node : seedChoice(nodes)) {
+						try {
+							int index = node.lastIndexOf(":");
+							InetSocketAddress addr = new InetSocketAddress(node.substring(0,index), Integer.parseInt(node.substring(index+1)));
+							if(!seedAddressAllowed(addr)) {
+								continue;
+							}
+							mPeersChecker.PostMessage(new Message(P2PPeersChecker.PEERS_CHECKPEERS)
+																.addObject("address", addr)
+																.addBoolean("force", true));
+							added++;
+						}catch(Exception exc) {
+							MinimaLogger.log("P2P seed peers : entry not used "+exc);
+						}
+					}
+
+					MinimaLogger.log("P2P seed peers : checking "+added+" published peers");
+				}catch(Throwable exc) {
+					MinimaLogger.log("P2P seed peers : stopped "+exc);
+				}finally {
+					mSeeding.set(false);
+				}
+			}
+		}, "P2PSeedPeers");
+    	seeder.setDaemon(true);
+    	try {
+    		seeder.start();
+    	}catch(Throwable exc) {
+    		//Never started : the next call may try again
+    		mSeeding.set(false);
+    		mLastSeedPeers = 0;
+    		MinimaLogger.log("P2P seed peers : could not start "+exc);
+    	}
+    }
+
     private long mLastNotifyNoPeers 	= 0;
     private long NOTIFY_NOPEERS_TIMER 	= 1000 * 60 * 3;
     private void doDiscoveryPing(){
@@ -232,6 +428,9 @@ public class P2PManager extends MessageProcessor {
     		if(timenow - mLastNotifyNoPeers > NOTIFY_NOPEERS_TIMER) {
     			MinimaLogger.log("No default Peers found - please use command 'peers' to add a valid peer..");
     			mLastNotifyNoPeers = timenow;
+
+    			//No peers left.. try the published lists again
+    			seedPeers();
     		}
     		
     		return;

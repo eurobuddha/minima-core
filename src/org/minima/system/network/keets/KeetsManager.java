@@ -144,6 +144,10 @@ public class KeetsManager {
 					cmd.add("--mailboxes");
 					cmd.add(mailboxes);
 				}
+				//Chat only - the sidecar carries no Minima traffic
+				if(GeneralParams.KEETS_CHAT_ONLY) {
+					cmd.add("--chat-only");
+				}
 				//Host specific extras ( a fleet box : --serve --dht-port 49737 --mailbox-dir ... )
 				if(!GeneralParams.KEETS_SIDECAR_EXTRA.trim().equals("")) {
 					for(String extra : GeneralParams.KEETS_SIDECAR_EXTRA.trim().split("\\s+")) {
