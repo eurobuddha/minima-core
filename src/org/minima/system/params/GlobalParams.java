@@ -15,7 +15,7 @@ public class GlobalParams {
 	/**
 	 * The MICRO build number
 	 */
-	public static String MINIMA_MICRO_BUILD		= "31-euro16";
+	public static String MINIMA_MICRO_BUILD		= "31-euro19";
 
 	public static String getFullMicroVersion() {
 		return MINIMA_VERSION+"."+MINIMA_MICRO_BUILD;
