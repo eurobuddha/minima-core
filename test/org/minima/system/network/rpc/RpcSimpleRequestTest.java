@@ -48,7 +48,9 @@ public class RpcSimpleRequestTest {
 	public void simpleRequestsRunReadOnly() throws Exception {
 		String reply = RpcHardeningTest.raw("GET /txncreate%20id:simpleget HTTP/1.1\r\nHost: 127.0.0.1:9005", "");
 		assertFalse("a password-less GET ran a WRITE command: "+reply, row("simpleget"));
-		assertTrue(reply, reply.contains("X-Minima-Rpc"));
+		//the refusal says exactly what to add
+		assertTrue(reply, reply.contains("Add the request header  X-Minima-Rpc: 1  (curl: -H 'X-Minima-Rpc: 1'"));
+		assertTrue(reply, reply.contains("-rpcpassword"));
 		for(String type : new String[] {"", "Content-Type: text/plain;charset=UTF-8\r\n",
 				"Content-Type: application/x-www-form-urlencoded\r\n", "Content-Type: multipart/form-data; boundary=x\r\n"}) {
 			post(type, "txncreate id:simplepost");

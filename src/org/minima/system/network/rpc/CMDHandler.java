@@ -260,9 +260,12 @@ public class CMDHandler implements Runnable {
 				if(readonly) {
 					for(Object obj : res) {
 						JSONObject reply = (JSONObject) obj;
-						if(String.valueOf(reply.get("error")).contains("ADMIN")) {
-							reply.put("error", reply.get("error")+" - this RPC has no password: send the command with the"
-									+ " header X-Minima-Rpc: 1 (or set -rpcpassword)");
+						//refused for want of ADMIN - or, with a MiniDapp System, left pending as a READ MiniDapp's is
+						if(String.valueOf(reply.get("error")).contains("ADMIN") || Boolean.TRUE.equals(reply.get("pending"))) {
+							reply.put("error", reply.get("error")+" - this RPC has no password, so a request without the"
+									+ " header ran read-only. Add the request header  X-Minima-Rpc: 1  (curl: -H 'X-Minima-Rpc: 1';"
+									+ " wget: --header='X-Minima-Rpc: 1'; fetch / requests / http.request: headers {\"X-Minima-Rpc\": \"1\"})"
+									+ " - or start the node with -rpcpassword and send it as Basic auth");
 						}
 					}
 				}
