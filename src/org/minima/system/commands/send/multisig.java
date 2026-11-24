@@ -122,6 +122,19 @@ public class multisig extends Command {
 				"file","publickeys","amount", "tokenid","coinid","address","password","mine"}));
 	}
 	
+	/**
+	 * The terms of a multisig coin - root key, required, total and every key: its state without port 0 (the id)
+	 */
+	private static String multisigTerms(Coin zCoin) {
+		java.util.TreeMap<Integer, String> terms = new java.util.TreeMap<>();
+		for(StateVariable statevar : zCoin.getState()) {
+			if(statevar.getPort() != 0) {
+				terms.put(statevar.getPort(), statevar.getData().toString());
+			}
+		}
+		return terms.toString();
+	}
+
 	@Override
 	public JSONObject runCommand() throws Exception {
 		JSONObject ret = getJSONReply();
@@ -407,6 +420,18 @@ public class multisig extends Command {
 				
 				Coin multicoin 					  = trans.getAllInputs().get(0);
 				ArrayList<StateVariable> allstate = multicoin.getState();
+
+				//SECURITY (2026-11-24): every multisig coin is at that ONE address - so every input must also be the SAME
+				//multisig as input 0 (root, required, total and keys: state 1 and up), or a crafted file adds a coin of
+				//another multisig this wallet's key can spend alone (its root key, or 1 of n)
+				String terms = multisigTerms(multicoin);
+				for(Coin input : trans.getAllInputs()) {
+					if(!multisigTerms(input).equals(terms)) {
+						throw new CommandException("Not one multisig - input "+input.getCoinID().to0xString()
+								+" has another root key, required number or key list than the first input");
+					}
+				}
+
 				for(StateVariable statevar : allstate) {
 					//Get the vaklue..
 					String possiblepubkey = statevar.getData().toString();
