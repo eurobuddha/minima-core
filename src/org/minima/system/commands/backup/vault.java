@@ -230,7 +230,7 @@ public class vault extends Command {
 			//Set the key uses to this.. OWNER MAY DROP (2026-11-23): below the capacity of the keys it is about to create
 			//(and checked before anything is wiped) - a count at or past a key's last leaf restarts it at leaf 0 on its
 			//next signature: a one-time leaf used twice
-			long capacity = TreeKey.createDefault(new MiniData("0x00")).getMaxUses();
+			long capacity = TreeKey.defaultMaxUses();
 			int keyuses   = getKeyUsesParam("keyuses", new MiniNumber(100), capacity);
 			
 			//Clean it up..
