@@ -225,7 +225,7 @@ public class P2PManager extends MessageProcessor {
     }
 
 
-    private long mLastSeedPeers = 0;
+    private volatile long mLastSeedPeers = 0;
 
     /** The most entries of the published lists that are checked in one go ( both lists together ) */
     public static final int SEED_PEERS_MAX 		= 50;
@@ -233,7 +233,9 @@ public class P2PManager extends MessageProcessor {
     public static final int SEED_LIST_MAX_BYTES 	= 65536;
     /** The longest one published list may take to arrive, in all */
     public static final long SEED_FETCH_MAX_MS 	= 30000;
-    /** The least time between two seedings : SEED_PEERS_MAX checks of up to 10 s each, and a little more */
+    /** The least time between two seedings that fetched something : SEED_PEERS_MAX checks of 10 s each ( a check that
+     *  connects and then gets no answer takes 20 ), and a little more. Asked for with the no-peers notice, so in
+     *  practice every 12 to 13 minutes. A seeding that fetched NOTHING is asked for again with the next notice. */
     public static final long SEED_PEERS_INTERVAL 	= 1000 * 60 * 10;
     /** A seeding is running : no second one is started beside it ( a node without peers asks every few minutes ) */
     private final java.util.concurrent.atomic.AtomicBoolean mSeeding = new java.util.concurrent.atomic.AtomicBoolean(false);
@@ -374,10 +376,12 @@ public class P2PManager extends MessageProcessor {
 					}
 
 					int added = 0;
+					//Nothing could be fetched ( offline at the first start, both hosts failing ) : nothing was queued, so
+					//the next ask is not made to wait SEED_PEERS_INTERVAL. It comes with the no-peers notice, minutes later.
+					if(nodes.isEmpty()) {
+						mLastSeedPeers = 0;
+					}
 					for(String node : seedChoice(nodes)) {
-						if(added >= SEED_PEERS_MAX) {
-							break;
-						}
 						try {
 							int index = node.lastIndexOf(":");
 							InetSocketAddress addr = new InetSocketAddress(node.substring(0,index), Integer.parseInt(node.substring(index+1)));
@@ -407,6 +411,7 @@ public class P2PManager extends MessageProcessor {
     	}catch(Throwable exc) {
     		//Never started : the next call may try again
     		mSeeding.set(false);
+    		mLastSeedPeers = 0;
     		MinimaLogger.log("P2P seed peers : could not start "+exc);
     	}
     }
