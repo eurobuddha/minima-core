@@ -36,17 +36,49 @@ public class SeedPeersListTest {
 	}
 
 	@Test
-	public void aListCutAtTheBoundLosesItsLastPartialEntry() {
-		StringBuilder list = new StringBuilder();
-		while(list.length() < P2PManager.SEED_LIST_MAX_BYTES - 6) {
-			list.append("x,");
+	public void aListCutAtTheBoundLosesItsLastPartialEntry() throws Exception {
+		//the bound falls right after "1.2.3.4:90" of "1.2.3.4:9001" : a plain cut would use port 90
+		StringBuilder list = new StringBuilder("9.9.9.9:9001,");
+		while(list.length() < P2PManager.SEED_LIST_MAX_BYTES - 10) {
+			list.append(list.length() == P2PManager.SEED_LIST_MAX_BYTES - 11 ? "," : "x");
 		}
-		list.append("1.2.3.4:9001,5.6.7.8:9001");   // the bound falls inside the first of these two
-		String cut = P2PManager.cutSeedList(list.toString());
-		assertTrue(cut.length() <= P2PManager.SEED_LIST_MAX_BYTES);
-		assertTrue("nothing of a cut entry is left", P2PManager.parseSeedPeers(cut).isEmpty());
-		assertEquals("a list within the bound is untouched", "1.2.3.4:9001,5.6.7.8:9001", P2PManager.cutSeedList("1.2.3.4:9001,5.6.7.8:9001"));
-		assertEquals("", P2PManager.cutSeedList(new String(new char[P2PManager.SEED_LIST_MAX_BYTES + 5]).replace((char)0, 'a')));
+		list.append("1.2.3.4:9001,5.6.7.8:9001");
+		byte[] bytes = list.toString().getBytes("UTF-8");
+		assertEquals("1.2.3.4:90", new String(bytes, P2PManager.SEED_LIST_MAX_BYTES - 10, 10, "UTF-8"));
+		ArrayList<String> want = new ArrayList<>();
+		want.add("9.9.9.9:9001");
+		assertEquals(want, P2PManager.parseSeedPeers(P2PManager.cutSeedList(bytes)));
+		assertEquals("a list within the bound is untouched", "1.2.3.4:9001,5.6.7.8:9001", P2PManager.cutSeedList("1.2.3.4:9001,5.6.7.8:9001".getBytes("UTF-8")));
+		assertEquals("no comma at all : nothing", "", P2PManager.cutSeedList(new byte[P2PManager.SEED_LIST_MAX_BYTES + 5]));
+		//the bound is in BYTES : a two-byte character before the cut must not hide that the list was too long
+		byte[] multi = ("\u00e9," + list.toString()).getBytes("UTF-8");
+		assertTrue(!P2PManager.parseSeedPeers(P2PManager.cutSeedList(multi)).contains("1.2.3.4:90"));
+		for(String entry : P2PManager.parseSeedPeers(P2PManager.cutSeedList(multi))) {
+			assertTrue(entry, entry.equals("9.9.9.9:9001"));
+		}
+	}
+
+	@Test
+	public void theChoiceIsDrawnFromAllEntriesAndIsNeverMoreThanTheCap() {
+		ArrayList<String> all = new ArrayList<>();
+		for(int i=0;i<400;i++) {
+			all.add("10."+(i/250)+"."+(i%250)+".1:9001");
+		}
+		assertEquals("every usable entry is parsed, not only the first 50", 400, P2PManager.parseSeedPeers(String.join(",", all)).size());
+		java.util.HashSet<String> seen = new java.util.HashSet<>();
+		for(int round=0;round<40;round++) {
+			ArrayList<String> choice = P2PManager.seedChoice(all);
+			assertEquals(P2PManager.SEED_PEERS_MAX, choice.size());
+			assertEquals("each once", P2PManager.SEED_PEERS_MAX, new java.util.HashSet<>(choice).size());
+			seen.addAll(choice);
+		}
+		assertTrue("entries past the first 50 are chosen too ( "+seen.size()+" different ones in 40 rounds )", seen.size() > 300);
+		assertEquals(3, P2PManager.seedChoice(all.subList(0, 3)).size());
+	}
+
+	@Test
+	public void aSeedingIsNotAskedForMoreOftenThanItsChecksTake() {
+		assertTrue(P2PManager.SEED_PEERS_INTERVAL >= P2PManager.SEED_PEERS_MAX * 10000L);
 	}
 
 	@Test
@@ -65,6 +97,6 @@ public class SeedPeersListTest {
 		for(int i=0;i<5000;i++) {
 			list.append("10.").append(i/250).append(".").append(i%250).append(".1:9001,");
 		}
-		assertEquals(P2PManager.SEED_PEERS_MAX, P2PManager.parseSeedPeers(list.toString()).size());
+		assertEquals(P2PManager.SEED_PEERS_MAX, P2PManager.seedChoice(P2PManager.parseSeedPeers(list.toString())).size());
 	}
 }

@@ -233,14 +233,17 @@ public class P2PManager extends MessageProcessor {
     public static final int SEED_LIST_MAX_BYTES 	= 65536;
     /** The longest one published list may take to arrive, in all */
     public static final long SEED_FETCH_MAX_MS 	= 30000;
+    /** The least time between two seedings : SEED_PEERS_MAX checks of up to 10 s each, and a little more */
+    public static final long SEED_PEERS_INTERVAL 	= 1000 * 60 * 10;
     /** A seeding is running : no second one is started beside it ( a node without peers asks every few minutes ) */
     private final java.util.concurrent.atomic.AtomicBoolean mSeeding = new java.util.concurrent.atomic.AtomicBoolean(false);
     /** host:port as a published list may hold it : a host name or IPv4 address, and a port of 1 to 5 digits */
     private static final java.util.regex.Pattern SEED_ENTRY = java.util.regex.Pattern.compile("[A-Za-z0-9]([A-Za-z0-9.-]{0,251}[A-Za-z0-9])?:[0-9]{1,5}");
 
     /**
-     * The usable entries of a published peers list ( comma separated host:port ), in the order given, each once,
-     * SEED_PEERS_MAX at most. An entry that is not exactly host:port with a port of 1 to 65535 is left out.
+     * The usable entries of a published peers list ( comma separated host:port ), in the order given, each once.
+     * An entry that is not exactly host:port with a port of 1 to 65535 is left out. No more than SEED_PEERS_MAX of
+     * them are CHECKED ( seedChoice ) : which ones is drawn afresh every time, from all of them.
      */
     public static ArrayList<String> parseSeedPeers(String zList) {
     	ArrayList<String> ret = new ArrayList<>();
@@ -248,7 +251,7 @@ public class P2PManager extends MessageProcessor {
     		return ret;
     	}
     	StringTokenizer strtok = new StringTokenizer(zList,",");
-    	while(strtok.hasMoreTokens() && ret.size() < SEED_PEERS_MAX) {
+    	while(strtok.hasMoreTokens()) {
     		String entry = strtok.nextToken().trim();
     		if(!SEED_ENTRY.matcher(entry).matches()) {
     			continue;
@@ -263,16 +266,27 @@ public class P2PManager extends MessageProcessor {
     }
 
     /**
+     * SEED_PEERS_MAX of the entries at most, in a different order every time : with more entries than are checked,
+     * it must not always be the same ones, nor only those at the start of a list.
+     */
+    public static ArrayList<String> seedChoice(java.util.Collection<String> zEntries) {
+    	ArrayList<String> shuffled = new ArrayList<>(zEntries);
+    	Collections.shuffle(shuffled);
+    	return new ArrayList<>(shuffled.subList(0, Math.min(SEED_PEERS_MAX, shuffled.size())));
+    }
+
+    /**
      * A list longer than SEED_LIST_MAX_BYTES is cut there, and what follows its last comma goes too : the cut may
      * have fallen inside an entry, and "1.2.3.4:90" from "1.2.3.4:9001" would be used as another port.
      */
-    public static String cutSeedList(String zList) {
-    	if(zList.length() <= SEED_LIST_MAX_BYTES) {
-    		return zList;
+    public static String cutSeedList(byte[] zList) {
+    	String all = new String(zList, 0, Math.min(zList.length, SEED_LIST_MAX_BYTES), java.nio.charset.StandardCharsets.UTF_8);
+    	if(zList.length <= SEED_LIST_MAX_BYTES) {
+    		return all;
     	}
-    	String cut = zList.substring(0, SEED_LIST_MAX_BYTES);
-    	int comma = cut.lastIndexOf(",");
-    	return comma == -1 ? "" : cut.substring(0, comma);
+    	//Too long ( counted in BYTES, as it was read ) : the cut may have fallen inside an entry
+    	int comma = all.lastIndexOf(",");
+    	return comma == -1 ? "" : all.substring(0, comma);
     }
 
     /**
@@ -321,7 +335,7 @@ public class P2PManager extends MessageProcessor {
     		}finally {
     			is.close();
     		}
-    		return cutSeedList(new String(bout.toByteArray(), java.nio.charset.StandardCharsets.UTF_8));
+    		return cutSeedList(bout.toByteArray());
     	}finally {
     		con.disconnect();
     	}
@@ -333,11 +347,13 @@ public class P2PManager extends MessageProcessor {
     private void seedPeers() {
     	//Not on a test / private network, and not more than once every few minutes
     	long timenow = System.currentTimeMillis();
-    	if(GeneralParams.TEST_PARAMS || GeneralParams.NOCONNECT || timenow - mLastSeedPeers < NOTIFY_NOPEERS_TIMER) {
+    	if(GeneralParams.TEST_PARAMS || GeneralParams.NOCONNECT || timenow - mLastSeedPeers < SEED_PEERS_INTERVAL) {
     		return;
     	}
-    	//Not while the last seeding still runs, nor while the peers checker still has that many checks waiting
-    	if(mPeersChecker.getSize() > SEED_PEERS_MAX || !mSeeding.compareAndSet(false, true)) {
+    	//Not while the last seeding still runs. ( The peers checker's queue is NOT looked at : right here it holds the
+    	//node's own saved peers, so a node with many saved peers and none alive was never seeded. The pile-up is bounded
+    	//by SEED_PEERS_INTERVAL instead : SEED_PEERS_MAX checks of 10 s each have drained by then. )
+    	if(!mSeeding.compareAndSet(false, true)) {
     		return;
     	}
     	mLastSeedPeers = timenow;
@@ -357,12 +373,8 @@ public class P2PManager extends MessageProcessor {
 						}
 					}
 
-					//In a different order every time : with more entries than are checked, it must not always be the same ones
-					ArrayList<String> shuffled = new ArrayList<>(nodes);
-					Collections.shuffle(shuffled);
-
 					int added = 0;
-					for(String node : shuffled) {
+					for(String node : seedChoice(nodes)) {
 						if(added >= SEED_PEERS_MAX) {
 							break;
 						}
