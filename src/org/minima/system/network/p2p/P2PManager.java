@@ -226,6 +226,68 @@ public class P2PManager extends MessageProcessor {
 
 
     private long mLastSeedPeers = 0;
+
+    /** The most entries of the published lists that are checked in one go ( both lists together ) */
+    public static final int SEED_PEERS_MAX 		= 50;
+    /** The most a published list may be, in bytes : anything longer is not read further */
+    public static final int SEED_LIST_MAX_BYTES 	= 65536;
+    /** host:port as a published list may hold it : a host name or IPv4 address, and a port of 1 to 5 digits */
+    private static final java.util.regex.Pattern SEED_ENTRY = java.util.regex.Pattern.compile("[A-Za-z0-9]([A-Za-z0-9.-]{0,251}[A-Za-z0-9])?:[0-9]{1,5}");
+
+    /**
+     * The usable entries of a published peers list ( comma separated host:port ), in the order given, each once,
+     * SEED_PEERS_MAX at most. An entry that is not exactly host:port with a port of 1 to 65535 is left out.
+     */
+    public static ArrayList<String> parseSeedPeers(String zList) {
+    	ArrayList<String> ret = new ArrayList<>();
+    	if(zList == null) {
+    		return ret;
+    	}
+    	StringTokenizer strtok = new StringTokenizer(zList,",");
+    	while(strtok.hasMoreTokens() && ret.size() < SEED_PEERS_MAX) {
+    		String entry = strtok.nextToken().trim();
+    		if(!SEED_ENTRY.matcher(entry).matches()) {
+    			continue;
+    		}
+    		int port = Integer.parseInt(entry.substring(entry.lastIndexOf(":")+1));
+    		if(port < 1 || port > 65535 || ret.contains(entry)) {
+    			continue;
+    		}
+    		ret.add(entry);
+    	}
+    	return ret;
+    }
+
+    /**
+     * One published list, read with a connect AND a read timeout and never more than SEED_LIST_MAX_BYTES of it.
+     */
+    private static String fetchSeedList(String zUrl) throws IOException {
+    	java.net.HttpURLConnection con = (java.net.HttpURLConnection) new java.net.URL(zUrl).openConnection();
+    	con.setConnectTimeout(10000);
+    	con.setReadTimeout(10000);
+    	con.setRequestMethod("GET");
+    	con.setRequestProperty("User-Agent", RPCClient.USER_AGENT);
+    	con.setRequestProperty("Connection", "close");
+    	try {
+    		if(con.getResponseCode() != java.net.HttpURLConnection.HTTP_OK) {
+    			throw new IOException("not HTTP_OK : "+con.getResponseCode());
+    		}
+    		java.io.ByteArrayOutputStream bout = new java.io.ByteArrayOutputStream();
+    		java.io.InputStream is = con.getInputStream();
+    		try {
+    			byte[] buffer = new byte[4096];
+    			int read;
+    			while(bout.size() < SEED_LIST_MAX_BYTES && (read = is.read(buffer, 0, Math.min(buffer.length, SEED_LIST_MAX_BYTES - bout.size()))) != -1) {
+    				bout.write(buffer, 0, read);
+    			}
+    		}finally {
+    			is.close();
+    		}
+    		return new String(bout.toByteArray(), java.nio.charset.StandardCharsets.UTF_8);
+    	}finally {
+    		con.disconnect();
+    	}
+    }
     /**
      * Seed the classic P2P from the published peers lists. Runs in its own thread ( network ), and every
      * peer goes through the peers checker ( reachable, right version, right chain ) before it is used.
@@ -241,31 +303,39 @@ public class P2PManager extends MessageProcessor {
     	Thread seeder = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				HashSet<String> nodes = new HashSet<>();
-				for(String url : P2PParams.SEED_PEER_URLS) {
-					try {
-						StringTokenizer strtok = new StringTokenizer(RPCClient.sendGET(url),",");
-						while(strtok.hasMoreTokens()) {
-							nodes.add(strtok.nextToken().trim());
+				//Nothing a published list holds, and no failure to read one, may ever end this thread with an
+				//exception: an uncaught one stops the whole node ( a port of 70000 in a list did that )
+				try {
+					HashSet<String> nodes = new HashSet<>();
+					for(String url : P2PParams.SEED_PEER_URLS) {
+						try {
+							nodes.addAll(parseSeedPeers(fetchSeedList(url)));
+						}catch(Exception exc) {
+							MinimaLogger.log("P2P seed peers : could not fetch "+url+" "+exc);
 						}
-					}catch(Exception exc) {
-						MinimaLogger.log("P2P seed peers : could not fetch "+url+" "+exc);
 					}
-				}
 
-				int added = 0;
-				for(String node : nodes) {
-					Message checker = connect.createConnectMessage(node);
-					if(checker != null) {
-						InetSocketAddress addr = new InetSocketAddress(checker.getString("host"), checker.getInteger("port"));
-						mPeersChecker.PostMessage(new Message(P2PPeersChecker.PEERS_CHECKPEERS)
-															.addObject("address", addr)
-															.addBoolean("force", true));
-						added++;
+					int added = 0;
+					for(String node : nodes) {
+						if(added >= SEED_PEERS_MAX) {
+							break;
+						}
+						try {
+							int index = node.lastIndexOf(":");
+							InetSocketAddress addr = new InetSocketAddress(node.substring(0,index), Integer.parseInt(node.substring(index+1)));
+							mPeersChecker.PostMessage(new Message(P2PPeersChecker.PEERS_CHECKPEERS)
+																.addObject("address", addr)
+																.addBoolean("force", true));
+							added++;
+						}catch(Exception exc) {
+							MinimaLogger.log("P2P seed peers : entry not used "+exc);
+						}
 					}
-				}
 
-				MinimaLogger.log("P2P seed peers : checking "+added+" published peers");
+					MinimaLogger.log("P2P seed peers : checking "+added+" published peers");
+				}catch(Throwable exc) {
+					MinimaLogger.log("P2P seed peers : stopped "+exc);
+				}
 			}
 		}, "P2PSeedPeers");
     	seeder.setDaemon(true);
