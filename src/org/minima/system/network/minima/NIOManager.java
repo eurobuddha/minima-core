@@ -149,6 +149,19 @@ public class NIOManager extends MessageProcessor {
 		return mNIOServer.getNetClientSize();
 	}
 	
+	/**
+	 * Classic (non keets) connections only - keets peers must never make us give up on a classic peer
+	 */
+	public int getNumberOfClassicConnectedClients() {
+		int classic = 0;
+		for(NIOClient client : mNIOServer.getAllNIOClients()) {
+			if(!client.isKeets()) {
+				classic++;
+			}
+		}
+		return classic;
+	}
+	
 	public int getNumberOfConnnectingClients() {
 		return mConnectingClients.size();
 	}
@@ -466,8 +479,9 @@ public class NIOManager extends MessageProcessor {
 				//Do we attempt a reconnect..
 				if(nc.getConnectAttempts() > RECONNECT_ATTEMPTS) {
 					
-					//Do we have ANY connections at all..
-					int connected = getNumberOfConnectedClients();
+					//Do we have ANY CLASSIC connections at all.. a keets peer does not count,
+					//so a keets node keeps retrying its last classic peer like any other node
+					int connected = getNumberOfClassicConnectedClients();
 					int connecting = getNumberOfConnnectingClients();
 					
 //					ArrayList<NIOClient> conns = mNIOServer.getAllNIOClients();
