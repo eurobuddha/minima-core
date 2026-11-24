@@ -213,6 +213,9 @@ public class CommandSplitTest {
 	public void emptyAndControlCharacterPieces() {
 		//a piece of nothing but whitespace or control characters (trim() drops them) is skipped
 		assertSplit("a;\u0001;b; \t ;", "a", "b");
+		JSONObject none = CommandRunner.getRunner().runOneCommand("0x00", " ; ");
+		assertFalse((boolean) none.get("status"));
+		assertEquals("No command given - nothing was run", none.get("error"));
 		assertEquals(0, CommandRunner.getRunner().runMultiCommand(" ;; ").size());
 	}
 
