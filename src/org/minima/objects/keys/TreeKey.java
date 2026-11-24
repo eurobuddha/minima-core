@@ -28,6 +28,16 @@ public class TreeKey {
 	private static final int DEFAULT_BLKASKEYUSES_KEYSPERLEVEL 	= 128;
 	private static final int DEFAULT_BLKASKEYUSES_LEVELS 		= 4;
 	
+	/**
+	 * How many times the key createDefault builds can sign - keys per level ^ levels - without building one
+	 */
+	public static long defaultMaxUses() {
+		if(GeneralParams.USE_BLOCK_AS_KEYUSES) {
+			return (long) Math.pow(DEFAULT_BLKASKEYUSES_KEYSPERLEVEL, DEFAULT_BLKASKEYUSES_LEVELS);
+		}
+		return (long) Math.pow(DEFAULT_KEYSPERLEVEL, DEFAULT_LEVELS);
+	}
+
 	public static TreeKey createDefault(MiniData zPrivateSeed) {
 		
 		//ARE WE USING THE LARGER BLOCK AS KEY USES.. ?
