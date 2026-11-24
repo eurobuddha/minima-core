@@ -22,6 +22,13 @@ public class TreeKey {
 	public static final int DEFAULT_KEYSPERLEVEL = 64;
 	public static final int DEFAULT_LEVELS 		 = 3;
 	
+	/**
+	 * How many times the key createDefault builds can sign - keys per level ^ levels - without building one
+	 */
+	public static long defaultMaxUses() {
+		return (long) Math.pow(DEFAULT_KEYSPERLEVEL, DEFAULT_LEVELS);
+	}
+
 	public static TreeKey createDefault(MiniData zPrivateSeed) {
 		return new TreeKey(zPrivateSeed, DEFAULT_KEYSPERLEVEL, DEFAULT_LEVELS);
 	}
