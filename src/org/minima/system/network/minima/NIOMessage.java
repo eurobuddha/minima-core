@@ -343,6 +343,8 @@ public class NIOMessage implements Runnable {
 					return;
 				}
 
+				nioclient.expectKeetsGreeting();
+
 				//Both ends see the bridged socket as incoming - the hyperswarm initiator side starts the handshake
 				if(initiator.isTrue() && !nioclient.haveSentGreeting()) {
 					nioclient.setSentGreeting(true);
@@ -365,6 +367,11 @@ public class NIOMessage implements Runnable {
 				//A Parlons/Maxima relay client on OUR port (see NIOHandoff): hand the whole
 				//connection to the embedding relay, greeting and all, before any chain handling.
 				if(nioclient.isIncoming() && NIOHandoff.wants(greet)) {
+					// The Keets chain bridge ends at Minima. Direct Parlons clients use the relay.
+					if(nioclient.isKeets()) {
+						Main.getInstance().getNIOManager().disconnect(mClientUID);
+						return;
+					}
 					Object[] handed = Main.getInstance().getNIOManager().getNIOServer().detachForHandoff(mClientUID);
 					if(handed != null) {
 						try {

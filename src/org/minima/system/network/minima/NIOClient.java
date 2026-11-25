@@ -82,6 +82,8 @@ public class NIOClient {
 	 *  hand-off can replay it to the relay in order. A chain peer's greeting releases them. */
 	private final ArrayList<byte[]> mHeldFrames = new ArrayList<>();
 	private int mFramesSeen = 0;
+	// Guarded by mHeldFrames. Only the authenticated local Keets preamble arms this.
+	private boolean mExpectKeetsGreeting = false;
 	
 	boolean mSentGreeting = false;
 	
@@ -284,6 +286,29 @@ public class NIOClient {
 		}
 	}
 
+	// The preamble used the shared port's first-frame slot. Give the next chain greeting
+	// to the normal validator, whether the selector already queued it or reads it later.
+	void expectKeetsGreeting() {
+		if(NIOHandoff.HANDLER == null) {
+			return;
+		}
+		synchronized (mHeldFrames) {
+			mExpectKeetsGreeting = true;
+			if(!mHeldFrames.isEmpty() && takeKeetsGreeting(mHeldFrames.get(0))) {
+				postFrame(mHeldFrames.remove(0));
+			}
+		}
+	}
+
+	// Called under mHeldFrames. Later packets remain queued until setValidGreeting(true).
+	private boolean takeKeetsGreeting(byte[] zFrame) {
+		if(!mExpectKeetsGreeting) {
+			return false;
+		}
+		mExpectKeetsGreeting = false;
+		return zFrame.length > 0 && zFrame[0] == NIOMessage.MSG_GREETING.getByteValue();
+	}
+
 	private void postFrame(byte[] zFrame) {
 		Message msg = new Message(NIOManager.NIO_INCOMINGMSG);
 		msg.addString("uid", mUID);
@@ -445,7 +470,7 @@ public class NIOClient {
 					boolean hold = false;
 					if(mIncoming && !mValidGreeting && mFramesSeen > 1 && NIOHandoff.HANDLER != null) {
 						synchronized (mHeldFrames) {
-							if(!mValidGreeting) {
+							if(!mValidGreeting && !takeKeetsGreeting(allreaddata)) {
 								mHeldFrames.add(allreaddata);
 								hold = true;
 							}
