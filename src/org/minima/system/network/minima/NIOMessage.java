@@ -343,14 +343,19 @@ public class NIOMessage implements Runnable {
 					return;
 				}
 
-				nioclient.expectKeetsGreeting();
-
 				//Both ends see the bridged socket as incoming - the hyperswarm initiator side starts the handshake
 				if(initiator.isTrue() && !nioclient.haveSentGreeting()) {
 					nioclient.setSentGreeting(true);
 
 					Greeting greetout = new Greeting().createGreeting();
 					NIOManager.sendNetworkMessage(mClientUID, NIOMessage.MSG_GREETING, greetout);
+				}
+
+				// Finish the local side of the handshake before releasing a waiting reply.
+				try {
+					nioclient.expectKeetsGreeting();
+				} catch (IOException invalidGreeting) {
+					Main.getInstance().getNIOManager().disconnect(mClientUID);
 				}
 
 			}else if(type.isEqual(MSG_GREETING)) {

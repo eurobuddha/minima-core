@@ -71,7 +71,7 @@ public class NIOClient {
 	
 	int mConnectAttempts = 1;
 	
-	boolean mValidGreeting = false;
+	volatile boolean mValidGreeting = false;
 
 	/** Set (on the selector thread) once this connection has been handed to an embedding relay
 	 *  (see NIOHandoff): the NIO layer must never close or read it again. */
@@ -81,7 +81,9 @@ public class NIOClient {
 	 *  complete frame after the FIRST one in a read is held here instead of being posted, so a
 	 *  hand-off can replay it to the relay in order. A chain peer's greeting releases them. */
 	private final ArrayList<byte[]> mHeldFrames = new ArrayList<>();
-	private int mFramesSeen = 0;
+	private static final int MAX_HELD_FRAMES = 256;
+	private int mHeldBytes = 0;
+	private boolean mFirstFrameSeen = false;
 	// Guarded by mHeldFrames. Only the authenticated local Keets preamble arms this.
 	private boolean mExpectKeetsGreeting = false;
 	
@@ -272,41 +274,44 @@ public class NIOClient {
 	}
 	
 	public void setValidGreeting(boolean zValid) {
-		mValidGreeting = zValid;
-		if(zValid) {
-			//A chain peer after all: release, in order, any frames held back behind its greeting
-			ArrayList<byte[]> held;
-			synchronized (mHeldFrames) {
-				held = new ArrayList<>(mHeldFrames);
+		synchronized (mHeldFrames) {
+			mValidGreeting = zValid;
+			if(zValid) {
+				for(byte[] frame : mHeldFrames) {
+					postFrame(frame);
+				}
 				mHeldFrames.clear();
-			}
-			for(byte[] frame : held) {
-				postFrame(frame);
+				mHeldBytes = 0;
 			}
 		}
 	}
 
 	// The preamble used the shared port's first-frame slot. Give the next chain greeting
 	// to the normal validator, whether the selector already queued it or reads it later.
-	void expectKeetsGreeting() {
+	void expectKeetsGreeting() throws IOException {
 		if(NIOHandoff.HANDLER == null) {
 			return;
 		}
 		synchronized (mHeldFrames) {
 			mExpectKeetsGreeting = true;
 			if(!mHeldFrames.isEmpty() && takeKeetsGreeting(mHeldFrames.get(0))) {
-				postFrame(mHeldFrames.remove(0));
+				byte[] greeting = mHeldFrames.remove(0);
+				mHeldBytes -= greeting.length;
+				postFrame(greeting);
 			}
 		}
 	}
 
 	// Called under mHeldFrames. Later packets remain queued until setValidGreeting(true).
-	private boolean takeKeetsGreeting(byte[] zFrame) {
+	private boolean takeKeetsGreeting(byte[] zFrame) throws IOException {
 		if(!mExpectKeetsGreeting) {
 			return false;
 		}
 		mExpectKeetsGreeting = false;
-		return zFrame.length > 0 && zFrame[0] == NIOMessage.MSG_GREETING.getByteValue();
+		if(zFrame.length == 0 || zFrame[0] != NIOMessage.MSG_GREETING.getByteValue()) {
+			throw new IOException("Expected the Minima greeting");
+		}
+		return true;
 	}
 
 	private void postFrame(byte[] zFrame) {
@@ -425,9 +430,9 @@ public class NIOClient {
  	   				mReadCurrentPosition 	= 0;
  	   				
  	   				//Check MAX size..
- 	   				if(mReadCurrentLimit > MAX_MESSAGE) {
+					if(mReadCurrentLimit <= 0 || mReadCurrentLimit > MAX_MESSAGE) {
  	   					//Message too big..
- 	   					throw new IOException("Message too big for read! "+mReadCurrentLimit);
+						throw new IOException("Invalid message length: "+mReadCurrentLimit);
  	   				}
  	   				
  	   				//Create a new array - with initial capacity of 64k
@@ -466,16 +471,20 @@ public class NIOClient {
 					//Post it ! - unless it may belong to a relay client (see NIOHandoff): an incoming
 					//client that has not greeted yet gets its FIRST frame posted (that decides chain
 					//peer or relay client) and any further frames held until that decision is made.
-					mFramesSeen++;
 					boolean hold = false;
-					if(mIncoming && !mValidGreeting && mFramesSeen > 1 && NIOHandoff.HANDLER != null) {
+					if(mIncoming && mFirstFrameSeen && NIOHandoff.HANDLER != null) {
 						synchronized (mHeldFrames) {
 							if(!mValidGreeting && !takeKeetsGreeting(allreaddata)) {
+								if(mHeldFrames.size() >= MAX_HELD_FRAMES || allreaddata.length > MAX_MESSAGE - mHeldBytes) {
+									throw new IOException("Too much data waiting for a greeting");
+								}
 								mHeldFrames.add(allreaddata);
+								mHeldBytes += allreaddata.length;
 								hold = true;
 							}
 						}
 					}
+					mFirstFrameSeen = true;
 					if(!hold) {
 						postFrame(allreaddata);
 					}
@@ -600,6 +609,7 @@ public class NIOClient {
 				out.write(frame, 0, frame.length);
 			}
 			mHeldFrames.clear();
+			mHeldBytes = 0;
 		}
 		if(mReadByteArray != null) {
 			byte[] partial = mReadByteArray.toByteArray();
